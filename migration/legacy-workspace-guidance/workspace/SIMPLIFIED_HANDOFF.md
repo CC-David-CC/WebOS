@@ -77,7 +77,9 @@ rename; it journals the operation locally, uses atomic server rename, retries a
 lost response and preserves conflicts. Only synced files and synced destination
 folders can begin a move; folder moves/renames remain unsupported. Text Reload
 checks the server first and an open editor reports changes detected by sync.
-External files must be owned by the file service with mode 0600. One unreadable
+External files must be owned by the file service. Common 0644/0664 file modes
+are automatically tightened to 0600 when read or scanned; restrictive owner
+modes and unsafe links are rejected. One unreadable
 server file no longer stops other files from syncing; its name is reported.
 
 `tests/chonky-browser.test.mjs`, `tests/chonky-move.test.mjs` and
@@ -101,5 +103,4 @@ before building the public apps.
 
 The local launcher source now sets a larger per-minute gateway request limit to
 avoid the earlier prototype limit being exhausted by directory synchronization.
-This is effective only after that launcher is restarted; the current running
-preview retains its original limit. The gateway's default remains unchanged.
+The local preview was restarted with this limit; the gateway's default remains unchanged.
