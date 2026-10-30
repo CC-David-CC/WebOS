@@ -1,5 +1,6 @@
 """Run the built production-derived issuer with isolated development state."""
 import json
+import importlib.util
 import os
 from pathlib import Path
 import socket
@@ -12,12 +13,25 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 ROOT=Path(__file__).resolve().parents[1]
-RELEASE=Path(os.environ.get('CODI_ISSUER_CANDIDATE',ROOT/'.build/browser-native-candidate/profile28-r2'))
+RELEASE=Path(os.environ.get('CODI_ISSUER_CANDIDATE',ROOT/'.build/browser-native-candidate/profile28-r3'))
 GEO=ROOT/'active-system/.build/browser-geoip/dbip-country-lite-2026-10.mmdb'
 PIN='7faf30b5457fa629acc7ffa695c15a6a8a56098ba4372412260ade478af5a537'
 
 
 class CandidateIssuerTest(unittest.TestCase):
+    def test_turn_preference_matches_existing_profile(self):
+        baseline=ROOT/'.build/browser-native-candidate/base-release'
+        if not baseline.is_dir() or not RELEASE.is_dir():self.skipTest('Candidate and baseline releases required')
+        values=[]
+        for root in (baseline,RELEASE):
+            root=root.resolve();sys.path.insert(0,str(root))
+            try:
+                spec=importlib.util.spec_from_file_location('turn_test_'+root.name,root/'origin_service/turn_management.py')
+                module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+                values.append(module.public_policy({'release':str(root),'turn':{'urls':['turns:turn.ksu.codes:443?transport=tcp'],'iceTransportPolicy':'all'}}))
+            finally:sys.path.pop(0)
+        self.assertEqual(values[0],values[1])
+
     def test_split_listener_configuration_and_rule_updates(self):
         if not RELEASE.is_dir() or not GEO.is_file():self.skipTest('Candidate release and local Geo-IP fixture required')
         def port():

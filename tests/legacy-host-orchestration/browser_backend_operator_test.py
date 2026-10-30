@@ -18,7 +18,7 @@ class BackendPins(unittest.TestCase):
         folder=ROOT/'.build/browser-hosting-candidate'
         paths={'candidateSource':folder/'common.py','candidateManifest':folder/'sites-login-relay.toml',
                'candidateCaddy':folder/'Caddyfile-login-relay',
-               'candidateRelease':ROOT/'.build/browser-native-candidate/profile28-r2/connected-release.json'}
+               'candidateRelease':ROOT/'.build/browser-native-candidate/profile28-r3/connected-release.json'}
         if not all(path.is_file() for path in paths.values()):self.skipTest('Staged candidate artifacts not present')
         for name,path in paths.items():
             with self.subTest(name=name):self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),operator.PINS[name])
