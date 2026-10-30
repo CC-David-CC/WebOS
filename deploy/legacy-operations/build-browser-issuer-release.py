@@ -43,7 +43,8 @@ def transform_server(text):
     p.add_argument('--browser-relay-policy-sha256')
     p.add_argument('--login-port',type=int)
     p.add_argument('--login-access-policy',type=Path)
-    p.add_argument('--login-geoip',type=Path)"""
+    p.add_argument('--login-geoip',type=Path)
+    p.add_argument('--login-geoip-python-path',type=Path)"""
     text = once(text, anchor, anchor + extra, 'arguments')
     anchor = '\n    if a.guest_network_policy_sha256 is not None:\n'
     extra = """    login_values=(a.login_port,a.login_access_policy,a.login_geoip)
@@ -65,7 +66,7 @@ def transform_server(text):
             if a.login_port is not None:
                 from network_policy.policy import LocalCountryDatabase
                 from network_policy.login_server import split_login_server
-            with closing(LocalCountryDatabase(a.login_geoip)) if a.login_port is not None else nullcontext(None) as geo:
+            with closing(LocalCountryDatabase(a.login_geoip,module_path=a.login_geoip_python_path)) if a.login_port is not None else nullcontext(None) as geo:
                 with split_login_server(application,a.login_access_policy,port=a.login_port,server_class=BoundedServer,handler_class=Quiet,geo=geo,base_path=a.base_path) if a.login_port is not None else nullcontext(application) as public_application:
                     with make_server('127.0.0.1',a.port,HeadSupport(public_application),server_class=BoundedServer,handler_class=Quiet) as server:
                         print(f'Test issuer and staged desktop: {origin}/',flush=True)
@@ -93,7 +94,7 @@ def transform_manager(text):
     text = text.replace("'codi-connected-development/27')", "'codi-connected-development/27','codi-connected-development/28')")
     anchor = "  if role=='issuer' and config.get('userFiles'):command+=['--user-files']"
     addition = """  if role=='issuer' and json.loads((source/'connected-release.json').read_text())['version']=='codi-connected-development/28':
-   command+=['--browser-relay-policy-sha256','""" + POLICY_PIN + """','--login-port','8117','--login-access-policy','/etc/codi-browser/access-policy.json','--login-geoip','/etc/codi-browser/country.mmdb']
+   command+=['--browser-relay-policy-sha256','""" + POLICY_PIN + """','--login-port','8117','--login-access-policy','/etc/codi-browser/access-policy.json','--login-geoip','/etc/codi-browser/country.mmdb','--login-geoip-python-path','/srv/codi-browser/venvs/a5ee6aa9a1c18535aad36a52b7ec57ca9c1e1fca03cbb02d4c423fd7ec317326/lib/python3.12/site-packages']
 """
     text = once(text, anchor, addition + anchor, 'browser issuer settings')
     anchor = ' assertions=[]\n'
@@ -117,9 +118,8 @@ def build(base, destination):
     edit('origin_service/release.py',transform_release)
     edit('scripts/manage-services.py',transform_manager)
     edit('origin_service/deployment.py',lambda s:s.replace("'codi-connected-development/27')", "'codi-connected-development/27','codi-connected-development/28')"))
-    lock=destination/'requirements.lock';lock.write_text(lock.read_text()+'maxminddb==2.8.2\n')
     manifest_path=destination/'connected-release.json';manifest=json.loads(manifest_path.read_text());manifest['version']='codi-connected-development/28'
-    for name in (*ADDED,'scripts/serve-connected.py','origin_service/release.py','scripts/manage-services.py','origin_service/deployment.py','requirements.lock'):
+    for name in (*ADDED,'scripts/serve-connected.py','origin_service/release.py','scripts/manage-services.py','origin_service/deployment.py'):
         raw=(destination/name).read_bytes();manifest['files'][name]={'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
     manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
     return verifier(destination).verify(destination)
