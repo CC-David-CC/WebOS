@@ -21,7 +21,6 @@ from codiauth.service import Config
 from origin_service.lifecycle import Service
 from origin_service.mount import validate_base_path
 from origin_service.runtime import PrivateRuntime
-from origin_service.turn import add_turn_arguments,policy_from_arguments
 from origin_service.http_server import BoundedServer, QuietHandler
 
 FILES=['index.html','style.css','app.js','reference.js','terminal.js','desktop-apps.js','config.json']
@@ -70,20 +69,14 @@ def main():
     location.add_argument('--runtime-dir',type=Path,help='Private writable absolute directory outside the application release')
     p.add_argument('--origin',help='Explicit external HTTPS origin behind a reverse proxy; backend still binds loopback')
     p.add_argument('--base-path',default='',type=validate_base_path)
-    p.add_argument('--discovery-policy',type=Path,help='Operator-pinned public policy for an independently owned steward')
-    p.add_argument('--discovery-bundle',type=Path,help='Read-only public bundle from that steward; no private state access')
     p.add_argument('--user-files',action='store_true',help='Enable registered-only file identity confirmations; the separate file gateway is required')
-    p.add_argument('--official-channels',action='store_true',help='Enable official-history identity confirmations; a separate official service is required')
     p.add_argument('--guest-network-policy-sha256',help='Explicit pinned policy for live-session guest network grants')
     p.add_argument('--maintenance-notice',type=Path,help='Root-owned public maintenance notice; clients cannot write it')
-    p.add_argument('--ice-preferences',action='store_true',help='Advertise signed codi-session-ice/1 preferences while preserving legacy relay clients')
-    add_turn_arguments(p)
     a=p.parse_args()
     if a.guest_network_policy_sha256 is not None:
         from guest_service.authorization import policy_hash
         try:policy_hash(a.guest_network_policy_sha256)
         except ValueError as error:p.error(str(error))
-    if bool(a.discovery_policy)!=bool(a.discovery_bundle):p.error('Discovery policy and public bundle must be configured together')
     if not 1<=a.port<=65535:p.error('Port must be 1..65535')
     if a.instance is not None and not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,63}',a.instance):p.error('Instance must be a bounded directory label')
     if a.origin:
@@ -96,36 +89,20 @@ def main():
     try:
         with PrivateRuntime(a.runtime_dir,ROOT) if a.runtime_dir is not None else nullcontext(None) as runtime:
             public_path=runtime.public if runtime else base/'public' if instance else ROOT/'.build/connected-public'
-            turn_policy=policy_from_arguments(a,public_path)
             public=stage(public_path);origin=a.origin or f'http://127.0.0.1:{a.port}'
             state=runtime.state if runtime else base/'state' if instance else ROOT/'.build/connected-state'
-            source=None
-            issuer_base=Service
-            if a.ice_preferences:
-                from origin_service.ice_preference import PreferenceService
-                issuer_base=PreferenceService
-            class Issuer(issuer_base):
+            class Issuer(Service):
                 def config(self):
                     config=super().config()
                     if a.user_files:config['gateway']={'version':'codi-user-files/1','basePath':a.base_path+'/gateway','fileBytes':8*1024*1024}
                     if a.guest_network_policy_sha256 is not None:
                         from guest_service.runtime import metadata
                         config['guestNetwork']=metadata(a.base_path,a.guest_network_policy_sha256)
-                    if source is not None:
-                        discovery=source.config()
-                        if discovery is not None:config['discovery']=discovery
                     return config
-            service=Issuer(Config(state,public,origin=origin),turn_policy=turn_policy,base_path=a.base_path,maintenance_file=a.maintenance_notice);application=service
-            if a.discovery_policy:
-                from origin_service.discovery import DiscoverySource,DiscoveryApplication
-                source=DiscoverySource(a.discovery_policy,a.discovery_bundle,service.config()['identity'],a.base_path)
-                application=DiscoveryApplication(service,source)
+            service=Issuer(Config(state,public,origin=origin),base_path=a.base_path,maintenance_file=a.maintenance_notice);application=service
             if a.user_files:
                 from origin_service.gateway_authority import GatewayAuthority
                 application=GatewayAuthority(service,application)
-            if a.official_channels:
-                from origin_service.official_authority import OfficialAuthority
-                application=OfficialAuthority(service,application)
             if a.guest_network_policy_sha256 is not None:
                 from origin_service.guest_authority import GuestAuthority
                 application=GuestAuthority(service,a.guest_network_policy_sha256,application)
