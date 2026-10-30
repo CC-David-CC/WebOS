@@ -534,3 +534,32 @@ after the copies were verified; the original build checkout remains. The
 sources are not public yet, and this preparation does not establish complete
 third-party license compliance or authorize distributing the engine without
 the remaining notices and source review.
+
+### Split login and Browser issuer candidate — 2026-10-30
+
+Further inspection found that the existing Linux guest relay reads issuer
+configuration directly from port 8118. Restricting that entire port to Caddy
+would break the guest. The profile-28 candidate therefore keeps the existing
+issuer port for configuration and other APIs, rejects `/api/v1/auth` there,
+and binds a separate login-only listener on port 8117. The managed-hosting
+candidate routes that exact path to the new listener and overwrites its client
+IP header. The proposed nftables proxy-UID boundary applies to 8117 only.
+`render-issuer-ingress-service.py` produces the atomic rules and a static
+systemd unit; these have passed isolated nftables syntax and systemd unit
+validation, but are not installed. The candidate issuer unit requires this
+guard before startup.
+
+`build-browser-issuer-release.py` verifies the exact live profile-27 manifest
+before producing an isolated profile-28 candidate. It preserves the existing
+public asset tree, adds the registered Browser authority and the split login
+listener, and retains the existing live guest and steward unit renderings. The
+candidate manifest SHA-256 is
+`0ce5bb3cd3189431716f6d3661f86aade6185e1895fc33bc02127475f17301ce`.
+An isolated real issuer started, advertised the Browser policy, denied auth
+on its ordinary port, accepted only login on the separate port, and enforced
+an updated IP rule without restart. Unit and network policy tests pass. Caddy
+validated the candidate hosting configuration, and its adapted route order
+put the exact login path before the general API route. This is not a complete
+registered-user, external-ingress or deployment test; no candidate hosting or
+issuer change has been activated. The live file service still has the old
+8 MiB limit.
