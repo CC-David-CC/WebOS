@@ -109,7 +109,7 @@ The local preview was restarted with this limit; the gateway's default remains u
 ## Document Editor, PDF Viewer and Spreadsheet
 
 The local preview includes three independent, lazily loaded system apps. The
-Tiptap Document Editor writes `.codidoc` documents to the versioned account
+Tiptap Document Editor writes `.doc` documents to the versioned account
 mirror, exports a separate PDF and sends a preview to the PDF.js viewer. The
 viewer also opens saved PDFs from Files. PDF output is for straightforward
 reports; unsupported content or characters are reported, and it is not a
