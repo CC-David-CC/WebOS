@@ -83,21 +83,10 @@ frames share the desktop origin and are not a security boundary for untrusted
 notebooks. Do not assume this local-only policy is installed in another server
 or use it as a substitute for isolating untrusted code on a separate origin.
 
-## Files and the Linux account mount
+## Files and temporary Linux storage
 
-Files offers **My files**, the browser-first account mirror, and **temp_linux**,
-the v86 guest's temporary home. The guest's `/home/guest/Account` folder
-synchronizes with My files, including creations, edits and deletions. The
-mount watches both sides asynchronously; it is not a synchronous kernel mount.
-Wait for its status to report that the account folder is synced to browser
-storage before restarting. The mirror then sends pending writes to the server.
-Conflicting edits or a deletion against a changed file are held for attention
-rather than deliberately overwriting the other side. Save or copy the Linux
-version elsewhere before rebooting if there is a conflict. Automatic server-side
-history and restore are not implemented.
-
-The current mount supports regular files and directories, up to 500 items and
-8 MiB per file. Symbolic links and special Linux files are reported and are
-not synchronized. temp_linux outside Account is cleared whenever the guest
-restarts. Use **Copy to account** on a selected Linux file to keep a copy in
-My files. New folder, New file and Upload are in Files' right-click menu.
+Files offers **My files**, the browser-first account storage synchronized to the
+server, and **temp_linux**, the v86 guest's temporary home. Linux files reset
+when the guest restarts and do not automatically synchronize with My files.
+Use **Copy to account** on a selected Linux file to keep a separate copy in My
+files. New folder, New file and Upload are in Files' right-click menu.

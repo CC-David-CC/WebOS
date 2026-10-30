@@ -8,7 +8,7 @@ Open **System Tools → Files** and choose **My files**. Right-click in a folder
 
 A browser can clear its local storage. The server copy helps recovery only after synchronization succeeds. There is no restore/history feature yet. Deletions synchronize, so deleting a file can remove both copies. Keep independent backups of important coursework.
 
-**temp_linux** is the temporary browser Linux filesystem. It is reset when Linux reboots. `/home/guest/Account` is a synchronized copy of My files, not a real network mount: changes and deletions propagate asynchronously in both directions. Wait for sync, and resolve conflicts rather than editing the same file concurrently in Linux and another app. The current account bridge permits up to 500 items and files up to 8 MiB; it does not sync symbolic links or special files. A sync status for the Linux copy does not by itself prove the server backup is complete.
+**temp_linux** is the temporary browser Linux filesystem and resets when Linux reboots. It is separate from My files and does not automatically synchronize with it. To keep a Linux file, select it in temp_linux and use **Copy to account**; check synchronization before relying on the server copy. Files in My files currently have an 8 MiB per-file limit.
 
 ## Common tasks
 
