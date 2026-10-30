@@ -22,3 +22,8 @@ assets/*.ttf
 *.png
 *.jpg
 *.jpeg
+
+# Original artwork belongs to the application source.
+!/assets/icons/*.png
+!/assets/application.png
+!/assets/wallpaper.jpg
