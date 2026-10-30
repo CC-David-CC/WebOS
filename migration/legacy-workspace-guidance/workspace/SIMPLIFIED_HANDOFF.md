@@ -573,6 +573,9 @@ revised candidate keeps that environment and reads `maxminddb` from the
 root-owned, immutable Browser environment only after validating its package
 path. Real server checks resolved test addresses through that path, and the
 candidate passed the managed installation, guest binding, dependency and
-systemd syntax preflight. A test rejects user-writable fallback modules. The
+systemd syntax preflight. A separate isolated run of the installed candidate
+as the actual `codi-issuer` service account verified configuration, the
+Browser challenge handler, split login and an IP block using the existing
+Python environment. A test rejects user-writable fallback modules. The
 superseded candidate and unused environment were removed. The live file
 service still has the old 8 MiB limit.
