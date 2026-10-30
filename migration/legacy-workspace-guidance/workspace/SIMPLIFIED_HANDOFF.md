@@ -366,3 +366,38 @@ clicked downloads. The latter remains unfinished. Fixture tests exercise
 redirect policy, IP denial, size and expired lease, and a real HTTPS download
 was saved to My files in the isolated desktop. Production service wiring,
 traffic controls, broader website behavior and phone tests remain outstanding.
+
+### Phone windows and terminal startup — live
+
+Root release `bfcccab6fcdfd33221aeb5e57dd59d8eb788217b0c0172bb1cf45b3c533a807b`
+uses the prior live assets plus the tested phone window and terminal changes.
+On compact screens all applications start maximized; the normal maximize
+control still restores a movable window. Desktop window sizing is unchanged.
+Each new independent PTY runs the real shell `help` command and suppresses
+only the initial BusyBox ash banner. A local real-v86 phone-emulation test
+verified the command output and absence of the banner; 12 app types were
+checked at phone and desktop widths. Public asset hashes match and all ten
+hosted sites passed loopback production smoke. Physical phone testing remains
+separate. The previous release is
+`3d2842f5c3e07905e95039074f28752047c58e80dd339ba86936152107d8bee6`;
+manifest backup `/var/backups/webhost-sites/change-20261030T225146530854Z`.
+Current hosting generator `09247414f72e8507c582949c38cae3389cfc13ce50fb6b7118f9c6eaee207226`,
+manifest `8dbc923802a0fd3f66eaef45bf8105c6257ecb02a592de2956233ee1f369818b`,
+and derived Caddy `525b9b8e4997c53fb5522659a80bb9f8497c63abf3c6b955d6204c1aef79b551`.
+Use the hosting controller lock and generated configuration for rollback.
+
+### 128 MiB file work — not live
+
+Development raises the prior 8 MiB file limits to 128 MiB in the mirror,
+gateway, Files, ZIP, Browser URL download and affected app adapters. The
+encoded request allowance, transfer pacing and default account disk quota were
+also adjusted. A real registered browser wrote and read back a 128 MiB file
+with identical SHA-256; 128 MiB plus one byte was rejected by the client. The
+response now streams base64 in bounded chunks and the browser codec avoids a
+per-byte `Uint8Array.from` over a 128 MiB string. The isolated combined local
+issuer/proxy/gateway reached approximately 759 MiB high-water RSS during the
+round trip; the existing live gateway is capped at 384 MiB. Uploads still use
+large JSON/base64 request buffers, so concurrency and memory need more work
+before rollout. Current live config still advertises and enforces 8 MiB. Some
+apps have independently lower format/processing limits (including Text,
+Data Explorer and Audio Editor); they have not been raised by this change.
