@@ -13,7 +13,7 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
-APP_IDS = ('calculator', 'files', 'help', 'terminal', 'text', 'image-editor', 'personal-template')
+APP_IDS = ('calculator', 'files', 'help', 'terminal', 'text', 'image-editor', 'document-editor', 'pdf-viewer', 'spreadsheet', 'personal-template')
 
 def build(source=None, output=None, apps=APP_IDS, node=None, entries=None, public_inputs=()):
     runtime = node or os.environ.get('CODI_BUILD_NODE') or shutil.which('node')
