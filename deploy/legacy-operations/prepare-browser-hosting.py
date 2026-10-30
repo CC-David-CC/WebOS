@@ -40,10 +40,11 @@ def derive(source):
     anchor="        *(['\\thandle /gateway/* {', '\\t\\trequest_body {', '\\t\\t\\tmax_size 12MiB', '\\t\\t}', '\\t\\treverse_proxy 127.0.0.1:8140', '\\t}'] if s.get('codi_files') else []),"
     replacement="        *(['\\thandle /gateway/* {', '\\t\\trequest_body {', ('\\t\\t\\tmax_size 192MiB' if s.get('codi_large_files') else '\\t\\t\\tmax_size 12MiB'), '\\t\\t}', '\\t\\treverse_proxy 127.0.0.1:8140', '\\t}'] if s.get('codi_files') else []),"
     source=replace_once(source,anchor,replacement,'large-file body limit')
-    anchor="        '\\thandle @codi_identity {', '\\t\\trequest_body {', '\\t\\t\\tmax_size 64KiB', '\\t\\t}', '\\t\\treverse_proxy 127.0.0.1:8118', '\\t}',"
-    replacement="""        '\\thandle @codi_identity {', '\\t\\trequest_body {', '\\t\\t\\tmax_size 64KiB', '\\t\\t}',
-        *(['\\t\\treverse_proxy 127.0.0.1:8118 {', '\\t\\t\\theader_up X-Codi-Client-IP {http.request.remote.host}', '\\t\\t}'] if s.get('codi_login_filter') else ['\\t\\treverse_proxy 127.0.0.1:8118']), '\\t}',"""
-    source=replace_once(source,anchor,replacement,'trusted login address')
+    anchor="        '\\t@codi_identity path /api/* /discovery.json /.well-known/codi-issuer.json',"
+    login="""        *(['\\thandle /api/v1/auth {', '\\t\\trequest_body {', '\\t\\t\\tmax_size 64KiB', '\\t\\t}',
+           '\\t\\treverse_proxy 127.0.0.1:8117 {', '\\t\\t\\theader_up X-Codi-Client-IP {http.request.remote.host}', '\\t\\t}', '\\t}'] if s.get('codi_login_filter') else []),
+"""
+    source=replace_once(source,anchor,login+anchor,'separate trusted login address')
     return source
 
 if __name__=='__main__':
