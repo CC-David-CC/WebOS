@@ -446,3 +446,36 @@ emulation test tapped a guest input, typed `abc`, confirmed the guest changed
 its URL fragment in response, and observed a rendered page change after a
 touch drag. This is not a physical Android keyboard or full IME, accessibility,
 text selection or drag-and-drop test. Browser and relay are not live yet.
+
+### Browser relay private ingress candidate — development
+
+`active-system/scripts/serve-browser-relay.py` provides an operator entrypoint
+for a protected Unix-socket service. It validates a pinned issuer policy,
+requires a service-owned 0750 socket directory, sets the socket 0660, checks
+Linux `SO_PEERCRED` for the configured proxy UID, and requires exactly one
+well-formed ingress-provided client address. Runtime IP/country and domain
+policies remain independent. The relay now bounds shared active streams,
+tries alternative already-vetted addresses when an earlier address is
+unreachable, and checks revised domain/IP policy during active traffic.
+Browser URL downloads spool to private temporary disk and stream to the
+client with per-window, per-account and shared concurrency caps.
+
+Local tests include actual subprocess startup, pin rejection and socket
+cleanup, wrong peer UID/address rejection, a registered real-issuer grant
+through the Unix socket to an external HTTP endpoint, dynamic domain/IP
+blocking, alternate-address fallback, stream-cap cleanup, and a real Gecko
+HTTPS/download workflow. A separate loopback Caddy fixture on box-webhost ran
+as the actual Caddy UID; PROXY v1 and v2 source addresses replaced duplicate
+forged client-IP headers and the upstream observed that UID. This fixture did
+not exercise an independent public network or activate the live route.
+
+`prepare-browser-hosting.py` derives an opt-in managed generator candidate for
+the private socket route, scoped Browser worker CSP, larger file body limit,
+and trusted login header. With all flags absent it reproduces the captured
+baseline byte-for-byte; KSU-only validation/round-trip tests pass and the
+rendered production Caddy configuration validates. No candidate was installed
+or activated. Before production, install and harden the service with the right
+socket directory/group, prove the complete live HAProxy-to-Caddy address path,
+secure the login filter against direct issuer-port spoofing, cover guest and
+other server egress, arrange database and license/source custody, and perform
+live rollback/restart and phone tests. The optional server audit is still off.
