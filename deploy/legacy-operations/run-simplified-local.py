@@ -109,13 +109,14 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
     if browser_relay:
         sys.path.insert(0,str(ROOT.parent/'apps/system/browser'))
         from relay.wisp import Relay
+        from relay.download import Downloader
         from browser_service.sessions import BrowserSessions
         from browser_service.http import BrowserHTTP
         from network_policy.policy import PolicyLoader
         access=PolicyLoader(access_policy or ROOT/'network_policy/default.json',geo)
         async def unavailable(_request):return None
         relay=Relay(policy_path=browser_policy,origin=origin,authenticate=unavailable,source=lambda request:request.remote,network_check=lambda ip:access.check('outgoing',ip))
-        BrowserHTTP(BrowserSessions(issuer.config()['identity'],browser_sha),relay,origin=origin,secure_cookie=False).routes(app)
+        BrowserHTTP(BrowserSessions(issuer.config()['identity'],browser_sha),relay,origin=origin,secure_cookie=False,downloader=Downloader(relay)).routes(app)
     app.router.add_route('*','/{tail:.*}',proxy)
     runner=web.AppRunner(app,access_log=None);await runner.setup();await web.TCPSite(runner,'127.0.0.1',port).start()
     print(f'Simplified local preview: {origin}/',flush=True)
