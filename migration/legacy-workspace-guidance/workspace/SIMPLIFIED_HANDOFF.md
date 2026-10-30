@@ -498,3 +498,22 @@ is in `/etc/codi-browser`; the initially empty access-policy file matches
 the checked-in default, and the separate domain policy retains its existing
 blacklist and disabled whitelist. Geo-IP data is the DB-IP Country Lite
 October 2026 snapshot; attribution and updates are still required.
+
+### Issuer ingress protection candidate — 2026-10-30
+
+The issuer currently listens on `127.0.0.1:8118`; the managed Caddy route is
+the only configured local consumer found. The network-policy kernel module now
+generates a separate atomic nftables table that permits a designated proxy UID
+to connect to that loopback port and rejects other local socket UIDs. In an
+isolated network namespace, real connections from two distinct unprivileged
+UIDs worked before the rule; afterward only the designated UID worked, and
+reapplying the ruleset twice preserved the restriction. A root socket was also
+rejected. Removing the test table restored access. This does not defend against
+an administrator who can alter firewall state. Both the namespace test and
+the nine network-policy tests passed; the latter require the development venv
+for the installed Geo-IP reader. An initial run with system Python failed only
+because that interpreter lacks `maxminddb`.
+
+The ingress table is not installed. A managed boot/startup dependency, actual
+public proxy-chain test, issuer integration and rollback are still required
+before the login IP restrictions can be considered live.
