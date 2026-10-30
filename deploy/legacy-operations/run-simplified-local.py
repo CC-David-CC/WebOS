@@ -7,6 +7,7 @@ Linux guest networking is intentionally disabled in this local launcher.
 import argparse
 import asyncio
 import importlib.util
+import hashlib
 import re
 from pathlib import Path
 import shutil
@@ -30,7 +31,7 @@ from gateway_service.http import FileGateway
 spec=importlib.util.spec_from_file_location('codi_staging',ROOT/'scripts/serve-connected.py')
 staging=importlib.util.module_from_spec(spec);spec.loader.exec_module(staging)
 
-async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None):
+async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None,browser_relay=False):
     origin=f'http://127.0.0.1:{port}'
     runtime=ROOT/'.build'/('simplified-local-test-'+str(port) if isolated else 'simplified-local');runtime.mkdir(parents=True,exist_ok=True,mode=0o700)
     public=runtime/'public'
@@ -43,11 +44,19 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
     data=runtime/'account-data' if isolated else ROOT/'storage/accounts/data';state=runtime/'account-state' if isolated else ROOT/'storage/accounts/state'
     for folder in (data,state):folder.mkdir(parents=True,exist_ok=True,mode=0o700)
     store=UserStore(state,data);initialize_ledger(store);initialize_transfers(store)
+    browser_policy=ROOT.parent/'apps/system/browser/relay/policy.json'
+    browser_sha=hashlib.sha256(browser_policy.read_bytes()).hexdigest() if browser_relay else None
     class Issuer(Service):
         def config(self):
-            config=super().config();config['gateway']={'version':'codi-user-files/1','basePath':'/gateway','fileBytes':8*1024*1024};return config
+            config=super().config();config['gateway']={'version':'codi-user-files/1','basePath':'/gateway','fileBytes':8*1024*1024}
+            if browser_sha:config['browserRelay']={'version':'codi-browser-relay/1','basePath':'/browser-relay','policySHA256':browser_sha}
+            return config
     issuer=Issuer(Config(runtime/'issuer',public,origin=origin,rate_per_minute=1000))
-    application=staging.HeadSupport(GatewayAuthority(issuer));geo=None
+    application=GatewayAuthority(issuer)
+    if browser_relay:
+        from origin_service.browser_authority import BrowserAuthority
+        application=BrowserAuthority(issuer,browser_sha,application)
+    application=staging.HeadSupport(application);geo=None
     if access_policy:
         from network_policy.login import LoginFilter
         from network_policy.policy import LocalCountryDatabase
@@ -96,7 +105,18 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
             await response.prepare(request)
             async for chunk in upstream.content.iter_chunked(65536):await response.write(chunk)
             await response.write_eof();return response
-    app=web.Application(client_max_size=MAX_REQUEST_BYTES,handler_args={'auto_decompress':False});app.router.add_route('*','/{tail:.*}',proxy)
+    app=web.Application(client_max_size=MAX_REQUEST_BYTES,handler_args={'auto_decompress':False})
+    if browser_relay:
+        sys.path.insert(0,str(ROOT.parent/'apps/system/browser'))
+        from relay.wisp import Relay
+        from browser_service.sessions import BrowserSessions
+        from browser_service.http import BrowserHTTP
+        from network_policy.policy import PolicyLoader
+        access=PolicyLoader(access_policy or ROOT/'network_policy/default.json',geo)
+        async def unavailable(_request):return None
+        relay=Relay(policy_path=browser_policy,origin=origin,authenticate=unavailable,source=lambda request:request.remote,network_check=lambda ip:access.check('outgoing',ip))
+        BrowserHTTP(BrowserSessions(issuer.config()['identity'],browser_sha),relay,origin=origin,secure_cookie=False).routes(app)
+    app.router.add_route('*','/{tail:.*}',proxy)
     runner=web.AppRunner(app,access_log=None);await runner.setup();await web.TCPSite(runner,'127.0.0.1',port).start()
     print(f'Simplified local preview: {origin}/',flush=True)
     print(f'Account files: {data}; permissions: {state}; login state: {runtime / "issuer"}',flush=True)
@@ -106,7 +126,7 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
         if geo:geo.close()
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');parser.add_argument('--browser-relay',action='store_true',help='Enable the experimental registered-only Browser relay locally');args=parser.parse_args()
     if not 1<=args.port<=65535:parser.error('Invalid port')
-    try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip))
+    try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip,args.browser_relay))
     except KeyboardInterrupt:pass
