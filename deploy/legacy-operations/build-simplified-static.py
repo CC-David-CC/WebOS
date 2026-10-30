@@ -21,7 +21,10 @@ files={}
 for p in sorted(OUT.rglob('*')):
  if p.is_symlink():raise ValueError('Unexpected symlink in release')
  if p.is_file() and p.relative_to(OUT).as_posix() not in ('assets/desktop/offline-worker.js','assets/desktop/cache-manifest.json'):
-  rel=p.relative_to(OUT).as_posix();data=p.read_bytes();files[rel]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+  rel=p.relative_to(OUT).as_posix();digest=hashlib.sha256();size=0
+  with p.open('rb') as stream:
+   while chunk:=stream.read(1024*1024):digest.update(chunk);size+=len(chunk)
+  files[rel]={'bytes':size,'sha256':digest.hexdigest()}
 canonical=json.dumps(files,sort_keys=True,separators=(',',':')).encode();manifest={'version':'codi-public-cache/1','id':hashlib.sha256(canonical).hexdigest(),'files':files}
 (OUT/'assets/desktop/cache-manifest.json').write_text(json.dumps(manifest,separators=(',',':')))
 template=(ROOT/'scripts/templates/device-cache-worker.js').read_text().replace("'networking.js',", "'bootstrap.js',")
