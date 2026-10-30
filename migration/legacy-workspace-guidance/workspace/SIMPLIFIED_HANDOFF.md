@@ -401,3 +401,26 @@ large JSON/base64 request buffers, so concurrency and memory need more work
 before rollout. Current live config still advertises and enforces 8 MiB. Some
 apps have independently lower format/processing limits (including Text,
 Data Explorer and Audio Editor); they have not been raised by this change.
+
+### Streaming account transfers — local development
+
+The gateway now accepts a purpose-bound, account-signed binary upload with
+small authenticated metadata, streams bytes to a private temporary file,
+checks the exact declared length and SHA-256, and atomically publishes through
+`UserStore.put_stream`. A separate capability endpoint permits older services
+to keep using the legacy JSON/base64 client path. Reads use an authorized open
+file descriptor and bounded base64 output chunks; an already-open descriptor
+continues to read the selected version across atomic replacement. File
+permissions, preconditions and quotas are checked before publication. Temporary
+uploads are unlinked file objects and cannot become account files on failure.
+
+Local results: 34 private storage tests, 16 HTTP/issuer/gateway tests including
+corruption, replay, account isolation and concurrent separate-account uploads;
+a real Chrome registered account wrote and read 128 MiB with matching SHA-256
+and confirmed the binary endpoint was used. A 128 MiB plus one byte request was
+rejected by the browser. The combined isolated issuer/gateway/proxy process
+reported a high-water RSS of 115484 KiB on that round trip. This is a single
+local measurement, not a production concurrency capacity claim; large reads
+still use browser-side JSON/base64 buffers, and production ingress, service
+memory limits, temporary-disk placement, interrupted uploads and multi-user
+stress need validation. The live file service remains the older 8 MiB release.
