@@ -86,7 +86,7 @@ or use it as a substitute for isolating untrusted code on a separate origin.
 ## Files and temporary Linux storage
 
 Files offers **My files**, the browser-first account storage synchronized to the
-server, and **temp_linux**, the v86 guest's temporary home. Linux files reset
-when the guest restarts and do not automatically synchronize with My files.
-Use **Copy to account** on a selected Linux file to keep a separate copy in My
-files. New folder, New file and Upload are in Files' right-click menu.
+server, and **temp_linux**, the guest's separate temporary home. Linux files
+reset on reboot and do not automatically synchronize with My files. Use **Copy
+to account** to open a Linux file in another app. New folder, New file and
+Upload are in Files' right-click menu.
