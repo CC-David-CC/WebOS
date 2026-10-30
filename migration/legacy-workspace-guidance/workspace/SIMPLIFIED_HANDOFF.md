@@ -601,3 +601,27 @@ static account migration, durable guard installation, controlled rollback and
 full live/independent-network tests have not yet been performed. Candidate
 rules for UID 966 were rendered and syntax-checked; that UID must be confirmed
 free again immediately before any migration.
+
+### Trusted Caddy ingress guard active — 2026-10-30
+
+The controlled transition was exercised with real services and rolled back
+successfully before final application. It then installed a locked static
+`codi-shared-ingress` account at UID/GID 966, preserving the existing ingress
+unit and its restrictions, and installed the `codi_caddy_proxy_guard` nftables
+table plus `codi-caddy-proxy-guard.service`. A Caddy dependency starts the
+guard first. The operator and exact inputs are root-owned in
+`/srv/codi-ingress/operators/caddy-guard-db05e87a4`; its result receipt is
+`/var/lib/codi-ingress/caddy-proxy-guard-result.json`. Both the real rollback
+exercise and the final apply preserved the expected status codes for all ten
+sites, including hardware.ksu.codes' intentional 401. The old unprivileged
+direct connection to Caddy port 8443 now fails. HAProxy and Caddy were each
+restarted and the guard remained active; HAProxy retained UID 966. A request
+from i36 over its independently addressed Ethernet connection was recorded by
+Caddy as its correct public IP, `104.180.210.36`. This is address-chain
+evidence, not yet a live login-filter test. Caddy's generated file remains
+SHA-256 `525b9b8e4997c53fb5522659a80bb9f8497c63abf3c6b955d6204c1aef79b551`.
+
+The private Browser relay is now also a `Wants`/`After` dependency of Caddy,
+so a Caddy start pulls it in without making unrelated sites depend on its
+success. The issuer and hosting candidate are still not active. The previous
+paragraph records the discovery and temporary test before this installation.
