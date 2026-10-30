@@ -10,7 +10,7 @@ MODE,RELEASE,EXPECTED_COMMON,EXPECTED_MANIFEST,CANDIDATE_SHA=sys.argv[1:]
 assert MODE in ('preview','active') and len(RELEASE)==64 and os.geteuid()==0
 ROOT=Path('/home/dflanag3/webhost-sites');sys.path.insert(0,str(ROOT/'ops'))
 import webctl as ctl
-common=ROOT/'ops/common.py';manifest=ROOT/'sites.toml';candidate=Path('/tmp/codi-simplified-f66430fe/common.py')
+common=ROOT/'ops/common.py';manifest=ROOT/'sites.toml';candidate=Path('/tmp')/('codi-simplified-'+RELEASE[:8])/'common.py'
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 with (ROOT/'.controller.lock').open('r') as lock:
  fcntl.flock(lock,fcntl.LOCK_EX)
