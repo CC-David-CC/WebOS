@@ -100,6 +100,8 @@ def main():
                 def config(self):
                     config=super().config()
                     if a.user_files:config['gateway']={'version':'codi-user-files/1','basePath':a.base_path+'/gateway','fileBytes':8*1024*1024}
+                    if a.browser_relay_policy_sha256 is not None:
+                        config['browserRelay']={'version':'codi-browser-relay/1','basePath':a.base_path+'/browser-relay','policySHA256':a.browser_relay_policy_sha256}
                     if a.guest_network_policy_sha256 is not None:
                         from guest_service.runtime import metadata
                         config['guestNetwork']=metadata(a.base_path,a.guest_network_policy_sha256)
