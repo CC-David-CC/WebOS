@@ -150,3 +150,13 @@ upstream limitation.
 CSV import, aggregate SQL, grid, grouped bar chart and closing the window.
 The loader and builder bundle-size limits were raised for the DuckDB WASM;
 packages remain isolated and lazy. No external site was changed.
+
+## FFmpeg background tool
+
+Applications → System Tools shows a disabled FFmpeg item: the entry has no
+window, but apps can call the lazy browser-local tool via `host.tools`. Each
+caller has its own single-thread worker; no server process or external CDN is
+used. A real browser test generated a WAV, converted it to MP3, verified the
+menu and lazy loading, and checked app-view cleanup. The 31 MiB GPL-licensed
+core loads only when used; review its source and distribution obligations
+before publishing. See `apps/system/ffmpeg/README.md` for the API and limits.

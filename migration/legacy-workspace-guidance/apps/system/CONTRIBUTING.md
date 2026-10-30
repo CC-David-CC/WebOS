@@ -26,3 +26,8 @@ The PDF viewer uses this to prohibit PDF.js's dynamic fallback worker. The
 builder permits small embedded PNG/SVG CSS data URLs but rejects external URLs.
 Document Editor delegates PDF preview to the independent PDF Viewer via the
 host; apps communicate through host services, not each other's private state.
+
+Background media processing is available through `await host.tools.createFFmpeg()`.
+The returned instance has `run({input, inputName, outputName, args, timeout})`
+and `dispose()`; the host also disposes it when the app view closes. Data stays
+in the browser unless the app explicitly saves it through the file mirror.
