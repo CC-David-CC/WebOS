@@ -15,7 +15,7 @@ import unittest
 ROOT=Path(__file__).resolve().parent.parent;sys.path.insert(0,str(ROOT))
 from origin_service.lifecycle import Service,set_disabled
 from origin_service.gateway_authority import GatewayAuthority
-from gateway_service.auth import Gatekeeper,initialize_ledger,AUTHORIZE,CHALLENGE,CONFIRMATION_TYPE,USE_TYPE
+from gateway_service.auth import Gatekeeper,AuthorizedUse,initialize_ledger,AUTHORIZE,CHALLENGE,CONFIRMATION_TYPE,USE_TYPE
 from gateway_service.policy import Denied
 from gateway_service.user_store import UserStore
 from codiauth import jose
@@ -88,9 +88,10 @@ class Authorization(unittest.TestCase):
     def test_unknown_bearer_is_not_identity(self):
         a=self.enter('alice');a['session_token']=secrets.token_urlsafe(32)
         ch=self.gate.challenge(self.jwk,jose.digest(self.raw));self.assertEqual(self.authorize(a,ch)['status'],401)
-    def test_issuer_restart_requires_fresh_login_without_silent_adoption(self):
+    def test_issuer_restart_restores_registered_session_but_not_other_key(self):
         a=self.enter('alice');self.issuer=Service(self.config,clock=lambda:self.t);self.s=GatewayAuthority(self.issuer)
-        ch=self.gate.challenge(self.jwk,jose.digest(self.raw));self.assertEqual(self.authorize(a,ch)['status'],401)
+        ch=self.gate.challenge(self.jwk,jose.digest(self.raw));self.assertEqual(self.authorize(a,ch)['status'],200)
+        ch=self.gate.challenge(self.jwk,jose.digest(self.raw));self.assertEqual(self.authorize(a,ch,ec.generate_private_key(ec.SECP256R1()))['status'],401)
     def test_gateway_restart_preserves_pending_challenge(self):
         _,_,c,p=self.grant();self.assertEqual(self.gatekeeper().consume(self.raw,c,p)[0].kind,'registered')
     def test_replay_refused_across_restart(self):
@@ -134,7 +135,7 @@ class Authorization(unittest.TestCase):
         with self.assertRaises(Denied):self.gate.consume(self.raw,c,p)
         with self.assertRaises(Denied):self.store.put(principal,'expired',b'bad')
     def test_admitted_upload_can_finish_after_grant_expiry_but_not_operation_deadline(self):
-        _,_,c,p=self.grant();use=self.gate.begin(c,p)
+        _,_,c,p=self.grant();use=self.gate.begin(c,p,seconds=120)
         self.assertEqual(use.principal.deadline,self.t+120)
         self.store.ensure_user(use.principal);self.t+=31
         self.assertEqual(use.decode(self.raw.encode())['path'],'hello.txt')
@@ -142,6 +143,14 @@ class Authorization(unittest.TestCase):
         with self.assertRaises(Denied):self.gate.consume(self.raw,c,p)
         self.t+=90
         with self.assertRaises(Denied):self.store.put(use.principal,'late',b'too late')
+    def test_authorized_request_rejects_utf16_and_utf8_bom(self):
+        for raw in ['{"name":"test"}'.encode('utf-16'),b'\xef\xbb\xbf{"name":"test"}']:
+            use=AuthorizedUse(None,jose.b64(hashlib.sha256(raw).digest()))
+            with self.assertRaises(Denied):use.decode(raw)
+        raw='{"name":"café"}'.encode('utf-8')
+        use=AuthorizedUse(None,jose.b64(hashlib.sha256(raw).digest()))
+        self.assertEqual(use.decode(raw)['name'],'café')
+
     def test_admission_does_not_authorize_different_upload_bytes(self):
         _,_,c,p=self.grant();use=self.gate.begin(c,p)
         with self.assertRaises(Denied):use.decode((self.raw+' ').encode())
