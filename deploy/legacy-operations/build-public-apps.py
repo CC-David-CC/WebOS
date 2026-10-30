@@ -13,13 +13,16 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
-APP_IDS = ('calculator', 'chat', 'files', 'help', 'rooms', 'terminal', 'text')
+APP_IDS = ('calculator', 'files', 'help', 'terminal', 'text', 'personal-template')
 
 def build(source=None, output=None, apps=APP_IDS, node=None, entries=None, public_inputs=()):
     runtime = node or os.environ.get('CODI_BUILD_NODE') or shutil.which('node')
     if not runtime:
         raise ValueError('Node is required at build time; use --node or CODI_BUILD_NODE')
-    options = {'source': str(Path(source or ROOT/'served_apps_public').resolve()),
+    source_root = Path(source or ROOT.parent/'apps').resolve()
+    if source is None and entries is None:
+        entries = {app: ('individual/templates/index.mjs' if app == 'personal-template' else f'system/{app}/index.mjs') for app in apps}
+    options = {'source': str(source_root),
                'output': str(Path(output or ROOT/'assets/desktop').resolve()), 'apps': list(apps), 'entries': entries or {},
                'publicInputs': [str(Path(p).absolute()) for p in public_inputs]}
     # Configuration stays outside the public tree and is never a shell command.
