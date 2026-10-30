@@ -118,8 +118,9 @@ def build(base, destination):
     edit('origin_service/release.py',transform_release)
     edit('scripts/manage-services.py',transform_manager)
     edit('origin_service/deployment.py',lambda s:s.replace("'codi-connected-development/27')", "'codi-connected-development/27','codi-connected-development/28')"))
+    edit('origin_service/turn_management.py',lambda s:once(s,"'codi-connected-development/27')", "'codi-connected-development/27','codi-connected-development/28')",'TURN preference profile'))
     manifest_path=destination/'connected-release.json';manifest=json.loads(manifest_path.read_text());manifest['version']='codi-connected-development/28'
-    for name in (*ADDED,'scripts/serve-connected.py','origin_service/release.py','scripts/manage-services.py','origin_service/deployment.py'):
+    for name in (*ADDED,'scripts/serve-connected.py','origin_service/release.py','scripts/manage-services.py','origin_service/deployment.py','origin_service/turn_management.py'):
         raw=(destination/name).read_bytes();manifest['files'][name]={'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
     manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
     return verifier(destination).verify(destination)
