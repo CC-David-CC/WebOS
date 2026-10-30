@@ -8,6 +8,11 @@ def digest(value):
     if not re.fullmatch('[0-9a-f]{64}',value):raise ValueError('A 64-character lowercase SHA-256 is required')
     return value
 
+def caddy_dependency():
+    # The static relay is pulled in whenever the boot-enabled web server starts.
+    # A relay failure must not prevent the rest of the website from starting.
+    return '[Unit]\nWants=codi-browser-relay.service\nAfter=codi-browser-relay.service\n'
+
 def render(*,runtime,venv,issuer,policy,proxy_uid,proxy_gid):
     for value in (runtime,venv,issuer,policy):digest(value)
     if any(type(value) is not int or not 1<=value<=2**31-1 for value in (proxy_uid,proxy_gid)):
