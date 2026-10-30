@@ -7,6 +7,7 @@ Linux guest networking is intentionally disabled in this local launcher.
 import argparse
 import asyncio
 import importlib.util
+import re
 from pathlib import Path
 import shutil
 import sys
@@ -58,7 +59,15 @@ async def main(port,speech_assets=None,isolated=False):
         hop={'connection','keep-alive','transfer-encoding','upgrade','te','trailer'}
         headers={k:v for k,v in request.headers.items() if k.lower() not in hop}
         async with outgoing.request(request.method,target,headers=headers,data=request.content if request.can_read_body else None,allow_redirects=False) as upstream:
-            response=web.StreamResponse(status=upstream.status,headers={k:v for k,v in upstream.headers.items() if k.lower() not in hop})
+            response_headers={k:v for k,v in upstream.headers.items() if k.lower() not in hop}
+            # JupyterLab compiles JSON-schema validators at runtime. Scope its
+            # required eval permission to notebook documents and workers only;
+            # all other desktop pages keep the stricter policy.
+            if re.fullmatch(r'/assets/desktop/apps/notebook/[0-9a-f]{64}/node_modules/jupyterlite/.*', request.path):
+                csp=response_headers.get('Content-Security-Policy','')
+                if "script-src 'self' 'wasm-unsafe-eval'" not in csp:raise RuntimeError('Unexpected notebook security policy')
+                response_headers['Content-Security-Policy']=csp.replace("script-src 'self' 'wasm-unsafe-eval'", "script-src 'self' 'unsafe-eval'")
+            response=web.StreamResponse(status=upstream.status,headers=response_headers)
             await response.prepare(request)
             async for chunk in upstream.content.iter_chunked(65536):await response.write(chunk)
             await response.write_eof();return response
