@@ -316,3 +316,22 @@ and rollout/rollback remain required. Login rules do not revoke sessions.
 The Browser relay and browser-local domain-report work also remain development
 only; no device records are uploaded automatically and optional server audit is
 off by default.
+
+### Browser relay authorization and stream concurrency — development
+
+A purpose-separated `browser_service.authorization` and issuer middleware
+`origin_service.browser_authority` now issue and verify short-lived,
+registered-account-only browser grants, bound to the signing key, connection
+challenge and pinned policy. The reference issuer can enable the middleware
+with an explicit `--browser-relay-policy-sha256`; it remains off by default.
+The real issuer/ES256/SQLite test passes 28 cases including replay, key theft,
+anonymous denial, service-token confusion, policy changes and durable session
+recovery. This is not yet connected to Browser, the Wisp endpoint or live
+services; admission, renewal, safe service deployment and browser end-to-end
+checks remain. A grant is a short lease, so connection renewal and cleanup must
+be designed and tested rather than silently extending it.
+
+The Wisp prototype now starts connection requests concurrently with bounded
+per-stream early-data buffering, instead of letting slow DNS/connect block
+other streams. Tests check concurrent progress and cancellation/capacity
+cleanup. Source is backed up; this relay is not live.
