@@ -514,9 +514,10 @@ the nine network-policy tests passed; the latter require the development venv
 for the installed Geo-IP reader. An initial run with system Python failed only
 because that interpreter lacks `maxminddb`.
 
-The ingress table is not installed. A managed boot/startup dependency, actual
-public proxy-chain test, issuer integration and rollback are still required
-before the login IP restrictions can be considered live.
+That original whole-port proposal was not installed: subsequent inspection
+found another consumer, leading to the split-port approach described below.
+An actual public proxy-chain test, issuer integration and rollback are still
+required before login IP restrictions can be considered live.
 
 ### Browser source snapshots staged — 2026-10-30
 
@@ -546,20 +547,32 @@ candidate routes that exact path to the new listener and overwrites its client
 IP header. The proposed nftables proxy-UID boundary applies to 8117 only.
 `render-issuer-ingress-service.py` produces the atomic rules and a static
 systemd unit; these have passed isolated nftables syntax and systemd unit
-validation, but are not installed. The candidate issuer unit requires this
-guard before startup.
+validation. The guard is now installed and active on box-webhost for port
+8117 only; a real temporary socket test admitted Caddy UID 997 and denied a
+root-owned client, and restarting the guard preserved the rule. The current
+issuer remains on 8118 and the public site continued to answer. The candidate
+issuer unit requires this guard before startup.
 
 `build-browser-issuer-release.py` verifies the exact live profile-27 manifest
 before producing an isolated profile-28 candidate. It preserves the existing
 public asset tree, adds the registered Browser authority and the split login
 listener, and retains the existing live guest and steward unit renderings. The
-candidate manifest SHA-256 is
-`0ce5bb3cd3189431716f6d3661f86aade6185e1895fc33bc02127475f17301ce`.
+current candidate manifest SHA-256 is
+`d09ddbbb04ce0e294a97b44ae1d8a8a555d302385c5d42b7fb7fd867bfab4878`,
+installed privately at `/srv/codi-connected/releases/browser-issuer-profile28-r2`.
 An isolated real issuer started, advertised the Browser policy, denied auth
 on its ordinary port, accepted only login on the separate port, and enforced
 an updated IP rule without restart. Unit and network policy tests pass. Caddy
 validated the candidate hosting configuration, and its adapted route order
 put the exact login path before the general API route. This is not a complete
 registered-user, external-ingress or deployment test; no candidate hosting or
-issuer change has been activated. The live file service still has the old
-8 MiB limit.
+issuer change has been activated. The first candidate attempted a separate
+issuer Python environment, but managed preflight rejected it because the
+existing Linux guest backend is pinned to the original environment. The
+revised candidate keeps that environment and reads `maxminddb` from the
+root-owned, immutable Browser environment only after validating its package
+path. Real server checks resolved test addresses through that path, and the
+candidate passed the managed installation, guest binding, dependency and
+systemd syntax preflight. A test rejects user-writable fallback modules. The
+superseded candidate and unused environment were removed. The live file
+service still has the old 8 MiB limit.
