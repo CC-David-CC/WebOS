@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+"""Rebind the packaged directory candidate to its updated discovery bundle."""
+import hashlib, importlib.util, json, shutil, tempfile, sys
+sys.dont_write_bytecode=True
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+BASE=ROOT/'.build/releases/listing-suppress-profile26-r1'
+OUT=ROOT/'.build/releases/larger-head-profile26-r1'
+SERVICE=ROOT/'.build/shared-services/larger-head-r1'
+PIN='af60f5fad6057229b83bedab724fe7ab2c7ad1b3051d6920e4c62913060e1e10'
+def sha(b):return hashlib.sha256(b).hexdigest()
+def enc(v):return (json.dumps(v,indent=2)+'\n').encode()
+def key(v):return sha(json.dumps(v,sort_keys=True,separators=(',',':')).encode())
+def record(p):
+ b=p.read_bytes();return {'bytes':len(b),'sha256':sha(b)}
+spec=importlib.util.spec_from_file_location('contract',BASE/'origin_service/release.py');contract=importlib.util.module_from_spec(spec);spec.loader.exec_module(contract)
+assert contract.verify(BASE)['manifestSHA256']==PIN and not OUT.exists()
+stage=Path(tempfile.mkdtemp(prefix='.directory-discovery-',dir=OUT.parent))
+try:
+ shutil.copytree(BASE,stage,dirs_exist_ok=True);changed=set()
+ def put(name,raw):
+  assert contract.public_name(name);p=stage/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw);changed.add(name)
+ registry=json.loads((BASE/'assets/desktop/shared-services.json').read_bytes());entry=next(e for e in registry['services'] if e['name']=='device-history');old=entry['path'];new=json.loads((SERVICE/'shared-service.json').read_bytes());assert new['name']==entry['name'] and new['sourceAlias']==entry['sourceAlias'];entry.update(new)
+ for name,expected in new['files'].items():
+  path=str(Path(new['path']).parent/name);assert record(SERVICE/path)==expected;put(path,(SERVICE/path).read_bytes())
+ put('assets/desktop/shared-services.json',enc(registry))
+ graph=json.loads((BASE/'assets/desktop/network-release.json').read_bytes());previous=graph['coreDirectory'];core={n:(BASE/previous/n).read_bytes() for n in graph['core']};assert sum(v.count(old.encode()) for v in core.values())>0
+ core={n:v.replace(old.encode(),new['path'].encode()) for n,v in core.items()};graph['core']={n:{'bytes':len(raw),'sha256':sha(raw)} for n,raw in core.items()};folder=str(Path(previous).parent/key(graph['core']));graph['coreDirectory']=folder
+ for n,raw in core.items():put(folder+'/'+n,raw)
+ put('assets/desktop/network-release.json',enc(graph));put('index.html',(BASE/'index.html').read_text().replace(previous,folder).encode())
+ cache=json.loads((BASE/'assets/desktop/cache-manifest.json').read_bytes());cache['files']={n:record(stage/n) for n in sorted(set(cache['files'])|changed)};cache['id']=key(cache['files']);put('assets/desktop/cache-manifest.json',enc(cache));put('assets/desktop/offline-worker.js',(ROOT/'scripts/templates/device-cache-worker.js').read_text().replace('__PUBLIC_CACHE_MANIFEST__',json.dumps(cache,separators=(',',':'))).encode())
+ public=json.loads((BASE/'release.json').read_bytes());public['files']={n:record(stage/n) for n in sorted(set(public['files'])|changed)};(stage/'release.json').write_bytes(enc(public));full=json.loads((BASE/'connected-release.json').read_bytes());full['files']={str(p.relative_to(stage)):record(p) for p in sorted(stage.rglob('*')) if p.is_file() and p.name!='connected-release.json'};(stage/'connected-release.json').write_bytes(enc(full))
+ for p in (stage,*stage.rglob('*')):p.chmod(0o755 if p.is_dir() else 0o644)
+ result=contract.verify(stage);stage.rename(OUT);print(json.dumps({'status':'PASS','manifestSHA256':result['manifestSHA256'],'service':new['path'],'core':folder}))
+finally:
+ if stage.exists():shutil.rmtree(stage)

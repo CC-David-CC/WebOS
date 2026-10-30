@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+"""Pinned development frontend update on the unchanged native25 contract.
+
+Uses managed upgrade/recovery and hosting lock; no backend transition, authority
+renewal, data restore, route/port/firewall or boot-policy change.
+"""
+import argparse
+import fcntl
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import re
+import socket
+import sqlite3
+import time
+
+OLD='46c878c394203e962680e1b09acf51cd5bdf625e5eeea3901f8664d6e2db024e'
+NEW='6ebdb23536e1fdaafd82c7372bfc01126cbedcb94190b4060f3a0b980ced5321'
+OLD_DIR=Path('/srv/codi-connected/releases/native25-'+OLD[:16])
+DEST=Path('/srv/codi-connected/releases/native25-'+NEW[:16])
+HELPER=Path('/srv/codi-connected/publishers/d08b9f7b4137db482577ecc0ac5df619cf62a9678e52a4dd554d575df8a0ce88/publish-hosted-peer.py')
+OPERATOR=Path('/srv/codi-rooms/operators/53aa99303600f942a6f40b63718e26f2e73d78bffa0c458ba3d6bebb83a034fc')
+WORKER='3a6d3c5184e52858abe324e37fd4ca410f66d7d289468efe6f169352d347727b'
+BASELINE=Path('/srv/codi-connected/hosted-peer-inspect-1792890782972029188-result.json')
+
+
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def main(action,commit):
+    assert os.geteuid()==0 and socket.gethostname()=='box-webhost' and re.fullmatch('[a-f0-9]{40}',commit)
+    assert sha(HELPER)=='d08b9f7b4137db482577ecc0ac5df619cf62a9678e52a4dd554d575df8a0ce88'
+    spec=importlib.util.spec_from_file_location('topology_publish_helper',HELPER);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+    m.protected(HELPER);m.NATIVE_DIR=DEST
+    def config():
+        m.protected(m.CONTROL);c=json.loads(m.CONTROL.read_bytes())
+        assert c['version']=='codi-managed-instance/5' and c['basePath']=='' and c['origin']=='https://ksu.codes' and c['instance']=='codi-ksu-hidden'
+        assert c['stateRoot']=='/var/lib/codi-connected/ksu' and c['python']==str(m.PYTHON)
+        assert (c['manifestSHA256'],c['release']) in [(OLD,str(OLD_DIR)),(NEW,str(DEST))]
+        assert sha(Path(c['release'])/'connected-release.json')==c['manifestSHA256']
+        assert c['guestNetwork']['policySHA256']=='436096d722a1bfb42935ca817dcaaf74cec7b2856bf229a4f775cc0c7cd2c049'
+        if action!='recover':assert not any((m.CONTROL.parent/n).exists() for n in ['maintenance.json','native-rollout.json','site-cutover.json','reader-backend-transition.json'])
+        return c
+    def backend():
+        op=m.module('topology_publish_rooms',OPERATOR/'room_service/operator.py').Manager(m.ROOM_CONFIG)
+        with op.locked():c=op.load();assert c['manifestSHA256']==WORKER;return c,op.inspect(c),op.health(c)
+    def usage(c):
+        state=Path(json.loads(Path(c['guestNetwork']['configFile']).read_bytes())['stateRoot']);out={}
+        for role in ['anonymous','registered']:
+            with sqlite3.connect('file:'+str(state/role/'usage.sqlite3')+'?mode=ro',uri=True) as db:out[role]=db.execute('SELECT subject,window,bytes,packets FROM usage ORDER BY subject,window').fetchall()
+        return out
+    def verified():
+        contract=m.module('topology_publish_contract',DEST/'origin_service/release.py');v=contract.verify(DEST);assert v['manifestSHA256']==NEW and v['files']==340
+        previous=json.loads((OLD_DIR/'connected-release.json').read_bytes())['files'];new=json.loads((DEST/'connected-release.json').read_bytes())['files']
+        assert all(new[n]==previous[n] for n in contract.V19_NATIVE)
+        assert all(new[n]==r for n,r in previous.items() if '/apps/' in n)
+        return v
+    def notice(c,fn):
+        args=[m.PYTHON,'-I','-B',Path(c['release'])/'scripts/desktop-maintenance.py','--directory',Path(c['stateRoot'])/'public']
+        scheduled=json.loads(m.run([*args,'scheduled','--in-seconds','10','--duration','240','--message','Development update in 10 seconds. Please save your work. Unsaved browser work is not backed up.']))
+        time.sleep(10);finished=False
+        try:value=fn();finished=True;return {'scheduledNotice':scheduled,'operation':value}
+        finally:m.run([*args,'cancelled','--duration','120','--message','Development update finished. Reload to load the current version. Unsaved browser work was not backed up.' if finished else 'Development update interrupted; recovery may be needed. Unsaved browser work was not backed up.'])
+    with (m.HOST/'.controller.lock').open('rb') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        git=lambda *args:m.run(['runuser','-u','dflanag3','--','git','-C',m.REPO,*args])
+        assert git('rev-parse','HEAD')==commit and not git('status','--porcelain') and m.hosting_pins()==m.NEW_PINS
+        c=config();before=m.capture(c);used=usage(c);bc,bs,bh=backend()
+        result={'status':'PASS','action':action,'sourceCommit':commit,'beforeManifestSHA256':c['manifestSHA256']}
+        if action=='stage':
+            assert c['manifestSHA256']==OLD;m.install(m.REPO/'tools/codiserver/reader-topology-update-r1/release',DEST,'connected-release.json',NEW);result['releaseVerification']=verified()
+        elif action in ['activate','rollback']:
+            result['releaseVerification']=verified();target=DEST if action=='activate' else OLD_DIR;pin=NEW if action=='activate' else OLD
+            if c['manifestSHA256']==pin:result['operation']={'status':'already-current','servicesRestarted':False}
+            else:
+                result['native']=notice(c,lambda:m.native('upgrade','--release',target,'--python',m.PYTHON));assert result['native']['operation']['status']=='upgraded'
+            assert config()['manifestSHA256']==pin
+        elif action=='recover':result['operation']=m.native('recover-operation')
+        elif action=='verify':
+            result['releaseVerification']=verified();result['nativeStatus']=m.native('status')
+            assert sha(BASELINE)=='43fb53090747c89c43f9b64012416a75a54a21fdf5ad36a1b3f184e860b98e5f'
+            m.preserved(json.loads(BASELINE.read_bytes())['state'],c)
+        else:raise ValueError('Unknown action')
+        after=config();result['state']=m.preserved(before,after);ac,ast,ah=backend()
+        retained=m.module('topology_publish_retained',OPERATOR/'room_service/operator.py').retained
+        assert ac==bc and ah==bh and retained(bs,ast)
+        current=usage(after)
+        for role,rows in used.items():
+            values={(r[0],r[1]):r[2:] for r in current[role]}
+            assert all((r[0],r[1]) in values and all(a>=b for a,b in zip(values[(r[0],r[1])],r[2:])) for r in rows)
+        assert m.hosting_pins()==m.NEW_PINS
+        result.update(afterManifestSHA256=after['manifestSHA256'],nativeConfigSHA256=sha(m.CONTROL),roomHealth=ah,backendUnchanged=True,guestUsageFloorsPreserved=True,hostingUnchanged=True,routerPortsChanged=False,bootPolicyChanged=False,dataRestored=False,rootMinted=False)
+        return result
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=['stage','activate','rollback','recover','verify']);p.add_argument('--commit',required=True);a=p.parse_args()
+    try:v=main(a.action,a.commit)
+    except Exception as error:
+        import traceback
+        v={'status':'FAIL','action':a.action,'error':str(error),'traceback':traceback.format_exc(),'recoveryRequired':'Inspect native rollout journal; recover code without restoring user data'}
+    receipt=Path('/srv/codi-connected')/('reader-topology-'+a.action+'-'+str(time.time_ns())+'-result.json');fd=os.open(receipt,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+    with os.fdopen(fd,'w') as stream:json.dump(v,stream,indent=2);stream.write('\n')
+    print(json.dumps({'status':v['status'],'action':a.action,'rootReceipt':str(receipt),'rootReceiptSHA256':sha(receipt),'manifestSHA256':v.get('afterManifestSHA256'),'error':v.get('error')}));raise SystemExit(0 if v['status']=='PASS' else 1)

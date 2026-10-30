@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+"""Ten anonymous public desktop profiles try a shared chat with manual peer introductions."""
+import argparse,importlib.util,json,shutil,tempfile,traceback,time,subprocess,urllib.request,urllib.error,uuid,shlex
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];spec=importlib.util.spec_from_file_location('driver',ROOT/'scripts/touch-preview-check.py');d=importlib.util.module_from_spec(spec);spec.loader.exec_module(d)
+def run():
+ sessions={};profiles={};selectors={};checks=[];remotes={};runid=uuid.uuid4().hex;r={'status':'FAIL','scope':__doc__,'checks':checks,'actualBrowsers':10,'serverAccountsCreated':0,'liveSite':'https://ksu.codes/','transport':'WebRTC; peer invitation manually transferred by test driver'};started=time.monotonic()
+ def call(side,path,data=None,method=None):
+  if side not in remotes:return d.call(path,data,method)
+  req=urllib.request.Request('http://127.0.0.1:'+str(remotes[side]['localport'])+path,data=None if data is None else json.dumps(data).encode(),headers={'Content-Type':'application/json'},method=method)
+  try:
+   with urllib.request.urlopen(req,timeout=120) as response:return json.load(response)['value']
+  except urllib.error.HTTPError as error:raise RuntimeError(error.read().decode()) from error
+ def js(side,code,args=[]):return call(side,'/session/'+sessions[side]+'/execute/sync',{'script':code,'args':args})
+ def wait(side,code,args=[],seconds=60):return d.wait(lambda:js(side,code,args),seconds)
+ def check(name,v):assert v,name;checks.append(name);print(json.dumps({'check':name}),flush=True)
+ def node(side,attr):return selectors[side]+' ['+attr+']'
+ def click(side,attr):
+  selector=node(side,attr);wait(side,'const n=document.querySelector(arguments[0]);return !!n&&!n.disabled;',[selector]);js(side,'document.querySelector(arguments[0]).click();',[selector])
+ def value(side,attr):return js(side,'return document.querySelector(arguments[0]).value;',[node(side,attr)])
+ def input_value(side,attr,v):js(side,'const n=document.querySelector(arguments[0]);n.value=arguments[1];n.dispatchEvent(new Event("input",{bubbles:true}));',[node(side,attr),v])
+ def generous(side):
+  wait(side,'return !document.querySelector(arguments[0]).disabled;',[node(side,'data-device-apply-global-allowance')],60)
+  for key in ['uploadBytes','downloadBytes','serveBytes']:
+   sel=selectors[side]+' [data-device-global-quota="'+key+'"]';js(side,'const n=document.querySelector(arguments[0]);n.value="65536";n.dispatchEvent(new Event("input",{bubbles:true}));',[sel])
+  click(side,'data-device-apply-global-allowance');wait(side,'return !document.querySelector(arguments[0]).disabled;',[node(side,'data-device-apply-global-allowance')],60)
+ def trace_history(side,seconds):
+  start=time.monotonic();samples=[]
+  while time.monotonic()-start<seconds:
+   for who in (r.get('currentParent','a'),side):
+    try:
+     v=call(who,'/session/'+sessions[who]+'/execute/async',{'script':'const done=arguments[arguments.length-1];desktopNetwork.stats().then(x=>done({device:x.deviceChannels,budget:x.budget}),e=>done({error:e.message}));','args':[]})
+     v['side']=who;v['t']=round(time.monotonic()-start,1);samples.append(v)
+    except Exception as e:samples.append({'side':who,'error':str(e)})
+   if js(side,'return document.querySelector(arguments[0]).textContent.includes("Small group initial message");',[node(side,'data-device-history')]):r.setdefault('trace',{})[side]=samples;return True
+   time.sleep(5)
+  r.setdefault('trace',{})[side]=samples
+  raise AssertionError('History recovery timed out for '+side)
+ try:
+  for side,target,port,binary,driver,profilebase in [('b','maint@100.105.243.29',19536,'/snap/chromium/current/usr/lib/chromium-browser/chrome','/snap/chromium/current/usr/lib/chromium-browser/chromedriver','/home/maint/snap/chromium/common'),('j','maint@10.0.7.105',19537,'/usr/bin/chromium','/usr/bin/chromedriver','/tmp')]:
+   publicip=subprocess.check_output(['ssh','-o','BatchMode=yes',target,'curl','-4','-fsS','--max-time','10','https://api.ipify.org'],text=True,timeout=20).strip()
+   profile=subprocess.check_output(['ssh','-o','BatchMode=yes',target,'mktemp','-d',profilebase+'/codi-group-test-XXXXXXXX'],text=True,timeout=15).strip();assert profile.startswith(profilebase+'/codi-group-test-')
+   pidfile='/tmp/codi-group-test-'+runid+'-'+side+'.pid';command='umask 077; echo $$ > '+pidfile+'; exec '+driver+' --port='+str(port)+' --allowed-ips=127.0.0.1'
+   proc=subprocess.Popen(['ssh','-o','BatchMode=yes',target,command],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL);tunnel=subprocess.Popen(['ssh','-o','BatchMode=yes','-o','ExitOnForwardFailure=yes','-N','-L','127.0.0.1:'+str(port)+':127.0.0.1:'+str(port),target],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+   remotes[side]={'target':target,'localport':port,'profile':profile,'profilebase':profilebase,'pidfile':pidfile,'driver':proc,'tunnel':tunnel,'binary':binary};r.setdefault('externalHosts',{})[side]={'publicIP':publicip,'name':'Moonpie' if side=='b' else 'i36'}
+   def ready():
+    if proc.poll() is not None or tunnel.poll() is not None:raise RuntimeError('Remote ChromeDriver or tunnel ended on '+side)
+    try:
+     with urllib.request.urlopen('http://127.0.0.1:'+str(port)+'/status',timeout=1) as f:return json.load(f)['value']['ready']
+    except OSError:return False
+   d.wait(ready,25)
+  for side in 'abcdefghij':
+   profiles[side]=Path(remotes[side]['profile']) if side in remotes else Path(tempfile.mkdtemp(prefix='codi-live-p2p-'+side+'-',dir=Path.home()/'snap/chromium/common'))
+   v=call(side,'/session',{'capabilities':{'alwaysMatch':{'browserName':'chrome','goog:chromeOptions':{'binary':remotes[side]['binary'] if side in remotes else '/snap/chromium/current/usr/lib/chromium-browser/chrome','args':['--headless=new','--no-sandbox','--disable-dev-shm-usage','--user-data-dir='+str(profiles[side])]},'goog:loggingPrefs':{'browser':'ALL'}}}});sessions[side]=v['sessionId'];call(side,'/session/'+sessions[side]+'/timeouts',{'script':180000});call(side,'/session/'+sessions[side]+'/url',{'url':'https://ksu.codes/'});wait(side,'return !!window.desktopLab?.session&&window.desktopLab.surfaces.size>0;',seconds=90);call(side,'/session/'+sessions[side]+'/goog/cdp/execute',{'cmd':'Browser.setPermission','params':{'permission':{'name':'persistent-storage'},'setting':'granted','origin':'https://ksu.codes'}})
+   wid=js(side,'window.testDesktop=[...surfaces.values()][0];return testDesktop.launch("chat").id;');selectors[side]='[data-window="'+str(wid)+'"]';wait(side,'return !!document.querySelector(arguments[0])?.querySelector(".storage-consent button:not(:disabled),[data-device-channels]");',[selectors[side]],90)
+   if not js(side,'return !!document.querySelector(arguments[0]).querySelector("[data-device-channels]");',[selectors[side]]):
+    e=call(side,'/session/'+sessions[side]+'/element',{'using':'css selector','value':selectors[side]+' .storage-consent button:not(:disabled)'})['element-6066-11e4-a52e-4f735466cecf'];call(side,'/session/'+sessions[side]+'/element/'+e+'/click',{})
+   wait(side,'return !!document.querySelector(arguments[0])?.querySelector("[data-device-channels]");',[selectors[side]],90)
+   js(side,'for(const e of document.querySelector(arguments[0]).querySelectorAll("details"))e.open=true;',[selectors[side]])
+  check('ten anonymous browsers opened device-owned chat',True)
+  js('a','document.querySelector(arguments[0]).checked=true;',[node('a','data-device-public-read')]);click('a','data-device-create');wait('a','return !!document.querySelector(arguments[0]).value;',[node('a','data-device-select')],60)
+  js('a','const n=document.querySelector(arguments[0]);n.value="fast";n.dispatchEvent(new Event("change",{bubbles:true}));',[node('a','data-device-traffic')]);wait('a','return !document.querySelector(arguments[0]).disabled;',[node('a','data-device-queue')],60)
+  input_value('a','data-device-draft','Small group initial message');click('a','data-device-queue');wait('a','return document.querySelector(arguments[0]).textContent.includes("Small group initial message");',[node('a','data-device-history')],90)
+  click('a','data-device-export');share=wait('a','return document.querySelector(arguments[0]).value||false;',[node('a','data-device-share')],60)
+  r['joined']=[]
+  for number,side in enumerate('bcdefghij'):
+   def admission(peer):
+    result=call(peer,'/session/'+sessions[peer]+'/execute/async',{'script':'const done=arguments[arguments.length-1];desktopNetwork.stats().then(x=>done(x.deviceChannels?.peerOrganization?.[0]||{}),e=>done({error:e.message}));','args':[]});return result
+   choices=[(admission(p).get('admissions',99),p) for p in ['a']+r['joined']];r.setdefault('parentChoices',{})[side]=choices;available=[x for x in choices if x[0]<5];assert available,'No peer has a free channel neighbor slot';parent=min(available)[1];r['currentPeer']=side;r['currentParent']=parent
+   input_value(parent,'data-device-connection-out','');click(parent,'data-device-offer');offer=wait(parent,'return document.querySelector(arguments[0]).value||false;',[node(parent,'data-device-connection-out')],60)
+   input_value(side,'data-device-connection-in',offer);click(side,'data-device-answer');answer=wait(side,'return document.querySelector(arguments[0]).value||false;',[node(side,'data-device-connection-out')],60)
+   input_value(parent,'data-device-connection-in',answer);click(parent,'data-device-accept');wait(side,'return document.querySelector(arguments[0]).options.length>0;',[node(side,'data-device-peer')],45)
+   input_value(side,'data-device-share',share);click(side,'data-device-import');trace_history(side,60)
+   js(side,'const n=document.querySelector(arguments[0]);n.value="fast";n.dispatchEvent(new Event("change",{bubbles:true}));',[node(side,'data-device-traffic')]);wait(side,'return !document.querySelector(arguments[0]).disabled;',[node(side,'data-device-traffic')],60)
+   if side in remotes:
+    r.setdefault('ice',{})[side]=call(side,'/session/'+sessions[side]+'/execute/async',{'script':'const done=arguments[arguments.length-1],pool=desktopNetwork.appContext().pool,entry=pool.firstReady();entry.link.pc.getStats().then(stats=>{const t=[...stats.values()].find(v=>v.type==="transport"&&v.selectedCandidatePairId),p=t&&stats.get(t.selectedCandidatePairId),l=p&&stats.get(p.localCandidateId),r=p&&stats.get(p.remoteCandidateId);done({local:l?.candidateType,remote:r?.candidateType,protocol:l?.protocol});},e=>done({error:e.message}));','args':[]})
+   actor=value(side,'data-device-member-key');input_value('a','data-device-member-subject',actor);click('a','data-device-allow-write');wait(side,'return !document.querySelector(arguments[0]).disabled;',[node(side,'data-device-queue')],60)
+   r['joined'].append(side);print(json.dumps({'joined':side}),flush=True)
+  check('nine peers joined and received initial message',True)
+  for side in 'bcdefghij':
+   message='small group message '+side;input_value(side,'data-device-draft',message);click(side,'data-device-queue');wait('a','return document.querySelector(arguments[0]).textContent.includes(arguments[1]);',[node('a','data-device-history'),message],90)
+  check('all nine peers sent accepted messages',True)
+  for side in 'bcdefghij':
+   for sender in 'bcdefghij':wait(side,'return document.querySelector(arguments[0]).textContent.includes(arguments[1]);',[node(side,'data-device-history'),'small group message '+sender],90)
+  check('every peer received every message',True)
+  r['status']='PASS'
+ except Exception as e:
+  r.update(error=str(e),traceback=traceback.format_exc())
+  for side in sessions:
+   try:r[side+'Diagnostic']=js(side,'return {body:document.body.innerText,status:document.querySelector(arguments[0])?.querySelector("[data-device-status]")?.textContent,peer:document.querySelector(arguments[0])?.querySelector("[data-device-peer]")?.options.length};',[selectors.get(side,'body')])
+   except Exception as x:r[side+'DiagnosticError']=str(x)
+ finally:
+  for side,sid in sessions.items():
+   try:call(side,'/session/'+sid,method='DELETE')
+   except Exception as e:r['status']='FAIL';r[side+'CleanupError']=str(e)
+  for side,remote in remotes.items():
+   remote['tunnel'].terminate();remote['tunnel'].wait(timeout=10);remote['driver'].terminate();remote['driver'].wait(timeout=10)
+   code='import os,signal,sys,shutil;from pathlib import Path;p=Path(sys.argv[1]);f=Path(sys.argv[2]);assert p.parent==Path(sys.argv[3]) and p.name.startswith("codi-group-test-");pid=int(f.read_text()) if f.exists() else 0;cmd=Path("/proc")/str(pid)/"cmdline";raw=cmd.read_bytes() if cmd.exists() else b"";assert not raw or b"chromedriver" in raw;os.kill(pid,signal.SIGTERM) if raw else None;shutil.rmtree(p);f.unlink(missing_ok=True);print("clean")'
+   try:remote['cleanup']=subprocess.check_output(['ssh','-o','BatchMode=yes',remote['target'],'python3','-c',shlex.quote(code),remote['profile'],remote['pidfile'],remote['profilebase']],text=True,timeout=30).strip()
+   except Exception as e:r['status']='FAIL';r[side+'CleanupError']=str(e)
+  for side,p in profiles.items():
+   if side not in remotes:shutil.rmtree(p)
+  r.update(ownedProfilesRemoved=all(not p.exists() for side,p in profiles.items() if side not in remotes) and all(v.get('cleanup')=='clean' for v in remotes.values()),elapsedSeconds=round(time.monotonic()-started,3))
+ return r
+if __name__=='__main__':
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args();assert not a.output.exists();r=run();a.output.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps({'status':r['status'],'error':r.get('error'),'checks':len(r['checks'])}));raise SystemExit(r['status']!='PASS')
