@@ -9,7 +9,9 @@ from pathlib import Path
 from types import SimpleNamespace
 from aiohttp import web
 root=Path(__file__).resolve().parents[1]/'apps/system/browser';sys.path.insert(0,str(root))
+sys.path.insert(0,str(root.parents[2]/'active-system'))
 from relay.wisp import Relay
+from network_policy.policy import PolicyLoader
 async def main():
  calls=[]
  async def serve(reader,writer):
@@ -21,7 +23,8 @@ async def main():
  async def auth(_):return SimpleNamespace(kind='registered',sub='user:fixture',deadline=time.time()+300)
  async def resolve(name,port):calls.append(name);return ['1.1.1.1']
  async def connect(addr,p):return await asyncio.open_connection('127.0.0.1',port)
- relay=Relay(policy_path=root/'relay/policy.json',origin='http://127.0.0.1:18088',authenticate=auth,source=lambda r:'127.0.0.1',resolver=resolve,connector=connect)
+ access=PolicyLoader(root.parents[2]/'active-system/network_policy/default.json')
+ relay=Relay(policy_path=root/'relay/policy.json',origin='http://127.0.0.1:18088',authenticate=auth,source=lambda r:'127.0.0.1',network_check=lambda ip:access.check('outgoing',ip),resolver=resolve,connector=connect)
  @web.middleware
  async def headers(request,handler):
   response=await handler(request);response.headers.update({'Cross-Origin-Opener-Policy':'same-origin','Cross-Origin-Embedder-Policy':'require-corp','Cross-Origin-Resource-Policy':'same-origin','Content-Security-Policy':"default-src 'self'; script-src 'self' blob: 'wasm-unsafe-eval'; worker-src 'self' blob:; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'"});return response
