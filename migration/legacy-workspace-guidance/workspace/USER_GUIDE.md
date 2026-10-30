@@ -13,7 +13,7 @@ Linux has a separate temporary filesystem that resets on reboot. Files can brows
 ## Common tasks
 
 - **Notes or code:** Create or upload a `.txt`, `.md`, `.py`, or other supported text file in Files, open it in Text Editor, edit and save. Reopen it from Files to check the saved copy.
-- **Reports:** Open Document Editor, write and save its `.doc` project in My files. Its `.doc` is this application's own format, not a Microsoft Word document. Export a PDF to share, or preview it using the separate PDF Viewer.
+- **Reports:** Open Document Editor, write and save its `.doc` or `.codidoc` project in My files. Those files use this application's own format, not a Microsoft Word document. Export a PDF to share, or preview it using the separate PDF Viewer.
 - **Tables:** Spreadsheet saves its own `.codisheet` format and can import `.xlsx` files. Imported files may contain features that the prototype does not preserve; check the result before relying on it.
 - **Data:** Upload a CSV to My files, then open Data Explorer and browse to it. DuckDB and Perspective run in the browser to query and view the data. Large datasets may exceed the preview's file and device limits.
 - **Python:** Applications → Programming → Python Notebook — Browser starts JupyterLite with Pyodide. Save notebooks as `.ipynb` to My files. Browser Python is not a full Linux process environment. The separate Linux notebook launcher is not yet available; Terminal runs in the temporary Linux guest.

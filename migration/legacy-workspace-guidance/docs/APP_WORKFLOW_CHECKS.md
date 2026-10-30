@@ -6,7 +6,7 @@ These are development-preview browser checks, not a claim that every feature of 
 | --- | --- | --- |
 | Files | Computer upload, folders, account browsing, ZIP creation/extraction, explicit Linux-to-account copy, sync and Linux reset. | Moving a newly uploaded file waits for synchronization. More error handling and larger files need work. |
 | Text | Upload, browse a folder, edit, browser save, server sync, close and reopen. | More file types and edge cases. |
-| Document Editor | Upload native project, open, edit, browser/server save, conflict handling, export and preview PDF. | Its `.doc` format is not Word; no DOCX support. |
+| Document Editor | Upload native project, open, edit, browser/server save, conflict handling, export and preview PDF. | Its `.doc` and `.codidoc` formats are not Word; no DOCX support. |
 | PDF Viewer | Open an uploaded PDF and a document-generated preview; page navigation. | Read-only; no save operation is expected. |
 | Spreadsheet | Upload XLSX, open, edit formulas, save the native format, export XLSX and reopen. | Advanced Excel features and formatting may not survive conversion. |
 | Data Explorer | Upload CSV, open, SQL query, grid and chart. | Query/chart configuration is not saved as an account project. |
