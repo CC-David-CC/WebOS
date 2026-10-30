@@ -24,7 +24,7 @@ from origin_service.runtime import PrivateRuntime
 from origin_service.turn import add_turn_arguments,policy_from_arguments
 from origin_service.http_server import BoundedServer, QuietHandler
 
-FILES=['index.html','style.css','app.js','reference.js','terminal.js','desktop-apps.js','networking.js','config.json']
+FILES=['index.html','style.css','app.js','reference.js','terminal.js','desktop-apps.js','config.json']
 RUNTIME=['libv86.js','v86.wasm','seabios.bin','vgabios.bin','vmlinuz','initramfs.cpio.gz']
 def stage(public=None):
     public=public or ROOT/'.build/connected-public'
@@ -34,8 +34,15 @@ def stage(public=None):
     for folder in ['assets']:
         shutil.copytree(ROOT/folder,public/folder,dirs_exist_ok=True)
     (public/'network').mkdir(exist_ok=True)
-    for name in ['crypto.mjs','identity.mjs','peer.mjs','strict-json.mjs','mesh-contract.mjs','origin-event.mjs','resource-budget.mjs','namespace.mjs','subscriptions.mjs','replay.mjs','room-invitation.mjs','public-rooms.mjs','chess-record.mjs','pgn-worker.mjs','pgn-importer.mjs','peer-pool.mjs','traffic-scheduler.mjs','bootstrap.mjs','bootstrap-source.mjs','support-client.mjs','discovery.mjs','server-frame-channel.mjs']:
+    for name in ['crypto.mjs','identity.mjs','strict-json.mjs']:
         shutil.copy2(ROOT/'network'/name,public/'network'/name)
+    (public/'storage/browser').mkdir(parents=True,exist_ok=True)
+    shutil.copy2(ROOT/'storage/browser/mirror.mjs',public/'storage/browser/mirror.mjs')
+    # Public apps are compiled separately before staging.
+    bundled=ROOT/'.build/simplified-apps'
+    if not (bundled/'apps.json').is_file():
+        raise ValueError('Build apps first: python3 scripts/build-public-apps.py --output .build/simplified-apps')
+    shutil.copytree(bundled,public/'assets/desktop',dirs_exist_ok=True)
     runtime=public/'.build/v86';runtime.mkdir(parents=True,exist_ok=True)
     for name in RUNTIME:shutil.copy2(ROOT/'.build/v86'/name,runtime/name)
     return public
