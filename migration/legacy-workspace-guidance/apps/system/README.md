@@ -90,3 +90,9 @@ server, and **temp_linux**, the guest's separate temporary home. Linux files
 reset on reboot and do not automatically synchronize with My files. Use **Copy
 to account** to open a Linux file in another app. New folder, New file and
 Upload are in Files' right-click menu.
+
+## Shared CodeMirror tool
+
+CodeMirror 6 is a lazily loaded system capability used by Text; each Text
+window owns its editor state and history. JupyterLite retains its own bundled
+CodeMirror through JupyterLab. See `codemirror/README.md` and `docs/EXPERIENCE.md`.
