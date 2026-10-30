@@ -28,6 +28,31 @@ from relay.wisp import Relay
 from relay.download import Downloader
 
 
+def verify_runtime(expected,*,require_root=False):
+    root=ROOT.parent;manifest=root/'browser-relay-runtime.json'
+    if not re.fullmatch('[0-9a-f]{64}',expected):raise ValueError('Runtime manifest pin required')
+    raw=manifest.read_bytes()
+    if len(raw)>65536 or hashlib.sha256(raw).hexdigest()!=expected:raise ValueError('Runtime manifest pin changed')
+    value=json.loads(raw)
+    if not isinstance(value,dict) or set(value)!={'version','sourceCommit','files'} or value['version']!='codi-browser-relay-runtime/1' or not re.fullmatch('[0-9a-f]{40}',value['sourceCommit']) or not isinstance(value['files'],dict):
+        raise ValueError('Invalid Browser relay runtime manifest')
+    allowed={0} if require_root else {0,os.geteuid()};actual=set()
+    for path in [root,*root.rglob('*')]:
+        info=path.lstat()
+        if stat.S_ISLNK(info.st_mode) or info.st_uid not in allowed or info.st_mode&0o022:
+            raise ValueError('Unprotected runtime content refused')
+        if stat.S_ISDIR(info.st_mode):continue
+        if not stat.S_ISREG(info.st_mode) or info.st_nlink!=1:raise ValueError('Unexpected runtime content')
+        name=path.relative_to(root).as_posix()
+        if name=='browser-relay-runtime.json':continue
+        actual.add(name);entry=value['files'].get(name)
+        if not isinstance(entry,dict) or set(entry)!={'bytes','sha256'} or info.st_size!=entry['bytes'] or info.st_size>1024*1024:
+            raise ValueError('Runtime file metadata changed')
+        if hashlib.sha256(path.read_bytes()).hexdigest()!=entry['sha256']:raise ValueError('Runtime file hash changed')
+    if actual!=set(value['files']):raise ValueError('Runtime file set changed')
+    return value
+
+
 def protected(path,*,maximum):
     path=Path(path).absolute()
     for part in [path,*path.parents]:
@@ -70,6 +95,8 @@ def make_app(*,origin,base_path,issuer_policy,policy_sha256,destination_policy,a
 
 
 async def serve(args):
+    if args.runtime_manifest_sha256:verify_runtime(args.runtime_manifest_sha256,require_root=args.require_root_runtime)
+    elif args.require_root_runtime:raise ValueError('Root runtime requires a manifest pin')
     issuer_file=protected(args.issuer_policy,maximum=32768)
     dest=protected(args.destination_policy,maximum=65536)
     access=protected(args.access_policy,maximum=1024*1024)
@@ -104,6 +131,7 @@ async def serve(args):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--origin',required=True);p.add_argument('--base-path',default='')
+    p.add_argument('--runtime-manifest-sha256');p.add_argument('--require-root-runtime',action='store_true')
     p.add_argument('--issuer-policy',type=Path,required=True);p.add_argument('--issuer-policy-sha256',required=True)
     p.add_argument('--policy-sha256',required=True,help='Explicit Browser authorization policy identifier')
     p.add_argument('--destination-policy',type=Path,required=True);p.add_argument('--access-policy',type=Path,required=True)
