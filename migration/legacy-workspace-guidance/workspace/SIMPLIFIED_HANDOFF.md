@@ -68,3 +68,21 @@ A real local Chrome smoke test registered a separate test account, opened the
 desktop, created and edited a file, and confirmed it arrived in the correct
 server account folder. The same test does not prove behavior across devices or
 deployment readiness.
+
+## Chonky Files and Text reload
+
+Files uses Chonky with React bundled solely in the lazily loaded Files app.
+The account mirror supports version-checked file moves and right-click file
+rename; it journals the operation locally, uses atomic server rename, retries a
+lost response and preserves conflicts. Only synced files and synced destination
+folders can begin a move; folder moves/renames remain unsupported. Text Reload
+checks the server first and an open editor reports changes detected by sync.
+External files must be owned by the file service with mode 0600. One unreadable
+server file no longer stops other files from syncing; its name is reported.
+
+`tests/chonky-browser.test.mjs`, `tests/chonky-move.test.mjs` and
+`tests/chonky-rename.test.mjs` exercise the
+local preview with a disposable account and a running Chrome DevTools endpoint;
+they need the explicit `CODI_TEST_USER`, `CODI_TEST_PASSWORD`, and, for the
+first test, `CODI_TEST_FILE_ROOT` environment variables. Neither test should
+be pointed at a real account.
