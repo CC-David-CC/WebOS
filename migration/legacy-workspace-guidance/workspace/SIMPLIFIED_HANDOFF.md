@@ -304,3 +304,15 @@ combined two users while counting repeat device snapshots once. No network
 transport, production session adapter, administrator UI or online request
 exists yet; no browser usage is automatically stored on the server. Optional
 independent server audit remains disabled by default.
+
+### Network rule management — development only
+
+`active-system/network_policy/manage.py` provides validated, locked, atomic
+operator edits to independent incoming-login and outgoing IP/CIDR/country
+lists. Focused tests cover separate rules, invalid edits and optional real
+local country lookups. The feature is **not active on the live site**: trusted
+client-IP ingress, production service wiring, coverage of every egress path,
+and rollout/rollback remain required. Login rules do not revoke sessions.
+The Browser relay and browser-local domain-report work also remain development
+only; no device records are uploaded automatically and optional server audit is
+off by default.
