@@ -8,4 +8,11 @@ console.log('External navigation',JSON.stringify(status));
 const domains=await p.evaluate(()=>new Promise((resolve,reject)=>{const req=indexedDB.open('codi-browser-domain-usage',2);req.onerror=()=>reject(req.error);req.onsuccess=()=>{const db=req.result,query=db.transaction('events').objectStore('events').getAll();query.onerror=()=>reject(query.error);query.onsuccess=()=>{resolve(query.result.map(x=>x.domain));db.close();};};}));
 assert.ok(domains.includes('example.com'),'External request must be recorded by the engine');
 assert.ok(!status.status.includes('disconnected'),'Connection should renew beyond its initial 30 second lease');
-console.log('PASS actual Gecko requested example.com and remained connected across lease renewal');assert.deepEqual(errors,[]);}catch(e){console.error('FAIL',e.message,JSON.stringify(errors),await p.evaluate(()=>document.body.innerText.slice(-1000)).catch(()=>''));process.exitCode=1;}finally{await c.close();await b.disconnect();}
+console.log('PASS actual Gecko requested example.com and remained connected across lease renewal');
+p.once('dialog',dialog=>dialog.accept('downloaded-example.html'));
+await p.evaluate(()=>{const r=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot;[...r.querySelectorAll('button')].find(b=>b.textContent==='Download URL').click();});
+await p.waitForFunction(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('.status')?.textContent.includes('Saved to My files'),{timeout:60000});
+const saved=await p.evaluate(async()=>{const c=await mirrorFileContext();return new TextDecoder().decode((await c.files.read('/downloaded-example.html')).data);});
+assert.match(saved,/example/i);
+const serverSaved=await p.evaluate(async()=>{const mirror=await mirrorFileContext();await mirror.files.sync();const server=await serverFileContext();return new TextDecoder().decode((await server.files.read('downloaded-example.html')).data);});
+assert.equal(serverSaved,saved);console.log('PASS real HTTPS download saved to My files and synchronized to server');assert.deepEqual(errors,[]);}catch(e){console.error('FAIL',e.message,JSON.stringify(errors),await p.evaluate(()=>document.body.innerText.slice(-1000)).catch(()=>''));process.exitCode=1;}finally{await c.close();await b.disconnect();}
