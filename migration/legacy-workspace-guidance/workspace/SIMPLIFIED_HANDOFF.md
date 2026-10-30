@@ -479,3 +479,22 @@ socket directory/group, prove the complete live HAProxy-to-Caddy address path,
 secure the login filter against direct issuer-port spoofing, cover guest and
 other server egress, arrange database and license/source custody, and perform
 live rollback/restart and phone tests. The optional server audit is still off.
+
+### Private relay staged on box-webhost — 2026-10-30
+
+The isolated Browser relay is installed and running privately, with no public
+route and no boot enablement. Its root-owned runtime manifest is
+`fefb814d50b46db56a948e01a9f3879c6fc3d9287ae32ee3a7b9e9a09a49dc52`;
+its separate dependency environment is pinned by lockfile SHA-256
+`a5ee6aa9a1c18535aad36a52b7ec57ca9c1e1fca03cbb02d4c423fd7ec317326`.
+The static `codi-browser-relay.service` runs as `codi-browser` with a private
+socket in `/run/codi-browser`. A request from Caddy's UID received HTTP 200;
+the same request from root was rejected with HTTP 403 by peer-credential
+checking. After restart the socket became available and again returned 200;
+an immediate probe raced startup and initially failed to connect. The public
+relay route returns 404. This is only private-ingress verification, not a
+live Browser release or a complete production security test. Configuration
+is in `/etc/codi-browser`; the initially empty access-policy file matches
+the checked-in default, and the separate domain policy retains its existing
+blacklist and disabled whitelist. Geo-IP data is the DB-IP Country Lite
+October 2026 snapshot; attribution and updates are still required.
