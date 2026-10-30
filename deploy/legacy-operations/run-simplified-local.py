@@ -30,7 +30,7 @@ from gateway_service.http import FileGateway
 spec=importlib.util.spec_from_file_location('codi_staging',ROOT/'scripts/serve-connected.py')
 staging=importlib.util.module_from_spec(spec);spec.loader.exec_module(staging)
 
-async def main(port,speech_assets=None,isolated=False):
+async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None):
     origin=f'http://127.0.0.1:{port}'
     runtime=ROOT/'.build'/('simplified-local-test-'+str(port) if isolated else 'simplified-local');runtime.mkdir(parents=True,exist_ok=True,mode=0o700)
     public=runtime/'public'
@@ -47,7 +47,13 @@ async def main(port,speech_assets=None,isolated=False):
         def config(self):
             config=super().config();config['gateway']={'version':'codi-user-files/1','basePath':'/gateway','fileBytes':8*1024*1024};return config
     issuer=Issuer(Config(runtime/'issuer',public,origin=origin,rate_per_minute=1000))
-    http=make_server('127.0.0.1',0,staging.HeadSupport(GatewayAuthority(issuer)),server_class=BoundedServer,handler_class=QuietHandler)
+    application=staging.HeadSupport(GatewayAuthority(issuer));geo=None
+    if access_policy:
+        from network_policy.login import LoginFilter
+        from network_policy.policy import LocalCountryDatabase
+        geo=LocalCountryDatabase(geoip) if geoip else None
+        application=LoginFilter(application,access_policy,trusted_proxies=['127.0.0.1'],geo=geo)
+    http=make_server('127.0.0.1',0,application,server_class=BoundedServer,handler_class=QuietHandler)
     thread=threading.Thread(target=http.serve_forever,daemon=True);thread.start()
     gateway=FileGateway(store,issuer.config()['identity'],max_requests_per_minute=4096)
     gateway_runner=web.AppRunner(gateway.app(),access_log=None);await gateway_runner.setup()
@@ -68,6 +74,11 @@ async def main(port,speech_assets=None,isolated=False):
         target=('http://127.0.0.1:'+str(gateway_port) if request.raw_path.startswith('/gateway/') else 'http://127.0.0.1:'+str(http.server_port))+request.raw_path
         hop={'connection','keep-alive','transfer-encoding','upgrade','te','trailer'}
         headers={k:v for k,v in request.headers.items() if k.lower() not in hop}
+        if access_policy:
+            # This local proxy is the only upstream connection to the issuer;
+            # never forward a browser-supplied value for the trusted header.
+            headers={k:v for k,v in headers.items() if k.lower()!='x-codi-client-ip'}
+            headers['X-Codi-Client-IP']=request.remote or ''
         async with outgoing.request(request.method,target,headers=headers,data=request.content if request.can_read_body else None,allow_redirects=False) as upstream:
             response_headers={k:v for k,v in upstream.headers.items() if k.lower() not in hop}
             # JupyterLab compiles JSON-schema validators at runtime. Scope its
@@ -92,9 +103,10 @@ async def main(port,speech_assets=None,isolated=False):
     try:await asyncio.Event().wait()
     finally:
         await runner.cleanup();await outgoing.close();await gateway_runner.cleanup();await asyncio.to_thread(http.shutdown);thread.join(2);http.server_close()
+        if geo:geo.close()
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');args=parser.parse_args()
     if not 1<=args.port<=65535:parser.error('Invalid port')
-    try:asyncio.run(main(args.port,args.speech_assets,args.isolated))
+    try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip))
     except KeyboardInterrupt:pass
