@@ -12,7 +12,7 @@ import threading
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'active-system'))
-from network_policy.kernel import render_issuer_ingress, render_issuer_ingress_update
+from network_policy.kernel import render_issuer_ingress, render_issuer_ingress_update, render_caddy_proxy_guard
 
 
 class IngressBoundaryTests(unittest.TestCase):
@@ -25,6 +25,9 @@ class IngressBoundaryTests(unittest.TestCase):
                 render_issuer_ingress(997, port)
         with self.assertRaises(ValueError):
             render_issuer_ingress(997, 8118, table='x;flush ruleset')
+        for uid in (0, -1, True, '997'):
+            with self.subTest(caddy_uid=uid), self.assertRaises(ValueError):
+                render_caddy_proxy_guard(uid)
 
     @unittest.skipUnless(os.environ.get('CODI_TEST_PRIVATE_NETNS') == '1',
                          'Requires a disposable network namespace')
@@ -73,6 +76,44 @@ class IngressBoundaryTests(unittest.TestCase):
             stop.set()
             thread.join(timeout=2)
             server.close()
+
+    @unittest.skipUnless(os.environ.get('CODI_TEST_PRIVATE_NETNS') == '1',
+                         'Requires a disposable network namespace')
+    def test_caddy_proxy_listener_guard(self):
+        self.assertEqual(os.geteuid(), 0)
+        self.assertNotEqual(os.stat('/proc/self/ns/net').st_ino, os.stat('/proc/1/ns/net').st_ino,
+                            'Refusing to change the initial network namespace')
+        subprocess.run(['ip', 'link', 'set', 'lo', 'up'], check=True)
+        servers=[];threads=[];stop=threading.Event()
+        def accept(server):
+            while not stop.is_set():
+                try:
+                    conn, _=server.accept()
+                    with conn:conn.sendall(b'ok')
+                except TimeoutError:continue
+        for port in (8080,8443):
+            server=socket.socket();server.bind(('127.0.0.1',port));server.listen();server.settimeout(.2)
+            servers.append(server);thread=threading.Thread(target=accept,args=(server,),daemon=True)
+            thread.start();threads.append(thread)
+        script='import socket,sys;s=socket.create_connection(("127.0.0.1",int(sys.argv[1])),timeout=2);assert s.recv(2)==b"ok"'
+        def probe(uid,port):
+            return subprocess.run(['setpriv','--reuid',str(uid),'--regid',str(uid),'--clear-groups',
+                                   sys.executable,'-c',script,str(port)],stdout=subprocess.DEVNULL,
+                                  stderr=subprocess.DEVNULL).returncode
+        try:
+            for port in (8080,8443):self.assertEqual(probe(12346,port),0)
+            for _ in range(2):
+                subprocess.run(['nft','-f','-'],input=render_caddy_proxy_guard(12345),text=True,check=True)
+                for port in (8080,8443):
+                    self.assertEqual(probe(12345,port),0)
+                    self.assertNotEqual(probe(12346,port),0)
+                    self.assertNotEqual(probe(0,port),0)
+            subprocess.run(['nft','delete','table','inet','codi_caddy_proxy_guard'],check=True)
+            for port in (8080,8443):self.assertEqual(probe(12346,port),0)
+        finally:
+            stop.set()
+            for thread in threads:thread.join(timeout=2)
+            for server in servers:server.close()
 
 
 if __name__ == '__main__':
