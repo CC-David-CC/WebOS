@@ -12,3 +12,9 @@ storage interfaces; a folder or hidden menu item is not a security boundary.
 The build process bundles declared imports and hashes output. Node and npm are
 build tools, not visitor requirements. Downloaded dependencies and generated
 output stay outside Git.
+
+An app may declare its own pinned `package.json` and lockfile in its folder;
+run `npm ci --prefix apps/system/<id> --ignore-scripts` before building. The
+builder resolves that app's `node_modules` first and bundles dependencies only
+into that app. `app.json` may declare an `inject` array of app-local JavaScript
+files for build-time shims. Dependency licenses are included in each bundle.

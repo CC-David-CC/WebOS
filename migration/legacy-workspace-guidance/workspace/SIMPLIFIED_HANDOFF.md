@@ -86,3 +86,20 @@ local preview with a disposable account and a running Chrome DevTools endpoint;
 they need the explicit `CODI_TEST_USER`, `CODI_TEST_PASSWORD`, and, for the
 first test, `CODI_TEST_FILE_ROOT` environment variables. Neither test should
 be pointed at a real account.
+
+## Image Editor
+
+`apps/system/image-editor` wraps Filerobot with app-local React 18 and its own
+pinned package lock; Files independently bundles React 19. PNG/JPEG/WebP images
+open from Files, and Files offers an import button. The editor uses the shared
+version-checked mirror, prevents the vendor's download action, disposes on
+close, and disables backend translation and cloud image services. Images are
+limited to 8 MiB and 20 megapixels. A real isolated-browser test covers opening,
+resizing, saving to the account's server folder, closing and reopening without
+external requests. Run `npm ci --prefix apps/system/image-editor --ignore-scripts`
+before building the public apps.
+
+The local launcher source now sets a larger per-minute gateway request limit to
+avoid the earlier prototype limit being exhausted by directory synchronization.
+This is effective only after that launcher is restarted; the current running
+preview retains its original limit. The gateway's default remains unchanged.
