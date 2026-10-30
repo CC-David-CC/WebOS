@@ -625,3 +625,16 @@ The private Browser relay is now also a `Wants`/`After` dependency of Caddy,
 so a Caddy start pulls it in without making unrelated sites depend on its
 success. The issuer and hosting candidate are still not active. The previous
 paragraph records the discovery and temporary test before this installation.
+
+### Coordinated backend transition exercise — 2026-10-30
+
+The first actual issuer/hosting rollback exercise did not reach the hosting
+switch: managed readiness detected that profile 28's TURN policy expectation
+omitted the existing ICE preference. The native controller restored profile 27,
+all three native services and the website; both transition journals cleared.
+This exposed a missed profile list in `origin_service/turn_management.py`.
+The candidate builder now updates that list, and a regression test compares
+the old and new public TURN policies. The corrected local profile-28 r3
+manifest is `957e6fec98101f5a57c7f8ebab633050d27759d5c0d673049b4da3527d39715d`.
+It supersedes the r2 candidate; r3 has not yet been installed or tested in a
+live managed transition. The live login and Browser routes remain unchanged.
