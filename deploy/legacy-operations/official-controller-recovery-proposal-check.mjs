@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {makeKey,hash,signJws,inspectJws} from '../network/crypto.mjs';
+import {deviceChannelId} from '../assets/desktop/channel-keys.mjs';
+import {createOfficialRecoveryProposal,acceptOfficialRecoveryProposal,verifyOfficialRecoveryProposal} from '../network/official-controller-recovery-proposal.mjs';
+const recovery=await makeKey(),replacement=await makeKey(),other=await makeKey(),old=await makeKey();
+const trusted={channel:await hash('channel'),genesisHash:await hash('genesis'),head:await hash('head'),generation:0,oldCommitteeHash:await hash('old committee'),newCommitteeHash:await hash('new committee'),controller:await deviceChannelId(old.publicKey),recoveryKey:recovery.publicKey};
+const wire=await createOfficialRecoveryProposal(trusted,replacement.publicKey,recovery.privateKey),accept=await acceptOfficialRecoveryProposal(wire,replacement.privateKey);
+const result=await verifyOfficialRecoveryProposal(wire,accept,trusted);assert.equal(result.replacement,await deviceChannelId(replacement.publicKey));assert.equal(result.generation,1);
+for(const mutation of [{channel:await hash('other')},{genesisHash:await hash('other')},{head:await hash('new head')},{generation:1},{controller:await deviceChannelId(other.publicKey)},{recoveryKey:other.publicKey}])await assert.rejects(()=>verifyOfficialRecoveryProposal(wire,accept,{...trusted,...mutation}));
+const impostor=await createOfficialRecoveryProposal(trusted,replacement.publicKey,other.privateKey);await assert.rejects(()=>verifyOfficialRecoveryProposal(impostor,accept,trusted));
+const falseAcceptance=await acceptOfficialRecoveryProposal(wire,other.privateKey);await assert.rejects(()=>verifyOfficialRecoveryProposal(wire,falseAcceptance,trusted));
+const competing=await createOfficialRecoveryProposal(trusted,other.publicKey,recovery.privateKey);await assert.rejects(()=>verifyOfficialRecoveryProposal(competing,accept,trusted));
+const competingAccept=await acceptOfficialRecoveryProposal(competing,other.privateKey);assert.equal((await verifyOfficialRecoveryProposal(competing,competingAccept,trusted)).generation,1);await assert.rejects(()=>verifyOfficialRecoveryProposal(competing,competingAccept,{...trusted,generation:1,controller:result.replacement}));
+const body=inspectJws(wire,'codi-official-controller-recovery-proposal/1').payload;body.replacement=await deviceChannelId(other.publicKey);const bad=await signJws(body,recovery.privateKey,'codi-official-controller-recovery-proposal/1');const badAcceptance=await acceptOfficialRecoveryProposal(bad,replacement.privateKey);await assert.rejects(()=>verifyOfficialRecoveryProposal(bad,badAcceptance,trusted));
+await assert.rejects(()=>createOfficialRecoveryProposal(trusted,old.publicKey,recovery.privateKey));
+console.log('PASS: pinned context, replay, unauthorized signer, replacement possession and competing proposal checks');

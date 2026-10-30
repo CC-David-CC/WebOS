@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {makeKey,signJws} from '../network/crypto.mjs';
+import {deviceChannelId} from '../assets/desktop/channel-keys.mjs';
+import {createDeviceChannelPolicy,readDeviceChannelPolicy,initialDeviceChannelPosition} from '../network/device-channel-state.mjs';
+import {genesisOfficialRecoveryContext} from '../network/official-controller-recovery-policy.mjs';
+import {readFile} from 'node:fs/promises';
+const catalog=JSON.parse(await readFile(new URL('../.build/shared-services/account-block-ui-core-r1/apps.json',import.meta.url),'utf8')),entry=catalog.apps[0].path.replace('assets/desktop/','');
+const {readDeviceChannelPolicy:legacyRead}=await import(new URL('../.build/shared-services/account-block-ui-core-r1/'+entry,import.meta.url));
+const owner=await makeKey(),backup=await makeKey(),actor=await deviceChannelId(owner.publicKey),members=[{actor,key:owner.publicKey}],keys={sign:async(channel,purpose,body)=>signJws({version:'codi-device-channel-key/1',channel,key:owner.publicKey,purpose,body},owner.privateKey,'codi-device-channel-key-proof+jws')};
+const wire=await createDeviceChannelPolicy(keys,actor,{stream:'chat',validators:[actor],publicRead:true,publicWrite:true,recoveryKey:backup.publicKey}),p=await readDeviceChannelPolicy(wire,{channel:actor}),at=await initialDeviceChannelPosition(p),ctx=await genesisOfficialRecoveryContext(at,{oldMembers:members,newMembers:members});assert.deepEqual(ctx.recoveryKey,backup.publicKey);
+await assert.rejects(()=>legacyRead(wire,{channel:actor}));
+const legacy=await createDeviceChannelPolicy(keys,actor,{publicRead:true,publicWrite:true}),lp=await readDeviceChannelPolicy(legacy,{channel:actor});await legacyRead(legacy,{channel:actor});await assert.rejects(async()=>genesisOfficialRecoveryContext(await initialDeviceChannelPosition(lp),{oldMembers:members,newMembers:members}));
+await assert.rejects(()=>createDeviceChannelPolicy(keys,actor,{stream:'chat',publicRead:false,publicWrite:false,recoveryKey:backup.publicKey}));
+await assert.rejects(()=>genesisOfficialRecoveryContext({...at},{oldMembers:members,newMembers:members}));
+const invalidKey={kty:'EC',crv:'P-256',x:'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',y:'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'};await assert.rejects(()=>createDeviceChannelPolicy(keys,actor,{publicRead:true,publicWrite:true,recoveryKey:invalidKey}));const invalidWire=await keys.sign(actor,'checkpoint',{profile:'codi-device-channel/1',type:'policy',channel:actor,stream:'chat',validators:[actor],publicWrite:true,players:null,publicRead:true,recovery:{profile:'codi-official-genesis-recovery/1',key:invalidKey}});await assert.rejects(()=>readDeviceChannelPolicy(invalidWire,{channel:actor}));
+console.log('PASS: signed opt-in genesis, old-reader refusal, legacy compatibility and verified position');

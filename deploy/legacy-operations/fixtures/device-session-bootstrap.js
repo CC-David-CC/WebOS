@@ -1,0 +1,10 @@
+// Owned window fixture only; real host API2, Chat/Rooms/Calculator and network initializer.
+const make=(tag,classes='',text='')=>{const n=document.createElement(tag);n.className=classes;n.textContent=text;return n;};
+const textButton=(text,handler,classes='')=>{const b=make('button',classes,text);b.type='button';b.addEventListener('click',handler);return b;};
+let currentSession=null;const identityConfig={deviceInlineValues:new URL(location.href).searchParams.get('inline')==='1',identity:{mode:'local-development',issuer:location.origin},rtc:{iceServers:[]},deviceChannels:{version:'codi-device-channels/1',maxChannels:1,trafficCreditMs:new URL(location.href).searchParams.has('credits')?6000:60000,trafficLimits:new URL(location.href).searchParams.has('credits')?{windowMs:10000,uploadBytes:8388608,downloadBytes:8388608,serveBytes:8388608,controlBytes:1048576}:false,automaticPeers:new URL(location.href).searchParams.get('peers')==='1',peerSettings:new URL(location.href).searchParams.get('peers')==='1'?{sampleMs:1000,pendingMs:15000,backoffMs:1000}:{},bindingSeconds:new URL(location.href).searchParams.has('data')?600:new URL(location.href).searchParams.get('automatic')==='1'?10:600,automaticRounds:new URL(location.href).searchParams.get('automatic')==='1',roundSettings:new URL(location.href).searchParams.get('automatic')==='1'?{tickMs:200,idleMs:30000,viewMs:2000,maxViewMs:16000,rpcMs:750,stepMs:12000}:{}}};
+let fixtureHistoryTask;function desktopHistoryServices(){return fixtureHistoryTask??=import('./assets/desktop/device-history-host.mjs').then(m=>new m.DeviceHistoryHost());}
+function feedback(){}
+window.hostSessionCase={windows:new Map(),facades:new Map(),owners:[],next:1,holdStart:false,held:false,startCalls:0};
+
+let guestState='fixture-only',guestMessage='No v86 in this test';function signedInSubject(){return currentSession?.public?.kind==='registered'?currentSession.public.sub:null;}
+for(const name of ['sendTerminalBytes','sendTerminal','attachTerminalRenderer','resizeTerminal','setScreenKeyboardEnabled','applyScreenKeyboardPolicy'])window[name]=()=>{};window.terminalSession=()=>null;
