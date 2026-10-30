@@ -8,6 +8,12 @@ spec=importlib.util.spec_from_file_location('browser_service_render',ROOT/'activ
 module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
 
 class Render(unittest.TestCase):
+    def test_caddy_starts_relay_without_blocking_the_rest_of_the_site(self):
+        text=module.caddy_dependency()
+        self.assertIn('Wants=codi-browser-relay.service',text)
+        self.assertIn('After=codi-browser-relay.service',text)
+        self.assertNotIn('Requires=',text)
+
     def test_expected_isolation_and_exact_pins(self):
         values=dict(runtime='a'*64,venv='b'*64,issuer='c'*64,policy='d'*64,proxy_uid=997,proxy_gid=984)
         text=module.render(**values)
