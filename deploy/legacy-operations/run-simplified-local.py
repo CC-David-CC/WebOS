@@ -48,7 +48,7 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
     browser_sha=hashlib.sha256(browser_policy.read_bytes()).hexdigest() if browser_relay else None
     class Issuer(Service):
         def config(self):
-            config=super().config();config['gateway']={'version':'codi-user-files/1','basePath':'/gateway','fileBytes':8*1024*1024}
+            config=super().config();config['gateway']={'version':'codi-user-files/1','basePath':'/gateway','fileBytes':128*1024*1024}
             if browser_sha:config['browserRelay']={'version':'codi-browser-relay/1','basePath':'/browser-relay','policySHA256':browser_sha}
             return config
     issuer=Issuer(Config(runtime/'issuer',public,origin=origin,rate_per_minute=1000))
@@ -68,7 +68,7 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
     gateway_runner=web.AppRunner(gateway.app(),access_log=None);await gateway_runner.setup()
     gateway_site=web.TCPSite(gateway_runner,'127.0.0.1',0);await gateway_site.start()
     gateway_port=gateway_site._server.sockets[0].getsockname()[1]
-    outgoing=ClientSession(timeout=ClientTimeout(total=150),trust_env=False,auto_decompress=False)
+    outgoing=ClientSession(timeout=ClientTimeout(total=930),trust_env=False,auto_decompress=False)
     async def proxy(request):
         # The reference issuer caps in-memory static responses at 64 MiB.
         # Stream larger immutable app assets like production Caddy does.

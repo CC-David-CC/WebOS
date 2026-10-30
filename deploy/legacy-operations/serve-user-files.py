@@ -20,7 +20,7 @@ if __name__=='__main__':
     parser.add_argument('action',choices=['initialize','serve']);parser.add_argument('--state-root',type=Path,required=True);parser.add_argument('--data-root',type=Path,required=True)
     parser.add_argument('--issuer-policy',type=Path,required=True);parser.add_argument('--issuer-policy-sha256',required=True)
     parser.add_argument('--base-path',default='');parser.add_argument('--port',type=int,default=8140)
-    parser.add_argument('--seconds-per-use',type=int,default=120);parser.add_argument('--bytes-per-second',type=int,default=1024*1024)
+    parser.add_argument('--seconds-per-use',type=int,default=900);parser.add_argument('--bytes-per-second',type=int,default=4*1024*1024)
     args=parser.parse_args()
     if not 1<=args.port<=65535:parser.error('Valid loopback port required')
     try:
