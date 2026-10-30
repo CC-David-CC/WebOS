@@ -26,6 +26,8 @@ def simplified_routes(s):
         '\\t@codi_simplified_notebook {', *cookie, '\\t\\tpath /assets/desktop/apps/notebook/*', '\\t}',
         '\\theader @codi_simplified_normal >Content-Security-Policy "'+normal+'"',
         '\\theader @codi_simplified_notebook >Content-Security-Policy "'+notebook+'"',
+        '\\theader @codi_simplified_normal >Cache-Control "no-store"',
+        '\\theader @codi_simplified_notebook >Cache-Control "no-store"',
         '\\theader @codi_simplified_normal >Cross-Origin-Opener-Policy "same-origin"',
         '\\theader @codi_simplified_normal >Cross-Origin-Embedder-Policy "require-corp"',
         '\\theader @codi_simplified_notebook >Cross-Origin-Opener-Policy "same-origin"',
