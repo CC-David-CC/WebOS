@@ -5,8 +5,9 @@ from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote,urlsplit
 ROOT=Path(__file__).resolve().parent
-PUBLIC={'index.html','style.css','app.js','reference.js','terminal.js','desktop-apps.js','networking.js','config.json'}
-NETWORK={'crypto.mjs','identity.mjs','peer.mjs','strict-json.mjs','mesh-contract.mjs','origin-event.mjs','resource-budget.mjs','namespace.mjs','subscriptions.mjs','replay.mjs','room-invitation.mjs','public-rooms.mjs','chess-record.mjs','pgn-worker.mjs','pgn-importer.mjs','peer-pool.mjs','traffic-scheduler.mjs','bootstrap.mjs','bootstrap-source.mjs','support-client.mjs','discovery.mjs'}
+PUBLIC={'index.html','style.css','app.js','reference.js','terminal.js','desktop-apps.js','config.json'}
+STORAGE={'storage/browser/mirror.mjs'}
+NETWORK={'crypto.mjs','identity.mjs','strict-json.mjs'}
 RUNTIME={'libv86.js','v86.wasm','seabios.bin','vgabios.bin','vmlinuz','initramfs.cpio.gz'}
 class PublicHandler(SimpleHTTPRequestHandler):
     def __init__(self,*args,**kwargs):super().__init__(*args,directory=str(ROOT),**kwargs)
@@ -17,7 +18,7 @@ class PublicHandler(SimpleHTTPRequestHandler):
         try:
             path=unquote(urlsplit(self.path).path,errors='strict');relative=path.lstrip('/') or 'index.html';parts=relative.split('/')
             if any(p in ('.','..','') for p in parts) or '\\' in path or '\x00' in path:raise ValueError()
-            allowed=relative in PUBLIC or len(parts)>1 and parts[0]=='assets' or len(parts)==2 and parts[0]=='network' and parts[1] in NETWORK or len(parts)==3 and parts[:2]==['.build','v86'] and parts[2] in RUNTIME
+            allowed=relative in PUBLIC or relative in STORAGE or len(parts)>1 and parts[0]=='assets' or len(parts)==2 and parts[0]=='network' and parts[1] in NETWORK or len(parts)==3 and parts[:2]==['.build','v86'] and parts[2] in RUNTIME
             if not allowed:raise ValueError()
             target=ROOT
             for part in parts:
