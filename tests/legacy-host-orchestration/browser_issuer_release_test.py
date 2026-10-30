@@ -12,7 +12,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 ROOT=Path(__file__).resolve().parents[1]
-RELEASE=Path(os.environ.get('CODI_ISSUER_CANDIDATE',ROOT/'.build/browser-native-candidate/profile28-r1'))
+RELEASE=Path(os.environ.get('CODI_ISSUER_CANDIDATE',ROOT/'.build/browser-native-candidate/profile28-r2'))
 GEO=ROOT/'active-system/.build/browser-geoip/dbip-country-lite-2026-10.mmdb'
 PIN='7faf30b5457fa629acc7ffa695c15a6a8a56098ba4372412260ade478af5a537'
 
