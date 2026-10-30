@@ -25,6 +25,6 @@ for p in sorted(OUT.rglob('*')):
 canonical=json.dumps(files,sort_keys=True,separators=(',',':')).encode();manifest={'version':'codi-public-cache/1','id':hashlib.sha256(canonical).hexdigest(),'files':files}
 (OUT/'assets/desktop/cache-manifest.json').write_text(json.dumps(manifest,separators=(',',':')))
 template=(ROOT/'scripts/templates/device-cache-worker.js').read_text().replace("'networking.js',", "'bootstrap.js',")
-template=template.replace("if(event.data?.type!=='cache-loaded'||!event.ports[0])return;", "if(event.data?.type==='codi-cache-version'&&event.ports[0]){event.ports[0].postMessage({protocol:'codi-simplified-cache/1'});return;}\n  if(event.data?.type!=='cache-loaded'||!event.ports[0])return;")
+template=template.replace("if(event.data?.type!=='cache-loaded'||!event.ports[0])return;", "if(event.data?.type==='codi-cache-version'&&event.ports[0]){event.ports[0].postMessage({protocol:'codi-simplified-cache/1',release:RELEASE.id});return;}\n  if(event.data?.type!=='cache-loaded'||!event.ports[0])return;")
 (OUT/'assets/desktop/offline-worker.js').write_text(template.replace('__PUBLIC_CACHE_MANIFEST__',json.dumps(manifest,separators=(',',':'))))
 print(json.dumps({'release':str(OUT),'cacheId':manifest['id'],'files':len(files)}))
