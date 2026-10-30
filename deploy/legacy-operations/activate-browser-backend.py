@@ -30,7 +30,7 @@ STATE=Path('/var/lib/codi-ingress');JOURNAL=STATE/'browser-backend-journal.json'
 SOURCE=ROOT/'ops/common.py';MANIFEST=ROOT/'sites.toml';CADDY=Path('/etc/caddy/Caddyfile')
 MANAGED=Path('/etc/codi-connected/ksu/managed.json')
 OLD_RELEASE='/srv/codi-connected/releases/native27-chat-open-error-r1'
-NEW_RELEASE='/srv/codi-connected/releases/browser-issuer-profile28-r2'
+NEW_RELEASE='/srv/codi-connected/releases/browser-issuer-profile28-r3'
 PYTHON='/srv/codi-connected/venvs/517179c/bin/python'
 MANAGER=NEW_RELEASE+'/scripts/manage-services.py'
 PINS={'oldSource':'09247414f72e8507c582949c38cae3389cfc13ce50fb6b7118f9c6eaee207226',
@@ -39,7 +39,7 @@ PINS={'oldSource':'09247414f72e8507c582949c38cae3389cfc13ce50fb6b7118f9c6eaee207
       'candidateSource':'25d58c0602e296aabce40c24d64d52408140e0c78e63347f6485aa240f39da64',
       'candidateManifest':'a8ac8177967396495711247402ce6b346865d1d2aab84d7e7310817e0c9d7d1c',
       'candidateCaddy':'ce813404d53fd8d9344eef3a49af868fbce53d70f01612cfd78c0e89e552edcd',
-      'candidateRelease':'d09ddbbb04ce0e294a97b44ae1d8a8a555d302385c5d42b7fb7fd867bfab4878',
+      'candidateRelease':'957e6fec98101f5a57c7f8ebab633050d27759d5c0d673049b4da3527d39715d',
       'browserPolicy':'7faf30b5457fa629acc7ffa695c15a6a8a56098ba4372412260ade478af5a537'}
 
 
@@ -101,7 +101,9 @@ def wait_checks(expected):
 def manager(action):
     args=[PYTHON,'-B',MANAGER,action,'--config',MANAGED]
     if action=='upgrade':args+=['--release',NEW_RELEASE,'--python',PYTHON]
-    output=run(args);return json.loads(output.stdout)
+    output=run(args,check=False)
+    if output.returncode:raise ValueError('Managed '+action+' failed: '+output.stderr.strip()[-1200:])
+    return json.loads(output.stdout)
 def restore(journal):
     old_source=base64.b64decode(journal['oldSource'],validate=True)
     old_manifest=base64.b64decode(journal['oldManifest'],validate=True)
