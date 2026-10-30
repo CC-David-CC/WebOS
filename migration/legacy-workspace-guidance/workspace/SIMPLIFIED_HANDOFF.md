@@ -267,3 +267,31 @@ Browser build supplement: the adapter's `native/embed-host.cpp` compiled by itse
 Source work through the Browser app remains local/source-only, not live. The exact pinned Gecko/SpiderMonkey was built on r730 under `/mnt/data2tb/codi-browser-engine`, with generated 227 MiB WASM and 13 MiB data copied locally to ignored `apps/system/browser/engine/`; no binaries are tracked by Git. Isolated Chrome tests rendered an offline fixture, exercised click and typing, tested two independent windows and observed nested worker targets disappearing after close. The shared-memory TextDecoder bug was fixed. The isolated desktop test opened an account-mirror HTML file through the real chooser. A real Gecko fixture loaded an HTTP page through the source-only Wisp v1 relay; a YouTube request was rejected before DNS, while local signed device records included the requested domains. Fixture authentication and connector are test-only.
 
 User chose server-relayed networking, a blacklist for named video/news/social domains, and a prefilled but disabled whitelist for engineering suppliers. `apps/system/browser/relay/policy.json` holds the lists. Device domain-request events are signed/hash-chained in IndexedDB per account by default and stay on the device until requested; cross-tab signature/tamper tests pass. Optional independent server-side signed ledger is off by default (`serverAuditEnabled: false`); tests verify per-user/all-user summaries and checkpoints. Neither report-request transport nor production account binding of device keys exists. The Wisp prototype requires injected authenticated registered identities and trustworthy client source; no production authenticator, service installation, live route, trusted certificate test or download-to-My-files exists. The current live CSP blocks worker blob imports; the local test allows them only on the worker. Do not publish the Browser app or claim enforcement until the production integration and risk checks are complete. Domain lists cannot block content rehosted on unrelated domains or indirect proxies.
+
+### 2026-10-30 — independent IP and country rules
+
+The user requested separate incoming-login and outgoing-destination IP/CIDR
+and geographic blocks, including Linux guest and other relayed services.
+`active-system/network_policy/` contains independent empty-default lists,
+local DB-IP Country Lite lookup, a spoof-resistant ingress adapter requiring a
+verified proxy-provided client IP, a guest policy composition adapter, and a
+scoped nftables rules generator for explicit service UIDs. Browser Wisp tests
+also enforce the outbound check before connect and during active streams.
+Seven focused policy tests and nineteen Browser Python tests pass. A real local
+issuer rejected a blocked loopback login despite a forged header and admitted
+requests again after an atomic policy change. nft syntax and actual UID-scoped
+blocking were verified in disposable network namespaces, as was a country
+ruleset derived from the local October 2026 DB-IP data. Dataset SHA256 is
+`dbd70ccfa2a13627eaf4913d19920a1a229f1b3c5439ac01c509995b6364202a`;
+`maxminddb==2.8.2` is installed in the development venv and recorded in the
+requirements lock, not installed on webhost. DB-IP attribution and updater
+instructions are in the network-policy README. Country data is an estimate.
+
+This remains prototype/source only: current ksu.codes login and outbound
+services do not enforce these new lists. Before rollout, verify the existing
+HAProxy PROXY protocol to Caddy chain and explicitly overwrite/verify the
+trusted client-IP header, build/deploy a compatible issuer release without the
+unrelated uncommitted SSH audit work, install a guarded atomic firewall table
+and verify every relayed egress UID, arrange country database/key custody and
+rollback, and test real registered logins, active connections and all sites.
+Do not claim system-wide blocking from the existence of the adapters.
