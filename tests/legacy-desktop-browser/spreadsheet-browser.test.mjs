@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import puppeteer from 'puppeteer-core';
-import {readFile} from 'node:fs/promises';
+import {readFile,writeFile,mkdtemp,rm} from 'node:fs/promises';
+import os from 'node:os';
 import path from 'node:path';
 import * as XLSX from '../apps/system/spreadsheet/node_modules/xlsx/xlsx.mjs';
 const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18131/',root=process.env.CODI_TEST_DATA_ROOT;
@@ -19,5 +20,6 @@ try{
  await page.evaluate(()=>document.querySelector('.spreadsheet-content').closest('.window').querySelector('[aria-label=Close]').click());await page.waitForFunction(()=>!document.querySelector('.spreadsheet-content'));
  await page.evaluate(name=>openMirrorDocument([...surfaces.values()][0],signedInSubject(),'/'+name),name);await page.waitForFunction(()=>document.querySelector('.spreadsheet-grid td[data-x="0"][data-y="2"]')?.textContent==='12',{timeout:20000});await page.evaluate(()=>document.querySelector('.spreadsheet-content').closest('.window').querySelector('[aria-label=Close]').click());await page.waitForFunction(()=>!document.querySelector('.spreadsheet-content'));
  await page.evaluate(name=>openMirrorDocument([...surfaces.values()][0],signedInSubject(),'/'+name),xlsx);await waitStatus('Imported a copy');await page.waitForFunction(()=>document.querySelector('.spreadsheet-grid td[data-x="0"][data-y="2"]')?.textContent==='12',{timeout:20000});assert.ok((await readFile(path.join(folder,xlsx))).equals(data));page.once('dialog',d=>d.accept());await page.evaluate(()=>document.querySelector('.spreadsheet-content').closest('.window').querySelector('[aria-label=Close]').click());await page.waitForFunction(()=>!document.querySelector('.spreadsheet-content'));
+ const fixture=await mkdtemp(path.join(os.tmpdir(),'codi-sheet-'));try{await writeFile(path.join(fixture,'uploaded.xlsx'),data);await page.evaluate(()=>[...surfaces.values()][0].launch('files'));await page.waitForSelector('input[aria-label="Upload files"]');await(await page.$('input[aria-label="Upload files"]')).uploadFile(path.join(fixture,'uploaded.xlsx'));await page.waitForFunction(async()=>{try{return !!(await(await mirrorFileContext()).files.read('/uploaded.xlsx'))}catch{return false}},{timeout:20000});await page.evaluate(()=>[...surfaces.values()][0].launch('spreadsheet'));await page.waitForSelector('.spreadsheet-grid');await button('Browse My files');await page.waitForSelector('[aria-label="Choose file uploaded.xlsx"]');await page.click('[aria-label="Choose file uploaded.xlsx"]');await waitStatus('Imported a copy');await page.waitForFunction(()=>document.querySelector('.spreadsheet-grid td[data-x="0"][data-y="2"]')?.textContent==='12',{timeout:20000});}finally{await rm(fixture,{recursive:true,force:true});}
  assert.deepEqual(errors,[]);assert.deepEqual(external,[]);console.log('PASS spreadsheet typing, bounded formulas, save/reopen, XLSX export and import');
 }catch(e){console.error('FAIL',e.message,'body:',await page.evaluate(()=>document.body.innerText.slice(-1500)).catch(()=>''),'errors:',errors,'external:',external);process.exitCode=1;}finally{await context.close();await browser.disconnect();}
