@@ -674,3 +674,38 @@ unfinished. Country blocking and an existing live transfer under a rule
 change still need testing, as do the other server egress paths. The account
 file service remains at 8 MiB pending its separate 128 MiB rollout. A login
 block does not revoke an existing session.
+
+### Browser sources published and 128 MiB worker candidate — 2026-10-30
+
+`https://ksu.codes/browser-sources/` now serves the Gecko-generated license
+inventory, Emscripten/runtime and Wisp/adapter notices, and exact pinned
+source archives through a fixed filename allowlist. Source downloads use
+Caddy's file server and support byte ranges; they are not copied into the
+desktop release or Git. The notice generator validates the original Gecko
+notice and exact Emscripten/Wisp archive hashes. A real hosting rollback
+exercise passed before activation, all ten sites preserved their expected
+statuses, twelve public source/notice links responded to HEAD, and a separate
+external host obtained a 32-byte range with HTTP 206. Unlisted paths returned
+404. The prior small obsolete source archive and transfer fixtures were removed.
+Current hosting generator SHA-256 is
+`9bb5e958f27985891b8c927215e4927ddd514870309e271ec0f29790e2de8c68`,
+manifest `3ff13521fdca82c339d39fff09be45258e41f132d893a9e7c9fc51796636d93f`,
+and Caddy `a4d05c0e404188ddf2192dd5f9efb53076aa499f76d5dc2b36e87c6ee7e3df63`.
+The root source-route operator is `/srv/codi-browser/operators/sources-37218ff39`.
+
+The Browser app has a source/notice link and simplified startup/status text in
+source, and its 83 focused tests pass; it is still not deployed. The engine
+link log reports 37 unresolved functions, including file-picker and audio
+functions. Its impact and the actual linked-component/license inventory need
+review before claiming general website support or complete compliance.
+
+`build-large-file-worker.py` verifies the exact currently deployed gateway
+manifest, exports the six reviewed changes, preserves the existing live Python
+dependency lock, and refuses uncommitted worker inputs. Its reproducible
+candidate manifest SHA-256 is
+`53588b25c06c7b88e038bcca4cca13b8de9bcabc35b952d463c1d7ff3727b5c0`.
+A fresh local test streamed two signed 128 MiB uploads concurrently in 35.1 s
+with approximately 115672 KiB process high-water memory. This candidate is
+not installed or live; issuer metadata, frontend and proxy limits still need
+coordinated deployment and live testing. The static release builder now hashes
+files in chunks instead of reading the entire WASM asset into memory.
