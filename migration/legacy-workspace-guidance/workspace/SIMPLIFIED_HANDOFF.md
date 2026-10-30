@@ -435,3 +435,14 @@ confirms no partial account file is published. These are local tests; the 128
 MiB changes are still not live, and production ingress/deployment remains.
 The stopped disposable previews on ports 18137 and 18138 were removed only
 after checking exact paths, owner, filesystem and absence of running services.
+
+### Browser touch and keyboard — development
+
+The Browser canvas translates touch taps into page clicks and touch drags into
+wheel scrolling; the toolbar Keyboard button activates an app-owned text bridge
+and asks the desktop to enable the on-screen keyboard. Unit tests cover touch,
+text/editing keys and desktop mouse events. An isolated real-Gecko mobile
+emulation test tapped a guest input, typed `abc`, confirmed the guest changed
+its URL fragment in response, and observed a rendered page change after a
+touch drag. This is not a physical Android keyboard or full IME, accessibility,
+text selection or drag-and-drop test. Browser and relay are not live yet.

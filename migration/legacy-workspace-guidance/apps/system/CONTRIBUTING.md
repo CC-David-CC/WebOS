@@ -49,3 +49,9 @@ CodeMirror is available lazily via `await host.tools.loadCodeMirror()`. Each
 consumer owns the result of `createEditor(...)` and must destroy its view and
 ignore late loading after disposal. Do not share mutable view/document state.
 JupyterLite retains its own bundled CodeMirror and JupyterLab integration.
+
+A desktop-owned `host.ui.enableKeyboard()` capability lets an app explicitly
+request the on-screen keyboard when the user taps its keyboard control. It
+changes the desktop input mode; it does not grant guest pages access to host
+services. Use it only for a user-initiated text-input action, and clean up any
+app-owned input bridge on disposal.
