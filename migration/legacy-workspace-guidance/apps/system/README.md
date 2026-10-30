@@ -38,3 +38,66 @@ A new account starts with no open windows. Returning users get their last
 window layout and saved file paths back on the same browser. Unsaved content,
 active terminal processes and state inside embedded third-party editors are
 not restored automatically; save work in Files before leaving.
+
+## Python in the browser guest
+
+The local guest can include i386 CPython 3.11 and the pinned static uv 0.13.6
+binary. This is the existing BusyBox-based v86 Linux image with Python added;
+it is not a complete Debian installation and does not provide apt. The local
+preview has guest Internet disabled, so uv cannot download packages there.
+The guest filesystem is temporary and is separate from account Files.
+
+To rebuild it, prepare the same i386 Debian source root used by the guest build
+and the verified uv i686 musl binary, then run:
+
+```sh
+python3 active-system/scripts/build-browser-initramfs.py \
+  --guest-root /path/to/debian-root \
+  --python-uv /path/to/uv \
+  --work-dir active-system/.build/python-image-root \
+  --output active-system/.build/python-image.cpio.gz
+```
+
+The builder checks the uv binary SHA-256 and reports the image hash. The file
+and its hash in `assets/terminal/v2/image.json` must match before staging.
+
+## Python Notebook
+
+Programming → Python Notebook — Browser uses JupyterLite 0.8.6 with local Pyodide 314.0.6.
+Its default kernel is browser Python. NumPy, pandas, SciPy and Matplotlib and
+their required local wheels are staged for on-demand use. The first Save to
+Files chooses the account `.ipynb` path; subsequent edits synchronize to that
+file, and existing `.ipynb` files open from Files. JupyterLite's own browser
+storage is scoped by account. The Linux Terminal shortcut opens a separate v86
+shell; the Linux notebook entry is disabled until its kernel bridge is ready.
+
+To prepare the notebook assets, install `requirements-build.txt` into a
+build-only environment and run `python apps/system/notebook/prepare.py` with
+that environment's Python before running the app builder. The preparation
+verifies the Pyodide archive, package wheel hashes, and pinned comm wheel.
+
+JupyterLite's JSON-schema validator dynamically compiles JavaScript. The local
+preview grants `unsafe-eval` only to the notebook's static document and worker
+paths; the rest of the desktop keeps its existing strict policy. These notebook
+frames share the desktop origin and are not a security boundary for untrusted
+notebooks. Do not assume this local-only policy is installed in another server
+or use it as a substitute for isolating untrusted code on a separate origin.
+
+## Files and the Linux account mount
+
+Files offers **My files**, the browser-first account mirror, and **temp_linux**,
+the v86 guest's temporary home. The guest's `/home/guest/Account` folder
+synchronizes with My files, including creations, edits and deletions. The
+mount watches both sides asynchronously; it is not a synchronous kernel mount.
+Wait for its status to report that the account folder is synced to browser
+storage before restarting. The mirror then sends pending writes to the server.
+Conflicting edits or a deletion against a changed file are held for attention
+rather than deliberately overwriting the other side. Save or copy the Linux
+version elsewhere before rebooting if there is a conflict. Automatic server-side
+history and restore are not implemented.
+
+The current mount supports regular files and directories, up to 500 items and
+8 MiB per file. Symbolic links and special Linux files are reported and are
+not synchronized. temp_linux outside Account is cleared whenever the guest
+restarts. Use **Copy to account** on a selected Linux file to keep a copy in
+My files. New folder, New file and Upload are in Files' right-click menu.
