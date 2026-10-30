@@ -55,6 +55,16 @@ async def main(port,speech_assets=None,isolated=False):
     gateway_port=gateway_site._server.sockets[0].getsockname()[1]
     outgoing=ClientSession(timeout=ClientTimeout(total=150),trust_env=False,auto_decompress=False)
     async def proxy(request):
+        # The reference issuer caps in-memory static responses at 64 MiB.
+        # Stream larger immutable app assets like production Caddy does.
+        if request.method in ('GET','HEAD') and re.fullmatch(r'/assets/desktop/apps/[a-z][a-z0-9-]{0,31}/[0-9a-f]{64}/(?:[A-Za-z0-9_@+.-]+/)*[A-Za-z0-9_@+.-]+',request.path):
+            relative=Path(request.path.lstrip('/'));cursor=public
+            for part in relative.parts:
+                if part in ('.','..'):raise web.HTTPForbidden()
+                cursor=cursor/part
+                if cursor.is_symlink():raise web.HTTPForbidden()
+            if cursor.is_file() and cursor.stat().st_size>64*1024*1024:
+                return web.FileResponse(cursor,headers={'Cross-Origin-Resource-Policy':'same-origin','X-Content-Type-Options':'nosniff','Cache-Control':'no-store'})
         target=('http://127.0.0.1:'+str(gateway_port) if request.raw_path.startswith('/gateway/') else 'http://127.0.0.1:'+str(http.server_port))+request.raw_path
         hop={'connection','keep-alive','transfer-encoding','upgrade','te','trailer'}
         headers={k:v for k,v in request.headers.items() if k.lower() not in hop}
@@ -67,6 +77,10 @@ async def main(port,speech_assets=None,isolated=False):
                 csp=response_headers.get('Content-Security-Policy','')
                 if "script-src 'self' 'wasm-unsafe-eval'" not in csp:raise RuntimeError('Unexpected notebook security policy')
                 response_headers['Content-Security-Policy']=csp.replace("script-src 'self' 'wasm-unsafe-eval'", "script-src 'self' 'unsafe-eval'")
+            if re.fullmatch(r'/assets/desktop/apps/browser/[0-9a-f]{64}/src/engine-worker\.js', request.path):
+                csp=response_headers.get('Content-Security-Policy','')
+                if "script-src 'self' 'wasm-unsafe-eval'" not in csp:raise RuntimeError('Unexpected browser worker security policy')
+                response_headers['Content-Security-Policy']=csp.replace("script-src 'self' 'wasm-unsafe-eval'", "script-src 'self' blob: 'wasm-unsafe-eval'")
             response=web.StreamResponse(status=upstream.status,headers=response_headers)
             await response.prepare(request)
             async for chunk in upstream.content.iter_chunked(65536):await response.write(chunk)
