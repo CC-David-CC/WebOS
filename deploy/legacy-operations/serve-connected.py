@@ -71,11 +71,16 @@ def main():
     p.add_argument('--base-path',default='',type=validate_base_path)
     p.add_argument('--user-files',action='store_true',help='Enable registered-only file identity confirmations; the separate file gateway is required')
     p.add_argument('--guest-network-policy-sha256',help='Explicit pinned policy for live-session guest network grants')
+    p.add_argument('--browser-relay-policy-sha256',help='Explicit pinned policy for registered-session browser relay grants')
     p.add_argument('--maintenance-notice',type=Path,help='Root-owned public maintenance notice; clients cannot write it')
     a=p.parse_args()
     if a.guest_network_policy_sha256 is not None:
         from guest_service.authorization import policy_hash
         try:policy_hash(a.guest_network_policy_sha256)
+        except ValueError as error:p.error(str(error))
+    if a.browser_relay_policy_sha256 is not None:
+        from browser_service.authorization import policy_hash
+        try:policy_hash(a.browser_relay_policy_sha256)
         except ValueError as error:p.error(str(error))
     if not 1<=a.port<=65535:p.error('Port must be 1..65535')
     if a.instance is not None and not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,63}',a.instance):p.error('Instance must be a bounded directory label')
@@ -106,6 +111,9 @@ def main():
             if a.guest_network_policy_sha256 is not None:
                 from origin_service.guest_authority import GuestAuthority
                 application=GuestAuthority(service,a.guest_network_policy_sha256,application)
+            if a.browser_relay_policy_sha256 is not None:
+                from origin_service.browser_authority import BrowserAuthority
+                application=BrowserAuthority(service,a.browser_relay_policy_sha256,application)
             with make_server('127.0.0.1',a.port,HeadSupport(application),server_class=BoundedServer,handler_class=Quiet) as server:
                 print(f'Test issuer and staged desktop: {origin}/',flush=True)
                 try:server.serve_forever()
