@@ -295,3 +295,12 @@ unrelated uncommitted SSH audit work, install a guarded atomic firewall table
 and verify every relayed egress UID, arrange country database/key custody and
 rollback, and test real registered logins, active connections and all sites.
 Do not claim system-wide blocking from the existence of the adapters.
+
+Browser usage-report source now includes a request-scoped coordinator and a
+Python verifier for the browser's WebCrypto-signed hash chain. Local tests
+verified a real Chrome-generated report in Python, detected modifications and
+checkpoint truncation, enforced explicit administrator/account scope, and
+combined two users while counting repeat device snapshots once. No network
+transport, production session adapter, administrator UI or online request
+exists yet; no browser usage is automatically stored on the server. Optional
+independent server audit remains disabled by default.
