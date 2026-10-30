@@ -1,0 +1,10 @@
+[Unit]
+Description=Hourly Codi KSU discovery authority renewal check
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+Unit=codi-ksu-live-root-renew.service
+
+[Install]
+WantedBy=timers.target

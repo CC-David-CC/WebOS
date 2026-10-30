@@ -1,0 +1,18 @@
+[Unit]
+Description=Codi KSU guarded discovery authority renewal
+After=codi-ksu-hidden-issuer.service codi-ksu-hidden-steward.service
+
+[Service]
+Type=oneshot
+ExecStart=/srv/codi-connected/venvs/517179c/bin/python -I -B /srv/codi-connected/recovery-operators/f1b5fd9e3eff2d75805c554fcba79130ba3e5ee87831bcd3ea268e01a12ad214/run.py tick --config /etc/codi-connected/ksu/managed.json --config-sha256 19f15f856ba5e40db865d6e9b4623fa8f680e92a1952d3765484a5fb31839092 --release-sha256 36868e655bc12c61123ec2e7d8562bea511375aa6136d5f5dd610ca81a751d46 --bundle-sha256 f1b5fd9e3eff2d75805c554fcba79130ba3e5ee87831bcd3ea268e01a12ad214 --seconds 86400 --renewal-window 21600 --controller-lock /home/dflanag3/webhost-sites/.controller.lock --controller-owner-uid 1000 --controller-owner-gid 1000
+TimeoutStartSec=300
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+ReadWritePaths=/var/lib/codi-connected/ksu /etc/codi-connected/ksu /etc/codi-user-files/ksu/.operator.lock /etc/codi-guest-network/ksu-signin/.operator.lock

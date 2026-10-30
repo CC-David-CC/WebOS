@@ -1,0 +1,20 @@
+Work on CodiServer's browser-first tiered P2P environment in the existing worktree.
+Read AGENTS.md, README.md, shared/MESH_ARCHITECTURE.md, MESH_WIRE.md,
+MESH_SUPPORT_SERVICES.md, docs/08_P2P_V03_DECISIONS.md, the combined acceptance
+registry and evidence/STATUS.md before changing anything.
+
+Treat login and v86 as provided prerequisites for this planning slice. Bind the
+actual current worktree and existing evidence; never replace working implementations
+with the older baseline bundled here. Do not configure public services yet.
+
+Start M00-T01, then one bounded ticket at a time. Preserve the menu/tree and per-node
+chat intent; separate namespace, membership/key epochs and physical transport.
+One browser session owns one budgeted pooled peer manager used by chat/games/files.
+No global membership list, parent-chat cascade, full mesh, root transit requirement,
+per-app network daemon or hidden login/chat backend. Some owned peers hold explicitly
+scoped stewardship grants. Add no host-file privileges to these public roles.
+
+The new isolated model/capacity tool is an oracle, not production P2P or crypto.
+Keep runtime, real RTC, WAN, model and analytical evidence separate. Do not claim
+10^10-device validation from arithmetic or small tests. A failed invariant requires
+revisiting the model, not unbounded retries or another parallel special-case path.

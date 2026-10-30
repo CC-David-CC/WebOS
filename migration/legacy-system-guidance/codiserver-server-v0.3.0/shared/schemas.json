@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:codiserver:peer:1:wire",
+  "title": "codi-peer/1 wire shapes; semantics are in PROTOCOL.md",
+  "$defs": {
+    "publicKey": {
+      "type": "object",
+      "required": [
+        "kty",
+        "crv",
+        "x",
+        "y"
+      ],
+      "properties": {
+        "kty": {
+          "const": "EC"
+        },
+        "crv": {
+          "const": "P-256"
+        },
+        "x": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "y": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "sid",
+        "sub",
+        "kind",
+        "name",
+        "key",
+        "certificate"
+      ],
+      "properties": {
+        "sid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "sub": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "kind": {
+          "enum": [
+            "anonymous",
+            "registered"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "key": {
+          "$ref": "#/$defs/publicKey"
+        },
+        "certificate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 16384
+        }
+      },
+      "additionalProperties": false
+    },
+    "requestEnvelope": {
+      "type": "object",
+      "required": [
+        "request",
+        "proof"
+      ],
+      "properties": {
+        "request": {
+          "type": "string",
+          "maxLength": 32768
+        },
+        "proof": {
+          "type": "string",
+          "maxLength": 16384
+        }
+      },
+      "additionalProperties": false
+    },
+    "signedPacketPayload": {
+      "type": "object",
+      "required": [
+        "v",
+        "kind",
+        "link",
+        "from",
+        "to",
+        "seq",
+        "iat",
+        "exp",
+        "text"
+      ],
+      "properties": {
+        "v": {
+          "const": 1
+        },
+        "kind": {
+          "enum": [
+            "hello",
+            "chat"
+          ]
+        },
+        "link": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "iat": {
+          "type": "integer"
+        },
+        "exp": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "signalingPayload": {
+      "type": "object",
+      "required": [
+        "v",
+        "kind",
+        "room",
+        "iat",
+        "exp",
+        "reply_to",
+        "sender",
+        "sdp"
+      ],
+      "properties": {
+        "v": {
+          "const": 1
+        },
+        "kind": {
+          "enum": [
+            "offer",
+            "answer"
+          ]
+        },
+        "room": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "iat": {
+          "type": "integer"
+        },
+        "exp": {
+          "type": "integer"
+        },
+        "reply_to": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sender": {
+          "$ref": "#/$defs/identity"
+        },
+        "sdp": {
+          "type": "string",
+          "maxLength": 131072
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$comment": "UTF-8 byte limits, signature checks, authority policy, expiry, request hash and replay counters MUST be enforced in code, not assumed from JSON Schema."
+}

@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+var/
+.test-output/
+public/vendor/
+public/vm/assets/
+*.pem

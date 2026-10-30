@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Guest worker feasibility test</title>
+<script>
+window.output='';window.shell='';window.shell3='';window.ready=false;window.fatal=null;window.rpcNext=0;window.pending=new Map();
+window.vm=new Worker('/scripts/fixtures/guest-worker-proof.js');let line='';const decoder=new TextDecoder();
+vm.onmessage=({data})=>{if(data.type==='serial'){for(const ch of data.text){line+=ch;if(ch==='\n'){const s=line.replace(/\r?\n$/,'');line='';if(s==='\x1eCDMUX R 2'){ready=true;vm.postMessage({type:'serial',text:'\x1eCDMUX O 2 80 24\n\x1eCDMUX O 3 80 24\n'});}else{const m=/^\x1eCDMUX D ([23]) ([0-9a-f]*)$/.exec(s);if(m){const bytes=Uint8Array.from(m[2].match(/../g)||[],v=>parseInt(v,16)),text=decoder.decode(bytes,{stream:true}).replace(/\r/g,'');if(m[1]==='2')shell+=text;else shell3+=text;vm.postMessage({type:'serial',text:'\x1eCDMUX A '+m[1]+' '+bytes.length+'\n'});}else output+=s+'\n';}}}}else if(data.type==='fatal')fatal=data.message;else if(data.type==='reply'){const p=pending.get(data.id);pending.delete(data.id);if(p)(data.ok?p.resolve:p.reject)(data.value);}};
+vm.onerror=e=>fatal=e.message;
+window.command=(text,id=2)=>vm.postMessage({type:'serial',text:'\x1eCDMUX I '+id+' '+[...new TextEncoder().encode(text)].map(b=>b.toString(16).padStart(2,'0')).join('')+'\n'});
+window.rpc=(type,value={})=>new Promise((resolve,reject)=>{const id=++rpcNext;pending.set(id,{resolve,reject});vm.postMessage({type,id,...value});});
+vm.postMessage({type:'start'});
+</script>

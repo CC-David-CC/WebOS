@@ -1,0 +1,17 @@
+{
+  "protocol": "codi-peer/1",
+  "identity": {
+    "mode": "local-development",
+    "apiBase": null,
+    "issuer": null,
+    "audience": "codiserver-peers-v1",
+    "authorityClass": "none",
+    "authorityKeys": []
+  },
+  "rtc": {
+    "iceServers": []
+  },
+  "vm": {
+    "manifest": "/vm/manifest.json"
+  }
+}

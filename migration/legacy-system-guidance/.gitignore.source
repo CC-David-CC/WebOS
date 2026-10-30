@@ -1,0 +1,24 @@
+.build/
+.venv/
+__pycache__/
+*.pyc
+
+# Installed dependencies and generated application/runtime assets.
+node_modules/
+assets/desktop/apps/
+assets/desktop/apps.json
+assets/desktop/cache-manifest.json
+assets/desktop/offline-worker.js
+assets/speech/vendor/
+assets/speech/models/
+assets/vendor/chess/chess.mjs
+assets/vendor/gossip/*.mjs
+network/gossip-vendor.mjs
+assets/terminal-initramfs.cpio.gz
+assets/terminal/v2/*.cpio.gz
+assets/*.ttf
+*.wasm
+*.onnx
+*.png
+*.jpg
+*.jpeg

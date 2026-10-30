@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><title>Asynchronous guest application test</title>
+<script type="module">
+let filesMount,textMount;
+if(location.search==='?compiled'){
+ const base='/.build/async-guest-apps-r1/',catalog=await(await fetch(base+'apps.json')).json(),entry=id=>base+catalog.apps.find(a=>a.id===id).path.slice('assets/desktop/'.length);
+ filesMount=(await import(entry('files'))).mount;textMount=(await import(entry('text'))).mount;
+}else{
+ filesMount=(await import('/served_apps_public/files/index.mjs')).mount;textMount=(await import('/served_apps_public/text/index.mjs')).mount;
+}
+const enc=new TextEncoder(),data=new Map([['/doc.txt','original'],['/fast/x.txt','fast']]);
+window.gates={};window.defer=key=>new Promise(resolve=>gates[key]=resolve);
+window.guest={path:p=>{const a=[];for(const x of String(p).replace(/^\/home\/guest(?=\/|$)/,'').split('/'))if(x==='..')a.pop();else if(x&&x!=='.')a.push(x);return '/'+a.join('/');},name:n=>n,
+ async list(p){if(p==='/slow')await defer('slow');return p==='/fast'?[{path:'/fast/x.txt',name:'x.txt',size:4,dir:false}]:p==='/'?[{path:'/doc.txt',name:'doc.txt',size:8,dir:false}]:[];},
+ async stat(p){if(!data.has(p))throw Error('File or folder not found: '+p);return {path:p,size:enc.encode(data.get(p)).length,dir:false};},async read(p){if(window.delayRead)await defer('read');return enc.encode(data.get(p));},async write(p,t){window.writes=(window.writes||0)+1;if(window.delayWrite)await defer('write');data.set(p,String(t));},async mkdir(){},async trash(){},async restore(){}};
+const ui={make:(tag,cls='',text)=>{const n=document.createElement(tag);n.className=cls;if(text!==undefined)n.textContent=text;return n;},textButton:(text,fn,cls='')=>{const n=document.createElement('button');n.type='button';n.textContent=text;n.className=cls;n.addEventListener('click',fn);return n;},appInput:(label,value='')=>{const n=document.createElement('input');n.setAttribute('aria-label',label);n.value=value;return n;}};
+window.openApp=(kind,w)=>{const controller=new AbortController(),clean=[],host={desktop:{},w,ui,session:()=>({public:{kind:'registered',name:'test'}}),signal:controller.signal,onDispose:fn=>clean.push(fn),storage:{guestFiles:guest,fileVolumeBar:()=>document.createElement('nav'),serverFilesAvailable:()=>false,signedInSubject:()=>'',openGuestEditor:()=>{},downloadGuestFile:()=>{}}};const app=(kind==='files'?filesMount:textMount)(host);document.body.append(app.element);return {app,close(){controller.abort();clean.forEach(fn=>fn());app.dispose();app.element.remove();}};};
+window.getData=path=>data.get(path);window.fixtureReady=true;
+</script>

@@ -1,0 +1,12 @@
+Implement the CodiServer server handoff in this directory. Read AGENTS.md, README.md,
+shared/PROTOCOL.md, docs/02_BUILD_TEST_LADDER.md, docs/03_TICKETS.md and
+contracts/acceptance.json first. Preserve the existing native CodiServer project.
+The next task is the first unproven prerequisite on the server ladder, not public
+deployment. The default browser path must remain static-only ANON with no account
+service. Prove real WebRTC exchanges and actual v86 guest commands separately;
+never confuse their unit tests or blocked adapters with completed integration.
+When connected later, ALL sessions including ANON must register with the real
+authority and receive a key-bound expiring certificate. No permanent local-only
+account authority. Keep the host-files broker out of the login service.
+Return a small tested patch, exact acceptance IDs/evidence, and precise remaining
+blockers. Do not ask David to set up ports/services merely to test the GUI.
