@@ -1,0 +1,31 @@
+__pycache__/
+*.pyc
+.build/
+.venv/
+node_modules/
+
+# Source-only backup: generated outputs, downloaded binaries and private state
+# stay on the workstation and can be rebuilt or provisioned separately.
+*.wasm
+*.onnx
+*.cpio.gz
+*.ttf
+*.png
+*.jpg
+*.jpeg
+*.zip
+*.tap
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.*
+assets/vendor/chess/chess.mjs
