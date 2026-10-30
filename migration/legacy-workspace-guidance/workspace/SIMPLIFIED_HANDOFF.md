@@ -104,3 +104,29 @@ before building the public apps.
 The local launcher source now sets a larger per-minute gateway request limit to
 avoid the earlier prototype limit being exhausted by directory synchronization.
 The local preview was restarted with this limit; the gateway's default remains unchanged.
+
+
+## Document Editor, PDF Viewer and Spreadsheet
+
+The local preview includes three independent, lazily loaded system apps. The
+Tiptap Document Editor writes `.codidoc` documents to the versioned account
+mirror, exports a separate PDF and sends a preview to the PDF.js viewer. The
+viewer also opens saved PDFs from Files. PDF output is for straightforward
+reports; unsupported content or characters are reported, and it is not a
+pixel-perfect document layout system. No DOCX or download-to-PC button is added.
+
+Spreadsheet uses Jspreadsheet CE with an app-owned SheetJS worker and stores
+`.codisheet` files; XLSX import makes a copy and export creates a separate file.
+Basic arithmetic and a small set of functions use a bounded parser; unsupported
+formulas show an error. Excel formatting, charts and advanced features are not
+preserved. The vendor's dynamic formula evaluator is disabled under the existing
+CSP. Each app has its own pinned lockfile; npm dependencies and built assets are
+not committed. Run npm ci --ignore-scripts in each app before rebuilding.
+
+Isolated Chrome tests cover document save/reopen, generated multi-page PDF and
+viewer, server files, offline sync, conflicts, account separation and cleanup;
+touch emulation covers editing and independent windows. A spreadsheet browser
+test covers typing, formulas, native save/reopen, XLSX import and export; parser
+tests cover malformed and hostile formulas. These are not physical-phone tests.
+The tests use disposable accounts and the isolated local preview. The current
+local preview at 127.0.0.1:18130 was updated; no public site was changed.
