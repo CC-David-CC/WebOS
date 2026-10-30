@@ -31,3 +31,9 @@ Background media processing is available through `await host.tools.createFFmpeg(
 The returned instance has `run({input, inputName, outputName, args, timeout})`
 and `dispose()`; the host also disposes it when the app view closes. Data stays
 in the browser unless the app explicitly saves it through the file mirror.
+
+Audio tools are available as `await host.tools.createWaveSurfer(options)` and
+`await host.tools.loadTone()`. The host destroys WaveSurfer instances with the
+view; apps must dispose their own Tone instruments and scheduled audio events.
+Use browser account-mirror files for inputs and outputs. The AudioMass editor is
+a separately packaged app; see `audio-editor/README.md` for its prepare step.

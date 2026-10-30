@@ -160,3 +160,19 @@ used. A real browser test generated a WAV, converted it to MP3, verified the
 menu and lazy loading, and checked app-view cleanup. The 31 MiB GPL-licensed
 core loads only when used; review its source and distribution obligations
 before publishing. See `apps/system/ffmpeg/README.md` for the API and limits.
+
+## Audio tools
+
+Applications → Audio Tools opens AudioMass as Audio Editor. Its host controls
+open an account file and save single-track edits as a separate version-checked
+WAV. Multitrack session persistence is not implemented. AudioMass's embedded
+PC download actions are disabled; the host Save WAV button saves to Files.
+The browser media CSP now permits local blob media for waveform playback.
+
+WaveSurfer.js and Tone.js are lazy system libraries, not windows: app authors
+use `host.tools.createWaveSurfer(options)` and `host.tools.loadTone()`. A real
+browser test covers AudioMass opening, reverse editing and saving a WAV to the
+account folder, Tone offline synthesis, and WaveSurfer rendering. AudioMass is
+prepared from a pinned hash-verified upstream archive with `prepare.py`; its
+untracked vendor files and all generated bundles stay out of Git. See each app's
+README for limitations, dependencies and audio-resource cleanup.
