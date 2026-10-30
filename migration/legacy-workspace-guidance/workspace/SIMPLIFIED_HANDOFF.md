@@ -638,3 +638,39 @@ the old and new public TURN policies. The corrected local profile-28 r3
 manifest is `957e6fec98101f5a57c7f8ebab633050d27759d5c0d673049b4da3527d39715d`.
 It supersedes the r2 candidate; r3 has not yet been installed or tested in a
 live managed transition. The live login and Browser routes remain unchanged.
+
+### Browser backend and login IP filter live — 2026-10-30
+
+The corrected profile-28 r3 and managed Caddy routing passed a real
+coordinated upgrade/rollback exercise, then were activated. The issuer is
+`/srv/codi-connected/releases/browser-issuer-profile28-r3`, manifest SHA-256
+`957e6fec98101f5a57c7f8ebab633050d27759d5c0d673049b4da3527d39715d`.
+The current hosting generator is
+`25d58c0602e296aabce40c24d64d52408140e0c78e63347f6485aa240f39da64`,
+manifest `a8ac8177967396495711247402ce6b346865d1d2aab84d7e7310817e0c9d7d1c`,
+and derived Caddy file `ce813404d53fd8d9344eef3a49af868fbce53d70f01612cfd78c0e89e552edcd`.
+The root-owned transition operator is
+`/srv/codi-browser/operators/backend-b7c31de02`, with receipt
+`/var/lib/codi-ingress/browser-backend-result.json`. The previous native
+release remains available for managed rollback. The failed r2 candidate,
+obsolete operator and temporary transfer directories were removed.
+
+From the external address `104.180.210.36`, a temporary incoming-login block
+returned 403 even with forged `X-Codi-Client-IP` and `X-Forwarded-For`
+headers; the Browser relay challenge remained available. Restoring the empty
+policy returned the same invalid login request to its expected 400 response.
+The original policy hash was confirmed after restoration. A real headless
+Chrome registered a disposable account, obtained a signed Browser relay grant,
+downloaded an allowed HTTPS page, rejected YouTube, IPv4/IPv6 loopback literals
+and a hostname resolving to loopback, and opened Wisp. It then signed in again
+in a fresh browser context and removed its exact test account. The reproducible
+check is `tests/live_browser_relay_account_check.py`.
+After separate live relay and issuer service restarts, the same registered
+account/relay test passed again; both guard units and services were active.
+
+Only the backend, login filter and Browser outgoing policy are live. The
+Browser app/engine are not yet published; ordinary clicked downloads remain
+unfinished. Country blocking and an existing live transfer under a rule
+change still need testing, as do the other server egress paths. The account
+file service remains at 8 MiB pending its separate 128 MiB rollout. A login
+block does not revoke an existing session.
