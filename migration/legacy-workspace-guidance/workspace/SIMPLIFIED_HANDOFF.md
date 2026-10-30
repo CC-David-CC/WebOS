@@ -52,3 +52,19 @@ start a complete file gateway or test a browser login.
   browser restarts and two real browser devices with the actual signed gateway.
 - Verify the VM and desktop apps in a real browser, and document operational
   backup/recovery of private account files and databases.
+
+## Local preview on this workstation
+
+`run-simplified-local.py` starts a loopback-only issuer, signed file gateway
+and desktop at port 18130. It uses ignored `storage/accounts/data/` and
+`storage/accounts/state/` directories for account files and permissions, and
+`.build/simplified-local/issuer/` for its test login database and signing key.
+These are real local preview state and are not included in Git backups. The
+local Linux guest has no Internet relay configured. It requires rebuilt app
+bundles and VM boot assets; `--speech-assets` optionally copies an existing
+speech runtime/model into the ignored staging tree.
+
+A real local Chrome smoke test registered a separate test account, opened the
+desktop, created and edited a file, and confirmed it arrived in the correct
+server account folder. The same test does not prove behavior across devices or
+deployment readiness.
