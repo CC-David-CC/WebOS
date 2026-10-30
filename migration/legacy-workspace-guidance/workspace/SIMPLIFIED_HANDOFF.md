@@ -579,3 +579,25 @@ Browser challenge handler, split login and an IP block using the existing
 Python environment. A test rejects user-writable fallback modules. The
 superseded candidate and unused environment were removed. The live file
 service still has the old 8 MiB limit.
+
+### Additional trusted-ingress gap — 2026-10-30
+
+The split login guard does not by itself protect the original address: a real
+unprivileged local connection to Caddy port 8443 sent a fabricated PROXY
+header, and Caddy recorded that fabricated `203.0.113.99` client address. Do
+not enable or claim live client-IP login enforcement until this HAProxy-to-Caddy
+boundary is fixed. HAProxy runs as `DynamicUser=codi-shared-ingress`; its UID
+can change, so a permanent nftables rule cannot safely pin the currently
+observed numeric UID.
+
+`render_caddy_proxy_guard` and `render-caddy-proxy-guard.py` prepare a distinct
+atomic nftables table, a root guard service and a Caddy startup dependency.
+Namespace tests prove both Caddy ports accept only the specified UID. A
+temporary real-host rule using the current UID blocked an unprivileged direct
+connection while three sites remained available through HAProxy; it was then
+removed. A separate systemd fixture verified that a service with
+`DynamicUser=yes` uses a matching locked static account after restart. The
+static account migration, durable guard installation, controlled rollback and
+full live/independent-network tests have not yet been performed. Candidate
+rules for UID 966 were rendered and syntax-checked; that UID must be confirmed
+free again immediately before any migration.
