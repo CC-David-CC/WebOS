@@ -34,3 +34,11 @@ assets/vendor/chess/chess.mjs
 !/active-system/assets/icons/*.png
 !/active-system/assets/application.png
 !/active-system/assets/wallpaper.jpg
+
+# Browser engine downloads and generated runtime artifacts.
+/apps/system/browser/.work/
+/apps/system/browser/engine/gecko.js
+/apps/system/browser/engine/gecko.data
+/apps/system/browser/engine/wisp-client.mjs
+/apps/system/browser/engine/manifest.json
+/apps/system/browser/engine/*.LICENSE.txt
