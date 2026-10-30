@@ -23,7 +23,7 @@ from origin_service.mount import validate_base_path
 from origin_service.runtime import PrivateRuntime
 from origin_service.http_server import BoundedServer, QuietHandler
 
-FILES=['index.html','style.css','app.js','reference.js','terminal.js','desktop-apps.js','config.json']
+FILES=['index.html','bootstrap.js','style.css','app.js','reference.js','terminal.js','desktop-apps.js','config.json']
 RUNTIME=['libv86.js','v86.wasm','seabios.bin','vgabios.bin','vmlinuz','initramfs.cpio.gz']
 def stage(public=None):
     public=public or ROOT/'.build/connected-public'
