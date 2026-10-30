@@ -16,7 +16,7 @@ for mode in ('prepare','production'):assert base.caddy(data,mode)==candidate.cad
 site=next(item for item in data['sites'] if item['domain']=='ksu.codes')
 site.update(codi_browser_relay=True,codi_large_files=True,codi_login_filter=True)
 candidate.validate(data);render=candidate.caddy(data,'production')
-for value in ['unix//run/codi-browser/relay.sock','X-Codi-Client-IP {http.request.remote.host}','max_size 192MiB','/assets/desktop/apps/browser/*/src/engine-worker.js']:
+for value in ['unix//run/codi-browser/relay.sock','X-Codi-Client-IP {http.request.remote.host}','max_size 192MiB','/assets/desktop/apps/browser/*/src/engine-worker.js','handle /api/v1/auth {','reverse_proxy 127.0.0.1:8117']:
     assert value in render,value
 roundtrip=tomllib.loads(candidate.dump(data));candidate.validate(roundtrip)
 assert next(item for item in roundtrip['sites'] if item['domain']=='ksu.codes')['codi_browser_relay'] is True
