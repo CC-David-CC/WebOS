@@ -29,3 +29,8 @@ node_modules/
 .env
 .env.*
 assets/vendor/chess/chess.mjs
+
+# Desktop artwork is application source, not a generated build artifact.
+!/active-system/assets/icons/*.png
+!/active-system/assets/application.png
+!/active-system/assets/wallpaper.jpg
