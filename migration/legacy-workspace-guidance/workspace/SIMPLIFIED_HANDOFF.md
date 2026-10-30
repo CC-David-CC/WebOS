@@ -37,7 +37,9 @@ existing real loopback signed file-gateway HTTP suite also passed 13 tests using
 its own disposable state, after updating an obsolete test password. These tests
 do not establish end-to-end behavior in a real browser against a running
 simplified deployment. The workstation's existing ChromeDriver failed to start
-Chrome during this work.
+Chrome during this work. A local issuer staging smoke check served the login
+page, signed-server configuration, app manifest and browser mirror; it did not
+start a complete file gateway or test a browser login.
 
 ## Remaining before deployment
 
