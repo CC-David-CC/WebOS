@@ -424,3 +424,14 @@ local measurement, not a production concurrency capacity claim; large reads
 still use browser-side JSON/base64 buffers, and production ingress, service
 memory limits, temporary-disk placement, interrupted uploads and multi-user
 stress need validation. The live file service remains the older 8 MiB release.
+
+A subsequent actual loopback test uploaded two 128 MiB files concurrently from
+separate signed accounts in 35.1 seconds, verified each disk hash, and measured
+115700 KiB high-water memory from `/proc/self/status`. A first version of the
+test used `getrusage` and reported an inherited 1117892 KiB peak; the current
+process's `VmHWM` exposed that measurement error, and the full test was rerun.
+An additional test disconnects a partially sent authenticated upload and
+confirms no partial account file is published. These are local tests; the 128
+MiB changes are still not live, and production ingress/deployment remains.
+The stopped disposable previews on ports 18137 and 18138 were removed only
+after checking exact paths, owner, filesystem and absence of running services.
