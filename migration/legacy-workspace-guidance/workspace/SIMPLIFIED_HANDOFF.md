@@ -335,3 +335,20 @@ The Wisp prototype now starts connection requests concurrently with bounded
 per-stream early-data buffering, instead of letting slow DNS/connect block
 other streams. Tests check concurrent progress and cancellation/capacity
 cleanup. Source is backed up; this relay is not live.
+
+### Local Browser relay integration
+
+The isolated launcher supports `--browser-relay` and advertises an explicitly
+pinned Browser authorization policy. The desktop obtains a challenge, proves a
+registered session to the issuer, and authenticates a purpose-bound grant to
+the relay. The relay uses a per-window HttpOnly, SameSite=Strict, scoped cookie
+(Secure on HTTPS); it renews a short lease, closes on expiry/revocation, and
+invalidates admissions at restart. This does not put account keys or bearer
+secrets in the renderer's URL. 31 real issuer/SQLite and local HTTP/WebSocket
+authorization tests and the Browser offline/unit suite pass. The actual Gecko
+engine rendered an external HTTPS page through this path in an isolated local
+desktop; this is not a production or broad site-compatibility test. Traffic
+policy, deployment, trusted external source attribution, stronger operational
+limits, file downloads, report transport, license/source distribution and
+mobile testing still require work. The local test state is disposable and the
+live site remains unchanged.
