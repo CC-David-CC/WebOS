@@ -42,3 +42,5 @@ ZIP operations are shared through `await host.tools.loadZip()`. Grid.Space's
 Kiri:Moto and Mesh:Tool share one packaged system app; see `grid-tools/README.md`
 for its pinned preparation step and file bridge. These tools' browser workspace
 state is separate from account-mirrored Files; exports must be saved explicitly.
+
+For an account file chooser use `await host.storage.pickFile({extensions, signal: host.signal})`. It returns a My files path or null on cancellation. Read and write through `mirrorFileContext()` and check that the account context remains valid after asynchronous work. Preserve unsaved changes when switching files, and report local saves separately from server synchronization. A PC upload picker is an additional import option, not the account file chooser.
