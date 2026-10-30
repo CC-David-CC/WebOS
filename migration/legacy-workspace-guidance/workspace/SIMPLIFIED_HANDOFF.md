@@ -517,3 +517,20 @@ because that interpreter lacks `maxminddb`.
 The ingress table is not installed. A managed boot/startup dependency, actual
 public proxy-chain test, issuer integration and rollback are still required
 before the login IP restrictions can be considered live.
+
+### Browser source snapshots staged — 2026-10-30
+
+Seven hash-verified source artifacts now reside privately under
+`/srv/codi-browser/source-staging/engine-6736dce5/` on box-webhost. They cover
+the exact clean Firefox source revision, Firefox-WASM base and actual local
+patch, the added native adapter, the patched Emscripten checkout without
+dependencies or caches, the installed Wisp source/license, and the relevant
+Codi app/integration source at commit `6749ae260`. The archive checksums,
+scope and remaining licensing review are in
+`apps/system/browser/docs/SOURCE_PROVISION.md`. Zstandard integrity and an
+actual base-plus-patch byte comparison passed; the Firefox archive is 918 MiB.
+Temporary transfer and duplicate archive staging directories were removed
+after the copies were verified; the original build checkout remains. The
+sources are not public yet, and this preparation does not establish complete
+third-party license compliance or authorize distributing the engine without
+the remaining notices and source review.
