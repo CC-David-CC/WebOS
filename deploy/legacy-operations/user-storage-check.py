@@ -3,6 +3,7 @@
 import concurrent.futures
 from dataclasses import replace
 import hashlib
+import io
 import json
 import os
 from pathlib import Path
@@ -49,6 +50,37 @@ class Storage(unittest.TestCase):
             os._exit(75)
         _, status = os.waitpid(child, 0)
         self.assertEqual(os.waitstatus_to_exitcode(status), 73)
+
+    def test_streamed_put_checks_hash_size_and_atomic_replacement(self):
+        self.store.ensure_user(ALICE);data=b'hello streamed world';sha=hashlib.sha256(data).hexdigest()
+        result=self.store.put_stream(ALICE,'sample',io.BytesIO(data),len(data),sha)
+        self.assertEqual(result,{'bytes':len(data),'sha256':sha})
+        self.assertEqual(self.store.read(ALICE,'sample')['bytes'],data)
+        for stream,size,digest in [(io.BytesIO(b'wrong'),5,'0'*64),(io.BytesIO(b'ab'),3,sha),(io.BytesIO(b'abcd'),3,sha)]:
+            with self.assertRaises(Denied):self.store.put_stream(ALICE,'sample',stream,size,digest,previous_sha256=sha)
+            self.assertEqual(self.store.read(ALICE,'sample')['bytes'],data)
+        with self.assertRaises(Denied):self.store.put_stream(BOB,'sample',io.BytesIO(data),len(data),sha)
+        updated=b'replacement';newsha=hashlib.sha256(updated).hexdigest()
+        self.store.put_stream(ALICE,'sample',io.BytesIO(updated),len(updated),newsha,previous_sha256=sha)
+        self.assertEqual(self.store.read(ALICE,'sample')['bytes'],updated)
+        self.assertFalse(any(p.name.startswith('.save-') for p in self.home().iterdir()))
+
+    def test_streamed_put_crash_preserves_old_file(self):
+        self.store.ensure_user(ALICE);self.store.put(ALICE,'sample',b'old')
+        oldsha=hashlib.sha256(b'old').hexdigest();new=b'new';newsha=hashlib.sha256(new).hexdigest()
+        self.crash(lambda phase:self.store.put_stream(ALICE,'sample',io.BytesIO(new),len(new),newsha,previous_sha256=oldsha,phase=phase),'staged')
+        self.assertEqual(self.reopen().read(ALICE,'sample')['bytes'],b'old')
+        self.assertFalse(any(p.name.startswith('.save-') for p in self.home().iterdir()))
+
+    def test_open_read_snapshot_survives_atomic_replace(self):
+        self.store.ensure_user(ALICE);self.store.put(ALICE,'sample',b'old version')
+        fd,size,sha=self.store.open_read_snapshot(ALICE,'sample',maximum_bytes=128)
+        try:
+            self.store.put(ALICE,'sample',b'new version',previous_sha256=sha)
+            self.assertEqual(size,len(b'old version'));self.assertEqual(os.read(fd,size),b'old version')
+            self.assertEqual(self.store.read(ALICE,'sample')['bytes'],b'new version')
+        finally:os.close(fd)
+        with self.assertRaises(Denied):self.store.open_read_snapshot(BOB,'sample',maximum_bytes=128)
 
     def test_anonymous_creates_no_row_or_folder(self):
         for operation in [lambda: self.store.ensure_user(ANON), lambda: self.store.put(ANON, 'file', b'private'), lambda: self.store.list(ANON)]:
