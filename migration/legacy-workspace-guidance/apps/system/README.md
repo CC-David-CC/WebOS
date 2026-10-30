@@ -1,7 +1,7 @@
 # System-served desktop applications
 
 These folders are the source used by the app builder: calculator, files, help,
-terminal, text, image-editor, document-editor, pdf-viewer, spreadsheet, data-explorer and audio-editor. Background libraries include ffmpeg, wavesurfer and tone. Each exports `mount(host)` and returns an element and a
+terminal, text, image-editor, document-editor, pdf-viewer, spreadsheet, data-explorer, audio-editor, grid-tools and gcode-preview. Background libraries include ffmpeg, wavesurfer, tone and zip. Each exports `mount(host)` and returns an element and a
 `dispose()` callback. Shared desktop services supply identity, storage and the
 Linux terminal. The app builder packages only explicit entries and dependencies.
 

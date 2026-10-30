@@ -37,3 +37,8 @@ Audio tools are available as `await host.tools.createWaveSurfer(options)` and
 view; apps must dispose their own Tone instruments and scheduled audio events.
 Use browser account-mirror files for inputs and outputs. The AudioMass editor is
 a separately packaged app; see `audio-editor/README.md` for its prepare step.
+
+ZIP operations are shared through `await host.tools.loadZip()`. Grid.Space's
+Kiri:Moto and Mesh:Tool share one packaged system app; see `grid-tools/README.md`
+for its pinned preparation step and file bridge. These tools' browser workspace
+state is separate from account-mirrored Files; exports must be saved explicitly.

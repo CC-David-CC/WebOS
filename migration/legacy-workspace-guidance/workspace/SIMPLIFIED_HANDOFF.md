@@ -176,3 +176,20 @@ account folder, Tone offline synthesis, and WaveSurfer rendering. AudioMass is
 prepared from a pinned hash-verified upstream archive with `prepare.py`; its
 untracked vendor files and all generated bundles stay out of Git. See each app's
 README for limitations, dependencies and audio-resource cleanup.
+
+## 3D printing and archives
+
+Applications → 3D Printing contains Kiri:Moto, Mesh:Tool and G-code Preview.
+Kiri and Mesh share a pinned, locally built Grid.Space bundle, with model import
+and export connected to the account file mirror. Their internal workspace and
+printer profiles remain local browser state, namespaced by account; exporting to
+Files is needed for server sync. The G-code viewer's 220 × 220 × 250 mm grid is
+illustrative and no physical printer is connected. Tests cover STL import, mesh
+union and export to Files, Kiri slicing and G-code export, account workspace isolation and G-code
+preview. Advanced modes and physical printers are untested.
+
+Files offers Create ZIP and Extract ZIP on selections; extraction goes into a
+new folder and checks paths, symlinks, CRCs and size limits. Folder trees can be archived recursively. zip.js is also a lazy shared system tool; see
+`apps/system/zip/README.md`. Grid.Space requires the pinned npm dependencies and
+`apps/system/grid-tools/prepare.py` before building. Vendor dependencies and
+built assets stay out of Git. All work has been on the local preview.
