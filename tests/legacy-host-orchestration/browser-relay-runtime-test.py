@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Verify source-only runtime export and rejection of mutations."""
 import importlib.util
+import hashlib
+import os
+import select
+import subprocess
+import sys
 import json
 from pathlib import Path
 import tempfile
@@ -19,6 +24,11 @@ class Runtime(unittest.TestCase):
             try:
                 self.assertEqual(runner.verify_runtime(result['manifestSHA256'])['sourceCommit'],result['sourceCommit'])
                 with self.assertRaises(ValueError):runner.verify_runtime('0'*64)
+                if os.getuid()!=0:
+                    with self.assertRaises(ValueError):runner.verify_runtime(result['manifestSHA256'],require_root=True)
+                target=dest/'apps/system/browser/relay/wisp.py';target.chmod(0o664)
+                with self.assertRaises(ValueError):runner.verify_runtime(result['manifestSHA256'])
+                target.chmod(0o644)
                 target=dest/'apps/system/browser/relay/wisp.py';original=target.read_bytes();target.write_bytes(original+b'\n# changed\n')
                 with self.assertRaises(ValueError):runner.verify_runtime(result['manifestSHA256'])
                 target.write_bytes(original);extra=dest/'extra.py';extra.write_text('unexpected')
@@ -27,5 +37,26 @@ class Runtime(unittest.TestCase):
                 with self.assertRaises(ValueError):runner.verify_runtime(result['manifestSHA256'])
                 link.unlink();self.assertEqual(runner.verify_runtime(result['manifestSHA256'])['version'],'codi-browser-relay-runtime/1')
             finally:runner.ROOT=old_root
+
+    def test_exported_process_starts_only_with_exact_pin(self):
+        from cryptography.hazmat.primitives.asymmetric import ec
+        from codiauth import jose
+        with tempfile.TemporaryDirectory(prefix='codi-browser-exec-') as folder:
+            root=Path(folder);dest=root/'runtime';result=builder.build(dest)
+            key=ec.generate_private_key(ec.SECP256R1());issuer=root/'issuer.json'
+            issuer.write_text(json.dumps({'mode':'server','issuer':'https://ksu.codes','authorityKeys':[{'kid':'fixture','jwk':jose.public_jwk(key)}]}));issuer.chmod(0o600)
+            domain=root/'domain.json';domain.write_bytes((ROOT/'apps/system/browser/relay/policy.json').read_bytes());domain.chmod(0o600)
+            access=root/'access.json';access.write_bytes((ROOT/'active-system/network_policy/default.json').read_bytes());access.chmod(0o600)
+            socketdir=root/'socket';socketdir.mkdir(mode=0o750);sock=socketdir/'relay.sock'
+            command=[sys.executable,'-I','-B',str(dest/'active-system/scripts/serve-browser-relay.py'),'--origin','https://ksu.codes','--runtime-manifest-sha256',result['manifestSHA256'],'--issuer-policy',str(issuer),'--issuer-policy-sha256',hashlib.sha256(issuer.read_bytes()).hexdigest(),'--policy-sha256','a'*64,'--destination-policy',str(domain),'--access-policy',str(access),'--socket',str(sock),'--proxy-uid',str(os.getuid()),'--proxy-gid',str(os.getgid())]
+            bad=subprocess.run([('0'*64 if item==result['manifestSHA256'] else item) for item in command],capture_output=True,text=True,timeout=10)
+            self.assertNotEqual(bad.returncode,0);self.assertFalse(sock.exists())
+            process=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+            try:
+                ready,_,_=select.select([process.stdout],[],[],10);self.assertTrue(ready,'Runtime failed to report readiness')
+                self.assertIn('ready',process.stdout.readline());self.assertTrue(sock.is_socket())
+            finally:
+                process.terminate();stdout,stderr=process.communicate(timeout=10)
+            self.assertEqual(process.returncode,0,stderr);self.assertFalse(sock.exists())
 
 if __name__=='__main__':unittest.main(verbosity=2)
