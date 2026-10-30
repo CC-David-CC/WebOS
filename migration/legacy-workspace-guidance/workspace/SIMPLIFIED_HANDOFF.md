@@ -130,3 +130,23 @@ test covers typing, formulas, native save/reopen, XLSX import and export; parser
 tests cover malformed and hostile formulas. These are not physical-phone tests.
 The tests use disposable accounts and the isolated local preview. The current
 local preview at 127.0.0.1:18130 was updated; no public site was changed.
+
+
+## Data Explorer
+
+`apps/system/data-explorer` packages Perspective and DuckDB-Wasm together as a
+lazy app. It opens account-mirrored CSV files, runs browser-local SELECT queries,
+and provides Perspective grid, pivot and chart controls backed by DuckDB's
+virtual-server adapter. Database contents, query text and viewer settings are
+currently temporary; opening DuckDB database files and saving query results are
+not implemented. CSV files are limited to 32 MiB. Automatic DuckDB extension
+downloads are disabled. The app's first load is roughly 44 MiB; charts need
+worker graphics support. The current Perspective virtual server logs an
+unhandled unsubscribe request during viewer cleanup. The viewer, DuckDB connection and per-window database worker are disposed;
+Perspective may retain a shared chart worker for reuse. The warning is an
+upstream limitation.
+
+`tests/data-explorer-browser.test.mjs` covers an isolated signed-in browser,
+CSV import, aggregate SQL, grid, grouped bar chart and closing the window.
+The loader and builder bundle-size limits were raised for the DuckDB WASM;
+packages remain isolated and lazy. No external site was changed.
