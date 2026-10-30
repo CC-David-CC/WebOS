@@ -352,3 +352,17 @@ policy, deployment, trusted external source attribution, stronger operational
 limits, file downloads, report transport, license/source distribution and
 mobile testing still require work. The local test state is disposable and the
 live site remains unchanged.
+
+### Explicit Browser URL downloads — local development
+
+The local relay now supports a bounded, registered-session-only explicit
+Download URL action. Every HTTP(S) request and redirect checks domain policy,
+resolves once, rejects non-public/mixed answers, pins the connection to the
+checked IP and checks outgoing IP policy during transfer. It enforces an 8 MiB
+limit matching the account file service and does not copy Gecko cookies or
+request headers. Downloaded bytes are written to the browser/server-backed
+My files mirror; this is a URL action, not interception of ordinary Gecko
+clicked downloads. The latter remains unfinished. Fixture tests exercise
+redirect policy, IP denial, size and expired lease, and a real HTTPS download
+was saved to My files in the isolated desktop. Production service wiring,
+traffic controls, broader website behavior and phone tests remain outstanding.
