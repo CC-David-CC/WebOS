@@ -42,6 +42,9 @@ CADDY_SHA='525b9b8e4997c53fb5522659a80bb9f8497c63abf3c6b955d6204c1aef79b551'
 MANIFEST_SHA='8dbc923802a0fd3f66eaef45bf8105c6257ecb02a592de2956233ee1f369818b'
 
 
+class RollbackExercise(Exception):pass
+
+
 def digest(raw):return hashlib.sha256(raw).hexdigest()
 def run(args,*,check=True,input=None,timeout=30):
     return subprocess.run(list(map(str,args)),input=input,text=True,capture_output=True,check=check,timeout=timeout)
@@ -73,6 +76,15 @@ def smoke():
             connection.request('GET','/',headers={'Host':host});response=connection.getresponse();response.read();results[host]=response.status
         finally:connection.close()
     return results
+def wait_smoke(expected):
+    deadline=time.monotonic()+15;last=None
+    while time.monotonic()<deadline:
+        try:
+            last=smoke()
+            if last==expected:return
+        except (OSError,ssl.SSLError,http.client.HTTPException) as error:last=str(error)
+        time.sleep(.25)
+    raise ValueError('Site responses did not recover: '+str(last))
 def untrusted_connects():
     code='import socket;socket.create_connection(("127.0.0.1",8443),timeout=3)'
     return run(['/usr/bin/setpriv','--reuid','65534','--regid','65534','--clear-groups',
@@ -122,12 +134,12 @@ def recover(journal):
         run(['groupdel',NAME])
     run(['systemctl','reset-failed',NAME+'.service'],check=False)
     run(['systemctl','start',NAME+'.service'])
-    if smoke()!=journal['beforeSites']:raise ValueError('Restored site responses differ; manual review required')
+    wait_smoke(journal['beforeSites'])
     JOURNAL.unlink()
     return {'status':'rolled-back','sites':journal['beforeSites']}
 
 
-def apply(inputs):
+def apply(inputs,*,exercise=False):
     if JOURNAL.exists() or RECEIPT.exists():raise ValueError('Prior transition record exists; inspect it first')
     for path,sha in [(Path('/etc/systemd/system/codi-shared-ingress.service'),INGRESS_UNIT_SHA),
                      (Path('/etc/caddy/Caddyfile'),CADDY_SHA),(ROOT/'sites.toml',MANIFEST_SHA)]:
@@ -139,13 +151,16 @@ def apply(inputs):
     except KeyError:pass
     try:grp.getgrgid(UID);raise ValueError('Target GID already allocated')
     except KeyError:pass
+    rendered={}
     for name,(target,sha) in FILES.items():
         source=inputs/name
         if source.is_symlink() or not source.is_file() or digest(source.read_bytes())!=sha:raise ValueError('Invalid input: '+name)
         if target.exists() or target.is_symlink():raise ValueError('Guard destination exists: '+str(target))
+        rendered[name]=source.read_bytes()
+        if digest(rendered[name])!=sha:raise ValueError('Input changed during reading: '+name)
     if run(['/usr/sbin/nft','list','table','inet','codi_caddy_proxy_guard'],check=False).returncode==0:raise ValueError('Guard table exists')
     if run(['systemctl','is-active',NAME+'.service']).stdout.strip()!='active':raise ValueError('Shared ingress is not active')
-    run(['/usr/sbin/nft','--check','-f',inputs/'caddy-proxy-guard.nft'])
+    run(['/usr/sbin/nft','--check','-f','-'],input=rendered['caddy-proxy-guard.nft'].decode())
     run(['systemd-analyze','verify',inputs/'codi-caddy-proxy-guard.service'])
     before=smoke()
     if not untrusted_connects():raise ValueError('Expected prior loopback path differs')
@@ -169,28 +184,33 @@ def apply(inputs):
         run(['systemctl','start',NAME+'.service'])
         pid=int(run(['systemctl','show',NAME+'.service','-p','MainPID','--value']).stdout)
         status=Path('/proc',str(pid),'status').read_text();actual=int(next(x for x in status.splitlines() if x.startswith('Uid:')).split()[1])
-        if actual!=UID or smoke()!=before:raise ValueError('Static ingress identity or site responses do not match')
+        if actual!=UID:raise ValueError('Static ingress identity does not match')
+        wait_smoke(before)
         journal['phase']='static-identity';write_state(JOURNAL,journal)
-        for name,(target,_) in FILES.items():atomic(target,(inputs/name).read_bytes(),0o644)
+        for name,(target,_) in FILES.items():atomic(target,rendered[name],0o644)
         run(['systemctl','daemon-reload']);run(['systemctl','start',UNIT.name])
         if untrusted_connects():raise ValueError('Caddy still accepts untrusted loopback connections')
-        if smoke()!=before:raise ValueError('Site responses changed after protecting Caddy')
+        wait_smoke(before)
+        if exercise:raise RollbackExercise('Verify rollback after applying the real guard')
         state={'status':'applied','uid':UID,'beforeSites':before,'unitSHA256':INGRESS_UNIT_SHA,'caddySHA256':CADDY_SHA}
         write_state(RECEIPT,state);JOURNAL.unlink();return state
+    except RollbackExercise:
+        restored=recover(journal)
+        return {'status':'rollback-exercised','restored':restored}
     except BaseException:
         recover(journal)
         raise
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('apply','recover'));p.add_argument('--inputs',type=Path);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('apply','exercise','recover'));p.add_argument('--inputs',type=Path);a=p.parse_args()
     if os.geteuid()!=0 or socket.gethostname()!='box-webhost':raise ValueError('Root on box-webhost required')
     if not STATE.is_dir() or STATE.is_symlink() or STATE.stat().st_uid!=0 or stat.S_IMODE(STATE.stat().st_mode)!=0o700:raise ValueError('Invalid private ingress state directory')
     with (ROOT/'.controller.lock').open('a+') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        if a.action=='apply':
+        if a.action in ('apply','exercise'):
             if a.inputs is None:raise ValueError('Reviewed input directory required')
-            result=apply(a.inputs)
+            result=apply(a.inputs,exercise=a.action=='exercise')
         else:
             if not JOURNAL.is_file() or JOURNAL.is_symlink() or JOURNAL.stat().st_uid!=0:raise ValueError('No valid pending journal')
             journal=json.loads(JOURNAL.read_text())
