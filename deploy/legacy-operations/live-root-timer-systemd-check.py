@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+"""Isolated real systemd live steward renewal after an interrupted operator.
+
+Only uniquely named local /srv fixture, ports and unit files are touched. No
+webhost, existing authority, router, firewall, user data or boot enablement.
+"""
+import hashlib,json,secrets,socket,subprocess,sys,time,traceback
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
+
+DRIVER=r'''
+import hashlib,importlib.util,json,os,sys
+from pathlib import Path
+release=Path(sys.argv[1]);candidate=Path(sys.argv[2]);config=Path(sys.argv[3]);journal_dir=Path(sys.argv[4]);mode=sys.argv[5]
+sys.path.insert(0,str(release))
+spec=importlib.util.spec_from_file_location('fixture_installed_operator',release/'scripts/manage-services.py');op=importlib.util.module_from_spec(spec);sys.modules[spec.name]=op;spec.loader.exec_module(op)
+from origin_service import maintenance
+def load(name,file):
+ s=importlib.util.spec_from_file_location(name,candidate/file);m=importlib.util.module_from_spec(s);sys.modules[name]=m;s.loader.exec_module(m);return m
+for name in ['expired_root_steps','expired_root_recovery','expired_root_managed','live_root_renewal','live_root_journal','live_root_managed']:load('origin_service.'+name,name+'.py')
+from origin_service.live_root_journal import LiveRenewalJournal,execute
+from origin_service.live_root_managed import ManagedLiveRenewal
+raw=config.read_bytes();c=json.loads(raw);backend=ManagedLiveRenewal(op,maintenance,config,config_sha256=hashlib.sha256(raw).hexdigest(),release_sha256=c['manifestSHA256'],seconds=1200,renewal_window=600);journal=LiveRenewalJournal(journal_dir/'root-journal.json')
+def phase(name):
+ if mode=='crash' and name=='after-renew-once':os._exit(77)
+result=execute(backend,journal,resume=mode=='resume',phase=phase);print(json.dumps(result))
+'''
+
+def run():
+ from urllib.request import Request,urlopen
+ token=secrets.token_hex(6);instance='codi-live-test-'+token;stage=Path('/srv')/instance;release=stage/'release';venv=stage/'venv';python=venv/'bin/python';config=stage/'control/managed.json';state=stage/'state';candidate=stage/'candidate';private=stage/'control/live-root-renewal';roles=['issuer','steward','guest','issuer-bootstrap'];units=[instance+'-'+role+'.service' for role in roles];service=instance+'-renew.service';timer=instance+'-renew.timer';units.extend([timer,service])
+ def command(args,*,check=True,timeout=120):
+  result=subprocess.run([str(x) for x in args],capture_output=True,text=True,check=False,timeout=timeout)
+  if check and result.returncode:raise RuntimeError('Fixture command failed: '+result.stderr[-6000:])
+  return result
+ def sudo(*args,**kw):return command(['sudo','-n',*args],**kw)
+ def tool(action,*args):return json.loads(sudo(python,'-I','-B',release/'scripts/manage-services.py',action,'--config',config,*args).stdout)
+ def port():
+  with socket.socket() as s:s.bind(('127.0.0.1',0));return s.getsockname()[1]
+ def digest(path):return sudo('/usr/bin/sha256sum',path).stdout.split()[0]
+ report={'status':'FAIL','scope':__doc__,'checks':[],'productionChanged':False};created=False
+ try:
+  source=ROOT/'.build/releases/connected-browser-files-r1';assert hashlib.sha256((source/'connected-release.json').read_bytes()).hexdigest()=='36868e655bc12c61123ec2e7d8562bea511375aa6136d5f5dd610ca81a751d46';ports={name:port() for name in ['issuer','steward','guest']};assert len(set(ports.values()))==3
+  sudo('mkdir','-m','0755',stage);created=True;sudo('cp','-a',source,release);sudo('cp','-a',ROOT/'.venv',venv);sudo('chown','-R','root:root',stage);sudo('chmod','-R','go-w',stage)
+  origin='https://127.0.0.1:8446';args=['--release',release,'--python',python,'--state-root',state,'--unit-dir','/etc/systemd/system','--instance',instance,'--origin',origin,'--base-path','',*[item for role in ports for item in ['--'+role+'-port',str(ports[role])]]]
+  tool('prepare',*args);tool('provision','--seconds','600');tool('start','--roles','issuer','steward')
+  request=Request('http://127.0.0.1:'+str(ports['issuer'])+'/config.json',headers={'Host':'127.0.0.1:8446'});deadline=time.monotonic()+15
+  while True:
+   with urlopen(request,timeout=3) as response:public=json.load(response)
+   if public.get('discovery'):break
+   if time.monotonic()>deadline:raise RuntimeError('Fixture discovery did not initialize')
+   time.sleep(.1)
+  from steward.protocol import jose
+  old=jose.inspect(public['discovery']['seed'],'codi-seed/1',32768)[1];assert old['revision']==1
+  tool('stop','--roles','issuer','steward');sudo('install','-d','-m','0700',stage/'backups');tool('backup','--output',stage/'backups/initial');tool('start','--roles','issuer','steward')
+  key_before=digest(state/'operator/root/root.pem');issuer_before=digest(state/'issuer/state/issuer.pem');accounts_before=digest(state/'issuer/state/accounts.sqlite3');ledger_before=digest(state/'steward/ledger/publisher.sqlite3')
+  sudo('install','-d','-m','0700',private);sudo('install','-d','-m','0755',candidate)
+  bundle=ROOT/'.build/recovery-operators/live-root-r1';bundle_hash=hashlib.sha256((bundle/'recovery-operator.json').read_bytes()).hexdigest();sudo('cp','-a',str(bundle)+'/.',candidate);sudo('chown','-R','root:root',candidate);assert digest(candidate/'recovery-operator.json')==bundle_hash;report['bundleSHA256']=bundle_hash
+  lock=stage/'control/controller.lock';sudo('install','-m','0600','/dev/null',lock)
+  common=['--config',config,'--config-sha256',digest(config),'--release-sha256',digest(release/'connected-release.json'),'--bundle-sha256',bundle_hash,'--seconds','1200','--renewal-window','600','--controller-lock',lock,'--controller-owner-uid','0','--controller-owner-gid','0']
+  inspected=json.loads(sudo(python,'-I','-B',candidate/'run.py','inspect',*common,timeout=120).stdout);assert inspected['nextStep']=='renew-once' and not inspected['pending']
+  wrong=list(common);wrong[wrong.index('--config-sha256')+1]='0'*64;refused=sudo(python,'-I','-B',candidate/'run.py','tick',*wrong,check=False,timeout=120);assert refused.returncode!=0 and sudo('test','-e',private/'journal.json',check=False).returncode!=0
+  report['checks'].append('packaged runner inspects safely and rejects wrong config pin')
+  driver=stage/'driver.py';temp=ROOT/'.build/checks'/('expired-systemd-driver-'+token+'.py');temp.write_text(DRIVER)
+  try:
+   sudo('install','-m','0644',temp,driver);report['driverSHA256']=hashlib.sha256(DRIVER.encode()).hexdigest();assert digest(driver)==report['driverSHA256']
+  finally:temp.unlink()
+  unitdir=stage/'unitfiles';sudo('install','-d','-m','0755',unitdir)
+  exec_args=[str(python),'-I','-B',str(candidate/'run.py'),'tick',*[str(x) for x in common]]
+  assert all(' ' not in v and '\n' not in v for v in exec_args)
+  service_text='[Unit]\nDescription=Isolated renewal test\n[Service]\nType=oneshot\nExecStart='+' '.join(exec_args)+'\n'
+  timer_text='[Unit]\nDescription=Isolated renewal timer test\n[Timer]\nOnActiveSec=1s\nOnUnitActiveSec=120s\nUnit='+service+'\n[Install]\nWantedBy=timers.target\n'
+  for unit,content in [(service,service_text),(timer,timer_text)]:
+   tmp=ROOT/'.build/checks'/('unit-'+token+'-'+unit);tmp.write_text(content)
+   try:sudo('install','-m','0644',tmp,Path('/etc/systemd/system')/unit)
+   finally:tmp.unlink()
+  sudo('systemd-analyze','verify',Path('/etc/systemd/system')/service,Path('/etc/systemd/system')/timer)
+  sudo('systemctl','daemon-reload');sudo('systemctl','start',timer)
+  deadline=time.monotonic()+120
+  while True:
+   status=sudo('systemctl','show',service,'-p','Result','-p','ExecMainExitTimestampMonotonic').stdout
+   fields=dict(line.split('=',1) for line in status.splitlines())
+   if fields.get('ExecMainExitTimestampMonotonic','0')!='0':
+    assert fields['Result']=='success',status;break
+   if time.monotonic()>deadline:raise RuntimeError('Timer did not complete its first tick')
+   time.sleep(.2)
+  report['checks'].append('real systemd timer triggered its packaged renewal service')
+  sudo('systemctl','start',service,timeout=120)
+  assert 'Result=success' in sudo('systemctl','show',service,'-p','Result').stdout
+  report['checks'].append('second service tick succeeded without another authority revision')
+  status=sudo('systemctl','show',instance+'-steward.service','-p','ActiveState','-p','MainPID').stdout;assert 'ActiveState=active' in status and 'MainPID=0' not in status
+  with urlopen(request,timeout=5) as response:current=json.load(response)
+  seed=jose.inspect(current['discovery']['seed'],'codi-seed/1',32768)[1];assert seed['revision']==2 and time.time()<seed['exp']
+  assert key_before==digest(state/'operator/root/root.pem') and issuer_before==digest(state/'issuer/state/issuer.pem') and accounts_before==digest(state/'issuer/state/accounts.sqlite3')
+  report['checks'].append('actual running systemd steward publishes the renewed signed seed')
+  report['checks'].append('root and issuer keys and account database remain byte-identical')
+  report.update(status='PASS',rootBefore=1,rootAfter=2,actualSystemd=True,interruptedExit=None)
+ except Exception:report['error']=traceback.format_exc()
+ finally:
+  if created:
+   try:
+    sudo('systemctl','stop',*units,check=False)
+    for unit in units:sudo('rm','-f',Path('/etc/systemd/system')/unit)
+    sudo('systemctl','daemon-reload');assert stage.parent==Path('/srv') and stage.name==instance and instance.startswith('codi-live-test-');sudo('rm','-rf','--',stage)
+    report['cleanup']={'unitsRemoved':all(not (Path('/etc/systemd/system')/u).exists() for u in units),'fixtureRemoved':not stage.exists()}
+    if not all(report['cleanup'].values()):report['status']='FAIL'
+   except Exception:report.update(status='FAIL',cleanupError=traceback.format_exc())
+ out=ROOT/'.build/checks/live-root-timer-systemd-r1-result.json';assert not out.exists();out.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return report['status']=='PASS'
+if __name__=='__main__':sys.exit(not run())

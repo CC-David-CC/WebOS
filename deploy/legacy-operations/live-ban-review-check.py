@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+"""Exercise the live administrator ban, offline draft and manual resend."""
+import importlib.util,json,re,secrets,shlex,subprocess,time
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];spec=importlib.util.spec_from_file_location('driver',ROOT/'scripts/touch-preview-check.py');d=importlib.util.module_from_spec(spec);spec.loader.exec_module(d);origin='https://ksu.codes';name='bantest'+secrets.token_hex(5);sid=None;print('Disposable account:',name,flush=True)
+def admin(action):return subprocess.run(['ssh','-o','BatchMode=yes','box-webhost','sudo','-n','/usr/local/sbin/codi-chat-admin',action,name],capture_output=True,text=True,check=True,timeout=60).stdout
+try:
+ sid=d.call('/session',{'capabilities':{'alwaysMatch':{'browserName':'chrome','goog:chromeOptions':{'binary':'/snap/chromium/current/usr/lib/chromium-browser/chrome','args':['--headless=new','--no-sandbox','--disable-dev-shm-usage']}}}})['sessionId']
+ def js(code,args=[]):return d.call('/session/'+sid+'/execute/sync',{'script':code,'args':args})
+ d.call('/session/'+sid+'/url',{'url':origin+'/'});d.call('/session/'+sid+'/goog/cdp/execute',{'cmd':'Browser.setPermission','params':{'permission':{'name':'persistent-storage'},'setting':'granted','origin':origin}});d.wait(lambda:js('return !!document.querySelector(".login-gate");'),30);js('document.querySelector(".login-toggle").click();');js('''const set=(a,v)=>{const n=document.querySelector('.login-gate input[aria-label="'+a+'"]');n.value=v;n.dispatchEvent(new Event('input',{bubbles:true}));};set('Username',arguments[0]);set('Password','1!$?');set('Confirm password','1!$?');document.querySelector('.login-form').requestSubmit();''',[name]);d.wait(lambda:js('return !!currentSession&&!document.documentElement.classList.contains("login-required")&&surfaces.size>0;'),60);js('localStorage.setItem("codi-device-history-consent-v1","accepted-v1");window.testDesktop=[...surfaces.values()][0];window.chatId=testDesktop.launch("chat").id;')
+ def ready():
+  value=js('''const n=document.querySelector('[data-window="'+chatId+'"]'),b=n?.querySelector('button[type=submit]');return {ready:!!b&&!b.disabled,text:n?.textContent||''};''')
+  if 'Could not load this app' in value['text']:raise RuntimeError(value['text'])
+  return value['ready']
+ d.wait(ready,90);baseline='Live ban baseline '+secrets.token_hex(3);js('''const n=document.querySelector('[data-window="'+chatId+'"]');n.querySelector('textarea').value=arguments[0];n.querySelector('form').requestSubmit();''',[baseline]);d.wait(lambda:js('''const n=document.querySelector('[data-window="'+chatId+'"]');return n?.querySelector('.channel-history')?.textContent.includes(arguments[0])&&!n.querySelector('.is-pending');''',[baseline]),120)
+ js('''window.testFetch=window.fetch.bind(window);window.testOffline=true;window.fetch=(input,options)=>{const u=new URL(input,location.href);return window.testOffline&&u.pathname.startsWith('/official-')?Promise.resolve(new Response('{"error":"offline"}',{status:503,headers:{'Content-Type':'application/json'}})):window.testFetch(input,options);};''');assert json.loads(admin('ban'))['status']=='banned';draft='Live offline draft '+secrets.token_hex(3);js('''const n=document.querySelector('[data-window="'+chatId+'"]');n.querySelector('textarea').value=arguments[0];n.querySelector('form').requestSubmit();''',[draft]);d.wait(lambda:js('''const n=document.querySelector('[data-window="'+chatId+'"]');return n?.querySelector('.channel-history')?.textContent.includes(arguments[0])&&!!n.querySelector('.is-pending');''',[draft]),45);assert json.loads(admin('unban'))['status']=='unbanned';js('window.testOffline=false;')
+ d.wait(lambda:js('''const n=document.querySelector('[data-window="'+chatId+'"]');return n?.querySelector('.channel-history')?.textContent.includes(arguments[0])&&n.textContent.includes('Not sent; review before resending');''',[draft]),120);time.sleep(6);assert js('''const n=document.querySelector('[data-window="'+chatId+'"]');return n.textContent.includes('Not sent; review before resending');''')
+ js('''const n=document.querySelector('[data-window="'+chatId+'"]');[...n.querySelectorAll('button')].find(b=>b.textContent==='Resend').click();''');d.wait(lambda:js('''const n=document.querySelector('[data-window="'+chatId+'"]');return n?.querySelector('.channel-history')?.textContent.includes(arguments[0])&&!n.querySelector('.is-pending');''',[draft]),120);print('PASS live ban/unban retains an offline draft until the sender explicitly resends',flush=True)
+finally:
+ if sid:
+  try:js('endSession();')
+  except Exception:pass
+  try:d.call('/session/'+sid,method='DELETE')
+  except Exception:pass
+ try:admin('unban')
+ except Exception:pass
+ cleanup='''import re,sqlite3,sys\nname=sys.argv[1];assert re.fullmatch(r"bantest[0-9a-f]{10}",name)\na=sqlite3.connect("/var/lib/codi-connected/ksu/issuer/state/accounts.sqlite3",timeout=30);row=a.execute("SELECT subject FROM accounts WHERE username=?",(name,)).fetchone()\nif row:\n subject=row[0];b=sqlite3.connect("/var/lib/codi-official/state/official.sqlite",timeout=30);b.execute("BEGIN IMMEDIATE")\n for table in ("official_upload_bans","official_chat_ban_epochs","official_chat_actor_reviews","official_chat_actors"):b.execute("DELETE FROM "+table+" WHERE subject=?",(subject,))\n b.commit();a.execute("BEGIN IMMEDIATE");a.execute("DELETE FROM account_policy WHERE subject=?",(subject,));a.execute("DELETE FROM accounts WHERE username=? AND subject=?",(name,subject));a.commit()\nprint("removed disposable account and its restriction metadata")'''
+ try:print(subprocess.run(['ssh','-o','BatchMode=yes','box-webhost','sudo','-n','python3','-B','-c',shlex.quote(cleanup),name],capture_output=True,text=True,check=True,timeout=30).stdout.strip(),flush=True)
+ except Exception as error:print('Test cleanup failed for',name,':',error,flush=True)
