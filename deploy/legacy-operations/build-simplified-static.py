@@ -39,4 +39,10 @@ canonical=json.dumps(files,sort_keys=True,separators=(',',':')).encode();manifes
 template=(ROOT/'scripts/templates/device-cache-worker.js').read_text().replace("'networking.js',", "'bootstrap.js',")
 template=template.replace("if(event.data?.type!=='cache-loaded'||!event.ports[0])return;", "if(event.data?.type==='codi-cache-version'&&event.ports[0]){event.ports[0].postMessage({protocol:'codi-simplified-cache/1',release:RELEASE.id});return;}\n  if(event.data?.type!=='cache-loaded'||!event.ports[0])return;")
 (OUT/'assets/desktop/offline-worker.js').write_text(template.replace('__PUBLIC_CACHE_MANIFEST__',json.dumps(manifest,separators=(',',':'))))
+# Public release directories must be traversable by the web-server user.
+# App bundling uses private temporary directories, whose modes survive staging.
+OUT.chmod(0o755)
+for path in OUT.rglob('*'):
+ if path.is_symlink(): raise ValueError('Unexpected symlink in release')
+ path.chmod(0o755 if path.is_dir() else 0o644)
 print(json.dumps({'release':str(OUT),'cacheId':manifest['id'],'files':len(files)}))
