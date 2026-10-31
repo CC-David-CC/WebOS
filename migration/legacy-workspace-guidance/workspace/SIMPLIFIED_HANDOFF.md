@@ -1836,3 +1836,41 @@ The findings and reproducible loopback-only fixture are in
 Accurate, race-safe navigation status remains outstanding. The first TLS test
 fixture hung on a TLS handshake; the corrected fixture explicitly closes it,
 and the full asserted test passed. Unrelated guest SSH work remains untouched.
+
+### Browser navigation feedback — 2026-10-31 UTC
+
+Release `1ce5edb5bb8312f9cf3ab6a793f809549b38628a28b7440b42058359e4e68117`
+is live with Browser bundle
+`88b0f26a45dffa7c2c6fe385059aad3fe6450eb52894de7ded40184bbc45d3e4`
+and engine ABI v3. Gecko's top-level network events now report completed
+loads, HTTP 4xx/5xx and generic connection failures; policy-block notices are
+preserved separately. Redirect cancellation is not treated as an error, and
+older Wisp stream notices are tagged to avoid replacing a newer navigation's
+status. The native wait also exits after a verified non-cancellation network
+failure, allowing later requests instead of waiting indefinitely for an
+internal error page. These are not guarantees for every website or race.
+
+Local real-engine tests covered HTTP 200/404, HTTP and scripted redirects,
+stalled-load Stop, a blocked destination, TLS failure, later recovery,
+overlapping navigation/Stop, a second independent window, and an emulated
+phone-sized viewport. An initial test found the listener attached too early;
+that ordering was fixed. A subsequent test found blocked loads could keep the
+native command waiting; the failure exit fixed the tested case. The packaged
+bundle passed the same navigation suite. Nine-plus patch and 89 JS tests passed.
+Live registered desktop and emulated phone-sized sessions rendered example.com;
+the phone-sized session reported a real 404 and Stop. Both live layouts saved
+a Browser download to My files, synchronized it and recovered it in a fresh
+browser context. Test accounts and files were removed. Physical phone behavior
+has not been checked. Source snapshot
+`codi-browser-source-ac6ea5798-v3.tar.zst`, SHA-256
+`318ef4997e96e9f862ecf53bfa9c61e8c7dac2fb507fc71004bf36dd23c86d92`,
+is available on the authenticated source page and was downloaded and checked
+by the live registered test. Direct unauthenticated access returns 401.
+
+Previous release `8d5fe713698d4bb94781b10ef22c4815e48b1d046237730e23259945d2332f05`;
+hosting rollback inputs `/var/backups/webhost-sites/change-20261031T061922276453Z`
+and `/var/backups/webhost-sites/change-20261031T061922276862Z`. Current hosting
+generator `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
+manifest `4765ea3e77b329afb91aa9f03ea569aa2430e3ad4f8c4088c898aead325a8f7f`,
+Caddy `8b8602566e96063bd0e22c623333153d75e62e853ab9cdb41e155c522e856cc0`.
+The complete engine final-link/license inventory remains unresolved.
