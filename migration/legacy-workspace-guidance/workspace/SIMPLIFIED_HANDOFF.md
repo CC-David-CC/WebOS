@@ -1584,3 +1584,27 @@ On Moonpie (about 2 GiB RAM), the live Gecko glue prestarts 20 pthread workers a
 ## Lower Gecko initial-memory experiment
 
 A separate r730 build linked the existing Gecko engine with 256 MiB instead of 512 MiB initial WebAssembly memory and passed local real-worker 128 MiB HTML, over-limit, My files, signed relay/download and five-navigation McMaster checks. Moonpie started it and loaded a page. The candidate grew to about 455 MiB WebAssembly memory by the first native sample; both the 256 and 512 MiB engines grew to about 2 GiB of WebAssembly address space in the artificial 128 MiB HTML test. These buffer sizes are not RSS. One Moonpie largest-process RSS snapshot was lower at startup for the candidate but similar after loading a page; differing origins/cache and single samples make that inconclusive. No engine was deployed. The first build attempt failed due to Node missing from PATH; the isolated retry succeeded. Reproduction details, hashes, and limitations are in `apps/system/browser/docs/MEMORY_EXPERIMENT.md`. Temporary candidate builds were removed; the original engine source and live release were not changed.
+### Browser relay IPv6 transition-address protection — 2026-10-31 UTC
+
+Relay runtime `d022d596bb2ab2d0fca8c4633b552f75b03b7483f72703886162c582ff646353`
+from source `3a82d4665221beeb2745f16674479f82b1602d84` is active. Its
+address validator rejects IPv4-mapped IPv6, well-known and local-use NAT64,
+6to4 and Teredo ranges to prevent encoded destinations evading IPv4 rules.
+Ordinary public IPv6 remains accepted. A network-specific NAT64 prefix cannot
+be identified automatically and requires a separate network rule. Unit tests
+and a real local Wisp session covered denial; the installed policy was checked
+directly on box-webhost. The live registered-account test passed signed relay,
+public download, blacklist, private-address denials, Wisp, file write/read/
+delete and fresh-context sign-in; the disposable account was removed. This
+does not claim a live end-to-end DNS translation test.
+
+The guarded upgrade and rollback were exercised; old unit backup is
+`/var/backups/codi-browser-relay-before-transition-runtime.service`. The
+active unit SHA-256 is `4b1efe74f85f08cc97e3e50033bcc6cbb6dfa1ba49ac8ac125c9a88279ae10f6`.
+Audit operator `7849f5502227f8a62b93d486ee8ba9cc1ef99fa934c878b42329604813ded935`
+and policy operator `policy-17d95b771` now point to the new runtime. Audit
+status confirms disabled, matching service, no key or ledger; both access
+lists remain empty. The previous public Browser source archive predates this
+relay-only patch; update the source index before treating distribution
+provisions for the new source as fully reviewed.
+
