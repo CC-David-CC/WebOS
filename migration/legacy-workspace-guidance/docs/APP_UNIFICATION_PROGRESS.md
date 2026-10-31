@@ -31,7 +31,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | diagrams.net | Diagrams | Local and live desktop and emulated-phone tests cover opening a document, editing a shape label, rejecting malformed XML without discarding edits, account sync, fresh-session recovery and upload through Files. Broader touch, format and physical-device tests remain. | In progress |
 | Excalidraw | Drawings | Local and live desktop and emulated-phone tests cover drawing a shape, rejecting invalid input without discarding work, account sync, fresh-session recovery and upload through Files. Broader touch, embedded images and physical-device tests remain. | In progress |
 | SVG Editor | SVG artwork | Local and live desktop and emulated-phone viewport tests draw a rectangle with pointer input, reject malformed SVG without losing it, sync, recover in a fresh browser session and upload through Files. Complex SVG and physical-touch behavior remain unverified. | In progress |
-| Replicad | Code-based CAD | Basic model generation and export checked; not a full CAD editor. | Pending |
+| Replicad | Box/cylinder model generator | Editable projects, sync and STL/STEP export tested locally and live at desktop and phone-sized viewports; upload tested locally. A repeat live run hit a gateway request limit. No 3D preview, CAD scripting, or manufacturing validation. | Partial |
 | Grid tools: Kiri:Moto | 3D printing | Model import and G-code export checked; printer settings need independent review. | Pending |
 | Grid tools: Mesh:Tool | Mesh editing | Import, union and account export checked. | Pending |
 | G-code Preview | G-code viewer | Viewing checked; not an editor or printer connection. | Pending |

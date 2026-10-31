@@ -2416,3 +2416,9 @@ pointer input, rejected malformed SVG without losing it, synced to account disk,
 reopened in a fresh browser session and uploaded through Files. Two disposable
 live accounts and their files were removed. Physical touch and complex SVG
 compatibility are not established.
+
+## 2026-10-31 — Replicad primitive projects
+
+Live static release `b2a0809a06bd3c316eb12c52ce8f6434a65ef31247c06074f3fa4b5e915229e7`; previous `477085a902f1ec63021de1a0b8359985083f6891c82c1d0855a32f31f0cda896`. Hosting generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`; manifest SHA `05e198f56bb0a6da1f7e3b4993d10d12c24b0fc14cd7e9fe08610377605afe32`. Changes are Replicad assets, the app catalog, and the desktop routing/close/layout changes needed for project files.
+
+Replicad is a box/cylinder generator, not a complete visual or programmable CAD app. It now saves and opens editable `.replicad.json` projects in My files, validates dimensions and input, guards unsaved work and changed files, creates STL/STEP in a cancellable local worker, and opens its projects from Files. The local desktop and emulated-phone test verifies uploading through Files, invalid-file recovery, account/server sync, opening from a fresh browser session, STL dimensions, and a STEP file header. The same live desktop and emulated-phone tests passed before the upload case was added; a later live upload run was interrupted by HTTP 429 from the file gateway after rapid tests, so live upload was not verified. Disposable live test accounts were removed. Actual phone touch, geometry beyond the tested models, 3D preview, CAD source editing, and manufacturing validation remain outstanding.
