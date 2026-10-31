@@ -1096,3 +1096,9 @@ manifest is `49c3d119bda77e7bd6fb93c487cf848f13e78a9c75edb47b73ad081f639d58ee`
 and Caddy is `f8e953dd50445f2efb417af9290bca0bb7cd96aec70daa4b9ed20c3196468555`.
 Hosting rollback snapshots are under `/var/backups/webhost-sites/` as
 `change-20261031T014355641269Z` and `change-20261031T014355650311Z`.
+
+The existing Arduino Simulator is also served by the current release under
+Applications → Electronics. A live registered test ran its compiled Blink HEX,
+observed the simulated LED change, opened firmware from My files, and verified
+independent windows; its disposable account and file were removed. Pico remains
+separate unfinished development.
