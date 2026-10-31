@@ -1263,3 +1263,13 @@ The source index was regenerated and the current source link is correctly
 under Source code. Prior public notices were backed up under
 `/var/lib/codi-ingress/browser-source-rlbox-notice-backup.json`. This closes
 one identified attribution gap, not the full linked-component/legal review.
+
+The next inventory pass found additional linked graphics and utility object
+groups, including ANGLE, Skia, Cairo, FreeType, Brotli, HarfBuzz, WOFF2,
+Graphite and Expat. Their pinned source licenses and FreeType 2.14.2's
+upstream FTL text are now in the combined notice; the public index explicitly
+credits FreeType. The generator and its tests verify both new input hashes.
+The public combined notice SHA-256 is
+`35258b272eca7cb0f23e53c847733c536197ee3ce8884b66d693b425433b6d1a`;
+the prior files are in `/var/lib/codi-ingress/browser-source-graphics-notice-backup.json`.
+See `SOURCE_PROVISION.md` for reproducible collection and audit limits.
