@@ -1456,3 +1456,24 @@ its previous wrapper is backed up at
 `/var/backups/codi-browser-policy-before-audit-runtime`. See Browser
 `LIVE_POLICY.md` for audit controls, key backup, checkpoint limits, and the
 separate Linux guest egress boundary.
+
+## Browser memory-growth fix — local candidate
+
+Real live desktop and phone-sized checks loaded example.com, Grainger, and
+McMaster. Grainger returned its own access-restriction page in both tests;
+this was not a local blacklist decision. McMaster rendered on the phone-sized
+viewport, while the desktop window failed with `Engine buffer outside WASM
+memory`. The live example.com page also displayed missing-glyph boxes for
+Arabic and CJK text; the currently packaged fonts do not cover those scripts.
+
+The desktop failure was reproduced twice in an isolated preview. In the two
+failures the engine had grown shared WASM memory from 536,870,912 bytes to
+644,284,416 bytes, while Emscripten's exported typed-array view remained at
+the old length; newly allocated frame pointers were valid in the grown memory
+but outside that stale view. The local Browser adapter now holds the imported
+`WebAssembly.Memory` and reacquires its views whenever its buffer changes.
+A real shared-memory growth unit test passes, as do 93 Browser unit tests.
+Two concurrent local desktop Browser windows each reloaded McMaster five times
+without the prior error. These are limited examples, not a guarantee that all
+websites or physical phones work. Deployment and download regressions remain
+in progress; this fix is not yet live.
