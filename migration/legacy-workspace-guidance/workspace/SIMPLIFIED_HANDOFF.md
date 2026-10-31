@@ -1075,3 +1075,24 @@ the per-transfer and 128 MiB file limits remain separate. Gateway release is
 `0685f9925f2d00cb2433d6d3d9066ee86da7f901a2c3302e3c1f1e1842ab2152`.
 Browser routing and management details are in
 `apps/system/browser/docs/LIVE_POLICY.md` and `DOMAIN_REPORTS.md`.
+
+## Embroidery apps live
+
+Release `bc92bb0d2f7f033b868b97d4d04b04204df8d2191d3216681c6f54052990832b`
+serves Embroidery Studio and Stitch Converter under Applications → Crafts.
+The prior release was `d360a4ef6c221d2f120b20bd1c38e89be100f62a514ff573a3130abe64ff34d8`.
+Desktop and phone-sized local checks and a live registered-account check opened
+both apps, generated PES and DST examples, and saved to My files. The live test
+account and its files were removed. Physical-machine compatibility and sewing
+remain unverified; StitchFoundry is an upstream pre-release.
+
+The first deployment preserved app-builder temporary-directory modes (0700),
+which gave the web server 403 responses for app assets. The release directory
+permissions were corrected to public read/traverse, after which the live test
+passed. `build-simplified-static.py` now normalizes public directory and file
+permissions to prevent a repeat. Caddy generator SHA-256 remains
+`bb88688bdb94c5921ec08187d4605075772c0187b401e8e33342be19184e60d5`;
+manifest is `49c3d119bda77e7bd6fb93c487cf848f13e78a9c75edb47b73ad081f639d58ee`
+and Caddy is `f8e953dd50445f2efb417af9290bca0bb7cd96aec70daa4b9ed20c3196468555`.
+Hosting rollback snapshots are under `/var/backups/webhost-sites/` as
+`change-20261031T014355641269Z` and `change-20261031T014355650311Z`.
