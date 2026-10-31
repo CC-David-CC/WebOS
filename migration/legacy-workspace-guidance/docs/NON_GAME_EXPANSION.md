@@ -77,3 +77,13 @@ Do not claim a category is complete just because its library loads. Record
 what is operational, partial or deferred in `APP_UNIFICATION_PROGRESS.md`, and
 keep the user guide and live deployment evidence current. Retain the 100-user
 storage-capacity work as a separate measurable requirement.
+
+
+## Cross-application lifecycle scenarios
+
+As games and media apps are integrated, test several game windows at once,
+independent audio playback and teardown, an emulator isolated from desktop
+state, a feed with thousands of posts, and a gallery with large files. Measure
+responsiveness and resource cleanup; these are future tests, not completed
+capabilities. An engine being installed does not supply usable content, assets,
+permissions, app design, storage integration, or rights to distribute content.
