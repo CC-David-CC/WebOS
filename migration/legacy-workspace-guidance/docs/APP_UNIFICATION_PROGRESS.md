@@ -30,7 +30,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Audio Editor | Audio | My files open, single-track edit, WAV save and reopen tested on desktop and emulated phone; an undecodable replacement preserves the current edit. Multitrack project saving and a physical phone test remain outstanding. | Partial |
 | diagrams.net | Diagrams | Local and live desktop and emulated-phone tests cover opening a document, editing a shape label, rejecting malformed XML without discarding edits, account sync, fresh-session recovery and upload through Files. Broader touch, format and physical-device tests remain. | In progress |
 | Excalidraw | Drawings | Local and live desktop and emulated-phone tests cover drawing a shape, rejecting invalid input without discarding work, account sync, fresh-session recovery and upload through Files. Broader touch, embedded images and physical-device tests remain. | In progress |
-| SVG Editor | SVG artwork | Basic account save/reopen checked. | Pending |
+| SVG Editor | SVG artwork | Local desktop and emulated-phone tests draw a rectangle, reject malformed SVG without losing it, sync, recover in a fresh browser session and upload through Files. Complex SVG and physical-touch behavior remain unverified. | In progress |
 | Replicad | Code-based CAD | Basic model generation and export checked; not a full CAD editor. | Pending |
 | Grid tools: Kiri:Moto | 3D printing | Model import and G-code export checked; printer settings need independent review. | Pending |
 | Grid tools: Mesh:Tool | Mesh editing | Import, union and account export checked. | Pending |
