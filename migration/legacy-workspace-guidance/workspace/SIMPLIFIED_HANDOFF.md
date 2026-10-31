@@ -1702,6 +1702,13 @@ authoritative signal before presenting a completion status. The first fixture
 attempt also used a directory URL that the test server refused; it was rerun
 against `/demo/index.html` before making the observation above.
 
+A follow-up debug progress-listener candidate observed a stop event associated
+with a delayed successful request after the response, and a nonzero result for
+a blocked request. An HTTP 404 returned a zero Gecko network result, confirming
+that network completion is not HTTP success. Rapid start/stop events also
+occurred between status polls. It remains unshipped; source patch, test scope,
+privacy caveat and remaining work are in `apps/system/browser/experiments/`.
+
 The pinned live WASM's name subsection has 367,777 named functions; a
 reproducible scan found references to `svg_fmt::`, `seahash::`, `app_units::`
 and `content_analysis::sdk::`. These may be type references, not a complete
