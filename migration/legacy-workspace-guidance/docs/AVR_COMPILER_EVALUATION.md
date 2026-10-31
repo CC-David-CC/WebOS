@@ -90,3 +90,60 @@ account-switch/save-race and mock-storage compile/diagnostics tests also passed.
 These are research checks only. Physical devices, full compatibility and the
 compiler's exact corresponding-source and distribution requirements remain
 unverified; the research compiler has not been deployed.
+
+### Runtime-package byte audit — 2026-10-31
+
+A narrower piece of the provenance is now identified. The 326 uncompressed
+`sysroot/avr/` include and library files in the pinned `avrwasm.tar` match
+byte-for-byte the corresponding files in Ubuntu Jammy's
+[`avr-libc` 1:2.0.0+Atmel3.6.2-3 package](https://packages.ubuntu.com/jammy/avr-libc).
+The ten bundled AVR5/AVR6 linker scripts match the corresponding files in its
+[`binutils-avr` 2.26.20160125+Atmel3.6.2-4 package](https://packages.ubuntu.com/jammy/binutils-avr).
+Compressed `.br` copies and the GCC runtime/WASM executables were not covered.
+A byte match does not prove which repository the producer used; for example,
+the Uno libc archive's 296 member contents also match Debian Bookworm's package,
+although archive metadata differs. Ubuntu's Jammy archive itself is an exact
+archive-byte match for that file.
+
+The Ubuntu package hashes were authenticated against Jammy's signed `InRelease`
+using the installed Ubuntu archive keyring (good signature by 2018 key ID
+`871920D1991BC93C`). The signed `universe/binary-amd64/Packages.xz` SHA-256 was
+`d29cb24c93fec5f43255706bce7eb46d4779952039d8c68ac1bb14a6f3655ce2`;
+the `avr-libc` `.deb` hash is
+`984d0c38ccdd08fd10761da5e7eb75f9f9572d9a804bc1c4a649051c3aaed09b`
+and the `binutils-avr` `.deb` hash is
+`ebae1564675109969b3dcc6a6d4cb73ee445997e1dc2be05717cdc1d01453e0c`.
+The signed `universe/source/Sources.xz` hash was
+`8f73d18065a4f05ee7362c50553ea4b26ca2b4b3786472676b6b1ee58b4cff72`.
+The following source files and packaging patches were fetched from Ubuntu's
+archive and checked against that signed index; these are candidate source
+materials for the matching package contents, not a complete compiler source bundle:
+
+| Package | File | SHA-256 |
+| --- | --- | --- |
+| avr-libc | `avr-libc_2.0.0+Atmel3.6.2-3.dsc` | `ee90f9b10ebfb5536b133df31dd89e25fda0ea13b6ee746b6dee8d6b919af8fc` |
+| avr-libc | `avr-libc_2.0.0+Atmel3.6.2.orig.tar.gz` | `99f7218bd1fda680ad60d15d9a71cce7376201c6dce28acd813ea082009045eb` |
+| avr-libc | `avr-libc_2.0.0+Atmel3.6.2-3.diff.gz` | `b28aae79b573dbc176770895a7962064b1306638df5fc1bc96b3d997cebc5508` |
+| binutils-avr | `binutils-avr_2.26.20160125+Atmel3.6.2-4.dsc` | `f48ffa57e7d1f6a9c9be201ba74e41a460ae8ba3c2d35738562c7248a5b10e96` |
+| binutils-avr | `binutils-avr_2.26.20160125+Atmel3.6.2.orig.tar.gz` | `a6bb9873cccaa39dc3a4ba821aa2274c3291bf397587aaf130d4faeb70ed7049` |
+| binutils-avr | `binutils-avr_2.26.20160125+Atmel3.6.2-4.diff.gz` | `fafe85877eb8c97d25e5e493efcdc8ecaf05913219a185e2c09e39de0d1cf6b4` |
+
+The package source directories are
+`https://archive.ubuntu.com/ubuntu/pool/universe/a/avr-libc/` and
+`https://archive.ubuntu.com/ubuntu/pool/universe/b/binutils-avr/`.
+Package copyright notices are distributed inside the packages; individual
+source-file notices and obligations still require review for any release.
+
+Repeat the byte comparison without extracting archives using:
+
+```
+python3 tests/fixtures/avr-compiler-probe/audit-runtime-packages.py \
+  /path/to/avrwasm.tar /path/to/avr-libc.deb /path/to/binutils-avr.deb
+```
+
+The script pins all three input hashes and rejects a substituted package. It
+requires `dpkg-deb` and checks exactly 326 library/header files and ten linker
+scripts. It does **not** establish exact sources or reproducibility for GCC,
+its `libgcc`, the WASM Binutils executables, Emscripten or their dependencies.
+Those items, corresponding-source review and a distribution plan remain open;
+this does not authorize deploying the research compiler.
