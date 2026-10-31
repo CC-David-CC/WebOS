@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — notebook working-copy cleanup
+
+Live release `f76d2c172d3691c0f048cfb84124181ff1772fb53abaf5b1b33fd9dd844f3f09` requests best-effort removal of each closing window’s generated JupyterLite file and checkpoint keys from that account’s browser database, including pending replaced copies; account My files are separate. Unknown database layouts are left untouched. Local desktop, phone-sized and 4K-sized and live desktop and phone-sized tests closed and reopened windows, verified a second kernel still executed, checked both saved server copies, and verified old working-copy keys were absent. An initial live candidate emitted a Jupyter disposed-session error; the explicit widget shutdown was removed and the revised live tests passed without page errors. Browser crashes, interrupted startup, older copies and future storage-layout changes may leave temporary data.
+
 ## 2026-10-31 — notebook first-save race
 
 Live release `c82e925ee2f7098eaffb40abbe0555082678d7676a6747d31760d63ded250d04` schedules a follow-up automatic save when the notebook changes while its first save is in flight, and captures the requested destination before asynchronous work. A regression test first waits for the Python kernel metadata to settle, pauses the first account-file write, edits the cell, and checks the newer edit syncs and reappears in a fresh session. It failed against the previous version and passed locally and live at desktop and phone-sized viewports. JupyterLite temporary working copies and lifecycle cleanup remain unfinished; untrusted notebooks are not isolated.
