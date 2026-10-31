@@ -941,3 +941,16 @@ Source hosting generator SHA-256 is
 Caddy is `887fdcb7da1b2ba05c6d3204fa0c4cf38a8a8d4d4a9743cc3e269116283209c7`,
 and notice rollback data is `/var/lib/codi-ingress/browser-source-index-802-backup.json`.
 
+### Browser compiled-component notices — 2026-10-30
+
+The actual Gecko link list contains 1,860 object inputs. Its identified
+third-party groups include ICU, Abseil, msgpack, zstd and several media
+libraries. The public runtime notice file now includes the exact pinned-source
+license files for the named libraries, including the IJG text referenced by
+libjpeg-turbo; the existing Gecko page supplies ICU's notice. The downloaded
+combined notice SHA-256 is
+`4d04c982f8713a75b6c787679e0f93ff7ac076b08c5fd5ce0d82da515bf6d35e`.
+The pinned collection and notice-builder tests pass; previous notices remain
+in `/var/lib/codi-ingress/browser-source-component-notice-backup.json`. This
+does not prove a complete object-level, Rust dependency, or legal audit.
+
