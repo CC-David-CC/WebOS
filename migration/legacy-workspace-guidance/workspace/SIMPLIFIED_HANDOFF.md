@@ -1212,3 +1212,8 @@ read back the exact content, and was removed with its disposable account.
 This fixes a confirmed short timeout but does not prove that timeout caused the
 previous intermittent 128 MiB failure. Longer upload idle time also means a
 stalled authenticated upload can occupy one of the bounded slots longer.
+
+After the upload-idle update, a fresh live 128 MiB browser-mirror upload,
+server read with SHA-256 verification, synchronized deletion, and fresh-browser
+sign-in all passed. The disposable account was removed. An unchanged-file
+sync in the same run again made no redundant file downloads.
