@@ -20,7 +20,7 @@ async def main():
    if first==b'\x16':calls.append('TLS_REJECTED');return
    request=first+await reader.readuntil(b'\r\n\r\n')
    path=request.split(b' ',2)[1].decode('ascii','replace');calls.append('request:'+path)
-   if path=='/slow':await asyncio.sleep(8)
+   if path.startswith('/slow'):await asyncio.sleep(8)
    body=b'<!doctype html><title>Fixture</title><h1>FIXTURE PAGE</h1>'
    if path=='/chain':body=b"<!doctype html><title>Redirecting</title><script>location.replace('/missing')</script>"
    if path=='/redirect':
