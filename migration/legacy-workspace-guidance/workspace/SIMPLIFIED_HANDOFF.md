@@ -2752,3 +2752,10 @@ Calculator adds inverse sine, cosine and tangent (honoring angle units), exponen
 Live static release `a148b7bf4fbf77cc86f1b9cb677871d2ce589402402303aadde796bd723b788c` replaces `b6cbd988a87307b846e5b0dd6a53cd98317ad9169dac30f883dbf132f2ce8c4b`. Hosting generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`; hosting manifest SHA `ed485f536701384dac056ff9fed4ff6d3fbfda137bcdf2034ea13c78c11568d8`. Managed rollback inputs `/var/backups/webhost-sites/change-20261031T153237950509Z` and `/var/backups/webhost-sites/change-20261031T153237950914Z`.
 
 Files offers a Move to… action for a single file in My files, using the shared folder chooser and existing version-checked, server-journaled move. Cancel, same-folder choice, destination collision, source change during selection, successful sync and fresh-session reopening passed local desktop, emulated phone and 4K, and live desktop and emulated phone. Test fixtures/accounts were removed. Files and destination folders must finish syncing; folder moves and physical-device touch remain unverified or unavailable.
+
+
+## 2026-10-31 — Digital Logic full-adder example
+
+Live static release `28a74ac3d051cff4b30c48f9785c7ae092bfbe4544082adb8af2877d1e8024b3` replaces `a148b7bf4fbf77cc86f1b9cb677871d2ce589402402303aadde796bd723b788c`. Hosting generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`, manifest SHA `d5671ed2c4102a7dcbb5f3b094c011b3a7bf296b5d84dd56c1aa293497a04df1`; managed rollback inputs `/var/backups/webhost-sites/change-20261031T153541536243Z` and `/var/backups/webhost-sites/change-20261031T153541542174Z`.
+
+Digital Logic includes a full-adder example using XOR, AND and OR gates. Local desktop and phone-sized tests compare generated truth tables and interactive outputs for all eight combinations. Local desktop, phone-sized and 4K and live desktop and phone-sized account tests cover project/CSV save, sync and fresh-session recovery. Disposable live accounts and verified fixtures were removed. Simulation is combinational logic only; it is not timing, electrical or hardware validation. Physical touch remains unverified.
