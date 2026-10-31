@@ -13,18 +13,14 @@ browser-first, account-isolated storage and conflict guarantees.
   and returning to a stale tab prompts a refresh. Each pass still lists every
   folder and checks file versions. If 100 mirrors were visible, the intervals
   alone would start about 100 passes per minute before counting folders or
-  files, already exceeding the shared 60-per-minute issuer bucket. This is
-  arithmetic, not a load measurement or a capacity claim.
+  files, already exceeding the former shared 60-per-minute issuer bucket. Account-scoped admission is now live, but the gateway budget still constrains the workload. This is arithmetic, not a capacity claim.
 * Each file gateway operation obtains signed authorization using separate
-  challenge and authorization requests. The issuer currently limits each file
-  authorization phase to 60 requests per minute per address it observes. The
+  challenge and authorization requests. The issuer previously limited each file authorization phase to 60 requests per minute per address it observed. The
   live phone-sized tests encountered this limit, including a Files upload
   check after several conflict and upload tests in quick succession; a later
   retry passed. The active Caddy route sends
   file-authorization requests to a loopback issuer without rewriting WSGI
-  `REMOTE_ADDR`; the file authority keys its buckets by that address. Visitors
-  therefore share the proxy-observed budget on this route. This conclusion is
-  from the active routing and service code, not a 100-user load test.
+  `REMOTE_ADDR`; the file authority keys its buckets by that address. Legacy callers without a recognized session still share that proxy-observed budget. The live client now supplies its session credential for account-scoped admission; a server-wide ceiling remains.
 * The gateway has a bounded global request budget and an active-work limit of
   four. Do not assume four active transfers supports the target or raise it
   blindly: measure transfer memory, file descriptors, latency and disk load.
@@ -48,9 +44,7 @@ falls back to ordinary directory listings. A live six-folder account required
 one signed inventory request instead of seven list requests; local and live
 checks also detected a same-size direct disk edit, and the old-gateway fallback
 was exercised. A local eight-account mixed test overlapped inventory with a
-2 MiB upload. This reduces work for nested accounts but does not solve the
-shared issuer bucket: 100 visible idle accounts can still exceed it with just
-one inventory request each.
+2 MiB upload. This reduces work for nested accounts but did not by itself solve the former shared issuer bucket; the account-scoped admission change described below addresses that part, while the gateway budget remains.
 
 The live gateway now offers an optional signed version-batch capability grouping up to 16
 files per request, with at most 32 MiB hashed per batch and individual fallback
@@ -94,8 +88,8 @@ supported. Validate on the live testing environment only with isolated test
 accounts and remove only the resulting fixtures.
 
 
-## Local admission candidate — 2026-10-31
+## Account-scoped admission — 2026-10-31
 
-A source candidate groups file-authorization admission by the subject of a live in-memory registered session, with separate bounded legacy and global budgets. The session token selects an admission bucket only: signed one-use proofs, token/key binding, current account policy, gateway permissions and exact-operation checks remain required before access. A modified browser client supplies the token on the issuer challenge; the old issuer ignores the extra authorization header and old clients remain on the legacy budget. Invalid and unknown tokens use the bounded legacy budget. This candidate has not yet been deployed.
+The live issuer groups file-authorization admission by the subject of a live in-memory registered session, with separate bounded legacy and global budgets. The session token selects an admission bucket only: signed one-use proofs, token/key binding, current account policy, gateway permissions and exact-operation checks remain required before access. A modified browser client supplies the token on the issuer challenge; the old issuer ignores the extra authorization header and old clients remain on the legacy budget. Invalid and unknown tokens use the bounded legacy budget. The change is live. A public browser test completed 62 signed inventory operations across two accounts and confirmed isolation; it was not a 100-user load test.
 
 Local tests exercised 100 independently keyed accounts, issuer and gateway signatures, account isolation, legacy callers, independent account budgets and a global ceiling. One sequential issuer/proof run completed 100 authorizations in 0.624 seconds after setup (p95 7.66 ms). In a separate signed HTTP fixture with 100 accounts and one 4-byte file each, concurrency three, all 100 inventories completed in 2.479 seconds after setup (p95 86 ms); the immediately following version checks completed for 27 accounts and 73 hit the separate 256-request/minute gateway budget. Account setup used a permissive fixture, so neither run establishes login-burst capacity. Large files, slow transfers, concurrent bursts, public proxy behavior, sustained throughput, gateway fair scheduling and 100-user end-to-end capacity remain unverified.
