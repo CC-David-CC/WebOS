@@ -2077,3 +2077,25 @@ validation and registered live source/relay/files checks passed, and the
 live disposable test account was removed. The new collector source is backed
 up in Git; update the downloadable source snapshot before declaring the source
 provision work complete.
+
+### Linked notice collector source snapshot — 2026-10-31 UTC
+
+The authenticated source page now includes
+`codi-browser-source-7bc6719ed.tar.zst`, SHA-256
+`4fe52eaa8a8c2450fae3683845eaa4480ab045e2f5f28faf4a2a40a69a049c80`.
+It contains the new linked-Rust header collector and the two pinned compact
+link-audit records needed to reproduce the candidate list. A registered live
+session downloaded and hash-verified the complete archive; relay and file
+checks passed, and the test account was removed. Index SHA-256 is
+`f3ef45a667ea5973111110a177697704e6dc82f60a1380399aab02a34e534b30`;
+manifest SHA-256 is
+`e3c26d091d1dd303bedef382498b0961417575df826c5eed9ded54f1430fb470`.
+Previous index files are backed up at
+`/var/lib/codi-ingress/browser-source-index-linked-headers-backup.json`.
+
+The link summary also lists three vendored package names only in ambiguous
+matches (`ffi-support`, `mime`, and `rustc-demangle`), which were outside the
+195-package direct-match source-header scan. A quick source search found
+Mozilla copyright headers in `ffi-support`; the other two produced no matches
+in their `src` trees with that search. This is a lead for further review, not a
+claim that those packages are absent or that their notices are complete.
