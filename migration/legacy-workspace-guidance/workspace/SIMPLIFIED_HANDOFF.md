@@ -762,6 +762,20 @@ Hosting generator is now
 manifest remains `a287d968a80cb8387295a4a5fb6a23cb039efc6e127aaebb7e7cb7d699481260`,
 and Caddy is `c098afe8572a12105527e17773c14f551075c52854617838b5477ab136ea55a0`.
 Browser desktop deployment and complete engine-license review remain pending.
+The next assembled candidate, with the Arduino application, has cache ID
+`4ac8781a92ed58b9fc0d878d927055d86d44fa3fe4aaadd4a2858757ce63d80a`.
+Its matching `adece7482` Browser/source-integration archive has SHA-256
+`2e64c1c3856f622af986157059eca6f8f14a8c73e275829d397372b70701c127`
+and is published alongside the previous versions at `/browser-sources/`.
+The archive's desktop source and the candidate `app.js` were compared by hash.
+The source-allowlist update passed a rollback exercise and all-site checks.
+Current hosting generator is
+`6ac5e114fe7ed8949f2c8ce3876cafa1745353ef0409c4d2bc13600067ea3226`,
+manifest remains `a287d968a80cb8387295a4a5fb6a23cb039efc6e127aaebb7e7cb7d699481260`,
+and Caddy is `9de277b1a34fa28f76899a883fdf8fdb1d6d5478fdb9c33e6739ce12014b14ab`.
+The candidate's Browser passed real desktop and phone-emulated Chromium tests
+for authenticated networking, My files download, keyboard input and touch
+scrolling. This does not qualify a physical phone or general website behavior.
 `build-large-file-issuer.py` creates a profile-28 candidate from the exact
 live issuer by updating the advertised file limit, its managed-policy health
 check and the release manifest. Earlier candidates omitted rollback
