@@ -70,8 +70,7 @@ is not implemented.
 
 CodeMirror owns history, selections and text editing. Undo, redo, replace and
 indentation are editor transactions; Tab continues to move focus rather than
-trapping keyboard users. Line numbers are visible, and Python and JavaScript/
-TypeScript files use syntax highlighting. Additional languages, folding and
+trapping keyboard users. Line numbers are visible, and Python, JavaScript/TypeScript, C/C++ and Arduino `.ino` files use syntax highlighting. Additional languages, folding and
 further editor controls can be added based on real use rather than placeholders.
 
 New documents continue to use the shell's existing new-editor workflow. A future
