@@ -108,7 +108,14 @@ def optional_audit(policy_path,database,key_path):
     from relay.audit import AuditLedger
     key_file=protected(key_path,maximum=32)
     info=key_file.stat()
-    if info.st_mode&0o077:raise ValueError('Audit signing credential must be private')
+    systemd_path=Path('/run/credentials/codi-browser-relay.service/audit-signing-key')
+    # systemd LoadCredential uses root-owned 0440 files inside a root-owned
+    # 0550 per-unit directory with an ACL for the service user. Group read is
+    # accepted only for that exact protected root:root credential location.
+    systemd_credential=(key_file==systemd_path and info.st_uid==0 and info.st_gid==0
+                        and key_file.parent.stat().st_uid==0 and key_file.parent.stat().st_gid==0
+                        and not key_file.parent.stat().st_mode&0o027)
+    if info.st_mode&0o037 or (info.st_mode&0o040 and not systemd_credential):raise ValueError('Audit signing credential must be private')
     raw=key_file.read_bytes()
     if len(raw)!=32:raise ValueError('Audit signing credential must be a raw Ed25519 key')
     ledger=AuditLedger(database,Ed25519PrivateKey.from_private_bytes(raw))
