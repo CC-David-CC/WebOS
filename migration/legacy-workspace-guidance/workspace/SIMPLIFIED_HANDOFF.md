@@ -1941,3 +1941,18 @@ disposable account. Current source-index SHA-256
 notice manifest `df4e896c4d37024e38e805b037f6402a90e7427c5a362f55fe950e83ac529252`;
 prior index files are in
 `/var/lib/codi-ingress/browser-source-index-doc-update-backup.json`.
+
+### Live Browser relay recovery — 2026-10-31 UTC
+
+With a disposable registered account, the current live Browser displayed an
+unavailable message when its relay was stopped before launch. After the relay
+started, Reset engine reconnected and loaded example.com. A second stop while
+the Browser was open produced its connection-ended message; restarting and
+resetting again loaded a page. The test account was removed. This is manual
+recovery and does not restore the temporary Gecko profile. The test made no
+administrator report request, avoiding uploads from other browsers. Relay,
+issuer and file services were active afterward; the public site returned 200,
+unauthenticated source access returned 401, access block lists remained empty,
+and server audit remained disabled with no key or ledger. The socket readiness
+probe initially saw a missing socket during startup before the later retry
+succeeded; this did not cause a test failure.
