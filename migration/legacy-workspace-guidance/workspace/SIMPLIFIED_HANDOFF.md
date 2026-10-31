@@ -2745,3 +2745,10 @@ Replicad now supports one optional centered vertical through-hole in box/cylinde
 Live static release `b6cbd988a87307b846e5b0dd6a53cd98317ad9169dac30f883dbf132f2ce8c4b`; prior release `5a66937dec8e3335609c0a0787a4d006ffda61f127cdb66bee2eeb4dd872489b`. Generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`; hosting manifest SHA `9dcc02206b31bc618f6d2f5299b2c07e8adcc4d9acb19b5c6eaab4dd312b4852`. Managed rollback inputs `/var/backups/webhost-sites/change-20261031T152939977882Z` and `/var/backups/webhost-sites/change-20261031T152939978357Z`.
 
 Calculator adds inverse sine, cosine and tangent (honoring angle units), exponential function and scientific notation keypad entry, with an EE explanation in the app. Unit tests cover inverse and domain behavior. Local desktop, emulated phone and 4K, plus live desktop and emulated phone, exercised keypad input, units, errors and independent windows; the final explanatory text was checked live at phone size. Disposable live accounts and empty homes were removed. Floating-point and physical-touch limitations remain.
+
+
+## 2026-10-31 — Files Move to action
+
+Live static release `a148b7bf4fbf77cc86f1b9cb677871d2ce589402402303aadde796bd723b788c` replaces `b6cbd988a87307b846e5b0dd6a53cd98317ad9169dac30f883dbf132f2ce8c4b`. Hosting generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`; hosting manifest SHA `ed485f536701384dac056ff9fed4ff6d3fbfda137bcdf2034ea13c78c11568d8`. Managed rollback inputs `/var/backups/webhost-sites/change-20261031T153237950509Z` and `/var/backups/webhost-sites/change-20261031T153237950914Z`.
+
+Files offers a Move to… action for a single file in My files, using the shared folder chooser and existing version-checked, server-journaled move. Cancel, same-folder choice, destination collision, source change during selection, successful sync and fresh-session reopening passed local desktop, emulated phone and 4K, and live desktop and emulated phone. Test fixtures/accounts were removed. Files and destination folders must finish syncing; folder moves and physical-device touch remain unverified or unavailable.
