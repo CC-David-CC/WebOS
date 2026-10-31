@@ -2790,3 +2790,8 @@ No production code or hosting change. Local desktop, emulated-phone and 4K and l
 ## 2026-10-31 — Desktop Help workflow review
 
 No production source or hosting changes. Local desktop, phone-sized and 4K and live desktop and phone-sized registered-account checks verified the beta/support wording, exact mailto link, temporary Linux filesystem explanation, no horizontal overflow and three repeated open/close cycles. Disposable live accounts had no account-file homes and were removed. Help has no document or network workflow. Physical-device testing remains open.
+
+
+## 2026-10-31 — Student guide coverage
+
+Updated `USER_GUIDE.md` against the current Applications menu and app READMEs. It now covers the live interactive applications, touch-friendly file copy/move/rename, the lack of a general download action, editable projects versus exports, and relevant simulation/fabrication limits. A source check confirms every current interactive menu application is named. The guide is a repository document, not a newly added link in Desktop Help; no production assets or hosting were changed.
