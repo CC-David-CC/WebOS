@@ -1059,3 +1059,18 @@ copies of the live policies, displayed the live rules, rejected an IP literal
 as a domain, and left both live policy hashes unchanged. Live rule enforcement
 and active-stream changes were tested separately using the guarded fixture.
 
+
+## Browser and file mirror update
+
+The live Simplified frontend is release `d360a4ef6c221d2f120b20bd1c38e89be100f62a514ff573a3130abe64ff34d8`.
+The file mirror stores large browser records as Blobs and checks the server's
+file version before downloading again. Local tests verify unchanged files do
+not trigger another full download, and external same-size edits are detected.
+A live 128 MiB mirror test timed out; this size remains under investigation and
+must not be described as verified on the live service.
+
+The live gateway defaults are 50 GiB per account and 200 GiB shared per day;
+the per-transfer and 128 MiB file limits remain separate. Gateway release is
+`0685f9925f2d00cb2433d6d3d9066ee86da7f901a2c3302e3c1f1e1842ab2152`.
+Browser routing and management details are in
+`apps/system/browser/docs/LIVE_POLICY.md` and `DOMAIN_REPORTS.md`.
