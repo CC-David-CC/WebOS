@@ -744,5 +744,29 @@ person with access to that same browser profile. A real test with two accounts
 open in separate tabs of the same browser profile passed: their notebook
 storage namespaces and UUID names differed, the second notebook listing did
 not show the first, and the second account could not read the first account's
-My files test document. A separate sign-out/switch test timed out and remains
-unresolved; this simultaneous-tab test does not establish sign-out behavior.
+My files test document. After accepting the notebook's browser leave-page
+confirmation, signing out and back into the first account also passed; its
+own saved test document remained available. An earlier test timed out because
+it did not respond to that confirmation, not because isolation was verified.
+
+The Browser source archive for the `0fc6bf9a7` desktop candidate is now
+available at `/browser-sources/codi-browser-source-0fc6bf9a7.tar.zst` with
+SHA-256 `47ac4d287646b42b808680e2be422e4a7a7bf62dcd928b6ae911bf4a2c91bbe4`.
+The prior snapshot remains available, and the public index and notice manifest
+include both. The exact allowlist addition was rollback-exercised and deployed
+with all ten hosted site statuses preserved; the new source download's hash was
+verified over HTTPS. The pre-update source-index files are retained in the
+root-only `/var/lib/codi-ingress/browser-source-index-0fc-backup.json`.
+Hosting generator is now
+`d32c182fe5043a1671d460bd27325cf72750d94e771dbd070f523537eee407e8`,
+manifest remains `a287d968a80cb8387295a4a5fb6a23cb039efc6e127aaebb7e7cb7d699481260`,
+and Caddy is `c098afe8572a12105527e17773c14f551075c52854617838b5477ab136ea55a0`.
+Browser desktop deployment and complete engine-license review remain pending.
+`build-large-file-issuer.py` creates a profile-28 candidate from the exact
+live issuer by updating the advertised file limit, its managed-policy health
+check and the release manifest. The first candidate omitted the health check
+and must not be deployed. Corrected candidate `profile28-large-files-r2` has
+manifest SHA-256 `a05af60d0130b525e56be385d8d6648938dc4be512322ef312420c54fb0a979d`.
+Its isolated issuer tests passed, including advertised 128 MiB, management
+metadata validation, separate login listener, rule updates and unchanged TURN
+policy. It has not been installed or tested with the live desktop.
