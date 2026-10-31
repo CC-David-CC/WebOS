@@ -3203,3 +3203,7 @@ Research only; the live Arduino Simulator still does not compile sketches. A dis
 ### Desktop close confirmation — local candidate
 
 The desktop's window Close control now uses a themed, keyboard-accessible dialog for unsaved work, offering Keep editing and Discard changes; Escape keeps the window open. Local registered-account tests with a real edited Text document passed at desktop, emulated-phone and 4K sizes, including cancel, Escape, discard and absence of a native browser dialog. This candidate is not deployed. App-specific confirm/prompt/alert calls, including file naming and replacement, are separate and remain to be migrated; physical touch has not been tested. See `tests/desktop-close-dialog.test.mjs`.
+
+### Text open/reload confirmation — local candidate
+
+A shared asynchronous `host.ui.confirm` desktop service and Text's dirty-document open/reload flows now use themed dialogs in the isolated preview. Escape, cancel and app-abort settle without discarding; account validity is rechecked after each prompt. Local registered-account tests at desktop, emulated-phone and 4K sizes cover cancel/discard, opening a second My files document, reloading the saved document, and abort cleanup without a native browser dialog. This is not live. Other app-specific confirms, text prompts, vendor dialogs and physical touch remain to be addressed. See `tests/text-confirm-dialog.test.mjs` and `apps/system/CONTRIBUTING.md`.

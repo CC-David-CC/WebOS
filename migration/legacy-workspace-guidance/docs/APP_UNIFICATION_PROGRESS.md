@@ -68,3 +68,4 @@ During each app review, suppress optional third-party account and sign-up prompt
 Deferred third-party service and AI features are tracked in `DEFERRED_APP_FEATURES.md`; those features are not implied to work through the desktop account.
 
 The desktop-wide unsaved-window close warning has a locally tested themed dialog candidate. It is not live, and app-specific browser prompts for file names, replacing work and other actions still need migration. Desktop, emulated-phone and 4K tests cover an edited Text document, cancel, Escape and discard; physical touch is not yet verified.
+Text's open/reload unsaved-change prompts also use a shared themed confirmation service in a local candidate. Desktop, emulated-phone and 4K registered-account tests cover both outcomes and abort cleanup. It is not live; other apps and prompt types remain to migrate.

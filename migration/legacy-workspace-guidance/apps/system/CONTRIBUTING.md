@@ -43,6 +43,8 @@ Kiri:Moto and Mesh:Tool share one packaged system app; see `grid-tools/README.md
 for its pinned preparation step and file bridge. These tools' browser workspace
 state is separate from account-mirrored Files; exports must be saved explicitly.
 
+For an in-app confirmation use `await host.ui.confirm(message, {title, confirmLabel, cancelLabel, danger, signal: host.signal})`. It returns `true` only when the user accepts; Escape, cancellation and app disposal return `false`. Recheck the current account, document and any captured versions after awaiting the answer. Do not use synchronous browser `confirm()` for new application workflows.
+
 For an account file chooser use `await host.storage.pickFile({extensions, signal: host.signal})`. It returns a My files path or null on cancellation. Read and write through `mirrorFileContext()` and check that the account context remains valid after asynchronous work. Preserve unsaved changes when switching files, and report local saves separately from server synchronization. A PC upload picker is an additional import option, not the account file chooser.
 
 CodeMirror is available lazily via `await host.tools.loadCodeMirror()`. Each
