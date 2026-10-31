@@ -1006,3 +1006,27 @@ already published, while the remaining attribution review and live desktop
 tests must be completed before calling the release ready. The active desktop
 is still `bfcccab6fcdfd33221aeb5e57dd59d8eb788217b0c0172bb1cf45b3c533a807b`.
 
+### Browser desktop active — 2026-10-31 UTC
+
+`https://ksu.codes/` now serves Simplified desktop cache
+`2c386e8748f45b836a070bf336287275ae432b0003f362ad17645574e15e0539`.
+The managed hosting generator SHA-256 remains
+`2329d2b8925501ea5b59c9a0182b24db66e076b6abc1d4305ad820da45a4079b`,
+manifest is `517ebeb6523eea4c9ff61ee18a84f8e5dce3d81729fe679eda1706f72a94ace3`,
+and Caddy is `bc4089a16acfebf62d6249cd9455d26c08f4d21f012e3fd93a0a3db97c2aa393`.
+Hosting input snapshots are `/var/backups/webhost-sites/change-20261031T011746938217Z`
+and `/var/backups/webhost-sites/change-20261031T011746938685Z`; the previous
+desktop release remains `bfcccab6fcdfd33221aeb5e57dd59d8eb788217b0c0172bb1cf45b3c533a807b`.
+Use the managed hosting lock and generated validation/apply workflow for rollback.
+
+Fresh real HTTPS Chromium tests with disposable registered accounts passed
+Browser launch, visible blocked-site feedback, HTML open from My files, relay
+navigation, lease renewal, explicit URL download and server synchronization.
+Phone-emulated Chromium passed visible status, typing and touch scrolling.
+Those test accounts and their exact files were removed. The separate desktop
+prototype and the other hosted sites returned their expected status codes.
+These checks do not cover a physical phone, ordinary clicked downloads,
+authenticated site downloads, general website compatibility, or audio.
+The broader component/license review and live requested-report workflow are
+not complete. Existing Linux guest egress is outside the new Browser IP rules.
+
