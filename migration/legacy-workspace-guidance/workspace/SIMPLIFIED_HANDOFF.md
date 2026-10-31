@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — account-file retry and batching
+
+Live release `8789f1b5077fe40f25e19c96fef717510c5df91aff4a3a54457a8194f7ca7237` keeps automatic sync attempts from restarting for each local change after a 429, and batches up to 16 existing-file version checks. Individual writes and deletes retain server-side hash checks. Local unit tests cover 20 edited files and conflict preservation; a local registered-account Files test covers cross-device conflict resolution. Live desktop and emulated-phone tests injected two 429 responses and verified queued files reached the server. The issuer authorization budget is still shared behind the reverse proxy; no 100-user capacity or safe change to that limit is established.
+
 ## 2026-10-31 — PDF search occurrences
 
 Live release `c49f945e61f50d41de8e87381a3cad3234a3df819db15105e3cba5c2fbae844d` updates PDF Viewer search to visit individual occurrences, wrap across pages, and highlight text that spans PDF text runs. Local and live registered-account tests passed at desktop and phone-sized viewports for repeated matches, reverse navigation, wraparound, cancellation, literal `+`, selection, resize and invalid-file recovery. The disposable live accounts were removed. The viewer still cannot OCR scanned pages; physical touch is unverified.
