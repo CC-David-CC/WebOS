@@ -24,6 +24,9 @@ import subprocess
 import sys
 import tempfile
 
+# Imported pinned code must never create unmanifested files in immutable trees.
+sys.dont_write_bytecode=True
+
 RUNTIME='c54118ec1a534860f8293d74cd92dbe0744d31c72fa602f52fef986437ae4b37'
 VENV='a5ee6aa9a1c18535aad36a52b7ec57ca9c1e1fca03cbb02d4c423fd7ec317326'
 ISSUER='33208c945336d9c910368c70894af89c575383d1e3da9ceb9addd0b86bfcfa74'
