@@ -889,6 +889,13 @@ tests now assert that status fits inside the window. The desktop test passed
 account-file HTML open, relay request and renewal, visible non-stuck status,
 and URL download with server synchronization. The phone-emulated test passed
 status visibility, typing and touch scroll. These changes are not live. The
-prior report-enabled static candidate is superseded and must be rebuilt and
-its matching source snapshot published before deployment.
+prior report-enabled static candidate is superseded. The replacement
+`.build/simplified-release-reports-r2` has cache ID
+`8138c0e892580c8aafc3637738b4d9d577898c923e9ceb108f7fd337477d6c27`
+and Browser bundle SHA-256
+`4b26e64f6b9edf41155cf206c4ee5b24ddf77bfb4011bb552ae6a12185beb9a2`.
+The matching source archive from `0488c275e`, SHA-256
+`841993d069a9d824942224b2e34012a1dc56ce6c24f3407b920adaa4f2d7e0cd`,
+is prepared locally but not yet published. Publish it before deploying this
+candidate. The prior generated candidate and independent build were removed.
 
