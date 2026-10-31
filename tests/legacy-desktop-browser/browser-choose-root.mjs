@@ -5,3 +5,9 @@ export async function chooseRoot(page){
  await page.evaluate(()=>[...document.querySelectorAll('.codi-picker-bar button')].find(b=>b.textContent==='Use this folder').click());
  await page.waitForFunction(()=>!document.querySelector('.codi-file-picker'));
 }
+export async function chooseFolder(page,name){
+ await page.waitForSelector('[aria-label="Open folder '+name+'"]');
+ await page.click('[aria-label="Open folder '+name+'"]');
+ await page.waitForFunction(n=>document.querySelector('.codi-picker-location')?.textContent==='My files: /'+n,{},name);
+ await chooseRoot(page);
+}
