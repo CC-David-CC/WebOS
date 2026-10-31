@@ -2208,3 +2208,25 @@ Hosting backups: `change-20261031T072742460126Z` and
 `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
 manifest is `4df245dbc575d0ee1b24b2f6dca368564f3ee635ed2494aae1f45da6f85778a3`,
 and Caddy is `ed555313f1afe1e6cef074615ec1acdf85bc8a506a7419b94620648ef3c496a0`.
+
+### Files Open action and Files → Text workflow — 2026-10-31 UTC
+
+Simplified release `e4cec0d0b929cb5f6bdc41e146d433d2d8e99eb5314b5ce5a833ea2c0d280a2f`
+serves Files bundle `070b263b69e8cc8c29954e111c24a7fef925db883365827913276fc34187eb1d`.
+A selected file or folder now has an explicit Open action, so touch users need
+not perform a mouse double-click. Linux guest files still require copying to My
+files before opening in a desktop app. Live registered desktop and phone-sized
+tests created a text file in Files, opened it in Text, edited and synchronized
+it, closed and reopened it, then read the server-backed copy in a fresh browser
+context. Both disposable accounts and their files were removed. The initial
+local test revealed that a single phone tap only selected the file; an initial
+reopen test tapped an already-selected file and deselected it. The corrected
+test uses the visible Open action. Real-phone behavior and broader Files/Text
+edge cases remain open.
+
+Previous release: `00490a673b162911ef55b86c0e536ac555249957da212fd1bfbe4ca5c1aedf71`.
+Hosting backups: `change-20261031T073255411340Z` and
+`change-20261031T073255411743Z`; generator SHA-256 remains
+`fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
+manifest `273b361d38f7d7f48df27ad7d0b72dd5144b48e5922d6417049c8932a303fbb3`,
+and Caddy `c455ebbc5d581d0180ec771a683c25756b7ade23fa29a15c4c349d472d71f5ac`.
