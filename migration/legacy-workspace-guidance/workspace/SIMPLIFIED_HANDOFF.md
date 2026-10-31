@@ -1709,6 +1709,15 @@ that network completion is not HTTP success. Rapid start/stop events also
 occurred between status polls. It remains unshipped; source patch, test scope,
 privacy caveat and remaining work are in `apps/system/browser/experiments/`.
 
+The subsequent unshipped HTTP-channel candidate distinguished local 200,
+404 and a redirect to 404; a zero Gecko network result alone still does not
+mean HTTP success. A ten-second delayed-response fixture also demonstrated that
+the **shipping** engine's Stop button remained queued after four seconds. Its
+native `xul_load` spins until an interactive document while the worker serializes
+commands, so cancellation needs a coordinated worker/native solution. The
+prototype and remaining security, lifecycle and navigation tests are documented
+in `apps/system/browser/experiments/`. Live source and engine are unchanged.
+
 The pinned live WASM's name subsection has 367,777 named functions; a
 reproducible scan found references to `svg_fmt::`, `seahash::`, `app_units::`
 and `content_analysis::sdk::`. These may be type references, not a complete
