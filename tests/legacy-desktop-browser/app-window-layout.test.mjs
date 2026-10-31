@@ -12,8 +12,7 @@ try{
    await p.click('.login-form button[type=submit]');await p.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:30000});
    for(const app of ['text','calculator','document-editor','spreadsheet','image-editor','pdf-viewer','data-explorer','notebook','audio-editor','gcode-preview','svg-editor','diagrams-net']){
     const size=await p.evaluate(app=>{const d=surfaces.get('Desktop'),w=d.launch(app),el=d.root.querySelector('[data-window="'+w.id+'"]'),r=el.getBoundingClientRect(),screen=d.root.getBoundingClientRect();const out={width:r.width,height:r.height,screenWidth:screen.width,screenHeight:screen.height,x:r.left-screen.left,bottom:screen.bottom-r.bottom};el.querySelector('[aria-label="Close"]').click();return out;},app);
-    if(phone)assert.ok(size.x<=1&&size.width>=size.screenWidth-2&&size.bottom<=2,app+' should fill phone: '+JSON.stringify(size));
-    else assert.ok(size.width<size.screenWidth-10,app+' should retain its normal desktop width: '+JSON.stringify(size));
+    assert.ok(size.x<=1&&size.width>=size.screenWidth-2&&size.bottom<=2,app+' should open maximized: '+JSON.stringify(size));
    }
    console.log('PASS',phone?'phone':'desktop','layout for 12 app types');
   }finally{await c.close();}
