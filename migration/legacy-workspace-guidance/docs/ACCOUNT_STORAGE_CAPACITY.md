@@ -15,7 +15,9 @@ browser-first, account-isolated storage and conflict guarantees.
 * Each file gateway operation obtains signed authorization using separate
   challenge and authorization requests. The issuer currently limits each file
   authorization phase to 60 requests per minute per address it observes. The
-  live phone-sized tests encountered this limit. The active Caddy route sends
+  live phone-sized tests encountered this limit, including a Files upload
+  check after several conflict and upload tests in quick succession; a later
+  retry passed. The active Caddy route sends
   file-authorization requests to a loopback issuer without rewriting WSGI
   `REMOTE_ADDR`; the file authority keys its buckets by that address. Visitors
   therefore share the proxy-observed budget on this route. This conclusion is
