@@ -2349,3 +2349,23 @@ Audio Editor validates browser decoding before replacing the current track, keep
 Live static release: `8de776337097c89fb9ae825db7e9e3bd9999522f518a4292716db5bf5bccde44`; previous release: `34bf76afe9033469c4cb482a5eaeb79f5b91f63c7c200edc8d0946c4fcbb1ece`. Hosting generator SHA: `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`; manifest SHA: `c0db2952fa9972d366e559cb41b9075615bcf3d44535717a294090b490ed024f`.
 
 The user authorized games and identified `../served_apps_public/game_tree` as the design starting point. It contains pseudocode and specifications, not playable games. Its own AGENTS.md requires independent apps, real Rive integration, and one finished vertical slice before expansion. XR/AR remains outside the newly authorized scope.
+
+
+## 2026-10-31 — Falling Blocks live preview
+
+Applications → Games → Falling Blocks (preview) is available at ksu.codes. It
+contains the independent Phaser game and locally served Rive coach. Local
+desktop tests cover multiple windows, account saves, stale versions, simulated
+separate-browser gateway failure, minimize/restore and isolation. A disposable
+live account passed menu launch, coach rendering, account save and recovery in
+a fresh phone-sized browser session; that account and its one test file were
+removed. This does not establish physical-phone operation or complete game
+acceptance, and the app is labeled preview.
+
+Live static release `d652a17c3d8144db943eeddd48b5bd11e8a66e7364797ab7e70003c9bd758e0c`;
+previous release `8de776337097c89fb9ae825db7e9e3bd9999522f518a4292716db5bf5bccde44`.
+Generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`;
+manifest SHA `8fd3e6bc30d456bf31c28af2ed59314e45c2451b95b8e481f45b699aff5e2242`.
+The reviewed release differs only in app.js, catalog and Falling Blocks assets.
+The full build now includes Falling Blocks: run its pinned `prepare.py` with
+Rive CLI 1.8.0 and install its npm dependencies before building.
