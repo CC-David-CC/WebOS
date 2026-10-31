@@ -1,0 +1,30 @@
+import puppeteer from 'puppeteer-core';
+import assert from 'node:assert/strict';
+const browser=await puppeteer.connect({browserURL:'http://127.0.0.1:19255',protocolTimeout:120000});
+const context=await browser.createBrowserContext(),page=await context.newPage();
+const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18144/';
+try{
+  if(process.env.CODI_PHONE==='1')await page.setViewport({width:412,height:915,deviceScaleFactor:2.625,isMobile:true,hasTouch:true});
+  await page.evaluateOnNewDocument(()=>{const f=window.fetch;window.fetch=(u,...a)=>String(u).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):f(u,...a)});
+  await page.goto(base);await page.waitForSelector('.login-toggle');await page.click('.login-toggle');
+  await page.type('[aria-label=Username]','avrsim'+Date.now().toString().slice(-9));await page.type('[aria-label=Password]','test1234');await page.type('[aria-label="Confirm password"]','test1234');
+  await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered');
+  await page.click('[aria-label="Applications"]');await page.waitForSelector('[aria-label="Electronics"]');await page.click('[aria-label="Electronics"]');
+  await page.waitForSelector('[aria-label="Arduino Simulator"]');await page.click('[aria-label="Arduino Simulator"]');await page.waitForSelector('.arduino-simulator');
+  await page.evaluate(()=>[...document.querySelectorAll('.arduino-toolbar button')].find(b=>b.textContent==='Run Blink example').click());
+  await page.waitForFunction(()=>document.querySelector('.arduino-status')?.textContent.startsWith('Running'),{timeout:30000});
+  await page.waitForFunction(()=>document.querySelector('.arduino-stage wokwi-led')?.value===true,{timeout:30000});
+  await page.waitForFunction(()=>document.querySelector('.arduino-stage wokwi-led')?.value===false,{timeout:30000});
+  await page.evaluate(async()=>{const catalog=await (await fetch('/assets/desktop/apps.json')).json();const app=catalog.apps.find(a=>a.id==='arduino-simulator');const hex=await (await fetch(new URL('examples/blink.hex',new URL('/'+app.path,location.href)))).text();const context=await mirrorFileContext();await context.files.write('/test-firmware.hex',hex);await context.files.sync();});
+  await page.evaluate(()=>[...document.querySelectorAll('.arduino-toolbar button')].find(b=>b.textContent==='Open HEX from My files').click());
+  await page.waitForSelector('[aria-label="Choose file test-firmware.hex"]');await page.click('[aria-label="Choose file test-firmware.hex"]');
+  await page.waitForFunction(()=>document.querySelector('.arduino-status')?.textContent.includes('test-firmware.hex'),{timeout:30000});
+  await page.evaluate(()=>[...surfaces.values()][0].launch('arduino-simulator'));
+  await page.waitForFunction(()=>document.querySelectorAll('.arduino-simulator').length===2);
+  await page.evaluate(()=>[...document.querySelectorAll('.arduino-toolbar')][1].querySelector('button').click());
+  await page.waitForFunction(()=>[...document.querySelectorAll('.arduino-status')][1]?.textContent.startsWith('Running'),{timeout:30000});
+  await page.evaluate(()=>document.querySelector('.arduino-simulator').closest('.window').querySelector('[aria-label=Close]').click());
+  assert.equal(await page.$$eval('.arduino-simulator',items=>items.length),1);
+  await page.waitForFunction(()=>document.querySelector('.arduino-stage wokwi-led')?.value===true,{timeout:30000});
+  console.log('PASS compiled Blink toggles Uno D13, HEX opens from My files, and independent windows survive closing');
+}finally{await context.close();await browser.disconnect();}
