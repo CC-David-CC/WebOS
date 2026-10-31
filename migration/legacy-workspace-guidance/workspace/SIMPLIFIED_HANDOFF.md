@@ -919,6 +919,12 @@ connection limit was reached. A real local Gecko window navigating to
 youtube.com displayed the block message. Ten relay tests passed, including
 hostname and changed outbound-policy blocks and capacity behavior; report
 HTTP and download tests also passed. This change is not live. Its new relay
-runtime, Browser bundle and matching source snapshot must be built, tested,
-and published before activation; it supersedes the earlier desktop candidate.
+runtime, Browser bundle and matching source snapshot must be published and
+tested on the live path before this feedback can be considered live. They
+supersede the earlier desktop candidate. The local immutable relay manifest
+SHA-256 is `2046bb480628f3124bba74b2cd249b00eee665709b15cc12e1eca7dbd5434cad`,
+the desktop cache ID is
+`2c386e8748f45b836a070bf336287275ae432b0003f362ad17645574e15e0539`,
+and the prepared source archive from `802621ec2` has SHA-256
+`128c33ee16a6dde95f5c594b19ef6c8a05cb9b251024e95ac859f888b3a26c90`.
 
