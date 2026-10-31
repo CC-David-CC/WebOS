@@ -33,14 +33,15 @@ browser-first, account-isolated storage and conflict guarantees.
 
 ## Design direction
 
-Local candidate: an optional signed version-batch capability groups up to 16
+The live gateway now offers an optional signed version-batch capability grouping up to 16
 files per request, with at most 32 MiB hashed per batch and individual fallback
 for larger files. A real local browser/gateway test checked 20 files in two
 batch calls, detected a same-size external edit, and verified fallback when the
 capability is absent. Account isolation and read-permission tests also passed.
-This candidate is not deployed and still hashes files and polls folders; it is
-not yet evidence that the 100-user target is supported. It needs guarded
-gateway rollout, live testing and mixed-load measurements.
+The live browser test also checked 20 files in two signed batch calls. An
+eight-account local mixed-workload check overlapped batches with a 2 MiB upload.
+It still hashes files and polls folders; these checks do not establish the
+100-user target. Larger mixed-load measurements remain necessary.
 
 1. Replace routine full per-file polling with an account-scoped, paginated
    change/index protocol. One authenticated request should summarize many
