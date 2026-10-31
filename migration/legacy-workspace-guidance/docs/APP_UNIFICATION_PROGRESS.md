@@ -37,7 +37,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | G-code Preview | G-code viewer | Local and live desktop and phone-sized tests cover the example, upload through Files, sync, invalid-file recovery, visible travel toggle, and fresh-session reopening. Primarily interprets 3D-printer G-code; no hardware or safety validation. Large files run on the UI thread. Physical touch remains unverified. | In progress |
 | Arduino Simulator | AVR firmware | Blink and independent windows checked; simulation is not hardware validation. | Pending |
 | Pico Simulator | RP2040 firmware | Blink checked; flash and SSI support are partial. | Pending |
-| Digital Logic | Gates | Basic gate and account save/reopen checked; no full schematic editor. | Pending |
+| Digital Logic | Gates | AND truth table checked locally; local and live desktop and phone-sized tests cover upload, sync, invalid-file recovery, close warning, Files launch and fresh-session reopening. JSON netlists only; no feedback, sequential devices or full schematic editor. Physical touch remains unverified. | In progress |
 | Circuit Simulator | CircuitJS | Divider simulation and account save checked; not ngspice. | Pending |
 | Electronics Design | Electronics editor | Account project save/reopen checked; sample is not a production board. | Pending |
 | Embroidery Studio | Stitch design | Example generation and account save checked; physical sewing unverified. | Pending |
