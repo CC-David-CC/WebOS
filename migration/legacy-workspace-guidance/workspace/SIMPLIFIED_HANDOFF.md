@@ -1793,3 +1793,26 @@ load. Nine patch tests and 62 mailbox/policy tests passed. A completely stalled
 Gecko event loop and a physical phone have not been verified. The candidate is
 not live: the corresponding source provision and further release checks remain.
 The live Browser remains on ABI v1; do not mix its engine with the v2 worker.
+
+The integrated Stop candidate is now live at release
+`8d5fe713698d4bb94781b10ef22c4815e48b1d046237730e23259945d2332f05`,
+Browser bundle `a84f7a0611eb8cdec8406738a8b1afabe493ff9b20c94b6455642d6f9ba5a4eb`.
+Its corresponding v2 source archive is listed on the authenticated source
+page, SHA-256 `736e7a6694e50ab66d8fe77da9a666685a6753b7613a5b9cbac4e72ff90ca171`.
+A registered live test downloaded and verified it; unauthenticated source
+access returned 401. A separately packaged bundle stopped a 10-second fixture
+response in 67 ms and accepted subsequent navigation. Live registered desktop
+and emulated phone-sized sessions rendered example.com; the phone-sized
+session's Stop control returned, and both tests exercised signed relay,
+blocklist, private-address denial and signed file-gateway operations. The
+screenshots were visually inspected. Test accounts were removed. Physical
+phone behavior and a live slow-response Stop test were not checked. The status
+still says “Navigation requested.” after successful rendering; accurate page
+completion/error reporting remains unfinished, as does the complete engine
+license and final-link inventory review. Hosting generator SHA-256
+`fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
+manifest `15384f69c1f69e4deacbb7b959fce2fda2ff2fbe245ff16004b937e0b59de90f`,
+Caddy `75d50e4c780724f95d425350db300c6c171866a5e2f41cdc738a72b4740c4ba1`.
+Hosting backups are `/var/backups/webhost-sites/change-20261031T060217965059Z`
+and `/var/backups/webhost-sites/change-20261031T060217965535Z`; prior release
+is `c538220f32e70e55616f423e10d8e51af9bbf95b82d3bd510d64a29706feef03`.
