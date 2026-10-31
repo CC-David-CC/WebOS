@@ -15,9 +15,10 @@ class NoticesTest(unittest.TestCase):
         folder=ROOT/'.build/browser-source-provision'
         firefox=folder/'firefox-license.generated.html';ems=folder/'emscripten-6.0.1-patched-source.tar.zst';wisp=folder/'wisp-js-0.4.1-source.tar.zst'
         liberation=ROOT/'.build/browser-notice-inputs/liberation-license.txt'
-        if not all(p.is_file() for p in (firefox,ems,wisp,liberation)):self.skipTest('Pinned engine build inputs not available')
+        compiled=ROOT/'.build/browser-notice-inputs/compiled-component-notices.txt'
+        if not all(p.is_file() for p in (firefox,ems,wisp,liberation,compiled)):self.skipTest('Pinned engine build inputs not available')
         with tempfile.TemporaryDirectory(prefix='codi-browser-notices-test-') as t:
-            out=Path(t)/'notices';records=module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,out)
+            out=Path(t)/'notices';records=module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,out)
             manifest=json.loads((out/'notice-manifest.json').read_text())
             self.assertEqual(manifest['files'],records)
             self.assertEqual(manifest['sourceArchives'],module.SOURCES)
@@ -29,11 +30,13 @@ class NoticesTest(unittest.TestCase):
             self.assertIn('GNU AFFERO GENERAL PUBLIC LICENSE',(out/'wisp-license.txt').read_text())
             self.assertIn('emscripten/system/lib/libc/musl/COPYRIGHT',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('SIL OPEN FONT LICENSE Version 1.1',(out/'emscripten-licenses.txt').read_text())
+            self.assertIn('third_party/abseil-cpp/LICENSE',(out/'emscripten-licenses.txt').read_text())
             index=(out/'index.html').read_text()
             for name,digest in module.SOURCES.items():self.assertIn(name,index);self.assertIn(digest,index)
-            with self.assertRaises(ValueError):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,out)
+            with self.assertRaises(ValueError):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,out)
             bad=Path(t)/'wrong-license.txt';bad.write_text('wrong')
-            with self.assertRaisesRegex(ValueError,'font license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',bad,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'font license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',bad,compiled,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,bad,Path(t)/'other')
 
 
 if __name__=='__main__':unittest.main()
