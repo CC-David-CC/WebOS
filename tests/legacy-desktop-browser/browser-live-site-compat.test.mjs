@@ -11,7 +11,7 @@ try{
  await page.goto(process.env.CODI_TEST_URL||'https://ksu.codes/');await page.waitForSelector('.login-toggle');await page.click('.login-toggle');await page.type('[aria-label=Username]',user);await page.type('[aria-label=Password]','test1234');await page.type('[aria-label="Confirm password"]','test1234');await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:30000});
  await page.evaluate(()=>[...surfaces.values()][0].launch('browser'));await page.waitForFunction(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('.status')?.textContent==='Ready',{timeout:180000});
  await fs.mkdir('.build/browser-live-site-compat',{recursive:true});
- const sites=process.env.CODI_STRESS==='1'?Array.from({length:5},(_,i)=>[`mcmaster-${i}`,'https://www.mcmaster.com/']):[['reference','https://example.com/'],['grainger','https://www.grainger.com/'],['mcmaster','https://www.mcmaster.com/']];
+ const sites=process.env.CODI_REFERENCE_ONLY==='1'?[['reference','https://example.com/']]:process.env.CODI_STRESS==='1'?Array.from({length:5},(_,i)=>[`mcmaster-${i}`,'https://www.mcmaster.com/']):[['reference','https://example.com/'],['grainger','https://www.grainger.com/'],['mcmaster','https://www.mcmaster.com/']];
  for(const [name,url] of sites){
   await page.evaluate(url=>{const r=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot;r.querySelector('[aria-label="Website address"]').value=url;r.querySelector('form').requestSubmit()},url);
   await new Promise(resolve=>setTimeout(resolve,process.env.CODI_STRESS==='1'?8000:18000));
