@@ -15,9 +15,11 @@ browser-first, account-isolated storage and conflict guarantees.
 * Each file gateway operation obtains signed authorization using separate
   challenge and authorization requests. The issuer currently limits each file
   authorization phase to 60 requests per minute per address it observes. The
-  live phone-sized test encountered this limit during cleanup. Confirm how the
-  trusted proxy supplies that address before treating this as a per-visitor
-  budget: multiple visitors behind NAT or a proxy may share it.
+  live phone-sized tests encountered this limit. The active Caddy route sends
+  file-authorization requests to a loopback issuer without rewriting WSGI
+  `REMOTE_ADDR`; the file authority keys its buckets by that address. Visitors
+  therefore share the proxy-observed budget on this route. This conclusion is
+  from the active routing and service code, not a 100-user load test.
 * The gateway has a bounded global request budget and an active-work limit of
   four. Do not assume four active transfers supports the target or raise it
   blindly: measure transfer memory, file descriptors, latency and disk load.
@@ -29,7 +31,9 @@ browser-first, account-isolated storage and conflict guarantees.
   make progress on the next attempt. This is not a batch protocol: folder
   listing still starts over on retry, a new tab starts over, and the full scan
   is repeated after completion. This change alone does not establish capacity
-  or fix excessive idle traffic.
+  or fix excessive idle traffic. The mirror now adds jitter and bounded
+  exponential backoff after a 429; explicit sync and new writes still try
+  immediately. This reduces synchronized retries but does not increase capacity.
 
 ## Design direction
 
