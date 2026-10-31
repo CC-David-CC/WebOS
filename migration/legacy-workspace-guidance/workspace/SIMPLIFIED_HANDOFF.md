@@ -2183,3 +2183,28 @@ The generic HTTP smoke script failed because it expects 200 on port 80 but
 Caddy redirects to HTTPS; a separate local HTTPS status probe returned 200 for
 nine sites and the configured Basic-auth 401 for hardware.ksu.codes. This
 status probe does not replace full functional checks of the other sites.
+
+### Maximized apps and Files touch menu live — 2026-10-31 UTC
+
+Simplified release `00490a673b162911ef55b86c0e536ac555249957da212fd1bfbe4ca5c1aedf71`
+uses Files bundle `96c5adddcef0b1710e63af9bde696ea25a3984fc6f25693850acb336d9d5d16d`.
+New app windows open maximized within the desktop and maximized windows follow
+viewport changes; the maximize control restores a smaller window. Layout
+persistence records the maximized state. On touch/narrow screens, Files has a
+New / Upload menu for its existing create-folder, create-file, and upload
+actions. Desktop right-click remains available. A real live registered test
+created and uploaded files via the phone-sized UI, waited for server sync,
+recovered both in a fresh browser context, and removed its files and account.
+Two open windows followed phone, 1080p and 4K emulated viewports; a restored
+window stayed independent and both states survived reload. A fine-pointer
+desktop launch was also checked. Local tests covered menu toggling, the file
+chooser and disposal. Physical F11, real phone touch and all other applications'
+individual responsive layouts remain to be tested. App-by-app work is tracked
+in `docs/APP_UNIFICATION_PROGRESS.md`.
+
+Previous frontend was `628cceb37a2bb3541390a87df258453ac0fc4a4b03fafac0a899f0784709c108`.
+Hosting backups: `change-20261031T072742460126Z` and
+`change-20261031T072742460532Z`. Generator SHA-256 remains
+`fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
+manifest is `4df245dbc575d0ee1b24b2f6dca368564f3ee635ed2494aae1f45da6f85778a3`,
+and Caddy is `ed555313f1afe1e6cef074615ec1acdf85bc8a506a7419b94620648ef3c496a0`.

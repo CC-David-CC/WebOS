@@ -11,7 +11,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 
 | App | Role | Prior evidence / known boundary | New review |
 | --- | --- | --- | --- |
-| Files | Account and temporary Linux files | Account sync and Linux copy checked; drives are separate. Touch create/upload menu under local test. | In progress |
+| Files | Account and temporary Linux files | Account sync and Linux copy checked; drives are separate. Touch create/upload menu live; phone-sized account creation, upload, sync, and fresh-context recovery checked. | In progress |
 | Text | Text and code editor | Account edit/save/reopen checked. | Pending |
 | Terminal | Temporary v86 Linux | No automatic account-drive mount. | Pending |
 | Help | Desktop help | No document workflow. | Pending |
@@ -51,4 +51,4 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | MapLibre | Shared map capability | Programmatic capability. | Pending consumer review |
 | Transformers | Shared model capability | No model configured. | Pending consumer review |
 
-Apps are being changed to open maximized and follow viewport resizing, including 1080p and 4K; users can restore a smaller window. The local shell candidate has passed viewport-emulation checks, including multiple windows and remembered layout. Physical F11 and device behavior remain to be checked. Electronics Design’s three-view large-screen layout needs individual investigation.
+Apps are being changed to open maximized and follow viewport resizing, including 1080p and 4K; users can restore a smaller window. The live shell passed viewport-emulation checks, including multiple windows and remembered layout. Physical F11 and device behavior remain to be checked. Electronics Design’s three-view large-screen layout needs individual investigation.
