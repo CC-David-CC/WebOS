@@ -23,9 +23,10 @@ class NoticesTest(unittest.TestCase):
         graphics=ROOT/'.build/browser-notice-inputs/graphics-component-notices.txt'
         freetype=ROOT/'.build/browser-notice-inputs/freetype-FTL.txt'
         upstream=ROOT/'.build/browser-notice-inputs/rust-upstream-licenses.txt'
-        if not all(p.is_file() for p in (firefox,ems,wisp,liberation,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,upstream)):self.skipTest('Pinned engine build inputs not available')
+        enum_map=ROOT/'.build/browser-notice-inputs/enum-map-notices.txt'
+        if not all(p.is_file() for p in (firefox,ems,wisp,liberation,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,enum_map)):self.skipTest('Pinned engine build inputs not available')
         with tempfile.TemporaryDirectory(prefix='codi-browser-notices-test-') as t:
-            out=Path(t)/'notices';records=module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,out)
+            out=Path(t)/'notices';records=module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,enum_map,out)
             manifest=json.loads((out/'notice-manifest.json').read_text())
             self.assertEqual(manifest['files'],records)
             self.assertEqual(manifest['sourceArchives'],module.SOURCES)
@@ -46,20 +47,22 @@ class NoticesTest(unittest.TestCase):
             self.assertIn('gfx/angle/checkout/LICENSE',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('The FreeType Project LICENSE',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Pinned upstream Rust license files',(out/'emscripten-licenses.txt').read_text())
+            self.assertIn('enum-map 2.7.3 vendored SPDX copyright lines',(out/'emscripten-licenses.txt').read_text())
             index=(out/'index.html').read_text()
             self.assertIn('copyright © 2026 The FreeType Project',index)
             for name,digest in module.SOURCES.items():self.assertIn(name,index);self.assertIn(digest,index)
-            with self.assertRaises(ValueError):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,out)
+            with self.assertRaises(ValueError):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,enum_map,out)
             bad=Path(t)/'wrong-license.txt';bad.write_text('wrong')
-            with self.assertRaisesRegex(ValueError,'font license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',bad,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,bad,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'Rust component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,bad,stdlib,pulse,rlbox,graphics,freetype,upstream,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'standard library'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,bad,pulse,rlbox,graphics,freetype,upstream,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'Pulse Rust license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,bad,rlbox,graphics,freetype,upstream,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'RLBox license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,bad,graphics,freetype,upstream,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'graphics component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,bad,freetype,upstream,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'FreeType license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,graphics,bad,upstream,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'upstream Rust notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,bad,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'font license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',bad,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,enum_map,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,bad,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,enum_map,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'Rust component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,bad,stdlib,pulse,rlbox,graphics,freetype,upstream,enum_map,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'standard library'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,bad,pulse,rlbox,graphics,freetype,upstream,enum_map,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'Pulse Rust license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,bad,rlbox,graphics,freetype,upstream,enum_map,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'RLBox license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,bad,graphics,freetype,upstream,enum_map,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'graphics component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,bad,freetype,upstream,enum_map,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'FreeType license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,graphics,bad,upstream,enum_map,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'upstream Rust notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,bad,enum_map,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'enum-map notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,rlbox,graphics,freetype,upstream,bad,Path(t)/'other')
 
 
 if __name__=='__main__':unittest.main()
