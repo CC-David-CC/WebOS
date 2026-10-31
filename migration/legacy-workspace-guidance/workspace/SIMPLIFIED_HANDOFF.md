@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — G-code relative movement
+
+Live static release `91a9a4b45c5a6b0a4a4dca28badaa96494c344173067216e513a5f94b604d191`; previous `93a06328aae04a0873cc7d9eb59d413aa15e0c3e4814ed8d0e8f3f1d93942a2f`. The parser normalizes G90/G91 XYZ movements before grouping layers. It treats M82/M83 extrusion mode separately; firmware dialects can differ. It rejects multiple commands on one line, positioning-mode lines with coordinates, arc-center mode changes, and invalid numeric moves, in addition to previous unsupported cases. Local worker tests compared equivalent absolute/relative coordinates, extrusion and layers; desktop and emulated-phone account tests compared pixels at the same canvas size and recovered the file in a fresh session. A live emulated-phone workflow also passed; the disposable account was removed. An initial pixel comparison failed because status text changed canvas height; controlling the test canvas size produced matching images. Large-worker cancellation passed locally. This is a visual aid, not machine or safety validation, and physical touch and other controller dialects remain unverified.
+
 ## 2026-10-31 — Digital Logic combined-circuit examples
 
 Live static release `93a06328aae04a0873cc7d9eb59d413aa15e0c3e4814ed8d0e8f3f1d93942a2f`; previous `b737b94d940239632dd62110f8260775ee56ed4316e62b10ed4f730e74264c39`. The example selector now offers a half-adder and a 2-to-1 multiplexer alongside the single gates. Local desktop and emulated-phone tests checked each truth-table row, interactive input changes, replacement, and disposal; local registered-account desktop and phone-sized workflows and a live phone-sized workflow saved, synced, reopened and checked the half-adder truth table. The live disposable account was removed. These are logic models, not timing, electrical, or hardware validation; physical touch remains unverified.
