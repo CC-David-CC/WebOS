@@ -2015,3 +2015,16 @@ intermediate link. Pinned comparisons, counts, scripts and limitations are in
 WASM link and does not by itself resolve all licensing obligations. The first
 attempt used the upstream ordinary `-shared` recipe and hit its documented
 linker crash; the relocatable recipe succeeded. No live service was changed.
+
+### Browser final-link symbol comparison — 2026-10-31 UTC
+
+A mapped final Browser relink produced WASM byte-for-byte identical to the
+live engine. Its final map and a regenerated, hash-matching intermediate map
+were joined by symbol name using `tools/join_gecko_final_maps.py`. The join
+found unambiguous direct matches to 315 Rust package names, while 637 matched
+symbol names had multiple possible input categories and 2,955 final libxul
+symbol names had no match. Hashes, reproducible parser, counts and caveats are
+in `apps/system/browser/docs/SOURCE_PROVISION.md`. Inlining and symbol naming
+mean this is not proof of package absence or complete license compliance.
+No live runtime or notice changed. The compact summary is retained locally;
+temporary engine and linker-map copies were removed.
