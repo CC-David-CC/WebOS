@@ -2400,3 +2400,19 @@ the edit, synced it, recovered and resaved it from a fresh browser session, and
 uploaded through Files. Disposable live accounts and test files were removed.
 Physical touch, arbitrary embedded images and full upstream compatibility are
 not established.
+
+
+## 2026-10-31 — SVG-edit file workflow
+
+Live static release `477085a902f1ec63021de1a0b8359985083f6891c82c1d0855a32f31f0cda896`;
+previous `641af409e1602e8278c95ee22a06c8c7a01e06642d53e238ff40bdc70d336f41`.
+Hosting generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`;
+manifest SHA `51cb1071dc7bba7b0d0a6b8d91ccaaf574fc7a33e951b0e4bde4237c6a1b9b78`.
+Only SVG-edit assets and app catalog changed. The editor checks XML and SVG
+root before opening, attempts to restore the prior drawing if the editor rejects
+a valid-looking file, offers a folder picker, and confirms replacements. Local
+and live desktop and phone-sized viewport tests used the rectangle tool with
+pointer input, rejected malformed SVG without losing it, synced to account disk,
+reopened in a fresh browser session and uploaded through Files. Two disposable
+live accounts and their files were removed. Physical touch and complex SVG
+compatibility are not established.
