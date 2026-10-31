@@ -862,3 +862,17 @@ The source notice builder now requires this license explicitly. Link-script
 inspection and symbol checks narrowed the LGPL questions but do not complete
 the full third-party license review.
 
+### Report-enabled desktop candidate — 2026-10-30
+
+The static candidate `.build/simplified-release-reports-r1` contains the
+report-enabled Browser bundle and has cache ID
+`5d9f737d4fe4190f4edcd740ab4ac3b2c395a4a683ed23c1072ec438528ecd74`.
+The Builder's optional `--desktop-app-source` supplied a reviewed `app.js`
+snapshot from commit `2ed6d0259`, preserving the separate uncommitted Crafts
+menu work. That file's SHA-256 is
+`bc0da0094bc80c1cdd6524a9491b60209449d7fb2d82c7fdf24db646470e85e5`.
+An independent Browser-only rebuild matched the candidate's full Browser
+catalog entry and bundle SHA-256
+`2af8a8f2a644daf6bd7039170ddef2dc93f9799f7c6bdc8238f5506cd97f8079`.
+The candidate is not live; engine licensing and live end-to-end tests remain.
+
