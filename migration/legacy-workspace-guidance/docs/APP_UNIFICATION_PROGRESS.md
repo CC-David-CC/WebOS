@@ -34,7 +34,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Replicad | Box/cylinder model generator | Editable projects, sync and STL/STEP export tested locally and live at desktop and phone-sized viewports; upload tested locally. A repeat live run hit a gateway request limit. No 3D preview, CAD scripting, or manufacturing validation. | Partial |
 | Grid tools: Kiri:Moto | 3D printing | Model import and G-code export checked; printer settings need independent review. | Pending |
 | Grid tools: Mesh:Tool | Mesh editing | Import, union and account export checked. | Pending |
-| G-code Preview | G-code viewer | Viewing checked; not an editor or printer connection. | Pending |
+| G-code Preview | G-code viewer | Local and live desktop and phone-sized tests cover the example, upload through Files, sync, invalid-file recovery, visible travel toggle, and fresh-session reopening. Primarily interprets 3D-printer G-code; no hardware or safety validation. Large files run on the UI thread. Physical touch remains unverified. | In progress |
 | Arduino Simulator | AVR firmware | Blink and independent windows checked; simulation is not hardware validation. | Pending |
 | Pico Simulator | RP2040 firmware | Blink checked; flash and SSI support are partial. | Pending |
 | Digital Logic | Gates | Basic gate and account save/reopen checked; no full schematic editor. | Pending |
