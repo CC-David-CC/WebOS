@@ -577,8 +577,8 @@ systemd syntax preflight. A separate isolated run of the installed candidate
 as the actual `codi-issuer` service account verified configuration, the
 Browser challenge handler, split login and an IP block using the existing
 Python environment. A test rejects user-writable fallback modules. The
-superseded candidate and unused environment were removed. The live file
-service still has the old 8 MiB limit.
+superseded candidate and unused environment were removed. The later entry
+records the subsequent file gateway upgrade.
 
 ### Additional trusted-ingress gap — 2026-10-30
 
@@ -671,9 +671,9 @@ account/relay test passed again; both guard units and services were active.
 Only the backend, login filter and Browser outgoing policy are live. The
 Browser app/engine are not yet published; ordinary clicked downloads remain
 unfinished. Country blocking and an existing live transfer under a rule
-change still need testing, as do the other server egress paths. The account
-file service remains at 8 MiB pending its separate 128 MiB rollout. A login
-block does not revoke an existing session.
+change still need testing, as do the other server egress paths. The desktop
+remains limited to 8 MiB pending the frontend/proxy rollout described below.
+A login block does not revoke an existing session.
 
 ### Browser sources published and 128 MiB worker candidate — 2026-10-30
 
@@ -705,7 +705,44 @@ dependency lock, and refuses uncommitted worker inputs. Its reproducible
 candidate manifest SHA-256 is
 `53588b25c06c7b88e038bcca4cca13b8de9bcabc35b952d463c1d7ff3727b5c0`.
 A fresh local test streamed two signed 128 MiB uploads concurrently in 35.1 s
-with approximately 115672 KiB process high-water memory. This candidate is
-not installed or live; issuer metadata, frontend and proxy limits still need
-coordinated deployment and live testing. The static release builder now hashes
-files in chunks instead of reading the entire WASM asset into memory.
+with approximately 115672 KiB process high-water memory. The worker passed
+the existing root file operator's runtime and policy preflight, was upgraded,
+rolled back to the previous worker and upgraded again through the journaled
+private-file code helper. Each transition reported preserved permission and
+folder bindings without restoring account/file data. The new worker is now
+active at `/srv/codi-gateway/releases/53588b25c06c7b88e038bcca4cca13b8de9bcabc35b952d463c1d7ff3727b5c0`;
+the previous worker remains available for rollback. Its public upload
+capability reports 134217728 bytes. A real registered browser performed a
+signed binary write, read with hash verification and delete; its exact empty
+test folder, gateway records and disposable account were then removed. Issuer
+metadata, browser mirror and proxy limits still restrict the desktop to 8 MiB,
+so a live 128 MiB round trip remains unproven. The static release builder now
+hashes files in chunks instead of reading the entire WASM asset into memory.
+
+### Large-file ingress and notebook names — 2026-10-30
+
+The assembled local desktop completed an authenticated 128 MiB binary
+write/read with matching SHA-256. The live gateway ingress was then changed
+using `activate-large-file-ingress.py`: its exact KSU-only flag change was
+applied, rolled back and reapplied with all ten site statuses preserved.
+Current hosting manifest is
+`a287d968a80cb8387295a4a5fb6a23cb039efc6e127aaebb7e7cb7d699481260`
+and Caddy is `0abb1284887d57115a48fc6c6a554207930294c0582c420cc1f13e168e5ad016`.
+The earlier hosting pins above are historical. A real signed registered
+browser directly used the live gateway to write, read and delete 128 MiB with
+matching SHA-256 `fb3251b1618f009f9fb644d1302b668a65a131e58521ef86e4d5080625dd138a`;
+its exact disposable account and folder were removed. The live desktop and
+issuer still retain the earlier file limit, so the live desktop mirror's
+end-to-end 128 MiB transfer has not been verified.
+
+Notebook temporary names previously used the desktop window number; source now
+uses a fresh random UUID per window. The new notebook build is only in the local
+candidate, not live. JupyterLite config namespaces browser working storage by
+the current account; server My files uses an authenticated account-to-folder
+mapping. Browser storage namespaces are not a security boundary against a
+person with access to that same browser profile. A real test with two accounts
+open in separate tabs of the same browser profile passed: their notebook
+storage namespaces and UUID names differed, the second notebook listing did
+not show the first, and the second account could not read the first account's
+My files test document. A separate sign-out/switch test timed out and remains
+unresolved; this simultaneous-tab test does not establish sign-out behavior.
