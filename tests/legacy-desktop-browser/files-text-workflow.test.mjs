@@ -6,7 +6,7 @@ try{
  await p.setViewport(phone?{width:412,height:915,isMobile:true,hasTouch:true,deviceScaleFactor:1}:{width:1920,height:1080,deviceScaleFactor:1});
  await p.evaluateOnNewDocument(()=>{const f=window.fetch;window.fetch=(u,...a)=>String(u).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):f(u,...a)});
  await p.goto(base);await p.waitForSelector('.login-toggle');await p.click('.login-toggle');await p.type('[aria-label=Username]',username);await p.type('[aria-label=Password]','test1234');await p.type('[aria-label="Confirm password"]','test1234');await p.click('.login-form button[type=submit]');await p.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:30000});
- await p.evaluate(()=>surfaces.get('Desktop').launch('files'));await p.waitForSelector('.codi-chonky');await p.waitForFunction(()=>document.querySelector('.files-content')?.innerText.includes('Files are up to date.'));
+ await p.evaluate(()=>surfaces.get('Desktop').launch('files'));await p.waitForSelector('.codi-chonky');await p.waitForFunction(()=>document.querySelector('.files-content')?.innerText.includes('Files checked with the server.'));
  p.once('dialog',d=>d.accept('lesson.txt'));
  if(phone)await p.tap('[aria-label="New or upload"]');else await p.$eval('.codi-chonky',e=>e.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,clientX:350,clientY:350})));
  await p.waitForSelector('[role=menuitem]');await p.evaluate(()=>[...document.querySelectorAll('[role=menuitem]')].find(e=>e.textContent==='New file').click());
