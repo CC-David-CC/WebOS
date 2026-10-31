@@ -1915,3 +1915,18 @@ directories. The archive and report hashes, caveats, verification tools and
 workspace/toolchain distinctions are in `apps/system/browser/docs/SOURCE_PROVISION.md`.
 These are link inputs and heading coverage, not proof of final retained
 objects or complete license compliance. No live runtime or notice changed.
+
+### Live rule-manager and documentation check — 2026-10-31 UTC
+
+Read-only live operator checks reported empty incoming-login and outgoing
+IP/country block lists, the configured Browser domain blacklist, a populated
+but disabled whitelist, and the independent server audit disabled with no
+key or ledger present. The Browser and network-policy READMEs now correctly
+identify the running relay and distinguish the historical trusted-proxy
+finding from the active guard. The new IP/country outgoing list covers the
+Browser relay, not the separate Linux guest or every server egress path;
+login blocks do not revoke existing sessions. The focused policy and operator
+tests passed (11 and 2 tests) with a scoped maxminddb 2.8.2 environment. The
+first attempt used the shared auth venv, which lacked maxminddb, and failed
+its local-country-database test; the isolated dependency environment fixed the
+test setup. No live policy was changed for these read-only checks.
