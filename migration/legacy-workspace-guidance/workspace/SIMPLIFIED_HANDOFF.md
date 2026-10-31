@@ -1,5 +1,11 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Audio Editor WAV precision
+
+Live static release `46ceeb7e966bc0ae3cd50dbdcc8262bb10d308a901a9eeb9337a61b8ce3988f2`; previous `92583c0e95dd3bf778fb6b209b4891cd7c8aa6ed9423eff7b260de12295df53e`. Save options now offers 16-bit PCM, 24-bit PCM and 32-bit float WAV. PCM clips values outside −1 to 1; float retains finite out-of-range values, although playback may clip. Existing version checks and the 128 MiB output limit apply.
+
+Local desktop, emulated phone and 4K tests plus live desktop and emulated phone tests checked sample values, output format, rate, synchronization, fresh-session reopen and stale-save protection. An earlier live phone-sized run hit the server request limit during consecutive rapid sync tests; a later run passed after the limit cleared. Worker tests cover 24-bit interleaving and odd padding, float headers, nonfinite rejection and the 128 MiB limit. Physical phones, all codecs and effects, and multitrack persistence remain unqualified.
+
 ## 2026-10-31 — Audio Editor WAV sample rates
 
 Live release `92583c0e95dd3bf778fb6b209b4891cd7c8aa6ed9423eff7b260de12295df53e` decodes conventional RIFF/WAVE files at their source sample rate when the browser supports it. If the rate is unavailable or unsupported, decoding uses the browser rate and reports that the original may differ. WAV output remains 16-bit and does not preserve source bit depth or compressed formats. Existing-output checks now use mirror metadata instead of rereading audio bytes. Local and live desktop and phone-sized tests round-tripped a 32 kHz WAV through reverse, save and fresh-session reopen; local 4K-sized and forced-fallback tests also passed. Physical audio-device behavior, all codecs and multitrack saving remain unverified.
