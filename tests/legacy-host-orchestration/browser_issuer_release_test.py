@@ -19,6 +19,21 @@ PIN='7faf30b5457fa629acc7ffa695c15a6a8a56098ba4372412260ade478af5a537'
 
 
 class CandidateIssuerTest(unittest.TestCase):
+    def test_managed_file_policy_matches_issuer_limit(self):
+        if not os.environ.get('CODI_ISSUER_FILE_LIMIT'):self.skipTest('Candidate limit not specified')
+        spec=importlib.util.spec_from_file_location('candidate_files_management',RELEASE/'origin_service/files_management.py')
+        sys.path.insert(0,str(RELEASE.resolve()))
+        try:module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        finally:sys.path.pop(0)
+        class Manager:
+            def health(self,backend):self.backend=backend
+        manager=Manager();module.validate=lambda op,config:(manager,'expected-backend')
+        expected=int(os.environ['CODI_ISSUER_FILE_LIMIT'])
+        class Operator:
+            def issuer_config(self,config):return {'gateway':{'version':'codi-user-files/1','basePath':'/gateway','fileBytes':expected}}
+        module.ready(Operator(),{'userFiles':{'enabled':True},'basePath':''})
+        self.assertEqual(manager.backend,'expected-backend')
+
     def test_turn_preference_matches_existing_profile(self):
         baseline=ROOT/'.build/browser-native-candidate/base-release'
         if not baseline.is_dir() or not RELEASE.is_dir():self.skipTest('Candidate and baseline releases required')
@@ -68,6 +83,8 @@ class CandidateIssuerTest(unittest.TestCase):
                     time.sleep(.1)
                 config=json.loads(raw)
                 self.assertEqual(config['browserRelay']['policySHA256'],PIN)
+                if os.environ.get('CODI_ISSUER_FILE_LIMIT'):
+                    self.assertEqual(config['gateway']['fileBytes'],int(os.environ['CODI_ISSUER_FILE_LIMIT']))
                 self.assertEqual(call(main,'/api/v1/auth',post=True)[0],404)
                 self.assertEqual(call(login,'/config.json')[0],404)
                 self.assertEqual(call(login,'/api/v1/auth',post=True,ip='203.0.113.8')[0],403)
