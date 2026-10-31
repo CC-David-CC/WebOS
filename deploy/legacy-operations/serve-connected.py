@@ -25,7 +25,7 @@ from origin_service.http_server import BoundedServer, QuietHandler
 
 FILES=['index.html','bootstrap.js','style.css','app.js','reference.js','terminal.js','desktop-apps.js','config.json']
 RUNTIME=['libv86.js','v86.wasm','seabios.bin','vgabios.bin','vmlinuz','initramfs.cpio.gz']
-def stage(public=None):
+def stage(public=None, *, bundled=None):
     public=public or ROOT/'.build/connected-public'
     public.mkdir(parents=True,exist_ok=True)
     for name in FILES:
@@ -38,7 +38,7 @@ def stage(public=None):
     (public/'storage/browser').mkdir(parents=True,exist_ok=True)
     shutil.copy2(ROOT/'storage/browser/mirror.mjs',public/'storage/browser/mirror.mjs')
     # Public apps are compiled separately before staging.
-    bundled=ROOT/'.build/simplified-apps'
+    bundled=Path(bundled) if bundled is not None else ROOT/'.build/simplified-apps'
     if not (bundled/'apps.json').is_file():
         raise ValueError('Build apps first: python3 scripts/build-public-apps.py --output .build/simplified-apps')
     shutil.copytree(bundled,public/'assets/desktop',dirs_exist_ok=True)
