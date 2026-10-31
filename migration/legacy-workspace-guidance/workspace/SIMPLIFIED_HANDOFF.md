@@ -2384,3 +2384,19 @@ edited its label, rejected malformed XML without losing that edit, saved and
 synced it, recovered in a fresh browser session, and uploaded via Files. The
 two disposable live test accounts and their files were removed. This does not
 prove arbitrary compressed payloads, full touch UX or physical-phone behavior.
+
+
+## 2026-10-31 — Excalidraw file workflow
+
+Live static release `641af409e1602e8278c95ee22a06c8c7a01e06642d53e238ff40bdc70d336f41`;
+previous `1ba25a429096862853834d5eb47b83a13c5aece4b46917e0f5605684a0934c28`.
+Hosting generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`;
+manifest SHA `74f77dda811ebacf8d24760ab3ca121e0e935b31a6b6924c55f825bc076e4310`.
+Only Excalidraw assets and the app catalog changed. Open validates basic
+document structure before replacing the drawing; Save location chooses a folder
+and replacing an existing file requires confirmation. Local and live desktop
+and emulated-phone tests drew a shape, rejected an invalid file without losing
+the edit, synced it, recovered and resaved it from a fresh browser session, and
+uploaded through Files. Disposable live accounts and test files were removed.
+Physical touch, arbitrary embedded images and full upstream compatibility are
+not established.
