@@ -19,7 +19,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Browser | Independent web browser | Experimental; temporary profile and no audio. Scroll fix verified in emulation. | In progress |
 | Document Editor | Reports | Folder selection, invalid-file draft preservation and fresh-session recovery pass locally and on the live desktop. On the live phone-sized run those checks passed, but fixture cleanup hit a server request limit; test accounts were cleaned separately. Account project and PDF export checked locally; not a Word editor. | In progress |
 | PDF Viewer | Read-only documents | Open, page navigation, resize and failed-open recovery checked locally and live on desktop and phone-sized views; report preview and PC upload checked locally. Canvas-only: no text selection, search or annotations. | In progress |
-| Spreadsheet | Tables | Native save, XLSX import/export, folder selection and invalid-file draft recovery checked locally on desktop and phone-sized views. Advanced Excel compatibility limited. | In progress |
+| Spreadsheet | Tables | Native save, XLSX import/export, folder selection and invalid-file draft recovery checked locally. The live desktop workflow passed; phone-sized checks reached fresh-session recovery but fixture cleanup hit the request limit. Advanced Excel compatibility limited. | In progress |
 | Data Explorer | Data analysis | CSV query and chart checked; query state is temporary. | Pending |
 | Python Notebook | Browser Python | Pyodide and account notebook workflow checked; untrusted notebooks are not isolated. | Pending |
 | Image Editor | Images | PNG/JPEG/WebP workflow checked; animated GIF editing unsupported. | Pending |
