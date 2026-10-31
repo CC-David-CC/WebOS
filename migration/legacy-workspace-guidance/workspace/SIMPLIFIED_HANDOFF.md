@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — larger text documents
+
+Live release `245696116948979eba6935624562050d8dc5e923c4c4f5ce200eeb30fd00035a` raises Text’s opening limit to the shared 128 MiB file limit. CodeMirror indexed lookups avoid rebuilding the document for cursor position and line navigation; word counts are omitted above 2,097,152 UTF-16 code units. Broad searches stop after 50,000 matches and disable Replace all until narrowed. The mirror exposes metadata-only `stat` for change checks. Local and live desktop and emulated-phone tests opened, edited and synced an 8 MiB file and checked the search limit and line navigation; a local desktop test completed an approximately 127 MiB round trip but was slow and memory intensive. Single very long lines, low-memory devices, the exact maximum and physical touch remain unqualified.
+
 ## 2026-10-31 — notebook working-copy cleanup
 
 Live release `f76d2c172d3691c0f048cfb84124181ff1772fb53abaf5b1b33fd9dd844f3f09` requests best-effort removal of each closing window’s generated JupyterLite file and checkpoint keys from that account’s browser database, including pending replaced copies; account My files are separate. Unknown database layouts are left untouched. Local desktop, phone-sized and 4K-sized and live desktop and phone-sized tests closed and reopened windows, verified a second kernel still executed, checked both saved server copies, and verified old working-copy keys were absent. An initial live candidate emitted a Jupyter disposed-session error; the explicit widget shutdown was removed and the revised live tests passed without page errors. Browser crashes, interrupted startup, older copies and future storage-layout changes may leave temporary data.
