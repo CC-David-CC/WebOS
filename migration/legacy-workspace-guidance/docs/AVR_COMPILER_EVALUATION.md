@@ -184,3 +184,28 @@ headers only. Reproducing or otherwise establishing the actual WASM compiler,
 `libgcc`, WASM Binutils, Emscripten, their build dependencies and complete
 corresponding-source distribution remains open. Do not deploy the research
 compiler on the basis of header matches.
+
+### Debian i386 toolchain in the existing v86 guest — 2026-10-31
+
+A separate **local-only** experiment tested Debian Bookworm's i386 `gcc-avr` (5.4.0), `binutils-avr` and `avr-libc` inside the actual 256 MiB v86 Linux guest. The guest image was not modified and no compiler was deployed. The toolchain and required matching guest libraries were copied into its temporary 9p home, and the test explicitly copied generated HEX from the guest to the account mirror for AVR8js; normal desktop apps still do not mount that temporary filesystem as My files.
+
+- A real build of the app's D2-input C example produced HEX. The existing AVR8js simulator ran it and the D2 switch drove the D13 LED.
+- A second build compiled a small C++ `setup`/`loop` sketch against Arduino core `wiring.c`, `wiring_digital.c` and `main.cpp`; its HEX also drove D13 in AVR8js. The test supplies `#include <Arduino.h>` explicitly: it is **not** an Arduino `.ino` preprocessor, a complete core build or arbitrary library support. Invalid C++ returned a compiler error and no object file.
+- On this workstation, the repeated run took 58.523 seconds to unpack the approximately 36.1 MB compressed toolchain, 2.849 seconds to build the C example, and 18.039 seconds to build the sketch and those core files. The archive contains about 123.8 MB of regular-file payload. These are individual local measurements, not phone results or a controlled comparison with the earlier WASM candidates. First upload, guest boot and transfer were outside the recorded build times.
+- The first guest attempt failed because `libdl.so.2` was missing. Adding the matching guest `libdl` and `libm` libraries fixed that observed failure. The build, diagnostic and simulator tests then passed using archives produced by the preparation script. A separate archive comparison checked 1,867 toolchain entries and 47 Arduino core file contents against the earlier successful inputs.
+
+The binary packages were authenticated against Debian Bookworm's signed `InRelease` using the existing Bookworm archive keyring; the authenticated i386 `Packages.xz` SHA-256 was `900739f3ad35b689d23f4a97ee2dc7943bebb3763c7c41f9a03072d639444e4d`. Their SHA-256 values are pinned in `tests/fixtures/avr-compiler-probe/prepare-v86-avr-probe.py`. Debian's authenticated `Sources.xz` SHA-256 was `92d11a035571df011f06f28c61cb9825130ef1d92abb2f2e0525e8674dc44af8`; all nine source-package metadata, original archive and Debian patch files for these three packages were downloaded and matched its checksums. The `gcc-avr` source archive SHA-256 was `282a83501e2e7b9e4911ce3f621809d1b644231745e47894ccd4b9c22de3840d`; its Debian patch SHA-256 was `faf4cc16d0d90f5cd964dbf1ea2a47178e6f39dcbe3160046fac085f3ac48d61`. The matching runtime libraries came from the existing Debian guest root (`libc6` 2.36-9+deb12u14, `libgmp10` 2:6.2.1+dfsg1-1.1, `libmpc3` 1.3.1-1, `libmpfr6` 4.2.0-1 and `zlib1g` 1:1.2.13.dfsg-1). The 47 Arduino core files were checked against the pinned research release archive and its source checkout, as described above.
+
+To repeat, obtain the three exact Debian `.deb` files named and hashed by `prepare-v86-avr-probe.py`, the existing matching i386 guest root, and the pinned research `avrwasm.tar` used only as an Arduino-core source. Run:
+
+```
+python3 tests/fixtures/avr-compiler-probe/prepare-v86-avr-probe.py \
+  --packages /path/to/debs --guest-root /path/to/debian-root \
+  --core-release /path/to/avrwasm.tar \
+  --output /tmp/v86-avr.tar.gz --core-output /tmp/arduino-core.tar.gz
+CODI_AVR_V86_TARBALL=/tmp/v86-avr.tar.gz \
+  CODI_AVR_CORE_TARBALL=/tmp/arduino-core.tar.gz \
+  node tests/avr-v86-research.test.mjs
+```
+
+The test requires an isolated loopback Simplified preview with Terminal and Arduino Simulator built and a local Chromium debugging endpoint; its URL guard refuses non-loopback targets. It creates temporary guest and test-account data. Remove only the isolated fixtures after testing. The archive-preparation script rejects changed input hashes and existing output paths. This research archive deliberately omits release notices and corresponding source: before any distribution, review and package the complete corresponding source, notices and dependency materials, and build a supported install/cache strategy. An actual product workflow still needs a safe guest-to-My-files transfer, sketch preprocessing, general core/library support, resource and cancellation policy, cross-window/session handling, and phone testing. Do not present this as an enabled Arduino compiler or physical-hardware validation.
