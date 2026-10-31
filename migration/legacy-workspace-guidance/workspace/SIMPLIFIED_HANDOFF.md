@@ -2002,3 +2002,16 @@ and closing existing traffic after a new rule. The DNS and redirect tests used
 local fixtures; they did not change public DNS or demonstrate every external
 resolver/network configuration. The separately documented network-specific
 NAT64-prefix limitation remains.
+
+### Reproduced Gecko intermediate link map — 2026-10-31 UTC
+
+An isolated reproduction used the pinned upstream relocatable relink recipe
+and a linker map, without replacing the retained libxul. The result matched
+all retained library sections except the generated module name and build ID;
+name subsections other than module name also matched. The map identified
+5,269 distinct Rust archive members across 326 package names in the
+intermediate link. Pinned comparisons, counts, scripts and limitations are in
+`apps/system/browser/docs/SOURCE_PROVISION.md`. This is not the final Browser
+WASM link and does not by itself resolve all licensing obligations. The first
+attempt used the upstream ordinary `-shared` recipe and hit its documented
+linker crash; the relocatable recipe succeeded. No live service was changed.
