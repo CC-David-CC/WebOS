@@ -42,13 +42,16 @@ def protected(path,*,directory=False,mode=None):
     if not expected or info.st_uid!=0 or info.st_mode&0o022 or (not directory and info.st_nlink!=1) or (mode is not None and stat.S_IMODE(info.st_mode)!=mode):raise ValueError('Unprotected operator input: '+str(path))
     return info
 
+def protected_parents(path):
+    for directory in path.parents:protected(directory,directory=True)
+
 def load(name,path):
     spec=importlib.util.spec_from_file_location(name,path);module=importlib.util.module_from_spec(spec);sys.modules[name]=module;spec.loader.exec_module(module);return module
 
 def imports():
     # The installed operator bundle is named by its manifest hash, and all its
     # code is verified before it is imported with root privileges.
-    root=Path(__file__).resolve().parents[2];protected(root,directory=True)
+    root=Path(__file__).resolve().parents[2];protected(root,directory=True);protected_parents(root)
     manifest=root/'browser-audit-operator.json';protected(manifest,mode=0o644);raw=manifest.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=root.name:raise ValueError('Operator manifest pin changed')
     value=json.loads(raw);names={'active-system/scripts/manage-browser-audit.py','active-system/scripts/render-browser-service.py','active-system/browser_service/audit_switch.py'}
@@ -61,7 +64,7 @@ def imports():
         protected(path,mode=0o644);data=path.read_bytes()
         if value['files'][name]!={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}:raise ValueError('Operator code changed')
     # Verify the candidate runtime before importing its policy validator.
-    protected(BASE,directory=True);m=BASE/'browser-relay-runtime.json';protected(m,mode=0o644);raw=m.read_bytes()
+    protected(BASE,directory=True);protected_parents(BASE);m=BASE/'browser-relay-runtime.json';protected(m,mode=0o644);raw=m.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=RUNTIME:raise ValueError('Browser runtime pin changed')
     data=json.loads(raw);found=set()
     for path in BASE.rglob('*'):
@@ -113,6 +116,7 @@ def main():
     params=dict(runtime=RUNTIME,venv=VENV,issuer=ISSUER,policy=POLICY,proxy_uid=997,proxy_gid=984,reports=True)
     off=renderer.render(**params,audit=False).encode();on=renderer.render(**params,audit=True).encode()
     for path in (DEST,UNIT,HOST_LOCK,POLICY_LOCK):protected(path)
+    for path in (DEST,UNIT,POLICY_LOCK,JOURNAL):protected_parents(path)
     with HOST_LOCK.open('r+') as host, POLICY_LOCK.open('r+') as policy_lock:
         fcntl.flock(host,fcntl.LOCK_EX|fcntl.LOCK_NB);fcntl.flock(policy_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         if subprocess.run(['systemctl','show','codi-browser-relay.service','-p','DropInPaths','--value'],check=True,text=True,capture_output=True).stdout.strip():raise ValueError('Unexpected service drop-ins')
