@@ -17,7 +17,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Help | Desktop help | No document workflow. | Pending |
 | Calculator | Calculator | No document workflow. | Pending |
 | Browser | Independent web browser | Experimental; temporary profile and no audio. Scroll fix verified in emulation. | In progress |
-| Document Editor | Reports | Account project and PDF export checked; folder selection, invalid-file draft preservation and fresh-session recovery pass local desktop and phone-sized tests. Not a Word editor. | In progress |
+| Document Editor | Reports | Folder selection, invalid-file draft preservation and fresh-session recovery pass locally and on the live desktop. On the live phone-sized run those checks passed, but fixture cleanup hit a server request limit; test accounts were cleaned separately. Account project and PDF export checked locally; not a Word editor. | In progress |
 | PDF Viewer | Read-only documents | Open and page navigation checked. | Pending |
 | Spreadsheet | Tables | Native save and XLSX import/export checked; advanced Excel compatibility limited. | Pending |
 | Data Explorer | Data analysis | CSV query and chart checked; query state is temporary. | Pending |

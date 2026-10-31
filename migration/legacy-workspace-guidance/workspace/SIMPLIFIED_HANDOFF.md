@@ -2274,3 +2274,9 @@ Hosting backups: `change-20261031T074116644050Z` and
 `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
 manifest `ff9309da3ac2bcda972f88b34e7bc70b296ccbf92d0f2027aaf7e8822ba07703`,
 and Caddy `d6f62938039e9718e8158994d8f35b9a6078f60eff925ac1d85b8a581a2a0081`.
+
+### Document Editor account-file workflow (2026-10-31)
+
+Live release `3da419b1cd6f33642b73ca9bfa64d5d3de338c698c508b65855f1a721a029787` adds Open from My files, Choose save folder, and preserves the current editable draft if a chosen document cannot be opened. Local desktop and phone-sized browser tests passed, including save, sync and fresh-session recovery; the broader desktop report/PDF and touch tests also passed. On the live site, the desktop test passed. The phone-sized run completed the same save/recovery checks but encountered a server request limit during fixture cleanup; its test account was then cleaned directly with path and content checks. Investigate request limits when reviewing sync behavior. This is not yet a complete Document Editor review.
+
+Hosting generator SHA256 `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`, manifest `68865ff3e73a2d3becc89d0b1de2cc46de7a50f56e5f92466e199770fd63ee42`; prior active release `099f46ea3c88af6866333d24508f6af6a7d07e1f403506529a704f35fd00d7a7`. The staging check found changes only in the Document Editor bundle and app catalog.
