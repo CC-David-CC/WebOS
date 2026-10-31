@@ -1692,6 +1692,16 @@ restored for the successful rerun, the test rule restored, its scheduled
 timer stopped, and the guard removed. Audit remains disabled. The protected
 source index still needs the new `933db11ea` source snapshot.
 
+That snapshot is now listed on the authenticated source page as
+`codi-browser-source-933db11ea.tar.zst`, SHA-256
+`86a7231825d85de9199d5117ffe12d4f18f941161f75ad7351f4df00d0169836`.
+A registered live session downloaded the complete file and verified its hash;
+the test account was removed. The source index and manifest were regenerated
+from the pinned notice inputs and now match the generator byte for byte.
+Index SHA-256 `5aece1521b25cc96606d7805b0fd9836f37e55f043f1459aae7386c0b279d939`;
+manifest `1cd10b58626614a584ebdc74e539ac7653fac56e1953c00a36a424bdd822a500`.
+The prior files are at `/var/lib/codi-ingress/browser-source-reproducible-index-backup.json`.
+
 Relay rollback was exercised; previous unit is
 `/var/backups/codi-browser-relay-before-rule-race-runtime.service`. Current
 audit operator is `c98a0663a48f646a6c4e88b78939b0021ac53e05674547d966e734be9f36bf2c`;
