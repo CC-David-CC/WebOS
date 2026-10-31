@@ -38,7 +38,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Arduino Simulator | AVR firmware | Blink and independent windows checked; simulation is not hardware validation. | Pending |
 | Pico Simulator | RP2040 firmware | Blink checked; flash and SSI support are partial. | Pending |
 | Digital Logic | Gates | AND truth table checked locally; local and live desktop and phone-sized tests cover upload, sync, invalid-file recovery, close warning, Files launch and fresh-session reopening. JSON netlists only; no feedback, sequential devices or full schematic editor. Physical touch remains unverified. | In progress |
-| Circuit Simulator | CircuitJS | Divider simulation and account save checked; not ngspice. | Pending |
+| Circuit Simulator | CircuitJS | Local and live desktop and phone-sized tests cover a voltage-divider change, upload, sync, bad-file recovery, close warning and fresh-session Files open. Not ngspice or hardware validation; physical touch and broader circuit formats remain unverified. | In progress |
 | Electronics Design | Electronics editor | Account project save/reopen checked; sample is not a production board. | Pending |
 | Embroidery Studio | Stitch design | Example generation and account save checked; physical sewing unverified. | Pending |
 | Stitch Converter | Stitch formats | Example conversion and account save checked; machine compatibility unverified. | Pending |
