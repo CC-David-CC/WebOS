@@ -8,9 +8,9 @@ privacy, cost and availability information.
 
 | App | Feature | Status / reason |
 | --- | --- | --- |
-| App not yet confirmed | Design from prompt | User-reported example; investigate exact implementation and service dependency during the app review. |
-| App not yet confirmed | Redraw image | User-reported example; investigate exact implementation and service dependency during the app review. |
-| App not yet confirmed | Ask about embroidery | User-reported example; investigate exact implementation and service dependency during the app review. |
+| Embroidery Studio (StitchFoundry) | Design from prompt | The bundled upstream README describes an Anthropic-key feature for its desktop app; browser integration is not established. Revisit as a desktop-integrated AI feature. |
+| Embroidery Studio (StitchFoundry) | Redraw image | The bundled upstream README describes an Anthropic-key feature for its desktop app; browser integration is not established. Revisit as a desktop-integrated AI feature. |
+| Embroidery Studio (StitchFoundry, attribution tentative) | Ask about embroidery | Found in a separate upstream research checkout; availability in the deployed pinned browser build remains unverified. |
 
 Add entries when an app review confirms a feature is removed, disabled, or
 unavailable due to a third-party dependency. Record the exact app and feature,
