@@ -1683,6 +1683,13 @@ it does not automatically establish that arbitrary sites are usable. The
 disposable account was removed. `apps/system/browser/docs/TEST_STATUS.md`
 now distinguishes current live evidence from its original source-only report.
 
+The Browser's persistent “Navigation requested” message confirms only that
+the engine accepted the command. The native control interface exposes the URL
+and history state but no verified load-completion or HTTP-status signal. Avoid
+turning this into a “loaded successfully” claim based solely on a changed URL
+or painted frame; improving it requires an engine progress interface and
+qualification of the resulting engine build.
+
 The pinned live WASM's name subsection has 367,777 named functions; a
 reproducible scan found references to `svg_fmt::`, `seahash::`, `app_units::`
 and `content_analysis::sdk::`. These may be type references, not a complete
