@@ -982,3 +982,16 @@ The pinned notice tests pass, and prior notices are saved in
 `/var/lib/codi-ingress/browser-source-rust-stdlib-notice-backup.json`.
 This is target-build evidence, not a final-link or complete legal audit.
 
+### Browser workspace headers and Pulse notice — 2026-10-30
+
+The 22 target workspace manifests without a declared license have Mozilla
+license headers on all 47 observed tracked Rust source file paths (some paths
+overlap between manifests). `audit_workspace_headers.py` reproduces the
+check; non-Rust files and final-link inclusion were not established. The
+vendored `pulse` and `pulse-ffi` crates refer to a missing ISC license file;
+the exact Cargo.lock-pinned upstream `cubeb-pulse-rs` LICENSE was retrieved
+and added to the public notices. The combined public response SHA-256 is
+`cfec82baaa9cc83eb238288f493d2116a14603c34aadebab15c7796c4d7cd9c3`;
+prior notices remain in `/var/lib/codi-ingress/browser-source-pulse-notice-backup.json`.
+Notice-generation tests passed. Other attribution and release checks remain.
+
