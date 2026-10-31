@@ -45,3 +45,7 @@ assets/vendor/chess/chess.mjs
 
 # Reproducible upstream web release; prepare.py verifies and extracts it.
 /apps/system/embroidery-studio/vendor/
+
+# Browser font assets are reproduced from pinned packages.
+/apps/system/browser/engine-fonts/*.ttf
+/apps/system/browser/engine-fonts/*.data

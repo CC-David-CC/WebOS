@@ -1503,3 +1503,18 @@ hosting snapshots are `change-20261031T035715125933Z` and
 `3cf1dca82b180122de30fdf44f9751941423281fdfdc5566418826be22525d0e`,
 manifest `23203a7bc06b2743978a130e2d9eddf9af1c4eec54c767366fe701602fbee041`,
 and Caddy `c1bd4ec92c21f152bb725ccd9c37128710f594974fa6f4dacaeeab4cff14142a`.
+
+## Browser language-font candidate — local only
+
+The candidate Browser now stages unmodified Noto Arabic and CJK fonts before
+Gecko initializes, with SHA-256 integrity checks and bundled SIL OFL notices.
+`apps/system/browser/tools/prepare_fonts.py` reproduces the exact font assets
+from verified Ubuntu packages or matching installed fonts; the font binaries
+are generated inputs, excluded from Git. This adds about 19 MiB per initial
+Browser load. The desktop and phone-sized isolated Browser rendered Arabic and
+Chinese on example.com rather than missing-glyph boxes; the phone-sized site
+compatibility run also visited Grainger and McMaster. Browser offline tests
+passed with the project Python environment. This candidate is not yet live;
+prepare its corresponding source archive, perform release/hosting activation
+and public regression before announcing it. Physical phones and full language
+coverage are not verified. The previously documented live release is unchanged.
