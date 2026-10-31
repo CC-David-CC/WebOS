@@ -1,7 +1,7 @@
 import {chooseRoot} from './browser-choose-root.mjs';
 import puppeteer from 'puppeteer-core';import assert from 'node:assert/strict';
 const name=process.env.CODI_TEST_USER;if(!/^browserprobe[0-9a-f]{10}$/.test(name||''))throw Error('Set disposable test user');
-const b=await puppeteer.connect({browserURL:'http://127.0.0.1:19255',protocolTimeout:180000}),c=await b.createBrowserContext(),p=await c.newPage();
+const b=await puppeteer.connect({browserURL:process.env.CODI_BROWSER_URL||'http://127.0.0.1:19255',protocolTimeout:180000}),c=await b.createBrowserContext(),p=await c.newPage();
 try{
  await p.setViewport(process.env.CODI_PHONE==='1'?{width:412,height:915,deviceScaleFactor:2,isMobile:true,hasTouch:true}:{width:1366,height:950});
  await p.evaluateOnNewDocument(()=>{const f=window.fetch;window.fetch=(u,...a)=>String(u).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):f(u,...a)});
