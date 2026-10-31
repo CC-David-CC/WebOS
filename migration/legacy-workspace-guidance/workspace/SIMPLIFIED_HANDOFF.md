@@ -1155,3 +1155,22 @@ manifest is `0931fc48033969107f3fe18992926845a187f1cff4cecd39b0c14bb24cd5399a`,
 and Caddy is `34218a7e4da124cb8085be7c8a109df53240876429dcd79c2440c5c022422f02`.
 Two activation attempts with mistyped expected manifest hashes were rejected
 before changes; the exact current pin then validated and activated normally.
+
+## Electronics Design live
+
+Release `67f4c5a44ab04a28147a895ec1d52a58fcb1a48dacbd5b24da9a646b4d1f6558`
+adds Electronics Design under Electronics; previous app bundles are unchanged.
+The editor's WASM was built locally from the pinned source inputs documented in
+`apps/system/electronics-design/README.md`; notices are included. Registered
+local and live desktop and phone-sized tests opened a project, captured Save As,
+synced to the server, closed and reopened. A local 9 MiB project round-tripped;
+the 128 MiB limit itself and physical touch were not tested. Use the editor's
+Save As / Share and then the host's Save to My files; native Save alone is
+transient. The example is not a production-ready board.
+
+Previous release: `a690fd6f65795434dd6e6ce7f44c53627462cfdd0b8dc91581d64c22d3940875`.
+Hosting backups: `change-20261031T021402839361Z` and
+`change-20261031T021402839858Z` under `/var/backups/webhost-sites/`.
+Generator SHA-256 remains `bb88688bdb94c5921ec08187d4605075772c0187b401e8e33342be19184e60d5`,
+manifest is `8351825cf04e6b1b1ff0a36fabfb56bb2a6a35aca6180c4884ea55098713e851`,
+and Caddy is `7e49a881f9ea0b6d46cc846ce270ec76f1aa996d91973c5513fc03893e014b42`.
