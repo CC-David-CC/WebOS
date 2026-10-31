@@ -1217,3 +1217,35 @@ After the upload-idle update, a fresh live 128 MiB browser-mirror upload,
 server read with SHA-256 verification, synchronized deletion, and fresh-browser
 sign-in all passed. The disposable account was removed. An unchanged-file
 sync in the same run again made no redundant file downloads.
+
+## Browser clicked downloads live
+
+Release `f3681cd5867e0f779049812f9fc178db90d4c2f8169699a1d66b1fba69d35919`
+adds Gecko clicked downloads to a per-window temporary queue. Users choose
+Save to My files to retain one; the account mirror then synchronizes it to the
+server. The queue permits three active/waiting files up to 128 MiB each and
+warns on reset or close. Browser crashes can still lose temporary downloads.
+Existing-name collisions do not overwrite files. The Browser's direct URL
+download remains separate and does not share Gecko cookies.
+
+Local real-Gecko desktop and emulated-phone tests passed a cookie-protected
+delayed download, explicit save/cancel, server sync, collisions, empty files,
+interruption, advertised and streaming size limits, reset, independent windows,
+and worker termination. Live fresh-account desktop and emulated-phone tests
+clicked a data-URL download and verified the saved server copy; they do not
+prove a live third-party authenticated download or physical phone behavior.
+The live signed relay, blocked destination, gateway write/read, unchanged-file
+sync with zero repeat reads, and fresh-browser sign-in also passed. Disposable
+accounts were removed. Source commit `29a71d717` is on box-git.
+
+Public modified source and Mozilla modules are at
+`/browser-sources/codi-browser-source-29a71d717.tar.zst`, SHA-256
+`f231dfee54279c20c6bca77988b556d6fcad7c8886792eb78c63e1f9c10b680b`;
+the source route rollback exercise passed. See Browser's `CLICKED_DOWNLOADS.md`
+and `SOURCE_PROVISION.md` for limits and outstanding license-audit scope.
+Previous release `67f4c5a44ab04a28147a895ec1d52a58fcb1a48dacbd5b24da9a646b4d1f6558`
+is retained. Hosting backups are `change-20261031T031853664991Z` and
+`change-20261031T031853665753Z`. Current generator SHA-256 is
+`2d04ab00dc0e17003f94155b4f812b640ed2f9ed897e4f3685b8cb2bbbda41cb`,
+manifest `1eff3c244aa5e528f0fe91962e835b2e551c77846a44a410d1066d6c606a7137`,
+and Caddy `a34f149de23c2c88c61c3999035fb23fef758aca4ae6c33dface3ed75e3ece01`.
