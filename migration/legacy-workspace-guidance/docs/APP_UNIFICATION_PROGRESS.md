@@ -12,7 +12,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | App | Role | Prior evidence / known boundary | New review |
 | --- | --- | --- | --- |
 | Files | Account and temporary Linux files | Account sync and Linux copy checked; drives are separate. Touch create/upload is live; a selected-file Open action is live; phone and desktop Text editing, sync, close/reopen, and fresh-context checks passed. | In progress |
-| Text | Text and code editor | Files → Text edit, sync, close/reopen and fresh-context recovery checked; new-document naming and collision handling verified live on desktop and phone-sized views. | In progress |
+| Text | Text and code editor | Files → Text edit, sync, close/reopen and fresh-context recovery checked; new-document naming and collision handling verified live; shared folder selection passed local desktop and phone-sized checks. | In progress |
 | Terminal | Temporary v86 Linux | No automatic account-drive mount. | Pending |
 | Help | Desktop help | No document workflow. | Pending |
 | Calculator | Calculator | No document workflow. | Pending |

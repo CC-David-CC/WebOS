@@ -55,3 +55,10 @@ request the on-screen keyboard when the user taps its keyboard control. It
 changes the desktop input mode; it does not grant guest pages access to host
 services. Use it only for a user-initiated text-input action, and clean up any
 app-owned input bridge on disposal.
+
+For a destination folder, `await host.storage.pickFolder({signal: host.signal})`
+returns an account-backed My files folder path or null on cancel. It never
+selects the temporary Linux filesystem. Join a validated filename with the
+folder using the current mirror context; continue to pass the correct expected
+version to writes and handle collisions. Check the window and account are
+still valid after the picker resolves.
