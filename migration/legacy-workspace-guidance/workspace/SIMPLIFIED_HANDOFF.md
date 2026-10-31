@@ -2099,3 +2099,18 @@ matches (`ffi-support`, `mime`, and `rustc-demangle`), which were outside the
 Mozilla copyright headers in `ffi-support`; the other two produced no matches
 in their `src` trees with that search. This is a lead for further review, not a
 claim that those packages are absent or that their notices are complete.
+
+### Linked Rust notice coverage audit — 2026-10-31 UTC
+
+A reproducible comparison of the pinned final-symbol and archive inventories
+against the exact live notice text found headings for all 198 vendored
+package/version candidates, including the three ambiguous-only candidates.
+Twenty-six lack separate vendored license files; all have supplemental markers.
+Three (`aa-stroke`, `debug_tree`, `seahash`) have package-level metadata rather
+than a verified standalone upstream license, and `svg_fmt` uses a source-matched
+historical license. A marker alone is not a legal determination or evidence of
+exact per-file linkage. Report SHA-256:
+`646833aaa6f9db6ff500f7f24929978c1bd2d384760dfc5de83866b02f7242ec`.
+The live combined notice hash matched the audit input; the audit test passed.
+No live files were modified by this review. Other license categories remain
+under review.
