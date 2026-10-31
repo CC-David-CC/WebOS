@@ -1816,3 +1816,10 @@ Caddy `75d50e4c780724f95d425350db300c6c171866a5e2f41cdc738a72b4740c4ba1`.
 Hosting backups are `/var/backups/webhost-sites/change-20261031T060217965059Z`
 and `/var/backups/webhost-sites/change-20261031T060217965535Z`; prior release
 is `c538220f32e70e55616f423e10d8e51af9bbf95b82d3bd510d64a29706feef03`.
+
+After activation, the Browser Download URL workflow also passed in separate
+live desktop and emulated phone-sized sessions: each saved to My files,
+synchronized the server copy and recovered it after signing into a fresh
+browser context. Both test files and accounts were removed. Temporary build
+copies on the workstation, r730 and box-webhost were removed; live assets,
+source archives, rollback backups, screenshots and unrelated work remain.
