@@ -896,6 +896,14 @@ and Browser bundle SHA-256
 `4b26e64f6b9edf41155cf206c4ee5b24ddf77bfb4011bb552ae6a12185beb9a2`.
 The matching source archive from `0488c275e`, SHA-256
 `841993d069a9d824942224b2e34012a1dc56ce6c24f3407b920adaa4f2d7e0cd`,
-is prepared locally but not yet published. Publish it before deploying this
-candidate. The prior generated candidate and independent build were removed.
+is published at `/browser-sources/` and its public download matched that hash.
+The managed hosting change passed a rollback exercise and all ten site status
+checks. Hosting generator SHA-256 is
+`19b71614139100907f21c6b28383532a163c06aa8b951e5d540e5d241e4c37f6`,
+manifest remains `a287d968a80cb8387295a4a5fb6a23cb039efc6e127aaebb7e7cb7d699481260`,
+and Caddy SHA-256 is
+`40df5f82ebbbf37ccc30d498a43a1a9f2480b120aad61d0f54b93b1affeef789`.
+The previous notices are saved under
+`/var/lib/codi-ingress/browser-source-index-0488-backup.json`. The prior
+generated candidate and independent build were removed.
 
