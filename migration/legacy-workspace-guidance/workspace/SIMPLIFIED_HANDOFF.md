@@ -968,3 +968,17 @@ SHA-256 is `0c225076a90714c0badf93424d3ae6ee8c57d2d773d17af6641af63643cb042a`;
 previous notices are saved in
 `/var/lib/codi-ingress/browser-source-rust-notice-backup.json`.
 
+### Browser Rust standard library notices — 2026-10-30
+
+A tracked-source scan matched 464 of the 477 target fingerprint names to
+Firefox Cargo manifests; the other 13 include Rust standard-library and
+compiler crates. It matched 131 names beyond the earlier vendored-package
+scan. Some workspace packages omit a license field, so their source still
+needs review. The exact build used Rust 1.95.0; its standard-library copyright
+and dependency notice is appended unchanged to the public runtime notices.
+The public response SHA-256 is
+`b1a5cd60fa71ae515da2e05ffb88358b1f2d4925cba2d79ae4ee8b6e6b1eeb6c`.
+The pinned notice tests pass, and prior notices are saved in
+`/var/lib/codi-ingress/browser-source-rust-stdlib-notice-backup.json`.
+This is target-build evidence, not a final-link or complete legal audit.
+
