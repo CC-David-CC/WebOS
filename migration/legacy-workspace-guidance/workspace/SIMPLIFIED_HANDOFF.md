@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — G-code extrusion interpretation
+
+Live release `c36d3910b40e2d7100ca7b81678272766fe67bac2fc6a93fd1566e093a9dfdec` classifies tested M82/M83 extrusion changes using per-tool E values and G92 E resets, so decreasing absolute E is shown as non-extruding travel. Numbered commands, coordinate-only modal moves and full-circle arcs are rejected instead of being silently omitted. Local desktop and emulated-phone workflows, a 100,000-move worker test and cancellation passed. The deployed worker passed registered desktop and emulated-phone tests, and the complete live viewer workflow passed at phone size. Controller semantics vary; this is not a hardware or safety validation.
+
 ## 2026-10-31 — account-file retry and batching
 
 Live release `8789f1b5077fe40f25e19c96fef717510c5df91aff4a3a54457a8194f7ca7237` keeps automatic sync attempts from restarting for each local change after a 429, and batches up to 16 existing-file version checks. Individual writes and deletes retain server-side hash checks. Local unit tests cover 20 edited files and conflict preservation; a local registered-account Files test covers cross-device conflict resolution. Live desktop and emulated-phone tests injected two 429 responses and verified queued files reached the server. The issuer authorization budget is still shared behind the reverse proxy; no 100-user capacity or safe change to that limit is established.
