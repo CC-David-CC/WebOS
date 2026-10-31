@@ -33,7 +33,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Electronics Design | Work with breadboard, schematic and PCB views; save the project. | Component coverage and production-board validation remain incomplete. |
 | Embroidery Studio | Create and save a project and export stitches. | Pre-release editor; machine compatibility and physical sewing are unverified. |
 | Stitch Converter | Open SVG artwork, create a stitch preview, save editable artwork separately, then export a machine file. | Conversion may omit unsupported SVG; inspect the design and test-sew. |
-| Falling Blocks | Play the preview and save a game. | Still in development. |
+| Falling Blocks | Play the preview, save a game and reopen it from Files. | Still in development. |
 | Personal template | Example for app authors. | Not a finished end-user app. |
 
 Items shown disabled under System Tools are shared capabilities for apps, not independent applications. Third-party and AI features deferred from these apps are tracked in [Deferred app features](DEFERRED_APP_FEATURES.md).
