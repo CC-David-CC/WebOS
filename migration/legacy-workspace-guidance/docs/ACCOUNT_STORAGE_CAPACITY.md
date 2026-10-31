@@ -42,6 +42,17 @@ browser-first, account-isolated storage and conflict guarantees.
 
 ## Design direction
 
+The gateway and browser mirror now support an optional signed, bounded account
+inventory. It gathers up to 128 directories and 2,048 entries (with a 512 KiB
+path budget) in one discovery operation, or returns no partial inventory and
+falls back to ordinary directory listings. A live six-folder account required
+one signed inventory request instead of seven list requests; local and live
+checks also detected a same-size direct disk edit, and the old-gateway fallback
+was exercised. A local eight-account mixed test overlapped inventory with a
+2 MiB upload. This reduces work for nested accounts but does not solve the
+shared issuer bucket: 100 visible idle accounts can still exceed it with just
+one inventory request each.
+
 The live gateway now offers an optional signed version-batch capability grouping up to 16
 files per request, with at most 32 MiB hashed per batch and individual fallback
 for larger files. A real local browser/gateway test checked 20 files in two
