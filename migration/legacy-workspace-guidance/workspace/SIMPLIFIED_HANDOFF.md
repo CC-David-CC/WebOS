@@ -876,3 +876,19 @@ catalog entry and bundle SHA-256
 `2af8a8f2a644daf6bd7039170ddef2dc93f9799f7c6bdc8238f5506cd97f8079`.
 The candidate is not live; engine licensing and live end-to-end tests remain.
 
+### Browser status and window sizing — 2026-10-30
+
+An actual desktop Browser test exposed that `window-content` overrode the
+desktop's title-bar height calculation, clipping Browser status and
+diagnostics. It also found that navigation left the status on “Loading…”
+after the native navigation command returned. The local Browser now respects
+the desktop's content height, lets its viewport shrink, and reports
+“Navigation requested.” after the command returns; that wording does not
+claim the destination has finished loading. Both desktop and phone-emulated
+tests now assert that status fits inside the window. The desktop test passed
+account-file HTML open, relay request and renewal, visible non-stuck status,
+and URL download with server synchronization. The phone-emulated test passed
+status visibility, typing and touch scroll. These changes are not live. The
+prior report-enabled static candidate is superseded and must be rebuilt and
+its matching source snapshot published before deployment.
+
