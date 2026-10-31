@@ -1030,3 +1030,16 @@ authenticated site downloads, general website compatibility, or audio.
 The broader component/license review and live requested-report workflow are
 not complete. Existing Linux guest egress is outside the new Browser IP rules.
 
+### Live requested Browser report and restart — 2026-10-31 UTC
+
+`CODI_TEST_REPORT=1 tests/live_browser_relay_account_check.py` used a fresh
+registered account and actual live Browser to visit example.com. It checked
+that the server held no report for that account before a test request,
+created the explicit request through the coordinator as its service account,
+observed the signed device report and domain summary, restarted the relay,
+and confirmed the summary remained identical. It then removed the request,
+its reports, and the disposable account. The relay is active and its report
+database passed SQLite `quick_check`. This tests the real client and service
+but creates the request as an operator rather than logging into the admin UI;
+the admin UI workflow was tested separately in the local two-account fixture.
+
