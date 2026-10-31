@@ -2140,3 +2140,18 @@ inertial scrolling, precise drag distance, physical-phone behavior, or that a
 specific third-party site permits horizontal scrolling. The test created no
 user file and its disposable account was removed. The test source is
 `tests/browser-live-phone-horizontal-scroll.test.mjs`.
+
+### Phone horizontal drag measurement — 2026-10-31 UTC
+
+The controlled horizontal-scroll test now waits for Browser controls rather
+than matching a transient status message, and measures after queued updates
+settle. Two fresh live runs with six 35px touch moves spaced 40ms apart reported
+final page offsets of 92px and 91px. A listener in the latter run confirmed
+that the outer canvas received all six move coordinates. This suggests that
+more investigation is needed between input dispatch and the embedded engine's
+scroll behavior; it does not establish the cause or prove physical-device
+behavior. An intermediate diagnostic run's original test waited indefinitely
+for a transient status; after verifying its controls were enabled, the test's
+status text was changed locally to let that run finish. That run is not used
+as an independent readiness result. All disposable accounts were removed; no
+live product code changed.
