@@ -833,3 +833,18 @@ report workflow passed against a local real Browser and two registered
 accounts. The report UI and Browser desktop app are not deployed yet, and a
 live end-to-end report and restart recovery test is still required.
 
+### Updated Browser and relay source provision — 2026-10-30
+
+Public `/browser-sources/` now includes the snapshot from commit `2ed6d0259`,
+which contains the currently running report-enabled relay and tracked Browser
+app source. Its archive SHA-256 is
+`49f1c63f6160a58d9d6624d5baa35589fae1a74580f32cbb8883f71f9a203b0b`;
+the public download was independently hash-checked. The managed source-route
+update and rollback exercise passed all ten site status checks. Generator
+SHA-256 is `3ac0cf3bc1dda9063c0cd3494c71d83a706681b7a8cdc682a0d8f77dcace8ff3`,
+manifest `a287d968a80cb8387295a4a5fb6a23cb039efc6e127aaebb7e7cb7d699481260`,
+and derived Caddy `9db5c7c717501259da4e969c930441bf74f66127ceb0720c03c4c5dc3f4d88d2`.
+Index rollback data is `/var/lib/codi-ingress/browser-source-index-2ed-backup.json`.
+The Gecko component and LGPL review remains incomplete; source availability
+alone is not a finding that the engine's distribution obligations are met.
+
