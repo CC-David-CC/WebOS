@@ -79,7 +79,7 @@ def trusted_client(request,expected_uid):
     except ValueError:raise web.HTTPForbidden() from None
 
 
-def make_app(*,origin,base_path,issuer_policy,policy_sha256,destination_policy,access_policy,geo,proxy_uid,reports=None,audit=None):
+def make_app(*,origin,base_path,issuer_policy,policy_sha256,destination_policy,access_policy,geo,proxy_uid,reports=None,audit=None,source_root=None):
     if type(proxy_uid) is not int or proxy_uid<0:raise ValueError('Explicit trusted proxy UID required')
     access=PolicyLoader(access_policy,geo)
     async def unavailable(_request):return None
@@ -91,7 +91,7 @@ def make_app(*,origin,base_path,issuer_policy,policy_sha256,destination_policy,a
         trusted_client(request,proxy_uid)
         return await handler(request)
     app=web.Application(client_max_size=(12*1024*1024+4096 if reports else 16384),middlewares=[only_proxy],handler_args={'auto_decompress':False,'max_headers':32,'keepalive_timeout':5})
-    BrowserHTTP(sessions,relay,origin=origin,base_path=base_path,downloader=Downloader(relay),reports=reports).routes(app)
+    BrowserHTTP(sessions,relay,origin=origin,base_path=base_path,downloader=Downloader(relay),reports=reports,source_root=source_root).routes(app)
     return app
 
 
@@ -157,8 +157,15 @@ async def serve(args):
         if not isinstance(admins,list) or not admins or len(admins)>64 or any(not isinstance(x,str) or not re.fullmatch(r'user:[0-9a-f-]{36}',x) for x in admins) or len(admins)!=len(set(admins)):raise ValueError('Explicit registered administrator IDs required')
         reports=ReportRequests(args.report_database,origin=args.origin,admin_subjects=admins)
     audit=optional_audit(dest,args.audit_database,args.audit_key)
+    source_root=args.source_root
+    if source_root is not None:
+        source_root=source_root.absolute()
+        for path in (source_root,*source_root.parents):
+            info=path.lstat()
+            if not stat.S_ISDIR(info.st_mode) or info.st_uid!=0 or info.st_mode&0o022:
+                raise ValueError('Protected root-owned source directory required')
     app=make_app(origin=args.origin,base_path=args.base_path,issuer_policy=issuer,policy_sha256=args.policy_sha256,
-                 destination_policy=dest,access_policy=access,geo=geo,proxy_uid=args.proxy_uid,reports=reports,audit=audit)
+                 destination_policy=dest,access_policy=access,geo=geo,proxy_uid=args.proxy_uid,reports=reports,audit=audit,source_root=source_root)
     sockpath=Path(args.socket).absolute();parent=sockpath.parent
     info=parent.stat()
     if parent.is_symlink() or not stat.S_ISDIR(info.st_mode) or info.st_uid!=os.geteuid() or info.st_gid!=args.proxy_gid or stat.S_IMODE(info.st_mode)!=0o750:
@@ -189,6 +196,7 @@ if __name__=='__main__':
     p.add_argument('--geoip',type=Path);p.add_argument('--socket',type=Path,required=True);p.add_argument('--proxy-uid',type=int,required=True);p.add_argument('--proxy-gid',type=int,required=True)
     p.add_argument('--report-database',type=Path);p.add_argument('--report-admins',type=Path)
     p.add_argument('--audit-database',type=Path);p.add_argument('--audit-key',type=Path)
+    p.add_argument('--source-root',type=Path)
     args=p.parse_args()
     try:asyncio.run(serve(args))
     except (ValueError,OSError,KeyError) as error:p.error(str(error))
