@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Digital Logic truth tables
+
+Live release `c70938b7f52efdae36f714ea6219eb58c37d8b52933074642d5f5e2584b43e38` adds a truth table from the current JSON draft using a separate DigitalJS simulation. It supports 1–6 one-bit buttons and 1–16 one-bit lamps, reports undefined signals as X, and cancels old results when the draft changes. Local desktop, phone-sized and 4K-sized tests cover seven gates, a half-adder, undefined signals and cancellation. Registered-account local desktop and phone-sized and live desktop tests reopened saved circuits and generated their tables. The live phone-sized workflow reached cleanup after those checks but hit the shared gateway limit; its test account was removed separately. Physical touch, sequential logic and hardware validation remain outside this test.
+
 ## 2026-10-31 — G-code extrusion interpretation
 
 Live release `c36d3910b40e2d7100ca7b81678272766fe67bac2fc6a93fd1566e093a9dfdec` classifies tested M82/M83 extrusion changes using per-tool E values and G92 E resets, so decreasing absolute E is shown as non-extruding travel. Numbered commands, coordinate-only modal moves and full-circle arcs are rejected instead of being silently omitted. Local desktop and emulated-phone workflows, a 100,000-move worker test and cancellation passed. The deployed worker passed registered desktop and emulated-phone tests, and the complete live viewer workflow passed at phone size. Controller semantics vary; this is not a hardware or safety validation.
