@@ -92,3 +92,10 @@ Establish explicit numerical throughput and latency acceptance thresholds from
 measured hardware and the desired experience before calling this capacity
 supported. Validate on the live testing environment only with isolated test
 accounts and remove only the resulting fixtures.
+
+
+## Local admission candidate — 2026-10-31
+
+A source candidate groups file-authorization admission by the subject of a live in-memory registered session, with separate bounded legacy and global budgets. The session token selects an admission bucket only: signed one-use proofs, token/key binding, current account policy, gateway permissions and exact-operation checks remain required before access. A modified browser client supplies the token on the issuer challenge; the old issuer ignores the extra authorization header and old clients remain on the legacy budget. Invalid and unknown tokens use the bounded legacy budget. This candidate has not yet been deployed.
+
+Local tests exercised 100 independently keyed accounts, issuer and gateway signatures, account isolation, legacy callers, independent account budgets and a global ceiling. One sequential issuer/proof run completed 100 authorizations in 0.624 seconds after setup (p95 7.66 ms). In a separate signed HTTP fixture with 100 accounts and one 4-byte file each, concurrency three, all 100 inventories completed in 2.479 seconds after setup (p95 86 ms); the immediately following version checks completed for 27 accounts and 73 hit the separate 256-request/minute gateway budget. Account setup used a permissive fixture, so neither run establishes login-burst capacity. Large files, slow transfers, concurrent bursts, public proxy behavior, sustained throughput, gateway fair scheduling and 100-user end-to-end capacity remain unverified.
