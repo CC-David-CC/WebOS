@@ -1322,3 +1322,11 @@ whose current public SHA-256 is
 `7775f6197a7a14a397ad6180b43b4c553aaacef77ac4e0136a34fc15f3f3f829`.
 The prior file set is under
 `/var/lib/codi-ingress/browser-source-licence-correction-backup.json`.
+
+A real local Wisp WebSocket test now also exercises DNS rebinding between
+streams: an allowed public answer connects using the exact vetted numeric IP,
+then private IPv4, mixed public/private IPv6 and mapped IPv4-in-IPv6 answers
+are rejected before the connector is called. All 11 Wisp tests passed. The
+tested `wisp.py` and `policy.py` SHA-256 values matched the installed live
+relay files. This is a local controlled-DNS test, not a claim that a real
+external DNS provider performed the rebind during the live test.
