@@ -16,7 +16,7 @@ class NoticesTest(unittest.TestCase):
         firefox=folder/'firefox-license.generated.html';ems=folder/'emscripten-6.0.1-patched-source.tar.zst';wisp=folder/'wisp-js-0.4.1-source.tar.zst'
         liberation=ROOT/'.build/browser-notice-inputs/liberation-license.txt'
         compiled=ROOT/'.build/browser-notice-inputs/compiled-component-notices.txt'
-        rust=ROOT/'.build/browser-notice-inputs/rust-component-notices.txt'
+        rust=ROOT/'.build/browser-notice-inputs/rust-component-notices-corrected.txt'
         stdlib=ROOT/'.build/browser-notice-inputs/rust-stdlib-copyright.html'
         pulse=ROOT/'.build/browser-notice-inputs/cubeb-pulse-license.txt'
         rlbox=ROOT/'.build/browser-notice-inputs/rlbox-license.txt'
@@ -39,6 +39,7 @@ class NoticesTest(unittest.TestCase):
             self.assertIn('SIL OPEN FONT LICENSE Version 1.1',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('third_party/abseil-cpp/LICENSE',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Target-built vendored Rust crate notices',(out/'emscripten-licenses.txt').read_text())
+            self.assertIn('third_party/rust/remove_dir_all/LICENCE-MIT',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Copyright notices for The Rust Standard Library',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('cubeb-pulse-rs LICENSE',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Copyright (c) 2019 UCSD PLSysSec',(out/'emscripten-licenses.txt').read_text())
