@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — broad text search navigation
+
+Live release `4aa4e77e8401e50c6d306c7a077bdb5b77ae96be11eba70e3e9923308d063e8d` keeps the 50,000 stored-match limit but adds directional searches and single replacements beyond it, including wraparound. Replace all remains disabled for truncated result sets. Local and live desktop and emulated-phone tests cover a match after the limit, reverse/forward wrap, a single replacement, literal symbols, case matching and a chunk boundary. Large-document searches may still take time on the UI thread; physical touch remains unverified.
+
 ## 2026-10-31 — larger text documents
 
 Live release `245696116948979eba6935624562050d8dc5e923c4c4f5ce200eeb30fd00035a` raises Text’s opening limit to the shared 128 MiB file limit. CodeMirror indexed lookups avoid rebuilding the document for cursor position and line navigation; word counts are omitted above 2,097,152 UTF-16 code units. Broad searches stop after 50,000 matches and disable Replace all until narrowed. The mirror exposes metadata-only `stat` for change checks. Local and live desktop and emulated-phone tests opened, edited and synced an 8 MiB file and checked the search limit and line navigation; a local desktop test completed an approximately 127 MiB round trip but was slow and memory intensive. Single very long lines, low-memory devices, the exact maximum and physical touch remain unqualified.
