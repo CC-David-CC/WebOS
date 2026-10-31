@@ -1956,3 +1956,12 @@ unauthenticated source access returned 401, access block lists remained empty,
 and server audit remained disabled with no key or ledger. The socket readiness
 probe initially saw a missing socket during startup before the later retry
 succeeded; this did not cause a test failure.
+
+The current live release was tested with `CODI_TEST_REPORT=local`: a
+disposable registered account recorded example.com in its browser storage,
+then remained open for 32 seconds without submitting a report or acquiring a
+server report row while no administrator request was active. The test made
+no report request affecting other browsers and removed the test account.
+The explicit-request and report-persistence tests remain documented in
+`apps/system/browser/docs/DOMAIN_REPORTS.md`; those earlier tests used the
+then-current release. Server audit remains independently disabled.
