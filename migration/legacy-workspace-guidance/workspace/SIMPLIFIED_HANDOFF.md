@@ -1856,7 +1856,7 @@ overlapping navigation/Stop, a second independent window, and an emulated
 phone-sized viewport. An initial test found the listener attached too early;
 that ordering was fixed. A subsequent test found blocked loads could keep the
 native command waiting; the failure exit fixed the tested case. The packaged
-bundle passed the same navigation suite. Nine-plus patch and 89 JS tests passed.
+bundle passed the same navigation suite. Ten patch and 89 JS tests passed.
 Live registered desktop and emulated phone-sized sessions rendered example.com;
 the phone-sized session reported a real 404 and Stop. Both live layouts saved
 a Browser download to My files, synchronized it and recovered it in a fresh
@@ -1874,3 +1874,6 @@ generator `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
 manifest `4765ea3e77b329afb91aa9f03ea569aa2430e3ad4f8c4088c898aead325a8f7f`,
 Caddy `8b8602566e96063bd0e22c623333153d75e62e853ab9cdb41e155c522e856cc0`.
 The complete engine final-link/license inventory remains unresolved.
+
+Temporary local, r730 and webhost build inputs for this release were removed;
+live assets, source archives, rollback backups and unrelated work remain.
