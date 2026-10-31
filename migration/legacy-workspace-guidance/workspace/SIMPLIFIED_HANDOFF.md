@@ -921,10 +921,23 @@ hostname and changed outbound-policy blocks and capacity behavior; report
 HTTP and download tests also passed. This change is not live. Its new relay
 runtime, Browser bundle and matching source snapshot must be published and
 tested on the live path before this feedback can be considered live. They
-supersede the earlier desktop candidate. The local immutable relay manifest
+supersede the earlier desktop candidate. The immutable relay manifest
 SHA-256 is `2046bb480628f3124bba74b2cd249b00eee665709b15cc12e1eca7dbd5434cad`,
 the desktop cache ID is
 `2c386e8748f45b836a070bf336287275ae432b0003f362ad17645574e15e0539`,
 and the prepared source archive from `802621ec2` has SHA-256
 `128c33ee16a6dde95f5c594b19ef6c8a05cb9b251024e95ac859f888b3a26c90`.
+The exact source archive is now public at `/browser-sources/` and its HTTPS
+download was hash-checked. The new relay runtime is live and retains the
+existing report configuration and private database. A signed disposable
+account confirmed Wisp `HostBlocked` for YouTube, and a live temporary
+outgoing rule closed an existing stream and denied a new one. The original
+policy was restored and checked, the scheduled recovery timer stopped, and
+the temporary test account and helper were removed. The Browser desktop UI
+is still not deployed, so its user-visible feedback is not live. The previous
+relay unit is saved at `/var/backups/codi-browser-relay-before-blocked-802.service`.
+Source hosting generator SHA-256 is
+`2329d2b8925501ea5b59c9a0182b24db66e076b6abc1d4305ad820da45a4079b`,
+Caddy is `887fdcb7da1b2ba05c6d3204fa0c4cf38a8a8d4d4a9743cc3e269116283209c7`,
+and notice rollback data is `/var/lib/codi-ingress/browser-source-index-802-backup.json`.
 
