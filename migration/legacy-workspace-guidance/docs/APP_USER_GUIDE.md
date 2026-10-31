@@ -21,7 +21,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Audio Editor | Try the generated 440 Hz tone, or open or record audio; edit and export WAV. | Physical microphone behavior and multitrack project saving need more work. |
 | diagrams.net | Open or create a diagram and save it. | Broader format and touch behavior remain under review. |
 | Excalidraw | Draw and save a sketch. | Embedded images and physical touch need further testing. |
-| SVG Editor | Draw vector artwork and save an SVG. | Complex SVG and physical touch remain unverified. |
+| SVG Editor | Try the example or draw vector artwork, then save an SVG. | Complex SVG and physical touch remain unverified. |
 | Replicad | Choose a box or cylinder, dimensions and optional offset hole; inspect volume and surface area, then export a model. | This is a limited model generator, not a full CAD system; validate manufacturing dimensions. |
 | Kiri:Moto | Open a model, configure slicing and export; save a workspace. | Check printer profiles and output independently before printing. |
 | Mesh:Tool | Import and manipulate meshes; save a workspace or export geometry. | Undo history is not saved in workspace snapshots; verify geometry independently. |
