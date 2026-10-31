@@ -66,3 +66,5 @@ New apps open full screen on phones and in alternating half-width, full-height t
 During each app review, suppress optional third-party account and sign-up prompts where the local feature can work without them. The desktop account does not automatically grant access to an external provider; label any feature that genuinely needs one. Defer AI and other features that depend on removed account services for later integration; preserve working local features.
 
 Deferred third-party service and AI features are tracked in `DEFERRED_APP_FEATURES.md`; those features are not implied to work through the desktop account.
+
+The desktop-wide unsaved-window close warning has a locally tested themed dialog candidate. It is not live, and app-specific browser prompts for file names, replacing work and other actions still need migration. Desktop, emulated-phone and 4K tests cover an edited Text document, cancel, Escape and discard; physical touch is not yet verified.
