@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Data Explorer save checks
+
+Live static release `b737b94d940239632dd62110f8260775ee56ed4316e62b10ed4f730e74264c39`; previous `46ceeb7e966bc0ae3cd50dbdcc8262bb10d308a901a9eeb9337a61b8ce3988f2`. Analysis saves check source hashes and project versions with My files metadata instead of rereading potentially large source files. CSV export overwrite checks also use metadata. Local desktop and emulated-phone tests covered saved analysis reopening, stale project and changed source protection, invalid-project rollback, CSV results, cancelled overwrite and no full-file reads for these checks. A live emulated-phone analysis workflow passed; its disposable account was removed. This does not prove a 128 MiB dataset works on every device or qualify physical touch.
+
 ## 2026-10-31 — Audio Editor WAV precision
 
 Live static release `46ceeb7e966bc0ae3cd50dbdcc8262bb10d308a901a9eeb9337a61b8ce3988f2`; previous `92583c0e95dd3bf778fb6b209b4891cd7c8aa6ed9423eff7b260de12295df53e`. Save options now offers 16-bit PCM, 24-bit PCM and 32-bit float WAV. PCM clips values outside −1 to 1; float retains finite out-of-range values, although playback may clip. Existing version checks and the 128 MiB output limit apply.
