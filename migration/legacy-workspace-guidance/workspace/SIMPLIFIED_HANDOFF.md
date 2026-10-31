@@ -1718,6 +1718,14 @@ commands, so cancellation needs a coordinated worker/native solution. The
 prototype and remaining security, lifecycle and navigation tests are documented
 in `apps/system/browser/experiments/`. Live source and engine are unchanged.
 
+An isolated Stop prototype adds a matched worker/mailbox atomic signal and a
+native event-loop check. Three delayed-response runs completed Stop in 68–85 ms;
+immediate Stop and later navigation passed, and a two-window fixture showed
+the other window remained usable. The three source patches and reproducible
+local-only tests are retained, but the prototype is not deployed: ABI pairing,
+build/source integration, idle-event-loop, overlapping-command, lifecycle,
+phone and failure tests remain. The live Stop limitation still applies.
+
 The pinned live WASM's name subsection has 367,777 named functions; a
 reproducible scan found references to `svg_fmt::`, `seahash::`, `app_units::`
 and `content_analysis::sdk::`. These may be type references, not a complete
