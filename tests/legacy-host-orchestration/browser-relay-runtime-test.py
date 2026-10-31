@@ -77,4 +77,25 @@ class Runtime(unittest.TestCase):
                 process.terminate();stdout,stderr=process.communicate(timeout=10)
             self.assertEqual(process.returncode,0,stderr);self.assertFalse(sock.exists())
 
+    def test_exported_runtime_can_start_with_audit_enabled(self):
+        from cryptography.hazmat.primitives.asymmetric import ec,ed25519
+        from cryptography.hazmat.primitives import serialization
+        from codiauth import jose
+        with tempfile.TemporaryDirectory(prefix='codi-browser-audit-export-') as folder:
+            root=Path(folder);dest=root/'runtime';result=builder.build(dest);private=root/'private';private.mkdir(mode=0o700)
+            key=ec.generate_private_key(ec.SECP256R1());issuer=root/'issuer.json'
+            issuer.write_text(json.dumps({'mode':'server','issuer':'https://ksu.codes','authorityKeys':[{'kid':'fixture','jwk':jose.public_jwk(key)}]}));issuer.chmod(0o600)
+            domain=root/'domain.json';value=json.loads((ROOT/'apps/system/browser/relay/policy.json').read_text());value['serverAuditEnabled']=True;domain.write_text(json.dumps(value));domain.chmod(0o600)
+            access=root/'access.json';access.write_bytes((ROOT/'active-system/network_policy/default.json').read_bytes());access.chmod(0o600)
+            credential=private/'key';credential.write_bytes(ed25519.Ed25519PrivateKey.generate().private_bytes(serialization.Encoding.Raw,serialization.PrivateFormat.Raw,serialization.NoEncryption()));credential.chmod(0o600)
+            socketdir=root/'socket';socketdir.mkdir(mode=0o750);sock=socketdir/'relay.sock';database=private/'events.sqlite3'
+            command=[sys.executable,'-I','-B',str(dest/'active-system/scripts/serve-browser-relay.py'),'--origin','https://ksu.codes','--runtime-manifest-sha256',result['manifestSHA256'],'--issuer-policy',str(issuer),'--issuer-policy-sha256',hashlib.sha256(issuer.read_bytes()).hexdigest(),'--policy-sha256','a'*64,'--destination-policy',str(domain),'--access-policy',str(access),'--socket',str(sock),'--proxy-uid',str(os.getuid()),'--proxy-gid',str(os.getgid()),'--audit-key',str(credential),'--audit-database',str(database)]
+            process=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+            try:
+                ready,_,_=select.select([process.stdout],[],[],10);self.assertTrue(ready,'Audit runtime failed to report readiness')
+                self.assertIn('ready',process.stdout.readline());self.assertTrue(database.is_file());self.assertEqual(database.stat().st_mode&0o777,0o600)
+            finally:
+                process.terminate();_,stderr=process.communicate(timeout=10)
+            self.assertEqual(process.returncode,0,stderr);self.assertFalse(sock.exists())
+
 if __name__=='__main__':unittest.main(verbosity=2)
