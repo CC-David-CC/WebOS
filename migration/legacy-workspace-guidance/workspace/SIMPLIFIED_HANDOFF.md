@@ -995,3 +995,14 @@ and added to the public notices. The combined public response SHA-256 is
 prior notices remain in `/var/lib/codi-ingress/browser-source-pulse-notice-backup.json`.
 Notice-generation tests passed. Other attribution and release checks remain.
 
+### Private Browser desktop release staging — 2026-10-30
+
+The tested static candidate with policy feedback is staged privately at
+`/srv/codi-connected/simplified/2c386e8748f45b836a070bf336287275ae432b0003f362ad17645574e15e0539`.
+All 4,941 cached files and both cache-control files were independently
+hash-checked on the server; no account or service state was copied. The
+current live desktop route was not changed. The staged candidate's source is
+already published, while the remaining attribution review and live desktop
+tests must be completed before calling the release ready. The active desktop
+is still `bfcccab6fcdfd33221aeb5e57dd59d8eb788217b0c0172bb1cf45b3c533a807b`.
+
