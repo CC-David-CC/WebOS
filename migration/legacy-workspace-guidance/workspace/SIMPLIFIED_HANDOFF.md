@@ -1348,3 +1348,17 @@ enable**: protected systemd credential provisioning, operator controls,
 end-to-end failure/recovery and live opt-in tests remain. Do not set
 `serverAuditEnabled` on the live policy yet: the current live runtime has no
 configured audit callback and would reject traffic.
+
+The optional service renderer now adds a private `StateDirectory` and a
+systemd `LoadCredential` only in explicit audit mode; the default unit has
+neither. A real isolated systemd test found that its per-unit credential is
+root-owned mode 0440 with directory/ACL isolation, not mode 0400. The key
+validator now permits that layout only at the exact Browser service
+credential path and requires root:root ownership and no writable/world bits.
+An isolated transient unit using the actual service name and a disposable
+key successfully opened and signed the test ledger. A real local process
+test also started with audit disabled (no ledger created), enabled it, and
+restarted with the same ledger. A local HTTP integration test verified signed
+per-hop redirect metadata without paths or file contents. Temporary test key,
+unit and database were removed. The live configuration remains off; safe
+operator switching and live opt-in/recovery testing are not done.
