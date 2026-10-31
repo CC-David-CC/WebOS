@@ -12,7 +12,7 @@ Linux has a separate temporary filesystem that resets on reboot. Files can brows
 
 ## Common tasks
 
-On a phone, open Files and tap **New / Upload** to create a folder, create a file, or bring a file in from your device. To open an item, tap it and then tap **Open**. On a desktop, right-click empty space in Files for the same actions. Apps open maximized; use the window’s maximize control to restore a smaller window.
+On a phone, open Files and tap **New / Upload** to create a folder, create a file, or bring a file in from your device. To open an item, tap it and then tap **Open**. On a desktop, right-click empty space in Files for the same actions. New windows fill the phone screen; on a desktop they open at half width, alternating left and right. Use the window’s maximize control to fill the screen or return to its previous size.
 
 - **Notes or code:** Create or upload a `.txt`, `.md`, `.py`, or other supported text file in Files, open it in Text Editor, edit and save. A new Text document asks where to save in My files; use **Choose folder** to browse folders, then enter the filename. Text has line numbers, search and replace, undo, and syntax highlighting for Python and JavaScript/TypeScript. Reopen it from Files to check the saved copy.
 - **Reports:** Open Document Editor, write and save its `.doc` or `.codidoc` project in My files. Those files use this application's own format, not a Microsoft Word document. Export a PDF to share, or preview it using the separate PDF Viewer.

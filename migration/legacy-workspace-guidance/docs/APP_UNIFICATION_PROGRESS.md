@@ -50,8 +50,13 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | pdfme | Shared PDF capability | Programmatic capability. | Pending consumer review |
 | MapLibre | Shared map capability | Programmatic capability. | Pending consumer review |
 | Transformers | Shared model capability | No model configured. | Pending consumer review |
+| ONNX Runtime Web | Shared model capability | Separate CPU/WASM runtime; small local inference tested, no app integrated. | Pending consumer review |
+| Trystero | Shared networking capability | Lazy library only; no signaling or app integration configured. | Pending consumer review |
+| TanStack Virtual | Shared list/grid capability | Lazy framework-independent core; no app integrated. | Pending consumer review |
+| WebTorrent | Shared peer transfer capability | Lazy browser library only; no tracker, transfers or app integration configured. | Pending consumer review |
+| Yjs | Shared state capability | Lazy library only; no synchronization provider, persistence or app integration configured. | Pending consumer review |
 
-Apps are being changed to open maximized and follow viewport resizing, including 1080p and 4K; users can restore a smaller window. The live shell passed viewport-emulation checks, including multiple windows and remembered layout. Physical F11 and device behavior remain to be checked. Electronics Design’s three-view large-screen layout needs individual investigation.
+New apps open full screen on phones and in alternating half-width, full-height tiles on desktop. Local viewport-emulation checks cover 1080p, 4K, maximization, resize, manual movement and phone/desktop transitions. Physical F11 and device behavior remain to be checked. Electronics Design’s three-view large-screen layout needs individual investigation.
 
 During each app review, suppress optional third-party account and sign-up prompts where the local feature can work without them. The desktop account does not automatically grant access to an external provider; label any feature that genuinely needs one. Defer AI and other features that depend on removed account services for later integration; preserve working local features.
 
