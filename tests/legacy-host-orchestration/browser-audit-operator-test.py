@@ -4,6 +4,7 @@ import importlib.util
 import hashlib
 from pathlib import Path
 import shutil
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -22,7 +23,7 @@ class OperatorTest(unittest.TestCase):
             imported=importlib.util.spec_from_file_location('packaged_audit_operator',entry);module=importlib.util.module_from_spec(imported);imported.loader.exec_module(module)
             # The privileged installation enforces root ownership. This fixture
             # runs as the developer and checks the separate content pins.
-            with patch.object(module,'BASE',runtime),patch.object(module,'protected',return_value=None):
+            with patch.object(module,'BASE',runtime),patch.object(module,'protected',return_value=None),patch.object(sys,'dont_write_bytecode',True):
                 switch,renderer,policy=module.imports();self.assertTrue(callable(switch.switch));self.assertTrue(callable(renderer.render));self.assertTrue(callable(policy.load))
                 target=bundle/'active-system/browser_service/audit_switch.py';target.write_bytes(target.read_bytes()+b'\n# changed\n')
                 with self.assertRaisesRegex(ValueError,'Operator code changed'):module.imports()
