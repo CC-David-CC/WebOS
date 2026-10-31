@@ -7,11 +7,14 @@ browser-first, account-isolated storage and conflict guarantees.
 
 ## Current findings
 
-* The browser mirror starts a sync about every 15 seconds. A sync lists every
-  folder and requests a version for each server file; even idle users therefore
-  consume requests and server disk work. With 100 users, the intervals alone
-  could start about 400 passes per minute, before counting each folder and file.
-  This arithmetic is not a load measurement.
+* A successful, idle browser mirror now polls at roughly 60 seconds in a
+  visible tab and four minutes in a hidden tab, with jitter. Edits and explicit
+  sync remain immediate; pending or failed work uses the shorter retry schedule,
+  and returning to a stale tab prompts a refresh. Each pass still lists every
+  folder and checks file versions. If 100 mirrors were visible, the intervals
+  alone would start about 100 passes per minute before counting folders or
+  files, already exceeding the shared 60-per-minute issuer bucket. This is
+  arithmetic, not a load measurement or a capacity claim.
 * Each file gateway operation obtains signed authorization using separate
   challenge and authorization requests. The issuer currently limits each file
   authorization phase to 60 requests per minute per address it observes. The
