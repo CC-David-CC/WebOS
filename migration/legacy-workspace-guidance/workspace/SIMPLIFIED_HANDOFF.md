@@ -3223,3 +3223,7 @@ The updated Files desktop dialogs passed local registered-account copy, ZIP extr
 ### Remaining Files dialog actions — local checks
 
 A registered-account test created a ZIP using the themed filename dialog, inspected its contents, cancelled deletion, then confirmed deletion and verified it on the server. This passed at desktop, emulated-phone and 4K sizes; the deletion menu was opened with a simulated right-click, so physical touch access was not established. A separate actual-v86 desktop test copied an empty shell-created Linux file through the themed prompt to My files, synced it and verified the account copy survived guest reset while the guest original did not. The same Linux-copy and reset test passed at an emulated-phone size. These changes remain local and other apps still have native dialogs. See `tests/files-archive-delete-dialog.test.mjs` and `tests/linux-empty-files.test.mjs`.
+
+### Files touch deletion control — local candidate
+
+Files adds a Delete toolbar action for the current selection on both drives, sharing the existing version-checked and themed-confirmation deletion path. It is disabled without a selection. Local registered-account desktop, emulated-phone and 4K tests created and inspected a ZIP, cancelled deletion, confirmed deletion and verified server sync; the phone test selected and activated Delete with emulated taps. Initial parallel test registrations collided or hit the issuer busy limit; separate reruns passed. This is not deployed and is not a physical-phone test. See `tests/files-archive-delete-dialog.test.mjs`.
