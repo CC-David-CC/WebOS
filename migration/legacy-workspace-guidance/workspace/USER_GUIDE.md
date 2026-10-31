@@ -8,7 +8,7 @@ Open **System Tools → Files** and choose **My files**. Right-click in a folder
 
 A browser can clear its local storage. The server copy helps recovery only after synchronization succeeds. There is no restore/history feature yet. Deletions synchronize, so deleting a file can remove both copies. Keep independent backups of important coursework.
 
-Linux has a separate temporary filesystem that resets on reboot. Files can browse it using the **temp_linux** drive; other desktop apps use My files. To open a Linux file in another app, select it in temp_linux and use **Copy to account**. The two drives do not automatically synchronize. My files currently has an 8 MiB per-file limit.
+Linux has a separate temporary filesystem that resets on reboot. Files can browse it using the **temp_linux** drive; other desktop apps use My files. To open a Linux file in another app, select it in temp_linux and use **Copy to account**. The two drives do not automatically synchronize. My files allows files up to 128 MiB; individual apps can have smaller limits.
 
 ## Common tasks
 

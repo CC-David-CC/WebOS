@@ -2155,3 +2155,31 @@ for a transient status; after verifying its controls were enabled, the test's
 status text was changed locally to let that run finish. That run is not used
 as an independent readiness result. All disposable accounts were removed; no
 live product code changed.
+
+### Browser scroll fix live — 2026-10-31 UTC
+
+Simplified release `628cceb37a2bb3541390a87df258453ac0fc4a4b03fafac0a899f0784709c108`
+serves Browser bundle `d4779962241ed074236cbbe00c29eeeb258f9859e736c8fa21b1ed76e7b5f5ee`
+with engine WASM SHA-256 `4efd895c3ec20729ee738ab942e6fbc2fc798ced2f28b7d37b116668540758be`.
+The software wheel fallback uses immediate scrolling so successive touch events
+accumulate instead of restarting a smooth animation. A live registered
+phone-sized Chrome test moved 210px for both a six-step and a single 210px
+gesture; a registered desktop Browser rendered example.com. Signed-in source,
+relay admission, deny policy, file gateway, and account re-login checks passed.
+Test accounts were removed. Local real-engine tests also covered vertical touch;
+physical-phone input and custom page scroll widgets still need testing.
+
+Corresponding source is `codi-browser-source-7092c2e0d-scroll.tar.zst`, SHA-256
+`bb21975085ee8552ac16c428a59c83aa014be955b18742e0336f37f0b5703cae`,
+on the authenticated source page. Its combined patch passed a reverse dry run
+against the experiment checkout. Previous frontend is
+`1ce5edb5bb8312f9cf3ab6a793f809549b38628a28b7440b42058359e4e68117`;
+hosting backups are `change-20261031T071928382832Z` and
+`change-20261031T071928383307Z`. Generator SHA-256 remains
+`fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
+manifest is `02aefbcde5ecc43c9da2988e3ad8d10b7d5860f49c586ab9b0401a7ab07ba90b`,
+and Caddy is `84647a587008adb146180c260a038c0310a011d2f317189ceb474a677faa16ab`.
+The generic HTTP smoke script failed because it expects 200 on port 80 but
+Caddy redirects to HTTPS; a separate local HTTPS status probe returned 200 for
+nine sites and the configured Basic-auth 401 for hardware.ksu.codes. This
+status probe does not replace full functional checks of the other sites.
