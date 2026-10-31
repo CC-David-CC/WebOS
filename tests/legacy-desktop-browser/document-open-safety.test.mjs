@@ -4,7 +4,7 @@ const browser=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'ht
 const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18211/';
 async function run(phone){
  const context=await browser.createBrowserContext(),p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
- const user=(phone?'docphone':'docdesk')+Date.now().toString().slice(-9);
+ const user=(phone?process.env.CODI_TEST_PHONE_USER:process.env.CODI_TEST_DESKTOP_USER)||(phone?'docphone':'docdesk')+Date.now().toString().slice(-9);
  const click=async label=>p.evaluate(label=>{const b=[...document.querySelectorAll('.document-file-actions button')].find(x=>x.textContent===label);if(!b)throw Error('Missing '+label);b.click()},label);
  try{
   await p.setViewport(phone?{width:412,height:915,isMobile:true,hasTouch:true,deviceScaleFactor:1}:{width:1920,height:1080});
@@ -18,6 +18,7 @@ async function run(phone){
   assert.match(await p.$eval('.document-editable .tiptap',e=>e.innerText),/My report draft/);assert.equal(await p.$eval('[aria-label="Document file path"]',e=>e.value),'/Notes/Untitled.doc');assert.equal(await p.$eval('.document-editable .tiptap',e=>e.getAttribute('contenteditable')),'true');
   await click('Save');await p.waitForFunction(async()=>{try{const f=await(await mirrorFileContext()).files.read('/Notes/Untitled.doc');return f.status==='synced'&&new TextDecoder().decode(f.data).includes('My report draft')}catch{return false}},{timeout:45000});
   const fresh=await browser.createBrowserContext(),q=await fresh.newPage();try{await q.goto(base);await q.waitForSelector('.login-gate');await q.type('[aria-label=Username]',user);await q.type('[aria-label=Password]','test1234');await q.click('.login-form button[type=submit]');await q.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:30000});await q.waitForFunction(async()=>{try{return new TextDecoder().decode((await(await mirrorFileContext()).files.read('/Notes/Untitled.doc')).data).includes('My report draft')}catch{return false}},{timeout:30000});}finally{await fresh.close()}
+  await p.evaluate(async()=>{const c=await mirrorFileContext();for(const path of ['/Notes/Untitled.doc','/broken.doc']){const f=await c.files.read(path);await c.files.remove(path,f.version)}await c.files.sync();const folder=(await c.files.list('/')).entries.find(e=>e.path==='/Notes');if(folder)await c.files.remove('/Notes',folder.version);await c.files.sync()});await p.waitForFunction(async()=>{try{return (await(await mirrorFileContext()).files.status()).pending===0}catch{return false}},{timeout:45000});
   assert.deepEqual(errors,[]);console.log('PASS',phone?'phone':'desktop','save folder, failed open preserves draft, and fresh session recovery');
  }finally{await context.close()}
 }
