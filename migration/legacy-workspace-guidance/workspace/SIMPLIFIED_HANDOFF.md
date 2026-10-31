@@ -2129,3 +2129,14 @@ disposable test accounts were removed. The first test-runner attempt had no
 Node executable and exited before registration; the rerun used a temporary Node
 22.16.0 archive checked against the distribution's SHA-256 list. No live site
 code or policy was changed.
+
+### Browser horizontal phone touch check — 2026-10-31 UTC
+
+A fresh registered live session in emulated 412px Chrome opened a controlled
+1,600px-wide local HTML page in the actual Browser engine. A horizontal touch
+drag caused the page's own `scrollX` observer to report a nonzero offset (53px),
+so sideways panning works in this fixture. This does not establish pinch zoom,
+inertial scrolling, precise drag distance, physical-phone behavior, or that a
+specific third-party site permits horizontal scrolling. The test created no
+user file and its disposable account was removed. The test source is
+`tests/browser-live-phone-horizontal-scroll.test.mjs`.
