@@ -1675,6 +1675,14 @@ notice manifest `1230180107f7157ba7b2be53d883c5a334d5057506d5e75019eaacb671c8e3a
 The previous files are at `/var/lib/codi-ingress/browser-content-sdk-notice-backup.json`.
 The wider final-link license inventory remains incomplete.
 
+A fresh live desktop site check rendered the example.com reference page and
+the McMaster-Carr catalog. Grainger displayed its own “Access is temporarily
+restricted” page; the reason for that site's response is not established.
+The script checks engine failure status and saves screenshots for inspection;
+it does not automatically establish that arbitrary sites are usable. The
+disposable account was removed. `apps/system/browser/docs/TEST_STATUS.md`
+now distinguishes current live evidence from its original source-only report.
+
 The pinned live WASM's name subsection has 367,777 named functions; a
 reproducible scan found references to `svg_fmt::`, `seahash::`, `app_units::`
 and `content_analysis::sdk::`. These may be type references, not a complete
