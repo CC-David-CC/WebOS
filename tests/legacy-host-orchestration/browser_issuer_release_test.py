@@ -30,9 +30,14 @@ class CandidateIssuerTest(unittest.TestCase):
         manager=Manager();module.validate=lambda op,config:(manager,'expected-backend')
         expected=int(os.environ['CODI_ISSUER_FILE_LIMIT'])
         class Operator:
-            def issuer_config(self,config):return {'gateway':{'version':'codi-user-files/1','basePath':'/gateway','fileBytes':expected}}
-        module.ready(Operator(),{'userFiles':{'enabled':True},'basePath':''})
+            def issuer_config(self,config):return {'gateway':{'version':'codi-user-files/1','basePath':'/gateway','fileBytes':config['limit']}}
+        config={'userFiles':{'enabled':True},'basePath':'','release':str(RELEASE.resolve()),'limit':expected}
+        module.ready(Operator(),config)
         self.assertEqual(manager.backend,'expected-backend')
+        baseline=ROOT/'.build/browser-native-candidate/profile28-r3'
+        if baseline.is_dir():
+            module.ready(Operator(),{**config,'release':str(baseline.resolve()),'limit':8*1024*1024})
+            with self.assertRaises(ValueError):module.ready(Operator(),{**config,'release':str(baseline.resolve())})
 
     def test_turn_preference_matches_existing_profile(self):
         baseline=ROOT/'.build/browser-native-candidate/base-release'
