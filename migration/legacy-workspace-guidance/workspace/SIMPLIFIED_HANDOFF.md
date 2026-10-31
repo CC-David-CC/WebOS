@@ -848,3 +848,17 @@ Index rollback data is `/var/lib/codi-ingress/browser-source-index-2ed-backup.js
 The Gecko component and LGPL review remains incomplete; source availability
 alone is not a finding that the engine's distribution obligations are met.
 
+### Browser font notice — 2026-10-30
+
+The Gecko resource package includes four Liberation Sans fonts. Their
+SIL OFL 1.1 notice was missing from the browsable notices and is now appended
+to `/browser-sources/emscripten-licenses.txt`, with the index updated. The
+notice input is pinned to the exact Firefox checkout's license hash. The
+public response matched SHA-256
+`4b87b95e8c51dde5861703e11ce57c416f178497fab403b73033f6db48f550ad`.
+Previous notices are retained in
+`/var/lib/codi-ingress/browser-source-font-notice-backup.json`.
+The source notice builder now requires this license explicitly. Link-script
+inspection and symbol checks narrowed the LGPL questions but do not complete
+the full third-party license review.
+
