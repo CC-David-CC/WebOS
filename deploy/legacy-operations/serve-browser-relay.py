@@ -26,6 +26,7 @@ from browser_service.sessions import BrowserSessions
 from network_policy.policy import LocalCountryDatabase,PolicyLoader,address
 from relay.wisp import Relay
 from relay.download import Downloader
+from relay.policy import DestinationPolicy
 
 
 def verify_runtime(expected,*,require_root=False):
@@ -78,12 +79,12 @@ def trusted_client(request,expected_uid):
     except ValueError:raise web.HTTPForbidden() from None
 
 
-def make_app(*,origin,base_path,issuer_policy,policy_sha256,destination_policy,access_policy,geo,proxy_uid,reports=None):
+def make_app(*,origin,base_path,issuer_policy,policy_sha256,destination_policy,access_policy,geo,proxy_uid,reports=None,audit=None):
     if type(proxy_uid) is not int or proxy_uid<0:raise ValueError('Explicit trusted proxy UID required')
     access=PolicyLoader(access_policy,geo)
     async def unavailable(_request):return None
     relay=Relay(policy_path=destination_policy,origin=origin,authenticate=unavailable,
-                source=lambda req:trusted_client(req,proxy_uid),network_check=lambda ip:access.check('outgoing',ip))
+                source=lambda req:trusted_client(req,proxy_uid),network_check=lambda ip:access.check('outgoing',ip),audit=audit)
     sessions=BrowserSessions(issuer_policy,policy_sha256,base_path=base_path)
     @web.middleware
     async def only_proxy(request,handler):
@@ -92,6 +93,26 @@ def make_app(*,origin,base_path,issuer_policy,policy_sha256,destination_policy,a
     app=web.Application(client_max_size=(12*1024*1024+4096 if reports else 16384),middlewares=[only_proxy],handler_args={'auto_decompress':False,'max_headers':32,'keepalive_timeout':5})
     BrowserHTTP(sessions,relay,origin=origin,base_path=base_path,downloader=Downloader(relay),reports=reports).routes(app)
     return app
+
+
+def optional_audit(policy_path,database,key_path):
+    """Open a protected metadata ledger only when explicitly enabled.
+
+    A systemd credential or equivalent service-readable private file holds a
+    raw 32-byte Ed25519 private key. No database/key is opened while disabled.
+    """
+    enabled=DestinationPolicy.load(policy_path).server_audit_enabled
+    if not enabled:return None
+    if database is None or key_path is None:raise ValueError('Enabled server audit requires a private database and signing credential')
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+    from relay.audit import AuditLedger
+    key_file=protected(key_path,maximum=32)
+    info=key_file.stat()
+    if info.st_mode&0o077:raise ValueError('Audit signing credential must be private')
+    raw=key_file.read_bytes()
+    if len(raw)!=32:raise ValueError('Audit signing credential must be a raw Ed25519 key')
+    ledger=AuditLedger(database,Ed25519PrivateKey.from_private_bytes(raw))
+    return ledger.append
 
 
 async def serve(args):
@@ -115,8 +136,9 @@ async def serve(args):
         admins=json.loads(admin_file.read_text())
         if not isinstance(admins,list) or not admins or len(admins)>64 or any(not isinstance(x,str) or not re.fullmatch(r'user:[0-9a-f-]{36}',x) for x in admins) or len(admins)!=len(set(admins)):raise ValueError('Explicit registered administrator IDs required')
         reports=ReportRequests(args.report_database,origin=args.origin,admin_subjects=admins)
+    audit=optional_audit(dest,args.audit_database,args.audit_key)
     app=make_app(origin=args.origin,base_path=args.base_path,issuer_policy=issuer,policy_sha256=args.policy_sha256,
-                 destination_policy=dest,access_policy=access,geo=geo,proxy_uid=args.proxy_uid,reports=reports)
+                 destination_policy=dest,access_policy=access,geo=geo,proxy_uid=args.proxy_uid,reports=reports,audit=audit)
     sockpath=Path(args.socket).absolute();parent=sockpath.parent
     info=parent.stat()
     if parent.is_symlink() or not stat.S_ISDIR(info.st_mode) or info.st_uid!=os.geteuid() or info.st_gid!=args.proxy_gid or stat.S_IMODE(info.st_mode)!=0o750:
@@ -146,6 +168,7 @@ if __name__=='__main__':
     p.add_argument('--destination-policy',type=Path,required=True);p.add_argument('--access-policy',type=Path,required=True)
     p.add_argument('--geoip',type=Path);p.add_argument('--socket',type=Path,required=True);p.add_argument('--proxy-uid',type=int,required=True);p.add_argument('--proxy-gid',type=int,required=True)
     p.add_argument('--report-database',type=Path);p.add_argument('--report-admins',type=Path)
+    p.add_argument('--audit-database',type=Path);p.add_argument('--audit-key',type=Path)
     args=p.parse_args()
     try:asyncio.run(serve(args))
     except (ValueError,OSError,KeyError) as error:p.error(str(error))
