@@ -1892,3 +1892,13 @@ A hash-pinned scan of the actual live ABI v3 WASM confirmed 367,819 function
 names and the named crate/type references documented in SOURCE_PROVISION.md.
 Name counts are not a complete final-link audit; remaining licensing questions
 are not declared resolved. Unrelated guest SSH work remains untouched.
+
+The updated notice generator and associated Browser source snapshot is
+`codi-browser-source-9f99310f6.tar.zst`, SHA-256
+`14f39b6438216f4ab3a99524255389594ec73682b392e30fe555780a04edd88b`.
+The signed-in source page and complete archive download were verified with a
+fresh disposable account; the account was removed. Current index SHA-256
+`0750f7e555476aa7ed0389cbd9ecfc30bad573e80141bd1f4abb7886d9d186f2`,
+notice manifest `b63a5c359fcd48774bf528ad652fae2d301d89756f214321cea6e38f49a00953`;
+the index rollback backup is
+`/var/lib/codi-ingress/browser-source-index-rust-metadata-backup.json`.
