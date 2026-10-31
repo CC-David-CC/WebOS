@@ -2340,3 +2340,12 @@ Image Editor Save As was deployed in preceding release `1f1887d6b2a610ae42fa9ca8
 User expanded scope to all listed non-game, non-XR/AR webOS applications and shared tools, while developing games and XR/AR separately. `docs/NON_GAME_EXPANSION.md` records current inventory, proposed categories and unfinished integration. The full app review and 100-user storage capacity objective remain active.
 
 Hosting generator `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`, manifest `a98f610bebc6c5fbe32af7feb205f1697eba8aadabd795ed5db1807f3ee0dfd9`, previous static release `1f1887d6b2a610ae42fa9ca8b39ebaf5bc7517168cba8fc40c3f872533fc964d`. Staging changed only the shell, app catalog, Image Editor and five new tool bundles. Disposable live test accounts/fixtures were removed.
+
+
+## 2026-10-31 — Audio Editor open safety and game scope
+
+Audio Editor validates browser decoding before replacing the current track, keeps the edited track and destination name when an invalid file is chosen, and avoids the upstream open-or-append modal for My files. Desktop, emulated phone and 4K local tests exercised upload through Files, reverse, invalid open, WAV save, server sync and reopen. A fresh registered live-site desktop test passed the same workflow, plus local Tone and WaveSurfer checks; its disposable account and test files were removed. Physical-phone behavior, large-file memory pressure, multitrack saves and full audio workflows are not qualified.
+
+Live static release: `8de776337097c89fb9ae825db7e9e3bd9999522f518a4292716db5bf5bccde44`; previous release: `34bf76afe9033469c4cb482a5eaeb79f5b91f63c7c200edc8d0946c4fcbb1ece`. Hosting generator SHA: `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`; manifest SHA: `c0db2952fa9972d366e559cb41b9075615bcf3d44535717a294090b490ed024f`.
+
+The user authorized games and identified `../served_apps_public/game_tree` as the design starting point. It contains pseudocode and specifications, not playable games. Its own AGENTS.md requires independent apps, real Rive integration, and one finished vertical slice before expansion. XR/AR remains outside the newly authorized scope.

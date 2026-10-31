@@ -31,7 +31,11 @@ explicitly connects a provider, credentials and permissions need their own desig
 
 ## Requested work remaining
 
-- **Games:** evaluate Phaser, EmulatorJS, Babylon.js, chess.js/boardgame.io,
+- **Games:** use the design handoff in `../../served_apps_public/game_tree/` as
+  the starting point; read its AGENTS.md and preserve that tree. It describes
+  28 designs, not playable apps, and requires independent app windows and
+  real Rive assets. Start with the flat Falling Blocks vertical slice; XR
+  portions remain out of scope. Evaluate Phaser, EmulatorJS, Babylon.js, chess.js/boardgame.io,
   js-dos and Ruffle as candidates. Build usable independent apps and examples;
   ensure user-supplied game content and saves use My files where applicable.
   Check licenses, source/content rights, browser compatibility, isolation,
