@@ -1297,8 +1297,9 @@ issuer/config upgrades must reconcile this unit's config and release pins.
 
 ## Additional upstream Rust notices
 
-Review of 26 checksum-verified registry crate archives confirmed that none
-included a root license file. For crates with an available original GitHub
+Review of 26 checksum-verified registry crate archives found that 25 had no
+root license file; `remove_dir_all` had two using the spelling `LICENCE`,
+which the original collection script missed. For crates with an available original GitHub
 source revision, 27 license files from 16 pinned revisions were collected,
 hash-pinned and appended to the public Browser notices. The pinned source
 list and reproducible collector are in `apps/system/browser/docs/` and
@@ -1310,3 +1311,14 @@ the prior public files are in
 Some upstream packages lack separate license files or have unavailable
 revisions, and non-GitHub sources were not resolved by this pass. The Rust
 target-build set is conservative rather than a final-link inventory.
+
+The registry audit was subsequently made reproducible in
+`tools/audit_missing_rust_crates.py`, which verifies every package against the
+pinned Cargo lockfile and detects both LICENSE and LICENCE. It caught the
+collector's missed `remove_dir_all` files; the collector and public notice
+were corrected. The two corrected files match the already published upstream
+copies byte for byte. Only that crate's block changed in the combined notice,
+whose current public SHA-256 is
+`7775f6197a7a14a397ad6180b43b4c553aaacef77ac4e0136a34fc15f3f3f829`.
+The prior file set is under
+`/var/lib/codi-ingress/browser-source-licence-correction-backup.json`.
