@@ -1102,3 +1102,8 @@ Applications → Electronics. A live registered test ran its compiled Blink HEX,
 observed the simulated LED change, opened firmware from My files, and verified
 independent windows; its disposable account and file were removed. Pico remains
 separate unfinished development.
+
+A live registered-account mirror test also instrumented two subsequent syncs
+of an unchanged file: both used version checks and neither requested a file
+read. The disposable test account and its file were removed. Run the check with
+`CODI_TEST_NO_REPEAT=1 ../active-system/.venv/bin/python tests/live_browser_relay_account_check.py`.
