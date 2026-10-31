@@ -1930,3 +1930,14 @@ tests passed (11 and 2 tests) with a scoped maxminddb 2.8.2 environment. The
 first attempt used the shared auth venv, which lacked maxminddb, and failed
 its local-country-database test; the isolated dependency environment fixed the
 test setup. No live policy was changed for these read-only checks.
+
+The corrected documentation and current Browser source are published for
+signed-in users as `codi-browser-source-f15af44a6.tar.zst`, SHA-256
+`27e670c3bdae08bfe550ca6d732fc483e22d5ca50704f3d18b26ec7f02b01d27`.
+A registered live test downloaded and verified the complete archive alongside
+the runtime source, exercised relay and file-gateway checks, and removed its
+disposable account. Current source-index SHA-256
+`784e0ca9614166e56a99d8487d6c7ef8046bc76907b07caf66c72d64e7c2fd6c`,
+notice manifest `df4e896c4d37024e38e805b037f6402a90e7427c5a362f55fe950e83ac529252`;
+prior index files are in
+`/var/lib/codi-ingress/browser-source-index-doc-update-backup.json`.
