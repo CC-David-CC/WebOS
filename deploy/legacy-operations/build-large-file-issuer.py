@@ -13,6 +13,12 @@ CHANGES={
  'scripts/serve-connected.py':"if a.user_files:config['gateway']={'version':'codi-user-files/1','basePath':a.base_path+'/gateway','fileBytes':8*1024*1024}",
  'origin_service/files_management.py':"expected={'version':'codi-user-files/1','basePath':config['basePath']+'/gateway','fileBytes':8*1024*1024}",
 }
+HEALTH_REPLACEMENT='''issuer_source=(Path(config['release'])/'scripts/serve-connected.py').read_text()
+    old_limit="if a.user_files:config['gateway']={'version':'codi-user-files/1','basePath':a.base_path+'/gateway','fileBytes':8*1024*1024}"
+    new_limit=old_limit.replace('8*1024*1024','128*1024*1024')
+    if issuer_source.count(old_limit)+issuer_source.count(new_limit)!=1:raise ValueError('Unexpected issuer file limit')
+    limit=128*1024*1024 if new_limit in issuer_source else 8*1024*1024
+    expected={'version':'codi-user-files/1','basePath':config['basePath']+'/gateway','fileBytes':limit}'''
 
 
 def verifier(root):
@@ -30,7 +36,8 @@ def main():
     shutil.copytree(base,out)
     manifest_path=out/'connected-release.json';manifest=json.loads(manifest_path.read_text())
     for name,old in CHANGES.items():
-        path=out/name;path.write_text(texts[name].replace(old,old.replace('8*1024*1024','128*1024*1024'),1));raw=path.read_bytes()
+        replacement=HEALTH_REPLACEMENT if name=='origin_service/files_management.py' else old.replace('8*1024*1024','128*1024*1024')
+        path=out/name;path.write_text(texts[name].replace(old,replacement,1));raw=path.read_bytes()
         manifest['files'][name]={'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
     manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
     print(json.dumps(verifier(out).verify(out),indent=2))
