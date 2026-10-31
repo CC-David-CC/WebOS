@@ -1690,6 +1690,18 @@ turning this into a “loaded successfully” claim based solely on a changed UR
 or painted frame; improving it requires an engine progress interface and
 qualification of the resulting engine build.
 
+An isolated native candidate compiled and linked with
+`nsIWebProgress::GetIsLoadingDocument` exposed in the status JSON. In a real
+local Gecko/Wisp fixture, the HTTP server confirmed receiving a request and
+held its response for eight seconds; one-second status samples remained
+`loading: false`. This candidate did not meet the intended loading-state test
+and was not deployed. Its experimental WASM SHA-256 was
+`3c3328968f0408977666e39f9f11fb3d46975c871ed400ce2dcd530a95e9665c`;
+the live engine remains unchanged. Investigate a progress listener or another
+authoritative signal before presenting a completion status. The first fixture
+attempt also used a directory URL that the test server refused; it was rerun
+against `/demo/index.html` before making the observation above.
+
 The pinned live WASM's name subsection has 367,777 named functions; a
 reproducible scan found references to `svg_fmt::`, `seahash::`, `app_units::`
 and `content_analysis::sdk::`. These may be type references, not a complete
