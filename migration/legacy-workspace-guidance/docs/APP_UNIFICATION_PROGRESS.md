@@ -29,7 +29,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Image Editor | Images | Local and live desktop and phone-sized tests cover opening, editing, save, rejected-image recovery and fresh-session recovery. Save As passes local desktop, phone-sized and 4K-sized checks and a live phone-sized check; animated GIF editing remains unsupported. Physical touch remains unverified. | In progress |
 | Audio Editor | Audio | My files open, single-track edit, WAV save and reopen tested on desktop and emulated phone; an undecodable replacement preserves the current edit. Multitrack project saving and a physical phone test remain outstanding. | Partial |
 | diagrams.net | Diagrams | Local and live desktop and emulated-phone tests cover opening a document, editing a shape label, rejecting malformed XML without discarding edits, account sync, fresh-session recovery and upload through Files. Broader touch, format and physical-device tests remain. | In progress |
-| Excalidraw | Drawings | Basic account save/reopen checked. | Pending |
+| Excalidraw | Drawings | Local desktop and emulated-phone tests cover drawing a shape, rejecting invalid input without discarding work, account sync, fresh-session recovery and upload through Files. Broader touch, embedded images and physical-device tests remain. | In progress |
 | SVG Editor | SVG artwork | Basic account save/reopen checked. | Pending |
 | Replicad | Code-based CAD | Basic model generation and export checked; not a full CAD editor. | Pending |
 | Grid tools: Kiri:Moto | 3D printing | Model import and G-code export checked; printer settings need independent review. | Pending |
