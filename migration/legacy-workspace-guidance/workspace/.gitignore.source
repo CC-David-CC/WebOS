@@ -42,3 +42,6 @@ assets/vendor/chess/chess.mjs
 /apps/system/browser/engine/wisp-client.mjs
 /apps/system/browser/engine/manifest.json
 /apps/system/browser/engine/*.LICENSE.txt
+
+# Reproducible upstream web release; prepare.py verifies and extracts it.
+/apps/system/embroidery-studio/vendor/

@@ -1066,8 +1066,9 @@ The live Simplified frontend is release `d360a4ef6c221d2f120b20bd1c38e89be100f62
 The file mirror stores large browser records as Blobs and checks the server's
 file version before downloading again. Local tests verify unchanged files do
 not trigger another full download, and external same-size edits are detected.
-A live 128 MiB mirror test timed out; this size remains under investigation and
-must not be described as verified on the live service.
+A live 128 MiB mirror test timed out on its first attempt. A repeat passed
+through browser storage, upload, verified server read, deletion, and sign-in
+from a fresh browser context. The intermittent timeout remains unexplained.
 
 The live gateway defaults are 50 GiB per account and 200 GiB shared per day;
 the per-transfer and 128 MiB file limits remain separate. Gateway release is
