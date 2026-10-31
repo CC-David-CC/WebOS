@@ -7,6 +7,10 @@ const workerURL='/'+entry.replace(/index\.mjs$/,'workers/wav.mjs');
 const browser=await puppeteer.connect({browserURL:process.env.CODI_BROWSER_URL||'http://127.0.0.1:19255'}),context=await browser.createBrowserContext(),page=await context.newPage();
 try {
  await page.goto(process.env.CODI_TEST_URL||'http://127.0.0.1:18256/');
+ const precision=await page.evaluate(async workerURL=>{async function encode(format,arrays){const worker=new Worker(workerURL,{type:'module'});try{return await new Promise((resolve,reject)=>{worker.onerror=()=>reject(Error('Worker failed'));worker.onmessage=async({data})=>{if(data.type==='error')return resolve({error:data.message});if(data.type==='ready'){const parts=arrays.map(x=>new Float32Array(x));worker.postMessage({type:'chunk',offset:0,parts},parts.map(p=>p.buffer));return}const b=new Uint8Array(await data.blob.arrayBuffer());resolve([...b])};worker.postMessage({type:'start',length:arrays[0].length,numberOfChannels:arrays.length,sampleRate:32000,format})})}finally{worker.terminate()}}return {pcm24:await encode('pcm24',[[-1,0,1]]),stereo:await encode('pcm24',[[-1,.5],[1,-.5]]),float:await encode('float32',[[-1.25,0,.75,1.25]]),invalid:await encode('float32',[[NaN]])}},workerURL);
+ const a=Uint8Array.from(precision.pcm24),av=new DataView(a.buffer);assert.equal(av.getUint16(20,true),1);assert.equal(av.getUint16(34,true),24);assert.equal(av.getUint32(24,true),32000);assert.equal(av.getUint32(40,true),9);assert.equal(a.length,54,'odd PCM data is padded');assert.deepEqual([...a.slice(44,53)],[0,0,128,0,0,0,255,255,127]);assert.equal(a[53],0);
+ const stereo=Uint8Array.from(precision.stereo);assert.equal(new DataView(stereo.buffer).getUint16(22,true),2);assert.deepEqual([...stereo.slice(44,56)],[0,0,128,255,255,127,255,255,63,0,0,192],'24-bit samples are interleaved by frame');
+ const f=Uint8Array.from(precision.float),fv=new DataView(f.buffer);assert.equal(fv.getUint16(20,true),3);assert.equal(fv.getUint16(34,true),32);assert.equal(String.fromCharCode(...f.slice(36,40)),'fact');assert.equal(fv.getUint32(44,true),4);assert.equal(String.fromCharCode(...f.slice(48,52)),'data');assert.deepEqual([0,1,2,3].map(i=>fv.getFloat32(56+4*i,true)),[-1.25,0,.75,1.25]);assert.match(precision.invalid.error,/non-finite/);
  const result=await page.evaluate(async ({workerURL,length})=>{
   const worker=new Worker(workerURL,{type:'module'});let offset=0,ticks=0;const timer=setInterval(()=>ticks++,10);
   try{return await new Promise((resolve,reject)=>{
@@ -22,5 +26,5 @@ try {
  assert.equal(result.size,128*1024*1024);assert.equal(result.magic,'RIFF');assert.equal(result.channels,1);assert.equal(result.sample,16383);assert.ok(result.ticks>0,'UI thread remains responsive');
  const rejected=await page.evaluate(workerURL=>new Promise((resolve,reject)=>{const worker=new Worker(workerURL,{type:'module'});worker.onerror=()=>reject(Error('Worker failed'));worker.onmessage=({data})=>{worker.terminate();resolve(data)};worker.postMessage({type:'start',length:128*1024*1024,numberOfChannels:1,sampleRate:48000})}),workerURL);
  assert.equal(rejected.type,'error');assert.match(rejected.message,/128 MiB/);
- console.log('PASS 128 MiB WAV conversion off-thread, sample values and 128 MiB boundary rejection');
+ console.log('PASS 16-bit, 24-bit, float, stereo, clipping, padding and 128 MiB worker boundary');
 }finally{await context.close();await browser.disconnect()}
