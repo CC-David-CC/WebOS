@@ -8,6 +8,7 @@ import argparse
 import asyncio
 import importlib.util
 import hashlib
+import os
 import re
 from pathlib import Path
 import shutil
@@ -51,7 +52,7 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
             config=super().config();config['gateway']={'version':'codi-user-files/1','basePath':'/gateway','fileBytes':128*1024*1024}
             if browser_sha:config['browserRelay']={'version':'codi-browser-relay/1','basePath':'/browser-relay','policySHA256':browser_sha}
             return config
-    issuer=Issuer(Config(runtime/'issuer',public,origin=origin,rate_per_minute=1000))
+    issuer=Issuer(Config(runtime/'issuer',public,origin=origin,rate_per_minute=int(os.environ.get('CODI_TEST_ISSUER_RATE','1000')) if isolated else 1000))
     application=GatewayAuthority(issuer)
     if browser_relay:
         from origin_service.browser_authority import BrowserAuthority
