@@ -38,7 +38,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Electronics Design | Electronics editor | Account project save/reopen checked; sample is not a production board. | Pending |
 | Embroidery Studio | Stitch design | Example generation and account save checked; physical sewing unverified. | Pending |
 | Stitch Converter | Stitch formats | Example conversion and account save checked; machine compatibility unverified. | Pending |
-| Falling Blocks | Single-player game in development | Deterministic rules and exact logical snapshot have unit tests; no interface, account-file integration, Rive artwork or physical-device tests yet. Not registered or live. | In progress |
+| Falling Blocks | Single-player game in development | Rules and exact snapshot unit-tested; a Phaser prototype passed isolated two-window play/save/load/disposal checks using mock storage at desktop and emulated phone sizes. Real account-file sync, full interface, Rive artwork and physical-device tests remain. Not registered or live. | In progress |
 | Personal template | Per-user app example | Template, not a completed end-user tool. | Pending |
 | CodeMirror | Shared editor capability | Used by apps; no standalone file workflow. | Pending consumer review |
 | FFmpeg | Shared media capability | Programmatic conversion checked. | Pending consumer review |
