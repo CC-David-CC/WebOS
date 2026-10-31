@@ -6,7 +6,7 @@ async function run(phone,user){
  try{
   await page.setViewport(phone?{width:412,height:915,deviceScaleFactor:2,isMobile:true,hasTouch:true}:{width:1366,height:950});
   await page.evaluateOnNewDocument(()=>{const original=window.fetch;window.fetch=(u,...a)=>String(u).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):original(u,...a)});
-  await page.goto('http://127.0.0.1:18189/');await page.waitForSelector('.login-toggle');await page.click('.login-toggle');
+  await page.goto(process.env.CODI_TEST_URL||'http://127.0.0.1:18189/');await page.waitForSelector('.login-toggle');await page.click('.login-toggle');
   await page.type('[aria-label=Username]',user);await page.type('[aria-label=Password]','test1234');await page.type('[aria-label="Confirm password"]','test1234');await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:30000});
   const state=()=>page.evaluate(()=>({hidden:document.querySelector('#voice-control').hidden,keyboard:document.documentElement.dataset.keyboardMode,buttons:document.querySelectorAll('#voice-control button').length}));
   assert.deepEqual(await state(),{hidden:!phone,keyboard:phone?'voice':'typing',buttons:1});
@@ -18,4 +18,4 @@ async function run(phone,user){
   console.log(phone?'phone menu PASS':'desktop menu PASS');
  }finally{await context.close();}
 }
-try{await run(false,'voicetestdfa12');await run(true,'voicetestdfa13');}finally{await browser.disconnect()}
+try{await run(false,'browserprobe69af180001');await run(true,'browserprobe69af180002');}finally{await browser.disconnect()}
