@@ -23,6 +23,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+import time
 
 # Imported pinned code must never create unmanifested files in immutable trees.
 sys.dont_write_bytecode=True
@@ -101,14 +102,23 @@ def restart():
     subprocess.run(['systemctl','restart','codi-browser-relay.service'],check=True,timeout=60)
 
 def check():
-    subprocess.run(['systemctl','is-active','--quiet','codi-browser-relay.service'],check=True,timeout=15)
-    conn=http.client.HTTPSConnection('ksu.codes',timeout=15)
-    conn.sock=ssl.create_default_context().wrap_socket(socket.create_connection(('127.0.0.1',443),timeout=5),server_hostname='ksu.codes')
-    try:
-        conn.request('POST','/browser-relay/challenge',body=b'{}',headers={'Host':'ksu.codes','Origin':'https://ksu.codes','Content-Type':'application/json'})
-        response=conn.getresponse();response.read(65536)
-        if response.status!=200:raise ValueError('Browser relay challenge is unavailable')
-    finally:conn.close()
+    # Type=exec may be active before the Unix socket is accepting requests.
+    # Keep this bounded, including connection timeouts, while waiting for the
+    # actual routed challenge rather than trusting systemd's active state.
+    deadline=time.monotonic()+20;last=None
+    while time.monotonic()<deadline:
+        try:
+            subprocess.run(['systemctl','is-active','--quiet','codi-browser-relay.service'],check=True,timeout=3)
+            conn=http.client.HTTPSConnection('ksu.codes',timeout=3)
+            conn.sock=ssl.create_default_context().wrap_socket(socket.create_connection(('127.0.0.1',443),timeout=2),server_hostname='ksu.codes')
+            try:
+                conn.request('POST','/browser-relay/challenge',body=b'{}',headers={'Host':'ksu.codes','Origin':'https://ksu.codes','Content-Type':'application/json'})
+                response=conn.getresponse();response.read(65536)
+                if response.status!=200:raise ValueError('Browser relay challenge is unavailable')
+                return
+            finally:conn.close()
+        except (ValueError,OSError,subprocess.SubprocessError) as error:last=error;time.sleep(.25)
+    raise ValueError('Browser relay did not become ready: '+str(last))
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('status','enable','disable','recover','report'));p.add_argument('--subject');p.add_argument('--expected-head');a=p.parse_args()

@@ -11,6 +11,7 @@ import socket
 import subprocess
 import sys
 import tempfile
+import time
 
 sys.dont_write_bytecode=True
 OPERATOR=Path('/srv/codi-browser/operators/2fe3f429322c16adbe60890aa04ea2c95d67afbd3d94b9a3d4778e73c5615258')
@@ -25,6 +26,13 @@ POLICY_LOCK=Path('/etc/codi-browser/.destination-policy.json.lock')
 JOURNAL=Path('/var/lib/codi-ingress/browser-audit-runtime-journal.json')
 BACKUP=Path('/var/backups/codi-browser-relay-before-audit-runtime.service')
 digest=lambda value:hashlib.sha256(value).hexdigest()
+
+def wait_check(op):
+    deadline=time.monotonic()+20;last=None
+    while time.monotonic()<deadline:
+        try:op.check();return
+        except (ValueError,OSError,subprocess.SubprocessError) as error:last=error;time.sleep(.25)
+    raise ValueError('Browser relay did not become ready: '+str(last))
 
 def operator():
     def protect(p,directory):
@@ -55,7 +63,7 @@ def main():
         if sys.argv[1]=='recover':
             op.protected(JOURNAL,mode=0o600);saved=json.loads(JOURNAL.read_bytes());old=base64.b64decode(saved['old'],validate=True);new=base64.b64decode(saved['new'],validate=True)
             if saved.get('version')!='codi-browser-audit-runtime/1' or digest(old)!=OLD_UNIT or digest(new)!=NEW_UNIT or UNIT.read_bytes() not in (old,new):raise ValueError('Runtime journal or unit changed')
-            switch.atomic(UNIT,old,0o644);op.restart();op.check();switch.remove_journal(JOURNAL);print('Restored previous relay runtime');return
+            switch.atomic(UNIT,old,0o644);op.restart();wait_check(op);switch.remove_journal(JOURNAL);print('Restored previous relay runtime');return
         backup=BACKUP.with_name('codi-browser-relay-before-audit-runtime-exercise.service') if sys.argv[1]=='exercise' else BACKUP
         if JOURNAL.exists() or JOURNAL.is_symlink() or backup.exists() or backup.is_symlink():raise ValueError('Prior upgrade state exists')
         old=UNIT.read_bytes()
@@ -72,12 +80,12 @@ def main():
         data={'version':'codi-browser-audit-runtime/1','old':base64.b64encode(old).decode(),'new':base64.b64encode(new).decode()}
         switch.atomic(JOURNAL,(json.dumps(data,sort_keys=True)+'\n').encode(),0o600)
         try:
-            switch.atomic(UNIT,new,0o644);op.restart();op.check()
-            if sys.argv[1]=='exercise':switch.atomic(UNIT,old,0o644);op.restart();op.check()
+            switch.atomic(UNIT,new,0o644);op.restart();wait_check(op)
+            if sys.argv[1]=='exercise':switch.atomic(UNIT,old,0o644);op.restart();wait_check(op)
             switch.remove_journal(JOURNAL)
         except Exception:
             if UNIT.read_bytes() not in (old,new):raise ValueError('Unit changed during upgrade; manual recovery required')
-            switch.atomic(UNIT,old,0o644);op.restart();op.check();switch.remove_journal(JOURNAL);raise
+            switch.atomic(UNIT,old,0o644);op.restart();wait_check(op);switch.remove_journal(JOURNAL);raise
         print(json.dumps({'status':'rollback-exercised' if sys.argv[1]=='exercise' else 'upgraded','runtime':OLD if sys.argv[1]=='exercise' else NEW,'auditEnabled':False,'rollback':str(backup)}))
 
 if __name__=='__main__':
