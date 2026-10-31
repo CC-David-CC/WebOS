@@ -24,10 +24,9 @@ explicitly connects a provider, credentials and permissions need their own desig
 - WaveSurfer, Tone, MapLibre, Plotly, Transformers.js and zip.js are existing
   shared tools. Three.js is an internal dependency of 3D printing tools, not a
   general shared tool. CesiumJS is not currently packaged as a shared tool.
-- Trystero, WebTorrent, Yjs, TanStack Virtual and ONNX Runtime Web are being
-  added as disabled lazy tools; no collaboration, transfer or model is enabled
-  just by installing them. Verify actual rollout and consumer support before
-  marking any of them complete.
+- Trystero, WebTorrent, Yjs, TanStack Virtual and ONNX Runtime Web are live as
+  disabled lazy tools; no collaboration, transfer or model is enabled just by
+  installing them. Consumer support remains to be implemented and tested.
 
 ## Requested work remaining
 

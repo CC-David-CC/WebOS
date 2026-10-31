@@ -22,7 +22,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Spreadsheet | Tables | Native save, XLSX import/export, folder selection and invalid-file draft recovery checked locally. The live desktop workflow passed; phone-sized checks reached fresh-session recovery but fixture cleanup hit the request limit. Advanced Excel compatibility limited. | In progress |
 | Data Explorer | Data analysis | Desktop and phone-sized tests locally and live, plus local 4K-sized tests, cover CSV upload, SQL, chart, save to My files, cancelled overwrite, new-session recovery and reopening results. Query and chart settings remain temporary; physical touch remains unverified. | In progress |
 | Python Notebook | Browser Python | Local Python/NumPy and same-browser account isolation checked. Save, automatic sync, invalid-file recovery and fresh session passed locally and live on desktop and phone-sized views; local 4K view emulated. Untrusted notebooks are not isolated. | In progress |
-| Image Editor | Images | Local and live desktop and phone-sized tests cover opening, editing, save, rejected-image recovery and fresh-session recovery. Save As passes local desktop, phone-sized and 4K-sized checks; animated GIF editing remains unsupported. Physical touch remains unverified. | In progress |
+| Image Editor | Images | Local and live desktop and phone-sized tests cover opening, editing, save, rejected-image recovery and fresh-session recovery. Save As passes local desktop, phone-sized and 4K-sized checks and a live phone-sized check; animated GIF editing remains unsupported. Physical touch remains unverified. | In progress |
 | Audio Editor | Audio | WAV edit/save checked; no multitrack project persistence. | Pending |
 | diagrams.net | Diagrams | Basic account save/reopen checked. | Pending |
 | Excalidraw | Drawings | Basic account save/reopen checked. | Pending |
@@ -56,7 +56,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | WebTorrent | Shared peer transfer capability | Lazy browser library only; no tracker, transfers or app integration configured. | Pending consumer review |
 | Yjs | Shared state capability | Lazy library only; no synchronization provider, persistence or app integration configured. | Pending consumer review |
 
-New apps open full screen on phones and in alternating half-width, full-height tiles on desktop. Local viewport-emulation checks cover 1080p, 4K, maximization, resize, manual movement and phone/desktop transitions. Physical F11 and device behavior remain to be checked. Electronics Design’s three-view large-screen layout needs individual investigation.
+New apps open full screen on phones and in alternating half-width, full-height tiles on desktop. Local and live viewport-emulation checks cover 1080p, 4K, maximization, resize, manual movement and phone/desktop transitions. Physical F11 and device behavior remain to be checked. Electronics Design’s three-view large-screen layout needs individual investigation.
 
 During each app review, suppress optional third-party account and sign-up prompts where the local feature can work without them. The desktop account does not automatically grant access to an external provider; label any feature that genuinely needs one. Defer AI and other features that depend on removed account services for later integration; preserve working local features.
 
