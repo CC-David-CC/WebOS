@@ -1330,3 +1330,19 @@ are rejected before the connector is called. All 11 Wisp tests passed. The
 tested `wisp.py` and `policy.py` SHA-256 values matched the installed live
 relay files. This is a local controlled-DNS test, not a claim that a real
 external DNS provider performed the rebind during the live test.
+
+## Optional server audit integration — source work in progress
+
+The live Browser policy still has `serverAuditEnabled: false`; no server
+metadata ledger was enabled. Review found that the existing `AuditLedger` and
+Wisp hooks were not wired into the relay service, so simply turning the flag
+on would fail startup rather than enable recording. Source work now adds
+private credential/database arguments, constructs the ledger only when the
+policy explicitly enables it, and includes its source in exported runtimes.
+Local tests verify default-off makes no file, enabled mode requires a private
+32-byte Ed25519 credential, and an enabled Wisp stream records metadata but
+not payload. This work is **not deployed or ready to enable**: the explicit
+URL downloader still needs equivalent per-hop audit, and the protected
+systemd credential, operator controls, failure/recovery and live opt-in tests
+remain. Do not set `serverAuditEnabled` on the live policy yet: the current
+live runtime has no configured audit callback and would reject traffic.
