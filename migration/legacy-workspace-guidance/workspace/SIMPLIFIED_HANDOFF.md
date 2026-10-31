@@ -1656,3 +1656,14 @@ passed; the exact reported module URL with `?retry=14` returned 200. Old tabs
 that cached the failure may need a page refresh. Source-only scripts and tests
 are backed up separately; unrelated guest SSH work remains untouched.
 
+The authenticated index now includes `codi-browser-source-ed78ff4b3.tar.zst`,
+SHA-256 `0b6f94ae5573bb80d430085cdad66bb3720fdb63d8e5883166412f5219b34139`,
+covering the deployed protected-source implementation. The Firefox notice's
+old absolute public link now points back to the protected index. A fresh real
+registered-session test verified the UI, index, notice link, both source range
+downloads and refusal without the session. Current source index SHA-256 is
+`81955daf2abf8e4ce82743b5278d40862afd75bea462b251a9b5f720d5f1e614`,
+Firefox notice `863ab7630592181f9c16be9f509cbc0b859c56124af4711d8a519c6b4c79fa0e`,
+and notice manifest `b149d4c620611e8284a0920c5cc85ea69ce28a61bb3ac0e5ea0a2233c7c391dd`.
+The prior files are backed up at `/var/lib/codi-ingress/browser-source-index-ed78-backup.json`.
+
