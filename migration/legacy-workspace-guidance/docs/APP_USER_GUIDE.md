@@ -17,7 +17,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Spreadsheet | Edit a workbook; import/export supported CSV or XLSX. | Advanced Excel compatibility is limited. |
 | Data Explorer | Open CSV, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
 | Python Notebook | Run Python cells and save the notebook in My files. | Untrusted notebooks are not isolated. Browser Python differs from Linux. |
-| Image Editor | Open an image, edit, and save a copy. | Animated GIF editing is unsupported. |
+| Image Editor | Create a blank image or open an image, edit, and save a copy. | Animated GIF editing is unsupported. |
 | Audio Editor | Try the generated 440 Hz tone, or open or record audio; edit and export WAV. | Physical microphone behavior and multitrack project saving need more work. |
 | diagrams.net | Open or create a diagram and save it. | Broader format and touch behavior remain under review. |
 | Excalidraw | Draw and save a sketch. | Embedded images and physical touch need further testing. |
