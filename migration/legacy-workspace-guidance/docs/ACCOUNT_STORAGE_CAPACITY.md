@@ -10,8 +10,7 @@ browser-first, account-isolated storage and conflict guarantees.
 * A successful, idle browser mirror now polls at roughly 60 seconds in a
   visible tab and four minutes in a hidden tab, with jitter. Edits and explicit
   sync remain immediate; pending or failed work uses the shorter retry schedule,
-  and returning to a stale tab prompts a refresh. Each pass still lists every
-  folder and checks file versions. If 100 mirrors were visible, the intervals
+  and returning to a stale tab prompts a refresh. Each pass still discovers the tree and checks file versions; the live combined operation now performs those checks together within its bounds. If 100 mirrors were visible, the intervals
   alone would start about 100 passes per minute before counting folders or
   files, already exceeding the former shared 60-per-minute issuer bucket. Account-scoped admission is now live, but the gateway budget still constrains the workload. This is arithmetic, not a capacity claim.
 * Each file gateway operation obtains signed authorization using separate
@@ -24,9 +23,7 @@ browser-first, account-isolated storage and conflict guarantees.
 * The gateway has a bounded global request budget and an active-work limit of
   four. Do not assume four active transfers supports the target or raise it
   blindly: measure transfer memory, file descriptors, latency and disk load.
-* Version checks avoid redownloading unchanged file contents, but currently
-  still incur one signed request and server hash per file. Large accounts can
-  therefore be slow even without a download.
+* Version checks avoid redownloading unchanged file contents. Combined inventory hashes up to 64 files and 32 MiB in one signed operation; beyond that it falls back to bounded batches or individual checks. Large accounts can still be slow even without a download.
 * The mirror now remembers completed file-version checks across an interrupted
   scan in the current browser session, so a 429 during the file-check phase can
   make progress on the next attempt. This is not a batch protocol: folder
@@ -95,8 +92,8 @@ The live issuer groups file-authorization admission by the subject of a live in-
 Local tests exercised 100 independently keyed accounts, issuer and gateway signatures, account isolation, legacy callers, independent account budgets and a global ceiling. One sequential issuer/proof run completed 100 authorizations in 0.624 seconds after setup (p95 7.66 ms). In a separate signed HTTP fixture with 100 accounts and one 4-byte file each, concurrency three, all 100 inventories completed in 2.479 seconds after setup (p95 86 ms); the immediately following version checks completed for 27 accounts and 73 hit the separate 256-request/minute gateway budget. Account setup used a permissive fixture, so neither run establishes login-burst capacity. Large files, slow transfers, concurrent bursts, public proxy behavior, sustained throughput, gateway fair scheduling and 100-user end-to-end capacity remain unverified.
 
 
-## Local combined inventory candidate — 2026-10-31
+## Combined inventory live — 2026-10-31
 
-A local candidate adds one signed account-scoped inventory operation with hashes for up to 64 files and 32 MiB of data. Remaining entries carry no hash and use existing version checks; oversized directory trees fall back without treating partial results as deletions. The operation retains list and read permissions, no-follow descriptor checks, per-file hashing and change-during-read detection. Browser mirror validation rejects malformed, duplicate or inconsistent inventory results. The client and mirror retain fallbacks for older gateway capabilities.
+The live gateway provides one signed account-scoped inventory operation with hashes for up to 64 files and 32 MiB of data. Remaining entries carry no hash and use existing version checks; oversized directory trees fall back without treating partial results as deletions. The operation retains list and read permissions, no-follow descriptor checks, per-file hashing and change-during-read detection. Browser mirror validation rejects malformed, duplicate or inconsistent inventory results. The client and mirror retain fallbacks for older gateway capabilities.
 
-Signed HTTP tests covered account isolation, revoked list/read permissions, anonymous denial, link rejection, bounded hashing, count overflow and same-size external disk edits. Local browser tests checked a six-folder account using one combined signed operation, same-size external edits and both legacy fallbacks; conflict preservation also passed. With 100 distinct authenticated accounts containing one 4-byte file each and only three concurrent operations, a local HTTP fixture completed all combined inventories in 2.647 seconds after setup (p95 91.08 ms), using 200 gateway requests. The earlier two-operation version hit the gateway limit for 73 subsequent version checks. These are narrow test fixtures, not a claim that the gateway supports 100 active users: login bursts, large files, many-file accounts, uploads, slow connections and sustained workloads remain unqualified. The combined candidate is not yet deployed.
+Signed HTTP tests covered account isolation, revoked list/read permissions, anonymous denial, link rejection, bounded hashing, count overflow and same-size external disk edits. Local browser tests checked a six-folder account using one combined signed operation, same-size external edits and both legacy fallbacks; conflict preservation also passed. With 100 distinct authenticated accounts containing one 4-byte file each and only three concurrent operations, a local HTTP fixture completed all combined inventories in 2.647 seconds after setup (p95 91.08 ms), using 200 gateway requests. The earlier two-operation version hit the gateway limit for 73 subsequent version checks. These are narrow test fixtures, not a claim that the gateway supports 100 active users: login bursts, large files, many-file accounts, uploads, slow connections and sustained workloads remain unqualified. The gateway and browser mirror are live. A live phone-sized browser test used one combined check for a six-folder fixture, verified old-protocol fallbacks, and detected a same-size edit made directly on server disk. A live simulated-429 test confirmed a local edit eventually synced. Four exact disposable test accounts and their verified fixture files were removed.
