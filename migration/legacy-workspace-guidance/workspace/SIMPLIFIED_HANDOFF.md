@@ -776,6 +776,19 @@ before final activation. `/config.json` now advertises 134217728 bytes from
 site status checks passed. The live desktop remains on its old static release
 and its mirror's 128 MiB end-to-end path has not yet been verified.
 
+Real live signed-account tests then exercised outgoing CIDR and country rule
+updates: each update closed an existing Wisp stream and rejected a new stream,
+and traffic resumed after restoring the original rule file. The country test
+blocked AU/CA, covering the selected host's resolved IPv4/IPv6 addresses. A
+separate test from i36's public address (104.180.210.36, US in the installed
+DB-IP database) added an incoming US login block: login returned 403 despite
+forged client-IP headers, while an already signed-in Browser relay still
+downloaded an allowed site. Login returned its normal 400 invalid-body response
+after restore. Tests used an automatic two-minute conflict-safe recovery timer;
+the original policy hash was verified, the timer and temporary helper removed,
+and the exact disposable account cleaned up after each run. A login rule does
+not revoke an existing session.
+
 ### Electronics apps — local work in progress
 
 The requested electronics tools are tracked in `docs/ELECTRONICS_APPS.md` as
