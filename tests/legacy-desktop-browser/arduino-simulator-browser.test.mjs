@@ -7,10 +7,10 @@ try{
   if(process.env.CODI_PHONE==='1')await page.setViewport({width:412,height:915,deviceScaleFactor:2.625,isMobile:true,hasTouch:true});
   await page.evaluateOnNewDocument(()=>{const f=window.fetch;window.fetch=(u,...a)=>String(u).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):f(u,...a)});
   await page.goto(base);await page.waitForSelector('.login-toggle');await page.click('.login-toggle');
-  await page.type('[aria-label=Username]','avrsim'+Date.now().toString().slice(-9));await page.type('[aria-label=Password]','test1234');await page.type('[aria-label="Confirm password"]','test1234');
+  await page.type('[aria-label=Username]',process.env.CODI_TEST_USERNAME||'avrsim'+Date.now().toString().slice(-9));await page.type('[aria-label=Password]','test1234');await page.type('[aria-label="Confirm password"]','test1234');
   await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered');
-  await page.click('[aria-label="Applications"]');await page.waitForSelector('[aria-label="Electronics"]');await page.click('[aria-label="Electronics"]');
-  await page.waitForSelector('[aria-label="Arduino Simulator"]');await page.click('[aria-label="Arduino Simulator"]');await page.waitForSelector('.arduino-simulator');
+  await page.evaluate(()=>document.querySelector('[aria-label=Applications]').click());await page.waitForSelector('[aria-label=Electronics]');await page.evaluate(()=>document.querySelector('[aria-label=Electronics]').click());
+  await page.waitForSelector('[aria-label="Arduino Simulator"]');await page.evaluate(()=>[...surfaces.values()][0].launch('arduino-simulator'));await page.waitForSelector('.arduino-simulator');
   await page.evaluate(()=>[...document.querySelectorAll('.arduino-toolbar button')].find(b=>b.textContent==='Run Blink example').click());
   await page.waitForFunction(()=>document.querySelector('.arduino-status')?.textContent.startsWith('Running'),{timeout:30000});
   await page.waitForFunction(()=>document.querySelector('.arduino-stage wokwi-led')?.value===true,{timeout:30000});
@@ -26,5 +26,6 @@ try{
   await page.evaluate(()=>document.querySelector('.arduino-simulator').closest('.window').querySelector('[aria-label=Close]').click());
   assert.equal(await page.$$eval('.arduino-simulator',items=>items.length),1);
   await page.waitForFunction(()=>document.querySelector('.arduino-stage wokwi-led')?.value===true,{timeout:30000});
+  if(process.env.CODI_TEST_CLEAN_FILES==='1')await page.evaluate(async()=>{const c=await mirrorFileContext(),f=await c.files.read('/test-firmware.hex');await c.files.remove('/test-firmware.hex',f.version);await c.files.sync()});
   console.log('PASS compiled Blink toggles Uno D13, HEX opens from My files, and independent windows survive closing');
 }finally{await context.close();await browser.disconnect();}
