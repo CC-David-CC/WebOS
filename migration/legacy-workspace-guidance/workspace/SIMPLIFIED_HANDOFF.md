@@ -1081,8 +1081,8 @@ Browser routing and management details are in
 Release `bc92bb0d2f7f033b868b97d4d04b04204df8d2191d3216681c6f54052990832b`
 serves Embroidery Studio and Stitch Converter under Applications → Crafts.
 The prior release was `d360a4ef6c221d2f120b20bd1c38e89be100f62a514ff573a3130abe64ff34d8`.
-Desktop and phone-sized local checks and a live registered-account check opened
-both apps, generated PES and DST examples, and saved to My files. The live test
+Desktop and phone-sized local and live registered-account checks opened both
+apps, generated PES and DST examples, and saved to My files. The live test
 account and its files were removed. Physical-machine compatibility and sewing
 remain unverified; StitchFoundry is an upstream pre-release.
 
