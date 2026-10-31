@@ -112,6 +112,7 @@ def optional_audit(policy_path,database,key_path):
     raw=key_file.read_bytes()
     if len(raw)!=32:raise ValueError('Audit signing credential must be a raw Ed25519 key')
     ledger=AuditLedger(database,Ed25519PrivateKey.from_private_bytes(raw))
+    ledger.verify()
     return ledger.append
 
 
