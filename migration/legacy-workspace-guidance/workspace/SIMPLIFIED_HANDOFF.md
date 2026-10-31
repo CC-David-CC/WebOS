@@ -814,3 +814,22 @@ simulate analog circuits. Desktop and phone-emulated Chromium tests passed
 real firmware-driven LED changes, opening firmware through My files and two
 independent windows with one closed. It is not deployed. Pico, writable flash,
 analog circuit simulation, PCB design and digital logic apps remain unfinished.
+### Browser report relay activation — 2026-10-30
+
+The Browser relay is running the root-owned runtime with manifest SHA-256
+`6b2ea6b67591faf490e164dd79b80cabd2fd58f8e13c3f56998dc0947b3516c9`,
+source commit `6078c8e18`. Requested reports are enabled on this service;
+`dflanag3` is the only configured administrator, in root-owned
+`/etc/codi-browser/report-admins.json`. Report data uses the service-owned
+0700 `/var/lib/codi-browser-reports` directory and 0600 SQLite database.
+No request is active merely because this service is enabled. The separate
+continuous server-side access audit remains disabled. The prior unit is at
+`/var/backups/codi-browser-relay-before-report-6078.service` for rollback.
+After restart, a public challenge advertised report support and a new
+disposable registered account passed signed relay admission, HTTPS download,
+blacklist and private-address denial, Wisp connection, account-file
+write/read/delete and a fresh-context login; the account was removed. The
+report workflow passed against a local real Browser and two registered
+accounts. The report UI and Browser desktop app are not deployed yet, and a
+live end-to-end report and restart recovery test is still required.
+
