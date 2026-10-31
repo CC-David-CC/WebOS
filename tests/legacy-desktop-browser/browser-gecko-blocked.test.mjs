@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 
 const browser=await puppeteer.connect({browserURL:'http://127.0.0.1:19255'});
 const context=await browser.createBrowserContext(),page=await context.newPage();
-const username='blockedtest'+Date.now().toString().slice(-8);
+const username=process.env.CODI_TEST_USERNAME||'blockedtest'+Date.now().toString().slice(-8);
 try {
   await page.evaluateOnNewDocument(()=>{const fetch0=window.fetch;window.fetch=(url,...args)=>String(url).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):fetch0(url,...args);});
   await page.goto(process.env.CODI_TEST_DESKTOP_URL||'http://127.0.0.1:18154/');

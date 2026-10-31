@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer-core';import assert from 'node:assert/strict';
-const b=await puppeteer.connect({browserURL:'http://127.0.0.1:19255'}),c=await b.createBrowserContext(),p=await c.newPage(),user='phoneweb'+Date.now().toString().slice(-8),errors=[];
+const b=await puppeteer.connect({browserURL:'http://127.0.0.1:19255'}),c=await b.createBrowserContext(),p=await c.newPage(),user=process.env.CODI_TEST_USERNAME||'phoneweb'+Date.now().toString().slice(-8),errors=[];
 p.on('pageerror',e=>errors.push(e.message));
 try{
  await p.setViewport({width:390,height:844,isMobile:true,hasTouch:true,deviceScaleFactor:1});
