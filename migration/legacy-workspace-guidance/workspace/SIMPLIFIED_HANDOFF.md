@@ -1294,3 +1294,19 @@ unit appears inactive after a successful run, so check its `Result` and
 `ExecMainStatus` rather than expecting it to remain running. Actual renewal
 at the future due time was not forced or tested in this repair. Subsequent
 issuer/config upgrades must reconcile this unit's config and release pins.
+
+## Additional upstream Rust notices
+
+Review of 26 checksum-verified registry crate archives confirmed that none
+included a root license file. For crates with an available original GitHub
+source revision, 27 license files from 16 pinned revisions were collected,
+hash-pinned and appended to the public Browser notices. The pinned source
+list and reproducible collector are in `apps/system/browser/docs/` and
+`apps/system/browser/tools/`; `prepare_notices.py` requires the exact input.
+The public combined notice SHA-256 is
+`a817feabfa8bc5cd56dd24619f0c9c3c9688fa58b69694c082c24d615cd37ea7`;
+the prior public files are in
+`/var/lib/codi-ingress/browser-source-rust-upstream-notice-backup.json`.
+Some upstream packages lack separate license files or have unavailable
+revisions, and non-GitHub sources were not resolved by this pass. The Rust
+target-build set is conservative rather than a final-link inventory.
