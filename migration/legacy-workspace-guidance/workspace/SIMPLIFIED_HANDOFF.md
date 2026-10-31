@@ -1249,3 +1249,17 @@ is retained. Hosting backups are `change-20261031T031853664991Z` and
 `2d04ab00dc0e17003f94155b4f812b640ed2f9ed897e4f3685b8cb2bbbda41cb`,
 manifest `1eff3c244aa5e528f0fe91962e835b2e551c77846a44a410d1066d6c606a7137`,
 and Caddy `a34f149de23c2c88c61c3999035fb23fef758aca4ae6c33dface3ed75e3ece01`.
+
+## Browser RLBox attribution
+
+The shipped Gecko object's RLBox thread-local implementation includes
+vendored RLBox headers. The Firefox license page named RLBox but the combined
+notices lacked its exact pinned copyright text, so the Mozilla revision's
+`third_party/rlbox/LICENSE` was added to the public combined notices.
+The notice builder verifies its exact SHA-256 and has an input-rejection test.
+The public notice SHA-256 is
+`28b3c6267097ecfa2e40dc56de5715348ca011652a2b26817f7cbba15e2570b7`.
+The source index was regenerated and the current source link is correctly
+under Source code. Prior public notices were backed up under
+`/var/lib/codi-ingress/browser-source-rlbox-notice-backup.json`. This closes
+one identified attribution gap, not the full linked-component/legal review.
