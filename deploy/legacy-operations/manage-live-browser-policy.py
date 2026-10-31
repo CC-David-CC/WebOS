@@ -11,7 +11,7 @@ import stat
 import sys
 import tempfile
 
-RUNTIME=Path('/srv/codi-browser/releases/953a58dc68dde9f1c988fa18857ea344347508f7e07e6c508eb256245e20764a')
+RUNTIME=Path('/srv/codi-browser/releases/af8d81daf6fdda84d9b563ce6885f862a4d68c0a55bea194d0c9360c47b1092e')
 RUNTIME_PIN=RUNTIME.name
 ACCESS=Path('/etc/codi-browser/access-policy.json')
 DESTINATION=Path('/etc/codi-browser/destination-policy.json')
