@@ -18,6 +18,7 @@ ROOT=Path(__file__).resolve().parent.parent
 WORKSPACE=ROOT.parent
 FILES=(
     'active-system/scripts/serve-browser-relay.py',
+    'active-system/scripts/browser-audit-report.py',
     'active-system/browser_service/__init__.py',
     'active-system/browser_service/authorization.py',
     'active-system/browser_service/http.py',

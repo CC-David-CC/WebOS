@@ -95,24 +95,26 @@ def make_app(*,origin,base_path,issuer_policy,policy_sha256,destination_policy,a
     return app
 
 
-def optional_audit(policy_path,database,key_path):
-    """Open a protected metadata ledger only when explicitly enabled.
-
-    A systemd credential or equivalent service-readable private file holds a
-    raw 32-byte Ed25519 private key. No database/key is opened while disabled.
-    """
-    enabled=DestinationPolicy.load(policy_path).server_audit_enabled
-    if not enabled:return None
+def open_audit_ledger(database,key_path,*,require_existing=False):
+    """Open and verify the private signed metadata ledger."""
     if database is None or key_path is None:raise ValueError('Enabled server audit requires a private database and signing credential')
+    database=Path(database)
+    if require_existing and (database.is_symlink() or not database.is_file()):raise ValueError('Existing audit ledger required')
+    if require_existing:
+        import sqlite3
+        with sqlite3.connect(database.absolute().as_uri()+'?mode=ro',uri=True) as db:
+            if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='events'").fetchone() is None:
+                raise ValueError('Existing audit ledger schema required')
     from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
     from relay.audit import AuditLedger
     key_file=protected(key_path,maximum=32)
     info=key_file.stat()
-    systemd_path=Path('/run/credentials/codi-browser-relay.service/audit-signing-key')
+    systemd_paths={Path('/run/credentials/codi-browser-relay.service/audit-signing-key'),
+                   Path('/run/credentials/codi-browser-audit-report.service/audit-signing-key')}
     # systemd LoadCredential uses root-owned 0440 files inside a root-owned
     # 0550 per-unit directory with an ACL for the service user. Group read is
-    # accepted only for that exact protected root:root credential location.
-    systemd_credential=(key_file==systemd_path and info.st_uid==0 and info.st_gid==0
+    # accepted only for these two protected root:root credential locations.
+    systemd_credential=(key_file in systemd_paths and info.st_uid==0 and info.st_gid==0
                         and key_file.parent.stat().st_uid==0 and key_file.parent.stat().st_gid==0
                         and not key_file.parent.stat().st_mode&0o027)
     if info.st_mode&0o037 or (info.st_mode&0o040 and not systemd_credential):raise ValueError('Audit signing credential must be private')
@@ -120,7 +122,17 @@ def optional_audit(policy_path,database,key_path):
     if len(raw)!=32:raise ValueError('Audit signing credential must be a raw Ed25519 key')
     ledger=AuditLedger(database,Ed25519PrivateKey.from_private_bytes(raw))
     ledger.verify()
-    return ledger.append
+    return ledger
+
+
+def optional_audit(policy_path,database,key_path):
+    """Open a protected metadata ledger only when explicitly enabled.
+
+    A systemd credential or equivalent service-readable private file holds a
+    raw 32-byte Ed25519 private key. No database/key is opened while disabled.
+    """
+    if not DestinationPolicy.load(policy_path).server_audit_enabled:return None
+    return open_audit_ledger(database,key_path).append
 
 
 async def serve(args):
