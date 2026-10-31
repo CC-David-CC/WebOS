@@ -1,8 +1,8 @@
 import puppeteer from 'puppeteer-core';
 const b=await puppeteer.connect({browserURL:'http://127.0.0.1:19255',protocolTimeout:180000}),c=await b.createBrowserContext(),p=await c.newPage();
 try{
- await p.setViewport({width:1280,height:1000});await p.goto('http://127.0.0.1:18195/demo/index.html');await p.waitForFunction(()=>document.querySelector('.window-content')?.shadowRoot?.querySelector('.status')?.textContent==='Ready',{timeout:180000});
- await p.click('#open');await p.waitForFunction(()=>{const r=[...document.querySelectorAll('.window-content')];return r.length===2&&r.every(e=>e.shadowRoot?.querySelector('.status')?.textContent==='Ready')},{timeout:180000});
+ await p.setViewport({width:1280,height:1000});await p.goto('http://127.0.0.1:18195/demo/index.html');await p.waitForFunction(()=>[...(document.querySelector('.window-content')?.shadowRoot?.querySelectorAll('button')||[])].some(b=>b.textContent==='Stop'&&!b.disabled),{timeout:180000});
+ await p.click('#open');await p.waitForFunction(()=>{const r=[...document.querySelectorAll('.window-content')];return r.length===2&&r.every(e=>[...(e.shadowRoot?.querySelectorAll('button')||[])].some(b=>b.textContent==='Stop'&&!b.disabled))},{timeout:180000});
  const go=async(i,url)=>p.evaluate(({i,url})=>{const a=document.querySelectorAll('.window-content')[i].shadowRoot.querySelector('[aria-label="Website address"]');a.value=url;a.form.requestSubmit()},{i,url});
  await go(0,'http://fixture.example/slow');await p.waitForFunction(async()=>{const r=await fetch('/test-calls');return (await r.json()).resolved.includes('SLOW_REQUEST')},{timeout:30000});
  await go(1,'http://fixture.example/after');await p.waitForFunction(async()=>{const r=await fetch('/test-calls');return (await r.json()).resolved.includes('AFTER_RESPONSE')},{timeout:30000});

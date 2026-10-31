@@ -20,4 +20,7 @@ try {
  await go('https://www.youtube.com/');await page.waitForFunction(()=>document.querySelector('.window-content').shadowRoot.querySelector('.status').textContent.includes('blocked by the server network policy'),{timeout:30000});console.log('PASS policy block retains its explanation');
  await go('https://fixture.example/ok');await status('Could not load the page. Check the address or connection.');console.log('PASS connection failure explained');
  await go('http://fixture.example/ok?recovery');await response('/ok?recovery',0);await status('Page loaded.');console.log('PASS subsequent navigation recovers');
+ await go('http://fixture.example/slow?overlap');await page.waitForFunction(async()=>(await(await fetch('/test-calls')).json()).resolved.includes('request:/slow?overlap'),{timeout:30000});
+ await go('http://fixture.example/ok?queued');await page.evaluate(()=>[...document.querySelector('.window-content').shadowRoot.querySelectorAll('button')].find(b=>b.textContent==='Stop').click());
+ await status('Stopped.');await new Promise(r=>setTimeout(r,1500));await status('Stopped.');console.log('PASS Stop supersedes overlapping navigation');
 } finally {await context.close();await browser.disconnect();}
