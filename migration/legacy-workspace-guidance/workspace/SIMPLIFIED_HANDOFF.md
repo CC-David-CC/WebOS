@@ -1,5 +1,10 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Electronics Design account files
+
+The Simplified desktop is deployed at `https://ksu.codes/`; older statements below that this branch is not deployed are historical. Electronics Design release `1fc8a8a734836d53fb09103558f34b06a638c1e46d27b1f4b1722188709655f3` captures current projects directly to My files, checks for unsaved work and stale versions, and keeps editor exports separately until saved. Native Save uses the shared account workflow. A new design created during a save retains its own identity. The upstream GitHub account and history controls are disabled; see `docs/DEFERRED_APP_FEATURES.md`. The integration and its limitations are described in `apps/system/electronics-design/README.md`. Local registered-account workflows passed at desktop, emulated-phone and 4K sizes; a 9 MiB project passed locally. The live registered-account workflow reached its final cleanup before the gateway returned a request-limit error; the disposable account was then removed separately. Independent physical-touch tests, standalone part import, broad simulation coverage, and hardware validation remain open. Do not treat this as completing the overall app review.
+
+
 This branch is source development only. It has not been deployed. The old
 live site is not modified. Historical handoffs and deployment manifests refer
 to the original system and are not instructions for deploying this branch.

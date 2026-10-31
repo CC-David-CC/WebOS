@@ -8,6 +8,7 @@ privacy, cost and availability information.
 
 | App | Feature | Status / reason |
 | --- | --- | --- |
+| Electronics Design (designElectronics) | GitHub connection, commits, and project history | The embedded account and history controls are hidden; provide integrated project history before restoring them. |
 | Embroidery Studio (StitchFoundry) | Design from prompt | The bundled upstream README describes an Anthropic-key feature for its desktop app; browser integration is not established. Revisit as a desktop-integrated AI feature. |
 | Embroidery Studio (StitchFoundry) | Redraw image | The bundled upstream README describes an Anthropic-key feature for its desktop app; browser integration is not established. Revisit as a desktop-integrated AI feature. |
 | Embroidery Studio (StitchFoundry, attribution tentative) | Ask about embroidery | Found in a separate upstream research checkout; availability in the deployed pinned browser build remains unverified. |
