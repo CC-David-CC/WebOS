@@ -2369,3 +2369,18 @@ manifest SHA `8fd3e6bc30d456bf31c28af2ed59314e45c2451b95b8e481f45b699aff5e2242`.
 The reviewed release differs only in app.js, catalog and Falling Blocks assets.
 The full build now includes Falling Blocks: run its pinned `prepare.py` with
 Rive CLI 1.8.0 and install its npm dependencies before building.
+
+
+## 2026-10-31 — diagrams.net file workflow
+
+Live static release `1ba25a429096862853834d5eb47b83a13c5aece4b46917e0f5605684a0934c28`;
+previous `d652a17c3d8144db943eeddd48b5bd11e8a66e7364797ab7e70003c9bd758e0c`.
+Hosting generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`;
+manifest SHA `8bb32e7d5e3f2e229a3aceb56b6ee1faf5823479173910d75f8d6a5a4c117af9`.
+Only diagrams.net assets and app catalog changed. Open validates XML before
+replacing the current diagram; save supports choosing a folder and confirms
+replacement. Local and live desktop and emulated-phone tests opened a diagram,
+edited its label, rejected malformed XML without losing that edit, saved and
+synced it, recovered in a fresh browser session, and uploaded via Files. The
+two disposable live test accounts and their files were removed. This does not
+prove arbitrary compressed payloads, full touch UX or physical-phone behavior.
