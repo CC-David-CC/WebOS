@@ -1477,3 +1477,29 @@ Two concurrent local desktop Browser windows each reloaded McMaster five times
 without the prior error. These are limited examples, not a guarantee that all
 websites or physical phones work. Deployment and download regressions remain
 in progress; this fix is not yet live.
+
+## Browser memory-growth fix — live
+
+Release `0389a65b0a5bf8da3d0c26e714f6a79e05a0ba37d134c07130e54964248c3042`
+is now live from source `ee1704dcd`; only the Browser app bundle changed in
+the 38-app catalog. Its matching public source archive is
+`/browser-sources/codi-browser-source-ee1704dcd.tar.zst`, SHA-256
+`0ef62be5518d9cbd01543efd9bacafc22238ac6b4ca7a00719898753cfbab60a`.
+Two fresh public desktop sessions and one phone-sized session each navigated
+to McMaster five times without the former memory error; screenshots showed
+the rendered site. A live phone-sized clicked-download/save/server-copy test
+and isolated desktop/phone cookie-protected download regressions passed.
+One of three simultaneous test registrations timed out before creating an
+account; the same test registered successfully when rerun separately. Its
+cause was not established. All test accounts were removed. Phone tests were
+emulated; actual Android input and general website compatibility are not proven.
+
+Grainger returned its own access restriction in the earlier test, and the
+current fallback fonts do not cover Arabic or CJK characters. Those issues
+are not resolved by the memory fix. Server audit remains disabled. Previous
+frontend release is `f3681cd5867e0f779049812f9fc178db90d4c2f8169699a1d66b1fba69d35919`;
+hosting snapshots are `change-20261031T035715125933Z` and
+`change-20261031T035715126409Z`. Current generator SHA-256 is
+`3cf1dca82b180122de30fdf44f9751941423281fdfdc5566418826be22525d0e`,
+manifest `23203a7bc06b2743978a130e2d9eddf9af1c4eec54c767366fe701602fbee041`,
+and Caddy `c1bd4ec92c21f152bb725ccd9c37128710f594974fa6f4dacaeeab4cff14142a`.
