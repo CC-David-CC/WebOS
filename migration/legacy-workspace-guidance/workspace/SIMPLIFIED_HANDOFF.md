@@ -1965,3 +1965,22 @@ no report request affecting other browsers and removed the test account.
 The explicit-request and report-persistence tests remain documented in
 `apps/system/browser/docs/DOMAIN_REPORTS.md`; those earlier tests used the
 then-current release. Server audit remains independently disabled.
+
+### Live Browser files and Linux boundary — 2026-10-31 UTC
+
+Two disposable registered accounts wrote different HTML contents under the
+same My files path and synchronized their server copies. The second account
+could not find the first account's file before writing its own, and each
+account subsequently read its own version from the server. A fresh signed-in,
+phone-sized browser context opened the first account's HTML via Browser →
+Open from My files; its rendered pixels matched, and the browser and server
+copies remained identical. Both test files and accounts were removed. This
+is an account-isolation workflow check, not an exhaustive security audit.
+
+A separate disposable live account confirmed that Files browses temporary
+Linux home, Linux-only files do not appear in My files automatically, account
+files do not appear in Linux's former Account mount, and explicit Copy to
+account works. After refreshing and signing in again, the temporary Linux
+file was gone and the account file remained. Test account files were removed
+and synchronized before the disposable account was removed. This used browser
+automation on one computer, not a physical phone or an independent network.
