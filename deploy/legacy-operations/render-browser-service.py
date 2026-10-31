@@ -13,7 +13,7 @@ def caddy_dependency():
     # A relay failure must not prevent the rest of the website from starting.
     return '[Unit]\nWants=codi-browser-relay.service\nAfter=codi-browser-relay.service\n'
 
-def render(*,runtime,venv,issuer,policy,proxy_uid,proxy_gid):
+def render(*,runtime,venv,issuer,policy,proxy_uid,proxy_gid,reports=False):
     for value in (runtime,venv,issuer,policy):digest(value)
     if any(type(value) is not int or not 1<=value<=2**31-1 for value in (proxy_uid,proxy_gid)):
         raise ValueError('Non-root numeric proxy UID and GID required')
@@ -24,6 +24,9 @@ def render(*,runtime,venv,issuer,policy,proxy_uid,proxy_gid):
           '--policy-sha256',policy,'--destination-policy','/etc/codi-browser/destination-policy.json',
           '--access-policy','/etc/codi-browser/access-policy.json','--geoip','/etc/codi-browser/country.mmdb',
           '--socket','/run/codi-browser/relay.sock','--proxy-uid',str(proxy_uid),'--proxy-gid',str(proxy_gid)]
+    if type(reports) is not bool:raise ValueError('Reports setting must be boolean')
+    if reports:args+=['--report-database','/var/lib/codi-browser-reports/reports.sqlite3','--report-admins','/etc/codi-browser/report-admins.json']
+    state='StateDirectory=codi-browser-reports\nStateDirectoryMode=0700\n' if reports else ''
     return '''[Unit]
 Description=Codi registered Browser relay
 After=network-online.target
@@ -35,7 +38,7 @@ User=codi-browser
 Group=caddy
 RuntimeDirectory=codi-browser
 RuntimeDirectoryMode=0750
-UMask=0077
+'''+state+'''UMask=0077
 ExecStart='''+' '.join(args)+'''
 Restart=on-failure
 RestartSec=2s
@@ -68,6 +71,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('runtime','venv','issuer','policy'):p.add_argument('--'+name,required=True)
     p.add_argument('--proxy-uid',type=int,required=True);p.add_argument('--proxy-gid',type=int,required=True)
+    p.add_argument('--reports',action='store_true')
     p.add_argument('--output',type=Path,required=True);a=p.parse_args()
-    try:a.output.write_text(render(runtime=a.runtime,venv=a.venv,issuer=a.issuer,policy=a.policy,proxy_uid=a.proxy_uid,proxy_gid=a.proxy_gid))
+    try:a.output.write_text(render(runtime=a.runtime,venv=a.venv,issuer=a.issuer,policy=a.policy,proxy_uid=a.proxy_uid,proxy_gid=a.proxy_gid,reports=a.reports))
     except (ValueError,OSError) as error:p.error(str(error))

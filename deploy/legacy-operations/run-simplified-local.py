@@ -31,7 +31,7 @@ from gateway_service.http import FileGateway
 spec=importlib.util.spec_from_file_location('codi_staging',ROOT/'scripts/serve-connected.py')
 staging=importlib.util.module_from_spec(spec);spec.loader.exec_module(staging)
 
-async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None,browser_relay=False,apps_bundle=None):
+async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None,browser_relay=False,apps_bundle=None,report_admin=None):
     origin=f'http://127.0.0.1:{port}'
     runtime=ROOT/'.build'/('simplified-local-test-'+str(port) if isolated else 'simplified-local');runtime.mkdir(parents=True,exist_ok=True,mode=0o700)
     public=runtime/'public'
@@ -113,10 +113,16 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
         from browser_service.sessions import BrowserSessions
         from browser_service.http import BrowserHTTP
         from network_policy.policy import PolicyLoader
+        if report_admin and not isolated:raise ValueError('Local report fixture requires isolated state')
+        reports=None
+        if report_admin:
+            from relay.report_requests import ReportRequests
+            folder=runtime/'reports';folder.mkdir(mode=0o700,exist_ok=True)
+            reports=ReportRequests(folder/'reports.sqlite3',origin=origin,admin_subjects=[report_admin])
         access=PolicyLoader(access_policy or ROOT/'network_policy/default.json',geo)
         async def unavailable(_request):return None
         relay=Relay(policy_path=browser_policy,origin=origin,authenticate=unavailable,source=lambda request:request.remote,network_check=lambda ip:access.check('outgoing',ip))
-        BrowserHTTP(BrowserSessions(issuer.config()['identity'],browser_sha),relay,origin=origin,secure_cookie=False,downloader=Downloader(relay)).routes(app)
+        BrowserHTTP(BrowserSessions(issuer.config()['identity'],browser_sha),relay,origin=origin,secure_cookie=False,downloader=Downloader(relay),reports=reports).routes(app)
     app.router.add_route('*','/{tail:.*}',proxy)
     runner=web.AppRunner(app,access_log=None);await runner.setup();await web.TCPSite(runner,'127.0.0.1',port).start()
     print(f'Simplified local preview: {origin}/',flush=True)
@@ -127,7 +133,8 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
         if geo:geo.close()
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');parser.add_argument('--browser-relay',action='store_true',help='Enable the experimental registered-only Browser relay locally');parser.add_argument('--apps-bundle',type=Path,help='Optional separately built app catalog');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');parser.add_argument('--browser-relay',action='store_true',help='Enable the experimental registered-only Browser relay locally');parser.add_argument('--apps-bundle',type=Path,help='Optional separately built app catalog');parser.add_argument('--report-admin',help='Registered test subject for the isolated report fixture');args=parser.parse_args()
     if not 1<=args.port<=65535:parser.error('Invalid port')
-    try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip,args.browser_relay,args.apps_bundle))
+    if args.report_admin and not args.browser_relay:parser.error('Report fixture requires Browser relay')
+    try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip,args.browser_relay,args.apps_bundle,args.report_admin))
     except KeyboardInterrupt:pass
