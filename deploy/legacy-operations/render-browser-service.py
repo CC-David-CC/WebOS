@@ -13,7 +13,7 @@ def caddy_dependency():
     # A relay failure must not prevent the rest of the website from starting.
     return '[Unit]\nWants=codi-browser-relay.service\nAfter=codi-browser-relay.service\n'
 
-def render(*,runtime,venv,issuer,policy,proxy_uid,proxy_gid,reports=False):
+def render(*,runtime,venv,issuer,policy,proxy_uid,proxy_gid,reports=False,audit=False):
     for value in (runtime,venv,issuer,policy):digest(value)
     if any(type(value) is not int or not 1<=value<=2**31-1 for value in (proxy_uid,proxy_gid)):
         raise ValueError('Non-root numeric proxy UID and GID required')
@@ -24,9 +24,12 @@ def render(*,runtime,venv,issuer,policy,proxy_uid,proxy_gid,reports=False):
           '--policy-sha256',policy,'--destination-policy','/etc/codi-browser/destination-policy.json',
           '--access-policy','/etc/codi-browser/access-policy.json','--geoip','/etc/codi-browser/country.mmdb',
           '--socket','/run/codi-browser/relay.sock','--proxy-uid',str(proxy_uid),'--proxy-gid',str(proxy_gid)]
-    if type(reports) is not bool:raise ValueError('Reports setting must be boolean')
+    if type(reports) is not bool or type(audit) is not bool:raise ValueError('Reports and audit settings must be boolean')
     if reports:args+=['--report-database','/var/lib/codi-browser-reports/reports.sqlite3','--report-admins','/etc/codi-browser/report-admins.json']
-    state='StateDirectory=codi-browser-reports\nStateDirectoryMode=0700\n' if reports else ''
+    if audit:args+=['--audit-database','/var/lib/codi-browser-audit/events.sqlite3','--audit-key','/run/credentials/codi-browser-relay.service/audit-signing-key']
+    directories=(['codi-browser-reports'] if reports else [])+(['codi-browser-audit'] if audit else [])
+    state=('StateDirectory='+' '.join(directories)+'\nStateDirectoryMode=0700\n') if directories else ''
+    credential='LoadCredential=audit-signing-key:/etc/codi-browser/private/audit-signing-key\n' if audit else ''
     return '''[Unit]
 Description=Codi registered Browser relay
 After=network-online.target
@@ -38,7 +41,7 @@ User=codi-browser
 Group=caddy
 RuntimeDirectory=codi-browser
 RuntimeDirectoryMode=0750
-'''+state+'''UMask=0077
+'''+state+credential+'''UMask=0077
 ExecStart='''+' '.join(args)+'''
 Restart=on-failure
 RestartSec=2s
@@ -72,6 +75,7 @@ if __name__=='__main__':
     for name in ('runtime','venv','issuer','policy'):p.add_argument('--'+name,required=True)
     p.add_argument('--proxy-uid',type=int,required=True);p.add_argument('--proxy-gid',type=int,required=True)
     p.add_argument('--reports',action='store_true')
+    p.add_argument('--audit',action='store_true',help='Provision an explicitly enabled private metadata ledger')
     p.add_argument('--output',type=Path,required=True);a=p.parse_args()
-    try:a.output.write_text(render(runtime=a.runtime,venv=a.venv,issuer=a.issuer,policy=a.policy,proxy_uid=a.proxy_uid,proxy_gid=a.proxy_gid,reports=a.reports))
+    try:a.output.write_text(render(runtime=a.runtime,venv=a.venv,issuer=a.issuer,policy=a.policy,proxy_uid=a.proxy_uid,proxy_gid=a.proxy_gid,reports=a.reports,audit=a.audit))
     except (ValueError,OSError) as error:p.error(str(error))
