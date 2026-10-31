@@ -1043,3 +1043,19 @@ database passed SQLite `quick_check`. This tests the real client and service
 but creates the request as an operator rather than logging into the admin UI;
 the admin UI workflow was tested separately in the local two-account fixture.
 
+### Live Browser policy operator — 2026-10-31 UTC
+
+`sudo codi-browser-policy` on box-webhost now manages incoming-login and
+outbound IP/country rules, Browser blacklist/whitelist entries, and the
+whitelist switch. It uses the protected live relay's pinned validation code,
+a per-file lock and atomic validated replacement. It does not enable server
+audit or cover Linux guest egress. See `apps/system/browser/docs/LIVE_POLICY.md`
+for commands and scope. The installed source at
+`/srv/codi-browser/operators/policy-1e7ae703d/manage.py` has SHA-256
+`79870a7f49e4c3d1c66f82dcfda217acdb2b02e6bf8a1e6155da5237791ee5ef`;
+the root-owned entrypoint is `/usr/local/sbin/codi-browser-policy`. Local
+fixture tests passed; the installed operator successfully edited isolated
+copies of the live policies, displayed the live rules, rejected an IP literal
+as a domain, and left both live policy hashes unchanged. Live rule enforcement
+and active-stream changes were tested separately using the guarded fixture.
+
