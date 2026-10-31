@@ -2,6 +2,10 @@
 
 This is the working checklist for the Simplified desktop's app-by-app review.
 “Prior evidence” refers to existing checks, not completion of the new review.
+The primary audience is high-school seniors and college STEM students. Clear
+onboarding should remain approachable to beginners while preserving the detail
+needed for advanced work; avoid a child-directed presentation.
+
 Every interactive app still needs a fresh review of its primary workflow,
 account-backed open/save where applicable, first-run experience, desktop and
 phone-sized interaction, cleanup, and an honest user-facing explanation.
@@ -38,7 +42,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Electronics Design | Electronics editor | Account project save/reopen checked; sample is not a production board. | Pending |
 | Embroidery Studio | Stitch design | Example generation and account save checked; physical sewing unverified. | Pending |
 | Stitch Converter | Stitch formats | Example conversion and account save checked; machine compatibility unverified. | Pending |
-| Falling Blocks | Single-player game in development | Rules and exact snapshot unit-tested; a Phaser prototype passed isolated two-window play/save/load/disposal checks using mock storage at desktop and emulated phone sizes. Real local account-file sync, fresh-session recovery, account isolation, close warning and same-browser save conflict checked; separate browser contexts also preserve both copies and show a conflict after a simulated gateway outage. Full interface, real cross-device operation, Rive artwork and physical-device tests remain. Not registered or live. | In progress |
+| Falling Blocks | Single-player game in development | Rules and exact snapshot unit-tested; a Phaser prototype with help, next-piece preview and outcome messages passed isolated two-window play/save/load/disposal checks using mock storage at desktop, 4K and emulated phone sizes, including keyboard and emulated touch input. Real local account-file sync, fresh-session recovery, account isolation, close warning and same-browser save conflict checked; separate browser contexts also preserve both copies and show a conflict after a simulated gateway outage. Full interface, real cross-device operation, Rive artwork and physical-device tests remain. Not registered or live. | In progress |
 | Personal template | Per-user app example | Template, not a completed end-user tool. | Pending |
 | CodeMirror | Shared editor capability | Used by apps; no standalone file workflow. | Pending consumer review |
 | FFmpeg | Shared media capability | Programmatic conversion checked. | Pending consumer review |
