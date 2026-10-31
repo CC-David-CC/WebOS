@@ -1394,3 +1394,31 @@ and the corrected package check passed. This operator is not installed and
 has not been exercised against real service transitions; live audit remains
 disabled. The privileged wrapper and actual transition/rollback still require
 an isolated installed-systemd exercise before any live switch.
+
+The current rebuilt operator additionally disables Python bytecode before
+importing pinned runtime files; its manifest SHA-256 is
+`2fe3f429322c16adbe60890aa04ea2c95d67afbd3d94b9a3d4778e73c5615258`.
+Its package and tampering checks passed. It supersedes the prior candidate;
+the current runtime candidate is unchanged.
+
+An isolated root-owned temporary systemd unit subsequently passed a real
+enable transition, automatic rollback after a failed restart, and recovery
+after a simulated process interruption; the fixture unit was removed. The
+runtime `c54118ec…` and operator `2fe3f429…` have been copied to protected
+`/srv/codi-browser/releases/` and `/srv/codi-browser/operators/` paths. The
+operator's read-only `status` check passed and reported audit disabled,
+no key or ledger, no pending journal, and `serviceMatchesMode: false` because
+the live service still runs the previous runtime. Neither candidate has been
+activated. A release-matched public source archive, guarded runtime upgrade,
+live opt-in and rollback tests, and default-off restoration remain necessary.
+
+The source archive for runtime `c54118ec…` is now public at
+`/browser-sources/codi-browser-source-f4a43b30e.tar.zst`, SHA-256
+`3e090e5a9508f0ff53aae97791ff21c71dc38afb5d84bc9cc2cc54f304aeb42c`;
+its route was rollback-exercised and the public download hash checked. Current
+hosting generator SHA-256 is
+`29305c1d0d5387886816d156986dc53ad82e1e6b287ad6c7ea8b4b2559a8d7c2`,
+manifest remains `1eff3c244aa5e528f0fe91962e835b2e551c77846a44a410d1066d6c606a7137`,
+and Caddy SHA-256 is
+`5a1052be870c92e98696464174e12f8b5faed66b8dfa535dd22e544a1b5a150f`.
+The relay still uses the previous runtime with audit off.
