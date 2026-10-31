@@ -954,3 +954,17 @@ The pinned collection and notice-builder tests pass; previous notices remain
 in `/var/lib/codi-ingress/browser-source-component-notice-backup.json`. This
 does not prove a complete object-level, Rust dependency, or legal audit.
 
+### Browser target-built Rust notices — 2026-10-30
+
+The Gecko target build's Cargo fingerprints identified 477 distinct crate
+names, of which 335 match vendored package names. The public runtime notice
+file now includes the declared licenses and available top-level notice files
+for matching vendored versions. This is a conservative target-build list,
+not a claim those crates all survive final linking. There were 38 matching
+vendored versions with no separate top-level notice file and 142 unmatched
+names including workspace/toolchain crates; these need further review. The
+collector and pinned notice-builder tests pass. The public combined file
+SHA-256 is `0c225076a90714c0badf93424d3ae6ee8c57d2d773d17af6641af63643cb042a`;
+previous notices are saved in
+`/var/lib/codi-ingress/browser-source-rust-notice-backup.json`.
+
