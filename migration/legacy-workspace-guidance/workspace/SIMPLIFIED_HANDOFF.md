@@ -2252,3 +2252,25 @@ Hosting backups: `change-20261031T073619549120Z` and
 `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
 manifest is `0afb0763ef2f80c6ed583945eeb2f43d6dd249409809110fcce296e2a6bb4071`,
 and Caddy is `25c0553f189c179dc00d8e83aa9612af3fb76de42635aaff840aaa7fcb1d79b8`.
+
+### Text My files folder picker — 2026-10-31 UTC
+
+Simplified release `099f46ea3c88af6866333d24508f6af6a7d07e1f403506529a704f35fd00d7a7`
+serves Text bundle `0c8e1a9420c867d4c50ea4f06ed0dc3d0e271d13ed3ac89372174eebaa0590f3`.
+Text's first-save and Save As dialog can now browse account folders using the
+shared `host.storage.pickFolder` service. A typed path remains available;
+existing destinations are not overwritten. The picker returns only My files
+folders, checks the active account, and closes on app disposal. Its list and
+buttons have 44px minimum targets. Registered live desktop and phone-sized
+tests verified folder selection, cancel, collision refusal, sync, recovery in a
+fresh browser context and cleanup; disposable accounts were removed. Local
+existing-file, conflict, reload and shared open-picker regression tests passed.
+Physical phone keyboard and accessibility testing remain outstanding.
+
+Previous frontend:
+`d5e3b44eb6e6f3d5038d0adbda6ea090455508f2dbb9e7fe236f3bef00849898`.
+Hosting backups: `change-20261031T074116644050Z` and
+`change-20261031T074116644458Z`; generator SHA-256 remains
+`fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
+manifest `ff9309da3ac2bcda972f88b34e7bc70b296ccbf92d0f2027aaf7e8822ba07703`,
+and Caddy `d6f62938039e9718e8158994d8f35b9a6078f60eff925ac1d85b8a581a2a0081`.
