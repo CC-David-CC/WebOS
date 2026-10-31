@@ -1273,3 +1273,24 @@ The public combined notice SHA-256 is
 `35258b272eca7cb0f23e53c847733c536197ee3ce8884b66d693b425433b6d1a`;
 the prior files are in `/var/lib/codi-ingress/browser-source-graphics-notice-backup.json`.
 See `SOURCE_PROVISION.md` for reproducible collection and audit limits.
+
+## Identity renewal pin repair
+
+The enabled hourly `codi-ksu-live-root-renew.timer` was repeatedly starting a
+job pinned to the old issuer config and native release, so the guarded job
+failed with `Managed config pin changed`. The current signed seed then expired
+at 2026-10-31 20:00:39 UTC; this was a future expiry at the time of repair.
+The issuer was serving normally. A read-only run of the protected operator
+using the current config and release hashes validated the installed release
+and reported root revision 10, `nextStep: wait`, and no pending journal.
+
+`active-system/scripts/reconcile-browser-renewal-pins.py` took the managed
+hosting lock, verified both current pins and the old unit, backed it up to
+`/var/backups/codi-renew-before-browser-issuer-r3.service`, validated and
+atomically installed the two pin changes, and reloaded systemd. A manual
+`systemctl start codi-ksu-live-root-renew.service` then exited successfully
+with `not-due`, root revision 10; the hourly timer remains active. A oneshot
+unit appears inactive after a successful run, so check its `Result` and
+`ExecMainStatus` rather than expecting it to remain running. Actual renewal
+at the future due time was not forced or tested in this repair. Subsequent
+issuer/config upgrades must reconcile this unit's config and release pins.
