@@ -19,6 +19,6 @@ try {
  await page.tap(trigger);const chooserPromise=page.waitForFileChooser();await page.evaluate(()=>[...document.querySelectorAll('[role=menuitem]')].find(e=>e.textContent==='Upload').click());const chooser=await chooserPromise;await chooser.accept([file]);
  await page.waitForFunction(()=>window.testWrites.some(x=>x[0]==='write'&&x[1]==='/codi-files-touch-upload-fixture.txt'));
  await page.evaluate(()=>window.disposeFixture());assert.equal(await page.$('.codi-files-touch-menu'),null);
- await page.setViewport({width:1366,height:900,deviceScaleFactor:1,isMobile:false,hasTouch:false});await page.reload();await page.waitForSelector(trigger);const desktop=await page.evaluate(s=>({fine:matchMedia('(hover:hover) and (pointer:fine)').matches,display:getComputedStyle(document.querySelector(s)).display}),trigger);if(desktop.fine)assert.equal(desktop.display,'none','Fine-pointer desktop keeps right-click workflow');
- console.log('PASS touch create, folder, upload, toggle and cleanup; desktop fine-pointer rule checked');
+ await page.setViewport({width:1366,height:900,deviceScaleFactor:1,isMobile:false,hasTouch:false});await page.reload();await page.waitForSelector(trigger);const desktop=await page.evaluate(s=>({fine:matchMedia('(hover:hover) and (pointer:fine)').matches,display:getComputedStyle(document.querySelector(s)).display}),trigger);if(desktop.fine)assert.notEqual(desktop.display,'none','Desktop also exposes new and upload actions');
+ console.log('PASS touch create, folder, upload, toggle and cleanup; desktop action visibility checked');
 } finally {await unlink(file).catch(()=>{});await context.close();await browser.disconnect()}
