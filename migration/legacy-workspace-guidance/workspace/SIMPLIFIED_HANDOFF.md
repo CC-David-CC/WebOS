@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Spreadsheet aggregate accuracy
+
+Live static release `4092716a15ee79d1e7bb1d08cdd130af5f23d1317155eec943cc4a86e1d570ab`; previous `eccde7cf460139dd2d983acfcd08a473e0bdf25259d3996d9b9b2da4ad1b2a16`. Supported SUM, AVERAGE, COUNT, MIN and MAX now ignore blank and nonnumeric text cells in referenced ranges or standalone cell arguments; decimal numeric text is included because grid values may be stored as text. AVERAGE of no numeric values reports an error, while MIN and MAX return zero. This changes earlier average/count results for blank ranges. Formula evaluation remains bounded and supports only the documented subset. Unit tests cover mixed cells, cycles and bounds; local desktop and emulated-phone account tests and a live emulated-phone account test checked displayed values and CSV output. The live disposable account was removed. Physical touch and broad Excel compatibility remain unverified.
+
 ## 2026-10-31 — Spreadsheet CSV export
 
 Live static release `eccde7cf460139dd2d983acfcd08a473e0bdf25259d3996d9b9b2da4ad1b2a16`; previous `b58c9c8e2e94545d6f4cb9ebb5cd51c1135fc645d607e6bcf2b42454d9a674cc`. Spreadsheet exports the selected worksheet’s calculated values to a separate CSV in My files; formulas, formatting and other sheets are not included. Export runs in the conversion worker, rejects unsupported formulas, limits output to 8 MiB, confirms replacement and protects formula-like text. Local desktop and emulated-phone account tests and a live emulated-phone test cover import/edit/export, cancelled replacement, multi-sheet selection, formula values, invalid-formula rejection and Data Explorer opening. Unit tests cover quoting and CSV text protection. The live disposable account was removed. Physical touch and full spreadsheet compatibility remain unverified.
