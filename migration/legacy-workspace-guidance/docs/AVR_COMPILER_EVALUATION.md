@@ -73,3 +73,20 @@ The published [`avr-v1.0.0` release](https://github.com/begeistert/wasm-toolchai
 The archive's `avr/version.h` reports avr-libc 2.0.0, and the assembler/linker JavaScript contains a Binutils 2.45.1 version string. Those version labels do not identify the exact source commits or distribution patches. The pinned [release workflow](https://github.com/begeistert/wasm-toolchains/blob/23058387b320a133f36c701d55c5cde420caac42/.github/workflows/release-avr.yml) uses moving branch/package inputs and Docker build caches; its public run `28085465875` is associated with the tagged commit, but unauthenticated GitHub log download returned HTTP 403. A cache hit can also complicate provenance. The archive contains no complete license or source bundle. Exact compiler/binutils source, system-library package sources/patches, associated notices, and a reviewed distribution method remain outstanding. Do not deploy the compiler on the strength of this partial audit.
 
 Repeat with `python3 tests/fixtures/avr-compiler-probe/audit-release-sources.py /path/to/avrwasm.tar /path/to/wasm-toolchains-checkout`; the checkout must be at the pinned revision. Generated archives and toolchains are not committed.
+
+### Sketch conflict handling — isolated research
+
+The research-only sketch editor now keeps a separate file-change notice while
+the student builds and runs code. If a mirror write returns a conflict, it
+reports that condition and keeps the sketch marked dirty; saving an earlier
+sketch after switching documents also reports an immediate conflict without
+attaching the old save to the new document. The watcher is removed on close.
+`tests/avr-sketch-conflict-research.test.mjs` uses the hash-checked research
+bundle and isolated account service to arrange competing server and local
+writes, verify both copies, build and run the retained draft on AVR8js, save a
+separate copy, reopen it in a fresh session and check subscription cleanup. It
+passed at local desktop, emulated-phone and 4K sizes. Existing isolated
+account-switch/save-race and mock-storage compile/diagnostics tests also passed.
+These are research checks only. Physical devices, full compatibility and the
+compiler's exact corresponding-source and distribution requirements remain
+unverified; the research compiler has not been deployed.
