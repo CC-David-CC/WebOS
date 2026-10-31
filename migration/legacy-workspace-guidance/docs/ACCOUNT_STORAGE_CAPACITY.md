@@ -24,6 +24,12 @@ browser-first, account-isolated storage and conflict guarantees.
 * Version checks avoid redownloading unchanged file contents, but currently
   still incur one signed request and server hash per file. Large accounts can
   therefore be slow even without a download.
+* The mirror now remembers completed file-version checks across an interrupted
+  scan in the current browser session, so a 429 during the file-check phase can
+  make progress on the next attempt. This is not a batch protocol: folder
+  listing still starts over on retry, a new tab starts over, and the full scan
+  is repeated after completion. This change alone does not establish capacity
+  or fix excessive idle traffic.
 
 ## Design direction
 
