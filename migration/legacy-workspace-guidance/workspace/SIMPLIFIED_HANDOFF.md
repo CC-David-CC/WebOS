@@ -1718,3 +1718,12 @@ Relay rollback was exercised; previous unit is
 audit operator is `c98a0663a48f646a6c4e88b78939b0021ac53e05674547d966e734be9f36bf2c`;
 policy operator is `policy-9915463c7`. No unrelated guest SSH work was touched.
 
+The live Browser **Download URL** workflow was rechecked after the relay
+update in desktop and emulated phone-sized Chrome layouts. Each test saved an
+HTML file to My files, synchronized it to the server, then signed in as the
+same disposable user in a fresh browser context and recovered identical
+contents. Both test files and accounts were removed. The second context is
+separate browser storage on the same computer; this is not a physical-phone or
+separate-network result. `tests/browser-live-url-download.test.mjs` now covers
+this recovery and attempts scoped file cleanup even if its later checks fail.
+
