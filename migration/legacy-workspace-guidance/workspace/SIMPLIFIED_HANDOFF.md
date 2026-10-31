@@ -1373,3 +1373,10 @@ process interruption and refusal to overwrite an independently changed
 policy. The privileged wrapper, protected key provisioning, end-to-end live
 recovery, and deployment remain outstanding. The primitive requires its
 caller to hold the hosting and policy locks and validate ownership/units.
+
+The source-only runtime candidate built from commit `f4a43b30e` has manifest
+`c54118ec1a534860f8293d74cd92dbe0744d31c72fa602f52fef986437ae4b37`.
+The exported, pinned process passed both default-off startup and an explicit
+enabled startup with a private test key and ledger. It is not installed or
+active on box-webhost. Any further source changes require a new candidate and
+matching public source provision before activation.
