@@ -32,6 +32,9 @@ class Runtime(unittest.TestCase):
             key.chmod(0o600);append=runner.optional_audit(policy,database,key)
             result=append({'subject':'user:test','source':'203.0.113.1','destination':'example.com','port':443,'event':'opened'})
             self.assertEqual(result['seq'],1);self.assertTrue(database.is_file())
+            import sqlite3
+            with sqlite3.connect(database) as db:db.execute("UPDATE events SET record='{}' WHERE seq=1")
+            with self.assertRaisesRegex(ValueError,'chain changed'):runner.optional_audit(policy,database,key)
 
     def test_exact_runtime_and_tampering(self):
         with tempfile.TemporaryDirectory(prefix='codi-browser-export-') as folder:
