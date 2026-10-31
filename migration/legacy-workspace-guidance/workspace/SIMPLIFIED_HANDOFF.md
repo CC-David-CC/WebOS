@@ -1130,3 +1130,8 @@ passed. Its MicroPython save/sync/reload was tested locally using privately
 supplied ROM and UF2; neither is distributed. Explicit project saves retain
 simulated flash, not CPU state. SSI support is partial. Both test accounts used
 on the live site were removed. See each app's README for test scope and terms.
+
+The live Pico Blink and Digital Logic account save/reopen checks also pass in
+an emulated phone viewport. Obsolete local generated release candidates were
+removed after deployment; source and the live rollback remain. The Raspberry Pi
+ROM and MicroPython firmware were not included in Git or the release.
