@@ -36,4 +36,10 @@ The table describes useful starting points, not a promise that every feature or 
 | Falling Blocks | Play the preview, save a game and reopen it from Files. | Still in development. |
 | Personal template | Example for app authors. | Not a finished end-user app. |
 
+### Try a model-to-toolpath workflow
+
+In **Replicad**, set the box dimensions, save the project and select **Create model** to save an STL in My files. In **Kiri:Moto**, use **Open from My files** to choose that STL, then select a printer profile and use its slicing and export controls. Save the resulting G-code to My files. Open that file in **G-code Preview** to inspect the drawn path; you can reopen it in another signed-in browser after it has synced.
+
+This is an example of moving work between apps, not approval to run a printer. The G-code viewer omits homing movement and supports only a subset of controller behavior. Check the profile and toolpath with tools appropriate to the actual machine before using it.
+
 Items shown disabled under System Tools are shared capabilities for apps, not independent applications. Third-party and AI features deferred from these apps are tracked in [Deferred app features](DEFERRED_APP_FEATURES.md).
