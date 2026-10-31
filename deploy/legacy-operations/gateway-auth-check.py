@@ -32,9 +32,9 @@ class Authorization(unittest.TestCase):
         self.store=UserStore(state,data,clock=lambda:self.t);initialize_ledger(self.store)
         self.gate=self.gatekeeper();self.raw=jose.dumps({'resource':'my-files','operation':'create','path':'hello.txt','body':'hello'})
     def gatekeeper(self,**kwargs):return Gatekeeper(self.store,self.issuer.config()['identity'],base_path=self.issuer.base_path,clock=lambda:self.t,**kwargs)
-    def authorize(self,session,challenge,key=None):
+    def authorize(self,session,challenge,key=None,authenticated_challenge=False):
         key=key or self.key;path=self.issuer.base_path+AUTHORIZE
-        ch=self.call(CHALLENGE,{'key':jose.public_jwk(key),'path':path});self.assertEqual(ch['status'],200,ch)
+        ch=self.call(CHALLENGE,{'key':jose.public_jwk(key),'path':path},headers={'HTTP_AUTHORIZATION':'Codi '+session['session_token']} if authenticated_challenge else None);self.assertEqual(ch['status'],200,ch)
         raw=jose.dumps({'nonce':challenge['nonce'],'request_sha256':challenge['request_sha256']})
         proof={'v':1,'nonce':ch['body']['nonce'],'iss':session['identity']['sid'],'aud':self.config.origin,'method':'POST','path':path,'iat':self.t,'exp':self.t+60,'request_sha256':jose.digest(raw)}
         return self.call(AUTHORIZE,{'request':raw,'proof':jose.sign(proof,key,PROOF_TYPE)},headers={'HTTP_AUTHORIZATION':'Codi '+session['session_token']})
@@ -67,6 +67,68 @@ class Authorization(unittest.TestCase):
         self.assertEqual(self.call(CHALLENGE,{'key':self.jwk,'path':AUTHORIZE})['status'],429)
         self.assertNotEqual(self.call(AUTHORIZE,{})['status'],429)
         self.assertEqual(self.enter()['identity']['kind'],'anonymous')
+    def test_signed_in_accounts_have_separate_bounded_admission(self):
+        alice=self.enter('alice');alice2=self.enter('alice');bob=self.enter('bob')
+        self.issuer.c=replace(self.issuer.c,rate_per_minute=3)
+        def challenge(session):
+            return self.call(CHALLENGE,{'key':self.jwk,'path':AUTHORIZE},headers={'HTTP_AUTHORIZATION':'Codi '+session['session_token']})
+        for session in (alice,alice2,alice):self.assertEqual(challenge(session)['status'],200)
+        self.assertEqual(challenge(alice2)['status'],429,'two sessions share the account budget')
+        for _ in range(3):self.assertEqual(challenge(bob)['status'],200,'another account retains its own budget')
+        self.assertEqual(challenge(bob)['status'],429)
+        self.t+=61
+        self.assertEqual(challenge(alice)['status'],200,'budgets expire')
+
+    def test_per_account_authorization_limit_does_not_block_another_account(self):
+        alice=self.enter('alice');bob=self.enter('bob')
+        self.issuer.c=replace(self.issuer.c,rate_per_minute=3)
+        for _ in range(3):
+            challenge=self.gate.challenge(self.jwk,jose.digest(self.raw))
+            self.assertEqual(self.authorize(alice,challenge,authenticated_challenge=True)['status'],200)
+        challenge=self.gate.challenge(self.jwk,jose.digest(self.raw))
+        self.assertEqual(self.authorize(bob,challenge,authenticated_challenge=True)['status'],200)
+        self.assertEqual(self.issuer.rates['file-authorize-account:'+alice['identity']['sub']][1],3)
+        self.assertEqual(self.issuer.rates['file-authorize-account:'+bob['identity']['sub']][1],1)
+
+    def test_hundred_accounts_can_authorize_without_a_shared_proxy_bucket(self):
+        # Sequential bounded issuer-only test; this does not test gateway
+        # throughput, login bursts, external proxy behavior or 100 browsers.
+        accounts=[]
+        for i in range(100):
+            key=ec.generate_private_key(ec.SECP256R1());accounts.append((self.enter('loaduser'+str(i),key),key))
+        self.issuer.c=replace(self.issuer.c,rate_per_minute=6)
+        durations=[];start=time.monotonic()
+        for account,key in accounts:
+            t=time.monotonic();challenge=self.gate.challenge(jose.public_jwk(key),jose.digest(self.raw))
+            reply=self.authorize(account,challenge,key,authenticated_challenge=True)
+            self.assertEqual(reply['status'],200,reply)
+            self.gate.consume(self.raw,reply['body']['confirmation'],self.use_proof(account,reply['body']['confirmation'],challenge,key));durations.append(time.monotonic()-t)
+        ordered=sorted(durations)
+        print(json.dumps({'scope':'local issuer only; sequential signed requests, not a 100-user capacity test','accounts':100,'authorizationSeconds':round(time.monotonic()-start,3),'p50Milliseconds':round(ordered[49]*1000,2),'p95Milliseconds':round(ordered[94]*1000,2),'maxMilliseconds':round(ordered[-1]*1000,2)}),flush=True)
+
+    def test_invalid_bearer_remains_in_bounded_legacy_budget(self):
+        alice=self.enter('alice');self.issuer.c=replace(self.issuer.c,rate_per_minute=2)
+        bad={'HTTP_AUTHORIZATION':'Codi '+secrets.token_urlsafe(32)}
+        for _ in range(2):self.assertEqual(self.call(CHALLENGE,{'key':self.jwk,'path':AUTHORIZE},headers=bad)['status'],200)
+        self.assertEqual(self.call(CHALLENGE,{'key':self.jwk,'path':AUTHORIZE},headers=bad)['status'],429)
+        good={'HTTP_AUTHORIZATION':'Codi '+alice['session_token']}
+        self.assertEqual(self.call(CHALLENGE,{'key':self.jwk,'path':AUTHORIZE},headers=good)['status'],200)
+
+    def test_account_admission_never_replaces_signed_authorization(self):
+        alice=self.enter('alice');other=ec.generate_private_key(ec.SECP256R1())
+        challenge=self.call(CHALLENGE,{'key':jose.public_jwk(other),'path':AUTHORIZE},headers={'HTTP_AUTHORIZATION':'Codi '+alice['session_token']})
+        self.assertEqual(challenge['status'],200)
+        raw=jose.dumps({'nonce':secrets.token_urlsafe(32),'request_sha256':jose.digest(self.raw)})
+        proof={'v':1,'nonce':challenge['body']['nonce'],'iss':alice['identity']['sid'],'aud':self.config.origin,'method':'POST','path':AUTHORIZE,'iat':self.t,'exp':self.t+60,'request_sha256':jose.digest(raw)}
+        result=self.call(AUTHORIZE,{'request':raw,'proof':jose.sign(proof,other,PROOF_TYPE)},headers={'HTTP_AUTHORIZATION':'Codi '+alice['session_token']})
+        self.assertEqual(result['status'],401,'a session token alone cannot authorize a different key')
+
+    def test_global_file_admission_limit_remains_bounded(self):
+        alice=self.enter('alice');self.issuer.c=replace(self.issuer.c,rate_per_minute=2)
+        self.issuer.rates['file-challenge-global']=(self.t,40)
+        result=self.call(CHALLENGE,{'key':self.jwk,'path':AUTHORIZE},headers={'HTTP_AUTHORIZATION':'Codi '+alice['session_token']})
+        self.assertEqual(result['status'],429)
+
     def test_anonymous_certificate_gets_no_confirmation_or_folder(self):
         a=self.enter();challenge=self.gate.challenge(self.jwk,jose.digest(self.raw));self.assertEqual(self.authorize(a,challenge)['status'],403)
         self.assertEqual(list(self.store.users_path.iterdir()),[])
