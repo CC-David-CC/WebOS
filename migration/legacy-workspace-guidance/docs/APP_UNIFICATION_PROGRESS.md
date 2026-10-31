@@ -19,7 +19,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Text | Text and code editor | Files → Text edit, sync, close/reopen and fresh-context recovery checked; new-document naming, folder selection, collision handling, sync and recovery verified live on desktop and phone-sized views. | In progress |
 | Terminal | Temporary v86 Linux | No automatic account-drive mount. | Pending |
 | Help | Desktop help | No document workflow. | Pending |
-| Calculator | Calculator | No document workflow. | Pending |
+| Calculator | Scientific arithmetic | A touch keypad, typed expressions, angle units and per-window Ans work locally and live on desktop and phone-sized views; local 4K view tested. Expressions remain temporary and use floating-point arithmetic. Physical touch and advanced numerical methods remain unverified. | In progress |
 | Browser | Independent web browser | Experimental; temporary profile and no audio. Scroll fix verified in emulation. | In progress |
 | Document Editor | Reports | Folder selection, invalid-file draft preservation and fresh-session recovery pass locally and on the live desktop. On the live phone-sized run those checks passed, but fixture cleanup hit a server request limit; test accounts were cleaned separately. Account project and PDF export checked locally; not a Word editor. | In progress |
 | PDF Viewer | Read-only documents | Open, page navigation, resize and failed-open recovery checked locally and live on desktop and phone-sized views; report preview and PC upload checked locally. Canvas-only: no text selection, search or annotations. | In progress |
