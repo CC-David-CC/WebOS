@@ -907,3 +907,18 @@ The previous notices are saved under
 `/var/lib/codi-ingress/browser-source-index-0488-backup.json`. The prior
 generated candidate and independent build were removed.
 
+### Browser policy-denial feedback — local work, 2026-10-30
+
+The existing live relay enforces blocked destinations but reported the same
+generic Wisp close reason for a policy block, capacity limit, and network
+failure. The local relay now emits Wisp's standard `HostBlocked` (0x48) and
+`ConnThrottled` (0x49) reasons; active streams stopped by a new policy also
+receive `HostBlocked`. The Browser worker reports these to the window, which
+shows a plain message that a site or resource was blocked, or that the
+connection limit was reached. A real local Gecko window navigating to
+youtube.com displayed the block message. Ten relay tests passed, including
+hostname and changed outbound-policy blocks and capacity behavior; report
+HTTP and download tests also passed. This change is not live. Its new relay
+runtime, Browser bundle and matching source snapshot must be built, tested,
+and published before activation; it supersedes the earlier desktop candidate.
+
