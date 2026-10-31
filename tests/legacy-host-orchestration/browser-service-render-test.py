@@ -17,6 +17,10 @@ class Render(unittest.TestCase):
     def test_expected_isolation_and_exact_pins(self):
         values=dict(runtime='a'*64,venv='b'*64,issuer='c'*64,policy='d'*64,proxy_uid=997,proxy_gid=984)
         text=module.render(**values)
+        self.assertNotIn('--report-database',text)
+        enabled=module.render(**values,reports=True)
+        self.assertIn('StateDirectoryMode=0700',enabled)
+        self.assertIn('--report-admins /etc/codi-browser/report-admins.json',enabled)
         for required in ('User=codi-browser','Group=caddy','RuntimeDirectoryMode=0750','--require-root-runtime','--proxy-uid 997','--proxy-gid 984','ProtectSystem=strict','PrivateTmp=yes','NoNewPrivileges=yes','MemoryMax=512M','CapabilityBoundingSet='):
             self.assertIn(required,text)
         for field in ('runtime','venv','issuer','policy'):
