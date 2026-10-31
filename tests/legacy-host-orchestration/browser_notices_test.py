@@ -18,9 +18,10 @@ class NoticesTest(unittest.TestCase):
         compiled=ROOT/'.build/browser-notice-inputs/compiled-component-notices.txt'
         rust=ROOT/'.build/browser-notice-inputs/rust-component-notices.txt'
         stdlib=ROOT/'.build/browser-notice-inputs/rust-stdlib-copyright.html'
-        if not all(p.is_file() for p in (firefox,ems,wisp,liberation,compiled,rust,stdlib)):self.skipTest('Pinned engine build inputs not available')
+        pulse=ROOT/'.build/browser-notice-inputs/cubeb-pulse-license.txt'
+        if not all(p.is_file() for p in (firefox,ems,wisp,liberation,compiled,rust,stdlib,pulse)):self.skipTest('Pinned engine build inputs not available')
         with tempfile.TemporaryDirectory(prefix='codi-browser-notices-test-') as t:
-            out=Path(t)/'notices';records=module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,out)
+            out=Path(t)/'notices';records=module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,out)
             manifest=json.loads((out/'notice-manifest.json').read_text())
             self.assertEqual(manifest['files'],records)
             self.assertEqual(manifest['sourceArchives'],module.SOURCES)
@@ -35,14 +36,16 @@ class NoticesTest(unittest.TestCase):
             self.assertIn('third_party/abseil-cpp/LICENSE',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Target-built vendored Rust crate notices',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Copyright notices for The Rust Standard Library',(out/'emscripten-licenses.txt').read_text())
+            self.assertIn('cubeb-pulse-rs LICENSE',(out/'emscripten-licenses.txt').read_text())
             index=(out/'index.html').read_text()
             for name,digest in module.SOURCES.items():self.assertIn(name,index);self.assertIn(digest,index)
-            with self.assertRaises(ValueError):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,out)
+            with self.assertRaises(ValueError):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,pulse,out)
             bad=Path(t)/'wrong-license.txt';bad.write_text('wrong')
-            with self.assertRaisesRegex(ValueError,'font license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',bad,compiled,rust,stdlib,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,bad,rust,stdlib,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'Rust component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,bad,stdlib,Path(t)/'other')
-            with self.assertRaisesRegex(ValueError,'standard library'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,bad,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'font license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',bad,compiled,rust,stdlib,pulse,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,bad,rust,stdlib,pulse,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'Rust component notices'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,bad,stdlib,pulse,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'standard library'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,bad,pulse,Path(t)/'other')
+            with self.assertRaisesRegex(ValueError,'Pulse Rust license'):module.prepare(firefox,ems,wisp,ROOT/'apps/system/browser/docs/LICENSE',liberation,compiled,rust,stdlib,bad,Path(t)/'other')
 
 
 if __name__=='__main__':unittest.main()
