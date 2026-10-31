@@ -4,7 +4,7 @@ After=codi-ksu-hidden-issuer.service codi-ksu-hidden-steward.service
 
 [Service]
 Type=oneshot
-ExecStart=/srv/codi-connected/venvs/517179c/bin/python -I -B /srv/codi-connected/recovery-operators/f1b5fd9e3eff2d75805c554fcba79130ba3e5ee87831bcd3ea268e01a12ad214/run.py tick --config /etc/codi-connected/ksu/managed.json --config-sha256 19f15f856ba5e40db865d6e9b4623fa8f680e92a1952d3765484a5fb31839092 --release-sha256 36868e655bc12c61123ec2e7d8562bea511375aa6136d5f5dd610ca81a751d46 --bundle-sha256 f1b5fd9e3eff2d75805c554fcba79130ba3e5ee87831bcd3ea268e01a12ad214 --seconds 86400 --renewal-window 21600 --controller-lock /home/dflanag3/webhost-sites/.controller.lock --controller-owner-uid 1000 --controller-owner-gid 1000
+ExecStart=/srv/codi-connected/venvs/517179c/bin/python -I -B /srv/codi-connected/recovery-operators/f1b5fd9e3eff2d75805c554fcba79130ba3e5ee87831bcd3ea268e01a12ad214/run.py tick --config /etc/codi-connected/ksu/managed.json --config-sha256 0651b5e6bc49657795c6d77e768d35a3ee351561ab6baad994fc2b013f524e18 --release-sha256 0aaf61849fa03e41376d63a36496c83e83adbc97c14aeafe366100ff9e530af2 --bundle-sha256 f1b5fd9e3eff2d75805c554fcba79130ba3e5ee87831bcd3ea268e01a12ad214 --seconds 86400 --renewal-window 21600 --controller-lock /home/dflanag3/webhost-sites/.controller.lock --controller-owner-uid 1000 --controller-owner-gid 1000
 TimeoutStartSec=300
 NoNewPrivileges=yes
 ProtectSystem=strict
