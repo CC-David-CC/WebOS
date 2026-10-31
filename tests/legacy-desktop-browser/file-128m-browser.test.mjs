@@ -7,7 +7,7 @@ page.on('pageerror',error=>errors.push(error.message));
 page.on('error',error=>{console.error('Browser renderer failed:',error.message);process.exitCode=1;});
 try {
   await page.evaluateOnNewDocument(()=>{const original=window.fetch;window.__streamWrites=0;window.fetch=(url,...args)=>{if(String(url).endsWith('/gateway/upload'))window.__streamWrites++;return String(url).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):original(url,...args);};});
-  await page.goto('http://127.0.0.1:18140/');await page.waitForSelector('.login-toggle');await page.click('.login-toggle');
+  await page.goto(process.env.CODI_TEST_DESKTOP_URL||'http://127.0.0.1:18140/');await page.waitForSelector('.login-toggle');await page.click('.login-toggle');
   await page.type('[aria-label=Username]',user);await page.type('[aria-label=Password]','test1234');await page.type('[aria-label="Confirm password"]','test1234');
   await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:30000});
   const rejected=await page.evaluate(async()=>{try{const c=await serverFileContext();await c.files.write('too-large.bin',new Uint8Array(128*1024*1024+1));return false;}catch{return true;}});
