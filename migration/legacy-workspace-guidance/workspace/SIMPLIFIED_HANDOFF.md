@@ -1622,3 +1622,37 @@ The prior index is backed up at `/var/lib/codi-ingress/browser-source-index-3a82
 The previously documented uncertainty about the exact final-link license
 inventory remains; publication of this source snapshot does not resolve it.
 
+### Signed-in Browser source access — 2026-10-31 UTC
+
+The public `/browser-sources` path and its files now return 401 with a sign-in
+instruction. Signed-in users open Browser and choose **Licenses & source**;
+the link uses the Browser relay's short-lived, registered-account lease and
+path-scoped HttpOnly cookie. Closing Browser or losing that lease can end source
+access; reopen Browser to obtain a new link. Public source paths are no longer
+usable for unauthenticated automation or as permanent distribution links.
+The protected source index and range download passed with a real disposable
+account; missing cookies, unlisted files, and an anonymous lease are rejected.
+The live UI test opened the link and verified the index. The test account was
+removed. Source recipients still have access to notices and source; the wider
+licensing inventory remains under review.
+
+Frontend `c538220f32e70e55616f423e10d8e51af9bbf95b82d3bd510d64a29706feef03`,
+Browser bundle `27c53dde04fd16189bcea2e8e56fa38881a1cd0cde2e6e09945dac8febf1f49a`,
+and relay `953a58dc68dde9f1c988fa18857ea344347508f7e07e6c508eb256245e20764a`
+are active. The relay rollback was exercised; the previous unit is at
+`/var/backups/codi-browser-relay-before-source-auth-runtime.service`. Audit is
+disabled, and audit operator `d4919a4b70b077b93037e1a4a4020d5a9c2056f653410ff2d8ab7fea54cb3aa6`
+and policy operator `policy-8874c0118` point to the new relay. Hosting generator
+SHA-256 `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
+manifest `6945436b3856931831a757768c6a02d5222eb8d111136a95e4ce7556826ce65e`,
+and Caddy `b28129f67e7a0c2ee50719bd1f87df300ce00248c856627f33a951348fa76731`.
+Hosting rollback inputs are `/var/backups/webhost-sites/change-20261031T051342536271Z`
+and `/var/backups/webhost-sites/change-20261031T051342536750Z`.
+
+The first frontend staging run left the new app bundle directory mode 0700,
+causing a 403 until corrected to public-readable modes. The staging script now
+normalizes the copied bundle's permissions. A fresh public test after correction
+passed; the exact reported module URL with `?retry=14` returned 200. Old tabs
+that cached the failure may need a page refresh. Source-only scripts and tests
+are backed up separately; unrelated guest SSH work remains untouched.
+
