@@ -2114,3 +2114,18 @@ exact per-file linkage. Report SHA-256:
 The live combined notice hash matched the audit input; the audit test passed.
 No live files were modified by this review. Other license categories remain
 under review.
+
+### Current Browser supplier-site recheck — 2026-10-31 UTC
+
+The live Browser release `1ce5edb5bb8312f9cf3ab6a793f809549b38628a28b7440b42058359e4e68117`
+was exercised in fresh registered desktop and emulated phone-sized Chrome
+contexts. In both, example.com reported loaded; Grainger returned HTTP 403 and
+its own “Access is temporarily restricted” page; McMaster reported loaded
+and displayed its catalog. The phone-sized McMaster canvas showed a desktop
+layout wider than the viewport and a large supplier survey overlay; usability
+of that page on a physical phone is not established. These checks do not test
+login, purchasing, full site interactions or general site compatibility. Two
+disposable test accounts were removed. The first test-runner attempt had no
+Node executable and exited before registration; the rerun used a temporary Node
+22.16.0 archive checked against the distribution's SHA-256 list. No live site
+code or policy was changed.
