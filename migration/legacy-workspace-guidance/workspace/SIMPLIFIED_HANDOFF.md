@@ -1778,3 +1778,18 @@ separate browser storage on the same computer; this is not a physical-phone or
 separate-network result. `tests/browser-live-url-download.test.mjs` now covers
 this recovery and attempts scoped file cleanup even if its later checks fail.
 
+
+### Integrated Browser Stop candidate — 2026-10-31 UTC
+
+The responsive Stop prototype is now integrated into the pinned engine patch
+and paired with the worker using `browser-gecko-mailbox-v2`; its source is
+backed up at `6bd03a679`. A separate, locally staged engine build from the
+pinned sources has WASM SHA-256
+`23b02f87791ad87208faf3680c5269ce0a7dc77c7bf33c7f88986e52d2ea5e2b`.
+Tests against that actual engine stopped a delayed load in 68 ms, navigated
+again, handled immediate Stop, and preserved a second Browser window. A
+phone-sized emulated viewport also passed Stop and close/reopen during a slow
+load. Nine patch tests and 62 mailbox/policy tests passed. A completely stalled
+Gecko event loop and a physical phone have not been verified. The candidate is
+not live: the corresponding source provision and further release checks remain.
+The live Browser remains on ABI v1; do not mix its engine with the v2 worker.
