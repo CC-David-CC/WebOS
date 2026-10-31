@@ -35,5 +35,12 @@ try {
   assert(!second.files.includes(first.path),'Second account sees the first account notebook in JupyterLite');
   const privateFile=await page.evaluate(async()=>{try{return !!(await(await mirrorFileContext()).files.read('/private-check.txt'));}catch{return false;}});
   assert.equal(privateFile,false,'Second account can read the first account file');
-  console.log('PASS same browser: per-account notebook storage, random notebook names, and separate My files');
+  page.on('dialog',dialog=>dialog.accept());
+  await Promise.all([page.waitForNavigation({waitUntil:'domcontentloaded',timeout:45000}),page.evaluate(()=>{void endSession();})]);
+  await page.waitForSelector('.login-form');await page.type('[aria-label=Username]',users[0]);await page.type('[aria-label=Password]','test1234');
+  await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:45000});
+  const switched=await notebook();assert.equal(switched.owner,first.owner);assert(!switched.files.includes(second.path));
+  const saved=await page.evaluate(async()=>new TextDecoder().decode((await(await mirrorFileContext()).files.read('/private-check.txt')).data));
+  assert.equal(saved,'only account A');
+  console.log('PASS same browser: simultaneous and switched accounts, per-account notebook storage, random names, and separate My files');
 } finally {await context.close();await browser.disconnect();}
