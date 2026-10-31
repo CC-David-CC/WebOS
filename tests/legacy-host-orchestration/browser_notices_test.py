@@ -40,6 +40,7 @@ class NoticesTest(unittest.TestCase):
             self.assertIn('SIL OPEN FONT LICENSE Version 1.1',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('third_party/abseil-cpp/LICENSE',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('third_party/content_analysis_sdk/LICENSE',(out/'emscripten-licenses.txt').read_text())
+            self.assertIn('third_party/rust/seahash/Cargo.toml.orig',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Target-built vendored Rust crate notices',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('third_party/rust/remove_dir_all/LICENCE-MIT',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Copyright notices for The Rust Standard Library',(out/'emscripten-licenses.txt').read_text())
