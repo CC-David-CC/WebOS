@@ -1341,8 +1341,10 @@ private credential/database arguments, constructs the ledger only when the
 policy explicitly enables it, and includes its source in exported runtimes.
 Local tests verify default-off makes no file, enabled mode requires a private
 32-byte Ed25519 credential, and an enabled Wisp stream records metadata but
-not payload. This work is **not deployed or ready to enable**: the explicit
-URL downloader still needs equivalent per-hop audit, and the protected
-systemd credential, operator controls, failure/recovery and live opt-in tests
-remain. Do not set `serverAuditEnabled` on the live policy yet: the current
-live runtime has no configured audit callback and would reject traffic.
+not payload. The URL downloader now also emits per-hop events for redirects,
+completion and policy denials without recording paths or contents. Ledger
+integrity is verified on startup. This work is **not deployed or ready to
+enable**: protected systemd credential provisioning, operator controls,
+end-to-end failure/recovery and live opt-in tests remain. Do not set
+`serverAuditEnabled` on the live policy yet: the current live runtime has no
+configured audit callback and would reject traffic.
