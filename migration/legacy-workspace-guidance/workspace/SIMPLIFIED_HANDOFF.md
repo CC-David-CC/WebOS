@@ -769,5 +769,21 @@ compatibility and must not be deployed. Candidate `profile28-large-files-r3`
 has manifest SHA-256 `0aaf61849fa03e41376d63a36496c83e83adbc97c14aeafe366100ff9e530af2`.
 Its isolated tests passed, including advertised 128 MiB, metadata validation
 against both old and new issuer releases, separate login listener, rule
-updates and unchanged TURN policy. It has not been installed or tested with
-the live desktop; exercise managed upgrade and rollback before final activation.
+updates and unchanged TURN policy. The root-owned release was staged from the
+verified prior release, then its managed upgrade and rollback were exercised
+before final activation. `/config.json` now advertises 134217728 bytes from
+`/srv/codi-connected/releases/browser-issuer-profile28-large-r3`; all ten
+site status checks passed. The live desktop remains on its old static release
+and its mirror's 128 MiB end-to-end path has not yet been verified.
+
+### Electronics apps — local work in progress
+
+The requested electronics tools are tracked in `docs/ELECTRONICS_APPS.md` as
+separate applications. `apps/system/arduino-simulator` is the first local
+implementation: pinned AVR8js and Wokwi Elements, a compiled ATmega328P Blink
+HEX and its C/Arduino source examples, a worker per window, pin 13 LED display,
+serial output and opening HEX from My files. It does not compile sketches or
+simulate analog circuits. Desktop and phone-emulated Chromium tests passed
+real firmware-driven LED changes, opening firmware through My files and two
+independent windows with one closed. It is not deployed. Pico, writable flash,
+analog circuit simulation, PCB design and digital logic apps remain unfinished.
