@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Spreadsheet CSV import
+
+Live static release `b58c9c8e2e94545d6f4cb9ebb5cd51c1135fc645d607e6bcf2b42454d9a674cc`; previous `72e97c0bf8047e7cbbbca80cc9c735cdd129f516324abbbd2828bd765593733c`. Spreadsheet can open UTF-8 comma-separated CSV from My files as a new workbook. Fields stay text and leading `=` receives an apostrophe to prevent accidental formula evaluation; the original CSV remains unchanged. CSV is limited to 8 MiB and a 10,000-cell grid, including minimum grid dimensions. Local unit tests cover quoting, embedded newlines, malformed input and limits; local and live desktop/emulated-phone account tests cover opening, editing, saving, sync and fresh-session recovery. One live phone-sized run timed out waiting for sync; a later fresh run passed, and all disposable accounts were removed. Local XLSX and formula regression tests passed. Physical touch, other delimiters and non-UTF-8 encodings remain unverified or unsupported.
+
 ## 2026-10-31 — Document save and PDF snapshot safety
 
 Live static release `72e97c0bf8047e7cbbbca80cc9c735cdd129f516324abbbd2828bd765593733c`; previous `7deebe2bfd81bee4eddab89c6444942433358ee55790e5048ddcfe6535b5dca5`. Saving a different existing report now asks before replacement, checks its version and preserves the draft on cancellation or stale saves. PDF export captures the destination and document snapshot at the start and reports later edits; PDF conflict checks and the saved-file watcher use metadata. Local and live desktop/emulated-phone tests cover these cases and account recovery. A local formatted multipage PDF, image, PDF Viewer, offline sync and conflict workflow also passed; its first run used an outdated local PDF Viewer bundle and was rerun with current source. Live disposable accounts were removed. Physical touch and broader document/PDF compatibility remain unverified.
