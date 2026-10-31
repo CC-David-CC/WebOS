@@ -4,7 +4,7 @@ This is a prototype for coursework and engineering experiments. Sign in to use t
 
 ## Keep your work in My files
 
-Open **System Tools → Files** and choose **My files**. Right-click in a folder to create a file or folder or upload files from your computer. Select a supported file to open its associated app, or use **Browse My files** inside a supported app. In an editor, save explicitly and watch its status. A save first updates this browser's copy; the server sync happens afterward. If the browser is offline or a conflict is reported, do not assume the server has the latest copy. Reconnect and resolve the issue in Files before relying on another device.
+Open **System Tools → Files** and choose **My files**. Right-click in a folder to create a file or folder or upload files from your computer. Select a supported file to open its associated app, or use **Browse My files** inside a supported app. In an editor, save explicitly and watch its status. A save first updates this browser's copy; the server sync happens afterward. Files shows when it has checked the server and when local changes are waiting to sync. If the browser is offline or a conflict is reported, do not assume the server has the latest copy. Reconnect and resolve the issue in Files before relying on another device.
 
 A browser can clear its local storage. The server copy helps recovery only after synchronization succeeds. There is no restore/history feature yet. Deletions synchronize, so deleting a file can remove both copies. Keep independent backups of important coursework.
 

@@ -37,8 +37,7 @@ browser-first, account-isolated storage and conflict guarantees.
   listing still starts over on retry, a new tab starts over, and the full scan
   is repeated after completion. This change alone does not establish capacity
   or fix excessive idle traffic. The mirror now adds jitter and bounded
-  exponential backoff after a 429; explicit sync and new writes still try
-  immediately. This reduces synchronized retries but does not increase capacity.
+  exponential backoff after a 429; explicit sync still tries immediately; new writes queue behind the retry delay after a rate limit. This reduces synchronized retries but does not increase capacity.
 
 ## Design direction
 
