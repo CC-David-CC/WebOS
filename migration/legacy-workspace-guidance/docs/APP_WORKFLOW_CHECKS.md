@@ -8,6 +8,7 @@ These are development-preview browser checks, not a claim that every feature of 
 | Text | Upload, browse a folder, edit, browser save, server sync, close and reopen. | More file types and edge cases. |
 | Document Editor | Upload native project, open, edit, browser/server save, conflict handling, export and preview PDF. | Its `.doc` and `.codidoc` formats are not Word; no DOCX support. |
 | PDF Viewer | Open an uploaded PDF and a document-generated preview; page navigation. | Read-only; no save operation is expected. |
+| Browser | Gecko engine and signed relay integration are retained, but the Applications launcher is labeled “Browser (in development)” and disabled while higher-priority STEM apps are improved. | Experimental embedded browser; the latest themed download-dialog candidate remains local and is not in the live bundle. |
 | Spreadsheet | Upload XLSX, open, edit formulas, save the native format, export XLSX and reopen. | Advanced Excel features and formatting may not survive conversion. |
 | Data Explorer | Upload CSV, open, SQL query, grid and chart. | Query/chart configuration is not saved as an account project. |
 | Image Editor | Upload PNG, open, resize, browser/server save and reopen. | PNG/JPEG/WebP only; animated GIF editing is not supported. |
