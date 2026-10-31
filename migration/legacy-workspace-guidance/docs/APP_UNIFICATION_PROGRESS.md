@@ -18,7 +18,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Calculator | Calculator | No document workflow. | Pending |
 | Browser | Independent web browser | Experimental; temporary profile and no audio. Scroll fix verified in emulation. | In progress |
 | Document Editor | Reports | Folder selection, invalid-file draft preservation and fresh-session recovery pass locally and on the live desktop. On the live phone-sized run those checks passed, but fixture cleanup hit a server request limit; test accounts were cleaned separately. Account project and PDF export checked locally; not a Word editor. | In progress |
-| PDF Viewer | Read-only documents | Open and page navigation checked. | Pending |
+| PDF Viewer | Read-only documents | Open, page navigation, resize and failed-open recovery checked locally on desktop and phone-sized views. Canvas-only: no text selection, search or annotations. | In progress |
 | Spreadsheet | Tables | Native save and XLSX import/export checked; advanced Excel compatibility limited. | Pending |
 | Data Explorer | Data analysis | CSV query and chart checked; query state is temporary. | Pending |
 | Python Notebook | Browser Python | Pyodide and account notebook workflow checked; untrusted notebooks are not isolated. | Pending |
