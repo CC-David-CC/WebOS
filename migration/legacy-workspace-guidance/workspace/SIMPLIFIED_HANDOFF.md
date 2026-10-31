@@ -1380,3 +1380,17 @@ The exported, pinned process passed both default-off startup and an explicit
 enabled startup with a private test key and ledger. It is not installed or
 active on box-webhost. Any further source changes require a new candidate and
 matching public source provision before activation.
+
+The source-only privileged audit operator is built as a three-file protected
+bundle with manifest SHA-256
+`55b97370580f079fb0b644323f015d54d36e4767547b9ade1b90069fc20b4fe2`.
+It pins the above runtime, validates root-owned operator/runtime content and
+service units, holds the hosting and destination-policy locks, and preserves
+keys and ledgers when disabling or rolling back. Fixture tests cover key
+preservation and refusal of a tampered operator file. A test initially created
+Python bytecode in the staged runtime; the verifier correctly rejected the
+extra file. The test now disables bytecode, the test-only cache was removed,
+and the corrected package check passed. This operator is not installed and
+has not been exercised against real service transitions; live audit remains
+disabled. The privileged wrapper and actual transition/rollback still require
+an isolated installed-systemd exercise before any live switch.
