@@ -2058,3 +2058,22 @@ Index SHA-256 is `49167a41e6024920cbf20b8de2860c0c143ed4bc817cf6db733e77d453fa35
 notice manifest SHA-256 is `2ea88b61c485792dd6f156bca4b2f2e147ef4aa7c254f6ad412d7d4f95553525`.
 Prior index files are saved at
 `/var/lib/codi-ingress/browser-source-index-wpf-update-backup.json`.
+
+### Rust source comment notices — 2026-10-31 UTC
+
+A reproducible source scan of 195 Rust package candidates identified by
+unambiguous final-link symbol matches collected 85 distinct copyright-bearing
+comment blocks across 482 file references, including libm's Sun notices. It
+only scans the first 100 lines of tracked source files and omits test/example
+directories; attribution at package level does not prove a given file was in
+the binary, and other files and dependencies still need review. The signed-in
+component notice SHA-256 is
+`953caeb7f1f698f875d5ef4675d81b31e6cb4c26b3665cebf4a3419d497c1ba0`;
+the manifest SHA-256 is
+`b9b05b549abac8c2abd5dbf91875f0951ff810acdeaa838c98f303817b7f560f`.
+The old notices are backed up at
+`/var/lib/codi-ingress/browser-linked-headers-backup.json`. Local notice
+validation and registered live source/relay/files checks passed, and the
+live disposable test account was removed. The new collector source is backed
+up in Git; update the downloadable source snapshot before declaring the source
+provision work complete.
