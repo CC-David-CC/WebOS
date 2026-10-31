@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Spreadsheet CSV export
+
+Live static release `eccde7cf460139dd2d983acfcd08a473e0bdf25259d3996d9b9b2da4ad1b2a16`; previous `b58c9c8e2e94545d6f4cb9ebb5cd51c1135fc645d607e6bcf2b42454d9a674cc`. Spreadsheet exports the selected worksheet’s calculated values to a separate CSV in My files; formulas, formatting and other sheets are not included. Export runs in the conversion worker, rejects unsupported formulas, limits output to 8 MiB, confirms replacement and protects formula-like text. Local desktop and emulated-phone account tests and a live emulated-phone test cover import/edit/export, cancelled replacement, multi-sheet selection, formula values, invalid-formula rejection and Data Explorer opening. Unit tests cover quoting and CSV text protection. The live disposable account was removed. Physical touch and full spreadsheet compatibility remain unverified.
+
 ## 2026-10-31 — Spreadsheet CSV import
 
 Live static release `b58c9c8e2e94545d6f4cb9ebb5cd51c1135fc645d607e6bcf2b42454d9a674cc`; previous `72e97c0bf8047e7cbbbca80cc9c735cdd129f516324abbbd2828bd765593733c`. Spreadsheet can open UTF-8 comma-separated CSV from My files as a new workbook. Fields stay text and leading `=` receives an apostrophe to prevent accidental formula evaluation; the original CSV remains unchanged. CSV is limited to 8 MiB and a 10,000-cell grid, including minimum grid dimensions. Local unit tests cover quoting, embedded newlines, malformed input and limits; local and live desktop/emulated-phone account tests cover opening, editing, saving, sync and fresh-session recovery. One live phone-sized run timed out waiting for sync; a later fresh run passed, and all disposable accounts were removed. Local XLSX and formula regression tests passed. Physical touch, other delimiters and non-UTF-8 encodings remain unverified or unsupported.
