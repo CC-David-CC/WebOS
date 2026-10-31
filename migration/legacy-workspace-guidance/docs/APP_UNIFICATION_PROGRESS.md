@@ -12,7 +12,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | App | Role | Prior evidence / known boundary | New review |
 | --- | --- | --- | --- |
 | Files | Account and temporary Linux files | Account sync and Linux copy checked; drives are separate. Touch create/upload is live; a selected-file Open action is live; phone and desktop Text editing, sync, close/reopen, and fresh-context checks passed. | In progress |
-| Text | Text and code editor | Files → Text edit, sync, close/reopen and fresh-context recovery checked; new-document naming and collision handling under local test. | In progress |
+| Text | Text and code editor | Files → Text edit, sync, close/reopen and fresh-context recovery checked; new-document naming and collision handling verified live on desktop and phone-sized views. | In progress |
 | Terminal | Temporary v86 Linux | No automatic account-drive mount. | Pending |
 | Help | Desktop help | No document workflow. | Pending |
 | Calculator | Calculator | No document workflow. | Pending |
@@ -52,3 +52,5 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Transformers | Shared model capability | No model configured. | Pending consumer review |
 
 Apps are being changed to open maximized and follow viewport resizing, including 1080p and 4K; users can restore a smaller window. The live shell passed viewport-emulation checks, including multiple windows and remembered layout. Physical F11 and device behavior remain to be checked. Electronics Design’s three-view large-screen layout needs individual investigation.
+
+During each app review, suppress optional third-party account and sign-up prompts where the local feature can work without them. The desktop account does not automatically grant access to an external provider; label any feature that genuinely needs one.

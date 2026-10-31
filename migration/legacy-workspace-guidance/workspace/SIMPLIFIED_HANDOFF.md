@@ -2230,3 +2230,25 @@ Hosting backups: `change-20261031T073255411340Z` and
 `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
 manifest `273b361d38f7d7f48df27ad7d0b72dd5144b48e5922d6417049c8932a303fbb3`,
 and Caddy `c455ebbc5d581d0180ec771a683c25756b7ade23fa29a15c4c349d472d71f5ac`.
+
+### Text first-save naming — 2026-10-31 UTC
+
+Simplified release `d5e3b44eb6e6f3d5038d0adbda6ea090455508f2dbb9e7fe236f3bef00849898`
+serves Text bundle `0bfe806569aa98921bfef3274c8f9cee44ce9879bfc1f252f3395ecedc892f66`.
+The first Save for an unsaved Text document asks for a path in My files. It
+uses the existing version-checked create behavior, so an existing file is not
+overwritten and the draft is preserved. Live registered desktop and phone-sized
+tests checked naming, collision refusal, sync and fresh-context recovery;
+test accounts were removed. Local desktop and phone-sized editor regressions
+also passed for existing-file edits, conflicts, Save As and reload. The old
+phone regression test was updated to use the current Keyboard lock menu.
+The dialog still uses a path field rather than a visual destination picker;
+physical phone keyboard behavior and broader app integration remain open.
+
+Previous frontend:
+`e4cec0d0b929cb5f6bdc41e146d433d2d8e99eb5314b5ce5a833ea2c0d280a2f`.
+Hosting backups: `change-20261031T073619549120Z` and
+`change-20261031T073619549552Z`. Generator SHA-256 remains
+`fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`,
+manifest is `0afb0763ef2f80c6ed583945eeb2f43d6dd249409809110fcce296e2a6bb4071`,
+and Caddy is `25c0553f189c179dc00d8e83aa9612af3fb76de42635aaff840aaa7fcb1d79b8`.
