@@ -1518,3 +1518,9 @@ passed with the project Python environment. This candidate is not yet live;
 prepare its corresponding source archive, perform release/hosting activation
 and public regression before announcing it. Physical phones and full language
 coverage are not verified. The previously documented live release is unchanged.
+
+## Voice and keyboard menu controls — live
+
+Simplified frontend release `affe246ba843cc62a41a77557171e254db33379ea0a24414e381d9b6dbb130e4` serves desktop source `ef070123a`. The microphone overlay starts hidden on desktop and visible on compact/touch layouts. Applications → System Tools → Voice input toggles it; Keyboard lock toggles the on-screen keyboard hint, with status feedback. The overlay contains no keyboard button. Desktop keyboard mode initially permits typing; the previous voice-mode default remains on compact screens. Desktop and emulated phone-sized tests passed both locally and on the public site; two disposable public accounts were removed. No physical-phone test was performed. All 5,462 release files passed hash verification before activation. This release retains the previously live Browser bundle: the font candidate above remains local only.
+
+Hosting generator remains `3cf1dca82b180122de30fdf44f9751941423281fdfdc5566418826be22525d0e`; manifest `d05ef60376f13a66485f96a6822ca35d19b9a1d4b08ccfca51a44a15548b08a8`; Caddy `44be733ea39f778de37eb32ecb5c03735b4607dea6e5ed843087c5f684353001`. Previous release is `0389a65b0a5bf8da3d0c26e714f6a79e05a0ba37d134c07130e54964248c3042`; hosting backups `change-20261031T040729846308Z` and `change-20261031T040729846712Z`.
