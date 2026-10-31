@@ -23,6 +23,16 @@ for name,digest in expected.items():
 shutil.copytree(original,dest,ignore=shutil.ignore_patterns('node_modules','__pycache__'))
 shutil.copytree(original/'node_modules',dest/'node_modules',copy_function=__import__('os').link)
 root=Path(__file__).resolve().parent;shutil.copy2(root/'archive-worker.js',dest/'compiler-worker.js')
+shutil.copy2(root/'sketch-editor.mjs',dest/'sketch-editor.mjs')
+index=dest/'index.mjs';source=index.read_text()
+source="import {mountSketch} from './sketch-editor.mjs';\n"+source
+needle="  const note=make('p','arduino-note','Runs compiled ATmega328P firmware locally."
+insert="  const sketch=mountSketch(host,hex=>{parseHex(hex);state.hex=hex;state.name='Built sketch';state.path=null;state.version=null;run()});body.append(sketch.element);\n"
+if source.count(needle)!=1:raise SystemExit('Unexpected Arduino app source')
+source=source.replace(needle,insert+needle).replace('Sketch compilation is not available here yet.','Sketch compilation is experimental.')
+source=source.replace('dispose(){disposed=true;loadSerial++;stop();}','dispose(){sketch.dispose();disposed=true;loadSerial++;stop();}')
+index.write_text(source)
+with (dest/'style.css').open('a') as css:css.write('\n.arduino-sketch{display:flex;flex-direction:column;gap:8px}.arduino-sketch textarea{width:100%;min-height:200px;box-sizing:border-box;font:14px/1.5 monospace;resize:vertical}.arduino-sketch pre{max-height:180px;overflow:auto}\n')
 files=list(expected)
 for name in files:
  source=web/name
