@@ -1,3 +1,4 @@
+import {chooseRoot} from './browser-choose-root.mjs';
 import puppeteer from 'puppeteer-core';
 import assert from 'node:assert/strict';
 import {writeFile,unlink} from 'node:fs/promises';
@@ -17,7 +18,7 @@ try{
  const rect=await page.evaluate(()=>{const e=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot.querySelector('canvas').getBoundingClientRect();return {x:e.x,y:e.y}});
  if(process.env.CODI_PHONE==='1')await page.touchscreen.tap(rect.x+60,rect.y+30);else await page.mouse.click(rect.x+60,rect.y+30);
  await page.waitForFunction(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('.download-row button')?.textContent==='Save to My files',{timeout:30000});
- page.once('dialog',d=>d.accept('gateway-probe.txt'));await page.evaluate(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot.querySelector('.download-row button').click());
+ page.once('dialog',d=>d.accept('gateway-probe.txt'));await page.evaluate(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot.querySelector('.download-row button').click());await chooseRoot(page);
  await page.waitForFunction(()=>![...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('.download-row'),{timeout:30000});
  const actual=await page.evaluate(async()=>{const c=await mirrorFileContext();await c.files.sync();return new TextDecoder().decode((await(await serverFileContext()).files.read('gateway-probe.txt')).data)});assert.equal(actual,'codi file gateway probe 20261030');
  await page.evaluate(async()=>{const c=await mirrorFileContext(),f=await c.files.read('/gateway-probe.txt');await c.files.remove('/gateway-probe.txt',f.version);await c.files.sync()});

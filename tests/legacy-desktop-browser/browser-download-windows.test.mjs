@@ -1,3 +1,4 @@
+import {chooseRoot} from './browser-choose-root.mjs';
 import puppeteer from 'puppeteer-core';
 import assert from 'node:assert/strict';
 const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18181/';
@@ -14,7 +15,7 @@ try{
  page.once('dialog',d=>{assert.match(d.message(),/Discard unsaved changes/);return d.accept()});await page.evaluate(i=>{const w=document.querySelector(`[data-window="${i}"]`);window.__closedAppView=w.appView;w.querySelector('[aria-label="Close"]').click()},first);await page.waitForFunction(i=>!document.querySelector(`[data-window="${i}"]`),{},first);assert.equal(await page.evaluate(()=>window.__closedAppView?.signal?.aborted),true);
  await page.waitForFunction(()=>window.__downloadWorkerAudit.filter(w=>w.__auditURL.includes('/src/engine-worker.js'))[0]?.__terminated===true,{timeout:15000});
  assert.equal(await page.evaluate(()=>window.__downloadWorkerAudit.filter(w=>w.__auditURL.includes('/src/engine-worker.js'))[1]?.__terminated),false,'Closing one browser must not terminate the other');
- await navigate(second);await clickLink(second);page.once('dialog',d=>d.accept('second-window.bin'));await page.evaluate(i=>document.querySelector(`[data-window="${i}"] .window-content`).shadowRoot.querySelector('.download-row button').click(),second);
+ await navigate(second);await clickLink(second);page.once('dialog',d=>d.accept('second-window.bin'));await page.evaluate(i=>document.querySelector(`[data-window="${i}"] .window-content`).shadowRoot.querySelector('.download-row button').click(),second);await chooseRoot(page);
  await page.waitForFunction(async()=>{try{return (await(await mirrorFileContext()).files.read('/second-window.bin')).data.length===65566}catch{return false}},{timeout:30000});console.log('PASS independent browser downloads and worker cleanup');
 }catch(error){console.error('DIAGNOSTIC',await page.evaluate(()=>[...document.querySelectorAll('.window-content')].filter(x=>x.shadowRoot).map(x=>({status:x.shadowRoot.querySelector('.status')?.textContent,logs:x.shadowRoot.querySelector('pre')?.textContent}))).catch(()=>null));throw error}
 finally{await context.close();await browser.disconnect()}
