@@ -1194,3 +1194,21 @@ tests. Two clean builds matched on the same Linux machine. Final distribution
 review of source, notices and LGPL relinking sufficiency remains open, so
 Circuit Lab is not live. The archive and SDK were generated test artifacts and
 removed; the pinned recipes and tests are tracked for rebuilding.
+
+## Signed upload pause handling
+
+The live private-file worker now uses a 60-second idle timeout specifically
+for authenticated binary upload metadata and content. Control requests retain
+their 5-second timeout; the 900-second overall transfer deadline, transfer
+quota, per-use size, and concurrency limits remain. The live worker is
+`be4a9ef3a613c2e90517fae427d4d2256b97b74ee2134c10cafe263fc2440eac`,
+with previous worker
+`0685f9925f2d00cb2433d6d3d9066ee86da7f901a2c3302e3c1f1e1842ab2152`
+available for rollback. The journaled code upgrade reported preserved account
+and permission bindings. Local tests passed a real signed upload with a
+5.2-second pause and a separate bounded idle-timeout case, plus all 18 gateway
+HTTP tests. A live signed upload through ksu.codes survived a 5.5-second pause,
+read back the exact content, and was removed with its disposable account.
+This fixes a confirmed short timeout but does not prove that timeout caused the
+previous intermittent 128 MiB failure. Longer upload idle time also means a
+stalled authenticated upload can occupy one of the bounded slots longer.
