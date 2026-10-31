@@ -26,7 +26,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Kiri:Moto | Open a model, configure slicing and export; save a workspace. | Check printer profiles and output independently before printing. |
 | Mesh:Tool | Import and manipulate meshes; save a workspace or export geometry. | Undo history is not saved in workspace snapshots; verify geometry independently. |
 | G-code Preview | Open printer G-code and inspect the path. | Supports a documented subset; it does not validate machine safety. |
-| Arduino Simulator | Run the supplied Blink or D2 input examples, or open supported HEX; inspect serial output. | Executes AVR firmware, but is not an electrical simulation. Browser compilation is not live. |
+| Arduino Simulator | Run an example or open supported HEX; inspect serial output and save an example’s C source. | Executes AVR firmware, but is not an electrical simulation. Browser compilation is not live. |
 | Pico Simulator | Run Blink or load supported RP2040 firmware and inspect serial. | Firmware and peripheral support are partial; no physical-board validation. |
 | Digital Logic | Try gates, adder and comparator examples, toggle inputs and inspect or save a truth table. | JSON combinational circuits only; no sequential circuits or full schematic editor. |
 | Circuit Simulator | Try the voltage divider, RC filter or rectifier and inspect simulated output. | CircuitJS simulation is not a substitute for measurement or hardware validation. |
