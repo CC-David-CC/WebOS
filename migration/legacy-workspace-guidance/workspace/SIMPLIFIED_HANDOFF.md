@@ -1877,3 +1877,18 @@ The complete engine final-link/license inventory remains unresolved.
 
 Temporary local, r730 and webhost build inputs for this release were removed;
 live assets, source archives, rollback backups and unrelated work remain.
+
+### Browser Rust metadata and live WASM review — 2026-10-31 UTC
+
+The authenticated combined notice now includes exact package metadata from
+Firefox's pinned sources for app_units, core_maths, debug_tree and void, whose
+releases lack separate project license files. Metadata identifies declared
+licenses and listed authors without inventing copyright statements. The live
+registered-session test checked the added entries and the complete notice hash
+`04dd62fdc18dc6b94bfa439f55b4103de6bb34394b53e8e6167264dd8d2b8ada`;
+manifest `8f35548e9754f63a3fa201ef9698c5c55c93a39085dd2ef41fbcb8aed140240f`.
+Prior files are in `/var/lib/codi-ingress/browser-rust-package-metadata-backup.json`.
+A hash-pinned scan of the actual live ABI v3 WASM confirmed 367,819 function
+names and the named crate/type references documented in SOURCE_PROVISION.md.
+Name counts are not a complete final-link audit; remaining licensing questions
+are not declared resolved. Unrelated guest SSH work remains untouched.
