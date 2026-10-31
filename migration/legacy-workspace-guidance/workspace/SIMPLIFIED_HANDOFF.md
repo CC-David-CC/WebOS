@@ -1107,3 +1107,26 @@ A live registered-account mirror test also instrumented two subsequent syncs
 of an unchanged file: both used version checks and neither requested a file
 read. The disposable test account and its file were removed. Run the check with
 `CODI_TEST_NO_REPEAT=1 ../active-system/.venv/bin/python tests/live_browser_relay_account_check.py`.
+
+## Digital Logic and Pico live
+
+Current release `fef98d4b459cf9b6e6e8d86c906143f5bf81d3b6fd404a0a866954851d470175`
+adds Digital Logic and Pico Simulator under Applications → Electronics and
+keeps open application submenus intact during desktop updates. Existing app
+bundles are unchanged. All release files were hash-verified and public asset
+permissions checked before activation. Rollback release is
+`bc92bb0d2f7f033b868b97d4d04b04204df8d2191d3216681c6f54052990832b`;
+hosting snapshots are `change-20261031T015446474999Z` and
+`change-20261031T015446476222Z` under `/var/backups/webhost-sites/`.
+Generator SHA-256 remains `bb88688bdb94c5921ec08187d4605075772c0187b401e8e33342be19184e60d5`,
+manifest is `df3b55c5c353c438cce9137100e5451555d5bf1ebf67270382eff80cd2ababdf`,
+and Caddy is `6f7000bafe0f6a0eea0afc54fa3983fbd404ffc4499369dd06e13d77f5c83131`.
+
+Local desktop and phone-sized tests exercised Digital Logic's gate simulation
+and actual account save/sync/reopen. Live registered testing repeated the save,
+server read and reopen. It supports basic feed-forward gates in JSON, not a
+schematic editor, sequential logic or analog circuits. Pico's live Blink test
+passed. Its MicroPython save/sync/reload was tested locally using privately
+supplied ROM and UF2; neither is distributed. Explicit project saves retain
+simulated flash, not CPU state. SSI support is partial. Both test accounts used
+on the live site were removed. See each app's README for test scope and terms.
