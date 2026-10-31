@@ -1,8 +1,9 @@
-# Non-game desktop expansion
+# Desktop expansion
 
-The user requested the listed non-game, non-XR/AR apps and capabilities be
-integrated with the Simplified desktop. Games and XR/AR are being developed
-separately by the user. This is a working scope, not a claim that these features
+The user requested the listed apps and capabilities be integrated with the
+Simplified desktop and subsequently authorized games as well. XR/AR remains
+outside this scope. The user may also work on games independently, so preserve
+concurrent changes. This is a working scope, not a claim that these features
 already work. Treat listed engines as candidates, verify their browser support,
 licenses, build size and maintenance before adopting them, and record any
 replacement or unavailable capability in `DEFERRED_APP_FEATURES.md`.
@@ -29,6 +30,12 @@ explicitly connects a provider, credentials and permissions need their own desig
   installing them. Consumer support remains to be implemented and tested.
 
 ## Requested work remaining
+
+- **Games:** evaluate Phaser, EmulatorJS, Babylon.js, chess.js/boardgame.io,
+  js-dos and Ruffle as candidates. Build usable independent apps and examples;
+  ensure user-supplied game content and saves use My files where applicable.
+  Check licenses, source/content rights, browser compatibility, isolation,
+  touch controls and cleanup. Do not imply a library provides game content.
 
 - **Reading and feeds:** Readability.js, an RSS/Atom parser, a News Reader,
   Podcast Player, E-book Reader (evaluate foliate-js and epub.js), and a comic
