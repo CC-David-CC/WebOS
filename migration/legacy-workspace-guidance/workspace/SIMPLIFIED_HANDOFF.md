@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Digital Logic combined-circuit examples
+
+Live static release `93a06328aae04a0873cc7d9eb59d413aa15e0c3e4814ed8d0e8f3f1d93942a2f`; previous `b737b94d940239632dd62110f8260775ee56ed4316e62b10ed4f730e74264c39`. The example selector now offers a half-adder and a 2-to-1 multiplexer alongside the single gates. Local desktop and emulated-phone tests checked each truth-table row, interactive input changes, replacement, and disposal; local registered-account desktop and phone-sized workflows and a live phone-sized workflow saved, synced, reopened and checked the half-adder truth table. The live disposable account was removed. These are logic models, not timing, electrical, or hardware validation; physical touch remains unverified.
+
 ## 2026-10-31 — Data Explorer save checks
 
 Live static release `b737b94d940239632dd62110f8260775ee56ed4316e62b10ed4f730e74264c39`; previous `46ceeb7e966bc0ae3cd50dbdcc8262bb10d308a901a9eeb9337a61b8ce3988f2`. Analysis saves check source hashes and project versions with My files metadata instead of rereading potentially large source files. CSV export overwrite checks also use metadata. Local desktop and emulated-phone tests covered saved analysis reopening, stale project and changed source protection, invalid-project rollback, CSV results, cancelled overwrite and no full-file reads for these checks. A live emulated-phone analysis workflow passed; its disposable account was removed. This does not prove a 128 MiB dataset works on every device or qualify physical touch.
