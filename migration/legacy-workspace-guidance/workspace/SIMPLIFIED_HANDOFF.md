@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — notebook first-save race
+
+Live release `c82e925ee2f7098eaffb40abbe0555082678d7676a6747d31760d63ded250d04` schedules a follow-up automatic save when the notebook changes while its first save is in flight, and captures the requested destination before asynchronous work. A regression test first waits for the Python kernel metadata to settle, pauses the first account-file write, edits the cell, and checks the newer edit syncs and reappears in a fresh session. It failed against the previous version and passed locally and live at desktop and phone-sized viewports. JupyterLite temporary working copies and lifecycle cleanup remain unfinished; untrusted notebooks are not isolated.
+
 ## 2026-10-31 — Digital Logic truth tables
 
 Live release `c70938b7f52efdae36f714ea6219eb58c37d8b52933074642d5f5e2584b43e38` adds a truth table from the current JSON draft using a separate DigitalJS simulation. It supports 1–6 one-bit buttons and 1–16 one-bit lamps, reports undefined signals as X, and cancels old results when the draft changes. Local desktop, phone-sized and 4K-sized tests cover seven gates, a half-adder, undefined signals and cancellation. Registered-account local desktop and phone-sized and live desktop tests reopened saved circuits and generated their tables. The live phone-sized workflow reached cleanup after those checks but hit the shared gateway limit; its test account was removed separately. Physical touch, sequential logic and hardware validation remain outside this test.
