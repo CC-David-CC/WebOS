@@ -1185,3 +1185,12 @@ relink materials and complete release notices are not yet verified. Build and
 relink recipes and exact limits are recorded in `apps/system/circuit-lab/README.md`;
 research build outputs and test accounts were removed. Live Circuit Simulator
 continues to provide the separate CircuitJS engine.
+
+The later ngspice candidate produced a 48,509,541-byte source/relink archive,
+SHA-256 `194eb712ba6ad296baff16b1760ceefc67eab828e7df39555cd94125c018915a`.
+It passed an independent-directory modified-component relink and the combined
+app passed simulation, account sync, phone-sized reopen, and lazy source-link
+tests. Two clean builds matched on the same Linux machine. Final distribution
+review of source, notices and LGPL relinking sufficiency remains open, so
+Circuit Lab is not live. The archive and SDK were generated test artifacts and
+removed; the pinned recipes and tests are tracked for rebuilding.
