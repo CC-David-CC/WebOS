@@ -12,6 +12,8 @@ import tempfile
 import unittest
 from aiohttp import ClientSession, UnixConnector, web
 from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+from cryptography.hazmat.primitives import serialization
 
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('relay_runner',ROOT/'active-system/scripts/serve-browser-relay.py')
@@ -66,5 +68,27 @@ class SocketBoundary(unittest.IsolatedAsyncioTestCase):
         await self.start(os.getuid()+1)
         headers={'Host':'ksu.codes','Origin':self.origin,'X-Codi-Client-IP':'1.1.1.1'}
         self.assertEqual((await self.request(headers))[0],403)
+
+    async def test_real_process_opens_private_audit_only_after_opt_in_and_restarts(self):
+        folder=Path(self.temp.name);folder.chmod(0o750);private=folder/'private';private.mkdir(mode=0o700)
+        issuer=folder/'issuer.json';issuer.write_text(json.dumps(self.policy));issuer.chmod(0o600)
+        destination=folder/'destination.json';policy=json.loads((ROOT/'apps/system/browser/relay/policy.json').read_text());destination.write_text(json.dumps(policy));destination.chmod(0o600)
+        access=folder/'access.json';access.write_bytes((ROOT/'active-system/network_policy/default.json').read_bytes());access.chmod(0o600)
+        key=private/'key';key.write_bytes(Ed25519PrivateKey.generate().private_bytes(serialization.Encoding.Raw,serialization.PrivateFormat.Raw,serialization.NoEncryption()));key.chmod(0o600)
+        database=private/'events.sqlite3';pin=hashlib.sha256(issuer.read_bytes()).hexdigest()
+        command=[sys.executable,str(ROOT/'active-system/scripts/serve-browser-relay.py'),'--origin',self.origin,'--issuer-policy',str(issuer),'--issuer-policy-sha256',pin,'--policy-sha256','a'*64,'--destination-policy',str(destination),'--access-policy',str(access),'--socket',self.socket,'--proxy-uid',str(os.getuid()),'--proxy-gid',str(os.getgid()),'--audit-database',str(database),'--audit-key',str(key)]
+        async def start_stop():
+            process=await asyncio.create_subprocess_exec(*command,stdout=asyncio.subprocess.PIPE,stderr=asyncio.subprocess.PIPE)
+            try:
+                line=await asyncio.wait_for(process.stdout.readline(),10);self.assertIn(b'ready',line)
+                self.assertEqual((await self.request({'Host':'ksu.codes','Origin':self.origin,'X-Codi-Client-IP':'198.51.100.5'}))[0],200)
+            finally:
+                if process.returncode is None:process.send_signal(signal.SIGTERM)
+                _,stderr=await asyncio.wait_for(process.communicate(),10)
+            self.assertEqual(process.returncode,0,stderr);self.assertFalse(Path(self.socket).exists())
+        await start_stop();self.assertFalse(database.exists(),'Disabled mode must not create a ledger')
+        policy['serverAuditEnabled']=True;destination.write_text(json.dumps(policy));await start_stop()
+        self.assertTrue(database.is_file());self.assertEqual(database.stat().st_mode&0o777,0o600)
+        await start_stop()  # Existing signed ledger is accepted after restart.
 
 if __name__=='__main__':unittest.main(verbosity=2)
