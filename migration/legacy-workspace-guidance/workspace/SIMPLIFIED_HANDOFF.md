@@ -1422,3 +1422,37 @@ manifest remains `1eff3c244aa5e528f0fe91962e835b2e551c77846a44a410d1066d6c606a71
 and Caddy SHA-256 is
 `5a1052be870c92e98696464174e12f8b5faed66b8dfa535dd22e544a1b5a150f`.
 The relay still uses the previous runtime with audit off.
+
+## Optional server audit live, default off
+
+The audit-capable relay runtime `c54118ec1a534860f8293d74cd92dbe0744d31c72fa602f52fef986437ae4b37`
+is now live with recording disabled. Its protected operator is
+`/srv/codi-browser/operators/ed662839765996e6f5138ddb1eaedce6b2c4f40c2d4ae9ec6e2d4c7a0dc7d374`;
+`sudo codi-browser-audit` is the installed entrypoint. The first runtime
+rollback exercise hit a readiness race: systemd became active before its Unix
+socket. The old unit was restored, its journal recovered, and bounded routed
+health retries were added. The second real upgrade/rollback exercise passed,
+followed by the guarded upgrade. Previous unit backup is
+`/var/backups/codi-browser-relay-before-audit-runtime.service`.
+
+A live timed opt-in with automatic shutoff used a disposable account to test
+signed Browser access, direct download, blocked domains and private targets.
+The report verified seven signed events; after relay restart the independently
+saved head matched. The audit was explicitly disabled, the shutoff timer was
+stopped, and the test-only ledger and newly created test key were removed only
+after checking the exact expected head, record count, domains, single deleted
+test account, owners and file set. Current status reports audit disabled,
+matching unit, no transition, no key and no ledger. A new enable creates a
+fresh key and ledger; ordinary disable retains them. Later signed-account,
+relay, blocked destination, file sync and fresh-login checks passed.
+
+The live destination policy after the toggle is semantically identical to
+the tracked default, though formatting changed its SHA-256 to
+`31654ffd64073946ba9833a7594bf5fe4ef1f5bf575466e00984a6946f515433`.
+The independent `codi-browser-policy` manager now validates against this
+runtime using root-owned operator `policy-e36ed9571`, SHA-256
+`e36ed957153e4390749c2192a8230f7ea52b24ae8fc44682233167f451e49b43`;
+its previous wrapper is backed up at
+`/var/backups/codi-browser-policy-before-audit-runtime`. See Browser
+`LIVE_POLICY.md` for audit controls, key backup, checkpoint limits, and the
+separate Linux guest egress boundary.
