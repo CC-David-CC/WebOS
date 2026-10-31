@@ -11,7 +11,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 
 | App | Role | Prior evidence / known boundary | New review |
 | --- | --- | --- | --- |
-| Files | Account and temporary Linux files | Account sync and Linux copy checked; drives are separate. Touch create/upload menu live; phone-sized account creation, upload, sync, and fresh-context recovery checked. | In progress |
+| Files | Account and temporary Linux files | Account sync and Linux copy checked; drives are separate. Touch create/upload is live; a selected-file Open action passed local phone and desktop editing, sync, close/reopen, and fresh-context checks. | In progress |
 | Text | Text and code editor | Account edit/save/reopen checked. | Pending |
 | Terminal | Temporary v86 Linux | No automatic account-drive mount. | Pending |
 | Help | Desktop help | No document workflow. | Pending |
