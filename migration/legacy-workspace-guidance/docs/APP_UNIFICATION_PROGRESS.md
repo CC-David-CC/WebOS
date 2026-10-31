@@ -17,7 +17,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | --- | --- | --- | --- |
 | Files | Account and temporary Linux files | Account sync and Linux copy checked; drives are separate. Touch create/upload is live; a selected-file Open action is live; phone and desktop Text editing, sync, close/reopen, and fresh-context checks passed. | In progress |
 | Text | Text and code editor | Files → Text edit, sync, close/reopen and fresh-context recovery checked; new-document naming, folder selection, collision handling, sync and recovery verified live on desktop and phone-sized views. | In progress |
-| Terminal | Temporary v86 Linux | No automatic account-drive mount. | Pending |
+| Terminal | Temporary v86 Linux | Local desktop, phone-sized and 4K-sized and live desktop and phone-sized checks cover independent shells, nano save/exit, shared guest files, the in-app storage guide and closing one shell while another continues. A local Files test confirms explicit account copy and Linux reset on reload. No automatic account-drive mount; physical touch and more interactive programs remain unverified. | In progress |
 | Help | Desktop help | No document workflow. | Pending |
 | Calculator | Scientific arithmetic | A touch keypad, typed expressions, angle units and per-window Ans work locally and live on desktop and phone-sized views; local 4K view tested. Expressions remain temporary and use floating-point arithmetic. Physical touch and advanced numerical methods remain unverified. | In progress |
 | Browser | Independent web browser | Experimental; temporary profile and no audio. Scroll fix verified in emulation. | In progress |
