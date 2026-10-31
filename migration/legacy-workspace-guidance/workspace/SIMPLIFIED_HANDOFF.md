@@ -1823,3 +1823,16 @@ synchronized the server copy and recovered it after signing into a fresh
 browser context. Both test files and accounts were removed. Temporary build
 copies on the workstation, r730 and box-webhost were removed; live assets,
 source archives, rollback backups, screenshots and unrelated work remain.
+
+### Browser navigation-status investigation — 2026-10-31 UTC
+
+An isolated diagnostic engine tested page completion, HTTP errors, redirects,
+Stop, a blocked host and a deliberately closed TLS connection. The network
+result alone cannot distinguish 404 from 200, or the tested block from TLS
+failure. A script redirect also produced an intermediate cancellation result,
+and successful start and stop events used different request identifiers.
+The findings and reproducible loopback-only fixture are in
+`apps/system/browser/experiments/README.md`; no diagnostic code is live.
+Accurate, race-safe navigation status remains outstanding. The first TLS test
+fixture hung on a TLS handshake; the corrected fixture explicitly closes it,
+and the full asserted test passed. Unrelated guest SSH work remains untouched.
