@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Document save and PDF snapshot safety
+
+Live static release `72e97c0bf8047e7cbbbca80cc9c735cdd129f516324abbbd2828bd765593733c`; previous `7deebe2bfd81bee4eddab89c6444942433358ee55790e5048ddcfe6535b5dca5`. Saving a different existing report now asks before replacement, checks its version and preserves the draft on cancellation or stale saves. PDF export captures the destination and document snapshot at the start and reports later edits; PDF conflict checks and the saved-file watcher use metadata. Local and live desktop/emulated-phone tests cover these cases and account recovery. A local formatted multipage PDF, image, PDF Viewer, offline sync and conflict workflow also passed; its first run used an outdated local PDF Viewer bundle and was rerun with current source. Live disposable accounts were removed. Physical touch and broader document/PDF compatibility remain unverified.
+
 ## 2026-10-31 — Digital Logic truth-table export
 
 Live static release `7deebe2bfd81bee4eddab89c6444942433358ee55790e5048ddcfe6535b5dca5`; previous `91a9a4b45c5a6b0a4a4dca28badaa96494c344173067216e513a5f94b604d191`. A calculated truth table can now be saved as CSV in My files. Editing the circuit invalidates the calculated table; a save checks that it still represents the current draft. Existing files require confirmation and a version check, and formula-like headings receive an apostrophe for spreadsheet safety. Local desktop and emulated-phone browser tests cover quoting, cancelled overwrite and edits during save. Local and live emulated-phone account workflows calculated a half-adder table, synced its CSV and opened it in Data Explorer; the live disposable account was removed. A CSV is an exported snapshot; simulation and table limits and physical-touch caveats remain.
