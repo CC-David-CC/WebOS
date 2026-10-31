@@ -1362,3 +1362,14 @@ restarted with the same ledger. A local HTTP integration test verified signed
 per-hop redirect metadata without paths or file contents. Temporary test key,
 unit and database were removed. The live configuration remains off; safe
 operator switching and live opt-in/recovery testing are not done.
+
+The local candidate now includes an audit report tool that verifies the
+ledger and reports either per-account or aggregate domain totals; it can check
+an independently saved head for rollback. Tests cover account scope,
+wrong heads, an absent or unrelated database, and a real transient systemd
+reporter using a disposable credential. It also includes journaled switch
+primitives with local tests for successful change, failed restart rollback,
+process interruption and refusal to overwrite an independently changed
+policy. The privileged wrapper, protected key provisioning, end-to-end live
+recovery, and deployment remain outstanding. The primitive requires its
+caller to hold the hosting and policy locks and validate ownership/units.
