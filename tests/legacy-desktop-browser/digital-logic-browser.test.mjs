@@ -14,11 +14,11 @@ try{
  await page.click('[model-id="b"] .btnface');await page.waitForFunction(color=>document.querySelector('[model-id="lamp"] .led')?.getAttribute('fill')!==color,{},initial);
  await page.click('[model-id="a"] .btnface');await page.waitForFunction(color=>document.querySelector('[model-id="lamp"] .led')?.getAttribute('fill')===color,{},initial);
  await page.evaluate(()=>[...document.querySelectorAll('.logic-toolbar button')].find(b=>b.textContent==='Save to My files').click());
- await page.waitForFunction(()=>document.querySelector('.logic-status')?.textContent.startsWith('Saved /logic-circuit.json'));
- assert.ok(await page.evaluate(()=>window.test.store.has('/logic-circuit.json')));
+ await page.waitForFunction(()=>document.querySelector('.logic-status')?.textContent.startsWith('Saved /Circuit.logic.json'));
+ assert.ok(await page.evaluate(()=>window.test.store.has('/Circuit.logic.json')));
  await page.evaluate(()=>[...document.querySelectorAll('.logic-toolbar button')].find(b=>b.textContent==='Open from My files').click());
  await page.waitForFunction(()=>document.querySelector('.logic-status')?.textContent.startsWith('Simulation running'));
- await page.evaluate(()=>{const el=document.querySelector('[aria-label="Circuit JSON"]');el.value=JSON.stringify({devices:{a:{type:'Not',bits:1}},connectors:[{from:{id:'a',port:'out'},to:{id:'a',port:'in'}}]});[...document.querySelectorAll('.logic-toolbar button')].find(b=>b.textContent==='Run').click()});await page.waitForFunction(()=>document.querySelector('.logic-status')?.textContent.includes('Feedback loops are not supported'));
+ await page.evaluate(()=>{const el=document.querySelector('[aria-label="Circuit JSON"]');el.value=JSON.stringify({devices:{a:{type:'Not',bits:1}},connectors:[{from:{id:'a',port:'out'},to:{id:'a',port:'in'}}]});[...document.querySelectorAll('.logic-toolbar button')].find(b=>b.textContent==='Run').click()});await page.waitForFunction(()=>document.querySelector('.logic-status')?.textContent.includes('Feedback loops are not supported'));assert.ok(await page.$('[model-id="lamp"] .led'),'invalid run preserves the previous simulation');
  await page.evaluate(()=>{window.test.app.dispose();window.test.app.element.remove();window.test.app=window.test.mount()});await page.waitForFunction(()=>document.querySelector('.logic-status')?.textContent.startsWith('Simulation running'));await page.evaluate(()=>{window.test.app.dispose();window.test.app.element.remove()});assert.equal(await page.$('.digital-logic'),null);
  assert.deepEqual(errors,[]);console.log('PASS AND truth table, save/open against mock host, disposal');
 }finally{await context.close();await browser.disconnect()}
