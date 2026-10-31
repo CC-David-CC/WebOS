@@ -1667,3 +1667,11 @@ Firefox notice `863ab7630592181f9c16be9f509cbc0b859c56124af4711d8a519c6b4c79fa0e
 and notice manifest `b149d4c620611e8284a0920c5cc85ea69ce28a61bb3ac0e5ea0a2233c7c391dd`.
 The prior files are backed up at `/var/lib/codi-ingress/browser-source-index-ed78-backup.json`.
 
+The link input list and generated unified source identify Firefox's bundled
+Content Analysis SDK. Its exact pinned license was added to the authenticated
+combined notice; the registered live test reads it. Combined notice SHA-256
+`ee553fd12a0e8ef825cae8661f19c86c6f15e83dbf0592caf8b5c249eeab7c01`,
+notice manifest `1230180107f7157ba7b2be53d883c5a334d5057506d5e75019eaacb671c8e3a3`.
+The previous files are at `/var/lib/codi-ingress/browser-content-sdk-notice-backup.json`.
+The wider final-link license inventory remains incomplete.
+
