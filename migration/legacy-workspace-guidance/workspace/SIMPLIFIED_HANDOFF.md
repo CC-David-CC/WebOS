@@ -1675,6 +1675,17 @@ notice manifest `1230180107f7157ba7b2be53d883c5a334d5057506d5e75019eaacb671c8e3a
 The previous files are at `/var/lib/codi-ingress/browser-content-sdk-notice-backup.json`.
 The wider final-link license inventory remains incomplete.
 
+The pinned live WASM's name subsection has 367,777 named functions; a
+reproducible scan found references to `svg_fmt::`, `seahash::`, `app_units::`
+and `content_analysis::sdk::`. These may be type references, not a complete
+component inventory. Exact Firefox-vendored SeaHash 4.1.0 package metadata,
+which declares MIT and lists its authors, was added to the authenticated
+combined notice; its exact upstream release has no separate license file.
+The live registered-account test read the addition. Combined notice SHA-256
+`3f2781508e089b26b8c9af60f0820bd8085aaa9bb9d77d4c21aef852266c519a`,
+notice manifest `6a30ebc4b64a65acb01ca5345f677567d2da5769954110cca73ff237fb27f6e6`;
+prior files are at `/var/lib/codi-ingress/browser-seahash-metadata-notice-backup.json`.
+
 ### Browser rule changes during connection setup — 2026-10-31 UTC
 
 Relay `af8d81daf6fdda84d9b563ce6885f862a4d68c0a55bea194d0c9360c47b1092e`
