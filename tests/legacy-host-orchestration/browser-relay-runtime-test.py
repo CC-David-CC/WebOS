@@ -18,6 +18,21 @@ builder=load('runtime_builder',ROOT/'active-system/scripts/build-browser-relay-r
 runner=load('runtime_runner',ROOT/'active-system/scripts/serve-browser-relay.py')
 
 class Runtime(unittest.TestCase):
+    def test_optional_audit_is_disabled_by_default_and_requires_private_credential(self):
+        from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+        from cryptography.hazmat.primitives import serialization
+        with tempfile.TemporaryDirectory(prefix='codi-audit-mode-') as folder:
+            root=Path(folder);policy=root/'policy.json';source=ROOT/'apps/system/browser/relay/policy.json'
+            value=json.loads(source.read_text());policy.write_text(json.dumps(value));key=root/'key';database=root/'events.sqlite3'
+            self.assertIsNone(runner.optional_audit(policy,database,key));self.assertFalse(database.exists());self.assertFalse(key.exists())
+            value['serverAuditEnabled']=True;policy.write_text(json.dumps(value))
+            with self.assertRaisesRegex(ValueError,'requires'):runner.optional_audit(policy,None,None)
+            key.write_bytes(Ed25519PrivateKey.generate().private_bytes(serialization.Encoding.Raw,serialization.PrivateFormat.Raw,serialization.NoEncryption()));key.chmod(0o644)
+            with self.assertRaisesRegex(ValueError,'private'):runner.optional_audit(policy,database,key)
+            key.chmod(0o600);append=runner.optional_audit(policy,database,key)
+            result=append({'subject':'user:test','source':'203.0.113.1','destination':'example.com','port':443,'event':'opened'})
+            self.assertEqual(result['seq'],1);self.assertTrue(database.is_file())
+
     def test_exact_runtime_and_tampering(self):
         with tempfile.TemporaryDirectory(prefix='codi-browser-export-') as folder:
             dest=Path(folder)/'runtime';result=builder.build(dest);old_root=runner.ROOT;runner.ROOT=dest/'active-system'
