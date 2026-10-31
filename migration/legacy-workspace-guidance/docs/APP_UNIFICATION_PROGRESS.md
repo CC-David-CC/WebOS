@@ -23,7 +23,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Data Explorer | Data analysis | Desktop and phone-sized tests locally and live, plus local 4K-sized tests, cover CSV upload, SQL, chart, save to My files, cancelled overwrite, new-session recovery and reopening results. Query and chart settings remain temporary; physical touch remains unverified. | In progress |
 | Python Notebook | Browser Python | Local Python/NumPy and same-browser account isolation checked. Save, automatic sync, invalid-file recovery and fresh session passed locally and live on desktop and phone-sized views; local 4K view emulated. Untrusted notebooks are not isolated. | In progress |
 | Image Editor | Images | Local and live desktop and phone-sized tests cover opening, editing, save, rejected-image recovery and fresh-session recovery. Save As passes local desktop, phone-sized and 4K-sized checks and a live phone-sized check; animated GIF editing remains unsupported. Physical touch remains unverified. | In progress |
-| Audio Editor | Audio | WAV edit/save checked; no multitrack project persistence. | Pending |
+| Audio Editor | Audio | My files open, single-track edit, WAV save and reopen tested on desktop and emulated phone; an undecodable replacement preserves the current edit. Multitrack project saving and a physical phone test remain outstanding. | Partial |
 | diagrams.net | Diagrams | Basic account save/reopen checked. | Pending |
 | Excalidraw | Drawings | Basic account save/reopen checked. | Pending |
 | SVG Editor | SVG artwork | Basic account save/reopen checked. | Pending |
