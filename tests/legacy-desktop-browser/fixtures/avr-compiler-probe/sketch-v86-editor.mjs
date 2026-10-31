@@ -20,9 +20,7 @@ export function mountSketch(host, acceptFirmware) {
     active=true;controller=new AbortController();const signal=controller.signal;log.textContent='';say('Preparing the Linux compiler on this device…');
     try{
       if(!compiler){
-        const fetchBytes=async name=>{const response=await fetch(new URL('./research/'+name,import.meta.url),{signal});if(!response.ok)throw Error('Compiler assets could not be loaded.');return new Uint8Array(await response.arrayBuffer())};
-        const [toolchain,core]=await Promise.all([fetchBytes('toolchain.data'),fetchBytes('core.data')]);if(!valid()||id!==operation)return;
-        compiler=await host.researchAvr({toolchain,core,onProgress:text=>{if(valid()&&id===operation)say(text)}});await compiler.install(signal);installed=true;
+        compiler=await host.researchAvr({toolchainURL:new URL('./research/toolchain.data',import.meta.url).href,coreURL:new URL('./research/core.data',import.meta.url).href,onProgress:text=>{if(valid()&&id===operation)say(text)}});await compiler.install(signal);installed=true;
       }
       if(!valid()||id!==operation)return;say('Building in temporary Linux…');
       const result=await compiler.build('#include <Arduino.h>\n#line 1 "sketch.ino"\n'+source,{signal});if(!valid()||id!==operation)return;
