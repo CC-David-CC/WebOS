@@ -9,6 +9,8 @@ try{
  await p.evaluate(async html=>{const f=await mirrorFileContext();await f.files.write('/touch.html',html);},html);
  await p.click('[aria-label=Applications]');await p.waitForSelector('[aria-label="Browser"]');await p.click('[aria-label="Browser"]');
  await p.waitForFunction(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('.status')?.textContent==='Ready',{timeout:180000});
+ const visible=await p.evaluate(()=>{const host=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot),status=host.shadowRoot.querySelector('.status').getBoundingClientRect(),bounds=host.getBoundingClientRect();return status.height>0&&status.top>=bounds.top&&status.bottom<=bounds.bottom+1;});
+ assert.ok(visible,'Browser status must fit within the phone window');
  await p.evaluate(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot.querySelectorAll('button').forEach(x=>{if(x.textContent==='Open from My files')x.click()}));
  await p.waitForSelector('[aria-label="Choose file touch.html"]',{timeout:15000});await p.click('[aria-label="Choose file touch.html"]');
  await p.waitForFunction(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('[aria-label="Website address"]')?.value.includes('page-2.html'),{timeout:30000});
