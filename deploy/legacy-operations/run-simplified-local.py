@@ -31,12 +31,12 @@ from gateway_service.http import FileGateway
 spec=importlib.util.spec_from_file_location('codi_staging',ROOT/'scripts/serve-connected.py')
 staging=importlib.util.module_from_spec(spec);spec.loader.exec_module(staging)
 
-async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None,browser_relay=False):
+async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None,browser_relay=False,apps_bundle=None):
     origin=f'http://127.0.0.1:{port}'
     runtime=ROOT/'.build'/('simplified-local-test-'+str(port) if isolated else 'simplified-local');runtime.mkdir(parents=True,exist_ok=True,mode=0o700)
     public=runtime/'public'
     if public.exists():shutil.rmtree(public)
-    staging.stage(public)
+    staging.stage(public,bundled=apps_bundle)
     if speech_assets:
         source=Path(speech_assets).resolve()
         if not (source/'client.mjs').is_file() or not (source/'worker.mjs').is_file():raise ValueError('Invalid speech asset directory')
@@ -127,7 +127,7 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
         if geo:geo.close()
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');parser.add_argument('--browser-relay',action='store_true',help='Enable the experimental registered-only Browser relay locally');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');parser.add_argument('--browser-relay',action='store_true',help='Enable the experimental registered-only Browser relay locally');parser.add_argument('--apps-bundle',type=Path,help='Optional separately built app catalog');args=parser.parse_args()
     if not 1<=args.port<=65535:parser.error('Invalid port')
-    try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip,args.browser_relay))
+    try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip,args.browser_relay,args.apps_bundle))
     except KeyboardInterrupt:pass

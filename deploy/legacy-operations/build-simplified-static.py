@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Build a public-only Simplified tree and hash-verified lazy cache worker."""
+import argparse
 from pathlib import Path
 import hashlib, importlib.util, json, shutil
 ROOT=Path(__file__).resolve().parent.parent
-OUT=ROOT/'.build/simplified-release'
-if OUT.exists():shutil.rmtree(OUT)
+p=argparse.ArgumentParser(description=__doc__)
+p.add_argument('--output',type=Path,default=ROOT/'.build/simplified-release')
+p.add_argument('--apps-bundle',type=Path,default=ROOT/'.build/simplified-apps')
+args=p.parse_args();OUT=args.output.absolute()
+if OUT.exists() or OUT.is_symlink() or not OUT.parent.is_dir():raise ValueError('Choose a new release directory under an existing parent')
 spec=importlib.util.spec_from_file_location('staging',ROOT/'scripts/serve-connected.py')
-staging=importlib.util.module_from_spec(spec);spec.loader.exec_module(staging);staging.stage(OUT)
+staging=importlib.util.module_from_spec(spec);spec.loader.exec_module(staging);staging.stage(OUT,bundled=args.apps_bundle)
 # Keep only app bundles referenced by the catalog; never publish private state.
 catalog=json.loads((OUT/'assets/desktop/apps.json').read_text())
 for appdir in (OUT/'assets/desktop/apps').iterdir():
