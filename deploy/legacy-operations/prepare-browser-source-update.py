@@ -3,8 +3,8 @@
 from pathlib import Path
 import sys
 
-OLD = '/codi-browser-source-0488c275e.tar.zst'
-NEW = '/codi-browser-source-802621ec2.tar.zst'
+OLD = '/codi-browser-source-802621ec2.tar.zst'
+NEW = '/codi-browser-source-485928f3f.tar.zst'
 
 
 def derive(source):

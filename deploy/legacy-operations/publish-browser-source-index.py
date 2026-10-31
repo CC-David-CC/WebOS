@@ -14,12 +14,12 @@ ROOT=Path('/srv/codi-browser/source-staging/engine-6736dce5')
 LOCK=Path('/home/dflanag3/webhost-sites/.controller.lock')
 STATE=Path('/var/lib/codi-ingress')
 FILES={
- 'index.html':('7e15474e1633d334eaacde560e243b7a49b758336321149c31fa297873fecf3c','a40c47fcc128e925171498499ea4e8b6b3cf093f233dac25ff7b4176caa2ccfb'),
- 'notice-manifest.json':('201c2497704af5db821fa9e671e17ab4d73f3a78e0ecc538689169bf5cb1f43e','18a3e6948f82e550a2020a4f93735864fc65dd1886eb8a3c83db26b11ae6fa5a'),
+ 'index.html':('4f4ac065e5840e0f01d80898dc87df777ff0f9b18ce69cc55deca5217a7b28f3','8ba2ec5c5b7195be331c0d130bdd0b24ed4d4d1b5db3c3d15499ebeb0a08cbba'),
+ 'notice-manifest.json':('1423f0fc9b32005bafc15f43fc3386e7cc928dc83ad882571acddad047a379b5','45ccd10bc607f1215e852ad3a9350634b50a3fd60fa431e33332f306f583d315'),
 }
-ARCHIVE='codi-browser-source-802621ec2.tar.zst'
-ARCHIVE_SHA='128c33ee16a6dde95f5c594b19ef6c8a05cb9b251024e95ac859f888b3a26c90'
-SOURCE_SHA='2329d2b8925501ea5b59c9a0182b24db66e076b6abc1d4305ad820da45a4079b'
+ARCHIVE='codi-browser-source-485928f3f.tar.zst'
+ARCHIVE_SHA='e3d823eeb3d042ca051f7b12c2c775a945660036c7ec3ca55bd07588e32bf968'
+SOURCE_SHA='bb88688bdb94c5921ec08187d4605075772c0187b401e8e33342be19184e60d5'
 
 
 def digest(raw):return hashlib.sha256(raw).hexdigest()
@@ -52,7 +52,7 @@ def main():
         expected=json.loads(old['notice-manifest.json']);expected['sourceArchives'][ARCHIVE]=ARCHIVE_SHA
         expected['files']['index.html']={'bytes':len(data['index.html']),'sha256':digest(data['index.html'])}
         if candidate!=expected or ARCHIVE.encode() not in data['index.html']:raise ValueError('Unexpected manifest or index change')
-        journal=STATE/'browser-source-index-802-backup.json'
+        journal=STATE/'browser-source-index-485-backup.json'
         if journal.exists():raise ValueError('Source index backup already exists')
         backup={k:base64.b64encode(v).decode() for k,v in old.items()};put(journal,(json.dumps(backup,sort_keys=True)+'\n').encode(),0o600)
         try:

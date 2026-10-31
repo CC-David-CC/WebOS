@@ -10,7 +10,7 @@ NAMES=('index.html','firefox-licenses.html','emscripten-licenses.txt','wisp-lice
        'adapter-license.txt','notice-manifest.json','firefox-2e1e835a.tar.zst',
        'firefox-wasm-bc69aaa5.tar.zst','firefox-wasm-local.patch','embed-host.cpp',
        'emscripten-6.0.1-patched-source.tar.zst','wisp-js-0.4.1-source.tar.zst',
-       'codi-browser-source-59dfaf024.tar.zst','codi-browser-source-0fc6bf9a7.tar.zst','codi-browser-source-adece7482.tar.zst','codi-browser-source-2ed6d0259.tar.zst','codi-browser-source-0488c275e.tar.zst','codi-browser-source-802621ec2.tar.zst',
+       'codi-browser-source-59dfaf024.tar.zst','codi-browser-source-0fc6bf9a7.tar.zst','codi-browser-source-adece7482.tar.zst','codi-browser-source-2ed6d0259.tar.zst','codi-browser-source-0488c275e.tar.zst','codi-browser-source-802621ec2.tar.zst','codi-browser-source-485928f3f.tar.zst',
        'codi-relay-source-05e70e3b0.tar.zst')
 
 
