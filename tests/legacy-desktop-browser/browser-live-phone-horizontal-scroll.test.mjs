@@ -25,5 +25,17 @@ try{
  await page.waitForFunction(()=>{const s=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('[aria-label="Website address"]')?.value||'';return /#x[1-9][0-9]*/.test(s);},{timeout:15000});
  await new Promise(r=>setTimeout(r,2000)); // Allow queued input and navigation status to settle.
  const address=await page.evaluate(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot.querySelector('[aria-label="Website address"]').value);
- assert.match(address,/#x[1-9]/);console.log('PASS horizontal touch drag moved the real embedded page:',address.split('#').at(-1),'pointer moves:',JSON.stringify(await page.evaluate(()=>window.__testPointerMoves)));
+ assert.match(address,/#x[1-9]/);assert.ok(Number(address.split('#x').at(-1))>=170,'The six-step 210px drag should not lose most of its movement');console.log('PASS horizontal touch drag moved the real embedded page:',address.split('#').at(-1),'pointer moves:',JSON.stringify(await page.evaluate(()=>window.__testPointerMoves)));
+ // Compare with a single move of the same distance on a fresh guest page.
+ await page.evaluate(html=>{const r=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot,p=r.querySelector('input[type=file]'),dt=new DataTransfer();dt.items.add(new File([html],'wide2.html',{type:'text/html'}));p.files=dt.files;p.dispatchEvent(new Event('change',{bubbles:true}));},html);
+ await page.waitForFunction(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('[aria-label="Website address"]')?.value.includes('page-3.html'),{timeout:30000});
+ await new Promise(r=>setTimeout(r,1000));
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x-210,y}]});
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+ await page.waitForFunction(()=>{const s=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('[aria-label="Website address"]')?.value||'';return /#x[1-9][0-9]*/.test(s);},{timeout:15000});
+ await new Promise(r=>setTimeout(r,2000));
+ const single=await page.evaluate(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot.querySelector('[aria-label="Website address"]').value);
+ console.log('Single-move final offset:',single.split('#').at(-1));
+
 }finally{await context.close();await browser.disconnect()}
