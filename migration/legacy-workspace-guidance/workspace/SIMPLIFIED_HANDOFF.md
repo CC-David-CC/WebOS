@@ -764,9 +764,10 @@ and Caddy is `c098afe8572a12105527e17773c14f551075c52854617838b5477ab136ea55a0`.
 Browser desktop deployment and complete engine-license review remain pending.
 `build-large-file-issuer.py` creates a profile-28 candidate from the exact
 live issuer by updating the advertised file limit, its managed-policy health
-check and the release manifest. The first candidate omitted the health check
-and must not be deployed. Corrected candidate `profile28-large-files-r2` has
-manifest SHA-256 `a05af60d0130b525e56be385d8d6648938dc4be512322ef312420c54fb0a979d`.
-Its isolated issuer tests passed, including advertised 128 MiB, management
-metadata validation, separate login listener, rule updates and unchanged TURN
-policy. It has not been installed or tested with the live desktop.
+check and the release manifest. Earlier candidates omitted rollback
+compatibility and must not be deployed. Candidate `profile28-large-files-r3`
+has manifest SHA-256 `0aaf61849fa03e41376d63a36496c83e83adbc97c14aeafe366100ff9e530af2`.
+Its isolated tests passed, including advertised 128 MiB, metadata validation
+against both old and new issuer releases, separate login listener, rule
+updates and unchanged TURN policy. It has not been installed or tested with
+the live desktop; exercise managed upgrade and rollback before final activation.
