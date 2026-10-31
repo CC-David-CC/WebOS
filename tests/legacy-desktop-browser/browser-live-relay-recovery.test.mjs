@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 const name=process.env.CODI_TEST_USER;
 if(!/^browserprobe[0-9a-f]{10}$/.test(name||''))throw Error('Set a disposable browserprobe username');
-const ssh=(...args)=>execFileSync('ssh',['-o','BatchMode=yes','box-webhost',...args],{encoding:'utf8',timeout:60000});
+const ssh=(...args)=>execFileSync('ssh',['-o','BatchMode=yes','box-webhost',...args],{encoding:'utf8',timeout:60000,stdio:'pipe'});
 const browser=await puppeteer.connect({browserURL:'http://127.0.0.1:19255',protocolTimeout:180000});const context=await browser.createBrowserContext(),page=await context.newPage();let stopped=false;
 try{
  await page.setViewport({width:1366,height:950});
@@ -17,8 +17,16 @@ try{
  await page.waitForFunction(()=>true,{timeout:1000});
  for(let i=0;i<50;i++){try{ssh('sudo','-n','/usr/bin/python3','-c',"'import socket;s=socket.socket(socket.AF_UNIX);s.connect(\"/run/codi-browser/relay.sock\");s.close()'");break;}catch(e){if(i===49)throw e;await new Promise(r=>setTimeout(r,200));}}
  await page.evaluate(()=>{const r=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot;[...r.querySelectorAll('button')].find(b=>b.textContent==='Reset engine').click()});
- await page.waitForFunction(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('.status')?.textContent==='Ready',{timeout:180000});
- console.log('PASS live relay stopped: clear recovery message; restart and Reset engine reconnect');
+ const ready=()=>page.waitForFunction(()=>[...([...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelectorAll('button')||[])].some(b=>b.textContent==='Stop'&&!b.disabled),{timeout:180000});
+ const navigate=()=>page.evaluate(()=>{const r=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot;const a=r.querySelector('[aria-label=\"Website address\"]');a.value='https://example.com/';a.form.requestSubmit()});
+ const loaded=()=>page.waitForFunction(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('.status')?.textContent==='Page loaded.',{timeout:90000});
+ const reset=()=>page.evaluate(()=>{const r=[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot).shadowRoot;[...r.querySelectorAll('button')].find(b=>b.textContent==='Reset engine').click()});
+ await ready();await navigate();await loaded();console.log('PASS live relay unavailable at launch: clear message and Reset reconnects');
+ stopped=true;ssh('sudo','-n','systemctl','stop','codi-browser-relay.service');
+ await page.waitForFunction(()=>[...document.querySelectorAll('.window-content')].find(x=>x.shadowRoot)?.shadowRoot.querySelector('.info')?.textContent.includes('Network connection ended'),{timeout:40000});
+ ssh('sudo','-n','systemctl','start','codi-browser-relay.service');stopped=false;
+ for(let i=0;i<50;i++){try{ssh('sudo','-n','/usr/bin/python3','-c',"'import socket;s=socket.socket(socket.AF_UNIX);s.connect(\"/run/codi-browser/relay.sock\");s.close()'");break;}catch(e){if(i===49)throw e;await new Promise(r=>setTimeout(r,200));}}
+ await reset();await ready();await navigate();await loaded();console.log('PASS active Browser detects relay loss and Reset reconnects after restart');
 }finally{
  if(stopped)ssh('sudo','-n','systemctl','start','codi-browser-relay.service');
  await context.close();await browser.disconnect();
