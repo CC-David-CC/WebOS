@@ -20,7 +20,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Image Editor | Create a blank image or open an image, edit, and save a copy. | Animated GIF editing is unsupported. |
 | Audio Editor | Try the generated 440 Hz tone, or open or record audio; edit and export WAV. | Physical microphone behavior and multitrack project saving need more work. |
 | diagrams.net | Open or create a diagram and save it. | Broader format and touch behavior remain under review. |
-| Excalidraw | Draw and save a sketch. | Embedded images and physical touch need further testing. |
+| Excalidraw | Draw a sketch, insert images from My files, and save it. | Large embedded images use more memory and count toward the drawing size limit; physical touch needs testing. |
 | SVG Editor | Try the example or draw vector artwork, then save an SVG. | Complex SVG and physical touch remain unverified. |
 | Replicad | Choose a box or cylinder, dimensions and optional offset hole; inspect volume and surface area, then export a model. | This is a limited model generator, not a full CAD system; validate manufacturing dimensions. |
 | Kiri:Moto | Open a model, configure slicing and export; save a workspace. | Check printer profiles and output independently before printing. |
