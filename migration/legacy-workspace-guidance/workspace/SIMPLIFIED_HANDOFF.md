@@ -1608,3 +1608,17 @@ lists remain empty. The previous public Browser source archive predates this
 relay-only patch; update the source index before treating distribution
 provisions for the new source as fully reviewed.
 
+The update is now published: `/browser-sources/codi-browser-source-3a82d4665.tar.zst`
+has SHA-256 `e908debde58ac8280f4768593c73ba7099bf6bde3ca9365017a4b83aa2e1db39`.
+An HTTPS download was hash-checked, and the archived relay policy matches the
+deployed source commit. The managed hosting route rollback exercise passed;
+the ten site checks were unchanged. Current generator SHA-256 is
+`028554374cda0aebfb0c399ab9c473e88b45f69670dc03d06aeb8e081be3431c`,
+manifest `9bf90f3a73822963631ae6257f70bc84474257d6304392dfb552111d156bad7e`,
+Caddy `329297a7963bca9e9b8ed3d6635c1a915c959a01881aeef88175f8a5d67453c3`,
+source index `64e06a7aed14a64f0a56d4e4f2e8dfc4eb98932c0aaf03204d5a9f4490227edd`,
+and notice manifest `6285a85f3f8213064f38bb85c859f357e1586b17fdab634f281a859cd5ba15f4`.
+The prior index is backed up at `/var/lib/codi-ingress/browser-source-index-3a82-backup.json`.
+The previously documented uncertainty about the exact final-link license
+inventory remains; publication of this source snapshot does not resolve it.
+
