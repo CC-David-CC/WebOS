@@ -15,6 +15,14 @@ spec=importlib.util.spec_from_file_location('audit_upgrade',ROOT/'active-system/
 upgrade=importlib.util.module_from_spec(spec);spec.loader.exec_module(upgrade)
 
 class UpgradeTest(unittest.TestCase):
+    def test_routed_readiness_is_retried_after_systemd_starts(self):
+        attempts=[]
+        def check():
+            attempts.append(1)
+            if len(attempts)<3:raise ValueError('socket not ready')
+        with patch.object(upgrade.time,'sleep',return_value=None):upgrade.wait_check(SimpleNamespace(check=check))
+        self.assertEqual(len(attempts),3)
+
     def run_upgrade(self,fail=False,exercise=False):
         with tempfile.TemporaryDirectory(prefix='codi-audit-upgrade-test-') as folder:
             root=Path(folder);unit=root/'unit';dest=root/'policy';host=root/'host.lock';lock=root/'policy.lock';journal=root/'journal';backup=root/'backup'
