@@ -1174,3 +1174,14 @@ Hosting backups: `change-20261031T021402839361Z` and
 Generator SHA-256 remains `bb88688bdb94c5921ec08187d4605075772c0187b401e8e33342be19184e60d5`,
 manifest is `8351825cf04e6b1b1ff0a36fabfb56bb2a6a35aca6180c4884ea55098713e851`,
 and Caddy is `7e49a881f9ea0b6d46cc846ce270ec76f1aa996d91973c5513fc03893e014b42`.
+
+## ngspice Circuit Lab research
+
+The separate ngspice Circuit Lab remains unshipped. A clean build from pinned
+ngspice 45.2 and wrapper sources passed divider and RC tests and an isolated
+account sync and phone-sized reopen. A development-tree test modified and
+relinked numparam and reran the solver. The portable corresponding-source,
+relink materials and complete release notices are not yet verified. Build and
+relink recipes and exact limits are recorded in `apps/system/circuit-lab/README.md`;
+research build outputs and test accounts were removed. Live Circuit Simulator
+continues to provide the separate CircuitJS engine.
