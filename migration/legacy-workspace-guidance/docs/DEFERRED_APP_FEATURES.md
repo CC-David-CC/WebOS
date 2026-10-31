@@ -8,9 +8,9 @@ privacy, cost and availability information.
 
 | App | Feature | Status / reason |
 | --- | --- | --- |
-| Embroidery Studio | Design from prompt | User-reported example; investigate exact implementation and service dependency during the app review. |
-| Embroidery Studio | Redraw image | User-reported example; investigate exact implementation and service dependency during the app review. |
-| Embroidery Studio | Ask about embroidery | User-reported example; investigate exact implementation and service dependency during the app review. |
+| App not yet confirmed | Design from prompt | User-reported example; investigate exact implementation and service dependency during the app review. |
+| App not yet confirmed | Redraw image | User-reported example; investigate exact implementation and service dependency during the app review. |
+| App not yet confirmed | Ask about embroidery | User-reported example; investigate exact implementation and service dependency during the app review. |
 
 Add entries when an app review confirms a feature is removed, disabled, or
 unavailable due to a third-party dependency. Record the exact app and feature,
