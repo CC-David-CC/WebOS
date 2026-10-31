@@ -1902,3 +1902,16 @@ fresh disposable account; the account was removed. Current index SHA-256
 notice manifest `b63a5c359fcd48774bf528ad652fae2d301d89756f214321cea6e38f49a00953`;
 the index rollback backup is
 `/var/lib/codi-ingress/browser-source-index-rust-metadata-backup.json`.
+
+### Gecko Rust archive input inventory — 2026-10-31 UTC
+
+A reproducible scan of the pinned Gecko `libgkrust.a` archive found 5,713
+members, 470 crate/build pairs and 454 package names. The hash-checked live
+combined notice includes the exact Rust input and headings for all 318 vendored
+package/version manifests identified in that archive. The other names map to
+tracked workspace manifests or nine Rust toolchain crates. Three additional
+native archive members were traced to cubeb-core, mozglue and SWGL build
+directories. The archive and report hashes, caveats, verification tools and
+workspace/toolchain distinctions are in `apps/system/browser/docs/SOURCE_PROVISION.md`.
+These are link inputs and heading coverage, not proof of final retained
+objects or complete license compliance. No live runtime or notice changed.
