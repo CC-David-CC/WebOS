@@ -2045,3 +2045,16 @@ Previous files are backed up on box-webhost under
 `/var/lib/codi-ingress/browser-wpf-notice-backup.json`. Local generation and a
 fresh registered live source/relay/files test passed; its test account was
 removed. The broader linked-component license review remains open.
+
+### Browser notice source snapshot — 2026-10-31 UTC
+
+The authenticated source page now indexes
+`codi-browser-source-8a7a3c43d.tar.zst`, SHA-256
+`ecf9e1526400f863291849c8ddbb4594c6534fcc1ec070ba629d2e63a1dbd8de`,
+including the updated aa-stroke notice collector and WPF license. A live
+registered session downloaded the entire snapshot and verified the hash;
+relay, file and access checks also passed and the test account was removed.
+Index SHA-256 is `49167a41e6024920cbf20b8de2860c0c143ed4bc817cf6db733e77d453fa3541`;
+notice manifest SHA-256 is `2ea88b61c485792dd6f156bca4b2f2e147ef4aa7c254f6ad412d7d4f95553525`.
+Prior index files are saved at
+`/var/lib/codi-ingress/browser-source-index-wpf-update-backup.json`.
