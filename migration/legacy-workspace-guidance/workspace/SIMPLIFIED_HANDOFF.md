@@ -2795,3 +2795,10 @@ No production source or hosting changes. Local desktop, phone-sized and 4K and l
 ## 2026-10-31 — Student guide coverage
 
 Updated `USER_GUIDE.md` against the current Applications menu and app READMEs. It now covers the live interactive applications, touch-friendly file copy/move/rename, the lack of a general download action, editable projects versus exports, and relevant simulation/fabrication limits. A source check confirms every current interactive menu application is named. The guide is a repository document, not a newly added link in Desktop Help; no production assets or hosting were changed.
+
+
+## 2026-10-31 — PDF Viewer file-change notice
+
+Live static release `d4e14f1797a44a0e273e1ce4bd714072347ac264e01f2f182a02e9a795e0a19b` replaces `44fc3629dc7512f85fb7d14f46f7c653429a36acc983127df2aeaf971bf1b5d7`. Hosting generator SHA `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`; manifest SHA `eada7409657eb2a9dfc3c72bec591ac47aad64db1fc0929e2a880622dd1eb2bf`; managed rollback inputs `/var/backups/webhost-sites/change-20261031T155240907448Z` and `/var/backups/webhost-sites/change-20261031T155240907857Z`.
+
+PDF Viewer checks metadata and compares content hashes rather than rereading PDF bytes on every file notification. A changed, conflicting, missing or temporarily uncheckable file now has a separate notice that persists when paging; opening another copy resets it. A same-content version change does not produce a false change notice. Local desktop, phone-sized and 4K and live desktop and phone-sized tests instrumented reads and covered same-content changes, real changes, deletion, paging and reopening. The existing full phone-sized navigation/search/failed-open test passed locally and live. Disposable live accounts and verified fixtures were removed. Physical touch remains unverified.
