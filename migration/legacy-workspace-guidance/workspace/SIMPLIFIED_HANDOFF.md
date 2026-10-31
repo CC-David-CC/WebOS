@@ -1675,3 +1675,25 @@ notice manifest `1230180107f7157ba7b2be53d883c5a334d5057506d5e75019eaacb671c8e3a
 The previous files are at `/var/lib/codi-ingress/browser-content-sdk-notice-backup.json`.
 The wider final-link license inventory remains incomplete.
 
+### Browser rule changes during connection setup — 2026-10-31 UTC
+
+Relay `af8d81daf6fdda84d9b563ce6885f862a4d68c0a55bea194d0c9360c47b1092e`
+from source `933db11eaef2b2d1a75630ee13af3f81888b4738` is live. It rechecks
+current domain and network rules after DNS, immediately before Wisp connection
+attempts, and after a connection completes; if blocked after connecting it
+closes the socket before forwarding Wisp payload. Explicit downloads recheck
+after DNS and before processing a response. Requests or TCP attempts already
+sent cannot be retracted. Deterministic local tests cover rules changing while
+DNS or a Wisp connect waits. The live registered-account suite passed, including
+source access, outbound policy changes stopping an existing stream, denial of a
+new stream, and access after restoration. Its first policy test attempt could
+not start because the temporary guard had been cleaned up; the guard was
+restored for the successful rerun, the test rule restored, its scheduled
+timer stopped, and the guard removed. Audit remains disabled. The protected
+source index still needs the new `933db11ea` source snapshot.
+
+Relay rollback was exercised; previous unit is
+`/var/backups/codi-browser-relay-before-rule-race-runtime.service`. Current
+audit operator is `c98a0663a48f646a6c4e88b78939b0021ac53e05674547d966e734be9f36bf2c`;
+policy operator is `policy-9915463c7`. No unrelated guest SSH work was touched.
+
