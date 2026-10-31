@@ -147,3 +147,40 @@ scripts. It does **not** establish exact sources or reproducibility for GCC,
 its `libgcc`, the WASM Binutils executables, Emscripten or their dependencies.
 Those items, corresponding-source review and a distribution plan remain open;
 this does not authorize deploying the research compiler.
+
+### GCC header audit — 2026-10-31
+
+All 19 `sysroot/gcc-include/` files in the pinned research release match files
+in the official [GCC 15.2.0 source archive](https://gcc.gnu.org/ftp/gcc/releases/gcc-15.2.0/),
+including six installed under different names. The archive downloaded from
+GCC's HTTPS site matched its published SHA-512:
+`89047a2e07bd9da265b507b516ed3635adb17491c7f4f67cf090f0bd5b3fc7f2ee6e4cc4008beef7ca884b6b71dffe2bb652b21f01a702e17b468cca2d10b2de`.
+Its SHA-256 was `438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e`.
+The detached source signature was not independently verified in this check.
+
+The renamed mappings are `README` → `fixincludes/README-fixinc`, `limits.h`
+→ `gcc/glimits.h`, `stdfix-gcc.h` → `gcc/ginclude/stdfix.h`, `stdint.h` →
+`gcc/ginclude/stdint-wrap.h`, `syslimits.h` → `gcc/gsyslimits.h`, and
+`unwind.h` → `libgcc/unwind-generic.h`. The other mappings are explicitly
+listed in `tests/fixtures/avr-compiler-probe/audit-gcc-headers.py`.
+
+The released AVR5 and AVR6 `libgcc.a` archives each contain 1,182 uniquely
+named members; strings identify GCC 15.2.0 in 944 occurrences in each. The
+archive SHA-256 values are `95f0002df98162cbb736f0f2e08f1c7451609a3f4eb6860fe3c1a52ff535d873`
+and `ec5f8162860682a88130ad28c22ad3e197bbe8759d02ffc72faf2eebb86af98e`,
+respectively. Version strings are evidence of version labels, **not** proof of
+which exact sources, patches or build environment produced those objects.
+
+Repeat the header comparison without extracting archives:
+
+```
+python3 tests/fixtures/avr-compiler-probe/audit-gcc-headers.py \
+  /path/to/avrwasm.tar /path/to/gcc-15.2.0.tar.xz
+```
+
+The script pins both archives, verifies all 19 named mappings, and rejects a
+substituted source archive. This comparison strengthens the source evidence for
+headers only. Reproducing or otherwise establishing the actual WASM compiler,
+`libgcc`, WASM Binutils, Emscripten, their build dependencies and complete
+corresponding-source distribution remains open. Do not deploy the research
+compiler on the basis of header matches.
