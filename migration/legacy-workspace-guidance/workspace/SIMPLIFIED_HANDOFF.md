@@ -1135,3 +1135,23 @@ The live Pico Blink and Digital Logic account save/reopen checks also pass in
 an emulated phone viewport. Obsolete local generated release candidates were
 removed after deployment; source and the live rollback remain. The Raspberry Pi
 ROM and MicroPython firmware were not included in Git or the release.
+
+## Circuit Simulator live
+
+Release `a690fd6f65795434dd6e6ce7f44c53627462cfdd0b8dc91581d64c22d3940875`
+adds Circuit Simulator (CircuitJS) under Electronics; existing app bundles
+are unchanged. It includes the GPL corresponding-source archive and notices.
+Local tests exercised the graphical divider at 5 V, editing it to 6.67 V,
+account sync, phone-sized reopen and iframe cleanup. Live desktop and
+phone-sized checks independently verified the 5 V simulation, source archive,
+and server-backed save. Their disposable accounts and files were removed.
+This is CircuitJS, not ngspice; complex circuits run on the browser main thread.
+
+The previous release is `fef98d4b459cf9b6e6e8d86c906143f5bf81d3b6fd404a0a866954851d470175`.
+Hosting snapshots are `change-20261031T020934080997Z` and
+`change-20261031T020934086998Z` under `/var/backups/webhost-sites/`.
+Generator SHA-256 remains `bb88688bdb94c5921ec08187d4605075772c0187b401e8e33342be19184e60d5`,
+manifest is `0931fc48033969107f3fe18992926845a187f1cff4cecd39b0c14bb24cd5399a`,
+and Caddy is `34218a7e4da124cb8085be7c8a109df53240876429dcd79c2440c5c022422f02`.
+Two activation attempts with mistyped expected manifest hashes were rejected
+before changes; the exact current pin then validated and activated normally.
