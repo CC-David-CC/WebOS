@@ -17,6 +17,8 @@ class Render(unittest.TestCase):
     def test_expected_isolation_and_exact_pins(self):
         values=dict(runtime='a'*64,venv='b'*64,issuer='c'*64,policy='d'*64,proxy_uid=997,proxy_gid=984)
         text=module.render(**values)
+        self.assertNotIn('--source-root',text)
+        self.assertIn('--source-root /srv/codi-browser/source-staging/engine-6736dce5',module.render(**values,sources=True))
         self.assertNotIn('--report-database',text)
         self.assertNotIn('--audit-database',text)
         self.assertNotIn('LoadCredential=',text)
