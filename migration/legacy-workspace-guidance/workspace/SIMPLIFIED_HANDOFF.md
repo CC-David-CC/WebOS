@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-10-31 — Audio Editor WAV sample rates
+
+Live release `92583c0e95dd3bf778fb6b209b4891cd7c8aa6ed9423eff7b260de12295df53e` decodes conventional RIFF/WAVE files at their source sample rate when the browser supports it. If the rate is unavailable or unsupported, decoding uses the browser rate and reports that the original may differ. WAV output remains 16-bit and does not preserve source bit depth or compressed formats. Existing-output checks now use mirror metadata instead of rereading audio bytes. Local and live desktop and phone-sized tests round-tripped a 32 kHz WAV through reverse, save and fresh-session reopen; local 4K-sized and forced-fallback tests also passed. Physical audio-device behavior, all codecs and multitrack saving remain unverified.
+
 ## 2026-10-31 — broad text search navigation
 
 Live release `4aa4e77e8401e50c6d306c7a077bdb5b77ae96be11eba70e3e9923308d063e8d` keeps the 50,000 stored-match limit but adds directional searches and single replacements beyond it, including wraparound. Replace all remains disabled for truncated result sets. Local and live desktop and emulated-phone tests cover a match after the limit, reverse/forward wrap, a single replacement, literal symbols, case matching and a chunk boundary. Large-document searches may still take time on the UI thread; physical touch remains unverified.
