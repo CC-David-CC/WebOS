@@ -25,6 +25,11 @@ class Durable(unittest.TestCase):
         self.b=replace(self.a,sub='user:22222222-2222-4222-8222-222222222222',sid='b')
         self.store.ensure_user(self.a);self.store.ensure_user(self.b)
     def quota(self,**kwargs):return Quotas(self.store,daily_bytes=100,shared_daily_bytes=150,bytes_per_use=80,**kwargs)
+    def test_default_daily_allowances(self):
+        q=Quotas(self.store)
+        self.assertEqual(q.daily,50*1024**3)
+        self.assertEqual(q.shared,200*1024**3)
+        self.assertEqual(q.per_use,192*1024**2)
     def test_new_session_does_not_reset_account_allowance(self):
         q=self.quota();first=q.begin(self.a,60);q.finish(first)
         with self.assertRaises(AllowanceExceeded):self.quota().begin(replace(self.a,sid='new-device'),50)
