@@ -30,6 +30,8 @@ FILES=(
     'apps/system/browser/relay/policy.py',
     'apps/system/browser/relay/wisp.py',
     'apps/system/browser/relay/download.py',
+    'apps/system/browser/relay/report.py',
+    'apps/system/browser/relay/report_requests.py',
 )
 
 def digest(raw):return hashlib.sha256(raw).hexdigest()
