@@ -15,7 +15,7 @@ class NoticesTest(unittest.TestCase):
         folder=ROOT/'.build/browser-source-provision'
         firefox=folder/'firefox-license.generated.html';ems=folder/'emscripten-6.0.1-patched-source.tar.zst';wisp=folder/'wisp-js-0.4.1-source.tar.zst'
         liberation=ROOT/'.build/browser-notice-inputs/liberation-license.txt'
-        compiled=ROOT/'.build/browser-notice-inputs/compiled-component-notices.txt'
+        compiled=ROOT/'.build/browser-notice-inputs/compiled-component-notices-aa-stroke.txt'
         rust=ROOT/'.build/browser-notice-inputs/rust-component-notices-corrected.txt'
         stdlib=ROOT/'.build/browser-notice-inputs/rust-stdlib-copyright.html'
         pulse=ROOT/'.build/browser-notice-inputs/cubeb-pulse-license.txt'
@@ -45,6 +45,8 @@ class NoticesTest(unittest.TestCase):
             self.assertIn('third_party/rust/core_maths/Cargo.toml.orig',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('third_party/rust/debug_tree/Cargo.toml.orig',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('third_party/rust/void/Cargo.toml',(out/'emscripten-licenses.txt').read_text())
+            self.assertIn('Copyright 2012 VMware, Inc.',(out/'emscripten-licenses.txt').read_text())
+            self.assertIn('Licensed to the .NET Foundation',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Target-built vendored Rust crate notices',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('third_party/rust/remove_dir_all/LICENCE-MIT',(out/'emscripten-licenses.txt').read_text())
             self.assertIn('Copyright notices for The Rust Standard Library',(out/'emscripten-licenses.txt').read_text())
