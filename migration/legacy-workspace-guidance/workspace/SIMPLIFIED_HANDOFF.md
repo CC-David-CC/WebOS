@@ -2785,3 +2785,8 @@ Image Editor watches versions and checks Save As destinations via metadata inste
 ## 2026-10-31 — Image Editor account-switch check
 
 No production code or hosting change. Local desktop, emulated-phone and 4K and live desktop and emulated-phone tests registered two accounts in one browser, saved different same-named images, delayed the first account’s image encoding during an actual account change, resumed it, and confirmed neither stored image was changed. Both tabs retained their account-specific image; a return to the first account recovered its original. Four verified disposable live accounts and their fixtures were removed. This closes the specific account-switch test gap noted above, not a general multi-account security audit.
+
+
+## 2026-10-31 — Desktop Help workflow review
+
+No production source or hosting changes. Local desktop, phone-sized and 4K and live desktop and phone-sized registered-account checks verified the beta/support wording, exact mailto link, temporary Linux filesystem explanation, no horizontal overflow and three repeated open/close cycles. Disposable live accounts had no account-file homes and were removed. Help has no document or network workflow. Physical-device testing remains open.
