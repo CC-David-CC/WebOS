@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer-core';
 import assert from 'node:assert/strict';
 const b=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19255'});
-async function run(phone){const c=await b.createBrowserContext(),p=await c.newPage(),errors=[],username=(phone?'ftphone':'ftdesk')+Date.now().toString().slice(-9),base=process.env.CODI_TEST_URL||'http://127.0.0.1:18208/';p.on('pageerror',e=>errors.push(e.message));
+async function run(phone){const c=await b.createBrowserContext(),p=await c.newPage(),errors=[],username=(phone?process.env.CODI_TEST_PHONE_USER:process.env.CODI_TEST_DESKTOP_USER)||(phone?'ftphone':'ftdesk')+Date.now().toString().slice(-9),base=process.env.CODI_TEST_URL||'http://127.0.0.1:18208/';p.on('pageerror',e=>errors.push(e.message));
 try{
  await p.setViewport(phone?{width:412,height:915,isMobile:true,hasTouch:true,deviceScaleFactor:1}:{width:1920,height:1080,deviceScaleFactor:1});
  await p.evaluateOnNewDocument(()=>{const f=window.fetch;window.fetch=(u,...a)=>String(u).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):f(u,...a)});
