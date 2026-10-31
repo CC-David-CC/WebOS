@@ -1984,3 +1984,21 @@ account works. After refreshing and signing in again, the temporary Linux
 file was gone and the account file remained. Test account files were removed
 and synchronized before the disposable account was removed. This used browser
 automation on one computer, not a physical phone or an independent network.
+
+### Browser subresource and relay policy regression — 2026-10-31 UTC
+
+A disposable registered account saved an HTML document in My files that
+referenced a blacklisted embedded resource. The current live Browser opened
+the document and displayed the network-policy block message for that resource;
+the file and account were removed. This was one embedded-resource case, not a
+claim about every website.
+
+The local relay's current `wisp.py`, `download.py`, destination policy, and
+shared network policy hashes matched the installed live runtime. Their focused
+tests passed: 14 Wisp tests, five downloader tests, and six destination-policy
+tests. These included controlled DNS answer changes, mixed/public-private and
+IPv6 transition addresses, redirect target checks, changes during DNS/connect,
+and closing existing traffic after a new rule. The DNS and redirect tests used
+local fixtures; they did not change public DNS or demonstrate every external
+resolver/network configuration. The separately documented network-specific
+NAT64-prefix limitation remains.
