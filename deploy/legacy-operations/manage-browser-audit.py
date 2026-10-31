@@ -28,7 +28,7 @@ import time
 # Imported pinned code must never create unmanifested files in immutable trees.
 sys.dont_write_bytecode=True
 
-RUNTIME='d022d596bb2ab2d0fca8c4633b552f75b03b7483f72703886162c582ff646353'
+RUNTIME='953a58dc68dde9f1c988fa18857ea344347508f7e07e6c508eb256245e20764a'
 VENV='a5ee6aa9a1c18535aad36a52b7ec57ca9c1e1fca03cbb02d4c423fd7ec317326'
 ISSUER='33208c945336d9c910368c70894af89c575383d1e3da9ceb9addd0b86bfcfa74'
 POLICY='7faf30b5457fa629acc7ffa695c15a6a8a56098ba4372412260ade478af5a537'
@@ -126,7 +126,7 @@ def main():
     switch,renderer,DestinationPolicy=imports()
     # UID/GID are part of the reviewed deployed ingress configuration.
     if pwd.getpwnam('caddy').pw_uid!=997 or grp.getgrnam('caddy').gr_gid!=984:raise ValueError('Caddy UID or GID changed')
-    params=dict(runtime=RUNTIME,venv=VENV,issuer=ISSUER,policy=POLICY,proxy_uid=997,proxy_gid=984,reports=True)
+    params=dict(runtime=RUNTIME,venv=VENV,issuer=ISSUER,policy=POLICY,proxy_uid=997,proxy_gid=984,reports=True,sources=True)
     off=renderer.render(**params,audit=False).encode();on=renderer.render(**params,audit=True).encode()
     for path in (DEST,UNIT,HOST_LOCK,POLICY_LOCK):protected(path)
     for path in (DEST,UNIT,POLICY_LOCK,JOURNAL):protected_parents(path)
