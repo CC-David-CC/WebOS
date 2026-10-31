@@ -22,7 +22,7 @@ check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 | Spreadsheet | Tables | Native save, XLSX import/export, folder selection and invalid-file draft recovery checked locally. The live desktop workflow passed; phone-sized checks reached fresh-session recovery but fixture cleanup hit the request limit. Advanced Excel compatibility limited. | In progress |
 | Data Explorer | Data analysis | Desktop and phone-sized tests locally and live, plus local 4K-sized tests, cover CSV upload, SQL, chart, save to My files, cancelled overwrite, new-session recovery and reopening results. Query and chart settings remain temporary; physical touch remains unverified. | In progress |
 | Python Notebook | Browser Python | Local Python/NumPy and same-browser account isolation checked. Save, automatic sync, invalid-file recovery and fresh session passed locally and live on desktop and phone-sized views; local 4K view emulated. Untrusted notebooks are not isolated. | In progress |
-| Image Editor | Images | PNG/JPEG/WebP workflow checked; animated GIF editing unsupported. | Pending |
+| Image Editor | Images | Local desktop and phone-sized tests cover opening, editing, save, rejected-image recovery and fresh-session recovery. Save updates the opened file; Save As and animated GIF editing remain unsupported. | In progress |
 | Audio Editor | Audio | WAV edit/save checked; no multitrack project persistence. | Pending |
 | diagrams.net | Diagrams | Basic account save/reopen checked. | Pending |
 | Excalidraw | Drawings | Basic account save/reopen checked. | Pending |
