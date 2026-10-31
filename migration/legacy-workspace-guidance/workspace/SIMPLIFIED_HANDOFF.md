@@ -2028,3 +2028,20 @@ in `apps/system/browser/docs/SOURCE_PROVISION.md`. Inlining and symbol naming
 mean this is not proof of package absence or complete license compliance.
 No live runtime or notice changed. The compact summary is retained locally;
 temporary engine and linker-map copies were removed.
+
+### Browser embedded graphics notices — 2026-10-31 UTC
+
+The signed-in Browser source page now includes the original embedded notices
+from the pinned aa-stroke `bezierflattener.rs` and `tri_rasterize.rs`, as well
+as the MIT license from the matching .NET WPF graphics implementation at
+revision `3993645a2957293053ec8090eff1fd472a07cd65`. The exact WPF revision used
+to produce the Rust port is not established. The collector pins the complete
+Firefox source-file hashes and WPF license before extracting notices. The
+component notice SHA-256 is
+`02a2923ad8fc48e68cde3756ff4323b81e8bcff56101fb9bee4803061a5b942f`;
+notice manifest SHA-256 is
+`40736943c79faaecd3a0c2ead8247b78e388dc0eda1c9a252abfbe43f3a53a8c`.
+Previous files are backed up on box-webhost under
+`/var/lib/codi-ingress/browser-wpf-notice-backup.json`. Local generation and a
+fresh registered live source/relay/files test passed; its test account was
+removed. The broader linked-component license review remains open.
