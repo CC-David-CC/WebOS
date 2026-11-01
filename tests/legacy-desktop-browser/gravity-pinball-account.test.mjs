@@ -8,7 +8,7 @@ async function login(page,register){
  await page.goto(base);await page.waitForSelector('.login-toggle');if(register)await page.click('.login-toggle');await page.type('[aria-label=Username]',username);await page.type('[aria-label=Password]','test1234');if(register)await page.type('[aria-label="Confirm password"]','test1234');await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:30000});
 }
 async function checkGamesMenu(page){
- await page.click('.app-menu-button');await page.waitForSelector('.menu-pane');
+ for(let attempt=0;attempt<4;attempt++){try{await page.click('.app-menu-button');break}catch(error){if(attempt===3||!String(error.message).includes('detached'))throw error}}await page.waitForSelector('.menu-pane');
  await page.evaluate(()=>[...document.querySelectorAll('.menu-row')].find(x=>x.getAttribute('aria-label')==='Games').click());
  await page.waitForFunction(()=>[...document.querySelectorAll('.menu-row')].some(x=>x.getAttribute('aria-label')==='Memory Garden (preview)'));
  const metrics=await page.evaluate(()=>{const row=[...document.querySelectorAll('.menu-row')].find(x=>x.getAttribute('aria-label')==='Memory Garden (preview)');row.scrollIntoView({block:'nearest'});const p=row.closest('.menu-pane'),r=row.getBoundingClientRect(),v=p.getBoundingClientRect();return {count:p.querySelectorAll('.menu-row').length,bottom:r.bottom,viewBottom:v.bottom,top:r.top,viewTop:v.top}});
