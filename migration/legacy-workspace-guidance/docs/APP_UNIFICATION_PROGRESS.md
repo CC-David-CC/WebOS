@@ -319,6 +319,16 @@ up and provides Jump to latest; simulated packets were tested at those sizes,
 with a separate real Blink-worker check. Physical touch, PDF extraction order
 and real-firmware serial behavior for this change remain unverified.
 
+Next local candidates: Arduino Simulator shows a persistent notice when its
+opened or saved HEX changes, disappears or conflicts in My files, while keeping
+the loaded firmware running. Desktop, emulated-phone and 4K checks exercised
+real two-browser changes, deletion and conflict, plus AVR serial echo and
+subscription cleanup. Spreadsheet warns before closing during workbook saves
+or CSV/XLSX exports; desktop, emulated-phone and 4K checks held real conversion
+and writes, cancelled close, then verified sync and reopening. Those delays were
+injected and already-dispatched writes can still finish after closure. Neither
+candidate is live; physical touch and hardware remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
