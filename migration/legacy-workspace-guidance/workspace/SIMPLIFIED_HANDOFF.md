@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Calculator save confirmation
+
+Live static release `29f8d8842c696d45664de4666d21dbe76504d3550a7b4d468bab91ace9dcfc41`
+uses a desktop confirmation when replacing a calculation note. Local desktop,
+phone-sized and 4K account tests cover cancellation, changed-file protection,
+snapshot saving, sync and Text reopen; arithmetic unit tests and the public
+phone-sized account workflow passed. The public test account was cleaned and
+disabled. Physical touch remains unverified. Source `a86e91d07` is on box-git.
+Hosting manifest SHA-256 is
+`813d69e59fc1da13ce66844b92f41bade9981f5699585ed11eb6235bb45686ee`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T031416042570Z`
+and `/var/backups/webhost-sites/change-20261101T031416042991Z`.
+
 ## 2026-11-01 — Data Explorer confirmations
 
 Live static release `08ffb5ed31f300e3f180ccf690a459e11082ab31b41dd33a6765f40afb8f953f`
