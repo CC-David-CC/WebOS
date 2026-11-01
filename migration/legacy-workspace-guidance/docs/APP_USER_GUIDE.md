@@ -1,6 +1,6 @@
 # Simplified desktop: app guide
 
-This beta desktop is intended for students exploring engineering, computing and creative work. Sign in, open **Applications** at the bottom of the right-hand bar, and choose a tool. Your account is at the top of that bar. Use **Files → Upload** to bring in a computer file; open and save app work in **My files**. My files keeps a browser copy and synchronizes it to the account service when available. A synchronization or conflict notice needs attention: keep both versions and resolve the conflict in Files. Linux's temporary home is a separate drive and resets with the guest; copy work explicitly if you need to keep it. The desktop account does not grant access to unrelated outside services.
+This beta desktop is intended for students exploring engineering, computing and creative work. Sign in, open **APPs** at the bottom of the right-hand bar, and choose a tool. Your account is at the top of that bar. Use **Files → Upload** to bring in a computer file; open and save app work in **My files**. My files keeps a browser copy and synchronizes it to the account service when available. A synchronization or conflict notice needs attention: keep both versions and resolve the conflict in Files. Linux's temporary home is a separate drive and resets with the guest; copy work explicitly if you need to keep it. The desktop account does not grant access to unrelated outside services.
 
 The table describes useful starting points, not a promise that every feature or file format has been reviewed. The detailed [review tracker](APP_UNIFICATION_PROGRESS.md) records tests and remaining work. Simulated results and exports must be independently checked before use on real equipment.
 
@@ -11,7 +11,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Text Editor (CodeMirror 6) | Open or create a text/code file, edit and save. | Very large files can be slow and memory-intensive. |
 | Help | Read beta contact and Linux information. | Help is not an exhaustive manual. |
 | Calculator | Enter an expression or use the keypad; choose angle units, then save or reopen a calculation note in My files. | Results are floating-point approximations; a reopened result is recorded, not recalculated, and prior Ans history is not preserved. |
-| Browser | Open a supported website or save a download to My files. | Experimental; temporary profile and no audio. |
+| Browser | Listed under Applications as **Browser (in development)**. | Disabled while in development; its experimental profile is temporary and does not support audio. |
 | Document Editor (Tiptap) | Write and save a report; export a PDF. | Not a Word editor. |
 | PDF Viewer (PDF.js) | Open, search and navigate a PDF. | Read-only; image-only scans need OCR. |
 | Spreadsheet (Jspreadsheet CE + SheetJS CE) | Edit a workbook in the native format or import/export CSV. | XLSX is optional and compatibility is limited. For example, `=-2^2` evaluates to `-4` here; use parentheses when exchanging formulas with Excel. |
@@ -37,7 +37,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Owl Companion | Try an activity, save and reopen your progress. | Preview uses a procedural placeholder while authored Rive art is pending. |
 | Snake Garden | Choose a garden or endless game, play and save your progress. | Preview uses a procedural guide; physical touch remains unverified. |
 | Physics Playground | Create objects, run the simulation, and save a checkpoint. | Preview uses simulated physics; XR and physical-device behavior remain unverified. |
-| Other Games previews | Open **Applications → Games** and choose a group. The game list below gives a starting point for each preview. | Physics and World groups have XR planned; headset support is not yet established. Many assets are placeholders. |
+| Other Games previews | Open **APPs → Games** and choose a group. The game list below gives a starting point for each preview. | Physics and World groups have XR planned; headset support is not yet established. Many assets are placeholders. |
 | Personal template | Example for app authors. | Not a finished end-user app. |
 
 ### Game previews
