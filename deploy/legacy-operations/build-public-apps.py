@@ -34,7 +34,10 @@ def build(source=None, output=None, apps=APP_IDS, node=None, entries=None, publi
         # dependency. Stage it automatically after builder dependencies exist.
         if 'files' in apps:
             subprocess.run([sys.executable, str(source_root/'system/files/prepare.py')], check=True, stdout=subprocess.DEVNULL)
-        entries = {app: ('individual/templates/index.mjs' if app == 'personal-template' else f'system/{app}/index.mjs') for app in apps}
+        game_groups = json.loads((source_root/'games/catalog.json').read_text())
+        entries = {app: ('individual/templates/index.mjs' if app == 'personal-template'
+                         else f'games/{game_groups[app]}/{app}/index.mjs' if app in game_groups
+                         else f'system/{app}/index.mjs') for app in apps}
     options = {'source': str(source_root),
                'output': str(Path(output or ROOT/'assets/desktop').resolve()), 'apps': list(apps), 'entries': entries or {},
                'publicInputs': [str(Path(p).absolute()) for p in public_inputs]}
