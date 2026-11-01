@@ -4735,3 +4735,7 @@ Live release `a69cfa0da7895568cbf3c19fe914778acb3ef7893fa6b934d597e09a863bc9cc` 
 # Static archive after row-move release — 2026-11-01
 
 Two verified inactive releases moved to `/srv/data/codi-archived-simplified-20261101`, with individual `/srv/codi-connected/simplified-archive-<hash>.json` receipts. Source/destination checked under hosting lock; restore archives before using historical paths. Active `a69cfa0d…` and rollbacks `394e79e1…` / `be1c3637…` remain. Root free 4.5 to 6.4 GiB; `/srv/data` 328 GiB. Caddy, root, `/desktop/` and `/blog/` checked.
+
+# PDF passwords and embroidery gradient warning — 2026-11-01
+
+PDF source `c351c9b83` deployed to `92f8e86be57207da72f9901040045d8b87657df4dbede587ac7a6865f40ba789` and Stitch source `0ccb447bb` separately deployed to current `b98df4ccd7e17ec0f93ecf181b2aac3165f36587a86c385c11011ac535c40b95`. Public desktop/phone-sized real-account tests passed encrypted PDF retry/cancel/open/sync/reopen and embroidery gradient warning/SVG/PES sync/reopen. Four exact test accounts disabled. Current manifest `d169d03919ab22c81a24e8a9f7549638d1e14bcc8357414b57182bdafda88d4c`, Caddy `a707acc21f1f4317653b1248e6bc48e01c95a2e3986fe50ad52022fc71e9cfe9`; rollback inputs `/var/backups/webhost-sites/change-20261101T205617393387Z/common.py` and `/var/backups/webhost-sites/change-20261101T205617394531Z/sites.toml`. Physical phone and machine sew-out unverified. G-code candidate excluded.
