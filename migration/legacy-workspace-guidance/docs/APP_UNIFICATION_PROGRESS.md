@@ -347,6 +347,13 @@ sync and reopening; the phone-sized STL workflow also passed. The test verifies
 the prior canvas remains, not pixel-identical rendering. This is not live and
 physical touch remains unverified.
 
+Digital Logic's local candidate asks before closing while a circuit or truth
+table CSV save is pending, even if the circuit was clean. Desktop,
+emulated-phone and 4K tests held saves, cancelled close, then checked real
+simulation output, sync and reopening. Operation delays were injected; writes
+already dispatched to storage may still finish after closure. It is not live and
+physical touch remains unverified.
+
 Live release `e87dc394762835f1510801a828fd7002b2cffc5b06837418f48d97aab13e620e`:
 Calculator marks a calculation-note save as pending
 for the desktop close guard. Desktop, emulated-phone and 4K account tests held
