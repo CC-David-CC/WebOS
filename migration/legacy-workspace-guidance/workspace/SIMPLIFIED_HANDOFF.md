@@ -1,5 +1,17 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Generated release cleanup
+
+Removed eight obsolete generated static releases created during these test
+updates: `34be5d79`, `f4bc797d`, `e0117b30`, `e9949ff9`, `11431c97`,
+`a7b37d4e`, `e1e1cc7b`, and `4cfea5fb`. Under the hosting lock, each full ID
+was checked against the active manifest and Caddy configuration; each release’s
+manifest ID and exact file inventory were checked before deletion. Current
+release `eb3fae98` and its immediate rollback `72fe5ec7` were retained. Server
+free space rose from approximately 29 GB to 36 GB. Earlier rollback notes that
+point to the removed releases are historical and would require rebuilding those
+releases from source; account data was not touched.
+
 ## 2026-11-01 — Data Explorer single-statement check
 
 Live static release `eb3fae98f8ae96b87c19d57539cb207209127845b50426cb057fb024eb21b788`

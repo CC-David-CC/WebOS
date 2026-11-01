@@ -698,6 +698,11 @@ DuckDB reject that specific multi-statement with an upstream error. A live
 phone-sized account check passed the injected and legitimate query cases. This
 is not a general SQL security sandbox.
 
+G-code Preview has a local candidate rejecting motion after M2/M30 rather than
+assuming a controller dialect. Real-worker desktop and phone-sized checks cover
+program-end variants, ordinary M20, comments and preservation of the previous
+preview. This is not live or a machine-safety validation.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
