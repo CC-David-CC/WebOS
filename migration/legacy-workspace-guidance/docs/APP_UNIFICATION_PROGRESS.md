@@ -80,11 +80,7 @@ box-git's isolated `/srv/data/codi-embroidery-candidate-e5` build directory.
 provider transport and credential store, hides provider entries in menus and the
 command palette, and rejects their command IDs for WebAssembly. The patch
 applied to clean local and remote checkouts with matching changed-file hashes.
-The candidate has not yet been built, visually checked or tested; the current
-binary and live site have not changed. The remote Trunk tool is installed; a release build and WebAssembly check are
-in progress. A successful rebuild still needs source provenance, app workflow,
-network, lifecycle and phone/desktop verification before it can be considered
-for release. Rust, the WebAssembly target and Trunk are installed on the build host. The candidate passed `cargo check --locked --target wasm32-unknown-unknown -p vectorcraft-web` with unused-code warnings. The optimized browser build is still in progress and has not been tested.
+The candidate built successfully and its WebAssembly source check passed. In an isolated local preview, desktop and emulated-phone tests verified startup, blocked cross-origin fetch, absence and rejection of eight provider/account commands, project save, server sync, DST export and fresh-session reopening. The older shipped binary and live site have not changed. This is a deliberate build from the documented source revision, not a proven match for that older binary; packaging, the remaining network surface, physical touch and licensing review remain before release.
 
 ### Current milestone and handoff
 
