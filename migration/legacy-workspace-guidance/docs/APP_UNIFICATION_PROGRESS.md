@@ -570,12 +570,12 @@ first-save and concurrent-confirm regressions passed. A live phone-sized
 account test verified server bytes and both confirmation paths. It does not
 preserve individual endings in a mixed file; physical touch remains unverified.
 
-Data Explorer has a local candidate protecting project saves and CSV exports
-from window closure. It also tracks real Perspective viewer changes made during
+Data Explorer protects project saves and CSV exports from window closure. It also tracks real Perspective viewer changes made during
 those writes, so a later chart remains marked unsaved after an older snapshot
 is saved. Desktop and phone-sized account tests held writes, used the viewer
-API, checked close cancellation and verified subsequent server saves. This is
-not live; physical touch and every viewer configuration remain unverified.
+API, checked close cancellation and verified subsequent server saves. Both
+checks also passed live at a phone-sized viewport; physical touch and every
+viewer configuration remain unverified.
 
 ### Embedded-app file-menu review
 

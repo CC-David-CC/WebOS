@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Data Explorer save and chart protection
+
+Live static release `14d8c05159178284e1268d25d48735394d32a324e32dcc654a256ed01ac5073c`
+warns before closing while saving a project or CSV, and preserves the unsaved
+state of chart changes made during a save. Live phone-sized account tests held
+writes, used the actual Perspective viewer API and checked later server saves;
+physical touch and all configurations remain unverified. Two test accounts were
+disabled with data retained. Asset hash and root, /desktop/ and /blog/ checks
+passed. Source `068389d68` is on box-git. Hosting manifest SHA-256 is
+`a5844569dc754dd7669238aa96edb23558a094e737c1962f88670fdcb8017b36`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T051837036311Z`
+and `/var/backups/webhost-sites/change-20261101T051837036776Z`.
+
 ## 2026-11-01 — Text line ending and BOM protection
 
 Live static release `7afbf8fe95fe1e14a436fe98fd192db6317bf7ee70f68d35dcf4ca30db77b5ea`
