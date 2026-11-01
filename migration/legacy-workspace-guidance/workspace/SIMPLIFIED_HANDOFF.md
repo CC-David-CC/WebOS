@@ -4146,3 +4146,21 @@ Hosting generator `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560
 Live release `9b70b08178d92db0dac97f73ffc5c54e70feac54a593c8f1468a01e72173d854`, replacing `d28af034a752ab15ba9844a027b1923ce892940c8b5fdd8626cbc6c848d5a69a`. Falling Blocks has a two-line tutorial and per-window synthesized audio, muted by default. A live phone-sized browser test enabled, muted and closed a real AudioContext; local tests covered independent audio contexts, model, account sync, conflicts and focus. Owl Companion, Physics Playground and Snake Garden are added as previews. Local desktop/phone tests covered save/close races, stale opens, account sync/isolation, lifecycle and focus pause; live account tests covered save, paused reopen, sync and isolation. Each pauses when its desktop window loses focus. Owl/Snake use labeled procedural placeholders; authored Rive art is absent. Physics XR, full challenge/acceptance, physical touch and audible speakers remain unverified. Physics is a simulation. Nine uniquely identified live test accounts were disabled (one audio test first used an incorrect test selector and was rerun successfully). Owl includes the MIT Rive notice for the bundled WASM. The final tracked Falling Blocks coach runtime has SHA-256 `f1719c678e0b78b2c29f063d07872b301ff4cc577f819db3d13860424a6bd707`.
 
 The live desktop app.js also now matches the tested source desktop title metrics (30px title bar; phone remains 48px), replacing the previous live 44px desktop values. Hosting generator `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`, manifest `1838bf3aeebc51088a12a7a24d0af1c2acec8753b3e900de72ff74543584fc38`, Caddy `2de5ab82258ea4f52818553c8d8031bcc2ee120f3c8b917cb07b75e80fdc64c3`; rollback backups `/var/backups/webhost-sites/change-20261101T065711923522Z` and `/var/backups/webhost-sites/change-20261101T065711924673Z`.
+
+## 2026-11-01 — Scoped static-release cleanup
+
+Under the hosting-controller lock, verified the manifest ID and exact file set,
+rejected symlinks, and checked the hosting manifest and Caddy configurations
+before removing unreferenced releases `02f54a8c560d6b181ce8b6735d0aa0e7bcd36e023202cc03bb34eb6c64c3667f`,
+`fbb906a284e4072b8704dbffc41eb6eadba360057ac7bc4da68d6aaa99262e96`, and
+`39a1c8053f6d266e600503050cbb8b217ce660a036a888ea7fd025031d95c129`.
+The active `9b70b08178d92db0dac97f73ffc5c54e70feac54a593c8f1468a01e72173d854`
+and recent rollback releases `d28af034a752ab15ba9844a027b1923ce892940c8b5fdd8626cbc6c848d5a69a`
+and `5ffef0e6907ec08f2b5b0610e3ed2a60c5b2fb36fe44e28b44b4acb51604c3d8`
+were retained. Other historical release directories were not removed in this pass.
+
+## 2026-11-01 — PDF search and electronics restore
+
+Live release `406b901f8bc52427dcb3c8d477008af992d5f33579c6dd00da414604547136cb` replaces `9b70b08178d92db0dac97f73ffc5c54e70feac54a593c8f1468a01e72173d854`. PDF Viewer clears stale search status on page navigation; local desktop/phone and live phone account tests cover pending/completed search, navigation, sync and fresh-session reopening. Electronics Design updates the desktop restore reference after opening or saving and clears it on New; local desktop/phone and live phone tests cover switching projects, refresh, New, sync and retaining the previous server file. The broad account workflow also passed locally. Unsaved work is not recovered after refresh; physical touch remains unverified. Both unique live test accounts were disabled.
+
+Hosting generator `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560935`, manifest `f1c29e6d13e254437b8aae40f4e1f34d83cb4ca97d0036932cb8eb46b6725ba7`, Caddy `b82d3434021e6e03fbb9b4c0ca0d5a07cd4339d2dfdaeec141dd04a76431dfad`; rollback backups `/var/backups/webhost-sites/change-20261101T070632692049Z` and `/var/backups/webhost-sites/change-20261101T070632693369Z`.

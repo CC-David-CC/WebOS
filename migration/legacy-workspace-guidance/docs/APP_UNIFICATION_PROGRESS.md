@@ -1,5 +1,7 @@
 # App workflow review
 
+For a concise app-by-app index, see [App review status](APP_STATUS.md).
+
 This is the working checklist for the Simplified desktop's app-by-app review.
 “Prior evidence” refers to existing checks, not completion of the new review.
 The primary audience is high-school seniors and college STEM students. Clear
@@ -24,6 +26,8 @@ Files asks before replacing an existing account file during upload; local deskto
 diagrams.net routes its local export save API to My files; local desktop/phone and live phone tests cover actual SVG/PNG export, cancellation, changed-target protection and server sync. Other upstream export types remain unverified. Text rechecks after an open/reload so a change during the read remains visible; delayed-read desktop/phone and live phone tests cover notice, saving a copy, sync and reopen. Circuit Simulator guards New Blank and the built-in circuit library against discarding edits or overwriting the old account file; local desktop/phone and live phone tests cover cancel, blank round-trip, saved library circuit and sync. Digital Logic integrates the contributor review at `abe8507b6`: new saves require `.logic.json` for Files routing while previously opened `.json` files can save in place; local desktop/phone and live phone tests cover both paths. Excalidraw hides its unintegrated shape library, including external library browsing; drawing and account save remain tested, and removed features are tracked in `DEFERRED_APP_FEATURES.md`. These UI controls are not a network security boundary. The tested release is `d28af034a752ab15ba9844a027b1923ce892940c8b5fdd8626cbc6c848d5a69a`. Physical touch and untested provider entry points remain open.
 
 Applications → Games now contains previews of Falling Blocks, Owl Companion, Physics Playground and Snake Garden. Falling Blocks has per-window synthesized sound, muted by default; a real-browser live test checked enable, mute and cleanup, while local tests checked independent windows. All four pause when their desktop window loses focus and require an explicit resume. Live account tests covered Owl, Snake and Physics save/sync, paused reopen and isolation; local desktop/phone tests covered save races, close guards and focus behavior. Owl and Snake use labeled procedural placeholders; their authored Rive art is not yet available. Physics XR and full game acceptance remain incomplete. Physical-phone input, audible speakers and broad performance remain unverified. The live release is `9b70b08178d92db0dac97f73ffc5c54e70feac54a593c8f1468a01e72173d854`.
+
+PDF Viewer now clears stale search status when page navigation cancels a search; desktop/phone local and live phone account tests cover pending and completed searches and fresh-session reopen. Electronics Design updates its desktop restore reference when opening or saving another project and clears it on New; local desktop/phone and live phone tests cover project switching, refresh, server sync and preservation of the prior project. Unsaved work still must be saved before refresh. Both changes are live in `406b901f8bc52427dcb3c8d477008af992d5f33579c6dd00da414604547136cb`; physical touch remains unverified.
 
 ## Current goals and progress — 2026-10-31
 
