@@ -18,7 +18,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Data Explorer | Create the synthetic resistor example or open CSV or TSV from Files or My files, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
 | Python Notebook | Run the measurement example with Shift+Enter or Run, edit it, then save to My files. The getting-started guide explains the two Python environments. | Untrusted notebooks are not isolated. Browser Python differs from the temporary Linux environment. |
 | Image Editor | Create a blank image or open an image, add a watermark or annotation from My files, and save a copy. | Animated images are unsupported; annotation images use a temporary gallery. |
-| Audio Editor | Try the generated 440 Hz tone, open or record audio, or add tracks from My files. | Physical microphone behavior and multitrack project saving need more work. |
+| Audio Editor | Try the generated 440 Hz tone, open or record audio, or add tracks from My files and export a MultiTrack WAV mixdown. | The WAV is not an editable track project; multitrack project saving and physical microphone behavior need more work. |
 | diagrams.net | Open or create a diagram, save it, or export SVG/PNG to My files. | Other export formats and physical touch remain under review. |
 | Excalidraw | Draw a sketch, insert images from My files, save the drawing, or export a PNG. | Large embedded images use more memory and count toward the drawing size limit; physical touch needs testing. |
 | SVG Editor | Try the example or draw vector artwork, then save an SVG. | Complex SVG and physical touch remain unverified. |

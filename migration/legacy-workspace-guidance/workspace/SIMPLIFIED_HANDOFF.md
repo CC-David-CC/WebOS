@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Audio mixdown and CAD project recovery
+
+Live static release `25975f80bb9e3dace021b6e253535e20355336314078c810d4f28e9451224108` adds a MultiTrack stereo WAV export to My files and fixes Replicad restoring an old project after opening or saving another. Local desktop and emulated-phone tests and live emulated-phone account tests passed; audio checks include rendered samples, clip overlap, mute, failures, sync and the 128 MiB output limit. CAD checks include project switch, preview, sync and refresh; broader local checks include STL/STEP. The editable audio session is not saved by WAV export; rendering may need substantially more RAM than the output size. Physical touch, real audio hardware and fabrication accuracy were not verified. Two live test accounts were disabled with their data retained. Hosting manifest SHA-256 `69550afd0c5cb8a2c1c0b4324708e2aaa895a443b9a42b3a7bde67a516bcce06`; rollback inputs `/var/backups/webhost-sites/change-20261101T072202097623Z` and `/var/backups/webhost-sites/change-20261101T072202099162Z`.
+
 ## 2026-11-01 — Stitch and Pico save/import safety
 
 Live static release `c07254868618fd4a63983327a566356137fbdaf4462f2d89462b4ea467b8d052`
