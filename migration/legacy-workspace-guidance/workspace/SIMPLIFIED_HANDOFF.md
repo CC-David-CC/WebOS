@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Data, PDF and Pico review
+
+Live static release `1af8bd99a73a7773c7e6671a71f59a6f54840207bc22a4b8fdec1dfae3727dd9`
+includes the documented Data Explorer query recovery, PDF wrapped-phrase
+search, and Pico serial scrollback improvements. Public phone-sized account
+tests and asset hash checks passed. A query failure and serial packets were
+injected; a separate real Blink-worker check passed locally. Physical touch,
+PDF extraction order and real-firmware serial behavior remain unverified.
+Three test accounts were disabled with data retained. Source `140ebb4e5` is
+backed up to box-git. Hosting manifest SHA-256 is
+`f776b2ec7601a51e9282f4fcaac8dd3527f65f9cc3f92bce92feaab54868981d`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T042346291642Z`
+and `/var/backups/webhost-sites/change-20261101T042346292070Z`.
+
 ## 2026-11-01 — Engineering workflows
 
 Live static release `06dbfc2a20a2ec4a343d549ac73282e196b9acd986b12f8ea29b0088c4d99f79`

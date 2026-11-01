@@ -309,7 +309,8 @@ table, sync and reopening were tested locally. Physical touch and actual
 machine or board behavior remain unverified. Public phone-sized tests passed
 for all three apps, including real STL generation and account sync.
 
-Further local candidates await release: Data Explorer restores the prior result
+Live release `1af8bd99a73a7773c7e6671a71f59a6f54840207bc22a4b8fdec1dfae3727dd9`:
+Data Explorer restores the prior result
 and viewer settings when switching to a new query result fails; an injected
 failure after a real table switch and a real invalid query were tested at
 desktop, emulated-phone and 4K sizes. PDF Viewer finds phrases spanning extracted
@@ -317,7 +318,19 @@ line breaks; a generated two-line PDF and existing search regressions passed at
 those sizes. Pico Simulator retains the serial reading position while scrolled
 up and provides Jump to latest; simulated packets were tested at those sizes,
 with a separate real Blink-worker check. Physical touch, PDF extraction order
-and real-firmware serial behavior for this change remain unverified.
+and real-firmware serial behavior for this change remain unverified. Public
+phone-sized account checks passed for all three workflows.
+
+Circuit Simulator's local XML import candidate rejects missing positions and
+components silently skipped by the simulator, restoring the previous circuit.
+Desktop, emulated-phone and 4K account tests cover invalid and valid imports;
+phone-sized menu and export regressions also passed. The corresponding-source
+archive was regenerated and checked against the host files. This check does not
+fully validate parameters or legacy text imports. SVG Editor's local candidate
+routes focused Ctrl+S to My files and Ctrl+Shift+S to Save As, and prevents
+overlapping actions during path prompts. Desktop, emulated-phone and 4K account
+tests cover shortcuts, save, export, sync and reopen. Neither candidate is live;
+physical touch and actual Mac shortcuts remain unverified.
 
 Next local candidates: Arduino Simulator shows a persistent notice when its
 opened or saved HEX changes, disappears or conflicts in My files, while keeping
