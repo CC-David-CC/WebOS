@@ -19,9 +19,9 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Document Editor | Workflow checked | Read failures offer retry; clipboard and existing animated images are not comprehensively checked. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Native format and CSV are primary; stale folder choices are rejected and row/column changes track unsaved work. Physical dragging remains unverified. |
-| Data Explorer | Workflow checked | Large datasets can exceed device memory; injected restore failures now pass without the previously observed worker error, but other failure and resource-pressure cases remain unverified. |
+| Data Explorer | Workflow checked | Folder choices reject stale destinations; large datasets can exceed device memory and resource-pressure cases remain unverified. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
-| Image Editor | Workflow checked | Temporary restore failures retain the image reference; animated images unsupported and embedded tools need further audit. |
+| Image Editor | Workflow checked | Save As rejects stale folder choices; animated images are unsupported and embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | Loads require a guarded confirmation; the adapter must be requalified when diagrams.net changes. Other export types and provider entry points need review. |
 | Excalidraw | Workflow checked | Missing embedded image data is rejected; full imported image decoding and provider audit remain partial. |
@@ -32,7 +32,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | G-code Preview | Workflow checked | Supports a subset, assumes an initial state, and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | D13 indicator shows driven-high output, not analog brightness; no electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Firmware/peripheral support partial; page-program wrapping tested with real MicroPython. Unsaved flash cannot be recovered after a crash; physical hardware is unverified. |
-| Digital Logic | Workflow checked | Feed-forward combinational JSON only; propagation delay is bounded and is not hardware timing validation. |
+| Digital Logic | Workflow checked | Folder choices reject stale destinations; feed-forward combinational JSON only, and propagation delay is not hardware timing validation. |
 | Circuit Simulator | Workflow checked | Divider simulation, upload, sync and recovery checked; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Pre-release; physical sewing, machine formats and provider audit remain open. |
