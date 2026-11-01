@@ -422,12 +422,13 @@ closing while saving a project or serial output; desktop, emulated-phone and
 Blink worker test passed. Neither change is live; physical phone and macOS
 shortcut behavior remain unverified.
 
-Further local candidates: Data Explorer cleans up and permits retry after an
-injected worker-constructor failure; other initialization failures are not yet
-covered. Stitch Converter keeps a changed preview when another file is opening;
-desktop, emulated-phone and 4K account tests delay the file read, alter the
-preview, then verify it remains open and retry works. These changes are not
-live; physical touch and machine-sewing behavior remain unverified.
+Data Explorer cleans up and permits retry after an injected worker-constructor
+failure; other initialization failures are not yet covered. Stitch Converter
+keeps a changed preview when another file is opening; desktop, emulated-phone
+and 4K account tests delay the file read, alter the preview, then verify it
+remains open and retry works. Both are live: the public Data Explorer failure
+injection used a desktop-sized viewport, and the Stitch test used a phone-sized
+viewport and mouse clicks. Physical touch and sewing remain unverified.
 
 Circuit Lab remains gated and is not deployed. Its local source candidate uses
 desktop discard confirmation, reports immediate file conflicts and cancels
@@ -440,11 +441,26 @@ PTM redistribution question and independent KLU relink remain unresolved; do
 not deploy or publish the unreviewed models. The archive is private research
 material, not a completed distribution review.
 
-G-code Preview has a local candidate that rejects `M206` and `M428` home-offset
-changes rather than silently ignoring them. Desktop, emulated-phone and 4K
-account tests exercised the real parser and preview and verified that the prior
-view remains open. This candidate is not live; other controller-specific
+G-code Preview rejects `M206` and `M428` home-offset changes rather than
+silently ignoring them. Desktop, emulated-phone and 4K account tests exercised
+the real parser and preview and verified that the prior view remains open. The
+live phone-sized test used mouse clicks; physical touch, other controller-specific
 behavior and physical machines remain unverified.
+
+Digital Logic has a local candidate that rejects multiple outputs wired to the
+same input before simulation or truth-table generation, while keeping the prior
+diagram. Desktop, emulated-phone and 4K account checks passed; the existing
+comparator also passed all 16 combinations with supported output fan-out, sync
+and reopen. This is not live; physical touch and electrical-bus behavior remain
+unverified.
+
+Notebook has a local invalid-launch candidate that opens an editable starter
+while keeping the failed file untouched and the error visible. Desktop,
+emulated-phone and 4K tests cover invalid and valid direct launches; that
+specific test did not run Python. SVG Editor has a local file-identity candidate
+that keeps an original and a Save As copy in separate windows; a desktop
+account regression and phone-sized shortcut regression passed. Neither is
+live; physical touch remains unverified.
 
 ### Embedded-app file-menu review
 

@@ -1,5 +1,22 @@
 # Simplified branch handoff
 
+## 2026-11-01 — App recovery and G-code safety
+
+Live static release `34be5d79ae697c1ddf17b654d6ad84a11128a87716b3188f92e0a91495360544`
+contains the Data Explorer worker-start retry, Stitch Converter open-race guard,
+and G-code home-offset rejection. Public registered-account tests passed: Data
+Explorer used a desktop viewport and injected a worker-constructor failure; the
+other two used phone-sized viewports with mouse clicks. Real physical touch,
+other initialization failures and physical machines remain unverified. The
+three test accounts were disabled with their data retained. Asset hashes and
+root, /desktop/ and /blog/ checks passed. An initial G-code run mistakenly
+targeted a stopped local preview; the test was corrected to honor its target
+environment before the successful public run. Source commits `3eb93c5a0` and
+`59e3af77a` are on box-git. Hosting manifest SHA-256 is
+`2bd5e4cbb34fbbea9ef955d949150a3096b4c6837570a5ebca36d7ff91ac7567`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T044533613424Z`
+and `/var/backups/webhost-sites/change-20261101T044533614099Z`.
+
 ## Circuit Lab private research candidate
 
 The local candidate fixes discard, immediate-conflict and stale-simulation
