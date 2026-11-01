@@ -333,11 +333,13 @@ overlapping actions during path prompts. Desktop, emulated-phone and 4K account
 tests cover shortcuts, save, export, sync and reopen. Public phone-sized tests
 passed for both. Physical touch and actual Mac shortcuts remain unverified.
 
-Pico Simulator's local candidate ignores Enter while an input method is
+Live release `04d51cf02682f7e8a6902489c29c7f1975d9f1433a9be7551a4eba41748c548b`:
+Pico Simulator ignores Enter while an input method is
 composing text, preventing a partial serial command from being sent. Desktop,
 emulated-phone and 4K account tests used synthetic composition events and a fake
 board worker; a separate real Blink-worker check passed. Physical keyboards and
-MicroPython serial behavior for this change remain unverified; it is not live.
+MicroPython serial behavior for this change remain unverified. A public
+phone-sized check passed.
 
 Live release `0db4822d66dfa593aa266d615bf8a28d66b963d9762bcfd24d6b343e7440785c`:
 PDF Viewer moves Previous, Next and Go to the
@@ -354,11 +356,11 @@ sync and reopening; the phone-sized STL workflow also passed. The test verifies
 the prior canvas remains, not pixel-identical rendering. A public phone-sized
 check passed; physical touch remains unverified.
 
-Calculator's local keypad candidate enforces the 512-character expression
+Calculator's keypad enforces the 512-character expression
 limit while still allowing a selected range to be replaced at the limit.
 Desktop and emulated-phone keypad tests and existing calculation regressions
 passed; the previous keypad could create an expression its parser rejected.
-This candidate is not live; physical touch remains unverified.
+A public phone-sized test passed; physical touch remains unverified.
 
 Digital Logic asks before closing while a circuit or truth
 table CSV save is pending, even if the circuit was clean. Desktop,

@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Calculator and Pico input
+
+Live static release `04d51cf02682f7e8a6902489c29c7f1975d9f1433a9be7551a4eba41748c548b`
+includes the Calculator keypad length limit and Pico serial IME Enter guard.
+Both public phone-sized account tests passed; assets and root, /desktop/ and
+/blog/ checked. The Pico test used synthetic composition and board messages;
+physical keyboards, touch and real MicroPython serial behavior remain unverified.
+Three test accounts were disabled with data retained. Source through
+`4cf242d05` is on box-git. Hosting manifest SHA-256 is
+`954e54eab5dafbf48c263fa780afbae5911e2597aeeeaf9b497849c72750c0a0`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T043619169880Z`
+and `/var/backups/webhost-sites/change-20261101T043619170306Z`.
+
 ## 2026-11-01 — Image, PDF, CAD and logic workflows
 
 Live static release `0db4822d66dfa593aa266d615bf8a28d66b963d9762bcfd24d6b343e7440785c`
