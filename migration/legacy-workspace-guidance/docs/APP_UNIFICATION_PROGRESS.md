@@ -720,6 +720,11 @@ sized account tests covered delayed saves and real AVR serial echo with
 synthetic composition events. Live phone-sized account checks passed both;
 physical touch and physical IME behavior remain unverified.
 
+Folder move and rename remain unsupported. The existing gateway and browser
+journal cover individual files, not a versioned subtree. The coordinated
+protocol, out-of-band-write decision and test gates are described in
+`FOLDER_MOVE_DESIGN.md`; no unsafe copy-and-delete substitute has been enabled.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
