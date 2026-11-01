@@ -75,6 +75,18 @@ local free space is also below the upstream documentation's approximately 30 GB
 build-directory estimate; box-git has a larger writable data disk, but its build
 toolchain has not been prepared.
 
+A source-only StitchFoundry candidate is being prepared from `e5a88e0...` on
+box-git's isolated `/srv/data/codi-embroidery-candidate-e5` build directory.
+`apps/system/embroidery-studio/prepare_local_source.py` removes the browser
+provider transport and credential store, hides provider entries in menus and the
+command palette, and rejects their command IDs for WebAssembly. The patch
+applied to clean local and remote checkouts with matching changed-file hashes.
+The candidate has not yet been built, visually checked or tested; the current
+binary and live site have not changed. The remote Trunk tool installation is
+in progress. A successful rebuild still needs source provenance, app workflow,
+network, lifecycle and phone/desktop verification before it can be considered
+for release.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
