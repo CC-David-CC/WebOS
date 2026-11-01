@@ -14,7 +14,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Browser | Listed under Applications as **Browser (in development)**. | Disabled while in development; its experimental profile is temporary and does not support audio. |
 | Document Editor (Tiptap) | Write a report with Title, Heading and Subheading controls; save it and export a PDF. | Not a Word editor. |
 | PDF Viewer (PDF.js) | Open, search and navigate a PDF. | Read-only; image-only scans need OCR. |
-| Spreadsheet (Jspreadsheet CE + SheetJS CE) | Edit a workbook in the native format or import/export CSV. | XLSX is optional and compatibility is limited. For example, `=-2^2` evaluates to `-4` here; use parentheses when exchanging formulas with Excel. |
+| Spreadsheet (Jspreadsheet CE + SheetJS CE) | Start with the optional measurement example or edit a workbook in the native format; import/export CSV. | XLSX is optional and compatibility is limited. For example, `=-2^2` evaluates to `-4` here; use parentheses when exchanging formulas with Excel. |
 | Data Explorer (Perspective + DuckDB) | Create the synthetic resistor example or open CSV or TSV from Files or My files, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
 | Python Notebook (JupyterLite + Pyodide) | Run the measurement example with Shift+Enter or Run, edit it, then save to My files. The getting-started guide explains the two Python environments. | Untrusted notebooks are not isolated. Browser Python differs from the temporary Linux environment. |
 | Image Editor (Filerobot) | Create a blank image or open an image, add a watermark or annotation from My files, and save a copy. | Animated images are unsupported; annotation images use a temporary gallery. |
@@ -22,7 +22,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Diagram Editor (diagrams.net) | Open or create a diagram, save it, or export SVG/PNG to My files. | Other export formats and physical touch remain under review. |
 | Sketch Board (Excalidraw) | Draw a sketch, insert images from My files, save the drawing, or export a PNG. | Large embedded images use more memory and count toward the drawing size limit; physical touch needs testing. |
 | Vector Editor (SVG-Edit) | Try the example or draw vector artwork, then save an SVG. | SMIL and common inline CSS animation are refused to protect the original. Other CSS animation, complex SVG and physical touch remain unverified. |
-| Primitive 3D Modeler (Replicad) | Choose a box or cylinder, dimensions and optional offset hole; inspect volume and surface area, then export a model. | This is a limited model generator, not a full CAD system; validate manufacturing dimensions. |
+| Primitive 3D Modeler (Replicad) | Try the 40 × 40 × 20 mm box lesson, choose dimensions and an optional offset hole, then inspect and export the model. | This is a limited model generator, not a full CAD system; validate manufacturing dimensions. |
 | Fabrication Studio (Kiri:Moto) | Open a model, configure slicing and export; save a workspace. | Check printer profiles and output independently before printing. |
 | Mesh Editor (Mesh:Tool) | Import and manipulate meshes; save a workspace or export geometry. | Undo history is not saved in workspace snapshots; verify geometry independently. |
 | G-code Viewer (G-code Preview) | Open supported G-code from My files and inspect the path using the extrusion/travel legend. | Supports a documented subset; it does not validate machine safety. |
