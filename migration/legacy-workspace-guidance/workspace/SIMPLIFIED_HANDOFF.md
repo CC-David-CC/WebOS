@@ -1,5 +1,22 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Files drag and PDF warning ordering
+
+Live static release `1c8412afaedf7c90b96cc3bd608aafd684e403b09c37f3229184386c5d1ddb47`
+uses a hash-pinned Chonky patch for the stale-hover drag race and orders PDF
+file-change checks so an old response cannot clear a newer warning. A live
+deterministic delayed-hover negative-control scenario, cross-window drag and
+three repeated phone-sized mouse-driven partial-move checks passed; a live
+phone-sized PDF metadata-order check also passed. The earlier unpatched build
+had failed 4 of 8 automated drags. Physical touch and broader drag scenarios
+remain unverified. Six test accounts were disabled with data retained. Asset
+hashes and root, /desktop/ and /blog/ checks passed. Source `b6ffa5025` is on
+box-git. Files builds require `python3 apps/system/files/prepare.py` after the
+shared builder dependencies are installed. Hosting manifest SHA-256 is
+`1ad499a156c162d39b4e2d7d9dbe7f121e6e3e8729e6e5b722c63ebe7070da74`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T052037982360Z`
+and `/var/backups/webhost-sites/change-20261101T052037982777Z`.
+
 ## 2026-11-01 — Data Explorer save and chart protection
 
 Live static release `14d8c05159178284e1268d25d48735394d32a324e32dcc654a256ed01ac5073c`

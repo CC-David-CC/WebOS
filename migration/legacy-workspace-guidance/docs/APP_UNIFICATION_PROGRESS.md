@@ -546,10 +546,11 @@ supplies those fields, serializes local moves with sync and supports moving a
 new offline file. Its local storage suite, idle scheduling, phone-sized offline
 move and account sync/reopen checks passed. A live phone-sized Move to… test
 covered offline movement, collision, sync and fresh-session recovery; a separate
-live conflict-resolution test passed. Multi-file drag passed in 4 of 8 live automated runs. During a failure the
-browser briefly accepted the folder, then changed its drop effect to none; a
-700 ms dwell did not consistently help. The source and destination rows stayed
-attached, and no drop followed. The exact drag-target cause remains unproven.
+live conflict-resolution test passed. On the older build, multi-file drag passed in 4 of 8 live automated runs;
+the browser sometimes changed the target drop effect to none before release.
+A pinned Chonky patch is now live: a deterministic delayed-hover test, a
+cross-window drag and three repeated phone-sized mouse-driven drags passed on
+the served assets. Physical touch and broader drag scenarios remain unverified.
 
 Terminal clears click suppression after a cancelled swipe. Desktop and
 phone-sized tests used actual CDP touch cancellation and the real v86/Linux
@@ -577,15 +578,17 @@ API, checked close cancellation and verified subsequent server saves. Both
 checks also passed live at a phone-sized viewport; physical touch and every
 viewer configuration remain unverified.
 
-Files has a local pinned Chonky patch for a stale hover-state drag race. A
+Files has a pinned Chonky patch for a stale hover-state drag race. A
 deterministic delayed-frame negative control failed on the old build and passed
 with the patch; six candidate partial-drag and four cross-window tests passed
 against the live account service using hash-verified intercepted assets. This is
-not yet deployed; physical touch and broader drag scenarios remain unverified.
-PDF Viewer has a local fix that prevents slower, earlier metadata checks from
+live; deterministic stale-hover, cross-window and three repeated phone-sized
+mouse-driven account checks passed. Physical touch and broader drag scenarios
+remain unverified.
+PDF Viewer has a fix that prevents slower, earlier metadata checks from
 clearing a newer file-change warning. Desktop and phone-sized account tests
-covered delayed checks and existing change/deletion/reload behavior; this is not
-live and physical touch remains unverified.
+covered delayed checks and existing change/deletion/reload behavior; a live
+phone-sized account check passed. Physical touch remains unverified.
 
 ### Embedded-app file-menu review
 
