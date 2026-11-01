@@ -37,6 +37,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Owl Companion | Try an activity, save and reopen your progress. | Preview uses a procedural placeholder while authored Rive art is pending. |
 | Snake Garden | Choose a garden or endless game, play and save your progress. | Preview uses a procedural guide; physical touch remains unverified. |
 | Physics Playground | Create objects, run the simulation, and save a checkpoint. | Preview uses simulated physics; XR and physical-device behavior remain unverified. |
+| Additional Games previews | Open **Applications → Games** and choose a preview. | The expanded catalog is early work; many art and audio assets are placeholders. |
 | Personal template | Example for app authors. | Not a finished end-user app. |
 
 ### Try a model-to-toolpath workflow
