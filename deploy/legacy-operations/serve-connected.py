@@ -24,7 +24,7 @@ from origin_service.runtime import PrivateRuntime
 from origin_service.http_server import BoundedServer, QuietHandler
 
 FILES=['index.html','bootstrap.js','style.css','app.js','reference.js','terminal.js','desktop-apps.js','config.json']
-RUNTIME=['libv86.js','v86.wasm','seabios.bin','vgabios.bin','vmlinuz','initramfs.cpio.gz']
+RUNTIME=['libv86.js','v86.wasm','seabios.bin','vgabios.bin','vmlinuz']
 def stage(public=None, *, bundled=None):
     public=public or ROOT/'.build/connected-public'
     public.mkdir(parents=True,exist_ok=True)
@@ -43,7 +43,13 @@ def stage(public=None, *, bundled=None):
         raise ValueError('Build apps first: python3 scripts/build-public-apps.py --output .build/simplified-apps')
     shutil.copytree(bundled,public/'assets/desktop',dirs_exist_ok=True)
     runtime=public/'.build/v86';runtime.mkdir(parents=True,exist_ok=True)
-    for name in RUNTIME:shutil.copy2(ROOT/'.build/v86'/name,runtime/name)
+    # A complete locally rebuilt runtime takes precedence; a fresh checkout can
+    # use the checked-in preview runtime without a workstation-specific cache.
+    rebuilt=ROOT/'.build/v86';checked_in=ROOT/'runtime/v86'
+    source=rebuilt if all((rebuilt/name).is_file() for name in RUNTIME) else checked_in
+    missing=[name for name in RUNTIME if not (source/name).is_file()]
+    if missing:raise ValueError('Missing v86 runtime files: '+', '.join(missing)+'; see runtime/v86/README.md')
+    for name in RUNTIME:shutil.copy2(source/name,runtime/name)
     return public
 
 class HeadSupport:
