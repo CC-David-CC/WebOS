@@ -656,6 +656,14 @@ check saw a transient discrepancy, and subsequent runs passed. Live phone-sized
 account checks passed all three. Physical touch, PDF export during close and
 later PDF render failures remain unverified.
 
+Local candidates: Document Editor recovers from an invalid direct open into
+an independent editable Untitled report without changing the original. G-code
+Preview rejects malformed or repeated coordinates in supported moves and G92
+resets rather than silently parsing part of a value. Desktop and phone-sized
+account checks covered recovery/sync and real-worker preview rejection. The
+G-code check is not comprehensive syntax or machine validation. These changes
+are not live; physical touch remains unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
