@@ -275,26 +275,37 @@ used a real v86 shell with stubbed clipboard responses; the phone-sized
 two-shell and nano regression passed. Public phone-sized tests passed for both;
 physical hardware, actual clipboard permission prompts and touch are unverified.
 
-Notebook's local candidate prevents an explicit save from silently writing the
+Live release `8c8dd9f477bd8df8b0decc6aa9f59e61d5e892ea124140058370b0d0020011d7`:
+Notebook prevents an explicit save from silently writing the
 linked notebook when a different Jupyter tab is active, including a tab switch
 during Save As. Desktop, emulated-phone and 4K tests use Jupyter's API to switch
 tabs, verify server bytes and continued automatic saving; the phone-sized menu
-regression passed. Stitch Converter's local candidate clears the old machine
+regression passed. Stitch Converter clears the old machine
 file association when an example is chosen, so replacing a prior PES requires
 confirmation. Desktop, emulated-phone and 4K tests cover cancellation,
 replacement, sync and reopen; the old code overwrote the PES without a dialog
-in a negative control. Both candidates are not live; physical touch remains
-unverified.
+in a negative control. Public phone-sized tests passed for both. Physical touch
+remains unverified.
 
-Files has a local Select multiple mode for plain taps, plus clearer partial
+Files has a Select multiple mode for plain taps, plus clearer partial
 upload/deletion results and conflict checks before deletion. Desktop,
 emulated-phone and 4K tests cover selection, an actual upload collision and a
 two-browser conflict; a second-delete failure was injected. Uploads and deletes
-remain per-item, not atomic. Spreadsheet's local formula candidate reports
+remain per-item, not atomic. Spreadsheet reports
 exact tangent poles as errors and refuses CSV export of the invalid result;
 desktop, emulated-phone and 4K account workflows cover correction, save, sync
-and reopen. Neither candidate is live; physical touch and unusual numerical
-precision cases remain unverified.
+and reopen. Public phone-sized tests passed for both; physical touch and unusual
+numerical precision cases remain unverified.
+
+Additional local candidates awaiting release: G-code Preview fits a tested
+320×568 phone-sized viewport and keeps its visual-only warning visible; desktop,
+phone and 4K account workflows cover opening and invalid-file preservation.
+Replicad guards in-progress saves and exports; held-operation tests cover close
+cancellation, real STL generation, sync and reopening at all three sizes.
+Digital Logic explains incompatible wire widths before simulator construction,
+preserving the prior circuit; matching and mismatched widths, correction, truth
+table, sync and reopening were tested locally. Physical touch and actual
+machine or board behavior remain unverified.
 
 ### Embedded-app file-menu review
 

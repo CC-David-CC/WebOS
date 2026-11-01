@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Files, Notebook and stitch safety release
+
+Live static release `8c8dd9f477bd8df8b0decc6aa9f59e61d5e892ea124140058370b0d0020011d7`
+includes touch-friendly Files multiselect and partial-operation reporting,
+Notebook tab-safe saves, Stitch Converter replacement protection, and the
+Spreadsheet tangent-pole check. Four public phone-sized account tests passed;
+asset hashes and root, /desktop/ and /blog/ checked. Some fault and concurrent
+actions were simulated; physical touch and hardware remain unverified. Four
+test accounts were disabled with data retained. Source through `72f41ea7d` is
+backed up to box-git. Hosting manifest SHA-256 is
+`7b3cdcf3a22a07b906dbc1123cf2e4797ec42be6e36a3b9bc3db25c124bca64b`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T041326291958Z`
+and `/var/backups/webhost-sites/change-20261101T041326292712Z`.
+
 ## 2026-11-01 — Six-app safety release
 
 Live static release `c893a35a981a2180ade8f67e01214c69f9bbb978e970a54f56a2b75976a11b6f`
