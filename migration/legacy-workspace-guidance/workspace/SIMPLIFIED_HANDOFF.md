@@ -1,5 +1,11 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Notebook kernel race
+
+Live static release `98d92d5a71d74e7db9b210ff76ee60370f4ae027383cb0696245420fe7dcdd9c` patches a pinned JupyterLite Pyodide proxy to handle synchronous and asynchronous `Atomics.waitAsync` values. A deterministic test reproduces the previous synchronous-result error. Local desktop/phone and live phone-sized tests ran independent concurrent kernels and verified the surviving window after close. Before the patch, two of three bounded simultaneous runs timed out, one with the matching exception. This does not establish that all kernel failures share that cause; physical devices and resource pressure remain unverified. One live test account was disabled with data retained. Hosting manifest SHA-256 `1ab50546693b0a9902d1bdf13e1706d4b48678f87bde83030aec6329e6193b53`; rollback inputs `/var/backups/webhost-sites/change-20261101T075735864739Z` and `/var/backups/webhost-sites/change-20261101T075735865402Z`.
+
+A separate source-only folder-lock candidate is on box-git branch `research/folder-lock-20261101` at `65018616e95277df39c2fba1ca4bbf41eda13d54`. It permits another account’s reads during a held folder hash while existing writes still wait. It is not deployed; folder moves and their browser recovery protocol are unavailable and direct host writers remain outside the lock.
+
 ## 2026-11-01 — Analysis and workspace recovery
 
 Live static release `0d4b09d5bf2b8816cfa55b83102ab3be9f7ff677f9a04273b33472e35927aef6` clears failed initial-file references in Data Explorer, Kiri:Moto and Mesh:Tool. Local desktop/phone and live emulated-phone account tests passed invalid-file recovery, saving, server sync and refresh; the two grid tools used real model import. Local phone missing-file fallback passed; one earlier Kiri missing-file full workflow timed out after fallback, cause unverified. Manufacturing correctness and physical touch remain unverified. Three live test accounts were disabled with data retained. Hosting manifest SHA-256 `88fcfcdd16e280487f0d2fc4a7d88260b6ba4a084953a1ff62a8a5722ffa82bf`; rollback inputs `/var/backups/webhost-sites/change-20261101T075316059639Z` and `/var/backups/webhost-sites/change-20261101T075316060425Z`.

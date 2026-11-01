@@ -51,6 +51,8 @@ Audio Editor now stores beat/snap enabled state in an additional project metadat
 
 Data Explorer clears a failed initial analysis-file reference; local desktop/phone and live phone-sized account tests cover source preservation, example, save/sync and refresh. Kiri:Moto and Mesh:Tool clear a failed initial workspace reference; local desktop/phone and live phone-sized tests cover real model import, workspace save/sync and refresh for each. Local phone-sized missing-file fallback passed; one earlier Kiri missing-file full workflow timed out after fallback, cause unverified. These do not validate manufacturing output or physical touch. Live release `0d4b09d5bf2b8816cfa55b83102ab3be9f7ff677f9a04273b33472e35927aef6`.
 
+Notebook’s pinned Pyodide proxy now handles both synchronous and asynchronous `Atomics.waitAsync` results. A deterministic test reproduced the original synchronous-result exception and passed both cases with the patch. Before the patch, two of three bounded simultaneous two-window runs timed out; after it, two desktop and two phone-sized local cycles and two live phone-sized cycles completed with independent kernels. This addresses the observed race, not every possible kernel or resource-pressure failure; physical devices remain unverified. A folder-lock source candidate is backed up separately at box-git `research/folder-lock-20261101` commit `65018616e95277df39c2fba1ca4bbf41eda13d54`; it is not deployed and folder moves remain unavailable pending recovery, direct-host-writer and operational work. Notebook live release `98d92d5a71d74e7db9b210ff76ee60370f4ae027383cb0696245420fe7dcdd9c`.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and
