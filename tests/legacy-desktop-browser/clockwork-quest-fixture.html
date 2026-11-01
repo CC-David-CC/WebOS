@@ -1,0 +1,92 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clockwork Quest isolated harness</title>
+<body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get('app');
+if(!entry||!entry.startsWith('/apps/clockwork-quest/'))throw Error('Missing Clockwork Quest bundle');
+const link=document.createElement('link');
+link.rel='stylesheet';
+link.href=entry.replace('index.mjs','index.css');
+document.head.append(link);
+const {mount}=await import(entry);
+
+const files=new Map();
+let sequence=0;
+const context={
+ owner:'test',
+ valid:()=>true,
+ path:value=>value.startsWith('/')?value:'/'+value,
+ name:value=>String(value).replaceAll('/',''),
+ files:{
+  async read(path){
+   if(!files.has(path))throw Error('File not found.');
+   return files.get(path);
+  },
+  async write(path,data,expected){
+   const current=files.get(path)?.version??null;
+   if(current!==expected)throw Error('File changed.');
+   const result={
+    data:typeof data==='string'?new TextEncoder().encode(data):data,
+    version:String(++sequence),
+    status:'synced',
+   };
+   files.set(path,result);
+   return result;
+  },
+  async stat(path){
+   if(!files.has(path))throw Error('File not found.');
+   return files.get(path);
+  },
+  subscribe(){return()=>{}},
+ },
+};
+
+const make=(tag,className='',text='')=>{
+ const element=document.createElement(tag);
+ element.className=className;
+ element.textContent=text;
+ return element;
+};
+const button=(label,action)=>{
+ const element=make('button','',label);
+ element.setAttribute('aria-label',label);
+ element.addEventListener('click',action);
+ return element;
+};
+const input=(label,value)=>{
+ const element=make('input');
+ element.setAttribute('aria-label',label);
+ element.value=value;
+ return element;
+};
+
+window.fileStore=files;
+window.target='/Clockwork Quest.game.json';
+window.confirmAnswer=true;
+window.createQuest=()=>{
+ const controller=new AbortController();
+ const app=mount({
+  signal:controller.signal,
+  ui:{
+   make,
+   textButton:button,
+   appInput:input,
+   confirm:async message=>window.confirmAnswer?window.confirm(message):false,
+  },
+  storage:{
+   signedInSubject:()=> 'test',
+   mirrorFileContext:async()=>context,
+   pickFile:async()=>window.target,
+   pickFolder:async()=>'/',
+  },
+ });
+ const frame=make("section","fixture-window");
+ frame.style.cssText="display:flex;height:700px;width:100%;min-height:0;overflow:hidden;position:relative;border:1px solid #777;margin:8px 0";
+ frame.append(app.element);
+ document.body.append(frame);
+ return {app,controller};
+};
+window.instances=[createQuest(),createQuest()];
+</script>
