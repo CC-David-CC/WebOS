@@ -2,7 +2,7 @@
 
 Generated from `cargo metadata --offline --locked --filter-platform wasm32-unknown-unknown` for the e5a88e0 candidate source and lockfile. This walks normal and build dependencies from vectorcraft-web; it is a conservative dependency graph, not proof every package is linked into the final WASM. Package license expressions are upstream declarations, not a legal conclusion. Dev-only edges are excluded.
 
-317 packages were found. Upstream NOTICE includes references to epaint default fonts and the Independent JPEG Group. Verify the complete notices and applicable license texts for the actual shipped build before release. Apache-2.0 is an available choice for self_cell, which also offers GPL-2.0-only.
+317 packages were found. Upstream NOTICE includes references to epaint default fonts and the Independent JPEG Group. The four font license texts from epaint_default_fonts 0.36.2 are now explicitly packaged under `licenses/epaint-default-fonts-0.36.2/`; the upstream NOTICE includes the IJG binary acknowledgement. Verify the complete notices and applicable license texts for the actual shipped build before release. Apache-2.0 is an available choice for self_cell, which also offers GPL-2.0-only.
 
 | Package | Version | Declared license |
 | --- | --- | --- |
