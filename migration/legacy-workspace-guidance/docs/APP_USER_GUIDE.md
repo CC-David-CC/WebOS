@@ -14,7 +14,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Browser | Open a supported website or save a download to My files. | Experimental; temporary profile and no audio. |
 | Document Editor (Tiptap) | Write and save a report; export a PDF. | Not a Word editor. |
 | PDF Viewer (PDF.js) | Open, search and navigate a PDF. | Read-only; image-only scans need OCR. |
-| Spreadsheet (Jspreadsheet CE + SheetJS CE) | Edit a workbook; import/export supported CSV or XLSX. | Advanced Excel compatibility is limited. For example, `=-2^2` evaluates to `-4` here; use parentheses when exchanging formulas with Excel. |
+| Spreadsheet (Jspreadsheet CE + SheetJS CE) | Edit a workbook in the native format or import/export CSV. | XLSX is optional and compatibility is limited. For example, `=-2^2` evaluates to `-4` here; use parentheses when exchanging formulas with Excel. |
 | Data Explorer (Perspective + DuckDB) | Create the synthetic resistor example or open CSV or TSV from Files or My files, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
 | Python Notebook (JupyterLite + Pyodide) | Run the measurement example with Shift+Enter or Run, edit it, then save to My files. The getting-started guide explains the two Python environments. | Untrusted notebooks are not isolated. Browser Python differs from the temporary Linux environment. |
 | Image Editor (Filerobot) | Create a blank image or open an image, add a watermark or annotation from My files, and save a copy. | Animated images are unsupported; annotation images use a temporary gallery. |

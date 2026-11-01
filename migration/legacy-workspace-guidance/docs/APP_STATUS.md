@@ -18,7 +18,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | Animated images selected from My files are rejected; clipboard and existing animations need review. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; read-only, with no OCR for scans. |
-| Spreadsheet | Workflow checked | Advanced Excel compatibility is limited; mathematical exponent precedence differs from Excel. |
+| Spreadsheet | Workflow checked | Native format and CSV are primary; XLSX compatibility is optional and limited. |
 | Data Explorer | Workflow checked | Large datasets can exceed device memory; injected restore failures now pass without the previously observed worker error, but other failure and resource-pressure cases remain unverified. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
 | Image Editor | Workflow checked | Temporary restore failures retain the image reference; animated images unsupported and embedded tools need further audit. |
@@ -28,7 +28,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | SVG Editor | Workflow checked | SMIL animation is rejected; CSS animation and complex SVG compatibility remain unverified. |
 | Replicad | Workflow checked | Limited model generator, not general CAD; validate output. |
 | Kiri:Moto | Workflow checked | Printer profiles, output and physical touch need independent verification. |
-| Mesh:Tool | Workflow checked | Undo history is not saved; manufacturing correctness unverified. |
+| Mesh:Tool | Workflow checked | Typed-array wrap/overflow is rejected; undo history and manufacturing correctness remain unverified. |
 | G-code Preview | Workflow checked | Supports a subset, assumes an initial state, and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | Not electrical simulation; browser compilation unavailable; reload does not preserve serial output. |
 | Pico Simulator | Workflow checked | Firmware/peripheral support partial; temporary storage failures retain restore references, but unsaved flash cannot be recovered after a crash. |
@@ -53,7 +53,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Story Cards | Preview | Account sync and isolation checked; complete story and physical touch remain. |
 | Expression Puppet | Preview | Further interaction and physical-device review; final artwork pending. |
 | Rhythm Garden | Preview | Single touch/accessibility activations and save/reopen checked; physical audio latency and full medal runs remain. |
-| Lantern Leap | Preview | Further interaction and physical-device review; final artwork pending. |
+| Lantern Leap | Preview | Overlapping inputs, focus loss, save and reopen checked; physical touch and all rooms remain unverified. |
 | Garden Defense | Preview | Further interaction and physical-device review; final artwork pending. |
 | Pocket Rally | Preview | Focus/input, account save and isolation checked; full races and physical multitouch remain. |
 | Sling Targets | Preview | Further interaction and physical-device review; final artwork pending. |
