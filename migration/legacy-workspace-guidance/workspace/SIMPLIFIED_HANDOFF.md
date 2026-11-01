@@ -4254,3 +4254,7 @@ Hosting generator `fb6df35217cf19d5c138f67ebbc3ffc8a3514a75c0cb85e0ae5b568819560
 ## Right rail refinement — 2026-11-01
 
 Live static release `0e62a8a061fd48a26d3ff3948916cd2e38d95ec6e0c3d42a3381d224b2ea4c40` places tasks above the X at the bottom of a dark charcoal rail, retains the light menus, aligns left-opening submenus, and displays larger MM/DD/YY and HH:MM:SS. Desktop, 4K, and emulated phone checks passed locally; desktop and emulated phone checks passed on the live site. Physical phone was not tested. The shell test mocks the guest image and is not a Linux boot test. Root, /desktop/ and /blog/ returned 200. Hosting manifest `712939329d08ea9030dbaa623aa811b2fd9de3826e3ce8c3fa0626dd5e78178a`; rollback inputs `/var/backups/webhost-sites/change-20261101T084011533366Z` and `/var/backups/webhost-sites/change-20261101T084011534150Z`.
+
+## App recovery update — 2026-11-01
+
+Live release `06e26892602f380d632d9b63e35a902ea0f697b384b84d587b256eeb0398d29e` includes Audio Editor invalid restored audio recovery and Data Explorer failed-open recovery and pinned DuckDB worker exception bindings. Local desktop/phone tests and live phone-sized audio and desktop Data Explorer tests passed; physical touch and arbitrary failures remain unverified. Hosting manifest `d3065b2607498cc6a44a65c5aa51a4e4abddf468d819bed33c61492301cba028`; rollback inputs `/var/backups/webhost-sites/change-20261101T084154514270Z` and `/var/backups/webhost-sites/change-20261101T084154514949Z`.
