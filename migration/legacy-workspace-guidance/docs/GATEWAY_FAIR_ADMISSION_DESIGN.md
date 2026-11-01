@@ -67,8 +67,11 @@ issuer/gateway operations, legacy traffic, separate bounded shares, forged and
 replayed proofs and expiry. Its random per-instance epoch is part of each
 enhanced proof: a replacement gateway instance rejects the old proof and accepts
 a newly signed one. This is an in-process instance replacement, not a tested OS
-restart or multi-replica protocol. Verification slots remain shared and can be
-saturated. It has no production route; do not enable it.
+restart or multi-replica protocol. Separate bounded reader slots prevent slow
+challenge bodies from occupying verification slots in a real TCP test; when
+verification workers themselves are saturated, a negative control confirms
+signed uses still wait. This does not resolve connection pressure or challenge
+starvation. It has no production route; do not enable it.
 
 An unwired client experiment lives in
 `active-system/gateway_service/experimental_admission_client.mjs`. It validates
