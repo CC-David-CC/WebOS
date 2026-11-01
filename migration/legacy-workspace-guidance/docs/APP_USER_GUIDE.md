@@ -31,7 +31,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Digital Logic Simulator (DigitalJS) | Try gates, adder and comparator examples, toggle inputs and inspect or save a truth table. | JSON combinational circuits only; no sequential circuits or full schematic editor. |
 | Circuit Simulator (CircuitJS) | Try the voltage divider, RC filter or rectifier and inspect simulated output. | CircuitJS simulation is not a substitute for measurement or hardware validation. |
 | Electronics Design (designElectronics) | Work with breadboard, schematic and PCB views; save the project. After opening a project, use Save As with a different filename. | The original is protected because the editor may omit unsupported parts from a copy. Inspect both files; component coverage and production-board validation remain incomplete. |
-| Embroidery Studio (StitchFoundry) | Create and save a project and export stitches. | Pre-release editor; machine compatibility and physical sewing are unverified. |
+| Embroidery Studio (StitchFoundry) | Try the stitched rectangle, create and save a project, and export stitches. | Pre-release editor; machine compatibility and physical sewing are unverified. |
 | Stitch Converter (tsembroidery) | Open SVG artwork, set the labeled size and format, preview stitches, then save editable artwork and machine output separately. | Conversion may omit unsupported SVG; inspect the design and test-sew. |
 | Falling Blocks | Play, choose sound and volume in Settings, and save or reopen a game. | Preview; sound starts muted. |
 | Owl Companion | Try an activity, save and reopen your progress. | Preview uses a procedural placeholder while authored Rive art is pending. |
