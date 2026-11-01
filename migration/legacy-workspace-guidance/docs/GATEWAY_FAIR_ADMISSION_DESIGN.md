@@ -68,10 +68,17 @@ replayed proofs and expiry. Its random per-instance epoch is part of each
 enhanced proof: a replacement gateway instance rejects the old proof and accepts
 a newly signed one. This is an in-process instance replacement, not a tested OS
 restart or multi-replica protocol. Separate bounded reader slots prevent slow
-challenge bodies from occupying verification slots in a real TCP test; when
-verification workers themselves are saturated, a negative control confirms
-signed uses still wait. This does not resolve connection pressure or challenge
-starvation. It has no production route; do not enable it.
+challenge bodies from occupying verification slots in a real TCP test. The
+verification budget is also partitioned by endpoint, without trusting any
+unverified identity claim; challenge verification cannot occupy the slots
+reserved for file uses. In a bounded loopback test, 32 real, forged signed
+challenges and a signed file operation run concurrently. A controlled stalled
+challenge verifier leaves signed uses progressing. A negative control shows
+that forged use requests can still saturate the reserved use lane: their identity
+cannot be known until verification, so signed uses can still wait. Controlled
+verifier delays are not performance measurements of cryptographic verification.
+These controls do not resolve connection pressure, challenge starvation, issuer
+exhaustion, or saturation within a lane. It has no production route; do not enable it.
 
 An unwired client experiment lives in
 `active-system/gateway_service/experimental_admission_client.mjs`. It validates
