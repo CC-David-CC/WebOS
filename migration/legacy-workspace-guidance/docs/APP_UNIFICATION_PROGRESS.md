@@ -556,6 +556,12 @@ phone-sized tests used actual CDP touch cancellation and the real v86/Linux
 guest, including a completed scrollback swipe; a live phone-sized test passed.
 Physical touch remains unverified.
 
+Image Editor has a local candidate that rejects animated PNG and WebP before
+opening: the still-image editor would otherwise save just one frame. Desktop
+and phone-sized tests used real two-frame files and static browser-generated
+images, verifying preservation of the original file and current edits. This is
+not live; physical touch and other image formats remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
