@@ -227,6 +227,14 @@ remain unverified. PDF Viewer's local candidate adds page-number navigation;
 desktop, emulated-phone and 4K account checks cover My files open, navigation,
 invalid numbers, search, resize and fresh-session reopening. Both are not live.
 
+Embroidery Studio's local File-menu candidate places Open and Save first,
+increases touch targets, and returns focus on Escape. Desktop, emulated-phone
+and 4K menu tests, desktop/phone file workflows, and a phone-sized provider
+command/CSP regression passed. Its corresponding-source archive was regenerated
+and checked against the integration files; a clean isolated packaging run
+passed with the updated pin. This menu update is not live. Physical touch and
+the complete upstream service surface remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
