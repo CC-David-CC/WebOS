@@ -664,13 +664,14 @@ account checks covered recovery/sync and real-worker preview rejection. The
 G-code check is not comprehensive syntax or machine validation. Live
 phone-sized account checks passed both cases; physical touch remains unverified.
 
-Image Editor has a local signature check before decode, preventing a GIF
+Image Editor checks image signatures before decode, preventing a GIF
 renamed as PNG from bypassing animation protection and being overwritten as a
 still image. Desktop and phone-sized real-editor/account tests used a two-frame
 GIF and PNG/JPEG/WebP round trips; the phone resize/Save As test also passed.
 An initial phone test hit a detached node and an initial round-trip test clicked
-a disabled clean Save; corrected reruns passed. This is not live; physical touch
-and malformed files mimicking valid signatures remain unverified.
+a disabled clean Save; corrected reruns passed. Live phone-sized account
+checks passed both the mismatch and supported format round trips. Physical
+touch and malformed files mimicking valid signatures remain unverified.
 
 ### Embedded-app file-menu review
 

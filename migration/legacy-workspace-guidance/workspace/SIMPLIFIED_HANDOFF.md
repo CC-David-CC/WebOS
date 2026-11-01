@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Image format signature protection
+
+Live static release `43f517bf406953873fa9bfc758b94baf09ebb9861a92cd1097749cb0482ed68c`
+checks PNG/JPEG/WebP signatures before decoding, preventing a renamed animated
+GIF from being overwritten as a still image. Live phone-sized account checks
+covered that mismatch, retained edits and PNG/JPEG/WebP resize/save round trips.
+Physical touch and malformed files mimicking valid signatures remain unverified.
+Two test accounts were disabled with data retained. Asset hash and root,
+/desktop/ and /blog/ checks passed. Source `bfc036c15` is on box-git. Hosting
+manifest SHA-256 is
+`a1ecc2d34dc89e15a624d2fe126d2ea93742334e36b8096ba70099e1044a7e9d`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T054726098095Z`
+and `/var/backups/webhost-sites/change-20261101T054726098518Z`.
+
 ## 2026-11-01 — Report recovery and G-code coordinate validation
 
 Live static release `c3a2996a14bfd394299e7627344a6bb160b1ce804f42b75c5d83e66aa49176a1`
