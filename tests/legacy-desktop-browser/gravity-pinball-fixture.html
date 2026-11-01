@@ -1,0 +1,25 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gravity Pinball harness</title>
+<body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get('app');
+if(!entry||!entry.startsWith('/apps/gravity-pinball/'))throw Error('Missing local app bundle');
+const link=document.createElement('link');link.rel='stylesheet';link.href=entry.replace('index.mjs','index.css');document.head.append(link);
+const {mount}=await import(entry);
+const store=new Map();let revision=0;
+globalThis.target='/Gravity Pinball.game.json';globalThis.confirmAnswer=true;
+const files={
+ async stat(path){if(!store.has(path))throw Error('File not found.');const item=store.get(path);return{version:item.version,status:item.status,bytes:item.data.byteLength}},
+ async read(path){if(!store.has(path))throw Error('File not found.');return{...store.get(path)}},
+ async write(path,data,expected){const current=store.get(path)?.version??null;if(current!==expected)throw Error('File changed');const item={data:data instanceof Uint8Array?data:new Uint8Array(data),version:String(++revision),status:'synced'};store.set(path,item);return{version:item.version,status:item.status}},
+ async sync(){},
+ subscribe(){return()=>{}}
+};
+const context={owner:'test',valid:()=>true,path:value=>value.startsWith('/')?value:'/'+value,name:value=>value.split('/').pop(),files};
+const make=(tag,className='',text='')=>{const node=document.createElement(tag);node.className=className;if(text!=='')node.textContent=text;return node};
+const host={w:{title:'Gravity Pinball'},signal:new AbortController().signal,ui:{make,textButton(label,action){const node=make('button');node.type='button';node.textContent=label;node.setAttribute('aria-label',label);node.addEventListener('click',action);return node},appInput(label,value=''){const node=make('input');node.setAttribute('aria-label',label);node.value=value;return node},async confirm(){return globalThis.confirmAnswer}},storage:{signedInSubject:()=> 'test',mirrorFileContext:async()=>context,pickFile:async()=>globalThis.target,pickFolder:async()=>'/'}};
+const app=mount(host);document.body.append(app.element);
+window.test={app,store,files,host,dispose(){app.dispose();app.dispose();app.element.remove()}};
+</script>
