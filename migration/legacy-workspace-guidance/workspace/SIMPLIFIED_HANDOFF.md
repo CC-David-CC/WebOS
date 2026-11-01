@@ -1,5 +1,11 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Multi-file copy and SVG recovery
+
+Live static release `75b49fea6129f2e90bc4164d316edc98d8edd8acbd2d536f0d8453af5f3d7e14` adds multi-file Copy to and guards SVG Editor when both an open and rollback fail. Local desktop/phone and live emulated-phone account tests cover sync, preserving originals and injected partial-copy or double-load failure. Copies are separate operations and report partial completion; folders copy one at a time. Physical touch and other upstream failure modes are unverified. Two live test accounts were disabled with data retained. Hosting manifest SHA-256 `0daea9e9ce6142117a560ec4caa500ef0aa308da40c26855bb60d7233d7429ce`; rollback inputs `/var/backups/webhost-sites/change-20261101T081952144947Z` and `/var/backups/webhost-sites/change-20261101T081952150806Z`.
+
+Folder-move research is separately backed up at `research/folder-lock-20261101` commit `dd65e86b0fc45f466bdcf819964f3d140bef915c`. The isolated journal tests stable retry and externally verified receipt settlement against the Python server primitive; signed transport, authentication, production integration, direct host writers and UI remain unfinished.
+
 ## 2026-11-01 — PDF render and startup recovery
 
 Live static release `478b750fbd2254d10026f273bf9ada9c4b5e0169b8a7a0e4ff699aa121d903d2` clears a failed initial PDF reference and stages page rendering before replacing the visible page or previous document. Failed search-result rendering clears the false match notice and allows retry. Local desktop/phone and live phone-sized account tests cover injected rendering failures, startup fallback, preservation and retry. One parallel oversized-open regression failed and a sequential rerun passed; the cause is unverified. Physical touch and other failure modes remain unverified. Three live test accounts were disabled with data retained. Hosting manifest SHA-256 `a926d148c169527d4b91129784f5547fa75cd9cece845d7de4b4368b43ceb879`; rollback inputs `/var/backups/webhost-sites/change-20261101T081532833082Z` and `/var/backups/webhost-sites/change-20261101T081532833531Z`.
