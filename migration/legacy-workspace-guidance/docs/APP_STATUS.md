@@ -18,19 +18,19 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | PDF has a Latin-focused fallback alongside Greek/math glyphs; complex scripts and clipboard paths remain incompletely checked. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Password-protected PDFs prompt locally; read-only, with no OCR for scans. |
-| Spreadsheet | Workflow checked | Compensated sums still use floating point; native format plus bounded CSV/TSV import are primary. Physical dragging remains unverified. |
+| Spreadsheet | Workflow checked | CSV/TSV stays capped at 8 MiB; long cells are read-only previews, with full value retained for export. The 128 MiB target is research, not live. |
 | Data Explorer | Workflow checked | Text import can preserve identifiers; numeric inference, calculations and charts can round. Large datasets and resource pressure remain unverified. |
 | Python Notebook | Workflow checked | Transient local autosave failures retry, then require manual recovery; intermittent kernel startup errors remain unexplained. Untrusted notebooks are not isolated. |
 | Image Editor | Workflow checked | Warns on recognized metadata that saving may strip; detection is incomplete. Animated images unsupported; embedded tools need further audit. |
 | Audio Editor | Workflow checked | Tested file picker, drop and MultiTrack paths refuse unsupported >2-channel inputs; unusual codecs and physical audio remain unverified. |
 | diagrams.net | Workflow checked | Temporary restore failures offer guarded retry; the adapter must be requalified when diagrams.net changes. Other exports and provider entry points need review. |
-| Excalidraw | Workflow checked | Unknown element types are refused to preserve drawings; unknown fields, image memory and provider audit remain partial. |
+| Excalidraw | Workflow checked | Static self-contained SVG insertion is supported; complex SVG, unknown fields, image memory and provider audit remain partial. |
 | SVG Editor | Workflow checked | JPEG export warns about lost transparency and lossy compression. SMIL and common inline CSS animation are rejected; other CSS and complex SVG remain unverified. |
 | Replicad | Workflow checked | Preview shows approximate solid extents; export defaults beside the project. Limited model generator, not general CAD or manufacturing validation. |
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Temporary workspace read failures offer retry; undo history and manufacturing correctness remain unverified. |
 | G-code Preview | Workflow checked | Temporary restore failures offer Reload; refuses G29/G30 probing found in some slicer files; supports a subset and does not validate machine safety. |
-| Arduino Simulator | Workflow checked | Temporary firmware restore failures offer retry; D13 shows driven-high output, not analog brightness. No electrical simulation or browser compilation. |
+| Arduino Simulator | Workflow checked | D2/D3 driven-input exercise executes real AVR firmware; D13 shows driven-high output. No analog/electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Folder choices reject stale selections; firmware/peripheral support partial and unsaved flash cannot be recovered after a crash. Physical hardware unverified. |
 | Digital Logic | Workflow checked | Examples include an enabled 2-to-4 decoder; truth tables can be saved. Combinational JSON only; no hardware timing validation. |
 | Circuit Simulator | Workflow checked | Output-probe CSV records one simulated instant, not a waveform or hardware measurement. |
