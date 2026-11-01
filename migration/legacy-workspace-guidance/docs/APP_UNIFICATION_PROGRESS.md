@@ -720,10 +720,13 @@ sized account tests covered delayed saves and real AVR serial echo with
 synthetic composition events. Live phone-sized account checks passed both;
 physical touch and physical IME behavior remain unverified.
 
-Folder move and rename remain unsupported. The existing gateway and browser
-journal cover individual files, not a versioned subtree. The coordinated
-protocol, out-of-band-write decision and test gates are described in
-`FOLDER_MOVE_DESIGN.md`; no unsafe copy-and-delete substitute has been enabled.
+Folder move and rename remain unsupported. The existing live gateway and browser
+journal cover individual files, not a versioned subtree. An unrouted local
+server experiment now tests a bounded manifest, no-replace rename and durable
+receipt across injected process exits; 17 focused filesystem tests passed.
+Out-of-band writes, orphan recovery, backup invariants, scalable limits and the
+browser protocol remain unresolved. See `FOLDER_MOVE_DESIGN.md`; no folder
+endpoint, UI or copy-and-delete substitute has been enabled.
 
 Stitch Converter has a close guard for artwork saves and machine-file
 exports. Desktop and phone-sized real-converter/account tests covered pending
