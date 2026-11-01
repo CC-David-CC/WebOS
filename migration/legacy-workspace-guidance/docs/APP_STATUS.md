@@ -48,7 +48,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Marble Works | Preview | Pause/resume, account sync and reopen checked; all eight puzzles, physical touch and final artwork remain. |
 | Stack & Balance | Preview | Touch cancellation, save and reopen checked; full challenge set and physical devices remain unverified. |
 | Crystal Defense | Preview | Deleted-save and busy-pause handling checked; full eight-wave playthrough and physical touch remain. |
-| Drone Circuit | Preview | Further interaction and physical-device review; final artwork pending. |
+| Drone Circuit | Preview | Overlapping inputs, focus loss, save and reopen checked; physical multitouch and full course remain unverified. |
 | Reactive Control Desk | Preview | Further interaction and physical-device review; final artwork pending. |
 | Story Cards | Preview | Account sync and isolation checked; complete story and physical touch remain. |
 | Expression Puppet | Preview | Further interaction and physical-device review; final artwork pending. |
