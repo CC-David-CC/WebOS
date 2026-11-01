@@ -11,8 +11,8 @@ phone-sized PDF metadata-order check also passed. The earlier unpatched build
 had failed 4 of 8 automated drags. Physical touch and broader drag scenarios
 remain unverified. Six test accounts were disabled with data retained. Asset
 hashes and root, /desktop/ and /blog/ checks passed. Source `b6ffa5025` is on
-box-git. Files builds require `python3 apps/system/files/prepare.py` after the
-shared builder dependencies are installed. Hosting manifest SHA-256 is
+box-git. The standard Files builder now runs `prepare.py` automatically after the
+shared builder dependencies are installed; custom overlays prepare themselves. Hosting manifest SHA-256 is
 `1ad499a156c162d39b4e2d7d9dbe7f121e6e3e8729e6e5b722c63ebe7070da74`;
 rollback inputs are `/var/backups/webhost-sites/change-20261101T052037982360Z`
 and `/var/backups/webhost-sites/change-20261101T052037982777Z`.

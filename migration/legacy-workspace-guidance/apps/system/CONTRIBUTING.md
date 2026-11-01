@@ -18,6 +18,9 @@ standard selected-app builder includes CodeMirror when Text is selected; its
 pinned packages must still be installed with
 `npm ci --prefix apps/system/codemirror --ignore-scripts`. Custom source or entry overlays are
 responsible for selecting their own host-loaded tools.
+The standard builder also stages Files’ hash-checked Chonky patch automatically;
+install the shared builder dependencies first. Custom overlays handle their own
+preparation.
 
 An app may declare its own pinned `package.json` and lockfile in its folder;
 run `npm ci --prefix apps/system/<id> --ignore-scripts` before building. The

@@ -590,6 +590,11 @@ clearing a newer file-change warning. Desktop and phone-sized account tests
 covered delayed checks and existing change/deletion/reload behavior; a live
 phone-sized account check passed. Physical touch remains unverified.
 
+The standard Files builder now stages its hash-checked Chonky dependency
+automatically after shared builder dependencies are installed. A build with the
+app-local package absent recreated it and produced the same Files index hash as
+the live bundle. Custom source or entry overlays still prepare themselves.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
