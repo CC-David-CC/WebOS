@@ -440,6 +440,12 @@ PTM redistribution question and independent KLU relink remain unresolved; do
 not deploy or publish the unreviewed models. The archive is private research
 material, not a completed distribution review.
 
+G-code Preview has a local candidate that rejects `M206` and `M428` home-offset
+changes rather than silently ignoring them. Desktop, emulated-phone and 4K
+account tests exercised the real parser and preview and verified that the prior
+view remains open. This candidate is not live; other controller-specific
+behavior and physical machines remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
