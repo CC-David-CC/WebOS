@@ -613,6 +613,20 @@ menu respectively; corrected reruns passed. Live phone-sized account checks
 passed both cases. Physical touch, concurrent Open invocations and UI-level grid
 behavior remain unverified.
 
+Local candidates: Files rechecks captured folder listings and file versions
+after ZIP assembly and stops before writing if a change is detected. Tests
+injected an added file during compression and verified a successful retry;
+changes after the last check can still be missed and Linux guest fallback is
+unverified. Spreadsheet opens an editable blank workbook after an invalid direct
+launch while keeping the original untouched; account tests save and reopen the
+recovered workbook. diagrams.net warns before closing during editor export or
+account write, and restores prior dirty state after failure. Desktop and
+phone-sized tests passed; the diagrams test uses a programmatic fallback Save
+control. One Files parallel test and a diagrams registration run timed out;
+sequential reruns passed. A broader Spreadsheet check lacked Data Explorer in
+its isolated bundle and is not claimed. These changes are not live; physical
+touch remains unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
