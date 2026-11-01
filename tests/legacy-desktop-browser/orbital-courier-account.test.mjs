@@ -74,7 +74,7 @@ try{
   await phone.waitForSelector('[aria-label="Choose file Orbital Courier.game.json"]',{visible:true});
   await phone.click('[aria-label="Choose file Orbital Courier.game.json"]');
   await phone.waitForFunction(()=>document.querySelector('.orbital-view .app-status')?.textContent.includes('Mission loaded and paused'),{timeout:30000});
-  assert.match(await phone.$eval('.orbital-view .orbital-panel',node=>node.textContent),/Mission/);
+  assert.match(await phone.$eval('.orbital-view .orbital-panel',node=>node.textContent),/First Orbit/);
 
   const isolation=await browser.createBrowserContext();contexts.push(isolation);
   const other=await isolation.newPage();await login(other,true,username+'b');
