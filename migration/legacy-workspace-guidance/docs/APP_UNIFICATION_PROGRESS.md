@@ -207,6 +207,17 @@ testing, some app workflows, and the classroom capacity target remain separate
 verification work. Source and notes are backed up to box-git; generated builds,
 dependencies, user files and account state are not source backups.
 
+Recent local candidates: Document Editor prevents an Open operation from
+discarding edits made while either confirmation is displayed. Desktop,
+emulated-phone and 4K account tests inject those races and cover open, edit,
+save and sync; the phone-sized open-safety test also passed fresh-session
+recovery. Data Explorer now separately reports changes, deletion or conflicts
+in the saved analysis project and reports an immediate conflicting save
+honestly. Desktop, emulated-phone and 4K two-session account tests cover
+change, deletion, conflict, save copy and fresh-session recovery; an immediate
+write-conflict response was injected in a phone-sized test. These candidates
+are not live; physical touch remains unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
