@@ -4544,3 +4544,7 @@ Live static release `a142c2bb272672cc9d54836ba80548114a9110344ca76e003d5ce5faf91
 ## Simplified static archival tenth batch — 2026-11-01
 
 Ten verified inactive static releases archived to `/srv/data/codi-archived-simplified-20261101`, 92 total receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Active `a142c2bb…`, rollbacks `eb01c5c6…` / `0bc90b47…`, referenced paths and user data retained; services active. Root free 4.3 to 5.4 GiB; `/srv/data` 388 GiB available. Known manifest mismatches remain untouched; archived historical paths require restoration before use.
+
+## Kiri starter, Text picker and diagram exports live — 2026-11-01
+
+Live release `64a8aaa6dab9036653c7b370eb34637fee5510126267c248d5a511a26a6d3b4b`, previous `a142c2bb272672cc9d54836ba80548114a9110344ca76e003d5ce5faf910a4c5`. Public phone-sized account tests passed actual Kiri cube dimensions/nonreplacement/slice/sync/reopen; Text SQL/README picker, binary refusal/save/sync/reopen; diagrams native SVG/PNG export/cancel/sync. Three exact test accounts disabled; files retained. CodeMirror auto-dependency unchanged. Root, `/desktop/`, `/blog/` 200. Manifest `7e791cb32040d3e11720bb8d85d383c634c3716c4e2c214e8af52cd3f76edab2`; Caddy `5cc9104a7e52e32cc7637b94cf24ea9d217be9d376aa382cd9ddcd2889d4fca5`; rollback `/var/backups/webhost-sites/change-20261101T140909633270Z` and `/var/backups/webhost-sites/change-20261101T140909634056Z`. Root 4.5 GB available before archive. Physical touch and printer validation remain unverified.
