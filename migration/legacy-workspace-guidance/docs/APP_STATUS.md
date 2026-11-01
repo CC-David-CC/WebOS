@@ -45,7 +45,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Chess Study | Preview | Actual AI, save and reopen checked; AI strength and physical touch unverified. |
 | Solitaire | Preview | Rules, seeded invariants and near-win recovery checked; full deal-to-win and physical touch remain. |
 | Sky Courier | Preview | Steering and firing checks passed; full campaign and physical touch unverified. |
-| Marble Works | Preview | Further interaction and physical-device review; final artwork pending. |
+| Marble Works | Preview | Pause/resume, account sync and reopen checked; all eight puzzles, physical touch and final artwork remain. |
 | Stack & Balance | Preview | Further interaction and physical-device review; final artwork pending. |
 | Crystal Defense | Preview | Further interaction and physical-device review; final artwork pending. |
 | Drone Circuit | Preview | Further interaction and physical-device review; final artwork pending. |
