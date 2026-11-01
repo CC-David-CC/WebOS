@@ -12,7 +12,7 @@ from aiohttp import web
 ROOT=Path(__file__).resolve().parent.parent;sys.path.insert(0,str(ROOT))
 from gateway_service.auth import initialize_ledger
 from gateway_service.transfers import initialize_transfers,Pacer
-from gateway_service.user_store import UserStore
+from gateway_service.user_store import UserStore, DEFAULT_ACCOUNT_FOLDERS
 from gateway_service.http import FileGateway
 
 if __name__=='__main__':
@@ -34,7 +34,7 @@ if __name__=='__main__':
         raw=path.read_bytes()
         if hashlib.sha256(raw).hexdigest()!=args.issuer_policy_sha256:raise ValueError('Issuer policy pin changed')
         value=json.loads(raw);policy=value.get('identity',value)
-        store=UserStore(args.state_root,args.data_root)
+        store=UserStore(args.state_root,args.data_root,initial_folders=DEFAULT_ACCOUNT_FOLDERS)
         if args.action=='initialize':
             initialize_ledger(store);initialize_transfers(store)
             print(json.dumps({'status':'initialized','publicServiceStarted':False,'anonymousFolders':0}));raise SystemExit(0)

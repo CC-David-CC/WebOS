@@ -26,7 +26,7 @@ from origin_service.gateway_authority import GatewayAuthority
 from origin_service.http_server import BoundedServer, QuietHandler
 from gateway_service.auth import initialize_ledger, MAX_REQUEST_BYTES
 from gateway_service.transfers import initialize_transfers
-from gateway_service.user_store import UserStore
+from gateway_service.user_store import UserStore, DEFAULT_ACCOUNT_FOLDERS
 from gateway_service.http import FileGateway
 
 spec=importlib.util.spec_from_file_location('codi_staging',ROOT/'scripts/serve-connected.py')
@@ -44,7 +44,7 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
         shutil.copytree(source,public/'assets/speech',dirs_exist_ok=True)
     data=runtime/'account-data' if isolated else ROOT/'storage/accounts/data';state=runtime/'account-state' if isolated else ROOT/'storage/accounts/state'
     for folder in (data,state):folder.mkdir(parents=True,exist_ok=True,mode=0o700)
-    store=UserStore(state,data);initialize_ledger(store);initialize_transfers(store)
+    store=UserStore(state,data,initial_folders=DEFAULT_ACCOUNT_FOLDERS);initialize_ledger(store);initialize_transfers(store)
     browser_policy=ROOT.parent/'apps/system/browser/relay/policy.json'
     browser_sha=hashlib.sha256(browser_policy.read_bytes()).hexdigest() if browser_relay else None
     class Issuer(Service):
