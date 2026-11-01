@@ -18,7 +18,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | Animated images selected from My files are rejected; clipboard and existing animations need review. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; read-only, with no OCR for scans. |
-| Spreadsheet | Workflow checked | Native format and CSV are primary; XLSX compatibility is optional and limited. |
+| Spreadsheet | Workflow checked | Native format and CSV are primary; row/column changes track unsaved work. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Large datasets can exceed device memory; injected restore failures now pass without the previously observed worker error, but other failure and resource-pressure cases remain unverified. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
 | Image Editor | Workflow checked | Temporary restore failures retain the image reference; animated images unsupported and embedded tools need further audit. |
@@ -54,7 +54,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Expression Puppet | Preview | Further interaction and physical-device review; final artwork pending. |
 | Rhythm Garden | Preview | Single touch/accessibility activations and save/reopen checked; physical audio latency and full medal runs remain. |
 | Lantern Leap | Preview | Overlapping inputs, focus loss, save and reopen checked; physical touch and all rooms remain unverified. |
-| Garden Defense | Preview | Further interaction and physical-device review; final artwork pending. |
+| Garden Defense | Preview | Map cancellation and pending-save path checks pass; physical touch and full wave progression remain. |
 | Pocket Rally | Preview | Focus/input, account save and isolation checked; full races and physical multitouch remain. |
 | Sling Targets | Preview | Further interaction and physical-device review; final artwork pending. |
 | Gravity Pinball | Preview | Account save/reopen and input-focus checks passed; physical touch remains. |
