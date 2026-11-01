@@ -34,7 +34,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Pico Simulator | Workflow checked | Firmware/peripheral support partial; temporary storage failures retain restore references, but unsaved flash cannot be recovered after a crash. |
 | Digital Logic | Workflow checked | Feed-forward combinational JSON circuits only; no timing or hardware validation. |
 | Circuit Simulator | Workflow checked | Divider simulation, upload, sync and recovery checked; simulation is not hardware validation. |
-| Electronics Design | Workflow checked | Component coverage, physical touch and board validation remain open. |
+| Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Pre-release; physical sewing, machine formats and provider audit remain open. |
 | Stitch Converter | Workflow checked | SVG support and machine compatibility remain partial; test-sew output. |
 | Falling Blocks | Preview | Emulated multitouch tested; physical phone and audible speakers unverified. |
