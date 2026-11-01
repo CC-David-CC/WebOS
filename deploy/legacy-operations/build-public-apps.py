@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,6 +30,10 @@ def build(source=None, output=None, apps=APP_IDS, node=None, entries=None, publi
         for app in apps:
             for dependency in APP_DEPENDENCIES.get(app, ()):
                 if dependency not in apps: apps.append(dependency)
+        # Files has an app-local, hash-checked patch of the shared Chonky
+        # dependency. Stage it automatically after builder dependencies exist.
+        if 'files' in apps:
+            subprocess.run([sys.executable, str(source_root/'system/files/prepare.py')], check=True, stdout=subprocess.DEVNULL)
         entries = {app: ('individual/templates/index.mjs' if app == 'personal-template' else f'system/{app}/index.mjs') for app in apps}
     options = {'source': str(source_root),
                'output': str(Path(output or ROOT/'assets/desktop').resolve()), 'apps': list(apps), 'entries': entries or {},
