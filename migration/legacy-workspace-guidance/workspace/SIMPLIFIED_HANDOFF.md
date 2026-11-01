@@ -4524,3 +4524,7 @@ Live release `af1f9774c752eb69e18b20d58f15872d651cd3ed7e6e1e0d733e4447924b8391`,
 ## Preview, notebook title and JPEG conversion live — 2026-11-01
 
 Live release `0bc90b47b02987624ad11e66d8963c601536ce2e0b8efd31c3da2741c27a5694`, previous `af1f9774c752eb69e18b20d58f15872d651cd3ed7e6e1e0d733e4447924b8391`. Public phone tests passed Replicad stale/cancel/retry/save/sync/reopen; JPEG cancel/save/sync/reopen; Notebook Save As title/independent original/copy. First Notebook registration timed out at 30s; DB check found no new matching account, fresh witnessed rerun passed; cause unproven. Three exact test accounts disabled; files retained. Root, `/desktop/`, `/blog/` 200. Manifest `13e7b69c3b6d1f7b3a50cc66f0d059510947d54c62514c43705cedaab84487e3`; Caddy `3177c96796ed9189d1a52f4607e04d0d7f9b9e084c8ddf7d3ba6f85a77ae0b69`; rollback `/var/backups/webhost-sites/change-20261101T132903712458Z` and `/var/backups/webhost-sites/change-20261101T132903713297Z`. Root had 4.5 GB free before next archive batch. Physical touch/manufacturing unverified.
+
+## Simplified static archival ninth batch — 2026-11-01
+
+Ten more verified inactive releases archived to `/srv/data/codi-archived-simplified-20261101`; 82 per-release receipts in `/srv/codi-connected/simplified-archive-<hash>.json`. Active `0bc90b47…` and rollbacks `af1f9774…` / `84fea19f…` retained; services active. Root free 4.5 to 6.3 GiB; `/srv/data` 393 GiB available. Historical `49f37406…` is archived and its former path requires restoration before use. Known manifest mismatches remain untouched.
