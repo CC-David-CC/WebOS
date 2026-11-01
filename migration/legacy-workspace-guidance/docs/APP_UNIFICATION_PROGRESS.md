@@ -321,16 +321,17 @@ with a separate real Blink-worker check. Physical touch, PDF extraction order
 and real-firmware serial behavior for this change remain unverified. Public
 phone-sized account checks passed for all three workflows.
 
-Circuit Simulator's local XML import candidate rejects missing positions and
+Live release `d8c9c1f7074d037631c8075e85fc601a9ba3deb17a3e3f2641de47869769d13b`:
+Circuit Simulator's XML import check rejects missing positions and
 components silently skipped by the simulator, restoring the previous circuit.
 Desktop, emulated-phone and 4K account tests cover invalid and valid imports;
 phone-sized menu and export regressions also passed. The corresponding-source
 archive was regenerated and checked against the host files. This check does not
-fully validate parameters or legacy text imports. SVG Editor's local candidate
+fully validate parameters or legacy text imports. SVG Editor
 routes focused Ctrl+S to My files and Ctrl+Shift+S to Save As, and prevents
 overlapping actions during path prompts. Desktop, emulated-phone and 4K account
-tests cover shortcuts, save, export, sync and reopen. Neither candidate is live;
-physical touch and actual Mac shortcuts remain unverified.
+tests cover shortcuts, save, export, sync and reopen. Public phone-sized tests
+passed for both. Physical touch and actual Mac shortcuts remain unverified.
 
 Calculator has a local candidate that marks a calculation-note save as pending
 for the desktop close guard. Desktop, emulated-phone and 4K account tests held
@@ -339,15 +340,15 @@ synced and reopened. Hold/failure timing was injected; storage was real. The
 minimal host guard and Calculator update must be released together. This
 candidate is not live; physical touch remains unverified.
 
-Next local candidates: Arduino Simulator shows a persistent notice when its
+Arduino Simulator shows a persistent notice when its
 opened or saved HEX changes, disappears or conflicts in My files, while keeping
 the loaded firmware running. Desktop, emulated-phone and 4K checks exercised
 real two-browser changes, deletion and conflict, plus AVR serial echo and
 subscription cleanup. Spreadsheet warns before closing during workbook saves
 or CSV/XLSX exports; desktop, emulated-phone and 4K checks held real conversion
 and writes, cancelled close, then verified sync and reopening. Those delays were
-injected and already-dispatched writes can still finish after closure. Neither
-candidate is live; physical touch and hardware remain unverified.
+injected and already-dispatched writes can still finish after closure. Public
+phone-sized tests passed; physical touch and hardware remain unverified.
 
 ### Embedded-app file-menu review
 

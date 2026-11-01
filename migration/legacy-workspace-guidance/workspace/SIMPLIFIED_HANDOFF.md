@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Import, save and firmware safety
+
+Live static release `d8c9c1f7074d037631c8075e85fc601a9ba3deb17a3e3f2641de47869769d13b`
+includes the documented Circuit Simulator XML import protection, SVG save
+shortcuts, Arduino firmware-change notices and Spreadsheet pending-save guard.
+Public phone-sized account tests passed for all four; served assets and the
+CircuitJS corresponding-source archive matched their hashes. Some delays and
+concurrent changes were injected; physical touch and hardware remain unverified.
+Five test accounts were disabled with data retained. Source through `d1f37a865`
+is backed up to box-git. Hosting manifest SHA-256 is
+`74b9c2d9559e24bf84b9194dc5964a2f76887079f36c44a2a15734ca6b4bd49e`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T042729343902Z`
+and `/var/backups/webhost-sites/change-20261101T042729345020Z`.
+
 ## 2026-11-01 — Data, PDF and Pico review
 
 Live static release `1af8bd99a73a7773c7e6671a71f59a6f54840207bc22a4b8fdec1dfae3727dd9`
