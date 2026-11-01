@@ -499,12 +499,20 @@ arc regressions also passed. An initial arc run used an unavailable debugging
 port; rerunning with the active port passed. A live phone-sized account check
 passed. This does not establish machine compatibility or safety.
 
-Digital Logic has a local candidate validating wire port existence and direction
-before simulation or truth tables; invalid connections retain the previous
-diagram. Desktop and phone-sized account tests and the phone multiple-driver
-and 16-case comparator regressions passed. An initial comparator run used an
-unavailable debugging port; rerunning with the active port passed. This is not
-live; physical touch and hardware behavior remain unverified.
+Digital Logic validates wire port existence and direction before simulation or
+truth tables; invalid connections retain the previous diagram. Desktop and
+phone-sized account tests and the phone multiple-driver and 16-case comparator
+regressions passed. An initial comparator run used an unavailable debugging
+port; rerunning with the active port passed. A live phone-sized account check
+also passed; physical touch and hardware behavior remain unverified.
+
+Image Editor has a local candidate for focused Ctrl/Command+S and an immediate
+resize/save race. A same-turn test reproduced saving 800×600 rather than
+320×240; the fix waits one event turn and snapshots the current editor state.
+Desktop and phone-sized tests verify saved dimensions through the native Save
+button and shortcut. The pending-close test passed; the account-switch test ran
+before the last snapshot-order adjustment. This is not live and does not prove
+timing for every image tool, physical touch or Mac shortcuts.
 
 ### Embedded-app file-menu review
 

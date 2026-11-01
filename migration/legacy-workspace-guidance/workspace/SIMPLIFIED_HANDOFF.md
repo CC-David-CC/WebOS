@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Digital Logic port validation
+
+Live static release `e1e1cc7b971e4687c3775cb34535fcd260f012d425b7358a975a311e5c5ea8d3`
+validates that wires connect existing outputs to existing inputs before running
+or calculating truth tables. A live phone-sized account check verified invalid
+ports are rejected and the previous simulation remains. Physical touch and
+hardware behavior remain unverified. The test account was disabled with data
+retained. Asset hash and root, /desktop/ and /blog/ checks passed. Source
+`df3b0b03d` is on box-git. Hosting manifest SHA-256 is
+`706bf05edc0eb22f9becff833601c6256b75c5f9c095e5e0b7cadeac48c9c975`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T045602433431Z`
+and `/var/backups/webhost-sites/change-20261101T045602434225Z`.
+
 ## 2026-11-01 — G-code unsupported motion
 
 Live static release `a7b37d4e49d969611834bd06ed4fe59c4e950e7afaca2d7cc13c1bc2777e15ca`
