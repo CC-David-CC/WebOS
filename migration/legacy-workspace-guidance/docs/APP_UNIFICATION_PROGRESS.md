@@ -33,7 +33,7 @@ their current gates.
 
 A source review found that the local Embroidery candidate still includes an upstream MakerFoundry startup-link importer. Its CSP blocks the cross-origin request; a follow-up source candidate removes the entry point and is being rebuilt. The dependency graph and unresolved license-notice review are recorded in `EMBROIDERY_DEPENDENCY_INVENTORY.md`.
 
-An Arduino Simulator local candidate replaces native firmware, example-source and serial-output replacement prompts with desktop dialogs. Desktop, phone-sized and 4K checks cover cancellation and files changed during confirmation; the full local example/serial/GPIO, file-sync and Text-reopen workflows also passed. Physical touch remains unverified.
+The live Arduino Simulator replaces native firmware, example-source and serial-output replacement prompts with desktop dialogs. Desktop, phone-sized and 4K checks cover cancellation and files changed during confirmation; the full local example/serial/GPIO, file-sync and Text-reopen workflows also passed. A public phone-sized collision and cancellation test passed. Physical touch remains unverified.
 
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
