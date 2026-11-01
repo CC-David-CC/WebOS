@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Embroidery pending-save guard
+
+Live static release `72fe5ec7a17fadfc70c5c6a919c14ae19f668c7623ab0cff952de5c449d7750d`
+guards a project save before account metadata checks. A live phone-sized
+account test held the check and verified that cancelling close preserves the
+window; physical touch and sewing remain unverified. The test account was
+disabled with data retained. The shipped corresponding-source archive SHA-256
+is `bc742f7ab0c8ebd17c6cb2fe7527fe8cca492c9a4ff6665260664ba6489a9f86`;
+its app integration matches source `8d74e9022` on box-git. Asset hash and root,
+/desktop/ and /blog/ checks passed. Hosting manifest SHA-256 is
+`dca710355dcb9f724fac1a5021ed54f66219d582a5459d68bf03ad7089481e46`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T055255180390Z`
+and `/var/backups/webhost-sites/change-20261101T055255180889Z`.
+
 ## 2026-11-01 — Text invalid-open recovery
 
 Live static release `42f2fe05a2e071252431b116589dc52b6abd8c6013dd0c87a1020f07ed291708`

@@ -680,11 +680,12 @@ account tests covered editing and server sync; existing first-save and line-
 ending checks passed. A live phone-sized account check passed; physical touch
 remains unverified.
 
-Embroidery Studio has a local pending-project-save close guard that starts
+Embroidery Studio has a pending-project-save close guard that starts
 before account metadata checks. Real editor/account tests passed desktop and
 phone-sized checks, including cancelling a close while a clean project saves.
 The matching source archive was rebuilt and checked against the app integration;
-this candidate is not live. Physical touch and sewing remain unverified.
+a live phone-sized account check passed. Physical touch and sewing remain
+unverified.
 
 ### Embedded-app file-menu review
 
