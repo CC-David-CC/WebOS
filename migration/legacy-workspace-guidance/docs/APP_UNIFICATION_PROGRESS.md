@@ -333,6 +333,13 @@ overlapping actions during path prompts. Desktop, emulated-phone and 4K account
 tests cover shortcuts, save, export, sync and reopen. Public phone-sized tests
 passed for both. Physical touch and actual Mac shortcuts remain unverified.
 
+PDF Viewer's local page-navigation candidate moves Previous, Next and Go to the
+top of the selected page while Find continues to scroll to its match. Desktop,
+emulated-phone and 4K tests used a real synced three-page PDF, and phone-sized
+page-jump, search and reload regressions passed. The test set the prior scroll
+position programmatically. This candidate is not live; physical touch remains
+unverified.
+
 Live release `e87dc394762835f1510801a828fd7002b2cffc5b06837418f48d97aab13e620e`:
 Calculator marks a calculation-note save as pending
 for the desktop close guard. Desktop, emulated-phone and 4K account tests held
