@@ -10,9 +10,11 @@ async function login(page,register){
 async function checkGamesMenu(page){
  for(let attempt=0;attempt<4;attempt++){try{await page.click('.app-menu-button');break}catch(error){if(attempt===3||!String(error.message).includes('detached'))throw error}}await page.waitForSelector('.menu-pane');
  await page.evaluate(()=>[...document.querySelectorAll('.menu-row')].find(x=>x.getAttribute('aria-label')==='Games').click());
- await page.waitForFunction(()=>[...document.querySelectorAll('.menu-row')].some(x=>x.getAttribute('aria-label')==='Memory Garden (preview)'));
- const metrics=await page.evaluate(()=>{const row=[...document.querySelectorAll('.menu-row')].find(x=>x.getAttribute('aria-label')==='Memory Garden (preview)');row.scrollIntoView({block:'nearest'});const p=row.closest('.menu-pane'),r=row.getBoundingClientRect(),v=p.getBoundingClientRect();return {count:p.querySelectorAll('.menu-row').length,bottom:r.bottom,viewBottom:v.bottom,top:r.top,viewTop:v.top}});
- assert.ok(metrics.count>=28);assert.ok(metrics.bottom<=metrics.viewBottom+1&&metrics.top>=metrics.viewTop-1,'last game reachable in scrollable menu');await page.keyboard.press('Escape');
+ await page.waitForFunction(()=>[...document.querySelectorAll('.menu-row')].some(x=>x.getAttribute('aria-label')==='Physics games (XR planned)'));
+ await page.evaluate(()=>[...document.querySelectorAll('.menu-row')].find(x=>x.getAttribute('aria-label')==='Physics games (XR planned)').click());
+ await page.waitForFunction(()=>[...document.querySelectorAll('.menu-row')].some(x=>x.getAttribute('aria-label')==='Gravity Pinball (preview)'));
+ const visible=await page.evaluate(()=>{const row=[...document.querySelectorAll('.menu-row')].find(x=>x.getAttribute('aria-label')==='Gravity Pinball (preview)');row.scrollIntoView({block:'nearest'});const r=row.getBoundingClientRect(),v=row.closest('.menu-pane').getBoundingClientRect();return r.bottom<=v.bottom+1&&r.top>=v.top-1});
+ assert.ok(visible,'Gravity Pinball is reachable in the physics games group');await page.keyboard.press('Escape');
 }
 async function launch(page){await page.evaluate(()=>surfaces.get('Desktop').launch('gravity-pinball'));await page.waitForSelector('.pinball-stage canvas',{timeout:30000});await page.waitForFunction(()=>document.querySelector('.pinball-marquee')?.textContent.includes('Balls 3'))}
 try{
