@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Drawing change protection
+
+Live static release `9f5f22f44246cf54ba643e1cb9df2878dd642424c0d31b6ff77577b2b95eea8e`
+keeps diagrams.net edits made during an Open confirmation and marks Excalidraw
+background and saved grid settings unsaved. Live phone-sized account tests
+covered a delayed embedded autosave and a background-only edit, close warning,
+sync and reopen; physical touch and overlapping Open invocations remain
+unverified. Two test accounts were disabled with data retained. Asset hashes
+and root, /desktop/ and /blog/ checks passed. Source `7571c6a25` is on box-git.
+Hosting manifest SHA-256 is
+`b3e10a6c4ad1529b8ec61e30fe78e68e1544cd4dac08842f284d42a3af96f10a`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T052558648426Z`
+and `/var/backups/webhost-sites/change-20261101T052558649177Z`.
+
 ## 2026-11-01 — Pico UF2 overlap protection
 
 Live static release `29708dabf4d7edf54e9a24ce6cd4a1aa9c675092e4476d1d6dd68eb01c86d620`
