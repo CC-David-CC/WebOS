@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Stitch Converter confirmations
+
+Live static release `e08faf59b0760145cf69f118e71451724dd2958f35ece57fb4598b200c45a2c4`
+uses desktop dialogs to confirm discard and replacement in Stitch Converter,
+with guards for changes during confirmation. Local desktop, phone-sized and 4K
+account safety tests passed, as did the full local upload, conversion, sync and
+fresh-session workflow and delayed-save regression. A public phone-sized safety
+test passed; its test account was disabled after its files were removed. Physical
+touch and machine compatibility are not verified. Source `054154ad0` is backed
+up to box-git. Hosting manifest SHA-256 is
+`5fd574d0f2bcaee9848c7c5fbb12f1f696a1672a8366542196a79144957ddfe1`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T025931272751Z`
+and `/var/backups/webhost-sites/change-20261101T025931273225Z`.
+
 ## 2026-11-01 — New-account starter folders
 
 New account homes start with Documents, Digital Projects, 3D Objects, Games,
