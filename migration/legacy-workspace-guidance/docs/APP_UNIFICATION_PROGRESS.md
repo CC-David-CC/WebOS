@@ -31,13 +31,13 @@ their current gates.
 | Make the app shell feel integrated, not like a collection of embedded web pages. | Electronics Design and several other editors have live wrapper cleanup; Embroidery cleanup is also live. Title-bar sizing has also been reviewed. | Review each app's menus, dialogs, status and responsive layouts. Replace browser-native prompts with themed dialogs where app workflows still use them. Check touch and large-screen layouts without sacrificing usable targets. |
 | Keep the Browser app experimental and lower priority. | It remains marked “in development” in the launcher. | Do not let browser polishing delay the STEM app and file-workflow integration gates above. |
 
-A source review found that the local Embroidery candidate still includes an upstream MakerFoundry startup-link importer. Its CSP blocks the cross-origin request; a rebuilt follow-up candidate removes the entry point, and local desktop and emulated-phone startup-link checks observed no MakerFoundry request. The dependency graph and packaged notice collection are recorded in `EMBROIDERY_DEPENDENCY_INVENTORY.md`; nested asset and source-availability review remains.
+The rebuilt live Embroidery editor removes the MakerFoundry startup-link importer; local desktop and emulated-phone checks observed no MakerFoundry request. Its iframe CSP is a separate restriction. The dependency graph and packaged notice collection are recorded in `EMBROIDERY_DEPENDENCY_INVENTORY.md`; nested asset and source-availability review remains.
 
 The live Arduino Simulator replaces native firmware, example-source and serial-output replacement prompts with desktop dialogs. Desktop, phone-sized and 4K checks cover cancellation and files changed during confirmation; the full local example/serial/GPIO, file-sync and Text-reopen workflows also passed. A public phone-sized collision and cancellation test passed. Physical touch remains unverified.
 
 The live Replicad CAD app uses desktop confirmations for discard and replacement. Local desktop, phone-sized and 4K tests cover cancellation and changes during confirmation; a real STL geometry, sync, conflict and fresh-session workflow passed locally; a public phone-sized cancellation and changed-target test passed. Physical touch remains unverified.
 
-The Embroidery local candidate now preserves edits made during discard confirmations and prevents overlapping Save As prompts. Desktop, emulated-phone and 4K local checks covered discard and replacement races, two-session file-change warnings, sync, reopen and listener cleanup; example and Stitch Converter workflows passed desktop and phone-sized tests. The release still needs dependency-notice and remaining network review.
+The Embroidery candidate preserved edits made during discard confirmations and prevented overlapping Save As prompts. Desktop, emulated-phone and 4K local checks covered discard and replacement races, two-session file-change warnings, sync, reopen and listener cleanup; example and Stitch Converter workflows passed desktop and phone-sized tests. A later build is live; remaining network and dependency review continues.
 
 The Embroidery candidate now bundles a reproducible archive of the exact
 patched editor source and desktop integration, with a File-menu link. Its
@@ -178,7 +178,7 @@ box-git's isolated `/srv/data/codi-embroidery-candidate-e5` build directory.
 provider transport and credential store, hides provider entries in menus and the
 command palette, and rejects their command IDs for WebAssembly. The patch
 applied to clean local and remote checkouts with matching changed-file hashes.
-The no-startup-link candidate built successfully and its freshly prepared source matched the build tree. In an isolated local preview, desktop and emulated-phone tests verified startup, blocked cross-origin fetch, absence and rejection of eight provider/account commands, project save, server sync, DST export and fresh-session reopening. The older shipped binary and live site have not changed. This is a deliberate build from the documented source revision, not a proven match for that older binary; the normal packaging path now passes those desktop and emulated-phone checks and rejects mismatched build inputs. The remaining network surface, physical touch and licensing review remain before release.
+The no-startup-link candidate built successfully and its freshly prepared source matched the build tree. In an isolated local preview, desktop and emulated-phone tests verified startup, blocked cross-origin fetch, absence and rejection of eight provider/account commands, project save, server sync, DST export and fresh-session reopening. At that stage the older shipped binary and live site had not changed. The later File bridge build is live, and its WASM matches the current live bundle; broader network, physical touch and licensing review remain open.
 
 ### Current milestone and handoff
 

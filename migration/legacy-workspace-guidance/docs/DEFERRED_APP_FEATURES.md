@@ -8,14 +8,16 @@ replacement exists and has its own privacy, cost, rate-limit, abuse-control and
 availability policies. Do not route requests through a user's personal
 provider account or silently send their work to a third party.
 
-The pinned StitchFoundry WebAssembly contains provider URLs and account/AI
-feature text. Its locally prepared page now adds `connect-src 'self'` and
-`form-action 'none'`. Local desktop and phone-sized tests verified a blocked
-third-party fetch and successful editor startup; this policy does not establish
-that every account or AI control has been removed, or restrict same-origin
-requests. The change is not live.
-
-A separate local StitchFoundry rebuild removes its browser provider transport and credential store and rejects eight provider/account commands. Desktop and emulated-phone tests exercised those restrictions and the local file workflow. Its normal packaging path has passed local workflow checks and rejects mismatched build inputs. It is not live: remaining network-surface and licensing review are outstanding. The older shipped binary is not proven to match this source revision.
+The live rebuilt StitchFoundry editor uses local mode and the desktop account.
+Its browser build removes the provider transport and credential store, removes
+its MakerFoundry startup-link importer and blocks eight identified account or
+provider commands. Its iframe policy separately restricts direct cross-origin
+connections. The File bridge, local file workflow and identified command
+restrictions passed local and live phone-sized checks. These checks do not prove
+that every provider entry point or same-origin request has been audited; the
+broader network and dependency review remains open. See
+`apps/system/embroidery-studio/README.md` and `SIMPLIFIED_HANDOFF.md` for the
+build and test evidence.
 
 This is a partial inventory. A hidden sign-in button is not proof that the
 underlying feature or its network request has been removed. Before calling an
@@ -28,12 +30,12 @@ unverified or provider-dependent features unavailable in the student workflow.
 | Circuit Simulator (CircuitJS) | Import from Dropbox | The live Circuit Simulator removes the File-menu and command-palette entries and Dropbox startup import; My files is the supported workflow. No desktop-integrated cloud import replacement exists. |
 | Electronics Design (designElectronics) | Upstream AI assistant | The upstream desktop assistant uses external local CLI tools; the WebAssembly build does not enable its network-backed agent support. No desktop-integrated replacement exists. |
 | Electronics Design (designElectronics) | GitHub connection, commits, and project history | The embedded account and history controls are hidden; provide integrated project history before restoring them. |
-| Embroidery Studio (StitchFoundry) | Open a MakerFoundry design from a startup link | The local candidate still contains this upstream path; its iframe policy blocks the cross-origin request and the desktop supplies no such link. The rebuilt local candidate removes the path; desktop and emulated-phone startup-link checks observed no MakerFoundry request. It is not live. |
-| Embroidery Studio (StitchFoundry) | Design from prompt | Upstream documentation says this uses the user's Anthropic API key. No internal replacement exists. Keep unavailable; audit the pinned browser build to confirm the entry point and provider request are blocked. |
-| Embroidery Studio (StitchFoundry) | Redraw image | Upstream documentation says this uses the user's Anthropic API key. No internal replacement exists. Keep unavailable; audit the pinned browser build to confirm the entry point and provider request are blocked. |
-| Embroidery Studio (StitchFoundry) | Ask about embroidery | The pinned WebAssembly contains this feature’s name and upstream help text; its interactive entry points have not been fully audited. No internal replacement exists. Keep unavailable until its interface and replacement are reviewed. |
+| Embroidery Studio (StitchFoundry) | Open a MakerFoundry design from a startup link | The rebuilt live editor removes this importer. Desktop and phone-sized startup-link checks observed no MakerFoundry request; the iframe policy is a separate restriction. |
+| Embroidery Studio (StitchFoundry) | Design from prompt | Upstream documentation says this uses an Anthropic API key. The identified browser command is blocked in the rebuilt live editor; no internal replacement exists. |
+| Embroidery Studio (StitchFoundry) | Redraw image | Upstream documentation says this uses an Anthropic API key. The identified browser command is blocked in the rebuilt live editor; no internal replacement exists. |
+| Embroidery Studio (StitchFoundry) | Ask about embroidery | The identified browser command is blocked in the rebuilt live editor. No internal replacement exists; other provider entry points remain under review. |
 | Embroidery Studio (StitchFoundry) | Check My Sew-out | The bundled WebAssembly contains upstream feature text; the nearby candidate source sends a design and photos for AI analysis. The actual entry points require audit and no internal replacement exists. |
-| Embroidery Studio (StitchFoundry) | Foundry Account and credits | The bundled WebAssembly contains account screens and provider text. Use the desktop account; upstream account entry points require removal. |
+| Embroidery Studio (StitchFoundry) | Foundry Account and credits | The rebuilt live browser removes its provider credential store and blocks identified account commands. Use the desktop account; other entry points remain under review. |
 | Embroidery Studio (StitchFoundry) | Publish to MakerFoundry; Send to StitchShop | The bundled WebAssembly contains these feature names. Their actual entry points and network behavior need review; no integrated replacement exists. |
 
 ## Replacement gate
