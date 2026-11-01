@@ -535,10 +535,10 @@ saves or image exports; desktop and phone-sized checks held a real account
 write, cancelled close and verified sync, and the existing phone file-menu
 workflow passed. The older CircuitJS file-safety test has a stale empty-root
 assertion and did not complete. Its corresponding-source archive was rebuilt
-and checked against the app source and README. Live phone-sized account checks passed Audio Editor and CircuitJS. A live
-Files drag passed once and failed to start on another run, so drag reliability
-remains under investigation. Physical touch, Mac shortcuts and closing during
-a real image export remain unverified.
+and checked against the app source and README. Live phone-sized account checks
+passed Audio Editor and CircuitJS. A subsequent Files release fixed the observed
+intermittent drag issue as described below. Physical touch, Mac shortcuts and
+closing during a real image export remain unverified.
 
 The live Files bundle initially expected move-readiness fields absent from the
 older live mirror module, disabling drag. The current mirror is now live; it
