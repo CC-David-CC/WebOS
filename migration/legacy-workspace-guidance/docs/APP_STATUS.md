@@ -16,7 +16,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Help | Static information checked | Not a full manual. |
 | Calculator | Workflow checked | Floating-point results; notes restore the recorded result but not previous Ans history. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
-| Document Editor | Workflow checked | Read failures offer retry; clipboard and existing animated images are not comprehensively checked. |
+| Document Editor | Workflow checked | Read failures offer retry and stale folder choices are rejected; clipboard and animated images remain incompletely checked. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Native format and CSV are primary; stale folder choices are rejected and row/column changes track unsaved work. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Folder choices reject stale destinations; large datasets can exceed device memory and resource-pressure cases remain unverified. |
@@ -25,7 +25,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | Loads require a guarded confirmation; the adapter must be requalified when diagrams.net changes. Other export types and provider entry points need review. |
 | Excalidraw | Workflow checked | Missing embedded image data is rejected; full imported image decoding and provider audit remain partial. |
-| SVG Editor | Workflow checked | SMIL animation is rejected; CSS animation and complex SVG compatibility remain unverified. |
+| SVG Editor | Workflow checked | Read failures retain the original reference for retry; SMIL animation is rejected, while CSS animation and complex SVG remain unverified. |
 | Replicad | Workflow checked | Unknown project fields are rejected to preserve source; limited model generator, not general CAD. |
 | Kiri:Moto | Workflow checked | Printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Typed-array wrap/overflow is rejected; undo history and manufacturing correctness remain unverified. |
