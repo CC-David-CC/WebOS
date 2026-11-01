@@ -1,0 +1,52 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Solitaire isolated harness</title>
+<body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get('app');
+if(!entry||!entry.startsWith('/apps/solitaire/'))throw Error('Missing Solitaire bundle');
+const styles=document.createElement('link');styles.rel='stylesheet';styles.href=entry.replace('index.mjs','index.css');document.head.append(styles);
+const {mount}=await import(entry);
+const files=new Map();let sequence=0;
+const context={
+ owner:'test',
+ valid:()=>true,
+ path:value=>value.startsWith('/')?value:'/'+value,
+ name:value=>String(value).replaceAll('/',''),
+ files:{
+  async read(path){if(!files.has(path))throw Error('File not found.');return files.get(path)},
+  async stat(path){if(!files.has(path))throw Error('File not found.');const file=files.get(path);return {version:file.version,status:file.status,bytes:file.data.byteLength}},
+  async write(path,data,expected){
+   if(window.delayWrite){window.writeWaiting=true;await new Promise(resolve=>window.releaseWrite=resolve)}
+   const old=files.get(path);if((old?.version??null)!==expected)throw Error('File changed');
+   const out={data:typeof data==='string'?new TextEncoder().encode(data):data,version:String(++sequence),status:'synced'};files.set(path,out);return out
+  },
+  async sync(){if(!files.has('/Solitaire.game.json'))files.set('/Solitaire.game.json',{data:new TextEncoder().encode('cached'),version:'cached',status:'synced'})},
+  subscribe(){return ()=>{}},
+ },
+};
+const make=(tag,className='',text='')=>{const element=document.createElement(tag);element.className=className;element.textContent=text;return element};
+window.fileStore=files;window.targetPath='/Solitaire.game.json';
+window.makeSolitaire=()=>{
+ const controller=new AbortController();
+ const gameWindow=make('div','window focused');
+ const app=mount({
+  w:{},
+  signal:controller.signal,
+  ui:{
+   make,
+   textButton:(label,action)=>{const button=make('button','',label);button.type='button';button.setAttribute('aria-label',label);button.addEventListener('click',action);return button},
+   appInput:(label,value='')=>{const input=make('input');input.setAttribute('aria-label',label);input.value=value;return input},
+   confirm:async message=>window.confirm(message),
+  },
+  storage:{
+   signedInSubject:()=> 'test',
+   mirrorFileContext:async()=>context,
+   pickFile:async()=>window.targetPath,
+   pickFolder:async()=>'/',
+  },
+ });
+ gameWindow.append(app.element);document.body.append(gameWindow);return {app,controller,window:gameWindow};
+};
+window.instances=[makeSolitaire(),makeSolitaire()];
+</script>
