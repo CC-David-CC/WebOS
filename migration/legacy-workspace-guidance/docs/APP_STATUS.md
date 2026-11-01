@@ -16,13 +16,13 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Help | Static information checked | Not a full manual. |
 | Calculator | Workflow checked | New notes retain the Ans input for recalculation; older notes lack it and show a warning. Earlier Ans history is not retained. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
-| Document Editor | Workflow checked | Read failures offer retry and `/Untitled.doc` uses a separate scratch name; clipboard and animated images remain incompletely checked. |
+| Document Editor | Workflow checked | PDF has a Latin-focused fallback alongside Greek/math glyphs; complex scripts and clipboard paths remain incompletely checked. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Password-protected PDFs prompt locally; read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Compensated sums still use floating point; native format plus bounded CSV/TSV import are primary. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Text import can preserve identifiers; numeric inference, calculations and charts can round. Large datasets and resource pressure remain unverified. |
 | Python Notebook | Workflow checked | Transient local autosave failures retry, then require manual recovery; intermittent kernel startup errors remain unexplained. Untrusted notebooks are not isolated. |
 | Image Editor | Workflow checked | Warns on recognized metadata that saving may strip; detection is incomplete. Animated images unsupported; embedded tools need further audit. |
-| Audio Editor | Workflow checked | My files single-track opens are mono/stereo; other multichannel paths remain unqualified. Other AudioMass tools may omit beat/snap metadata; physical microphone behavior remains unverified. |
+| Audio Editor | Workflow checked | Tested file picker, drop and MultiTrack paths refuse unsupported >2-channel inputs; unusual codecs and physical audio remain unverified. |
 | diagrams.net | Workflow checked | Temporary restore failures offer guarded retry; the adapter must be requalified when diagrams.net changes. Other exports and provider entry points need review. |
 | Excalidraw | Workflow checked | Unknown element types are refused to preserve drawings; unknown fields, image memory and provider audit remain partial. |
 | SVG Editor | Workflow checked | JPEG export warns about lost transparency and lossy compression. SMIL and common inline CSS animation are rejected; other CSS and complex SVG remain unverified. |
@@ -32,7 +32,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | G-code Preview | Workflow checked | Temporary restore failures offer Reload; refuses G29/G30 probing found in some slicer files; supports a subset and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | Temporary firmware restore failures offer retry; D13 shows driven-high output, not analog brightness. No electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Folder choices reject stale selections; firmware/peripheral support partial and unsaved flash cannot be recovered after a crash. Physical hardware unverified. |
-| Digital Logic | Workflow checked | Examples and truth tables are foremost; labeled binary controls support multi-bit signals. Combinational JSON only; no hardware timing validation. |
+| Digital Logic | Workflow checked | Examples include an enabled 2-to-4 decoder; truth tables can be saved. Combinational JSON only; no hardware timing validation. |
 | Circuit Simulator | Workflow checked | Output-probe CSV records one simulated instant, not a waveform or hardware measurement. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Temporary restore failures offer guarded retry; pre-release, with physical sewing, machine formats and provider audit open. |
