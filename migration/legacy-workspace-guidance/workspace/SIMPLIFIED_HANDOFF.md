@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Text line ending and BOM protection
+
+Live static release `7afbf8fe95fe1e14a436fe98fd192db6317bf7ee70f68d35dcf4ca30db77b5ea`
+preserves UTF-8 BOM and uniform CRLF/CR/LF line endings. Mixed endings require
+confirmation before LF normalization. A live phone-sized account test checked
+server bytes, ordinary save, Save As and cancellation; physical touch and
+preserving each mixed ending remain unverified. The test account was disabled
+with data retained. Text and shared CodeMirror hashes and root, /desktop/ and
+/blog/ checks passed. Source `1a1bc26ae` is on box-git. Hosting manifest SHA-256
+is `033fa8e3949cf9f30a173bf6184a07e3c5b428a80ad0b33579b2e30ca897a574`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T051601233923Z`
+and `/var/backups/webhost-sites/change-20261101T051601234380Z`.
+
 ## 2026-11-01 — Image animation protection
 
 Live static release `0c8399c9c7c90aa96f378c393872b9c8bddb94c332ee42b0489335730017e2cf`

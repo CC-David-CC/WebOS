@@ -562,13 +562,13 @@ images, verifying preservation of the original file and current edits. A live
 phone-sized account check passed. Physical touch and other image formats remain
 unverified.
 
-Text Editor has a local candidate that preserves UTF-8 BOM and uniform CRLF,
+Text Editor preserves UTF-8 BOM and uniform CRLF,
 CR and LF endings. Mixed endings require explicit confirmation before they are
 normalized to LF; cancel preserves the draft and original. Desktop and
 phone-sized account checks cover save, Save As, cancellation and server bytes;
-first-save and concurrent-confirm regressions passed. This is not live and does
-not preserve the individual endings of a mixed file; physical touch remains
-unverified.
+first-save and concurrent-confirm regressions passed. A live phone-sized
+account test verified server bytes and both confirmation paths. It does not
+preserve individual endings in a mixed file; physical touch remains unverified.
 
 ### Embedded-app file-menu review
 
