@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Stitch and Pico save/import safety
+
+Live static release `c07254868618fd4a63983327a566356137fbdaf4462f2d89462b4ea467b8d052`
+guards Stitch Converter artwork and machine-file saves against closure and
+checks Pico UF2 numbered-block completeness when totals are declared. Live
+phone-sized account tests passed with PES output, synthetic incomplete UF2 and
+the real Blink worker. Zero-count UF2 files remain supported without a
+completeness claim; physical touch and hardware remain unverified. Two test
+accounts were disabled with data retained. Asset hashes and root, /desktop/ and
+/blog/ checks passed. Source through `e7eebdab8` is on box-git. Hosting manifest
+SHA-256 is `c05d78a68fbdffc293c85f555a29d3e6b967434b6abd798a2621b50de9a742af`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T060746511264Z`
+and `/var/backups/webhost-sites/change-20261101T060746511679Z`.
+
 ## 2026-11-01 — Text save and Arduino composition
 
 Live static release `838f71673dad6a6e3aa8b845a5b662cf3292f12fb386edc82bcf08acd972cb61`
