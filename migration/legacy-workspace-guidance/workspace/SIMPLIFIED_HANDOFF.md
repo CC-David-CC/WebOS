@@ -1,5 +1,17 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Image animation protection
+
+Live static release `0c8399c9c7c90aa96f378c393872b9c8bddb94c332ee42b0489335730017e2cf`
+rejects animated PNG and WebP before the still-image editor can save one frame.
+A live phone-sized account test used actual two-frame images, static images and
+unsaved edits; physical touch and other formats remain unverified. The test
+account was disabled with data retained. Asset hash and root, /desktop/ and
+/blog/ checks passed. Source `308e14975` is on box-git. Hosting manifest SHA-256
+is `2389df35c0fd29b156864f910978ccbd28f0360dba034ea60c90380a9e6f961c`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T051456835000Z`
+and `/var/backups/webhost-sites/change-20261101T051456835804Z`.
+
 ## 2026-11-01 — Files, audio, circuit and mirror
 
 Live static release `7a87f1fdd0fd2c17aaf72e23ae2edff4446c1fab23e76003e40ad4c68943c484`

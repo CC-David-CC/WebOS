@@ -556,11 +556,19 @@ phone-sized tests used actual CDP touch cancellation and the real v86/Linux
 guest, including a completed scrollback swipe; a live phone-sized test passed.
 Physical touch remains unverified.
 
-Image Editor has a local candidate that rejects animated PNG and WebP before
-opening: the still-image editor would otherwise save just one frame. Desktop
+Image Editor rejects animated PNG and WebP before opening: the still-image editor would otherwise save just one frame. Desktop
 and phone-sized tests used real two-frame files and static browser-generated
-images, verifying preservation of the original file and current edits. This is
-not live; physical touch and other image formats remain unverified.
+images, verifying preservation of the original file and current edits. A live
+phone-sized account check passed. Physical touch and other image formats remain
+unverified.
+
+Text Editor has a local candidate that preserves UTF-8 BOM and uniform CRLF,
+CR and LF endings. Mixed endings require explicit confirmation before they are
+normalized to LF; cancel preserves the draft and original. Desktop and
+phone-sized account checks cover save, Save As, cancellation and server bytes;
+first-save and concurrent-confirm regressions passed. This is not live and does
+not preserve the individual endings of a mixed file; physical touch remains
+unverified.
 
 ### Embedded-app file-menu review
 
