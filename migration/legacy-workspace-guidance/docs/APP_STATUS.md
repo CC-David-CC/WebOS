@@ -16,7 +16,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Help | Static information checked | Not a full manual. |
 | Calculator | Workflow checked | Floating-point results; notes restore the recorded result but not previous Ans history. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
-| Document Editor | Workflow checked | Animated images selected from My files are rejected; clipboard and existing animations need review. |
+| Document Editor | Workflow checked | Read failures offer retry; clipboard and existing animated images are not comprehensively checked. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Native format and CSV are primary; row/column changes track unsaved work. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Large datasets can exceed device memory; injected restore failures now pass without the previously observed worker error, but other failure and resource-pressure cases remain unverified. |
@@ -36,7 +36,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Circuit Simulator | Workflow checked | Divider simulation, upload, sync and recovery checked; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Pre-release; physical sewing, machine formats and provider audit remain open. |
-| Stitch Converter | Workflow checked | SVG support and machine compatibility remain partial; test-sew output. |
+| Stitch Converter | Workflow checked | Unsupported artwork is reported; SVG support and machine compatibility remain partial. Test-sew output. |
 | Falling Blocks | Preview | Emulated multitouch tested; physical phone and audible speakers unverified. |
 | Owl Companion | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Snake Garden | Preview | Authored Rive artwork and physical-device testing remain open. |
@@ -58,7 +58,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Pocket Rally | Preview | Focus/input, account save and isolation checked; full races and physical multitouch remain. |
 | Sling Targets | Preview | Dirty settings and interrupted aim checked; physical touch and all arrangements remain unverified. |
 | Gravity Pinball | Preview | Account save/reopen and input-focus checks passed; physical touch remains. |
-| Kinetic Relay | Preview | Further interaction and physical-device review; final artwork pending. |
+| Kinetic Relay | Preview | Single-step dirty tracking and deleted-save protection checked; physical touch and full puzzle sequence remain. |
 | Tabletop Bot Arena | Preview | Account match save/reopen and input-focus checks passed; physical touch remains. |
 | Pocket Golf | Preview | Further interaction and physical-device review; final artwork pending. |
 | Target Garden | Preview | Further interaction and physical-device review; final artwork pending. |
