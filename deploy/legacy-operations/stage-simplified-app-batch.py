@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+"""Create a public-only static release from a baseline and reviewed app bundles.
+
+This stages files only; activation remains the hosting controller's job. Run on
+the webhost where both the baseline release and uploaded app batch are local.
+"""
+import argparse
+import hashlib
+import json
+import re
+import shutil
+from pathlib import Path
+
+p=argparse.ArgumentParser(description=__doc__)
+p.add_argument('--baseline',type=Path,required=True)
+p.add_argument('--batch',type=Path,required=True)
+p.add_argument('--output',type=Path,required=True)
+p.add_argument('--apps',nargs='+',required=True)
+a=p.parse_args();base=a.baseline;batch=a.batch;out=a.output;expected=set(a.apps)
+def digest(path):
+ h=hashlib.sha256()
+ with path.open('rb') as stream:
+  while chunk:=stream.read(1024*1024):h.update(chunk)
+ return h.hexdigest()
+if len(expected)!=len(a.apps) or any(not re.fullmatch(r'[a-z][a-z0-9-]{0,31}',x) for x in expected):raise ValueError('Invalid app selection')
+if out.exists() or out.is_symlink():raise ValueError('Choose a new staging directory')
+old=json.loads((base/'assets/desktop/cache-manifest.json').read_text())
+if not re.fullmatch('[0-9a-f]{64}',base.name) or old['id']!=base.name:raise ValueError('Baseline release does not match its manifest')
+catalog=json.loads((base/'assets/desktop/apps.json').read_text());incoming=json.loads((batch/'apps.json').read_text());records={r['id']:r for r in incoming['apps']}
+if set(records)!=expected or not expected.issubset({r['id'] for r in catalog['apps']}):raise ValueError('Unexpected app catalog')
+for app,record in records.items():
+ sha=record['bundleSHA256']
+ if not re.fullmatch('[0-9a-f]{64}',sha):raise ValueError('Invalid bundle hash')
+ root=batch/'apps'/app/sha
+ if not root.is_dir() or root.is_symlink():raise ValueError('Missing bundle')
+ if any(path.is_symlink() for path in root.rglob('*')):raise ValueError('Symlink in bundle')
+ actual={p.relative_to(root).as_posix() for p in root.rglob('*') if p.is_file()}
+ if actual!=set(record['files']):raise ValueError('Bundle file list differs')
+ for name,info in record['files'].items():
+  path=root/name
+  if path.is_symlink() or path.stat().st_size!=info['bytes'] or digest(path)!=info['sha256']:raise ValueError('Bundle file mismatch: '+name)
+if base.is_symlink() or any(path.is_symlink() for path in base.rglob('*')):raise ValueError('Symlink in baseline')
+shutil.copytree(base,out,symlinks=False);appdir=out/'assets/desktop/apps'
+for app,record in records.items():
+ shutil.rmtree(appdir/app);(appdir/app).mkdir();shutil.copytree(batch/'apps'/app/record['bundleSHA256'],appdir/app/record['bundleSHA256'])
+catalog['apps']=[records.get(r['id'],r) for r in catalog['apps']]
+(out/'assets/desktop/apps.json').write_text(json.dumps(catalog,separators=(',',':')))
+files={}
+for path in sorted(out.rglob('*')):
+ if path.is_symlink():raise ValueError('Unexpected symlink in output')
+ if not path.is_file():continue
+ name=path.relative_to(out).as_posix()
+ if name in ('assets/desktop/offline-worker.js','assets/desktop/cache-manifest.json'):continue
+ files[name]={'bytes':path.stat().st_size,'sha256':digest(path)}
+manifest={'version':'codi-public-cache/1','id':hashlib.sha256(json.dumps(files,sort_keys=True,separators=(',',':')).encode()).hexdigest(),'files':files}
+(out/'assets/desktop/cache-manifest.json').write_text(json.dumps(manifest,separators=(',',':')))
+worker=out/'assets/desktop/offline-worker.js';lines=worker.read_text().splitlines(keepends=True)
+if not lines[1].startswith('const RELEASE=') or old['id'] not in lines[1]:raise ValueError('Unexpected cache worker')
+lines[1]='const RELEASE='+json.dumps(manifest,separators=(',',':'))+';\n';worker.write_text(''.join(lines))
+# The builder's temporary bundle directories can be private. Normalize the
+# staging copy before activation so Caddy can traverse every app asset.
+out.chmod(0o755)
+for path in out.rglob('*'):path.chmod(0o755 if path.is_dir() else 0o644)
+print(json.dumps({'release':manifest['id'],'apps':{k:r['bundleSHA256'] for k,r in records.items()},'files':len(files)}))
