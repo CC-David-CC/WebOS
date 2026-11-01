@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Excalidraw main menu
+
+Live static release `99afe9bd80ff4b9fcc006a4d588fd754cb525a482a810ce8c336c4aa9befd4e0`
+places My files actions in Excalidraw's own main menu and removes the duplicate
+outer toolbar. Local desktop, emulated-phone and 4K account tests cover drawing,
+image insertion, saving, PNG export, conflict handling, sync and reopening;
+related phone-sized regressions and a public phone-sized account test passed.
+The public test account was cleaned and disabled. Physical touch and the full
+feature set remain unverified. Source `0e04ffc11` is backed up to box-git.
+Hosting manifest SHA-256 is
+`c294f204a0040e3c272dbc8f5269f0f548d55d82c2da14e58a5ad3aca45da668`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T034458326908Z`
+and `/var/backups/webhost-sites/change-20261101T034458327325Z`.
+
 ## 2026-11-01 — Image Editor File menu
 
 Live static release `bc12051a9156f0d0f047ae0008fa52a3a1881fe8cf88f73417e0530e496df46f`
