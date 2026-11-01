@@ -332,6 +332,13 @@ overlapping actions during path prompts. Desktop, emulated-phone and 4K account
 tests cover shortcuts, save, export, sync and reopen. Neither candidate is live;
 physical touch and actual Mac shortcuts remain unverified.
 
+Calculator has a local candidate that marks a calculation-note save as pending
+for the desktop close guard. Desktop, emulated-phone and 4K account tests held
+the save, cancelled close, changed the expression and verified the captured note
+synced and reopened. Hold/failure timing was injected; storage was real. The
+minimal host guard and Calculator update must be released together. This
+candidate is not live; physical touch remains unverified.
+
 Next local candidates: Arduino Simulator shows a persistent notice when its
 opened or saved HEX changes, disappears or conflicts in My files, while keeping
 the loaded firmware running. Desktop, emulated-phone and 4K checks exercised
