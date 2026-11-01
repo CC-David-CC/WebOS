@@ -66,6 +66,12 @@ cancellation and changes while confirming; separate local desktop/phone tests
 cover serial sync, Text reopen and cleanup, and a phone-sized test runs the
 real Blink worker. Public phone-sized tests passed the confirmation flows with synthetic firmware and the real Blink worker. Physical hardware and phone touch are unverified.
 
+Digital Logic has a local candidate replacing native discard and overwrite
+prompts with desktop dialogs. Registered-account desktop, emulated-phone and
+4K checks cover cancellation and edits or file changes while confirmation is
+open; the real full-adder and save-race regressions also passed locally. The
+candidate is not yet live, and physical touch remains unverified.
+
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
 app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement
