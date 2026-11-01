@@ -637,6 +637,13 @@ and copy in separate windows and server sync. Notebook's Save As command was
 invoked programmatically; an earlier menu attempt timed out. These changes are
 not live; physical touch and machine safety remain unverified.
 
+Kiri:Moto and Mesh:Tool have a local workspace-save close guard. Desktop and
+phone-sized tests used real model import and account sync, held the workspace
+write and injected a separate pending export to verify its warning remains.
+The initial setup clicked before model load completed and timed out; reruns
+waited for readiness. Actual export generation during the race, physical touch
+and fabrication hardware remain unverified; this is not live.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
