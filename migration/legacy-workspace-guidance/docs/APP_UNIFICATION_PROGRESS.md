@@ -49,19 +49,16 @@ asset route serves a known Circuit Simulator source ZIP without login (HTTP
 that direct source-asset URLs require login. Review the user's login requirement
 and the intended source distribution route before activating the candidate.
 
-A follow-up Embroidery file bridge is in progress: upstream Open and Place
-currently invoke the computer's picker, so a new browser source patch sends
-those requests to the desktop's My files picker and adds an explicit Place
-entry. The Rust WebAssembly-target check passed; host bridge tests cover
-cancellation, conflicts, stale edits, event rebinding and disposal. A full
-release build is running on box-git, and real editor/Open/Place tests remain.
-An unverified browser test, `tests/embroidery-file-bridge-integration.test.mjs`,
-is prepared to exercise the My files menu, the editor's own Place command,
-object insertion, account sync and a fresh-session reopen. It must be run and
-corrected as necessary against the new build; it is not passing evidence yet.
-The prior pinned WASM and source ZIP do not include this bridge; regenerate and
-verify both with the changed host sources before any deployment. The existing
-live Embroidery build is unchanged.
+A rebuilt Embroidery candidate routes the editor's own Open and Place requests
+to My files and adds a Place entry to its File menu. Real desktop, emulated-phone
+and 4K account tests exercised both Open entry points, Place, inserted SVG
+objects, project save, server sync and fresh-session reopen. One early phone
+run began Place before the preceding Open finished; the test now waits for the
+editor to finish and the app displays a wait message if a file action is busy.
+The phone-sized local policy, export and save-safety regressions also passed.
+The matching patched-source archive was regenerated and checked against host
+sources. This candidate is not yet live; physical touch and physical sewing
+are unverified. Direct source-asset URLs are public as described above.
 
 The live Pico Simulator uses desktop confirmations for board
 replacement, simulated-flash reset, and project and serial-output overwrites.
