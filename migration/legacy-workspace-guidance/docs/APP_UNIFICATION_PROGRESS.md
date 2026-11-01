@@ -628,6 +628,15 @@ its isolated bundle and is not claimed. Live phone-sized account checks passed
 all three; the Files drag stale-hover regression also passed on the new bundle.
 Physical touch remains unverified.
 
+Local candidates: G-code Preview rejects additional A/B/C/U/V/W axes instead
+of silently omitting motion, including unsupported G commands and modal forms.
+Real-worker desktop and phone-sized account tests covered all six axes,
+comments and preservation of the prior preview. Notebook updates file identity
+after Open and Save As; desktop and phone-sized account tests cover the original
+and copy in separate windows and server sync. Notebook's Save As command was
+invoked programmatically; an earlier menu attempt timed out. These changes are
+not live; physical touch and machine safety remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
