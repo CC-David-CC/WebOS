@@ -1,5 +1,20 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Falling Blocks confirmation and pause
+
+Live static release `973ed6d4ed69f6729f272b563b1ec0f8b9ea2dd19f9228fdc020ea32c7477513`
+pauses before discard decisions and uses desktop dialogs for game replacement,
+opening and starting over. It protects progress and files changed during a
+confirmation; cancellation leaves the game paused. Local desktop, phone-sized
+and 4K account tests cover cancellation, changed progress, save replacement,
+sync and exact reopen. Local delayed-save, Files routing and game-model tests,
+and a public phone-sized account test passed. The public test account was
+cleaned and disabled. Physical touch remains unverified. Source `3e6da4927` is
+backed up to box-git. Hosting manifest SHA-256 is
+`eee25c98f4c865f40ecacd07226a2057fbb6b99b175f389c4f4cc321f44fc4a5`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T031741515704Z`
+and `/var/backups/webhost-sites/change-20261101T031741516128Z`.
+
 ## 2026-11-01 — Calculator save confirmation
 
 Live static release `29f8d8842c696d45664de4666d21dbe76504d3550a7b4d468bab91ace9dcfc41`
