@@ -1,6 +1,6 @@
 # Gateway admission compatibility experiment
 
-This is a protocol design and a local model, not an implemented or deployed
+This is a protocol design and unwired local experiment, not a deployed
 security boundary. The live gateway retains its shared pre-authentication
 fixed-minute ceiling. An authenticated-account limit inserted after the current
 one-use grant was verified would not prevent one client from consuming that
@@ -60,6 +60,15 @@ It does not test the gateway consuming tickets or a real browser negotiation.
 Once issued, an offline-verifiable ticket is not instantly revoked on logout or
 account disable; it remains valid for up to 20 seconds unless the final protocol
 adds a revocation mechanism. That tradeoff requires an explicit security review.
+
+An unwired gateway adapter in `active-system/gateway_service/experimental_admission.py`
+and `tests/gateway-admission-gateway-review.py` exercises real signed loopback
+issuer/gateway operations, legacy traffic, separate bounded shares, forged and
+replayed proofs and expiry. Its random per-instance epoch is part of each
+enhanced proof: a replacement gateway instance rejects the old proof and accepts
+a newly signed one. This is an in-process instance replacement, not a tested OS
+restart or multi-replica protocol. Verification slots remain shared and can be
+saturated. It has no browser client or production route; do not enable it.
 
 The model test `tests/gateway-admission-protocol-model.py` uses real ES256
 signatures, fixed mock time and tiny bounded budgets. It checks session/key and
