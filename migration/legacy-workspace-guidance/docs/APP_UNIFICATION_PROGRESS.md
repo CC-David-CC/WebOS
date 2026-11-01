@@ -347,6 +347,12 @@ sync and reopening; the phone-sized STL workflow also passed. The test verifies
 the prior canvas remains, not pixel-identical rendering. This is not live and
 physical touch remains unverified.
 
+Calculator's local keypad candidate enforces the 512-character expression
+limit while still allowing a selected range to be replaced at the limit.
+Desktop and emulated-phone keypad tests and existing calculation regressions
+passed; the previous keypad could create an expression its parser rejected.
+This candidate is not live; physical touch remains unverified.
+
 Digital Logic's local candidate asks before closing while a circuit or truth
 table CSV save is pending, even if the circuit was clean. Desktop,
 emulated-phone and 4K tests held saves, cancelled close, then checked real
