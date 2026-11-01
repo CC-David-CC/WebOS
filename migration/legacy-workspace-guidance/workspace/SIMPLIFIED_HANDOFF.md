@@ -4572,3 +4572,7 @@ Live release `95c3fe5167b898d0a018b935ff0877ecb670b8bdc07d5134d32b896f901c5861`,
 ## Document list and project exports live — 2026-11-01
 
 Live `2bb1661f22319d4a4527836622648e7e2cca71a806dc8c439e9a33211f767fca`, previous `95c3fe5167b898d0a018b935ff0877ecb670b8bdc07d5134d32b896f901c5861`. Public phone account tests passed Document start=5 editor/PDF/sync/reopen, actual Kiri cube slice/workspace-relative export/sync/reopen, and real audio import/project default/custom mixdown/sync/reopen. Three exact test accounts disabled; files retained. Root, `/desktop/`, `/blog/` 200. Manifest `88772352fb8612182dd11c2b49fdb008db14992927ea1046f84939f29a6c89d6`; Caddy `16b41a9c26895c7fdb5cbd6aca593d7b35cbb614057f5d4ebd1dab83dcc73a40`; rollback `/var/backups/webhost-sites/change-20261101T144045989614Z` and `/var/backups/webhost-sites/change-20261101T144045990339Z`. Root 4.3 GB free before next archival batch. Physical touch, printer/audio hardware and Mesh-specific path unverified.
+
+## Simplified static archival thirteenth batch — 2026-11-01
+
+Ten verified inactive releases archived to `/srv/data/codi-archived-simplified-20261101`; 122 receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Current `2bb1661f…`, rollbacks `95c3fe51…` / `ed4103a5…`, configured references and user data retained; services active. Root free 4.3 to 8.0 GiB; `/srv/data` 375 GiB free. Historical `7148c2f5…` is archived and old path requires restoration. Known mismatches remain untouched.
