@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+import puppeteer from 'puppeteer-core';
+const browser = await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19255'});
+const context = await browser.createBrowserContext(), page = await context.newPage();
+const user = 'textrec'+Date.now().toString().slice(-7)+process.pid, errors=[];
+page.on('pageerror', e=>errors.push(e.message));
+try {
+  await page.setViewport(process.env.CODI_PHONE ? {width:412,height:915,isMobile:true,hasTouch:true} : {width:1366,height:900});
+  await page.goto(process.env.CODI_TEST_URL||'http://127.0.0.1:18589/');
+  await page.waitForSelector('.login-toggle'); await page.click('.login-toggle');
+  await page.type('[aria-label=Username]',user); await page.type('[aria-label=Password]','test1234');
+  await page.type('[aria-label="Confirm password"]','test1234'); await page.click('.login-form button[type=submit]');
+  await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered');
+  console.log('Test account',user,await page.evaluate(()=>signedInSubject()));
+  await page.evaluate(async()=>{const f=(await mirrorFileContext()).files; await f.write('/review.txt','original',null); await f.sync(); const subscribe=f.subscribe.bind(f); f.subscribe=cb=>{window.reviewWatch=cb;return subscribe(cb)}; openMirrorDocument(surfaces.get('Desktop'),signedInSubject(),'/review.txt');});
+  await page.waitForFunction(()=>document.querySelector('.cm-content')?.innerText==='original'&&window.reviewWatch,{timeout:30000});
+  await page.evaluate(async()=>{const f=(await mirrorFileContext()).files; window.reviewOriginalStat=f.stat.bind(f);f.stat=async()=>{throw Error('temporary metadata failure')};await window.reviewWatch()});
+  await page.waitForFunction(()=>document.querySelector('.ce-status-message')?.textContent.includes('Saved file unavailable'));
+  await page.evaluate(async()=>{const f=(await mirrorFileContext()).files;f.stat=window.reviewOriginalStat;await window.reviewWatch()});
+  await page.waitForFunction(()=>!surfaces.get('Desktop').windows.find(w=>w.app==='text').editor.changed);
+  assert.doesNotMatch(await page.$eval('.ce-status-message',e=>e.textContent),/unavailable|changed outside/);
+  await page.evaluate(async()=>{const f=(await mirrorFileContext()).files,old=await f.stat('/review.txt');await f.write('/review.txt','changed elsewhere',old.version);await window.reviewWatch()});
+  await page.waitForFunction(()=>surfaces.get('Desktop').windows.find(w=>w.app==='text').editor.changed);
+  await page.evaluate(async()=>{const f=(await mirrorFileContext()).files;f.stat=async()=>{throw Error('temporary metadata failure')};await window.reviewWatch();f.stat=window.reviewOriginalStat;await window.reviewWatch()});
+  assert.equal(await page.evaluate(()=>surfaces.get('Desktop').windows.find(w=>w.app==='text').editor.changed),true,'recovery must preserve a genuine change warning');
+  await page.click('.cm-content'); await page.keyboard.press('End'); await page.keyboard.type(' edited');
+  await page.keyboard.down('Control'); await page.keyboard.down('Shift'); await page.keyboard.press('s'); await page.keyboard.up('Shift'); await page.keyboard.up('Control');
+  await page.waitForSelector('.ce-dialog-backdrop:not([hidden])'); await page.$eval('.ce-path-input',e=>e.value='/review-copy.txt'); await page.click('.ce-dialog-primary');
+  await page.waitForFunction(()=>document.querySelector('.ce-status-message')?.textContent.includes('Saved locally'),{timeout:30000});
+  const saved=await page.evaluate(async()=>{const f=(await mirrorFileContext()).files;await f.sync();return new TextDecoder().decode((await(await serverFileContext()).files.read('review-copy.txt')).data)}); assert.equal(saved,'original edited');
+  await page.evaluate(()=>document.querySelector('.codi-text-editor').closest('.window').querySelector('[aria-label=Close]').click());
+  await page.waitForFunction(()=>!document.querySelector('.codi-text-editor'));
+  await page.evaluate(()=>openMirrorDocument(surfaces.get('Desktop'),signedInSubject(),'/review-copy.txt'));
+  await page.waitForFunction(()=>document.querySelector('.cm-content')?.innerText==='original edited',{timeout:30000});
+  assert.deepEqual(errors,[]);console.log('PASS transient metadata failure recovers; genuine change remains; copy syncs and reopens');
+} finally { await context.close(); await browser.disconnect(); }
