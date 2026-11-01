@@ -24,7 +24,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Image Editor | Workflow checked | Animated image editing unsupported; annotation images use a temporary gallery; embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | SVG/PNG export tested; other export types and provider entry points need review. |
-| Excalidraw | Workflow checked | Reusable library features deferred pending My files integration; provider audit partial. |
+| Excalidraw | Workflow checked | File and folder choices are serialized; reusable library features and provider audit remain partial. |
 | SVG Editor | Workflow checked | Complex SVG and physical touch remain unverified. |
 | Replicad | Workflow checked | Limited model generator, not general CAD; validate output. |
 | Kiri:Moto | Workflow checked | Printer profiles, output and physical touch need independent verification. |
@@ -33,7 +33,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Arduino Simulator | Workflow checked | Not electrical simulation; browser compilation unavailable; reload does not preserve serial output. |
 | Pico Simulator | Workflow checked | Firmware/peripheral support partial; unsaved flash cannot be recovered after a crash. |
 | Digital Logic | Workflow checked | Feed-forward combinational JSON circuits only; no timing or hardware validation. |
-| Circuit Simulator | Workflow checked | Not hardware validation; upstream import/recovery paths need review. |
+| Circuit Simulator | Workflow checked | Divider simulation, upload, sync and recovery checked; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Component coverage, physical touch and board validation remain open. |
 | Embroidery Studio | Workflow checked | Pre-release; physical sewing, machine formats and provider audit remain open. |
 | Stitch Converter | Workflow checked | SVG support and machine compatibility remain partial; test-sew output. |
@@ -41,7 +41,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Owl Companion | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Snake Garden | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Physics Playground | Preview | XR and complete challenge acceptance remain open. |
-| Clockwork Room | Preview | Further interaction and physical-device review; final artwork pending. |
+| Clockwork Room | Preview | Four mechanisms and save recovery checked; physical-device review and final artwork remain. |
 | Chess Study | Preview | Actual AI, save and reopen checked; AI strength and physical touch unverified. |
 | Solitaire | Preview | Rules, seeded invariants and near-win recovery checked; full deal-to-win and physical touch remain. |
 | Sky Courier | Preview | Steering and firing checks passed; full campaign and physical touch unverified. |
