@@ -4564,3 +4564,7 @@ Live release `ed4103a579ef6c45cf302d1d47e39f6ad8e748c336062632aed5727da913828a`,
 ## Simplified static archival twelfth batch — 2026-11-01
 
 Ten verified inactive releases archived to `/srv/data/codi-archived-simplified-20261101`; 112 individual receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Active `ed4103a5…`, recent `bf2cefcb…` / `64a8aaa6…`, references and user data retained; services active. Root free 5.4 to 6.2 GiB; `/srv/data` 379 GiB available. Known manifest mismatches remain untouched; archived historical paths require restoration before use.
+
+## Files and G-code labels live — 2026-11-01
+
+Live release `95c3fe5167b898d0a018b935ff0877ecb670b8bdc07d5134d32b896f901c5861`, prior `ed4103a579ef6c45cf302d1d47e39f6ad8e748c336062632aed5727da913828a`. Public phone account tests passed Files upload/create/Open in Text/edit/save/sync/fresh reopen/duplicate preservation and G-code same-name paths/failed-load preservation/reopen. Two exact test accounts disabled; files retained. Root, `/desktop/`, `/blog/` 200. Manifest `414fd3aa3fa811495cf1a75dcba2eae5d1cf228847476368dbb67ea29e1a0dbf`; Caddy `faa8ead2eb040aef591c3c0b1069fee8957801e43335d5730082acfb747590ff`; rollback `/var/backups/webhost-sites/change-20261101T143342637323Z` and `/var/backups/webhost-sites/change-20261101T143342638386Z`. Root 5.3 GB free. Physical touch and machine operation unverified.
