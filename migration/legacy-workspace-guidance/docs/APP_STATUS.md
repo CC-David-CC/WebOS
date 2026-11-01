@@ -18,15 +18,15 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | Read failures offer retry and `/Untitled.doc` uses a separate scratch name; clipboard and animated images remain incompletely checked. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Password-protected PDFs prompt locally; read-only, with no OCR for scans. |
-| Spreadsheet | Workflow checked | Temporary restore failures offer guarded retry; native format plus CSV/TSV import are primary; TSV import is bounded and does not overwrite the source. Physical dragging remains unverified. |
+| Spreadsheet | Workflow checked | Compensated sums still use floating point; native format plus bounded CSV/TSV import are primary. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Text import can preserve identifiers; numeric inference, calculations and charts can round. Large datasets and resource pressure remain unverified. |
 | Python Notebook | Workflow checked | Transient local autosave failures retry, then require manual recovery; intermittent kernel startup errors remain unexplained. Untrusted notebooks are not isolated. |
 | Image Editor | Workflow checked | Warns on recognized metadata that saving may strip; detection is incomplete. Animated images unsupported; embedded tools need further audit. |
-| Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
+| Audio Editor | Workflow checked | My files single-track opens are mono/stereo; other multichannel paths remain unqualified. Other AudioMass tools may omit beat/snap metadata; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | Temporary restore failures offer guarded retry; the adapter must be requalified when diagrams.net changes. Other exports and provider entry points need review. |
 | Excalidraw | Workflow checked | Unknown element types are refused to preserve drawings; unknown fields, image memory and provider audit remain partial. |
 | SVG Editor | Workflow checked | JPEG export warns about lost transparency and lossy compression. SMIL and common inline CSS animation are rejected; other CSS and complex SVG remain unverified. |
-| Replicad | Workflow checked | Export defaults beside the project unless customized; unknown fields are rejected. Limited model generator, not general CAD. |
+| Replicad | Workflow checked | Preview shows approximate solid extents; export defaults beside the project. Limited model generator, not general CAD or manufacturing validation. |
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Temporary workspace read failures offer retry; undo history and manufacturing correctness remain unverified. |
 | G-code Preview | Workflow checked | Temporary restore failures offer Reload; refuses G29/G30 probing found in some slicer files; supports a subset and does not validate machine safety. |
