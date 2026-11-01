@@ -218,6 +218,15 @@ change, deletion, conflict, save copy and fresh-session recovery; an immediate
 write-conflict response was injected in a phone-sized test. These candidates
 are not live; physical touch remains unverified.
 
+Spreadsheet's local candidate clears a stale layout reference when importing
+CSV or XLSX and rejects empty, plain-text and tested truncated XLSX inputs
+without replacing the open draft. Desktop, emulated-phone and 4K account tests
+cover invalid imports and CSV save, sync and reload; a valid XLSX and a separate
+save-race regression passed at phone size. Unusual XLSX files and physical touch
+remain unverified. PDF Viewer's local candidate adds page-number navigation;
+desktop, emulated-phone and 4K account checks cover My files open, navigation,
+invalid numbers, search, resize and fresh-session reopening. Both are not live.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
@@ -236,15 +245,14 @@ belong:
 | Python Notebook / JupyterLite | The live update replaces native discard prompts with desktop dialogs and preserves changes made while confirmation is open. Registered-account desktop, emulated-phone and 4K-sized tests cover cancellation, the edit race, Python example, sync and fresh-session reopen. A public phone-sized account workflow also passed. The live release places My files open/save and Linux Terminal in Jupyter's File menu, with the old toolbar as fallback. Desktop, emulated-phone touch and 4K account tests cover saving, sync, cancellation, reopening and duplicate-command cleanup. The initial phone test exposed an ignored touch; a targeted touch bridge passed the retest. A simulated missing menu preserved the fallback controls on desktop and emulated phone; two simultaneous notebook windows saved independently. A public phone-sized account test also passed. Physical touch and Jupyter upgrade compatibility remain unverified. |
 | Grid Tools / Kiri:Moto and mesh:tool | The live release replaces workspace-open, workspace-replace and export-replace native confirmations with desktop dialogs. Desktop and phone-sized Kiri and Mesh account tests cover validation, cancellation, reopen and sync; Kiri also checks a settings edit during confirmation. Desktop, emulated-phone and 4K-sized export tests cover cancellation and a target changed during confirmation. A public phone-sized export collision test passed with a simulated export; native-menu integration remains to be reviewed, and physical touch and broader snapshot fidelity remain unverified. |
 
-Grid Tools review found that a new Mesh:Tool account starts with a vendor About
-dialog, while its File menu and Kiri:Moto's File menu still coexist with the
-desktop's separate file toolbar. A local build candidate suppresses the startup
-dialog and preserves Help → About. Desktop, emulated-phone and 4K account checks
-cover two Mesh windows and a Kiri window; a phone-sized export collision check
-also passed. Help was invoked programmatically in the checks, not by real touch.
-The pinned upstream source was rebuilt through the stage script, and the
-phone-sized startup and export-collision checks passed again on that rebuild.
-Deployment and integration of both native file menus remain outstanding.
+Grid Tools has a local candidate that moves model and workspace actions into
+both native File menus, redirects the native file input to My files, and keeps
+the older desktop toolbar as a fallback. Mesh:Tool's About and Kiri:Moto's Help
+no longer appear automatically on startup. Desktop, emulated-phone and 4K
+account workflows cover menu interaction, model import, workspace save, sync
+and reopen; a freshly rebuilt bundle passed the phone-sized workflow, startup
+and export collision checks. Mesh's About action was invoked programmatically,
+not by actual touch. Physical touch, wider format coverage and deployment remain.
 
 This list is an initial source audit; continue checking the remaining applications and their
 bundled menus rather than assuming the listed set is exhaustive.
