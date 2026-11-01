@@ -1,5 +1,20 @@
 # Simplified branch handoff
 
+## 2026-11-01 — G-code, Notebook and fabrication save protection
+
+Live static release `230b64da6e50c3f38cb8833826ab612719ac8473eade1eaa922381dc32e8ef25`
+rejects unsupported extra G-code axes, updates Notebook file identity after Open
+and Save As, and guards Kiri:Moto and Mesh:Tool workspace saves against window
+closure. Live phone-sized account checks passed for each editor; the concurrent
+fabrication export event and notebook Save As command were invoked by the test.
+Physical touch, actual export generation during that race and machine safety
+remain unverified. Four test accounts were disabled with data retained. Asset
+hashes and root, /desktop/ and /blog/ checks passed. Source through `563d14bce`
+is on box-git. Hosting manifest SHA-256 is
+`d18394a9f4ea2f3e5deb18b7193e3c290a9f4414a3f32030e7968ef5f74c42a1`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T053710254317Z`
+and `/var/backups/webhost-sites/change-20261101T053710255134Z`.
+
 ## 2026-11-01 — Archive, spreadsheet and diagram recovery
 
 Live static release `296d2211a02067d55435262225fbdecbb85c61f38cf053ed04f0a4ce834b3b51`

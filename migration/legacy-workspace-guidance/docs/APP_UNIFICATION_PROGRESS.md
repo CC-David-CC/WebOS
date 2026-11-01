@@ -628,21 +628,23 @@ its isolated bundle and is not claimed. Live phone-sized account checks passed
 all three; the Files drag stale-hover regression also passed on the new bundle.
 Physical touch remains unverified.
 
-Local candidates: G-code Preview rejects additional A/B/C/U/V/W axes instead
+G-code Preview rejects additional A/B/C/U/V/W axes instead
 of silently omitting motion, including unsupported G commands and modal forms.
 Real-worker desktop and phone-sized account tests covered all six axes,
 comments and preservation of the prior preview. Notebook updates file identity
 after Open and Save As; desktop and phone-sized account tests cover the original
 and copy in separate windows and server sync. Notebook's Save As command was
-invoked programmatically; an earlier menu attempt timed out. These changes are
-not live; physical touch and machine safety remain unverified.
+invoked programmatically; an earlier menu attempt timed out. Live phone-sized
+account checks passed both cases. Physical touch and machine safety remain
+unverified.
 
-Kiri:Moto and Mesh:Tool have a local workspace-save close guard. Desktop and
+Kiri:Moto and Mesh:Tool have a workspace-save close guard. Desktop and
 phone-sized tests used real model import and account sync, held the workspace
 write and injected a separate pending export to verify its warning remains.
 The initial setup clicked before model load completed and timed out; reruns
 waited for readiness. Actual export generation during the race, physical touch
-and fabrication hardware remain unverified; this is not live.
+and fabrication hardware remain unverified. Live phone-sized account checks
+passed both editors.
 
 ### Embedded-app file-menu review
 
