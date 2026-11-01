@@ -20,7 +20,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Native format and CSV are primary; stale folder choices are rejected and row/column changes track unsaved work. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Folder choices reject stale destinations; large datasets can exceed device memory and resource-pressure cases remain unverified. |
-| Python Notebook | Workflow checked | Recovery tested with idle kernel; immediate-close and concurrent kernel errors remain unresolved. Untrusted notebooks are not isolated. |
+| Python Notebook | Workflow checked | Recovery, concurrent starts and early close passed limited reruns; earlier intermittent kernel errors remain unexplained. Untrusted notebooks are not isolated. |
 | Image Editor | Workflow checked | Save As rejects stale folder choices; animated images are unsupported and embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | Temporary restore failures offer guarded retry; the adapter must be requalified when diagrams.net changes. Other exports and provider entry points need review. |
