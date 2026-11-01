@@ -105,13 +105,13 @@ account tests cover cancellation, changed progress, file replacement, sync and
 exact save reopening; local delayed-save, Files routing and game-model tests
 passed. A public phone-sized account test passed; physical touch remains unverified.
 
-Image Editor has a local candidate with desktop Open, New and Save As
-confirmations. It waits for the editor's deferred change notification and
+Image Editor uses desktop Open, New and Save As confirmations in live release
+`5a567ebae384f7bd4f18c3ca0d95be8514825a12a8c6746952343d572f78ac7c`. It waits for the editor's deferred change notification and
 protects edits or files changed during confirmation. Desktop, phone-sized and
 4K account tests cover cancellation, injected edit races, changed-file protection,
 sync and reopening; real local resize, invalid-image recovery and Save As tests
-also passed. The candidate is not live. Its outer file toolbar still needs a
-native-editor integration review; physical touch remains unverified.
+also passed. A public phone-sized safety test passed. Its outer file toolbar
+still needs a native-editor integration review; physical touch remains unverified.
 
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled

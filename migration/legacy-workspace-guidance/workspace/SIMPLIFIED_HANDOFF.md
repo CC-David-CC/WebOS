@@ -1,5 +1,20 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Image Editor confirmations
+
+Live static release `5a567ebae384f7bd4f18c3ca0d95be8514825a12a8c6746952343d572f78ac7c`
+uses desktop confirmations for Open, New and Save As and waits for deferred
+editor change notifications before deciding whether to discard edits. Local
+desktop, phone-sized and 4K account tests cover cancellation, injected edit
+races, changed-file protection, sync and reopening. Real local resize,
+invalid-image recovery and Save As checks and a public phone-sized safety test
+passed. The public test account was cleaned and disabled. Physical touch is
+unverified; the outer file toolbar still needs native-editor integration review.
+Source `2beb27b9e` is backed up to box-git. Hosting manifest SHA-256 is
+`ea1db7aa7254c99be36e0032fa609589785765c6c175ae2f35a27549b2076e4d`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T032329984313Z`
+and `/var/backups/webhost-sites/change-20261101T032329984723Z`.
+
 ## 2026-11-01 — Falling Blocks confirmation and pause
 
 Live static release `973ed6d4ed69f6729f272b563b1ec0f8b9ea2dd19f9228fdc020ea32c7477513`
