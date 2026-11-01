@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Editable MultiTrack audio projects
+
+Live static release `0124ca7eb4edf1f626e583e60eb6dee766c3c814f2b5c3f1a622a8d0941f625d` adds editable AudioMass `.amss` projects in My files, including Files routing and checked, rollback-capable project loading. Desktop and emulated-phone local tests and a live emulated-phone two-account test cover real audio/timing/mixer round trips, server sync, separate accounts, pending actions, malformed files, conflicts and injected failures. Upstream format omits beat/snap state and may shorten long names; the save dialog discloses both. Failed rollback or uncertain undo clearing warns and marks unsaved; decoding can use substantially more memory than file size. Physical touch and audio hardware are unverified. Two live test accounts were disabled with data retained. Hosting manifest SHA-256 `20e5f0de8ecfd74f2a4cc1f7fe16a82e9053f6323c31839fb6515da9836f1083`; rollback inputs `/var/backups/webhost-sites/change-20261101T073530650712Z` and `/var/backups/webhost-sites/change-20261101T073530651177Z`.
+
 ## 2026-11-01 — PDF and Digital Logic recovery
 
 Live static release `babaddc475c9cfc385015311e108b7f94ddce4beadb0347a228bc05ba788f734` keeps PDF page controls on the visible page if a later page exceeds the rendering limit, and clears Digital Logic’s stale restored-file association when the initial circuit cannot open. Local desktop/phone and live emulated-phone account tests passed; a missing-file Digital Logic case passed locally. Other rendering failures, physical touch and hardware remain unverified. Two live test accounts were disabled with data retained. Hosting manifest SHA-256 `20240b9b317fb279a456fb9051deb6d1742f186e5a73a41ff659d734427e7d7c`; rollback inputs `/var/backups/webhost-sites/change-20261101T073012102649Z` and `/var/backups/webhost-sites/change-20261101T073012108591Z`.

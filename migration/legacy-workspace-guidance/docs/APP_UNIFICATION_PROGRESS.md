@@ -41,6 +41,8 @@ Calculator can reopen its own calculation notes from My files, restoring the exp
 
 PDF Viewer keeps the displayed page and page number aligned if a later page is too large to show; local desktop/phone and live phone-sized tests cover a three-page PDF and recovery to another page. Digital Logic clears a stale desktop restore reference when its initial circuit cannot open; desktop/phone local and live phone-sized account checks cover invalid-file preservation, simulation, save and refresh. A missing-file phone-sized test passed locally. Other rendering failures, physical touch and real hardware remain unverified. Live release `babaddc475c9cfc385015311e108b7f94ddce4beadb0347a228bc05ba788f734`.
 
+Audio Editor now saves editable MultiTrack `.amss` projects to My files and opens them from Files. Local desktop/phone and live emulated-phone tests cover track audio, timing and mixer round trips, server sync, separate accounts, close guards, malformed files, stale-target conflicts and injected load/rollback failures. On failed undo clearing or rollback, the editor warns and marks the session unsaved. Single-track and mixdown regressions passed locally. The underlying format omits beat/snap state and can shorten long names; save warns about both. Decoding can consume more memory than the file size. Physical touch and audio hardware remain unverified. Live release `0124ca7eb4edf1f626e583e60eb6dee766c3c814f2b5c3f1a622a8d0941f625d`.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and
