@@ -731,6 +731,13 @@ saves, PES output and a simulated failure; existing save-race and conflict
 regressions passed. This is not live; physical touch and sewing remain
 unverified.
 
+Pico Simulator has a local UF2 block-count check: when a nonzero total is
+declared, inconsistent, duplicate or incomplete numbered blocks are rejected
+without replacing the running board. Zero-count legacy files remain accepted
+without a completeness claim. Desktop and phone-sized real-Blink/account tests
+and Pico regressions passed; an official MicroPython UF2 parsed but was not
+executed. This is not live or physical hardware validation.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
