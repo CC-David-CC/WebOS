@@ -33,7 +33,10 @@ The table describes useful starting points, not a promise that every feature or 
 | Electronics Design | Work with breadboard, schematic and PCB views; save the project. | Component coverage and production-board validation remain incomplete. |
 | Embroidery Studio | Create and save a project and export stitches. | Pre-release editor; machine compatibility and physical sewing are unverified. |
 | Stitch Converter | Open SVG artwork, create a stitch preview, save editable artwork separately, then export a machine file. | Conversion may omit unsupported SVG; inspect the design and test-sew. |
-| Falling Blocks | Play the preview, save a game and reopen it from Files. | Still in development. |
+| Falling Blocks | Play, choose sound and volume in Settings, and save or reopen a game. | Preview; sound starts muted. |
+| Owl Companion | Try an activity, save and reopen your progress. | Preview uses a procedural placeholder while authored Rive art is pending. |
+| Snake Garden | Choose a garden or endless game, play and save your progress. | Preview uses a procedural guide; physical touch remains unverified. |
+| Physics Playground | Create objects, run the simulation, and save a checkpoint. | Preview uses simulated physics; XR and physical-device behavior remain unverified. |
 | Personal template | Example for app authors. | Not a finished end-user app. |
 
 ### Try a model-to-toolpath workflow
