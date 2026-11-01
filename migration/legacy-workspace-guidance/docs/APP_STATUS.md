@@ -64,7 +64,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Target Garden | Preview | Pointer cancellation and independent input tested; full rounds and physical-device review remain, with final artwork pending. |
 | Orbital Courier | Preview | Further interaction and physical-device review; final artwork pending. |
 | Clockwork Quest | Preview | Further interaction and physical-device review; final artwork pending. |
-| Memory Garden | Preview | Further interaction and physical-device review; final artwork pending. |
+| Memory Garden | Preview | Full keyboard six-pair game and account reopen checked locally; physical touch, assistive technology and final artwork remain. |
 | Circuit Lab | Research candidate, not deployed | ngspice source/relink distribution review and model licensing remain open. |
 | PCB Design | Research prototype, not deployed | Browser packaging, dependency notices and usable design workflow remain open. |
 | Personal template | App-author example | Not an end-user app. |
