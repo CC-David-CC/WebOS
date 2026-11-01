@@ -525,7 +525,7 @@ synthetic container data; Pico flash, machine-code Blink, project and serial
 tests passed. Live phone-sized account checks passed both workflows; physical
 touch, physical devices and manufacturing remain unverified.
 
-Local candidates: Files reports how many files moved when a later item in a
+Files reports how many files moved when a later item in a
 multi-file drag fails. Desktop and phone-sized account tests used mouse-driven
 multi-select/drag with a destination collision and confirmed both files; the
 existing phone-sized move/sync/reopen workflow passed. Audio Editor routes
@@ -535,23 +535,24 @@ saves or image exports; desktop and phone-sized checks held a real account
 write, cancelled close and verified sync, and the existing phone file-menu
 workflow passed. The older CircuitJS file-safety test has a stale empty-root
 assertion and did not complete. Its corresponding-source archive was rebuilt
-and checked against the app source and README. None is live; physical touch,
-Mac shortcuts and closing during a real image export remain unverified.
+and checked against the app source and README. Live phone-sized account checks passed Audio Editor and CircuitJS. A live
+Files drag passed once and failed to start on another run, so drag reliability
+remains under investigation. Physical touch, Mac shortcuts and closing during
+a real image export remain unverified.
 
-The live Files bundle expects move-readiness fields absent from the older live
-mirror module; public drag attempts could not start even though local drag
-checks passed. The current source mirror supplies those fields, serializes local
-moves with sync and supports moving a new offline file. Its local storage suite,
-idle scheduling, phone-sized offline move and account sync/reopen checks passed.
-A staged shared-module update is required before the live drag workflow can be
-retested. Earlier public drag tests timed out because dragging was disabled;
-they did not establish a successful public move.
+The live Files bundle initially expected move-readiness fields absent from the
+older live mirror module, disabling drag. The current mirror is now live; it
+supplies those fields, serializes local moves with sync and supports moving a
+new offline file. Its local storage suite, idle scheduling, phone-sized offline
+move and account sync/reopen checks passed. A live phone-sized Move to… test
+covered offline movement, collision, sync and fresh-session recovery; a separate
+live conflict-resolution test passed. Multi-file drag passed once live but did
+not start reliably in repeated automated runs; the cause is under investigation.
 
-Terminal has a local touch-cancellation fix: a cancelled swipe no longer
-suppresses the next mouse click on a touch-capable desktop. Desktop and
+Terminal clears click suppression after a cancelled swipe. Desktop and
 phone-sized tests used actual CDP touch cancellation and the real v86/Linux
-guest, including a completed scrollback swipe. It is not live; physical touch
-remains unverified.
+guest, including a completed scrollback swipe; a live phone-sized test passed.
+Physical touch remains unverified.
 
 ### Embedded-app file-menu review
 

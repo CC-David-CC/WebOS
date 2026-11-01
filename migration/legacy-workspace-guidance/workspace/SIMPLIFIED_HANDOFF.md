@@ -1,5 +1,27 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Files, audio, circuit and mirror
+
+Live static release `7a87f1fdd0fd2c17aaf72e23ae2edff4446c1fab23e76003e40ad4c68943c484`
+contains the Files partial-move message, Audio Editor Ctrl/Command+S, CircuitJS
+pending-save guard, Terminal touch-cancel fix, and the current browser mirror.
+The Files bundle had expected readiness fields missing from the older deployed
+mirror; the current mirror supplies them and supports offline moves. Public
+phone-sized account tests passed Audio Editor WAV save, CircuitJS pending save,
+Terminal cancelled swipe with real Linux, Files offline Move to…/sync/reopen,
+and Files conflict resolution. A multi-file drag passed once and failed to start
+on another live run; its reliability is still being investigated. Earlier drag
+tests also failed while the old mirror was live. Physical touch, Mac shortcuts,
+physical devices and closing during a real circuit image export are unverified.
+The matching CircuitJS corresponding-source archive was verified before staging
+(SHA-256 `94193d48033a433305d96577f0adb3782bf30a1785c80d6afce0ed350341d85f`).
+Test accounts used in these checks were disabled with their data retained. App
+and mirror hashes and root, /desktop/ and /blog/ checks passed. Source through
+`f62721e4c` is on box-git. Hosting manifest SHA-256 is
+`0ab5d87c7bb98d83add1fb71c54ae6fec0c8a9164a8c85b62b3e1407b670e154`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T050627901236Z`
+and `/var/backups/webhost-sites/change-20261101T050627902078Z`.
+
 ## 2026-11-01 — Pico firmware and CAD input
 
 Live static release `fb76b9b0917e748190b9d7475cad9028583c21c57ebc769e320ea96fc089192a`
