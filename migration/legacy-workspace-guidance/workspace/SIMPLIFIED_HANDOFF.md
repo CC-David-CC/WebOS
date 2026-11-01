@@ -4468,3 +4468,7 @@ Ten more verified inactive static releases were archived to `/srv/data/codi-arch
 ## Arduino and Pico fixes live — 2026-11-01
 
 Live release `5a3605bbafde2e08132122a5dd54b75744f4dfe1e5d644f7adcbdce4bc096430`, previous `990d773a166c62841b5a4e763b2bd1b4360f02d571819e948519894e95d04ee5`. Public phone-sized account tests passed Arduino injected transient read, actual AVR Blink HEX retry, synced original and close/reopen; Pico stale folder, save/sync and worker disposal used a mocked worker. Two exact test accounts disabled; files retained. Root, `/desktop/`, `/blog/` 200. Manifest `8bb3ff8bfc5274acc458ef296f115ba1345c978ae0809fe2df3998690d7cb9a3`; Caddy `1e819ca9e5f354e5699416d33d3e97697f02d5385ecbb7c879f496ff6e6250d1`; rollback `/var/backups/webhost-sites/change-20261101T123302763486Z` and `/var/backups/webhost-sites/change-20261101T123302764218Z`. Physical touch, Pico firmware fidelity in this test and hardware remain unverified.
+
+## Simplified static archival fourth batch — 2026-11-01
+
+Ten more verified inactive static releases moved to `/srv/data/codi-archived-simplified-20261101`, making 34 receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Active `5a3605bb…`, rollbacks `990d773a…` and `47eb430c…`, referenced releases and user data remained. Root free 4.5 to 5.8 GiB; `/srv/data` 420 GiB available. Caddy, issuer, guest and files active. Archived paths require restoration before rollback; more historical releases remain.
