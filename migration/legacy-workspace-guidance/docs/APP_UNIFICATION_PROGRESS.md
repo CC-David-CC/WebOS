@@ -490,6 +490,14 @@ run hit the concurrent transfer limit when reading three files at once, and a
 sequential rerun passed. Dispatched writes can finish after closure. This is
 not live; physical touch and hardware remain unverified.
 
+G-code Preview has a local candidate that rejects unsupported G commands with
+geometric or extrusion parameters instead of silently omitting possible motion.
+Real-worker desktop and phone-sized checks cover splines, probes, drilling,
+dwell and comments; the prior preview remains open. Home-offset, modal and
+arc regressions also passed. An initial arc run used an unavailable debugging
+port; rerunning with the active port passed. This is not live and does not
+establish machine compatibility or safety.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
