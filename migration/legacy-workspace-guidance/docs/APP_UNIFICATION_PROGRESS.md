@@ -546,8 +546,10 @@ supplies those fields, serializes local moves with sync and supports moving a
 new offline file. Its local storage suite, idle scheduling, phone-sized offline
 move and account sync/reopen checks passed. A live phone-sized Move to… test
 covered offline movement, collision, sync and fresh-session recovery; a separate
-live conflict-resolution test passed. Multi-file drag passed once live but did
-not start reliably in repeated automated runs; the cause is under investigation.
+live conflict-resolution test passed. Multi-file drag passed in 4 of 8 live automated runs. During a failure the
+browser briefly accepted the folder, then changed its drop effect to none; a
+700 ms dwell did not consistently help. The source and destination rows stayed
+attached, and no drop followed. The exact drag-target cause remains unproven.
 
 Terminal clears click suppression after a cancelled swipe. Desktop and
 phone-sized tests used actual CDP touch cancellation and the real v86/Linux

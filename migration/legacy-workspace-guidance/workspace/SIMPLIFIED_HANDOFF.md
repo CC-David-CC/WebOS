@@ -9,8 +9,10 @@ The Files bundle had expected readiness fields missing from the older deployed
 mirror; the current mirror supplies them and supports offline moves. Public
 phone-sized account tests passed Audio Editor WAV save, CircuitJS pending save,
 Terminal cancelled swipe with real Linux, Files offline Move to…/sync/reopen,
-and Files conflict resolution. A multi-file drag passed once and failed to start
-on another live run; its reliability is still being investigated. Earlier drag
+and Files conflict resolution. Multi-file drag passed in 4 of 8 further live
+runs; a 700 ms dwell was inconsistent. Instrumentation observed the browser
+change the target drop effect from move to none before release without replacing
+the rows. The precise cause remains under investigation. Earlier drag
 tests also failed while the old mirror was live. Physical touch, Mac shortcuts,
 physical devices and closing during a real circuit image export are unverified.
 The matching CircuitJS corresponding-source archive was verified before staging
