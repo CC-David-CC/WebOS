@@ -263,6 +263,16 @@ Editor warns before closing while saving even when initially clean; held-save
 tests covered desktop, phone and 4K, while the failed-save edit was simulated.
 Physical touch and unusual cases remain unverified for these candidates.
 
+Arduino Simulator's local candidate clears the saved HEX reference when a
+bundled example replaces it; desktop, emulated-phone and 4K tests ran the real
+AVR worker and covered refresh, save, sync, account isolation and cleanup. The
+old source failed the targeted stale-reference test. Terminal's local candidate
+handles missing, synchronously throwing and rejected Clipboard API calls and
+ignores late paste results after closure. Desktop, emulated-phone and 4K checks
+used a real v86 shell with stubbed clipboard responses; the phone-sized
+two-shell and nano regression passed. Neither candidate is live; physical
+hardware, actual clipboard permission prompts and physical touch are unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
