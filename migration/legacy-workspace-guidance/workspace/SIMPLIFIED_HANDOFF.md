@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-11-01 — PDF render and startup recovery
+
+Live static release `478b750fbd2254d10026f273bf9ada9c4b5e0169b8a7a0e4ff699aa121d903d2` clears a failed initial PDF reference and stages page rendering before replacing the visible page or previous document. Failed search-result rendering clears the false match notice and allows retry. Local desktop/phone and live phone-sized account tests cover injected rendering failures, startup fallback, preservation and retry. One parallel oversized-open regression failed and a sequential rerun passed; the cause is unverified. Physical touch and other failure modes remain unverified. Three live test accounts were disabled with data retained. Hosting manifest SHA-256 `a926d148c169527d4b91129784f5547fa75cd9cece845d7de4b4368b43ceb879`; rollback inputs `/var/backups/webhost-sites/change-20261101T081532833082Z` and `/var/backups/webhost-sites/change-20261101T081532833531Z`.
+
 ## 2026-11-01 — Diagram restore references
 
 Live static release `904a286a95f706e66977edb1f7d0f8d73d317627ef3fd2df936b0955dab62891` updates diagrams.net’s restore reference after open or Save As, and clears it if the initial file fails. Local desktop/phone and live emulated-phone account tests passed switching, save/sync and refresh; invalid fallback passed live and missing fallback passed locally. Physical touch remains unverified. Two live test accounts were disabled with data retained. Hosting manifest SHA-256 `70058cc6d42691584bc4ee127fe714743ab45a163e3573345018cdd36c62581b`; rollback inputs `/var/backups/webhost-sites/change-20261101T081051227955Z` and `/var/backups/webhost-sites/change-20261101T081051293963Z`.

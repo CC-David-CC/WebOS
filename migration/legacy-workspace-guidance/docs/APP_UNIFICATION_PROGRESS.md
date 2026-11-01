@@ -59,6 +59,8 @@ Circuit Simulator and Stitch Converter clear failed initial-file references with
 
 diagrams.net updates its restore reference when opening or saving another diagram and clears it after a failed initial open. Local desktop/phone and live phone-sized account tests cover diagram switching, save/sync and refresh; invalid and missing initial-file fallback passed locally at phone size and invalid fallback passed live. Physical touch remains unverified. Live release `904a286a95f706e66977edb1f7d0f8d73d317627ef3fd2df936b0955dab62891`. Folder-move research now includes an isolated browser journal and two-tab/reload test, backed up on `research/folder-lock-20261101` at `facbde0b7df29abe2a58289bdf275a32871492e5`; receipt recovery, production mirror integration, direct host writers and the UI remain unfinished.
 
+PDF Viewer now clears failed startup references, stages pages before showing them, and stages a new PDF’s first page before replacing the prior document. A failed search-result render clears the false match status and allows retry. Local desktop/phone and live phone-sized account tests inject render failures and cover previous-page/document preservation, startup fallback and retry. Search/navigation regressions passed; one parallel oversized-open run failed and a sequential rerun passed, with cause unverified. Physical touch and other failure modes remain unverified. Live release `478b750fbd2254d10026f273bf9ada9c4b5e0169b8a7a0e4ff699aa121d903d2`.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and
