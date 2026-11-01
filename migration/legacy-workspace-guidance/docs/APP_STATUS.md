@@ -32,7 +32,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | G-code Preview | Workflow checked | Temporary restore failures offer Reload; supports a subset and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | Temporary firmware restore failures offer retry; D13 shows driven-high output, not analog brightness. No electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Folder choices reject stale selections; firmware/peripheral support partial and unsaved flash cannot be recovered after a crash. Physical hardware unverified. |
-| Digital Logic | Workflow checked | Examples and truth tables are foremost; JSON is under Advanced. Feed-forward combinational JSON only; no hardware timing validation. |
+| Digital Logic | Workflow checked | Examples and truth tables are foremost; labeled binary controls support multi-bit signals. Combinational JSON only; no hardware timing validation. |
 | Circuit Simulator | Workflow checked | Includes a voltage-divider lesson with expected 5 V output; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Temporary restore failures offer guarded retry; pre-release, with physical sewing, machine formats and provider audit open. |
