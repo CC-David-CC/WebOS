@@ -14,14 +14,14 @@ The table describes useful starting points, not a promise that every feature or 
 | Browser | Open a supported website or save a download to My files. | Experimental; temporary profile and no audio. |
 | Document Editor (Tiptap) | Write and save a report; export a PDF. | Not a Word editor. |
 | PDF Viewer (PDF.js) | Open, search and navigate a PDF. | Read-only; image-only scans need OCR. |
-| Spreadsheet (Jspreadsheet CE + SheetJS CE) | Edit a workbook; import/export supported CSV or XLSX. | Advanced Excel compatibility is limited. |
+| Spreadsheet (Jspreadsheet CE + SheetJS CE) | Edit a workbook; import/export supported CSV or XLSX. | Advanced Excel compatibility is limited. For example, `=-2^2` evaluates to `-4` here; use parentheses when exchanging formulas with Excel. |
 | Data Explorer (Perspective + DuckDB) | Create the synthetic resistor example or open CSV or TSV from Files or My files, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
 | Python Notebook (JupyterLite + Pyodide) | Run the measurement example with Shift+Enter or Run, edit it, then save to My files. The getting-started guide explains the two Python environments. | Untrusted notebooks are not isolated. Browser Python differs from the temporary Linux environment. |
 | Image Editor (Filerobot) | Create a blank image or open an image, add a watermark or annotation from My files, and save a copy. | Animated images are unsupported; annotation images use a temporary gallery. |
 | Audio Editor (AudioMass) | Try the generated 440 Hz tone, open or record audio, or add tracks from My files. Save an editable MultiTrack project or export a WAV mixdown. | The WAV is not an editable project; other AudioMass tools may remove the desktop’s beat/snap settings and long names can be shortened. Physical microphone behavior remains unverified. |
 | Diagram Editor (diagrams.net) | Open or create a diagram, save it, or export SVG/PNG to My files. | Other export formats and physical touch remain under review. |
 | Sketch Board (Excalidraw) | Draw a sketch, insert images from My files, save the drawing, or export a PNG. | Large embedded images use more memory and count toward the drawing size limit; physical touch needs testing. |
-| Vector Editor (SVG-Edit) | Try the example or draw vector artwork, then save an SVG. | Complex SVG and physical touch remain unverified. |
+| Vector Editor (SVG-Edit) | Try the example or draw vector artwork, then save an SVG. | SMIL animation is not supported and animated files with SMIL elements are refused to protect the original. CSS animation, complex SVG and physical touch remain unverified. |
 | Primitive 3D Modeler (Replicad) | Choose a box or cylinder, dimensions and optional offset hole; inspect volume and surface area, then export a model. | This is a limited model generator, not a full CAD system; validate manufacturing dimensions. |
 | Fabrication Studio (Kiri:Moto) | Open a model, configure slicing and export; save a workspace. | Check printer profiles and output independently before printing. |
 | Mesh Editor (Mesh:Tool) | Import and manipulate meshes; save a workspace or export geometry. | Undo history is not saved in workspace snapshots; verify geometry independently. |

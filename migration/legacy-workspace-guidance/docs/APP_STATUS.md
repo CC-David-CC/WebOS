@@ -23,7 +23,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
 | Image Editor | Workflow checked | Animated image editing unsupported; annotation images use a temporary gallery; embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
-| diagrams.net | Workflow checked | SVG/PNG export tested; other export types and provider entry points need review. |
+| diagrams.net | Workflow checked | Corrupt compressed pages are rejected; the editor does not acknowledge every load, and other export types and provider entry points need review. |
 | Excalidraw | Workflow checked | File and folder choices are serialized; reusable library features and provider audit remain partial. |
 | SVG Editor | Workflow checked | SMIL animation is rejected; CSS animation and complex SVG compatibility remain unverified. |
 | Replicad | Workflow checked | Limited model generator, not general CAD; validate output. |
@@ -31,7 +31,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Mesh:Tool | Workflow checked | Undo history is not saved; manufacturing correctness unverified. |
 | G-code Preview | Workflow checked | Supports a subset, assumes an initial state, and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | Not electrical simulation; browser compilation unavailable; reload does not preserve serial output. |
-| Pico Simulator | Workflow checked | Firmware/peripheral support partial; unsaved flash cannot be recovered after a crash. |
+| Pico Simulator | Workflow checked | Firmware/peripheral support partial; temporary storage failures retain restore references, but unsaved flash cannot be recovered after a crash. |
 | Digital Logic | Workflow checked | Feed-forward combinational JSON circuits only; no timing or hardware validation. |
 | Circuit Simulator | Workflow checked | Divider simulation, upload, sync and recovery checked; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Component coverage, physical touch and board validation remain open. |
@@ -47,7 +47,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Sky Courier | Preview | Steering and firing checks passed; full campaign and physical touch unverified. |
 | Marble Works | Preview | Pause/resume, account sync and reopen checked; all eight puzzles, physical touch and final artwork remain. |
 | Stack & Balance | Preview | Touch cancellation, save and reopen checked; full challenge set and physical devices remain unverified. |
-| Crystal Defense | Preview | Further interaction and physical-device review; final artwork pending. |
+| Crystal Defense | Preview | Deleted-save and busy-pause handling checked; full eight-wave playthrough and physical touch remain. |
 | Drone Circuit | Preview | Further interaction and physical-device review; final artwork pending. |
 | Reactive Control Desk | Preview | Further interaction and physical-device review; final artwork pending. |
 | Story Cards | Preview | Account sync and isolation checked; complete story and physical touch remain. |
