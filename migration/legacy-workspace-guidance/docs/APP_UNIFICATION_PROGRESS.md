@@ -49,6 +49,16 @@ asset route serves a known Circuit Simulator source ZIP without login (HTTP
 that direct source-asset URLs require login. Review the user's login requirement
 and the intended source distribution route before activating the candidate.
 
+A follow-up Embroidery file bridge is in progress: upstream Open and Place
+currently invoke the computer's picker, so a new browser source patch sends
+those requests to the desktop's My files picker and adds an explicit Place
+entry. The Rust WebAssembly-target check passed; host bridge tests cover
+cancellation, conflicts, stale edits, event rebinding and disposal. A full
+release build is running on box-git, and real editor/Open/Place tests remain.
+The prior pinned WASM and source ZIP do not include this bridge; regenerate and
+verify both with the changed host sources before any deployment. The existing
+live Embroidery build is unchanged.
+
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
 app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement
