@@ -4576,3 +4576,7 @@ Live `2bb1661f22319d4a4527836622648e7e2cca71a806dc8c439e9a33211f767fca`, previou
 ## Simplified static archival thirteenth batch — 2026-11-01
 
 Ten verified inactive releases archived to `/srv/data/codi-archived-simplified-20261101`; 122 receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Current `2bb1661f…`, rollbacks `95c3fe51…` / `ed4103a5…`, configured references and user data retained; services active. Root free 4.3 to 8.0 GiB; `/srv/data` 375 GiB free. Historical `7148c2f5…` is archived and old path requires restoration. Known mismatches remain untouched.
+
+## Report image scale, logic CSV and SVG export live — 2026-11-01
+
+Live release `68b9952bf398dd04dce87a2dfe1f146aacc4afbfe239a26a6369afdb75c05566`, previous `2bb1661f22319d4a4527836622648e7e2cca71a806dc8c439e9a33211f767fca`. Public phone account tests passed PDF.js 18×9 pt small and 480×120 pt large image geometry/sync/reopen; actual truth CSV project/custom paths/sync/reopen; vector SVG export/sync/open in SVG Editor and drawing reopen. Three exact test accounts disabled; files retained. Root, `/desktop/`, `/blog/` 200. Manifest `a6a4fb7b6abb6d1f2450e6c82069785452437cd797e45a93bb43a57fe22effc8`; Caddy `54209fd26ce4db9508ea834627ec3561382c46abe2b52282a9cebc81bbebc3ed`; rollback `/var/backups/webhost-sites/change-20261101T145304925627Z` and `/var/backups/webhost-sites/change-20261101T145304926489Z`. Webhost 7.0 GB free. Complex SVG, orientation metadata, physical touch unverified.
