@@ -249,6 +249,18 @@ cover draft preservation, save, server bytes and fresh-session reopen; existing
 confirmation regressions passed at all three sizes. Physical touch is unverified
 and the candidate is not live.
 
+The next local candidates are not live: SVG Editor rechecks drawing changes
+around discard prompts and the picker; concurrent-change tests were simulated
+at desktop, emulated-phone and 4K, followed by save, sync and reopen. Calculator
+reports exactly represented tangent poles as undefined; arithmetic and
+desktop/phone/4K workflow checks include nearby valid angles. Circuit Simulator
+clears an old layout reference when an example replaces a saved circuit;
+desktop, emulated-phone and 4K account checks cover save, sync, reload and
+account isolation, and the old code failed the targeted regression. Image
+Editor warns before closing while saving even when initially clean; held-save
+tests covered desktop, phone and 4K, while the failed-save edit was simulated.
+Physical touch and unusual cases remain unverified for these candidates.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
