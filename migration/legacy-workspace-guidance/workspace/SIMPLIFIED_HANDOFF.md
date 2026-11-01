@@ -4540,3 +4540,7 @@ Managed issuer `registration-admission-r1` manifest `51a3991f7a158c2f181899fcbc0
 ## Electronics, Notebook and Audio usability live — 2026-11-01
 
 Live static release `a142c2bb272672cc9d54836ba80548114a9110344ca76e003d5ce5faf910a4c5`, previous `eb01c5c631a2dadcd03d10739ff32648d6799c4705b1ed5cb71f8d21d6074301`. Public phone-sized account tests passed electronics example/guide/save/sync/reopen; real Pyodide mean, edit during chooser/one discard confirmation/save/sync/reopen; audio keyboard MultiTrack/import/project sync/fresh reopen. Three exact test accounts disabled; files retained. Root, `/desktop/`, `/blog/` 200. Manifest `5b4486081b8e5b59876cffd8066260d0193985503a4393a65c112445cfc8aba4`; Caddy `1c7c4e58255fe74ab01d4b09938a2085a638b8f3d60209f0cb157d64a4acb262`; rollback `/var/backups/webhost-sites/change-20261101T135646411679Z` and `/var/backups/webhost-sites/change-20261101T135646412947Z`. Root had 4.3 GB free before next archival batch. Physical touch, assistive technology, electronics sketch and hardware unverified.
+
+## Simplified static archival tenth batch — 2026-11-01
+
+Ten verified inactive static releases archived to `/srv/data/codi-archived-simplified-20261101`, 92 total receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Active `a142c2bb…`, rollbacks `eb01c5c6…` / `0bc90b47…`, referenced paths and user data retained; services active. Root free 4.3 to 5.4 GiB; `/srv/data` 388 GiB available. Known manifest mismatches remain untouched; archived historical paths require restoration before use.
