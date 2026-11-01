@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Pico UF2 overlap protection
+
+Live static release `29708dabf4d7edf54e9a24ce6cd4a1aa9c675092e4476d1d6dd68eb01c86d620`
+rejects conflicting overlapping firmware blocks without replacing the running
+board. A live phone-sized account check used synthetic conflicting UF2 and the
+real Blink worker; physical touch, arbitrary firmware and physical hardware
+remain unverified. The test account was disabled with data retained. Asset hash
+and root, /desktop/ and /blog/ checks passed. Source `b2d9db9c7` is on box-git.
+Hosting manifest SHA-256 is
+`cd6cc6f031196f3548977b1194afaf8547db5b529df301a7775e50ada72e2826`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T052438832827Z`
+and `/var/backups/webhost-sites/change-20261101T052438834505Z`.
+
 ## 2026-11-01 — Files drag and PDF warning ordering
 
 Live static release `1c8412afaedf7c90b96cc3bd608aafd684e403b09c37f3229184386c5d1ddb47`

@@ -595,12 +595,23 @@ automatically after shared builder dependencies are installed. A build with the
 app-local package absent recreated it and produced the same Files index hash as
 the live bundle. Custom source or entry overlays still prepare themselves.
 
-Pico Simulator has a local candidate rejecting UF2 blocks with conflicting
+Pico Simulator rejects UF2 blocks with conflicting
 overlapping flash bytes, while allowing identical overlaps. Desktop and
 phone-sized account checks used synthetic conflicting firmware and the real
 Blink worker; unit checks cover both block orders, valid overlap and adjacent
-blocks. The full Pico suite passed. This is not live; physical hardware and
-arbitrary firmware remain unverified.
+blocks. The full Pico suite passed. A live phone-sized account test passed;
+physical hardware and arbitrary firmware remain unverified.
+
+Local candidates: diagrams.net cancels Open if the current diagram changes
+while discard confirmation is displayed; desktop and phone-sized tests used a
+delayed embedded autosave and the existing phone workflow passed after adding
+its Files test dependency. Excalidraw now marks background and serialized grid
+settings unsaved, while zoom and pan remain view-only; desktop and phone-sized
+account tests cover background-only edit, close warning, save, sync and reopen.
+Initial test failures were traced to a missing Files bundle and an already-open
+menu respectively; corrected reruns passed. These changes are not live;
+physical touch, concurrent Open invocations and UI-level grid behavior remain
+unverified.
 
 ### Embedded-app file-menu review
 
