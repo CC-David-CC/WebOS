@@ -111,7 +111,10 @@ protects edits or files changed during confirmation. Desktop, phone-sized and
 4K account tests cover cancellation, injected edit races, changed-file protection,
 sync and reopening; real local resize, invalid-image recovery and Save As tests
 also passed. A public phone-sized safety test passed. Its outer file toolbar
-still needs a native-editor integration review; physical touch remains unverified.
+has a local candidate moving New, Open and Save As into a File menu in the
+editor's own top bar. Desktop, phone-sized and 4K account tests cover pointer
+actions, menu dismissal, save, sync, reopen and a simulated missing-toolbar
+fallback. The File-menu candidate is not live; physical touch remains unverified.
 
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
