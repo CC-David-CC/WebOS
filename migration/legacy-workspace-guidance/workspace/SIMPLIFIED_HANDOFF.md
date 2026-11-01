@@ -4472,3 +4472,7 @@ Live release `5a3605bbafde2e08132122a5dd54b75744f4dfe1e5d644f7adcbdce4bc096430`,
 ## Simplified static archival fourth batch — 2026-11-01
 
 Ten more verified inactive static releases moved to `/srv/data/codi-archived-simplified-20261101`, making 34 receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Active `5a3605bb…`, rollbacks `990d773a…` and `47eb430c…`, referenced releases and user data remained. Root free 4.5 to 5.8 GiB; `/srv/data` 420 GiB available. Caddy, issuer, guest and files active. Archived paths require restoration before rollback; more historical releases remain.
+
+## Spreadsheet recovery live — 2026-11-01
+
+Live release `519e1f95902918098f703f63f6926f77ae365885c2615da29f5f2d932ccee8fa`, previous `5a3605bbafde2e08132122a5dd54b75744f4dfe1e5d644f7adcbdce4bc096430`. Public phone-sized account test passed transient restore failure, cancel, separate scratch sync, unchanged original and retry. Exact test account disabled; files retained. Root, `/desktop/`, `/blog/` 200. Manifest `c0fa25655237cba7809caa7c5d02a8da46573d6f74436d4f8aba82adf7719b4c`; Caddy `c2a8bdd2d498bea0c76d6f98be3ed2040f8fc09ec52d11164afd240ef9933a13`; rollback `/var/backups/webhost-sites/change-20261101T123653851606Z` and `/var/backups/webhost-sites/change-20261101T123653852354Z`. Webhost 4.9 GB available. Physical touch and import-conflict retry remain unverified.
