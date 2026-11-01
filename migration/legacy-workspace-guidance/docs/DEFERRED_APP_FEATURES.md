@@ -23,7 +23,7 @@ unverified or provider-dependent features unavailable in the student workflow.
 
 | App | Feature | Status / reason |
 | --- | --- | --- |
-| Circuit Simulator (CircuitJS) | Import from Dropbox | The local candidate removes the File-menu and command-palette entries and Dropbox startup import; My files is the supported workflow. No desktop-integrated cloud import replacement exists. The candidate is not live. |
+| Circuit Simulator (CircuitJS) | Import from Dropbox | The live Circuit Simulator removes the File-menu and command-palette entries and Dropbox startup import; My files is the supported workflow. No desktop-integrated cloud import replacement exists. |
 | Electronics Design (designElectronics) | Upstream AI assistant | The upstream desktop assistant uses external local CLI tools; the WebAssembly build does not enable its network-backed agent support. No desktop-integrated replacement exists. |
 | Electronics Design (designElectronics) | GitHub connection, commits, and project history | The embedded account and history controls are hidden; provide integrated project history before restoring them. |
 | Embroidery Studio (StitchFoundry) | Design from prompt | Upstream documentation says this uses the user's Anthropic API key. No internal replacement exists. Keep unavailable; audit the pinned browser build to confirm the entry point and provider request are blocked. |
