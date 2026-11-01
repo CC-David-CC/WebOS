@@ -10,7 +10,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 
 | App | Status | Main remaining boundary |
 | --- | --- | --- |
-| Files | Workflow checked | Folder moves unavailable; 100-user capacity unqualified. |
+| Files | Workflow checked | Copies use an atomic local snapshot; unseen remote edits may arrive later. Folder moves unavailable; 100-user capacity unqualified. |
 | Terminal | Workflow checked | Guest files are temporary; more interactive programs need testing. |
 | Text | Workflow checked | File actions are serialized during confirmation and selection; the 128 MiB boundary remains unverified. |
 | Help | Static information checked | Not a full manual. |
