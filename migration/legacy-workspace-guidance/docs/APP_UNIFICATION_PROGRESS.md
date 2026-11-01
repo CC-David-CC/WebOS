@@ -577,6 +577,16 @@ API, checked close cancellation and verified subsequent server saves. Both
 checks also passed live at a phone-sized viewport; physical touch and every
 viewer configuration remain unverified.
 
+Files has a local pinned Chonky patch for a stale hover-state drag race. A
+deterministic delayed-frame negative control failed on the old build and passed
+with the patch; six candidate partial-drag and four cross-window tests passed
+against the live account service using hash-verified intercepted assets. This is
+not yet deployed; physical touch and broader drag scenarios remain unverified.
+PDF Viewer has a local fix that prevents slower, earlier metadata checks from
+clearing a newer file-change warning. Desktop and phone-sized account tests
+covered delayed checks and existing change/deletion/reload behavior; this is not
+live and physical touch remains unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
