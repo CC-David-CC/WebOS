@@ -4528,3 +4528,7 @@ Live release `0bc90b47b02987624ad11e66d8963c601536ce2e0b8efd31c3da2741c27a5694`,
 ## Simplified static archival ninth batch — 2026-11-01
 
 Ten more verified inactive releases archived to `/srv/data/codi-archived-simplified-20261101`; 82 per-release receipts in `/srv/codi-connected/simplified-archive-<hash>.json`. Active `0bc90b47…` and rollbacks `af1f9774…` / `84fea19f…` retained; services active. Root free 4.5 to 6.3 GiB; `/srv/data` 393 GiB available. Historical `49f37406…` is archived and its former path requires restoration before use. Known manifest mismatches remain untouched.
+
+## Electronics and stitched example live — 2026-11-01
+
+Live release `7841c461b24a18f6fa667a609667964ef12d0b4e71cccd8be6c2898e35ba41da`, previous `0bc90b47b02987624ad11e66d8963c601536ce2e0b8efd31c3da2741c27a5694`. Public phone-sized account tests passed electronics stale Save As rejection/correct save/sync/reopen and Embroidery 182-stitch DST export/project save/sync/reopen. Staged and authenticated public corresponding-source ZIP matched `bf5f2b0c26d14c7c81f257139003ac3605027bf4e85ea5dbc71996837165bebe`. Two exact test accounts disabled; files retained. Root, `/desktop/`, `/blog/` 200. Manifest `b93ce79d3e1c2e8a8d521503b3294acc2f3886ca8c397d2f2fbbd5a7b4f8a2cb`; Caddy `3f14e33f5d3fa731b2d533552a90fd194b5ac0cab40bdc87e3811149c593203b`; rollback `/var/backups/webhost-sites/change-20261101T134308773369Z` and `/var/backups/webhost-sites/change-20261101T134308774405Z`. Webhost 5.4 GB available. Physical touch, hardware and sewing unverified.
