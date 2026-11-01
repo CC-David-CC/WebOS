@@ -333,12 +333,13 @@ overlapping actions during path prompts. Desktop, emulated-phone and 4K account
 tests cover shortcuts, save, export, sync and reopen. Public phone-sized tests
 passed for both. Physical touch and actual Mac shortcuts remain unverified.
 
-Calculator has a local candidate that marks a calculation-note save as pending
+Live release `e87dc394762835f1510801a828fd7002b2cffc5b06837418f48d97aab13e620e`:
+Calculator marks a calculation-note save as pending
 for the desktop close guard. Desktop, emulated-phone and 4K account tests held
 the save, cancelled close, changed the expression and verified the captured note
 synced and reopened. Hold/failure timing was injected; storage was real. The
-minimal host guard and Calculator update must be released together. This
-candidate is not live; physical touch remains unverified.
+minimal host guard and Calculator update are live together; a public
+phone-sized check passed. Physical touch remains unverified.
 
 Image Editor's local layout candidate updates the restore reference on open and
 save and clears it for a new blank image. Desktop, emulated-phone and 4K tests
@@ -347,19 +348,19 @@ reopening; a phone-sized Save As and fresh-session test also passed. An unsaved
 blank is not recovered on refresh. This candidate is not live; physical touch
 remains unverified.
 
-G-code Preview's local parser candidate strips balanced parenthesized comments
+G-code Preview strips balanced parenthesized comments
 and rejects unmatched or nested parentheses. The previous worker interpreted
 `X10 (X999)` as X999. Desktop, emulated-phone and 4K tests compare real-worker
 geometry and rendered output, and verify malformed comments preserve the prior
-preview; the large-file cancellation regression also passed. It is not live
-and does not establish controller or physical-machine behavior.
+preview; the large-file cancellation regression and a public phone-sized test
+also passed. This does not establish controller or physical-machine behavior.
 
-Notebook's local Save As candidate asks before replacing an existing notebook,
+Notebook's Save As asks before replacing an existing notebook,
 checks the observed version and cancels if the active tab changes during the
 confirmation. Desktop, emulated-phone and 4K account tests cover cancellation,
 both races, accepted replacement, sync and fresh-session reopen; a separate
 desktop regression ran the real Pyodide example. The test switches tabs through
-Jupyter's API. This is not live; physical touch remains unverified.
+Jupyter's API. A public phone-sized test passed; physical touch remains unverified.
 
 Arduino Simulator shows a persistent notice when its
 opened or saved HEX changes, disappears or conflicts in My files, while keeping

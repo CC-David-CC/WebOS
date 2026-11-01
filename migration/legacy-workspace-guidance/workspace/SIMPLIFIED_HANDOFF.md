@@ -1,5 +1,20 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Calculator, G-code and Notebook safety
+
+Live static release `e87dc394762835f1510801a828fd7002b2cffc5b06837418f48d97aab13e620e`
+contains the documented Calculator pending-save guard, G-code parenthesized
+comment parsing and Notebook Save As protection. Public phone-sized account
+tests passed for all three, including server sync and recovery. The desktop
+shell was based on the previous live version with only the one Calculator guard
+change, and the served bytes were checked. Some race timings were injected;
+physical touch and controller behavior remain unverified. Three test accounts
+were disabled with data retained. Source through `acbc70930` is on box-git.
+Hosting manifest SHA-256 is
+`2c2feea1d1b82c0876051027ecc4cf1ab5ea5e223934c2506c9218944e664e83`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T043031515219Z`
+and `/var/backups/webhost-sites/change-20261101T043031515631Z`.
+
 ## 2026-11-01 — Import, save and firmware safety
 
 Live static release `d8c9c1f7074d037631c8075e85fc601a9ba3deb17a3e3f2641de47869769d13b`
