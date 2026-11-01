@@ -1,0 +1,47 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rhythm Garden isolated harness</title>
+<body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get("app");
+if(!entry||!entry.startsWith("/apps/rhythm-garden/"))throw Error("Missing Rhythm Garden bundle");
+const styles=document.createElement("link");
+styles.rel="stylesheet";
+styles.href=entry.replace("index.mjs","index.css");
+document.head.append(styles);
+const {mount}=await import(entry);
+const files=new Map();
+let sequence=0;
+let delayNextWrite=false;
+const context={
+ path(value){return value.startsWith("/")?value:"/"+value},
+ name(value){return String(value).replaceAll("/","")},
+ valid(){return true},
+ files:{
+  async read(path){if(!files.has(path))throw Error("File not found.");return files.get(path)},
+  async write(path,data,expected){
+   if(delayNextWrite){delayNextWrite=false;window.writeWaiting=true;await new Promise(resolve=>window.releaseWrite=resolve)}
+   const current=files.get(path)?.version??null;if(current!==expected)throw Error("File changed");
+   const out={data:typeof data==="string"?new TextEncoder().encode(data):data,version:String(++sequence),status:"synced"};files.set(path,out);return out
+  },
+  async stat(path){const file=files.get(path);if(!file)throw Error("File not found.");return{version:file.version,status:file.status,bytes:file.data.byteLength}},
+  subscribe(){return()=>{}},
+ },
+};
+const make=(tag,className="",text="")=>{const node=document.createElement(tag);node.className=className;node.textContent=text;return node};
+window.fileStore=files;window.fileContext=context;window.targetPath="/Rhythm Garden.game.json";window.delayNextWrite=()=>{delayNextWrite=true;window.writeWaiting=false};
+window.makeRhythm=(initialPath=null)=>{
+ const controller=new AbortController();
+ const w=initialPath?{launchContext:{version:1,storage:"mirror",path:initialPath,owner:"test"}}:{};
+ const app=mount({
+  w,
+  signal:controller.signal,
+  ui:{make,textButton:(label,fn)=>{const node=make("button","",label);node.setAttribute("aria-label",label);node.addEventListener("click",fn);return node},appInput:(label,value)=>{const node=make("input");node.setAttribute("aria-label",label);node.value=value;return node},confirm:async message=>window.confirm(message)},
+  storage:{signedInSubject:()=>"test",mirrorFileContext:async()=>context,pickFile:async()=>window.targetPath,pickFolder:async()=>"/"},
+ });
+ const shell=make("div","window focused");shell.append(app.element);document.body.append(shell);
+ return {app,controller,shell,w};
+};
+window.instances=[makeRhythm(),makeRhythm()];
+</script>
