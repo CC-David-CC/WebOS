@@ -43,3 +43,5 @@ In **Replicad**, set the box dimensions, save the project and select **Create mo
 This is an example of moving work between apps, not approval to run a printer. The G-code viewer omits homing movement and supports only a subset of controller behavior. Check the profile and toolpath with tools appropriate to the actual machine before using it.
 
 Items shown disabled under System Tools are shared capabilities for apps, not independent applications. Third-party and AI features deferred from these apps are tracked in [Deferred app features](DEFERRED_APP_FEATURES.md).
+
+In Files, select an account file and choose **Open in Text** to edit its UTF-8 source even if Open normally launches another application. Save, then open it in the other application to see the updated file.
