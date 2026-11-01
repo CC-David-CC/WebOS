@@ -12,7 +12,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | --- | --- | --- |
 | Files | Workflow checked | Folder moves unavailable; 100-user capacity unqualified. |
 | Terminal | Workflow checked | Guest files are temporary; more interactive programs need testing. |
-| Text | Workflow checked | Temporary restore failures retain the path and allow Reload; large files and further editing modes need review. |
+| Text | Workflow checked | Cache misses check server sync before being treated as missing; the 128 MiB boundary remains unverified. |
 | Help | Static information checked | Not a full manual. |
 | Calculator | Workflow checked | Floating-point results; notes restore the recorded result but not previous Ans history. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
@@ -26,7 +26,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | diagrams.net | Workflow checked | Loads require a guarded confirmation; the adapter must be requalified when diagrams.net changes. Other export types and provider entry points need review. |
 | Excalidraw | Workflow checked | File and folder choices are serialized; reusable library features and provider audit remain partial. |
 | SVG Editor | Workflow checked | SMIL animation is rejected; CSS animation and complex SVG compatibility remain unverified. |
-| Replicad | Workflow checked | Limited model generator, not general CAD; validate output. |
+| Replicad | Workflow checked | Unknown project fields are rejected to preserve source; limited model generator, not general CAD. |
 | Kiri:Moto | Workflow checked | Printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Typed-array wrap/overflow is rejected; undo history and manufacturing correctness remain unverified. |
 | G-code Preview | Workflow checked | Supports a subset, assumes an initial state, and does not validate machine safety. |
@@ -59,7 +59,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Sling Targets | Preview | Dirty settings and interrupted aim checked; physical touch and all arrangements remain unverified. |
 | Gravity Pinball | Preview | Account save/reopen and input-focus checks passed; physical touch remains. |
 | Kinetic Relay | Preview | Single-step dirty tracking and deleted-save protection checked; physical touch and full puzzle sequence remain. |
-| Tabletop Bot Arena | Preview | Account match save/reopen and input-focus checks passed; physical touch remains. |
+| Tabletop Bot Arena | Preview | Overlapping inputs and file-operation guards checked; physical touch and full cup remain. |
 | Pocket Golf | Preview | Further interaction and physical-device review; final artwork pending. |
 | Target Garden | Preview | Further interaction and physical-device review; final artwork pending. |
 | Orbital Courier | Preview | Further interaction and physical-device review; final artwork pending. |
