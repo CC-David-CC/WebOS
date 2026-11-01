@@ -1,0 +1,47 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Lantern Leap isolated harness</title>
+<body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get('app');
+if(!entry||!entry.startsWith('/apps/lantern-leap/'))throw Error('Missing Lantern Leap bundle');
+const style=document.createElement('link');style.rel='stylesheet';style.href=entry.replace('index.mjs','index.css');document.head.append(style);
+const {mount}=await import(entry);
+const files=new Map();let sequence=0;let releaseWrite=null;
+const context={
+ owner:'test',
+ path:value=>value.startsWith('/')?value:'/'+value,
+ name:value=>String(value).trim().replaceAll('/',''),
+ valid:()=>true,
+ files:{
+  async read(path){if(!files.has(path))throw Error('File not found.');return files.get(path)},
+  async write(path,data,expected){const current=files.get(path)?.version??null;if(current!==expected)throw Error('File changed');if(window.delayWrites)await new Promise(resolve=>{releaseWrite=resolve});const out={data:typeof data==='string'?new TextEncoder().encode(data):data,version:String(++sequence),status:'synced'};files.set(path,out);return out},
+  async stat(path){const file=files.get(path);if(!file)throw Error('File not found.');return {version:file.version,status:file.status,bytes:file.data.byteLength}},
+  subscribe(){return()=>{}},
+ },
+};
+const make=(tag,className='',text='')=>{const node=document.createElement(tag);node.className=className;node.textContent=text;return node};
+window.fileStore=files;window.targetPath='/Lantern Leap.game.json';window.testContext=context;window.releaseWrite=()=>{const release=releaseWrite;releaseWrite=null;release?.()};
+window.makeLantern=()=>{
+ const controller=new AbortController();
+ const windowState={dirty:false};
+ const app=mount({
+  w:{lanternLeap:windowState},
+  signal:controller.signal,
+  ui:{
+   make,
+   textButton:(label,action)=>{const node=make('button','',label);node.setAttribute('aria-label',label);node.addEventListener('click',action);return node},
+   appInput:(label,value)=>{const node=make('input');node.setAttribute('aria-label',label);node.value=value;return node},
+   confirm:async message=>window.confirm(message),
+  },
+  storage:{
+   signedInSubject:()=> 'test',
+   mirrorFileContext:async()=>context,
+   pickFile:async()=>window.targetPath,
+   pickFolder:async()=>'/',
+  },
+ });
+ const shell=make('div','window focused');shell.append(app.element);document.body.append(shell);return {app,controller,shell,windowState};
+};
+window.instances=[makeLantern(),makeLantern()];
+</script>
