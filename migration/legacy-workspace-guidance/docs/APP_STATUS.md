@@ -32,7 +32,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | G-code Preview | Workflow checked | Supports a subset, assumes an initial state, and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | Not electrical simulation; browser compilation unavailable; reload does not preserve serial output. |
 | Pico Simulator | Workflow checked | Firmware/peripheral support partial; temporary storage failures retain restore references, but unsaved flash cannot be recovered after a crash. |
-| Digital Logic | Workflow checked | Feed-forward combinational JSON circuits only; no timing or hardware validation. |
+| Digital Logic | Workflow checked | Feed-forward combinational JSON only; propagation delay is bounded and is not hardware timing validation. |
 | Circuit Simulator | Workflow checked | Divider simulation, upload, sync and recovery checked; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Pre-release; physical sewing, machine formats and provider audit remain open. |
@@ -56,7 +56,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Lantern Leap | Preview | Overlapping inputs, focus loss, save and reopen checked; physical touch and all rooms remain unverified. |
 | Garden Defense | Preview | Map cancellation and pending-save path checks pass; physical touch and full wave progression remain. |
 | Pocket Rally | Preview | Focus/input, account save and isolation checked; full races and physical multitouch remain. |
-| Sling Targets | Preview | Further interaction and physical-device review; final artwork pending. |
+| Sling Targets | Preview | Dirty settings and interrupted aim checked; physical touch and all arrangements remain unverified. |
 | Gravity Pinball | Preview | Account save/reopen and input-focus checks passed; physical touch remains. |
 | Kinetic Relay | Preview | Further interaction and physical-device review; final artwork pending. |
 | Tabletop Bot Arena | Preview | Account match save/reopen and input-focus checks passed; physical touch remains. |

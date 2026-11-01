@@ -37,8 +37,52 @@ The table describes useful starting points, not a promise that every feature or 
 | Owl Companion | Try an activity, save and reopen your progress. | Preview uses a procedural placeholder while authored Rive art is pending. |
 | Snake Garden | Choose a garden or endless game, play and save your progress. | Preview uses a procedural guide; physical touch remains unverified. |
 | Physics Playground | Create objects, run the simulation, and save a checkpoint. | Preview uses simulated physics; XR and physical-device behavior remain unverified. |
-| Additional Games previews | Open **Applications → Games**, choose Arcade, Physics, World or Interactive, then choose a preview. | Physics and World groups have XR planned; headset support is not yet established. Many assets are placeholders. |
+| Other Games previews | Open **Applications → Games** and choose a group. The game list below gives a starting point for each preview. | Physics and World groups have XR planned; headset support is not yet established. Many assets are placeholders. |
 | Personal template | Example for app authors. | Not a finished end-user app. |
+
+### Game previews
+
+All games are previews. Use the in-game save controls to keep checkpoints in My files where offered. Physical touch, audio and complete playthroughs are not verified for every game; the [app review status](APP_STATUS.md) lists the current boundaries.
+
+**Arcade**
+
+- **Falling Blocks:** Rotate and place blocks to clear lines.
+- **Chess Study:** Play either side against a local computer, or try a practice position.
+- **Solitaire:** Build foundations from a Klondike deal; choose draw-one or draw-three.
+- **Sky Courier:** Fly through the route, deliver and avoid obstacles.
+- **Snake Garden:** Guide the snake toward food without colliding.
+- **Lantern Leap:** Collect lanterns and reach the exit in each room.
+- **Garden Defense:** Build and upgrade towers along a route to defend the garden.
+- **Pocket Rally:** Drive laps through checkpoints and improve your time.
+
+**Physics games — XR planned**
+
+- **Physics Playground:** Arrange objects, run the simulated physics and try a challenge.
+- **Marble Works:** Build a track and run a marble through its course.
+- **Stack & Balance:** Place blocks and keep the stack stable.
+- **Sling Targets:** Aim and launch to knock targets past the scoring line.
+- **Gravity Pinball:** Launch the ball and use the flippers to score.
+- **Kinetic Relay:** Arrange mechanisms to reach checkpoints in order.
+- **Tabletop Bot Arena:** Control a toy robot against a local opponent.
+
+**World games — XR planned**
+
+- **Clockwork Room:** Solve the room’s four mechanisms to unlock the exit.
+- **Crystal Defense:** Build and upgrade towers to defend the crystal.
+- **Drone Circuit:** Fly through the ordered gates on a course.
+- **Pocket Golf:** Aim and putt through miniature-golf holes.
+- **Target Garden:** Aim at moving mechanical targets.
+- **Orbital Courier:** Collect parcels and deliver them to the dock.
+- **Clockwork Quest:** Explore the rooms, solve mechanisms and rescue Pip.
+
+**Interactive games**
+
+- **Owl Companion:** Try the blink, firefly and expression activities.
+- **Reactive Control Desk:** Adjust instruments to complete repair orders.
+- **Story Cards:** Choose paths through a branching story.
+- **Expression Puppet:** Adjust facial and pose controls to match challenges.
+- **Rhythm Garden:** Tap lanes in time with the notes.
+- **Memory Garden:** Reveal pairs of matching cards.
 
 ### Try a model-to-toolpath workflow
 
