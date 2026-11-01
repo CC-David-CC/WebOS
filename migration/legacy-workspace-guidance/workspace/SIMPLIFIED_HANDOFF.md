@@ -1,5 +1,20 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Image Editor File menu
+
+Live static release `bc12051a9156f0d0f047ae0008fa52a3a1881fe8cf88f73417e0530e496df46f`
+moves New, Open and Save As from the outer toolbar into a File menu in the
+editor's top bar; a fallback appears if that toolbar cannot be found. Local
+desktop, phone-sized and 4K account tests cover mouse or emulated touch,
+keyboard dismissal, save, sync, reopen, simulated toolbar loss and observer
+cleanup. Local phone-sized image-safety, invalid-image and Save As regressions,
+and a public phone-sized File-menu test passed. The disposable public account
+was cleaned and disabled. Physical touch remains unverified. Source
+`5f0e72509` is backed up to box-git. Hosting manifest SHA-256 is
+`25a6ff181d9aa9475dfb0ac6560f3be2a8135553a3a7fc75362bdb973b87444f`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T032920455004Z`
+and `/var/backups/webhost-sites/change-20261101T032920455425Z`.
+
 ## 2026-11-01 — Image Editor confirmations
 
 Live static release `5a567ebae384f7bd4f18c3ca0d95be8514825a12a8c6746952343d572f78ac7c`
