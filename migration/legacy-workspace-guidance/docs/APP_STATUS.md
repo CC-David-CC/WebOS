@@ -22,7 +22,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Data Explorer | Workflow checked | Large datasets can exceed device memory. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; intermittent multiple-kernel allocation failures remain. |
 | Image Editor | Workflow checked | Animated image editing unsupported; annotation images use a temporary gallery; embedded tools need further audit. |
-| Audio Editor | Workflow checked | MultiTrack projects omit beat/snap settings and may shorten long names; physical microphone behavior remains unverified. |
+| Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | SVG/PNG export tested; other export types and provider entry points need review. |
 | Excalidraw | Workflow checked | Reusable library features deferred pending My files integration; provider audit partial. |
 | SVG Editor | Workflow checked | Complex SVG and physical touch remain unverified. |

@@ -87,3 +87,11 @@ sparse fixture used bounded 64 KiB reads and passed interrupted-retry tests,
 but cannot predict slow-disk or concurrent-user behavior. Ordinary file writes
 and direct host writers are not frozen by cleanup; quiescence and backup/restore
 remain release gates. Cleanup receipts also lack a retention policy.
+
+A local concurrency regression now holds the prototype's manifest calculation
+artificially and verifies that a second account's folder listing waits until the
+move releases the shared lock. This demonstrates cross-account contention; the
+200 ms assertion is a coordination check, not a throughput benchmark. A routed
+implementation needs an account-scoped isolation strategy that also protects
+gateway mutations and permits ordinary activity in other accounts. Direct host
+writers remain outside that strategy and need a separate consistency boundary.
