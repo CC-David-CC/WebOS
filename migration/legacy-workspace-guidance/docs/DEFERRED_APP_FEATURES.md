@@ -26,7 +26,10 @@ unverified or provider-dependent features unavailable in the student workflow.
 | Electronics Design (designElectronics) | GitHub connection, commits, and project history | The embedded account and history controls are hidden; provide integrated project history before restoring them. |
 | Embroidery Studio (StitchFoundry) | Design from prompt | Upstream documentation says this uses the user's Anthropic API key. No internal replacement exists. Keep unavailable; audit the pinned browser build to confirm the entry point and provider request are blocked. |
 | Embroidery Studio (StitchFoundry) | Redraw image | Upstream documentation says this uses the user's Anthropic API key. No internal replacement exists. Keep unavailable; audit the pinned browser build to confirm the entry point and provider request are blocked. |
-| Embroidery Studio (StitchFoundry, attribution tentative) | Ask about embroidery | The pinned WebAssembly contains this feature’s name and upstream help text; its interactive entry points have not been fully audited. No internal replacement exists. Keep unavailable until its interface and replacement are reviewed. |
+| Embroidery Studio (StitchFoundry) | Ask about embroidery | The pinned WebAssembly contains this feature’s name and upstream help text; its interactive entry points have not been fully audited. No internal replacement exists. Keep unavailable until its interface and replacement are reviewed. |
+| Embroidery Studio (StitchFoundry) | Check My Sew-out | The bundled WebAssembly contains upstream feature text; the nearby candidate source sends a design and photos for AI analysis. The actual entry points require audit and no internal replacement exists. |
+| Embroidery Studio (StitchFoundry) | Foundry Account and credits | The bundled WebAssembly contains account screens and provider text. Use the desktop account; upstream account entry points require removal. |
+| Embroidery Studio (StitchFoundry) | Publish to MakerFoundry; Send to StitchShop | The bundled WebAssembly contains these feature names. Their actual entry points and network behavior need review; no integrated replacement exists. |
 
 ## Replacement gate
 

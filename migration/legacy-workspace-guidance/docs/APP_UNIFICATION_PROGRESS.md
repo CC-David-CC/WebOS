@@ -64,6 +64,17 @@ simulated translated labels and a missing popup API; recovery controls saved
 the diagram in the missing-API case. A changed menu structure has not been
 simulated. These changes are not live.
 
+The StitchFoundry WebAssembly has an unresolved source-provenance gap. The
+previously recorded `e3b80b2...` commit lacks account and Ask source files whose
+paths and text appear in the pinned archive's WebAssembly. Upstream commit
+`e5a88e0...` predates the archive timestamp, contains those features and matches
+its README, notices, assets list and licenses; this is useful review evidence,
+not proof that it produced the binary. Confirm a source/build match before
+rebuilding or claiming those controls have been removed. The current 5.4 GB of
+local free space is also below the upstream documentation's approximately 30 GB
+build-directory estimate; box-git has a larger writable data disk, but its build
+toolchain has not been prepared.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
