@@ -1,5 +1,33 @@
 # Simplified branch handoff
 
+## 2026-11-01 — G-code unsupported motion
+
+Live static release `a7b37d4e49d969611834bd06ed4fe59c4e950e7afaca2d7cc13c1bc2777e15ca`
+rejects unsupported G commands carrying motion-related parameters instead of
+silently skipping them. A public phone-sized account check exercised the real
+worker against spline, probe, drilling, dwell and comment examples and kept the
+previous preview on rejection. This does not establish machine compatibility or
+safety. The test account was disabled with data retained. Asset hash and root,
+/desktop/ and /blog/ checks passed. Source `1ecacbce3` is on box-git. Hosting
+manifest SHA-256 is
+`45a37744fac7ce569ea315b1600cb4c3f9db77fc0c925fc1e550a05bf11e7fd2`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T045428090013Z`
+and `/var/backups/webhost-sites/change-20261101T045428090800Z`.
+
+## 2026-11-01 — Arduino save close guard
+
+Live static release `11431c97ceab49b53a110b0220565a21a8e61e6d25988c2982f3490322cfc77b`
+warns before closing Arduino Simulator during firmware, source and serial saves.
+A live phone-sized account test held writes and verified cancel, AVR serial,
+and server sync. It did not test physical touch or hardware. The test account
+was disabled with data retained. Asset hash and root, /desktop/ and /blog/
+checks passed. The live app.js received only the guard change, preserving its
+existing sizing configuration. Source `240a0b5b0` is on box-git. Hosting
+manifest SHA-256 is
+`c411e464ac72eba8635b2a52d57eddeaacad8581eee59af92ad36d05a122ac27`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T045336610774Z`
+and `/var/backups/webhost-sites/change-20261101T045336611464Z`.
+
 ## 2026-11-01 — Spreadsheet, electronics and SVG save safety
 
 Live static release `e9949ff902d6c321cac4af1702e8aa5efa3c665df9972b31c94aeaee259cdd66`

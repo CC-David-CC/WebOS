@@ -483,20 +483,21 @@ and Electronics Design; Stitch passed desktop and phone-sized public checks.
 Physical touch for Spreadsheet and Electronics Design and physical hardware
 remain unverified.
 
-Arduino Simulator has a local pending-save close guard for firmware, source and
+Arduino Simulator has a pending-save close guard for firmware, source and
 serial output. Desktop, emulated-phone and 4K account tests held writes open,
 cancelled closing, then verified sync with a real AVR serial worker; a first
 run hit the concurrent transfer limit when reading three files at once, and a
-sequential rerun passed. Dispatched writes can finish after closure. This is
-not live; physical touch and hardware remain unverified.
+sequential rerun passed. The live phone-sized account check also passed.
+Dispatched writes can finish after closure; physical touch and hardware remain
+unverified.
 
-G-code Preview has a local candidate that rejects unsupported G commands with
-geometric or extrusion parameters instead of silently omitting possible motion.
+G-code Preview rejects unsupported G commands with geometric or extrusion
+parameters instead of silently omitting possible motion.
 Real-worker desktop and phone-sized checks cover splines, probes, drilling,
 dwell and comments; the prior preview remains open. Home-offset, modal and
 arc regressions also passed. An initial arc run used an unavailable debugging
-port; rerunning with the active port passed. This is not live and does not
-establish machine compatibility or safety.
+port; rerunning with the active port passed. A live phone-sized account check
+passed. This does not establish machine compatibility or safety.
 
 ### Embedded-app file-menu review
 
