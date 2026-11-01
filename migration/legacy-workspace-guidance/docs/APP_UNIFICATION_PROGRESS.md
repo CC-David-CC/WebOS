@@ -39,6 +39,16 @@ The live Replicad CAD app uses desktop confirmations for discard and replacement
 
 The Embroidery local candidate now preserves edits made during discard confirmations and prevents overlapping Save As prompts. Desktop, emulated-phone and 4K local checks covered discard and replacement races, two-session file-change warnings, sync, reopen and listener cleanup; example and Stitch Converter workflows passed desktop and phone-sized tests. The release still needs dependency-notice and remaining network review.
 
+The Embroidery candidate now bundles a reproducible archive of the exact
+patched editor source and desktop integration, with a File-menu link. Its
+archive and separate packaging script match the reviewed inputs; local
+desktop and emulated-phone tests fetched the ZIP successfully and exercised
+the provider restrictions and My files workflow. The existing public static
+asset route serves a known Circuit Simulator source ZIP without login (HTTP
+200); the `/browser-sources` page itself returns 401 signed out. Do not claim
+that direct source-asset URLs require login. Review the user's login requirement
+and the intended source distribution route before activating the candidate.
+
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
 app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement

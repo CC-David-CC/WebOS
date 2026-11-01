@@ -16,6 +16,16 @@ files from those revisions, including the Codeberg enum-map repository's
 upstream notices remain in the app package. `collect_dependency_notices.py`
 records source URLs and individual text hashes to support repeat review.
 
+The candidate's `vendor/corresponding-source.zip` contains the 2,062 tracked
+files from the pinned editor checkout, the five patched source files, and seven
+reviewed desktop-integration files. Its SHA-256 is
+`4c34bcd23a17dc8bf10c4677988352ff91fe09ce8fba6aada63f397e1457729c`.
+A separate adjacent `vendor/prepare.py.txt` contains the exact packaging
+script, which pins the archive. Generation was repeated with byte-identical
+output, and a checkout with the older patch was rejected. The archive omits
+dependency source and caches; Cargo.lock and the notice collection identify
+them. It is not yet deployed.
+
 This collection is evidence of included dependency license texts, not a legal
 opinion or proof that every nested asset, modification notice, or distribution
 obligation has been identified. Review bundled assets and source availability
