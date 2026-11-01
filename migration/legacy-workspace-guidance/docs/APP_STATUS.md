@@ -25,7 +25,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | SVG/PNG export tested; other export types and provider entry points need review. |
 | Excalidraw | Workflow checked | File and folder choices are serialized; reusable library features and provider audit remain partial. |
-| SVG Editor | Workflow checked | Complex SVG and physical touch remain unverified. |
+| SVG Editor | Workflow checked | SMIL animation is rejected; CSS animation and complex SVG compatibility remain unverified. |
 | Replicad | Workflow checked | Limited model generator, not general CAD; validate output. |
 | Kiri:Moto | Workflow checked | Printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Undo history is not saved; manufacturing correctness unverified. |
@@ -46,7 +46,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Solitaire | Preview | Rules, seeded invariants and near-win recovery checked; full deal-to-win and physical touch remain. |
 | Sky Courier | Preview | Steering and firing checks passed; full campaign and physical touch unverified. |
 | Marble Works | Preview | Pause/resume, account sync and reopen checked; all eight puzzles, physical touch and final artwork remain. |
-| Stack & Balance | Preview | Further interaction and physical-device review; final artwork pending. |
+| Stack & Balance | Preview | Touch cancellation, save and reopen checked; full challenge set and physical devices remain unverified. |
 | Crystal Defense | Preview | Further interaction and physical-device review; final artwork pending. |
 | Drone Circuit | Preview | Further interaction and physical-device review; final artwork pending. |
 | Reactive Control Desk | Preview | Further interaction and physical-device review; final artwork pending. |
