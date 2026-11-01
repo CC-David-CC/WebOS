@@ -16,8 +16,8 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Help | Static information checked | Not a full manual. |
 | Calculator | Workflow checked | Floating-point results; notes restore the recorded result but not previous Ans history. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
-| Document Editor | Workflow checked | Not a Word editor; more complex reports need review. |
-| PDF Viewer | Workflow checked | Read-only; no OCR for image-only scans. |
+| Document Editor | Workflow checked | Animated images selected from My files are rejected; clipboard and existing animations need review. |
+| PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Advanced Excel compatibility is limited; mathematical exponent precedence differs from Excel. |
 | Data Explorer | Workflow checked | Large datasets can exceed device memory; injected restore failures now pass without the previously observed worker error, but other failure and resource-pressure cases remain unverified. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
@@ -52,7 +52,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Reactive Control Desk | Preview | Pending-save state, sync and reopen checked; physical touch and all orders remain unverified. |
 | Story Cards | Preview | Account sync and isolation checked; complete story and physical touch remain. |
 | Expression Puppet | Preview | Further interaction and physical-device review; final artwork pending. |
-| Rhythm Garden | Preview | Further interaction and physical-device review; final artwork pending. |
+| Rhythm Garden | Preview | Single touch/accessibility activations and save/reopen checked; physical audio latency and full medal runs remain. |
 | Lantern Leap | Preview | Further interaction and physical-device review; final artwork pending. |
 | Garden Defense | Preview | Further interaction and physical-device review; final artwork pending. |
 | Pocket Rally | Preview | Focus/input, account save and isolation checked; full races and physical multitouch remain. |
