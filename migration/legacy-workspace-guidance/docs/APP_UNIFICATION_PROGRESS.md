@@ -55,6 +55,10 @@ those requests to the desktop's My files picker and adds an explicit Place
 entry. The Rust WebAssembly-target check passed; host bridge tests cover
 cancellation, conflicts, stale edits, event rebinding and disposal. A full
 release build is running on box-git, and real editor/Open/Place tests remain.
+An unverified browser test, `tests/embroidery-file-bridge-integration.test.mjs`,
+is prepared to exercise the My files menu, the editor's own Place command,
+object insertion, account sync and a fresh-session reopen. It must be run and
+corrected as necessary against the new build; it is not passing evidence yet.
 The prior pinned WASM and source ZIP do not include this bridge; regenerate and
 verify both with the changed host sources before any deployment. The existing
 live Embroidery build is unchanged.
