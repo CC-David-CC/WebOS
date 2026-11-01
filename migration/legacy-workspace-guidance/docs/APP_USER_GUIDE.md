@@ -15,7 +15,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Document Editor | Write and save a report; export a PDF. | Not a Word editor. |
 | PDF Viewer | Open, search and navigate a PDF. | Read-only; image-only scans need OCR. |
 | Spreadsheet | Edit a workbook; import/export supported CSV or XLSX. | Advanced Excel compatibility is limited. |
-| Data Explorer | Create the synthetic resistor example or open CSV or TSV from My files, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
+| Data Explorer | Create the synthetic resistor example or open CSV or TSV from Files or My files, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
 | Python Notebook | Run the measurement example with Shift+Enter or Run, edit it, then save to My files. The getting-started guide explains the two Python environments. | Untrusted notebooks are not isolated. Browser Python differs from the temporary Linux environment. |
 | Image Editor | Create a blank image or open an image, edit, and save a copy. | Animated GIF, APNG and WebP editing is unsupported. |
 | Audio Editor | Try the generated 440 Hz tone, or open or record audio; edit and export WAV. | Physical microphone behavior and multitrack project saving need more work. |
@@ -25,7 +25,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Replicad | Choose a box or cylinder, dimensions and optional offset hole; inspect volume and surface area, then export a model. | This is a limited model generator, not a full CAD system; validate manufacturing dimensions. |
 | Kiri:Moto | Open a model, configure slicing and export; save a workspace. | Check printer profiles and output independently before printing. |
 | Mesh:Tool | Import and manipulate meshes; save a workspace or export geometry. | Undo history is not saved in workspace snapshots; verify geometry independently. |
-| G-code Preview | Open printer G-code and inspect the path. | Supports a documented subset; it does not validate machine safety. |
+| G-code Preview | Open a supported G-code file from My files and inspect the path. | Supports a documented subset; it does not validate machine safety. |
 | Arduino Simulator | Run an example or open supported HEX; inspect serial output and save an example’s C source. | Executes AVR firmware, but is not an electrical simulation. Browser compilation is not live. |
 | Pico Simulator | Run Blink or load supported RP2040 firmware and inspect serial. | Firmware and peripheral support are partial; no physical-board validation. |
 | Digital Logic | Try gates, adder and comparator examples, toggle inputs and inspect or save a truth table. | JSON combinational circuits only; no sequential circuits or full schematic editor. |
