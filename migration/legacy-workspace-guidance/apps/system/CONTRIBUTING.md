@@ -13,6 +13,12 @@ The build process bundles declared imports and hashes output. Node and npm are
 build tools, not visitor requirements. Downloaded dependencies and generated
 output stay outside Git.
 
+Some apps request shared tools from the host rather than importing them. The
+standard selected-app builder includes CodeMirror when Text is selected; its
+pinned packages must still be installed with
+`npm ci --prefix apps/system/codemirror --ignore-scripts`. Custom source or entry overlays are
+responsible for selecting their own host-loaded tools.
+
 An app may declare its own pinned `package.json` and lockfile in its folder;
 run `npm ci --prefix apps/system/<id> --ignore-scripts` before building. The
 builder resolves that app's `node_modules` first and bundles dependencies only
