@@ -69,7 +69,12 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | PCB Design | Research prototype, not deployed | Browser packaging, dependency notices and usable design workflow remain open. |
 | Personal template | App-author example | Not an end-user app. |
 
-The 24 additional game previews passed individual builds and available unit tests; this does not establish a complete interactive review of each game. Most final artwork/audio remains pending; see [game asset gaps](GAME_ASSET_GAPS.md).
+The full 2026-11-01 review of all 28 game previews is in
+[GAME_PREVIEW_REVIEW.md](GAME_PREVIEW_REVIEW.md). It verifies two-window
+startup and cleanup, startup close, representative gameplay and interaction,
+account save/sync/reopen, and account isolation. Authored Rive artwork is
+present only for Falling Blocks, and final-art, complete rendered-content,
+physical-device, performance and XR hardware gates remain open.
 
 Shared tools in the menu are capabilities, not standalone user apps; their
 consumer coverage is tracked in the detailed review. None of these rows closes
