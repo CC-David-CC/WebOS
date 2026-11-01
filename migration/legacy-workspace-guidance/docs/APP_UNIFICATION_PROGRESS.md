@@ -499,6 +499,13 @@ arc regressions also passed. An initial arc run used an unavailable debugging
 port; rerunning with the active port passed. A live phone-sized account check
 passed. This does not establish machine compatibility or safety.
 
+Digital Logic has a local candidate validating wire port existence and direction
+before simulation or truth tables; invalid connections retain the previous
+diagram. Desktop and phone-sized account tests and the phone multiple-driver
+and 16-case comparator regressions passed. An initial comparator run used an
+unavailable debugging port; rerunning with the active port passed. This is not
+live; physical touch and hardware behavior remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
