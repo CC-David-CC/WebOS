@@ -65,6 +65,8 @@ Files supports copying multiple selected files to one folder; local desktop/phon
 
 Data Explorer warns and requires reopening the source when opening data and restoring the prior view both fail, preventing queries and exports from an uncertain view. Local desktop/phone and live phone-sized account tests inject both failures and verify reopening and sync. An existing query-restore regression still reports Perspective `_setThrew is not defined` on both the unchanged baseline and candidate; it is not counted as passing. Physical touch and other failure modes remain unverified. Live release `7f6f28530d456219e37404966e5b5b15b93ff6d7e3e650f33af353c28a35a0a5`.
 
+The desktop now has a right-side rail: the account is at the top, Applications at the bottom, with task and workspace controls between them. The background is charcoal and both Applications and End session use a clean blue X. Local desktop/phone/4K tests and live desktop/phone-sized tests cover menu, account, workspaces, Files, Terminal window and viewport geometry; a separate live phone-sized real v86 test exercised independent shells, nano and cleanup. Physical touch and real F11 remain unverified. Image Editor now replaces an existing same-name blank image only after confirmation and correct version checking; desktop/phone local and live phone-sized account tests cover cancellation, changed-target refusal, replacement and sync. Live release `be9d65aec30f72d97f96d4411216f2e61eedd1576975607fc6debdec54d63bdd`.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and
