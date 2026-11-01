@@ -21,8 +21,10 @@ if __name__=='__main__':
     parser.add_argument('--issuer-policy',type=Path,required=True);parser.add_argument('--issuer-policy-sha256',required=True)
     parser.add_argument('--base-path',default='');parser.add_argument('--port',type=int,default=8140)
     parser.add_argument('--seconds-per-use',type=int,default=900);parser.add_argument('--bytes-per-second',type=int,default=4*1024*1024)
+    parser.add_argument('--max-requests-per-minute',type=int,default=2048,help='Shared gateway POST limit per fixed minute (1–100000; default 2048).')
     args=parser.parse_args()
     if not 1<=args.port<=65535:parser.error('Valid loopback port required')
+    if not 1<=args.max_requests_per_minute<=100000:parser.error('Bounded request limit required (1–100000)')
     try:
         path=args.issuer_policy.absolute()
         for p in [path,*path.parents]:
@@ -38,6 +40,6 @@ if __name__=='__main__':
         if args.action=='initialize':
             initialize_ledger(store);initialize_transfers(store)
             print(json.dumps({'status':'initialized','publicServiceStarted':False,'anonymousFolders':0}));raise SystemExit(0)
-        gateway=FileGateway(store,policy,base_path=args.base_path,seconds_per_use=args.seconds_per_use,pacer=Pacer(per_second=args.bytes_per_second))
+        gateway=FileGateway(store,policy,base_path=args.base_path,seconds_per_use=args.seconds_per_use,pacer=Pacer(per_second=args.bytes_per_second),max_requests_per_minute=args.max_requests_per_minute)
         web.run_app(gateway.app(),host='127.0.0.1',port=args.port,access_log=None,print=None,backlog=16,shutdown_timeout=10)
     except (ValueError,OSError) as error:parser.error(str(error))
