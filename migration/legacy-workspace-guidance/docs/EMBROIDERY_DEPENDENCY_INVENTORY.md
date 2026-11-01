@@ -4,6 +4,21 @@ Generated from `cargo metadata --offline --locked --filter-platform wasm32-unkno
 
 317 packages were found. Upstream NOTICE includes references to epaint default fonts and the Independent JPEG Group. The four font license texts from epaint_default_fonts 0.36.2 are now explicitly packaged under `licenses/epaint-default-fonts-0.36.2/`; the upstream NOTICE includes the IJG binary acknowledgement. Verify the complete notices and applicable license texts for the actual shipped build before release. Apache-2.0 is an available choice for self_cell, which also offers GPL-2.0-only.
 
+## Notice review still required
+
+The pinned WASM-target metadata resolves 317 normal/build dependency packages (a
+conservative graph, not a precise list of linked code). In the downloaded
+crate packages, 22 registry dependencies have no root-level license or notice
+file. These include accesskit, alloc-stdlib, ecolor, eframe, egui, egui-wgpu,
+egui_extras, egui_glow, emath, enum-map, enum-map-derive, epaint,
+epaint_default_fonts, i_key_sort, i_overlay, profiling, spirv, wasmi,
+wasmi_collections, wasmi_core, wasmi_ir and wasmparser. Missing at the package
+root does not mean a license is absent elsewhere; match the exact dependency
+revision and retrieve or verify its applicable notices before release. Upstream
+NOTICE mentions several dependencies but does not enumerate all 317 package
+licenses. Four epaint font texts are included separately. This is a packaging
+review, not a claim that the app or these libraries are unlicensed.
+
 | Package | Version | Declared license |
 | --- | --- | --- |
 | accesskit | 0.24.1 | MIT OR Apache-2.0 |
