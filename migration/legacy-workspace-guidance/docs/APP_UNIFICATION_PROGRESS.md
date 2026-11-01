@@ -235,6 +235,13 @@ and checked against the integration files; a clean isolated packaging run
 passed with the updated pin. This menu update is not live. Physical touch and
 the complete upstream service surface remain unverified.
 
+Audio Editor's local candidate asks before closing during a WAV save or effect,
+including when the track was previously clean. Desktop, emulated-phone and 4K
+checks cover a held Save As, cancelling close, completion and sync; an effect
+check simulated a clean state during processing. The phone-sized effect and
+layout regression passed. Already-dispatched writes can still complete after a
+close; physical touch is unverified and this candidate is not live.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
