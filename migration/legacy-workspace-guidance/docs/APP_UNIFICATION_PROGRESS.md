@@ -297,7 +297,8 @@ desktop, emulated-phone and 4K account workflows cover correction, save, sync
 and reopen. Public phone-sized tests passed for both; physical touch and unusual
 numerical precision cases remain unverified.
 
-Additional local candidates awaiting release: G-code Preview fits a tested
+Live release `06dbfc2a20a2ec4a343d549ac73282e196b9acd986b12f8ea29b0088c4d99f79`:
+G-code Preview fits a tested
 320×568 phone-sized viewport and keeps its visual-only warning visible; desktop,
 phone and 4K account workflows cover opening and invalid-file preservation.
 Replicad guards in-progress saves and exports; held-operation tests cover close
@@ -305,7 +306,8 @@ cancellation, real STL generation, sync and reopening at all three sizes.
 Digital Logic explains incompatible wire widths before simulator construction,
 preserving the prior circuit; matching and mismatched widths, correction, truth
 table, sync and reopening were tested locally. Physical touch and actual
-machine or board behavior remain unverified.
+machine or board behavior remain unverified. Public phone-sized tests passed
+for all three apps, including real STL generation and account sync.
 
 Further local candidates await release: Data Explorer restores the prior result
 and viewer settings when switching to a new query result fails; an injected

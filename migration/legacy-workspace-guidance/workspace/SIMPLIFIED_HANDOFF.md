@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Engineering workflows
+
+Live static release `06dbfc2a20a2ec4a343d549ac73282e196b9acd986b12f8ea29b0088c4d99f79`
+includes the documented Digital Logic, G-code Preview and Replicad improvements.
+Public phone-sized tests passed for width-error recovery, small-screen preview
+and a real STL export with save protection; account sync and reopen were covered.
+Asset hashes and root, /desktop/ and /blog/ checked. Physical touch and hardware
+remain unverified. Three test accounts were disabled with data retained. Source
+through `a5d85bd72` is backed up to box-git. Hosting manifest SHA-256 is
+`827e1e9b4093b7ed9869d87b9d4c72b7301a6b36e6e97b92f0e6f3394688c086`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T042017453242Z`
+and `/var/backups/webhost-sites/change-20261101T042017453650Z`.
+
 ## Fresh checkout: browser Linux runtime
 
 The current v86 runtime and the one guest image selected by
@@ -7,8 +20,9 @@ The current v86 runtime and the one guest image selected by
 uses `active-system/runtime/v86/` automatically when no complete local runtime
 exists in `active-system/.build/v86/`. See the runtime README for hashes,
 provenance, notices and the local-rebuild override. Older guest images and
-intermediate builds remain excluded. Build dependencies and app bundles are
-still installed or generated as described in the local verification section.
+intermediate builds remain excluded. A clean clone of `e32e132de` started the
+real v86 shell with these files, without a local v86 cache. Build dependencies
+and app bundles are still installed or generated as described in local verification.
 
 ## 2026-11-01 — Files, Notebook and stitch safety release
 
