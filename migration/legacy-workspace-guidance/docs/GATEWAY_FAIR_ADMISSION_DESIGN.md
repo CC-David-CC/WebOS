@@ -66,8 +66,16 @@ and `tests/gateway-admission-gateway-review.py` exercises real signed loopback
 issuer/gateway operations, legacy traffic, separate bounded shares, forged and
 replayed proofs and expiry. Its random per-instance epoch is part of each
 enhanced proof: a replacement gateway instance rejects the old proof and accepts
-a newly signed one. This is an in-process instance replacement, not a tested OS
-restart or multi-replica protocol. Separate bounded reader slots prevent slow
+a newly signed one. `tests/gateway-admission-process-review.py` also exercises
+two separate local gateway processes sharing the same SQLite store, kills one
+with SIGKILL, starts a fresh process and checks old admission and file-use proof
+replay, newly signed admission, and a use issued by one process on the other.
+The JavaScript client test in the same fixture proves that routing a capability
+request to one process and the ensuing challenge to another fails closed without
+legacy fallback; routing consistently to one process succeeds. The other live
+process retains its own epoch after its peer is killed. This does not establish
+cross-host behavior, shared fairness budgets, a coordinated rolling restart,
+or a production multi-replica protocol. Separate bounded reader slots prevent slow
 challenge bodies from occupying verification slots in a real TCP test. The
 verification budget is also partitioned by endpoint, without trusting any
 unverified identity claim; challenge verification cannot occupy the slots
