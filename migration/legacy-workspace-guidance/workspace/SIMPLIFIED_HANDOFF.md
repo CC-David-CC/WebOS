@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-11-01 — PDF and Digital Logic recovery
+
+Live static release `babaddc475c9cfc385015311e108b7f94ddce4beadb0347a228bc05ba788f734` keeps PDF page controls on the visible page if a later page exceeds the rendering limit, and clears Digital Logic’s stale restored-file association when the initial circuit cannot open. Local desktop/phone and live emulated-phone account tests passed; a missing-file Digital Logic case passed locally. Other rendering failures, physical touch and hardware remain unverified. Two live test accounts were disabled with data retained. Hosting manifest SHA-256 `20240b9b317fb279a456fb9051deb6d1742f186e5a73a41ff659d734427e7d7c`; rollback inputs `/var/backups/webhost-sites/change-20261101T073012102649Z` and `/var/backups/webhost-sites/change-20261101T073012108591Z`.
+
 ## 2026-11-01 — Calculator note reopening
 
 Live static release `d8f1c1166b62055088567fe4cef6d42ae697faf41c8d4a0a9f3222e0f9eb62cd` adds reopening of saved Calculator notes from My files. Local desktop/phone and live phone-sized account tests passed synchronization, fresh-session recovery, separate-account isolation, cancellation, invalid notes, and edits while choosing a file. The restored result is recorded, not recalculated; prior Ans history is not saved. Physical touch remains unverified. Two live test accounts were disabled with their data retained. Hosting manifest SHA-256 `8632a5f37e3d60ec285b959a4702fcdc556f9364403c083eeb661cc7bfc0efa4`; rollback inputs `/var/backups/webhost-sites/change-20261101T072637165660Z` and `/var/backups/webhost-sites/change-20261101T072637166386Z`.

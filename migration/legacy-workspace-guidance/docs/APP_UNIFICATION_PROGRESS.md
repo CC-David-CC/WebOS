@@ -39,6 +39,8 @@ Document Editor project switching and recovery passed additional local desktop a
 
 Calculator can reopen its own calculation notes from My files, restoring the expression, angle unit and recorded result; it labels that result as not recalculated and sets Ans to it. Local desktop/phone and live phone-sized account tests covered synchronization, fresh-session recovery, account isolation, cancellation, malformed files and edits during the picker. Previous Ans history cannot be recovered from a note. Excalidraw’s hidden library was investigated locally: forcing it visible showed a shape added in one window in a second window; normal disabled controls and account drawing/sync passed desktop and phone-sized checks. Cross-account library persistence was not tested. Live release `d8f1c1166b62055088567fe4cef6d42ae697faf41c8d4a0a9f3222e0f9eb62cd`. Physical touch remains unverified.
 
+PDF Viewer keeps the displayed page and page number aligned if a later page is too large to show; local desktop/phone and live phone-sized tests cover a three-page PDF and recovery to another page. Digital Logic clears a stale desktop restore reference when its initial circuit cannot open; desktop/phone local and live phone-sized account checks cover invalid-file preservation, simulation, save and refresh. A missing-file phone-sized test passed locally. Other rendering failures, physical touch and real hardware remain unverified. Live release `babaddc475c9cfc385015311e108b7f94ddce4beadb0347a228bc05ba788f734`.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and
