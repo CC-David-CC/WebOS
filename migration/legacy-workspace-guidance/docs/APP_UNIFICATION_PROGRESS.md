@@ -29,6 +29,8 @@ Applications → Games now contains previews of Falling Blocks, Owl Companion, P
 
 PDF Viewer now clears stale search status when page navigation cancels a search; desktop/phone local and live phone account tests cover pending and completed searches and fresh-session reopen. Electronics Design updates its desktop restore reference when opening or saving another project and clears it on New; local desktop/phone and live phone tests cover project switching, refresh, server sync and preservation of the prior project. Unsaved work still must be saved before refresh. Both changes are live in `406b901f8bc52427dcb3c8d477008af992d5f33579c6dd00da414604547136cb`; physical touch remains unverified.
 
+Image Editor now selects watermark images from My files and provides a My files-backed temporary gallery for image annotations. Local desktop/phone and live emulated-phone tests cover both paths, invalid watermark rejection, saved pixels, server sync and no observed third-party requests in the tested flows. The separate computer Upload image remains. Annotation requires dismissing the gallery before Save; physical touch, large images and other provider paths remain unverified. Live release `97a6b241a1fc91823c2e636c27c8264f4f48e2ec8578a5b9b219d922b766090d`.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and
