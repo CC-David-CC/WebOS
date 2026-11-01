@@ -8,31 +8,31 @@ The table describes useful starting points, not a promise that every feature or 
 | --- | --- | --- |
 | Files | Browse My files, upload, create, copy, rename and sync. To move or copy files, select them and choose **Move to…** or **Copy to…**. Right-click a file and choose **Download** to save it to your computer. You can also drop computer files into the current folder to upload them. | Temporary Linux files are separate; folder moves are not supported. If a multi-file move stops, check the destination before retrying. Physical touch dragging is still under review. |
 | Terminal | Explore the temporary Linux shell; use `nano` to edit. | Its files reset with the guest and are not automatically mounted into My files. |
-| Text | Open or create a text/code file, edit and save. | Very large files can be slow and memory-intensive. |
+| Text Editor (CodeMirror 6) | Open or create a text/code file, edit and save. | Very large files can be slow and memory-intensive. |
 | Help | Read beta contact and Linux information. | Help is not an exhaustive manual. |
 | Calculator | Enter an expression or use the keypad; choose angle units, then save or reopen a calculation note in My files. | Results are floating-point approximations; a reopened result is recorded, not recalculated, and prior Ans history is not preserved. |
 | Browser | Open a supported website or save a download to My files. | Experimental; temporary profile and no audio. |
-| Document Editor | Write and save a report; export a PDF. | Not a Word editor. |
-| PDF Viewer | Open, search and navigate a PDF. | Read-only; image-only scans need OCR. |
-| Spreadsheet | Edit a workbook; import/export supported CSV or XLSX. | Advanced Excel compatibility is limited. |
-| Data Explorer | Create the synthetic resistor example or open CSV or TSV from Files or My files, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
-| Python Notebook | Run the measurement example with Shift+Enter or Run, edit it, then save to My files. The getting-started guide explains the two Python environments. | Untrusted notebooks are not isolated. Browser Python differs from the temporary Linux environment. |
-| Image Editor | Create a blank image or open an image, add a watermark or annotation from My files, and save a copy. | Animated images are unsupported; annotation images use a temporary gallery. |
-| Audio Editor | Try the generated 440 Hz tone, open or record audio, or add tracks from My files. Save an editable MultiTrack project or export a WAV mixdown. | The WAV is not an editable project; other AudioMass tools may remove the desktop’s beat/snap settings and long names can be shortened. Physical microphone behavior remains unverified. |
-| diagrams.net | Open or create a diagram, save it, or export SVG/PNG to My files. | Other export formats and physical touch remain under review. |
-| Excalidraw | Draw a sketch, insert images from My files, save the drawing, or export a PNG. | Large embedded images use more memory and count toward the drawing size limit; physical touch needs testing. |
-| SVG Editor | Try the example or draw vector artwork, then save an SVG. | Complex SVG and physical touch remain unverified. |
-| Replicad | Choose a box or cylinder, dimensions and optional offset hole; inspect volume and surface area, then export a model. | This is a limited model generator, not a full CAD system; validate manufacturing dimensions. |
-| Kiri:Moto | Open a model, configure slicing and export; save a workspace. | Check printer profiles and output independently before printing. |
-| Mesh:Tool | Import and manipulate meshes; save a workspace or export geometry. | Undo history is not saved in workspace snapshots; verify geometry independently. |
-| G-code Preview | Open a supported G-code file from My files and inspect the path. | Supports a documented subset; it does not validate machine safety. |
-| Arduino Simulator | Run an example or open supported HEX; inspect serial output and save an example’s C source. | Executes AVR firmware, but is not an electrical simulation. Browser compilation is not live. |
-| Pico Simulator | Run Blink or load supported RP2040 firmware and inspect serial. | Firmware and peripheral support are partial; no physical-board validation. |
-| Digital Logic | Try gates, adder and comparator examples, toggle inputs and inspect or save a truth table. | JSON combinational circuits only; no sequential circuits or full schematic editor. |
-| Circuit Simulator | Try the voltage divider, RC filter or rectifier and inspect simulated output. | CircuitJS simulation is not a substitute for measurement or hardware validation. |
-| Electronics Design | Work with breadboard, schematic and PCB views; save the project. | Component coverage and production-board validation remain incomplete. |
-| Embroidery Studio | Create and save a project and export stitches. | Pre-release editor; machine compatibility and physical sewing are unverified. |
-| Stitch Converter | Open SVG artwork, create a stitch preview, save editable artwork separately, then export a machine file. | Conversion may omit unsupported SVG; inspect the design and test-sew. |
+| Document Editor (Tiptap) | Write and save a report; export a PDF. | Not a Word editor. |
+| PDF Viewer (PDF.js) | Open, search and navigate a PDF. | Read-only; image-only scans need OCR. |
+| Spreadsheet (Jspreadsheet CE + SheetJS CE) | Edit a workbook; import/export supported CSV or XLSX. | Advanced Excel compatibility is limited. |
+| Data Explorer (Perspective + DuckDB) | Create the synthetic resistor example or open CSV or TSV from Files or My files, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
+| Python Notebook (JupyterLite + Pyodide) | Run the measurement example with Shift+Enter or Run, edit it, then save to My files. The getting-started guide explains the two Python environments. | Untrusted notebooks are not isolated. Browser Python differs from the temporary Linux environment. |
+| Image Editor (Filerobot) | Create a blank image or open an image, add a watermark or annotation from My files, and save a copy. | Animated images are unsupported; annotation images use a temporary gallery. |
+| Audio Editor (AudioMass) | Try the generated 440 Hz tone, open or record audio, or add tracks from My files. Save an editable MultiTrack project or export a WAV mixdown. | The WAV is not an editable project; other AudioMass tools may remove the desktop’s beat/snap settings and long names can be shortened. Physical microphone behavior remains unverified. |
+| Diagram Editor (diagrams.net) | Open or create a diagram, save it, or export SVG/PNG to My files. | Other export formats and physical touch remain under review. |
+| Sketch Board (Excalidraw) | Draw a sketch, insert images from My files, save the drawing, or export a PNG. | Large embedded images use more memory and count toward the drawing size limit; physical touch needs testing. |
+| Vector Editor (SVG-Edit) | Try the example or draw vector artwork, then save an SVG. | Complex SVG and physical touch remain unverified. |
+| Primitive 3D Modeler (Replicad) | Choose a box or cylinder, dimensions and optional offset hole; inspect volume and surface area, then export a model. | This is a limited model generator, not a full CAD system; validate manufacturing dimensions. |
+| Fabrication Studio (Kiri:Moto) | Open a model, configure slicing and export; save a workspace. | Check printer profiles and output independently before printing. |
+| Mesh Editor (Mesh:Tool) | Import and manipulate meshes; save a workspace or export geometry. | Undo history is not saved in workspace snapshots; verify geometry independently. |
+| G-code Viewer (G-code Preview) | Open a supported G-code file from My files and inspect the path. | Supports a documented subset; it does not validate machine safety. |
+| Arduino Simulator (AVR8js) | Run an example or open supported HEX; inspect serial output and save an example’s C source. | Executes AVR firmware, but is not an electrical simulation. Browser compilation is not live. |
+| Pico Simulator (RP2040js) | Run Blink or load supported RP2040 firmware and inspect serial. | Firmware and peripheral support are partial; no physical-board validation. |
+| Digital Logic Simulator (DigitalJS) | Try gates, adder and comparator examples, toggle inputs and inspect or save a truth table. | JSON combinational circuits only; no sequential circuits or full schematic editor. |
+| Circuit Simulator (CircuitJS) | Try the voltage divider, RC filter or rectifier and inspect simulated output. | CircuitJS simulation is not a substitute for measurement or hardware validation. |
+| Electronics Design (designElectronics) | Work with breadboard, schematic and PCB views; save the project. | Component coverage and production-board validation remain incomplete. |
+| Embroidery Studio (StitchFoundry) | Create and save a project and export stitches. | Pre-release editor; machine compatibility and physical sewing are unverified. |
+| Stitch Converter (tsembroidery) | Open SVG artwork, create a stitch preview, save editable artwork separately, then export a machine file. | Conversion may omit unsupported SVG; inspect the design and test-sew. |
 | Falling Blocks | Play, choose sound and volume in Settings, and save or reopen a game. | Preview; sound starts muted. |
 | Owl Companion | Try an activity, save and reopen your progress. | Preview uses a procedural placeholder while authored Rive art is pending. |
 | Snake Garden | Choose a garden or endless game, play and save your progress. | Preview uses a procedural guide; physical touch remains unverified. |
