@@ -251,7 +251,8 @@ cover draft preservation, save, server bytes and fresh-session reopen; existing
 confirmation regressions passed at all three sizes. A public phone-sized
 workflow passed. Physical touch is unverified.
 
-The next local candidates are not live: SVG Editor rechecks drawing changes
+Live release `c893a35a981a2180ade8f67e01214c69f9bbb978e970a54f56a2b75976a11b6f`:
+SVG Editor rechecks drawing changes
 around discard prompts and the picker; concurrent-change tests were simulated
 at desktop, emulated-phone and 4K, followed by save, sync and reopen. Calculator
 reports exactly represented tangent poles as undefined; arithmetic and
@@ -261,17 +262,18 @@ desktop, emulated-phone and 4K account checks cover save, sync, reload and
 account isolation, and the old code failed the targeted regression. Image
 Editor warns before closing while saving even when initially clean; held-save
 tests covered desktop, phone and 4K, while the failed-save edit was simulated.
-Physical touch and unusual cases remain unverified for these candidates.
+Public phone-sized account checks passed for all four apps. Physical touch and
+unusual cases remain unverified.
 
-Arduino Simulator's local candidate clears the saved HEX reference when a
+Arduino Simulator clears the saved HEX reference when a
 bundled example replaces it; desktop, emulated-phone and 4K tests ran the real
 AVR worker and covered refresh, save, sync, account isolation and cleanup. The
-old source failed the targeted stale-reference test. Terminal's local candidate
+old source failed the targeted stale-reference test. Terminal
 handles missing, synchronously throwing and rejected Clipboard API calls and
 ignores late paste results after closure. Desktop, emulated-phone and 4K checks
 used a real v86 shell with stubbed clipboard responses; the phone-sized
-two-shell and nano regression passed. Neither candidate is live; physical
-hardware, actual clipboard permission prompts and physical touch are unverified.
+two-shell and nano regression passed. Public phone-sized tests passed for both;
+physical hardware, actual clipboard permission prompts and touch are unverified.
 
 Notebook's local candidate prevents an explicit save from silently writing the
 linked notebook when a different Jupyter tab is active, including a tab switch

@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Six-app safety release
+
+Live static release `c893a35a981a2180ade8f67e01214c69f9bbb978e970a54f56a2b75976a11b6f`
+contains the documented SVG Editor, Calculator, Circuit Simulator, Image
+Editor, Arduino Simulator and Terminal changes. All six public phone-sized
+account checks passed, including a real v86 shell and real AVR worker; asset
+hashes and root, /desktop/ and /blog/ returned as expected. Clipboard responses
+and some concurrent-edit timings were simulated; physical touch and hardware
+remain unverified. Eight test accounts were disabled, with their data retained.
+Source through `22bcced50` is backed up to box-git. Hosting manifest SHA-256 is
+`1e8bb932da82f8a04271e91bbc9f178210ac6ebc02276f14916d10109e613f79`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T040952028402Z`
+and `/var/backups/webhost-sites/change-20261101T040952029224Z`.
+
 ## 2026-11-01 — Eight-app integration release
 
 Live static release `5ad6f63d07e88fb7bdce101b4404493b2b2d9aa6ed18b60b758c816ccce61ee2`
