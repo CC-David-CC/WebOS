@@ -31,6 +31,8 @@ their current gates.
 | Make the app shell feel integrated, not like a collection of embedded web pages. | Electronics Design and several other editors have live wrapper cleanup; Embroidery cleanup is still a local candidate. Title-bar sizing has also been reviewed. | Review each app's menus, dialogs, status and responsive layouts. Replace browser-native prompts with themed dialogs where app workflows still use them. Check touch and large-screen layouts without sacrificing usable targets. |
 | Keep the Browser app experimental and lower priority. | It remains marked “in development” in the launcher. | Do not let browser polishing delay the STEM app and file-workflow integration gates above. |
 
+A source review found that the local Embroidery candidate still includes an upstream MakerFoundry startup-link importer. Its CSP blocks the cross-origin request; a follow-up source candidate removes the entry point and is being rebuilt. The dependency graph and unresolved license-notice review are recorded in `EMBROIDERY_DEPENDENCY_INVENTORY.md`.
+
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
 app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement
