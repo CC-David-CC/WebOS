@@ -4592,3 +4592,7 @@ Live release `ca2d1142cafc123d49c9d5a5a7bbf807b735c02ddaf63503d16de5f11281919e`,
 ## Logic accessibility, report format, export background live — 2026-11-01
 
 Live release `53905c734670dd3feaf7ef720451d3d8e2d421a392a1c0e7c2f8d74b1f30fb82`, previous `ca2d1142cafc123d49c9d5a5a7bbf807b735c02ddaf63503d16de5f11281919e`. Public phone account tests passed Digital Logic actual AND keyboard/diagram synchronization/save/sync/reopen, report heading/PDF/reopen, PNG opaque/transparent pixel alpha and SVG XML background/vector inspection. Three exact test accounts disabled; files retained. Root, `/desktop/`, `/blog/` 200. Manifest `76fb25b5b95f57c25f0d3b7752a8fc150d1e714bb21888045db3cbc157643e11`; Caddy `705205485874ba7f20fca145bfa9956426ab3104a71326c6d02cfcb5f578ad81`; rollback `/var/backups/webhost-sites/change-20261101T152250000255Z` and `/var/backups/webhost-sites/change-20261101T152250001004Z`. Root 4.2 GB free before archival batch. SVG transparency not raster-tested; physical touch, assistive technology and complex scenes unverified.
+
+## Simplified static archival fourteenth batch — 2026-11-01
+
+Ten verified inactive releases archived to `/srv/data/codi-archived-simplified-20261101`; 132 per-release receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Current `53905c73…`, rollbacks `ca2d1142…` / `0e7abca3…`, configured references and user data retained; services active. Root free 4.2 to 6.1 GiB; `/srv/data` 370 GiB free. Known mismatches remain untouched; historical archived paths require restoration before use.
