@@ -18,7 +18,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | Read failures offer retry; clipboard and existing animated images are not comprehensively checked. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; read-only, with no OCR for scans. |
-| Spreadsheet | Workflow checked | Native format and CSV are primary; row/column changes track unsaved work. Physical dragging remains unverified. |
+| Spreadsheet | Workflow checked | Native format and CSV are primary; stale folder choices are rejected and row/column changes track unsaved work. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Large datasets can exceed device memory; injected restore failures now pass without the previously observed worker error, but other failure and resource-pressure cases remain unverified. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
 | Image Editor | Workflow checked | Temporary restore failures retain the image reference; animated images unsupported and embedded tools need further audit. |
@@ -31,7 +31,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Mesh:Tool | Workflow checked | Typed-array wrap/overflow is rejected; undo history and manufacturing correctness remain unverified. |
 | G-code Preview | Workflow checked | Supports a subset, assumes an initial state, and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | D13 indicator shows driven-high output, not analog brightness; no electrical simulation or browser compilation. |
-| Pico Simulator | Workflow checked | Firmware/peripheral support partial; temporary storage failures retain restore references, but unsaved flash cannot be recovered after a crash. |
+| Pico Simulator | Workflow checked | Firmware/peripheral support partial; page-program wrapping tested with real MicroPython. Unsaved flash cannot be recovered after a crash; physical hardware is unverified. |
 | Digital Logic | Workflow checked | Feed-forward combinational JSON only; propagation delay is bounded and is not hardware timing validation. |
 | Circuit Simulator | Workflow checked | Divider simulation, upload, sync and recovery checked; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
@@ -51,7 +51,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Drone Circuit | Preview | Overlapping inputs, focus loss, save and reopen checked; physical multitouch and full course remain unverified. |
 | Reactive Control Desk | Preview | Pending-save state, sync and reopen checked; physical touch and all orders remain unverified. |
 | Story Cards | Preview | Account sync and isolation checked; complete story and physical touch remain. |
-| Expression Puppet | Preview | Further interaction and physical-device review; final artwork pending. |
+| Expression Puppet | Preview | Pointer cancellation and independent input tested; full rounds and physical-device review remain, with final artwork pending. |
 | Rhythm Garden | Preview | Single touch/accessibility activations and save/reopen checked; physical audio latency and full medal runs remain. |
 | Lantern Leap | Preview | Overlapping inputs, focus loss, save and reopen checked; physical touch and all rooms remain unverified. |
 | Garden Defense | Preview | Map cancellation and pending-save path checks pass; physical touch and full wave progression remain. |
@@ -61,10 +61,10 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Kinetic Relay | Preview | Single-step dirty tracking and deleted-save protection checked; physical touch and full puzzle sequence remain. |
 | Tabletop Bot Arena | Preview | Overlapping inputs and file-operation guards checked; physical touch and full cup remain. |
 | Pocket Golf | Preview | In-flight saves retain unsaved state and hole changes ask before discard; physical touch and all holes remain. |
-| Target Garden | Preview | Further interaction and physical-device review; final artwork pending. |
-| Orbital Courier | Preview | Further interaction and physical-device review; final artwork pending. |
-| Clockwork Quest | Preview | Further interaction and physical-device review; final artwork pending. |
-| Memory Garden | Preview | Further interaction and physical-device review; final artwork pending. |
+| Target Garden | Preview | Pointer cancellation and independent input tested; full rounds and physical-device review remain, with final artwork pending. |
+| Orbital Courier | Preview | Pointer cancellation and independent input tested; full rounds and physical-device review remain, with final artwork pending. |
+| Clockwork Quest | Preview | Pointer cancellation and independent input tested; full rounds and physical-device review remain, with final artwork pending. |
+| Memory Garden | Preview | Pointer cancellation and independent input tested; full rounds and physical-device review remain, with final artwork pending. |
 | Circuit Lab | Research candidate, not deployed | ngspice source/relink distribution review and model licensing remain open. |
 | PCB Design | Research prototype, not deployed | Browser packaging, dependency notices and usable design workflow remain open. |
 | Personal template | App-author example | Not an end-user app. |
