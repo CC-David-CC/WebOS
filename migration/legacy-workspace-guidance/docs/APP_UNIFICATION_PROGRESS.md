@@ -422,6 +422,13 @@ closing while saving a project or serial output; desktop, emulated-phone and
 Blink worker test passed. Neither change is live; physical phone and macOS
 shortcut behavior remain unverified.
 
+Further local candidates: Data Explorer cleans up and permits retry after an
+injected worker-constructor failure; other initialization failures are not yet
+covered. Stitch Converter keeps a changed preview when another file is opening;
+desktop, emulated-phone and 4K account tests delay the file read, alter the
+preview, then verify it remains open and retry works. These changes are not
+live; physical touch and machine-sewing behavior remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
