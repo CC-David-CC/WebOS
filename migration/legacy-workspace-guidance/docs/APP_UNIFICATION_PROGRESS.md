@@ -340,6 +340,13 @@ synced and reopened. Hold/failure timing was injected; storage was real. The
 minimal host guard and Calculator update must be released together. This
 candidate is not live; physical touch remains unverified.
 
+Image Editor's local layout candidate updates the restore reference on open and
+save and clears it for a new blank image. Desktop, emulated-phone and 4K tests
+cover opening a second image, creating a blank, refreshing, then saving and
+reopening; a phone-sized Save As and fresh-session test also passed. An unsaved
+blank is not recovered on refresh. This candidate is not live; physical touch
+remains unverified.
+
 G-code Preview's local parser candidate strips balanced parenthesized comments
 and rejects unmatched or nested parentheses. The previous worker interpreted
 `X10 (X999)` as X999. Desktop, emulated-phone and 4K tests compare real-worker
