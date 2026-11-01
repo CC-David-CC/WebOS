@@ -15,7 +15,7 @@ third-party fetch and successful editor startup; this policy does not establish
 that every account or AI control has been removed, or restrict same-origin
 requests. The change is not live.
 
-A separate local StitchFoundry rebuild removes its browser provider transport and credential store and rejects eight provider/account commands. Desktop and emulated-phone tests exercised those restrictions and the local file workflow. It is not live: packaging, remaining network-surface and licensing review are outstanding. The older shipped binary is not proven to match this source revision.
+A separate local StitchFoundry rebuild removes its browser provider transport and credential store and rejects eight provider/account commands. Desktop and emulated-phone tests exercised those restrictions and the local file workflow. Its normal packaging path has passed local workflow checks and rejects mismatched build inputs. It is not live: remaining network-surface and licensing review are outstanding. The older shipped binary is not proven to match this source revision.
 
 This is a partial inventory. A hidden sign-in button is not proof that the
 underlying feature or its network request has been removed. Before calling an

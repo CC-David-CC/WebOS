@@ -80,7 +80,7 @@ box-git's isolated `/srv/data/codi-embroidery-candidate-e5` build directory.
 provider transport and credential store, hides provider entries in menus and the
 command palette, and rejects their command IDs for WebAssembly. The patch
 applied to clean local and remote checkouts with matching changed-file hashes.
-The candidate built successfully and its WebAssembly source check passed. In an isolated local preview, desktop and emulated-phone tests verified startup, blocked cross-origin fetch, absence and rejection of eight provider/account commands, project save, server sync, DST export and fresh-session reopening. The older shipped binary and live site have not changed. This is a deliberate build from the documented source revision, not a proven match for that older binary; packaging, the remaining network surface, physical touch and licensing review remain before release.
+The candidate built successfully and its WebAssembly source check passed. In an isolated local preview, desktop and emulated-phone tests verified startup, blocked cross-origin fetch, absence and rejection of eight provider/account commands, project save, server sync, DST export and fresh-session reopening. The older shipped binary and live site have not changed. This is a deliberate build from the documented source revision, not a proven match for that older binary; the normal packaging path now passes those desktop and emulated-phone checks and rejects mismatched build inputs. The remaining network surface, physical touch and licensing review remain before release.
 
 ### Current milestone and handoff
 
