@@ -1,5 +1,11 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Circuit, stitch and Text recovery
+
+Live static release `a5636f2d1035ba802339d82f383ec9362e5eaacd59605803e444411f159e68fc` clears failed initial-file references in Circuit Simulator and Stitch Converter, and orders Text file-status checks so a stale failure cannot replace a newer result. Local desktop/phone and live emulated-phone account tests passed save, sync and recovery; Text timing was injected. Physical touch, electronics hardware and sewing compatibility are unverified. Three live test accounts were disabled with data retained. Hosting manifest SHA-256 `a14dd73b18cf1afea169b260c9fbdba05f3922cb8728eba863b9b69186a54978`; rollback inputs `/var/backups/webhost-sites/change-20261101T080504438623Z` and `/var/backups/webhost-sites/change-20261101T080504439507Z`.
+
+Folder-move source-only research is backed up on `research/folder-lock-20261101` at `d4a6a092d357ffded79a2998958cbca9493d0632`. Browser and server canonical manifests now match for tested Unicode paths; browser journaling, recovery, route and direct-host-writer consistency remain unfinished. Folder moves are not enabled. Three unused generated app bundles (`browser-app-build-check`, `simplified-apps-blocked-r1`, `circuit-audit-app`) were removed after checking their manifests and active process arguments, recovering roughly 1 GB; source and account data were not removed.
+
 ## 2026-11-01 — Multiple file moves and app recovery
 
 Live static release `8f2c44d28c626a87faf97c77933dec6f9b7d3321523a11c6232942fbb5aef542` adds multi-file Move to, prevents stale Data Explorer picker results, and corrects Embroidery Studio restore references. Local desktop/phone and live emulated-phone account tests passed; file moves are individual and report partial completion on failure, while folder moves remain unavailable. The chooser-order test injects delayed results. Physical touch and embroidery machine compatibility are unverified. Three live test accounts were disabled with data retained. Hosting manifest SHA-256 `908c2ad779a7272383dbc37138be0bd3033c36fc424aa5e33e8c52011b070c27`; rollback inputs `/var/backups/webhost-sites/change-20261101T080122276174Z` and `/var/backups/webhost-sites/change-20261101T080122277028Z`.
