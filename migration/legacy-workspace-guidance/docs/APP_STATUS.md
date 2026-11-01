@@ -33,7 +33,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Arduino Simulator | Workflow checked | D13 indicator shows driven-high output, not analog brightness; no electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Firmware/peripheral support partial; page-program wrapping tested with real MicroPython. Unsaved flash cannot be recovered after a crash; physical hardware is unverified. |
 | Digital Logic | Workflow checked | Folder choices reject stale destinations; feed-forward combinational JSON only, and propagation delay is not hardware timing validation. |
-| Circuit Simulator | Workflow checked | Divider simulation, upload, sync and recovery checked; simulation is not hardware validation. |
+| Circuit Simulator | Workflow checked | Temporary restore failures offer a guarded retry; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Pre-release; physical sewing, machine formats and provider audit remain open. |
 | Stitch Converter | Workflow checked | Unsupported artwork is reported; SVG support and machine compatibility remain partial. Test-sew output. |
