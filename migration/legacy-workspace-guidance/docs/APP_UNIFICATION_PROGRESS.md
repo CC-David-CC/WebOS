@@ -97,6 +97,13 @@ release `29f8d8842c696d45664de4666d21dbe76504d3550a7b4d468bab91ace9dcfc41`. Desk
 changed-file protection, snapshot saving, server sync and reopening in Text.
 Arithmetic unit tests and the public phone-sized account workflow passed.
 
+Falling Blocks has a local candidate with desktop discard and replace dialogs.
+It pauses before a discard decision, guards changed progress and saved files,
+and leaves the game paused on cancellation. Desktop, phone-sized and 4K
+account tests cover cancellation, changed progress, file replacement, sync and
+exact save reopening; local delayed-save, Files routing and game-model tests
+passed. The candidate is not live; physical touch remains unverified.
+
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
 app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement
