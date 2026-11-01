@@ -1,10 +1,14 @@
 import puppeteer from 'puppeteer-core';
 import assert from 'node:assert/strict';
+import {installDesktopDialogAutoAnswer} from './helpers/desktop-dialogs.mjs';
 const browser=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19272',protocolTimeout:120000}),context=await browser.createBrowserContext(),page=await context.newPage();
 const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18273/',user=process.env.CODI_TEST_USER||'nblife'+Date.now().toString().slice(-9);const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
 async function launch(){await page.evaluate(()=>[...surfaces.values()][0].launch('notebook'));await page.waitForFunction(()=>[...document.querySelectorAll('.notebook-app .app-status')].at(-1)?.textContent.includes('Browser Python notebook ready'),{timeout:120000});return await page.evaluate(()=>{const a=[...document.querySelectorAll('.notebook-app')].at(-1),j=a.querySelector('iframe').contentWindow.jupyterapp;return j.shell.currentWidget.context.path})}
 async function save(index,name,text){await page.evaluate(({index,name,text})=>{const a=[...document.querySelectorAll('.notebook-app')][index],j=a.querySelector('iframe').contentWindow.jupyterapp;j.shell.currentWidget.content.model.sharedModel.getCell(0).setSource(text);a.querySelector('[aria-label="Notebook file path"]').value=name;[...a.querySelectorAll('button')].find(b=>b.textContent==='Save to Files').click()},{index,name,text});await page.waitForFunction(async({name,text})=>{try{return new TextDecoder().decode((await(await mirrorFileContext()).files.read(name)).data).includes(text)}catch{return false}},{timeout:30000},{name,text})}
 try{
+ // Running a cell can leave unsaved output; deliberately discard it when the
+ // lifecycle test closes a window after checking its saved account file.
+ await installDesktopDialogAutoAnswer(page,'accept');
  if(process.env.CODI_PHONE==='1')await page.setViewport({width:412,height:915,isMobile:true,hasTouch:true});else if(process.env.CODI_4K==='1')await page.setViewport({width:3840,height:2160});
  await page.evaluateOnNewDocument(()=>{const f=window.fetch;window.fetch=(u,...a)=>String(u).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):f(u,...a)});
  await page.goto(base);await page.waitForSelector('.login-toggle');await page.click('.login-toggle');await page.type('[aria-label=Username]',user);await page.type('[aria-label=Password]','test1234');await page.type('[aria-label="Confirm password"]','test1234');await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered');
