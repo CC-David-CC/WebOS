@@ -4,7 +4,7 @@ These are development-preview browser checks, not a claim that every feature of 
 
 | App or feature | Checked workflow | Remaining integration work |
 | --- | --- | --- |
-| Files | Computer upload, folders, account browsing, ZIP creation/extraction, explicit Linux-to-account copy, sync and Linux reset. | Moving a newly uploaded file waits for synchronization. More error handling and larger files need work. |
+| Files | Upload to My files, offline local-first move into a new folder, reconnect and server sync at the new path; move-picker cancellation, same-folder/collision checks, stale-version handling and fresh-session reopen. Checked at 1366×900, 412×915 and 3840×2160. | Drag-and-drop itself remains unverified; the tested move path is **Move to…**. Larger files, broader Linux copy cases and error recovery need more work. |
 | Text | Upload, browse a folder, edit, browser save, server sync, close and reopen. | More file types and edge cases. |
 | Document Editor | Upload native project, open, edit, browser/server save, conflict handling, export and preview PDF. | Its `.doc` and `.codidoc` formats are not Word; no DOCX support. |
 | PDF Viewer | Open an uploaded PDF and a document-generated preview; page navigation. | Read-only; no save operation is expected. |
@@ -23,4 +23,4 @@ These are development-preview browser checks, not a claim that every feature of 
 | Calculator, Help, Terminal | No general account-file upload/save interface to test. Terminal uses temporary Linux files. | Terminal guest has no integrated account mount; Linux networking/SSH remains unfinished in this preview. |
 | ZIP, FFmpeg, WaveSurfer, Tone, Mermaid, ECharts, Plotly, pdfme, MapLibre, Transformers | Shared browser-side capabilities have programmatic smoke checks; ZIP and audio have app workflow checks. | They are libraries, not independent file editors. Transformers has no model configured; each future consumer needs its own file and UI tests. |
 
-Account files are local-first and synchronize to the server asynchronously. Do not assume that a local save is backed up until Files reports synchronization. Per-file limits and browser storage availability still constrain engineering workloads. Tests run against an isolated local server and do not prove a production deployment or physical phone behavior.
+Account files are local-first and synchronize to the server asynchronously. A newly uploaded local-only file can move immediately; saves and moves of files that already exist on the server remain serialized and version-checked. Do not assume that a local save is backed up until Files reports synchronization. Per-file limits and browser storage availability still constrain engineering workloads. These workflow checks run against an isolated local server; viewport emulation does not prove physical phone behavior or production deployment.

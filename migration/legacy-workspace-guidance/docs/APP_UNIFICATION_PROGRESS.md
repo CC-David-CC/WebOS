@@ -13,6 +13,79 @@ Physical-device testing is separate. Shared tools need a tested consumer rather
 than a standalone editor workflow. See `APP_USER_GUIDE.md` for concise student-facing workflows, `APP_WORKFLOW_CHECKS.md` for earlier
 check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 
+## Current goals and progress — 2026-10-31
+
+The goal is a dependable browser-based desktop for high-school senior and
+college STEM students. Apps should use the signed-in desktop identity and the
+desktop's **My files** workflow: changes are saved in browser storage first and
+synchronized with the account's server files. Students should not need a second
+provider account just to open or save their work. The app-by-app table below is
+the detailed evidence log; this section records the shared release goals and
+their current gates.
+
+| Goal | Progress now | What still gates completion |
+| --- | --- | --- |
+| Integrate every app with My files and the browser-backed account workflow. | Substantial Files, Text, document, spreadsheet, engineering and simulation workflows already have local and live evidence in the table below. The current review found duplicate file controls around embedded editors. This working copy moves Embroidery Studio's file actions into its editor File menu and removes Electronics Design's outer file row. The global desktop title bar is reduced to 30 px while phone controls retain touch-sized targets. These latest UI changes are local candidates, not a live release. | Finish an app-by-app review of open, upload, save, export, overwrite, conflict, account isolation, cleanup and phone/desktop behavior. Remove duplicate outer wrappers where an app has a native file menu; integrate storage into the app's own interface where it does not. Audit the remaining embedded apps for similar wrappers. |
+| Remove app-level registrations and provider-account dependencies. | The Electronics Design GitHub account/history controls are hidden. Embroidery starts in a local workflow and its upstream Sign In control is covered by a Local label. Confirmed dependencies and removed or unsupported features are recorded in `DEFERRED_APP_FEATURES.md`. | The inventory is not complete. Review every app for sign-up prompts, API-key forms, provider login, cloud storage, analytics or other service calls. Verify that hiding an entry point actually prevents the request; do not call a feature removed based only on covering its sign-in button. |
+| Keep third-party-dependent features blocked until an internal server-backed replacement is ready. | No internal replacement service is implemented for the deferred Embroidery AI features. “Design from prompt” and “Redraw image” are named blocked features. “Ask about embroidery” is also held behind the gate, but its presence in the pinned browser build is unverified. | Audit the pinned app bundle for every entry point and outbound request, then keep these actions unavailable until a reviewed internal service supports the desktop identity, per-account limits, clear data disclosure and consent, abuse controls, and failure handling. The ordinary local editor must continue working without the service. |
+| Make the app shell feel integrated, not like a collection of embedded web pages. | The screenshot-driven Embroidery and Electronics wrapper cleanup and compact desktop title bar are in progress in the working copy. | Review each app's menus, dialogs, status and responsive layouts. Replace browser-native prompts with themed dialogs where app workflows still use them. Check touch and large-screen layouts without sacrificing usable targets. |
+| Keep the Browser app experimental and lower priority. | It remains marked “in development” in the launcher. | Do not let browser polishing delay the STEM app and file-workflow integration gates above. |
+
+The third-party feature register is intentionally a **partial inventory**, not a
+claim that every provider feature has already been removed from every bundled
+app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement
+gate.
+
+The Electronics Design working copy now queues generated exports and drops a
+cancelled export rather than reopening its save dialog. Local registered-account
+desktop and emulated-phone-sized runs passed upload, editing, save and reopen,
+queued export cancellation, conflict handling and a fresh-session reopen. The
+phone-sized run used automated keyboard and pointer input; physical touch is
+unverified. These changes have not been deployed. Earlier runs exposed test
+setup issues: Snap Chromium could not read the temporary fixture, a simulated
+editor message came from the wrong frame, and the close-dialog test predated the
+themed dialog. The test now uses a shared fixture path and the actual frame and
+dialog.
+
+The diagrams.net working copy uses themed confirmations for discarding edits
+and replacing files. Local registered-account desktop and emulated-phone-sized
+runs passed editing, failed-open recovery, cancellation and confirmation of
+replacement, upload, server sync and fresh-session reopening. A separate desktop
+save-safety run passed destination capture, newer edits, conflict notices and
+reopening; its first parallel attempt timed out at the login screen, and the
+individual retry passed. Phone-sized checks used automation, not physical
+touch. The working copy now places Open from My files and Save As in the editor File
+menu and removes the duplicate file wrapper. Desktop and emulated-phone-sized
+account workflows and a desktop save-safety test pass locally. The integration
+uses the pinned editor popup implementation and needs review on vendor upgrades;
+physical touch is unverified. A phone-sized save-safety run also passed. The
+menu matches translated editor labels, and desktop and phone-sized checks
+simulated translated labels and a missing popup API; recovery controls saved
+the diagram in the missing-API case. A changed menu structure has not been
+simulated. These changes are not live.
+
+### Embedded-app file-menu review
+
+The screenshot issue is a cross-app review item, not an Embroidery-only fix.
+These embedded apps currently have an outer Codi file toolbar or path panel;
+review each against the engine's own menus before deciding where its actions
+belong:
+
+| App | Current status |
+| --- | --- |
+| Electronics Design | Working-copy change removes the duplicate host file row; its editor File menu uses the My files adapter. The separate three-view layout action remains in the host shell. |
+| Embroidery Studio | Working-copy change puts My files actions into the editor's File menu and removes the outer file row. Its upstream Sign In is visually replaced with Local; full provider-feature entry-point audit is still required. |
+| diagrams.net | Working-copy change removes the duplicate file row and places Open from My files and Save As in the editor File menu. Native Save updates the current My files document. Local desktop and emulated-phone-sized account workflows and desktop save-safety checks passed; physical touch and vendor-update compatibility remain to be checked. |
+| SVG-edit | Working-copy change moves Open, example, Save and Save As into the SVG-Edit menu and removes the outer file row. Local desktop and emulated-phone-sized account tests cover examples, edits, upload, invalid files, replace cancellation and confirmation, syncing, conflicts, fresh-session reopening and opening the saved SVG in Stitch Converter. A local 4K-sized example check also passed, including keyboard activation of a menu item. Image export now saves PNG, JPEG and WebP to My files with overwrite and size checks; local desktop, emulated-phone and 4K-sized checks cover image signatures, decoded PNG artwork, PNG server sync, replacement cancellation/confirmation, size limits, no popup and the missing-menu fallback. PDF export uses a raster image and is not a vector document; local desktop, emulated-phone and 4K-sized checks save and sync the PDF and render its artwork in PDF Viewer. One initial desktop assertion sampled the canvas during a resize; waiting for rendered pixels passed. Complex SVG rendering and physical touch remain unverified. This is not live. |
+| Audio Editor / AudioMass | Host Open/Save controls are present. Review the embedded editor's file menu and preserve host-backed My files behavior without a duplicate row. |
+| Circuit Simulator / CircuitJS | Host file controls wrap the embedded simulator. Review its native menu before changing the adapter surface. |
+| Python Notebook / JupyterLite | Host Open/Save controls sit around a full notebook UI. Review how to put account-file operations into Jupyter's own menus while retaining the separate Linux launcher. |
+| Grid Tools / Kiri:Moto and mesh:tool | Host workspace and export controls are present for two different engines. Audit each engine's native menus and distinguish necessary My files integration from duplicate controls. |
+
+The two changes marked “working-copy” are not yet a live release. This list is
+an initial source audit; continue checking the remaining applications and their
+bundled menus rather than assuming the listed set is exhaustive.
+
 | App | Role | Prior evidence / known boundary | New review |
 | --- | --- | --- | --- |
 | Files | Account and temporary Linux files | Empty guest files created by the shell or browser can be listed and copied to My files; local desktop/phone/4K and live phone-sized tests verify the account copy survives guest reset. Account sync and Linux copy checked; drives are separate. A Move to… folder picker makes single-file moves available without dragging; local desktop, phone-sized and 4K, and live desktop and phone-sized tests cover cancellation, collisions, stale versions, server sync and fresh-session recovery. Copy to… and toolbar Rename provide touch-accessible single-file copy and rename; local desktop, phone and 4K and live desktop/phone-sized workflows cover cancellation, duplicate names, changed sources, sync and fresh-session recovery. Copy to… also copies nested account folders and empty folders as a local transaction followed by per-item server sync; local desktop, emulated-phone and 4K tests and a live emulated-phone test cover the UI, sync and fresh-session recovery, and storage tests cover offline copies, conflicts and account isolation. Simultaneous creation of the same remote folder can combine contents; conflicting files require resolution. ZIP extraction into My files now creates the local tree atomically after checking the source version; local desktop/phone/4K and live phone-sized account tests cover collisions, changed archives, nested folders, sync and recovery. Server sync remains per entry; temporary Linux extraction can remain partial on failure. Folder moves remain unsupported. New / Upload and Sync now are visible on desktop and touch; selected-file Open and explicit conflict recovery are live. Idle background polling is reduced while writes remain immediate. Browser uploads are snapshotted so removing the original computer file does not invalidate the saved copy. Local and live tests cover saving both conflicting edits, deletion conflicts, upload destination changes, Text editing, sync and fresh-context recovery. When the shared gateway limit is reached, subsequent local changes now wait for an automatic retry instead of restarting it; existing-file version checks can be batched. Local tests cover batching and conflicts; live desktop and emulated-phone tests injected two 429 responses and verified recovery. Files no longer claims a server check before its first successful sync, and a manual-sync error clears after automatic recovery; local desktop/phone/4K and live phone-sized tests verify a pending local edit reaches the server after injected limits. Account-scoped issuer admission and bounded combined inventory/version checks are live. Local and live tests verify isolation, same-size direct disk edits, older-gateway fallback, conflicts and retry; a local 100-account one-file fixture completed combined checks with three operations in flight. A bounded gateway queue smooths brief bursts; local 100-account mixed and live four-account parallel checks passed. The gateway still has shared limits, and 100-user end-to-end capacity remains unqualified. | In progress |
