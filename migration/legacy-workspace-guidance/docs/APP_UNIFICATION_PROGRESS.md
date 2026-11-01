@@ -273,6 +273,17 @@ used a real v86 shell with stubbed clipboard responses; the phone-sized
 two-shell and nano regression passed. Neither candidate is live; physical
 hardware, actual clipboard permission prompts and physical touch are unverified.
 
+Notebook's local candidate prevents an explicit save from silently writing the
+linked notebook when a different Jupyter tab is active, including a tab switch
+during Save As. Desktop, emulated-phone and 4K tests use Jupyter's API to switch
+tabs, verify server bytes and continued automatic saving; the phone-sized menu
+regression passed. Stitch Converter's local candidate clears the old machine
+file association when an example is chosen, so replacing a prior PES requires
+confirmation. Desktop, emulated-phone and 4K tests cover cancellation,
+replacement, sync and reopen; the old code overwrote the PES without a dialog
+in a negative control. Both candidates are not live; physical touch remains
+unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
