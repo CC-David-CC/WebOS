@@ -1,0 +1,68 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import puppeteer from 'puppeteer-core';
+
+const browser=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19262'});
+const context=await browser.createBrowserContext(),page=await context.newPage(),errors=[];
+page.on('pageerror',error=>errors.push(error.message));page.on('dialog',dialog=>dialog.accept());
+const click=label=>page.evaluate(label=>{
+ const first=document.querySelectorAll('.control-desk-app')[0];
+ const button=[...first.querySelectorAll('button')].find(node=>node.textContent===label||node.getAttribute('aria-label')===label);
+ if(!button)throw Error('Missing button: '+label);button.click();
+},label);
+try{
+ const phone=process.env.CODI_PHONE==='1';
+ await page.setViewport(phone?{width:412,height:915,isMobile:true,hasTouch:true}:{width:1366,height:900});
+ const manifest=JSON.parse(await readFile(process.env.CODI_DESK_MANIFEST||'.build/reactive-control-desk-test/apps.json','utf8'));
+ const entry='/'+manifest.apps[0].path.replace(/^assets\/desktop\//,'');
+ const base=process.env.CODI_DESK_URL||'http://127.0.0.1:18347/';
+ await page.goto(base+'?app='+encodeURIComponent(entry));
+ await page.waitForFunction(()=>window.instances?.length===2);
+ await page.waitForSelector('.control-desk-visual canvas',{timeout:30000});
+ assert.equal(await page.$$eval('.control-desk-visual canvas',nodes=>nodes.length),2);
+ assert.match(await page.$eval('.control-desk-rive-note',node=>node.textContent),/control-desk\.riv.*pending/);
+ assert.equal(await page.$eval('.control-desk-save-fields',node=>getComputedStyle(node).display),'none');
+ await page.$eval('[aria-label=Power]',element=>{element.value='0.3';element.dispatchEvent(new Event('input',{bubbles:true}))});
+ await page.$eval('[aria-label=Frequency]',element=>{element.value='0.4';element.dispatchEvent(new Event('input',{bubbles:true}))});
+ await page.$eval('[aria-label=Route]',element=>{element.value='1';element.dispatchEvent(new Event('input',{bubbles:true}))});
+ assert.equal(await page.$$eval('.control-desk-output',nodes=>nodes[0].textContent),'0.30');
+ await click('Resume');
+ await page.evaluate(()=>document.querySelectorAll('.window')[0].classList.remove('focused'));
+ await page.waitForFunction(()=>document.querySelectorAll('.control-desk-view .app-status')[0]?.textContent.includes('lost attention'));
+ await page.evaluate(()=>document.querySelectorAll('.window')[0].classList.add('focused'));
+ await click('Resume');
+ await page.waitForFunction(()=>document.querySelector('.control-desk-progress i')?.style.width==='100%',{timeout:5000});
+ await click('Submit order');
+ await page.waitForFunction(()=>document.querySelector('.control-desk-summary')?.textContent.includes('Order 2'));
+ await page.select('[aria-label=Mode]','free');
+ assert.equal(await page.$eval('[aria-label="Submit order"]',element=>element.disabled),true);
+ await page.select('[aria-label=Mode]','orders');
+ await page.click('.control-desk-save summary');
+ assert.notEqual(await page.$eval('.control-desk-save-fields',node=>getComputedStyle(node).display),'none');
+ await page.$eval('[aria-label="Control desk save path"]',element=>element.value='/Desk Test.game.json');
+ await click('Save to My files');
+ await page.waitForFunction(()=>document.querySelector('.control-desk-view .app-status')?.textContent.includes('saved to My files'));
+ assert.match(await page.evaluate(()=>new TextDecoder().decode(window.fileStore.get('/Desk Test.game.json').data)),/"appId":"reactive-control-desk"/);
+ assert.equal(await page.evaluate(()=>window.instances[0].w.reactiveControlDesk.dirty),false);
+ await page.$eval('[aria-label="Control desk save path"]',element=>element.value='/Desk Race.game.json');
+ await page.evaluate(()=>{
+  const files=window.fileContext.files,stat=files.stat.bind(files);
+  files.stat=async path=>{if(path==='/Desk Race.game.json'){files.stat=stat;await new Promise(resolve=>window.releaseDeskSave=resolve)}return stat(path)};
+ });
+ await click('Save to My files');
+ await page.waitForFunction(()=>typeof window.releaseDeskSave==='function');
+ await page.$eval('[aria-label=Power]',element=>{element.value='0.9';element.dispatchEvent(new Event('input',{bubbles:true}))});
+ await page.evaluate(()=>window.releaseDeskSave());
+ await page.waitForFunction(()=>document.querySelector('.control-desk-view .app-status')?.textContent.includes('newer changes remain unsaved'));
+ const raced=await page.evaluate(()=>JSON.parse(new TextDecoder().decode(window.fileStore.get('/Desk Race.game.json').data)));
+ assert.equal(raced.payload.values.power,0.3);
+ assert.equal(await page.evaluate(()=>window.instances[0].w.reactiveControlDesk.dirty),true);
+ await page.evaluate(()=>window.fileStore.set('/Bad.game.json',{data:new TextEncoder().encode('{bad'),version:'bad'}));
+ await page.evaluate(()=>window.target='/Bad.game.json');
+ await click('Open from My files');
+ await page.waitForFunction(()=>document.querySelector('.control-desk-view .app-status')?.textContent.includes('Could not open'));
+ await page.evaluate(()=>{const first=window.instances[0];first.controller.abort();first.app.dispose();first.app.dispose();first.app.element.remove()});
+ assert.equal(await page.$$('.control-desk-visual canvas').then(nodes=>nodes.length),1);
+ assert.deepEqual(errors,[]);
+ console.log(`PASS ${phone?'phone':'desktop'} Control Desk dwell, order, free play, save/invalid load and disposal`);
+}finally{await context.close();await browser.disconnect()}
