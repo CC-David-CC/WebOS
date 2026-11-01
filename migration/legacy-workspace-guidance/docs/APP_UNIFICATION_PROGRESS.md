@@ -687,15 +687,16 @@ The matching source archive was rebuilt and checked against the app integration;
 a live phone-sized account check passed. Physical touch and sewing remain
 unverified.
 
-Data Explorer has a local single-statement query candidate. A query beginning
+Data Explorer has a single-statement query check. A query beginning
 with SELECT previously executed a second statement that changed the in-browser
 working dataset while reporting success; the account CSV was unchanged. The
 candidate scans one SELECT/WITH statement and uses a DuckDB prepared statement
 for the result table. Desktop and phone-sized real-DuckDB/account tests reject
 the injected query and project while retaining rows, and accept tested quoted,
 dollar-quoted and comment semicolons. A temporary scanner-bypass test observed
-DuckDB reject that specific multi-statement with an upstream error. This is not
-a general SQL security sandbox and is not live.
+DuckDB reject that specific multi-statement with an upstream error. A live
+phone-sized account check passed the injected and legitimate query cases. This
+is not a general SQL security sandbox.
 
 ### Embedded-app file-menu review
 

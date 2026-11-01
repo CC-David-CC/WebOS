@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Data Explorer single-statement check
+
+Live static release `eb3fae98f8ae96b87c19d57539cb207209127845b50426cb057fb024eb21b788`
+rejects the tested multi-statement SELECT injection and uses a DuckDB prepared
+statement for result-table creation. A live phone-sized account test checked
+that the in-browser rows remain intact and tested legitimate quoted/commented
+semicolons. This is not a general SQL security sandbox. The test account was
+disabled with data retained. Asset hash and root, /desktop/ and /blog/ checks
+passed. Source `665b28eda` is on box-git. Hosting manifest SHA-256 is
+`6edc329e7514adb925d48d7c15b54de3531d254fa7826dcb50da34d2312ab76a`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T055632322847Z`
+and `/var/backups/webhost-sites/change-20261101T055632323279Z`.
+
 ## 2026-11-01 — Embroidery pending-save guard
 
 Live static release `72fe5ec7a17fadfc70c5c6a919c14ae19f668c7623ab0cff952de5c449d7750d`
