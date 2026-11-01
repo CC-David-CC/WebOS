@@ -506,13 +506,24 @@ regressions passed. An initial comparator run used an unavailable debugging
 port; rerunning with the active port passed. A live phone-sized account check
 also passed; physical touch and hardware behavior remain unverified.
 
-Image Editor has a local candidate for focused Ctrl/Command+S and an immediate
+Image Editor supports focused Ctrl/Command+S and fixes a reproduced immediate
 resize/save race. A same-turn test reproduced saving 800×600 rather than
 320×240; the fix waits one event turn and snapshots the current editor state.
 Desktop and phone-sized tests verify saved dimensions through the native Save
 button and shortcut. The pending-close test passed; the account-switch test ran
-before the last snapshot-order adjustment. This is not live and does not prove
-timing for every image tool, physical touch or Mac shortcuts.
+before the last snapshot-order adjustment. A live phone-sized account test
+verified saved dimensions. This does not prove timing for every image tool,
+physical touch or Mac shortcuts.
+
+Local candidates: Replicad disables the box-only depth field for cylinders and
+allows a cylinder to be saved when the unused field is blank, retaining a box
+depth when switching back. Desktop, phone-sized and 4K tests used the real CAD
+preview worker and account sync. Pico Simulator rejects UF2 file containers,
+which use file offsets instead of flash addresses, without replacing the
+running board. Desktop and phone-sized account workflows used real Blink and
+synthetic container data; Pico flash, machine-code Blink, project and serial
+tests passed. Neither candidate is live; physical touch, physical devices and
+manufacturing remain unverified.
 
 ### Embedded-app file-menu review
 

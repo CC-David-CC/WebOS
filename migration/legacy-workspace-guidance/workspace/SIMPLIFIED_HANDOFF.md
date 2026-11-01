@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Image resize and save
+
+Live static release `4cfea5fb11ea97c4c78fbe8b303b8854168fdb1cc88fac656d4e1622a7814051`
+adds focused Ctrl/Command+S and fixes a reproduced resize/save timing race. A
+live phone-sized account test immediately resized and saved, then verified the
+image dimensions on the server. Other image tools, physical touch and Mac
+shortcuts remain unverified. The test account was disabled with data retained.
+Asset hash and root, /desktop/ and /blog/ checks passed. Source `2ac3ccb13` is
+on box-git. Hosting manifest SHA-256 is
+`ce1be00677efa0be981b54b363301371da8b0bdf603d835c2689b456d7d33ef9`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T045653281416Z`
+and `/var/backups/webhost-sites/change-20261101T045653282171Z`.
+
 ## 2026-11-01 — Digital Logic port validation
 
 Live static release `e1e1cc7b971e4687c3775cb34535fcd260f012d425b7358a975a311e5c5ea8d3`
