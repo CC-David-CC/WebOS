@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Text save and Arduino composition
+
+Live static release `838f71673dad6a6e3aa8b845a5b662cf3292f12fb386edc82bcf08acd972cb61`
+guards Text while a save is pending and prevents Arduino serial Enter from
+sending during IME composition. Live phone-sized account checks passed, using
+synthetic composition events and real AVR serial echo. Physical touch and
+physical IME behavior remain unverified. Two test accounts were disabled with
+data retained. Asset hashes and root, /desktop/ and /blog/ checks passed. Source
+`603965be6` is on box-git. Hosting manifest SHA-256 is
+`9c9d33df6368257f0d2d724b213cfbb73079a9c4962de750c62459074aaaf55d`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T060422951302Z`
+and `/var/backups/webhost-sites/change-20261101T060422951737Z`.
+
 ## 2026-11-01 — Additional generated release cleanup
 
 Removed 15 obsolete generated static releases from this test sequence:

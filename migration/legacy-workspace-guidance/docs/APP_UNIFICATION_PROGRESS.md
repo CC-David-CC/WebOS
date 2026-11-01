@@ -713,12 +713,12 @@ passed after rebuilding with it. Live phone-sized account checks passed both.
 Physical touch and accepting close during an already-dispatched write remain
 unverified.
 
-Local candidates: Text holds its close guard during pending saves, restoring
+Text holds its close guard during pending saves, restoring
 clean state on failure and retaining later edits. Arduino Simulator does not
 send serial input when Enter completes an IME composition. Desktop and phone-
 sized account tests covered delayed saves and real AVR serial echo with
-synthetic composition events. These are not live; physical touch and physical
-IME behavior remain unverified.
+synthetic composition events. Live phone-sized account checks passed both;
+physical touch and physical IME behavior remain unverified.
 
 ### Embedded-app file-menu review
 
