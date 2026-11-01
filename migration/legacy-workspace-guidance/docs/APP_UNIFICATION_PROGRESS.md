@@ -408,19 +408,19 @@ and writes, cancelled close, then verified sync and reopening. Those delays were
 injected and already-dispatched writes can still finish after closure. Public
 phone-sized tests passed; physical touch and hardware remain unverified.
 
-Arduino Simulator's local serial candidate follows output while at the bottom,
+Arduino Simulator follows serial output while at the bottom,
 pauses when the user scrolls up and resumes at the bottom. Desktop and 4K wheel
 tests and an emulated-phone swipe used real AVR serial echo, then saved and
 synced the log and reopened it in Text. Returning to the bottom was set
-programmatically; physical touch remains unverified and this is not live.
+programmatically; physical touch remains unverified.
 
-Further local candidates: Excalidraw routes focused Ctrl/Command+S to My files
+Excalidraw routes focused Ctrl/Command+S to My files
 and Shift+Ctrl/Command+S to Save As; a browser test drew and saved a real shape,
 and the phone-sized native-menu workflow passed. Pico Simulator warns before
 closing while saving a project or serial output; desktop, emulated-phone and
 4K tests used real account storage with a simulated board, and a separate phone
-Blink worker test passed. Neither change is live; physical phone and macOS
-shortcut behavior remain unverified.
+Blink worker test passed. Both changes are included in current live bundles;
+physical phone and macOS shortcut behavior remain unverified.
 
 Data Explorer cleans up and permits retry after an injected worker-constructor
 failure; other initialization failures are not yet covered. Stitch Converter
@@ -740,6 +740,9 @@ New apps open full screen on phones and in alternating half-width, full-height t
 During each app review, suppress optional third-party account and sign-up prompts where the local feature can work without them. The desktop account does not automatically grant access to an external provider; label any feature that genuinely needs one. Defer AI and other features that depend on removed account services for later integration; preserve working local features.
 
 Deferred third-party service and AI features are tracked in `DEFERRED_APP_FEATURES.md`; those features are not implied to work through the desktop account.
+
+Historical review notes below describe earlier candidates; later live releases and
+tests in this document supersede their deployment status.
 
 The desktop-wide unsaved-window close warning has a locally tested themed dialog candidate. It is not live, and app-specific browser prompts for file names, replacing work and other actions still need migration. Desktop, emulated-phone and 4K tests cover an edited Text document, cancel, Escape and discard; physical touch is not yet verified.
 Text's open/reload unsaved-change prompts also use a shared themed confirmation service in a local candidate. Desktop, emulated-phone and 4K registered-account tests cover both outcomes and abort cleanup. It is not live; other apps and prompt types remain to migrate.
