@@ -15,8 +15,8 @@ Every future Rive asset must contain artboard `Main`, state machine
 `apps/UNFINISHED-TO INTEGRATE-PARTIAL/game_tree/`.
 
 Falling Blocks is the only game with a final compiled Rive artifact,
-`apps/system/falling-blocks/coach/build/coach.riv`. Its source is
-`apps/system/falling-blocks/coach/scene.rml` and `prepare.py` verifies the
+`apps/games/01-phaser-arcade/falling-blocks/coach/build/coach.riv`. Its source is
+`apps/games/01-phaser-arcade/falling-blocks/coach/scene.rml` and `prepare.py` verifies the
 built file.
 
 | Game | Required final asset |
