@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import puppeteer from 'puppeteer-core';
+const browser=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19255'}),context=await browser.createBrowserContext(),page=await context.newPage();
+const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18195/',user='policy'+Date.now().toString().slice(-9),errors=[];
+page.on('pageerror',e=>errors.push(e.message));
+try{
+ if(process.env.CODI_PHONE==='1')await page.setViewport({width:412,height:915,isMobile:true,hasTouch:true});
+ await page.evaluateOnNewDocument(()=>{const f=window.fetch;window.fetch=(u,...a)=>String(u).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):f(u,...a)});
+ await page.goto(base);await page.waitForSelector('.login-toggle');await page.click('.login-toggle');await page.type('[aria-label=Username]',user);await page.type('[aria-label=Password]','test1234');await page.type('[aria-label="Confirm password"]','test1234');await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered');
+ await page.evaluate(()=>surfaces.get('Desktop').launch('embroidery-studio'));await page.waitForFunction(()=>document.querySelector('.embroidery-studio .app-status')?.textContent.includes('local design'),{timeout:120000});const frame=await(await page.$('.embroidery-studio iframe')).contentFrame();
+ const result=await frame.evaluate(async()=>{const policy=document.querySelector('meta[http-equiv="Content-Security-Policy"]')?.content;const sameOrigin=(await fetch(location.href)).ok;const violation=new Promise(resolve=>{document.addEventListener('securitypolicyviolation',event=>{if(event.originalPolicy.includes("form-action 'none'")&&event.effectiveDirective==='connect-src')resolve({directive:event.effectiveDirective,blocked:event.blockedURI})},{once:false})});let failed=false;try{await fetch('https://provider.example.invalid/')}catch{failed=true}const event=await Promise.race([violation,new Promise(resolve=>setTimeout(()=>resolve(null),3000))]);return {policy,sameOrigin,failed,event}});
+ assert.match(result.policy,/connect-src 'self'/);assert.equal(result.sameOrigin,true);assert.equal(result.failed,true);assert.equal(result.event?.directive,'connect-src');assert.match(result.event.blocked,/provider\.example\.invalid/);assert.deepEqual(errors,[]);
+ await page.evaluate(()=>document.querySelector('.embroidery-studio').closest('.window').querySelector('[aria-label=Close]').click());await page.waitForFunction(()=>!document.querySelector('.embroidery-studio'));console.log('PASS local StitchFoundry startup and external connection CSP enforcement');
+}finally{await context.close();await browser.disconnect()}
