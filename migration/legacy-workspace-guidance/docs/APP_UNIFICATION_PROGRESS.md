@@ -525,6 +525,19 @@ synthetic container data; Pico flash, machine-code Blink, project and serial
 tests passed. Live phone-sized account checks passed both workflows; physical
 touch, physical devices and manufacturing remain unverified.
 
+Local candidates: Files reports how many files moved when a later item in a
+multi-file drag fails. Desktop and phone-sized account tests used mouse-driven
+multi-select/drag with a destination collision and confirmed both files; the
+existing phone-sized move/sync/reopen workflow passed. Audio Editor routes
+focused Ctrl/Command+S to its My files WAV save; desktop and phone-sized tests
+verified synced WAV samples. CircuitJS warns before closing during pending
+saves or image exports; desktop and phone-sized checks held a real account
+write, cancelled close and verified sync, and the existing phone file-menu
+workflow passed. The older CircuitJS file-safety test has a stale empty-root
+assertion and did not complete. Its corresponding-source archive was rebuilt
+and checked against the app source and README. None is live; physical touch,
+Mac shortcuts and closing during a real image export remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
