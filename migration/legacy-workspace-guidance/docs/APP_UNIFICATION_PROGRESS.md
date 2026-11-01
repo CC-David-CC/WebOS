@@ -333,19 +333,26 @@ overlapping actions during path prompts. Desktop, emulated-phone and 4K account
 tests cover shortcuts, save, export, sync and reopen. Public phone-sized tests
 passed for both. Physical touch and actual Mac shortcuts remain unverified.
 
-PDF Viewer's local page-navigation candidate moves Previous, Next and Go to the
+Pico Simulator's local candidate ignores Enter while an input method is
+composing text, preventing a partial serial command from being sent. Desktop,
+emulated-phone and 4K account tests used synthetic composition events and a fake
+board worker; a separate real Blink-worker check passed. Physical keyboards and
+MicroPython serial behavior for this change remain unverified; it is not live.
+
+Live release `0db4822d66dfa593aa266d615bf8a28d66b963d9762bcfd24d6b343e7440785c`:
+PDF Viewer moves Previous, Next and Go to the
 top of the selected page while Find continues to scroll to its match. Desktop,
 emulated-phone and 4K tests used a real synced three-page PDF, and phone-sized
 page-jump, search and reload regressions passed. The test set the prior scroll
-position programmatically. This candidate is not live; physical touch remains
-unverified.
+position programmatically. A public phone-sized check passed; physical touch
+remains unverified.
 
-Replicad's local candidate adds Cancel preview, terminating only the active
+Replicad adds Cancel preview, terminating only the active
 preview worker while keeping the previous canvas and allowing a retry. Desktop,
 emulated-phone and 4K checks cover cancellation, worker cleanup, retry, save,
 sync and reopening; the phone-sized STL workflow also passed. The test verifies
-the prior canvas remains, not pixel-identical rendering. This is not live and
-physical touch remains unverified.
+the prior canvas remains, not pixel-identical rendering. A public phone-sized
+check passed; physical touch remains unverified.
 
 Calculator's local keypad candidate enforces the 512-character expression
 limit while still allowing a selected range to be replaced at the limit.
@@ -353,12 +360,12 @@ Desktop and emulated-phone keypad tests and existing calculation regressions
 passed; the previous keypad could create an expression its parser rejected.
 This candidate is not live; physical touch remains unverified.
 
-Digital Logic's local candidate asks before closing while a circuit or truth
+Digital Logic asks before closing while a circuit or truth
 table CSV save is pending, even if the circuit was clean. Desktop,
 emulated-phone and 4K tests held saves, cancelled close, then checked real
 simulation output, sync and reopening. Operation delays were injected; writes
-already dispatched to storage may still finish after closure. It is not live and
-physical touch remains unverified.
+already dispatched to storage may still finish after closure. A public
+phone-sized check passed; physical touch remains unverified.
 
 Live release `e87dc394762835f1510801a828fd7002b2cffc5b06837418f48d97aab13e620e`:
 Calculator marks a calculation-note save as pending
@@ -368,12 +375,12 @@ synced and reopened. Hold/failure timing was injected; storage was real. The
 minimal host guard and Calculator update are live together; a public
 phone-sized check passed. Physical touch remains unverified.
 
-Image Editor's local layout candidate updates the restore reference on open and
+Image Editor updates the restore reference on open and
 save and clears it for a new blank image. Desktop, emulated-phone and 4K tests
 cover opening a second image, creating a blank, refreshing, then saving and
 reopening; a phone-sized Save As and fresh-session test also passed. An unsaved
-blank is not recovered on refresh. This candidate is not live; physical touch
-remains unverified.
+blank is not recovered on refresh. A public phone-sized check passed; physical
+touch remains unverified.
 
 G-code Preview strips balanced parenthesized comments
 and rejects unmatched or nested parentheses. The previous worker interpreted

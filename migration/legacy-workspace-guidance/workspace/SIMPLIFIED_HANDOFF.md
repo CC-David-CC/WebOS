@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Image, PDF, CAD and logic workflows
+
+Live static release `0db4822d66dfa593aa266d615bf8a28d66b963d9762bcfd24d6b343e7440785c`
+contains the documented Image Editor restore fix, PDF page navigation,
+Replicad preview cancellation and Digital Logic pending-save guard. Four
+public phone-sized account checks, asset hashes and root, /desktop/ and /blog/
+checks passed. Some timing and scroll actions were injected; physical touch and
+pixel-identical CAD rendering remain unverified. Four test accounts were
+disabled with data retained. Source through `b929564df` is backed up to box-git.
+Hosting manifest SHA-256 is
+`7bbd5e3046286f9ad79b403300b5118098b6c5bce8c5ac66ad6ded678ba8b789`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T043404259673Z`
+and `/var/backups/webhost-sites/change-20261101T043404260364Z`.
+
 ## 2026-11-01 — Calculator, G-code and Notebook safety
 
 Live static release `e87dc394762835f1510801a828fd7002b2cffc5b06837418f48d97aab13e620e`
