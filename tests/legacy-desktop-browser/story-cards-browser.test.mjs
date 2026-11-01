@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import puppeteer from 'puppeteer-core';
+
+const browser=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19262'});
+const context=await browser.createBrowserContext(),page=await context.newPage(),errors=[];
+page.on('pageerror',error=>errors.push(error.message));page.on('dialog',dialog=>dialog.accept());
+const click=label=>page.evaluate(label=>{const node=[...document.querySelectorAll('.story-app button')].find(item=>item.textContent===label);if(!node)throw Error('Missing button: '+label);node.click()},label);
+try{
+ await page.setViewport(process.env.CODI_PHONE?{width:412,height:915,isMobile:true,hasTouch:true}:{width:1366,height:900});
+ const manifest=JSON.parse(await readFile(process.env.CODI_STORY_MANIFEST||'.build/story-cards-test/apps.json','utf8')),entry='/'+manifest.apps[0].path.replace(/^assets\/desktop\//,'');
+ await page.goto((process.env.CODI_STORY_URL||'http://127.0.0.1:18350/')+'?app='+encodeURIComponent(entry));
+ await page.waitForFunction(()=>window.instances?.length===2&&document.querySelectorAll('.story-app').length===2);
+ assert.equal(await page.$$eval('.story-app canvas',nodes=>nodes.length),2);
+ assert.match(await page.$eval('.story-prompt',node=>node.textContent),/paused/i);
+ await click('Resume');
+ await page.waitForFunction(()=>[...document.querySelectorAll('.story-choices button')].length===2);
+ await page.evaluate(()=>window.instances[0].windowElement.classList.remove('focused'));
+ await page.waitForFunction(()=>window.instances[0].view.element.querySelector('.story-prompt')?.textContent.includes('paused'));
+ await page.evaluate(()=>window.instances[0].windowElement.classList.add('focused'));
+ await click('Resume');
+ await page.waitForFunction(()=>[...document.querySelectorAll('.story-choices button')].length===2);
+ await click('Ask the owl for help');
+ await page.waitForFunction(()=>document.querySelector('.story-prompt')?.textContent.includes('Choose'));
+ await click('Climb at dusk');await click('Return to the workshop');
+ await page.waitForFunction(()=>document.querySelector('.story-prompt')?.textContent.includes('Ending reached'));
+ await page.evaluate(()=>{document.querySelector('.story-save').open=true;document.querySelector('[aria-label="Story save path"]').value='/Story Cards.game.json'});
+ await click('Save to My files');await page.waitForFunction(()=>document.querySelector('.story-app .app-status')?.textContent.includes('syncing'));
+ const saved=await page.evaluate(()=>JSON.parse(new TextDecoder().decode(window.fileStore.get('/Story Cards.game.json').data)));
+ assert.equal(saved.appId,'story-cards');assert.equal(saved.payload.nodeId,'ending-light');assert.deepEqual(saved.payload.endings,['light']);
+ await page.evaluate(()=>{const files=window.storyFiles,write=files.write.bind(files);files.write=async(...args)=>{await new Promise(resolve=>window.releaseStorySave=resolve);const result=await write(...args);files.write=write;return result}});
+ await click('Save to My files');await page.waitForFunction(()=>!!window.releaseStorySave);
+ assert.equal(await page.evaluate(()=>window.instances[0].host.w.storyCards.dirty),true,'pending save protects the window');
+ await page.evaluate(()=>window.releaseStorySave());await page.waitForFunction(()=>document.querySelector('.story-app .app-status')?.textContent.includes('syncing'));
+ assert.equal(await page.evaluate(()=>window.instances[0].host.w.storyCards.dirty),false,'completed clean save clears the guard');
+ await page.evaluate(()=>window.fileStore.set('/bad.game.json',{data:new TextEncoder().encode('{bad'),version:'bad'}));await page.evaluate(()=>window.targetPath='/bad.game.json');
+ await click('Open from My files');await page.waitForFunction(()=>document.querySelector('.story-app .app-status')?.textContent.includes('Could not open'));
+ assert.match(await page.$eval('.story-prompt',node=>node.textContent),/Ending reached/);
+ await page.evaluate(()=>{const first=window.instances[0];first.controller.abort();first.view.dispose();first.view.dispose();first.view.element.remove()});
+ assert.equal(await page.$$('.story-app').then(nodes=>nodes.length),1);
+ assert.deepEqual(errors,[]);
+ console.log('PASS two independent stories, focus pause/resume, choices, ending, save, invalid recovery and disposal');
+}finally{await context.close();await browser.disconnect()}
