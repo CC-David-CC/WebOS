@@ -17,7 +17,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Calculator | Workflow checked | New notes retain the Ans input for recalculation; older notes lack it and show a warning. Earlier Ans history is not retained. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | Read failures offer retry and `/Untitled.doc` uses a separate scratch name; clipboard and animated images remain incompletely checked. |
-| PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Read-only, with no OCR for scans. |
+| PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Password-protected PDFs prompt locally; read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Temporary restore failures offer guarded retry; native format and CSV are primary. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Text import can preserve identifiers; numeric inference, calculations and charts can round. Large datasets and resource pressure remain unverified. |
 | Python Notebook | Workflow checked | Recovery, concurrent starts and early close passed limited reruns; earlier intermittent kernel errors remain unexplained. Untrusted notebooks are not isolated. |
@@ -29,14 +29,14 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Replicad | Workflow checked | Temporary restore failures offer guarded retry; unknown fields are rejected. Limited model generator, not general CAD. |
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Temporary workspace read failures offer retry; undo history and manufacturing correctness remain unverified. |
-| G-code Preview | Workflow checked | Temporary restore failures offer Reload; supports a subset and does not validate machine safety. |
+| G-code Preview | Workflow checked | Temporary restore failures offer Reload; refuses G29/G30 probing found in some slicer files; supports a subset and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | Temporary firmware restore failures offer retry; D13 shows driven-high output, not analog brightness. No electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Folder choices reject stale selections; firmware/peripheral support partial and unsaved flash cannot be recovered after a crash. Physical hardware unverified. |
 | Digital Logic | Workflow checked | Examples and truth tables are foremost; labeled binary controls support multi-bit signals. Combinational JSON only; no hardware timing validation. |
 | Circuit Simulator | Workflow checked | Includes a voltage-divider lesson with expected 5 V output; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Temporary restore failures offer guarded retry; pre-release, with physical sewing, machine formats and provider audit open. |
-| Stitch Converter | Workflow checked | Temporary restore failures offer guarded retry; SVG support and machine compatibility remain partial. Test-sew output. |
+| Stitch Converter | Workflow checked | Temporary restore failures offer guarded retry; Gradients may become one approximate thread color; SVG support and machine compatibility remain partial. Test-sew output. |
 | Falling Blocks | Preview | Emulated multitouch tested; physical phone and audible speakers unverified. |
 | Owl Companion | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Snake Garden | Preview | Authored Rive artwork and physical-device testing remain open. |
