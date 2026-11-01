@@ -92,6 +92,11 @@ including a source CSV changing while a project replacement is pending. A local
 phone-sized example/SQL/export/reopen workflow and public phone-sized safety
 test passed. Physical touch remains unverified.
 
+Calculator has a local candidate that replaces its browser overwrite prompt
+with a desktop dialog. Desktop, phone-sized and 4K account checks cover cancel,
+changed-file protection, snapshot saving, server sync and reopening in Text.
+Arithmetic unit tests passed. This candidate is not yet live.
+
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
 app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement
