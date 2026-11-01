@@ -4600,3 +4600,7 @@ Ten verified inactive releases archived to `/srv/data/codi-archived-simplified-2
 ## Legacy static release mismatch investigation — 2026-11-01
 
 Read-only full checksum/inventory scan passed all nine previously flagged static release trees against embedded cache manifests. Eight also have valid sibling `codi-simplified-release/1` manifests whose SHA is the directory name; embedded cache IDs use a different scheme, and both manifests agree including worker/cache files. `bfcccab6…` lacks its sibling; current content is internally consistent but original historical content cannot be independently proven. No checked live configuration/process references found. No release moved by that investigation. Archive candidates with their verified sibling manifests; preserve missing-manifest case separately and never infer its original identity.
+
+## Verified legacy-format static release archive — 2026-11-01
+
+Eight inactive legacy static releases with valid sibling `codi-simplified-release/1` manifests were archived to `/srv/data/codi-archived-simplified-20261101` together with those manifests; source/destination checksums and both manifests were validated under the controller lock and live references checked before removal. Individual `/srv/codi-connected/simplified-archive-<hash>.json` receipts; 140 total. Root free approximately 6.1 to 8.6 GiB; `/srv/data` 367 GiB free. Services active; lock released. `bfcccab6…` without independent historical manifest remains untouched. Archived historical paths require restoration before use.
