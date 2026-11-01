@@ -286,6 +286,16 @@ replacement, sync and reopen; the old code overwrote the PES without a dialog
 in a negative control. Both candidates are not live; physical touch remains
 unverified.
 
+Files has a local Select multiple mode for plain taps, plus clearer partial
+upload/deletion results and conflict checks before deletion. Desktop,
+emulated-phone and 4K tests cover selection, an actual upload collision and a
+two-browser conflict; a second-delete failure was injected. Uploads and deletes
+remain per-item, not atomic. Spreadsheet's local formula candidate reports
+exact tangent poles as errors and refuses CSV export of the invalid result;
+desktop, emulated-phone and 4K account workflows cover correction, save, sync
+and reopen. Neither candidate is live; physical touch and unusual numerical
+precision cases remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
