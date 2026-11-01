@@ -17,7 +17,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Calculator | Workflow checked | Floating-point results; notes restore the recorded result but not previous Ans history. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | Read failures offer retry and stale folder choices are rejected; clipboard and animated images remain incompletely checked. |
-| PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; read-only, with no OCR for scans. |
+| PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Native format and CSV are primary; stale folder choices are rejected and row/column changes track unsaved work. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Folder choices reject stale destinations; large datasets can exceed device memory and resource-pressure cases remain unverified. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
