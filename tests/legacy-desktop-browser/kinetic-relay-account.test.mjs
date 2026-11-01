@@ -44,8 +44,10 @@ try {
   await page.click('.relay-view [aria-label="Add mechanism"]');
   await page.click('.relay-view [aria-label="Launch marble"]');
   await page.evaluate(() => {
+    document.querySelector('.relay-save').open = true;
     document.querySelector('[aria-label="Kinetic Relay save path"]').value = "/Kinetic Relay.game.json";
   });
+  await page.$eval('.relay-view [aria-label="Save to My files"]', node => node.scrollIntoView({block: "center"}));
   await page.click('.relay-view [aria-label="Save to My files"]');
   await page.waitForFunction(() => document.querySelector(".relay-view .app-status")?.textContent.includes("syncing with the server"), {timeout: 30000});
   await page.evaluate(async () => (await mirrorFileContext()).files.sync());
@@ -69,6 +71,10 @@ try {
   await login(phone, false);
   await phone.evaluate(async () => (await mirrorFileContext()).files.sync());
   await launch(phone);
+  await phone.evaluate(() => {
+    document.querySelector(".relay-save").open = true;
+    document.querySelector('.relay-view [aria-label="Open from My files"]').scrollIntoView({block: "center"});
+  });
   await phone.click('.relay-view [aria-label="Open from My files"]');
   await phone.waitForSelector('[aria-label="Choose file Kinetic Relay.game.json"]', {visible: true});
   await phone.click('[aria-label="Choose file Kinetic Relay.game.json"]');
