@@ -1,5 +1,17 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Text invalid-open recovery
+
+Live static release `42f2fe05a2e071252431b116589dc52b6abd8c6013dd0c87a1020f07ed291708`
+recovers from an unreadable direct-open file to an independent editable note.
+A live phone-sized account test verified the original bytes remain untouched
+and the new note saves; physical touch remains unverified. The test account was
+disabled with data retained. Text and CodeMirror hashes and root, /desktop/ and
+/blog/ checks passed. Source `7f90e0369` is on box-git. Hosting manifest SHA-256
+is `ed671855c37962583864c11eda6ac6a22484e937fca26c9b90103f6ee9e8c406`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T055000805972Z`
+and `/var/backups/webhost-sites/change-20261101T055000806665Z`.
+
 ## 2026-11-01 — Image format signature protection
 
 Live static release `43f517bf406953873fa9bfc758b94baf09ebb9861a92cd1097749cb0482ed68c`

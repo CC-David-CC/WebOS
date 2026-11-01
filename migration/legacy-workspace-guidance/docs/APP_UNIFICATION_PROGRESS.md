@@ -673,11 +673,12 @@ a disabled clean Save; corrected reruns passed. Live phone-sized account
 checks passed both the mismatch and supported format round trips. Physical
 touch and malformed files mimicking valid signatures remain unverified.
 
-Text Editor has a local recovery candidate for an unreadable direct-open file:
+Text Editor recovers from an unreadable direct-open file:
 it retains the error, starts an independent editable Untitled note and requires
 a new save path without changing the original bytes. Desktop and phone-sized
 account tests covered editing and server sync; existing first-save and line-
-ending checks passed. This is not live; physical touch remains unverified.
+ending checks passed. A live phone-sized account check passed; physical touch
+remains unverified.
 
 ### Embedded-app file-menu review
 
