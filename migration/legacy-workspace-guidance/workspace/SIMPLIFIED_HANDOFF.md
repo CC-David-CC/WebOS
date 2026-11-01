@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Notebook, SVG Editor and Digital Logic
+
+Live static release `f4bc797d9b93bd8676aeb7082bad1b67c239228c4735deb86a50f033ba881623`
+contains the notebook invalid-file recovery, SVG Save As identity and Digital
+Logic multiple-driver rejection. Public registered-account tests passed on
+phone-sized viewports for Notebook and Digital Logic, and desktop for SVG.
+Notebook's test did not run Python; physical touch remains unverified. The
+three test accounts were disabled with their data retained. Asset hashes and
+root, /desktop/ and /blog/ checks passed. Source `8bbd33387` is on box-git.
+Hosting manifest SHA-256 is
+`6cac660cf16484f7ca73c43f2eb423c84671bc3efbd2084c7911d6927daeb36b`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T044940293180Z`
+and `/var/backups/webhost-sites/change-20261101T044940293616Z`.
+
 ## 2026-11-01 — App recovery and G-code safety
 
 Live static release `34be5d79ae697c1ddf17b654d6ad84a11128a87716b3188f92e0a91495360544`
@@ -25,9 +39,13 @@ workflow guards and separate real ngspice examples passed. A matching private
 archive at `/srv/data/codi-circuit-review-20261101/output/source-relink.zip` on
 box-git has SHA-256 `5001e42d586b3d510465d1814d7190d58f654730d6853ccae818e8df98f88f86`.
 Package and built-app audits passed; fresh extraction relinked modified
-numparam and solved a 5 V circuit. PTM redistribution terms and independent
-KLU relinking remain unresolved. The candidate is not deployed and must not be
-published until the documented distribution gate is satisfied.
+numparam and solved a 5 V circuit. A private fresh-extraction experiment modified KLU_defaults, relinked it, and
+confirmed its marker ran while solving a 5 V divider; the original engine solved
+the same control without the marker. Evidence is on box-git under
+`/srv/data/codi-circuit-klu-review-20261101/evidence/`. This tests one KLU path,
+not all configurations or a clean independent rebuild. PTM redistribution terms
+remain unresolved. The candidate is not deployed and must not be published
+until the documented distribution gate is satisfied.
 
 ## 2026-11-01 — Calculator and Pico input
 

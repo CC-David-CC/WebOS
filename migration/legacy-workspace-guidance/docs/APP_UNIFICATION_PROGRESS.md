@@ -437,8 +437,11 @@ separate real ngspice divider, transient and MOSFET tests. The source-package
 audit now binds packaged app inputs to the build. A matching private research
 archive was rebuilt on box-git and its package and built-app audits passed; a
 fresh extraction relinked modified numparam code and solved a 5 V circuit. The
-PTM redistribution question and independent KLU relink remain unresolved; do
-not deploy or publish the unreviewed models. The archive is private research
+PTM redistribution question remains unresolved; do not deploy or publish the
+unreviewed models. A private fresh-extraction experiment modified KLU_defaults,
+relinked it and observed its marker execute while solving a 5 V divider; the
+original engine control solved it without the marker. This proves one relink
+path, not a clean independent rebuild or all configurations. The archive is private research
 material, not a completed distribution review.
 
 G-code Preview rejects `M206` and `M428` home-offset changes rather than
@@ -447,20 +450,25 @@ the real parser and preview and verified that the prior view remains open. The
 live phone-sized test used mouse clicks; physical touch, other controller-specific
 behavior and physical machines remain unverified.
 
-Digital Logic has a local candidate that rejects multiple outputs wired to the
-same input before simulation or truth-table generation, while keeping the prior
-diagram. Desktop, emulated-phone and 4K account checks passed; the existing
-comparator also passed all 16 combinations with supported output fan-out, sync
-and reopen. This is not live; physical touch and electrical-bus behavior remain
-unverified.
+Digital Logic rejects multiple outputs wired to the same input before simulation
+or truth-table generation, while keeping the prior diagram. Desktop,
+emulated-phone and 4K account checks passed; the existing comparator also
+passed all 16 combinations with supported output fan-out, sync and reopen. A
+live phone-sized account check passed. Physical touch and electrical-bus
+behavior remain unverified.
 
-Notebook has a local invalid-launch candidate that opens an editable starter
-while keeping the failed file untouched and the error visible. Desktop,
-emulated-phone and 4K tests cover invalid and valid direct launches; that
-specific test did not run Python. SVG Editor has a local file-identity candidate
-that keeps an original and a Save As copy in separate windows; a desktop
-account regression and phone-sized shortcut regression passed. Neither is
-live; physical touch remains unverified.
+Notebook opens an editable starter when a directly opened file is invalid,
+while keeping that file untouched and the error visible. Desktop, emulated-phone
+and 4K tests cover invalid and valid direct launches; a live phone-sized account
+check also passed. This test did not run Python. SVG Editor keeps an original
+and a Save As copy in separate windows; a live desktop account regression and
+local phone-sized shortcut regression passed. Physical touch remains unverified.
+
+Document Editor has a local candidate that resets Undo history when another
+report opens, preventing Undo from erasing the new report or restoring the old
+one. Real browser editing, Undo, Redo and server-synced save passed locally on
+desktop and phone-sized viewports. This is not live; physical touch remains
+unverified.
 
 ### Embedded-app file-menu review
 
