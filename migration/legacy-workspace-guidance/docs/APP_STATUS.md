@@ -62,7 +62,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Tabletop Bot Arena | Preview | Overlapping inputs and file-operation guards checked; physical touch and full cup remain. |
 | Pocket Golf | Preview | In-flight saves retain unsaved state and hole changes ask before discard; physical touch and all holes remain. |
 | Target Garden | Preview | Pointer cancellation and independent input tested; full rounds and physical-device review remain, with final artwork pending. |
-| Orbital Courier | Preview | Further interaction and physical-device review; final artwork pending. |
+| Orbital Courier | Preview | Flight, saved progress and mission phases from controlled checkpoints checked locally; uninterrupted mission, touch, XR and final artwork remain. |
 | Clockwork Quest | Preview | Full quest and account reopen checked live; XR session lifecycle mocked only, with headset, touch and final artwork unverified. |
 | Memory Garden | Preview | Full keyboard six-pair game and account reopen checked live; physical touch, assistive technology and final artwork remain. |
 | Circuit Lab | Research candidate, not deployed | ngspice source/relink distribution review and model licensing remain open. |
