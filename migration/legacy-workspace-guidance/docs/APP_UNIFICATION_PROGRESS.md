@@ -79,6 +79,13 @@ passed upload, sync, invalid-file recovery, Files open, fresh-session reopening
 and truth-table CSV handoff to Data Explorer. A public emulated-phone account
 test passed the confirmation protections. Physical touch remains unverified.
 
+Stitch Converter has a local candidate replacing native discard and overwrite
+prompts with desktop dialogs. Desktop, phone-sized and 4K account tests cover
+cancelled prompts and edits or file changes during confirmation. The local
+upload, save, conversion, sync and fresh-session workflow and delayed-save
+regression passed. This candidate is not yet live; physical touch and machine
+compatibility remain unverified.
+
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
 app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement
