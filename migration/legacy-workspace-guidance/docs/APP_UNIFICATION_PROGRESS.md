@@ -429,6 +429,17 @@ desktop, emulated-phone and 4K account tests delay the file read, alter the
 preview, then verify it remains open and retry works. These changes are not
 live; physical touch and machine-sewing behavior remain unverified.
 
+Circuit Lab remains gated and is not deployed. Its local source candidate uses
+desktop discard confirmation, reports immediate file conflicts and cancels
+stale simulations. A simulated-worker/file-service guard test passed, as did
+separate real ngspice divider, transient and MOSFET tests. The source-package
+audit now binds packaged app inputs to the build. A matching private research
+archive was rebuilt on box-git and its package and built-app audits passed; a
+fresh extraction relinked modified numparam code and solved a 5 V circuit. The
+PTM redistribution question and independent KLU relink remain unresolved; do
+not deploy or publish the unreviewed models. The archive is private research
+material, not a completed distribution review.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.

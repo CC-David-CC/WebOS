@@ -1,5 +1,17 @@
 # Simplified branch handoff
 
+## Circuit Lab private research candidate
+
+The local candidate fixes discard, immediate-conflict and stale-simulation
+handling; its source-package audit now rejects mismatched app inputs. Simulated
+workflow guards and separate real ngspice examples passed. A matching private
+archive at `/srv/data/codi-circuit-review-20261101/output/source-relink.zip` on
+box-git has SHA-256 `5001e42d586b3d510465d1814d7190d58f654730d6853ccae818e8df98f88f86`.
+Package and built-app audits passed; fresh extraction relinked modified
+numparam and solved a 5 V circuit. PTM redistribution terms and independent
+KLU relinking remain unresolved. The candidate is not deployed and must not be
+published until the documented distribution gate is satisfied.
+
 ## 2026-11-01 — Calculator and Pico input
 
 Live static release `04d51cf02682f7e8a6902489c29c7f1975d9f1433a9be7551a4eba41748c548b`
