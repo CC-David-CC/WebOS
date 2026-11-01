@@ -12,7 +12,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | --- | --- | --- |
 | Files | Workflow checked | Copies use an atomic local snapshot; unseen remote edits may arrive later. Folder moves unavailable; 100-user capacity unqualified. |
 | Terminal | Workflow checked | Guest files are temporary; more interactive programs need testing. |
-| Text | Workflow checked | File actions are serialized during confirmation and selection; the 128 MiB boundary remains unverified. |
+| Text | Workflow checked | ~8 MiB account workflow checked live; 128 MiB is a storage limit, not a proven device editing capacity. |
 | Help | Static information checked | Not a full manual. |
 | Calculator | Workflow checked | New notes retain the Ans input for recalculation; older notes lack it and show a warning. Earlier Ans history is not retained. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
@@ -24,7 +24,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Image Editor | Workflow checked | Warns on recognized metadata that saving may strip; detection is incomplete. Animated images unsupported; embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | Temporary restore failures offer guarded retry; the adapter must be requalified when diagrams.net changes. Other exports and provider entry points need review. |
-| Excalidraw | Workflow checked | Temporary restore failures offer guarded retry; full imported image decoding and provider audit remain partial. |
+| Excalidraw | Workflow checked | Image preflight limits dimensions and may refuse complex SVG or unusual headers; memory and provider audit remain partial. |
 | SVG Editor | Workflow checked | SMIL and common inline CSS animation are rejected to avoid data loss; other CSS and complex SVG remain unverified. |
 | Replicad | Workflow checked | Temporary restore failures offer guarded retry; unknown fields are rejected. Limited model generator, not general CAD. |
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
