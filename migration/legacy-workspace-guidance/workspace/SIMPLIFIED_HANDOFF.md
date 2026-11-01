@@ -1,5 +1,23 @@
 # Simplified branch handoff
 
+## 2026-11-01 — New-account starter folders
+
+New account homes start with Documents, Digital Projects, 3D Objects, Games,
+Pictures, Audio and Video. These are normal private account folders, not the
+server's system root or the temporary guest Linux filesystem; deleted folders
+are not recreated for ready accounts. Existing test accounts are untouched.
+Worker `/srv/codi-gateway/releases/starter-folders-r1` is live with manifest
+`8b9ea654f1c8f954c8fbade8c83046c388955d70eb2ed9d70991500bc6a854af`.
+The guarded upgrade retained permission bindings; native config SHA-256 is
+`4d67889b8ae2e978f40c9808b94fd4c7346d162c0eb47fa132e01d3317885e05`
+and file config SHA-256 is
+`df358b01c6cae919c476bbb23ae392abf5404ba229875188462f11afc3befff9`.
+Three local storage tests cover account isolation, modes, deletion, interrupted
+setup, unexpected data and quotas; 34 existing storage tests pass. Desktop and
+phone-sized local and public phone-sized account checks verified synchronization
+and fresh-browser reopening. The public test account was cleaned and disabled.
+Physical touch remains unverified. Previous worker is `file-queue-r1`.
+
 ## 2026-11-01 — Digital Logic confirmations
 
 Live release `f12200887e11ab34f34308ddb4d11692b5ff38192bdcfec8a2457b42b57868f1`
