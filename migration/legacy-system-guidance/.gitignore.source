@@ -23,6 +23,10 @@ assets/*.ttf
 *.jpg
 *.jpeg
 
+# Only the current reviewed browser Linux runtime is tracked.
+!/runtime/v86/v86.wasm
+!/assets/terminal/v2/e571ca17c12f1b392851b1cc1144aa14abc185c3bac7380d7c24821073e6e389.cpio.gz
+
 # Original artwork belongs to the application source.
 !/assets/icons/*.png
 !/assets/application.png
