@@ -30,6 +30,10 @@ node_modules/
 .env.*
 assets/vendor/chess/chess.mjs
 
+# The current, reviewed browser Linux runtime is required in a fresh checkout.
+!/active-system/runtime/v86/v86.wasm
+!/active-system/assets/terminal/v2/e571ca17c12f1b392851b1cc1144aa14abc185c3bac7380d7c24821073e6e389.cpio.gz
+
 # Desktop artwork is application source, not a generated build artifact.
 !/active-system/assets/icons/*.png
 !/active-system/assets/application.png

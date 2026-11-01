@@ -1,5 +1,15 @@
 # Simplified branch handoff
 
+## Fresh checkout: browser Linux runtime
+
+The current v86 runtime and the one guest image selected by
+`active-system/assets/terminal/v2/image.json` are checked in. A fresh checkout
+uses `active-system/runtime/v86/` automatically when no complete local runtime
+exists in `active-system/.build/v86/`. See the runtime README for hashes,
+provenance, notices and the local-rebuild override. Older guest images and
+intermediate builds remain excluded. Build dependencies and app bundles are
+still installed or generated as described in the local verification section.
+
 ## 2026-11-01 — Files, Notebook and stitch safety release
 
 Live static release `8c8dd9f477bd8df8b0decc6aa9f59e61d5e892ea124140058370b0d0020011d7`
