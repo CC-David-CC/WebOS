@@ -49,6 +49,8 @@ SVG Editor clears a stale restore reference when the original SVG cannot open; l
 
 Audio Editor now stores beat/snap enabled state in an additional project metadata record. Local desktop/phone and live phone-sized account tests cover tempo and snap restoration, compatibility with projects lacking the record, malformed flags and acceptance by the native AudioMass decoder. Other AudioMass tools may discard this extra record; long names may still shorten. Image Editor clears a failed initial image association; local desktop/phone and live phone-sized tests cover fallback, preserving the original file, save/sync and refresh. Physical touch and audio hardware remain unverified. Files folder moves remain unavailable: a server-only prototype test demonstrates that a deliberately stalled tree hash blocks another account’s file listing, and browser journaling/recovery and direct-host-writer consistency are unfinished. Live release `463ea092b4f9923c2f933d97d7ea12dd897564fd2a0ea4874ad3ae1068e375b2`.
 
+Data Explorer clears a failed initial analysis-file reference; local desktop/phone and live phone-sized account tests cover source preservation, example, save/sync and refresh. Kiri:Moto and Mesh:Tool clear a failed initial workspace reference; local desktop/phone and live phone-sized tests cover real model import, workspace save/sync and refresh for each. Local phone-sized missing-file fallback passed; one earlier Kiri missing-file full workflow timed out after fallback, cause unverified. These do not validate manufacturing output or physical touch. Live release `0d4b09d5bf2b8816cfa55b83102ab3be9f7ff677f9a04273b33472e35927aef6`.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and
