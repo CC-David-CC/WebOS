@@ -23,7 +23,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Python Notebook | Workflow checked | Recovery tested with idle kernel; immediate-close and concurrent kernel errors remain unresolved. Untrusted notebooks are not isolated. |
 | Image Editor | Workflow checked | Save As rejects stale folder choices; animated images are unsupported and embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
-| diagrams.net | Workflow checked | Loads require a guarded confirmation; the adapter must be requalified when diagrams.net changes. Other export types and provider entry points need review. |
+| diagrams.net | Workflow checked | Temporary restore failures offer guarded retry; the adapter must be requalified when diagrams.net changes. Other exports and provider entry points need review. |
 | Excalidraw | Workflow checked | Temporary restore failures offer guarded retry; full imported image decoding and provider audit remain partial. |
 | SVG Editor | Workflow checked | Read failures retain the original reference for retry; SMIL animation is rejected, while CSS animation and complex SVG remain unverified. |
 | Replicad | Workflow checked | Temporary restore failures offer guarded retry; unknown fields are rejected. Limited model generator, not general CAD. |
