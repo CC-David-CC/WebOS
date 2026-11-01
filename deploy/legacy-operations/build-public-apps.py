@@ -14,7 +14,7 @@ import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
-APP_IDS = ('falling-blocks', 'calculator', 'files', 'help', 'browser', 'codemirror', 'terminal', 'text', 'image-editor', 'document-editor', 'pdf-viewer', 'spreadsheet', 'data-explorer', 'ffmpeg', 'wavesurfer', 'tone', 'audio-editor', 'zip', 'gcode-preview', 'grid-tools', 'mermaid', 'echarts', 'plotly', 'pdfme', 'maplibre', 'transformers', 'trystero', 'tanstack-virtual', 'onnx-runtime', 'webtorrent', 'yjs', 'replicad', 'diagrams-net', 'notebook', 'excalidraw', 'svg-editor', 'arduino-simulator', 'pico-simulator', 'circuitjs', 'electronics-design', 'digital-logic', 'embroidery-studio', 'stitch-converter', 'personal-template')
+APP_IDS = ('falling-blocks', 'owl-companion', 'physics-playground', 'snake-garden', 'calculator', 'files', 'help', 'browser', 'codemirror', 'terminal', 'text', 'image-editor', 'document-editor', 'pdf-viewer', 'spreadsheet', 'data-explorer', 'ffmpeg', 'wavesurfer', 'tone', 'audio-editor', 'zip', 'gcode-preview', 'grid-tools', 'mermaid', 'echarts', 'plotly', 'pdfme', 'maplibre', 'transformers', 'trystero', 'tanstack-virtual', 'onnx-runtime', 'webtorrent', 'yjs', 'replicad', 'diagrams-net', 'notebook', 'excalidraw', 'svg-editor', 'arduino-simulator', 'pico-simulator', 'circuitjs', 'electronics-design', 'digital-logic', 'embroidery-studio', 'stitch-converter', 'personal-template')
 
 # Host-loaded system tools are separate bundles, so a selected-app build must
 # include them even though the consumer has no direct JavaScript import.
