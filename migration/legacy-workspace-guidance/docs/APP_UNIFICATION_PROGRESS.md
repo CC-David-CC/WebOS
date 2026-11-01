@@ -118,6 +118,16 @@ fallback. The File-menu update is live in release
 `bc12051a9156f0d0f047ae0008fa52a3a1881fe8cf88f73417e0530e496df46f`;
 a public phone-sized account test passed. Physical touch remains unverified.
 
+Excalidraw has a local candidate that moves My files open, image insertion,
+drawing save and PNG export into its own main menu and removes the duplicate
+outer toolbar. The menu keeps search, canvas controls and help; the native
+computer-file image button is disabled in favor of My files. Desktop,
+emulated-phone and 4K account tests cover menu input, image insertion, save,
+export, conflict, reload after signing back in and fresh-session reopen. Local
+phone-sized drawing, upload, image undo and delayed-save regressions passed.
+The candidate is not live; physical touch and
+the full set of Excalidraw features remain unverified.
+
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
 app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement
