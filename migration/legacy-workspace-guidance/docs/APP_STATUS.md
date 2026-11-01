@@ -12,7 +12,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | --- | --- | --- |
 | Files | Workflow checked | Folder moves unavailable; 100-user capacity unqualified. |
 | Terminal | Workflow checked | Guest files are temporary; more interactive programs need testing. |
-| Text | Workflow checked | Large files and further editing modes need review. |
+| Text | Workflow checked | Temporary restore failures retain the path and allow Reload; large files and further editing modes need review. |
 | Help | Static information checked | Not a full manual. |
 | Calculator | Workflow checked | Floating-point results; notes restore the recorded result but not previous Ans history. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
@@ -21,7 +21,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Spreadsheet | Workflow checked | Advanced Excel compatibility is limited; mathematical exponent precedence differs from Excel. |
 | Data Explorer | Workflow checked | Large datasets can exceed device memory; injected restore failures now pass without the previously observed worker error, but other failure and resource-pressure cases remain unverified. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
-| Image Editor | Workflow checked | Animated image editing unsupported; annotation images use a temporary gallery; embedded tools need further audit. |
+| Image Editor | Workflow checked | Temporary restore failures retain the image reference; animated images unsupported and embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | Loads require a guarded confirmation; the adapter must be requalified when diagrams.net changes. Other export types and provider entry points need review. |
 | Excalidraw | Workflow checked | File and folder choices are serialized; reusable library features and provider audit remain partial. |
@@ -49,7 +49,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Stack & Balance | Preview | Touch cancellation, save and reopen checked; full challenge set and physical devices remain unverified. |
 | Crystal Defense | Preview | Deleted-save and busy-pause handling checked; full eight-wave playthrough and physical touch remain. |
 | Drone Circuit | Preview | Overlapping inputs, focus loss, save and reopen checked; physical multitouch and full course remain unverified. |
-| Reactive Control Desk | Preview | Further interaction and physical-device review; final artwork pending. |
+| Reactive Control Desk | Preview | Pending-save state, sync and reopen checked; physical touch and all orders remain unverified. |
 | Story Cards | Preview | Account sync and isolation checked; complete story and physical touch remain. |
 | Expression Puppet | Preview | Further interaction and physical-device review; final artwork pending. |
 | Rhythm Garden | Preview | Further interaction and physical-device review; final artwork pending. |
