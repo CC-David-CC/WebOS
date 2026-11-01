@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Data Explorer confirmations
+
+Live static release `08ffb5ed31f300e3f180ccf690a459e11082ab31b41dd33a6765f40afb8f953f`
+uses desktop dialogs for discard, changed CSV and file replacement and checks
+that the source CSV still matches before saving a project. Local desktop,
+phone-sized and 4K account tests cover edits or files changed while confirming;
+a local phone-sized example/query/export/sync/reopen test and public phone-sized
+safety test passed. The disposable public account was cleaned and disabled.
+Physical touch remains unverified. Source `ad4c2c20a` is backed up to box-git.
+Hosting manifest SHA-256 is
+`22124895483818a7bbbddee5327bd138b233d975fd18c1ba845b74fb2ef8a7d4`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T031144013960Z`
+and `/var/backups/webhost-sites/change-20261101T031144014383Z`.
+
 ## 2026-11-01 — Embroidery Studio My files bridge
 
 Live static release `0eb7730ce9b2c17fcab679da996c99406f2dc1878662ee27d0da7a531664e3e6`
