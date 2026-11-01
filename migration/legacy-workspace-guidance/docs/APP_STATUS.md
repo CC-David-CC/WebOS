@@ -14,7 +14,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Terminal | Workflow checked | Guest files are temporary; more interactive programs need testing. |
 | Text | Workflow checked | File actions are serialized during confirmation and selection; the 128 MiB boundary remains unverified. |
 | Help | Static information checked | Not a full manual. |
-| Calculator | Workflow checked | Floating-point results; notes restore the recorded result but not previous Ans history. |
+| Calculator | Workflow checked | Mouse keypad returns focus for hardware typing; notes restore the recorded result but not previous Ans history. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | Read failures offer retry and stale folder choices are rejected; clipboard and animated images remain incompletely checked. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Read-only, with no OCR for scans. |
