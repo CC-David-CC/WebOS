@@ -69,11 +69,10 @@ previously recorded `e3b80b2...` commit lacks account and Ask source files whose
 paths and text appear in the pinned archive's WebAssembly. Upstream commit
 `e5a88e0...` predates the archive timestamp, contains those features and matches
 its README, notices, assets list and licenses; this is useful review evidence,
-not proof that it produced the binary. Confirm a source/build match before
-rebuilding or claiming those controls have been removed. The current 5.4 GB of
-local free space is also below the upstream documentation's approximately 30 GB
-build-directory estimate; box-git has a larger writable data disk, but its build
-toolchain has not been prepared.
+not proof that it produced the binary. Resolve the provenance gap before
+claiming a rebuild corresponds to the currently shipped binary. The upstream
+documentation estimates approximately 30 GB for a build directory, so the
+candidate build uses box-git's larger data disk instead of the workstation.
 
 A source-only StitchFoundry candidate is being prepared from `e5a88e0...` on
 box-git's isolated `/srv/data/codi-embroidery-candidate-e5` build directory.
@@ -85,7 +84,36 @@ The candidate has not yet been built, visually checked or tested; the current
 binary and live site have not changed. The remote Trunk tool installation is
 in progress. A successful rebuild still needs source provenance, app workflow,
 network, lifecycle and phone/desktop verification before it can be considered
-for release.
+for release. Rust and the WebAssembly target are installed on the build host;
+the Trunk installation and a WebAssembly cargo check have started, but neither
+has yet been reported as passing.
+
+### Current milestone and handoff
+
+1. Finish each app's real workflow: open from My files, edit or run, save,
+   close and reopen, with account isolation, conflict handling, cleanup and
+   desktop, phone-sized and large-screen checks. Upload from the user's device
+   remains an explicit separate action. Temporary Linux files are separate.
+2. Integrate file actions into each app's own menus where practical, remove
+   duplicated wrapper controls, and replace browser-native dialogs with desktop
+   dialogs. The reviewed menu and title-bar improvements above are local
+   candidates; do not describe them as live until deployed and verified.
+3. Inventory and remove third-party sign-in, account, cloud and service
+   dependencies app by app. Hiding a control alone is not proof that the
+   underlying integration is disabled. Record each affected feature in
+   `DEFERRED_APP_FEATURES.md` and test both its interface and network behavior.
+4. Keep affected features unavailable until an internal server-backed
+   replacement is designed, implemented and verified under the replacement
+   gate in that register. No replacement currently exists for the listed
+   Embroidery AI features. Their removal or blocking must not prevent the
+   ordinary browser-local editor and My files workflow from working.
+
+The release milestone is every interactive app having an honest status and a
+consistent, tested primary workflow, not merely a successful launch. The
+app-by-app inventory and external-service audit are incomplete. Physical phone
+testing, some app workflows, and the classroom capacity target remain separate
+verification work. Source and notes are backed up to box-git; generated builds,
+dependencies, user files and account state are not source backups.
 
 ### Embedded-app file-menu review
 
