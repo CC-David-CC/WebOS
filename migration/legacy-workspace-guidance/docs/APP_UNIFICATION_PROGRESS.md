@@ -59,12 +59,12 @@ The prior pinned WASM and source ZIP do not include this bridge; regenerate and
 verify both with the changed host sources before any deployment. The existing
 live Embroidery build is unchanged.
 
-A local Pico Simulator candidate uses desktop confirmations for board
+The live Pico Simulator uses desktop confirmations for board
 replacement, simulated-flash reset, and project and serial-output overwrites.
 Desktop, emulated-phone and 4K tests use synthetic firmware/fake worker for
 cancellation and changes while confirming; separate local desktop/phone tests
 cover serial sync, Text reopen and cleanup, and a phone-sized test runs the
-real Blink worker. Physical hardware and phone touch are unverified.
+real Blink worker. Public phone-sized tests passed the confirmation flows with synthetic firmware and the real Blink worker. Physical hardware and phone touch are unverified.
 
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
