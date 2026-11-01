@@ -646,6 +646,16 @@ waited for readiness. Actual export generation during the race, physical touch
 and fabrication hardware remain unverified. Live phone-sized account checks
 passed both editors.
 
+Local candidates: Excalidraw reports an invalid direct open and starts an
+independent Untitled drawing without changing the original. SVG Editor warns
+before closing during SVG saves or image/PDF export, restoring prior dirty state
+on failure. PDF Viewer checks a new PDF’s first-page display limit before
+replacing the current document. Desktop and phone-sized account tests cover
+these workflows, including real editor saves and PDF.js; one early PDF status
+check saw a transient discrepancy, and subsequent runs passed. These changes are
+not live; physical touch, PDF export during close and later PDF render failures
+remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
