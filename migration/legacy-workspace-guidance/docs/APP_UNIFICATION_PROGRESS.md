@@ -698,18 +698,20 @@ DuckDB reject that specific multi-statement with an upstream error. A live
 phone-sized account check passed the injected and legitimate query cases. This
 is not a general SQL security sandbox.
 
-G-code Preview has a local candidate rejecting motion after M2/M30 rather than
+G-code Preview rejects motion after M2/M30 rather than
 assuming a controller dialect. Real-worker desktop and phone-sized checks cover
 program-end variants, ordinary M20, comments and preservation of the previous
-preview. This is not live or a machine-safety validation.
+preview. A live phone-sized account check passed; this is not a machine-safety
+validation.
 
-Local candidates: Document Editor and Excalidraw hold their close guards during
+Document Editor and Excalidraw hold their close guards during
 saves and exports, even when the document was clean when the operation began.
 Desktop and phone-sized real-editor/account tests covered delayed saves,
 exports, cancellation and sync; the Document test also covered failure and
 newer edits. An Excalidraw PNG regression initially omitted Image Editor and
-passed after rebuilding with it. These changes are not live; physical touch and
-accepting close during an already-dispatched write remain unverified.
+passed after rebuilding with it. Live phone-sized account checks passed both.
+Physical touch and accepting close during an already-dispatched write remain
+unverified.
 
 ### Embedded-app file-menu review
 

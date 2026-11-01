@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Program-end and pending-save protection
+
+Live static release `025b34a6c390c8f540a5b911cffa4825e2e6c8da335d6e5865e81755184748be`
+rejects motion after ambiguous M2/M30 program-end commands and guards Document
+Editor and Excalidraw while saves or exports are pending. Live phone-sized
+account checks passed; physical touch, accepting close during an already-
+dispatched write and machine safety remain unverified. Three test accounts were
+disabled with data retained. Asset hashes and root, /desktop/ and /blog/ checks
+passed. Source through `8fd1c356d` is on box-git. Hosting manifest SHA-256 is
+`7183e6033d559293a4173fe739b33f3a177de3c2f009cda72c682ca0771ab3d2`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T060110160190Z`
+and `/var/backups/webhost-sites/change-20261101T060110161006Z`.
+
 ## 2026-11-01 — Generated release cleanup
 
 Removed eight obsolete generated static releases created during these test
