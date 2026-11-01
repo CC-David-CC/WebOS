@@ -1,5 +1,17 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Document Undo isolation
+
+Live static release `e0117b30a3be72c17f46f6d814add407bc7e188021d5f1beefee70dc59a68247`
+resets Undo history when a different report opens. A public phone-sized account
+check covered opening, Undo, Redo and server-synced save; physical touch remains
+unverified. The test account was disabled with data retained. Asset hash and
+root, /desktop/ and /blog/ checks passed. Source `61a281425` is on box-git.
+Hosting manifest SHA-256 is
+`29f72cf77b1d7fd54cc15b620bf424323b02d1c35fca3969b98d980bbb3343ed`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T045054318423Z`
+and `/var/backups/webhost-sites/change-20261101T045054318838Z`.
+
 ## 2026-11-01 — Notebook, SVG Editor and Digital Logic
 
 Live static release `f4bc797d9b93bd8676aeb7082bad1b67c239228c4735deb86a50f033ba881623`
