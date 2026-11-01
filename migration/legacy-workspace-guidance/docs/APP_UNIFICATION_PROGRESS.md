@@ -725,6 +725,12 @@ journal cover individual files, not a versioned subtree. The coordinated
 protocol, out-of-band-write decision and test gates are described in
 `FOLDER_MOVE_DESIGN.md`; no unsafe copy-and-delete substitute has been enabled.
 
+Stitch Converter has a local close guard for artwork saves and machine-file
+exports. Desktop and phone-sized real-converter/account tests covered pending
+saves, PES output and a simulated failure; existing save-race and conflict
+regressions passed. This is not live; physical touch and sewing remain
+unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
