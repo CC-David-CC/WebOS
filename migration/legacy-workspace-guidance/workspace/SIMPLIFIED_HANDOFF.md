@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Data Explorer uncertain-view recovery
+
+Live static release `7f6f28530d456219e37404966e5b5b15b93ff6d7e3e650f33af353c28a35a0a5` requires reopening the source if opening data and restoring the previous view both fail. Local desktop/phone and live phone-sized account tests inject both failures and check warnings, blocked query/export, reopening and sync. The existing query-restore regression reports Perspective `_setThrew is not defined` on unchanged baseline and candidate; it remains failing. Physical touch remains unverified. One live test account was disabled with data retained. Hosting manifest SHA-256 `fb0e1dfa352761feaf9a529d844bad77e2b6e90e5678ac847a0054484c46ddb8`; rollback inputs `/var/backups/webhost-sites/change-20261101T082233755455Z` and `/var/backups/webhost-sites/change-20261101T082233756235Z`.
+
 ## 2026-11-01 — Multi-file copy and SVG recovery
 
 Live static release `75b49fea6129f2e90bc4164d316edc98d8edd8acbd2d536f0d8453af5f3d7e14` adds multi-file Copy to and guards SVG Editor when both an open and rollback fail. Local desktop/phone and live emulated-phone account tests cover sync, preserving originals and injected partial-copy or double-load failure. Copies are separate operations and report partial completion; folders copy one at a time. Physical touch and other upstream failure modes are unverified. Two live test accounts were disabled with data retained. Hosting manifest SHA-256 `0daea9e9ce6142117a560ec4caa500ef0aa308da40c26855bb60d7233d7429ce`; rollback inputs `/var/backups/webhost-sites/change-20261101T081952144947Z` and `/var/backups/webhost-sites/change-20261101T081952150806Z`.

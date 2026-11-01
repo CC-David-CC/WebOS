@@ -63,6 +63,8 @@ PDF Viewer now clears failed startup references, stages pages before showing the
 
 Files supports copying multiple selected files to one folder; local desktop/phone and live phone-sized account tests cover server sync, original preservation and an injected partial failure with a completed count. Folder copies remain one at a time. SVG Editor marks its canvas unsaved and detaches its old file if both opening a new drawing and restoring the prior canvas fail; local desktop/phone and live phone-sized injected-failure tests cover close guard, original preservation and saving a copy. Physical touch and unrelated upstream crashes remain unverified. Folder-move research branch `research/folder-lock-20261101` is at `dd65e86b0fc45f466bdcf819964f3d140bef915c`: an isolated journal can retry a simulated lost reply and settle an externally verified matching receipt, but production integration, signed transport, receipt authentication and direct host-writer protection remain unfinished. Live release `75b49fea6129f2e90bc4164d316edc98d8edd8acbd2d536f0d8453af5f3d7e14`.
 
+Data Explorer warns and requires reopening the source when opening data and restoring the prior view both fail, preventing queries and exports from an uncertain view. Local desktop/phone and live phone-sized account tests inject both failures and verify reopening and sync. An existing query-restore regression still reports Perspective `_setThrew is not defined` on both the unchanged baseline and candidate; it is not counted as passing. Physical touch and other failure modes remain unverified. Live release `7f6f28530d456219e37404966e5b5b15b93ff6d7e3e650f33af353c28a35a0a5`.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and

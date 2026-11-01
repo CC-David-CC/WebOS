@@ -19,7 +19,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Document Editor | Workflow checked | Not a Word editor; more complex reports need review. |
 | PDF Viewer | Workflow checked | Read-only; no OCR for image-only scans. |
 | Spreadsheet | Workflow checked | Advanced Excel compatibility is limited. |
-| Data Explorer | Workflow checked | Large datasets can exceed device memory. |
+| Data Explorer | Workflow checked | Large datasets can exceed device memory; an injected query-restore regression still logs a Perspective error. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
 | Image Editor | Workflow checked | Animated image editing unsupported; annotation images use a temporary gallery; embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
