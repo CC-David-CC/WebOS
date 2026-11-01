@@ -35,7 +35,7 @@ A source review found that the local Embroidery candidate still includes an upst
 
 The live Arduino Simulator replaces native firmware, example-source and serial-output replacement prompts with desktop dialogs. Desktop, phone-sized and 4K checks cover cancellation and files changed during confirmation; the full local example/serial/GPIO, file-sync and Text-reopen workflows also passed. A public phone-sized collision and cancellation test passed. Physical touch remains unverified.
 
-A Replicad CAD local candidate uses desktop confirmations for discard and replacement. Local desktop, phone-sized and 4K tests cover cancellation and changes during confirmation; a real STL geometry, sync, conflict and fresh-session workflow passed locally. Physical touch remains unverified.
+The live Replicad CAD app uses desktop confirmations for discard and replacement. Local desktop, phone-sized and 4K tests cover cancellation and changes during confirmation; a real STL geometry, sync, conflict and fresh-session workflow passed locally; a public phone-sized cancellation and changed-target test passed. Physical touch remains unverified.
 
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
