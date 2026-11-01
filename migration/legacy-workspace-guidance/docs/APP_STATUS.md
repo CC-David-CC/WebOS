@@ -36,7 +36,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Circuit Simulator | Workflow checked | Temporary restore failures offer a guarded retry; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Temporary restore failures offer guarded retry; pre-release, with physical sewing, machine formats and provider audit open. |
-| Stitch Converter | Workflow checked | Unsupported artwork is reported; SVG support and machine compatibility remain partial. Test-sew output. |
+| Stitch Converter | Workflow checked | Temporary restore failures offer guarded retry; SVG support and machine compatibility remain partial. Test-sew output. |
 | Falling Blocks | Preview | Emulated multitouch tested; physical phone and audible speakers unverified. |
 | Owl Companion | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Snake Garden | Preview | Authored Rive artwork and physical-device testing remain open. |
