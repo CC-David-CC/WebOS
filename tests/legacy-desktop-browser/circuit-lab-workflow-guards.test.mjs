@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer-core';
 
 const browser=await puppeteer.connect({browserURL:process.env.CODI_BROWSER_URL||'http://127.0.0.1:19255'}),context=await browser.createBrowserContext(),page=await context.newPage();
 try{
- await page.goto('http://127.0.0.1:18303/');
+ await page.goto(process.env.CODI_TEST_URL||'http://127.0.0.1:18303/');
  await page.evaluate(async()=>{
   const catalog=await (await fetch('/apps.json')).json(),record=catalog.apps.find(x=>x.id==='arduino-simulator');
   const module=await import(`/apps/arduino-simulator/${record.bundleSHA256}/index.mjs`);
@@ -11,7 +11,7 @@ try{
   window.nativeCalls=0;window.confirm=()=>{window.nativeCalls++;return false};window.desktopCalls=0;
   const make=(tag,cls='',value='')=>{const e=document.createElement(tag);e.className=cls;e.textContent=value;return e};
   const textButton=(label,handler)=>{const b=make('button','',label);b.addEventListener('click',handler);return b};
-  const files={write:async()=>({version:'local-v1',status:'conflict'})};
+  const files={stat:async()=>{throw Error('File not found.')},write:async()=>({version:'local-v1',status:'conflict'})};
   const host={signal:new AbortController().signal,ui:{make,textButton,confirm:async()=>{window.desktopCalls++;return window.deferConfirm?await new Promise(resolve=>window.resolveConfirm=resolve):false}},storage:{signedInSubject:()=> 'test-account',mirrorFileContext:async()=>({valid:()=>true,path:p=>p,files}),pickFile:async()=>null}};
   window.view=module.mount(host);document.body.replaceChildren(window.view.element);
  });
