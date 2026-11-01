@@ -4282,3 +4282,7 @@ Live release `3c17a590c6f716ccef8cddc94dca5c34923561589df1f4e9fd2a5f35aa5c916d` 
 ## APPs launcher label — 2026-11-01
 
 Live release `e9178740fccb767666aac62c64d6e2e3587fac60292ccad87e1a4d318a58cf8a` displays APPs for the Applications launcher, retaining its accessible label. Local desktop/4K/phone-sized and live desktop/phone-sized shell checks passed. Manifest `baa5c9e3482b0ff4bebcbe1ffdc884a5554a51afcfa50cafe57c3d28cdfb7592`; rollback inputs `/var/backups/webhost-sites/change-20261101T092225853732Z` and `/var/backups/webhost-sites/change-20261101T092225854499Z`.
+
+## Solitaire rules and app recovery — 2026-11-01
+
+Live release `ab71505f9cc8bbbf47d9d6a9435afd47868a9af3be77c25f215d8d6ca2fa4ae8` fixes Solitaire tableau source columns, exposed waste, draw/redeal order, face-up tracking, long piles, keyboard destination and save validation. Model tests and local and live desktop/phone-sized account tests cover long-pile pointer/touch, a multi-card run, keyboard movement and saving; no full deal-to-win or physical touch test. Keyboard selection remains limited to top-card tableau moves. Prior release `ae06dce0269dd9a3edea38e5d258e511e1443c5afd813ca32d3a698a4feb1fc1` delivered Text temporary metadata recovery, Story Cards deleted-save protection, and Snake/Owl failed-restore recovery; live phone-sized and account-isolation workflows passed. Manifest `fa44a5cf133430ba32feb8725e77d61db57850933a1cee719ffd6d8d027ef362`; rollback inputs `/var/backups/webhost-sites/change-20261101T092521446090Z` and `/var/backups/webhost-sites/change-20261101T092521446933Z`.
