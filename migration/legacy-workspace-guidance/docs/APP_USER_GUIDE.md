@@ -6,7 +6,7 @@ The table describes useful starting points, not a promise that every feature or 
 
 | App | Start here | Current boundary |
 | --- | --- | --- |
-| Files | Browse My files, upload, create, copy, rename and sync. To move a file, select it and choose **Move to…**. | Temporary Linux files are separate; folder moves are not supported. If a multi-file move stops, check the destination before retrying. Physical touch dragging is still under review. |
+| Files | Browse My files, upload, create, copy, rename and sync. To move files, select them and choose **Move to…**. | Temporary Linux files are separate; folder moves are not supported. If a multi-file move stops, check the destination before retrying. Physical touch dragging is still under review. |
 | Terminal | Explore the temporary Linux shell; use `nano` to edit. | Its files reset with the guest and are not automatically mounted into My files. |
 | Text | Open or create a text/code file, edit and save. | Very large files can be slow and memory-intensive. |
 | Help | Read beta contact and Linux information. | Help is not an exhaustive manual. |

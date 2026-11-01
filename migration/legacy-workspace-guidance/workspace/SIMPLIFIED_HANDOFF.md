@@ -1,5 +1,9 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Multiple file moves and app recovery
+
+Live static release `8f2c44d28c626a87faf97c77933dec6f9b7d3321523a11c6232942fbb5aef542` adds multi-file Move to, prevents stale Data Explorer picker results, and corrects Embroidery Studio restore references. Local desktop/phone and live emulated-phone account tests passed; file moves are individual and report partial completion on failure, while folder moves remain unavailable. The chooser-order test injects delayed results. Physical touch and embroidery machine compatibility are unverified. Three live test accounts were disabled with data retained. Hosting manifest SHA-256 `908c2ad779a7272383dbc37138be0bd3033c36fc424aa5e33e8c52011b070c27`; rollback inputs `/var/backups/webhost-sites/change-20261101T080122276174Z` and `/var/backups/webhost-sites/change-20261101T080122277028Z`.
+
 ## 2026-11-01 — Notebook kernel race
 
 Live static release `98d92d5a71d74e7db9b210ff76ee60370f4ae027383cb0696245420fe7dcdd9c` patches a pinned JupyterLite Pyodide proxy to handle synchronous and asynchronous `Atomics.waitAsync` values. A deterministic test reproduces the previous synchronous-result error. Local desktop/phone and live phone-sized tests ran independent concurrent kernels and verified the surviving window after close. Before the patch, two of three bounded simultaneous runs timed out, one with the matching exception. This does not establish that all kernel failures share that cause; physical devices and resource pressure remain unverified. One live test account was disabled with data retained. Hosting manifest SHA-256 `1ab50546693b0a9902d1bdf13e1706d4b48678f87bde83030aec6329e6193b53`; rollback inputs `/var/backups/webhost-sites/change-20261101T075735864739Z` and `/var/backups/webhost-sites/change-20261101T075735865402Z`.
