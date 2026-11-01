@@ -15,7 +15,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Document Editor | Write and save a report; export a PDF. | Not a Word editor. |
 | PDF Viewer | Open, search and navigate a PDF. | Read-only; image-only scans need OCR. |
 | Spreadsheet | Edit a workbook; import/export supported CSV or XLSX. | Advanced Excel compatibility is limited. |
-| Data Explorer | Create the synthetic resistor example or open CSV, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
+| Data Explorer | Create the synthetic resistor example or open CSV or TSV from My files, query with SQL, and configure a chart; save a project or CSV. | Large inputs can consume substantial memory. |
 | Python Notebook | Run the measurement example with Shift+Enter or Run, edit it, then save to My files. The getting-started guide explains the two Python environments. | Untrusted notebooks are not isolated. Browser Python differs from the temporary Linux environment. |
 | Image Editor | Create a blank image or open an image, edit, and save a copy. | Animated GIF, APNG and WebP editing is unsupported. |
 | Audio Editor | Try the generated 440 Hz tone, or open or record audio; edit and export WAV. | Physical microphone behavior and multitrack project saving need more work. |

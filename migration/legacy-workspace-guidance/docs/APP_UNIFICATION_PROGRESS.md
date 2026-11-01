@@ -13,6 +13,8 @@ Physical-device testing is separate. Shared tools need a tested consumer rather
 than a standalone editor workflow. See `APP_USER_GUIDE.md` for concise student-facing workflows, `APP_WORKFLOW_CHECKS.md` for earlier
 check scope and `SIMPLIFIED_HANDOFF.md` for dated deployment details.
 
+Data Explorer now opens CSV and TSV in My files, with quoted TSV fields, SQL and saved analysis projects. Local desktop and emulated-phone account workflows and a live emulated-phone workflow passed sync, fresh-session reopening and changed-source warnings. Select TSV inside Data Explorer; the shared Files association is unchanged. Physical touch and large TSV inputs remain unverified. Live release `02f54a8c560d6b181ce8b6735d0aa0e7bcd36e023202cc03bb34eb6c64c3667f`.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and

@@ -39,7 +39,7 @@ Files still cannot move folders. A manifest excludes the root and orders
 relative paths by Unicode code point; entries contain a path, directory flag,
 and a SHA-256 for files. Its digest is SHA-256 over compact UTF-8 JSON with
 sorted object keys and unescaped Unicode. The current bound is 4,096 entries,
-128 MiB of file data, 16 path components, and existing gateway path limits.
+128 MiB per file, a provisional 4 GiB aggregate hashing-work cap, 16 path components, and existing gateway path limits.
 These are experimental bounds, not a chosen product limit: aggregate folder
 size needs a scalable, bounded-memory design before rollout so ordinary
 folders containing multiple large files are not arbitrarily excluded.
@@ -62,8 +62,11 @@ a backup copy with a different inode, path/depth bounds and symlink rejection.
 This is **not release-ready**. The gateway lock covers gateway mutations only;
 direct host writers must be quiesced because metadata checks cannot establish
 an atomic snapshot against arbitrary concurrent host writes. A crash after the
-marker is fsynced but before its receipt commits leaves an orphan marker; it
-fails closed and currently needs an operator recovery procedure. A prepared
+marker is fsynced but before its receipt commits leaves an orphan marker. An
+unrouted inspection and explicitly confirmed cleanup candidate now exists,
+including crash-retry and overlapping-move tests. An unreceipted marker is not
+proof of service ownership: an operator must independently verify it. There is
+no operator CLI, and prepared-move cancellation remains unimplemented. A prepared
 move whose source changes, whose marker is missing, or whose destination is
 ambiguous likewise preserves data but needs an explicit cancellation or recovery
 workflow. Backup/restore must retain both the permission database and the user
@@ -77,3 +80,10 @@ convergence remain unverified. Receipts currently have a per-account bound of
 10,000 with no retention/compaction policy; resolving that bound is required
 before rollout. Do not enable the route or UI until these invariants and the
 rest of this design are implemented and reviewed together.
+
+The provisional aggregate cap does not establish acceptable performance: a move
+rehashes the tree several times while holding a global storage lock. A 136 MiB
+sparse fixture used bounded 64 KiB reads and passed interrupted-retry tests,
+but cannot predict slow-disk or concurrent-user behavior. Ordinary file writes
+and direct host writers are not frozen by cleanup; quiescence and backup/restore
+remain release gates. Cleanup receipts also lack a retention policy.
