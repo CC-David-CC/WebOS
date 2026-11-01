@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Digital Logic confirmations
+
+Live release `f12200887e11ab34f34308ddb4d11692b5ff38192bdcfec8a2457b42b57868f1`
+replaces Digital Logic's native discard and overwrite confirmations with
+desktop dialogs and preserves edits or changed files during confirmation.
+Local desktop, emulated-phone and 4K safety tests, full-adder and save-race
+tests, and a registered-account upload/save/sync/reopen/CSV-to-Data-Explorer
+workflow passed. A public emulated-phone safety test passed; its disposable
+account was cleaned and disabled. Physical touch is not verified. Source commit
+`ca771f0f6` is backed up to box-git. Hosting manifest SHA-256 is
+`7342fb26f1e9d8e72eec1126bda21b5cc3fc668075da41ac092ca291b801dfd9`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T024803418429Z`
+and `/var/backups/webhost-sites/change-20261101T024803418852Z`.
+
 ## 2026-11-01 — app menu and storage candidates backed up
 
 Source commit `b105dc5a467ab88bd2d0f9e2f1bd2ffab9188550` was pushed to the
