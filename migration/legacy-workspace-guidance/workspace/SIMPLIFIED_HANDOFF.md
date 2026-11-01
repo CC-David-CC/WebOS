@@ -4596,3 +4596,7 @@ Live release `53905c734670dd3feaf7ef720451d3d8e2d421a392a1c0e7c2f8d74b1f30fb82`,
 ## Simplified static archival fourteenth batch — 2026-11-01
 
 Ten verified inactive releases archived to `/srv/data/codi-archived-simplified-20261101`; 132 per-release receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Current `53905c73…`, rollbacks `ca2d1142…` / `0e7abca3…`, configured references and user data retained; services active. Root free 4.2 to 6.1 GiB; `/srv/data` 370 GiB free. Known mismatches remain untouched; historical archived paths require restoration before use.
+
+## Legacy static release mismatch investigation — 2026-11-01
+
+Read-only full checksum/inventory scan passed all nine previously flagged static release trees against embedded cache manifests. Eight also have valid sibling `codi-simplified-release/1` manifests whose SHA is the directory name; embedded cache IDs use a different scheme, and both manifests agree including worker/cache files. `bfcccab6…` lacks its sibling; current content is internally consistent but original historical content cannot be independently proven. No checked live configuration/process references found. No release moved by that investigation. Archive candidates with their verified sibling manifests; preserve missing-manifest case separately and never infer its original identity.
