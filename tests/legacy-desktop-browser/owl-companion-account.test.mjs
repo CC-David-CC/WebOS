@@ -27,6 +27,7 @@ async function login(page, register, user = username) {
   if (register) await page.type('[aria-label="Confirm password"]', 'test1234');
   await page.click('.login-form button[type=submit]');
   await page.waitForFunction(() => window.desktopLab?.session?.kind === 'registered', {timeout: 30000});
+  if (register) console.log('Test account', user, await page.evaluate(() => signedInSubject()));
 }
 
 async function launch(page) {
