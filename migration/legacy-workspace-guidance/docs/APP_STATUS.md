@@ -27,8 +27,8 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Excalidraw | Workflow checked | Missing embedded image data is rejected; full imported image decoding and provider audit remain partial. |
 | SVG Editor | Workflow checked | Read failures retain the original reference for retry; SMIL animation is rejected, while CSS animation and complex SVG remain unverified. |
 | Replicad | Workflow checked | Temporary restore failures offer guarded retry; unknown fields are rejected. Limited model generator, not general CAD. |
-| Kiri:Moto | Workflow checked | Printer profiles, output and physical touch need independent verification. |
-| Mesh:Tool | Workflow checked | Typed-array wrap/overflow is rejected; undo history and manufacturing correctness remain unverified. |
+| Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
+| Mesh:Tool | Workflow checked | Temporary workspace read failures offer retry; undo history and manufacturing correctness remain unverified. |
 | G-code Preview | Workflow checked | Temporary restore failures offer Reload; supports a subset and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | D13 indicator shows driven-high output, not analog brightness; no electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Firmware/peripheral support partial; page-program wrapping tested with real MicroPython. Unsaved flash cannot be recovered after a crash; physical hardware is unverified. |
