@@ -1,5 +1,23 @@
 # Simplified branch handoff
 
+## 2026-11-01 — app menu and storage candidates backed up
+
+Source commit `b105dc5a467ab88bd2d0f9e2f1bd2ffab9188550` was pushed to the
+`simplified` branch on box-git. It contains the current Files move changes,
+compact desktop title bars, Embroidery Studio and Electronics Design file-menu
+work, diagrams.net and SVG-edit file-menu integration, SVG image/PDF exports,
+associated tests, and the app and deferred-feature notes. These are working-copy
+candidates and have not been activated on the live site. The detailed test
+scope and limitations are recorded in `docs/APP_UNIFICATION_PROGRESS.md` and
+individual app READMEs; physical touch and the cross-app third-party-service
+audit are still outstanding. The SVG PDF is rasterized.
+
+Stopped isolated previews on ports 18192/18193 and removed only their generated
+public trees and the `ui-file-menu-title-test` build output. Isolated account,
+issuer and permission data were retained. Local free disk rose from about 3.6 GB
+to 5.4 GB. Guest SSH work remained unstaged and was not included in this backup.
+
+
 ## 2026-10-31 — Arduino serial output capture
 
 Live static release `ee3363f4b850dbec9ea235e4b72ed61f4311142309cedfffb19e057775ba493b`; previous `f8e2eafafd0422f0383603e2c814b2021c647b61397c457ba76f51a2ed432423`. Arduino Simulator can save the visible decoded serial output as a `.txt` snapshot in My files. The monitor keeps only the most recent 32,768 UTF-16 code units, avoids splitting surrogate pairs and warns after trimming; restart clears it. The save requires confirmation before replacing a file, checks versions, and distinguishes later serial output from the saved snapshot. Local desktop and emulated-phone tests and a live emulated-phone test cover Unicode echo, cancelled replacement, output during save, account sync and reopening in Text. The live disposable account was removed. This is not raw or timestamped serial recording; physical hardware and touch remain unverified.
