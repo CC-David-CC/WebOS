@@ -18,8 +18,8 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | Not a Word editor; more complex reports need review. |
 | PDF Viewer | Workflow checked | Read-only; no OCR for image-only scans. |
-| Spreadsheet | Workflow checked | Advanced Excel compatibility is limited. |
-| Data Explorer | Workflow checked | Large datasets can exceed device memory; an injected query-restore regression still logs a Perspective error. |
+| Spreadsheet | Workflow checked | Advanced Excel compatibility is limited; mathematical exponent precedence differs from Excel. |
+| Data Explorer | Workflow checked | Large datasets can exceed device memory; injected restore failures now pass without the previously observed worker error, but other failure and resource-pressure cases remain unverified. |
 | Python Notebook | Workflow checked | Untrusted notebooks are not isolated; other kernel or resource-pressure failures remain possible. |
 | Image Editor | Workflow checked | Animated image editing unsupported; annotation images use a temporary gallery; embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
@@ -37,13 +37,39 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Electronics Design | Workflow checked | Component coverage, physical touch and board validation remain open. |
 | Embroidery Studio | Workflow checked | Pre-release; physical sewing, machine formats and provider audit remain open. |
 | Stitch Converter | Workflow checked | SVG support and machine compatibility remain partial; test-sew output. |
-| Falling Blocks | Preview | Physical phone and audible speakers unverified. |
+| Falling Blocks | Preview | Emulated multitouch tested; physical phone and audible speakers unverified. |
 | Owl Companion | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Snake Garden | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Physics Playground | Preview | XR and complete challenge acceptance remain open. |
+| Clockwork Room | Preview | Further interaction and physical-device review; final artwork pending. |
+| Chess Study | Preview | Actual AI, save and reopen checked; AI strength and physical touch unverified. |
+| Solitaire | Preview | Rules, seeded invariants and near-win recovery checked; full deal-to-win and physical touch remain. |
+| Sky Courier | Preview | Steering and firing checks passed; full campaign and physical touch unverified. |
+| Marble Works | Preview | Further interaction and physical-device review; final artwork pending. |
+| Stack & Balance | Preview | Further interaction and physical-device review; final artwork pending. |
+| Crystal Defense | Preview | Further interaction and physical-device review; final artwork pending. |
+| Drone Circuit | Preview | Further interaction and physical-device review; final artwork pending. |
+| Reactive Control Desk | Preview | Further interaction and physical-device review; final artwork pending. |
+| Story Cards | Preview | Account sync and isolation checked; complete story and physical touch remain. |
+| Expression Puppet | Preview | Further interaction and physical-device review; final artwork pending. |
+| Rhythm Garden | Preview | Further interaction and physical-device review; final artwork pending. |
+| Lantern Leap | Preview | Further interaction and physical-device review; final artwork pending. |
+| Garden Defense | Preview | Further interaction and physical-device review; final artwork pending. |
+| Pocket Rally | Preview | Focus/input, account save and isolation checked; full races and physical multitouch remain. |
+| Sling Targets | Preview | Further interaction and physical-device review; final artwork pending. |
+| Gravity Pinball | Preview | Account save/reopen and input-focus checks passed; physical touch remains. |
+| Kinetic Relay | Preview | Further interaction and physical-device review; final artwork pending. |
+| Tabletop Bot Arena | Preview | Account match save/reopen and input-focus checks passed; physical touch remains. |
+| Pocket Golf | Preview | Further interaction and physical-device review; final artwork pending. |
+| Target Garden | Preview | Further interaction and physical-device review; final artwork pending. |
+| Orbital Courier | Preview | Further interaction and physical-device review; final artwork pending. |
+| Clockwork Quest | Preview | Further interaction and physical-device review; final artwork pending. |
+| Memory Garden | Preview | Further interaction and physical-device review; final artwork pending. |
 | Circuit Lab | Research candidate, not deployed | ngspice source/relink distribution review and model licensing remain open. |
 | PCB Design | Research prototype, not deployed | Browser packaging, dependency notices and usable design workflow remain open. |
 | Personal template | App-author example | Not an end-user app. |
+
+The 24 additional game previews passed individual builds and available unit tests; this does not establish a complete interactive review of each game. Most final artwork/audio remains pending; see [game asset gaps](GAME_ASSET_GAPS.md).
 
 Shared tools in the menu are capabilities, not standalone user apps; their
 consumer coverage is tracked in the detailed review. None of these rows closes
