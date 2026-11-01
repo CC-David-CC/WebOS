@@ -41,6 +41,8 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Owl Companion | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Snake Garden | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Physics Playground | Preview | XR and complete challenge acceptance remain open. |
+| Circuit Lab | Research candidate, not deployed | ngspice source/relink distribution review and model licensing remain open. |
+| PCB Design | Research prototype, not deployed | Browser packaging, dependency notices and usable design workflow remain open. |
 | Personal template | App-author example | Not an end-user app. |
 
 Shared tools in the menu are capabilities, not standalone user apps; their

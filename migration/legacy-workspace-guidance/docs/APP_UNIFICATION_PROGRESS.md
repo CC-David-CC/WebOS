@@ -31,6 +31,8 @@ PDF Viewer now clears stale search status when page navigation cancels a search;
 
 Image Editor now selects watermark images from My files and provides a My files-backed temporary gallery for image annotations. Local desktop/phone and live emulated-phone tests cover both paths, invalid watermark rejection, saved pixels, server sync and no observed third-party requests in the tested flows. The separate computer Upload image remains. Annotation requires dismissing the gallery before Save; physical touch, large images and other provider paths remain unverified. Live release `97a6b241a1fc91823c2e636c27c8264f4f48e2ec8578a5b9b219d922b766090d`.
 
+Spreadsheet commits an active cell before deciding whether a delayed open may replace the sheet; local desktop/phone and live phone account tests cover cancel, retained edit and server sync. G-code Preview rejects M218 hotend-offset commands and retains the previous preview; local desktop/phone and live phone tests cover commands, comments, sync and rejection. Audio Editor imports MultiTrack audio from My files; local desktop/phone and live phone tests cover two decoded tracks, invalid audio and pending-import close protection. MultiTrack session save/export is not implemented. The live release is `0f90d663ff9904555603380fc5a00fa085afa3a5ae6c08be87ba290798217763`; physical touch and machine compatibility remain unverified. A later historical KLU relink receipt was found on box-git: its retained WASM marker and matching baseline inputs were verified, but the runtime experiment was not rerun and Circuit Lab remains unshipped pending distribution review.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and
