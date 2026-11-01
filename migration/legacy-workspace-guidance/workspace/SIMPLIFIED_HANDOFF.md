@@ -4432,3 +4432,7 @@ Live release `a8b2362b5c16d36eb7e0201855c1a31024203c75b32eb4b7e2e4e2bd96852abe`,
 ## Simplified static archival first batch — 2026-11-01
 
 Four verified unreferenced generated static releases (`00490a67…`, `0115bfa3…`, `0124ca7e…`, `0129c55e…`) were copied with link-dest reuse, checksum verified and removed from the root filesystem under the hosting controller lock after checking references. Full identifiers and mappings are in `/srv/codi-connected/simplified-archive-<hash>.json`. Archive location `/srv/data/codi-archived-simplified-20261101`; live release `a8b2362b…`, prior `cbe2c666…` and `aa7ac767…` plus other configuration references retained. Root free space rose approximately 5.9 to 6.7 GiB. Caddy, issuer, guest and file service remained active. Archived historical paths require restoration before use; further batches remain.
+
+## Simplified static archival second batch — 2026-11-01
+
+Ten more verified inactive static releases were archived to `/srv/data/codi-archived-simplified-20261101`, making 14 across both batches. Each has a checksum-verified copy and an individual `/srv/codi-connected/simplified-archive-<hash>.json` receipt. Active, two rollback and configured releases and account data were retained; Caddy, issuer, guest and file services remained active. Root free space increased from approximately 5.9 to 11 GiB across the two batches; the archive used 8.7 GiB with link-dest reuse and `/srv/data` had 431 GiB available. Archived old paths must be restored before use. Hundreds of historical releases remain; no further batch was started.
