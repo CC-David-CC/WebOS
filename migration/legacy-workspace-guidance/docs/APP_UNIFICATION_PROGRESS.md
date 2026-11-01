@@ -307,6 +307,16 @@ preserving the prior circuit; matching and mismatched widths, correction, truth
 table, sync and reopening were tested locally. Physical touch and actual
 machine or board behavior remain unverified.
 
+Further local candidates await release: Data Explorer restores the prior result
+and viewer settings when switching to a new query result fails; an injected
+failure after a real table switch and a real invalid query were tested at
+desktop, emulated-phone and 4K sizes. PDF Viewer finds phrases spanning extracted
+line breaks; a generated two-line PDF and existing search regressions passed at
+those sizes. Pico Simulator retains the serial reading position while scrolled
+up and provides Jump to latest; simulated packets were tested at those sizes,
+with a separate real Blink-worker check. Physical touch, PDF extraction order
+and real-firmware serial behavior for this change remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
