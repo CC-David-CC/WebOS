@@ -538,6 +538,21 @@ assertion and did not complete. Its corresponding-source archive was rebuilt
 and checked against the app source and README. None is live; physical touch,
 Mac shortcuts and closing during a real image export remain unverified.
 
+The live Files bundle expects move-readiness fields absent from the older live
+mirror module; public drag attempts could not start even though local drag
+checks passed. The current source mirror supplies those fields, serializes local
+moves with sync and supports moving a new offline file. Its local storage suite,
+idle scheduling, phone-sized offline move and account sync/reopen checks passed.
+A staged shared-module update is required before the live drag workflow can be
+retested. Earlier public drag tests timed out because dragging was disabled;
+they did not establish a successful public move.
+
+Terminal has a local touch-cancellation fix: a cancelled swipe no longer
+suppresses the next mouse click on a touch-capable desktop. Desktop and
+phone-sized tests used actual CDP touch cancellation and the real v86/Linux
+guest, including a completed scrollback swipe. It is not live; physical touch
+remains unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
