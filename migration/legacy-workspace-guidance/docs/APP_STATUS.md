@@ -26,10 +26,10 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | diagrams.net | Workflow checked | Loads require a guarded confirmation; the adapter must be requalified when diagrams.net changes. Other export types and provider entry points need review. |
 | Excalidraw | Workflow checked | Missing embedded image data is rejected; full imported image decoding and provider audit remain partial. |
 | SVG Editor | Workflow checked | Read failures retain the original reference for retry; SMIL animation is rejected, while CSS animation and complex SVG remain unverified. |
-| Replicad | Workflow checked | Unknown project fields are rejected to preserve source; limited model generator, not general CAD. |
+| Replicad | Workflow checked | Temporary restore failures offer guarded retry; unknown fields are rejected. Limited model generator, not general CAD. |
 | Kiri:Moto | Workflow checked | Printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Typed-array wrap/overflow is rejected; undo history and manufacturing correctness remain unverified. |
-| G-code Preview | Workflow checked | Supports a subset, assumes an initial state, and does not validate machine safety. |
+| G-code Preview | Workflow checked | Temporary restore failures offer Reload; supports a subset and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | D13 indicator shows driven-high output, not analog brightness; no electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Firmware/peripheral support partial; page-program wrapping tested with real MicroPython. Unsaved flash cannot be recovered after a crash; physical hardware is unverified. |
 | Digital Logic | Workflow checked | Folder choices reject stale destinations; feed-forward combinational JSON only, and propagation delay is not hardware timing validation. |
