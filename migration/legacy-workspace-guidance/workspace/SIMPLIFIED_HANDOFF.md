@@ -1,5 +1,24 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Embroidery Studio My files bridge
+
+Live static release `0eb7730ce9b2c17fcab679da996c99406f2dc1878662ee27d0da7a531664e3e6`
+uses the rebuilt local-only StitchFoundry source, removes the outer file row,
+routes the editor's Open and Place commands through My files, and blocks eight
+identified provider/account commands. The source archive is matched against
+the patched editor and desktop integration sources; Rust dependency notices
+are included separately. Desktop, phone-sized and 4K local tests open SVG,
+place it, save the design, synchronize and reopen; local phone-sized export,
+file-safety and provider-policy checks passed. Public phone-sized file and
+provider-policy tests passed, and both disposable accounts were disabled.
+Physical touch, physical sewing and a complete provider-feature audit remain
+unverified. The separate `/browser-sources/` page requires login, while direct
+source-asset URLs are public; do not claim asset access is gated.
+Source `e170ab1a5` is backed up to box-git. Hosting manifest SHA-256 is
+`07e5b4009b22ad94e4f109274babd3c252520700a64b93ca5450690df8bc424c`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T030617767098Z`
+and `/var/backups/webhost-sites/change-20261101T030617767517Z`.
+
 ## 2026-11-01 — Stitch Converter confirmations
 
 Live static release `e08faf59b0760145cf69f118e71451724dd2958f35ece57fb4598b200c45a2c4`
