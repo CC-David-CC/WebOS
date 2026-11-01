@@ -20,11 +20,11 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Password-protected PDFs prompt locally; read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Temporary restore failures offer guarded retry; native format and CSV are primary. Physical dragging remains unverified. |
 | Data Explorer | Workflow checked | Text import can preserve identifiers; numeric inference, calculations and charts can round. Large datasets and resource pressure remain unverified. |
-| Python Notebook | Workflow checked | Recovery, concurrent starts and early close passed limited reruns; earlier intermittent kernel errors remain unexplained. Untrusted notebooks are not isolated. |
+| Python Notebook | Workflow checked | Transient local autosave failures retry, then require manual recovery; intermittent kernel startup errors remain unexplained. Untrusted notebooks are not isolated. |
 | Image Editor | Workflow checked | Warns on recognized metadata that saving may strip; detection is incomplete. Animated images unsupported; embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | Temporary restore failures offer guarded retry; the adapter must be requalified when diagrams.net changes. Other exports and provider entry points need review. |
-| Excalidraw | Workflow checked | Image preflight limits dimensions and may refuse complex SVG or unusual headers; memory and provider audit remain partial. |
+| Excalidraw | Workflow checked | Unknown element types are refused to preserve drawings; unknown fields, image memory and provider audit remain partial. |
 | SVG Editor | Workflow checked | SMIL and common inline CSS animation are rejected to avoid data loss; other CSS and complex SVG remain unverified. |
 | Replicad | Workflow checked | Temporary restore failures offer guarded retry; unknown fields are rejected. Limited model generator, not general CAD. |
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
