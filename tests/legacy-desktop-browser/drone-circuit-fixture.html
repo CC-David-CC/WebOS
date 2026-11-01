@@ -1,0 +1,30 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Drone Circuit harness</title><body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get('app');
+if(!entry||!entry.startsWith('/apps/drone-circuit/'))throw Error('Missing Drone Circuit bundle');
+const styles=document.createElement('link');styles.rel='stylesheet';styles.href=entry.replace('index.mjs','index.css');document.head.append(styles);
+const {mount}=await import(entry);
+const files=new Map();let version=0,target='/Drone Circuit.game.json';
+window.target=target;
+const context={owner:'test',path:value=>value.startsWith('/')?value:'/'+value,name:value=>String(value).replaceAll('/',''),valid:()=>true,files:{
+ async read(path){if(!files.has(path))throw Error('File not found.');return files.get(path)},
+ async write(path,data,expected){const current=files.get(path)?.version??null;if(current!==expected)throw Error('File changed');const out={data:typeof data==='string'?new TextEncoder().encode(data):data,version:String(++version),status:'synced'};files.set(path,out);return out},
+ async stat(path){const file=files.get(path);if(!file)throw Error('File not found.');return {version:file.version,status:file.status,bytes:file.data.byteLength}},
+ subscribe(){return()=>{}},
+}};
+const make=(tag,className='',text='')=>{const element=document.createElement(tag);element.className=className;element.textContent=text;return element};
+window.fileStore=files;
+window.fileContext=context;
+window.createInstance=()=>{
+ const controller=new AbortController();
+ const w={droneCircuit:{dirty:false}};
+ const app=mount({signal:controller.signal,w,ui:{
+  make,
+  textButton(label,action){const element=make('button','',label);element.setAttribute('aria-label',label);element.addEventListener('click',action);return element},
+  appInput(label,value){const element=make('input');element.setAttribute('aria-label',label);element.value=value;return element},
+  confirm:async message=>window.confirm(message),
+ },storage:{signedInSubject:()=> 'test',mirrorFileContext:async()=>context,pickFile:async()=>window.target,pickFolder:async()=>'/'}});
+ const win=make('div','window focused');win.append(app.element);document.body.append(win);return {app,controller,win,w};
+};
+window.instances=[createInstance(),createInstance()];
+</script>
