@@ -65,7 +65,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Orbital Courier | Preview | Flight, saved progress and mission phases from controlled checkpoints checked live; uninterrupted mission, touch, XR and final artwork remain. |
 | Clockwork Quest | Preview | Full quest and account reopen checked live; XR session lifecycle mocked only, with headset, touch and final artwork unverified. |
 | Memory Garden | Preview | Full keyboard six-pair game and account reopen checked live; physical touch, assistive technology and final artwork remain. |
-| Circuit Lab | Research candidate, not deployed | ngspice source/relink distribution review and model licensing remain open. |
+| Circuit Lab | Research candidate, not deployed | ngspice source/relink distribution review, model licensing and an unsaved-changes close guard remain open. |
 | PCB Design | Research prototype, not deployed | Browser packaging, dependency notices and usable design workflow remain open. |
 | Personal template | App-author example | Not an end-user app. |
 
