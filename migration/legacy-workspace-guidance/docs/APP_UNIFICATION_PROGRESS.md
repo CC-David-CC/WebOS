@@ -406,6 +406,12 @@ and writes, cancelled close, then verified sync and reopening. Those delays were
 injected and already-dispatched writes can still finish after closure. Public
 phone-sized tests passed; physical touch and hardware remain unverified.
 
+Arduino Simulator's local serial candidate follows output while at the bottom,
+pauses when the user scrolls up and resumes at the bottom. Desktop and 4K wheel
+tests and an emulated-phone swipe used real AVR serial echo, then saved and
+synced the log and reopened it in Text. Returning to the bottom was set
+programmatically; physical touch remains unverified and this is not live.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
