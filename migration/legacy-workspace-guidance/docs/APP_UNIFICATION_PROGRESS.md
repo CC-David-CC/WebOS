@@ -242,6 +242,13 @@ check simulated a clean state during processing. The phone-sized effect and
 layout regression passed. Already-dispatched writes can still complete after a
 close; physical touch is unverified and this candidate is not live.
 
+Text's local candidate guards Open and Reload against CodeMirror edits arriving
+during discard confirmations, including edits while the file picker is open.
+Desktop, emulated-phone and 4K account tests use real editor transactions and
+cover draft preservation, save, server bytes and fresh-session reopen; existing
+confirmation regressions passed at all three sizes. Physical touch is unverified
+and the candidate is not live.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
