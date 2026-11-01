@@ -57,6 +57,8 @@ Files can move multiple selected files through one folder picker. Moves remain i
 
 Circuit Simulator and Stitch Converter clear failed initial-file references without modifying the original; local desktop/phone and live phone-sized tests cover example or artwork, save, server sync and refresh. Text ignores an older delayed metadata failure after a newer successful check; local desktop/phone and live phone-sized tests inject ordering and verify the draft saves and syncs. Physical touch, electronics hardware and sewing compatibility remain unverified. Folder-move research additionally matches canonical browser/server manifests including Unicode ordering; its branch `research/folder-lock-20261101` is at `d4a6a092d357ffded79a2998958cbca9493d0632` and remains undeployed. Live release `a5636f2d1035ba802339d82f383ec9362e5eaacd59605803e444411f159e68fc`.
 
+diagrams.net updates its restore reference when opening or saving another diagram and clears it after a failed initial open. Local desktop/phone and live phone-sized account tests cover diagram switching, save/sync and refresh; invalid and missing initial-file fallback passed locally at phone size and invalid fallback passed live. Physical touch remains unverified. Live release `904a286a95f706e66977edb1f7d0f8d73d317627ef3fd2df936b0955dab62891`. Folder-move research now includes an isolated browser journal and two-tab/reload test, backed up on `research/folder-lock-20261101` at `facbde0b7df29abe2a58289bdf275a32871492e5`; receipt recovery, production mirror integration, direct host writers and the UI remain unfinished.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and

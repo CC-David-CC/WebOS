@@ -1,5 +1,11 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Diagram restore references
+
+Live static release `904a286a95f706e66977edb1f7d0f8d73d317627ef3fd2df936b0955dab62891` updates diagrams.net’s restore reference after open or Save As, and clears it if the initial file fails. Local desktop/phone and live emulated-phone account tests passed switching, save/sync and refresh; invalid fallback passed live and missing fallback passed locally. Physical touch remains unverified. Two live test accounts were disabled with data retained. Hosting manifest SHA-256 `70058cc6d42691584bc4ee127fe714743ab45a163e3573345018cdd36c62581b`; rollback inputs `/var/backups/webhost-sites/change-20261101T081051227955Z` and `/var/backups/webhost-sites/change-20261101T081051293963Z`.
+
+Folder-move research is backed up separately on `research/folder-lock-20261101` at `facbde0b7df29abe2a58289bdf275a32871492e5`. Its isolated browser journal passes fake IndexedDB and Chrome two-tab/reload checks. It is not integrated with production storage; receipt reconciliation, direct host writers, server route and UI remain unfinished.
+
 ## 2026-11-01 — Circuit, stitch and Text recovery
 
 Live static release `a5636f2d1035ba802339d82f383ec9362e5eaacd59605803e444411f159e68fc` clears failed initial-file references in Circuit Simulator and Stitch Converter, and orders Text file-status checks so a stale failure cannot replace a newer result. Local desktop/phone and live emulated-phone account tests passed save, sync and recovery; Text timing was injected. Physical touch, electronics hardware and sewing compatibility are unverified. Three live test accounts were disabled with data retained. Hosting manifest SHA-256 `a14dd73b18cf1afea169b260c9fbdba05f3922cb8728eba863b9b69186a54978`; rollback inputs `/var/backups/webhost-sites/change-20261101T080504438623Z` and `/var/backups/webhost-sites/change-20261101T080504439507Z`.
