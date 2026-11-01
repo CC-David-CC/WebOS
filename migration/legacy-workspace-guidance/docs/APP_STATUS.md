@@ -19,9 +19,9 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Document Editor | Workflow checked | Read failures offer retry and `/Untitled.doc` uses a separate scratch name; clipboard and animated images remain incompletely checked. |
 | PDF Viewer | Workflow checked | Temporary restore failures retain the reference for Reload; confirmed invalid files clear it. Read-only, with no OCR for scans. |
 | Spreadsheet | Workflow checked | Temporary restore failures offer guarded retry; native format and CSV are primary. Physical dragging remains unverified. |
-| Data Explorer | Workflow checked | Temporary restore failures offer guarded retry; large datasets can exceed device memory and resource-pressure cases remain unverified. |
+| Data Explorer | Workflow checked | Text import can preserve identifiers; numeric inference, calculations and charts can round. Large datasets and resource pressure remain unverified. |
 | Python Notebook | Workflow checked | Recovery, concurrent starts and early close passed limited reruns; earlier intermittent kernel errors remain unexplained. Untrusted notebooks are not isolated. |
-| Image Editor | Workflow checked | Temporary restore failures offer guarded retry; animated images are unsupported and embedded tools need further audit. |
+| Image Editor | Workflow checked | Warns on recognized metadata that saving may strip; detection is incomplete. Animated images unsupported; embedded tools need further audit. |
 | Audio Editor | Workflow checked | Other AudioMass tools may omit desktop beat/snap metadata; long names may shorten; physical microphone behavior remains unverified. |
 | diagrams.net | Workflow checked | Temporary restore failures offer guarded retry; the adapter must be requalified when diagrams.net changes. Other exports and provider entry points need review. |
 | Excalidraw | Workflow checked | Temporary restore failures offer guarded retry; full imported image decoding and provider audit remain partial. |
