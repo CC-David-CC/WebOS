@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Drawing and PDF open/save protection
+
+Live static release `c6581dc501bb2b7a60081e0587c132e55e065fd9ddebcc2a2d397f5dbb0d65bd`
+recovers Excalidraw from an invalid direct open, checks a PDF’s first-page
+limit before replacing the current document, and guards SVG saves and exports
+against window closure. Live phone-sized account checks passed all three;
+physical touch, PDF export during close and later PDF render failures remain
+unverified. Three test accounts were disabled with data retained. Asset hashes
+and root, /desktop/ and /blog/ checks passed. Source `12262f982` is on box-git.
+Hosting manifest SHA-256 is
+`62f8859d6cbad49ffe59c63ee2d4b20b74e12f90c634747969729c39e12e919c`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T054114344891Z`
+and `/var/backups/webhost-sites/change-20261101T054114345539Z`.
+
 ## 2026-11-01 — G-code, Notebook and fabrication save protection
 
 Live static release `230b64da6e50c3f38cb8833826ab612719ac8473eade1eaa922381dc32e8ef25`
