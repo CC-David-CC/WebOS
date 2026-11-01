@@ -22,6 +22,29 @@ class FolderMove(unittest.TestCase):
   op=str(uuid.uuid4());self.assertEqual(self.move(op,value['sha256'])['state'],'done');self.assertEqual(self.store.read(self.a,'target/nested/a.txt')['bytes'],b'hello');self.assertTrue((self.home/'target/empty').is_dir())
   self.assertEqual(self.move(op,value['sha256'])['state'],'done')
   with self.assertRaises(Conflict):self.store.move_folder(self.a,'source','different',manifest_sha256=value['sha256'],operation_id=op)
+ def test_move_manifest_holds_global_lock_against_other_account(self):
+  # The current prototype hashes under the shared store lock. Verify the
+  # contention explicitly so future work does not mistake this for a
+  # per-account lock; the other account must resume once hashing completes.
+  import concurrent.futures,threading
+  entered=threading.Event();release=threading.Event();listing_started=threading.Event();digest=self.manifest();original=manifest_module.folder_manifest
+  def held(fd,*args,**kwargs):
+   entered.set()
+   if not release.wait(5):raise TimeoutError('test did not release manifest')
+   return original(fd,*args,**kwargs)
+  def list_other():
+   listing_started.set()
+   return self.store.list(self.b,'')
+  with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool,patch.object(manifest_module,'folder_manifest',held):
+   move=pool.submit(self.move,str(uuid.uuid4()),digest)
+   try:
+    self.assertTrue(entered.wait(3),'move never started hashing')
+    listing=pool.submit(list_other)
+    self.assertTrue(listing_started.wait(3),'other-account request never started')
+    with self.assertRaises(concurrent.futures.TimeoutError):listing.result(timeout=.2)
+   finally:release.set()
+   self.assertEqual(move.result(timeout=5)['state'],'done')
+   self.assertEqual(listing.result(timeout=5),[])
  def test_interrupted_before_and_after_rename(self):
   for stage in ('prepared','renamed'):
    with self.subTest(stage=stage):
