@@ -340,6 +340,13 @@ page-jump, search and reload regressions passed. The test set the prior scroll
 position programmatically. This candidate is not live; physical touch remains
 unverified.
 
+Replicad's local candidate adds Cancel preview, terminating only the active
+preview worker while keeping the previous canvas and allowing a retry. Desktop,
+emulated-phone and 4K checks cover cancellation, worker cleanup, retry, save,
+sync and reopening; the phone-sized STL workflow also passed. The test verifies
+the prior canvas remains, not pixel-identical rendering. This is not live and
+physical touch remains unverified.
+
 Live release `e87dc394762835f1510801a828fd7002b2cffc5b06837418f48d97aab13e620e`:
 Calculator marks a calculation-note save as pending
 for the desktop close guard. Desktop, emulated-phone and 4K account tests held
