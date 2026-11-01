@@ -4330,3 +4330,9 @@ Hosting manifest `670e9a7db82a9cea3b1e35a65e608c1da65baf9e12edf429d97386ce947985
 2026-11-01: Text keeps folder choices tied to their originating Save dialog and blocks Save until the choice finishes; stale results cannot alter a reopened dialog. Drone Circuit combines touch and keyboard inputs, clears held controls on focus loss, and prevents control changes during file operations. Local desktop and emulated-phone account checks passed, including actual first-save sync and touch-input regression. Live phone-sized Text and desktop/phone-sized Drone tests passed, including server sync and reopening. Physical multitouch and full course playthrough remain unverified. Live release `f6e004e427326685087002e1c208341eb7cb5ee6ad2b13fa7eb5ec0ebae113df`.
 
 Hosting manifest `8af7900e36a9503dc205ba93593e9d640fa3e7097572c399cb52f7b13373ee29`; rollback inputs `/var/backups/webhost-sites/change-20261101T101708782252Z` and `/var/backups/webhost-sites/change-20261101T101708782991Z`.
+
+## Diagram load confirmation — 2026-11-01
+
+2026-11-01: Diagram Editor now requires a matching protocol response and successful pinned-editor load before changing file identity. Failure or a missing response locks the window and retains the previous file target. Local desktop and emulated-phone tests covered actual injected failure, delayed and withheld acknowledgement, late messages, closing during load and normal save/reopen; live phone-sized checks passed. The adapter depends on pinned draw.io internals and must be requalified on upgrade. Live release `da1ab48955b0998f5ae98923b4669be0735392d6918c5ab635b45b85b1fbd272`.
+
+Hosting manifest `159f41345ad1edc349aa9fa901674e1a83dc4ccb47e62fb8ef841b50d6010db4`; rollback inputs `/var/backups/webhost-sites/change-20261101T102225496271Z` and `/var/backups/webhost-sites/change-20261101T102225497095Z`.
