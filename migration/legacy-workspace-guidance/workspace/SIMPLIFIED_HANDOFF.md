@@ -4560,3 +4560,7 @@ Live release `bf2cefcbb1c84edc631be39d5d42160a2a6f9fd65a691ec58f753e323fdcd5c8`,
 ## Serial, image and PDF first use live — 2026-11-01
 
 Live release `ed4103a579ef6c45cf302d1d47e39f6ad8e748c336062632aed5727da913828a`, previous `bf2cefcbb1c84edc631be39d5d42160a2a6f9fd65a691ec58f753e323fdcd5c8`. Public phone-sized tests passed real AVR serial echo/save/sync/fresh Text reopen; image blank save/cancel/stale target/replacement/sync/refresh; PDF selectable text/search/wrap/page navigation/resize/fit-width/failed-open recovery. Three exact test accounts disabled, files retained except two explicitly deleted PDF fixtures. Root, `/desktop/`, `/blog/` 200. Manifest `19863272db062f1a404df8743494e82560f512266169ec5809505f76f3e55359`; Caddy `433d973d2e9c1c98177d8bdb9129a0edfc28278b2baaa3928309741c5950890e`; rollback `/var/backups/webhost-sites/change-20261101T142747745139Z` and `/var/backups/webhost-sites/change-20261101T142747746022Z`. Webhost 5.4 GB free. Physical touch and hardware unverified.
+
+## Simplified static archival twelfth batch — 2026-11-01
+
+Ten verified inactive releases archived to `/srv/data/codi-archived-simplified-20261101`; 112 individual receipts under `/srv/codi-connected/simplified-archive-<hash>.json`. Active `ed4103a5…`, recent `bf2cefcb…` / `64a8aaa6…`, references and user data retained; services active. Root free 5.4 to 6.2 GiB; `/srv/data` 379 GiB available. Known manifest mismatches remain untouched; archived historical paths require restoration before use.
