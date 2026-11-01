@@ -340,6 +340,20 @@ synced and reopened. Hold/failure timing was injected; storage was real. The
 minimal host guard and Calculator update must be released together. This
 candidate is not live; physical touch remains unverified.
 
+G-code Preview's local parser candidate strips balanced parenthesized comments
+and rejects unmatched or nested parentheses. The previous worker interpreted
+`X10 (X999)` as X999. Desktop, emulated-phone and 4K tests compare real-worker
+geometry and rendered output, and verify malformed comments preserve the prior
+preview; the large-file cancellation regression also passed. It is not live
+and does not establish controller or physical-machine behavior.
+
+Notebook's local Save As candidate asks before replacing an existing notebook,
+checks the observed version and cancels if the active tab changes during the
+confirmation. Desktop, emulated-phone and 4K account tests cover cancellation,
+both races, accepted replacement, sync and fresh-session reopen; a separate
+desktop regression ran the real Pyodide example. The test switches tabs through
+Jupyter's API. This is not live; physical touch remains unverified.
+
 Arduino Simulator shows a persistent notice when its
 opened or saved HEX changes, disappears or conflicts in My files, while keeping
 the loaded firmware running. Desktop, emulated-phone and 4K checks exercised
