@@ -26,14 +26,14 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | diagrams.net | Workflow checked | Temporary restore failures offer guarded retry; the adapter must be requalified when diagrams.net changes. Other exports and provider entry points need review. |
 | Excalidraw | Workflow checked | Unknown element types are refused to preserve drawings; unknown fields, image memory and provider audit remain partial. |
 | SVG Editor | Workflow checked | JPEG export warns about lost transparency and lossy compression. SMIL and common inline CSS animation are rejected; other CSS and complex SVG remain unverified. |
-| Replicad | Workflow checked | Temporary restore failures offer guarded retry; unknown fields are rejected. Limited model generator, not general CAD. |
+| Replicad | Workflow checked | Export defaults beside the project unless customized; unknown fields are rejected. Limited model generator, not general CAD. |
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Temporary workspace read failures offer retry; undo history and manufacturing correctness remain unverified. |
 | G-code Preview | Workflow checked | Temporary restore failures offer Reload; refuses G29/G30 probing found in some slicer files; supports a subset and does not validate machine safety. |
 | Arduino Simulator | Workflow checked | Temporary firmware restore failures offer retry; D13 shows driven-high output, not analog brightness. No electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Folder choices reject stale selections; firmware/peripheral support partial and unsaved flash cannot be recovered after a crash. Physical hardware unverified. |
 | Digital Logic | Workflow checked | Examples and truth tables are foremost; labeled binary controls support multi-bit signals. Combinational JSON only; no hardware timing validation. |
-| Circuit Simulator | Workflow checked | Includes a voltage-divider lesson with expected 5 V output; simulation is not hardware validation. |
+| Circuit Simulator | Workflow checked | Output-probe CSV records one simulated instant, not a waveform or hardware measurement. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
 | Embroidery Studio | Workflow checked | Temporary restore failures offer guarded retry; pre-release, with physical sewing, machine formats and provider audit open. |
 | Stitch Converter | Workflow checked | Temporary restore failures offer guarded retry; Gradients may become one approximate thread color; SVG support and machine compatibility remain partial. Test-sew output. |
