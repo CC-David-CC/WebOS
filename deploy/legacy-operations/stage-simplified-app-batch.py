@@ -18,6 +18,8 @@ p.add_argument('--output',type=Path,required=True)
 p.add_argument('--apps',nargs='+',required=True)
 p.add_argument('--desktop-app',type=Path,help='Reviewed desktop app.js to include with the batch')
 p.add_argument('--desktop-base-sha256',help='Expected SHA-256 of the baseline app.js when replacing it')
+p.add_argument('--mirror',type=Path,help='Reviewed browser mirror module to include')
+p.add_argument('--mirror-base-sha256',help='Expected SHA-256 of the baseline browser mirror module')
 a=p.parse_args();base=a.baseline;batch=a.batch;out=a.output;expected=set(a.apps)
 def digest(path):
  h=hashlib.sha256()
@@ -28,6 +30,8 @@ if len(expected)!=len(a.apps) or any(not re.fullmatch(r'[a-z][a-z0-9-]{0,31}',x)
 if out.exists() or out.is_symlink():raise ValueError('Choose a new staging directory')
 if bool(a.desktop_app)!=bool(a.desktop_base_sha256):raise ValueError('Supply both desktop app and its baseline hash')
 if a.desktop_app and (not re.fullmatch('[0-9a-f]{64}',a.desktop_base_sha256) or a.desktop_app.is_symlink() or not a.desktop_app.is_file() or a.desktop_app.stat().st_size>4*1024*1024 or digest(base/'app.js')!=a.desktop_base_sha256):raise ValueError('Desktop app or baseline hash mismatch')
+if bool(a.mirror)!=bool(a.mirror_base_sha256):raise ValueError('Supply both mirror module and its baseline hash')
+if a.mirror and (not re.fullmatch('[0-9a-f]{64}',a.mirror_base_sha256) or a.mirror.is_symlink() or not a.mirror.is_file() or a.mirror.stat().st_size>4*1024*1024 or digest(base/'storage/browser/mirror.mjs')!=a.mirror_base_sha256):raise ValueError('Mirror module or baseline hash mismatch')
 old=json.loads((base/'assets/desktop/cache-manifest.json').read_text())
 if not re.fullmatch('[0-9a-f]{64}',base.name) or old['id']!=base.name:raise ValueError('Baseline release does not match its manifest')
 catalog=json.loads((base/'assets/desktop/apps.json').read_text());incoming=json.loads((batch/'apps.json').read_text());records={r['id']:r for r in incoming['apps']}
@@ -46,6 +50,7 @@ for app,record in records.items():
 if base.is_symlink() or any(path.is_symlink() for path in base.rglob('*')):raise ValueError('Symlink in baseline')
 shutil.copytree(base,out,symlinks=False);appdir=out/'assets/desktop/apps'
 if a.desktop_app:shutil.copyfile(a.desktop_app,out/'app.js')
+if a.mirror:shutil.copyfile(a.mirror,out/'storage/browser/mirror.mjs')
 for app,record in records.items():
  shutil.rmtree(appdir/app);(appdir/app).mkdir();shutil.copytree(batch/'apps'/app/record['bundleSHA256'],appdir/app/record['bundleSHA256'])
 catalog['apps']=[records.get(r['id'],r) for r in catalog['apps']]
