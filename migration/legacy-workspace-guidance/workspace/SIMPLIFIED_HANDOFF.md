@@ -1,5 +1,20 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Archive, spreadsheet and diagram recovery
+
+Live static release `296d2211a02067d55435262225fbdecbb85c61f38cf053ed04f0a4ce834b3b51`
+rechecks selected files and folders before writing a ZIP, opens a usable blank
+spreadsheet after an invalid direct launch, and warns before diagrams.net closes
+while a save is pending. Phone-sized account checks passed for each, and the
+Files delayed-hover drag regression passed against the new bundle. The ZIP
+check is not an atomic snapshot and Linux guest fallback remains unverified;
+physical touch remains unverified. Four test accounts were disabled with data
+retained. Asset hashes and root, /desktop/ and /blog/ checks passed. Source
+`9cb2b30a8` is on box-git. Hosting manifest SHA-256 is
+`f66b41a2645b56f97e0865f841b539cb81e807a996ed123b657e8ddea02e023f`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T053102310785Z`
+and `/var/backups/webhost-sites/change-20261101T053102312574Z`.
+
 ## 2026-11-01 — Drawing change protection
 
 Live static release `9f5f22f44246cf54ba643e1cb9df2878dd642424c0d31b6ff77577b2b95eea8e`
