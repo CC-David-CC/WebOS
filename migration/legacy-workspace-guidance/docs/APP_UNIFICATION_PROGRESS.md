@@ -656,13 +656,21 @@ check saw a transient discrepancy, and subsequent runs passed. Live phone-sized
 account checks passed all three. Physical touch, PDF export during close and
 later PDF render failures remain unverified.
 
-Local candidates: Document Editor recovers from an invalid direct open into
+Document Editor recovers from an invalid direct open into
 an independent editable Untitled report without changing the original. G-code
 Preview rejects malformed or repeated coordinates in supported moves and G92
 resets rather than silently parsing part of a value. Desktop and phone-sized
 account checks covered recovery/sync and real-worker preview rejection. The
-G-code check is not comprehensive syntax or machine validation. These changes
-are not live; physical touch remains unverified.
+G-code check is not comprehensive syntax or machine validation. Live
+phone-sized account checks passed both cases; physical touch remains unverified.
+
+Image Editor has a local signature check before decode, preventing a GIF
+renamed as PNG from bypassing animation protection and being overwritten as a
+still image. Desktop and phone-sized real-editor/account tests used a two-frame
+GIF and PNG/JPEG/WebP round trips; the phone resize/Save As test also passed.
+An initial phone test hit a detached node and an initial round-trip test clicked
+a disabled clean Save; corrected reruns passed. This is not live; physical touch
+and malformed files mimicking valid signatures remain unverified.
 
 ### Embedded-app file-menu review
 

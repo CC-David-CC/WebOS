@@ -1,5 +1,18 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Report recovery and G-code coordinate validation
+
+Live static release `c3a2996a14bfd394299e7627344a6bb160b1ce804f42b75c5d83e66aa49176a1`
+opens an independent editable report after an invalid direct open and rejects
+malformed or repeated supported G-code coordinate words. Live phone-sized
+account tests passed both; physical touch and comprehensive machine validation
+remain unverified. Two test accounts were disabled with data retained. Asset
+hashes and root, /desktop/ and /blog/ checks passed. Source `54d567e8e` is on
+box-git. Hosting manifest SHA-256 is
+`91c19e5517b0cec778a25e819c4cabc189e4acaa27ab286e85f40fee8e4929e3`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T054615317702Z`
+and `/var/backups/webhost-sites/change-20261101T054615318363Z`.
+
 ## 2026-11-01 — Drawing and PDF open/save protection
 
 Live static release `c6581dc501bb2b7a60081e0587c132e55e065fd9ddebcc2a2d397f5dbb0d65bd`
