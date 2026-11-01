@@ -207,7 +207,8 @@ testing, some app workflows, and the classroom capacity target remain separate
 verification work. Source and notes are backed up to box-git; generated builds,
 dependencies, user files and account state are not source backups.
 
-Recent local candidates: Document Editor prevents an Open operation from
+Live release `5ad6f63d07e88fb7bdce101b4404493b2b2d9aa6ed18b60b758c816ccce61ee2`:
+Document Editor prevents an Open operation from
 discarding edits made while either confirmation is displayed. Desktop,
 emulated-phone and 4K account tests inject those races and cover open, edit,
 save and sync; the phone-sized open-safety test also passed fresh-session
@@ -215,39 +216,40 @@ recovery. Data Explorer now separately reports changes, deletion or conflicts
 in the saved analysis project and reports an immediate conflicting save
 honestly. Desktop, emulated-phone and 4K two-session account tests cover
 change, deletion, conflict, save copy and fresh-session recovery; an immediate
-write-conflict response was injected in a phone-sized test. These candidates
-are not live; physical touch remains unverified.
+write-conflict response was injected in a phone-sized test. Both checks also
+passed on the public site at phone size; physical touch remains unverified.
 
-Spreadsheet's local candidate clears a stale layout reference when importing
+Spreadsheet clears a stale layout reference when importing
 CSV or XLSX and rejects empty, plain-text and tested truncated XLSX inputs
 without replacing the open draft. Desktop, emulated-phone and 4K account tests
 cover invalid imports and CSV save, sync and reload; a valid XLSX and a separate
 save-race regression passed at phone size. Unusual XLSX files and physical touch
-remain unverified. PDF Viewer's local candidate adds page-number navigation;
+remain unverified. PDF Viewer adds page-number navigation;
 desktop, emulated-phone and 4K account checks cover My files open, navigation,
-invalid numbers, search, resize and fresh-session reopening. Both are not live.
+invalid numbers, search, resize and fresh-session reopening. Public phone-sized
+account checks also passed both workflows.
 
-Embroidery Studio's local File-menu candidate places Open and Save first,
+Embroidery Studio's File menu places Open and Save first,
 increases touch targets, and returns focus on Escape. Desktop, emulated-phone
 and 4K menu tests, desktop/phone file workflows, and a phone-sized provider
 command/CSP regression passed. Its corresponding-source archive was regenerated
 and checked against the integration files; a clean isolated packaging run
-passed with the updated pin. This menu update is not live. Physical touch and
+passed with the updated pin. A public phone-sized menu test passed. Physical touch and
 the complete upstream service surface remain unverified.
 
-Audio Editor's local candidate asks before closing during a WAV save or effect,
+Audio Editor asks before closing during a WAV save or effect,
 including when the track was previously clean. Desktop, emulated-phone and 4K
 checks cover a held Save As, cancelling close, completion and sync; an effect
 check simulated a clean state during processing. The phone-sized effect and
 layout regression passed. Already-dispatched writes can still complete after a
-close; physical touch is unverified and this candidate is not live.
+close; a public phone-sized check passed and physical touch is unverified.
 
-Text's local candidate guards Open and Reload against CodeMirror edits arriving
+Text guards Open and Reload against CodeMirror edits arriving
 during discard confirmations, including edits while the file picker is open.
 Desktop, emulated-phone and 4K account tests use real editor transactions and
 cover draft preservation, save, server bytes and fresh-session reopen; existing
-confirmation regressions passed at all three sizes. Physical touch is unverified
-and the candidate is not live.
+confirmation regressions passed at all three sizes. A public phone-sized
+workflow passed. Physical touch is unverified.
 
 The next local candidates are not live: SVG Editor rechecks drawing changes
 around discard prompts and the picker; concurrent-change tests were simulated
@@ -279,14 +281,15 @@ belong:
 | Python Notebook / JupyterLite | The live update replaces native discard prompts with desktop dialogs and preserves changes made while confirmation is open. Registered-account desktop, emulated-phone and 4K-sized tests cover cancellation, the edit race, Python example, sync and fresh-session reopen. A public phone-sized account workflow also passed. The live release places My files open/save and Linux Terminal in Jupyter's File menu, with the old toolbar as fallback. Desktop, emulated-phone touch and 4K account tests cover saving, sync, cancellation, reopening and duplicate-command cleanup. The initial phone test exposed an ignored touch; a targeted touch bridge passed the retest. A simulated missing menu preserved the fallback controls on desktop and emulated phone; two simultaneous notebook windows saved independently. A public phone-sized account test also passed. Physical touch and Jupyter upgrade compatibility remain unverified. |
 | Grid Tools / Kiri:Moto and mesh:tool | The live release replaces workspace-open, workspace-replace and export-replace native confirmations with desktop dialogs. Desktop and phone-sized Kiri and Mesh account tests cover validation, cancellation, reopen and sync; Kiri also checks a settings edit during confirmation. Desktop, emulated-phone and 4K-sized export tests cover cancellation and a target changed during confirmation. A public phone-sized export collision test passed with a simulated export; native-menu integration remains to be reviewed, and physical touch and broader snapshot fidelity remain unverified. |
 
-Grid Tools has a local candidate that moves model and workspace actions into
+Grid Tools moves model and workspace actions into
 both native File menus, redirects the native file input to My files, and keeps
 the older desktop toolbar as a fallback. Mesh:Tool's About and Kiri:Moto's Help
 no longer appear automatically on startup. Desktop, emulated-phone and 4K
 account workflows cover menu interaction, model import, workspace save, sync
 and reopen; a freshly rebuilt bundle passed the phone-sized workflow, startup
-and export collision checks. Mesh's About action was invoked programmatically,
-not by actual touch. Physical touch, wider format coverage and deployment remain.
+and export collision checks. A public phone-sized workflow passed. Mesh's About
+action was invoked programmatically, not by actual touch. Physical touch and
+wider format coverage remain unverified.
 
 This list is an initial source audit; continue checking the remaining applications and their
 bundled menus rather than assuming the listed set is exhaustive.

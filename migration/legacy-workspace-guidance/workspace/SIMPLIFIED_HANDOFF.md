@@ -1,5 +1,20 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Eight-app integration release
+
+Live static release `5ad6f63d07e88fb7bdce101b4404493b2b2d9aa6ed18b60b758c816ccce61ee2`
+contains the documented Text, Document, Spreadsheet, Data Explorer, PDF Viewer,
+Audio Editor, Embroidery Studio and Grid Tools improvements. All eight public
+phone-sized account checks passed, as did asset hash checks and root, /desktop/
+and /blog/ HTTP checks. Physical touch remains unverified. The first public Grid
+check failed because new bundle directories were mode 0700; permissions were
+corrected to the standard public 0755/0644 and the check passed on rerun. The
+test accounts were disabled; their data was not deleted. Source through
+`30c084b0f` is backed up to box-git. Hosting manifest SHA-256 is
+`914eff9991fb2576af70d203fedc10b4234a5e5da0064b0e27a6608edcca7000`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T040449577297Z`
+and `/var/backups/webhost-sites/change-20261101T040449578024Z`.
+
 ## 2026-11-01 — Excalidraw main menu
 
 Live static release `99afe9bd80ff4b9fcc006a4d588fd754cb525a482a810ce8c336c4aa9befd4e0`
