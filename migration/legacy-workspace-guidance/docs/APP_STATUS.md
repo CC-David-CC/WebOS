@@ -51,7 +51,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Drone Circuit | Preview | Overlapping inputs, focus loss, save and reopen checked; physical multitouch and full course remain unverified. |
 | Reactive Control Desk | Preview | Pending-save state, sync and reopen checked; physical touch and all orders remain unverified. |
 | Story Cards | Preview | Account sync and isolation checked; complete story and physical touch remain. |
-| Expression Puppet | Preview | Further interaction and physical-device review; final artwork pending. |
+| Expression Puppet | Preview | Challenge, poses and account reopen checked locally; physical touch, assistive technology and authored artwork remain. |
 | Rhythm Garden | Preview | Single touch/accessibility activations and save/reopen checked; physical audio latency and full medal runs remain. |
 | Lantern Leap | Preview | Overlapping inputs, focus loss, save and reopen checked; physical touch and all rooms remain unverified. |
 | Garden Defense | Preview | Map cancellation and pending-save path checks pass; physical touch and full wave progression remain. |
