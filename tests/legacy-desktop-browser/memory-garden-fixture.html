@@ -1,0 +1,90 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Memory Garden isolated harness</title>
+<body>
+<script type="module">
+const entry = new URLSearchParams(location.search).get("app");
+if (!entry || !entry.startsWith("/apps/memory-garden/")) throw Error("Missing Memory Garden bundle");
+const style = document.createElement("link");
+style.rel = "stylesheet";
+style.href = entry.replace("index.mjs", "index.css");
+document.head.append(style);
+const {mount} = await import(entry);
+const files = new Map();
+let version = 0;
+const context = {
+  owner: "test",
+  path: value => value.startsWith("/") ? value : "/" + value,
+  name: value => String(value).replaceAll("/", ""),
+  valid: () => true,
+  files: {
+    async read(path) {
+      if (!files.has(path)) throw Error("File not found.");
+      return files.get(path);
+    },
+    async write(path, data, expected) {
+      if ((files.get(path)?.version ?? null) !== expected) throw Error("File changed");
+      const result = {data: typeof data === "string" ? new TextEncoder().encode(data) : data, version: String(++version), status: "synced"};
+      files.set(path, result);
+      return result;
+    },
+    async stat(path) {
+      if (!files.has(path)) throw Error("File not found.");
+      const file = files.get(path);
+      return {...file, bytes: file.data.byteLength};
+    },
+    subscribe() {
+      return () => {};
+    },
+  },
+};
+const make = (tag, className = "", text = "") => {
+  const element = document.createElement(tag);
+  element.className = className;
+  element.textContent = text;
+  return element;
+};
+window.fileStore = files;
+window.memoryFiles = context.files;
+window.targetPath = "/Memory Garden.game.json";
+window.confirmAnswer = true;
+window.makeGarden = () => {
+  const controller = new AbortController();
+  const host = {
+    signal: controller.signal,
+    w: {},
+    ui: {
+      make,
+      textButton(label, action) {
+        const element = make("button");
+        element.type = "button";
+        element.textContent = label;
+        element.setAttribute("aria-label", label);
+        element.addEventListener("click", action);
+        return element;
+      },
+      appInput(label, value) {
+        const element = make("input");
+        element.setAttribute("aria-label", label);
+        element.value = value;
+        return element;
+      },
+      confirm: async () => window.confirmAnswer,
+    },
+    storage: {
+      signedInSubject: () => "test",
+      mirrorFileContext: async () => context,
+      pickFile: async () => window.targetPath,
+      pickFolder: async () => "/",
+    },
+  };
+  const view = mount(host);
+  const windowElement = make("div", "window focused");
+  windowElement.append(view.element);
+  document.body.append(windowElement);
+  return {view, controller, windowElement, host};
+};
+window.instances = [makeGarden(), makeGarden()];
+</script>
+</body>
