@@ -414,6 +414,14 @@ tests and an emulated-phone swipe used real AVR serial echo, then saved and
 synced the log and reopened it in Text. Returning to the bottom was set
 programmatically; physical touch remains unverified and this is not live.
 
+Further local candidates: Excalidraw routes focused Ctrl/Command+S to My files
+and Shift+Ctrl/Command+S to Save As; a browser test drew and saved a real shape,
+and the phone-sized native-menu workflow passed. Pico Simulator warns before
+closing while saving a project or serial output; desktop, emulated-phone and
+4K tests used real account storage with a simulated board, and a separate phone
+Blink worker test passed. Neither change is live; physical phone and macOS
+shortcut behavior remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
