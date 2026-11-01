@@ -14,7 +14,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Terminal | Workflow checked | Guest files are temporary; more interactive programs need testing. |
 | Text | Workflow checked | Large files and further editing modes need review. |
 | Help | Static information checked | Not a full manual. |
-| Calculator | Workflow checked | Floating-point results; saved notes do not restore a session. |
+| Calculator | Workflow checked | Floating-point results; notes restore the recorded result but not previous Ans history. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
 | Document Editor | Workflow checked | Not a Word editor; more complex reports need review. |
 | PDF Viewer | Workflow checked | Read-only; no OCR for image-only scans. |

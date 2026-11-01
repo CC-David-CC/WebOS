@@ -10,7 +10,7 @@ The table describes useful starting points, not a promise that every feature or 
 | Terminal | Explore the temporary Linux shell; use `nano` to edit. | Its files reset with the guest and are not automatically mounted into My files. |
 | Text | Open or create a text/code file, edit and save. | Very large files can be slow and memory-intensive. |
 | Help | Read beta contact and Linux information. | Help is not an exhaustive manual. |
-| Calculator | Enter an expression or use the keypad; choose angle units and save a result as a text note. | Results are floating-point approximations; notes do not restore a calculator session. |
+| Calculator | Enter an expression or use the keypad; choose angle units, then save or reopen a calculation note in My files. | Results are floating-point approximations; a reopened result is recorded, not recalculated, and prior Ans history is not preserved. |
 | Browser | Open a supported website or save a download to My files. | Experimental; temporary profile and no audio. |
 | Document Editor | Write and save a report; export a PDF. | Not a Word editor. |
 | PDF Viewer | Open, search and navigate a PDF. | Read-only; image-only scans need OCR. |

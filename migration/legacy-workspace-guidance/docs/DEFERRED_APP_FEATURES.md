@@ -27,7 +27,7 @@ unverified or provider-dependent features unavailable in the student workflow.
 
 | App | Feature | Status / reason |
 | --- | --- | --- |
-| Excalidraw | Reusable shape library, including local library creation and import/export | The unintegrated library surface is hidden because it does not use My files or account-backed persistence. Restore with a reviewed account-file workflow. |
+| Excalidraw | Reusable shape library, including local library creation and import/export | The unintegrated library surface is hidden because it does not use My files or account-backed persistence. In a local investigation, forcing the hidden controls visible and adding a rectangle made the same shape appear in a second window. The package uses a shared in-page state store, so a My files integration must explicitly handle multiple windows and prove account isolation and cleanup; cross-account persistence has not been tested. Restore with a reviewed account-file workflow. |
 | Excalidraw | Browse or publish public shape libraries | The upstream library links to an external service. It is unavailable pending a reviewed integration and appropriate user disclosure. |
 | Circuit Simulator (CircuitJS) | Import from Dropbox | The live Circuit Simulator removes the File-menu and command-palette entries and Dropbox startup import; My files is the supported workflow. No desktop-integrated cloud import replacement exists. |
 | Electronics Design (designElectronics) | Upstream AI assistant | The upstream desktop assistant uses external local CLI tools; the WebAssembly build does not enable its network-backed agent support. No desktop-integrated replacement exists. |

@@ -37,6 +37,8 @@ Audio Editor can export a stereo MultiTrack WAV to My files; the editable sessio
 
 Document Editor project switching and recovery passed additional local desktop and emulated-phone account tests; no code change was required in that review.
 
+Calculator can reopen its own calculation notes from My files, restoring the expression, angle unit and recorded result; it labels that result as not recalculated and sets Ans to it. Local desktop/phone and live phone-sized account tests covered synchronization, fresh-session recovery, account isolation, cancellation, malformed files and edits during the picker. Previous Ans history cannot be recovered from a note. Excalidraw’s hidden library was investigated locally: forcing it visible showed a shape added in one window in a second window; normal disabled controls and account drawing/sync passed desktop and phone-sized checks. Cross-account library persistence was not tested. Live release `d8f1c1166b62055088567fe4cef6d42ae697faf41c8d4a0a9f3222e0f9eb62cd`. Physical touch remains unverified.
+
 ## Current goals and progress — 2026-10-31
 
 The goal is a dependable browser-based desktop for high-school senior and
