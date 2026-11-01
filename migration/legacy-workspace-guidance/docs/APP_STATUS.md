@@ -30,8 +30,8 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Temporary workspace read failures offer retry; undo history and manufacturing correctness remain unverified. |
 | G-code Preview | Workflow checked | Temporary restore failures offer Reload; supports a subset and does not validate machine safety. |
-| Arduino Simulator | Workflow checked | D13 indicator shows driven-high output, not analog brightness; no electrical simulation or browser compilation. |
-| Pico Simulator | Workflow checked | Firmware/peripheral support partial; page-program wrapping tested with real MicroPython. Unsaved flash cannot be recovered after a crash; physical hardware is unverified. |
+| Arduino Simulator | Workflow checked | Temporary firmware restore failures offer retry; D13 shows driven-high output, not analog brightness. No electrical simulation or browser compilation. |
+| Pico Simulator | Workflow checked | Folder choices reject stale selections; firmware/peripheral support partial and unsaved flash cannot be recovered after a crash. Physical hardware unverified. |
 | Digital Logic | Workflow checked | Folder choices reject stale destinations; feed-forward combinational JSON only, and propagation delay is not hardware timing validation. |
 | Circuit Simulator | Workflow checked | Temporary restore failures offer a guarded retry; simulation is not hardware validation. |
 | Electronics Design | Workflow checked | Opened projects require Save As to protect the original; copies may omit unsupported parts. Component coverage and hardware validation remain open. |
