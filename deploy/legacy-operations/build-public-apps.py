@@ -15,12 +15,20 @@ import tempfile
 ROOT = Path(__file__).resolve().parent.parent
 APP_IDS = ('falling-blocks', 'calculator', 'files', 'help', 'browser', 'codemirror', 'terminal', 'text', 'image-editor', 'document-editor', 'pdf-viewer', 'spreadsheet', 'data-explorer', 'ffmpeg', 'wavesurfer', 'tone', 'audio-editor', 'zip', 'gcode-preview', 'grid-tools', 'mermaid', 'echarts', 'plotly', 'pdfme', 'maplibre', 'transformers', 'trystero', 'tanstack-virtual', 'onnx-runtime', 'webtorrent', 'yjs', 'replicad', 'diagrams-net', 'notebook', 'excalidraw', 'svg-editor', 'arduino-simulator', 'pico-simulator', 'circuitjs', 'electronics-design', 'digital-logic', 'embroidery-studio', 'stitch-converter', 'personal-template')
 
+# Host-loaded system tools are separate bundles, so a selected-app build must
+# include them even though the consumer has no direct JavaScript import.
+APP_DEPENDENCIES = {'text': ('codemirror',)}
+
 def build(source=None, output=None, apps=APP_IDS, node=None, entries=None, public_inputs=()):
     runtime = node or os.environ.get('CODI_BUILD_NODE') or shutil.which('node')
     if not runtime:
         raise ValueError('Node is required at build time; use --node or CODI_BUILD_NODE')
     source_root = Path(source or ROOT.parent/'apps').resolve()
     if source is None and entries is None:
+        apps = list(apps)
+        for app in apps:
+            for dependency in APP_DEPENDENCIES.get(app, ()):
+                if dependency not in apps: apps.append(dependency)
         entries = {app: ('individual/templates/index.mjs' if app == 'personal-template' else f'system/{app}/index.mjs') for app in apps}
     options = {'source': str(source_root),
                'output': str(Path(output or ROOT/'assets/desktop').resolve()), 'apps': list(apps), 'entries': entries or {},
