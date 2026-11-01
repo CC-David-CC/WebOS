@@ -85,6 +85,13 @@ upload, save, conversion, sync and fresh-session workflow and delayed-save
 regression passed. A public phone-sized account safety test passed. Physical
 touch and machine compatibility remain unverified.
 
+Data Explorer has a local candidate replacing discard, changed-source and
+replacement browser prompts with desktop dialogs. Desktop, phone-sized and 4K
+account tests cover cancellation, SQL edits and file changes during confirmation,
+including a source CSV changing while a project replacement is pending. A local
+phone-sized example/SQL/export/reopen workflow passed. The candidate is not live;
+physical touch remains unverified.
+
 The third-party feature register is intentionally a **partial inventory**, not a
 claim that every provider feature has already been removed from every bundled
 app. See `DEFERRED_APP_FEATURES.md` for the exact known entries and replacement
