@@ -595,6 +595,13 @@ automatically after shared builder dependencies are installed. A build with the
 app-local package absent recreated it and produced the same Files index hash as
 the live bundle. Custom source or entry overlays still prepare themselves.
 
+Pico Simulator has a local candidate rejecting UF2 blocks with conflicting
+overlapping flash bytes, while allowing identical overlaps. Desktop and
+phone-sized account checks used synthetic conflicting firmware and the real
+Blink worker; unit checks cover both block orders, valid overlap and adjacent
+blocks. The full Pico suite passed. This is not live; physical hardware and
+arbitrary firmware remain unverified.
+
 ### Embedded-app file-menu review
 
 The screenshot issue is a cross-app review item, not an Embroidery-only fix.
