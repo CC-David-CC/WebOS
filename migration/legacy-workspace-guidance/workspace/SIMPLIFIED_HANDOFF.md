@@ -1,5 +1,19 @@
 # Simplified branch handoff
 
+## 2026-11-01 — Pico firmware and CAD input
+
+Live static release `fb76b9b0917e748190b9d7475cad9028583c21c57ebc769e320ea96fc089192a`
+rejects Pico UF2 file containers without replacing the running simulated board,
+and allows cylinders in Replicad without the unused box depth. Live phone-sized
+account checks passed with real Blink and CAD workers; the container was
+synthetic. Physical touch, physical devices and manufacturing remain unverified.
+Both test accounts were disabled with data retained. Asset hashes and root,
+/desktop/ and /blog/ checks passed. Source `77758dd8d` is on box-git. Hosting
+manifest SHA-256 is
+`f294b6e5e6c689ba32552c83a6912c2da82ccc5211e8a130eb9a74ecff977547`;
+rollback inputs are `/var/backups/webhost-sites/change-20261101T045756035776Z`
+and `/var/backups/webhost-sites/change-20261101T045756036197Z`.
+
 ## 2026-11-01 — Image resize and save
 
 Live static release `4cfea5fb11ea97c4c78fbe8b303b8854168fdb1cc88fac656d4e1622a7814051`

@@ -515,15 +515,15 @@ before the last snapshot-order adjustment. A live phone-sized account test
 verified saved dimensions. This does not prove timing for every image tool,
 physical touch or Mac shortcuts.
 
-Local candidates: Replicad disables the box-only depth field for cylinders and
+Replicad disables the box-only depth field for cylinders and
 allows a cylinder to be saved when the unused field is blank, retaining a box
 depth when switching back. Desktop, phone-sized and 4K tests used the real CAD
 preview worker and account sync. Pico Simulator rejects UF2 file containers,
 which use file offsets instead of flash addresses, without replacing the
 running board. Desktop and phone-sized account workflows used real Blink and
 synthetic container data; Pico flash, machine-code Blink, project and serial
-tests passed. Neither candidate is live; physical touch, physical devices and
-manufacturing remain unverified.
+tests passed. Live phone-sized account checks passed both workflows; physical
+touch, physical devices and manufacturing remain unverified.
 
 ### Embedded-app file-menu review
 
