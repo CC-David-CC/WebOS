@@ -43,7 +43,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Physics Playground | Preview | XR and complete challenge acceptance remain open. |
 | Clockwork Room | Preview | Four mechanisms and save recovery checked; physical-device review and final artwork remain. |
 | Chess Study | Preview | Actual AI, save and reopen checked; AI strength and physical touch unverified. |
-| Solitaire | Preview | One seeded draw-one deal played to victory and reopened locally; draw-three and physical touch remain. |
+| Solitaire | Preview | One seeded draw-one deal played to victory and reopened live; draw-three and physical touch remain. |
 | Sky Courier | Preview | Steering and firing checks passed; full campaign and physical touch unverified. |
 | Marble Works | Preview | Pause/resume, account sync and reopen checked; all eight puzzles, physical touch and final artwork remain. |
 | Stack & Balance | Preview | Touch cancellation, save and reopen checked; full challenge set and physical devices remain unverified. |
