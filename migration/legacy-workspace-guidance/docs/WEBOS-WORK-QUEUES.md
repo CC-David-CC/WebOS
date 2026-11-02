@@ -85,8 +85,10 @@ reopening; other app and platform work waits unless needed for this flow.
 version in an unresolved conflict; an isolated signed-account browser test
 verified both versions and explicit resolution. A separate candidate reports
 uncertainty if account validity changes after a local transaction commits;
-fake-IndexedDB tests pass, but real-browser qualification and durable receipts
-remain. Neither change is live. An isolated server test confirmed an external
+an isolated signed-account Chromium test confirmed the local commit and
+isolation, with simulated invalidation. Server sync required an explicit retry;
+desktop-switch qualification and durable receipts remain. Neither change is
+live. An isolated server test confirmed an external
 host writer can still race publication; pre-publication revalidation reduces
 the window but cannot guarantee atomicity against uncoordinated writers.
 
