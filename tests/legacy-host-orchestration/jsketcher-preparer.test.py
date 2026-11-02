@@ -25,12 +25,29 @@ from pathlib import Path
 if sys.argv[1:]==['--version']:print('0.test');sys.exit(0)
 if sys.argv[1]=='ci':
  d=Path('node_modules/jsketcher-occ-engine');d.mkdir(parents=True);(d/'occt.wasm').write_text('bad' if os.environ.get('CODI_TEST_BAD_NPM') else 'wasm');(d/'occt.js').write_text('js');(d/'license.md').write_text('exception');(d/'LICENSE_LGPL_21.txt').write_text('lgpl');(d/'opencascade-info.txt').write_text('info');(d/'package.json').write_text('{"name":"jsketcher-occ-engine","version":"1","license":"test"}')
+ c=Path('node_modules/clipper-lib');c.mkdir(parents=True);(c/'clipper.js').write_text('bad' if os.environ.get('CODI_TEST_BAD_CLIPPER') else 'clipper fixture');(c/'package.json').write_text('{"name":"clipper-lib","version":"6.2.1","license":"BSL"}')
+ r=Path('node_modules/babel-polyfill/node_modules/regenerator-runtime');r.mkdir(parents=True);(r/'runtime.js').write_text('bad' if os.environ.get('CODI_TEST_BAD_REGEN') else 'regen fixture');(r/'package.json').write_text('{"name":"regenerator-runtime","version":"0.10.5","license":"MIT"}')
  n=Path('node_modules/numeric');n.mkdir();(n/'numeric-1.2.6.js').write_text('abcd');(n/'package.json').write_text('{\"name\":\"numeric\",\"version\":\"1.2.6\"}');a=Path('node_modules/alpha');a.mkdir();(a/'package.json').write_text('{"name":"alpha","version":"1","license":"MIT"}');(a/'LICENSE-MIT').write_text('license')
 elif sys.argv[1]=='run':
- d=Path('dist');(d/'lib').mkdir(parents=True);(d/'lib/pnltri.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_PNLTRI') else 'pnltri fixture');(d/'static').mkdir(parents=True);(d/'index-webos.html').write_text('fixture');(d/'static/index.bundle.js').write_text('/***/ "./node_modules/alpha/index.js":');e=d/'lib-assets/jsketcher-occ-engine';e.mkdir(parents=True);shutil.copyfile('node_modules/jsketcher-occ-engine/occt.wasm',e/'occt.wasm');shutil.copyfile('node_modules/jsketcher-occ-engine/occt.js',e/'occt.js')
+ d=Path('dist');(d/'lib').mkdir(parents=True);(d/'lib/pnltri.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_PNLTRI') else 'pnltri fixture');(d/'lib/verb.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_VERB') else 'verb fixture');(d/'lib/diff_match_patch.js').write_text('diff fixture');(d/'static').mkdir(parents=True);(d/'index-webos.html').write_text('fixture');(d/'static/index.bundle.js').write_text('/***/ "./node_modules/alpha/index.js":');e=d/'lib-assets/jsketcher-occ-engine';e.mkdir(parents=True);shutil.copyfile('node_modules/jsketcher-occ-engine/occt.wasm',e/'occt.wasm');shutil.copyfile('node_modules/jsketcher-occ-engine/occt.js',e/'occt.js')
 ''');npm.chmod(0o755);node=tools/'node';node.write_text('#!/bin/sh\necho v0.fixture\n');node.chmod(0o755)
  oldpath=os.environ['PATH'];os.environ['PATH']=str(tools)+os.pathsep+oldpath
  m.PNLTRI_ASSET_SHA256=hashlib.sha256(b'pnltri fixture').hexdigest();m.PNLTRI_NOTICE=root/'pnltri-license';m.PNLTRI_NOTICE.write_text('pnltri terms');m.PNLTRI_NOTICE_SHA256=hashlib.sha256(b'pnltri terms').hexdigest()
+ m.VENDOR_NOTICE_DIR=root/'vendor-notices';m.VENDOR_NOTICE_DIR.mkdir()
+ m.CLIPPER_PACKAGE_SHA256=hashlib.sha256(b'clipper fixture').hexdigest()
+ m.CLIPPER_NOTICES=[]
+ for name,out,text in [('clip-license','CLIPPER-LIB-BOOST-LICENSE.txt','boost terms'),('clip-header','CLIPPER-LIB-COPYRIGHT.txt','clipper header')]:
+  (m.VENDOR_NOTICE_DIR/name).write_text(text);m.CLIPPER_NOTICES.append((name,out,hashlib.sha256(text.encode()).hexdigest()))
+ m.REGENERATOR_PACKAGE_SHA256=hashlib.sha256(b'regen fixture').hexdigest()
+ m.REGENERATOR_NOTICES=[]
+ for name,out,text in [('regen-license','REGENERATOR-RUNTIME-LICENSE.txt','regen bsd'),('regen-patents','REGENERATOR-RUNTIME-PATENTS.txt','regen patents')]:
+  (m.VENDOR_NOTICE_DIR/name).write_text(text);m.REGENERATOR_NOTICES.append((name,out,hashlib.sha256(text.encode()).hexdigest()))
+ m.OTHER_VENDOR_INPUTS={}
+ for asset,content,notices in [('lib/verb.js','verb fixture',[('verb.txt','VERB-LICENSE.txt','verb license')]),('lib/diff_match_patch.js','diff fixture',[('diff.txt','DIFF-MATCH-PATCH-LICENSE.txt','diff license'),('header.txt','DIFF-MATCH-PATCH-COPYRIGHT.txt','diff header')])]:
+  data=[]
+  for name,out,text in notices:
+   (m.VENDOR_NOTICE_DIR/name).write_text(text);data.append((name,out,hashlib.sha256(text.encode()).hexdigest()))
+  m.OTHER_VENDOR_INPUTS[asset]=(hashlib.sha256(content.encode()).hexdigest(),data)
  m.HERE=root/'output';m.HERE.mkdir();m.DESTINATION=m.HERE/'node_modules'/'jsketcher-build';m.PREFIX='node_modules/jsketcher-build/'
  def build(extra=()):sys.argv=['prepare.py','--repo',str(repo),'--engine-repo',str(engine),'--numeric-repo',str(numeric),'--experimental-local-only','--update-manifest','--manifold-research-input',str(manifold),*extra];m.main()
  (manifold/'manifold.js').write_text('tampered')
@@ -38,6 +55,44 @@ elif sys.argv[1]=='run':
  except RuntimeError as e:assert 'pinned hash' in str(e)
  (manifold/'manifold.js').write_text('fixture js')
  build();assert (m.DESTINATION/'PNLTRI-LICENSE.txt').read_text()=='pnltri terms';r1=(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();man=(m.HERE/'app.json').read_bytes();build();assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();assert man==(m.HERE/'app.json').read_bytes()
+ assert (m.DESTINATION/'CLIPPER-LIB-BOOST-LICENSE.txt').read_text()=='boost terms'
+ assert (m.DESTINATION/'CLIPPER-LIB-COPYRIGHT.txt').read_text()=='clipper header'
+ for name,text in [('clip-license','boost terms'),('clip-header','clipper header')]:
+  f=m.VENDOR_NOTICE_DIR/name;f.write_text('tampered')
+  try:build();raise AssertionError('tampered clipper notice accepted')
+  except RuntimeError as e:assert 'Clipper-lib notice differs' in str(e)
+  finally:f.write_text(text)
+  assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
+ os.environ['CODI_TEST_BAD_CLIPPER']='1'
+ try:build();raise AssertionError('tampered clipper source accepted')
+ except RuntimeError as e:assert 'clipper-lib differs' in str(e)
+ finally:del os.environ['CODI_TEST_BAD_CLIPPER']
+ assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
+ assert (m.DESTINATION/'REGENERATOR-RUNTIME-LICENSE.txt').read_text()=='regen bsd'
+ assert (m.DESTINATION/'REGENERATOR-RUNTIME-PATENTS.txt').read_text()=='regen patents'
+ for name,text in [('regen-license','regen bsd'),('regen-patents','regen patents')]:
+  f=m.VENDOR_NOTICE_DIR/name;f.write_text('tampered')
+  try:build();raise AssertionError('tampered regenerator notice accepted')
+  except RuntimeError as e:assert 'Regenerator notice differs' in str(e)
+  finally:f.write_text(text)
+  assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
+ os.environ['CODI_TEST_BAD_REGEN']='1'
+ try:build();raise AssertionError('tampered regenerator runtime accepted')
+ except RuntimeError as e:assert 'regenerator runtime differs' in str(e)
+ finally:del os.environ['CODI_TEST_BAD_REGEN']
+ assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
+ for name,expected in [('VERB-LICENSE.txt','verb license'),('DIFF-MATCH-PATCH-LICENSE.txt','diff license'),('DIFF-MATCH-PATCH-COPYRIGHT.txt','diff header')]:assert (m.DESTINATION/name).read_text()==expected
+ for name,text in [('verb.txt','verb license'),('diff.txt','diff license'),('header.txt','diff header')]:
+  f=m.VENDOR_NOTICE_DIR/name;f.write_text('tampered')
+  try:build();raise AssertionError('tampered vendor notice accepted')
+  except RuntimeError as e:assert 'Vendored notice differs' in str(e)
+  finally:f.write_text(text)
+  assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
+ os.environ['CODI_TEST_BAD_VERB']='1'
+ try:build();raise AssertionError('tampered vendor asset accepted')
+ except RuntimeError as e:assert 'Vendored asset differs' in str(e)
+ finally:del os.environ['CODI_TEST_BAD_VERB']
+ assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
  m.PNLTRI_NOTICE.write_text('tampered')
  try:build();raise AssertionError('tampered PNLTRI notice accepted')
  except RuntimeError as e:assert 'PNLTRI upstream notice' in str(e)
