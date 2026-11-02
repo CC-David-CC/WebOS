@@ -18,6 +18,9 @@ async def main():
   for d in ('network','gateway_service','storage/browser'):(public/d).mkdir(parents=True,exist_ok=True)
   for d,names in [('network',('crypto.mjs','identity.mjs','strict-json.mjs')),('gateway_service',('client.mjs',)),('storage/browser',('mirror.mjs',))]:
    for n in names:shutil.copy2(ROOT/d/n,public/d/n)
+  # The combined file client loads its verifier beside the served client.
+  (public/'gateway_service/hash').mkdir()
+  for n in ('core.mjs','shared.mjs','verify-worker.mjs'):shutil.copy2(ROOT/'gateway_service/vendor/js-sha256'/n,public/'gateway_service/hash'/n)
   origin='http://127.0.0.1:19864';issuer=Service(Config(root/'issuer',public,origin=origin,rate_per_minute=60));server=make_server('127.0.0.1',0,GatewayAuthority(issuer),server_class=BoundedServer,handler_class=QuietHandler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
   state=root/'state';data=root/'data';state.mkdir(mode=0o700);data.mkdir(mode=0o700);store=UserStore(state,data);initialize_ledger(store);initialize_transfers(store)
   gateway=FileGateway(store,issuer.config()['identity'],max_requests_per_minute=2048);runner=web.AppRunner(gateway.app(),access_log=None);await runner.setup();site=web.TCPSite(runner,'127.0.0.1',0);await site.start();gport=site._server.sockets[0].getsockname()[1]
