@@ -117,6 +117,12 @@ The 128 MiB all-chunk cold-download experiment hit the issuer's 60/minute
 per-account challenge limit (also confirmed on beta), and remains disabled.
 Candidate work is exploring a single authorized streaming cold read, with
 coordinated read pacing and no blind retry of ambiguous writes.
+Research client `a30a21337` completed a 128 MiB streamed cold read and a
+two-tab 64-read pacing test without 429; the latter took about 121 seconds.
+A forced read 429 succeeded with a fresh proof after about 61 seconds, while
+write retry was suppressed and account invalidation cancelled a waiting read.
+Memory savings were not established; stalled-stream, truncation, cross-device
+throttling and latency qualification remain, and this client is not deployed.
 
 Next beta storage candidate: a minimal transfer server based on the deployed
 beta worker was built reproducibly (`9db35b5ba`; artifact begins `2bb2e9af`).
