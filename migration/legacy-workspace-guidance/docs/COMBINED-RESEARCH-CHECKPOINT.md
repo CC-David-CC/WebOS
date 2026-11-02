@@ -6,8 +6,9 @@ commit `ebfa5d6fd0058f6421204b9b690a2cf980de624f` and the CAD host used a
 locally prepared JSketcher runtimes from fork commits `4c995a10` and
 `f3971dc8`. The latter is the combined manufacturing fork on box-git's
 `research/3mf-host-combined-20261102`. A subsequent export prototype uses fork
-`ed2f02fe5ca6d337e7d5c847e1c39f2a7dc793d7` and has a host export command;
-the hand-staged test build is not release-qualified.
+`ed2f02fe5ca6d337e7d5c847e1c39f2a7dc793d7` and has a host export command.
+An exact pinned catalog was subsequently built on R730 and tested; it remains
+local-only because its OCCT reproducibility and license gates are unresolved.
 
 ## Evidence
 
@@ -30,8 +31,9 @@ the hand-staged test build is not release-qualified.
   and signed account gateway, reopened the identical file in a fresh session,
   and verified another account could not read it. Independent lib3mf validation
   passed. The enclosure's touching inset was refused without producing an output;
-  a general interface verifier is not qualified. The tests used hand-staged assets
-  at desktop, emulated phone and 4K viewports, not a qualified release build.
+  a general interface verifier is not qualified. The tests used the exact R730
+  generated catalog at desktop, emulated phone and 4K viewports, not a released
+  build. See `evidence/jsketcher-3mf-r730-20261102.md` for the precise pins.
 - A signed browser sync test used a 128 MiB file (one byte added to a file one
   byte smaller) with two contexts on one account and a separate account. Initial
   request bodies totaled 134,218,087 bytes; the changed upload used 131,701 bytes
