@@ -153,11 +153,11 @@ print(json.dumps(values))
             passed('different unprivileged users, zero capabilities, private namespace and actual host/LAN/Internet denial')
             client=ClientSession(timeout=ClientTimeout(total=60),trust_env=False)
             helpers=http.HTTP();helpers.origin=origin;helpers.gateway_url='http://127.0.0.1:'+str(port);helpers.client=client
-            a,key=await helpers.enter('installed_'+token)
+            a,key=await helpers.enter('installed'+token)
             raw=http.jose.dumps({'resource':'my-files','operation':'create','path':'note.txt','data':base64.b64encode(b'persist through real unit restart').decode()})
             status,_,headers=await helpers.authorize(a,key,raw);assert status==200
             assert (await helpers.post('/gateway/use',{},gateway=True,headers=headers,raw=raw))[0]==200
-            b,bkey=await helpers.enter('other_'+token)
+            b,bkey=await helpers.enter('other'+token)
             assert (await helpers.rpc(b,bkey,'read','note.txt'))[0]==404
             anonymous,anonkey=await helpers.enter(None)
             assert (await helpers.authorize(anonymous,anonkey,raw))[0]==403
