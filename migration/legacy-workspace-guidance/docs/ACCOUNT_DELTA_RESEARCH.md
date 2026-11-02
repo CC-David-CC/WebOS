@@ -56,3 +56,16 @@ descriptors can be closed before releasing admission. Focused tests cover a
 block reconstruction, and repeated cancellation of fd-producing disk work.
 This does not substitute for the signed-account integration test on the final
 candidate, concurrent load testing, or physical-phone performance testing.
+
+The final `be6283c1` code was retested with a freshly created loopback-only
+issuer and private account store. The signed 16 MiB account test passed edit,
+insertion, conflicts, corrupted reads, retries, lost reply and account isolation.
+A signed 104 MiB test passed: the initial upload sent 109,054,230 bytes and a
+one-byte change sent 71,469 bytes, excluding transport overhead. Two distinct
+accounts also ran overlapping 8 MiB uploads and simultaneous delta saves. An
+in-flight full-upload abort sometimes happened after the server had received the
+whole upload; the test waited, checked the exact result hash and reconciled
+either a committed replacement or the prior version. Proxy connection-reset logs
+were observed for intentionally aborted browser requests. The isolated fixture,
+accounts, browser contexts and temporary test dependencies were removed. These
+checks do not establish performance on a physical phone or full server capacity.
