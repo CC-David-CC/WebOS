@@ -85,6 +85,7 @@ engine:
 
 The turn-based candidate fits the proven Chess Study pattern: a pure state
 model and a bounded AI behind revision-guarded workers, then presentation.
+The concrete catalog plan is in [GAME_CATALOG_GAP_PLAN.md](GAME_CATALOG_GAP_PLAN.md).
 
 ## Verdict
 
