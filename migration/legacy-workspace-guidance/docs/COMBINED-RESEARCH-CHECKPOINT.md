@@ -58,8 +58,10 @@ local-only because its OCCT reproducibility and license gates are unresolved.
   pieces. The current research revision runs download chunk discovery and
   verification in per-operation Web Workers, and a worker now scans upload
   deltas. Old files are re-chunked; legacy fallback and other paths still use
-  the main thread. The write API currently requires a full Uint8Array and creates
-  a Blob snapshot, potentially making another full copy. Heavy hashing and file
+  the main thread. The research gateway now accepts an immutable Blob from the
+  mirror without a full upload-side arrayBuffer, while mutable Uint8Array input
+  is copied to preserve snapshot semantics. Untrusted Blob/File capture and
+  initial reads can still allocate a full buffer. Heavy hashing and file
   processing must run in workers. Verify bounded worker concurrency and
   stalled-worker recovery, static packaging, license notices and peak memory;
   do not describe it as complete changed-chunk sync.
