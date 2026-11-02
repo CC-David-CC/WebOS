@@ -26,10 +26,12 @@ the hand-staged test build is not release-qualified.
 - Native CGAL feasibility experiments classified contact, separation, overlap,
   and containment for the regenerated enclosure meshes. They are not a browser
   validator, do not prove agreement with analytic CAD, and require license review.
-- A separate captured-CSP Chromium test exported two assigned disjoint boxes via
-  the host to a stand-in file store. Independent lib3mf validation passed. The
-  enclosure's touching inset was refused without producing an output; a general
-  interface verifier is not qualified. Real account/gateway export is untested.
+- Captured-CSP Chromium tests exported two assigned disjoint boxes via the host
+  and signed account gateway, reopened the identical file in a fresh session,
+  and verified another account could not read it. Independent lib3mf validation
+  passed. The enclosure's touching inset was refused without producing an output;
+  a general interface verifier is not qualified. The tests used hand-staged assets
+  at desktop, emulated phone and 4K viewports, not a qualified release build.
 - A signed browser sync test used a 128 MiB file (one byte added to a file one
   byte smaller) with two contexts on one account and a separate account. Initial
   request bodies totaled 134,218,087 bytes; the changed upload used 131,701 bytes
@@ -41,7 +43,7 @@ the hand-staged test build is not release-qualified.
 
 - Review the patch against the actual deployed source and package only intended
   changes; the research source contains other unfinished work.
-- Qualify the combined JSketcher build provenance and real-account export, and
+- Qualify the combined JSketcher build provenance and export beyond the two-box case, and
   independently inspect its 3MF structure, units, materials and geometry.
 - Prove reliable 128 MiB and concurrent-user sync, interruption and recovery,
   cancellation, cache eviction and external-writer behavior. The newer research
