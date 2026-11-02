@@ -1,6 +1,6 @@
 # Application commands and new editor integration
 
-This is planned work, not an implemented agent interface. The desktop's existing application host, per-window lifecycle and signed-in My files service remain the integration boundary. A command adapter for an app should advertise the operations that app actually supports, accept structured inputs, return structured success or failure, and act only within the invoking user's authorization and selected app instance. Adapters must handle cancellation and window closure, avoid converting arbitrary documents into shell commands, and use file versions/conflict handling already provided by the desktop. Agent invocation requires a separately reviewed transport and authorization; a browser-side API alone does not grant an external agent access. Do not advertise commands that are not implemented and tested.
+A first in-page prototype exists in source for Calculator; a remote-agent interface and adapters for the other apps do not yet exist. The desktop's existing application host, per-window lifecycle and signed-in My files service remain the integration boundary. A command adapter for an app should advertise the operations that app actually supports, accept structured inputs, return structured success or failure, and act only within the invoking user's authorization and selected app instance. Adapters must handle cancellation and window closure, avoid converting arbitrary documents into shell commands, and use file versions/conflict handling already provided by the desktop. Agent invocation requires a separately reviewed transport and authorization; a browser-side API alone does not grant an external agent access. Do not advertise commands that are not implemented and tested.
 
 Candidate work, not yet integrated or live:
 
@@ -12,3 +12,7 @@ Candidate work, not yet integrated or live:
 - **OpenGEX:** 3D scene interchange format, distinct from OpenGPEX. Review importer/exporter availability, licensing and mapping to an actual consumer; format support is not yet implemented.
 
 The separate glTF-Transform shared tool supports a narrow browser-safe API (GLB read/write, dedup and weld). It blocks URL fetches and expects apps to supply authorized file bytes. This is not an OpenGEX importer, a standalone editor, a general texture pipeline or an agent interface.
+
+## Calculator prototype
+
+`window.codiDesktopCommands.list()` discovers commands for the active account’s open windows; `execute({windowId, command, args})` invokes one of them. The initial `calculate` command accepts an expression and optional angle unit, updates its calculator window, and returns the result and Ans used. It validates inputs and removes the registration when that window closes. The registry rechecks the account, window and session after asynchronous handlers finish. Local desktop and emulated-phone tests cover two windows, discovery, calculation, invalid inputs, closing and switching accounts; a unit test covers stale async results. This is an in-page JavaScript API only. It is not a remote network endpoint or an authorization boundary against scripts already executing in the same page. It is not yet deployed.
