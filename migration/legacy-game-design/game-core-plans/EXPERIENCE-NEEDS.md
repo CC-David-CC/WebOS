@@ -192,7 +192,8 @@ The experience-rule changes add required state fields. Initial snapshots from
 before these changes were tested against this version: Math Path, Fraction
 Farm, Word Weaver, Market Math, and Rule Detective reject them; Pocket Conquest
 accepted its tested initial snapshot. These games are not yet playable and no
-production saves are known. Before exposing persistence, version the changed
-snapshot schemas or provide a tested migration; do not assume the unchanged
-`*-core-1` labels establish compatibility. Test all saved phases and malformed
-input, not only the initial snapshots.
+production saves are known. The five changed cores now identify their snapshots as `*-core-2` and reject
+old versions explicitly; Pocket Conquest retains `core-1` pending a full
+compatibility review. No migration is provided. Before exposing persistence,
+test all saved phases and malformed input, not only initial snapshots, and
+provide a migration if existing snapshots must be retained.
