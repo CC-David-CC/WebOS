@@ -161,8 +161,10 @@ accounts, saved-file reopen, cross-account denial and v86 readiness. Its test
 file was removed; test accounts remain because account deletion has no verified
 API. Worker rollout/recovery evidence is backed up in
 `research/beta-delta-candidate/ROLLOUT-HANDOFF.md` at `c50a91875` on
-`research/quota-owner-liveness-20261102`. The separate hosting reconciliation
-launcher needs its beta worker/unit pins refreshed before future use.
+`research/quota-owner-liveness-20261102`. A refreshed plan-only hosting
+checker at `80673a64f` passed against the current route and worker. It refuses
+apply/recover; a future routing change still requires a reviewed mutating
+controller for the then-current state.
 
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
