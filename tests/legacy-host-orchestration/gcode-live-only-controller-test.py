@@ -21,7 +21,7 @@ class CandidateTests(unittest.TestCase):
  def run_action(self,action):
   with patch.object(m.os,'geteuid',return_value=0),patch.dict(sys.modules,{'webctl':self.ctl}),patch.object(sys,'argv',['tool',action]),contextlib.redirect_stdout(io.StringIO()):m.main()
  def test_verify_is_read_only_and_full_cycle(self):
-  before=m.MANIFEST.read_bytes();self.run_action('verify');self.assertEqual(m.MANIFEST.read_bytes(),before);self.run_action('activate');self.assertEqual(json.loads(m.MANIFEST.read_text()),self.new);self.run_action('rollback');self.assertEqual(m.MANIFEST.read_bytes(),before)
+  before=m.MANIFEST.read_bytes();self.run_action('verify');self.assertEqual(m.MANIFEST.read_bytes(),before);self.run_action('activate');self.assertEqual(json.loads(m.MANIFEST.read_text()),self.new);self.run_action('verify-active');self.run_action('rollback');self.assertEqual(m.MANIFEST.read_bytes(),before)
  def test_reload_failure_restores_baseline(self):
   before=(m.MANIFEST.read_bytes(),m.CADDY.read_bytes());self.fail=True
   with self.assertRaisesRegex(RuntimeError,'injected'):self.run_action('activate')
