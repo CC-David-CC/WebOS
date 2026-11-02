@@ -90,126 +90,63 @@ users, so preserving an old-user upgrade path is not a prerequisite for
 replacing its test services. Preserve existing on-disk data and configuration
 unless specifically authorized otherwise.
 
-Beta provisioning progress: `https://beta.ksu.codes/` is publicly routed and
-trusted HTTPS returned 200 on 2026-11-02. The initial activation rolled back
-cleanly while its certificate was issuing; retry passed, the renewal timer was
-restored, and existing sites passed health checks. Activation evidence is in
-`research/beta-isolated-hosting/ACTIVATION-2026-11-02.md` on branch
-`research/beta-hosting-isolation` at `8ce4f843a`. An isolated signed-browser fixture verified separate beta
-accounts and files, host-only secure cookies, and rejection of cross-origin
-tokens. A managed-route fixture also verified file create/read/replace and
-conflict handling against the corrected guest source. Beta
-guest Internet is intentionally disabled pending a separately controlled relay.
-The route fixture used a shared service UID. A separate real-process fixture
-ran the three services as distinct unprivileged UIDs and verified signed
-file operations and denied cross-role and main-fixture filesystem reads. A
-separate service operator is under development; these processes share loopback
-network access. Three beta services are now installed and running on private
-loopback ports with separate locked users, keys and data; signed file operations,
-cross-account denial and service restart were tested against these real
-services. Their units are enabled at boot, though an actual host reboot has
-not been tested. Public Chromium registration, file creation/edit/save, sync,
-fresh-context sign-in/reopen, cross-account read denial and v86 shell readiness
-passed; the disposable test file was deleted, while two test accounts remain.
-The beta server now supports changed-chunk operations; its currently served
-browser client does not yet provide the tested end-to-end workflow.
-The 128 MiB all-chunk cold-download experiment hit the issuer's 60/minute
-per-account challenge limit (also confirmed on beta), and remains disabled.
-Candidate work is exploring a single authorized streaming cold read, with
-coordinated read pacing and no blind retry of ambiguous writes.
-Research client `a30a21337` completed a 128 MiB streamed cold read and a
-two-tab 64-read pacing test without 429; the latter took about 121 seconds.
-A forced read 429 succeeded with a fresh proof after about 61 seconds, while
-write retry was suppressed and account invalidation cancelled a waiting read.
-Memory savings were not established; stalled-stream, truncation, cross-device
-throttling and latency qualification remain, and this client is not deployed.
-Candidate `c485029ec` uses a single deadline timer for pacing. A signed two-tab
-64-read run completed in 64 seconds without 429; fresh read retry and write
-non-retry checks passed. Earlier 80–121 second runs used different timing/load,
-so this is not a controlled speed comparison. Independent review and a paired
-SDK-only beta rollout remain open.
-Follow-up `63f278ac2` tested account-change cancellation of a queued lock and
-stalled download, plus malformed/short/interrupted stream rejection. Review
-found JSON authorization and uploads still need cancellation and an explicit
-uncertain-result outcome for dispatched mutations; that work is in progress.
-Research `2cc65a3c` adds generic request cancellation and uncertain results;
-signed tests and an independent Chromium rerun passed simulated dropped replies,
-429 after commit, account changes and stalled response bodies. The additional
-body-stall test is `182c4d97f`. A real local TCP socket cut after server commit
-passed at `c6ab94396`: the write was sent once, reported uncertain and the
-mirror reconciled using the server hash. Physical WAN failures, beta client
-packaging and deployment remain open; no write is blindly retried.
-Strict browser memory bounds may require an account-scoped temporary OPFS
-design with verified publication, quota handling and crash cleanup; Blob
-backing alone does not prove a bound.
+Beta status, 2026-11-02: `https://beta.ksu.codes/` is live with trusted
+HTTPS and separate issuer keys, accounts, file data and three dedicated service
+identities. The services are enabled at boot, but an actual reboot has not
+been tested. Guest Internet is disabled. They share the host loopback network,
+so do not claim compromised-process network isolation. Main remains separate.
 
-Next beta storage candidate: a minimal transfer server based on the deployed
-beta worker was built reproducibly (`9db35b5ba`; artifact begins `2bb2e9af`).
-Isolated signed tests cover changed-chunk transfer, account denial, conflict,
-interruption and gateway process death before/after publication; a browser
-fixture also covers interrupted/tampered reads and lost-reply retry. The
-production CLI's 2,048-request/minute shared limit may throttle chunk reads
-and multiple users (256 was the test fixture's class default);
-large-file, concurrency, further conflict/recovery tests and client deployment
-remain open. These process-kill tests do not prove power-loss durability.
-The browser test exposed a lost-reply followed by a later local edit that
-preserved both versions but incorrectly raised conflict. A research fix records
-the attempted hash durably and passed close/reopen and later-delete cases;
-ordinary delete of an unresolved conflict is also being guarded. The newer
-server candidate batches up to eight authenticated chunk reads and reserves
-space for its own snapshot/write temporary files. Its 5 GiB admission floor is
-per process, not a global guarantee against other processes or mount changes.
-Browser candidate `f638742ec` passed signed conflict-delete and lost-reply
-recovery tests, and batched download tests, in a fixture; final joint testing
-and independent review remain. Server candidate `da91da7f6` also rejects
-nested account mounts and has a tested beta switch transaction model. The
-protected host adapter and browser/server rollout have not been completed.
-The follow-up browser fix `6845ed9b` prevents moving a new file while an
-uncertain initial upload remains unreconciled; the signed reproduction and
-combined client/server regression pass. Large-file browser memory and transfer
-measurements remain in progress. Main promotion analysis is recorded on
-`research/beta-hosting-isolation` at `49d83e3b9`; it preserves main identity
-and committed files and does not deploy the beta state to main.
-Isolated 128 MiB signed two-session test subsequently passed with exact hashes:
-one-byte change sent about 66 KiB on upload and received about 489 KiB on
-download (instrumented application body bytes; not full wire accounting).
-Sampled browser RSS peaked at approximately 2.04 GiB; shared pages may be
-counted more than once, but memory remains a significant open issue. No 128 MiB
-test was run on the live beta. The beta gateway was switched to `c0465afe…`
-and passed signed delta/batch health; main was unchanged. Its first attempted
-switch rolled back after an immediate startup probe raced the listener, and
-reviewed recovery and a bounded readiness wait preceded the successful retry.
-The guarded browser mirror is deployed on beta, but the updated gateway SDK
-is not; experimental chunked initial download encountered HTTP 429 during a
-128 MiB test and remains disabled.
-For an isolated beta client rollout, gateway bundle `3757bf02…` changes only
-the browser SDK, and content-addressed overlay `bc3c7e65…` holds its paired
-desktop loader/mirror without replacing shared main assets. Isolated signed
-tests and a gateway rollback after an upgraded-version write passed. A managed
-beta route, service-worker/old-tab behavior and paired rollout still need tests.
-Review reproduced an unsafe downgrade: the old mirror ignores a newer
-uncertain-write marker and can move a file while leaving its old server path.
-After introducing the guarded mirror, routing fresh clients back to the old
-mirror is not an acceptable automatic rollback. A guarded-client minimum floor
-and server rollback compatibility need qualification; old open tabs also need
-to be accounted for. The user states this is a test site with no real users.
-The guarded beta mirror was activated through the tested maintenance gate;
-activation evidence is `7ded4aec3` on `research/beta-hosting-isolation`.
-Public Chromium test `765d3aeab` verified file save/reopen, account isolation,
-Linux readiness, injected lost-reply reconciliation and conflict guards.
-The guarded loader is the rollback floor: do not route back to the old mirror.
-The gateway still serves the older SDK; the matching SDK is a separate step.
-Public Chromium smoke passed again after the worker switch, including fresh
-accounts, saved-file reopen, cross-account denial and v86 readiness. Its test
-file was removed; test accounts remain because account deletion has no verified
-API. Worker rollout/recovery evidence is backed up in
-`research/beta-delta-candidate/ROLLOUT-HANDOFF.md` at `c50a91875` on
-`research/quota-owner-liveness-20261102`. A refreshed plan-only hosting
-checker at `80673a64f` passed against the current route and worker. It refuses
-apply/recover; a future routing change still requires a reviewed mutating
-controller for the then-current state.
+The beta gateway worker `dd8cbea7…`, SDK `44da83bd…` and guarded mirror
+`cbfafe53…` are active. Public Chromium test `5fc0d26ad` passed Files/Text
+save/reopen, account denial, Linux readiness, injected lost-reply recovery,
+conflict handling and simulated cancellation. A 1 MiB random one-byte edit
+across two mirror scopes sharing one signed account/session measured 66,233 B
+upload request bodies and 146,230 B download response bodies plus 584 B
+request bodies; authentication, TLS and other overhead are excluded. Test files
+were deleted; disposable accounts remain because account deletion is unproven.
 
-2026-11-02 research progress: ordinary writes now refuse to replace a local
+Beta activation evidence: `research/beta-isolated-hosting/ACTIVATION-2026-11-02.md`
+on `research/beta-hosting-isolation` (initial `8ce4f843a`, later guarded
+activation receipts `7ded4aec3` and `d5b4810fd`). Worker rollout/recovery and
+SDK switch receipts are `c50a91875` and `e1c52fe96` on
+`research/quota-owner-liveness-20261102`. The initial TLS activation and first
+worker switch failed safely and were recovered before successful retries.
+Refreshed read-only hosting verifier receipt `cf04068aa` binds the current
+route and worker. Future route changes need a separately reviewed mutating
+controller. Main promotion assessment `49d83e3b9` preserves main identity,
+accounts and committed files; main has not received these storage changes.
+
+The current guarded mirror is the minimum rollback floor. An old mirror can
+misinterpret an uncertain-write marker and leave an unintended old server file
+when a locally edited file is moved; this was reproduced with signed services.
+Do not route fresh clients back to the unguarded mirror. Existing old tabs can
+still execute old code; the user states this is a test site without real users.
+The SDK forward-floor marker is respected only by cooperating operators.
+
+An isolated signed 128 MiB two-session test passed with matching hashes. A
+one-byte change sent about 66 KiB of upload bodies and received about 489 KiB
+of download bodies, excluding full wire overhead. Sampled browser RSS peaked
+around 2.04 GiB, then around 1.87 GiB in a metadata-oriented rerun; RSS may
+count shared pages, the runs were not controlled, and bounded memory remains
+unproven. A streamed cold read passed but did not establish a meaningful memory
+reduction. A full cold download via individual chunk operations hit the issuer's
+60/minute per-account challenge limit; that experimental route remains disabled.
+The active candidate uses bounded batches and read-only retry/pacing, not blind
+retry of uncertain writes. Its signed two-tab 64-read pacing test took about
+64 seconds, reflecting the account limit. Physical WAN and power-loss behavior,
+large-file concurrent-user capacity and further multi-device conflicts remain
+open. A local TCP cut after a committed write passed without duplicate upload
+(`c6ab94396`). Browser account invalidation, close and cancellation regressions
+passed under simulated stalls (`0c95bc9f` and public test `5fc0d26ad`).
+
+The 5 GiB disk admission floor is per participating gateway process; unrelated
+processes, metadata writes and privileged mount changes can consume space. The
+host currently has little headroom. Strict browser memory bounds may require an
+account-scoped temporary OPFS design with verified publication, quota handling
+and crash cleanup; Blob backing alone does not establish a bound.
+
+Earlier 2026-11-02 research progress (deployment status superseded by the beta
+status above): ordinary writes refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
 verified both versions and explicit resolution. A separate candidate reports
 uncertainty if account validity changes after a local transaction commits;
