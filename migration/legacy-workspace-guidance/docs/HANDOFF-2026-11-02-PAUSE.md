@@ -3,6 +3,11 @@
 The user requested a pause. The full WebOS goal remains unfinished. Resume only
 on request; do not treat the research branch as a deployable release.
 
+On resumption, use and maintain `docs/WEBOS-WORK-QUEUES.md` as the operational
+checklist: update its ledger when work starts, is tested, integrated, deployed,
+blocked, or handed off. Do not mark broad acceptance gates complete based on a
+partial prototype.
+
 ## Live
 
 - `https://ksu.codes/` returned HTTP 200 at handoff. Latest verified static

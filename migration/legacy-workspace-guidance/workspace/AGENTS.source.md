@@ -1,5 +1,14 @@
 # Desktop preview workspace
 
+## WebOS work queues
+
+For WebOS development, use `docs/WEBOS-WORK-QUEUES.md` as the operational
+checklist. Update its progress ledger and relevant queue when work starts, is
+tested, integrated, deployed, blocked, or handed off. Check off a broad item
+only when its complete acceptance criteria are verified; record partial and
+research-only results honestly. Preserve the full program and newly discovered
+work. A paused goal remains paused until the user requests resumption.
+
 The user split this workspace into two independent targets:
 
 - desktop-lab/: backend-free desktop proportion controller and local browser VM.
