@@ -91,6 +91,13 @@ desktop-switch qualification and durable receipts remain. Neither change is
 live. An isolated server test confirmed an external
 host writer can still race publication; pre-publication revalidation reduces
 the window but cannot guarantee atomicity against uncoordinated writers.
+Signed gateway process-kill tests preserved old bytes before publication and
+new bytes after rename plus directory fsync; they do not prove power-loss
+durability. A real test-proxy TCP abort after server commit, combined with a
+new local edit, preserved both versions and surfaced a conflict. Separately,
+an injected directory-fsync failure after rename exposed a gateway bug: it
+reported refusal despite the new file being visible. A phase-aware fix is in
+isolated testing and is not live.
 
 - [ ] Preserve previously committed bytes through saves, errors, concurrent
   writers, account changes, process interruption and lost acknowledgements.
