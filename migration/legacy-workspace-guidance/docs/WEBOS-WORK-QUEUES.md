@@ -176,6 +176,11 @@ switch rolled back after an immediate startup probe raced the listener, and
 reviewed recovery and a bounded readiness wait preceded the successful retry.
 The updated browser client is not deployed; its experimental chunked initial
 download encountered HTTP 429 during a 128 MiB test and remains disabled.
+For an isolated beta client rollout, gateway bundle `3757bf02…` changes only
+the browser SDK, and content-addressed overlay `bc3c7e65…` holds its paired
+desktop loader/mirror without replacing shared main assets. Isolated signed
+tests and a gateway rollback after an upgraded-version write passed. A managed
+beta route, service-worker/old-tab behavior and paired rollout still need tests.
 Public Chromium smoke passed again after the worker switch, including fresh
 accounts, saved-file reopen, cross-account denial and v86 readiness. Its test
 file was removed; test accounts remain because account deletion has no verified
