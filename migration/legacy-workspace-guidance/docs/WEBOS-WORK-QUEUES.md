@@ -156,6 +156,12 @@ retain unknown and published files, protect live writers, and cover browser
 SIGKILL before and after pointer publication. Account-scoped scans and late
 IndexedDB-upgrade rejection were added after review. Independent review and
 server integration remain; this is not a host power-loss guarantee.
+Follow-up `3aec0e59` adds indexed bounded cleanup and experimental signed
+OPFS-to-beta-protocol upload sync. Tests cover over 4,096 published generations,
+batched staging cleanup, referenced staging retention, concurrent local edits,
+lost replies, malformed receipts, conflict preservation and account denial.
+Independent review is pending. Remote downloads, desktop integration, strict
+RAM bounds and power-loss durability are not implemented or proven.
 
 Earlier 2026-11-02 research progress (deployment status superseded by the beta
 status above): ordinary writes refuse to replace a local
