@@ -90,6 +90,18 @@ users, so preserving an old-user upgrade path is not a prerequisite for
 replacing its test services. Preserve existing on-disk data and configuration
 unless specifically authorized otherwise.
 
+Beta provisioning progress: DNS resolves, but public HTTPS and the beta site
+are not yet active. An isolated signed-browser fixture verified separate beta
+accounts and files, host-only secure cookies, and rejection of cross-origin
+tokens. A managed-route fixture also verified file create/read/replace and
+conflict handling; it must be rerun against the corrected guest source. Beta
+guest Internet is intentionally disabled pending a separately controlled relay.
+These fixtures used a shared service UID and do not establish OS isolation. A
+separate operator with distinct service identities and protected state is under
+development. Public TLS, actual systemd isolation, desktop boot and restart
+recovery still require testing. The beta candidate does not yet implement
+changed-chunk synchronization.
+
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
 verified both versions and explicit resolution. A separate candidate reports
