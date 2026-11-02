@@ -100,7 +100,10 @@ The route fixture used a shared service UID. A separate real-process fixture
 ran the three services as distinct unprivileged UIDs and verified signed
 file operations and denied cross-role and main-fixture filesystem reads. A
 separate service operator is under development; these processes share loopback
-network access. Public TLS, actual systemd isolation, desktop boot and restart
+network access. Three beta services are now installed and running on private
+loopback ports with separate locked users, keys and data; signed file operations,
+cross-account denial and service restart were tested against these real
+services. They are not enabled at boot. Public TLS, desktop boot and restart
 recovery still require testing. The beta candidate does not yet implement
 changed-chunk synchronization.
 
