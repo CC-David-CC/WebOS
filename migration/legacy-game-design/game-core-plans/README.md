@@ -1,4 +1,4 @@
-# Core-only staging for the six new games
+# Core-only staging for the seven new games
 
 This folder follows the earlier implementation ladder: define the canonical
 rules model and its pure tests before any view, audio, save adapter, or
@@ -29,6 +29,7 @@ Games:
 4. [rule-detective](rule-detective.md)
 5. [word-weaver](word-weaver.md)
 6. [market-math](market-math.md)
+7. [tile-islands](tile-islands.md)
 
 Experience discovery and the broader learner contract are recorded separately
 in [EXPERIENCE-NEEDS.md](EXPERIENCE-NEEDS.md).
