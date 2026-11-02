@@ -134,3 +134,7 @@ actions, invariants, seeded RNG, snapshots, and pre-view tests. They are
 intentionally separate from the original 28-app handoff validator until the
 models are reviewed and the handoff is extended to 34 designs. No view, audio,
 save adapter, Rive brief, or engine choice exists for them yet.
+
+The wider learner-experience contract, accessibility, privacy, and per-game
+feedback needs are in
+[EXPERIENCE-NEEDS.md](game-core-plans/EXPERIENCE-NEEDS.md).
