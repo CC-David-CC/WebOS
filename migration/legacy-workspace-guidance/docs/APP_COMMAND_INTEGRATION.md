@@ -42,3 +42,7 @@ PDF Viewer offers `inspect` for the open document, `read-page` for bounded text 
 ## Files prototype
 
 Files provides account-scoped `list` and `open` commands. Listing has a bounded page size; opening checks the file exists and has no conflict, then asks the desktop's normal association router to open it. `requested` confirms the request, not that the destination app finished loading. The temporary Linux filesystem is excluded. Local desktop and emulated-phone tests cover listing, pagination, invalid inputs, opening a text file in Text, separate-account isolation and window cleanup. The same public desktop and emulated-phone account workflows passed on live release `d262d34e94746cd068a1d761d6e6426fa6d104b21fb06236e2d02599c89204b2`. Physical touch and external agent access remain unverified.
+
+## Spreadsheet prototype
+
+Spreadsheet provides `inspect`, `read-cell`, and revision-checked `set-cell` commands. Coordinates are zero-based; reads return bounded raw text/formulas, and edits use the normal workbook change tracking. Active cell editing and protected long cells are not overwritten. The revision changes after grid edits, workbook replacement and save to a different path. Local desktop and emulated-phone tests cover formulas, stale edits, a path change, normal save/sync and reopening. Saving still uses the app UI. The adapter is not yet deployed or remotely accessible to an agent.
