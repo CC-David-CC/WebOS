@@ -23,6 +23,18 @@ class Dispatch(f.HTTP):
   self.assertEqual(base64.b64decode(read['data']),b'old' if when=='before' else b'new')
  async def test_timeout_before_store_returns_uncertain(self):await self.exercise_timeout('before')
  async def test_timeout_after_mutation_returns_uncertain(self):await self.exercise_timeout('after')
+ async def test_binary_timeout_after_mutation_returns_uncertain(self):
+  alice,key=await self.enter('alice');_,created,_,_=await self.binary_upload(alice,key,'note',b'old')
+  begin=self.gateway.gate.begin;put=self.gateway.store.put_stream
+  def short(*args,**kwargs):
+   use=begin(*args,**kwargs);return dataclasses.replace(use,principal=dataclasses.replace(use.principal,deadline=math.ceil(time.time())+1))
+  def delayed(*args,**kwargs):
+   result=put(*args,**kwargs);time.sleep(3);return result
+  self.gateway.gate.begin=short;self.gateway.store.put_stream=delayed
+  try:status,result,_,_=await self.binary_upload(alice,key,'note',b'new',operation='replace',previous=created['sha256'])
+  finally:self.gateway.gate.begin=begin;self.gateway.store.put_stream=put
+  self.assertEqual(status,503);self.assertIn('may have completed',result['error'])
+  self.assertEqual(base64.b64decode((await self.rpc(alice,key,'read','note'))[1]['data']),b'new')
  async def test_response_encoding_failure_after_mutation(self):
   alice,key=await self.enter('alice');_,created,_=await self.rpc(alice,key,'create','note',data=base64.b64encode(b'old').decode())
   dispatch=self.gateway._dispatch;dumps=f.jose.dumps;fired=[]
@@ -38,5 +50,5 @@ class Dispatch(f.HTTP):
   self.assertTrue(fired);self.assertEqual(status,503);self.assertIn('may have completed',result['error'])
   self.assertEqual(base64.b64decode((await self.rpc(alice,key,'read','note'))[1]['data']),b'new')
 if __name__=='__main__':
- names=['test_timeout_before_store_returns_uncertain','test_timeout_after_mutation_returns_uncertain','test_response_encoding_failure_after_mutation']
+ names=['test_timeout_before_store_returns_uncertain','test_timeout_after_mutation_returns_uncertain','test_binary_timeout_after_mutation_returns_uncertain','test_response_encoding_failure_after_mutation']
  r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite(Dispatch(n) for n in names));raise SystemExit(not r.wasSuccessful())
