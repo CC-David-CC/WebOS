@@ -96,9 +96,11 @@ accounts and files, host-only secure cookies, and rejection of cross-origin
 tokens. A managed-route fixture also verified file create/read/replace and
 conflict handling against the corrected guest source. Beta
 guest Internet is intentionally disabled pending a separately controlled relay.
-These fixtures used a shared service UID and do not establish OS isolation. A
-separate operator with distinct service identities and protected state is under
-development. Public TLS, actual systemd isolation, desktop boot and restart
+The route fixture used a shared service UID. A separate real-process fixture
+ran the three services as distinct unprivileged UIDs and verified signed
+file operations and denied cross-role and main-fixture filesystem reads. A
+separate service operator is under development; these processes share loopback
+network access. Public TLS, actual systemd isolation, desktop boot and restart
 recovery still require testing. The beta candidate does not yet implement
 changed-chunk synchronization.
 
