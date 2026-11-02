@@ -42,6 +42,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Owl Companion | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Snake Garden | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Physics Playground | Preview | XR and complete challenge acceptance remain open. |
+| Microduck | Integration candidate, not deployed | Separate-origin runner and local registered-account simulation/save/reopen tests pass. Live hosting, physical touch, full simulation-state recovery and broader validation remain open. |
 | Clockwork Room | Preview | Four mechanisms and save recovery checked; physical-device review and final artwork remain. |
 | Chess Study | Preview | Actual AI, save and reopen checked; AI strength and physical touch unverified. |
 | Solitaire | Preview | One seeded draw-one deal played to victory and reopened live; draw-three and physical touch remain. |
