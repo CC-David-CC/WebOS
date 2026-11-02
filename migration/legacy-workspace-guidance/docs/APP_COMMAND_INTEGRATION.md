@@ -38,3 +38,7 @@ SolidCraft input bridge investigation: `tests/solidcraft-upstream-memory-open-pr
 ## PDF Viewer prototype
 
 PDF Viewer offers `inspect` for the open document, `read-page` for bounded text extraction and `go-to-page` for visible navigation. The commands are window- and account-scoped, validate arguments, and reject a document change during an asynchronous read. Text extraction is not OCR. Local desktop and emulated-phone account tests cover a three-page PDF, truncation, invalid pages, visible navigation, closing and file sync. The same desktop and emulated-phone account checks passed on live release `c4078f9f3f8c40ee488929da07afd5ab9f5f9568633a362408938b1ce654b03b`. Physical touch, document replacement during a read and external agent access remain unverified.
+
+## Files prototype
+
+Files provides account-scoped `list` and `open` commands. Listing has a bounded page size; opening checks the file exists and has no conflict, then asks the desktop's normal association router to open it. `requested` confirms the request, not that the destination app finished loading. The temporary Linux filesystem is excluded. Local desktop and emulated-phone tests cover listing, pagination, invalid inputs, opening a text file in Text, separate-account isolation and window cleanup. This is not yet deployed and is not a remote agent endpoint.
