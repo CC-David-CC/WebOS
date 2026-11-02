@@ -45,3 +45,19 @@ phone-sized layouts; record physical-device and hardware limitations separately.
 Track failures and feature gaps rather than treating a focused smoke test or an
 upstream claim as full validation. Requalify after combining changes or updating
 the geometry engine.
+
+## Closed upstream PR review
+
+Reviewed the closed-PR list on 2026-11-02. Closed does not imply merged into our
+fork; check each destination branch and current source. [#204](https://github.com/xibyte/jsketcher/pull/204)
+addresses Escape during dimension creation, but its submitted patch can delete
+unrelated selected objects; adapt and test cancellation instead. [#190](https://github.com/xibyte/jsketcher/pull/190)
+proposes DXF layer colors; test color parsing, defaults, round trips and source
+attribution before adoption. [#218](https://github.com/xibyte/jsketcher/pull/218)
+is a broad community fork with camera and editing ideas; review features in
+small pieces against the host and geometry changes rather than applying it as a
+single patch. Its tessellation fallback can hide missing geometry and needs
+explicit error handling. Some older merged DXF work, including #180-related
+dimension support, is already substantially present; validate actual output
+rather than assuming complete compatibility. Large divergent branches and old
+native packaging are references, not automatic dependencies.
