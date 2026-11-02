@@ -114,6 +114,15 @@ passed; the disposable test file was deleted, while two test accounts remain.
 The beta candidate does not yet implement
 changed-chunk synchronization.
 
+Next beta storage candidate: a minimal transfer server based on the deployed
+beta worker was built reproducibly (`9db35b5ba`; artifact begins `2bb2e9af`).
+Isolated signed tests cover changed-chunk transfer, account denial, conflict,
+interruption and gateway process death before/after publication; a browser
+fixture also covers interrupted/tampered reads and lost-reply retry. The
+256-request/minute shared limit may throttle chunk reads and multiple users;
+large-file, concurrency, further conflict/recovery tests and beta deployment
+remain open. These process-kill tests do not prove power-loss durability.
+
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
 verified both versions and explicit resolution. A separate candidate reports
