@@ -5,8 +5,9 @@ features are available on the live site. The source under test was desktop
 commit `ebfa5d6fd0058f6421204b9b690a2cf980de624f` and the CAD host used a
 locally prepared JSketcher runtimes from fork commits `4c995a10` and
 `f3971dc8`. The latter is the combined manufacturing fork on box-git's
-`research/3mf-host-combined-20261102`; it is not connected to a host export
-command, and the hand-staged test build is not release-qualified.
+`research/3mf-host-combined-20261102`. A subsequent export prototype uses fork
+`ed2f02fe5ca6d337e7d5c847e1c39f2a7dc793d7` and has a host export command;
+the hand-staged test build is not release-qualified.
 
 ## Evidence
 
@@ -25,12 +26,22 @@ command, and the hand-staged test build is not release-qualified.
 - Native CGAL feasibility experiments classified contact, separation, overlap,
   and containment for the regenerated enclosure meshes. They are not a browser
   validator, do not prove agreement with analytic CAD, and require license review.
+- A separate captured-CSP Chromium test exported two assigned disjoint boxes via
+  the host to a stand-in file store. Independent lib3mf validation passed. The
+  enclosure's touching inset was refused without producing an output; a general
+  interface verifier is not qualified. Real account/gateway export is untested.
+- A signed browser sync test used a 128 MiB file (one byte added to a file one
+  byte smaller) with two contexts on one account and a separate account. Initial
+  request bodies totaled 134,218,087 bytes; the changed upload used 131,701 bytes
+  and one changed download response used 84,890 encoded bytes. The whole test
+  took 130.6 seconds on the research machine. These exclude transport overhead
+  and do not qualify cold disks, browser memory, or classroom concurrency.
 
 ## Release gates
 
 - Review the patch against the actual deployed source and package only intended
   changes; the research source contains other unfinished work.
-- Qualify the combined JSketcher build provenance, connect a real export command, and
+- Qualify the combined JSketcher build provenance and real-account export, and
   independently inspect its 3MF structure, units, materials and geometry.
 - Prove reliable 128 MiB and concurrent-user sync, interruption and recovery,
   cancellation, cache eviction and external-writer behavior. The newer research
