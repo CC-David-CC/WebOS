@@ -75,6 +75,8 @@ def main():
     location.add_argument('--runtime-dir',type=Path,help='Private writable absolute directory outside the application release')
     p.add_argument('--origin',help='Explicit external HTTPS origin behind a reverse proxy; backend still binds loopback')
     p.add_argument('--base-path',default='',type=validate_base_path)
+    p.add_argument('--apps-bundle',type=Path,help='Explicit prebuilt public app catalog')
+    p.add_argument('--microduck-runner-origin',help='Explicit distinct HTTPS origin for the Microduck runner')
     p.add_argument('--user-files',action='store_true',help='Enable registered-only file identity confirmations; the separate file gateway is required')
     p.add_argument('--guest-network-policy-sha256',help='Explicit pinned policy for live-session guest network grants')
     p.add_argument('--browser-relay-policy-sha256',help='Explicit pinned policy for registered-session browser relay grants')
@@ -93,6 +95,12 @@ def main():
     if a.origin:
         u=urlsplit(a.origin)
         if not u.hostname or u.username or u.password or u.path or u.query or u.fragment or (u.scheme!='https' and not (u.scheme=='http' and u.hostname in ('127.0.0.1','localhost','::1'))):p.error('Origin must be HTTPS authority or loopback HTTP')
+    microduck_origin=None
+    if a.microduck_runner_origin is not None:
+        try:from origin_service.microduck_config import RunnerFramePolicy, runner_origin
+        except ImportError:p.error('Microduck runner configuration module is unavailable')
+        try:microduck_origin=runner_origin(a.microduck_runner_origin,a.origin or f'http://127.0.0.1:{a.port}')
+        except ValueError as error:p.error(str(error))
     instance=a.instance or (None if a.port==8098 else 'port-'+str(a.port))
     base=ROOT/'.build'/('connected-instances/'+instance) if instance else ROOT/'.build'
     def stop(signum,frame):raise KeyboardInterrupt
@@ -100,11 +108,12 @@ def main():
     try:
         with PrivateRuntime(a.runtime_dir,ROOT) if a.runtime_dir is not None else nullcontext(None) as runtime:
             public_path=runtime.public if runtime else base/'public' if instance else ROOT/'.build/connected-public'
-            public=stage(public_path);origin=a.origin or f'http://127.0.0.1:{a.port}'
+            public=stage(public_path,bundled=a.apps_bundle);origin=a.origin or f'http://127.0.0.1:{a.port}'
             state=runtime.state if runtime else base/'state' if instance else ROOT/'.build/connected-state'
             class Issuer(Service):
                 def config(self):
                     config=super().config()
+                    if microduck_origin:config['microduck']={'runnerOrigin':microduck_origin}
                     if a.user_files:config['gateway']={'version':'codi-user-files/1','basePath':a.base_path+'/gateway','fileBytes':128*1024*1024}
                     if a.browser_relay_policy_sha256 is not None:
                         config['browserRelay']={'version':'codi-browser-relay/1','basePath':a.base_path+'/browser-relay','policySHA256':a.browser_relay_policy_sha256}
@@ -122,6 +131,7 @@ def main():
             if a.browser_relay_policy_sha256 is not None:
                 from origin_service.browser_authority import BrowserAuthority
                 application=BrowserAuthority(service,a.browser_relay_policy_sha256,application)
+            if microduck_origin:application=RunnerFramePolicy(application,microduck_origin,a.base_path)
             with make_server('127.0.0.1',a.port,HeadSupport(application),server_class=BoundedServer,handler_class=Quiet) as server:
                 print(f'Test issuer and staged desktop: {origin}/',flush=True)
                 try:server.serve_forever()
