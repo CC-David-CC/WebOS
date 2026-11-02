@@ -72,3 +72,7 @@ The simulator exposes window-scoped `inspect`, `set-input` for D2/D3 and `read-s
 ## Pico Simulator prototype
 
 Pico Simulator exposes window-scoped `inspect` and bounded `read-serial` commands. Firmware replacement, serial input and flash operations remain user-controlled. Local desktop and emulated-phone tests cover the real Blink worker, LED state, stopped/running modes, two independent windows and command cleanup. They do not exercise real firmware or nonempty serial output through these commands. The same desktop and emulated-phone workflows passed publicly in live release `f4e8c4800dbf92e9796ea7e7b3cdbf64863f83bfccfeef1ef4e78556460c6be7`. This is not hardware validation or a remote agent interface.
+
+## Image Editor prototype
+
+Image Editor exposes in-page `inspect` for the current rendered dimensions, dirty state and file warning. It makes a local image snapshot, so a large image can consume additional memory. Local desktop and emulated-phone tests cover a blank image, a resize, changed dimensions and revision, normal PNG save, server sync and fresh-session reopen. This is inspection only; editing, saving, concurrent image changes and external agent access are not yet supported or verified through the command. The adapter is not yet deployed.
