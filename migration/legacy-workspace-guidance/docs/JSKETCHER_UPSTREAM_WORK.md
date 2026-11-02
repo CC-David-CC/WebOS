@@ -32,3 +32,16 @@ keep physical-device claims separate, test save/close/reopen and failures,
 and repeat integration checks after combining branches. A temporary candidate
 or passing isolated test is not evidence of live release or manufacturing
 accuracy. Full dependency and corresponding-source review remains open.
+
+## Required full validation follow-up
+
+The user explicitly requested that we return and properly validate **every**
+carried-forward feature. Keep this work open after the first integration pass:
+check each feature individually and in combination in the actual ksu.codes
+browser desktop, including representative and edge-case geometry, existing-file
+compatibility, My files save/sync/reopen, account isolation, multiple windows,
+undo/redo, lifecycle and error recovery. Check Chromium on desktop and
+phone-sized layouts; record physical-device and hardware limitations separately.
+Track failures and feature gaps rather than treating a focused smoke test or an
+upstream claim as full validation. Requalify after combining changes or updating
+the geometry engine.
