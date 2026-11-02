@@ -61,3 +61,23 @@ explicit error handling. Some older merged DXF work, including #180-related
 dimension support, is already substantially present; validate actual output
 rather than assuming complete compatibility. Large divergent branches and old
 native packaging are references, not automatic dependencies.
+
+## Newer surfacing branch
+
+The upstream `surfacing-refactor` tip inspected on 2026-11-02 was
+`b63378a9a8b34d0c702e0fb556ac9146519bc659` (2026-04-13), 124 commits
+past `main`. It is not a successor containing all of `dev`: the branches
+have diverged. Its 241-file change includes substantial native BREP/mesh,
+Manifold boolean, subdivision and NURBS/patch-cage surfacing work, with its
+own UI and scene persistence. Its package manifest still includes the old
+OCCT dependency, so the commit describing an OCC replacement alone does not
+establish that all OCC code is gone. The exact upstream branch is preserved on
+box-git at `reference/upstream-surfacing-refactor`.
+
+Assess this branch as a major feature and geometry integration, alongside the
+`dev` changes and PRs above. Determine which modeling paths, file formats,
+engine capabilities and dependencies can coexist, migrate and round-trip
+existing work, unify storage under My files and respect window lifecycle/CSP.
+Test representative geometry, save/reopen and interoperability rather than
+assuming the newer timestamp means it subsumes the other branches. No
+surfacing-refactor features have yet been qualified in our desktop.
