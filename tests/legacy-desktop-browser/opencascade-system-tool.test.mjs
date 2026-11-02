@@ -7,7 +7,7 @@ try{
   await page.goto(base);
   await page.waitForSelector('.login-toggle');
   await page.click('.login-toggle');
-  await page.type('[aria-label=Username]','occt'+Date.now().toString().slice(-9));
+  await page.type('[aria-label=Username]',process.env.CODI_TEST_USER||'occt'+Date.now().toString().slice(-9));
   await page.type('[aria-label=Password]','test1234');
   await page.type('[aria-label="Confirm password"]','test1234');
   await page.click('.login-form button[type=submit]');
