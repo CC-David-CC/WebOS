@@ -53,6 +53,32 @@ class Dispatch(f.HTTP):
  async def test_word_count_accepted_failure(self):await self.exercise_word_count_failure('accepted')
  async def test_word_count_published_failure(self):await self.exercise_word_count_failure('published')
  async def test_word_count_completed_failure(self):await self.exercise_word_count_failure('completed')
+ async def exercise_word_count_retry_failure(self,first_phase):
+  alice,key=await self.enter('alice');_,created,_=await self.rpc(alice,key,'create','note',data=base64.b64encode(b'one two').decode())
+  word_count=self.gateway.store.word_count
+  if first_phase:
+   def first(principal,path,previous):
+    def phase(name):
+     if name==first_phase:raise OSError('injected prior failure')
+    return word_count(principal,path,previous,phase=phase)
+   self.gateway.store.word_count=first
+   try:status,_,_=await self.rpc(alice,key,'word-count','note',previousSHA256=created['sha256'])
+   finally:self.gateway.store.word_count=word_count
+   self.assertEqual(status,503)
+  else:
+   status,first_report,_=await self.rpc(alice,key,'word-count','note',previousSHA256=created['sha256']);self.assertEqual(status,200)
+  def fail(principal,path,previous):
+   def phase(name):
+    if name=='published':raise OSError('injected retry failure')
+   return word_count(principal,path,previous,phase=phase)
+  self.gateway.store.word_count=fail
+  try:status,result,_=await self.rpc(alice,key,'word-count','note',previousSHA256=created['sha256'])
+  finally:self.gateway.store.word_count=word_count
+  self.assertEqual(status,503);self.assertIn('may have completed',result['error'])
+  status,report,_=await self.rpc(alice,key,'word-count','note',previousSHA256=created['sha256']);self.assertEqual(status,200)
+  if not first_phase:self.assertEqual(report,first_report)
+ async def test_word_count_published_failure_retry_existing_report(self):await self.exercise_word_count_retry_failure(None)
+ async def test_word_count_published_failure_retry_accepted_only(self):await self.exercise_word_count_retry_failure('accepted')
  async def test_quota_cleanup_failure_after_sent_success(self):
   alice,key=await self.enter('alice');_,created,_=await self.rpc(alice,key,'create','note',data=base64.b64encode(b'old').decode())
   finish=self.gateway.quotas.finish;fired=[]
@@ -84,5 +110,5 @@ class Dispatch(f.HTTP):
   self.assertTrue(fired);self.assertEqual(status,503);self.assertIn('may have completed',result['error'])
   self.assertEqual(base64.b64decode((await self.rpc(alice,key,'read','note'))[1]['data']),b'new')
 if __name__=='__main__':
- names=['test_timeout_before_store_returns_uncertain','test_timeout_after_mutation_returns_uncertain','test_binary_timeout_after_mutation_returns_uncertain','test_word_count_accepted_failure','test_word_count_published_failure','test_word_count_completed_failure','test_quota_cleanup_failure_after_sent_success','test_response_encoding_failure_after_mutation']
+ names=['test_timeout_before_store_returns_uncertain','test_timeout_after_mutation_returns_uncertain','test_binary_timeout_after_mutation_returns_uncertain','test_word_count_accepted_failure','test_word_count_published_failure','test_word_count_completed_failure','test_word_count_published_failure_retry_existing_report','test_word_count_published_failure_retry_accepted_only','test_quota_cleanup_failure_after_sent_success','test_response_encoding_failure_after_mutation']
  r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite(Dispatch(n) for n in names));raise SystemExit(not r.wasSuccessful())
