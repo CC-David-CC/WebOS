@@ -81,6 +81,15 @@ recovery, with heavy processing in workers. Work on these as one real
 browser-to-server flow, including existing-file updates and fresh-session
 reopening; other app and platform work waits unless needed for this flow.
 
+2026-11-02 research progress: ordinary writes now refuse to replace a local
+version in an unresolved conflict; an isolated signed-account browser test
+verified both versions and explicit resolution. A separate candidate reports
+uncertainty if account validity changes after a local transaction commits;
+fake-IndexedDB tests pass, but real-browser qualification and durable receipts
+remain. Neither change is live. An isolated server test confirmed an external
+host writer can still race publication; pre-publication revalidation reduces
+the window but cannot guarantee atomicity against uncoordinated writers.
+
 - [ ] Preserve previously committed bytes through saves, errors, concurrent
   writers, account changes, process interruption and lost acknowledgements.
 - [ ] Enforce and test account isolation at browser, transport and server.
