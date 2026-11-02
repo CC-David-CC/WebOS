@@ -123,6 +123,13 @@ production CLI's 2,048-request/minute shared limit may throttle chunk reads
 and multiple users (256 was the test fixture's class default);
 large-file, concurrency, further conflict/recovery tests and beta deployment
 remain open. These process-kill tests do not prove power-loss durability.
+The browser test exposed a lost-reply followed by a later local edit that
+preserved both versions but incorrectly raised conflict. A research fix records
+the attempted hash durably and passed close/reopen and later-delete cases;
+ordinary delete of an unresolved conflict is also being guarded. The newer
+server candidate batches up to eight authenticated chunk reads and reserves
+space for its own snapshot/write temporary files. Its 5 GiB admission floor is
+per process, not a global guarantee against other processes or mount changes.
 
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
