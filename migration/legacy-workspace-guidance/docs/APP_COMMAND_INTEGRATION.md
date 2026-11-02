@@ -1,6 +1,6 @@
 # Application commands and new editor integration
 
-An in-page prototype is live for Calculator and Text. Digital Logic has a live, tested adapter; a remote-agent interface and adapters for the remaining apps do not yet exist. The desktop's existing application host, per-window lifecycle and signed-in My files service remain the integration boundary. A command adapter for an app should advertise the operations that app actually supports, accept structured inputs, return structured success or failure, and act only within the invoking user's authorization and selected app instance. Adapters must handle cancellation and window closure, avoid converting arbitrary documents into shell commands, and use file versions/conflict handling already provided by the desktop. Agent invocation requires a separately reviewed transport and authorization; a browser-side API alone does not grant an external agent access. Do not advertise commands that are not implemented and tested.
+Several apps have live in-page prototypes described below. A remote-agent interface and adapters for all remaining apps do not yet exist. The desktop's existing application host, per-window lifecycle and signed-in My files service remain the integration boundary. A command adapter for an app should advertise the operations that app actually supports, accept structured inputs, return structured success or failure, and act only within the invoking user's authorization and selected app instance. Adapters must handle cancellation and window closure, avoid converting arbitrary documents into shell commands, and use file versions/conflict handling already provided by the desktop. Agent invocation requires a separately reviewed transport and authorization; a browser-side API alone does not grant an external agent access. Do not advertise commands that are not implemented and tested.
 
 Candidate work, not yet integrated or live:
 
@@ -70,6 +70,10 @@ G-code Preview exposes `inspect` for the currently displayed preview and `set-tr
 ## Arduino Simulator prototype
 
 The simulator exposes window-scoped `inspect`, `set-input` for D2/D3 and `read-serial`. Input changes are queued asynchronously; serial reads are bounded and may be truncated. Local desktop and emulated-phone tests exercised real D2 example firmware, two independent simulator windows, the simulated D13 output, serial echo, normal firmware and serial-output saving, sync and reopening. This is not physical hardware validation. The same desktop and emulated-phone workflows passed publicly in live release `3051f74ae009142e2a1547ae2ce9c9501a089cea5dbe2e1ddd9b2c0acc022929`. Physical touch and external-agent access remain unverified.
+
+## Circuit Simulator prototype
+
+Circuit Simulator exposes `inspect` and `read-probes` for the current window. Probe readings are a bounded snapshot of simulated output voltages relative to ground, ordered as the simulator reports them; they require an advancing simulation and finite values. The commands refuse an uncertain circuit or an active file operation and disappear when the window closes. Local desktop and emulated-phone tests and a live emulated-phone test covered a 5 V divider, editing a resistor, stopped simulation, two independent windows, save/sync and reopen. Live release `6e7ced7f9bf9dd581643f3ed91df620b05cccc436ea64ee820e5bab2750a22ac`. These commands cannot yet construct circuits or save files; readings are not physical measurements and do not prove simulation fidelity for arbitrary circuits. Physical touch and external agent access remain unverified.
 
 ## Pico Simulator prototype
 
