@@ -3,12 +3,18 @@
 
 This stages files only; activation remains the hosting controller's job. Run on
 the webhost where both the baseline release and uploaded app batch are local.
+The optional hard-link mode requires immutable releases on one filesystem.
+Never edit, chmod, or chown a linked release file in place: write a new file
+and replace its directory entry instead. Run as the baseline file owner (on the
+webhost, root), so hard-link protection and ownership behave as expected.
 """
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
+import stat
 from pathlib import Path
 
 p=argparse.ArgumentParser(description=__doc__)
@@ -27,6 +33,7 @@ p.add_argument('--catalog-loader',type=Path,help='Reviewed assets/desktop/apps.m
 p.add_argument('--catalog-loader-base-sha256',help='Expected SHA-256 of the baseline catalog loader')
 p.add_argument('--mirror',type=Path,help='Reviewed browser mirror module to include')
 p.add_argument('--mirror-base-sha256',help='Expected SHA-256 of the baseline browser mirror module')
+p.add_argument('--reuse-baseline-files',action='store_true',help='Hard-link unchanged 0644 baseline files on the same filesystem; never modify either release in place')
 a=p.parse_args();base=a.baseline;batch=a.batch;out=a.output;expected=set(a.apps)
 def digest(path):
  h=hashlib.sha256()
@@ -61,18 +68,24 @@ for app,record in records.items():
   path=root/name
   if path.is_symlink() or path.stat().st_size!=info['bytes'] or digest(path)!=info['sha256']:raise ValueError('Bundle file mismatch: '+name)
 if base.is_symlink() or any(path.is_symlink() for path in base.rglob('*')):raise ValueError('Symlink in baseline')
-shutil.copytree(base,out,symlinks=False);appdir=out/'assets/desktop/apps'
-if a.desktop_app:shutil.copyfile(a.desktop_app,out/'app.js')
-if a.desktop_style:shutil.copyfile(a.desktop_style,out/'style.css')
-if a.desktop_apps:shutil.copyfile(a.desktop_apps,out/'desktop-apps.js')
-if a.catalog_loader:shutil.copyfile(a.catalog_loader,out/'assets/desktop/apps.mjs')
-if a.mirror:shutil.copyfile(a.mirror,out/'storage/browser/mirror.mjs')
+if a.reuse_baseline_files:
+ if base.stat().st_dev!=out.parent.stat().st_dev:raise ValueError('Hard-link staging requires the same filesystem')
+ if any(stat.S_IMODE(path.stat().st_mode)!=0o644 for path in base.rglob('*') if path.is_file()):raise ValueError('Baseline files must have mode 0644 for hard-link staging')
+shutil.copytree(base,out,symlinks=False,copy_function=os.link if a.reuse_baseline_files else shutil.copy2);appdir=out/'assets/desktop/apps'
+def replace_copy(source,destination):
+ destination.unlink(missing_ok=True)
+ shutil.copyfile(source,destination)
+if a.desktop_app:replace_copy(a.desktop_app,out/'app.js')
+if a.desktop_style:replace_copy(a.desktop_style,out/'style.css')
+if a.desktop_apps:replace_copy(a.desktop_apps,out/'desktop-apps.js')
+if a.catalog_loader:replace_copy(a.catalog_loader,out/'assets/desktop/apps.mjs')
+if a.mirror:replace_copy(a.mirror,out/'storage/browser/mirror.mjs')
 for app,record in records.items():
  if app in existing:shutil.rmtree(appdir/app)
  elif (appdir/app).exists() or (appdir/app).is_symlink():raise ValueError('Unexpected directory for new app')
  (appdir/app).mkdir();shutil.copytree(batch/'apps'/app/record['bundleSHA256'],appdir/app/record['bundleSHA256'])
 catalog['apps']=[records.get(r['id'],r) for r in catalog['apps']]+[records[app] for app in a.apps if app in new]
-(out/'assets/desktop/apps.json').write_text(json.dumps(catalog,separators=(',',':')))
+catalog_path=out/'assets/desktop/apps.json';catalog_path.unlink();catalog_path.write_text(json.dumps(catalog,separators=(',',':')))
 files={}
 for path in sorted(out.rglob('*')):
  if path.is_symlink():raise ValueError('Unexpected symlink in output')
@@ -81,12 +94,14 @@ for path in sorted(out.rglob('*')):
  if name in ('assets/desktop/offline-worker.js','assets/desktop/cache-manifest.json'):continue
  files[name]={'bytes':path.stat().st_size,'sha256':digest(path)}
 manifest={'version':'codi-public-cache/1','id':hashlib.sha256(json.dumps(files,sort_keys=True,separators=(',',':')).encode()).hexdigest(),'files':files}
-(out/'assets/desktop/cache-manifest.json').write_text(json.dumps(manifest,separators=(',',':')))
+manifest_path=out/'assets/desktop/cache-manifest.json';manifest_path.unlink();manifest_path.write_text(json.dumps(manifest,separators=(',',':')))
 worker=out/'assets/desktop/offline-worker.js';lines=worker.read_text().splitlines(keepends=True)
 if not lines[1].startswith('const RELEASE=') or old['id'] not in lines[1]:raise ValueError('Unexpected cache worker')
-lines[1]='const RELEASE='+json.dumps(manifest,separators=(',',':'))+';\n';worker.write_text(''.join(lines))
+lines[1]='const RELEASE='+json.dumps(manifest,separators=(',',':'))+';\n';worker.unlink();worker.write_text(''.join(lines))
 # The builder's temporary bundle directories can be private. Normalize the
 # staging copy before activation so Caddy can traverse every app asset.
 out.chmod(0o755)
-for path in out.rglob('*'):path.chmod(0o755 if path.is_dir() else 0o644)
+for path in out.rglob('*'):
+ if path.is_dir():path.chmod(0o755)
+ elif not a.reuse_baseline_files or path.stat().st_nlink==1:path.chmod(0o644)
 print(json.dumps({'release':manifest['id'],'apps':{k:r['bundleSHA256'] for k,r in records.items()},'files':len(files)}))
