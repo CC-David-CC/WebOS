@@ -135,6 +135,12 @@ recovery tests, and batched download tests, in a fixture; final joint testing
 and independent review remain. Server candidate `da91da7f6` also rejects
 nested account mounts and has a tested beta switch transaction model. The
 protected host adapter and browser/server rollout have not been completed.
+The follow-up browser fix `6845ed9b` prevents moving a new file while an
+uncertain initial upload remains unreconciled; the signed reproduction and
+combined client/server regression pass. Large-file browser memory and transfer
+measurements remain in progress. Main promotion analysis is recorded on
+`research/beta-hosting-isolation` at `49d83e3b9`; it preserves main identity
+and committed files and does not deploy the beta state to main.
 
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
