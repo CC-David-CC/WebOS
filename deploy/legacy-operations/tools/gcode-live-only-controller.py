@@ -27,7 +27,7 @@ def file_hash(path):return digest(path.read_bytes())
 
 def main():
  require(os.geteuid()==0,'Root required')
- require(len(sys.argv)==2 and sys.argv[1] in ('verify','activate','rollback'),'Choose verify, activate, or rollback explicitly')
+ require(len(sys.argv)==2 and sys.argv[1] in ('verify','verify-active','activate','rollback'),'Choose verify, verify-active, activate, or rollback explicitly')
  action=sys.argv[1]
  sys.path.insert(0,str(ROOT/'ops'));import webctl as ctl
  with (ROOT/'.controller.lock').open('r') as lock:
@@ -35,7 +35,7 @@ def main():
   require(ctl.current_mode()=='production','Hosting mode changed')
   require(file_hash(COMMON_PATH)==COMMON,'Hosting generator changed')
   current_manifest=MANIFEST.read_bytes();current_caddy=CADDY.read_bytes()
-  state='new' if action=='rollback' else 'old'
+  state='new' if action in ('rollback','verify-active') else 'old'
   require((digest(current_manifest),digest(current_caddy))==PINS[state],'Hosting pins changed')
   current=ctl.load();site=next(s for s in current['sites'] if s['domain']=='ksu.codes')
   require(site.get('codi_simplified')==(NEW if state=='new' else OLD) and site.get('codi_simplified_mode')=='active','Active release changed')
@@ -64,8 +64,8 @@ def main():
    require(not Path(name).is_absolute() and '..' not in Path(name).parts,'Invalid rollback path')
    path=old/name
    require(path.is_file() and not path.is_symlink() and path.stat().st_size==info['bytes'] and file_hash(path)==info['sha256'],'Rollback file changed: '+name)
-  if action=='verify':
-   print(json.dumps({'verified':True,'active':OLD,'candidate':NEW,'activationPerformed':False}));return
+  if action in ('verify','verify-active'):
+   print(json.dumps({'verified':True,'active':NEW if state=='new' else OLD,'candidate':NEW,'activationPerformed':False}));return
   target=copy.deepcopy(current);target_site=next(s for s in target['sites'] if s['domain']=='ksu.codes');target_site['codi_simplified']=NEW if action=='activate' else OLD
   ctl.validate(target);expected=PINS['new' if action=='activate' else 'old']
   require((digest(ctl.dump(target).encode()),digest(ctl.caddy(target,'production').encode()))==expected,'Generated target differs from reviewed pins')
