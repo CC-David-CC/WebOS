@@ -21,9 +21,14 @@ async def main():
   origin='http://127.0.0.1:19864';issuer=Service(Config(root/'issuer',public,origin=origin,rate_per_minute=60));server=make_server('127.0.0.1',0,GatewayAuthority(issuer),server_class=BoundedServer,handler_class=QuietHandler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
   state=root/'state';data=root/'data';state.mkdir(mode=0o700);data.mkdir(mode=0o700);store=UserStore(state,data);initialize_ledger(store);initialize_transfers(store)
   gateway=FileGateway(store,issuer.config()['identity'],max_requests_per_minute=2048);runner=web.AppRunner(gateway.app(),access_log=None);await runner.setup();site=web.TCPSite(runner,'127.0.0.1',0);await site.start();gport=site._server.sockets[0].getsockname()[1]
+  proxy=None
+  if os.environ.get('CODI_USE_SOCKET_PROXY')=='1':
+   proxy=subprocess.Popen([sys.executable,str(pathlib.Path(__file__).with_name('light-file-socket-proxy-launch.py')),str(gport)],cwd=root,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
+   await asyncio.sleep(.25)
+   if proxy.poll() is not None:raise RuntimeError('isolated socket proxy exited: '+proxy.stderr.read().decode(errors='replace'))
+   gport=19865
   cfg=root/'Caddyfile';cfg.write_text('http://127.0.0.1:19864 {\n handle /gateway/* {\n reverse_proxy 127.0.0.1:'+str(gport)+'\n }\n handle {\n reverse_proxy 127.0.0.1:'+str(server.server_port)+'\n }\n}\n')
-  # Same Caddy binary as live, but direct loopback gateway: the systemd socket
-  # proxy's 16-connection limit and live TLS are not reproduced here.
+  # Opt-in proxy matches the live 16-connection limit; TLS remains absent.
   caddy=subprocess.Popen(['/tmp/codi-microduck-hosting-evidence/caddy','run','--config',str(cfg),'--adapter','caddyfile'],cwd=root,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
   try:
    for _ in range(100):
@@ -37,6 +42,10 @@ async def main():
    caddy.terminate()
    try:caddy.wait(timeout=5)
    except subprocess.TimeoutExpired:caddy.kill();caddy.wait()
+   if proxy is not None:
+    proxy.terminate()
+    try:proxy.wait(timeout=5)
+    except subprocess.TimeoutExpired:proxy.kill();proxy.wait()
    await runner.cleanup();await asyncio.to_thread(server.shutdown);thread.join(2);server.server_close()
 try:asyncio.run(main())
 except KeyboardInterrupt:pass

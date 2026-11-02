@@ -1,0 +1,16 @@
+// Isolated browser, real Caddy and 16-connection socket proxy. No live URLs.
+import assert from 'node:assert/strict';import {createRequire} from 'node:module';
+const require=createRequire(process.env.PUPPETEER_CORE_PATH),puppeteer=require('puppeteer-core');
+const browser=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP,protocolTimeout:180000}),context=await browser.createBrowserContext(),page=await context.newPage();
+try{
+ await page.goto('http://127.0.0.1:19864/');const result=await page.evaluate(async()=>{
+  const {authenticatedRequest}=await import('/network/identity.mjs'),{makeKey}=await import('/network/crypto.mjs'),{UserFiles}=await import('/gateway_service/client.mjs');
+  const config=await(await fetch('/config.json')).json();config.gateway={version:'codi-user-files/1',basePath:'/gateway'};const password=crypto.randomUUID().slice(0,24),users=[];const setup=performance.now();
+  for(let i=0;i<100;i++){const key=await makeKey(),session={privateKey:key.privateKey,public:{sid:crypto.randomUUID(),key:key.publicKey},token:null};const answer=await authenticatedRequest(config.identity,session,config.identity.apiBase+'/auth',{username:'student'+i,password,operation:'register'});session.public=answer.identity;session.token=answer.session_token;users.push(new UserFiles(config,session))}
+  const setupMs=Math.round(performance.now()-setup),original=window.fetch,counts={},transport=[];window.fetch=async(input,...args)=>{const path=new URL(input instanceof Request?input.url:String(input),location.href).pathname;try{const response=await original(input,...args);const k=path+':'+response.status;counts[k]=(counts[k]||0)+1;return response}catch(e){transport.push({path,name:e.name,message:e.message});throw e}};
+  const results=[],retries={};const percentile=(a,p)=>Math.round(a[Math.ceil(a.length*p)-1]);
+  async function read(user){const start=performance.now();for(let attempt=0;attempt<3;attempt++){try{const out=await user.inventoryVersions();if(!out.complete)throw Error('incomplete inventory');return performance.now()-start}catch(e){if(attempt===2||![429,503,undefined].includes(e.status))throw e;const k=e.status??'transport';retries[k]=(retries[k]||0)+1;await new Promise(r=>setTimeout(r,(k===429?24000:12000)+Math.random()*(k===429?12000:6000)))}}}
+  const allStart=performance.now();for(let wave=0;wave<3;wave++){const start=performance.now();const reads=users.map(read);const writes=wave===0?users.slice(0,8).map(u=>u.write('note.txt','data')):[];const settled=await Promise.allSettled([...reads,...writes]),ok=settled.slice(0,100).filter(x=>x.status==='fulfilled').map(x=>x.value).sort((a,b)=>a-b),errors=settled.filter(x=>x.status==='rejected').map(x=>({name:x.reason?.name,status:x.reason?.status,message:x.reason?.message}));results.push({wave:wave+1,successes:ok.length,writes:writes.length,errors,elapsedMs:Math.round(performance.now()-start),p95Ms:ok.length?percentile(ok,.95):null,p99Ms:ok.length?percentile(ok,.99):null});if(wave<2)await new Promise(r=>setTimeout(r,5000))}
+  window.fetch=original;return {setupMs,workloadMs:Math.round(performance.now()-allStart),results,counts,transport,retries};
+ });console.log(JSON.stringify(result));for(const w of result.results){assert.equal(w.successes,100);assert.deepEqual(w.errors,[])}
+}finally{await context.close();browser.disconnect()}
