@@ -64,3 +64,11 @@ edge-incidence check passed for nonempty fixtures, which is only a narrow
 manifoldness check. The test browser also logged invalid SVG `medium` size
 attributes and missing icons in the test host; check whether these occur in the
 actual packaged app before treating them as production defects.
+
+The user's direction is to keep and support both paths and let people choose;
+they do not need to return identical results. The current research candidate
+exposes surfacing actions alongside the existing OCCT modeling operations, but
+it does not yet provide a general engine selector for all operations. The native
+boolean service has been exercised through a test API; that alone does not make
+it a complete user-facing alternative. Identify and label the actual workflows
+and unsupported operations before presenting an engine choice in the desktop.
