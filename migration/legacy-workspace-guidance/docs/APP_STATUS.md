@@ -12,7 +12,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | --- | --- | --- |
 | Files | Workflow checked | Copies use an atomic local snapshot; unseen remote edits may arrive later. Folder moves unavailable; 100-user capacity unqualified. |
 | Terminal | Workflow checked | Guest files are temporary; more interactive programs need testing. |
-| Text | Workflow checked | ~8 MiB account workflow checked live; 128 MiB is a storage limit, not a proven device editing capacity. |
+| Text | Workflow checked | Highlights common code and web/data formats. ~8 MiB account workflow checked live; 128 MiB is a storage limit, not a proven device editing capacity. |
 | Help | Static information checked | Not a full manual. |
 | Calculator | Workflow checked | New notes retain the Ans input for recalculation; older notes lack it and show a warning. Earlier Ans history is not retained. |
 | Browser | Experimental | Lowest priority; temporary profile and no audio. |
