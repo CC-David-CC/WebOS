@@ -94,7 +94,7 @@ Beta provisioning progress: DNS resolves, but public HTTPS and the beta site
 are not yet active. An isolated signed-browser fixture verified separate beta
 accounts and files, host-only secure cookies, and rejection of cross-origin
 tokens. A managed-route fixture also verified file create/read/replace and
-conflict handling; it must be rerun against the corrected guest source. Beta
+conflict handling against the corrected guest source. Beta
 guest Internet is intentionally disabled pending a separately controlled relay.
 These fixtures used a shared service UID and do not establish OS isolation. A
 separate operator with distinct service identities and protected state is under
