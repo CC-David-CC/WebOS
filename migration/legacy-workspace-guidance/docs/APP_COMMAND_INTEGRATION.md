@@ -8,7 +8,7 @@ Candidate work, not yet integrated or live:
 - **Graphite:** browser 2D vector/raster editor; review its document API, third-party connections, source/license and desktop file integration.
 - **SolidCraft:** browser parametric CAD with a documented browser command API; its native MCP server is a separate executable and does not automatically connect to browser sessions. Verify the web API, per-user sessions and save/reopen before exposing commands.
 - **OpenZCAD:** browser parametric CAD with command history and B-rep kernel. Assess offline project format and isolate/remove optional provider integrations before connecting My files.
-- **OpenGPEX:** browser image editor with WebGPU and plugin commands. Review GPL source distribution, browser/GPU support, startup, lifecycle and project format; disable optional provider/cloud bridges until explicitly supported and record deferred features.
+- **OpenGPEX:** browser image editor with WebGPU and plugin commands. Review GPL source distribution, browser/GPU support, startup, lifecycle and project format; leave AI provider configuration empty and its provider/cloud bridges unavailable until the user supplies an approved backend; record deferred features. Local editing and any independently supported on-device tools do not require a provider.
 - **OpenGEX:** 3D scene interchange format, distinct from OpenGPEX. Review importer/exporter availability, licensing and mapping to an actual consumer; format support is not yet implemented.
 
 The separate glTF-Transform shared tool supports a narrow browser-safe API (GLB read/write, dedup and weld). It blocks URL fetches and expects apps to supply authorized file bytes. This is not an OpenGEX importer, a standalone editor, a general texture pipeline or an agent interface.
