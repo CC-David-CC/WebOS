@@ -60,8 +60,10 @@ local-only because its OCCT reproducibility and license gates are unresolved.
   deltas. Old files are re-chunked; legacy fallback and other paths still use
   the main thread. The research gateway now accepts an immutable Blob from the
   mirror without a full upload-side arrayBuffer, while mutable Uint8Array input
-  is copied to preserve snapshot semantics. Untrusted Blob/File capture and
-  initial reads can still allocate a full buffer. Heavy hashing and file
+  is copied to preserve snapshot semantics. A worker now captures File/Blob
+  data in bounded pieces and checks a second pass; browser APIs cannot guarantee
+  an atomic snapshot against all external writers. Initial reads and legacy
+  adapters can still allocate a full buffer. Heavy hashing and file
   processing must run in workers. Verify bounded worker concurrency and
   stalled-worker recovery, static packaging, license notices and peak memory;
   do not describe it as complete changed-chunk sync.
