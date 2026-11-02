@@ -31,3 +31,29 @@ The upstream surface scene is stored separately from the existing desktop
 project snapshot; it must be included and restored through the host before a
 user can rely on Save. Treat all initial results as focused evidence and retain
 the full validation follow-up in `JSKETCHER_UPSTREAM_WORK.md`.
+
+## Focused research results
+
+These findings supersede the initial “not yet compared” entries in the table.
+Both paths produced the expected 10 × 20 × 30 extents and 6,000 volume in a
+focused harness. The upstream native modeler `BOX` operation is still a stub;
+the comparison uses its surfacing primitives, not every modeler operation.
+
+In disposable Chromium tests with CSP bypassed, both engines gave 3,000 for
+overlap subtraction, 12,000 for a touching-box union, and empty results for
+disjoint intersection, coincident subtraction and a 0.000001 gap. A 0.000001
+overlap returned empty in OCCT and approximately 0.0005722 in the native path,
+against 0.0006 analytically. The OCCT path uses a 0.0001 fuzzy tolerance and the
+native mesh uses Float32; scale and tolerance require further investigation.
+These limited fixtures do not establish general validity or manufacturing
+accuracy. An OCCT solid also cannot currently be passed directly into the native
+boolean path, which requires mesh and origin data.
+
+The research merge preserves the working OCCT operations alongside the native
+path. The published Manifold JavaScript uses `new Function`, which the site's
+CSP blocks. An official-source rebuild with `DYNAMIC_EXECUTION=0` and
+`EMBIND_AOT=1` reproduced its hashes in a second clean build, and passed
+standalone strict-CSP box intersection, union and subtraction checks with
+volumes 3,000, 9,000 and 3,000 respectively. Integration into the combined
+desktop and broader API validation remain outstanding. Do not relax production
+CSP or silently substitute one engine for the other.
