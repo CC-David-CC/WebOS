@@ -57,7 +57,10 @@ def execute(config,expected,worker=None,worker_pin=None,recover=False,phase=lamb
    apply(target,native);phase('ready')
    if forward:j['phase']='committed';op.atomic(journal,(json.dumps(j,indent=2)+'\n').encode());phase('committed')
   except BaseException:
-   if not recover:apply(j['fileBefore'],before)
+   # A failed atomic commit write may already have renamed the journal to the
+   # committed phase. Never mutate the installation after such an ambiguous
+   # failure: recovery must reread the durable journal to decide its direction.
+   # This also makes recovery retryable after a second interruption.
    raise
   result={'status':'upgraded' if forward else 'code-recovered','workerManifestSHA256':target['manifestSHA256'],'nativeManifestSHA256':expected,'nativeConfigSHA256':digest(config.read_bytes()),'fileConfigSHA256':digest(m.config_path.read_bytes()),'accountOrFileDataRestored':False,'permissionBindingsPreserved':True,'otherNativeRolesRestarted':False}
   op.atomic(config.parent/'private-file-code-last.json',(json.dumps(result,indent=2)+'\n').encode());journal.unlink();maintenance.sync_directory(config.parent);return result
