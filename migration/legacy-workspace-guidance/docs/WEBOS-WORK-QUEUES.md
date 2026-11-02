@@ -152,6 +152,13 @@ switch rolled back after an immediate startup probe raced the listener, and
 reviewed recovery and a bounded readiness wait preceded the successful retry.
 The updated browser client is not deployed; its experimental chunked initial
 download encountered HTTP 429 during a 128 MiB test and remains disabled.
+Public Chromium smoke passed again after the worker switch, including fresh
+accounts, saved-file reopen, cross-account denial and v86 readiness. Its test
+file was removed; test accounts remain because account deletion has no verified
+API. Worker rollout/recovery evidence is backed up in
+`research/beta-delta-candidate/ROLLOUT-HANDOFF.md` at `c50a91875` on
+`research/quota-owner-liveness-20261102`. The separate hosting reconciliation
+launcher needs its beta worker/unit pins refreshed before future use.
 
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
