@@ -56,9 +56,11 @@ local-only because its OCCT reproducibility and license gates are unresolved.
 - Avoid full-file JavaScript allocations and repeated whole-file re-chunking.
   A research candidate streams final SHA-256 verification in bounded 256 KiB
   pieces. The current research revision runs download chunk discovery and
-  verification in per-operation Web Workers, but old files are re-chunked and
-  upload processing and other paths still use the main thread. Heavy hashing and
-  file processing must run in workers. Verify bounded worker concurrency and
+  verification in per-operation Web Workers, and a worker now scans upload
+  deltas. Old files are re-chunked; legacy fallback and other paths still use
+  the main thread. The write API currently requires a full Uint8Array and creates
+  a Blob snapshot, potentially making another full copy. Heavy hashing and file
+  processing must run in workers. Verify bounded worker concurrency and
   stalled-worker recovery, static packaging, license notices and peak memory;
   do not describe it as complete changed-chunk sync.
 - Remove the CAD host's temporary 8 MiB/full-hash research limit safely; retain
