@@ -29,7 +29,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Replicad | Workflow checked | Preview shows approximate solid extents; export defaults beside the project. Limited model generator, not general CAD or manufacturing validation. |
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Temporary workspace read failures offer retry; undo history and manufacturing correctness remain unverified. |
-| G-code Preview | Workflow checked | Temporary restore failures offer Reload; refuses G29/G30 probing found in some slicer files; supports a subset and does not validate machine safety. |
+| G-code Preview | Workflow checked | Temporary restore failures offer Reload; ordinary preview refuses G29/G30; an explicitly confirmed hypothetical view handles a narrow subset and is not machine validation. |
 | Arduino Simulator | Workflow checked | D2/D3 driven-input exercise executes real AVR firmware; D13 shows driven-high output. No analog/electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Folder choices reject stale selections; firmware/peripheral support partial and unsaved flash cannot be recovered after a crash. Physical hardware unverified. |
 | Digital Logic | Workflow checked | Examples include an enabled 2-to-4 decoder; truth tables can be saved. Combinational JSON only; no hardware timing validation. |
