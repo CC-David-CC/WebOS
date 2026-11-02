@@ -1,6 +1,6 @@
 # Experience needs — 3rd-to-5th-grade learning games
 
-This discovery pass describes what the six planned games need as experiences,
+This discovery pass describes what the seven planned games need as experiences,
 not just what their rules models can compute. It is intentionally wider than
 the current core plans and the 28-game desktop review. Anything marked
 **core-visible** belongs in the model layer and can be tested without a UI;
@@ -91,16 +91,23 @@ common report or learning-target contract.
 - Explanation must display the common denominator used by the rule model.
 - Hints can remove one wrong choice for choice-based tasks.
 
-### Pocket Conquest
+### Pocket Conquest (adult)
 
 - Turn feedback names the phase (Reinforce, Attack, Fortify) and shows what the
   AI did, including the dice values.
 - Before a battle, the game can show the exact odds from the bounded dice
   model; the odds are informational and never decide the roll.
 - Captures and eliminations are explained with the armies before and after.
-- There is no gore, weapon, or real-war imagery. Defeated units are returned
-  to a "garage" or "table edge," not destroyed.
-- AI difficulty is labeled Easy/Normal/Determined, not Dumb/Smart.
+- This is the adult tabletop version, so the Risk fiction stays; keep the
+  imagery abstract rather than graphic.
+
+### Tile Islands (grades 3–5)
+
+- Same bounded dice and turn structure as Pocket Conquest, with counters,
+  claims, and islands instead of armies, attacks, and territories.
+- A round ends at 9 tiles or 8 turns, so sessions stay short.
+- No player is eliminated. Results are win, friendly win, or draw.
+- Feedback explains what happened without combat language.
 
 ### Rule Detective
 
@@ -141,7 +148,7 @@ common report or learning-target contract.
   touch targets; for word/math games, no tiny text fields.
 - Sound starts muted and is unlocked by a user gesture. Visual feedback never
   depends on sound.
-- No XR requirement for these six games.
+- No XR requirement for these seven games.
 
 ## Accessibility needs
 
@@ -156,7 +163,7 @@ common report or learning-target contract.
 
 ## Privacy and classroom needs
 
-- All six games run locally. There is no network AI, leaderboard, analytics,
+- All seven games run locally. There is no network AI, leaderboard, analytics,
   or third-party asset fetch.
 - Save files contain the logical session and learning report, no personal
   narrative, photo, or executable content.
