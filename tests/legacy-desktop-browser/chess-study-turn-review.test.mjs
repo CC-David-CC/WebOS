@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';import puppeteer from 'puppeteer-core';
-const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18414/',phone=!!process.env.CODI_PHONE;if(!['http://127.0.0.1','https://ksu.codes'].includes(new URL(base).origin))throw Error('Unexpected test origin');
+const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18414/',phone=!!process.env.CODI_PHONE,target=new URL(base);if(!['127.0.0.1','localhost','[::1]'].includes(target.hostname)&&target.origin!=='https://ksu.codes')throw Error('Unexpected test origin');
 const b=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19414'}),c=await b.createBrowserContext(),p=await c.newPage(),errors=[],user='turn'+Date.now().toString().slice(-9)+process.pid;p.on('pageerror',e=>errors.push(e.message));
 async function click(label){await p.evaluate(label=>{const e=[...document.querySelectorAll('.chess-study button')].find(x=>x.textContent===label);if(!e)throw Error('Missing '+label);e.click()},label)}
 async function square(name){const el=await p.$('.chess-board');await el.scrollIntoView();const box=await el.boundingBox(),file='abcdefgh'.indexOf(name[0]),row=8-Number(name[1]),x=box.x+(file+.5)*box.width/8,y=box.y+(row+.5)*box.height/8;if(phone)await p.touchscreen.tap(x,y);else await p.mouse.click(x,y)}

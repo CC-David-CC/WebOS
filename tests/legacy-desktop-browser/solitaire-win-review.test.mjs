@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';import puppeteer from 'puppeteer-core';
-const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18413/',phone=!!process.env.CODI_PHONE;
-if(!['http://127.0.0.1','https://ksu.codes'].includes(new URL(base).origin))throw Error('Unexpected test origin');
+const base=process.env.CODI_TEST_URL||'http://127.0.0.1:18413/',phone=!!process.env.CODI_PHONE,target=new URL(base);
+if(!['127.0.0.1','localhost','[::1]'].includes(target.hostname)&&target.origin!=='https://ksu.codes')throw Error('Unexpected test origin');
 const b=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19255'}),contexts=[],user='solwin'+Date.now().toString().slice(-8)+process.pid,errors=[];
 async function login(p,register){p.on('pageerror',e=>errors.push(e.message));await p.evaluateOnNewDocument(()=>{const f=window.fetch;window.fetch=(u,...a)=>String(u).endsWith('assets/terminal/v2/image.json')?Promise.resolve(new Response('',{status:404})):f(u,...a)});await p.goto(base);await p.waitForSelector('.login-toggle');if(register)await p.click('.login-toggle');await p.type('[aria-label=Username]',user);await p.type('[aria-label=Password]','test1234');if(register)await p.type('[aria-label="Confirm password"]','test1234');await p.click('.login-form button[type=submit]');await p.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:30000})}
 async function card(p,x,y){const el=await p.$('.solitaire-board');await el.scrollIntoView();const box=await el.boundingBox(),cx=box.x+x*box.width/636,cy=box.y+y*box.height/620;if(phone)await p.touchscreen.tap(cx,cy);else await p.mouse.click(cx,cy)}
