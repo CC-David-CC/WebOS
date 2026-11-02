@@ -60,3 +60,7 @@ The `read-results` addition has local desktop/emulated-phone tests for paginatio
 ## Document Editor prototype
 
 Document Editor exposes bounded plain-text `inspect` and revision-checked `append-paragraph` commands. The edit appends a text paragraph rather than replacing the rich document; reading text omits formatting and images. Local desktop and emulated-phone tests verify heading/bold preservation, stale revision refusal, normal save/sync and reopening. Dedicated local and public desktop/emulated-phone tests verify the focused-editor guard and undo/redo of a command-inserted paragraph. The same desktop and emulated-phone account workflows passed publicly in live release `490d6a499ec2d48723825f55900b881e71b7e0f5caa8a08cf98ce975169f4fdf`. This is not a full rich-document API or remote-agent access.
+
+## G-code Preview prototype
+
+G-code Preview exposes `inspect` for the currently displayed preview and `set-travel` for its travel overlay. The normal preview reports parser layer and command counts, not estimates or machine validation; hypothetical previews are labeled separately. Local desktop and emulated-phone tests open a My files toolpath, toggle travel, reject invalid command input, confirm an unsupported probing file leaves the earlier preview in place, and reopen the original file. Hypothetical-mode command inspection and physical touch are not verified. The adapter is not yet deployed or connected to an external agent.
