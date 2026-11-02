@@ -33,9 +33,11 @@ command, and the hand-staged test build is not release-qualified.
 - Qualify the combined JSketcher build provenance, connect a real export command, and
   independently inspect its 3MF structure, units, materials and geometry.
 - Prove reliable 128 MiB and concurrent-user sync, interruption and recovery,
-  cancellation, cache eviction and external-writer behavior. Reserve bounded
-  staging capacity before copying: the prototype's 512 MiB cache limit does not
-  bound concurrent in-flight copies or all open descriptors.
+  cancellation, cache eviction and external-writer behavior. The newer research
+  cache reserves within a 1 GiB logical payload budget before staging and counts
+  active leases, with a separate 2 GiB free-space reserve. This is not a hard
+  physical disk reservation against unrelated writers; real deployment settings,
+  filesystem overhead, process crashes and sustained concurrency still need review.
 - Avoid full-file JavaScript allocations and repeated whole-file re-chunking;
   the current client reduces transferred data but does not meet the memory and
   incremental-computation goal. Its current integrity check still reads the
