@@ -130,6 +130,11 @@ ordinary delete of an unresolved conflict is also being guarded. The newer
 server candidate batches up to eight authenticated chunk reads and reserves
 space for its own snapshot/write temporary files. Its 5 GiB admission floor is
 per process, not a global guarantee against other processes or mount changes.
+Browser candidate `f638742ec` passed signed conflict-delete and lost-reply
+recovery tests, and batched download tests, in a fixture; final joint testing
+and independent review remain. Server candidate `da91da7f6` also rejects
+nested account mounts and has a tested beta switch transaction model. The
+protected host adapter and browser/server rollout have not been completed.
 
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
