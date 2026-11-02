@@ -85,3 +85,7 @@ seven npm notice candidates, bundled external dependencies, runtime behavior
 and source obligations before distribution. Obtain an appropriate review of
 license and attribution obligations, preserve exact license texts alongside
 any distributed binaries, and repeat the inventory against the final build.
+
+## Later local candidate
+
+The experimental host pin was later advanced to `ceac5a1bd1b4b9907963a9b38cbf47eef2384a04` to include the fourth-power correction from [upstream PR #216](https://github.com/xibyte/jsketcher/pull/216) and its regression test. The new local build receipt SHA-256 is `96f8a7178e611c69de33e17ad8a987ec5db7c52a5d0a3cfef7ea06e23312a326`. The detailed inventory above was made against the earlier build; it is not a fresh complete audit of the new bundle. The same provenance and distribution gates remain.
