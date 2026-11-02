@@ -123,6 +123,13 @@ A forced read 429 succeeded with a fresh proof after about 61 seconds, while
 write retry was suppressed and account invalidation cancelled a waiting read.
 Memory savings were not established; stalled-stream, truncation, cross-device
 throttling and latency qualification remain, and this client is not deployed.
+Follow-up `63f278ac2` tested account-change cancellation of a queued lock and
+stalled download, plus malformed/short/interrupted stream rejection. Review
+found JSON authorization and uploads still need cancellation and an explicit
+uncertain-result outcome for dispatched mutations; that work is in progress.
+Strict browser memory bounds may require an account-scoped temporary OPFS
+design with verified publication, quota handling and crash cleanup; Blob
+backing alone does not prove a bound.
 
 Next beta storage candidate: a minimal transfer server based on the deployed
 beta worker was built reproducibly (`9db35b5ba`; artifact begins `2bb2e9af`).
