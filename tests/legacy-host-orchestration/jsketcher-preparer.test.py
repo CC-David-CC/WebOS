@@ -13,6 +13,11 @@ with tempfile.TemporaryDirectory() as td:
  run('git','add','.',cwd=numeric);run('git','commit','-qm','fixture',cwd=numeric)
  m.NUMERIC_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=numeric,text=True).strip();m.NUMERIC_INPUT_SHA256=hashlib.sha256(b'abcd').hexdigest();m.NUMERIC_NOTICE_SHA256={k:hashlib.sha256((numeric/k).read_bytes()).hexdigest() for k in ['license.txt','resources/LICENSE.quadprog']}
  m.FORK_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip();m.ENGINE_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=engine,text=True).strip();m.ENGINE_SHA256={n:hashlib.sha256(v.encode()).hexdigest() for n,v in [('occt.wasm','wasm'),('occt.js','js')]}
+ manifold=root/'manifold';manifold.mkdir()
+ for name,content in [('manifold.js','fixture js'),('manifold.wasm','fixture wasm'),('manifold-source.zip','fixture source'),('clipper2-source.zip','fixture clipper')]: (manifold/name).write_text(content)
+ receipt={'manifoldCommit':m.MANIFOLD_COMMIT,'clipperCommit':m.CLIPPER_COMMIT,'jsSha256':hashlib.sha256(b'fixture js').hexdigest(),'wasmSha256':hashlib.sha256(b'fixture wasm').hexdigest(),'flags':['-sDYNAMIC_EXECUTION=0','-sEMBIND_AOT=1']}
+ (manifold/'build-receipt.json').write_text(json.dumps(receipt))
+ m.MANIFOLD_INPUTS={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in manifold.iterdir()}
  tools=root/'bin';tools.mkdir();npm=tools/'npm';npm.write_text('''#!/usr/bin/env python3
 import sys,pathlib,shutil
 from pathlib import Path
@@ -25,7 +30,11 @@ elif sys.argv[1]=='run':
 ''');npm.chmod(0o755);node=tools/'node';node.write_text('#!/bin/sh\necho v0.fixture\n');node.chmod(0o755)
  oldpath=os.environ['PATH'];os.environ['PATH']=str(tools)+os.pathsep+oldpath
  m.HERE=root/'output';m.HERE.mkdir();m.DESTINATION=m.HERE/'node_modules'/'jsketcher-build';m.PREFIX='node_modules/jsketcher-build/'
- def build():sys.argv=['prepare.py','--repo',str(repo),'--engine-repo',str(engine),'--numeric-repo',str(numeric),'--experimental-local-only','--update-manifest'];m.main()
+ def build():sys.argv=['prepare.py','--repo',str(repo),'--engine-repo',str(engine),'--numeric-repo',str(numeric),'--experimental-local-only','--update-manifest','--manifold-research-input',str(manifold)];m.main()
+ (manifold/'manifold.js').write_text('tampered')
+ try:build();raise AssertionError('tampered Manifold input accepted')
+ except RuntimeError as e:assert 'pinned hash' in str(e)
+ (manifold/'manifold.js').write_text('fixture js')
  build();r1=(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();man=(m.HERE/'app.json').read_bytes();build();assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();assert man==(m.HERE/'app.json').read_bytes()
  old_replace=m.os.replace
  def fail_once(src,dst):
