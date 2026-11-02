@@ -42,13 +42,22 @@ changes and return exact commit, tests and limitations; the owner integrates and
 tests them without overwriting other work. A release does not wait for unrelated
 backlog items, but must meet the safety and compatibility gates for its scope.
 
-**Current planning order on resume:** (1) protect committed notebook data and
-document its legacy-client limits; (2) qualify bounded file capture and safe
-versioned rollout in parallel with independent app workflows; (3) integrate
-session/lifecycle protections and exercise real cross-app failures; (4) run
-classroom load and large-file tests on the integrated system; (5) advance the
-parametric enclosure and material-aware 3MF vertical slice. This is a priority
-order, not a requirement that independent app work wait for storage completion.
+**Current planning order on resume: storage first.** Make dependable account
+storage the first major integration gate before broad app integration or CAD
+delivery. The gate is met only when actual browser/server workflows preserve
+saved data and account isolation, safely handle versions/conflicts, interruption
+and recovery, keep heavy work off the UI thread, and demonstrate bounded
+resources and responsive behavior at stated limits. Include the notebook's
+committed-working-file protection, efficient transfer and compatible rollout;
+do not claim a complete changed-chunk system merely because capture works.
+
+After storage, integrate shared session/lifecycle safety and test cross-app
+failures, then qualify apps one workflow at a time, classroom load, and the
+parametric enclosure and material-aware 3MF slice. App investigation, design,
+isolated fixes and independent tests may proceed in parallel when they do not
+depend on unsettled storage contracts; do not release a dependent workflow or
+create an app-specific competing storage system to bypass the storage gate.
+Refine the ordering when actual evidence shows a dependency is different.
 
 ## Progress ledger — 2026-11-02 (paused)
 
