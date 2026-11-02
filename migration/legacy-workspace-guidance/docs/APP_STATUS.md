@@ -1,6 +1,6 @@
 # App review status
 
-Updated 2026-11-01. This is a compact index of the current review, not a claim
+Updated 2026-11-02. This is a compact index of the current review, not a claim
 that every feature has been tested. “Workflow checked” means the listed primary
 workflow has desktop and emulated-phone evidence; most also have live account
 checks. Physical touch is not established by emulation. The detailed test scope,
@@ -27,6 +27,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Excalidraw | Workflow checked | Static self-contained SVG insertion is supported; complex SVG, unknown fields, image memory and provider audit remain partial. |
 | SVG Editor | Workflow checked | JPEG export warns about lost transparency and lossy compression. SMIL and common inline CSS animation are rejected; other CSS and complex SVG remain unverified. |
 | Replicad | Workflow checked | Preview shows approximate solid extents; export defaults beside the project. Limited model generator, not general CAD or manufacturing validation. |
+| jSketcher | Research candidate, not deployed | Local real-account modeling, My files and responsive-layout tests passed for selected OCC and native workflows. Physical touch, broader CAD/DXF features, 128 MiB DXF import and engine source/license review remain open. |
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Temporary workspace read failures offer retry; undo history and manufacturing correctness remain unverified. |
 | G-code Preview | Workflow checked | Temporary restore failures offer Reload; ordinary preview refuses G29/G30; an explicitly confirmed hypothetical view handles a narrow subset and is not machine validation. |
