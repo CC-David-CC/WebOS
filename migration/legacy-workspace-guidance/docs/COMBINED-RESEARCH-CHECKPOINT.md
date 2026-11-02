@@ -49,10 +49,12 @@ the hand-staged test build is not release-qualified.
   active leases, with a separate 2 GiB free-space reserve. This is not a hard
   physical disk reservation against unrelated writers; real deployment settings,
   filesystem overhead, process crashes and sustained concurrency still need review.
-- Avoid full-file JavaScript allocations and repeated whole-file re-chunking;
-  the current client reduces transferred data but does not meet the memory and
-  incremental-computation goal. Its current integrity check still reads the
-  whole reconstructed file. Do not describe it as complete changed-chunk sync.
+- Avoid full-file JavaScript allocations and repeated whole-file re-chunking.
+  A research candidate streams final SHA-256 verification in bounded 256 KiB
+  pieces, but its hash work still runs on the main thread and old files are
+  re-chunked. It does not meet the full incremental-computation goal. Verify
+  worker/static packaging, license notices, responsiveness and peak memory;
+  do not describe it as complete changed-chunk sync.
 - Remove the CAD host's temporary 8 MiB/full-hash research limit safely; retain
   account isolation, verified saves, explicit assignment repair and failure
   recovery. Do not infer topology equivalence merely from a producer ID.
