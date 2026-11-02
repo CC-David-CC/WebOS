@@ -50,3 +50,7 @@ Spreadsheet provides `inspect`, `read-cell`, and revision-checked `set-cell` com
 ## Replicad prototype
 
 Replicad exposes `inspect` and revision-checked `set-parameters` for its box/cylinder primitive project. It validates the whole model before changing the UI and refuses edits while a parameter field is active. The command changes parameters only; preview and save use the normal controls. Local desktop and emulated-phone tests cover invalid dimensions, stale edits, a 30 × 20 × 10 mm model preview and 6,000 mm³ volume, normal save/sync and fresh-session reopen. The active-parameter guard is implemented but not independently tested. The same public desktop and emulated-phone workflows passed on live release `96542d4bdb665bd55f218ee7293b6f8953c03506ec63d43e4ad872f28c4232b2`. This is not a general CAD API, a manufacturing check or a remote agent endpoint.
+
+## Data Explorer prototype
+
+Data Explorer exposes in-page `inspect`, revision-checked `set-query` and `run-query` commands for the active account's open analysis. SQL uses the existing single-SELECT validation; results update the normal viewer. Local desktop and emulated-phone tests exercised a grouped query, checked the actual result rows, exported CSV to My files and synced it. Commands do not yet return result rows, save analysis or provide external-agent access. Concurrent edits during a query and physical touch remain unverified. This adapter is not yet deployed.
