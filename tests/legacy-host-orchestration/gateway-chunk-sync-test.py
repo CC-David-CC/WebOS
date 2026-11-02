@@ -55,5 +55,32 @@ class Chunks(f.HTTP):
   pair=await asyncio.gather(self.delta(alice,key,'a.bin',result['sha256'],left,literal(left)),self.delta(alice,key,'a.bin',result['sha256'],right,literal(right)))
   self.assertEqual(sorted(x[0] for x in pair),[200,409],pair)
   print('changed upload bytes:',len(patch),'changed download bytes:',downloaded,'original bytes:',len(data))
+ async def test_cached_snapshot_external_edit_and_permission(self):
+  from unittest.mock import patch
+  session,key=await self.enter('cacheuser');data=random.Random(9).randbytes(512*1024)
+  status,created,_,_=await self.binary_upload(session,key,'cache.bin',data);self.assertEqual(status,200);sha=created['sha256']
+  with patch.object(self.store,'open_read_snapshot',wraps=self.store.open_read_snapshot) as opened:
+   status,m,_=await self.manifest(session,key,'cache.bin',sha);self.assertEqual(status,200)
+   for c in m['chunks'][:3]:self.assertEqual((await self.part(session,key,'cache.bin',sha,c))[0],200)
+   self.assertEqual(opened.call_count,1,'cache hit must not hash entire file again')
+   sub=session['identity']['sub'];path=self.store.users_path/sub[5:].replace('-','')/'cache.bin';before=path.stat()
+   # Simulate a host write between cache lookup and the post-read check.
+   original=self.store.file_identity;calls=0
+   def racing(*args,**kwargs):
+    nonlocal calls
+    calls+=1
+    if calls==2:
+     with path.open('r+b') as out:out.write(bytes([data[0]^1]))
+    return original(*args,**kwargs)
+   with patch.object(self.store,'file_identity',side_effect=racing):
+    self.assertNotEqual((await self.part(session,key,'cache.bin',sha,m['chunks'][0]))[0],200)
+   # Restore bytes via a fresh direct host write, then get a new valid manifest.
+   with path.open('r+b') as out:out.write(data[:1])
+   status,m,_=await self.manifest(session,key,'cache.bin',sha);self.assertEqual(status,200);before=path.stat()
+   with path.open('r+b') as out:out.seek(0);out.write(bytes([data[0]^1]))
+   import os;os.utime(path,ns=(before.st_atime_ns,before.st_mtime_ns))
+   self.assertNotEqual((await self.part(session,key,'cache.bin',sha,m['chunks'][0]))[0],200,'same-size external mutation must invalidate snapshot')
+   self.store.set_permission(sub,'read',False)
+   self.assertNotEqual((await self.part(session,key,'cache.bin',sha,m['chunks'][0]))[0],200,'cache must recheck permission')
 if __name__=='__main__':
- result=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite([Chunks('test_signed_chunks_changed_upload_download_and_conflicts')]));sys.exit(not result.wasSuccessful())
+ result=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite([Chunks('test_signed_chunks_changed_upload_download_and_conflicts'),Chunks('test_cached_snapshot_external_edit_and_permission')]));sys.exit(not result.wasSuccessful())
