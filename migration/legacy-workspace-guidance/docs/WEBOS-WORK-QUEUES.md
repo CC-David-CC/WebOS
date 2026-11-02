@@ -90,8 +90,12 @@ users, so preserving an old-user upgrade path is not a prerequisite for
 replacing its test services. Preserve existing on-disk data and configuration
 unless specifically authorized otherwise.
 
-Beta provisioning progress: DNS resolves, but public HTTPS and the beta site
-are not yet active. An isolated signed-browser fixture verified separate beta
+Beta provisioning progress: `https://beta.ksu.codes/` is publicly routed and
+trusted HTTPS returned 200 on 2026-11-02. The initial activation rolled back
+cleanly while its certificate was issuing; retry passed, the renewal timer was
+restored, and existing sites passed health checks. Activation evidence is in
+`research/beta-isolated-hosting/ACTIVATION-2026-11-02.md` on branch
+`research/beta-hosting-isolation` at `8ce4f843a`. An isolated signed-browser fixture verified separate beta
 accounts and files, host-only secure cookies, and rejection of cross-origin
 tokens. A managed-route fixture also verified file create/read/replace and
 conflict handling against the corrected guest source. Beta
@@ -104,7 +108,7 @@ network access. Three beta services are now installed and running on private
 loopback ports with separate locked users, keys and data; signed file operations,
 cross-account denial and service restart were tested against these real
 services. Their units are enabled at boot, though an actual host reboot has
-not been tested. Public TLS, desktop boot and restart
+not been tested. The full public desktop flow, desktop boot and restart
 recovery still require testing. The beta candidate does not yet implement
 changed-chunk synchronization.
 
