@@ -111,8 +111,8 @@ services. Their units are enabled at boot, though an actual host reboot has
 not been tested. Public Chromium registration, file creation/edit/save, sync,
 fresh-context sign-in/reopen, cross-account read denial and v86 shell readiness
 passed; the disposable test file was deleted, while two test accounts remain.
-The beta candidate does not yet implement
-changed-chunk synchronization.
+The beta server now supports changed-chunk operations; its currently served
+browser client does not yet provide the tested end-to-end workflow.
 
 Next beta storage candidate: a minimal transfer server based on the deployed
 beta worker was built reproducibly (`9db35b5ba`; artifact begins `2bb2e9af`).
@@ -121,7 +121,7 @@ interruption and gateway process death before/after publication; a browser
 fixture also covers interrupted/tampered reads and lost-reply retry. The
 production CLI's 2,048-request/minute shared limit may throttle chunk reads
 and multiple users (256 was the test fixture's class default);
-large-file, concurrency, further conflict/recovery tests and beta deployment
+large-file, concurrency, further conflict/recovery tests and client deployment
 remain open. These process-kill tests do not prove power-loss durability.
 The browser test exposed a lost-reply followed by a later local edit that
 preserved both versions but incorrectly raised conflict. A research fix records
@@ -146,7 +146,12 @@ one-byte change sent about 66 KiB on upload and received about 489 KiB on
 download (instrumented application body bytes; not full wire accounting).
 Sampled browser RSS peaked at approximately 2.04 GiB; shared pages may be
 counted more than once, but memory remains a significant open issue. No 128 MiB
-test was run on the live beta, and these storage changes remain undeployed.
+test was run on the live beta. The beta gateway was switched to `c0465afe…`
+and passed signed delta/batch health; main was unchanged. Its first attempted
+switch rolled back after an immediate startup probe raced the listener, and
+reviewed recovery and a bounded readiness wait preceded the successful retry.
+The updated browser client is not deployed; its experimental chunked initial
+download encountered HTTP 429 during a 128 MiB test and remains disabled.
 
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
