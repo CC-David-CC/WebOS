@@ -15,7 +15,7 @@ def read(path,mode=0o600,maximum=65536):
 source=Path(os.environ['CODI_CHUNK_WORKER'])
 with tempfile.TemporaryDirectory(prefix='codi-hash-inventory-') as tmp, patch.object(op,'protected',protected),patch.object(op,'read',read):
  folder=Path(tmp)/'worker';shutil.copytree(source,folder);pin=hashlib.sha256((folder/'files-service.json').read_bytes()).hexdigest();op.verify_worker(folder,pin)
- for name in ('core.mjs','shared.mjs','LICENSE.txt'):
+ for name in ('core.mjs','shared.mjs','verify-worker.mjs','LICENSE.txt'):
   p=folder/'gateway_service/vendor/js-sha256'/name;data=p.read_bytes();p.unlink()
   try:op.verify_worker(folder,pin);raise AssertionError('Missing '+name+' accepted')
   except (ValueError,FileNotFoundError):pass
@@ -27,4 +27,4 @@ with tempfile.TemporaryDirectory(prefix='codi-hash-inventory-') as tmp, patch.ob
   except (ValueError,FileNotFoundError):pass
   p.write_bytes(data);manifest.write_bytes(original)
  op.verify_worker(folder,pin)
-print('PASS exact worker inventory rejects both missing hash modules and missing license')
+print('PASS exact worker inventory rejects missing hash/worker modules and license')
