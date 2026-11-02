@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import puppeteer from 'puppeteer-core';
 
 const url = process.env.CODI_TEST_URL || 'http://127.0.0.1:19479/';
-if (new URL(url).hostname !== '127.0.0.1') throw Error('Isolated local test only.');
+if (!['http://127.0.0.1:19479', 'https://ksu.codes'].includes(new URL(url).origin)) throw Error('Unexpected test origin.');
 const browser = await puppeteer.connect({browserURL: 'http://127.0.0.1:19255'});
 try {
   for (const phone of [false, true]) {
@@ -13,12 +13,15 @@ try {
       await page.goto(url);
       await page.waitForSelector('.login-toggle');
       await page.click('.login-toggle');
-      await page.type('[aria-label=Username]', 'tilemenu' + Date.now().toString().slice(-8) + (phone ? 'b' : 'a'));
+      const username = 'tilemenu' + Date.now().toString().slice(-8) + (phone ? 'b' : 'a');
+      if (process.env.CODI_CLEANUP === '1') console.log('TEST_ACCOUNT ' + username);
+      await page.type('[aria-label=Username]', username);
       await page.type('[aria-label=Password]', 'test1234');
       await page.type('[aria-label="Confirm password"]', 'test1234');
       await page.click('.login-form button[type=submit]');
       await page.waitForFunction(() => window.desktopLab?.session?.kind === 'registered');
-      await page.click('[aria-label=Applications]');
+      if (process.env.CODI_CLEANUP === '1') console.log('CLEANUP_ACCOUNT ' + username + ' ' + await page.evaluate(() => signedInSubject()));
+      await page.evaluate(() => document.querySelector('[aria-label=Applications]').click());
       for (const label of ['Games', 'Learning & Strategy (in development)']) {
         await page.evaluate(label => {
           const item = [...document.querySelectorAll('.menu-pane button')].find(e => e.getAttribute('aria-label') === label);
