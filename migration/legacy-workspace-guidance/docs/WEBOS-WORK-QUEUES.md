@@ -150,6 +150,12 @@ generation after a dedicated Chrome process was killed during replacement.
 The 1.26 GiB sampled Chrome RSS is not comparable with the earlier network
 test or proof of a hard bound. Orphan cleanup, server sync, production account
 isolation, cross-store atomicity and host power-loss behavior remain open.
+Research cleanup `f489097e` journals candidates and only collects explicitly
+staged, never-published generations under an exclusive account lock. Tests
+retain unknown and published files, protect live writers, and cover browser
+SIGKILL before and after pointer publication. Account-scoped scans and late
+IndexedDB-upgrade rejection were added after review. Independent review and
+server integration remain; this is not a host power-loss guarantee.
 
 Earlier 2026-11-02 research progress (deployment status superseded by the beta
 status above): ordinary writes refuse to replace a local
