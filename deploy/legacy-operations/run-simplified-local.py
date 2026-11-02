@@ -12,6 +12,7 @@ import os
 import re
 import socket
 from pathlib import Path
+from urllib.parse import urlsplit
 import shutil
 import sys
 import threading
@@ -23,6 +24,7 @@ sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(ROOT/"codiserver-server-v0.3.0"))
 from codiauth.service import Config
 from origin_service.lifecycle import Service
+from origin_service.microduck_config import frame_policy, runner_origin
 from origin_service.gateway_authority import GatewayAuthority
 from origin_service.http_server import BoundedServer, QuietHandler
 from gateway_service.auth import initialize_ledger, MAX_REQUEST_BYTES
@@ -33,7 +35,7 @@ from gateway_service.http import FileGateway
 spec=importlib.util.spec_from_file_location('codi_staging',ROOT/'scripts/serve-connected.py')
 staging=importlib.util.module_from_spec(spec);spec.loader.exec_module(staging)
 
-async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None,browser_relay=False,apps_bundle=None,report_admin=None,listen_socket=None):
+async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None,browser_relay=False,apps_bundle=None,report_admin=None,listen_socket=None,microduck_runner_origin=None):
     origin=f'http://127.0.0.1:{port}'
     runtime=ROOT/'.build'/('simplified-local-test-'+str(port) if isolated else 'simplified-local');runtime.mkdir(parents=True,exist_ok=True,mode=0o700)
     public=runtime/'public'
@@ -52,6 +54,7 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
         def config(self):
             config=super().config();config['gateway']={'version':'codi-user-files/1','basePath':'/gateway','fileBytes':128*1024*1024}
             if browser_sha:config['browserRelay']={'version':'codi-browser-relay/1','basePath':'/browser-relay','policySHA256':browser_sha}
+            if microduck_runner_origin:config['microduck']={'runnerOrigin':microduck_runner_origin}
             return config
     issuer=Issuer(Config(runtime/'issuer',public,origin=origin,rate_per_minute=int(os.environ.get('CODI_TEST_ISSUER_RATE','1000')) if isolated else 1000))
     application=GatewayAuthority(issuer)
@@ -103,6 +106,9 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
                 csp=response_headers.get('Content-Security-Policy','')
                 if "script-src 'self' 'wasm-unsafe-eval'" not in csp:raise RuntimeError('Unexpected browser worker security policy')
                 response_headers['Content-Security-Policy']=csp.replace("script-src 'self' 'wasm-unsafe-eval'", "script-src 'self' blob: 'wasm-unsafe-eval'")
+            if microduck_runner_origin and request.path in ('/','/index.html'):
+                csp=response_headers.get('Content-Security-Policy','')
+                response_headers['Content-Security-Policy']=frame_policy(csp,microduck_runner_origin)
             response=web.StreamResponse(status=upstream.status,headers=response_headers)
             await response.prepare(request)
             async for chunk in upstream.content.iter_chunked(65536):await response.write(chunk)
@@ -135,7 +141,15 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
         if geo:geo.close()
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');parser.add_argument('--browser-relay',action='store_true',help='Enable the experimental registered-only Browser relay locally');parser.add_argument('--apps-bundle',type=Path,help='Optional separately built app catalog');parser.add_argument('--report-admin',help='Registered test subject for the isolated report fixture');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');parser.add_argument('--browser-relay',action='store_true',help='Enable the experimental registered-only Browser relay locally');parser.add_argument('--apps-bundle',type=Path,help='Optional separately built app catalog');parser.add_argument('--report-admin',help='Registered test subject for the isolated report fixture');parser.add_argument('--microduck-runner-origin',help='Separate loopback runner origin for isolated Microduck tests');args=parser.parse_args()
+    if args.microduck_runner_origin:
+        try:
+            parsed=urlsplit(args.microduck_runner_origin)
+            valid=args.isolated and parsed.scheme=='http' and parsed.hostname=='127.0.0.1' and parsed.port and parsed.port!=args.port and args.microduck_runner_origin==f'http://127.0.0.1:{parsed.port}'
+        except ValueError:valid=False
+        if not valid:parser.error('Microduck runner requires isolated loopback and a different port')
+        try:runner_origin(args.microduck_runner_origin,f'http://127.0.0.1:{args.port}',allow_loopback=True)
+        except ValueError as error:parser.error(str(error))
     if not 1<=args.port<=65535:parser.error('Invalid port')
     if args.report_admin and not args.browser_relay:parser.error('Report fixture requires Browser relay')
     # Reserve the port before touching the per-port public tree. Otherwise a
@@ -146,5 +160,5 @@ if __name__=='__main__':
             listen_socket.bind(('127.0.0.1', args.port));listen_socket.listen(socket.SOMAXCONN)
         except OSError as error:
             parser.exit(1, f'Cannot start preview on 127.0.0.1:{args.port}: {error}\n')
-        try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip,args.browser_relay,args.apps_bundle,args.report_admin,listen_socket))
+        try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip,args.browser_relay,args.apps_bundle,args.report_admin,listen_socket,args.microduck_runner_origin))
         except KeyboardInterrupt:pass
