@@ -143,7 +143,13 @@ The 5 GiB disk admission floor is per participating gateway process; unrelated
 processes, metadata writes and privileged mount changes can consume space. The
 host currently has little headroom. Strict browser memory bounds may require an
 account-scoped temporary OPFS design with verified publication, quota handling
-and crash cleanup; Blob backing alone does not establish a bound.
+and crash cleanup; Blob backing alone does not establish a bound. Isolated
+prototype `3db7f4a99` uses worker chunks and CAS-published verified generations.
+It reopened a 128 MiB file with the right hash and preserved a previous
+generation after a dedicated Chrome process was killed during replacement.
+The 1.26 GiB sampled Chrome RSS is not comparable with the earlier network
+test or proof of a hard bound. Orphan cleanup, server sync, production account
+isolation, cross-store atomicity and host power-loss behavior remain open.
 
 Earlier 2026-11-02 research progress (deployment status superseded by the beta
 status above): ordinary writes refuse to replace a local
