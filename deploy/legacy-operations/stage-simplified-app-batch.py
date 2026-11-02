@@ -29,6 +29,7 @@ p.add_argument('--desktop-style',type=Path,help='Reviewed desktop style.css to i
 p.add_argument('--desktop-style-base-sha256',help='Expected SHA-256 of the baseline style.css when replacing it')
 p.add_argument('--desktop-apps',type=Path,help='Reviewed desktop-apps.js to include with the batch')
 p.add_argument('--desktop-apps-base-sha256',help='Expected SHA-256 of the baseline desktop-apps.js when replacing it')
+p.add_argument('--new-command-registry',type=Path,help='New reviewed in-page command registry; fails if already present in baseline')
 p.add_argument('--catalog-loader',type=Path,help='Reviewed assets/desktop/apps.mjs catalog loader to include')
 p.add_argument('--catalog-loader-base-sha256',help='Expected SHA-256 of the baseline catalog loader')
 p.add_argument('--mirror',type=Path,help='Reviewed browser mirror module to include')
@@ -48,6 +49,7 @@ if bool(a.desktop_style)!=bool(a.desktop_style_base_sha256):raise ValueError('Su
 if a.desktop_style and (not re.fullmatch('[0-9a-f]{64}',a.desktop_style_base_sha256) or a.desktop_style.is_symlink() or not a.desktop_style.is_file() or a.desktop_style.stat().st_size>4*1024*1024 or digest(base/'style.css')!=a.desktop_style_base_sha256):raise ValueError('Desktop style or baseline hash mismatch')
 if bool(a.desktop_apps)!=bool(a.desktop_apps_base_sha256):raise ValueError('Supply both desktop-apps and its baseline hash')
 if a.desktop_apps and (not re.fullmatch('[0-9a-f]{64}',a.desktop_apps_base_sha256) or a.desktop_apps.is_symlink() or not a.desktop_apps.is_file() or a.desktop_apps.stat().st_size>4*1024*1024 or digest(base/'desktop-apps.js')!=a.desktop_apps_base_sha256):raise ValueError('Desktop apps or baseline hash mismatch')
+if a.new_command_registry and (a.new_command_registry.is_symlink() or not a.new_command_registry.is_file() or a.new_command_registry.stat().st_size>262144 or (base/'assets/desktop/command-registry.mjs').exists()):raise ValueError('Invalid new command registry or baseline already has one')
 if bool(a.catalog_loader)!=bool(a.catalog_loader_base_sha256):raise ValueError('Supply both catalog loader and its baseline hash')
 if a.catalog_loader and (not re.fullmatch('[0-9a-f]{64}',a.catalog_loader_base_sha256) or a.catalog_loader.is_symlink() or not a.catalog_loader.is_file() or a.catalog_loader.stat().st_size>4*1024*1024 or digest(base/'assets/desktop/apps.mjs')!=a.catalog_loader_base_sha256):raise ValueError('Catalog loader or baseline hash mismatch')
 if bool(a.mirror)!=bool(a.mirror_base_sha256):raise ValueError('Supply both mirror module and its baseline hash')
@@ -78,6 +80,7 @@ def replace_copy(source,destination):
 if a.desktop_app:replace_copy(a.desktop_app,out/'app.js')
 if a.desktop_style:replace_copy(a.desktop_style,out/'style.css')
 if a.desktop_apps:replace_copy(a.desktop_apps,out/'desktop-apps.js')
+if a.new_command_registry:shutil.copyfile(a.new_command_registry,out/'assets/desktop/command-registry.mjs')
 if a.catalog_loader:replace_copy(a.catalog_loader,out/'assets/desktop/apps.mjs')
 if a.mirror:replace_copy(a.mirror,out/'storage/browser/mirror.mjs')
 for app,record in records.items():
