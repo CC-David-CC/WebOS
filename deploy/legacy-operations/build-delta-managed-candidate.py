@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 BASE='8d977a271a776fd7265a775bc5c74d818abed9136049af3ae8adfd04cd9c0257'
 OPERATOR={'file_service/__init__.py':'8431c4ea8f8f8ef59bc11e6e177da9dd3fd2adcb11cae2fb2a5056130aacbfa5','scripts/manage-user-files.py':'f6db462426f8b98e1695c18eaa386deaa7bfa51952717147ccea81814f07eafc'}
-BASE_OPERATOR='a503ca0af5ead0d715005714dada13306796f264b8e3ec4c2b9877d65eb89517'
+PINS={'file_service/operator.py':'cc78d343b186d0374ed92c0b96de15c0d8deea273df0abb539a47ff80a5d2e58','gateway_service/http.py':'f4360fb9040fd311e1b6cb577b52776e353b3e5ec5fc7f575fd23c006baf3d94','gateway_service/client.mjs':'ab48fd037387da7d1ed3732b210fc3d9975eca28a828f122099cd893b5ac1903','gateway_service/delta.py':'43b23a4a739040888d31c7bf5c33b0c820e8f63ba0c299f72fe03b55d8e20d53'}
 EXPECTED={'gateway_service/__init__.py','gateway_service/auth.py','gateway_service/policy.py','gateway_service/user_store.py','gateway_service/http.py','gateway_service/transfers.py','gateway_service/client.mjs','codiserver-server-v0.3.0/codiauth/__init__.py','codiserver-server-v0.3.0/codiauth/jose.py','scripts/serve-user-files.py','requirements.lock'}
 CHANGED={'gateway_service/http.py','gateway_service/client.mjs'}
 def sha(raw):return hashlib.sha256(raw).hexdigest()
@@ -44,12 +44,14 @@ def build(base,worker,operator):
   p=ROOT/name
   if p.is_symlink() or not p.is_file():raise ValueError('Invalid candidate file')
   values[name]=p.read_bytes()
+  if sha(values[name])!=PINS[name]:raise ValueError('Candidate source differs: '+name)
  opvalues={}
  for name,pin in OPERATOR.items():
   data=(ROOT/name).read_bytes()
   if sha(data)!=pin:raise ValueError('Unrelated operator source drift: '+name)
   opvalues[name]=data
  opvalues['file_service/operator.py']=(ROOT/'file_service/operator.py').read_bytes()
+ if sha(opvalues['file_service/operator.py'])!=PINS['file_service/operator.py']:raise ValueError('Candidate operator source differs')
  workerpin=write_tree(Path(worker),'files-service.json','codi-private-file-service/1',values)
  try:operatorpin=write_tree(Path(operator),'file-operator.json','codi-file-operator/1',opvalues)
  except BaseException:shutil.rmtree(worker);raise
