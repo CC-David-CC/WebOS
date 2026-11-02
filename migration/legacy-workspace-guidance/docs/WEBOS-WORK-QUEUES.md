@@ -174,8 +174,9 @@ test was run on the live beta. The beta gateway was switched to `c0465afe…`
 and passed signed delta/batch health; main was unchanged. Its first attempted
 switch rolled back after an immediate startup probe raced the listener, and
 reviewed recovery and a bounded readiness wait preceded the successful retry.
-The updated browser client is not deployed; its experimental chunked initial
-download encountered HTTP 429 during a 128 MiB test and remains disabled.
+The guarded browser mirror is deployed on beta, but the updated gateway SDK
+is not; experimental chunked initial download encountered HTTP 429 during a
+128 MiB test and remains disabled.
 For an isolated beta client rollout, gateway bundle `3757bf02…` changes only
 the browser SDK, and content-addressed overlay `bc3c7e65…` holds its paired
 desktop loader/mirror without replacing shared main assets. Isolated signed
@@ -187,6 +188,12 @@ After introducing the guarded mirror, routing fresh clients back to the old
 mirror is not an acceptable automatic rollback. A guarded-client minimum floor
 and server rollback compatibility need qualification; old open tabs also need
 to be accounted for. The user states this is a test site with no real users.
+The guarded beta mirror was activated through the tested maintenance gate;
+activation evidence is `7ded4aec3` on `research/beta-hosting-isolation`.
+Public Chromium test `765d3aeab` verified file save/reopen, account isolation,
+Linux readiness, injected lost-reply reconciliation and conflict guards.
+The guarded loader is the rollback floor: do not route back to the old mirror.
+The gateway still serves the older SDK; the matching SDK is a separate step.
 Public Chromium smoke passed again after the worker switch, including fresh
 accounts, saved-file reopen, cross-account denial and v86 readiness. Its test
 file was removed; test accounts remain because account deletion has no verified
