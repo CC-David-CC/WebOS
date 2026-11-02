@@ -81,6 +81,15 @@ recovery, with heavy processing in workers. Work on these as one real
 browser-to-server flow, including existing-file updates and fresh-session
 reopening; other app and platform work waits unless needed for this flow.
 
+Latest direction: establish `beta.ksu.codes` as the test environment for
+iteration; after beta is established, qualify an upgrade path to the main
+`ksu.codes` site separately. DNS currently resolves both names to the same
+address, but HTTPS routing and any beta services/state must be verified and
+kept separate before beta is considered ready. The current site has no real
+users, so preserving an old-user upgrade path is not a prerequisite for
+replacing its test services. Preserve existing on-disk data and configuration
+unless specifically authorized otherwise.
+
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
 verified both versions and explicit resolution. A separate candidate reports
