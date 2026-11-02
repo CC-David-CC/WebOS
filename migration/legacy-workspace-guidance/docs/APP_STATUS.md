@@ -30,7 +30,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | jSketcher | Research candidate, not deployed | Local real-account modeling, My files and responsive-layout tests passed for selected OCC and native workflows. Physical touch, broader CAD/DXF features, 128 MiB DXF import and engine source/license review remain open. |
 | Kiri:Moto | Workflow checked | Temporary workspace read failures offer retry; printer profiles, output and physical touch need independent verification. |
 | Mesh:Tool | Workflow checked | Temporary workspace read failures offer retry; undo history and manufacturing correctness remain unverified. |
-| G-code Preview | Workflow checked | Temporary restore failures offer Reload; ordinary preview refuses G29/G30; an explicitly confirmed hypothetical view handles a narrow subset and is not machine validation. |
+| G-code Preview | Workflow checked | Live visibility handling pauses hidden previews and releases their graphics context; physical devices remain untested. Temporary restore failures offer Reload; ordinary preview refuses G29/G30; an explicitly confirmed hypothetical view handles a narrow subset and is not machine validation. |
 | Arduino Simulator | Workflow checked | D2/D3 driven-input exercise executes real AVR firmware; D13 shows driven-high output. No analog/electrical simulation or browser compilation. |
 | Pico Simulator | Workflow checked | Folder choices reject stale selections; firmware/peripheral support partial and unsaved flash cannot be recovered after a crash. Physical hardware unverified. |
 | Digital Logic | Workflow checked | Examples include a 4-to-1 multiplexer and an enabled 2-to-4 decoder; truth tables can be saved. Combinational JSON only; no hardware timing validation. |
@@ -42,7 +42,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Owl Companion | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Snake Garden | Preview | Authored Rive artwork and physical-device testing remain open. |
 | Physics Playground | Preview | XR and complete challenge acceptance remain open. |
-| Microduck | Live preview; primary account workflow checked | Public registered-account runner, server save/hash, fresh-session reopen and cross-account refusal passed. Opening .brf directly from Files and choosing a save filename are not yet supported. Physical touch, full simulation-state recovery and broader physical-model validation remain open. [Evidence](../apps/system/microduck/INTEGRATION-20261102.md). |
+| Microduck | Live preview; primary account workflow checked | Public registered-account tests passed named project save, Files → open, project-switch layout restore, server sync and cross-account refusal. The `.brf` open limit is 64 MiB. Physical touch, full simulation-state recovery and broader physical-model validation remain open. [Evidence](../apps/system/microduck/LIVE-ONLY-CANDIDATE-20261102.md). |
 | Clockwork Room | Preview | Four mechanisms and save recovery checked; physical-device review and final artwork remain. |
 | Chess Study | Preview | Actual AI, save and reopen checked; AI strength and physical touch unverified. |
 | Solitaire | Preview | One seeded draw-one deal played to victory and reopened live; draw-three and physical touch remain. |
