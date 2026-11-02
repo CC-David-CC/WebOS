@@ -8,6 +8,15 @@ The primary audience is high-school seniors and college STEM students. Clear
 onboarding should remain approachable to beginners while preserving the detail
 needed for advanced work; avoid a child-directed presentation.
 
+Use progressively richer layouts: on phones, put the essential actions and
+current work first and keep advanced commands reachable without crowding them;
+at 1080p, provide a comfortable full desktop workspace; on 4K displays, use
+the space for useful resizable side-by-side panels where the app benefits.
+Adapt to the actual window size and resizing, not just device labels. Avoid
+stretching simple apps to fill an oversized screen, and preserve the user's
+control of windows and panels. Validate interaction separately at phone,
+1080p and 4K sizes; emulation is not proof of physical touch behavior.
+
 Every interactive app still needs a fresh review of its primary workflow,
 account-backed open/save where applicable, first-run experience, desktop and
 phone-sized interaction, cleanup, and an honest user-facing explanation.
