@@ -57,3 +57,10 @@ standalone strict-CSP box intersection, union and subtraction checks with
 volumes 3,000, 9,000 and 3,000 respectively. Integration into the combined
 desktop and broader API validation remain outstanding. Do not relax production
 CSP or silently substitute one engine for the other.
+
+The same six cross-engine cases were subsequently repeated with the rebuilt
+native library under strict CSP (no bypass), with the same results. Its mesh
+edge-incidence check passed for nonempty fixtures, which is only a narrow
+manifoldness check. The test browser also logged invalid SVG `medium` size
+attributes and missing icons in the test host; check whether these occur in the
+actual packaged app before treating them as production defects.
