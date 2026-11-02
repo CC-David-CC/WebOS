@@ -11,6 +11,45 @@ This is the operational queue for the complete WebOS program. **Use and update t
 - Pop an item only when every part of its acceptance criteria is verified. Split a broad item before checking off a smaller result. Push newly discovered issues into the relevant section. Record date, commit/release, evidence, tests and remaining limitations in the ledger below. Do not use checked-box counts as a percentage of the overall vision.
 - At each handoff reconcile this ledger against actual source, tests and live state. Maintain parallel work in isolated worktrees, integrate reviewed results, preserve user changes and back up source and notes.
 
+## Scheduling: bounded work, parallel lanes and serial gates
+
+Keep the complete program below as the backlog, not one enormous active task.
+The lead selects a small active set based on current evidence and resources.
+Each package names one observable result, exact base, owned paths, acceptance
+tests, boundaries and a stopping point. Record status as ready, active, review,
+blocked or done; add newly discovered work to the backlog rather than silently
+expanding an agent's assignment. A failed test returns the package to active or
+blocked with evidence; it does not become done merely because time expired.
+
+**Can run independently:** app-specific UX/lifecycle fixes in separate
+worktrees; documentation and inventory; independent security, accessibility,
+and test reviews; CAD solver, geometry and manufacturing-model research behind
+agreed interfaces. These lanes must not edit the same shared files. Tests that
+need the same browser, port, CPU, disk or server use a scheduled resource slot.
+
+**Must be ordered:** agree on a shared storage or host contract before dependent
+implementations; implement server and browser sides in parallel after that;
+integrate and test the actual combined workflow; independently review it; then
+one designated operator stages, validates and deploys with rollback. Account,
+file-format and service-worker migrations require compatibility and recovery
+proof before a cutover. The CAD/3MF enclosure follows its necessary geometry,
+material identity and export contracts; physical studies depend on qualified
+models and a forward solver. App work can continue while these gates are open.
+
+**Shared ownership:** one integration owner serializes edits to shared desktop,
+storage contracts, hosting configuration and release pointers. Workers propose
+changes and return exact commit, tests and limitations; the owner integrates and
+tests them without overwriting other work. A release does not wait for unrelated
+backlog items, but must meet the safety and compatibility gates for its scope.
+
+**Current planning order on resume:** (1) protect committed notebook data and
+document its legacy-client limits; (2) qualify bounded file capture and safe
+versioned rollout in parallel with independent app workflows; (3) integrate
+session/lifecycle protections and exercise real cross-app failures; (4) run
+classroom load and large-file tests on the integrated system; (5) advance the
+parametric enclosure and material-aware 3MF vertical slice. This is a priority
+order, not a requirement that independent app work wait for storage completion.
+
 ## Progress ledger — 2026-11-02 (paused)
 
 - [x] LIVE: File-service non-JSON HTTP error status classification deployed and scoped two-account smoke passed. It does not fix server contention or guarantee exactly-once writes. See `evidence/file-http-status-errors-20261102.md`.
