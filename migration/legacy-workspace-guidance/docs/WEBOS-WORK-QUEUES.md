@@ -113,6 +113,10 @@ fresh-context sign-in/reopen, cross-account read denial and v86 shell readiness
 passed; the disposable test file was deleted, while two test accounts remain.
 The beta server now supports changed-chunk operations; its currently served
 browser client does not yet provide the tested end-to-end workflow.
+The 128 MiB all-chunk cold-download experiment hit the issuer's 60/minute
+per-account challenge limit (also confirmed on beta), and remains disabled.
+Candidate work is exploring a single authorized streaming cold read, with
+coordinated read pacing and no blind retry of ambiguous writes.
 
 Next beta storage candidate: a minimal transfer server based on the deployed
 beta worker was built reproducibly (`9db35b5ba`; artifact begins `2bb2e9af`).
