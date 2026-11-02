@@ -54,7 +54,8 @@ the hand-staged test build is not release-qualified.
 - Avoid full-file JavaScript allocations and repeated whole-file re-chunking.
   A research candidate streams final SHA-256 verification in bounded 256 KiB
   pieces, but its hash work still runs on the main thread and old files are
-  re-chunked. It does not meet the full incremental-computation goal. Verify
+  re-chunked. Heavy hashing and file processing must run in Web Workers; main-
+  thread yielding alone is insufficient. It does not meet the full incremental-computation goal. Verify
   worker/static packaging, license notices, responsiveness and peak memory;
   do not describe it as complete changed-chunk sync.
 - Remove the CAD host's temporary 8 MiB/full-hash research limit safely; retain
