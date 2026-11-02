@@ -123,6 +123,11 @@ A forced read 429 succeeded with a fresh proof after about 61 seconds, while
 write retry was suppressed and account invalidation cancelled a waiting read.
 Memory savings were not established; stalled-stream, truncation, cross-device
 throttling and latency qualification remain, and this client is not deployed.
+Candidate `c485029ec` uses a single deadline timer for pacing. A signed two-tab
+64-read run completed in 64 seconds without 429; fresh read retry and write
+non-retry checks passed. Earlier 80–121 second runs used different timing/load,
+so this is not a controlled speed comparison. Independent review and a paired
+SDK-only beta rollout remain open.
 Follow-up `63f278ac2` tested account-change cancellation of a queued lock and
 stalled download, plus malformed/short/interrupted stream rejection. Review
 found JSON authorization and uploads still need cancellation and an explicit
