@@ -76,6 +76,9 @@ The following is the complete underlying checklist. Its unchecked boxes are acce
 
 ## Current bounded storage milestone
 
+**Paused at the user's request.** Handoff: `docs/HANDOFF-STORAGE-BETA-2026-11-02.md`.
+Resume only on request; preserve in-progress research and current beta data.
+
 User priority: saved data, account isolation, conflicts, interruption and
 recovery, with heavy processing in workers. Work on these as one real
 browser-to-server flow, including existing-file updates and fresh-session
@@ -160,8 +163,14 @@ Follow-up `3aec0e59` adds indexed bounded cleanup and experimental signed
 OPFS-to-beta-protocol upload sync. Tests cover over 4,096 published generations,
 batched staging cleanup, referenced staging retention, concurrent local edits,
 lost replies, malformed receipts, conflict preservation and account denial.
-Independent review is pending. Remote downloads, desktop integration, strict
-RAM bounds and power-loss durability are not implemented or proven.
+Independent review passed; the later download prototype is described below.
+Desktop integration, strict RAM bounds and power-loss durability remain open.
+Follow-up `796a10f6` implements experimental verified OPFS remote downloads;
+signed corruption, local/remote race and invalidation tests passed, as did
+Chrome process kills before and after local publication. Independent signed
+Chromium review passed. The server can change after its last version check;
+later sync must detect it. This is not integrated with the desktop or proven
+power-loss durable.
 
 Earlier 2026-11-02 research progress (deployment status superseded by the beta
 status above): ordinary writes refuse to replace a local
