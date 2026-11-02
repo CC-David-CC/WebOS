@@ -24,6 +24,7 @@ sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(ROOT/"codiserver-server-v0.3.0"))
 from codiauth.service import Config
 from origin_service.lifecycle import Service
+from origin_service.microduck_config import frame_policy, runner_origin
 from origin_service.gateway_authority import GatewayAuthority
 from origin_service.http_server import BoundedServer, QuietHandler
 from gateway_service.auth import initialize_ledger, MAX_REQUEST_BYTES
@@ -107,8 +108,7 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
                 response_headers['Content-Security-Policy']=csp.replace("script-src 'self' 'wasm-unsafe-eval'", "script-src 'self' blob: 'wasm-unsafe-eval'")
             if microduck_runner_origin and request.path in ('/','/index.html'):
                 csp=response_headers.get('Content-Security-Policy','')
-                if not csp or 'frame-src' in csp:raise RuntimeError('Unexpected desktop frame policy')
-                response_headers['Content-Security-Policy']=csp+'; frame-src '+microduck_runner_origin
+                response_headers['Content-Security-Policy']=frame_policy(csp,microduck_runner_origin)
             response=web.StreamResponse(status=upstream.status,headers=response_headers)
             await response.prepare(request)
             async for chunk in upstream.content.iter_chunked(65536):await response.write(chunk)
@@ -148,6 +148,8 @@ if __name__=='__main__':
             valid=args.isolated and parsed.scheme=='http' and parsed.hostname=='127.0.0.1' and parsed.port and parsed.port!=args.port and args.microduck_runner_origin==f'http://127.0.0.1:{parsed.port}'
         except ValueError:valid=False
         if not valid:parser.error('Microduck runner requires isolated loopback and a different port')
+        try:runner_origin(args.microduck_runner_origin,f'http://127.0.0.1:{args.port}',allow_loopback=True)
+        except ValueError as error:parser.error(str(error))
     if not 1<=args.port<=65535:parser.error('Invalid port')
     if args.report_admin and not args.browser_relay:parser.error('Report fixture requires Browser relay')
     # Reserve the port before touching the per-port public tree. Otherwise a
