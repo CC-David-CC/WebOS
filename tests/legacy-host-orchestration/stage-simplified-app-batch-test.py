@@ -45,13 +45,18 @@ class ReleaseStagingTest(unittest.TestCase):
             replacement = root / 'app.js'
             replacement.write_bytes(b'new shell')
             output = root / 'stage'
+            command_registry = root / 'command-registry.mjs'
+            command_registry.write_bytes(b'export const ready = true;')
             subprocess.run(['python3', str(SCRIPT), '--baseline', str(base), '--batch', str(batch),
                             '--output', str(output), '--apps', 'example', '--reuse-baseline-files',
-                            '--desktop-app', str(replacement), '--desktop-base-sha256', record(b'old shell')['sha256']],
+                            '--desktop-app', str(replacement), '--desktop-base-sha256', record(b'old shell')['sha256'],
+                            '--new-command-registry', str(command_registry)],
                            check=True, capture_output=True)
             self.assertEqual(before, {p.relative_to(base): p.read_bytes() for p in base.rglob('*') if p.is_file()})
             self.assertEqual(os.stat(base / 'index.html').st_ino, os.stat(output / 'index.html').st_ino)
             self.assertEqual((output / 'app.js').read_bytes(), b'new shell')
+            self.assertEqual((output / 'assets/desktop/command-registry.mjs').read_bytes(), command_registry.read_bytes())
+            self.assertFalse((base / 'assets/desktop/command-registry.mjs').exists())
             self.assertNotEqual(os.stat(base / 'app.js').st_ino, os.stat(output / 'app.js').st_ino)
             self.assertNotEqual(os.stat(base / 'assets/desktop/apps.json').st_ino,
                                 os.stat(output / 'assets/desktop/apps.json').st_ino)
@@ -61,6 +66,14 @@ class ReleaseStagingTest(unittest.TestCase):
             manifest = json.loads((output / 'assets/desktop/cache-manifest.json').read_text())
             for name, info in manifest['files'].items():
                 self.assertEqual(record((output / name).read_bytes()), info)
+            existing_registry = base / 'assets/desktop/command-registry.mjs'
+            existing_registry.write_text('existing registry')
+            refused = subprocess.run(['python3', str(SCRIPT), '--baseline', str(base), '--batch', str(batch),
+                                      '--output', str(root / 'duplicate'), '--apps', 'example',
+                                      '--new-command-registry', str(command_registry)], capture_output=True)
+            self.assertNotEqual(refused.returncode, 0)
+            self.assertFalse((root / 'duplicate').exists())
+            existing_registry.unlink()
             (base / 'index.html').chmod(0o600)
             failure = subprocess.run(['python3', str(SCRIPT), '--baseline', str(base), '--batch', str(batch),
                                       '--output', str(root / 'unsafe'), '--apps', 'example', '--reuse-baseline-files'],
