@@ -13,7 +13,7 @@ Four games are the minimum to cover every gap named in the review:
 
 1. A number-facts or arithmetic path game.
 2. A visual fractions game.
-3. A Risk-like territory game with a dumb-but-legal AI.
+3. A Risk-like territory game with a bounded local AI.
 4. A pattern or rule-discovery game.
 
 Six games are the comfortable target, adding a word-building game and a
@@ -39,8 +39,8 @@ Add one new group:
 - Registry and Files identity: stable IDs and `.game.json` saves exactly like
   the existing previews.
 
-The total then becomes 28 existing + 4 core additions, with two optional
-follow-ups for a 34-game catalog.
+The total then becomes 28 existing + 4 core additions + 1 kid-friendly
+tabletop variant, with two optional follow-ups for a 35-game catalog.
 
 ## Wave A: four required games
 
@@ -71,7 +71,7 @@ add/subtract simple same-denominator cases.
 - Progress: unlocked plots; no economy or speed requirement.
 - State: lesson track, generated task, visual choices, RNG, stars.
 
-### 3. Pocket Conquest — Risk-like territory, grades 4–5+
+### 3. Pocket Conquest — full adult Risk-style territory game
 
 Core loop: 24–30 connected regions, 2–3 AI rivals, region bonuses, and bounded
 dice battles. A turn is reinforce, attack, fortify. Win by owning the map.
@@ -83,8 +83,15 @@ dice battles. A turn is reinforce, attack, fortify. Win by owning the map.
   never teleports, and cannot exceed its budget.
 - Seeded RNG and exact logical snapshot; the AI is revision-guarded so pause,
   undo, save, close, or load invalidates stale work like Chess Study does.
-- Session scope: one map with 3 difficulties rather than a long campaign.
+- Session scope: one map with 3 AI difficulties rather than a long campaign.
 - Presentation: simple polygons and labels; adjacency is drawn from the model.
+
+### 3a. Tile Islands — kid-friendly tabletop variant, grades 3–5
+
+Same turn structure and bounded dice, neutral fiction: 16 island tiles,
+counters, claims, and a first-to-9 or eight-turn round. No elimination or
+combat language; results are win, friendly win, or draw. It exists as its own
+app ID and save format, not as a skin of Pocket Conquest.
 
 ### 4. Rule Detective — pattern and logic, grades 3–5
 
@@ -128,11 +135,11 @@ outcome.
 
 ## Core-first staging
 
-The six cores are now defined in
+The seven cores are now defined in
 [game-core-plans/](game-core-plans/README.md) as pure models with state,
 actions, invariants, seeded RNG, snapshots, and pre-view tests. They are
 intentionally separate from the original 28-app handoff validator until the
-models are reviewed and the handoff is extended to 34 designs. No view, audio,
+models are reviewed and the handoff is extended to 35 designs. No view, audio,
 save adapter, Rive brief, or engine choice exists for them yet.
 
 The wider learner-experience contract, accessibility, privacy, and per-game

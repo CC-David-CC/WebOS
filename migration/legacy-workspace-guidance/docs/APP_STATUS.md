@@ -65,7 +65,7 @@ explains how to start. Third-party features are a [partial inventory](DEFERRED_A
 | Orbital Courier | Preview | Flight, saved progress and mission phases from controlled checkpoints checked live; uninterrupted mission, touch, XR and final artwork remain. |
 | Clockwork Quest | Preview | Full quest and account reopen checked live; XR session lifecycle mocked only, with headset, touch and final artwork unverified. |
 | Memory Garden | Preview | Full keyboard six-pair game and account reopen checked live; physical touch, assistive technology and final artwork remain. |
-| Learning & Strategy: Math Path, Fraction Farm, Word Weaver, Rule Detective, Market Math, Pocket Conquest | Rules cores only; disabled in menu | Pure models and tests exist; no desktop interface, account storage adapter, assets or playable release yet. |
+| Learning & Strategy: Math Path, Fraction Farm, Word Weaver, Rule Detective, Market Math, Pocket Conquest, Tile Islands | Rules cores only; disabled in menu | Pure models and tests exist; no desktop interface, account storage adapter, assets or playable release yet. |
 | Circuit Lab | Research candidate, not deployed | A close guard and numparam/KLU relinks passed in research; complete source, model provenance and distribution review remain open. |
 | PCB Design | Research prototype, not deployed | Browser packaging, dependency notices and usable design workflow remain open. |
 | Personal template | App-author example | Not an end-user app. |
