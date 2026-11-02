@@ -25,6 +25,9 @@ def subject(s):return SimpleNamespace(sub=s)
 def version(s):return hashlib.sha256((s*40).encode()).hexdigest()
 class Reservations(unittest.TestCase):
  def setUp(self):self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.store=Store(Path(self.tmp.name));self.cache=SnapshotCache(self.store,maximum_bytes=64,maximum_entries=2);self.addCleanup(self.cache.close)
+ def test_configured_defaults_are_distinct(self):
+  default=SnapshotCache(self.store)
+  self.assertEqual(default.maximum_bytes,1024*1024*1024);self.assertEqual(default.minimum_free_bytes,2*1024*1024*1024);default.close()
  def test_filesystem_reserve_rejects_and_cleans_up(self):
   from types import SimpleNamespace
   self.cache.minimum_free_bytes=10
