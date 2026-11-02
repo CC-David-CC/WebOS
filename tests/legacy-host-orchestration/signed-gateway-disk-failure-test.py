@@ -44,7 +44,7 @@ class DiskFailure(f.HTTP):
   finally:self.store.put_stream=original
   self.assertTrue(fired.is_set(),'fault did not reach intended syscall')
   self.assertEqual(status,503 if mode=='directory-fsync' else 403)
-  if mode=='directory-fsync':self.assertIn('may have been saved',result['error'])
+  if mode=='directory-fsync':self.assertIn('may have completed',result['error'])
   status,read,_=await self.rpc(alice,key,'read','document');self.assertEqual(status,200)
   self.assertEqual(base64.b64decode(read['data']),payload if mode=='directory-fsync' else b'original')
   self.assertEqual((await self.rpc(bob,bkey,'read','document'))[0],404)
@@ -69,7 +69,7 @@ class DiskFailure(f.HTTP):
   self.store.put=put
   try:status,result,_=await self.rpc(alice,key,'replace','json-note',data=base64.b64encode(b'new').decode(),previousSHA256=created['sha256'])
   finally:self.store.put=original
-  self.assertTrue(fired.is_set());self.assertEqual(status,503);self.assertIn('may have been saved',result['error'])
+  self.assertTrue(fired.is_set());self.assertEqual(status,503);self.assertIn('may have completed',result['error'])
   status,result,_=await self.rpc(alice,key,'read','json-note');self.assertEqual(status,200);self.assertEqual(base64.b64decode(result['data']),b'new')
 if __name__=='__main__':
  names=['test_write_enospc','test_temp_fsync_failure','test_rename_failure','test_directory_fsync_after_rename','test_json_write_directory_fsync_after_rename']
