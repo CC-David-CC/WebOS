@@ -3,10 +3,10 @@
 This branch is an integration workspace, not a release or evidence that these
 features are available on the live site. The source under test was desktop
 commit `ebfa5d6fd0058f6421204b9b690a2cf980de624f` and the CAD host used a
-locally prepared JSketcher runtime from fork commit `4c995a10`. The separate
-combined JSketcher manufacturing fork is `f3971dc8` on box-git's
-`research/3mf-host-combined-20261102`; it has not yet been qualified as a
-combined browser build or connected to a host export command.
+locally prepared JSketcher runtimes from fork commits `4c995a10` and
+`f3971dc8`. The latter is the combined manufacturing fork on box-git's
+`research/3mf-host-combined-20261102`; it is not connected to a host export
+command, and the hand-staged test build is not release-qualified.
 
 ## Evidence
 
@@ -17,7 +17,7 @@ combined browser build or connected to a host export command.
   initial sync, no-op, an inserted byte, interrupted download and retry, and
   account isolation. One sample fetched 53,414 encoded bytes in one chunk
   request; this is a test observation, not a performance guarantee.
-- An isolated registered-account CAD run passed on desktop and at an emulated
+- Isolated registered-account CAD runs passed with both fork revisions on desktop and at an emulated
   390 × 844 viewport: project save and reopen, explicit review of stale material
   bindings, rejection when changed during review, confirmed manual rebind,
   account isolation and captured frame CSP. This used automated clicks, did not
@@ -30,7 +30,7 @@ combined browser build or connected to a host export command.
 
 - Review the patch against the actual deployed source and package only intended
   changes; the research source contains other unfinished work.
-- Qualify the exact combined JSketcher fork, connect a real export command, and
+- Qualify the combined JSketcher build provenance, connect a real export command, and
   independently inspect its 3MF structure, units, materials and geometry.
 - Prove reliable 128 MiB and concurrent-user sync, interruption and recovery,
   cancellation, cache eviction and external-writer behavior. Reserve bounded
