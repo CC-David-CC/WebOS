@@ -141,6 +141,12 @@ combined client/server regression pass. Large-file browser memory and transfer
 measurements remain in progress. Main promotion analysis is recorded on
 `research/beta-hosting-isolation` at `49d83e3b9`; it preserves main identity
 and committed files and does not deploy the beta state to main.
+Isolated 128 MiB signed two-session test subsequently passed with exact hashes:
+one-byte change sent about 66 KiB on upload and received about 489 KiB on
+download (instrumented application body bytes; not full wire accounting).
+Sampled browser RSS peaked at approximately 2.04 GiB; shared pages may be
+counted more than once, but memory remains a significant open issue. No 128 MiB
+test was run on the live beta, and these storage changes remain undeployed.
 
 2026-11-02 research progress: ordinary writes now refuse to replace a local
 version in an unresolved conflict; an isolated signed-account browser test
