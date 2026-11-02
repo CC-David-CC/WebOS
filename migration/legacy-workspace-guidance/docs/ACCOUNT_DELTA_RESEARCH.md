@@ -69,3 +69,34 @@ either a committed replacement or the prior version. Proxy connection-reset logs
 were observed for intentionally aborted browser requests. The isolated fixture,
 accounts, browser contexts and temporary test dependencies were removed. These
 checks do not establish performance on a physical phone or full server capacity.
+
+## Isolated Microduck-source integration candidate
+
+The three delta commits were cherry-picked without conflicts onto live-source
+commit `a3d469e42897eaf0bca8670e3c9a1de1b789266f`; candidate code before
+this evidence note was `a179bdfd7`. The shared browser mirror and three gateway
+files exactly matched the verified delta branch; Microduck application and
+shared desktop source were unchanged.
+
+A new loopback-only preview with disposable account databases and an empty app
+catalog passed the signed 16 MiB account workflow (isolation, malformed input,
+conflicts, retries and binary/legacy reads), overlapping 8 MiB uploads and
+simultaneous delta saves by two accounts, and an intentionally aborted in-flight
+upload. In that run the prior version remained after waiting, and an explicit
+retry produced the verified replacement; an earlier run demonstrated the
+alternative lost-reply case where the replacement already committed. The 104
+MiB signed test sent 109,054,230 application bytes initially and 71,469 for a
+one-byte edit, with no upload for an unchanged save. The mirror suite and delta
+bounds/repeated-cancellation tests also passed. Deliberate browser cancellation
+produced expected local proxy connection-reset logs.
+
+At one sample the isolated issuer/gateway Python process reported 122,280 KiB
+high-water RSS and 59,164 KiB current RSS; the Node test drivers reported peak
+RSS of 93,200 KiB (16 MiB test), 91,020 KiB (parallel test), and 87,408 KiB
+(104 MiB test). These are individual process figures, not browser or aggregate
+system peak measurements. The disposable fixture occupied 175 MiB at the final
+sample, plus 56 MiB temporary npm dependencies; transient peak disk was not
+measured. The fixture process, accounts, browser contexts, and dependencies
+were removed. The empty app catalog means this did not retest Microduck's UI.
+No live state was touched. These tests do not establish physical-phone behavior
+or overall multi-user capacity.
