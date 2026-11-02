@@ -181,6 +181,12 @@ the browser SDK, and content-addressed overlay `bc3c7e65…` holds its paired
 desktop loader/mirror without replacing shared main assets. Isolated signed
 tests and a gateway rollback after an upgraded-version write passed. A managed
 beta route, service-worker/old-tab behavior and paired rollout still need tests.
+Review reproduced an unsafe downgrade: the old mirror ignores a newer
+uncertain-write marker and can move a file while leaving its old server path.
+After introducing the guarded mirror, routing fresh clients back to the old
+mirror is not an acceptable automatic rollback. A guarded-client minimum floor
+and server rollback compatibility need qualification; old open tabs also need
+to be accounted for. The user states this is a test site with no real users.
 Public Chromium smoke passed again after the worker switch, including fresh
 accounts, saved-file reopen, cross-account denial and v86 readiness. Its test
 file was removed; test accounts remain because account deletion has no verified
