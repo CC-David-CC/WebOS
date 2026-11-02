@@ -1,0 +1,23 @@
+import puppeteer from 'puppeteer-core';
+import assert from 'node:assert/strict';
+const browser=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19255'});
+const base=process.env.CODI_TEST_URL||'http://127.0.0.1:19663/';
+try{
+ for(const viewport of [{width:1366,height:768},{width:390,height:844,isMobile:true,hasTouch:true}]){
+  const context=await browser.createBrowserContext(),page=await context.newPage();
+  try{
+   await page.setViewport(viewport);await page.goto(base);await page.waitForSelector('.login-toggle');await page.click('.login-toggle');
+   await page.type('[aria-label=Username]',(process.env.CODI_TEST_USER||'gltf'+Date.now().toString().slice(-9))+(viewport.isMobile?'m':'d'));await page.type('[aria-label=Password]','test1234');await page.type('[aria-label="Confirm password"]','test1234');await page.click('.login-form button[type=submit]');
+   await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:30000});
+   assert.equal(await page.evaluate(()=>performance.getEntriesByType('resource').some(e=>e.name.includes('/apps/gltf-transform/'))),false,'tool must be lazy');
+   await page.click('[aria-label=Applications]');await page.click('[aria-label="System Tools"]');await page.waitForSelector('[aria-label="glTF-Transform"]');assert.equal(await page.$eval('[aria-label="glTF-Transform"]',e=>e.disabled),true);
+   const result=await page.evaluate(async()=>{
+    const {WebIO}=await publicAppHost(surfaces.get('Desktop'),{},'text').tools.loadGLTFTransform();let rejected=false;try{await new WebIO().read('https://example.invalid/model.gltf')}catch(e){rejected=e.message.includes('External URLs are not loaded')}if(!rejected)throw Error('URL fetch must be rejected');
+    const {workerModuleURL}=await publicAppHost(surfaces.get('Desktop'),{},'text').tools.loadGLTFTransform();
+    const code=`import {Document,WebIO,Accessor,dedup,weld} from ${JSON.stringify(workerModuleURL)}; try {const doc=new Document(),buffer=doc.createBuffer(),positions=doc.createAccessor().setType(Accessor.Type.VEC3).setArray(new Float32Array([0,0,0,1,0,0,0,1,0])).setBuffer(buffer);const second=doc.createAccessor().setType(Accessor.Type.VEC3).setArray(new Float32Array([0,0,0,1,0,0,0,1,0])).setBuffer(buffer);const primitive=doc.createPrimitive().setAttribute('POSITION',positions),other=doc.createPrimitive().setAttribute('POSITION',second),mesh=doc.createMesh().addPrimitive(primitive).addPrimitive(other);doc.createScene().addChild(doc.createNode().setMesh(mesh));await doc.transform(dedup());const shared=primitive.getAttribute('POSITION')===other.getAttribute('POSITION');const weldDoc=new Document(),weldBuffer=weldDoc.createBuffer(),weldPositions=weldDoc.createAccessor().setType(Accessor.Type.VEC3).setArray(new Float32Array([0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,0])).setBuffer(weldBuffer),weldPrimitive=weldDoc.createPrimitive().setAttribute('POSITION',weldPositions);weldDoc.createScene().addChild(weldDoc.createNode().setMesh(weldDoc.createMesh().addPrimitive(weldPrimitive)));await weldDoc.transform(weld());const welded=weldPrimitive.getAttribute('POSITION').getCount();const io=new WebIO(),bytes=await io.writeBinary(doc),read=await io.readBinary(bytes);postMessage({shared,welded,vertices:read.getRoot().listMeshes()[0].listPrimitives()[0].getAttribute('POSITION').getCount(),magic:Array.from(bytes.slice(0,4)),bytes:Array.from(bytes)})}catch(e){postMessage({error:String(e?.stack||e)})}`;
+    const url=URL.createObjectURL(new Blob([code],{type:'text/javascript'})),worker=new Worker(url,{type:'module'});try{return await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('worker timed out')),30000);worker.onmessage=e=>{clearTimeout(timer);resolve(e.data)};worker.onerror=e=>{clearTimeout(timer);reject(Error(e.message))}})}finally{worker.terminate();URL.revokeObjectURL(url)}
+   });
+   const {bytes,...summary}=result;assert.deepEqual(summary,{shared:true,welded:3,vertices:3,magic:[103,108,84,70]});const reopened=await page.evaluate(async bytes=>{const c=await mirrorFileContext(),path='/tool-example.glb';await c.files.write(path,new Uint8Array(bytes),null);await c.files.sync();const file=await c.files.read(path),{WebIO}=await publicAppHost(surfaces.get('Desktop'),{},'text').tools.loadGLTFTransform(),model=await new WebIO().readBinary(file.data);return {status:file.status,vertices:model.getRoot().listMeshes()[0].listPrimitives()[0].getAttribute('POSITION').getCount()}},bytes);assert.equal(reopened.vertices,3);assert.notEqual(reopened.status,'conflict');console.log('PASS glTF-Transform desktop host, lazy loading and worker GLB round trip:',viewport.width);
+  }finally{await context.close()}
+ }
+}finally{await browser.disconnect()}
