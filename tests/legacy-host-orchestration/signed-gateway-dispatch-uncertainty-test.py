@@ -87,14 +87,34 @@ class Dispatch(f.HTTP):
   self.gateway.quotas.finish=fail
   try:
    status,result,_=await self.rpc(alice,key,'replace','note',data=base64.b64encode(b'new').decode(),previousSHA256=created['sha256'])
+   for _ in range(200):
+    if self.gateway.active==0:break
+    await asyncio.sleep(.005)
   finally:self.gateway.quotas.finish=finish
-  self.assertEqual(status,200);self.assertEqual(len(fired),1)
-  for _ in range(200):
-   if self.gateway.active==0:break
-   await asyncio.sleep(.005)
+  self.assertEqual(status,200);self.assertEqual(len(fired),3)
   self.assertEqual(self.gateway.active,0)
   finish(fired[0])
+  # An error after response write can close its keep-alive connection.
+  await self.client.close();self.client=f.ClientSession(timeout=f.ClientTimeout(total=60),trust_env=False)
   self.assertEqual(base64.b64decode((await self.rpc(alice,key,'read','note'))[1]['data']),b'new')
+ async def test_transient_quota_cleanup_recovers_without_refund(self):
+  alice,key=await self.enter('alice');finish=self.gateway.quotas.finish;fired=[]
+  def flaky(transfer):
+   fired.append(transfer)
+   if len(fired)<3:raise OSError('temporary injected cleanup failure')
+   return finish(transfer)
+  self.gateway.quotas.finish=flaky
+  try:
+   status,_,_=await self.rpc(alice,key,'create','note',data=base64.b64encode(b'new').decode())
+   for _ in range(200):
+    if self.gateway.active==0:break
+    await asyncio.sleep(.005)
+  finally:self.gateway.quotas.finish=finish
+  self.assertEqual(status,200);self.assertEqual(len(fired),3);self.assertEqual(len({x.id for x in fired}),1)
+  with self.store.db() as db:
+   self.assertIsNone(db.execute('SELECT id FROM gateway_active_uses WHERE id=?',(fired[0].id,)).fetchone())
+   rows=db.execute('SELECT subject,bytes FROM gateway_usage WHERE subject IN (?,?)',(fired[0].subject,'*')).fetchall()
+  self.assertEqual(len(rows),2);self.assertTrue(all(amount>0 for _,amount in rows))
  async def test_response_encoding_failure_after_mutation(self):
   alice,key=await self.enter('alice');_,created,_=await self.rpc(alice,key,'create','note',data=base64.b64encode(b'old').decode())
   dispatch=self.gateway._dispatch;dumps=f.jose.dumps;fired=[]
@@ -110,5 +130,5 @@ class Dispatch(f.HTTP):
   self.assertTrue(fired);self.assertEqual(status,503);self.assertIn('may have completed',result['error'])
   self.assertEqual(base64.b64decode((await self.rpc(alice,key,'read','note'))[1]['data']),b'new')
 if __name__=='__main__':
- names=['test_timeout_before_store_returns_uncertain','test_timeout_after_mutation_returns_uncertain','test_binary_timeout_after_mutation_returns_uncertain','test_word_count_accepted_failure','test_word_count_published_failure','test_word_count_completed_failure','test_word_count_published_failure_retry_existing_report','test_word_count_published_failure_retry_accepted_only','test_quota_cleanup_failure_after_sent_success','test_response_encoding_failure_after_mutation']
+ names=['test_timeout_before_store_returns_uncertain','test_timeout_after_mutation_returns_uncertain','test_binary_timeout_after_mutation_returns_uncertain','test_word_count_accepted_failure','test_word_count_published_failure','test_word_count_completed_failure','test_word_count_published_failure_retry_existing_report','test_word_count_published_failure_retry_accepted_only','test_quota_cleanup_failure_after_sent_success','test_transient_quota_cleanup_recovers_without_refund','test_response_encoding_failure_after_mutation']
  r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite(Dispatch(n) for n in names));raise SystemExit(not r.wasSuccessful())
