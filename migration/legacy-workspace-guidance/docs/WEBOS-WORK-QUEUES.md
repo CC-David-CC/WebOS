@@ -130,8 +130,10 @@ uncertain-result outcome for dispatched mutations; that work is in progress.
 Research `2cc65a3c` adds generic request cancellation and uncertain results;
 signed tests and an independent Chromium rerun passed simulated dropped replies,
 429 after commit, account changes and stalled response bodies. The additional
-body-stall test is `182c4d97f`. A real broken-socket case, beta client packaging
-and deployment remain open; no write is blindly retried.
+body-stall test is `182c4d97f`. A real local TCP socket cut after server commit
+passed at `c6ab94396`: the write was sent once, reported uncertain and the
+mirror reconciled using the server hash. Physical WAN failures, beta client
+packaging and deployment remain open; no write is blindly retried.
 Strict browser memory bounds may require an account-scoped temporary OPFS
 design with verified publication, quota handling and crash cleanup; Blob
 backing alone does not prove a bound.
