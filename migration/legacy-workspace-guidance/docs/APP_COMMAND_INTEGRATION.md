@@ -68,3 +68,7 @@ G-code Preview exposes `inspect` for the currently displayed preview and `set-tr
 ## Arduino Simulator prototype
 
 The simulator exposes window-scoped `inspect`, `set-input` for D2/D3 and `read-serial`. Input changes are queued asynchronously; serial reads are bounded and may be truncated. Local desktop and emulated-phone tests exercised real D2 example firmware, two independent simulator windows, the simulated D13 output, serial echo, normal firmware and serial-output saving, sync and reopening. This is not physical hardware validation. The same desktop and emulated-phone workflows passed publicly in live release `3051f74ae009142e2a1547ae2ce9c9501a089cea5dbe2e1ddd9b2c0acc022929`. Physical touch and external-agent access remain unverified.
+
+## Pico Simulator prototype
+
+Pico Simulator exposes window-scoped `inspect` and bounded `read-serial` commands. Firmware replacement, serial input and flash operations remain user-controlled. Local desktop and emulated-phone tests cover the real Blink worker, LED state, stopped/running modes, two independent windows and command cleanup. They do not exercise real firmware or nonempty serial output through these commands. This is not hardware validation or a remote agent interface, and is not yet deployed.
