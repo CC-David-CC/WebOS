@@ -103,7 +103,8 @@ separate service operator is under development; these processes share loopback
 network access. Three beta services are now installed and running on private
 loopback ports with separate locked users, keys and data; signed file operations,
 cross-account denial and service restart were tested against these real
-services. They are not enabled at boot. Public TLS, desktop boot and restart
+services. Their units are enabled at boot, though an actual host reboot has
+not been tested. Public TLS, desktop boot and restart
 recovery still require testing. The beta candidate does not yet implement
 changed-chunk synchronization.
 
