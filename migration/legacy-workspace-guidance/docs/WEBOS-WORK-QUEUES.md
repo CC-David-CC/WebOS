@@ -74,6 +74,29 @@ Refine the ordering when actual evidence shows a dependency is different.
 
 The following is the complete underlying checklist. Its unchecked boxes are acceptance gates, including items with partial progress above.
 
+## Current bounded storage milestone
+
+User priority: saved data, account isolation, conflicts, interruption and
+recovery, with heavy processing in workers. Work on these as one real
+browser-to-server flow, including existing-file updates and fresh-session
+reopening; other app and platform work waits unless needed for this flow.
+
+- [ ] Preserve previously committed bytes through saves, errors, concurrent
+  writers, account changes, process interruption and lost acknowledgements.
+- [ ] Enforce and test account isolation at browser, transport and server.
+- [ ] Detect stale writes and preserve both versions or refuse without loss;
+  report the actual state to the user.
+- [ ] Recover interrupted work safely on restart, including uncertain commits;
+  don't claim recovery where it hasn't been proven.
+- [ ] Run heavy hashing and data processing in bounded, cancellable workers;
+  measure actual memory and responsiveness rather than claiming a hard bound.
+- [ ] Test the integrated path using real signed accounts, independent sessions,
+  conflicting writes, fault injection and representative file sizes. Qualify
+  rollout and rollback before changing live storage.
+
+The previously paused broader program remains the backlog; this milestone does
+not mark its other acceptance gates complete.
+
 ---
 
 # Browser WebOS: complete program and handoff checklist
