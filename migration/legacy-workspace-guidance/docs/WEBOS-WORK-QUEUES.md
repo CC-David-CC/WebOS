@@ -96,8 +96,11 @@ new bytes after rename plus directory fsync; they do not prove power-loss
 durability. A real test-proxy TCP abort after server commit, combined with a
 new local edit, preserved both versions and surfaced a conflict. Separately,
 an injected directory-fsync failure after rename exposed a gateway bug: it
-reported refusal despite the new file being visible. A phase-aware fix is in
-isolated testing and is not live.
+reported refusal despite the new file being visible. Phase-aware file and
+folder mutation handling, plus cancellation-resistant bounded quota-cleanup
+retries, are integrated in research and passed focused signed/fault tests;
+they are not live. Persistent quota cleanup failures can still hold a slot
+until expiry, and power-loss and arbitrary direct host writes remain unproven.
 
 - [ ] Preserve previously committed bytes through saves, errors, concurrent
   writers, account changes, process interruption and lost acknowledgements.
