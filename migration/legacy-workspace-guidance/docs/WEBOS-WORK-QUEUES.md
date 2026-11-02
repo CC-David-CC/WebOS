@@ -108,8 +108,10 @@ network access. Three beta services are now installed and running on private
 loopback ports with separate locked users, keys and data; signed file operations,
 cross-account denial and service restart were tested against these real
 services. Their units are enabled at boot, though an actual host reboot has
-not been tested. The full public desktop flow, desktop boot and restart
-recovery still require testing. The beta candidate does not yet implement
+not been tested. Public Chromium registration, file creation/edit/save, sync,
+fresh-context sign-in/reopen, cross-account read denial and v86 shell readiness
+passed; the disposable test file was deleted, while two test accounts remain.
+The beta candidate does not yet implement
 changed-chunk synchronization.
 
 2026-11-02 research progress: ordinary writes now refuse to replace a local
