@@ -47,3 +47,12 @@ The measured 104 MiB result was repeated after integrating the browser-byte
 snapshot fix; no generated bundles, dependencies, or fixture accounts are
 part of this source branch. A real implementation review and broader failure,
 resource and concurrency qualification remain before any deployment.
+
+The follow-up responsiveness and cancellation fix yields periodically while
+scanning unmatched blocks and checks whether the session is still valid. Disk
+worker results are retained through repeated cancellation so snapshot file
+descriptors can be closed before releasing admission. Focused tests cover a
+128 MiB unmatched scan in headless Chromium and Node, cancellation, shifted
+block reconstruction, and repeated cancellation of fd-producing disk work.
+This does not substitute for the signed-account integration test on the final
+candidate, concurrent load testing, or physical-phone performance testing.
