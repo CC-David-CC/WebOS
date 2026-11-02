@@ -1,5 +1,5 @@
 """Test response failures and timeouts around actual signed mutations."""
-import base64,dataclasses,importlib.util,math,time,unittest
+import asyncio,base64,dataclasses,importlib.util,math,time,unittest
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('gateway_fixture',root/'active-system/scripts/gateway-http-check.py')
@@ -35,6 +35,40 @@ class Dispatch(f.HTTP):
   finally:self.gateway.gate.begin=begin;self.gateway.store.put_stream=put
   self.assertEqual(status,503);self.assertIn('may have completed',result['error'])
   self.assertEqual(base64.b64decode((await self.rpc(alice,key,'read','note'))[1]['data']),b'new')
+ async def exercise_word_count_failure(self,target):
+  alice,key=await self.enter('alice');_,created,_=await self.rpc(alice,key,'create','note',data=base64.b64encode(b'one two').decode())
+  word_count=self.gateway.store.word_count;fired=[]
+  def fail(principal,path,previous):
+   def phase(name):
+    if name==target:fired.append(name);raise OSError('injected post-commit failure')
+   return word_count(principal,path,previous,phase=phase)
+  self.gateway.store.word_count=fail
+  try:status,result,_=await self.rpc(alice,key,'word-count','note',previousSHA256=created['sha256'])
+  finally:self.gateway.store.word_count=word_count
+  self.assertEqual(fired,[target]);self.assertEqual(status,503);self.assertIn('may have completed',result['error'])
+  status,report,_=await self.rpc(alice,key,'word-count','note',previousSHA256=created['sha256'])
+  self.assertEqual(status,200);self.assertEqual(report['status'],'completed')
+  status,output,_=await self.rpc(alice,key,'read',report['path']);self.assertEqual(status,200)
+  self.assertIn(b'Words (whitespace separated): 2',base64.b64decode(output['data']))
+ async def test_word_count_accepted_failure(self):await self.exercise_word_count_failure('accepted')
+ async def test_word_count_published_failure(self):await self.exercise_word_count_failure('published')
+ async def test_word_count_completed_failure(self):await self.exercise_word_count_failure('completed')
+ async def test_quota_cleanup_failure_after_sent_success(self):
+  alice,key=await self.enter('alice');_,created,_=await self.rpc(alice,key,'create','note',data=base64.b64encode(b'old').decode())
+  finish=self.gateway.quotas.finish;fired=[]
+  def fail(transfer):
+   fired.append(transfer);raise OSError('injected cleanup failure')
+  self.gateway.quotas.finish=fail
+  try:
+   status,result,_=await self.rpc(alice,key,'replace','note',data=base64.b64encode(b'new').decode(),previousSHA256=created['sha256'])
+  finally:self.gateway.quotas.finish=finish
+  self.assertEqual(status,200);self.assertEqual(len(fired),1)
+  for _ in range(200):
+   if self.gateway.active==0:break
+   await asyncio.sleep(.005)
+  self.assertEqual(self.gateway.active,0)
+  finish(fired[0])
+  self.assertEqual(base64.b64decode((await self.rpc(alice,key,'read','note'))[1]['data']),b'new')
  async def test_response_encoding_failure_after_mutation(self):
   alice,key=await self.enter('alice');_,created,_=await self.rpc(alice,key,'create','note',data=base64.b64encode(b'old').decode())
   dispatch=self.gateway._dispatch;dumps=f.jose.dumps;fired=[]
@@ -50,5 +84,5 @@ class Dispatch(f.HTTP):
   self.assertTrue(fired);self.assertEqual(status,503);self.assertIn('may have completed',result['error'])
   self.assertEqual(base64.b64decode((await self.rpc(alice,key,'read','note'))[1]['data']),b'new')
 if __name__=='__main__':
- names=['test_timeout_before_store_returns_uncertain','test_timeout_after_mutation_returns_uncertain','test_binary_timeout_after_mutation_returns_uncertain','test_response_encoding_failure_after_mutation']
+ names=['test_timeout_before_store_returns_uncertain','test_timeout_after_mutation_returns_uncertain','test_binary_timeout_after_mutation_returns_uncertain','test_word_count_accepted_failure','test_word_count_published_failure','test_word_count_completed_failure','test_quota_cleanup_failure_after_sent_success','test_response_encoding_failure_after_mutation']
  r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite(Dispatch(n) for n in names));raise SystemExit(not r.wasSuccessful())
