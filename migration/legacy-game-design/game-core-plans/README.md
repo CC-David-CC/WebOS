@@ -29,3 +29,6 @@ Games:
 4. [rule-detective](rule-detective.md)
 5. [word-weaver](word-weaver.md)
 6. [market-math](market-math.md)
+
+Experience discovery and the broader learner contract are recorded separately
+in [EXPERIENCE-NEEDS.md](EXPERIENCE-NEEDS.md).
