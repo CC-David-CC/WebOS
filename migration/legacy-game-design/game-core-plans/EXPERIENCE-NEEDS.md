@@ -167,20 +167,19 @@ common report or learning-target contract.
 
 ## Gaps to close in the core models next
 
-These are testable without any UI. The first branch of work has now closed
-items 1, 3, and 6; the others remain open:
+These are testable without any UI. The core foundation branch has now closed
+items 1, 2, 3, 4, 5, and 6:
 
 1. **Done:** a stable `report()` contract exists on every model: learning
    target, grade,
    phase, stars, attempts, first-try count, hints used, and remaining content.
-2. Add a bounded hint action with recorded cost to Math Path, Fraction Farm,
-   Rule Detective, and Word Weaver. Market Math already has a worked model;
-   it needs a receipt/coin breakdown in the explanation data.
+2. **Done:** bounded, recorded hint actions exist in Math Path, Fraction Farm,
+   Rule Detective, and Word Weaver. Market Math exposes a receipt/coin
+   breakdown in its explanation data.
 3. **Done:** Pocket Conquest exposes exact `battleOdds` and a before/after
    battle summary.
-4. Make difficulty changes observable in the report, not only in generated
-   values.
-5. Extend every malformed-save test to cover the new report and hint state.
+4. **Done:** difficulty and skill profiles are observable in the reports.
+5. **Done:** malformed-save tests cover hint, attempt, and report state.
 6. **Done:** a shared pure validator covers the common report shape.
 
 The next branch should implement these model changes and tests first. Views,
