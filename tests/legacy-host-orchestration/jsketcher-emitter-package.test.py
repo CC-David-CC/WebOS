@@ -9,10 +9,14 @@ if len(sys.argv) != 2:
     raise SystemExit('usage: python tests/jsketcher-emitter-package.test.py /path/to/jsketcher-build')
 runtime = Path(sys.argv[1])
 receipt = json.loads((runtime / 'BUILD-RECEIPT.json').read_text())
-assert receipt['forkCommit'] == '518a4666cfc5c94acb153f0cd315a2ca1625eb2f'
+assert receipt['forkCommit'] == 'f36062ba409963ea1ed93e1985bb0a781abdf9b1'
 assert receipt['occtSelection'] == 'source-research'
 assert hashlib.sha256((runtime / 'lib-assets/jsketcher-occ-engine/occt.wasm').read_bytes()).hexdigest() == 'a2b2f7daf6a4eb98b975f8aec136f6cbaf2720295ea32e71edb13ff4c5ceaecb'
+worker = receipt['projectValidatorWorker']
+assert worker['path'].startswith('static/project-validator.') and worker['path'].endswith('.js')
+assert hashlib.sha256((runtime / worker['path']).read_bytes()).hexdigest() == worker['sha256']
 code = (runtime / 'static/index.bundle.js').read_text(encoding='utf-8')
+assert Path(worker['path']).name in code
 assert 'node_modules/component-emitter/index.js' in code
 assert 'node_modules/emitter-component/index.js' not in code
 assert 'node_modules/stream/index.js' in code and 'node_modules/sax/lib/sax.js' in code

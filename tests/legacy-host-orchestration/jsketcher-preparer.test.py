@@ -29,7 +29,10 @@ if sys.argv[1]=='ci':
  r=Path('node_modules/babel-polyfill/node_modules/regenerator-runtime');r.mkdir(parents=True);(r/'runtime.js').write_text('bad' if os.environ.get('CODI_TEST_BAD_REGEN') else 'regen fixture');(r/'package.json').write_text('{"name":"regenerator-runtime","version":"0.10.5","license":"MIT"}')
  n=Path('node_modules/numeric');n.mkdir();(n/'numeric-1.2.6.js').write_text('abcd');(n/'package.json').write_text('{\"name\":\"numeric\",\"version\":\"1.2.6\"}');a=Path('node_modules/alpha');a.mkdir();(a/'package.json').write_text('{"name":"alpha","version":"1","license":"MIT"}');(a/'LICENSE-MIT').write_text('license')
 elif sys.argv[1]=='run':
- d=Path('dist');(d/'lib').mkdir(parents=True);(d/'lib/pnltri.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_PNLTRI') else 'pnltri fixture');(d/'lib/verb.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_VERB') else 'verb fixture');(d/'lib/diff_match_patch.js').write_text('diff fixture');(d/'static').mkdir(parents=True);(d/'index-webos.html').write_text('fixture');(d/'static/index.bundle.js').write_text('/***/ "./node_modules/alpha/index.js":');e=d/'lib-assets/jsketcher-occ-engine';e.mkdir(parents=True);shutil.copyfile('node_modules/jsketcher-occ-engine/occt.wasm',e/'occt.wasm');shutil.copyfile('node_modules/jsketcher-occ-engine/occt.js',e/'occt.js')
+ d=Path('dist');(d/'lib').mkdir(parents=True);(d/'lib/pnltri.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_PNLTRI') else 'pnltri fixture');(d/'lib/verb.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_VERB') else 'verb fixture');(d/'lib/diff_match_patch.js').write_text('diff fixture');(d/'static').mkdir(parents=True);(d/'index-webos.html').write_text('fixture');(d/'static/index.bundle.js').write_text('/***/ "./node_modules/alpha/index.js": '+('wrong-worker' if os.environ.get('CODI_TEST_BAD_WORKER_REF') else 'project-validator.0123456789abcdef0123.js'));
+ if not os.environ.get('CODI_TEST_MISSING_WORKER'):(d/'static/project-validator.0123456789abcdef0123.js').write_text('/***/ "./node_modules/worker-only/index.js":' if os.environ.get('CODI_TEST_WORKER_ONLY_MODULE') else 'worker fixture')
+ if os.environ.get('CODI_TEST_EXTRA_WORKER'):(d/'static/project-validator.123456789abcdef01234.js').write_text('extra worker')
+ e=d/'lib-assets/jsketcher-occ-engine';e.mkdir(parents=True);shutil.copyfile('node_modules/jsketcher-occ-engine/occt.wasm',e/'occt.wasm');shutil.copyfile('node_modules/jsketcher-occ-engine/occt.js',e/'occt.js')
 ''');npm.chmod(0o755);node=tools/'node';node.write_text('#!/bin/sh\necho v0.fixture\n');node.chmod(0o755)
  oldpath=os.environ['PATH'];os.environ['PATH']=str(tools)+os.pathsep+oldpath
  m.PNLTRI_ASSET_SHA256=hashlib.sha256(b'pnltri fixture').hexdigest();m.PNLTRI_NOTICE=root/'pnltri-license';m.PNLTRI_NOTICE.write_text('pnltri terms');m.PNLTRI_NOTICE_SHA256=hashlib.sha256(b'pnltri terms').hexdigest()
@@ -54,6 +57,11 @@ elif sys.argv[1]=='run':
  try:build();raise AssertionError('tampered Manifold input accepted')
  except RuntimeError as e:assert 'pinned hash' in str(e)
  (manifold/'manifold.js').write_text('fixture js')
+ for variable,expected in [('CODI_TEST_MISSING_WORKER','exactly one'),('CODI_TEST_EXTRA_WORKER','exactly one'),('CODI_TEST_BAD_WORKER_REF','does not reference'),('CODI_TEST_WORKER_ONLY_MODULE','worker-only npm')]:
+  os.environ[variable]='1'
+  try:build();raise AssertionError('invalid worker accepted')
+  except RuntimeError as e:assert expected in str(e)
+  finally:del os.environ[variable]
  build();assert (m.DESTINATION/'PNLTRI-LICENSE.txt').read_text()=='pnltri terms';r1=(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();man=(m.HERE/'app.json').read_bytes();build();assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();assert man==(m.HERE/'app.json').read_bytes()
  assert (m.DESTINATION/'CLIPPER-LIB-BOOST-LICENSE.txt').read_text()=='boost terms'
  assert (m.DESTINATION/'CLIPPER-LIB-COPYRIGHT.txt').read_text()=='clipper header'
