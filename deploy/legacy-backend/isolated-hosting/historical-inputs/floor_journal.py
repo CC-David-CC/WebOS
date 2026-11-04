@@ -8,7 +8,9 @@ from pathlib import Path
 
 class FloorJournal:
  def __init__(self,adapter,directory):
-  self.io=adapter;self.dir=Path(directory);self.journal=self.dir/'opfs-transition.json';self.floor=self.dir/'opfs-floor.json'
+  self.io=adapter;self.dir=Path(directory);info=self.dir.lstat()
+  if not stat.S_ISDIR(info.st_mode) or info.st_uid!=os.geteuid() or stat.S_IMODE(info.st_mode)!=0o700:raise ValueError('Protected 0700 journal directory required')
+  self.journal=self.dir/'opfs-transition.json';self.floor=self.dir/'opfs-floor.json'
  def _write(self,path,obj):
   fd,name=tempfile.mkstemp(prefix='.opfs-',dir=self.dir)
   try:
@@ -25,9 +27,10 @@ class FloorJournal:
   fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_CLOEXEC|os.O_NONBLOCK)
   try:
    info=os.fstat(fd)
-   if not stat.S_ISREG(info.st_mode) or info.st_nlink!=1 or info.st_size>4096:raise ValueError('Unsafe journal file')
+   if not stat.S_ISREG(info.st_mode) or info.st_uid!=os.geteuid() or stat.S_IMODE(info.st_mode)!=0o600 or info.st_nlink!=1 or info.st_size>4096:raise ValueError('Unsafe journal file')
    raw=os.read(fd,4097)
-   if len(raw)!=info.st_size:raise ValueError('Journal changed while reading')
+   after=os.fstat(fd)
+   if len(raw)!=info.st_size or (info.st_dev,info.st_ino,info.st_size,info.st_mtime_ns,info.st_ctime_ns)!=(after.st_dev,after.st_ino,after.st_size,after.st_mtime_ns,after.st_ctime_ns):raise ValueError('Journal changed while reading')
   finally:os.close(fd)
   result=json.loads(raw);self._validate(result);return result
  def _validate(self,result):
