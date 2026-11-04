@@ -184,3 +184,51 @@ then the staged directory was renamed into the absent final path and its parent
 fsynced. This stages public assets only: no selector, controller, timer, service,
 account or floor was changed. The literal managed plan must recheck it before
 activation. Main still serves 0965.
+
+The fixed-path install/recovery candidate `main-install-launch.py` is present
+in the review package, not installed. It preserves the observed controller
+owner 1000:1000/mode 0644, original 3ad floor, and uses the existing
+`main-restriction-journal.json` with a strictly validated installer-specific
+schema. fb27 already freezes supported legacy CLI writes whenever that name
+exists; the main forward transaction refuses this different schema. It verifies
+the exact successor input, publishes a root-owned bundle with no replacement,
+fsyncs file and directory boundaries, journals before replacing 84c with fb27,
+and resumes forward after interruption. An interrupted unselected stage is left
+for separately reviewed cleanup. Recovery can build a fresh generation after a
+death before publication. No original floor or user data is rewritten.
+
+The trusted maintenance freeze is an essential precondition: coordinate all
+operators and agents to start no other host mutation, record and stop the known
+renew timer, wait for or terminate identified old controller jobs, and keep
+that freeze through guard verification and recovery. The launcher checks exact
+unit hashes, inactive timer/service with no running PIDs, known controller argv,
+lock inode/ownership/mode, pending journals and custody under the hosting lock.
+It does not claim to detect renamed/embedded code or resist a trusted root
+administrator deliberately bypassing the freeze. Restore the recorded timer
+state only after the guard, successor, journal and beta recovery path are
+independently verified. This does not stop or modify the guest-network manager.
+
+Five SIGKILL primitive boundaries (staged, published, journaled, replaced,
+verified) passed in root-owned disposable `/run` fixtures. A literal fixed-path
+namespace run passed plan, active-timer/known-invoker/conflicting-journal
+refusals, kills after staging and guard replacement, recovery and idempotence;
+timer unit hashes/state and service-manager responses were fixture substitutions.
+Source path/custody bootstrap, concurrent invoker quiescence on the real host,
+actual successor operational health, and full protected installation remain
+independent-review and production-readiness gates.
+
+`build-main-release.py` creates the enabled candidate by verifying disabled
+source SHA `1db014d4d207fb746f52849bd7378a02aaf1b574d9585cb1d262214c74085c26`
+and removing its one research disable line. The resulting literal launcher SHA
+`6469eb631aec6e9d37496dd1547a04dbbda9ea112e280b695c8ea426368f8642`
+passed the isolated real-Caddy interruption/recovery test; production main
+readiness, systemd/timer and loopback translation were fixture substitutions.
+The seven-file public-code package manifest SHA is
+`171feaae4a7821e7d7b077cb2c2e688325b419894b736b38cd50821ab86e3e32`.
+A public-code-only archive containing package and exact successor is backed up
+as `/mnt/data10tb/codi-main-release-checkpoint-20261104.tar.gz` on R730,
+SHA-256 `82390f1a232d79511b286cd62d21b3b3f6ef09bef2cf7fffc7684597dd4571da`.
+The archive is a review input, not a root-custodied installation. Never execute
+checkout code as root on the host; trusted external bootstrap must establish
+and independently hash the exact package first. No live install or cutover
+was performed by this work.
