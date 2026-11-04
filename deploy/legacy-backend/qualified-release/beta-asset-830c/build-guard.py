@@ -10,6 +10,7 @@ def one(a,b):
  if s.count(a)!=1:raise ValueError('guard anchor changed')
  s=s.replace(a,b)
 one("MAIN_RESTRICTION_JOURNAL = STATE/'main-restriction-journal.json'", "MAIN_RESTRICTION_JOURNAL = STATE/'main-restriction-journal.json'\nASSET_FLOOR = STATE/'files-asset-floor.json'\nASSET_JOURNAL = STATE/'files-asset-transition.json'\nASSET_BETA_BLOCK_SHA = '"+block+"'")
+one("or not isinstance(value['baseline'],str)","or value['baseline']!='e7a5e64272c1d6b78de73c46f5105b9963e2272f40450e39e86a038293d9fb3b' or not isinstance(value['baseline'],str)")
 anchor='def _assert_v2_beta(data):\n'
 new='''def _asset_active():
     try: ASSET_FLOOR.lstat()

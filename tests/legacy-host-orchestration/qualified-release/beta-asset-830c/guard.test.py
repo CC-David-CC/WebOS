@@ -9,6 +9,11 @@ with tempfile.TemporaryDirectory(prefix='830c-guard-') as d:
  t=Path(d);subprocess.run([sys.executable,'-B',str(here/'build-generator.py'),'--old',sys.argv[1],'--new',sys.argv[2],'--out',str(t/'generator')],check=True,capture_output=True);subprocess.run([sys.executable,'-B',str(here/'build-guard.py'),str(t/'guard')],check=True,capture_output=True)
  gen=load('common',t/'generator/common.py');load('scaffold',ops/'scaffold_live.py');guard=load('asset_guard',t/'guard/webctl.py')
  old='3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc';new='830ca4f174a37cd499a05e07c373a0412fd94c3e6f232234a87645662170a1f0';data=tomllib.loads((ops/'sites_live.toml').read_text());data['codi_beta_maintenance']=False;data['codi_beta_opfs']=old
+ guard.BETA_FILES_FLOOR=t/'opfs-floor.json';original={'version':1,'baseline':'e7a5e64272c1d6b78de73c46f5105b9963e2272f40450e39e86a038293d9fb3b','candidate':old};guard.BETA_FILES_FLOOR.write_text(json.dumps(original));guard.BETA_FILES_FLOOR.chmod(0o600);guard._check_floor_record()
+ guard.BETA_FILES_FLOOR.write_text(json.dumps({**original,'baseline':'0'*64}))
+ try:guard._check_floor_record();raise AssertionError('changed original floor accepted')
+ except ValueError:pass
+ guard.BETA_FILES_FLOOR.write_text(json.dumps(original))
  guard.ASSET_FLOOR=t/'files-asset-floor.json';guard.ASSET_JOURNAL=t/'files-asset-transition.json';guard.ACTIVE_CADDY=t/'Caddyfile';guard._floor_guard_active=True;guard.ACTIVE_CADDY.write_text(gen.caddy(data,'production'));guard.ACTIVE_CADDY.chmod(0o644);guard._assert_v2_beta(data)
  rec={'version':1,'baseline':old,'candidate':new};guard.ASSET_FLOOR.write_text(json.dumps(rec));guard.ASSET_FLOOR.chmod(0o600)
  try:guard._assert_v2_beta(data);raise AssertionError('post-floor old route accepted')

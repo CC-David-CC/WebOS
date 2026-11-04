@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+"""Exact 830c protected actor candidate; no installation is implied."""
+import argparse,contextlib,hashlib,json,os,pwd,socket,stat,sys,types,urllib.error,urllib.request
+from pathlib import Path
+PKG=Path(__file__).absolute().parent
+PINS=__PINS__
+GUARD='ca25bb27799f0f306d7d901188d894d39ad22ea99ea2c1f1d224a2c6446ab8b9'
+MAIN='e7e8fb9fc1f964ec1b206462468f91b60e8bac1d8117ed29c5f1099abdac3480'
+def safe(path):
+ path=Path(path)
+ for p in (path,*path.parents):
+  v=p.lstat()
+  if p.is_symlink() or v.st_uid!=0 or v.st_mode&0o022:raise ValueError('Unprotected actor path: '+str(p))
+def read(path,limit=8*1024*1024):
+ fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK|os.O_CLOEXEC)
+ try:
+  a=os.fstat(fd)
+  if not stat.S_ISREG(a.st_mode) or a.st_uid!=0 or a.st_nlink!=1 or a.st_mode&0o022 or a.st_size>limit:raise ValueError('Unsafe actor input')
+  raw=b''
+  while len(raw)<a.st_size:
+   part=os.read(fd,min(65536,a.st_size-len(raw)))
+   if not part:raise ValueError('Short actor input')
+   raw+=part
+  b=os.fstat(fd)
+  if (a.st_dev,a.st_ino,a.st_size,a.st_mtime_ns,a.st_ctime_ns)!=(b.st_dev,b.st_ino,b.st_size,b.st_mtime_ns,b.st_ctime_ns):raise ValueError('Actor input changed')
+  return raw
+ finally:os.close(fd)
+def load(name,alias=None,fake_file=None):
+ path=PKG/(name+'.py');safe(path);raw=read(path)
+ if hashlib.sha256(raw).hexdigest()!=PINS[name]:raise ValueError('Actor source pin mismatch: '+name)
+ module=types.ModuleType(alias or name);module.__file__=str(fake_file or path);sys.modules[module.__name__]=module;exec(compile(raw,module.__file__,'exec'),module.__dict__);return module
+
+def main():
+ parser=argparse.ArgumentParser();parser.add_argument('action',choices=('plan','apply','recover'));args=parser.parse_args()
+ if os.geteuid()!=0 or socket.gethostname()!='box-webhost':raise ValueError('root on box-webhost required')
+ safe(Path(__file__).absolute());safe(PKG)
+ host=load('beta_launcher');pre=load('beta_files_preflight')
+ for name in ('microduck_hosting','hardware_hosting','cardboard_hosting'):load(name)
+ root=host.ROOT;old=load('common_live','common',root/'ops/common.py');v2=load('common','files_common',root/'ops/common.py');asset=load('asset_common','asset_common',root/'ops/common.py')
+ for module in (old,v2,asset):module.ROOT=root;module.MANIFEST=root/'sites.toml'
+ load('scaffold_live','scaffold',root/'ops/scaffold.py');ctl=load('webctl_live','files_webctl',root/'ops/webctl.py')
+ txmod=load('beta_transaction');load('render_inventory');managed=load('opfs_managed');load('opfs_floor');rescuemod=load('opfs_gate_rescue');load('beta_signed_probe');signed=load('beta_signed_health');healthmod=load('beta_files_host_health');issuer=load('beta_issuer_switch');svc=load('beta_service_operator');snap=load('beta_files_snapshots');successor=load('beta_successor');assetfloor=load('asset_floor');routermod=load('asset_router');select=load('asset_select');inventory=load('asset_inventory')
+ lock=host.HostLock();check=lock.check;journal=Path('/var/lib/webhost-ops');host.protected(journal)
+ if stat.S_IMODE(journal.stat().st_mode)!=0o700:raise ValueError('Unsafe private journal root')
+ manifest=read(PKG/'sites_live.toml');oldmanifest=read(PKG/'beta_files_candidate.json');newmanifest=read(PKG/'asset_manifest.json');table=read(PKG.parent/'OPFS-ROUTE-TABLE.json')
+ oldbound=types.SimpleNamespace(source=read(PKG/'common_live.py'),module=old);v2bound=types.SimpleNamespace(source=read(PKG/'common.py'),module=v2);newbound=types.SimpleNamespace(source=read(PKG/'asset_common.py'),module=asset)
+ x=routermod.snapshots(snap=snap,successor=successor,oldgen=oldbound,v2gen=v2bound,newgen=newbound,manifest=manifest,old_manifest=oldmanifest,new_manifest=newmanifest,table=table,selector=MAIN)
+ with lock.held():
+  check()
+  @contextlib.contextmanager
+  def held():check();yield
+  def marker(name):
+   p=journal/name
+   try:v=p.lstat()
+   except FileNotFoundError:return None
+   host.protected(p)
+   if not stat.S_ISREG(v.st_mode) or stat.S_IMODE(v.st_mode)!=0o600 or v.st_nlink!=1:raise ValueError('Unsafe journal: '+name)
+   return json.loads(host.read(p,8*1024*1024))
+  for name in ('main-restriction-journal.json','opfs-transition.json','files-inner-hosting.json','files-issuer-switch.json','files-emergency-gate.json','files-normalization.json','beta-hosting-journal.json'):
+   try:(journal/name).lstat()
+   except FileNotFoundError:continue
+   raise ValueError('Conflicting hosting journal: '+name)
+  original=marker('opfs-floor.json');asset_marker=marker('files-asset-floor.json');outer=marker('files-asset-transition.json');inner=marker('files-asset-inner-hosting.json');emergency=marker('files-asset-emergency-gate.json')
+  if inner is not None and emergency is not None:raise ValueError('Multiple nested asset journals')
+  current={k:host.read(p) for k,p in {'common':root/'ops/common.py','manifest':root/'sites.toml','caddy':Path('/etc/caddy/Caddyfile')}.items()}
+  chosen=select.select(snapshots={n:x[n] for n in ('baseline','gate','candidate')},current=current,original_floor=original,asset_floor=asset_marker,asset_journal=outer,nested_journal=inner if inner is not None else emergency,other_pending=False)
+  if args.action in ('plan','apply') and (asset_marker is not None or outer is not None or inner is not None or emergency is not None or chosen!='baseline'):raise ValueError('Asset transition already started')
+  if args.action=='recover' and asset_marker is None and outer is None:raise ValueError('No asset transition; use the 3ad recovery actor')
+  worker=Path('/srv/codi-gateway/releases')/host.GW
+  class LazyJose:
+   module=None
+   def __getattr__(self,name):
+    check()
+    if self.module is None:
+     host.verify_beta_worker(worker,host.GW);p=worker/'codiserver-server-v0.3.0/codiauth/jose.py';host.protected(p);m=types.ModuleType('asset_pinned_jose');m.__file__=str(p);exec(compile(host.read(p),str(p),'exec'),m.__dict__);self.module=m
+    return getattr(self.module,name)
+  signed_check=healthmod.create(lock=lock,launcher=host,preflight=pre,signed_health=signed,jose=LazyJose())
+  def guard():
+   check();host.protected(journal);pre.protected_ancestors(root/'ops')
+   if host.sha(host.read(root/'ops/webctl.py'))!=GUARD:raise ValueError('Asset guard not installed')
+   state=host.unit_state('caddy.service')
+   if state.get('ActiveState')!='active' or state.get('MainPID') in (None,'0') or state.get('UnitFileState')!='enabled' or state.get('NeedDaemonReload')!='no':raise ValueError('Caddy unavailable')
+   host.main_ready();check()
+  def full():
+   guard();pre.tree('/srv/data/codi-beta-opfs/'+routermod.OLD,'manifest.json',routermod.OLD);pre.tree('/srv/data/codi-beta-opfs/'+routermod.NEW,'manifest.json',routermod.NEW);pre.tree('/srv/data/codi-beta-native/'+issuer.NEW,'connected-release.json',issuer.NEW);host.verify_beta_worker(worker,host.GW);host.verify_static();host.verify_overlay()
+   identities=svc.verify_accounts()
+   for beta,mainpath,role in (('/var/lib/codi-connected/beta/issuer','/var/lib/codi-connected/ksu/issuer','issuer'),('/var/lib/codi-gateway/beta','/var/lib/codi-gateway/ksu','gateway'),('/var/lib/codi-user-files/beta','/var/lib/codi-user-files/ksu','gateway')):
+    path=Path(beta);a=path.lstat();b=Path(mainpath).stat()
+    if path.is_symlink() or not stat.S_ISDIR(a.st_mode) or a.st_uid!=identities[role]['uid'] or stat.S_IMODE(a.st_mode)!=0o700 or (a.st_dev,a.st_ino)==(b.st_dev,b.st_ino):raise ValueError('Beta state isolation changed')
+   fs=os.statvfs('/var/lib/codi-user-files/beta')
+   if fs.f_bavail*fs.f_frsize<5*1024**3:raise ValueError('Beta account volume below reserve')
+   signed_check();check()
+  def public(path):
+   opener=urllib.request.build_opener(urllib.request.ProxyHandler({}))
+   try:
+    with opener.open('https://beta.ksu.codes'+path,timeout=8) as r:return r.status,r.read(4*1024*1024+1)
+   except urllib.error.HTTPError as e:return e.code,e.read(65536)
+  def gate_health():
+   guard();status,body=public('/')
+   if status!=200 or b'Beta maintenance' not in body or public('/desktop-apps.js?simplified=1')[0]!=503:raise ValueError('Beta gate unavailable')
+  def candidate_health():
+   full();status,body=public('/desktop-apps.js?simplified=1');wanted=json.loads(newmanifest)['files']['shell/desktop-apps.js']['sha256']
+   if status!=200 or len(body)>4*1024*1024 or hashlib.sha256(body).hexdigest()!=wanted:raise ValueError('830c loader mismatch')
+  def baseline_health():
+   guard();pre.tree('/srv/data/codi-beta-opfs/'+routermod.OLD,'manifest.json',routermod.OLD);signed_check();status,body=public('/desktop-apps.js?simplified=1');wanted=json.loads(oldmanifest)['files']['shell/desktop-apps.js']['sha256']
+   if status!=200 or len(body)>4*1024*1024 or hashlib.sha256(body).hexdigest()!=wanted:raise ValueError('3ad loader mismatch')
+  def main_health():host.main_ready();host.public_health()
+  def route_health(name):
+   if name=='gate':gate_health()
+   elif name=='candidate':candidate_health()
+   else:baseline_health()
+  owner=pwd.getpwuid(root.stat().st_uid);caddy=pwd.getpwnam('caddy');paths={'common':root/'ops/common.py','manifest':root/'sites.toml','caddy':Path('/etc/caddy/Caddyfile')};timer=txmod.SystemdTimer(host.run)
+  router=routermod.Router(snapshots=x,baseline_gen=v2bound,gate_gen=oldbound,candidate_gen=newbound,inventory=inventory.RenderInventory,ctl=ctl,paths=paths,hosting_root=root,caddy_dir='/etc/caddy',uid=owner.pw_uid,gid=owner.pw_gid,caddy_gid=caddy.pw_gid,caddy_uid=0,timer=timer,lock=held,check_lock=check,beta_ready=full,gate_ready=guard,main_health=main_health,route_health=route_health,caddy_active=guard,backup=host.backup,nested_journal=journal/'files-asset-inner-hosting.json')
+  asset_path=journal/'files-asset-floor.json';rescue=rescuemod.GateRescue(router.adapter(x['candidate'],x['gate']),check,journal/'files-asset-emergency-gate.json',x['candidate'],x['gate'],guard,guard)
+  binding=managed.ManagedBinding(held,check,{n:x[n] for n in ('baseline','gate','candidate')},router.transaction,router.read,router.prepare,lambda:asset_path.exists(),lambda rec,mode:full() if mode in ('initial','forward') else baseline_health(),gate_health,lambda rec:candidate_health(),lambda rec:baseline_health(),lambda rec:check(),rescue)
+  actor=assetfloor.AssetFloor(binding,journal)
+  if args.action=='plan':full();baseline_health();print(json.dumps({'action':'plan','status':'PASS','candidate':routermod.NEW,'productionQualified':False}));return
+  if emergency is not None:rescue()
+  if args.action=='apply':actor.apply_exact()
+  else:actor.recover_exact()
+  print(json.dumps({'action':args.action,'status':'PASS','candidate':routermod.NEW}))
+if __name__=='__main__':main()
