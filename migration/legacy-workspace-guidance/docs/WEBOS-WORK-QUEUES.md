@@ -102,6 +102,14 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] FILES OPERATOR SOURCE INTEGRATION: imported only the independently reviewed
+  `research/beta-isolated-hosting` subtree at `f6deb3251`, including the
+  `a1e9e215c` gate-recovery correction. Seven targeted lead tests pass after
+  integration. Independent exact-launcher fault qualification uses real
+  loopback Caddy and disposable systemd, with explicit policy/main/timer/unit
+  substitutions. Actual service/timer qualification continues separately;
+  production installation and beta acceptance remain open. See
+  `evidence/files-operator-source-integration-20261104.md`. No live changes.
 - [~] ATOMIC RECTANGLE CREATION: fork `ec2e0156` records `07316f8f`.
   Lead build/typecheck, seven pure workspace tests, stream coordinator and nine
   current-build Chromium scripts pass. Real plane/worker rectangle bytes and
