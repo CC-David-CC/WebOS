@@ -42,7 +42,7 @@ if len(sys.argv)>1:
  sys.exit(0)
 with tempfile.TemporaryDirectory(prefix='opfs-journal-test-') as tmp:
  for phase in ('journaled','gated','floor','forward','healthy'):
-  root=Path(tmp)/phase;root.mkdir();(root/'route').write_text('old')
+  root=Path(tmp)/phase;root.mkdir(mode=0o700);(root/'route').write_text('old')
   p=subprocess.run([sys.executable,'-B',__file__,str(root),phase],timeout=10);assert p.returncode==17
   p=subprocess.run([sys.executable,'-B',__file__,str(root),'stale'],capture_output=True,timeout=10);assert p.returncode!=0 and (root/'route').read_text()=='gate' and (root/'opfs-transition.json').exists()
   if phase in ('floor','forward','healthy'):
