@@ -6,6 +6,34 @@ Place an app in `apps/system/<id>/index.mjs` and export a synchronous
 keep per-window state on the window or in the mounted view. `host.signal` is
 aborted on disposal.
 
+File-operation admission belongs to the mount, through
+`host.documentOperations`. Do not create an app-private competing controller.
+Call `begin('load' | 'save' | 'export')` synchronously before a picker,
+confirmation, serialization, read or write. Null means busy, not permission to
+queue a retry. Every button, menu, shortcut and agent command must enter the
+same guarded action. Include initial/retry loads and Save As dialogs; pass the
+existing token to nested helpers instead of beginning again. Finish in `finally`.
+
+The host shares active claims among windows in the exact account session.
+Use `mirror:` plus `context.path(path)` as the canonical document key; untitled
+documents have no key. Acquire a selected path with `token.claimDocument(key)`
+before accessing it, and refuse false. After a successful load/local save call
+`token.setDocument(key)`. Save As holds both old and new paths until completion.
+Idle windows may share a file; unrelated files remain usable. These claims do
+not replace authorization or cross-tab/device expected-version checks.
+
+Render Save availability using `bindControl` or `subscribe`/`busy`; embedded
+editors must update native action state too. Disabled controls alone are not a
+guard. Pass `token.signal` to cancellation-aware work and recheck
+`token.current()` plus account/document validity after awaits. Apps retain
+serialization and dirty-revision handling: an older save cannot mark newer
+edits clean. Local durable completion ends busy without waiting for background
+server sync. The controller retains no file bytes.
+
+See `docs/research/save-busy/CONTROLLER-20261104.md` and its app audit for
+migration status. Shared-helper tests do not qualify actual app workflows.
+Unqualified apps stay on beta; promotion to main requires end-to-end evidence.
+
 Register a new app in the explicit app builder list and desktop menu. App code
 is trusted same-origin code, not a sandbox. Use the shared host's account and
 storage interfaces; a folder or hidden menu item is not a security boundary.

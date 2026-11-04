@@ -102,6 +102,19 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] MOUNT-OWNED DOCUMENT OPERATIONS: `9fa27ad72` supplies session-local active
+  file claims, synchronous admission and observable state. Text/Calculator
+  migrate in `3f6d745d0`; actual mounted-app Chromium tests pass desktop/phone
+  sizes with stub storage/accounts. Parent-backed CAD, Circuit Lab and Digital
+  Logic migrations are in progress. Remaining apps are recorded in
+  `docs/research/save-busy/AUDIT-20261104.md`; no all-app/deployed claim.
+- [~] VERSIONED CAD WORKER HISTORY: `d64c506c` is tree-equivalent to owner
+  `4ed4a5ec`. V1 rectangle wizard/craft, bounds/topology, width/depth edits,
+  rejected changes, undo/redo/native reopen pass under strict CSP with actual
+  OCC workers and a test-owned host binder. Parent binding is desktop
+  `ed86194bd`; signed parent/Files/close qualification remains open. Full plate,
+  dependent holes/cuts/fillets/patterns and all of Gate 1 remain incomplete.
+
 - [~] MAIN/BETA BOUNDARY: main ksu.codes must offer only finished features with
   end-to-end evidence; all games and unfinished integrations belong on beta.
   Catalog, file associations, restored windows and direct launch are being

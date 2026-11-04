@@ -1,5 +1,14 @@
 Finish dependable Files, consolidate our existing JSketcher fork, then deliver the next useful mechanical CAD features through the WebOS.
 
+Latest user amendment — 2026-11-04: all games and unfinished features belong on
+beta.ksu.codes; main must offer only qualified end-to-end features. Main-only
+removal is authorized through managed hosting. Preserve beta, /desktop, saved
+files and account/key boundaries. Shared load/save admission and busy state
+belong to the mount/host; apps supply serialization and dirty-revision handling.
+Disable Save/menu controls during local operations and guard shortcuts/agent
+commands; no queued manual Save. Background server sync is independent. See the
+successor goal and work queues for current implementation and remaining work.
+
 Act as the integration lead. Use three subagents in separate branches/worktrees, with explicit ownership:
 1. Files and storage: browser/server persistence, synchronization, conflicts, recovery and the Files app.
 2. JSketcher consolidation: existing upstream adaptations, geometry engines, builds, provenance and desktop integration.

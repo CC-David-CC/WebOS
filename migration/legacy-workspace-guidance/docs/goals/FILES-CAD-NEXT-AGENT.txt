@@ -2,6 +2,24 @@ Continue dependable Files and the WebOS CAD foundation as integration lead.
 The full release and CAD Gate 1 remain active and incomplete. Do not restart the
 upstream merge or attempt every later gate at once.
 
+LATEST RELEASE AND APP CONTRACT — 2026-11-04
+Main must contain only qualified end-to-end features. All games and unfinished
+integrations belong on beta. A core-only candidate has isolated signed
+admission/layout and service-worker tests; it is not yet activated. Gate the
+catalog, document associations, restored windows and direct launches as well as
+menus. Preserve saved bytes and beta window layouts, /desktop, beta account/key
+state and OPFS floor. Lead owns the main-only managed selector transaction.
+
+The mount owns unified file-operation admission. Desktop 9fa27ad72 installs
+host.documentOperations; 3f6d745d0 migrates Text/Calculator. Lead and owner real
+Chromium app tests pass at desktop/phone sizes with stub storage/accounts, not
+signed deployment qualification. Remaining apps are being migrated. Disable
+Save and native menu equivalents while loading/locally saving, guard duplicate
+keyboard/agent actions, and never queue a manual Save. Same-file operations
+share session-local active claims; unrelated files remain usable. Preserve
+dirty revisions, storage CAS and cancellation. Background sync is independent.
+Use docs/research/save-busy; do not invent another controller or storage stack.
+
 SOURCE-TRUST RULE — latest explicit user direction
 All JSketcher features are suspect and are used for inspiration/reference.
 Upstream behavior, menus and previously merged code are not correctness evidence.
@@ -31,18 +49,21 @@ Adapter 29c89c67 connects a captured rectangle to an owned OCC worker and the
 bounded model projection. Focused guard/type checks and owner real-worker tests
 pass. Real pinned-runtime positive registration and injected failure controls
 are recorded in 5e54c5a5. Registry guards 9bb3eae0 reject worker collisions,
-oversized durable IDs and unsupported saved sketches. Owner tests pass;
-combined application qualification is in progress, not publication proof.
+oversized durable IDs and unsupported saved sketches. Combined application
+qualification passes at 4cae31eb. CAD d64c506c (tree-equivalent to owner4ed4a5ec)
+adds WORKER_RECTANGLE_EXTRUDE_V1 through actual wizard/history; host binder is
+138eff3f, parent frame binding/dispose is desktop ed86194bd. Strict-CSP Chromium
+passes geometry, width/depth edits, rejected changes, undo/redo/native reopen
+and reset/test-host cancellation. Actual signed parent/Files remains open.
 
 Next serial CAD exit:
-1. Qualify the combined consumer/reference/adapter/registry application build,
-   including collision and saved-ID limits and preservation of incompatible
-   stale sketch data on generated worker faces.
-2. Bind the captured sketch/frame/region/parameters/document/account lifetime to
-   the owned worker result, package trusted workers and publish matching model,
-   history and registry together. Never persist raw native pointers/handles.
-3. Prove width/depth edits, rejection with last-valid preservation, undo/redo,
-   native save/reopen and signed My files reopen on this exact combined path.
+1. Package the versioned worker route and all trusted emitted assets through
+   the desktop's closed inventory; retain combined guard evidence.
+2. Qualify actual signed parent/window/account lifetime and the shared Save
+   controller, including held work and cancellation.
+3. Prove width/depth edits, rejection, undo/redo and signed My files
+   save/sync/close/reopen on this exact packaged path. Isolated native reopen is
+   already covered. Never persist raw native pointers or runtime handles.
 4. Extend to dependent holes/cuts/fillets/patterns and the full plate acceptance.
 Use actual authored profile geometry, not a BOX substitute or a hidden editor.
 The normal desktop CAD package remains d3d36bc5 until separately qualified.
@@ -85,7 +106,8 @@ CURRENT FILES CHECKPOINT
 Beta actually runs candidate 3ad04c48 with issuer 853c12e5 and gateway dd8cbea7.
 OPFS v2 floor is installed. Do not rerun the old pre-floor plan/apply transition.
 Use the exact reviewed protected forward/recovery procedure in the handoff; no
-manual generated-Caddy edits. Preserve main and /desktop and all account/key
+manual generated-Caddy edits. Narrow main only through qualified managed
+release as above; preserve /desktop and all account/key
 boundaries. Do not deploy the research checkout wholesale.
 
 My files stays browser-first and account-bound with normal server disk files:

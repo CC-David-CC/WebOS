@@ -13,6 +13,29 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
+**Main/beta and Save policy:** all games and unfinished integrations must move
+off main to beta. Candidate e7e8fb9f keeps Files, Text, Terminal, Calculator and
+Help plus CodeMirror; isolated signed admission/layout and actual service-worker
+transition checks pass. Main is not yet changed. Saved files and beta layout
+remain; old loaded/offline clients may retain old code until updated. Core
+workflow qualification and a same-lock managed transaction are underway. Do not
+use pre-floor controllers or modify derived Caddy directly.
+
+Desktop `9fa27ad72` installs mount-owned `host.documentOperations`, with
+session-local active file claims, synchronous begin, observable busy state and
+cleanup. `3f6d745d0` migrates Text/Calculator. Owner and lead independently
+rebuilt/reran actual mounted-app Chromium tests at desktop/phone sizes; storage
+and accounts were stubs. Remaining apps are in migration, not qualified. No
+queued manual Save or app-private controllers; background sync stays separate.
+
+**Worker-history slice:** CAD `d64c506c` matches owner `4ed4a5ec` by tree and
+adds `WORKER_RECTANGLE_EXTRUDE_V1`. Host binder `138eff3f` and parent binding/
+disposal desktop `ed86194bd` tie owned work to the mounted frame. Isolated
+strict-CSP tests pass actual wizard/craft, bounds/topology, width/depth edits,
+rejection, undo/redo/native reopen and reset/test-host cancellation. Signed
+parent/My files and shared Save integration remain open. Full plate and Gate 1
+do not pass. Root typecheck/helper tests pass on the integrated tree.
+
 **Latest user/source rule:** all JSketcher features are suspect and used for
 reference/inspiration. Keep code only where independent tests establish its
 explicit contract; rewrite inherited behavior/architecture as needed. Later
@@ -27,10 +50,11 @@ mesh preflight and classifier pointers. Its focused spies and typecheck pass;
 regression. `7090a161` integrates transient-reference and generated-face sketch
 guards with owner real-worker/GUI/native-ID-boundary tests. `29c89c67` integrates
 the real authored rectangle/OCC/semantic-worker/model adapter and owner tests.
-These packages are not yet qualified as one published worker-history workflow.
+These packages are not yet qualified as a deployed signed worker-history workflow.
 Registry collision/ID/stored-sketch guards are integrated at `9bb3eae0`, with
-owner real-worker tests. Combined application qualification is in progress in
-an isolated worktree. The public CAD runtime remains `d3d36bc5`.
+owner real-worker tests. Combined application qualification passed at `4cae31eb`;
+the later worker-history slice is described above. Public CAD remains
+`d3d36bc5` until separate qualification; main removal is pending.
 
 **New Files evidence:** desktop `4613eebae`/`7a119bc4f` records all ordinary Files
 UI actions on beta in desktop and phone-sized emulation. Fresh-session `stat`
