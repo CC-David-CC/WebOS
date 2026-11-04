@@ -126,3 +126,15 @@ asset routes combined with the approved main selector family, with interrupted
 recovery and mixed-state refusal tested. Keep issuer 853 and gateway dd8 only
 after compatibility and signed-account/storage checks pass. Neither removing
 the floor nor broadly accepting arbitrary routes is a safe update strategy.
+
+The still-disabled main launcher now includes a fail-closed preflight for the
+exact recovery successor inventory `bc9f939a9db8849fb7d580e5a71d5c52728b127b74c3bca1ee811b41fdd1f754` at the fixed proposed protected bundle path.
+The lock must already be held; root ownership, file/link types, group/world
+write, xattrs, extra/missing files and every recorded hash are checked. The
+successor's protected ancestors and the existing exact fb27 guard are also
+required. `sudo -n python3 -B research/main-qualified-release/main-successor-preflight.test.py /path/to/clean-generated-bundle`
+passes its disposable root-owned custody and mutation controls. The first test
+input had a pycache added by an earlier compile and correctly failed; the clean
+bundle was regenerated from pins. This checks installed bytes only: actual
+entrypoint fencing, durable installation, invocation/health and real main
+transaction remain unqualified, and the launcher remains disabled.
