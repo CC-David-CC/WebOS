@@ -67,3 +67,21 @@ A follow-up exercises the actual `FilesAssembly.recover`/`ManagedBinding` classe
 `beta-successor.py` derives two exact beta snapshot families from the pinned beta snapshot builder, for main selectors 0965 and e7e8 only. It preserves the original floor baseline SHA-256 `e7a5e64272c1d6b78de73c46f5105b9963e2272f40450e39e86a038293d9fb3b` and beta candidate 3ad04c48 (confirmed read-only against the installed floor). It rejects a pending main journal before route selection, and accepts post-floor candidate/gate exact endpoints or a pinned nested journal whose mixed common/manifest/Caddy components all belong to the same main family. Candidate→gate requires the existing version-2 gate-only policy; gate→candidate requires the existing version-1 policy. Unknown phases, malformed flags, cross-main mixtures and changed floor are rejected. Pre-floor plan/apply is outside this recovery-only selector.
 
 `beta-successor.test.py` uses the exact checked-in pinned beta snapshot builder and generator, exercises eight same-family partial-write combinations in both directions for both main selectors, cross-main refusal, main-journal refusal, and a simulated `ManagedBinding` gate/restore preserving e7e8. This is only snapshot selection and callback simulation: it is **not** the protected beta successor, real Caddy/systemd, the complete existing nested-journal implementation, or a release. The installed beta launcher's guarded-webctl pin and old snapshot assumptions still require a reviewed, coordinated post-floor-only successor and protected installation. Do not install fb27/main launcher without it.
+
+The research-only `build-beta-successor.py OUTPUT` builds the recovery-only
+successor from the exact pinned old beta launcher, all of its pinned modules,
+the protected snapshot inputs, and `beta-successor.py`. OUTPUT must not exist.
+The bundle includes a sorted SHA-256 inventory; it is not an installer and is
+not authorized for the host. Two independent builds produced inventory SHA-256
+`bc9f939a9db8849fb7d580e5a71d5c52728b127b74c3bca1ee811b41fdd1f754`.
+The generated executable rejects `plan` and `apply`; its changed controller
+pin is the proposed main-journal guard, not the currently installed controller.
+
+This bundle is an **unqualified candidate**: the exact protected executable,
+its installation/old-process fencing, a real controller/Caddy recovery with
+interruption at each transition, and preservation of the live main route are
+still release gates. The family selector's isolated tests do not establish
+those properties on the host. Unknown routes, concurrent main journal, or
+multiple nested beta journals are refused; a refusal does not prove that the
+beta site has been gated. Do not install, activate, or replace existing
+recovery with this source until those gates are reviewed and tested.
