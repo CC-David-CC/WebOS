@@ -1,4 +1,4 @@
-import importlib.util,tempfile,json,os,subprocess,hashlib,sys
+import importlib.util,tempfile,json,os,subprocess,hashlib,sys,zipfile
 from pathlib import Path
 s=importlib.util.spec_from_file_location('p',str(Path(__file__).resolve().parents[1]/'apps/system/jsketcher/prepare.py'));m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
 def run(*a,cwd):subprocess.run(a,cwd=cwd,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -22,6 +22,15 @@ with tempfile.TemporaryDirectory() as td:
  m.WORKER_ENGINE_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=engine,text=True).strip()
  m.WORKER_ENGINE_TREE=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=engine,text=True).strip()
  m.WORKER_PORTABLE_SHA256=hashlib.sha256(b'portable').hexdigest();m.WORKER_BUNDLE_SHA256=hashlib.sha256(b'oci-worker').hexdigest()
+ runtime_zip=root/'runtime.zip';runtime_entries={'LICENSE':b'emscripten license','system/lib/dlmalloc.c':b'public domain * Version 2.8.6'}
+ with zipfile.ZipFile(runtime_zip,'w') as z:
+  for name,data in runtime_entries.items():z.writestr(name,data)
+ m.EMSCRIPTEN_RUNTIME_SOURCE_SHA256=hashlib.sha256(runtime_zip.read_bytes()).hexdigest()
+ m.EMSCRIPTEN_LICENSES={name:hashlib.sha256(data).hexdigest() for name,data in runtime_entries.items()}
+ m.SMALL_RUNTIME_PACKAGES={}
+ for name in ('stream','timers'):
+  metadata=json.dumps({'name':name,'version':'1','license':'MIT'},sort_keys=True)
+  m.SMALL_RUNTIME_PACKAGES[name]={'version':'1','readme':hashlib.sha256((name+' readme').encode()).hexdigest(),'entry':hashlib.sha256((name+' entry').encode()).hexdigest(),'package':hashlib.sha256(metadata.encode()).hexdigest()}
  m.MDI_COMPONENTS=set();m.MDI_SVG_SHA256={};m.MDI_LICENSE_SHA256=hashlib.sha256(b'mdi license').hexdigest()
  m.FORK_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip();m.ENGINE_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=engine,text=True).strip();m.ENGINE_SHA256={n:hashlib.sha256(v.encode()).hexdigest() for n,v in [('occt.wasm','wasm'),('occt.js','js')]}
  m.ENGINE_TREE=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=engine,text=True).strip();m.ENGINE_SOURCE_NOTICES={n:(target,hashlib.sha256((engine/n).read_bytes()).hexdigest()) for n,(target,_) in m.ENGINE_SOURCE_NOTICES.items()}
@@ -31,11 +40,14 @@ with tempfile.TemporaryDirectory() as td:
  (manifold/'build-receipt.json').write_text(json.dumps(receipt))
  m.MANIFOLD_INPUTS={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in manifold.iterdir()}
  tools=root/'bin';tools.mkdir();npm=tools/'npm';npm.write_text('''#!/usr/bin/env python3
-import sys,pathlib,shutil,os
+import sys,pathlib,shutil,os,json
 from pathlib import Path
 if sys.argv[1:]==['--version']:print('0.test');sys.exit(0)
 if sys.argv[1]=='ci':
  d=Path('node_modules/jsketcher-occ-engine');d.mkdir(parents=True);(d/'occt.wasm').write_text('bad' if os.environ.get('CODI_TEST_BAD_NPM') else 'wasm');(d/'occt.js').write_text('js');(d/'license.md').write_text('exception');(d/'LICENSE_LGPL_21.txt').write_text('lgpl');(d/'opencascade-info.txt').write_text('info');(d/'package.json').write_text('{"name":"jsketcher-occ-engine","version":"1","license":"test"}')
+
+ for name in ('stream','timers'):
+  q=Path('node_modules')/name;q.mkdir();(q/'README.md').write_text(name+' readme');(q/'index.js').write_text(name+' entry');(q/'package.json').write_text(json.dumps({'name':name,'version':'1','license':'MIT'},sort_keys=True))
  c=Path('node_modules/clipper-lib');c.mkdir(parents=True);(c/'clipper.js').write_text('bad' if os.environ.get('CODI_TEST_BAD_CLIPPER') else 'clipper fixture');(c/'package.json').write_text('{"name":"clipper-lib","version":"6.2.1","license":"BSL"}')
  r=Path('node_modules/babel-polyfill/node_modules/regenerator-runtime');r.mkdir(parents=True);(r/'runtime.js').write_text('bad' if os.environ.get('CODI_TEST_BAD_REGEN') else 'regen fixture');(r/'package.json').write_text('{"name":"regenerator-runtime","version":"0.10.5","license":"MIT"}')
  n=Path('node_modules/numeric');n.mkdir();(n/'numeric-1.2.6.js').write_text('abcd');(n/'package.json').write_text('{\"name\":\"numeric\",\"version\":\"1.2.6\"}');a=Path('node_modules/alpha');a.mkdir();(a/'package.json').write_text('{"name":"alpha","version":"1","license":"MIT"}');(a/'LICENSE-MIT').write_text('license')
@@ -74,8 +86,8 @@ elif sys.argv[1]=='run':
   for name,out,text in notices:
    (m.VENDOR_NOTICE_DIR/name).write_text(text);data.append((name,out,hashlib.sha256(text.encode()).hexdigest()))
   m.OTHER_VENDOR_INPUTS[asset]=(hashlib.sha256(content.encode()).hexdigest(),data)
- m.HERE=root/'output';m.HERE.mkdir();(m.HERE/'PROVENANCE-NOTES.md').write_text('fixture provenance');m.DESTINATION=m.HERE/'node_modules'/'jsketcher-build';m.PREFIX='node_modules/jsketcher-build/'
- def build(extra=()):sys.argv=['prepare.py','--repo',str(repo),'--engine-repo',str(engine),'--worker-engine-repo',str(engine),'--worker-occt-input',str(worker_input_dir),'--numeric-repo',str(numeric),'--experimental-local-only','--update-manifest','--manifold-research-input',str(manifold),*extra];m.main()
+ m.HERE=root/'output';m.HERE.mkdir();(m.HERE/'PROVENANCE-NOTES.md').write_text('fixture provenance');(m.HERE/'SOURCE-INDEX.html').write_text('<a href=\"emscripten-runtime-source.zip\">source</a>');m.DESTINATION=m.HERE/'node_modules'/'jsketcher-build';m.PREFIX='node_modules/jsketcher-build/'
+ def build(extra=()):sys.argv=['prepare.py','--repo',str(repo),'--engine-repo',str(engine),'--worker-engine-repo',str(engine),'--emscripten-runtime-source',str(runtime_zip),'--worker-occt-input',str(worker_input_dir),'--numeric-repo',str(numeric),'--experimental-local-only','--update-manifest','--manifold-research-input',str(manifold),*extra];m.main()
  (manifold/'manifold.js').write_text('tampered')
  try:build();raise AssertionError('tampered Manifold input accepted')
  except RuntimeError as e:assert 'pinned hash' in str(e)
@@ -93,7 +105,20 @@ elif sys.argv[1]=='run':
  except RuntimeError as e:assert 'Worker runtime asset missing, altered or unreferenced' in str(e)
  finally:del os.environ['CODI_TEST_BAD_OCI_WORKER']
  assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
+ original=runtime_zip.read_bytes();runtime_zip.write_bytes(b'tampered')
+ try:build();raise AssertionError('tampered Emscripten source accepted')
+ except RuntimeError as e:assert 'pinned hash' in str(e)
+ finally:runtime_zip.write_bytes(original)
+ assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
+ index=m.HERE/'SOURCE-INDEX.html';original_index=index.read_text();index.write_text('<a href=\"missing.zip\">missing</a>')
+ try:build();raise AssertionError('broken source index accepted')
+ except RuntimeError as e:assert 'Source index has an unsafe or missing target' in str(e)
+ finally:index.write_text(original_index)
+ assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
  assert (m.DESTINATION/'occt-worker-interpreter-source.zip').is_file()
+ assert (m.DESTINATION/'emscripten-runtime-source.zip').read_bytes()==runtime_zip.read_bytes()
+ assert 'public domain' in (m.DESTINATION/'EMSCRIPTEN-RUNTIME-NOTICES.txt').read_text()
+ assert 'emscripten-runtime-source.zip' in (m.DESTINATION/'SOURCE-INDEX.html').read_text()
  assert json.loads(r1)['workerInterpreterCommit']==m.WORKER_ENGINE_COMMIT
  for name in ('main.js','main.wasm'):
   f=worker_input_dir/name; original=f.read_bytes();f.write_bytes(b'tampered')

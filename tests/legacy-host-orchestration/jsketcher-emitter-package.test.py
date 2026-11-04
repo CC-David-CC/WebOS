@@ -26,6 +26,12 @@ for name, digest in receipt['workerOccAssets'].items():
 with zipfile.ZipFile(runtime / 'occt-worker-interpreter-source.zip') as worker_source:
     for name in ['LICENSE', 'occt/LICENSE_LGPL_21.txt', 'occt/OCCT_LGPL_EXCEPTION.txt', 'shape-io/drilledTopologyV1.hpp']:
         assert name in worker_source.namelist()
+assert receipt['emscriptenRuntimeSourceSHA256'] == 'ad04773a4a30e37ece3b9ccbd3bb919d2ba531ad358ecb8623f4d6199f62c656'
+assert hashlib.sha256((runtime / 'emscripten-runtime-source.zip').read_bytes()).hexdigest() == receipt['emscriptenRuntimeSourceSHA256']
+notice = (runtime / 'EMSCRIPTEN-RUNTIME-NOTICES.txt').read_text()
+for name in ['musl/COPYRIGHT', 'libcxx/LICENSE.TXT', 'libcxxabi/LICENSE.TXT', 'compiler-rt/LICENSE.TXT', 'public domain']:
+    assert name in notice
+assert 'emscripten-runtime-source.zip' in (runtime / 'SOURCE-INDEX.html').read_text()
 assert 'node_modules/component-emitter/index.js' in code
 assert 'node_modules/emitter-component/index.js' not in code
 assert 'node_modules/stream/index.js' in code and 'node_modules/sax/lib/sax.js' in code
