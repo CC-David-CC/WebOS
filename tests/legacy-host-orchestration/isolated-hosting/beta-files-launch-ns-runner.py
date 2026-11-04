@@ -17,7 +17,7 @@ a=p.parse_args()
 if a.gate_faults and not (a.real_caddy and a.real_systemd):p.error('--gate-faults requires --real-caddy and --real-systemd')
 if a.real_services and not (a.real_caddy and a.real_systemd):p.error('--real-services requires --real-caddy and --real-systemd')
 if a.kill_stage=='timer-stopped' and not a.real_services:p.error('timer-stopped requires --real-services')
-if not (1024<=a.caddy_port<=65535 and 1024<=a.caddy_admin_port<=65535) or a.caddy_port==a.caddy_admin_port or a.caddy_port in range(19771,19776) or a.caddy_admin_port in range(19771,19776):p.error('distinct unprivileged Caddy fixture ports outside the issuer range required')
+if not (1024<=a.caddy_port<=65535 and 1024<=a.caddy_admin_port<=65535) or a.caddy_port==a.caddy_admin_port or a.caddy_port in range(19771,19777) or a.caddy_admin_port in range(19771,19777):p.error('distinct unprivileged Caddy fixture ports outside the issuer range required')
 for v in (a.baseline,a.overlays,a.candidate,a.native_old,a.native_new,a.gateway,a.python,a.caddy):
  if not Path(v).is_absolute() or not Path(v).exists():p.error('all inputs must be existing absolute paths')
 for port in list(range(19771,19777 if a.real_services else 19776))+([a.caddy_port,a.caddy_admin_port] if a.real_caddy else []):
@@ -26,6 +26,22 @@ for port in list(range(19771,19777 if a.real_services else 19776))+([a.caddy_por
   try:s.bind(('127.0.0.1',port))
   except OSError:p.error('fixture port unavailable: '+str(port))
 def call(*cmd,timeout=300):return subprocess.run([str(v) for v in cmd],check=True,timeout=timeout,capture_output=True,text=True)
+def verify_tree(root,manifest,pin):
+ raw=(root/manifest).read_bytes()
+ if hashlib.sha256(raw).hexdigest()!=pin:raise ValueError('fixture manifest pin mismatch')
+ records=json.loads(raw)['files'];seen=set()
+ for parent,dirs,files in os.walk(root,followlinks=False):
+  for name in dirs+files:
+   path=Path(parent)/name
+   if path.is_symlink():raise ValueError('fixture release contains symlink')
+  for name in files:
+   path=Path(parent)/name;relative=path.relative_to(root).as_posix();seen.add(relative)
+   if relative==manifest:continue
+   h=hashlib.sha256();size=0
+   with path.open('rb') as stream:
+    while chunk:=stream.read(1024*1024):h.update(chunk);size+=len(chunk)
+   if records.get(relative)!={'bytes':size,'sha256':h.hexdigest()}:raise ValueError('fixture release inventory mismatch')
+ if seen!=set(records)|{manifest}:raise ValueError('fixture release has missing or extra files')
 call('sudo','-n','true');root=Path(tempfile.mkdtemp(prefix='codi-files-ns-'));bundle=Path(call('sudo','-n','mktemp','-d','/root/codi-files-bundle.XXXXXXXX').stdout.strip());issuer=None;proc=None;units=[];timer_units=[];fixture_mounts=[];mount_root=None;initial_issuer_pid=None
 q=shlex.quote
 try:
@@ -40,6 +56,9 @@ try:
  sudo('chown','-R','root:root',srv);sudo('chmod','-R','go-w',srv)
  if a.real_services:
   sudo('chmod','711',root);sudo('mkdir',root/'coord');sudo('chmod','755',root/'coord');sudo('chmod','-R','a+rX',srv/'data/codi-beta-native',srv/'codi-gateway/releases'/GW)
+  verify_tree(srv/'data/codi-beta-native/1666491de4fe097285f02a5b6f7602fe57e4b9d3b2995bf016d4a9e809e36a51','connected-release.json','1666491de4fe097285f02a5b6f7602fe57e4b9d3b2995bf016d4a9e809e36a51')
+  verify_tree(srv/'data/codi-beta-native'/NATIVE,'connected-release.json',NATIVE)
+  verify_tree(srv/'codi-gateway/releases'/GW,'files-service.json',GW)
  sudo('cp','-a',OPS,bundle/'ops');sudo('cp',HERE.parent/'OPFS-ROUTE-TABLE.json',bundle/'OPFS-ROUTE-TABLE.json');sudo('chown','-R','root:root',bundle);sudo('chmod','-R','go-w',bundle)
  for path in (var/'webhost-ops',var/'webhost-ops/beta-files-probe',backs/'webhost-sites'):sudo('chmod','700',path)
  sudo('chown','root:root',var,var/'webhost-ops',var/'webhost-ops/beta-files-probe',backs/'webhost-sites')
