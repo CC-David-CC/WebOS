@@ -117,9 +117,13 @@ slice evidence; it must not be presented as completion of these larger gates.
 Advanced Gate 3 is recorded separately in `CAD-ENGINE-GATE-3.md`, with ten
 groups. The user intentionally split the other six into `CAD-ENGINE-GATE-4.md`;
 they are not missing Gate 3 requirements. `CAD-ENGINE-GATES.md` indexes the
-program and requires later needs to inform early design. Do not start Gate 2–4
-implementation instead of finishing Gate 1. Competency priority and
-implementation dependency order are distinct.
+program and requires later needs to inform early design. Do not start Gate 2–5
+implementation instead of finishing Gate 1. Gate 5 is now defined in
+`CAD-ENGINE-GATE-5.md`, including the conceptual CAD 1.0–6.0 ladder, traceable
+requirements, experiments and system synthesis. `CAD-ENGINE-END-TO-END.md` maps
+inputs, outputs, failure handoffs and actual acceptance workflows. Gates 2–5
+remain queued. Competency priority and implementation dependency order are
+distinct.
 
 ### Explicit agent acceptance gate
 

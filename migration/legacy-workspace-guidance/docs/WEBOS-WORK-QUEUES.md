@@ -86,8 +86,12 @@ user intentionally moved the original groups 11–16 to a following Gate 4, whos
 description is now recorded in `docs/CAD-ENGINE-GATE-4.md`, including specialist
 projects, automation and representation boundaries. See
 `docs/CAD-ENGINE-GATES.md`: later gates inform earlier design contracts, while
-implementation stays focused on Files/Gate 1. Gates 2–4 remain queued; none is
-declared complete by planning.
+implementation stays focused on Files/Gate 1. Gate 5 now records requirements,
+functional intent, experiments, evidence and system synthesis in
+`docs/CAD-ENGINE-GATE-5.md`; future research remains distinct from demonstrated
+engineering. Gates 2–5 remain queued; none is declared complete by planning.
+`docs/CAD-ENGINE-END-TO-END.md` defines the actual handoffs, failure paths,
+acceptance workflows and bounded agent packages across this program.
 
 The user explicitly resumed Files, JSketcher consolidation, mechanical features
 and the material-aware enclosure/core-3MF handoff. See
@@ -97,6 +101,10 @@ Three isolated implementation lanes are active; the lead owns shared contracts,
 review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
+
+- [x] DOCUMENTED SCOPE ONLY: Gates 1–5 and the six conceptual CAD eras are
+  recorded with an end-to-end execution checklist. This checks off the requested
+  planning artifact, not the capabilities; Files and Gate 1 remain incomplete.
 
 - [ ] ACTIVE FOUNDATION GATE: user requests every basic CAD shape, feature and
   assumption be tested before further expansion. Use

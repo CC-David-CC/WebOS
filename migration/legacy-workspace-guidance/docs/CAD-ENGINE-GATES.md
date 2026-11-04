@@ -9,9 +9,12 @@ engineering engine in the browser WebOS, beyond a set of JSketcher patches.
 | [2](CAD-ENGINE-GATE-2.md) | Intermediate CAD: 12 groups, ten ordinary mechanical projects and four specialist areas. | Queued. |
 | [3](CAD-ENGINE-GATE-3.md) | Advanced modeling/engineering: original advanced groups 1–10. | Queued. |
 | [4](CAD-ENGINE-GATE-4.md) | Production, interoperability, automation: original groups 11–16 plus specialist/project/priority/architecture sections 17–20. | Queued. |
+| [5](CAD-ENGINE-GATE-5.md) | Requirements, functional intent, inverse design, experiments, evidence and system synthesis; six independently qualified slices including research. | Queued; not implemented by recording. |
 
-The user is ready to describe another gate separately. Do not invent its scope
-or let future descriptions displace ongoing Files and Gate 1 implementation.
+**End-to-end execution:** [CAD-ENGINE-END-TO-END.md](CAD-ENGINE-END-TO-END.md)
+defines the ordered delivery stages, 14 design-revision handoffs, five concrete
+acceptance workflows, failures/resources and bounded agent packages. Do not let
+future descriptions displace ongoing Files and Gate 1 implementation.
 
 ## Later gates inform earlier gates
 
@@ -32,6 +35,8 @@ and its testable invariant.
 | Reverse engineering | Preserve measured/fitted/derived distinctions and uncertainty; a faceted B-rep is not recovered parametric intent. |
 | Drawings/PMI/change management | Persistent semantic references, associative requirements, explicit missing/ambiguous references and durable revision history. |
 | Batch agents/collaboration | Shared UI/agent consistency/permission checks, cancellation/stale-result guards and complete per-candidate success/failure accounting. |
+| Intent and autonomous experiments | Requirements, functional relationships, decisions and evidence have distinct identities and applicability; proposals use reviewable transactions and the ordinary validated API. |
+| Learning and physical feedback | Nominal design, observations, solved states and inferred model properties remain separate; evidence cannot silently become a design edit or universal certification. |
 | Large models and XR previews | Worker/resource ownership, purpose-specific derived meshes, incremental file sync and separation of fast approximate display from authoritative results. |
 
 Schemas may evolve deliberately; reject unsupported required semantics rather
@@ -59,3 +64,18 @@ all gates. Keep both geometry engines with honest capability boundaries.
 Current implementation/audit: `ACTIVE-FILES-CAD-RELEASE.md`,
 `JSKETCHER-FOUNDATION-MATRIX.md` and `WEBOS-WORK-QUEUES.md`. None of these
 documents declares an unverified gate complete.
+
+## Conceptual eras
+
+| Era | Central activity |
+|---|---|
+| CAD 1.0 | Draw geometry |
+| CAD 2.0 | Model parametric geometry |
+| CAD 3.0 | Simulate and optimize designs |
+| CAD 4.0 | Generate designs from requirements |
+| CAD 5.0 | Autonomously investigate and validate engineering alternatives |
+| CAD 6.0 | Discover and synthesize new physical systems |
+
+These user-defined labels are a conceptual map, not industry standards or
+guaranteed dates. Later capabilities retain the correctness obligations of
+the earlier foundation.
