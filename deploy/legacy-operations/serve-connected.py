@@ -22,11 +22,13 @@ from origin_service.lifecycle import Service
 from origin_service.mount import validate_base_path
 from origin_service.runtime import PrivateRuntime
 from origin_service.http_server import BoundedServer, QuietHandler
+from origin_service.public_storage import require_independent_stage, stage_browser_storage
 
 FILES=['index.html','bootstrap.js','style.css','app.js','reference.js','terminal.js','desktop-apps.js','config.json']
 RUNTIME=['libv86.js','v86.wasm','seabios.bin','vgabios.bin','vmlinuz']
 def stage(public=None, *, bundled=None):
     public=public or ROOT/'.build/connected-public'
+    require_independent_stage(public)
     public.mkdir(parents=True,exist_ok=True)
     for name in FILES:
         shutil.copy2(ROOT/name,public/name)
@@ -35,8 +37,7 @@ def stage(public=None, *, bundled=None):
     (public/'network').mkdir(exist_ok=True)
     for name in ['crypto.mjs','identity.mjs','strict-json.mjs']:
         shutil.copy2(ROOT/'network'/name,public/'network'/name)
-    (public/'storage/browser').mkdir(parents=True,exist_ok=True)
-    shutil.copy2(ROOT/'storage/browser/mirror.mjs',public/'storage/browser/mirror.mjs')
+    stage_browser_storage(ROOT,public)
     # Public apps are compiled separately before staging.
     bundled=Path(bundled) if bundled is not None else ROOT/'.build/simplified-apps'
     if not (bundled/'apps.json').is_file():
@@ -78,10 +79,12 @@ def main():
     p.add_argument('--apps-bundle',type=Path,help='Explicit prebuilt public app catalog')
     p.add_argument('--microduck-runner-origin',help='Explicit distinct HTTPS origin for the Microduck runner')
     p.add_argument('--user-files',action='store_true',help='Enable registered-only file identity confirmations; the separate file gateway is required')
+    p.add_argument('--file-content-store',choices=('indexeddb','opfs'),default='indexeddb',help='Origin-wide browser file backend; OPFS raises the client database floor. Test before promotion.')
     p.add_argument('--guest-network-policy-sha256',help='Explicit pinned policy for live-session guest network grants')
     p.add_argument('--browser-relay-policy-sha256',help='Explicit pinned policy for registered-session browser relay grants')
     p.add_argument('--maintenance-notice',type=Path,help='Root-owned public maintenance notice; clients cannot write it')
     a=p.parse_args()
+    if a.file_content_store=='opfs' and not a.user_files:p.error('OPFS requires --user-files')
     if a.guest_network_policy_sha256 is not None:
         from guest_service.authorization import policy_hash
         try:policy_hash(a.guest_network_policy_sha256)
@@ -115,6 +118,7 @@ def main():
                     config=super().config()
                     if microduck_origin:config['microduck']={'runnerOrigin':microduck_origin}
                     if a.user_files:config['gateway']={'version':'codi-user-files/1','basePath':a.base_path+'/gateway','fileBytes':128*1024*1024}
+                    if a.file_content_store=='opfs':config['fileStorage']={'version':'codi-browser-file-content/1','backend':'opfs','databaseVersion':2}
                     if a.browser_relay_policy_sha256 is not None:
                         config['browserRelay']={'version':'codi-browser-relay/1','basePath':a.base_path+'/browser-relay','policySHA256':a.browser_relay_policy_sha256}
                     if a.guest_network_policy_sha256 is not None:
