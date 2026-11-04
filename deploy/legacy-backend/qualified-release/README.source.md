@@ -98,8 +98,13 @@ The shared dd8 archive also contained extra Python cache files; a disposable
 copy excluding those files passed the signed fixture's complete inventory.
 The original runner's inherited PASS message mentioned an issuer-unit kill;
 that statement was inaccurate for this successor run and has been corrected.
-The new forward-interruption check and explicit final e7 assertion are pending
-an extended rerun. This is not an installation or production qualification.
+The extended rerun passed actual SIGKILL at both the gate and forward Caddy
+reload boundaries, with the exact protected successor executable and explicit
+post-recovery e7 selector assertions. The generated code, loopback Caddy, pinned
+controller, sealed signed issuer/gateway fixture, and disposable account were
+used; timer, service-manager, production main readiness, and loopback translation
+remain fixture substitutions. The runner removed its own namespace directory and
+listeners after completion. This is not an installation or production qualification.
 
 Before main cutover, a reviewed installation must quiesce already-loaded old
 controller processes, stage and verify the closed e7 main release and the
