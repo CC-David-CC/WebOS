@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Disposable root-owned fixture; no live hosting, routes or services."""
-import fcntl,importlib.util,json,os,pathlib,shutil,tempfile
+import fcntl,importlib.util,json,os,pathlib,shutil,signal,tempfile
 p=pathlib.Path(__file__).resolve().parents[1];spec=importlib.util.spec_from_file_location('installer',p/'ops/files_install_candidate.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 assert os.geteuid()==0
 root=pathlib.Path(tempfile.mkdtemp(prefix='codi-install-test-',dir='/run'))
@@ -37,6 +37,21 @@ try:
  m.atomic=original
  m.guard_install(target=target,guard=source/'ops/webctl_floor_candidate.py',old_source=source/'ops/webctl_live.py',journal=journal,floor=floor,check_lock=check)
  assert m.digest(target.read_bytes())==m.NEW and not journal.exists()
+ # Process death after the replacement but before the journal is removed:
+ # the next lock holder can finish without restoring the old controller.
+ target.write_bytes((source/'ops/webctl_live.py').read_bytes())
+ pid=os.fork()
+ if pid==0:
+  def kill_after_replace(path,*args,**kw):
+   original(path,*args,**kw)
+   if path==target: os.kill(os.getpid(),signal.SIGKILL)
+  m.atomic=kill_after_replace
+  m.guard_install(target=target,guard=source/'ops/webctl_floor_candidate.py',old_source=source/'ops/webctl_live.py',journal=journal,floor=floor,check_lock=check)
+  os._exit(74)
+ _,status=os.waitpid(pid,0);assert os.waitstatus_to_exitcode(status)==-signal.SIGKILL
+ assert journal.exists() and m.digest(target.read_bytes())==m.NEW
+ m.guard_install(target=target,guard=source/'ops/webctl_floor_candidate.py',old_source=source/'ops/webctl_live.py',journal=journal,floor=floor,check_lock=check)
+ assert not journal.exists() and m.digest(target.read_bytes())==m.NEW
  target.write_bytes((source/'ops/webctl_live.py').read_bytes());floor.touch()
  try: m.guard_install(target=target,guard=source/'ops/webctl_floor_candidate.py',old_source=source/'ops/webctl_live.py',journal=journal,floor=floor,check_lock=check);raise AssertionError('floor ignored')
  except ValueError: pass
