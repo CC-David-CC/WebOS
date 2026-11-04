@@ -14,7 +14,9 @@ p.add_argument('--cad-dist',type=Path,required=True)
 p.add_argument('--output',type=Path,required=True)
 p.add_argument('--builder',type=Path,required=True)
 p.add_argument('--node',type=Path,required=True)
+p.add_argument('--wasm-name',default='a2b2f7daf6a4eb98b975.wasm',help='Exact emitted test runtime basename')
 a=p.parse_args()
+if not __import__('re').fullmatch(r'[a-f0-9]{20}\.wasm',a.wasm_name):p.error('Expected emitted WASM basename')
 root=Path(__file__).resolve().parents[1]
 base=a.base_bundle.resolve(strict=True); dist=a.cad_dist.resolve(strict=True)
 if a.output.exists():p.error('Output must not exist')
@@ -40,15 +42,23 @@ with tempfile.TemporaryDirectory(prefix='codi-rectangle-override-') as temp:
     # its own closed-inventory and source/notice qualification.
     for rel in ['static/oci-verified-worker.js','static/occ-portable.js',
                 'static/profile-topology.mjs','static/rectangleProfileRequest.mjs',
-                'static/authoredRegions.mjs','static/profilePlan.mjs']:
+                'static/authoredRegions.mjs','static/profilePlan.mjs',
+                'static/centeredHolePlan.mjs','static/centeredHoleTopology.mjs']:
         shutil.copy2(dist/rel,target/rel)
         assets.append('node_modules/jsketcher-build/'+rel)
-    for pattern in ['static/prism-semantic.*.js','static/a2b2f7daf6a4eb98b975.wasm']:
+    for pattern in ['static/prism-semantic.*.js','static/'+a.wasm_name]:
         workers=list(dist.glob(pattern))
         if len(workers)!=1:raise RuntimeError('Expected one '+pattern)
         for worker in workers:
             shutil.copy2(worker,target/'static'/worker.name)
             assets.append('node_modules/jsketcher-build/static/'+worker.name)
+    # Include split application chunks from this exact build, including the
+    # secondary engine. Never use the browser test helper as a public asset.
+    for pattern in ['static/*.bundle.js','static/*.wasm']:
+        for chunk in dist.glob(pattern):
+            if chunk.name=='webosTest.bundle.js':continue
+            shutil.copy2(chunk,target/'static'/chunk.name)
+            assets.append('node_modules/jsketcher-build/static/'+chunk.name)
     assets[:]=sorted(set(assets));(app/'app.json').write_text(json.dumps(manifest,indent=2)+'\n')
     entries=tmp/'entries.json';entries.write_text(json.dumps({'jsketcher':'system/jsketcher/index.mjs'}))
     built=tmp/'built';built.mkdir()
