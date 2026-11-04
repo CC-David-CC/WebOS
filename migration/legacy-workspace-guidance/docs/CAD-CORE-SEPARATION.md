@@ -8,6 +8,14 @@ silos without a canvas or fake browser UI, and authorizes extending this
 checklist when implementation exposes further core requirements. Every added
 requirement needs an observable acceptance test and a bounded owner/package.
 
+The latest user clarification makes **every JSketcher feature suspect**.
+Treat the upstream implementation as reference/inspiration. Preserve or reuse
+code only after its explicit semantics and independent acceptance tests earn
+that choice; there is no requirement to retain an incorrect inherited behavior
+or preserve the old architecture. Our fork's existing tests also confer only
+their recorded scope, not trust in adjacent features. Future-layer interfaces
+inform the core now, while unimplemented physics/features remain visibly deferred.
+
 This refines `goals/FILES-JSKETCHER-RELEASE-20261103.txt`. Maintain status in
 `WEBOS-WORK-QUEUES.md` and `ACTIVE-FILES-CAD-RELEASE.md`. The larger feature
 program and handoffs remain in `CAD-ENGINE-GATES.md` and

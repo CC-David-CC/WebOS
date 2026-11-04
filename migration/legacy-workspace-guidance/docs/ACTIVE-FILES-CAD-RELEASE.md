@@ -6,6 +6,23 @@ preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
 
 ## Current architectural direction — 2026-11-04
 
+Latest user clarification: **all JSketcher features are suspect and used for
+inspiration/reference.** Existing code earns reuse through an explicit contract
+and independent tests; source compatibility and prior menu presence are not
+acceptance criteria. Rewrite where needed. Later-layer contracts should inform
+the core now, while unimplemented physics/features stay deferred and do not count
+as passes. See the updated `goals/FILES-CAD-NEXT-AGENT.txt`.
+
+Current integration has consumer/registration guards `e4a21e7c`, reference/sketch
+guards `7090a161`, worker-prism adapter `29c89c67` and real registration regression
+`5e54c5a5`, plus registry collision/ID/stored-sketch guards `9bb3eae0`. Focused and
+owner tests pass; combined application qualification and the complete
+worker-solid/history/edit/reopen path remain incomplete.
+Files UI evidence `4613eebae`/`7a119bc4f`, clean-checkout recipe `37af97707` and
+isolated 128 MiB memory evidence `12b634976` are integrated. Network efficiency
+is sufficient for this milestone; memory/copy work stays open. The new PSS/private
+measurements include browser/test work and are not a pure transfer allocation bound.
+
 The user authorizes using JSketcher as inspiration and replacing coupled code
 where needed. Keep useful proven components, but production computational
 workers must not require canvas, DOM, editor windows or fake browser UI.

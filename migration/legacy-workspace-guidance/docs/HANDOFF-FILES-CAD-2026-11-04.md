@@ -13,7 +13,39 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
-**Current, superseding the historical checkpoints below:** CAD `efb96770`
+**Latest user/source rule:** all JSketcher features are suspect and used for
+reference/inspiration. Keep code only where independent tests establish its
+explicit contract; rewrite inherited behavior/architecture as needed. Later
+layers inform early contracts but stubs never count as passed features. The
+copyable successor goal has been rewritten to remove superseded v1/operator
+and old CAD checkpoint instructions.
+
+**New integration:** `e4a21e7c` adds representation/registration admission,
+including all Boolean operands, implicit targets, raw worker-ID names, native
+mesh preflight and classifier pointers. Its focused spies and typecheck pass;
+`5e54c5a5` carries the real OCC positive plus injected nonzero-registration
+regression. `7090a161` integrates transient-reference and generated-face sketch
+guards with owner real-worker/GUI/native-ID-boundary tests. `29c89c67` integrates
+the real authored rectangle/OCC/semantic-worker/model adapter and owner tests.
+These packages are not yet qualified as one published worker-history workflow.
+Registry collision/ID/stored-sketch guards are integrated at `9bb3eae0`, with
+owner real-worker tests. Combined application qualification is in progress in
+an isolated worktree. The public CAD runtime remains `d3d36bc5`.
+
+**New Files evidence:** desktop `4613eebae`/`7a119bc4f` records all ordinary Files
+UI actions on beta in desktop and phone-sized emulation. Fresh-session `stat`
+is explicitly metadata evidence; independent byte-readback evidence is separate.
+`37af97707` records identical clean R730 Files builds and focused signed tests,
+using existing toolchain/cache prerequisites that are not yet sealed. `12b634976`
+records one isolated signed 128 MiB measurement with Linux/speech excluded:
+fresh-read PSS max 1,026,091,008 bytes versus 611,861,504 immediately before that
+phase, but browser/test verification remains included and sampling is not a
+continuous allocation/peak proof. No public deployment changed. Network
+efficiency is sufficient for this milestone. Source candidate `0801ea2d7` removes
+two redundant detached-copy verification passes; it is backed up but not yet
+reviewed/integrated/deployed. Cold-download streaming needs its own contract.
+
+**Earlier qualified ownership/projection checkpoint:** CAD `efb96770`
 qualifies internal candidate/accepted engine-resource ownership using source
 `531cc24d`: nine pool tests and six actual-browser scripts pass, including real
 OCC worker termination, failed/rejected replay, history rollback, setup failure,
@@ -38,7 +70,7 @@ The current serial exit checklist is:
    (`efb96770`, per-document bounds, not a total RAM guarantee).
 3. [x] Review and qualify bounded JS model projection on the integrated tree
    (`91c8d95c`); model remains unpublished until the next checks.
-4. [ ] Gate unsupported legacy consumers and transient durable references;
+4. [~] Gate unsupported legacy consumers and transient durable references;
    connect the exact result to current document/engine ownership and publish
    matching model/history/registry together. Explicitly reject failed legacy
    pushModel rather than invoking an OCC name or silently dropping a target.
@@ -46,6 +78,8 @@ The current serial exit checklist is:
    injective encoding and its round trip are qualified. The exact functions and
    rejection matrix are in the fork
    `docs/research/WORKER-PRISM-CONSUMER-GATES-20261104.md` (`672efcdb`).
+   The source packages listed above implement the local consumer/reference
+   guards and registry preflight; combined tests and publication remain open.
 5. [ ] Prove width/depth edit, rejected change, undo/redo and native save/reopen
    on that complete worker-solid path; then exercise it through My files.
 6. [ ] Expand to dependent holes/cuts/fillets/patterns and the full plate test.

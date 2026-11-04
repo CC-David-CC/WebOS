@@ -11,6 +11,38 @@ boundaries; their features remain separately qualified.
 Current status: **OPEN / PARTIAL**. Files and foundational corrections continue.
 Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
 
+## Current source-trust rule and immediate substep
+
+Latest explicit user direction: **all JSketcher features are suspect and are
+reference/inspiration, not trusted foundations.** Retain an implementation only
+where the required mathematical contract and independent tests justify it;
+replace it when that is the clearer route. Upstream compatibility, menu presence,
+or a successful old demonstration must not override correct semantics. This
+also applies to our adaptations: a scoped passing case is evidence only for
+that case, not blanket qualification of a feature family.
+
+The conceptual CAD 1.0 authoring era is narrower than this Gate 1, which also
+requires trustworthy parametric editing, units, history and persistence. Later
+features may inform identities, typed quantities, worker/engine interfaces,
+materials and provenance now. Their implementations stay deferred; stubs and
+contracts never count as passing feature acceptance.
+
+Current integration adds legacy-consumer and failed-registration guards
+(`e4a21e7c`), transient-reference/sketch guards (`7090a161`) and the authored
+worker-prism adapter (`29c89c67`). Focused root guard tests/typecheck and owner
+real-worker/reference tests pass. Registry guards (`9bb3eae0`) now reject worker
+identity collisions, oversized durable IDs and unsupported stored face sketches.
+Combined application qualification and worker-model/history publication remain open.
+This does not qualify the entire gate or deploy a new public CAD runtime.
+
+Close the immediate substep by proving the same worker-created solid through
+dimension edit, explicit rejection, undo/redo and native/My files reopen. Then
+extend that path to dependent holes/cuts/fillets/patterns. Continue the full
+P0/P1/P2 matrix and 22 exercises below; do not shrink the gate to one rectangle.
+
+The following dated checkpoints retain their original test scope and are
+historical where superseded by this section and the current handoff.
+
 The 2026-11-04 combined fork `2b3f2c0f` passes the bounded five-hole plate
 resize/reopen, failed-edit recovery and document-lifetime/surface controls.
 Packaged fork `d3d36bc5` additionally passes ordinary OCC fillet/chamfer edits,

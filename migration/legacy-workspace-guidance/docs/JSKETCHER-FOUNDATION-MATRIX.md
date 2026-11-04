@@ -4,6 +4,12 @@ Active direction, 2026-11-04: qualify basic geometry and behavior before further
 feature expansion. Files integration continues in parallel. XR, physics and
 advanced feature catalogues are not tonight's implementation work.
 
+Latest user clarification: all JSketcher features are suspect and used as
+inspiration. This matrix evaluates behavior against independent contracts; it
+does not endorse upstream semantics. Rewrite a feature when needed. A correct
+unsupported refusal is not a passing supported-feature exercise, and a stub for
+a later layer is not evidence that the layer works.
+
 Authoritative full Gate 1 scope is `CAD-ENGINE-GATE-1.md`: 12 competencies,
 P0/P1/P2 priorities, 22 exercises, five validation responsibilities and the
 coupled rectangle-change test. This document is its current findings matrix.

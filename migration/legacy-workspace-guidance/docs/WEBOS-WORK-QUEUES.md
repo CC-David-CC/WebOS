@@ -102,6 +102,31 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [x] SOURCE-TRUST DIRECTION RECORDED: all JSketcher features are suspect and
+  reference/inspiration. Contracts and independent evidence determine reuse;
+  inherited behavior, compatibility and menus do not establish correctness.
+  Future-layer contracts inform the core; stubs/physics plans remain deferred.
+  Gate 1 and the successor goal now state this explicitly. Documentation only.
+- [~] CAD CONSUMER BRIDGE: integration `e4a21e7c` guards legacy/native operands,
+  default Boolean targets and failed OCC registration. Focused spy/type checks
+  pass; real pinned-runtime positive and injected failure controls are integrated
+  as `5e54c5a5`. Reference/sketch package `7090a161` and real worker-prism adapter
+  `29c89c67` are integrated with their owner evidence. Combined browser/runtime
+  validation, final registry collision/ID checks, exact worker-history publication
+  and edit/reject/undo/My files reopen remain open. No CAD runtime promotion.
+- [x] FILES UI, BOUNDED BETA PROOF: `4613eebae`/`7a119bc4f` cover chooser upload,
+  folder/rename/move/copy, exact-byte download, delete and other-account denial
+  at desktop and phone-sized emulation. Fresh-session stat proves SHA metadata
+  recovery, not a content read. Earlier harness failures/leftovers are recorded.
+- [~] FILES REPRODUCIBILITY/RESOURCES: `37af97707` proves repeated identical Files
+  builds and focused signed tests from clean R730 checkout using existing inputs;
+  sealing prerequisites remains. `12b634976` adds isolated 128 MiB phase PSS/private
+  observations with guest/speech excluded, exact hashes and cleanup. It still
+  includes browser/test costs, not pure transfer allocations. Network efficiency
+  is sufficient; focus remaining resource work on proven copies/verification
+  passes and a reviewed stream-to-staged-OPFS boundary. Candidate `0801ea2d7`
+  reduces redundant detached-copy verification scans and awaits lead review.
+
 - [x] CAD RESOURCE OWNERSHIP, BOUNDED SLICE: fork `efb96770` qualifies source
   `531cc24d` with nine focused pool tests and six actual-browser regressions.
   Real OCC mounts injected into PLANE replay preserve accepted/full-tip resources

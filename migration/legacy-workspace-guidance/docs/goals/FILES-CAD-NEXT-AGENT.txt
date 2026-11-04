@@ -1,147 +1,132 @@
-Continue the Files and WebOS CAD foundation as integration lead. Do not restart
-the upstream merge or attempt all later CAD gates at once.
+Continue dependable Files and the WebOS CAD foundation as integration lead.
+The full release and CAD Gate 1 remain active and incomplete. Do not restart the
+upstream merge or attempt every later gate at once.
 
-Clone box-git:/srv/data/git/CodiServer-distro.git, branch
-integration/files-jsketcher-release-20261103, and
-box-git:/srv/data/git/JSKetcher.git, branch
-integration/files-cad-release-20261104. Verify current tips. Read
-docs/HANDOFF-FILES-CAD-2026-11-04.md first, then its five priority references.
-The handoff names exact code checkpoints, scoped candidate results, reproductions,
-known failures and deployment boundaries. Treat it as the starting point and
-update it when new evidence changes the plan.
+SOURCE-TRUST RULE — latest explicit user direction
+All JSketcher features are suspect and are used for inspiration/reference.
+Upstream behavior, menus and previously merged code are not correctness evidence.
+Keep an implementation only where an explicit mathematical/domain contract and
+independent acceptance tests justify it; replace coupled or incorrect code when
+needed. This rule also applies to our adaptations. Scoped passing evidence stays
+useful but does not qualify an entire feature family. There is no obligation to
+preserve undocumented quirks or the inherited architecture.
 
-Latest integrated CAD source is c672d0d1, with tested worker code 25050c16 and
-fresh full application build 228cde72. Actual authored rectangle-to-OCC prism,
-source-edge ancestry, unsnapped solver geometry, corrected polygon-volume
-comparison and dense response validation pass. Lead seventeen data/math checks
-and actual strict-CSP topology/profile/lifecycle suites pass. The optional
-worker-local portable descriptor is capped at 16 KiB; ordinary callers never
-request or receive it. Read test/engine-extrude and test/engine-topology lead
-evidence JSON. The strict BREP reader, mount ownership, persistent generated
-references and editable-history publication remain ARC14. ARC15's object-as-ID
-defect is fixed and tested in both engines, but vertex picking and durable
-vertex references are not qualified. The selected pinned runtime remains
-separate from unpromoted replacement-build research.
+Clone and verify current tips:
+- box-git:/srv/data/git/CodiServer-distro.git
+  branch integration/files-jsketcher-release-20261103
+- box-git:/srv/data/git/JSKetcher.git
+  branch integration/files-cad-release-20261104
+Read docs/HANDOFF-FILES-CAD-2026-11-04.md, WEBOS-WORK-QUEUES.md,
+ACTIVE-FILES-CAD-RELEASE.md, CAD-CORE-SEPARATION.md and CAD-ENGINE-GATE-1.md.
+The capability matrix and end-to-end/gate documents preserve the broader scope.
+Read exact source and receipts before relying on historical checkpoint claims.
 
-Earlier application code is cc2d46dd (code tested at 9bde6b29, diagnostic change
-85b588c8). Desktop 64becedd8 integrates the scoped rectangle commands, Add-menu
-dialog and signed acceptance test. Lead builds/typecheck, eight command tests,
-actual atomic/host/boundary browser suites and signed account storage pass.
-Create, save, close, fresh-session reopen, real editor width edit and another
-signed save/reopen retain the authored rectangle; server bytes/hash match and
-another account is denied. The diagnostic follow-up was rebuilt at its exact
-revision and retested. Read the two rectangle evidence JSON files under
-docs/evidence. This is test-only packaging, not a deployed runtime or full Gate1.
+CURRENT CAD CHECKPOINT
+The integrated worker foundation has real authored-profile OCC extrusion,
+strict bounded topology reading, source/mount binding, model projection and
+candidate/displayed/last-complete resource ownership. Integrated consumer guards
+e4a21e7c reject incompatible representations and failed registrations; reference
+package 7090a161 gates transient edges/vertices and sketch entry on worker faces.
+Adapter 29c89c67 connects a captured rectangle to an owned OCC worker and the
+bounded model projection. Focused guard/type checks and owner real-worker tests
+pass. Real pinned-runtime positive registration and injected failure controls
+are recorded in 5e54c5a5. Registry guards9bb3eae0 reject worker collisions,
+oversized durable IDs and unsupported saved sketches. Owner tests pass;
+combined application qualification is in progress, not publication proof.
 
-The next concrete CAD dependency is ARC14. Existing EXTRUDE geometry and
-topology classification still run on the UI thread. The research engine mounts
-can make boxes/Booleans and a bounded OCC profile prism but cannot yet publish it with its
-model/topology/provenance/history and downstream references. Read the fork's
-docs/research/RECTANGLE-EXTRUSION-BOUNDARY-20261104.md. Use the qualified selected
-profile/prism and optional analytic descriptor, then qualify the strict model
-reader/ownership bridge, then integrate guarded replay/publication and the same
-human/agent command. Do not expose raw craft.modify, invent a BOX surrogate or
-use a hidden editor. OCC is preferred; other capabilities refuse explicitly
-until their own implementation is qualified. Both engines remain in scope.
+Next serial CAD exit:
+1. Qualify the combined consumer/reference/adapter/registry application build,
+   including collision and saved-ID limits and preservation of incompatible
+   stale sketch data on generated worker faces.
+2. Bind the captured sketch/frame/region/parameters/document/account lifetime to
+   the owned worker result, package trusted workers and publish matching model,
+   history and registry together. Never persist raw native pointers/handles.
+3. Prove width/depth edits, rejection with last-valid preservation, undo/redo,
+   native save/reopen and signed My files reopen on this exact combined path.
+4. Extend to dependent holes/cuts/fillets/patterns and the full plate acceptance.
+Use actual authored profile geometry, not a BOX substitute or a hidden editor.
+The normal desktop CAD package remains d3d36bc5 until separately qualified.
 
-Files operator source is integrated through desktop de71f56b8 from only the reviewed
-research/beta-isolated-hosting subtree through ba65151d2. The a1e9e215c gate
-correction passes independent exact-launcher faults and seven integrated lead
-checks. Four mapped-fixture interruption stages now pass with actual sealed
-services and a real disposable timer; independent review reproduced unit-write.
-Exact operator-written unit bytes select the fixture executable, with negative
-old/bad-unit controls. Production policy/paths/TLS/main readiness remain
-substituted; timer firing, protected installation and beta acceptance stay open.
-The install-readiness packet integrated at ad25aaded gives exact observed pins
-and remaining protected bundle/guard/probe work. A bounded preparation helper
-and bootstrap/quiescence through agent source 0f9d46d87 pass independent
-disposable review. Lead source integration, protected placement and actual
-supported-process inventory/freeze remain open; nothing is installed. Deployment remains
-lead-owned, with no new user approval inferred from these review documents.
-Twelve unused public staging trees were verified and archived on /srv/data;
-webhost root now has 7,297,232,896 bytes free, 1,928,523,776 bytes above the unchanged 5 GiB
-reserve. Recheck capacity at execution time. No account/floor/routes changed.
-The prior immediate headroom shortage is resolved; do not repeat that diagnosis
-as current or infer 100-user capacity from it. See the archive receipt and
-Files operator integration evidence. Main/beta/prototype still returned HTTP 200.
+GATE 1 AND RELEASE SCOPE
+Keep the 12 competency areas, P0/P1/P2 priorities, 22 exercises and Change the
+original rectangle test. Geometry domains, truthful constraint diagnostics,
+driving dimensions, typed units/formulas, planar regions/selection, kernel
+results, references, history, persistence and exchange need independent evidence.
+Unsupported is an honest refusal, not a passing supported-feature exercise.
+Test OCC and Native Mesh separately, not for identical topology or capability.
 
-Normal CAD package remains d3d36bc5. Do not deploy the test overrides: they
-retain older source/provenance notices. Independent engine source/build evidence
-0431dff0 remains research, not runtime promotion. Never weaken production ASLR.
-Set explicit browser URL/CDP when using historical tests.
+Use beginner single-part examples before the mounting bracket and enclosure.
+Substantially edit dimensions/hole positions, introduce/remove contradictions,
+undo/redo and save/sync/close/reopen without losing authored relationships.
+Humans and agents must use the same typed, discoverable, validated commands.
+Then qualify material-aware core 3MF: enclosure body and separate lid are two
+print objects; the aligned contrasting label remains a third assigned material
+region grouped with the lid. Verify geometry, units, transforms and assignments
+independently. Native projects remain editable design sources. Bambu, a physical
+printer, full physics and the full advanced-curve catalogue are not required for
+this bounded release; later gates retain their own complete scope.
 
-Use three subagents in separate branches/worktrees with explicit path ownership:
-1. Files: review the existing sealed beta-derived package and isolated issuer/
-   session tests; finish managed transition, forward recovery and continuity
-   qualification. No independent deployment.
-2. CAD regeneration: extend the integrated private replay/lifetime tests to
-   the next Gate 1 feature chain and expose explicit unsupported boundaries.
-3. CAD core: extend the integrated headless solve and begin the agreed engine
-   capability/mount contract on owned paths; preserve existing failure tests.
+ARCHITECTURE
+Use data-only computational workers without DOM/canvas/fake window/editor.
+Separate authored document, transactions, formulas, simultaneous constraints,
+planar topology, kernels, persistent references, representations, jobs, storage
+and evidence. Keep the five validation responsibilities separate. Define later
+materials/studies/agent/optimization contracts now where they constrain the core,
+but leave future implementations explicitly deferred. Stubs never count as
+validated physics or feature capability. Do not expand later feature work to
+avoid repairing the present foundation.
 
-You own shared contracts, document-lifetime generation, integration, independent
-review, exact packaging and deployment. Reassign agents as bounded packages
-finish. Serialize changes to shared files. Do not stop independent work because
-one lane needs a shared contract; agree that contract before dependent edits.
+OCC is preferred; Native Mesh/Manifold is secondary. Use versioned swappable
+mounts with broad inventories and genuine support for each library's applicable
+capabilities. Engine composition requires explicit conversions, units,
+tolerances/losses and provenance. No silent fallback or assumed equivalence.
 
-Earlier replay, worker, five-hole plate, fillet/pattern, upstream-consolidation
-and signed-host evidence is retained in the handoff and linked receipts. Reuse
-it rather than repeating the merge or treating fixed failures as current. A
-new source slice requires tests for its changed boundaries, not an automatic
-rerun of every historical script. Do not promote research engine binaries or
-infer full ownership/provenance qualification from bounded behavior tests.
+CURRENT FILES CHECKPOINT
+Beta actually runs candidate 3ad04c48 with issuer 853c12e5 and gateway dd8cbea7.
+OPFS v2 floor is installed. Do not rerun the old pre-floor plan/apply transition.
+Use the exact reviewed protected forward/recovery procedure in the handoff; no
+manual generated-Caddy edits. Preserve main and /desktop and all account/key
+boundaries. Do not deploy the research checkout wholesale.
 
-Continue Gate 1's shape/constraint/profile/kernel/history
-matrix and coupled rectangle edit. Both UI and agents must use the same typed,
-validated commands. Build/edit the bracket and enclosure before advancing to
-the material-aware core-3MF milestone. Keep later gates and XR queued.
+My files stays browser-first and account-bound with normal server disk files:
+saved data, opaque versions/CAS, isolation, conflicts, uncertain-write recovery,
+verified interrupted transfers and bounded workers through 128 MiB. Temporary
+Linux remains separate. No app-private mirror or hidden full-file copy per app.
+Public small/128 MiB integrity, changed-data, conflicts and everyday Files UI
+receipts exist. UI fresh-session stat is metadata evidence; independent readback
+has separate hash receipts. Network efficiency is sufficient for this milestone.
+Remaining memory work must measure incremental transfer costs and remove proven
+unnecessary copies without discarding verification or leases. The 3.49 GB summed
+RSS was not file-only RAM. The new isolated 128 MiB PSS/private measurement still
+includes browser/test verification, and is not a pure allocation bound.
+A clean R730 checkout reproduced Files builds and focused signed tests using
+existing toolchain/cache inputs; sealing those prerequisites remains open.
 
-Architecture: JSketcher is a component/inspiration, not an untouchable boundary.
-Rewrite coupled code when needed, preserving useful evidence and components.
-Pure computation consumes explicit model data in workers without canvas, DOM,
-fake window or hidden editor. Separate authored intent, commands/transactions,
-formulas, simultaneous constraints, planar topology, kernels, references,
-derived representations, job lifetimes, saved files and evidence.
+WORK ORGANIZATION
+Use three subagents with separate branches/worktrees and owned paths:
+1. Files, measured resources, storage faults, reproducibility and app actions.
+2. CAD engine/model/registry adapters and independent real-engine qualification.
+3. CAD solver/parameters/references and mechanical acceptance operations.
+The lead owns shared contracts, integration, independent review, combined tests,
+packaging and deployment. Reassign finished lanes to bounded dependency-ready
+packages. Serialize shared edits and resource-heavy tests; do not repeatedly run
+qualified large tests unless changes or unanswered questions justify them.
 
-OpenCascade is preferred; Native Mesh/Manifold is secondary. Mount engines behind
-versioned, swappable adapters with a broad capability inventory and real support
-for each library's applicable features, not only today's UI subset. Preserve
-engine-specific operations. Combining engines requires explicit conversions,
-units, tolerance/loss/provenance and identity rules. No silent fallback or
-pretended equivalence. ENG01-ENG08 in the core checklist define this work.
+Only Chromium is required. Distinguish real workers/signed services from spies,
+phone emulation from physical devices, process crash from power loss, and test
+fixtures from deployed behavior. Preserve failures and exact evidence; never
+weaken assertions or erase saved data to manufacture a pass.
 
-Files must remain one browser-first, account-bound My files service backed by
-normal server files: saved bytes, isolation, opaque versions/CAS, conflicts,
-uncertain commits, interrupted transfer, recovery and changed-data sync through
-128 MiB. Heavy processing stays in workers with bounded admission and measured
-resources. Linux guest home is temporary and separate. No app-private mirror.
+R730 storage/compute, llm-60 compute/testing, installs/scoped test accounts and
+LAN repository creation are authorized. Use R730 without waiting for llm-60's
+unresolved trusted SSH pin; never bypass host verification. No JSketcher GitHub
+publication now. Back up source, tests, recipes, final prerequisites and notes
+to box-git and R730; verify remote refs. Exclude dependencies, transient builds,
+private state and secrets. Another machine must have reproducible documented
+inputs rather than essential unrecorded workstation files.
 
-Only Chromium is required. Use real signed services and real workers where those
-boundaries matter; distinguish emulated phones, process crashes and synthetic
-fixtures from physical devices/power loss. Keep the five CAD validation questions
-separate and preserve negative controls. Do not weaken assertions or count
-unsupported/untested behavior as passing. Existing broad gates remain open.
-
-Use beta.ksu.codes for qualified iteration, preserving main and /desktop/.
-Do not deploy the research tree wholesale. Beta still uses guarded v1; an OPFS
-v2 transition needs a sealed package, adequate capacity and tested forward
-recovery. The old hosting reconciler is plan-only. No hand edits to generated
-Caddy, clearing saved data to hide failures, or copying accounts/keys across
-origins. Build concrete reviewable artifacts before any hosting mutation.
-
-R730 storage/compute, llm-60 compute/testing, scoped installs/test accounts and
-creating/cloning LAN repositories on box-git are authorized. llm-60 has an
-unresolved trusted SSH pin; use R730 without blocking progress. Do not bypass
-host verification. No GitHub JSketcher publication now.
-
-Back up source/tests/recipes/notes to box-git and R730; verify remote hashes.
-Do not commit dependency directories, transient builds, private state or keys.
-Keep WEBOS-WORK-QUEUES.md, the release audit and relevant core/matrix checklist
-current. The first task includes closing fresh-checkout prerequisite gaps;
-do not rely on unrecorded /tmp assets or claim portability before testing it.
-
-Keep me informed of meaningful findings and decisions. Resolve ordinary choices
-yourself; ask only when my preference changes the outcome. Report exact tested,
-integrated, packaged and deployed versions separately. As bounded work finishes,
-take the next dependency-ready item. Do not mark the entire release complete or
-pause it merely because a handoff or one candidate is done.
+Keep checklists, the active release audit and handoff current. Inform the user
+of meaningful findings and decisions; resolve ordinary implementation choices.
+Report tested, integrated, packaged and deployed separately. Keep the full goal
+active until its acceptance is proved; neither a handoff nor one passing slice
+is completion or a reason to pause.
