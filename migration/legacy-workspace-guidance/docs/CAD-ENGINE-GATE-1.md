@@ -22,6 +22,16 @@ These are development tests, not a deployed release or the complete
 rectangle/fillet/pattern/unit/agent chain below. The separate worker-engine
 mount research is not selected by this application package.
 
+New fork `bdc4ff2b` adds a bounded associative circular-cut pattern and
+discoverable seed picker with independent combined/targeted Chromium checks.
+Both isolated engine mounts now pass real box/Boolean controls with explicit
+differences in empty/multi-body support. Desktop package remains `d3d36bc5`.
+Original OCC native ownership defects are being repaired in a separate LAN
+source fork; replacement-runtime and cleanup qualification remain open.
+The actual agent registry still cannot start a sketch from an empty document;
+the next data-only transaction slice addresses this. See the current handoff
+and the fork's `combined-pattern-mount-evidence-20261104.json`.
+
 ## Gate definition and execution policy
 
 - [ ] Qualify all 12 competency areas below and the 22-exercise ladder.
@@ -74,7 +84,7 @@ exclusive enum values.
 | P0 | Sketch selection | Entities and individual/multiple regions selected unambiguously with durable intent. | Partial candidate for circles/axis-aligned rectangles; full selection/lifecycle scope remains open. |
 | P1 | Extrude/revolve | Valid supported-profile solids, with direction and result/body policy. | Partial; explicit selected-region OCC candidate passes scoped cases; complete feature matrix open. |
 | P1 | Boolean operations | Union/cut/intersection and correct empty/multi-body results. | Scoped tests exist; full boundary matrix open. |
-| P1 | Feature dependency graph | Deterministic downstream recomputation and attributable failure propagation. | Partial; private full-history replay, dependent five-hole resize, fillet/chamfer and last-complete recovery pass. True feature patterns and general dependency coverage remain open. |
+| P1 | Feature dependency graph | Deterministic downstream recomputation and attributable failure propagation. | Partial; private full-history replay, dependent five-hole resize, fillet/chamfer and last-complete recovery pass. A bounded associative OCC cut pattern passes local resize/reopen/rejection controls; general patterns and the complete chain remain open. |
 | P1 | Topological references | Survive supported changes or fail explicitly, never silently retarget. | Partial; complete change-chain test open. |
 | P1 | Persistence | Native intent, references, units and history survive save/reload. | Partial; canonical v2, both packaged workers and actual signed My files/server save/reopen pass for small models and the dependent plate. Large models and all document domains remain open. |
 | P1 | STEP/3MF export | Independently measurable geometry, units and intended structure preserved. | Partial research; complete coupled-model export open. |

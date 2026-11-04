@@ -11,14 +11,30 @@ sign-out cancel/save failure/stale worker and a second account. The lead verifie
 the closed 87-file inventory. The earlier `feaa1c6f…` candidate had a layout
 return-value bug and is superseded.
 
-Separate real issuer/guest tests exercise derived native release `853c12e5…`
+Separate issuer/guest tests exercise derived native release `853c12e5…`
 from pinned `1666491d…`, preserving issuer config/identity except opt-in OPFS
-metadata. This is not the signed session fixture and does not prove signed
-account continuity across an issuer update. See
-`../research/beta-opfs-release/README.md` for source, pins and reproduction.
-The recovery model is a pure model; durable managed transition/recovery,
-capacity, retained routes, complete host review and public beta acceptance
-remain open. Nothing was activated.
+metadata. Later checkpoint `b391e259b` proves actual signed account/file
+continuity across that issuer restart and adds a filesystem/process-tested
+forward floor journal. The lead independently passed four `c2d6f696` inventory,
+managed-binding, copied-controller/real-Caddy and maintenance tests. Thus this
+work is no longer only a pure recovery model. It still is not an assembled
+production transition. See `../research/beta-opfs-release/README.md` and the
+current successor handoff for exact boundaries.
+
+The separate `research/beta-files-operator-20261104` branch now contains exact
+route and normalization checks, retained issuer recovery state, local systemd
+and Caddy process-death fixtures. A protected launcher with combined signed
+service health, capacity and public beta acceptance remains unfinished. Do not
+merge its unrelated hosting base wholesale. Recovery after the floor may gate
+or advance to v2, never restore a v1 writer. Normal unrelated-site maintenance
+must remain available while preserving beta. Nothing was activated.
+
+Later read-only capacity was about 204 MiB above the required 5 GiB reserve.
+A disposable run of the exact issuer stage consumed about 115 MiB allocated;
+another 128 MiB stage at the same time would exceed that headroom. Measure the
+complete transaction working budget. The proposed 256 MiB extra margin is not
+the reserve itself. Do not lower the reserve or move account data implicitly.
+The plan-only launcher hash below was subsequently rechecked and matched.
 
 ## Observed beta baseline
 

@@ -10,6 +10,37 @@ regeneration, then qualify useful parametric parts through the same UI and
 agent commands. The long-term CAD 1.0–6.0 program informs these boundaries;
 it is not the next agent's first implementation task.
 
+## Latest integrated checkpoint
+
+Fork `bdc4ff2b` integrates verified OCI/Manifold worker mounts (`6486b1ef`),
+the bounded associative circular-cut pattern (`854dc3b3`), discoverable seed
+picker (`0680b40b`) and Boolean preprocessing control (`f83eec0c`). The lead
+independently passed both real engine suites/four contract checks, the combined
+build/typecheck/eight CAD browser regressions, then a fresh picker build and
+three targeted scripts. The later preprocessing control passed too. Exact
+source, asset hashes, outputs and limits are in the fork's
+`test/webos/combined-pattern-mount-evidence-20261104.json`.
+
+The pattern requires an immediately preceding circular through-cut on an
+unrotated rectangular OCC plate, bounded count and signed X/Y spacing. It
+discovers the seed without manual IDs and requires explicit repair if the
+authored circle is replaced. Native Mesh refuses this operation. The new engine
+mounts remain disconnected from CAD. **The desktop package still selects
+`d3d36bc5`; this is not a new public release.** Full units/agent/part coverage,
+general patterns and long-session native ownership remain open.
+
+The command-registry negative control on desktop branch
+`research/cad-agent-plate-desktop-20261104` (`c24c29290`) confirms that the
+current signed app exposes inspect, circular-object listing and concentricity,
+but cannot start a sketch from an empty document. Rejection leaves the model
+unchanged. It used the existing d3 package, not a newly packaged 068 build.
+The next slice is atomic data-only sketch creation using existing project
+validation/staging where possible. A rendered editor is an optional view,
+not a computational prerequisite. The full agent workflow remains unfinished.
+
+Earlier checkpoint descriptions below are historical where these later results
+supersede them. Verify current branch tips before continuing.
+
 ## Read first
 
 Read these in order; use the rest as references instead of restarting the
@@ -34,8 +65,8 @@ The complete original goal and amendments are preserved in
 
 | Repository | Integration branch | Code checkpoint before this handoff |
 |---|---|---|
-| `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `73c1e8b13` |
-| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `7d08c15902de5bd7fcf3527a7b53842917b4e1a5` |
+| `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `541db60789a2910f2a92a1023fe765ea902d43a0` |
+| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `bdc4ff2b` |
 
 The desktop branch's later handoff commit adds documentation to that code
 checkpoint. Verify branch tips with `git ls-remote` before starting; another
@@ -114,6 +145,61 @@ actual protected launcher/issuer switching, custody and host capacity remain
 unqualified. The account volume had 208.8 MiB above its 5 GiB reserve at the
 recorded check. Read `../research/beta-opfs-release/CAPACITY-2026-11-04.md`.
 
+### Interpreter source repair and current parallel work
+
+The original OCC wrapper has borrowed-name, duplicate-allocation,
+unknown-command and interrogation-pointer ownership defects. Do not treat the
+old runtime as memory-safe or free retained C++ pointers from JavaScript.
+Repair source lives at `box-git:/srv/data/git/occt-interpreter-codi.git`, backed
+by `r730:/mnt/data10tb/git/occt-interpreter-codi.git`; no GitHub publication.
+
+- `source-repair-20261104` at `5c353d62fac9dd7836105b26cf4cb612ebe81ca5`
+  owns named-shape keys and safely handles absent names/commands. Full
+  Emscripten 2.0.30 build and agent-run real Chromium controls pass.
+- `source-owned-model-names-20261104` at
+  `eac1772379ea1cbaede47abc3e7bccedbf3f3dd1` owns additional model-name tables.
+  Its separate incremental relink passes point/circle/spline/plane/history
+  controls with freed and churned strings, plus missing-name/dispatch/Boolean
+  tests. This is not an independent clean rebuild or complete memory proof.
+- R730 outputs/logs: `/mnt/data10tb/codi-occ-safe-build-20261104` and
+  `/mnt/data10tb/codi-occ-owned-names-build-20261104`. Full-build WASM SHA-256
+  `23d27bddf4af1b0fedb0c55956b7e17a34a7e1639661de32c26a01136c5da46a`;
+  incremental WASM
+  `5140643df8ef1180fc91c991a84da670b38f5fd950fc1403a678cac01a841ab3`.
+  Both generated JS files hash to
+  `21624d1322b63969dbb3ce165a8a56f51dd089f531d77c75ab9632813549f450`.
+- JSketcher `research/occ-cleanup-audit-20261104`, checkpoint `623c9c9a`,
+  holds controls and the versioned interrogation-session proposal. Engine work
+  now prototypes that ownership API separately while preserving the legacy ABI.
+  The lead has not yet qualified a replacement runtime/package.
+- JSketcher `research/cad-agent-plate-20261104` at `83f428f3` adds a
+  worker-only empty-sketch factory using actual headless IO. Agent-run tests
+  cover valid frames and invalid units/frame data. It does not prove face
+  ownership or publish a plane/sketch. Desktop `942f5edaf` records why current
+  restore/staged-storage primitives still need an atomic publication boundary.
+
+Files has advanced beyond the early managed prototype described above. The lead
+independently passed `c2d6f696` render-inventory, managed-binding,
+copied-controller/real-Caddy and maintenance-transaction tests.
+`docs/evidence/files-managed-lead-20261104.json` records those lead results.
+The assembled operator continues on
+`research/beta-files-operator-20261104`; its current checkpoints add retained
+issuer recovery state, exact routes, process-death and local Caddy/systemd
+fixtures. Protected launcher and combined signed-service qualification remain.
+Do not merge its unrelated hosting base wholesale or deploy fixture callbacks.
+One lock must cover gate, durable forward floor, issuer switch, service health,
+v2 exposure and finalization. Post-floor recovery may gate or advance, never
+restore v1. Unrelated-site maintenance must still work while preserving beta.
+
+The last account-volume check had about 204 MiB above the required 5 GiB
+reserve. A measured disposable issuer stage used about 115 MiB allocated;
+an additional concurrent 128 MiB stage would exceed the remaining headroom.
+The proposed extra 256 MiB margin is separate from the required reserve, and
+total working space remains unmeasured. Artifact-drive capacity does not add
+account-volume capacity. Preserve accounts and reserve; validate trusted admin
+inputs/pins under lock without claiming protection against deliberate admin
+bypass. Nothing in these checkpoints changes live services.
+
 ## What works and what is still open
 
 These are bounded results. A passing small model is not a completed CAD gate;
@@ -129,7 +215,7 @@ one worker is not a browser-wide RAM guarantee.
 | Temporary Linux | Real v86 boot; Files can browse guest home; identically named My files stays separate; guest reboot resets temporary content. | This is not a synchronized Linux Account mount. All-app compatibility remains. |
 | CAD host integration | Packaged fork `d3d36bc5`: actual signed small-model and dependent-plate save/reopen with both workers, independent OCC/Native windows, account denial and closed-command rejection at simulated phone, 1080p and 4K. | Large-model resource qualification, shared agent workflow, heavy snapshot/stringification and public release remain. |
 | Headless sketch solve | Actual IO/solver in a real worker, no canvas/DOM/fake editor; restricted plate fixtures, residual and finite-geometry checks. | Not all entity/constraint families, exact general DOF, arbitrary region extraction or all kernels. |
-| Dependent plate | 100×50×20 → 150×30×20 with centered Ø10 hole and four constrained corner holes, ordinary OCC fillet/chamfer; undo/redo, geometry rays, native-v2 and signed reopen. | Feature patterns, inch display and full shared-agent workflow remain. Native sketch extrusion and fillets are explicitly unsupported in these paths. |
+| Dependent plate | 100×50×20 → 150×30×20 with centered Ø10 hole and four constrained corner holes, ordinary OCC fillet/chamfer; undo/redo, geometry rays, native-v2 and signed reopen. | Bounded associative pattern/picker passes locally at bdc4ff2b; the complete coupled chain, general patterns, inch display and full shared-agent workflow remain. Native sketch extrusion and fillets are explicitly unsupported in these paths. |
 | Rejected CAD regeneration | Impossible 15×15 edit retains last complete plate, marks it stale and refuses save/3MF; correcting it regenerates. Held replay leaves accepted registry/model intact. | Broader operation-context/native-handle isolation, full feature chain and resource bounds. |
 | Document lifetime | Monotonic generation plus exact service/storage ownership; held validator/replay reset, staged rollback, late reply, service replacement and surface cleanup/reload controls pass. | All async services and noncooperative kernel interruption are not qualified. |
 | Material-aware 3MF | Existing research and independent limited lib3mf fixtures. | Full editable enclosure/body/lid/inset workflow and manufacturing handoff remain unqualified. |

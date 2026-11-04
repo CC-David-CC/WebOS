@@ -40,6 +40,14 @@ model and dependent-plate save/reopen at phone/1080p/4K. Ordinary OCC fillet
 and chamfer, explicit Native refusal and useful wizard errors also pass.
 See `evidence/cad-packaged-workers-20261104.md`. This is not a public release.
 
+Later fork `bdc4ff2b` integrates the bounded associative cut pattern/picker and
+verified OCI/Manifold worker research. Lead combined and targeted tests pass;
+the package remains `d3d36bc5`. Original OCC native ownership has separate
+source repairs and scoped real-runtime tests, not a qualified replacement.
+Signed command discovery confirms that agents cannot yet start a sketch;
+atomic data-only creation is the next command slice. Full units/part/agent,
+interrogation ownership, library coverage and release work remain open.
+
 The Files beta candidate and issuer/config/session fixture are integrated at
 desktop `2e312b797`, but managed transition/recovery and public qualification
 remain open. `research/beta-opfs-release/README.md` records exact pins.
@@ -123,13 +131,13 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; ENG01–ENG08 add broad capability inventory, swappable mounts, explicit conversions/composition and qualification. Linked-source evidence remains open. |
 | C03 | Splines/history/selection/DXF/camera/reconstruction work together | partial | Consolidation owner ran real carried-feature checks; integrated host and final fork regression remain |
 | C04 | CAD My files, independent instances, disposal and shared commands | partial | Desktop 73c1e8b13: signed native-v2 small models and dependent five-hole/fillet plate pass phone/1080p/4K, both packaged workers, exact server bytes, account denial and closed-command rejection. Full agent part, all lifetimes and large-model gates remain. |
-| C05 | Agent-driven CAD uses the same validated operations as the UI | open | Discover commands and stable entity IDs; build/edit bracket, reject contradiction without damage, undo/redo and account-backed save/reopen; no AI provider required |
+| C05 | Agent-driven CAD uses the same validated operations as the UI | open | Signed discovery confirms inspect/circular listing/concentricity but no sketch-start. Atomic data-only creation is next; full build/edit bracket, rejected change, undo and account-backed save/reopen remain. No AI provider required. |
 | A00 | Beginner single-part fixtures precede the bracket | open | Start from empty documents: dimensioned block, washer and drilled plate through UI/shared commands; see learning progression |
 | M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | partial | Reclassification/drag/restore fixes reviewed; independent cross-stage failure controls found further rollback work |
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
 | M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
 | M04 | Typed parameters/formulas/dependencies/configurations | open | Bracket/enclosure edits with explicit errors |
-| M05 | Regeneration/reference repair preserves authored intent | active | Combined plate resize/reopen, ordinary OCC fillet/chamfer, last-valid failed-edit recovery and late-result/document replacement pass; new worker graph is signed-host tested. Feature patterns, units, full Gate 1 and all operation contexts remain. |
+| M05 | Regeneration/reference repair preserves authored intent | active | Combined plate resize/reopen, ordinary OCC fillet/chamfer, last-valid failed-edit recovery and late-result/document replacement pass; new worker graph is signed-host tested. Bounded associative cut pattern/picker passes locally; general patterns, units, full Gate 1 and all operation contexts remain. |
 | ARC | Computational core operates independently of UI and publishes only current validated results | active | CAD-CORE-SEPARATION.md: no canvas/DOM/fake UI; actual equations, bounded jobs, residual/geometry checks, cancellation, IDs/revisions and explicit failure. |
 | A01 | Mounting bracket substantial edits, contradictions, undo and reopen | open | Real integrated acceptance model |
 | A02 | Enclosure/separate lid substantial edits, contradictions, save/reopen | open | Real integrated acceptance model |

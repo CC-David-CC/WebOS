@@ -102,6 +102,38 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] COMBINED CAD CHECKPOINT: fork `bdc4ff2b` integrates verified OCI/Manifold
+  workers, guarded associative circular-cut patterns and the discoverable seed
+  picker. The lead independently passed both engine suites/four contract checks,
+  combined build/typecheck/eight CAD browser scripts, a fresh picker build/three
+  targeted scripts, and the later Boolean preprocessing control. See the fork's
+  `test/webos/combined-pattern-mount-evidence-20261104.json`. The pattern is
+  limited to an immediate circular through-cut on an axis-aligned rectangular
+  OCC plate. Engine mounts are still disconnected from CAD. Desktop package
+  remains `d3d36bc5`; no deployment and Gate 1 remains open.
+- [~] ENGINE OWNERSHIP REPAIR: original OCC name/pointer lifetime defects have
+  real negative controls. New LAN source repo `occt-interpreter-codi.git` on
+  box-git and R730 holds `5c353d62` full build and `eac17723` incremental relink,
+  with agent-run real Chromium name/dispatch/curve/history/Boolean controls.
+  No production runtime change; native interrogation cleanup remains open.
+  Engine lane now owns a versioned worker-only session prototype preserving
+  legacy callers. Global resource limits, broad bindings and composition remain.
+- [~] AGENT ENTRY GAP: signed registry test confirms inspect/circular listing/
+  concentricity exist, but sketch-start is unavailable and leaves the model
+  unchanged. Desktop branch `research/cad-agent-plate-desktop-20261104` records
+  this and the data-only transaction proposal (`942f5edaf`). Fork `83f428f3`
+  has a worker-tested empty-sketch factory, not atomic document creation.
+  Next agree and test plane/sketch publication without a required editor view.
+- [~] FILES MANAGED TRANSITION: lead passed four `c2d6f696` inventory/controller/
+  Caddy/recovery scripts. The separate hosting branch
+  `research/beta-files-operator-20261104` is assembling exact v2 routes,
+  retained issuer journals and gate-only forward recovery. Local process-death,
+  Caddy and systemd controls exist; protected launcher, combined signed health,
+  capacity and actual beta qualification remain. The lead owns deployment.
+
+The entries below retain prior checkpoints; the later entries above supersede
+their not-yet-integrated status without closing the broader work.
+
 - [~] NEXT BOUNDED LANES ASSIGNED: from verified desktop `2384b3f3d` and fork
   `0259d3fc`, the lead continues with three isolated agents. Mechanical work
   owns replay-local seed/tool provenance and a narrowly declared associative

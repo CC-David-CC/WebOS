@@ -41,6 +41,22 @@ not a replacement packaged runtime. Files b391e259b records actual issuer
 continuity, tested floor journal and current capacity; managed binding
 e4a6c2ec6 remains on its separate hosting branch and is not deployable.
 
+Later fork bdc4ff2b integrates verified OCI/Manifold multi-operation workers and
+a bounded associative circular-cut pattern/picker. Independent combined and
+targeted tests pass, but the desktop package remains d3d36bc5. Read the fork's
+combined-pattern-mount-evidence-20261104.json. Original OCC native ownership
+defects now have separate source repairs in box-git:/srv/data/git/occt-interpreter-codi.git
+and its R730 backup; full-build and incremental-relink evidence are distinct.
+No new runtime is packaged. Interrogation ownership and broad mounts remain.
+Signed command discovery proves sketch-start is still missing; an empty-sketch
+worker factory exists, but atomic data-only plane/sketch publication does not.
+Do not replace that gap with a hidden or required rendered editor.
+
+The Files lane is now research/beta-files-operator-20261104, beyond the early
+e4 managed prototype. Lead c2d6f696 controller/Caddy tests pass; real protected
+launcher, combined signed health and capacity are still release gates. Read the
+latest handoff instead of restarting completed fixes or deploying the branch.
+
 Continue Gate 1's shape/constraint/profile/kernel/history
 matrix and coupled rectangle edit. Both UI and agents must use the same typed,
 validated commands. Build/edit the bracket and enclosure before advancing to
