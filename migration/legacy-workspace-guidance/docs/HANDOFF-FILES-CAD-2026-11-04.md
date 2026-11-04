@@ -1165,3 +1165,14 @@ lanes. No public deployment or full CAD gate advancement is claimed.
 Current user direction: both sites are test deployments without real users;
 replace directly when qualified, without old-window compatibility campaigns.
 Preserve saved-data integrity, isolation, resource cleanup and unrelated sites.
+
+### Integration continuation: feature commands and source discovery
+
+`feature-commands.mjs` at feee6e21a is a component adapter, not yet an end-to-end
+command acceptance. Its session/abort/extra-field/registration-cleanup tests pass.
+Root index.mjs currently wires it and adds File → Sources & licenses, pending
+agent runtime commands and packaged SOURCE-INDEX.html. The signed-account test
+has a new `CODI_TEST_FEATURE_COMMANDS=1` path prepared; it is not yet executed.
+Do not confuse that pending run with the already-passing prepared5b receipt.
+Current root fixture20058 and browser20055 remain available for integration;
+fixture20058 still serves the earlier prepared5b package, not these WIP changes.
