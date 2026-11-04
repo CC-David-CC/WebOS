@@ -93,3 +93,29 @@ Do not execute Python out of an artifact tree without disabling bytecode writes,
 The issuer config fixture now runs the issuer, guest frontend and negative controls with Python `-B`, and checks both native trees' complete pinned inventories and contents before **and after** the process tests. This was rerun successfully against fresh copies of the R730 baseline and sealed derived trees. The earlier config test demonstrated behavior but did not check post-run bytecode integrity and must not be used as sealed-artifact custody evidence.
 
 Integration lead independently verified the complete 520-file baseline and fresh derived issuer inventories on R730, and the corrected candidate archive hash, on 2026-11-04. The local corrected candidate also passed the closed 87-file verifier. These checks are artifact custody, not deployment or signed-account upgrade evidence.
+
+## Native issuer and signed-file continuity
+
+`native-continuity-fixture.py` runs the exact sealed native issuer and disabled-network guest frontend as separate actual processes, along with the exact dd8 gateway and a loopback-only Caddy proxy. It gives the two issuer versions the same **disposable** private runtime. `native-continuity.test.cjs` uses Chromium to register through the real issuer, write/read a file using the signed gateway SDK, restart the issuer as `853c12e5…`, log in again, and check the same account subject, issuer keys, bytes, and SHA-256. The test passed, including full native and gateway inventories before and after the fixture and `-B` process launches. It does not test production issuer service installation, managed host transition, migration of browser storage, or a real user account.
+
+The R730 `/mnt/data10tb/codi-beta-client-44da-dd8cbea7` gateway directory has unmanifested `__pycache__/*.pyc` from prior testing. It is **not an exact sealed inventory** even though its manifest's listed file hashes match. Make a disposable copy, remove only unlisted bytecode from that copy, and verify its *entire* inventory against `files-service.json` before using it; never clean the shared source directory as part of this procedure. The native continuity fixture checks exact inventories and refuses extras. Example copy preparation:
+
+```sh
+scp -r r730:/mnt/data10tb/codi-beta-client-44da-dd8cbea7 /tmp/opfs-dd8-copy
+python3 -B - <<'PY'
+import json,os
+from pathlib import Path
+root=Path('/tmp/opfs-dd8-copy'); keep=set(json.loads((root/'files-service.json').read_bytes())['files'])|{'files-service.json'}
+for parent,dirs,files in os.walk(root,topdown=False):
+ for name in files:
+  p=Path(parent)/name
+  if p.relative_to(root).as_posix() not in keep:
+   if '__pycache__' not in p.parts or p.suffix!='.pyc':raise ValueError('Unexpected extra: '+str(p))
+   p.unlink()
+ for name in dirs:
+  p=Path(parent)/name
+  if p.name=='__pycache__' and not any(p.iterdir()):p.rmdir()
+PY
+```
+
+`floor_journal.py` is a **non-CLI, unbound research component**, not a hosting operator. Its adapter contract requires the *existing* protected hosting lock, managed route/issuer transition, gate verification, exact baseline/forward artifact checks, issuer/account custody and disk-reserve checks. It journals and fsyncs before gating, fsyncs an irreversible floor before candidate exposure, and requires a recovery actor pinned to the same baseline and candidate. `floor-journal-test.py` exercises actual subprocess exit and filesystem journal boundaries, rename/fsync faults, stale actors, unavailable candidates, and re-gating after failed candidate health with a fixture adapter. This proves neither an actual managed-webctl gate nor crash/power-loss behavior of the production host. The existing hosting transaction's prepared-phase rollback must not run after this floor without a reviewed integration that preserves forward-only recovery. A concrete production adapter, lock composition, filesystem custody, disk reserve, managed generator changes, and independent review remain required before deployment.
