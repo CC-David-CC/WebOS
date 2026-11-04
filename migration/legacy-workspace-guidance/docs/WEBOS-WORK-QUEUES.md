@@ -102,6 +102,20 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+**Files-first gate reaffirmed:** finish and deploy the Files foundation before
+broad dependent-app migration. The newly proposed Spreadsheet migration stopped
+after read-only inspection, with no implementation changes. Independent CAD
+engine/solver work may continue; dependent save/reopen release acceptance waits.
+`4880ebbeb` adds signed commit/lost-reply/newer-edit/browser-process-death recovery:
+exact later local UUID/bytes and attempted metadata survive; reconciliation has
+two requests/two commits for two revisions, no duplicate replay. This is a
+client-side successful-response hold with c046, not TCP/power-loss proof.
+The exact 171-file beta asset candidate is
+`e359a081ee09027ce0247daaeabadea3d3d2c766e7b176d6bb422f7b85003a0f`;
+two builds and packaging refusal controls pass. See
+`research/beta-files-forward/README.md`. Exact deployed-dd8 compatibility,
+retained v2 data/client transition and managed installation remain open.
+
 **Latest integrated checkpoint; older entries below retain their original scope:**
 
 - [~] Shared document operations now cover Text/Calculator, Files

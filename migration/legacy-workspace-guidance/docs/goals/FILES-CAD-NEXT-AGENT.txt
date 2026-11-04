@@ -2,6 +2,15 @@ Continue dependable Files and the WebOS CAD foundation as integration lead.
 The full release and CAD Gate 1 remain active and incomplete. Do not restart the
 upstream merge or attempt every later gate at once.
 
+FILES-FIRST PRIORITY — latest user clarification
+Finish the Files foundation and its release before broad dependent-app migration.
+Independent CAD engine/solver work can continue, but CAD persistence acceptance
+and dependent app expansion wait. Spreadsheet migration was stopped before edits.
+The beta asset candidate in research/beta-files-forward has two reproducible
+builds and packaging controls; it still needs independent review, exact deployed
+dd8 compatibility, retained v2 data/client tests and managed forward recovery.
+Do not call the Files gate complete merely because ordinary UI tests pass.
+
 CURRENT UPDATE — supersedes older checkpoint details below
 Desktop 5af7c1bc7 integrates document-operation controls into Text, Calculator,
 Files, Circuit/Digital Logic and the CAD parent. Sixteen controller tests and
