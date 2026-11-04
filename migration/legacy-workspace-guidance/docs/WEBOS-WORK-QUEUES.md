@@ -137,11 +137,20 @@ own later check. R02 and the bounded beta Files foundation are accepted. Main
 storage promotion, per-app qualification, automatic GC and classroom/100-user
 capacity remain open. No new historical window/cache campaign is required.
 
-**Current parallel CAD work:** c55bce60 integrates candidate association and
-projection invariants, independently passing 12 units and two real-worker
-Chromium suites. Next implement/qualify the same-worker centered through-cut
-and analytic hole projection. No full plate, CAD Gate 1, or new deployed
-CAD capability is claimed. Root serializes integration and dependent publication.
+**Current parallel CAD work:** CAD `84a31086` includes the candidate-owned
+centered cut, analytic drilled model, operation-local role checks and registered
+history factory. Independent worker controls and parent-ledger regression pass;
+24 focused intent/ledger/role/section checks pass. Actual combined sketch → prism
+→ same-mount cut → model/publication-guard tests pass in the adapter checkpoint.
+The real application history test is now exercising parent edits, rejection and
+repair, undo/redo, native reopen and visible wizard use. It is not yet qualified
+or deployed. A clean native source build is running independently on R730; the
+default released runtime remains unchanged and lacks the new cut capability.
+Signed My files integration, full plate and CAD Gate 1 remain open.
+Independent review found a drilled-model guard gap: replacing temporary
+edge/vertex identity metadata could make it appear durable without invalidating
+publication. The projection owner is adding marker/container checks and real
+worker regressions before history acceptance is recorded.
 
 **Discovered old-client defect:** unexposed e359 replaced the global catalog,
 letting an old loaded host request new Files without document operations. Root
@@ -217,14 +226,13 @@ qualification is active. Broad app migration remains deferred.
   tests and actual worker heap-growth/prism plus parent lifecycle checks under
   self-only script policy. Owner signed fixture passes width edit, worker
   extrusion and save/reopen. Test packaging is not runtime promotion. The next
-  dependent centered-hole contract is `effc3717`; candidate/source association
-  is in review, actual cut/topology and full plate remain open.
-- [~] Main e7e8 restriction remains undeployed. Existing beta recovery pins the
-  old main selector/controller, requiring a coordinated post-floor recovery
-  successor. Exact two-family packaging/model tests are owner research; actual
-  Caddy, interruption/recovery and protected installation remain under review.
-  The first actual-Caddy attempt rejected inconsistent auxiliary fixture files;
-  correcting the fixture seed is active. No live operator changed.
+  centered-hole implementation is now at CAD `84a31086`; real history/reopen,
+  signed-host integration and the full plate remain open (see current lane above).
+- [x] Main catalog restriction is deployed as `0366e10a`, alongside beta Files
+  `830ca4f1`, with fresh public Files/Text save/reopen and account isolation
+  acceptance. Main keeps its older storage graph; promotion of the beta storage
+  graph remains separate. See the current deployment receipt above. Earlier
+  Caddy/operator fixture failures are historical evidence, not active blockers.
 
 - [~] DOCUMENT SUBTREES: `63271e457` adds active folder/descendant coordination
   to the shared mount controller, including source/destination reservations,
