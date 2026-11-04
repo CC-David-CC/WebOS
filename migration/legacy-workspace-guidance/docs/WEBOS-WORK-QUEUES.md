@@ -109,6 +109,10 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   cross-stage/annotation rollback and admission IO suites pass there; rendered
   and account-backed project round trips remain. One agent now develops the
   Concentric feature while another completes solver correctness; lead reviews.
+- [ ] EXPLICIT AGENT GATE: C05 in `docs/ACTIVE-FILES-CAD-RELEASE.md` requires a
+  discoverable browser command workflow using stable IDs and the same validated
+  UI operations: build/edit bracket, recover from rejected changes, undo/redo,
+  save/sync and reopen under the correct account/window. No AI provider needed.
 - [ ] ACTIVE: reader-aware OPFS reclamation, integrated 128 MiB/resource/fault
   tests, Files UI and origin-wide beta rollout; solver cross-stage rollback
   controls, then the remaining mechanical/material-aware acceptance models.

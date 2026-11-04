@@ -83,6 +83,7 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; linked-source evidence and full capability qualification remain |
 | C03 | Splines/history/selection/DXF/camera/reconstruction work together | partial | Consolidation owner ran real carried-feature checks; integrated host and final fork regression remain |
 | C04 | CAD My files, independent instances, disposal and shared commands | partial | Bounded read helper: 7 tests and real CAD desktop/emulated-phone stand-in workflow passed; signed product host still required |
+| C05 | Agent-driven CAD uses the same validated operations as the UI | open | Discover commands and stable entity IDs; build/edit bracket, reject contradiction without damage, undo/redo and account-backed save/reopen; no AI provider required |
 | M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | partial | Reclassification/drag/restore fixes reviewed; independent cross-stage failure controls found further rollback work |
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
 | M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
@@ -101,6 +102,21 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 ## Execution rules
 
 Current source/test details and limits: `docs/evidence/storage-product-integration-20261104.md`.
+
+### Explicit agent acceptance gate
+
+Agent use is part of this release, not a separate geometry representation. A
+browser API client must discover supported operations and entities, target stable
+IDs, and invoke the same validated model commands as the user interface. Test
+the bracket workflow through that API: create the model, change a parameter or
+dimension, inspect the result, attempt and recover from a contradictory edit,
+undo/redo, then save/sync/close/reopen through the account-bound host services.
+Compare the authored relationships and geometry before and after reopening.
+The API must report unsupported operations, conflicts and failures explicitly;
+stale document IDs, closed windows or changed accounts cannot apply mutations.
+An AI provider, autonomous search or private agent-only solver is not required.
+The current existence of individual callable CAD actions is partial evidence,
+not proof of this end-to-end acceptance gate.
 
 Keep three independent implementation lanes active where their contracts permit.
 Review actual commits and representative runtime evidence before integration.
