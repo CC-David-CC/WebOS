@@ -1,5 +1,12 @@
 # Files-only beta staging and main-renew inspection — 2026-11-04
 
+**Historical pre-install runbook:** the lead subsequently completed protected
+installation, probe provisioning, staging and actual beta activation. Current
+state and exact pins are in `../../evidence/files-beta-activation-20261104.json`
+and `../../docs/HANDOFF-FILES-CAD-2026-11-04.md`. The floor now exists; do not
+repeat pre-floor install/provision/plan/apply steps. The main-renew investigation
+below remains separate and was not deployed.
+
 This is a runbook for the existing reviewed candidates, not an activation receipt. Source basis: desktop integration `1dc60b460a4804e946a5e2abee66d24ccc746bf0`. It does not promote that desktop tree. Keep main, `/desktop/`, beta account data, keys and current dd8 gateway separate from public artifact staging. No live change was made for this document.
 
 ## Before staging
