@@ -104,6 +104,19 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 
 Current source/test details and limits: `docs/evidence/storage-product-integration-20261104.md`.
 
+Latest priority: `docs/JSKETCHER-FOUNDATION-MATRIX.md` makes the basic shape,
+constraint, solid-operation and persistence qualification explicit. Repair
+confirmed failures before expanding the feature catalogue. Tonight remains
+Files, correcting wrong JSketcher implementations and useful tested parts.
+
+The user has now defined the broader CAD-engine program explicitly:
+`CAD-ENGINE-GATE-1.md` is foundation competency (12 areas, 22 exercises and the
+coupled dimensional-change workflow); `CAD-ENGINE-GATE-2.md` is intermediate
+mechanical CAD. The original attached release audit remains historical/current
+slice evidence; it must not be presented as completion of these larger gates.
+Do not start Gate 2 implementation or an undefined next gate instead of finishing
+Gate 1. Competency priority and implementation dependency order are distinct.
+
 ### Explicit agent acceptance gate
 
 Agent use is part of this release, not a separate geometry representation. A

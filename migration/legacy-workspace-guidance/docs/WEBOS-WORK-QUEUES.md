@@ -74,6 +74,15 @@ Refine the ordering when actual evidence shows a dependency is different.
 
 ## Active release milestone — 2026-11-03
 
+**Expanded CAD gate definitions — 2026-11-04:**
+`docs/CAD-ENGINE-GATE-1.md` is the explicit foundational engine qualification:
+12 competency areas, P0/P1/P2 acceptance priorities, 22 exercises, five separate
+validation responsibilities and Change the original rectangle. Current work is
+Files plus that foundation, not routine patch accumulation. The next gate is
+`docs/CAD-ENGINE-GATE-2.md`, intermediate mechanical CAD with 12 groups, ten
+projects and four additional areas. Gate 2 stays queued; the user will define
+the following gate separately. Neither is declared complete by planning.
+
 The user explicitly resumed Files, JSketcher consolidation, mechanical features
 and the material-aware enclosure/core-3MF handoff. See
 `docs/ACTIVE-FILES-CAD-RELEASE.md` for ownership and the completion audit, and
@@ -82,6 +91,13 @@ Three isolated implementation lanes are active; the lead owns shared contracts,
 review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
+
+- [ ] ACTIVE FOUNDATION GATE: user requests every basic CAD shape, feature and
+  assumption be tested before further expansion. Use
+  `docs/JSKETCHER-FOUNDATION-MATRIX.md`; preserve separate engine support states,
+  real failing controls, UI/agent equivalence and beginner whole-part checks.
+  Nested circular-profile extrusion is confirmed wrong; angle-unit/orientation
+  handling is under investigation. No XR/physics implementation tonight.
 
 - [~] INTEGRATED SOURCE: opt-in OPFS content adapter/migration and guarded beta
   mirror through `b81ea020e`, lead merge `c4ec9b527`; reentrant cancellation and

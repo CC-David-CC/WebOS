@@ -1,0 +1,206 @@
+# Gate 1 — foundational parametric CAD engine competency
+
+Authoritative user acceptance gate, 2026-11-04. This is an engine for future
+development, beyond ordinary JSketcher patches. The source fork is a candidate
+implementation; merging fixes is not the gate's completion criterion.
+
+Current status: **OPEN / PARTIAL**. Files and foundational corrections continue.
+Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
+
+## Gate definition and execution policy
+
+- [ ] Qualify all 12 competency areas below and the 22-exercise ladder.
+- [ ] Pass the integrated Change the original rectangle test, supplemented by
+  isolated edge cases so one demonstration cannot conceal deeper defects.
+- [ ] Human UI and authorized agent commands use the same validated operations,
+  document, parameters, entity identities, history and account-bound file service.
+- [ ] Test OCC and Native Mesh separately. Publish each capability's supported,
+  passing, failing, unsupported and untested states; never silently substitute
+  engines or force identical topology. Every required exercise needs a qualified
+  supported path; unsupported is not a passing exercise.
+- [ ] An unsuccessful operation cannot silently corrupt the previous valid
+  document. Preserve authored intent, distinguish stale last-valid results and
+  expose missing/ambiguous dependencies with repairable failures.
+- [ ] Record exact source/runtime, test cases, expected invariants, tolerances,
+  actual outcomes and limits. No screenshot-only or menu-presence qualification.
+
+P0/P1/P2 are **competency priorities, not a strict implementation sequence**.
+Define persistent identity, units, parameter semantics and feature/reference
+contracts early even when their complete user-facing competency is P1/P2.
+Necessary architecture work can run in parallel; dependent release claims wait
+for evidence. Incremental beta testing does not mean Gate 1 has passed.
+
+## Five independent questions and responsible subsystems
+
+| Question | Responsibility | Required distinction |
+|---|---|---|
+| Is the geometry representable? | Geometry model | Valid entity, degenerate representation, invalid domain and unsupported type. A zero-radius circle is not automatically a contradictory equation. |
+| Are the constraints satisfiable? | Constraint solver | Satisfaction, local freedom, redundancy and numerical convergence are separate facts. Nonconvergence is not proof of impossibility. |
+| What regions exist? | Planar topology | Intersections, arrangements, bounded regions, boundaries and selected regions; an inner boundary is not automatically a hole. |
+| Can the feature produce valid geometry? | Modeling kernel | Empty, one-body, multi-body and invalid/non-manifold/failure outcomes under the requested operation. |
+| Do dependencies remain meaningful? | Parametric history | Persistent references, recomputation, missing/ambiguous dependencies, stale results and recoverability. Geometric equality does not prove identity. |
+
+Do not collapse these into a single validation Boolean. A sketch can be
+underconstrained and extrudable, or fully constrained and unsuitable for a
+particular solid feature. A valid solid can still have broken downstream
+references. Preserve separate test outcomes and failure attribution. A solver
+can be fully constrained and redundant at the same time; those are not mutually
+exclusive enum values.
+
+## Competency priority matrix
+
+| Priority | Capability | Acceptance standard | Current status |
+|---|---|---|---|
+| P0 | Geometry primitives | Correct valid/degenerate classification, with declared domains. | Partial; primitive domain/basis fixes under review. |
+| P0 | Constraint solver | Distinguish underconstrained, fully constrained, redundant and contradictory; report numerical uncertainty. | Partial; false DOF and other defects reproduced. |
+| P0 | Driving dimensions | Edits propagate consistently or fail while preserving prior intent. | Partial; positive dimensions tested narrowly, authored invalid parameter text remains open. |
+| P0 | Units and expressions | Typed, dimensionally valid formulas; conversion/display changes preserve physical size. | Partial; explicit native mm does not establish inch display or a complete units system. |
+| P0 | Planar region extraction | Disjoint, nested, intersecting and touching cases interpreted explicitly. | Incomplete; contour loops are not yet a complete arrangement/region model. |
+| P0 | Sketch selection | Entities and individual/multiple regions selected unambiguously with durable intent. | Incomplete; datum-face selection is not explicit selected-region intent. |
+| P1 | Extrude/revolve | Valid supported-profile solids, with direction and result/body policy. | Partial; selected-region extrusion still open. |
+| P1 | Boolean operations | Union/cut/intersection and correct empty/multi-body results. | Scoped tests exist; full boundary matrix open. |
+| P1 | Feature dependency graph | Deterministic downstream recomputation and attributable failure propagation. | Unqualified beyond scoped examples. |
+| P1 | Topological references | Survive supported changes or fail explicitly, never silently retarget. | Partial; complete change-chain test open. |
+| P1 | Persistence | Native intent, references, units and history survive save/reload. | Partial; canonical/worker/file integration under qualification. |
+| P1 | STEP/3MF export | Independently measurable geometry, units and intended structure preserved. | Partial research; complete coupled-model export open. |
+| P2 | Fillet/chamfer/shell | Ordinary and limiting cases behave robustly. | Unqualified. |
+| P2 | Sweep/loft | Supported profiles/path correspondence and explicit failure cases. | Unqualified. |
+| P2 | Assemblies | Separate components and meaningful mechanical relationships. | Not qualified; host snapshot currently rejects assembly projects. |
+| P2 | Drawings/GD&T | Consistent manufacturing documentation tied to model intent. | Not qualified. |
+
+These are acceptance states, not percentages. Unknown/unsupported states cannot
+be relabeled passing merely to close the gate.
+
+## Twelve competency areas and required isolated coverage
+
+1. **Sketch geometry.** Point, finite/construction/infinite lines, circle, arc,
+   ellipse, rectangle, polygon, spline, slot, offset, trim, extend, mirror,
+   patterns and projection where supported. Exercise coincidence/duplicates,
+   zero length/radius/sweep/area, reversed arcs, collapsed axes/controls,
+   self-intersections, overlapping entities, gaps and broken projections.
+2. **Profiles, regions and topology.** Geometry → intersections → planar
+   arrangement → bounded regions → explicit selected regions → solid operation.
+   Test one loop, open chain, disjoint loops, nested disk/annulus/islands,
+   selected subsets, crossing/tangent/coincident boundaries, overlapping edges,
+   point/edge contacts, zero-area regions and tiny gaps. Open paths remain useful
+   for supported sweep/thin/surface operations; do not call all open geometry
+   invalid. Any tolerance repair must be documented and observable.
+3. **Geometric constraints.** Coincident, horizontal/vertical, parallel,
+   perpendicular, tangent, concentric, equal, symmetry, collinear, midpoint,
+   fixed, distance, angle, radius, diameter and length. Define supporting versus
+   finite domains, contact semantics, orientation and branch preservation.
+   Test freedom, redundancy, contradictions, singularity and convergence
+   separately, with meaningful residual/rank/conditioning limits.
+4. **Dimensions and parametric edits.** Linear, signed X/Y, angular, radial,
+   diameter, arc/center/offset distances, driving/reference roles, named values,
+   expressions and tolerances. Rectangle width 100→120→1→0→−10→1e−6→1e6,
+   height=width/2 and width=2*thickness. Distinguish an acyclic formula graph,
+   cyclic formulas and simultaneous geometric equations; preserve accepted
+   source and geometry on rejected edits.
+5. **Degeneracy and numerical robustness.** Duplicate/sliver faces and edges,
+   collinear/collapsed geometry, tangent/near-tangent contacts, tiny features,
+   non-manifold/zero-thickness results, large offsets and numeric overflow
+   (including JSON `1e309`). Attribute invalid input, unsatisfiable constraints
+   and failed geometric operations separately.
+6. **3D features.** Extrude/cut/revolve, sweep/loft, engineered holes,
+   fillet/chamfer, shell/draft/rib, mirror/pattern, combine/split,
+   offset/thicken and thread behavior where exposed. Test valid ordinary cases
+   and domains: signed/symmetric directions, zero depth, excessive radii,
+   unsupported contact and disappearing references. Hole intent includes blind,
+   through-all, counterbore/countersink, tapped/clearance, pattern and placement;
+   it is not automatically represented by an untyped cylinder subtraction.
+7. **Parametric feature history.** Edit/suppress/unsuppress/reorder/rollback/
+   delete, dependency tracking, affected recomputation, primary versus downstream
+   failures, undo/redo, parameters and configurations. Test face/edge split,
+   merge, renumbering and deletion; UUIDs or equal positions alone do not solve
+   topological naming. Preserve last-valid authored state and explicit repair.
+8. **Coordinate systems and transformations.** Global/local/sketch frames,
+   principal/custom planes, translations/rotations, pivots, handedness, mirror,
+   axis selection, attachments, alignment and local↔world conversion. Move and
+   rotate a parent, edit its depth and plane, then verify attached sketch intent.
+9. **Units, precision and parameters.** Length/angle/area/volume/dimensionless
+   types and counts; mass/density where exposed. Separate stored physical units
+   from display, exact numeric values from approximate classification, and
+   solver/geometric/manufacturing tolerances. 25.4 mm displayed in inches is
+   1 inch with unchanged physical geometry. Reject mixed dimensions and unknown
+   units; one global epsilon is not a universal numeric policy.
+10. **Assemblies and relationships.** Parts versus components/instances, ground,
+    fixed/revolute/slider/cylindrical/planar/ball joints, distance/angle/axis
+    relationships, gear coupling, limits, interference, clearance and basic
+    motion. Qualify 3D rigid-pose freedoms separately from 2D sketch solving.
+11. **Drawings/manufacturing/exchange.** Orthographic/isometric/section/detail
+    views, hidden/center lines, center marks, dimensions, baseline/ordinate
+    callouts, datum/GD&T/finish, fits, BOM and manufacturing intent. Record
+    STEP/IGES/STL/3MF/DXF/DWG/OBJ/glTF/native support honestly; import/export
+    does not imply original history or metadata can be recovered.
+12. **Validation, recovery and editing.** Useful errors for invalid entities,
+    unsupported profiles/features, rejected constraints, ambiguous/broken refs,
+    bad formulas/cycles and failed recompute. Preserve prior valid state,
+    identify stale geometry, and restore exact supported history and references
+    through undo/redo/save/reload. Never claim an unknown solve succeeded.
+
+## The 22-exercise competency ladder
+
+| Level | Exercise | Core acceptance / current evidence |
+|---|---|---|
+| 1 | Draw a line and circle | Real tool creation and native records; scoped creation evidence, edge cases open. |
+| 2 | Fully constrain a rectangle | Correct freedoms and solver diagnostics; false DOF is a known blocker. |
+| 3 | Edit rectangle dimensions | Geometry and accepted authored dimensions remain consistent; partial parameter evidence. |
+| 4 | Two disconnected rectangles | Separate selectable regions and deliberate result-body policy; open. |
+| 5 | Three nested circles | Select disks/annuli/subsets unambiguously; region identity/selection is open. |
+| 6 | Introduce a duplicate line | Classify overlap without inventing a valid extra region; open. |
+| 7 | Contradictory dimensions | Truthful conflict, prior model/intent preserved, remove/recover/reload; partial. |
+| 8 | Extruded plate | Measured solid, correct body count, units and selected profile; scoped evidence. |
+| 9 | Four holes | Correct placement, hole/pattern semantics and measurable through geometry; partial audit. |
+| 10 | Edit plate width | Downstream features preserve relationships or report repairable failures; open. |
+| 11 | Fillets and chamfers | Correct edge operations and limiting-case recovery; open. |
+| 12 | Hollow enclosure | Shell/wall intent and valid ordinary limits; open. |
+| 13 | Revolved stepped profile | Axis, profile and measurable rotational solid; open. |
+| 14 | Sweep along a curve | Path/profile alignment and supported valid result; open. |
+| 15 | Loft different profiles | Defined correspondence and explicit unsupported cases; open. |
+| 16 | Join/subtract solids | Correct empty/connected/disconnected and tool/body policies; scoped evidence. |
+| 17 | Hinged two-part assembly | Independent parts, intended joint freedoms and limits; unqualified. |
+| 18 | Parameter-driven geometry | Typed values, dependency graph, accepted edits and invalid-cycle recovery; partial. |
+| 19 | Break a referenced face | Explicit missing/ambiguous dependency, no silent retargeting; open. |
+| 20 | Export STEP and 3MF | Independent size, geometry, units and intended structure verification; partial research. |
+| 21 | Reload saved native model | Intent, IDs, history, units and references restored via account files; partial. |
+| 22 | Dimensioned manufacturing drawing | Views/dimensions/reference meaning stay tied to the model; unqualified. |
+
+For each level record UI and agent paths, engine support, isolated failure cases,
+dimension changes, undo/redo and account-backed persistence. Basic operation
+complexity inside a kernel is not an excuse to reclassify a normal user skill as
+advanced. Gate 2 broadens these representative competencies into intermediate
+controls, variants and ordinary multi-feature projects.
+
+## Main integrated test — Change the original rectangle
+
+- [ ] Start an empty document; create a fully constrained 100 × 50 mm rectangle.
+- [ ] Extrude 20 mm using explicit supported region/body intent.
+- [ ] Add a centered Ø10 mm through-hole driven by the rectangle center.
+- [ ] Add four corner mounting holes with dimensions/construction relationships.
+- [ ] Fillet the intended outer edges.
+- [ ] Pattern a feature with explicit seed/count/spacing dependencies.
+- [ ] Change the original rectangle to 150 × 30 mm without manually rebuilding
+  each dependent sketch, hole, cut, fillet or pattern.
+- [ ] Change document **display** to inches without rescaling physical geometry.
+- [ ] Undo and redo the dimensional changes, preserving feature/reference intent.
+- [ ] Save/sync/close/reload and independently verify the complete model.
+
+Record the dimensions/counts/radii chosen for unspecified feature details before
+testing. Measure centers, offsets, body/hole counts, bounds, volume where
+appropriate, feature/dependency IDs and solver/kernel outcomes. Test a variant
+whose edit is impossible and require an explicit failure, not plausible-looking
+replacement geometry. Repeat through the same authorized browser command path;
+no AI provider is required.
+
+## File-workflow prerequisite and evidence index
+
+The desktop's shared Files gate remains required: registered-account isolation,
+version/conflict protection, uncertain-write reconciliation, verified downloads,
+interruption/crash/quota handling, worker/resource behavior and create/open/
+rename/move/copy/delete/upload/download. Linux home stays temporary and separate.
+Use `ACTIVE-FILES-CAD-RELEASE.md` for that audit, not an app-private CAD mirror.
+
+Use `JSKETCHER-FOUNDATION-MATRIX.md` for individual current findings and
+`WEBOS-WORK-QUEUES.md` for scheduling. Evidence is scoped; all unqualified rows
+stay open. Tonight's implementation stays on Files and Gate 1 foundations.
