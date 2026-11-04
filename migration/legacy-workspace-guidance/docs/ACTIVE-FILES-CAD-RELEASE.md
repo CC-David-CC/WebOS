@@ -27,10 +27,16 @@ change is the ZIP capability correction. Do not infer all-app validation.
 
 Shared mount operations are integrated into Text, Calculator, Files, Circuit
 Lab, Digital Logic and the CAD parent with bounded component/browser evidence.
-CAD is c55bce60 with strict-CSP worker extrusion, candidate association/projection
-guards and scoped signed native save/reopen proof. Actual dependent through-cut/
-runtime and analytic hole-model projection work are active in separate lanes. The full plate,
-Gate 1, bracket/enclosure and material-aware 3MF finish lines remain open.
+Current CAD source: 8a9f79d8 includes the clean worker runtime, centered-hole
+history, analytic projection, cylinder display fixes and type fixes. Normal
+exact-source build, full typecheck and 17 focused tests pass. Scoped actual-app
+edit/reject/recover/undo/native reopen and signed My files evidence are recorded
+in the handoff. Metadata guards and nonplanar display defects are fixed.
+However, the first clean-runtime signed test reproduced the saved-prism reopen
+timeout previously seen once with the incremental runtime. Cause is under
+investigation; no timeout was increased. Closed desktop asset/source packaging
+is in progress. No public CAD deployment, full plate, Gate1, bracket/enclosure
+or material-aware 3MF completion is claimed.
 
 Latest user clarification: **all JSketcher features are suspect and used for
 inspiration/reference.** Existing code earns reuse through an explicit contract

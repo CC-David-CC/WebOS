@@ -137,20 +137,16 @@ own later check. R02 and the bounded beta Files foundation are accepted. Main
 storage promotion, per-app qualification, automatic GC and classroom/100-user
 capacity remain open. No new historical window/cache campaign is required.
 
-**Current parallel CAD work:** CAD `84a31086` includes the candidate-owned
-centered cut, analytic drilled model, operation-local role checks and registered
-history factory. Independent worker controls and parent-ledger regression pass;
-24 focused intent/ledger/role/section checks pass. Actual combined sketch → prism
-→ same-mount cut → model/publication-guard tests pass in the adapter checkpoint.
-The real application history test is now exercising parent edits, rejection and
-repair, undo/redo, native reopen and visible wizard use. It is not yet qualified
-or deployed. A clean native source build is running independently on R730; the
-default released runtime remains unchanged and lacks the new cut capability.
-Signed My files integration, full plate and CAD Gate 1 remain open.
-Independent review found a drilled-model guard gap: replacing temporary
-edge/vertex identity metadata could make it appear durable without invalidating
-publication. The projection owner is adding marker/container checks and real
-worker regressions before history acceptance is recorded.
+**Current parallel CAD work:** Current CAD source: 8a9f79d8 includes the clean worker runtime, centered-hole
+history, analytic projection, cylinder display fixes and type fixes. Normal
+exact-source build, full typecheck and 17 focused tests pass. Scoped actual-app
+edit/reject/recover/undo/native reopen and signed My files evidence are recorded
+in the handoff. Metadata guards and nonplanar display defects are fixed.
+However, the first clean-runtime signed test reproduced the saved-prism reopen
+timeout previously seen once with the incremental runtime. Cause is under
+investigation; no timeout was increased. Closed desktop asset/source packaging
+is in progress. No public CAD deployment, full plate, Gate1, bracket/enclosure
+or material-aware 3MF completion is claimed.
 
 **Discovered old-client defect:** unexposed e359 replaced the global catalog,
 letting an old loaded host request new Files without document operations. Root
@@ -226,8 +222,8 @@ qualification is active. Broad app migration remains deferred.
   tests and actual worker heap-growth/prism plus parent lifecycle checks under
   self-only script policy. Owner signed fixture passes width edit, worker
   extrusion and save/reopen. Test packaging is not runtime promotion. The next
-  centered-hole implementation is now at CAD `84a31086`; real history/reopen,
-  signed-host integration and the full plate remain open (see current lane above).
+  centered-hole implementation is at CAD `8a9f79d8`; scoped history and signed
+  tests pass, but startup qualification, packaging and the full plate remain open.
 - [x] Main catalog restriction is deployed as `0366e10a`, alongside beta Files
   `830ca4f1`, with fresh public Files/Text save/reopen and account isolation
   acceptance. Main keeps its older storage graph; promotion of the beta storage

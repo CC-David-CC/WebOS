@@ -1131,3 +1131,20 @@ legacy main-thread consumers still use their separate existing dependency.
 Next: integrate clean-worker pins/source prerequisites and typecheck fixes,
 build the actual app normally, then rerun affected signed/display tests. No
 public CAD deployment changed.
+
+## Normal clean-runtime build and repeated signed restore timeout
+
+Exact source8a9f79d8 normal npm build, tsc and17 focused tests pass; the clean
+c397 worker WASM is emitted by the normal configuration with no test mount
+alias. See evidence/cad-clean-default-build-20261104.json. The signed test-only
+desktop overlay failed saved-prism reopen at line41 with host rebuild timeout.
+This repeats the earlier untraced corrected-app failure; warm/traced incremental
+passes do not resolve it. Browser lane owns a disposable sampled diagnostic,
+root fixture20054/browser20055 retained for that investigation. No timeout
+changed and no public deployment. A warm sampled run also passed but does not
+explain the cold failure; next diagnostic uses fresh browser profiles.
+
+Latest CAD5b1f4c63 adds an independently reviewed generic mount representation
+check: only OCC worker-owned handles can advertise centered cutting. Default
+mount was already correct. Focused capability test passes. Desktop packaging
+lane targets that exact commit and the closed six-input/source-notice inventory.
