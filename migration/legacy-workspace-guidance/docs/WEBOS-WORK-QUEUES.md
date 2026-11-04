@@ -102,11 +102,32 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] DOCUMENT SUBTREES: `63271e457` adds active folder/descendant coordination
+  to the shared mount controller, including source/destination reservations,
+  root scope, separate My files/Linux namespaces and release on disposal.
+  15 primitive tests pass; actual Text/Calculator tests pass again at 1366/390
+  after `06e696262` prevents editing during a blocked initial load and preserves
+  file association if editor replacement fails. Circuit/Digital Logic source
+  and owner real-engine tests are integrated in `e8e6338b5`. Files migration and
+  Circuit native-picker admission are active; no all-app or deployment claim.
+- [~] MAIN RESTRICTION QUALIFICATION: e7e8 now passes signed isolated Files→Text
+  save/fresh-session reopen, other-account denial, Calculator and real v86
+  Terminal/nano workflows. `53928d31d`, `2855183a9`, `3da83123d` add actual pinned
+  controller simulation, exact auxiliary inventory and a proposed pending-main
+  journal guard; lead tests pass. Protected launcher/real-Caddy recovery and
+  installed entrypoint coordination remain open. Main is unchanged.
+- [~] SIGNED CAD WORKER FAILURE: the signed parent correctly blocks the OCI
+  worker's verified-blob `importScripts` under its existing script policy.
+  Earlier isolated tests explicitly allowed blob scripts and did not prove
+  this deployment policy. A statically bundled pinned worker is being tested
+  without widening global CSP. Owner prototype passes real prism, tampered
+  WASM refusal and live heap growth; combined signed save/reopen is still open.
+
 - [~] MOUNT-OWNED DOCUMENT OPERATIONS: `9fa27ad72` supplies session-local active
   file claims, synchronous admission and observable state. Text/Calculator
   migrate in `3f6d745d0`; actual mounted-app Chromium tests pass desktop/phone
-  sizes with stub storage/accounts. Parent-backed CAD, Circuit Lab and Digital
-  Logic migrations are in progress. Remaining apps are recorded in
+  sizes with stub storage/accounts. Parent-backed CAD and Files migrations are
+  in progress; Circuit Lab and Digital Logic are integrated as noted above. Remaining apps are recorded in
   `docs/research/save-busy/AUDIT-20261104.md`; no all-app/deployed claim.
 - [~] VERSIONED CAD WORKER HISTORY: `d64c506c` is tree-equivalent to owner
   `4ed4a5ec`. V1 rectangle wizard/craft, bounds/topology, width/depth edits,

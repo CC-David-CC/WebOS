@@ -13,6 +13,28 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
+**Latest review:** Text correction `06e696262` and subtree controller
+`63271e457` pass lead real Text/Calculator Chromium tests at 1366/390 and
+15 primitive checks. Circuit/Digital Logic migration `e8e6338b5` has owner
+real-engine tests with held in-memory storage; native Circuit upload-picker
+admission is a remaining correction. Files migration is active. Folder claims
+are cooperative, session-local and released on disposal; they do not replace
+CAS or establish atomic multi-file operations/cancellation of dispatched writes.
+
+Main e7e8 now has isolated signed Files→Text create/save/fresh-session reopen,
+other-account denial, Calculator and real v86 Terminal/nano proof. Forward
+transaction, auxiliary render inventory and a proposed distinct-journal CLI
+guard are integrated (`53928d31d`, `2855183a9`, `3da83123d`); lead disposable
+tests pass. The protected launcher, real-Caddy recovery and current installed
+entrypoint coordination are unfinished. **No main activation occurred.**
+
+The signed parent worker-extrusion test exposed a script-policy failure:
+verified-blob importScripts is forbidden by that worker response's CSP. Earlier
+standalone tests allowed blob scripts and must not be described as production
+policy proof. A contained statically bundled worker with wrapper provenance and
+verified WASM is being qualified; no global CSP widening or runtime promotion.
+Full plate and Gate 1 remain open.
+
 **Main/beta and Save policy:** all games and unfinished integrations must move
 off main to beta. Candidate e7e8fb9f keeps Files, Text, Terminal, Calculator and
 Help plus CodeMirror; isolated signed admission/layout and actual service-worker
