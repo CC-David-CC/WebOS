@@ -303,6 +303,29 @@
       "rank": 13
     },
     {
+      "id": "J01",
+      "silo": "JSketcher integration consolidation",
+      "group": "CAD",
+      "done_pct": 70,
+      "partial_pct": 25,
+      "remaining_pct": 5,
+      "finish_days": [
+        3,
+        8
+      ],
+      "prove_days": [
+        7,
+        15
+      ],
+      "difficulty": 4,
+      "working": "Recorded main/surfacing integrated; adapted splines/history/DXF and WebOS fixes",
+      "partial": "Combined regression coverage and remaining divergent-dev feature gaps",
+      "missing": "Feature-by-feature qualification and remaining confirmed regressions",
+      "dependencies": "J03 engine builds; attributed upstream refs",
+      "evidence": "docs/JSKETCHER_UPSTREAM_WORK.md",
+      "rank": 14
+    },
+    {
       "id": "APP-diagrams.net",
       "silo": "diagrams.net",
       "group": "Application",
@@ -323,7 +346,7 @@
       "missing": "Qualified adapter and physical touch",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 14
+      "rank": 15
     },
     {
       "id": "S01",
@@ -346,7 +369,7 @@
       "missing": "Complete recovery, classroom sign-ins and transition qualification",
       "dependencies": "Session host; test identities",
       "evidence": "docs/HANDOFF-STORAGE-BETA-2026-11-02.md",
-      "rank": 15
+      "rank": 16
     },
     {
       "id": "APP-audio-editor",
@@ -369,7 +392,7 @@
       "missing": "Physical audio and complete export/lifecycle coverage",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 16
+      "rank": 17
     },
     {
       "id": "GAME-snake-garden",
@@ -392,7 +415,7 @@
       "missing": "Final artwork and complete touch/play acceptance",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 17
+      "rank": 18
     },
     {
       "id": "GAME-expression-puppet",
@@ -415,7 +438,7 @@
       "missing": "Art, assistive technology and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 18
+      "rank": 19
     },
     {
       "id": "GAME-kinetic-relay",
@@ -438,7 +461,7 @@
       "missing": "All puzzles, art and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 19
+      "rank": 20
     },
     {
       "id": "GAME-owl-companion",
@@ -461,7 +484,7 @@
       "missing": "Authored art and physical-device acceptance",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 20
+      "rank": 21
     },
     {
       "id": "GAME-reactive-control-desk",
@@ -484,7 +507,7 @@
       "missing": "All orders, art and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 21
+      "rank": 22
     },
     {
       "id": "GAME-sling-targets",
@@ -507,7 +530,7 @@
       "missing": "All arrangements, art and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 22
+      "rank": 23
     },
     {
       "id": "GAME-stack-&-balance",
@@ -530,7 +553,7 @@
       "missing": "Complete challenge set, art and physical devices",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 23
+      "rank": 24
     },
     {
       "id": "GAME-story-cards",
@@ -553,7 +576,7 @@
       "missing": "Complete story, art and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 24
+      "rank": 25
     },
     {
       "id": "GAME-clockwork-room",
@@ -576,7 +599,7 @@
       "missing": "Full content, art and physical-device review",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 25
+      "rank": 26
     },
     {
       "id": "GAME-pocket-golf",
@@ -599,7 +622,7 @@
       "missing": "All holes, art and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 26
+      "rank": 27
     },
     {
       "id": "S05",
@@ -622,7 +645,7 @@
       "missing": "Full physical-device, focus and state-restoration acceptance",
       "dependencies": "S06; phone and large-display access",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 27
+      "rank": 28
     },
     {
       "id": "NEXT-music-player",
@@ -645,7 +668,7 @@
       "missing": "Actual local-file user workflow and lifecycle/device qualification",
       "dependencies": "Verify source/runtime; content/data licensing; S06",
       "evidence": "docs/WEBOS-WORK-QUEUES.md",
-      "rank": 28
+      "rank": 29
     },
     {
       "id": "NEXT-photo-gallery",
@@ -668,7 +691,7 @@
       "missing": "Actual local-file user workflow and lifecycle/device qualification",
       "dependencies": "Verify source/runtime; content/data licensing; S06",
       "evidence": "docs/WEBOS-WORK-QUEUES.md",
-      "rank": 29
+      "rank": 30
     },
     {
       "id": "APP-digital-logic",
@@ -691,7 +714,7 @@
       "missing": "Qualified supported logic workflow; timing not implied",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 30
+      "rank": 31
     },
     {
       "id": "APP-doc",
@@ -714,7 +737,7 @@
       "missing": "Qualified Unicode, layout and conflict/lifecycle behavior",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 31
+      "rank": 32
     },
     {
       "id": "APP-image-editor",
@@ -737,7 +760,7 @@
       "missing": "Supported-format, memory and device qualification",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 32
+      "rank": 33
     },
     {
       "id": "APP-terminal",
@@ -760,7 +783,7 @@
       "missing": "Qualified supported terminal/device lifecycle; networking policy",
       "dependencies": "S08 guest runtime; S06; physical phone",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 33
+      "rank": 34
     },
     {
       "id": "GAME-crystal-defense",
@@ -783,7 +806,7 @@
       "missing": "Eight-wave playthrough, art and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 34
+      "rank": 35
     },
     {
       "id": "GAME-drone-circuit",
@@ -806,7 +829,7 @@
       "missing": "Full course, art and physical multitouch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 35
+      "rank": 36
     },
     {
       "id": "GAME-garden-defense",
@@ -829,7 +852,7 @@
       "missing": "Full waves, artwork and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 36
+      "rank": 37
     },
     {
       "id": "GAME-lantern-leap",
@@ -852,7 +875,7 @@
       "missing": "All rooms, artwork and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 37
+      "rank": 38
     },
     {
       "id": "GAME-marble-works",
@@ -875,7 +898,7 @@
       "missing": "All eight puzzles, art and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 38
+      "rank": 39
     },
     {
       "id": "APP-mesh:tool",
@@ -898,7 +921,7 @@
       "missing": "Supported-edit and export correctness qualification",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 39
+      "rank": 40
     },
     {
       "id": "GAME-pocket-rally",
@@ -921,7 +944,7 @@
       "missing": "All races, artwork and physical multitouch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 40
+      "rank": 41
     },
     {
       "id": "GAME-sky-courier",
@@ -944,7 +967,7 @@
       "missing": "Full campaign, artwork and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 41
+      "rank": 42
     },
     {
       "id": "GAME-tabletop-bot-arena",
@@ -967,7 +990,7 @@
       "missing": "Full cup, art and physical devices",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 42
+      "rank": 43
     },
     {
       "id": "GAME-target-garden",
@@ -990,7 +1013,7 @@
       "missing": "Full rounds, art and devices",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 43
+      "rank": 44
     },
     {
       "id": "GAME-rhythm-garden",
@@ -1013,7 +1036,7 @@
       "missing": "Full medal runs, art and physical audio timing",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 44
+      "rank": 45
     },
     {
       "id": "GAME-clockwork-quest",
@@ -1036,7 +1059,7 @@
       "missing": "Real headset, art and physical touch",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 45
+      "rank": 46
     },
     {
       "id": "APP-files",
@@ -1059,7 +1082,7 @@
       "missing": "Complete sync/conflict-safe file and folder workflow",
       "dependencies": "S02/S03/S04/S06; folder-operation contract",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 46
+      "rank": 47
     },
     {
       "id": "APP-stitch-converter",
@@ -1082,7 +1105,7 @@
       "missing": "Independent format checks; physical sewing optional external test",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 47
+      "rank": 48
     },
     {
       "id": "O01",
@@ -1105,7 +1128,7 @@
       "missing": "Qualified current main promotion and repeatable operator workflow",
       "dependencies": "Qualified candidate; server access; adequate disk",
       "evidence": "docs/HANDOFF-STORAGE-BETA-2026-11-02.md",
-      "rank": 48
+      "rank": 49
     },
     {
       "id": "S03",
@@ -1128,7 +1151,7 @@
       "missing": "Complete operation recovery and realistic capacity proof",
       "dependencies": "S01; coordinated host writers",
       "evidence": "docs/HANDOFF-STORAGE-BETA-2026-11-02.md",
-      "rank": 49
+      "rank": 50
     },
     {
       "id": "APP-replicad",
@@ -1151,7 +1174,7 @@
       "missing": "Useful qualified script-CAD workflow; not general CAD",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 50
+      "rank": 51
     },
     {
       "id": "NEXT-video-player",
@@ -1174,7 +1197,7 @@
       "missing": "Actual local-file user workflow and lifecycle/device qualification",
       "dependencies": "Verify source/runtime; content/data licensing; S06",
       "evidence": "docs/WEBOS-WORK-QUEUES.md",
-      "rank": 51
+      "rank": 52
     },
     {
       "id": "APP-circuit-simulator",
@@ -1197,7 +1220,7 @@
       "missing": "Qualified supported analyses; hardware validation excluded",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 52
+      "rank": 53
     },
     {
       "id": "S08",
@@ -1220,7 +1243,7 @@
       "missing": "Qualified supported tools, temporary files, reset and network policy",
       "dependencies": "Guest image/toolchain; networking policy; S06",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 53
+      "rank": 54
     },
     {
       "id": "GAME-physics-playground",
@@ -1243,7 +1266,7 @@
       "missing": "Complete challenges, art and separately tested XR",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 54
+      "rank": 55
     },
     {
       "id": "GAME-orbital-courier",
@@ -1266,7 +1289,7 @@
       "missing": "Uninterrupted mission, art, touch and XR",
       "dependencies": "S06; final assets and physical devices/headset where required",
       "evidence": "docs/GAME_PREVIEW_REVIEW.md",
-      "rank": 55
+      "rank": 56
     },
     {
       "id": "NEXT-news-reader",
@@ -1289,7 +1312,7 @@
       "missing": "Actual local-file user workflow and lifecycle/device qualification",
       "dependencies": "Verify source/runtime; content/data licensing; S06",
       "evidence": "docs/WEBOS-WORK-QUEUES.md",
-      "rank": 56
+      "rank": 57
     },
     {
       "id": "APP-spreadsheet",
@@ -1312,7 +1335,7 @@
       "missing": "Measured higher limits and correct supported round trips",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 57
+      "rank": 58
     },
     {
       "id": "APP-data-explorer",
@@ -1335,7 +1358,7 @@
       "missing": "Exact identifiers and reproducible resource-limited workflow",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 58
+      "rank": 59
     },
     {
       "id": "APP-kiri:moto",
@@ -1358,7 +1381,7 @@
       "missing": "Independent supported-output and device checks; no real print gate",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 59
+      "rank": 60
     },
     {
       "id": "NEXT-e-book-reader",
@@ -1381,7 +1404,7 @@
       "missing": "Actual local-file user workflow and lifecycle/device qualification",
       "dependencies": "Verify source/runtime; content/data licensing; S06",
       "evidence": "docs/WEBOS-WORK-QUEUES.md",
-      "rank": 60
+      "rank": 61
     },
     {
       "id": "S07",
@@ -1404,7 +1427,7 @@
       "missing": "Saved-file stale-writer fix; qualified formats and lifecycle",
       "dependencies": "S02/S04/S06 stable file contract; kernel assets",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 61
+      "rank": 62
     },
     {
       "id": "S06",
@@ -1427,7 +1450,7 @@
       "missing": "Universal session safety and authorized typed operations",
       "dependencies": "S01 and agreed S02/S04 interface",
       "evidence": "docs/WEBOS-WORK-QUEUES.md",
-      "rank": 62
+      "rank": 63
     },
     {
       "id": "S04",
@@ -1450,7 +1473,7 @@
       "missing": "Complete end-to-end OPFS adoption and load qualification",
       "dependencies": "S02/S03 agreed versions and publication contract",
       "evidence": "docs/HANDOFF-STORAGE-BETA-2026-11-02.md",
-      "rank": 63
+      "rank": 64
     },
     {
       "id": "APP-embroidery-studio",
@@ -1473,7 +1496,7 @@
       "missing": "Qualified native/export and device workflow",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 64
+      "rank": 65
     },
     {
       "id": "LEARN-fraction-farm",
@@ -1496,7 +1519,7 @@
       "missing": "Usable UI, assets, file adapter and playthrough/device acceptance",
       "dependencies": "Final game design/assets; S06",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 65
+      "rank": 66
     },
     {
       "id": "NEXT-maps",
@@ -1519,7 +1542,7 @@
       "missing": "Actual local-file user workflow and lifecycle/device qualification",
       "dependencies": "Verify source/runtime; content/data licensing; S06",
       "evidence": "docs/WEBOS-WORK-QUEUES.md",
-      "rank": 66
+      "rank": 67
     },
     {
       "id": "LEARN-market-math",
@@ -1542,7 +1565,7 @@
       "missing": "Usable UI, assets, file adapter and playthrough/device acceptance",
       "dependencies": "Final game design/assets; S06",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 67
+      "rank": 68
     },
     {
       "id": "LEARN-math-path",
@@ -1565,7 +1588,7 @@
       "missing": "Usable UI, assets, file adapter and playthrough/device acceptance",
       "dependencies": "Final game design/assets; S06",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 68
+      "rank": 69
     },
     {
       "id": "LEARN-pocket-conquest",
@@ -1588,7 +1611,7 @@
       "missing": "Usable UI, assets, file adapter and playthrough/device acceptance",
       "dependencies": "Final game design/assets; S06",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 69
+      "rank": 70
     },
     {
       "id": "LEARN-rule-detective",
@@ -1611,7 +1634,7 @@
       "missing": "Usable UI, assets, file adapter and playthrough/device acceptance",
       "dependencies": "Final game design/assets; S06",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 70
+      "rank": 71
     },
     {
       "id": "LEARN-tile-islands",
@@ -1634,7 +1657,7 @@
       "missing": "Usable UI, assets, file adapter and playthrough/device acceptance",
       "dependencies": "Final game design/assets; S06",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 71
+      "rank": 72
     },
     {
       "id": "LEARN-word-weaver",
@@ -1657,7 +1680,7 @@
       "missing": "Usable UI, assets, file adapter and playthrough/device acceptance",
       "dependencies": "Final game design/assets; S06",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 72
+      "rank": 73
     },
     {
       "id": "APP-microduck",
@@ -1680,7 +1703,7 @@
       "missing": "Qualified controls/recovery with honest simulation limits",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 73
+      "rank": 74
     },
     {
       "id": "J07",
@@ -1703,7 +1726,7 @@
       "missing": "Complete editable enclosure to independently verified 3MF",
       "dependencies": "J02-J06 supported slice; prerequisite effort excluded",
       "evidence": "docs/WEBOS-SILOED-WORK.md#j07--enclosure-acceptance-project",
-      "rank": 74
+      "rank": 75
     },
     {
       "id": "S02",
@@ -1726,7 +1749,7 @@
       "missing": "Desktop adoption; complete memory/eviction/recovery qualification",
       "dependencies": "S01, S04 and S06 contract",
       "evidence": "docs/HANDOFF-STORAGE-BETA-2026-11-02.md",
-      "rank": 75
+      "rank": 76
     },
     {
       "id": "APP-arduino-simulator",
@@ -1749,7 +1772,7 @@
       "missing": "Qualified source-build-run-save loop for supported board",
       "dependencies": "S06 file/session contract; physical device where applicable",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 76
+      "rank": 77
     },
     {
       "id": "J06",
@@ -1772,7 +1795,7 @@
       "missing": "Qualified real CAD app on phone/1080p/4K",
       "dependencies": "S06 file/session contract; J01/J03 runtime",
       "evidence": "docs/COMBINED-RESEARCH-CHECKPOINT.md",
-      "rank": 77
+      "rank": 78
     },
     {
       "id": "J04",
@@ -1795,7 +1818,7 @@
       "missing": "Durable general assignments through edits/save/reopen",
       "dependencies": "J02/J03 identity contract; file service",
       "evidence": "docs/COMBINED-RESEARCH-CHECKPOINT.md",
-      "rank": 78
+      "rank": 79
     },
     {
       "id": "S10",
@@ -1818,7 +1841,7 @@
       "missing": "Complete capability inventory and one real tested consumer per capability",
       "dependencies": "Consumer apps; reproducible upstream runtimes",
       "evidence": "apps/system/README.md",
-      "rank": 79
+      "rank": 80
     },
     {
       "id": "O02",
@@ -1841,7 +1864,7 @@
       "missing": "Complete baseline evidence at specified resource/device limits",
       "dependencies": "Frozen baseline; device/network access; excludes future physics QA",
       "evidence": "docs/WEBOS-WORK-QUEUES.md",
-      "rank": 80
+      "rank": 81
     },
     {
       "id": "APP-linux-notebook",
@@ -1864,29 +1887,6 @@
       "missing": "Working distinct kernel with subprocess/package and recovery proof",
       "dependencies": "S08 guest Python; kernel bridge; S06",
       "evidence": "docs/APP_STATUS.md",
-      "rank": 81
-    },
-    {
-      "id": "J01",
-      "silo": "JSketcher upstream feature integration",
-      "group": "CAD",
-      "done_pct": 40,
-      "partial_pct": 40,
-      "remaining_pct": 20,
-      "finish_days": [
-        15,
-        35
-      ],
-      "prove_days": [
-        10,
-        20
-      ],
-      "difficulty": 4,
-      "working": "Carried-forward fixes and scoped feature regressions",
-      "partial": "Spline/history/DXF/camera integration and combined behavior",
-      "missing": "Full feature-by-feature integrated validation",
-      "dependencies": "J03 engine builds; attributed upstream refs",
-      "evidence": "docs/JSKETCHER_UPSTREAM_WORK.md",
       "rank": 82
     },
     {

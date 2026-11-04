@@ -1,5 +1,42 @@
 # jSketcher upstream integration
 
+## Corrected checkpoint — 2026-11-03
+
+Much of the source integration described below has already happened. The
+earlier feature table is a historical work log, not a current list of missing
+implementations. Do not use its pre-merge wording to restart completed work
+or estimate the whole integration as mostly unimplemented.
+
+Read-only verification of box-git's `JSKetcher.git` found:
+
+| Fork/reference | Verified relationship |
+| --- | --- |
+| `webos-integration` `518a4666cfc5c94acb153f0cd315a2ca1625eb2f` | Contains recorded upstream main `c1905c4f…`; 215 additional commits in its history. |
+| Same fork vs recorded surfacing tip `b63378a9…` | Contains that entire tip; 91 additional commits. |
+| Same fork vs recorded dev `ca3e2b19…` | Divergent ancestry: 95 dev-only and 217 fork-only commits. Adapted/cherry-picked features are not necessarily ancestry-equivalent. |
+| `research/3mf-browser-export-20261102` `ed2f02fe…` | Contains recorded main plus 255 commits and recorded surfacing tip plus 131. This is further research, not a claim all research is merged into `webos-integration`. |
+
+The history includes adapted spline tools (PR 217), guarded sketch undo/redo
+and marquee work, DXF and stable-ID integration, dual-engine surfacing/CSP
+work, native modeling controls, movement/rotation/scale work, and WebOS-related
+fixes. These are substantial existing implementations. Commit counts include
+imported history and do not measure feature correctness or our original work.
+This comparison uses preserved upstream snapshots; it does not claim today's
+GitHub main/dev tips were fetched or that every dev feature is present.
+
+The remaining upstream-integration assignment is **consolidation and regression
+qualification**: choose the correct combined base; map remaining feature gaps;
+test carried-forward behavior together; fix actual regressions; and coordinate
+with the geometry and desktop owners. New mechanical dimensions, the solver
+admission redesign, general 3MF and physics belong to separate silos.
+
+The planning matrix's former 40%-done and 15–35-day implementation estimate
+understated existing integration. Its revised coarse estimate describes the
+remaining consolidation task separately from additional proof time; neither
+estimate is an audited feature-completion percentage.
+
+## Historical integration work log
+
 The goal is a coherent jSketcher application for the signed-in ksu.codes
 browser desktop. This is a work list, not a release claim. Preserve My files,
 per-window state, browser security policy and disposal while reviewing upstream

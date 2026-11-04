@@ -67,10 +67,10 @@ add('S10','Shared runtime library portfolio','Tools',40,40,(12,30),(7,15),3,
     'Consumer coverage, notices and independent disposal',
     'Complete capability inventory and one real tested consumer per capability',
     'Consumer apps; reproducible upstream runtimes', 'apps/system/README.md')
-add('J01','JSketcher upstream feature integration','CAD',40,40,(15,35),(10,20),4,
-    'Carried-forward fixes and scoped feature regressions',
-    'Spline/history/DXF/camera integration and combined behavior',
-    'Full feature-by-feature integrated validation',
+add('J01','JSketcher integration consolidation','CAD',70,25,(3,8),(7,15),4,
+    'Recorded main/surfacing integrated; adapted splines/history/DXF and WebOS fixes',
+    'Combined regression coverage and remaining divergent-dev feature gaps',
+    'Feature-by-feature qualification and remaining confirmed regressions',
     'J03 engine builds; attributed upstream refs', 'docs/JSKETCHER_UPSTREAM_WORK.md')
 add('J02','JSketcher constraints and parameters','CAD',20,45,(35,80),(20,45),5,
     'Existing mechanical sketch/feature baseline',
@@ -301,7 +301,7 @@ payload = dict(date='2026-11-03', basis='Saved checkpoint and scoped app evidenc
 columns = ['rank','id','silo','group','working','partial','missing','done_pct',
            'partial_pct','remaining_pct','finish_days','prove_days','difficulty','dependencies','evidence']
 with (ROOT/'SILO-MATRIX.csv').open('w', newline='') as f:
-    writer=csv.DictWriter(f, fieldnames=columns)
+    writer=csv.DictWriter(f, fieldnames=columns, lineterminator='\n')
     writer.writeheader()
     for r in ROWS:
         entry={k:r[k] for k in columns}

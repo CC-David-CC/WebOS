@@ -208,6 +208,10 @@ Finish line: reusable tested capability. It does not own all consuming apps.
 
 Owns reconciling carried-forward upstream features. See
 `docs/JSKETCHER_UPSTREAM_WORK.md`; recheck actual refs before implementation.
+Substantial source integration already exists: box-git `webos-integration`
+`518a4666` contains the recorded main and surfacing tips plus many adaptations.
+The remaining task is consolidation, feature-gap checking and regression
+qualification, not restarting that merge. Recorded dev has divergent ancestry.
 
 1. Map main/dev/surfacing changes and PRs to coherent independent features.
 2. Qualify polynomial fixes, spline tools, history/redo, selection and cancellation.

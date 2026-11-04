@@ -10,6 +10,10 @@ program remains paused; documenting the silos does not resume development.
 Estimated effort, risk and working/partial/missing fields are in
 `docs/planning/SILO-MATRIX.html` (also Markdown/CSV/JSON). Estimates do not
 check off acceptance gates; use their stated assumptions and dependency notes.
+The J01 estimate was corrected after verifying existing fork history: upstream
+main/surfacing integration and many adaptations are already present. Remaining
+J01 work is consolidation/regression qualification; see the corrected checkpoint
+in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Queue notation and operating rule
 
