@@ -10,7 +10,13 @@ The prior active/enabled renewal timer was restored; hosting journals are clear.
 `/desktop/` bytes matched before/after, all pinned public-site health checks
 passed, and the served main app hash matched. Exact pins and scope are in
 [the activation receipt](../../evidence/main-core-activation-20261104.json).
-Public core-app browser walkthroughs are a separate check still in progress.
+The [public core-app browser check](../../tests/main-core-live-smoke-prepared.md)
+passed desktop and phone-sized emulation: Files/Text save and fresh reopen with
+signed hashes, Calculator, Help and real guest boot/input. The terminal marker
+can match command echo, so it does not independently prove command execution.
+The first unscrolled default-viewport selector timeout remains inconclusive;
+matching viewport and ordinary Files scrolling passed without forced hydration.
+This is neither all-feature nor physical-phone validation.
 
 The lead independently repeated the five SIGKILL installer primitives, literal
 fixed-path namespace installer and deterministic seven-file package controls.
