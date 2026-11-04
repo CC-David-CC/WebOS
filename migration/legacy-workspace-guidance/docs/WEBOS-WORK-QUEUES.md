@@ -102,6 +102,27 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [x] GOAL/ARCHITECTURE DOCUMENTED: user authorizes replacing coupled JSketcher
+  internals and favors computational silos without canvas or fake browser UI.
+  `CAD-CORE-SEPARATION.md` adds ARC01–ARC08, ownership, boundaries and explicit
+  worker/regeneration acceptance. The saved goal, active audit and gate/execution
+  indexes link it. Extend requirements with tests when needed. Documentation
+  completion does not qualify the implementation.
+- [~] ACTIVE CORE SPLIT: the production headless solver candidate has actual
+  worker evidence for center/corner positions, independent residual/geometry
+  checks and editor-ID isolation. The separate caller owner has a first actual
+  five-hole solid resize and v2 reopen pass. Lead integration/review, the full
+  coupled Gate 1 chain and UI/agent equivalence remain open. Opening/cancelling
+  the in-place sketch no longer rewrites saved boundary snapshots in its scoped
+  candidate; the separate legacy 2D view still needs review.
+- [~] CONFLICT UI: `2cec3e7e2`, integrated as `c955f1e50`, uses two independent
+  signed Chromium processes/profiles and actual Files/Text controls. Offline
+  conflict, cancellation, a newer server edit during resolution, preserving
+  both copies and fresh signed reopen pass. No deployment.
+- [~] FILE RESOURCE/SEPARATION: `7064310e1` passes signed 128 MiB changed-data
+  sync and second-tab queued cancellation with the worker budget. `9f753a95c`
+  passes actual v86 home/My files/signed-server separation and reboot reset.
+  Scope and limits are in their tests/docs; final combined rollout remains.
 - [~] COMBINED HOST TESTED: canonical CAD version 2 and leased My files Blob
   worker opening pass actual signed desktop runs at simulated phone, 1080p and
   4K. Native Mesh intersection/history and OCC rotation/scale save/reopen,
@@ -117,11 +138,13 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   Chromium SIGKILL/restart. Cuts happen during transfer; kills follow the
   reported failure. No power-loss or total-memory claim. See
   `research/opfs-storage/DOWNLOAD-TCP-CUT-20261104.md`.
-- [ ] ACTIVE IMPLEMENTATION: bound cooperating heavy file workers across tabs;
-  independent lead review/test pending. CAD plate tests exposed DistancePL's
-  boolean-to-numeric parsing and accepted request/replay/default/ID issues;
-  geometry and history owners are fixing them in separate files. Do not mark
-  the dependent part workflow passed from the smaller signed models above.
+- [~] INTEGRATED WORKER BUDGET: `544480232` limits cooperating heavy content
+  workers across tabs. Lead independent two-tab capture/read, cancellation,
+  FIFO/deadline, failure and renderer-crash tests pass (max 1 worker; 1.789 s
+  observed capture/read run; 20 ms heartbeat max 28 ms). SDK/app allocations are
+  outside this cap. Fork `e974cb76` integrates DistancePL boolean handling,
+  normalized accepted requests and reserved feature IDs; combined rebuilt
+  qualification remains. These do not by themselves prove a complete part.
 
 - [x] DOCUMENTED SCOPE ONLY: Gates 1–5 and the six conceptual CAD eras are
   recorded with an end-to-end execution checklist. This checks off the requested

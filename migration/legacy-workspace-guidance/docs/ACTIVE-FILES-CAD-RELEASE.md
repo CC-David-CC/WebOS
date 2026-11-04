@@ -1,8 +1,24 @@
 # Active Files and JSketcher release milestone — 2026-11-03
 
 User resumed development through the attached goal. The complete goal is
-preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`. This milestone
-does not shrink its scope; the table below is the completion audit to maintain.
+preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
+2026-11-04 architecture amendment. The completion audit below retains its scope.
+
+## Current architectural direction — 2026-11-04
+
+The user authorizes using JSketcher as inspiration and replacing coupled code
+where needed. Keep useful proven components, but production computational
+workers must not require canvas, DOM, editor windows or fake browser UI.
+`CAD-CORE-SEPARATION.md` defines the required boundaries and ARC01–ARC08 packages.
+Separate the revisioned authored model, shared human/agent commands, formulas
+and simultaneous constraints, computational core, jobs, generated references,
+derived representations and saved files/caches. Extend the checklist when a
+real missing core requirement is found, with a test and bounded ownership.
+
+Current work extracts a data-only sketch solver and connects it to automatic
+dependent-feature regeneration. A stale-boundary refusal protects the old model
+but does not qualify ordinary supported resizing. The full Gate 1 and
+bracket/enclosure/core-3MF acceptance remain required; later gates stay queued.
 
 ## Integration ownership and verified starting state
 
@@ -71,14 +87,14 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 |---|---|---|---|
 | F01 | Saved browser data survives close/reopen and fresh-session recovery | partial | Opt-in product adapter and complete-row migration integrated; staged Chromium reopen passes; deployed/fresh-session acceptance remains |
 | F02 | Account invalidation, cancellation and independent sessions preserve isolation | partial | Guarded beta source carried forward; signed owner tests and bounded-read worker cancellation pass; full integration remains |
-| F03 | Stale windows/concurrent devices preserve edits and explicit conflicts | partial | Owner's separate-profile offline conflict test preserves both copies; resolution and Files UI gates remain |
+| F03 | Stale windows/concurrent devices preserve edits and explicit conflicts | partial | 2cec3e7e2: actual Files/Text UI, two independent Chromium processes/profiles, offline edits, stale resolution, preserving both copies and fresh signed reopen pass; final integrated rollout remains. |
 | F04 | Lost replies/uncertain writes reconcile without duplicate mutation | partial | Real committed-response socket cut reconciled with one upload; injected newer-edit tests also pass. Full release transition still open. |
 | F05 | Downloads publish only complete verified generations | partial | 218536add: real signed cold/replacement TCP cuts, OPFS row inspection, browser kill/restart and independent hashes pass; SDK still constructs a Blob before capture. |
 | F06 | Cleanup cannot remove committed/in-flight data | partial | Explicit reader-aware collector has bounded paging, writer/reader/attempt/conflict and unlink/crash tests; automatic retention/UI and wider scale remain open (ADAPTER-2026-11-03.md). |
-| F07 | Heavy work stays in workers with measured responsiveness/resources | partial | Real staged strict-CSP worker capture/verification passes; full responsiveness/concurrency and resource qualification remain |
-| F08 | Changed-data transfers and safe first/legacy reads through 128 MiB | partial | Signed 128 MiB candidate measured 71,470 request-body bytes for one-byte edit; resource bounds/concurrency and final integrated release acceptance remain. |
+| F07 | Heavy work stays in workers with measured responsiveness/resources | partial | 544480232: lead two-tab capture/read, cancellation, FIFO/deadline, worker failure and renderer-crash test passes with max 1 heavy content worker; SDK/app memory and whole-release qualification remain. |
+| F08 | Changed-data transfers and safe first/legacy reads through 128 MiB | partial | 7064310e1: signed 128 MiB plus queued/cancelled second-tab capture passes; one-byte edit 71,470 request-body bytes, sampled summed Chrome RSS 1.32 GiB, foreground heartbeat max 32.2 ms. These are observations, not a total-memory guarantee. |
 | F09 | Files create/open/rename/move/copy/delete/upload/download and truthful status | partial | 99bc3ba06 actual signed UI workflows and cancellation/stale/collision tests pass; physical phone, Linux and full fault/rollout qualification remain. |
-| F10 | Temporary Linux remains separate; existing app contract compatible | open | Existing callers and Linux-home integration tests |
+| F10 | Temporary Linux remains separate; existing app contract compatible | partial | 9f753a95c: actual v86 guest-home Files/Text/signed-server separation and reboot reset pass; all-app compatibility and deployed qualification remain. |
 | C01 | One coherent buildable fork preserves intended existing integrated work | partial | Consolidation candidate a05a7433 with source build recipe; final solver integration/release remains |
 | C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; linked-source evidence and full capability qualification remain |
 | C03 | Splines/history/selection/DXF/camera/reconstruction work together | partial | Consolidation owner ran real carried-feature checks; integrated host and final fork regression remain |
@@ -89,7 +105,8 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
 | M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
 | M04 | Typed parameters/formulas/dependencies/configurations | open | Bracket/enclosure edits with explicit errors |
-| M05 | Regeneration/reference repair preserves authored intent | open | Missing/ambiguous references and failed-edit recovery |
+| M05 | Regeneration/reference repair preserves authored intent | active | ARC02/03 data-only worker and revision-checked dependency replay; owner five-hole resize and v2 reopen candidate passes, combined review and full Gate 1 chain remain. |
+| ARC | Computational core operates independently of UI and publishes only current validated results | active | CAD-CORE-SEPARATION.md: no canvas/DOM/fake UI; actual equations, bounded jobs, residual/geometry checks, cancellation, IDs/revisions and explicit failure. |
 | A01 | Mounting bracket substantial edits, contradictions, undo and reopen | open | Real integrated acceptance model |
 | A02 | Enclosure/separate lid substantial edits, contradictions, save/reopen | open | Real integrated acceptance model |
 | E01 | Named material/region/appearance/group/placement persists | open | Reuse manufacturing metadata; native edit/reopen |

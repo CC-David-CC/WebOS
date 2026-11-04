@@ -16,6 +16,11 @@ defines the ordered delivery stages, 14 design-revision handoffs, five concrete
 acceptance workflows, failures/resources and bounded agent packages. Do not let
 future descriptions displace ongoing Files and Gate 1 implementation.
 
+**Core architecture:** [CAD-CORE-SEPARATION.md](CAD-CORE-SEPARATION.md) records
+the authority to replace coupled JSketcher internals and the required data-only
+workers without canvas or fake browser UI. Its ARC01–ARC08 packages and actual
+dependent-sketch acceptance are current Gate 1 work, not completed later gates.
+
 ## Current capability and qualification status
 
 Status checkpoint, 2026-11-04. Existing libraries and upstream features count as

@@ -9,6 +9,13 @@ An end-to-end pass requires compatible inputs and outputs at every boundary,
 not merely passing feature demos. Later gates constrain early identities,
 transactions, units and evidence contracts without activating the whole backlog.
 
+`CAD-CORE-SEPARATION.md` defines the computational/document boundaries and
+current worker/regeneration packages. E03–E05 must consume explicit revisioned
+model data without constructing an editor or fake UI. Human and agent callers
+use the same validated commands; stale worker results cannot publish over a
+different account, document or input revision. The saved goal's 2026-11-04
+amendment authorizes replacing JSketcher internals to establish these boundaries.
+
 ## Ordered delivery gates
 
 | Stage | Required output | Must be proven before relying on it |
