@@ -26,3 +26,13 @@ canonical-path refusal, exact-to-tree expansion, abort and reentrant disposal.
 Text/Calculator real mounted-app tests passed again at 1366 and 390 with this
 controller and Text correction `06e696262`; storage remains a test double.
 Actual Files directory-action integration is a separate active package.
+
+`3a9169c59` adds advisory `canClaimDocument(key)` and
+`canClaimDocumentTree(key)` for selection-based UI. Both return false while the
+window is busy/invalid or another active reservation overlaps the requested
+scope. They never reserve; actions must still begin and acquire claims. Existing
+subscriptions notify peer availability changes. Sixteen primitive tests pass.
+Files now consumes these queries (`dae5c8efb`) for toolbar/context-menu state.
+Lead real mounted-app tests pass Files/Text, Circuit/Digital Logic and Circuit's
+actual native chooser at 1366/390. Storage remains an in-memory test fixture;
+signed OPFS window-close qualification is active separately.
