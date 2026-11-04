@@ -102,6 +102,26 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] MAIN/BETA BOUNDARY: main ksu.codes must offer only finished features with
+  end-to-end evidence; all games and unfinished integrations belong on beta.
+  Catalog, file associations, restored windows and direct launch are being
+  audited; menu hiding alone is insufficient. Managed removal is not deployed.
+  Preserve source, beta access, account data and /desktop. Lead owns deployment.
+- [~] SAVE CONTROLS: disable Save during an app's load/local save and reject
+  duplicate keyboard/agent actions. Keep newer edits dirty. User accepts this
+  restriction; no automatic queued save requested. Background server sync alone
+  does not keep Save disabled. All-app audit is active. Signed rapid-save proof
+  `20b672f6b` preserves pending B during delayed A/B acknowledgments; simultaneous
+  stale local writes give one winner and one conflict.
+- [~] FILE COPY CLEANUP: `214fde710` proves twelve Chromium copy/use/close cycles
+  and test-only wrapper-reachability controls; no native RAM guarantee.
+  `a7ac40d65`/`e171752ec` cancel an actual OPFS copy via caller signal; Files
+  forwards its host signal. Bundle build/helper tests pass; real window-close
+  UI qualification and deployment remain open.
+- [x] CAD COMBINED GUARDS: `4cae31eb` qualifies tree-equivalent `9bb3eae0` with
+  app build/typecheck, core guards and ten real Chromium checks. Ordinary
+  worker-solid history, signed persistence and Gate 1 remain open.
+
 - [x] SOURCE-TRUST DIRECTION RECORDED: all JSketcher features are suspect and
   reference/inspiration. Contracts and independent evidence determine reuse;
   inherited behavior, compatibility and menus do not establish correctness.
