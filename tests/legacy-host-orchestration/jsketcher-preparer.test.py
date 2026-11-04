@@ -38,6 +38,10 @@ elif sys.argv[1]=='run':
  d=Path('dist');(d/'lib').mkdir(parents=True);(d/'lib/pnltri.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_PNLTRI') else 'pnltri fixture');(d/'lib/verb.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_VERB') else 'verb fixture');(d/'lib/diff_match_patch.js').write_text('diff fixture');(d/'static').mkdir(parents=True);(d/'index-webos.html').write_text('fixture');(d/'static/index.bundle.js').write_text('/***/ "./node_modules/alpha/index.js": '+('wrong-worker' if os.environ.get('CODI_TEST_BAD_WORKER_REF') else 'project-validator.0123456789abcdef0123.js'));
  if not os.environ.get('CODI_TEST_MISSING_WORKER'):(d/'static/project-validator.0123456789abcdef0123.js').write_text('/***/ "./node_modules/worker-only/index.js":' if os.environ.get('CODI_TEST_WORKER_ONLY_MODULE') else 'worker fixture')
  if os.environ.get('CODI_TEST_EXTRA_WORKER'):(d/'static/project-validator.123456789abcdef01234.js').write_text('extra worker')
+ main=d/'static/index.bundle.js';main.write_text(main.read_text()+' '+('wrong-sketch-worker' if os.environ.get('CODI_TEST_BAD_SKETCH_REF') else 'sketch-solver.0123456789abcdef0123.js'))
+ if not os.environ.get('CODI_TEST_MISSING_SKETCH_WORKER'):(d/'static/sketch-solver.0123456789abcdef0123.js').write_text('/***/ "./node_modules/worker-only/index.js":' if os.environ.get('CODI_TEST_SKETCH_ONLY_MODULE') else 'sketch worker fixture')
+ if os.environ.get('CODI_TEST_EXTRA_SKETCH_WORKER'):(d/'static/sketch-solver.123456789abcdef01234.js').write_text('extra sketch worker')
+ (d/'static/webosTest.bundle.js').write_text('test helper must never enter runtime assets')
  e=d/'lib-assets/jsketcher-occ-engine';e.mkdir(parents=True);shutil.copyfile('node_modules/jsketcher-occ-engine/occt.wasm',e/'occt.wasm');shutil.copyfile('node_modules/jsketcher-occ-engine/occt.js',e/'occt.js')
 ''');npm.chmod(0o755);node=tools/'node';node.write_text('#!/bin/sh\necho v0.fixture\n');node.chmod(0o755)
  oldpath=os.environ['PATH'];os.environ['PATH']=str(tools)+os.pathsep+oldpath
@@ -63,12 +67,16 @@ elif sys.argv[1]=='run':
  try:build();raise AssertionError('tampered Manifold input accepted')
  except RuntimeError as e:assert 'pinned hash' in str(e)
  (manifold/'manifold.js').write_text('fixture js')
- for variable,expected in [('CODI_TEST_MISSING_WORKER','exactly one'),('CODI_TEST_EXTRA_WORKER','exactly one'),('CODI_TEST_BAD_WORKER_REF','does not reference'),('CODI_TEST_WORKER_ONLY_MODULE','worker-only npm')]:
+ for variable,expected in [('CODI_TEST_MISSING_WORKER','exactly one'),('CODI_TEST_EXTRA_WORKER','exactly one'),('CODI_TEST_BAD_WORKER_REF','does not reference'),('CODI_TEST_WORKER_ONLY_MODULE','worker-only npm'),('CODI_TEST_MISSING_SKETCH_WORKER','exactly one'),('CODI_TEST_EXTRA_SKETCH_WORKER','exactly one'),('CODI_TEST_BAD_SKETCH_REF','does not reference'),('CODI_TEST_SKETCH_ONLY_MODULE','worker-only npm')]:
   os.environ[variable]='1'
   try:build();raise AssertionError('invalid worker accepted')
   except RuntimeError as e:assert expected in str(e)
   finally:del os.environ[variable]
  build();assert (m.DESTINATION/'runtime-source-candidates.zip').is_file();assert (m.DESTINATION/'PNLTRI-LICENSE.txt').read_text()=='pnltri terms';r1=(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();man=(m.HERE/'app.json').read_bytes();build();assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();assert man==(m.HERE/'app.json').read_bytes()
+ for key,prefix in [('projectValidatorWorker','project-validator'),('sketchSolverWorker','sketch-solver')]:
+  worker=json.loads(r1)[key];assert worker['path'].startswith('static/'+prefix+'.');assert worker['sha256']==hashlib.sha256((m.DESTINATION/worker['path']).read_bytes()).hexdigest();assert m.PREFIX+worker['path'] in json.loads(man)['assets']
+ assert not (m.DESTINATION/'static/webosTest.bundle.js').exists()
+ assert not any('webosTest' in path for path in json.loads(man)['assets'])
  mdi=m.VENDOR_NOTICE_DIR/'mdi-svg-2.2.43-LICENSE.txt';mdi.write_text('tampered')
  try:build();raise AssertionError('tampered mdi license accepted')
  except RuntimeError as e:assert 'mdi-svg license differs' in str(e)
