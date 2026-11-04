@@ -102,6 +102,30 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+**Main/beta priorities reaffirmed:** reduce main to the useful core integration
+targets Files, Text, Terminal, Calculator and Help; CodeMirror remains a shared
+dependency. These have bounded workflow evidence, **not full app validation**.
+The user permits important tools being integrated first on main. A System tools
+menu entry is not evidence that its library or all consumers are qualified.
+Programming is first priority, build/design and 3D printing second; games and
+other apps stay lower priority on beta. Preserve their source and beta access.
+The order remains Files foundation, then programming/design/3D-printing workflows.
+The reviewed e7e8 main candidate is still not deployed. Its exact inventory,
+launch/open/restore restrictions and existing 68-ID refusal tests are recorded in
+`tests/main-core-independent-review-20261104.md`. Root reran successor-family,
+reproducible recovery-bundle, launcher-pin, legacy-journal-fence and forward-fault
+tests after integration; these are scoped fixtures. Literal release launcher,
+protected installation/recovery and public acceptance remain required.
+
+**Exact Files candidate evidence:** `09ef362f1` integrates signed e359/dd8
+Files/Text desktop/phone-emulated actions and actual 8 MiB worker-close tests.
+Saved data survives the tested 3ad→e359 transition; conflict/attempt metadata in
+that retention control was synthetic. Real old controlled tabs and managed
+transition remain open. Complete gateway inventories establish that c046+the
+explicit 44da SDK used in prior tests has the same server/client bytes as dd8;
+issuer/routing/fault substitutions retain their original limits. Near-limit
+interruption/resources and portable R730 reproduction are active bounded tasks.
+
 **Files-first gate reaffirmed:** finish and deploy the Files foundation before
 broad dependent-app migration. The newly proposed Spreadsheet migration stopped
 after read-only inspection, with no implementation changes. Independent CAD

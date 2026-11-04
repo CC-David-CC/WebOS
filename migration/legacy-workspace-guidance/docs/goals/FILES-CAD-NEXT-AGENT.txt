@@ -2,6 +2,19 @@ Continue dependable Files and the WebOS CAD foundation as integration lead.
 The full release and CAD Gate 1 remain active and incomplete. Do not restart the
 upstream merge or attempt every later gate at once.
 
+LATEST USER PRIORITY
+Main should contain the essential programming-first integration targets, with
+build/design and 3D printing next. Games/other apps are low priority and belong
+on beta. The e7e8 candidate keeps Files/Text/Terminal/Calculator/Help and the
+CodeMirror dependency. Their bounded tests do not establish full app validation;
+the user expressly allows important tools being integrated first. Treat shared
+System tools libraries as dependencies requiring consumer evidence. The main
+restriction is not deployed until the protected managed cutover is qualified.
+Do not erase the deferred apps or their beta access. Files foundation still
+precedes dependent app work; exact e359/dd8 tests and main review are now in
+tests/files-forward-e359-qualification-20261104.md and
+tests/main-core-independent-review-20261104.md.
+
 FILES-FIRST PRIORITY — latest user clarification
 Finish the Files foundation and its release before broad dependent-app migration.
 Independent CAD engine/solver work can continue, but CAD persistence acceptance
