@@ -1,5 +1,10 @@
 # Simplified branch handoff
 
+Current state: [2026-11-04 handoff](docs/HANDOFF-FILES-CAD-2026-11-04.md) and
+[work queues](docs/WEBOS-WORK-QUEUES.md). Main offers the narrow core integration
+set; broader apps/tools and games remain on beta. Entries below are historical
+release evidence, not current selectors or complete app validation.
+
 ## 2026-11-01 — Right-side desktop rail
 
 Live static release `be9d65aec30f72d97f96d4411216f2e61eedd1576975607fc6debdec54d63bdd` moves the desktop panel to the right, places the account at the top and Applications at the bottom, uses a charcoal background and clean blue X icons, and sizes windows and popups around the rail. Local desktop/phone/4K and live desktop/phone-sized shell tests passed; a separate live phone-sized real v86 test exercised two independent shells and nano. Physical touch and real F11 remain unverified. Image Editor also fixes confirmed replacement of an existing same-name blank image; local desktop/phone and live phone-sized tests passed cancellation, changed-target refusal, replacement and sync. Four live test accounts were disabled with data retained. Staging preserved two pre-existing live stylesheet differences in window-control styling and pins both the old app and stylesheet hashes. Hosting manifest SHA-256 `7f2e228eaae10cc32d5b0d642fe95fb0c0d8ebfeb1ad355bb0538ecf89419c83`; rollback inputs `/var/backups/webhost-sites/change-20261101T083305320911Z` and `/var/backups/webhost-sites/change-20261101T083305321751Z`.

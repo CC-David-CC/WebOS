@@ -11,7 +11,39 @@ regeneration, then qualify useful parametric parts through the same UI and
 agent commands. The long-term CAD 1.0–6.0 program informs these boundaries;
 it is not the next agent's first implementation task.
 
-## Latest integrated checkpoint
+## Current operational checkpoint
+
+Main now serves **e7e8fb9f**: Files, Text, Terminal, Calculator, Help and the
+CodeMirror dependency. These are priority integration targets with bounded
+workflow evidence, not fully validated tools. Broader apps/games remain on beta.
+Protected install/plan/apply and actual signed beta recovery passed; original
+floor/prototype bytes were preserved, journals cleared and the prior timer state
+restored. Exact pins: `evidence/main-core-activation-20261104.json`. Current beta
+recovery is `/srv/codi-connected/operators/beta-recovery-e7-v1/ops/beta_files_recover.py`
+through the protected venv; historical launchers have obsolete pins.
+
+Public Files→Text save/fresh reopen with signed hashes, Calculator, Help and
+guest boot/input passed desktop/phone emulation. The terminal input marker can
+match command echo, so independent execution proof is scoped to the isolated
+real-guest fixture. An initial unscrolled 800×600 file lookup was inconclusive;
+intended viewport and normal scrolling passed. Test files were version-cleaned;
+empty test accounts retain private cleanup records without passwords. See
+`tests/main-core-live-smoke-prepared.md`.
+
+Beta stays **3ad04c48**/issuer853/gatewaydd8. Corrected **830ca4f1** is unexposed;
+offline reproduction, old/new clients, signed account-flight/conflicts, actual
+guest separation, injected quota failures and explicit origin-clear recovery
+pass. Near-limit socket/resource results carry at identical exercised bytes.
+See `tests/files-foundation-exit-20261104.md`. Remaining work is exact server
+failure mapping and protected 3ad→830 transition/recovery plus public acceptance.
+`research/main-qualified-release/beta-asset-830c` remains source-only; preserve
+the original floor and do not run its unqualified installation on the host.
+
+Desktop branch: `integration/files-jsketcher-release-20261103`, backed on both
+LAN repositories. CAD stays `effc3717740b2c3ba65269fd16bc392fc8b41388`; later
+cut/ownership research remains unintegrated and Gate 1 open. The goal is active.
+
+## Prior integrated checkpoint (historical; superseded above)
 
 **Current integrated result (supersedes earlier snapshots below):** desktop
 `5af7c1bc7` includes shared document operations for Text, Calculator, Files,

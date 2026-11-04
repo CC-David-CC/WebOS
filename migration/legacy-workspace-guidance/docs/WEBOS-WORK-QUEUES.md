@@ -108,15 +108,20 @@ priority integration targets with bounded workflow evidence, not fully validated
 System tools. The protected installer and forward launcher passed on the host;
 actual signed beta recovery passed before/after. Original beta 3ad floor and
 `/desktop/` bytes were preserved, journals cleared, and the renewal timer restored
-active/enabled. Public core browser checks are separate and running. See
+active/enabled. Public core browser checks passed bounded desktop/phone-emulated
+workflows; terminal input echo is not a command-execution oracle. See
 `evidence/main-core-activation-20261104.json`.
 
 **Files latest:** corrected 830 passed offline reproduction, real old/new-host
 coexistence, signed in-flight account switching with one-commit reconciliation,
 and two-profile conflict/cancel/stale-choice/fresh-reopen checks. Near-limit
 socket/resource tests carry at independently verified identical storage bytes.
-F06 failure/retention mapping, F10 current-host real Linux separation and R02's
-exact managed beta transition/public acceptance remain. Beta still serves 3ad;
+F10 now passes with the actual guest and current host, and injected Worker quota
+failures preserve saved bytes and unsaved Text edits before successful retry.
+An explicit isolated browser-origin clear recovers synced files from the server;
+it does not prove spontaneous eviction or recovery of unsynced-only data. Exact
+server disk/crash evidence mapping and R02's managed beta transition/public
+acceptance remain. Beta still serves 3ad;
 this main catalog change did not promote newer Files. The current exit matrix
 supersedes historical pending statements below.
 
@@ -136,14 +141,15 @@ menu entry is not evidence that its library or all consumers are qualified.
 Programming is first priority, build/design and 3D printing second; games and
 other apps stay lower priority on beta. Preserve their source and beta access.
 The order remains Files foundation, then programming/design/3D-printing workflows.
-The reviewed e7e8 main candidate is still not deployed. Its exact inventory,
+The reviewed e7e8 main candidate is now deployed. Its exact inventory,
 launch/open/restore restrictions and existing 68-ID refusal tests are recorded in
 `tests/main-core-independent-review-20261104.md`. Root reran successor-family,
 reproducible recovery-bundle, launcher-pin, legacy-journal-fence and forward-fault
-tests after integration; these are scoped fixtures. Literal release launcher,
-protected installation/recovery and public acceptance remain required.
+tests after integration; those were scoped fixtures. The later literal launcher,
+protected installation/recovery and bounded public checks are now recorded in
+the current activation receipt above.
 
-**Exact Files candidate evidence:** `09ef362f1` integrates signed e359/dd8
+**Historical Files candidate evidence, superseded above:** `09ef362f1` integrates signed e359/dd8
 Files/Text desktop/phone-emulated actions and actual 8 MiB worker-close tests.
 Saved data survives the tested 3ad→e359 transition; conflict/attempt metadata in
 that retention control was synthetic. Real old controlled tabs and managed
