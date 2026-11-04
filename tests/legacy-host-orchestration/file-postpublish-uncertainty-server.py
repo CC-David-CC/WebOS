@@ -5,6 +5,7 @@ from wsgiref.simple_server import make_server
 from aiohttp import web
 ROOT=pathlib.Path(__file__).resolve().parents[1]/'active-system';sys.path.insert(0,str(ROOT))
 from origin_service.lifecycle import Service
+from origin_service.public_storage import stage_browser_storage
 from origin_service.gateway_authority import GatewayAuthority
 from origin_service.http_server import BoundedServer,QuietHandler
 from codiauth.service import Config
@@ -16,8 +17,9 @@ async def main():
  with tempfile.TemporaryDirectory(prefix='codi-caddy-files-') as tmp:
   root=pathlib.Path(tmp);public=root/'public';public.mkdir();(public/'index.html').write_text('<!doctype html><title>Isolated Caddy file test</title>')
   for d in ('network','gateway_service','storage/browser'):(public/d).mkdir(parents=True,exist_ok=True)
-  for d,names in [('network',('crypto.mjs','identity.mjs','strict-json.mjs')),('gateway_service',('client.mjs',)),('storage/browser',('mirror.mjs',))]:
+  for d,names in [('network',('crypto.mjs','identity.mjs','strict-json.mjs')),('gateway_service',('client.mjs',))]:
    for n in names:shutil.copy2(ROOT/d/n,public/d/n)
+  stage_browser_storage(ROOT,public)
   # The combined file client loads its verifier beside the served client.
   (public/'gateway_service/hash').mkdir()
   for n in ('core.mjs','shared.mjs','verify-worker.mjs'):shutil.copy2(ROOT/'gateway_service/vendor/js-sha256'/n,public/'gateway_service/hash'/n)
