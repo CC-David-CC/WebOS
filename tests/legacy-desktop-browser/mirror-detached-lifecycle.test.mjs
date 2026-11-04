@@ -29,18 +29,25 @@ try{
   const hex=b=>Array.from(new Uint8Array(b),v=>v.toString(16).padStart(2,'0')).join('');
   const check=async blob=>hex(await crypto.subtle.digest('SHA-256',await blob.arrayBuffer()));
   const settle=async()=>{for(let n=0;n<100;n++){const locks=await navigator.locks.query();const relevant=locks.held.filter(x=>x.name.startsWith('codi-content:')||x.name==='codi-file-heavy-worker/1'||x.name.startsWith('codi-opfs:'));if(!active.size&&!relevant.length)return;if(n===99)throw Error('worker or storage lock not released');await new Promise(r=>setTimeout(r,20))}};
-  let urlsCreated=0,urlsRevoked=0,activeUrls=new Set(),heap=[];
+  let urlsCreated=0,urlsRevoked=0,activeUrls=new Set(),heap=[],released=[];
   for(let i=0;i<rounds;i++){
    ({mirror:m,content}=open());const {data}=await m.readBlob('/file');if(data.size!==size||await check(data)!==expected)throw Error('detached bytes mismatch');
-   const url=URL.createObjectURL(data);urlsCreated++;activeUrls.add(url);
+   released.push(new WeakRef(data));const url=URL.createObjectURL(data);urlsCreated++;activeUrls.add(url);
    try{const response=await fetch(url);if(!response.ok||hex(await crypto.subtle.digest('SHA-256',await response.arrayBuffer()))!==expected)throw Error('object URL mismatch')}finally{URL.revokeObjectURL(url);urlsRevoked++;activeUrls.delete(url)}
    let revoked=false;try{await fetch(url)}catch{revoked=true}if(!revoked)throw Error('revoked URL still fetchable');
    m.close();content.close();await settle();if(performance.memory)heap.push(performance.memory.usedJSHeapSize);
   }
   ({mirror:m,content}=open());const held=(await m.readBlob('/file')).data;m.close();content.close();await settle();if(await check(held)!==expected)throw Error('caller-held Blob invalid after close');
   if(activeUrls.size||active.size)throw Error('test resources remain active');
+  window.__detachedProbe={released,control:held};
   return {size,rounds,expected,urlsCreated,urlsRevoked,workersStarted:actions.length,actions,activeWorkers:active.size,activeUrls:activeUrls.size,heap,heldAfterClose:true};
  },{size,rounds,expected});
  assert.equal(result.urlsCreated,rounds);assert.equal(result.urlsRevoked,rounds);assert.equal(result.activeWorkers,0);assert.equal(result.activeUrls,0);assert.equal(result.heldAfterClose,true);assert.ok(result.actions.filter(x=>x==='copy').length>=rounds);
- console.log('PASS detached OPFS repeated read/drop/close',JSON.stringify(result));
+ // Finish the creation task first; WeakRef keep-alive semantics prevent a
+ // same-job GC from demonstrating whether the wrappers are still reachable.
+ await new Promise(r=>setTimeout(r,50));const cdp=await page.createCDPSession();await cdp.send('HeapProfiler.collectGarbage');await cdp.send('HeapProfiler.collectGarbage');
+ const reachability=await page.evaluate(async()=>{const p=window.__detachedProbe,live=p.released.filter(x=>x.deref()!==undefined).length,control=p.control,actual=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',await control.arrayBuffer())),v=>v.toString(16).padStart(2,'0')).join('');return {live,controlAlive:!!control,controlHash:actual}});
+ assert.equal(reachability.live,0,'released wrappers still reachable after diagnostic GC');assert.equal(reachability.controlAlive,true);assert.equal(reachability.controlHash,expected);
+ await page.evaluate(()=>{window.__detachedProbe.control=null});await new Promise(r=>setTimeout(r,0));await cdp.send('HeapProfiler.collectGarbage');await cdp.detach();await page.evaluate(()=>{delete window.__detachedProbe});
+ console.log('PASS detached OPFS repeated read/drop/close',JSON.stringify({...result,reachability}));
 }finally{await browser?.close();http.kill('SIGTERM');await rm(profile,{recursive:true,force:true})}
