@@ -104,13 +104,15 @@ are substituted; timer firing and protected installation are not qualified. See
 The protected-install readiness packet is integrated at `ad25aaded`:
 `research/beta-isolated-hosting/FILES-INSTALL-READINESS-2026-11-04.md`.
 It records observed live pins and required protected bundle/guard/probe work.
-Agent source through `0f9d46d87` now has independent disposable installer,
-bootstrap and known-preloaded-CLI quiescence checks. Lead integration, protected
+Agent source through `0f9d46d87` is integrated at `1dc60b460`. The six lead
+installer/bootstrap/legacy-process tests pass on that exact combined source;
+see `evidence/files-install-lead-20261104.json` for hashes and scope. Protected
 placement and actual production process inventory/freeze remain open. No
-installer is qualified on the real host or installed yet. `/srv/data` has a user-owned
-ancestor and is not the launcher's protected bundle destination; do not change
-all hosting ownership to bypass this check. A bounded preparation helper is
-being authored and tested in disposable paths, with deployment still lead-owned.
+installer is qualified on the real host or installed yet. `/srv/data` has a
+user-owned ancestor and is not the protected bundle destination; do not change
+all hosting ownership to bypass this check. The reviewed bootstrap reads only
+pinned public source data from a trusted administrator staging tree. Root owns
+its verified protected placement and the later managed install/activation.
 
 The root volume's immediate capacity shortage was removed by archiving twelve
 unused public staging directories onto the separate larger drive, comparing

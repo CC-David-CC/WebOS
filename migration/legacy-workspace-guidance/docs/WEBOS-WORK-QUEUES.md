@@ -102,6 +102,18 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- Foundation priority: the user explicitly accepts that usable workflows may
+  lag component qualification. Continue correctness work and preserve failing
+  cases; do not weaken a gate to meet a visible-progress deadline. Integrated
+  workflows test the connections, alongside the isolated competency checks.
+- [~] FILES INSTALLER INTEGRATED: `1dc60b460` contains the reviewed input
+  bootstrap, fixed-path installer and cooperative legacy-CLI procedure. All six
+  lead tests pass on the integrated tree: preparation, interrupted installation,
+  floor/metadata refusal, and both the old-process negative control and its
+  supervised quiescence correction. Receipt:
+  `evidence/files-install-lead-20261104.json`. Protected host preparation,
+  actual process inventory and deployment remain lead-owned; these disposable
+  tests are not a live-install or account-storage acceptance claim.
 - [~] CAD PROFILE WORKER: integrated checkpoint `c672d0d1`, tested worker code
   `25050c16`. Actual authored rectangle-to-OCC prism, unsnapped v2 profile,
   polygon-area volume check and dense result validation pass. The optional
@@ -130,8 +142,9 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 - [~] FILES INSTALL READINESS: packet `ad25aaded` records live pins and missing
   protected bundle, floor-aware guard and dedicated probe. Source preparation
   helper/bootstrap/quiescence work through agent branch `0f9d46d87` passes
-  independent disposable review; lead integration and actual supported-process
-  inventory/freeze remain open. No server install. Read
+  independent disposable review and is integrated/tested at `1dc60b460`.
+  Actual protected preparation and supported-process inventory/freeze remain
+  open. No server install. Read
   `research/beta-isolated-hosting/FILES-INSTALL-READINESS-2026-11-04.md`.
 - [~] CAD HOST AND SIGNED FILES: desktop `64becedd8`, CAD code `9bde6b29`
   (boundary plan `cc2d46dd`). Lead rebuilt exact revision and passed command,
