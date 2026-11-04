@@ -138,3 +138,38 @@ input had a pycache added by an earlier compile and correctly failed; the clean
 bundle was regenerated from pins. This checks installed bytes only: actual
 entrypoint fencing, durable installation, invocation/health and real main
 transaction remain unqualified, and the launcher remains disabled.
+
+The disposable main-launcher namespace runner now passed an isolated e7
+forward transition against the pinned controller and real translated loopback
+Caddy. The launcher source SHA-256 was
+`1db014d4d207fb746f52849bd7378a02aaf1b574d9585cb1d262214c74085c26`.
+The fixture checks those original bytes and removes only the unconditional
+research disable line **in memory** before compilation; it does not execute an
+enabled production launcher. It starts from a real signed disposable beta
+fixture and verifies the new main app bytes and beta selector after SIGKILL at
+the main Caddy reload, with the durable main journal recovered forward and
+cleared. Timer, service-manager, production main health and ingress are
+substituted; Caddy uses translated loopback routes. The fixture-owned processes,
+ports, and namespace files were removed afterward. Two initial plan attempts
+caught and corrected an incorrect cardboard source pin and a generator-import
+default that pointed `ctl.load()` at the protected bundle instead of the actual
+locked sites manifest. `main-launcher-pins.test.py` covers all embedded source
+pins and rejects a return to an argument-less `ctl.load()`.
+
+The installation/fence ordering still requires a concrete protected operator
+and independent interruption tests. The intended narrow sequence is: enter a
+controlled hosting maintenance window; stop and remember the renewal timer's
+state; prevent new supported controller invocations and wait for already-loaded
+legacy controller processes to finish; take the existing hosting lock; verify
+floor, journals, custody and exact endpoint inputs; publish the immutable
+successor bundle with no replacement; journal and atomically replace only the
+known 84c controller with fb27; verify its pending-journal fence and the new
+successor invocation; restore the timer state; then use the reviewed main
+forward transaction under that same lock. A crash after staging but before the
+guard must retain old routing and keep the administrative invocation freeze;
+a crash after guard replacement must recover the pinned install journal
+forward while keeping the floor and recovery successor. Merely replacing the
+file under flock does not fence an old Python process that loaded it earlier.
+This procedure is not an installed tool or an instruction to mutate the host;
+the quiescence, installation journal, and complete cross-entrypoint fencing
+remain release gates.

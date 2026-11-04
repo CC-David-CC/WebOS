@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Uninstalled protected launcher candidate: never execute on a live host yet."""
-import argparse,copy,hashlib,json,os,pwd,socket,stat,sys,types,urllib.request
+import argparse,copy,hashlib,json,os,pwd,socket,stat,sys,tomllib,types,urllib.request
 from pathlib import Path
 PKG=Path('/srv/codi-connected/operators/main-qualified-e7e8-v1')
 BETA=Path('/srv/codi-connected/operators/files-install-input-ce18b7794adc2472/ops')
 RELEASE='e7e8fb9fc1f964ec1b206462468f91b60e8bac1d8117ed29c5f1099abdac3480'
 SUCCESSOR=Path('/srv/codi-connected/operators/beta-recovery-e7-v1')
 SUCCESSOR_PREFLIGHT='9bbfd5e256a70fd385286a008af92d3928f6ea1511ad19062b60e14ac526df83'
-PINS={'beta_launcher.py':'9c1b32ecb71993649a2bd8e61f652486448543842a06c1654d685055959b9a95','beta_transaction.py':'8b365d054c423cc8af3460ad9fffdb6bb1808ab5e79b7b7068a86145eae4ff6a','common.py':'d11755a183bc5c12803b6fdc84fa54f4803c0f10c415c07bb9eecc82699132a1','scaffold_live.py':'28054ff66acf1450104b88f25afd41ce3a2d4b9cd9c3aecb49dd237f18e1fedd','microduck_hosting.py':'0adc990bb2beb801520fa9382e2924517f5bdd399e187cad6bcda9f3d57551fc','hardware_hosting.py':'34bea543dc4ac80702d68a43e361d9bfa291b831f37c48cc44a2a42f1cc0928f','cardboard_hosting.py':'9aff2ac2a91a743a4b0e6a7a876a775ac8de6515e0fd5e2261c33d9767','render_inventory.py':'c6a14a1d3ddbe52a592ecc2e519d430ca654056af99b3af1a92e43dcbb4c0c35','beta_files_preflight.py':'4f9bdcd5d47f6d2e0bf02c80bdb181dd36c62ce7b2046cb0bc0d960fa7cd05ff','beta_files_host_health.py':'d7ec08eabae1b13492c8fd533565da096e35dbed164f29dc4d61b91ee41f43ca','beta_signed_health.py':'ba8186d9b7fb44443914fecdf0da67989215f0b56fe13620bbad15639f029a81','beta_signed_probe.py':'e38cc2007b085666b0279259b7ec4143a7ad67a7d15d87655add57be6851257a','forward-transaction.py':'538d7e7438f61ab39f0449ab1e44f9af3df4db824cb0bca026fb8eb352cf8508','render-inventory.py':'e4f139b6956b0315b2728d82c1036aaaccf2e2d9313bd49f6fe8229a887fd3a8'}
+PINS={'beta_launcher.py':'9c1b32ecb71993649a2bd8e61f652486448543842a06c1654d685055959b9a95','beta_transaction.py':'8b365d054c423cc8af3460ad9fffdb6bb1808ab5e79b7b7068a86145eae4ff6a','common.py':'d11755a183bc5c12803b6fdc84fa54f4803c0f10c415c07bb9eecc82699132a1','scaffold_live.py':'28054ff66acf1450104b88f25afd41ce3a2d4b9cd9c3aecb49dd237f18e1fedd','microduck_hosting.py':'0adc990bb2beb801520fa9382e2924517f5bdd399e187cad6bcda9f3d57551fc','hardware_hosting.py':'34bea543dc4ac80702d68a43e361d9bfa291b831f37c48cc44a2a42f1cc0928f','cardboard_hosting.py':'9aff2ac2a91a743a4b0e6a7a876a775ac6de6515e0fd5c219d5e2261c33d9767','render_inventory.py':'c6a14a1d3ddbe52a592ecc2e519d430ca654056af99b3af1a92e43dcbb4c0c35','beta_files_preflight.py':'4f9bdcd5d47f6d2e0bf02c80bdb181dd36c62ce7b2046cb0bc0d960fa7cd05ff','beta_files_host_health.py':'d7ec08eabae1b13492c8fd533565da096e35dbed164f29dc4d61b91ee41f43ca','beta_signed_health.py':'ba8186d9b7fb44443914fecdf0da67989215f0b56fe13620bbad15639f029a81','beta_signed_probe.py':'e38cc2007b085666b0279259b7ec4143a7ad67a7d15d87655add57be6851257a','forward-transaction.py':'538d7e7438f61ab39f0449ab1e44f9af3df4db824cb0bca026fb8eb352cf8508','render-inventory.py':'e4f139b6956b0315b2728d82c1036aaaccf2e2d9313bd49f6fe8229a887fd3a8'}
 GUARD='fb27bc0ccb9be273765e489890a5fea056f578d08d729b92d00815de873ae783'
 def sha(x):return hashlib.sha256(x).hexdigest()
 def protected(path):
@@ -80,7 +80,7 @@ def main():
   # Compile only the exact guarded controller bytes while the lock is held.
   raw=host.read(root/'ops/webctl.py');ctl=types.ModuleType('main_webctl');ctl.__file__=str(root/'ops/webctl.py');exec(compile(raw,ctl.__file__,'exec'),ctl.__dict__);ctl.ROOT=root;ctl.MANIFEST=root/'sites.toml';gen.ROOT=root;gen.MANIFEST=root/'sites.toml'
   floor();verify_candidate();caddy_active();host.main_ready();signed()
-  live=ctl.load();old=copy.deepcopy(live);new=copy.deepcopy(live);a=[s for s in old['sites'] if s.get('domain')=='ksu.codes'];b=[s for s in new['sites'] if s.get('domain')=='ksu.codes']
+  live=ctl.validate(tomllib.loads(host.read(root/'sites.toml').decode()));old=copy.deepcopy(live);new=copy.deepcopy(live);a=[s for s in old['sites'] if s.get('domain')=='ksu.codes'];b=[s for s in new['sites'] if s.get('domain')=='ksu.codes']
   if len(a)!=1 or len(b)!=1 or a[0].get('codi_simplified') not in (forward.OLD_SELECTOR,forward.NEW_SELECTOR):raise ValueError('Unexpected main selector')
   a[0]['codi_simplified']=forward.OLD_SELECTOR;b[0]['codi_simplified']=forward.NEW_SELECTOR;raw=host.read(root/'ops/common.py')
   oldpoint={'common':raw,'manifest':gen.dump(old).encode(),'caddy':gen.caddy(old,'production').encode()};newpoint={'common':raw,'manifest':gen.dump(new).encode(),'caddy':gen.caddy(new,'production').encode()};forward.validate_endpoints(ctl,oldpoint,newpoint,forward.OLD_SELECTOR,forward.NEW_SELECTOR)
