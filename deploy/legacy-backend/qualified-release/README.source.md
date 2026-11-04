@@ -1,4 +1,31 @@
-# Main-only conservative release candidate (research; not activated)
+# Main-only conservative release
+
+## Current activation — 2026-11-04
+
+The lead installed the exact protected seven-file package and recovery-only
+beta successor, then passed the literal main launcher plan/apply on box-webhost.
+Main now selects **e7e8**; beta remains **3ad**, with its original floor intact.
+Actual signed beta recovery returned `v2-verified` before and after cutover.
+The prior active/enabled renewal timer was restored; hosting journals are clear.
+`/desktop/` bytes matched before/after, all pinned public-site health checks
+passed, and the served main app hash matched. Exact pins and scope are in
+[the activation receipt](../../evidence/main-core-activation-20261104.json).
+Public core-app browser walkthroughs are a separate check still in progress.
+
+The lead independently repeated the five SIGKILL installer primitives, literal
+fixed-path namespace installer and deterministic seven-file package controls.
+Those fixtures substitute timer/service state; actual host plan/install and
+recovery above supply the later operational evidence. Package bytes were copied
+from the pinned public archive into a root-private stage, every inventory/hash
+and custody checked, fsynced and published without replacement under the real
+hosting lock before execution. The trusted maintenance freeze remained in force
+through installation and verification. No private account material was copied.
+
+The retained apps are priority integration targets with bounded tests, not a
+claim that System tools or all consumers are validated. The historical research
+sections below describe earlier, unactivated checkpoints; they are superseded
+only by this exact activation and its receipt. The new Files 830 package remains
+unexposed and needs its own managed beta transition.
 
 The user requires no games on main and only finished, end-to-end tested features; beta remains the development site. This candidate is a conservative **proposed** core, not proof that every retained feature is fully finished: Files, Text, Terminal, Calculator and Help, with CodeMirror as Text's dependency. `docs/APP_STATUS.md` calls the first four workflows checked and Help's static information checked, but describes real limits; the integrated signed test below is not a comprehensive end-to-end qualification of them on live main. Do not describe all previously present non-game apps as finished. Release needs core workflow checks and independent review; missing apps and their saved files remain on beta/unchanged.
 
