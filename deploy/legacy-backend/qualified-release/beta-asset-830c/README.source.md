@@ -128,3 +128,66 @@ Independent source review, actual protected bootstrap/installation,
 full capacity/custody checks, supported old-process fencing, real service and
 production ingress health, old-tab/account compatibility and public acceptance
 remain required. The release is not installed by this checkpoint.
+
+## Superseding review candidate: entrypoint retirement and two main families
+
+The earlier `bdf72e2e1` operator archive is **blocked and superseded**: the
+installed old bc9 actor can write `opfs-transition.json` from the shared gate
+before checking its old guard pin, and two original ce18 launch copies are also
+callable. The revised installer publishes the exact new actor closure, writes
+the existing main-restriction journal, then moves all four exact executable
+files (bc9 recovery, ce18 bundle launcher, ce18 input launcher, completed main
+e7 one-shot) by no-replace rename to a root-only data quarantine with no old
+dependency tree. It fsyncs both directories and normalizes archived files to
+0400; bytes remain unchanged. It then installs ca25 and verifies all four paths
+remain absent before clearing the journal. All source and quarantine parents
+must be on the same filesystem. A trusted coordinated administrative freeze,
+known timer quiescence and draining of already-loaded processes remain required;
+deliberate invocation of archived data or privileged bypass is outside this
+boundary. Retiring the ce18 input launcher intentionally changes that input
+closure; the individual pinned helper modules used by the new installer remain.
+The completed main one-shot is retired only when the shared journal was absent
+at installation start. The new actor's 3ad recovery path is fenced by either
+asset marker under lock.
+
+The literal fixed-path installer fixture passed active-timer/known-invoker and
+foreign-journal refusal, SIGKILL after staging, after each of the four durable
+retirements, and after guard replacement, with forward/idempotent recovery.
+At each retirement/guard boundary an unexpectedly present asset floor made
+recovery refuse before further changes; removing the fixture marker permitted
+recovery. The standalone retirement test also checks wrong journal, exact
+bytes/modes, idempotence and simulated cross-device refusal. Timer state and
+unit hashes are fixture substitutions, not live systemd qualification.
+
+A combined R730 fixture then executed the literal installer, guard-aware 3ad
+actor and 830c actor with a signed disposable beta account and real translated
+Caddy. After the asset floor and interrupted 830c reload, 830c was temporarily
+unavailable; recovery established an actual 503 shared gate. All four former
+fixed paths were executed at that gate and failed before running code; the old
+`opfs-transition.json` was not created and hosting source/manifest/Caddy bytes
+were unchanged. Restoring 830c recovered forward, retaining the e7 main
+selector and original 3ad floor hash. The original attempted combined fixture
+had a test-only timer-file permission error; that was corrected before the pass.
+Fixture processes, ports and namespace files were removed afterward. Production
+main health, timer, systemd, ingress and trusted operator freeze remain outside
+this test.
+
+The actor now supports only exact e7 and proposed 0366 main families. Applying
+830c initially still requires e7; recovery may select either family after an
+independently reviewed main change. It rejects cross-family mixtures even during
+nested-journal recovery. The 0366 family is a proposed main capability fix, not
+an authorization to change main. Pinned-controller/real-loopback-Caddy tests
+passed 0366 asset-floor and inner-reload kills; actual 0366 asset installation
+and literal 0366-family actor recovery require separate qualification.
+
+Final review candidate pins:
+
+- Guard `ca25bb27799f0f306d7d901188d894d39ad22ea99ea2c1f1d224a2c6446ab8b9`.
+- Two-family actor `fecffaed2a83d50b8178b016a9b625fea4dca986f449e565531a58d4a0f3143a`, 35-file inventory `76a7cff14def855ba9dfcdc4a03916772c931df81c9cdafac34653348f4b83b7`.
+- Five-file installer inventory `89b0b188b4b337ef67a6cce22faf7e3f05e7947d19eea6bd0d17f0ef886de18d`.
+- Public-code-only R730 archive `/mnt/data10tb/codi-830c-retirement-review-20261104.tar.gz`, SHA-256 `be6c61467ee1d9e29451c2b95b2866fcd44f57e0520b77efbe9dbfe0b0eba905`.
+
+The original asset floor remains a policy marker: it does not change browser
+schema or replace the 3ad OPFS floor. This package and staged 830c assets are
+not authorization to activate; independent reviewer, protected bootstrap and
+live custody/quiescence/health checks remain required.

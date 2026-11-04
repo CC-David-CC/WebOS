@@ -21,7 +21,8 @@ try:
   asset=load('asset_common',t/'gen/common.py');inv=load('asset_inventory',t/'inv/render_inventory.py')
   def bound(path,module):return types.SimpleNamespace(source=path.read_bytes(),module=module)
   a=bound(ops/'common_live.py',old);b=bound(ops/'common.py',v2);c=bound(t/'gen/common.py',asset)
-  x=rm.snapshots(snap=snap,successor=successor,oldgen=a,v2gen=b,newgen=c,manifest=(ops/'sites_live.toml').read_bytes(),old_manifest=(ops/'beta_files_candidate.json').read_bytes(),new_manifest=(NEW/'manifest.json').read_bytes(),table=(ops.parent/'OPFS-ROUTE-TABLE.json').read_bytes(),selector='e7e8fb9fc1f964ec1b206462468f91b60e8bac1d8117ed29c5f1099abdac3480')
+  main=os.environ.get('CODI_ASSET_MAIN','e7e8fb9fc1f964ec1b206462468f91b60e8bac1d8117ed29c5f1099abdac3480')
+  x=rm.snapshots(snap=snap,successor=successor,oldgen=a,v2gen=b,newgen=c,manifest=(ops/'sites_live.toml').read_bytes(),old_manifest=(ops/'beta_files_candidate.json').read_bytes(),new_manifest=(NEW/'manifest.json').read_bytes(),table=(ops.parent/'OPFS-ROUTE-TABLE.json').read_bytes(),selector=main)
   def translated(module,data,mode):
    raw=module.caddy(data,mode);end=raw.index('\n}\n\n(site_defaults)')+3;raw=raw[:raw.index('{\n')]+'{\n admin 127.0.0.1:'+str(admin)+'\n auto_https off\n default_bind 127.0.0.1\n}\n'+raw[end:]
    raw=re.sub(r'(?m)^(?:http://)?([a-zA-Z0-9.-]+) \{',lambda m:'http://'+m.group(1)+':'+str(port)+' {',raw);raw=re.sub(r'127\.0\.0\.1:(?:80[0-9]{2}|81[0-9]{2}|28[0-9]{3})',f'127.0.0.1:{backend.server_port}',raw)
@@ -116,6 +117,6 @@ try:
    killed_stage=stage;post=killed_stage in ('floor','forward','healthy','inner-after');assert asset_floor.exists()==post
    stage='recovery';txn.recover_exact();assert r.read()==x['candidate' if post else 'baseline']
    assert hashlib.sha256(floor.read_bytes()).hexdigest()==floor_hash and not txn.journal.exists();main_health()
-   print('PASS pinned controller and real Caddy, original floor and e7 main after '+killed_stage+' kill; fixture timer/health')
+   print('PASS pinned controller and real Caddy, original floor and main '+main[:8]+' after '+killed_stage+' kill; fixture timer/health')
   finally:proc.terminate();proc.wait(timeout=10)
 finally:backend.shutdown();backend.server_close();thread.join(2)

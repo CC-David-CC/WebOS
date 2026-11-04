@@ -24,10 +24,19 @@ def wrapped(code,globals=None,locals=None):
  if globals and globals.get('__name__')=='main_install' and os.environ.get('CODI_INSTALL_STOP'):
   original=globals['install']
   def injected(**kw):
+   original_phase=kw.get('phase',lambda _:None)
    def phase(name):
+    original_phase(name)
     if name==os.environ['CODI_INSTALL_STOP']:os.kill(os.getpid(),9)
    kw['phase']=phase;return original(**kw)
   globals['install']=injected
+ if globals and globals.get('__name__')=='asset_retirement' and os.environ.get('CODI_INSTALL_STOP'):
+  original=globals['retire']
+  def injected_retire(**kw):
+   def phase(name):
+    if name==os.environ['CODI_INSTALL_STOP']:os.kill(os.getpid(),9)
+   kw['phase']=phase;return original(**kw)
+  globals['retire']=injected_retire
  return result
 builtins.exec=wrapped
 sys.argv=['main-install-launch.py',sys.argv[1]]

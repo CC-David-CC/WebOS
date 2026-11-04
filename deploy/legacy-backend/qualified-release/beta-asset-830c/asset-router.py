@@ -10,12 +10,22 @@ from beta_transaction import Transaction,ManagedWebctlAdapter
 from opfs_managed import HeldAdapter
 OLD='3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc';NEW='830ca4f174a37cd499a05e07c373a0412fd94c3e6f232234a87645662170a1f0'
 GEN='e06fc8aa018ff048138fb2585ddb34ab9c6f1b061fb0022b06b14dca7df55928'
-EXPECT={'0965a0cbdd022f588061cdc23e10eb6b18fa5977cc3f6a05569439eaf11d2020':('aba5377563df29c9ad618210cb51fca71ef1e9b5ebccdcb922752a25b8adf7a3','8f46e2762d8b613eb9c6bac7f8f3efc157a97e843f8981ed9a7a5333e01ac1a4'),'e7e8fb9fc1f964ec1b206462468f91b60e8bac1d8117ed29c5f1099abdac3480':('8b54871643131b4bb4c0e43195f688593e0f9d8068f704e35f535218b8e35862','7fa77b5081eac3c359b5c213f54903e6f40905ec3bcc28571b8a19e06468081b')}
+EXPECT={'0965a0cbdd022f588061cdc23e10eb6b18fa5977cc3f6a05569439eaf11d2020':('aba5377563df29c9ad618210cb51fca71ef1e9b5ebccdcb922752a25b8adf7a3','8f46e2762d8b613eb9c6bac7f8f3efc157a97e843f8981ed9a7a5333e01ac1a4'),'e7e8fb9fc1f964ec1b206462468f91b60e8bac1d8117ed29c5f1099abdac3480':('8b54871643131b4bb4c0e43195f688593e0f9d8068f704e35f535218b8e35862','7fa77b5081eac3c359b5c213f54903e6f40905ec3bcc28571b8a19e06468081b'),'0366e10aa555117191757db8ad0dd91ccf0ee7a33ee252be17079696cf0ed3b8':('e9fdd7bbcb273d177577896ce374a3ecacd6190c5da46ab040ccd50d5d79a741','7d17e426a6e81af9e8979007a3bea0f896a22f7cfbc56d736d635453dadde6aa')}
+NEXT='0366e10aa555117191757db8ad0dd91ccf0ee7a33ee252be17079696cf0ed3b8'
+NEXT_PIN={'candidate':('e8ea0ba1ff898688900daccac3af02b3d4ea1b81be066baf16d912e62b837b6a','15b876c02400c11014113b2664a5fc013e22bbb1ce41fa038c1894c19a9b8480'),'gate':('37ef9d4ff78067f08915177ed7df8591c8997941e187d9d432f3f2d571188ebe','16588ecb0185e63e9e34c80c26c654009db40c8b7b4d5d4330e78e53eebe73b3')}
 def sha(b):return hashlib.sha256(b).hexdigest()
 def snapshots(*,snap,successor,oldgen,v2gen,newgen,manifest,old_manifest,new_manifest,table,selector):
  if selector not in EXPECT or sha(newgen.source)!=GEN or sha(new_manifest)!=NEW:raise ValueError('Unexpected asset inputs')
  parent=snap.build(old=oldgen,new=v2gen,manifest=manifest,candidate_manifest=old_manifest,route_table=table)
- family=successor.families(parent,oldgen,v2gen)[selector]
+ families=successor.families(parent,oldgen,v2gen)
+ if selector==NEXT:
+  family={};base=families[successor.NEW]
+  for name,gen in (('candidate',v2gen),('gate',oldgen)):
+   data=copy.deepcopy(base[name+'Data']);next(s for s in data['sites'] if s.get('domain')=='ksu.codes')['codi_simplified']=NEXT;gen.module.validate(data)
+   item={'common':gen.source,'manifest':gen.module.dump(data).encode(),'caddy':gen.module.caddy(data,'production').encode()}
+   if (sha(item['manifest']),sha(item['caddy']))!=NEXT_PIN[name]:raise ValueError('Unexpected reviewed next-main snapshot')
+   family[name]=item;family[name+'Data']=data
+ else:family=families[selector]
  data=copy.deepcopy(family['gateData']);data['codi_beta_maintenance']=False;data['codi_beta_opfs']=NEW;newgen.module.validate(data)
  files=json.loads(new_manifest)['files'];routes={'/'+p:r['sha256'] for p,r in files.items() if p.startswith(('assets/','storage/'))}
  if newgen.module.OPFS_NEW_PUBLIC_FILES!=routes:raise ValueError('Asset route list differs from manifest')

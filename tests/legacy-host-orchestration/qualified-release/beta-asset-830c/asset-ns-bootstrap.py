@@ -131,5 +131,17 @@ def fixture_exec(code,globals=None,locals=None):
  return result
 builtins.exec=fixture_exec
 sys.argv=['launch',sys.argv[1]]
-name='asset-launch.py' if os.environ.get('CODI_ASSET_LAUNCH')=='1' else 'beta_files_launch.py'
-runpy.run_path(str(Path(os.environ['CODI_FILES_FIXTURE_BUNDLE'])/'ops'/name),run_name='__main__')
+if os.environ.get('CODI_CHECK_RETIRED')=='1':
+ paths=('/srv/codi-connected/operators/beta-recovery-e7-v1/ops/beta_files_recover.py','/srv/codi-connected/operators/files-bundle-ce18b7794adc2472/ops/beta_files_launch.py','/srv/codi-connected/operators/files-install-input-ce18b7794adc2472/ops/beta_files_launch.py','/srv/codi-connected/operators/main-qualified-e7e8-v1/main-launcher.py')
+ route=(Path('/home/dflanag3/webhost-sites/ops/common.py'),Path('/home/dflanag3/webhost-sites/sites.toml'),Path('/etc/caddy/Caddyfile'))
+ before=[hashlib.sha256(p.read_bytes()).hexdigest() for p in route]
+ connection=http.client.HTTPConnection('127.0.0.1',int(os.environ['CODI_FILES_CADDY_PORT']),timeout=5);connection.request('GET','/desktop-apps.js?simplified=1',headers={'Host':'beta.ksu.codes'});response=connection.getresponse();response.read();connection.close()
+ if response.status!=503:raise ValueError('Fixture shared gate is not active')
+ for path in paths:
+  result=subprocess.run([sys.executable,'-I','-B',path,'recover'],capture_output=True,text=True,timeout=10)
+  if result.returncode==0 or Path('/var/lib/webhost-ops/opfs-transition.json').exists():raise ValueError('Retired actor unexpectedly ran')
+ if [hashlib.sha256(p.read_bytes()).hexdigest() for p in route]!=before:raise ValueError('Retired actor changed routes')
+ print('PASS shared gate and four retired fixed paths; no original journal or route writes')
+else:
+ name='asset-launch.py' if os.environ.get('CODI_ASSET_LAUNCH')=='1' else os.environ.get('CODI_3AD_ENTRY','beta_files_launch.py')
+ runpy.run_path(str(Path(os.environ['CODI_FILES_FIXTURE_BUNDLE'])/'ops'/name),run_name='__main__')

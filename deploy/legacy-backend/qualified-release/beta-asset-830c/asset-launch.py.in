@@ -44,7 +44,7 @@ def main():
  if stat.S_IMODE(journal.stat().st_mode)!=0o700:raise ValueError('Unsafe private journal root')
  manifest=read(PKG/'sites_live.toml');oldmanifest=read(PKG/'beta_files_candidate.json');newmanifest=read(PKG/'asset_manifest.json');table=read(PKG.parent/'OPFS-ROUTE-TABLE.json')
  oldbound=types.SimpleNamespace(source=read(PKG/'common_live.py'),module=old);v2bound=types.SimpleNamespace(source=read(PKG/'common.py'),module=v2);newbound=types.SimpleNamespace(source=read(PKG/'asset_common.py'),module=asset)
- x=routermod.snapshots(snap=snap,successor=successor,oldgen=oldbound,v2gen=v2bound,newgen=newbound,manifest=manifest,old_manifest=oldmanifest,new_manifest=newmanifest,table=table,selector=MAIN)
+ families={name:routermod.snapshots(snap=snap,successor=successor,oldgen=oldbound,v2gen=v2bound,newgen=newbound,manifest=manifest,old_manifest=oldmanifest,new_manifest=newmanifest,table=table,selector=name) for name in (MAIN,routermod.NEXT)}
  with lock.held():
   check()
   @contextlib.contextmanager
@@ -63,8 +63,14 @@ def main():
   original=marker('opfs-floor.json');asset_marker=marker('files-asset-floor.json');outer=marker('files-asset-transition.json');inner=marker('files-asset-inner-hosting.json');emergency=marker('files-asset-emergency-gate.json')
   if inner is not None and emergency is not None:raise ValueError('Multiple nested asset journals')
   current={k:host.read(p) for k,p in {'common':root/'ops/common.py','manifest':root/'sites.toml','caddy':Path('/etc/caddy/Caddyfile')}.items()}
-  chosen=select.select(snapshots={n:x[n] for n in ('baseline','gate','candidate')},current=current,original_floor=original,asset_floor=asset_marker,asset_journal=outer,nested_journal=inner if inner is not None else emergency,other_pending=False)
-  if args.action in ('plan','apply') and (asset_marker is not None or outer is not None or inner is not None or emergency is not None or chosen!='baseline'):raise ValueError('Asset transition already started')
+  matches=[]
+  for family,item in families.items():
+   try:chosen=select.select(snapshots={n:item[n] for n in ('baseline','gate','candidate')},current=current,original_floor=original,asset_floor=asset_marker,asset_journal=outer,nested_journal=inner if inner is not None else emergency,other_pending=False)
+   except ValueError:continue
+   matches.append((family,item,chosen))
+  if len(matches)!=1:raise ValueError('Unknown, mixed or ambiguous main/asset route state')
+  family,x,chosen=matches[0]
+  if args.action in ('plan','apply') and (family!=MAIN or asset_marker is not None or outer is not None or inner is not None or emergency is not None or chosen!='baseline'):raise ValueError('Asset transition already started or main family differs')
   if args.action=='recover' and asset_marker is None and outer is None:raise ValueError('No asset transition; use the 3ad recovery actor')
   worker=Path('/srv/codi-gateway/releases')/host.GW
   class LazyJose:

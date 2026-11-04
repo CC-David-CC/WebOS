@@ -23,6 +23,11 @@ for floorstate,edges in ((None,(('baseline','gate',1,None),('gate','baseline',1,
 refuse(current=x['baseline'],asset_floor=sel.EXPECTED,asset_journal=None,nested_journal=None)
 refuse(current=x['candidate'],asset_floor=None,asset_journal=sel.EXPECTED,nested_journal=None)
 refuse(current=x['gate'],asset_floor={**sel.EXPECTED,'version':True},asset_journal=sel.EXPECTED,nested_journal=None)
+# An interrupted journal's components may mix within its one exact family,
+# but a component from another main family must never be selected.
+other={n:{k:v+b'-other-main' for k,v in item.items()} for n,item in x.items()}
+j={'version':1,'phase':'prepared','old':_encode(x['gate']),'new':_encode(x['candidate']),'timer':{'active':True,'enabled':True},'caddy_started':True,'backup':'fixture'}
+refuse(current={**x['gate'],'manifest':other['gate']['manifest']},asset_floor=sel.EXPECTED,asset_journal=sel.EXPECTED,nested_journal=j)
 try:sel.select(snapshots=x,current=x['baseline'],original_floor=sel.ORIGINAL,asset_floor=None,asset_journal=None,nested_journal=None,other_pending=True)
 except ValueError:pass
 else:raise AssertionError('pending host operation accepted')
