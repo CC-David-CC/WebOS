@@ -162,3 +162,16 @@ explicitly require monotonic document lifetimes and atomic full-history replay
 preserving the last complete accepted model. Existing candidate passes do not
 close their combined integration or release gates. Update these documents as
 actual work progresses, without declaring the broad milestone complete.
+
+Source-trust amendment — 2026-11-04, latest explicit user direction
+
+All features from JSketcher are suspect and are used for inspiration. This
+supersedes any interpretation of consolidation as an obligation to preserve
+inherited behavior or architecture. Our adaptations are subject to the same
+rule. State the intended mathematical/domain contract first, then use
+independent positive, negative and edit/failure/persistence tests to determine
+whether to retain, repair or replace an implementation. A library's feature
+list, a menu command and a successful demonstration are not complete acceptance
+evidence. Preserve useful scoped evidence without extending it to untested cases.
+Later gates inform early contracts; planned interfaces and stubs remain open
+work and never count as validated feature, simulation or engineering capability.

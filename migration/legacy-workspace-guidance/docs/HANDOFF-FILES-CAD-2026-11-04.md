@@ -41,9 +41,13 @@ records one isolated signed 128 MiB measurement with Linux/speech excluded:
 fresh-read PSS max 1,026,091,008 bytes versus 611,861,504 immediately before that
 phase, but browser/test verification remains included and sampling is not a
 continuous allocation/peak proof. No public deployment changed. Network
-efficiency is sufficient for this milestone. Source candidate `0801ea2d7` removes
-two redundant detached-copy verification passes; it is backed up but not yet
-reviewed/integrated/deployed. Cold-download streaming needs its own contract.
+efficiency is sufficient for this milestone. Source `0801ea2d7`, integrated as
+`72c7fdbc6` after independent review, removes two redundant detached-copy
+verification passes. Actual Chromium corruption, local-edit race and account
+invalidation controls pass. A full detached Blob still exists; no physical
+memory improvement or deployment is claimed. Cold-download streaming contract
+`0480d3f52` is recorded in `tests/files-cold-download-stream-contract-20261104.md`;
+SDK/source qualification and implementation remain separate work.
 
 **Earlier qualified ownership/projection checkpoint:** CAD `efb96770`
 qualifies internal candidate/accepted engine-resource ownership using source

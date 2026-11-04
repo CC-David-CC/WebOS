@@ -30,7 +30,7 @@ package 7090a161 gates transient edges/vertices and sketch entry on worker faces
 Adapter 29c89c67 connects a captured rectangle to an owned OCC worker and the
 bounded model projection. Focused guard/type checks and owner real-worker tests
 pass. Real pinned-runtime positive registration and injected failure controls
-are recorded in 5e54c5a5. Registry guards9bb3eae0 reject worker collisions,
+are recorded in 5e54c5a5. Registry guards 9bb3eae0 reject worker collisions,
 oversized durable IDs and unsupported saved sketches. Owner tests pass;
 combined application qualification is in progress, not publication proof.
 

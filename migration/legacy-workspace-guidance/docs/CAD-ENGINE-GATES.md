@@ -3,6 +3,11 @@
 User-defined program, 2026-11-04. These are qualification gates for a future
 engineering engine in the browser WebOS, beyond a set of JSketcher patches.
 
+Source-trust rule: **all JSketcher features are suspect and used for
+inspiration/reference.** Explicit contracts and independent acceptance evidence
+determine reuse, repair or replacement, including our adaptations. Neither
+upstream compatibility nor a feature's presence establishes correctness.
+
 | Gate | Outcome | State |
 |---|---|---|
 | [1](CAD-ENGINE-GATE-1.md) | Foundational engine: 12 areas, P0/P1/P2 priorities, 22 exercises, five validation responsibilities and Change the original rectangle. | Active; incomplete. |

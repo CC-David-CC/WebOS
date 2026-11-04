@@ -111,8 +111,9 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   default Boolean targets and failed OCC registration. Focused spy/type checks
   pass; real pinned-runtime positive and injected failure controls are integrated
   as `5e54c5a5`. Reference/sketch package `7090a161` and real worker-prism adapter
-  `29c89c67` are integrated with their owner evidence. Combined browser/runtime
-  validation, final registry collision/ID checks, exact worker-history publication
+  `29c89c67` are integrated with their owner evidence. Registry guards `9bb3eae0`
+  reject worker ID collisions/limits and unsupported stored face sketches.
+  Combined browser/runtime validation, exact worker-history publication
   and edit/reject/undo/My files reopen remain open. No CAD runtime promotion.
 - [x] FILES UI, BOUNDED BETA PROOF: `4613eebae`/`7a119bc4f` cover chooser upload,
   folder/rename/move/copy, exact-byte download, delete and other-account denial
@@ -124,8 +125,12 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   observations with guest/speech excluded, exact hashes and cleanup. It still
   includes browser/test costs, not pure transfer allocations. Network efficiency
   is sufficient; focus remaining resource work on proven copies/verification
-  passes and a reviewed stream-to-staged-OPFS boundary. Candidate `0801ea2d7`
-  reduces redundant detached-copy verification scans and awaits lead review.
+  passes and a reviewed stream-to-staged-OPFS boundary. Source `0801ea2d7`,
+  integrated as `72c7fdbc6`, reduces redundant detached-copy verification scans
+  after independent Chromium corruption, local-edit race and account-invalidation
+  checks. It still creates a full detached Blob and has not been deployed or
+  measured as a physical RAM improvement. Streaming contract `0480d3f52` is
+  documented; implementation and exact SDK/source qualification remain separate.
 
 - [x] CAD RESOURCE OWNERSHIP, BOUNDED SLICE: fork `efb96770` qualifies source
   `531cc24d` with nine focused pool tests and six actual-browser regressions.
