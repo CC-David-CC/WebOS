@@ -1032,3 +1032,34 @@ older normalization base and absent lifetime hook were real blockers at that
 checkpoint. They are superseded by the integrated fixes and combined lead
 results above; do not restart the old merge or quote that failure as current.
 The full Gate 1 and release still remain open for the listed reasons.
+
+## CAD continuation: guarded centered-hole integration
+
+CAD integration branch `integration/files-cad-release-20261104` is now at
+`39ed306b` (box-git and R730). Files deployment is unchanged. This remains source
+work, not a new public CAD release or completion of the mechanical plate gate.
+
+- Candidate ledger and authored LID intent: `0465f861`, 18 focused checks pass.
+  Independent actual Chromium/OCC parent-ledger regression passes, including
+  14 projected-model mutation refusals. Parent association still belongs to a
+  single private evaluation owner and worker mount.
+- History descriptor/admission hook: `59caa7ad`, compiled but unregistered.
+  The factory installs the adapter's synchronous publication guard; legacy
+  operations retain their existing representation checks. Actual hole replay,
+  undo/redo and native/signed My files reopen remain open.
+- Analytic drilled projection and ancestry-role checks are integrated through
+  `39ed306b`. Eleven focused circle/cylinder/orientation/role tests pass.
+  Retained authored outputs cover 100×50×20 and 150×30×35 translated plates,
+  with moved centers, diameter 10, through openings and expected analytic
+  volume. These retained-data tests do not establish live parent-index binding.
+- Native/worker lane has actual authored-prism and private mount controls,
+  including no-op rejection/termination and caller-handle mutation refusal.
+  Its next source checkpoint is pending integration. Persistent role assignment
+  requires authenticated parent-index correspondence and same-operation cutter
+  wall/rim ancestry; do not replace this with nearest-face matching.
+
+Next: integrate checked native/mount and projection adapter, then register and
+exercise the real history operation, parent edits, late mutation/cancellation,
+undo/redo and reopen. UI and agent commands must use that same history path.
+Detailed implementation queue and limits are in the CAD repository's
+`docs/research/CENTERED-THROUGH-HOLE-CONTRACT-20261104.md`.
