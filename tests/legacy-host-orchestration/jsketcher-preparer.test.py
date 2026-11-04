@@ -12,6 +12,12 @@ with tempfile.TemporaryDirectory() as td:
  for name,content in [('numeric.js','a'),('seedrandom.js','b'),('quadprog.js','c'),('svd.js','d')]:(numeric/'src'/name).write_text(content)
  run('git','add','.',cwd=numeric);run('git','commit','-qm','fixture',cwd=numeric)
  m.NUMERIC_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=numeric,text=True).strip();m.NUMERIC_INPUT_SHA256=hashlib.sha256(b'abcd').hexdigest();m.NUMERIC_NOTICE_SHA256={k:hashlib.sha256((numeric/k).read_bytes()).hexdigest() for k in ['license.txt','resources/LICENSE.quadprog']}
+ m.REVIEW_SOURCE_PACKAGES={'alpha':('alpha','1')}
+ # The source-evidence writer fails closed on package symlinks.
+ probe=root/'source-probe';(probe/'alpha').mkdir(parents=True);(probe/'alpha'/'package.json').write_text('{"name":"alpha","version":"1"}');(probe/'alpha'/'escape').symlink_to('/etc/passwd')
+ try:m.review_package_sources(probe,root/'probe.zip');raise AssertionError('source symlink accepted')
+ except RuntimeError as e:assert 'Symlink' in str(e)
+ m.MDI_COMPONENTS=set();m.MDI_SVG_SHA256={};m.MDI_LICENSE_SHA256=hashlib.sha256(b'mdi license').hexdigest()
  m.FORK_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip();m.ENGINE_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=engine,text=True).strip();m.ENGINE_SHA256={n:hashlib.sha256(v.encode()).hexdigest() for n,v in [('occt.wasm','wasm'),('occt.js','js')]}
  m.ENGINE_TREE=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=engine,text=True).strip();m.ENGINE_SOURCE_NOTICES={n:(target,hashlib.sha256((engine/n).read_bytes()).hexdigest()) for n,(target,_) in m.ENGINE_SOURCE_NOTICES.items()}
  manifold=root/'manifold';manifold.mkdir()
@@ -36,7 +42,7 @@ elif sys.argv[1]=='run':
 ''');npm.chmod(0o755);node=tools/'node';node.write_text('#!/bin/sh\necho v0.fixture\n');node.chmod(0o755)
  oldpath=os.environ['PATH'];os.environ['PATH']=str(tools)+os.pathsep+oldpath
  m.PNLTRI_ASSET_SHA256=hashlib.sha256(b'pnltri fixture').hexdigest();m.PNLTRI_NOTICE=root/'pnltri-license';m.PNLTRI_NOTICE.write_text('pnltri terms');m.PNLTRI_NOTICE_SHA256=hashlib.sha256(b'pnltri terms').hexdigest()
- m.VENDOR_NOTICE_DIR=root/'vendor-notices';m.VENDOR_NOTICE_DIR.mkdir()
+ m.VENDOR_NOTICE_DIR=root/'vendor-notices';m.VENDOR_NOTICE_DIR.mkdir();(m.VENDOR_NOTICE_DIR/'mdi-svg-2.2.43-LICENSE.txt').write_text('mdi license')
  m.CLIPPER_PACKAGE_SHA256=hashlib.sha256(b'clipper fixture').hexdigest()
  m.CLIPPER_NOTICES=[]
  for name,out,text in [('clip-license','CLIPPER-LIB-BOOST-LICENSE.txt','boost terms'),('clip-header','CLIPPER-LIB-COPYRIGHT.txt','clipper header')]:
@@ -51,7 +57,7 @@ elif sys.argv[1]=='run':
   for name,out,text in notices:
    (m.VENDOR_NOTICE_DIR/name).write_text(text);data.append((name,out,hashlib.sha256(text.encode()).hexdigest()))
   m.OTHER_VENDOR_INPUTS[asset]=(hashlib.sha256(content.encode()).hexdigest(),data)
- m.HERE=root/'output';m.HERE.mkdir();m.DESTINATION=m.HERE/'node_modules'/'jsketcher-build';m.PREFIX='node_modules/jsketcher-build/'
+ m.HERE=root/'output';m.HERE.mkdir();(m.HERE/'PROVENANCE-NOTES.md').write_text('fixture provenance');m.DESTINATION=m.HERE/'node_modules'/'jsketcher-build';m.PREFIX='node_modules/jsketcher-build/'
  def build(extra=()):sys.argv=['prepare.py','--repo',str(repo),'--engine-repo',str(engine),'--numeric-repo',str(numeric),'--experimental-local-only','--update-manifest','--manifold-research-input',str(manifold),*extra];m.main()
  (manifold/'manifold.js').write_text('tampered')
  try:build();raise AssertionError('tampered Manifold input accepted')
@@ -62,7 +68,12 @@ elif sys.argv[1]=='run':
   try:build();raise AssertionError('invalid worker accepted')
   except RuntimeError as e:assert expected in str(e)
   finally:del os.environ[variable]
- build();assert (m.DESTINATION/'PNLTRI-LICENSE.txt').read_text()=='pnltri terms';r1=(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();man=(m.HERE/'app.json').read_bytes();build();assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();assert man==(m.HERE/'app.json').read_bytes()
+ build();assert (m.DESTINATION/'runtime-source-candidates.zip').is_file();assert (m.DESTINATION/'PNLTRI-LICENSE.txt').read_text()=='pnltri terms';r1=(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();man=(m.HERE/'app.json').read_bytes();build();assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();assert man==(m.HERE/'app.json').read_bytes()
+ mdi=m.VENDOR_NOTICE_DIR/'mdi-svg-2.2.43-LICENSE.txt';mdi.write_text('tampered')
+ try:build();raise AssertionError('tampered mdi license accepted')
+ except RuntimeError as e:assert 'mdi-svg license differs' in str(e)
+ finally:mdi.write_text('mdi license')
+ assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
  assert (m.DESTINATION/'CLIPPER-LIB-BOOST-LICENSE.txt').read_text()=='boost terms'
  assert (m.DESTINATION/'CLIPPER-LIB-COPYRIGHT.txt').read_text()=='clipper header'
  for name,text in [('clip-license','boost terms'),('clip-header','clipper header')]:
