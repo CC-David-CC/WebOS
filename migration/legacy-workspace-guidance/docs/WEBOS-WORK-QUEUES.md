@@ -80,8 +80,10 @@ Refine the ordering when actual evidence shows a dependency is different.
 validation responsibilities and Change the original rectangle. Current work is
 Files plus that foundation, not routine patch accumulation. The next gate is
 `docs/CAD-ENGINE-GATE-2.md`, intermediate mechanical CAD with 12 groups, ten
-projects and four additional areas. Gate 2 stays queued; the user will define
-the following gate separately. Neither is declared complete by planning.
+projects and four additional areas. Gate 3 is now recorded in
+`docs/CAD-ENGINE-GATE-3.md`: advanced modeling/engineering, with categories 1–10
+received and 11–16 not yet provided. Gates 2 and 3 stay queued behind the
+foundational work; none is declared complete by planning.
 
 The user explicitly resumed Files, JSketcher consolidation, mechanical features
 and the material-aware enclosure/core-3MF handoff. See

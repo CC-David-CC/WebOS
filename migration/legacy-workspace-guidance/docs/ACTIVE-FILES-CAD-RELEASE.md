@@ -114,8 +114,10 @@ The user has now defined the broader CAD-engine program explicitly:
 coupled dimensional-change workflow); `CAD-ENGINE-GATE-2.md` is intermediate
 mechanical CAD. The original attached release audit remains historical/current
 slice evidence; it must not be presented as completion of these larger gates.
-Do not start Gate 2 implementation or an undefined next gate instead of finishing
-Gate 1. Competency priority and implementation dependency order are distinct.
+Advanced Gate 3 is recorded separately in `CAD-ENGINE-GATE-3.md`, with the ten
+received categories and six unprovided placeholders. Do not start Gate 2/3
+implementation instead of finishing Gate 1. Competency priority and
+implementation dependency order are distinct.
 
 ### Explicit agent acceptance gate
 
