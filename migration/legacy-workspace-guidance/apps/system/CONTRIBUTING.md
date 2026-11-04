@@ -22,6 +22,19 @@ before accessing it, and refuse false. After a successful load/local save call
 Idle windows may share a file; unrelated files remain usable. These claims do
 not replace authorization or cross-tab/device expected-version checks.
 
+For a folder move/delete/copy/archive or an extraction destination, acquire
+`token.claimDocumentTree('mirror:' + context.path(folder))` before any read or
+mutation of that tree. It reserves the folder and all current or future
+descendants, and conflicts with another window's active child-file operation.
+`/foo` does not reserve `/foobar`; Linux uses the separate `guest:` namespace.
+Paths must be canonical absolute storage paths, without dot or empty segments
+or trailing slash except `/`. These are literal paths, never URL-decoded here.
+Hold source and destination claims together until `finally`; if any claim
+fails, do no I/O and release the operation. Idle editors remain open and their
+Save control becomes busy while a parent-tree operation is active. On completion
+they still need expected-version and deletion/conflict handling. The controller
+does not make multi-file storage mutations atomic or lock other tabs/devices.
+
 Render Save availability using `bindControl` or `subscribe`/`busy`; embedded
 editors must update native action state too. Disabled controls alone are not a
 guard. Pass `token.signal` to cancellation-aware work and recheck
