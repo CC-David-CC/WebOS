@@ -2,6 +2,24 @@ Continue dependable Files and the WebOS CAD foundation as integration lead.
 The full release and CAD Gate 1 remain active and incomplete. Do not restart the
 upstream merge or attempt every later gate at once.
 
+CURRENT UPDATE — supersedes older checkpoint details below
+Desktop 5af7c1bc7 integrates document-operation controls into Text, Calculator,
+Files, Circuit/Digital Logic and the CAD parent. Sixteen controller tests and
+lead actual-app checks pass; signed Files worker-close/UI tests add real OPFS
+evidence including fresh-context readBlob plus hash. Accepted/completed Chromium
+handoff passes, but the download finished before the close command returned;
+in-progress survival remains unproved. No public app promotion occurred.
+CAD 715628d1 fixes the signed worker script-policy failure by statically embedding
+pinned glue while verifying WASM. Lead strict-CSP worker/parent checks and owner
+signed width-edit/extrude/save/reopen pass. effc3717 records the dependent centered
+through-hole contract; private candidate/source association is in independent
+review, real cut/analytic topology is next. Keep exact-package signed
+qualification before promotion. Main e7e8 is undeployed: changing its selector
+also requires a reviewed post-floor beta recovery successor. Actual-Caddy and
+protected installation/recovery qualification remain open; do not install a
+research operator based only on model tests. Read the current handoff/work
+queues before acting on earlier snapshots below.
+
 LATEST RELEASE AND APP CONTRACT — 2026-11-04
 Main must contain only qualified end-to-end features. All games and unfinished
 integrations belong on beta. A core-only candidate has isolated signed

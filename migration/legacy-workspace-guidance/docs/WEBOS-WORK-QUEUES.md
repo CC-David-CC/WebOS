@@ -102,6 +102,36 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+**Latest integrated checkpoint; older entries below retain their original scope:**
+
+- [~] Shared document operations now cover Text/Calculator, Files
+  (`521e3582f`/`dae5c8efb`), Circuit/Digital Logic (`e8e6338b5`), the native
+  Circuit picker (`21df8bc62`) and CAD parent (`cb57c744d`). Subtree/advisory
+  controller checks total 16. Lead actual-app/engine reruns pass, with in-memory
+  storage; exact results and the strict-CSP harness correction are `89236be4d`.
+  Other apps and public promotion remain open.
+- [x] Bounded signed Files close-during-copy: `d62ccc3e5` uses real OPFS Worker
+  progress on an 8 MiB + 7 byte file, closes Files, observes one termination,
+  released generation locks and no late download URL, then reopens and downloads
+  exact bytes matching the signed server hash. Desktop and phone emulation pass.
+  This does not promise immediate OS memory return or cover a browser download
+  already in progress. The ordinary signed UI action chain also passes;
+  `5af7c1bc7` strengthens fresh-session proof to readBlob plus independent hash.
+  Chromium accepted/completed handoff also passes; completion was observed before
+  the close command returned, so in-progress handoff survival remains unproved.
+- [~] CAD worker CSP repair `715628d1` passes lead fresh build, three integrity
+  tests and actual worker heap-growth/prism plus parent lifecycle checks under
+  self-only script policy. Owner signed fixture passes width edit, worker
+  extrusion and save/reopen. Test packaging is not runtime promotion. The next
+  dependent centered-hole contract is `effc3717`; candidate/source association
+  is in review, actual cut/topology and full plate remain open.
+- [~] Main e7e8 restriction remains undeployed. Existing beta recovery pins the
+  old main selector/controller, requiring a coordinated post-floor recovery
+  successor. Exact two-family packaging/model tests are owner research; actual
+  Caddy, interruption/recovery and protected installation remain under review.
+  The first actual-Caddy attempt rejected inconsistent auxiliary fixture files;
+  correcting the fixture seed is active. No live operator changed.
+
 - [~] DOCUMENT SUBTREES: `63271e457` adds active folder/descendant coordination
   to the shared mount controller, including source/destination reservations,
   root scope, separate My files/Linux namespaces and release on disposal.

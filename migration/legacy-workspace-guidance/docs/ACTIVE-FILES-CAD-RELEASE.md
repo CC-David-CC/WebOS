@@ -6,6 +6,20 @@ preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
 
 ## Current architectural direction — 2026-11-04
 
+**Current checkpoint (supersedes earlier implementation snapshots below):**
+shared mount operations are integrated into Text, Calculator, Files, Circuit
+Lab, Digital Logic and the CAD parent. Sixteen controller checks and lead
+actual-app/engine tests pass; signed Files copy-worker close/reopen and ordinary
+UI workflows are recorded at `d62ccc3e5`. No all-app or deployment claim.
+CAD `715628d1` repairs the worker script-policy failure by statically embedding
+pinned glue. Lead strict-CSP worker/parent checks and the owner's signed worker
+save/reopen fixture pass. The next bounded CAD task is the dependent centered
+through-hole contract (`effc3717`), starting with private candidate/source
+ownership; actual cut/topology and full plate remain open. Main e7e8 restriction
+is not deployed: changing its selector must preserve post-floor beta recovery
+through a separately qualified protected successor. See the handoff, work queues
+and exact receipts for current boundaries.
+
 Latest user clarification: **all JSketcher features are suspect and used for
 inspiration/reference.** Existing code earns reuse through an explicit contract
 and independent tests; source compatibility and prior menu presence are not

@@ -13,6 +13,36 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
+**Current integrated result (supersedes earlier snapshots below):** desktop
+`5af7c1bc7` includes shared document operations for Text, Calculator, Files,
+Circuit Lab, Digital Logic and the CAD parent. The subtree/advisory controller
+has 16 passing primitive checks; independent lead actual-app/engine runs are
+recorded in `89236be4d`. Those lead runs use in-memory storage. The separate
+signed Files fixture proves real 8 MiB + 7 byte worker-copy cancellation through
+the Close button, one worker termination, released locks, no late URL, and an
+exact-byte download after reopening at desktop and phone-sized viewports. Its
+create/Text-save/rename/move/copy/download/delete UI chain passes too, including
+fresh-context readBlob plus independent hash. Chromium download handoff passes,
+but completion was observed before the close command returned: this does not
+prove a still-running browser download survives closure. No app deployment.
+
+CAD `715628d1` statically embeds pinned OCI glue, preserves live heap access
+after growth and verifies WASM. Lead fresh build/integrity and actual
+self-only-CSP worker/parent tests pass. Owner signed fixture passes width edit,
+worker extrusion and signed save/reopen. Its test package is not a promoted
+runtime. `effc3717` records the dependent centered-through-hole contract;
+candidate-owned source association is in independent review, while cylindrical
+cut and analytic inner-loop projection are next. Full plate and Gate 1 stay open.
+
+Main e7e8 remains unchanged. Existing beta recovery pins the old controller/main
+selector, so a recover-only successor with two exact post-floor snapshot families
+must be qualified and installed together with the proposed guard. Packaging and
+model tests pass in the owner branch. Actual Caddy qualification is active; its
+first seed had inconsistent generated auxiliary files and was correctly refused.
+No live operator changed. Preserve the existing beta floor and recovery path.
+
+### Earlier checkpoints and evidence boundaries
+
 **Latest review:** Text correction `06e696262` and subtree controller
 `63271e457` pass lead real Text/Calculator Chromium tests at 1366/390 and
 15 primitive checks. Circuit/Digital Logic migration `e8e6338b5` has owner
