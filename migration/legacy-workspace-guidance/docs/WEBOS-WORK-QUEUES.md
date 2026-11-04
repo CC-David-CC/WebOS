@@ -2,6 +2,12 @@
 
 This is the operational queue for the complete WebOS program. **Use and update this file whenever work is started, tested, integrated, deployed, blocked, or handed off.** Preserve the full scope below. Add discovered work to the appropriate queue; do not remove an unfinished item merely because a prototype exists.
 
+For separate app/domain assignments and their ordered finish lines, use
+`docs/WEBOS-SILOED-WORK.md`. That decomposition separates browser storage,
+server storage, synchronization, desktop/app ownership, JSketcher upgrades,
+geometry engines, manufacturing metadata, 3MF, physics and operations. The
+program remains paused; documenting the silos does not resume development.
+
 ## Queue notation and operating rule
 
 - `[x]` means the exact stated outcome is complete and supported by evidence.
