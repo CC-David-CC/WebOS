@@ -102,6 +102,19 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] NEXT BOUNDED LANES ASSIGNED: from verified desktop `2384b3f3d` and fork
+  `0259d3fc`, the lead continues with three isolated agents. Mechanical work
+  owns replay-local seed/tool provenance and a narrowly declared associative
+  OCC through-cut pattern (`research/feature-pattern-cut-20261104`), including
+  identity, dimensions, count/spacing, undo/reopen and failure checks. Engine
+  work owns verified worker loading and multi-operation OCI handles
+  (`research/oci-multisolid-mount-20261104`), with real geometry, lifecycle and
+  integrity tests. It remains unconnected research; a scoped Blob-script test
+  policy does not authorize widening production CSP. Files work owns the
+  damaged/forbidden inner-journal recovery gap in the existing managed binding,
+  using the same controller and outer lock, without live mutation. The lead
+  owns contract review, combined checks and integration. Initial agent results
+  are not integrated passes; each lane must return a reviewed commit/evidence.
 - [x] HANDOFF PLAN WRITTEN: `HANDOFF-FILES-CAD-2026-11-04.md` and
   `goals/FILES-CAD-NEXT-AGENT.txt` give the successor verified refs, independent
   lanes, reproduction commands, known failures and bounded acceptance. Source

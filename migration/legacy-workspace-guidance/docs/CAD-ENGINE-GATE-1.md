@@ -13,8 +13,14 @@ Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
 
 The 2026-11-04 combined fork `2b3f2c0f` passes the bounded five-hole plate
 resize/reopen, failed-edit recovery and document-lifetime/surface controls.
-See its `docs/DOCUMENT-LIFETIME-REPLAY-20261104.md`. This advances the foundation
-but does not complete the rectangle/fillet/pattern/unit/agent chain below.
+Packaged fork `d3d36bc5` additionally passes ordinary OCC fillet/chamfer edits,
+invalid-size and Native refusal controls. Desktop `73c1e8b13` passes signed
+small-model and dependent-plate save/reopen at simulated phone, 1080p and 4K.
+See the fork's `docs/DOCUMENT-LIFETIME-REPLAY-20261104.md` and this repository's
+`evidence/cad-packaged-workers-20261104.md` for exact scope and receipts.
+These are development tests, not a deployed release or the complete
+rectangle/fillet/pattern/unit/agent chain below. The separate worker-engine
+mount research is not selected by this application package.
 
 ## Gate definition and execution policy
 
@@ -62,17 +68,17 @@ exclusive enum values.
 |---|---|---|---|
 | P0 | Geometry primitives | Correct valid/degenerate classification, with declared domains. | Partial; primitive domain/basis fixes under review. |
 | P0 | Constraint solver | Distinguish underconstrained, fully constrained, redundant and contradictory; report numerical uncertainty. | Partial; false DOF and other defects reproduced. |
-| P0 | Driving dimensions | Edits propagate consistently or fail while preserving prior intent. | Partial; positive dimensions tested narrowly, validated source/edit candidate exists; integrated edit-chain remains open. |
+| P0 | Driving dimensions | Edits propagate consistently or fail while preserving prior intent. | Partial; five-hole plate 100×50×20 → 150×30×20 and impossible-edit recovery pass. General dimensional/typed-expression coverage and full chain remain open. |
 | P0 | Units and expressions | Typed, dimensionally valid formulas; conversion/display changes preserve physical size. | Partial; explicit native mm does not establish inch display or a complete units system. |
 | P0 | Planar region extraction | Disjoint, nested, intersecting and touching cases interpreted explicitly. | Incomplete; contour loops are not yet a complete arrangement/region model. |
 | P0 | Sketch selection | Entities and individual/multiple regions selected unambiguously with durable intent. | Partial candidate for circles/axis-aligned rectangles; full selection/lifecycle scope remains open. |
 | P1 | Extrude/revolve | Valid supported-profile solids, with direction and result/body policy. | Partial; explicit selected-region OCC candidate passes scoped cases; complete feature matrix open. |
 | P1 | Boolean operations | Union/cut/intersection and correct empty/multi-body results. | Scoped tests exist; full boundary matrix open. |
-| P1 | Feature dependency graph | Deterministic downstream recomputation and attributable failure propagation. | Unqualified beyond scoped examples. |
+| P1 | Feature dependency graph | Deterministic downstream recomputation and attributable failure propagation. | Partial; private full-history replay, dependent five-hole resize, fillet/chamfer and last-complete recovery pass. True feature patterns and general dependency coverage remain open. |
 | P1 | Topological references | Survive supported changes or fail explicitly, never silently retarget. | Partial; complete change-chain test open. |
-| P1 | Persistence | Native intent, references, units and history survive save/reload. | Partial; canonical/worker/file integration under qualification. |
+| P1 | Persistence | Native intent, references, units and history survive save/reload. | Partial; canonical v2, both packaged workers and actual signed My files/server save/reopen pass for small models and the dependent plate. Large models and all document domains remain open. |
 | P1 | STEP/3MF export | Independently measurable geometry, units and intended structure preserved. | Partial research; complete coupled-model export open. |
-| P2 | Fillet/chamfer/shell | Ordinary and limiting cases behave robustly. | Unqualified. |
+| P2 | Fillet/chamfer/shell | Ordinary and limiting cases behave robustly. | Partial; ordinary 2 mm OCC corner fillet/chamfer, resize/reopen, invalid-size and Native refusal controls pass. Broad edge/limit coverage and shell remain unqualified. |
 | P2 | Sweep/loft | Supported profiles/path correspondence and explicit failure cases. | Unqualified. |
 | P2 | Assemblies | Separate components and meaningful mechanical relationships. | Not qualified; host snapshot currently rejects assembly projects. |
 | P2 | Drawings/GD&T | Consistent manufacturing documentation tied to model intent. | Not qualified. |
@@ -161,8 +167,8 @@ be relabeled passing merely to close the gate.
 | 7 | Contradictory dimensions | Truthful conflict, prior model/intent preserved, remove/recover/reload; partial. |
 | 8 | Extruded plate | Measured solid, correct body count, units and selected profile; scoped evidence. |
 | 9 | Four holes | Correct placement, hole/pattern semantics and measurable through geometry; partial audit. |
-| 10 | Edit plate width | Downstream features preserve relationships or report repairable failures; open. |
-| 11 | Fillets and chamfers | Correct edge operations and limiting-case recovery; open. |
+| 10 | Edit plate width | Scoped five-hole 100×50 → 150×30 edit, fillet/chamfer, undo/redo, failed-edit recovery and native reopen pass; general dependencies and the complete chain remain open. |
+| 11 | Fillets and chamfers | Ordinary OCC corner operations through the wizard and invalid-size preservation pass; complete edge/limit matrix and both-engine support remain open. |
 | 12 | Hollow enclosure | Shell/wall intent and valid ordinary limits; open. |
 | 13 | Revolved stepped profile | Axis, profile and measurable rotational solid; open. |
 | 14 | Sweep along a curve | Path/profile alignment and supported valid result; open. |
@@ -172,7 +178,7 @@ be relabeled passing merely to close the gate.
 | 18 | Parameter-driven geometry | Typed values, dependency graph, accepted edits and invalid-cycle recovery; partial. |
 | 19 | Break a referenced face | Explicit missing/ambiguous dependency, no silent retargeting; open. |
 | 20 | Export STEP and 3MF | Independent size, geometry, units and intended structure verification; partial research. |
-| 21 | Reload saved native model | Intent, IDs, history, units and references restored via account files; partial. |
+| 21 | Reload saved native model | Signed Files → CAD → My files/server → fresh-session reopen passes for scoped native-v2 models, with exact bytes, IDs and geometry checks; broader document coverage remains partial. |
 | 22 | Dimensioned manufacturing drawing | Views/dimensions/reference meaning stay tied to the model; unqualified. |
 
 For each level record UI and agent paths, engine support, isolated failure cases,
