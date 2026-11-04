@@ -57,6 +57,8 @@ def run(base,out):
  app=replace_one(app,'  launch(app,title) {',"  launch(app,title) {\n    if(!mainAppAdmitted(app)){feedback('This app is available on beta.ksu.codes.');return null;}")
  app=replace_one(app,'  open(app,context){',"  open(app,context){\n    if(!mainAppAdmitted(app))throw Error('This app is available on beta.ksu.codes.');")
  app=replace_one(app,'if(!v||!allowed.has(v.app)||', 'if(!v||!allowed.has(v.app)||!mainAppAdmitted(v.app)||')
+ app=replace_one(app,"return JSON.stringify(['codi-window-layout/1',identityConfig?.identity?.issuer||location.origin,owner]);","return JSON.stringify(['codi-main-core-window-layout/1',identityConfig?.identity?.issuer||location.origin,owner]);")
+ app=replace_one(app,"const raw=localStorage.getItem(this.layoutKey(owner));","const raw=localStorage.getItem(this.layoutKey(owner))??localStorage.getItem(JSON.stringify(['codi-window-layout/1',identityConfig?.identity?.issuer||location.origin,owner]));")
  old="if(/\\.game\\.json$/i.test(path)){void openSavedGameDocument(desktop,owner,path);return;}";new="if(/\\.game\\.json$/i.test(path)||/\\.brf$/i.test(path)){feedback('Open this project on beta.ksu.codes.');return;}"
  loader=replace_one(loader,old,new);loader=replace_one(loader,"const app=/\\.brf$/i.test(path)?'microduck':",'const app=');loader=replace_one(loader,":'text';desktop.open(app,Object.freeze({version:1,storage:'mirror',path,owner}));}",":'text';if(!mainAppAdmitted(app)){feedback('Open this project on beta.ksu.codes.');return;}desktop.open(app,Object.freeze({version:1,storage:'mirror',path,owner}));}")
  catalog['apps']=[a for a in catalog['apps'] if a['id'] in ADMITTED]
