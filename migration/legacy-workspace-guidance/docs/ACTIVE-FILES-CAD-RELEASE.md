@@ -82,7 +82,7 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | C01 | One coherent buildable fork preserves intended existing integrated work | open | Reuse 518a4666 descendants; exact selected base and feature map |
 | C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | open | Actual build provenance and supported-operation evidence |
 | C03 | Splines/history/selection/DXF/camera/reconstruction work together | open | Existing focused tests; combined app regression |
-| C04 | CAD My files, independent instances, disposal and shared commands | open | Signed host workflow against product file contract |
+| C04 | CAD My files, independent instances, disposal and shared commands | partial | Bounded read helper: 7 tests and real CAD desktop/emulated-phone stand-in workflow passed; signed product host still required |
 | M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | open | Admission research baseline; remaining solver failures/performance |
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
 | M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
