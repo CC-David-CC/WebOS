@@ -102,6 +102,27 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] COMBINED HOST TESTED: canonical CAD version 2 and leased My files Blob
+  worker opening pass actual signed desktop runs at simulated phone, 1080p and
+  4K. Native Mesh intersection/history and OCC rotation/scale save/reopen,
+  independent windows, closed command refusal, old-format rejection and a
+  second account's denial are covered. No deployment; see
+  `evidence/cad-files-combined-20261104.md`. The full bracket/agent gate remains.
+- [~] FILES UI TESTED: source `99bc3ba06` covers actual create/rename/move/copy/
+  delete/upload/download, sync/reopen, cancellation, stale/colliding copies,
+  signed account denial and explicit worker teardown. Phone is simulated and
+  Linux disabled. See `tests/files-desktop-signed-fixture.md`.
+- [~] DOWNLOAD RECOVERY TESTED: `218536add` verifies real signed TCP cuts,
+  complete OPFS generations, retained prior bytes/version and recovery after
+  Chromium SIGKILL/restart. Cuts happen during transfer; kills follow the
+  reported failure. No power-loss or total-memory claim. See
+  `research/opfs-storage/DOWNLOAD-TCP-CUT-20261104.md`.
+- [ ] ACTIVE IMPLEMENTATION: bound cooperating heavy file workers across tabs;
+  independent lead review/test pending. CAD plate tests exposed DistancePL's
+  boolean-to-numeric parsing and accepted request/replay/default/ID issues;
+  geometry and history owners are fixing them in separate files. Do not mark
+  the dependent part workflow passed from the smaller signed models above.
+
 - [x] DOCUMENTED SCOPE ONLY: Gates 1–5 and the six conceptual CAD eras are
   recorded with an end-to-end execution checklist. This checks off the requested
   planning artifact, not the capabilities; Files and Gate 1 remain incomplete.
