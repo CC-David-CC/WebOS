@@ -102,6 +102,24 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] PRIVATE CAD WORKSPACE: fork `3e42030f` records implementation `67b8888f`.
+  Lead seven pure core tests, stream coordinator, six legacy adapter checks,
+  build/typecheck and eight actual Chromium scripts pass. Prepared bytes stay
+  private until current-owner commit; per-key guarded delivery refreshes both
+  modified faces and removes stale loop/object IDs. Cancellation, service
+  replacement, reentrant callbacks and bounded candidate/delivery controls pass.
+  Receipt `test/webos/workspace-preparation-evidence-20261104.json` retains the
+  failing throttle control and corrected reset-test oracle. ARC11 still needs
+  the complete plane/worker-sketch/model transaction and common UI/agent command.
+  The new bounds do not qualify all legacy memory use or durable My files.
+  Desktop package stays `d3d36bc5`; nothing deployed.
+- [~] PARALLEL RESEARCH RETURNS: rectangle parity/provenance `e6db73ea` keeps
+  numeric worker versus named-parameter editor limits explicit. Engine `239c64b4`
+  records a clean source build and agent-run session tests, but unexplained
+  compiled-code differences prevent runtime promotion. Files `6fdc8d5a0` supplies
+  the reproducible isolated protected-launcher runner; production systemd/Caddy
+  boundaries remain simulated. These are backed research results, not a new
+  assembled release. See the latest successor handoff for exact paths and gaps.
 - [~] CONSISTENT CAD REVISION: fork `5b77f71d` records implementation
   `ccb66be7`. Lead build/typecheck, actual stream tests and 12 Chromium scripts
   pass. Successful/failed replay and reset publish matching geometry/history/

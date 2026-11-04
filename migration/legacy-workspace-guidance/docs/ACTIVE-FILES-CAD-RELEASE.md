@@ -56,6 +56,14 @@ the evaluated-craft publication gap, not the entire document/storage transaction
 Next integrate worker-prepared plane/sketch bytes under ARC11. The desktop
 package remains `d3d36bc5`; no deployment is claimed.
 
+Fork `3e42030f` adds private bounded workspace preparation (`67b8888f`),
+per-key lifetime-guarded invalidations and stale sketch-ID cleanup. Lead pure
+core/stream/legacy-adapter tests, build/typecheck and eight Chromium scripts pass.
+The real before-control loses one of two face updates; the corrected path keeps
+both. This is the storage participant for ARC11, not a complete document
+transaction or newly registered agent creation command. See the fork's
+`workspace-preparation-evidence-20261104.json` and latest successor handoff.
+
 The Files beta candidate and issuer/config/session fixture are integrated at
 desktop `2e312b797`, but managed transition/recovery and public qualification
 remain open. `research/beta-opfs-release/README.md` records exact pins.

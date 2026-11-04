@@ -12,6 +12,50 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
+Fork `3e42030fa3d094afdb5a36ac13c00b5549a6ca5d` records private workspace
+implementation `67b8888f` and lead evidence. Seven pure workspace tests, the
+stream coordinator, six legacy staged-write adapter checks, build/typecheck,
+and eight actual Chromium scripts pass. A real before-control proves the old
+last-value throttle omitted the first of two modified faces. Both now refresh;
+deleted/replaced sketch objects and loops leave the registry. Prepared bytes
+stay private until commit, and stale document/service work cannot publish or
+roll back a newer lifetime. New private preparation has explicit size and
+single-candidate bounds. Read the fork's updated `CRAFT-PUBLICATION-20261104.md`
+and `test/webos/workspace-preparation-evidence-20261104.json`.
+
+This supplies the storage participant for ARC11; **the complete plane + worker
+sketch + history/model transaction is still next**. No new command, desktop
+package or deployment. The built application stamp is parent `5b77f71d` because
+the implementation was built before commit; the receipt binds exact source and
+served bytes. Do not describe it as a clean post-commit build.
+
+Rectangle parity branch `research/cad-rectangle-parity-20261104` at `e6db73ea`
+records the verified eleven-asset editor provenance and agent-run visible-editor
+versus data-only worker geometry/constraint/resize/rejection/reopen controls.
+The editor uses named parameters and the factory uses numeric driving values;
+shared-command and named-parameter parity remain open. The factory is still
+research, not registered or integrated by these workspace changes.
+
+Engine checkpoint `239c64b4` on `research/occ-cleanup-audit-20261104` records an
+agent-run clean full non-instrumented source `5a4e14ce` build and exact-output
+Chromium session checks. Clean WASM `abb23bdd…` differs from incremental
+`b39e7a26…`; the difference is narrowed to `ShapeFix_Wire_1.cxx.o` with matching
+source bytes and changed compiled branch tables. A standalone recompile gave a
+third variant. Cause and semantic equivalence are unknown, so promotion remains
+blocked. The lead has not qualified this as the replacement runtime. Artifacts
+and provenance are on R730 at `/mnt/data10tb/codi-occ-session-full-build-20261104`.
+
+Files operator branch `research/beta-files-operator-20261104` at `6fdc8d5a0`
+adds a documented single runner for clean apply, forced issuer-switch
+interruption, forward recovery and idempotent recovery. Agent-run fixture uses
+the real protected launcher, lock, inventories, journals and disposable signed
+issuer/gateway. Main readiness, policy/origin mapping, systemd and Caddy routing
+are explicitly simulated. Read that branch's
+`research/beta-isolated-hosting/SIGNED-PROBE-NOTES.md`; preserve its unrelated
+hosting base and integrate scoped paths only after lead review. No activation.
+
+Earlier checkpoints below retain their original evidence and limits.
+
 Fork `5b77f71d` now includes craft publication implementation `ccb66be7` and
 its exact evidence. History, geometry, registry and failure status are installed
 together; reset stops stale delivery, and rejected commands preserve a valid,
@@ -93,7 +137,7 @@ The complete original goal and amendments are preserved in
 | Repository | Integration branch | Code checkpoint before this handoff |
 |---|---|---|
 | `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `541db60789a2910f2a92a1023fe765ea902d43a0` |
-| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `5b77f71d` (implementation `ccb66be7`) |
+| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `3e42030f` (workspace implementation `67b8888f`) |
 
 The desktop branch's later handoff commit adds documentation to that code
 checkpoint. Verify branch tips with `git ls-remote` before starting; another

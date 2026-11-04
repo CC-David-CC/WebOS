@@ -10,6 +10,15 @@ The handoff names exact code checkpoints, scoped candidate results, reproduction
 known failures and deployment boundaries. Treat it as the starting point and
 update it when new evidence changes the plan.
 
+Latest CAD checkpoint is 3e42030f (workspace implementation 67b8888f).
+Private sketch-byte preparation, lifetime-safe per-key notifications and stale
+geometry-ID removal pass lead core/adapter/build/typecheck and eight Chromium
+scripts. Compose this with evaluated craft publication and the validated worker
+factory next; do not rebuild another workspace store or call ARC11 complete.
+The handoff also names rectangle parity e6db73ea, clean engine research239c64b4
+with unexplained binary differences, and Files operator fixture6fdc8d5a0 with
+explicit simulated production boundaries. None changes the desktop package.
+
 Use three subagents in separate branches/worktrees with explicit path ownership:
 1. Files: review the existing sealed beta-derived package and isolated issuer/
    session tests; finish managed transition, forward recovery and continuity
