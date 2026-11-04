@@ -102,6 +102,40 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [x] CAD RESOURCE OWNERSHIP, BOUNDED SLICE: fork `efb96770` qualifies source
+  `531cc24d` with nine focused pool tests and six actual-browser regressions.
+  Real OCC mounts injected into PLANE replay preserve accepted/full-tip resources
+  on rejection, close superseded candidates, and terminate on document reset.
+  Setup failures and cleanup-failure poisoning are covered. Existing rectangle
+  undo/native reopen and OCC/Native Mesh registry checks still pass. This is an
+  internal ownership API, not worker-prism history publication or an origin-wide
+  memory budget. See fork `test/webos/craft-engine-resources-evidence-20261104.json`.
+- [~] NEXT CAD SUBSTEP EXIT: integrate the bounded model projection; explicitly
+  gate unsupported legacy consumers and transient references; bind the exact
+  worker result to current document/engine ownership; publish model, history and
+  registry atomically; then prove dimension edit, rejection, undo/redo and native
+  save/reopen on that combined path. Only then expand this path to dependent
+  holes/cuts/fillets/patterns. Projection `6cbee3a7`, integrated privately as `d6f7dfb0`, now has
+  owner, independent and lead real Worker/registry proof in `91c8d95c`.
+  The consumer audit identifies ignored failed legacy pushes, silently omitted
+  Boolean targets, transient references and native restore ID bounds to gate. Full Gate 1 and the plate workflow remain open;
+  engine parity is not required.
+- [~] FILES PUBLIC ACCEPTANCE REVIEWED: small-file Files→Text save, independent
+  account denial, fresh-context recovery and two-process conflict controls are
+  integrated. Lead reran strengthened positive transfer assertions: 69,283
+  request-body bytes for a one-byte edit of 1 MiB. The separately serialized
+  public 128 MiB run passes initial/fresh-profile/changed-file independent hashes
+  and verified deletion: 71,530 changed-operation request-body bytes, including
+  a 65,951-byte delta upload. Review preserves the earlier failed test and exact
+  retained test accounts. See `tests/files-public-beta-*-20261104.*`.
+  Sampled profile-process RSS (~3.49 GB) is not physical memory or a total bound;
+  the test retained Blobs and two desktops, with unmeasured guest/speech state.
+  Memory, wider interruption/crash and shared-capacity qualification remain open.
+  Two isolated 16 MiB phase/PSS runs pass hashes/deltas with real and stubbed
+  guests: ~1.38 GB versus ~0.53 GB PSS at the second guest wait (different
+  durations). Both actual guests reached ready. This suggests guest startup
+  contributes, without proving production/128 MiB budgets or exact causal cost.
+  See `tests/files-isolated-16m-memory-20261104.md`; no new public128 run.
 - [~] FILES V2 ACTIVE ON BETA: protected preparation, supported-CLI guard,
   dedicated private probe, full public-artifact staging and the actual managed
   plan/apply completed. Candidate `3ad04c48`, issuer `853c12e5`, unchanged
@@ -110,9 +144,9 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   independent read-only inventory/unit/public checks also pass. See
   `evidence/files-beta-activation-20261104.json` and protected-install/probe
   receipts. Main and `/desktop/` remain on their existing releases. The browser
-  owner reports a Ready-gated Files→Text edit/save, second-account denial,
+  owner verified a Ready-gated Files→Text edit/save, second-account denial,
   fresh-session reopen, 1 MiB one-byte changed transfer and independent-profile
-  conflict pass; lead review of those receipts remains. A controlled held-read
+  conflict pass; lead review is complete as recorded above. A controlled held-read
   follow-up found Text intentionally noneditable until ready; the initial
   empty-file test typed too early. Retain that failed test and readiness control;
   no lost accepted edit was reproduced. Activation does not complete Files
@@ -125,8 +159,9 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   existing OCC and Manifold suites. Fork receipts are under
   `test/portable-prism-reader`, `test/portable-mount-bridge` and
   `test/prism-semantic`. Four connector edges/all vertices still lack qualified
-  durable authored identity. Next: bounded model projection, private candidate
-  and accepted mount ownership, atomic history publication, edit/undo/reopen.
+  durable authored identity. Resource ownership now has the bounded proof above;
+  model projection integration, atomic worker-prism history publication and
+  edit/undo/reopen remain.
   No public CAD repin or full-plate qualification. Earlier checkpoint wording
   below is historical; these results supersede its missing reader/mount status.
 - Foundation priority: the user explicitly accepts that usable workflows may

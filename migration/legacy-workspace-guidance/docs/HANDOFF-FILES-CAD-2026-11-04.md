@@ -13,21 +13,46 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
-**Current, superseding the historical checkpoints below:** CAD
-`4b6528e9` on `integration/files-cad-release-20261104` includes the strict
-headless prism reader, deferred global Verb initialization, live mount binding
-and authored rectangle semantic roles. Lead fresh builds/typecheck and real
-strict-CSP workers pass; the shared controller also passes existing OCC and
-Manifold box/Boolean regressions. Exact receipts are in the fork's
-`test/portable-prism-reader/lead-evidence-20261104.json`,
-`test/portable-mount-bridge/lead-evidence-20261104.json`, and
-`test/prism-semantic/lead-evidence-20261104.json`. Width changes and reversed/
-reordered solved edges retain the supported structured source keys. Connector
-edges and vertices still lack qualified durable identity. Host projection,
-candidate/accepted engine-resource ownership, atomic history publication and
-edit/undo/native reopen remain unfinished; the full plate is not qualified on
-this new path. Read the refined bridge note in the fork. The ordinary desktop
-runtime remains `d3d36bc5`; no CAD runtime repin or deployment was made.
+**Current, superseding the historical checkpoints below:** CAD `efb96770`
+qualifies internal candidate/accepted engine-resource ownership using source
+`531cc24d`: nine pool tests and six actual-browser scripts pass, including real
+OCC worker termination, failed/rejected replay, history rollback, setup failure,
+document reset, existing rectangle undo/native reopen and both-engine registry
+IDs. See the fork's `test/webos/craft-engine-resources-evidence-20261104.json`
+and README. This is a real engine lifetime probe in PLANE replay, not worker-prism
+model publication. The `engineEvaluation` contract is ready for that caller.
+
+Private projection `6cbee3a7`, integrated as `d6f7dfb0`, constructs real Shell /
+MBrepShell objects from the bounded previously validated worker result. Owner
+and independent strict-CSP tests pass supported durable IDs under width edits
+and reordered local tokens, registry lookup and collision refusal. Lead integrated qualification also passed, recorded at `91c8d95c` in
+`test/prism-model-projection/lead-evidence-20261104.json`. Four connector edges and eight vertices stay explicitly
+transient; no native pointer or handle is serialized. Shared consumers do not
+honor representation restrictions automatically, so this model is unpublished.
+
+The current serial exit checklist is:
+
+1. [x] Authored rectangle profile → actual OCC worker result, bounded strict
+   reader, live mount binding and structured source roles (`4b6528e9`).
+2. [x] Candidate/displayed/full-tip engine ownership and reset/rejection cleanup
+   (`efb96770`, per-document bounds, not a total RAM guarantee).
+3. [x] Review and qualify bounded JS model projection on the integrated tree
+   (`91c8d95c`); model remains unpublished until the next checks.
+4. [ ] Gate unsupported legacy consumers and transient durable references;
+   connect the exact result to current document/engine ownership and publish
+   matching model/history/registry together. Explicitly reject failed legacy
+   pushModel rather than invoking an OCC name or silently dropping a target.
+   Keep generated reference IDs within native restore limits until a compact
+   injective encoding and its round trip are qualified. The exact functions and
+   rejection matrix are in the fork
+   `docs/research/WORKER-PRISM-CONSUMER-GATES-20261104.md` (`672efcdb`).
+5. [ ] Prove width/depth edit, rejected change, undo/redo and native save/reopen
+   on that complete worker-solid path; then exercise it through My files.
+6. [ ] Expand to dependent holes/cuts/fillets/patterns and the full plate test.
+
+The two engines need honest support and failure semantics, not identical
+geometry or capabilities. Full Gate 1 remains open. The ordinary desktop CAD
+runtime stays `d3d36bc5`; no public CAD repin/deployment occurred.
 
 **Files deployment:** the actual protected plan and apply passed on box-webhost,
 activating candidate `3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc`
@@ -57,16 +82,27 @@ releases. No account/key copying occurred. The 5 GiB account reserve is unchange
 The main renewal timer is active/waiting; its renewal service remains failed
 with no PID as before this work, a separate existing issue.
 
-Public-browser acceptance is in progress. The browser owner reports a
-Ready-gated Files→Text edit/save, other-account denial, fresh-session reopen
-and 1 MiB one-byte transfer pass, plus independent-profile conflict handling;
-lead receipt review remains. The first test typed during initial load and
-observed an empty synced file. A held-read follow-up found Text intentionally
-noneditable until ready; no lost accepted edit was reproduced. Preserve both
-tests and review their receipts. The public speech vendor JS returns 404 as a
-separate issue. Do not claim complete Files acceptance yet. Beta has no consumers and the user permits
-replacing its services; main and the prototype remain protected. Activation is
-not large-file, crash, conflict or classroom-concurrency qualification.
+Public small-file, account-isolation and two-process conflict receipts are
+reviewed and integrated. Lead reran the strengthened positive-upload/authorization
+measurement: the 1 MiB one-byte edit used 69,283 request-body bytes. See
+`tests/files-public-beta-lead-result-20261104.json`. A serialized public 128 MiB
+create, separate fresh-profile read, one-byte replacement and verified deletion
+also pass independently computed hashes: 71,530 changed-operation request-body
+bytes including the 65,951-byte delta. Source/evidence and memory audit are under
+`tests/files-public-beta-128m*`. Dedicated test accounts remain; the large file is
+verified absent. Initial failed test cases and the held-read Text readiness
+control are retained; no lost accepted edit was reproduced.
+
+The ~3.49 GB sampled profile-process RSS is not a physical-memory bound; both
+desktop sessions, test Blob/worker and unknown guest/voice residency contributed.
+Two isolated 16 MiB phase/PSS runs now pass: both real Linux guests reached
+ready; the explicitly stubbed comparison reported guest errors as intended.
+Observed second-guest-wait PSS peaks were ~1.38 GB real/~0.53 GB stub, with
+different sample durations. This points to guest startup as a contributor, not
+an exact causal allocation or public128 budget. See the isolated memory receipt. Wider crash,
+real interruption and resource/concurrency qualification remain; public success
+does not close Files. The speech vendor JS 404 remains separate. Beta has no
+consumers and its services may be replaced; main and `/desktop/` stay protected.
 
 ### Prior component checkpoint (historical next-step wording)
 

@@ -21,22 +21,27 @@ dependent-feature regeneration. A stale-boundary refusal protects the old model
 but does not qualify ordinary supported resizing. The full Gate 1 and
 bracket/enclosure/core-3MF acceptance remain required; later gates stay queued.
 
-Latest bounded CAD checkpoint is `4b6528e9`. ARC13's authored profile and
-ARC14's actual OCC prism now connect to a strict headless analytic reader,
-live mount binding and structured authored face/perimeter-edge roles. Combined
-actual-worker tests pass width edits and reversed/reordered solver output;
-both engine paths pass the changed shared controller's regressions. Ordinary
-calls do not transfer the optional 16 KiB descriptor. Model projection,
-candidate/accepted resource ownership, document/account guards, atomic history
-publication and edit/undo/native reopen remain. Connector edges and vertices
-lack qualified durable identity. Read the fork's portable-reader/mount/semantic
-evidence and refined worker-prism bridge note. No public CAD repin occurred.
+Latest qualified CAD resource checkpoint is `efb96770` (tested source
+`531cc24d`): nine focused pool tests and six actual-browser regressions pass.
+It adds candidate/displayed/last-complete engine ownership to existing private
+atomic replay, with setup/rejection/reset cleanup and real OCC termination.
+Existing rectangle undo/native reopen and both-engine registry checks still pass.
+Private model projection is integrated at `d6f7dfb0` after owner and independent
+Worker/registry proof; lead integrated qualification is `91c8d95c`. Reader, mount
+binding and authored face/perimeter-edge roles from `4b6528e9` remain qualified.
+
+ARC14 still needs consumer capability gates, transient-reference refusal, exact
+current document/mount association and matching worker-model/history publication,
+then dimension edit, rejection, undo/redo and native/My files reopen on that path.
+The full plate's dependent holes/fillets/pattern follow. Connector edges and
+vertices have no qualified durable identity. No public CAD runtime repin occurred.
 
 Files candidate `3ad04c48` with issuer `853c12e5` is now active on beta through
 the protected managed operator; gateway `dd8cbea7` is unchanged. The v2 floor
 persists and transient journals cleared. Signed known-file health and
-independent post-apply inventory/unit/public checks pass. Actual browser
-acceptance is running; activation does not close the storage gate. Main and
+independent post-apply inventory/unit/public checks pass. Public small-file/account/conflict and serialized 128 MiB hash/delta/readback
+checks pass with scoped evidence. Memory and broader fault/concurrency
+qualification continue; activation does not close the storage gate. Main and
 `/desktop/` remain on existing releases. See the current handoff and
 `evidence/files-beta-activation-20261104.json` for exact pins and recovery path.
 
