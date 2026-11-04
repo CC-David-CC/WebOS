@@ -6,6 +6,11 @@ Use `WEBOS-WORK-QUEUES.md` for the complete acceptance criteria and current
 ledger, and `HANDOFF-STORAGE-BETA-2026-11-02.md` for the stopping point.
 Statuses below describe that saved checkpoint, not a new live audit.
 
+The sortable planning matrix is `docs/planning/SILO-MATRIX.html`, with Markdown,
+CSV and JSON versions beside it. It estimates remaining implementation/proof
+effort and coarse done/partial shares for each app/domain separately. These
+are planning judgements, not acceptance evidence or a program completion score.
+
 ## Rules for keeping the silos separate
 
 Each silo gets its own branch, owner, ordered checklist, tests and finish line.

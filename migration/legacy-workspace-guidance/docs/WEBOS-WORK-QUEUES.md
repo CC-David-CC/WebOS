@@ -7,6 +7,9 @@ For separate app/domain assignments and their ordered finish lines, use
 server storage, synchronization, desktop/app ownership, JSketcher upgrades,
 geometry engines, manufacturing metadata, 3MF, physics and operations. The
 program remains paused; documenting the silos does not resume development.
+Estimated effort, risk and working/partial/missing fields are in
+`docs/planning/SILO-MATRIX.html` (also Markdown/CSV/JSON). Estimates do not
+check off acceptance gates; use their stated assumptions and dependency notes.
 
 ## Queue notation and operating rule
 
