@@ -102,6 +102,21 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] CAD HOST AND SIGNED FILES: desktop `64becedd8`, CAD code `9bde6b29`
+  (boundary plan `cc2d46dd`). Lead rebuilt exact revision and passed command,
+  menu, atomic creation, typed domain/precision refusal and notification tests.
+  Real signed create/save/fresh-session reopen/editor width edit/second save,
+  server hashes, account denial and closed-window refusal pass. The current UI
+  extrusion produces measured bounds, but no worker-backed shared extrusion
+  command exists. ARC13/14 now explicitly cover authored profile, worker
+  operation and model/topology/history/lifetime bridge. Normal runtime pin
+  remains `d3d36bc5`; no deployment. See both new rectangle evidence JSON files.
+- [~] FILES CAPACITY: verified archive of twelve inactive public staging
+  directories freed about 1.72 GB on webhost root; free space is now
+  7,297,232,896 bytes. The unchanged 5 GiB reserve and account data are preserved.
+  Main/beta/prototype return 200. This removes the immediate one-file arithmetic
+  shortage, not concurrency or production qualification. Receipt:
+  `evidence/webhost-staging-archive-20261104.json`.
 - [~] FILES OPERATOR SOURCE INTEGRATION: imported only the independently reviewed
   `research/beta-isolated-hosting` subtree at `f6deb3251`, including the
   `a1e9e215c` gate-recovery correction. Seven targeted lead tests pass after
@@ -115,15 +130,14 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   current-build Chromium scripts pass. Real plane/worker rectangle bytes and
   history/geometry/registry publish together. Two sketches survive native reopen;
   cancellation, stale services/revisions, pre-install failure, post-commit reset,
-  malformed worker output and parent-frame calls pass. Authorized host discovery,
-  human action and durable My files remain next (ARC12). Full Gate 1 and broader
+  malformed worker output and parent-frame calls pass. Later host discovery,
+  human action and signed My files results are above (ARC12). Full Gate 1 and broader
   document transactions remain open. No new package or deployment.
 - [~] PARALLEL QUALIFICATION: engine `0431dff0` records scoped compiler/behavior
-  evidence, not runtime promotion. Files `fa228b79c` records exact integration
-  and insufficient account-volume headroom. Later `c204b753b` has an independent
-  review findings in apply-finalization exposure and partial-asset verification;
-  both are being corrected. Do not
-  integrate it as ready. Existing disposable Caddy/systemd evidence retains
+  evidence, not runtime promotion. Files `fa228b79c` recorded earlier capacity
+  limits; later cleanup is above. The independent review findings in
+  `c204b753b` were fixed at `a1e9e215c` and integrated as noted above.
+  Existing disposable Caddy/systemd evidence retains
   explicit production substitutions. The 5 GiB account reserve is unchanged.
 - [~] PRIVATE CAD WORKSPACE: fork `3e42030f` records implementation `67b8888f`.
   Lead seven pure core tests, stream coordinator, six legacy adapter checks,

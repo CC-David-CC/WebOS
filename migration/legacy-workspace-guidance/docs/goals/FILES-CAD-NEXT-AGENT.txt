@@ -10,19 +10,43 @@ The handoff names exact code checkpoints, scoped candidate results, reproduction
 known failures and deployment boundaries. Treat it as the starting point and
 update it when new evidence changes the plan.
 
-Latest CAD checkpoint is ec2e0156 (rectangle implementation 07316f8f).
-The actual plane/worker-rectangle command composes private sketch bytes and
-matching craft publication. Lead build/typecheck, seven pure workspace tests,
-stream coordinator and nine current-build Chromium scripts pass, including two
-sketches, native reopen, stale/cancelled jobs and publication failures. Read the
-fork's RECTANGLE-CREATION-20261104.md and evidence JSON. Next register this core
-API through the authorized host and a human action, then prove editor edits and
-durable My files save/reopen. A volatile receipt is not durable persistence or
-completion of the whole-document transaction/Gate 1. Set explicit browser URL
-and CDP variables for old scripts. The handoff names engine 0431dff0 (scoped
-compiler/behavior evidence) and Files fa228b79c (integration/capacity); do not
-promote c204b753b until both independent review findings are fixed and qualified.
-No package/deployment change. Earlier paragraphs below are historical.
+Latest CAD source is cc2d46dd (code tested at 9bde6b29, diagnostic change
+85b588c8). Desktop 64becedd8 integrates the scoped rectangle commands, Add-menu
+dialog and signed acceptance test. Lead builds/typecheck, eight command tests,
+actual atomic/host/boundary browser suites and signed account storage pass.
+Create, save, close, fresh-session reopen, real editor width edit and another
+signed save/reopen retain the authored rectangle; server bytes/hash match and
+another account is denied. The diagnostic follow-up was rebuilt at its exact
+revision and retested. Read the two rectangle evidence JSON files under
+docs/evidence. This is test-only packaging, not a deployed runtime or full Gate1.
+
+The next concrete CAD dependency is ARC13/14. Existing EXTRUDE geometry and
+topology classification still run on the UI thread. The research engine mounts
+can make boxes/Booleans but cannot yet publish an authored extrusion with its
+model/topology/provenance/history and downstream references. Read the fork's
+docs/research/RECTANGLE-EXTRUSION-BOUNDARY-20261104.md. First extract selected
+profile semantics as bounded data, then qualify the actual worker prism and
+model/ownership bridge, then integrate guarded replay/publication and the same
+human/agent command. Do not expose raw craft.modify, invent a BOX surrogate or
+use a hidden editor. OCC is preferred; other capabilities refuse explicitly
+until their own implementation is qualified. Both engines remain in scope.
+
+Files operator source is integrated at desktop 8dc0331bd from only the reviewed
+research/beta-isolated-hosting subtree through f6deb3251. The a1e9e215c gate
+correction passes independent exact-launcher faults and seven integrated lead
+checks. Actual sealed services and a real disposable timer are in progress;
+production ingress, protected installation and beta acceptance remain open.
+Twelve unused public staging trees were verified and archived on /srv/data;
+webhost root now has 7,297,232,896 bytes free, 1,928,523,776 bytes above the unchanged 5 GiB
+reserve. Recheck capacity at execution time. No account/floor/routes changed.
+The prior immediate headroom shortage is resolved; do not repeat that diagnosis
+as current or infer 100-user capacity from it. See the archive receipt and
+Files operator integration evidence. Main/beta/prototype still returned HTTP 200.
+
+Normal CAD package remains d3d36bc5. Do not deploy the test overrides: they
+retain older source/provenance notices. Independent engine source/build evidence
+0431dff0 remains research, not runtime promotion. Never weaken production ASLR.
+Set explicit browser URL/CDP when using historical tests.
 
 Use three subagents in separate branches/worktrees with explicit path ownership:
 1. Files: review the existing sealed beta-derived package and isolated issuer/
@@ -38,47 +62,12 @@ review, exact packaging and deployment. Reassign agents as bounded packages
 finish. Serialize changes to shared files. Do not stop independent work because
 one lane needs a shared contract; agree that contract before dependent edits.
 
-The first bounded CAD slice is integrated and locally qualified at JSketcher
-2b3f2c0f: supported five-hole plate resize/reopen, impossible-edit last-valid
-preservation and correction, stale validator/replay rejection, document/service
-replacement, surface cleanup and feature-ID history controls. The lead's 11
-Chromium scripts, 9 unit checks, build and typecheck pass; see the fork's
-DOCUMENT-LIFETIME-REPLAY-20261104.md. Do not restart that merge or assume the
-old 8438 replay failure is still current. Broader kernel/context isolation,
-whole-browser budgets and the full Gate 1 model remain open.
-
-Desktop 73c1e8b13 now packages fork d3d36bc5 and both workers. Signed small
-models and the dependent five-hole/fillet plate pass phone/1080p/4K Save As,
-exact server bytes and fresh Files reopen. Read cad-packaged-workers-20261104.md
-under docs/evidence. Fork 7d08c159 adds unconnected engine-mount research,
-not a replacement packaged runtime. Files b391e259b records actual issuer
-continuity, tested floor journal and current capacity; managed binding
-e4a6c2ec6 remains on its separate hosting branch and is not deployable.
-
-Later fork bdc4ff2b integrates verified OCI/Manifold multi-operation workers and
-a bounded associative circular-cut pattern/picker. Independent combined and
-targeted tests pass, but the desktop package remains d3d36bc5. Read the fork's
-combined-pattern-mount-evidence-20261104.json. Original OCC native ownership
-defects now have separate source repairs in box-git:/srv/data/git/occt-interpreter-codi.git
-and its R730 backup; full-build and incremental-relink evidence are distinct.
-No new runtime is packaged. Interrogation ownership and broad mounts remain.
-Signed command discovery proves sketch-start is still missing; an empty-sketch
-worker factory exists, but atomic data-only plane/sketch publication does not.
-Do not replace that gap with a hidden or required rendered editor.
-
-Latest fork checkpoint 5b77f71d includes coherent craft publication ccb66be7:
-history/models/registry/status install together, rejected commands preserve the
-accepted document, resets stop stale delivery, and callback failures remain
-separate. Lead build/typecheck, stream tests and 12 Chromium scripts pass; read
-CRAFT-PUBLICATION-20261104.md and its evidence JSON. Next implement ARC11's
-sketch-storage plus prepared-plane transaction. The agent-tested rectangle
-factory at 508d54e4 is still on its research branch; do not claim a registered
-sketch-start command. The desktop package is unchanged.
-
-The Files lane is now research/beta-files-operator-20261104, beyond the early
-e4 managed prototype. Lead c2d6f696 controller/Caddy tests pass; real protected
-launcher, combined signed health and capacity are still release gates. Read the
-latest handoff instead of restarting completed fixes or deploying the branch.
+Earlier replay, worker, five-hole plate, fillet/pattern, upstream-consolidation
+and signed-host evidence is retained in the handoff and linked receipts. Reuse
+it rather than repeating the merge or treating fixed failures as current. A
+new source slice requires tests for its changed boundaries, not an automatic
+rerun of every historical script. Do not promote research engine binaries or
+infer full ownership/provenance qualification from bounded behavior tests.
 
 Continue Gate 1's shape/constraint/profile/kernel/history
 matrix and coupled rectangle edit. Both UI and agents must use the same typed,

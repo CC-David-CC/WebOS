@@ -4,6 +4,24 @@
 
 ## Candidate progress after the baseline assessment
 
+Current source update: desktop `8dc0331bd` imports only the independently reviewed
+Files operator subtree through `f6deb3251`. The three gate-recovery defects are
+fixed at `a1e9e215c`; exact-launcher fault checks and seven lead integrated tests
+pass. Actual sealed processes and a real disposable timer are the next fixture
+boundary, still in progress. Production installation and ingress are unqualified.
+See `evidence/files-operator-source-integration-20261104.md`.
+
+Capacity update at 2026-11-04 14:35 UTC: twelve inactive public `/tmp` staging
+directories were archived on the separate `/srv/data` drive and byte/metadata
+compared with `tar --compare` before and after retirement. Root free space rose
+from 5,576,151,040 to 7,297,232,896 bytes, leaving 1,928,523,776 bytes above the
+unchanged 5 GiB reserve. No account data, current served assets, route, service
+or floor was changed. Main, beta and `/desktop/` still returned HTTP 200. This
+removes the earlier one-file capacity arithmetic blocker, not the need to
+measure actual concurrent reservations and the complete test/rollout budget.
+Receipt: `evidence/webhost-staging-archive-20261104.json`. The older space
+observations below describe the earlier baseline and are no longer current.
+
 Desktop `2e312b797` adds reproducible sealed candidate `3ad04c48…`, keeping the
 full non-Files catalog and guarded version floor. The isolated signed test
 covers an old controlled tab, v1 metadata migration, Files/Text save/reopen,

@@ -9,7 +9,7 @@ preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
 The user authorizes using JSketcher as inspiration and replacing coupled code
 where needed. Keep useful proven components, but production computational
 workers must not require canvas, DOM, editor windows or fake browser UI.
-`CAD-CORE-SEPARATION.md` defines the required boundaries, ARC01–ARC10 packages
+`CAD-CORE-SEPARATION.md` defines the required boundaries, ARC01–ARC14 packages
 and ENG01–ENG08 engine-mount work.
 Separate the revisioned authored model, shared human/agent commands, formulas
 and simultaneous constraints, computational core, jobs, generated references,
@@ -21,15 +21,17 @@ dependent-feature regeneration. A stale-boundary refusal protects the old model
 but does not qualify ordinary supported resizing. The full Gate 1 and
 bracket/enclosure/core-3MF acceptance remain required; later gates stay queued.
 
-Latest bounded CAD checkpoint is `ec2e0156` (implementation `07316f8f`):
-worker-prepared plane/rectangle bytes and evaluated craft state publish together.
-Lead build/typecheck, seven pure workspace tests, stream coordinator and nine
-Chromium scripts pass, including two-sketch reopen, stale/cancelled work,
-pre-install failure and post-commit reset. The core API accepts parent-frame
-arguments/signals; authorized host discovery and a matching human action remain
-next. This is volatile publication, not durable My files acknowledgement,
-complete ARC11/full Gate 1 or deployment. Package stays `d3d36bc5`. See the latest
-handoff; earlier checkpoint paragraphs retain their historical scope.
+Latest bounded CAD checkpoint is `cc2d46dd` (tested code `9bde6b29`). Scoped
+command discovery and the Add-menu action use the atomic rectangle core.
+Independent lead tests pass signed create/save, exact server bytes/hash,
+second-account denial, fresh-session reopen, real editor width change and a
+second signed save/reopen. Coordinate/precision refusal and post-publication
+supersession are tested separately. Existing UI extrusion has measured bounds,
+but still performs kernel/topology work on the UI thread. The next ARC13/14
+slice connects authored profile semantics to an actual worker-owned engine and
+model/reference/history bridge. Full Gate 1 remains open. Test-only packages
+are not release artifacts; the normal pin stays `d3d36bc5`, with no deployment.
+See the latest handoff and rectangle host/diagnostics evidence JSON files.
 
 Latest successor entry point: `HANDOFF-FILES-CAD-2026-11-04.md` and the
 copyable `goals/FILES-CAD-NEXT-AGENT.txt`. OpenCascade is preferred and Native
@@ -157,7 +159,7 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; ENG01–ENG08 add broad capability inventory, swappable mounts, explicit conversions/composition and qualification. Linked-source evidence remains open. |
 | C03 | Splines/history/selection/DXF/camera/reconstruction work together | partial | Consolidation owner ran real carried-feature checks; integrated host and final fork regression remain |
 | C04 | CAD My files, independent instances, disposal and shared commands | partial | Desktop 73c1e8b13: signed native-v2 small models and dependent five-hole/fillet plate pass phone/1080p/4K, both packaged workers, exact server bytes, account denial and closed-command rejection. Full agent part, all lifetimes and large-model gates remain. |
-| C05 | Agent-driven CAD uses the same validated operations as the UI | open | Signed discovery confirms inspect/circular listing/concentricity but no sketch-start. Atomic data-only creation is next; full build/edit bracket, rejected change, undo and account-backed save/reopen remain. No AI provider required. |
+| C05 | Agent-driven CAD uses the same validated operations as the UI | partial | Registered rectangle discovery/create and matching Add-menu action pass; signed edit/save/fresh-session reopen and account denial pass. No validated extrusion command or complete agent-built part yet. Worker kernel/model bridge, bracket workflow and broad operations remain. No AI provider required. |
 | A00 | Beginner single-part fixtures precede the bracket | open | Start from empty documents: dimensioned block, washer and drilled plate through UI/shared commands; see learning progression |
 | M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | partial | Reclassification/drag/restore fixes reviewed; independent cross-stage failure controls found further rollback work |
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |

@@ -12,6 +12,54 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
+CAD is now `cc2d46dd2c67a13d188a910841cc038e2f061c81` (a boundary-plan
+documentation commit over tested code `9bde6b291f859660db3fe14613ceff9851148391`).
+Desktop `64becedd8` integrates the reviewed Add-menu dialog, scoped rectangle
+commands and signed acceptance test. The lead independently built the actual
+CAD output with its matching revision, passed typechecking, eight command tests,
+the atomic-creation and host-menu browser suites, then the signed account test.
+The diagnostic follow-up distinguishes coordinate-domain from precision refusal;
+its real built-core boundary/notification suite and injected dispatcher unit
+test also pass. The signed workflow was repeated on the diagnostic build.
+
+The signed workflow creates a rectangle, verifies server bytes and SHA-256,
+denies another account access, closes/reopens in a fresh session, edits the
+driving width from 100 to 150 mm in the actual sketch editor, and verifies a
+second signed save/reopen. Existing UI extrusion then produces measured
+150×50×10 mm bounds. This is not a volume/manifold/manufacturing proof. See
+`evidence/cad-rectangle-host-20261104.json` and
+`evidence/cad-rectangle-diagnostics-20261104.json`. Test-only overrides retain
+older source/provenance notices and use a raised fixture request limit. The
+packaged runtime pin remains `d3d36bc5`; nothing was deployed.
+
+**Next CAD boundary:** the existing extrusion kernel and topology work still
+run on the UI thread. Research OCC/Manifold mounts have box/Boolean operations,
+but do not yet connect authored regions, worker-owned BREP, persistent topology,
+history and downstream use. Do not expose raw `craft.modify`, substitute a BOX,
+or present a mesh preview as that integration. Read the fork's
+`docs/research/RECTANGLE-EXTRUSION-BOUNDARY-20261104.md`. ARC13 starts with a
+data-only selected-profile contract; ARC14 connects the actual worker operation,
+model/provenance bridge and guarded publication before shared command exposure.
+Keep both engines and explicit capability differences. Full Gate 1,
+bracket/enclosure, parameter/unit and core-3MF acceptance remain open.
+
+Files recovery source is integrated at desktop `8dc0331bd`, importing only the
+reviewed subtree through `f6deb3251`. The `a1e9e215c` correction resolves the
+three gate-recovery findings; independent exact-launcher fault tests and seven
+lead integrated checks pass. Actual real-service/timer qualification is now in
+progress, not production proof. See
+`evidence/files-operator-source-integration-20261104.md`.
+
+The root volume's immediate capacity shortage was removed by archiving twelve
+unused public staging directories onto the separate larger drive, comparing
+archive contents before and after retirement. Root free space rose from
+5,576,151,040 to 7,297,232,896 bytes; the 5 GiB reserve is unchanged. Account
+data, current releases, routes, services and floors were untouched. Main, beta
+and `/desktop/` still returned 200. This is headroom for further bounded tests,
+not concurrency qualification. See `evidence/webhost-staging-archive-20261104.json`.
+
+### Earlier atomic-rectangle checkpoint (historical next-step wording)
+
 CAD `ec2e0156129c02c66fa11177077cc9c212ea318f` records implementation
 `07316f8f`: a core command evaluates an XY plane privately, runs the real
 rectangle worker, checks its exact intent/evidence, and publishes sketch bytes
