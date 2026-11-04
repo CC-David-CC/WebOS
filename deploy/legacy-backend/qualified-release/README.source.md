@@ -85,3 +85,39 @@ those properties on the host. Unknown routes, concurrent main journal, or
 multiple nested beta journals are refused; a refusal does not prove that the
 beta site has been gated. Do not install, activate, or replace existing
 recovery with this source until those gates are reviewed and tested.
+
+The isolated exact-successor fixture `beta-files-successor-ns-runner.py` uses the
+existing signed namespace runner, the pinned controller and real translated
+loopback Caddy. Its seed checks and regenerates all four auxiliary Caddy
+outputs when selecting e7. One run passed missing candidate, partial candidate,
+missing gateway, and interrupted gate recovery with the e7 main snapshot;
+its service manager, timer and production main-readiness checks are simulated.
+The original attempt intentionally retained its negative result: seeding only
+primary files left old auxiliary outputs and was rejected by RenderInventory.
+The shared dd8 archive also contained extra Python cache files; a disposable
+copy excluding those files passed the signed fixture's complete inventory.
+The original runner's inherited PASS message mentioned an issuer-unit kill;
+that statement was inaccurate for this successor run and has been corrected.
+The new forward-interruption check and explicit final e7 assertion are pending
+an extended rerun. This is not an installation or production qualification.
+
+Before main cutover, a reviewed installation must quiesce already-loaded old
+controller processes, stage and verify the closed e7 main release and the
+recovery-only successor, and under the existing hosting lock install the exact
+floor-aware main-journal guard and successor as one coordinated protected
+operation. Verify entrypoint custody and refusal during a pending main journal;
+then the reviewed main forward-only transaction may select e7, with exact
+auxiliary inventories, beta floor and signed health checks. A failure remains
+journaled for same-lock forward recovery. Existing release, beta URLs, account
+files, and the OPFS floor remain intact. The candidate main launcher remains
+intentionally disabled until this sequence and its installation are tested.
+
+A subsequent beta Files/Text/mount/storage-only release needs an independently
+reviewed exact 3ad-to-new asset transition and forward journal, under that same
+lock. Preserve the original v2 floor record and retained 3ad assets; the
+current FloorJournal and recovery binding require the exact 3ad floor identity.
+The guard and recovery entrypoint must recognize only the approved old and new
+asset routes combined with the approved main selector family, with interrupted
+recovery and mixed-state refusal tested. Keep issuer 853 and gateway dd8 only
+after compatibility and signed-account/storage checks pass. Neither removing
+the floor nor broadly accepting arbitrary routes is a safe update strategy.
