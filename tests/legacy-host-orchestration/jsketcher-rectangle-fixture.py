@@ -21,6 +21,7 @@ for name in ['index.mjs','style.css','inspect-state.mjs','file-read.mjs','sketch
         text=text.split('\n',1)[1] # Browser fixture links stylesheet from HTML.
     (out/name).write_text(text)
 shutil.copy2(root/'active-system/assets/desktop/command-registry.mjs',out/'command-registry.mjs')
+shutil.copy2(root/'active-system/assets/desktop/document-operations.mjs',out/'document-operations.mjs')
 (out/'node_modules').mkdir()
 (out/'node_modules/jsketcher-build').symlink_to(dist,target_is_directory=True)
 print(out)

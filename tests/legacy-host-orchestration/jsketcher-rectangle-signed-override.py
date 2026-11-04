@@ -36,7 +36,20 @@ with tempfile.TemporaryDirectory(prefix='codi-rectangle-override-') as temp:
         for worker in workers:
             shutil.copy2(worker,target/'static'/worker.name)
             assets.append('node_modules/jsketcher-build/static/'+worker.name)
-    assets.sort();(app/'app.json').write_text(json.dumps(manifest,indent=2)+'\n')
+    # Test-only versioned worker prism assets. The release packager must do
+    # its own closed-inventory and source/notice qualification.
+    for rel in ['static/oci-verified-worker.js','static/occ-portable.js',
+                'static/profile-topology.mjs','static/rectangleProfileRequest.mjs',
+                'static/authoredRegions.mjs','static/profilePlan.mjs']:
+        shutil.copy2(dist/rel,target/rel)
+        assets.append('node_modules/jsketcher-build/'+rel)
+    for pattern in ['static/prism-semantic.*.js','static/a2b2f7daf6a4eb98b975.wasm']:
+        workers=list(dist.glob(pattern))
+        if len(workers)!=1:raise RuntimeError('Expected one '+pattern)
+        for worker in workers:
+            shutil.copy2(worker,target/'static'/worker.name)
+            assets.append('node_modules/jsketcher-build/static/'+worker.name)
+    assets[:]=sorted(set(assets));(app/'app.json').write_text(json.dumps(manifest,indent=2)+'\n')
     entries=tmp/'entries.json';entries.write_text(json.dumps({'jsketcher':'system/jsketcher/index.mjs'}))
     built=tmp/'built';built.mkdir()
     subprocess.run([sys.executable,str(a.builder),'--source',str(tmp/'src'),'--output',str(built),'--apps','jsketcher','--node',str(a.node),'--entries',str(entries)],check=True,stdout=subprocess.DEVNULL)
