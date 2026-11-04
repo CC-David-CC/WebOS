@@ -34,10 +34,17 @@ Beta stays **3ad04c48**/issuer853/gatewaydd8. Corrected **830ca4f1** is unexpose
 offline reproduction, old/new clients, signed account-flight/conflicts, actual
 guest separation, injected quota failures and explicit origin-clear recovery
 pass. Near-limit socket/resource results carry at identical exercised bytes.
-See `tests/files-foundation-exit-20261104.md`. Remaining work is exact server
-failure mapping and protected 3ad→830 transition/recovery plus public acceptance.
+Exact dd8 disk-failure and new-process recovery controls now pass, including an
+independent lead restart run. Actual 830/dd8 post-publication HTTP 503 reconciles
+without replaying the upload. See `tests/files-forward-foundation-carry-20261104.md`
+and `tests/files-foundation-exit-20261104.md` for bounded evidence. Remaining work
+is protected 3ad→830 transition/recovery plus public acceptance.
 `research/main-qualified-release/beta-asset-830c` remains source-only; preserve
 the original floor and do not run its unqualified installation on the host.
+In particular owner checkpoint `bdf72e2e1` is not deployable: an old recovery
+entrypoint can create a conflicting journal at the shared gate before rejecting
+its stale controller pin. Recoverable retirement of callable old entrypoints is
+being qualified by the owner and independent reviewer. No live 830 action ran.
 
 Desktop branch: `integration/files-jsketcher-release-20261103`, backed on both
 LAN repositories. CAD stays `effc3717740b2c3ba65269fd16bc392fc8b41388`; later

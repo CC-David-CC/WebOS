@@ -120,10 +120,22 @@ F10 now passes with the actual guest and current host, and injected Worker quota
 failures preserve saved bytes and unsaved Text edits before successful retry.
 An explicit isolated browser-origin clear recovers synced files from the server;
 it does not prove spontaneous eviction or recovery of unsynced-only data. Exact
-server disk/crash evidence mapping and R02's managed beta transition/public
-acceptance remain. Beta still serves 3ad;
+dd8 server checks now pass six injected disk-failure controls and two process
+death/restart controls; the lead independently reran the latter against a fresh
+17-entry verified dd8 copy. Actual 830 client reconciliation after a committed
+write returned HTTP 503 acknowledges the same bytes/revision with one upload.
+See `tests/files-forward-foundation-carry-20261104.md` for fault boundaries.
+R02's managed beta transition/public acceptance remain. Beta still serves 3ad;
 this main catalog change did not promote newer Files. The current exit matrix
 supersedes historical pending statements below.
+
+**Release review finding, not a live fault:** the proposed 830 operator checkpoint
+`bdf72e2e1` is not deployable. A previously installed recovery entrypoint can
+write an obsolete transition journal before detecting its stale controller pin
+when invoked at the shared maintenance gate. The owner and independent reviewer
+are qualifying recoverable retirement of every callable old entrypoint together
+with the new guard/actors. Do not install that checkpoint or run its activation.
+The live main/beta services remain unchanged by this isolated review.
 
 **Discovered old-client defect:** unexposed e359 replaced the global catalog,
 letting an old loaded host request new Files without document operations. Root
