@@ -46,7 +46,7 @@ class Tests(unittest.TestCase):
  def test_killed_boundaries_recover_forward(self):
   for stage in ('journaled','timer-stopped','common-written','manifest-written','caddy-starting','caddy-applied','committed','timer-restored'):
    with self.subTest(stage=stage),tempfile.TemporaryDirectory() as t:
-    io=Fixture(t);wrapped=main.ForwardAdapter(io,lambda:None,lambda:None);j=Path(t)/'journal';tx=Transaction(wrapped,j);pid=os.fork()
+    io=Fixture(t);wrapped=main.ForwardAdapter(io,lambda:None,lambda:None);j=Path(t)/'main-restriction-journal.json';tx=Transaction(wrapped,j);pid=os.fork()
     if pid==0:
      try:
       with io.held():tx.apply_gate(io.old,io.new,phase=lambda x:os._exit(17) if x==stage else None)
@@ -57,7 +57,7 @@ class Tests(unittest.TestCase):
     self.assertEqual(io.read(),io.new);self.assertFalse(j.exists())
  def test_failed_reload_cannot_restore_old_and_recovery_is_forward(self):
   with tempfile.TemporaryDirectory() as t:
-   io=Fixture(t);io.fail=True;wrapped=main.ForwardAdapter(io,lambda:None,lambda:None);j=Path(t)/'journal';tx=Transaction(wrapped,j)
+   io=Fixture(t);io.fail=True;wrapped=main.ForwardAdapter(io,lambda:None,lambda:None);j=Path(t)/'main-restriction-journal.json';tx=Transaction(wrapped,j)
    with io.held():
     with self.assertRaisesRegex(RuntimeError,'Refused Caddy rollback'):main.apply(tx,wrapped,io.old,io.new,OLD,NEW)
    self.assertTrue(j.exists());self.assertEqual(io.paths['caddy'].read_bytes(),io.new['caddy']);io.fail=False
@@ -65,7 +65,7 @@ class Tests(unittest.TestCase):
    self.assertEqual(io.read(),io.new);self.assertFalse(j.exists());self.assertNotIn(io.old['caddy'].decode(),io.reloads)
  def test_drift_and_unrelated_changes_refused(self):
   with tempfile.TemporaryDirectory() as t:
-   io=Fixture(t);wrapped=main.ForwardAdapter(io,lambda:None,lambda:None);tx=Transaction(wrapped,Path(t)/'journal')
+   io=Fixture(t);wrapped=main.ForwardAdapter(io,lambda:None,lambda:None);tx=Transaction(wrapped,Path(t)/'main-restriction-journal.json')
    with self.assertRaises(ValueError):main.apply(tx,wrapped,io.old,io.new,OLD,NEW)
    bad=dict(io.new);bad['manifest']=bad['manifest'].replace(b'"beta"',b'"other"')
    with io.held():
