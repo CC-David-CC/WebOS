@@ -13,6 +13,10 @@ try{await new Promise(r=>setTimeout(r,300));browser=await puppeteer.launch({exec
   await entered;ctrl.abort();const name=await pending;await new Promise(r=>setTimeout(r,10));mirror.close();
   let closedCount=0,closedStarted;const closeEntered=new Promise(r=>closedStarted=r),closeFactory=()=>{const url=URL.createObjectURL(new Blob(['self.onmessage=()=>{}'],{type:'text/javascript'})),worker=new Worker(url),post=worker.postMessage.bind(worker),stop=worker.terminate.bind(worker);worker.postMessage=(...args)=>{post(...args);closedStarted()};worker.terminate=()=>{closedCount++;URL.revokeObjectURL(url);stop()};return worker};
   const c2=new VerifiedContent(scope,{workerFactory:closeFactory}),m2=new MirroredFiles({scope,server,content:c2,retryMs:0}),wait=m2.readBounded('/x',100).then(()=>null,e=>e.name);await closeEntered;m2.close();const closedResult=await wait;await new Promise(r=>setTimeout(r,10));
-  return {name,posted,terminated,closedResult,closedCount};
- });assert.deepEqual(result,{name:'AbortError',posted:1,terminated:1,closedResult:'AbortError',closedCount:1});console.log('PASS aborted bounded read and mirror close terminate verification workers');
+  const earlyCtrl=new AbortController();let earlyPosts=0,earlyStops=0;
+  const earlyFactory=()=>{earlyCtrl.abort();return {postMessage(){earlyPosts++},terminate(){earlyStops++}}};
+  const c3=new VerifiedContent(scope,{workerFactory:earlyFactory}),m3=new MirroredFiles({scope,server,content:c3,retryMs:0});
+  const earlyResult=await m3.readBounded('/x',100,{signal:earlyCtrl.signal}).then(()=>null,e=>e.name);m3.close();
+  return {name,posted,terminated,closedResult,closedCount,earlyResult,earlyPosts,earlyStops};
+ });assert.deepEqual(result,{name:'AbortError',posted:1,terminated:1,closedResult:'AbortError',closedCount:1,earlyResult:'AbortError',earlyPosts:0,earlyStops:1});console.log('PASS aborted bounded read and mirror close terminate verification workers');
 }finally{await browser?.close();http.kill('SIGTERM');await rm(profile,{recursive:true,force:true})}
