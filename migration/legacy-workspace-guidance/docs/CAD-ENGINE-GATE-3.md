@@ -4,9 +4,9 @@ User-defined next gate, 2026-11-04. **QUEUED after Gates 1 and 2.** Recording
 this scope does not start advanced implementation or claim any capability passes.
 Current work remains Files and foundational CAD-engine qualification.
 
-The supplied outline calls for 16 categories, but this message supplies numbered
-categories 1–10. Those ten are recorded below. Categories 11–16 are **not yet
-provided**; do not invent them or call the complete advanced scope finalized.
+The user clarified that the original outline was deliberately split: the ten
+groups below are Gate 3. Original groups 11–16 belong to the following Gate 4,
+whose scope will be supplied separately. They are not missing Gate 3 requirements.
 Autodesk Fusion, Inventor and SolidWorks are capability references, not promised
 dependencies, license entitlements or proof this engine already implements them.
 
@@ -171,15 +171,10 @@ dependencies, license entitlements or proof this engine already implements them.
   and clearance regions while meeting stiffness requirements; compare against a
   conventional bracket under the same assumptions and independent final checks.
 
-## A11–A16 — Awaiting user scope
+## Following gate
 
-- [ ] Category 11 — not supplied.
-- [ ] Category 12 — not supplied.
-- [ ] Category 13 — not supplied.
-- [ ] Category 14 — not supplied.
-- [ ] Category 15 — not supplied.
-- [ ] Category 16 — not supplied.
-
-Do not mark this gate complete while its user-defined scope or required evidence
-is missing. Previously recorded magnetic/physical-system plans remain in the
-overall program; they are not silently substituted for the unspecified groups.
+Gate 4 will hold the six groups the user separated from the initial outline.
+Do not invent them, fold them back into Gate 3 or let their not-yet-supplied
+description block definition of Gate 3. Gate 3 still requires implementation
+and evidence for all ten groups above. Previously recorded magnetic/physical-
+system plans remain in the overall program; they do not define Gate 4 by default.

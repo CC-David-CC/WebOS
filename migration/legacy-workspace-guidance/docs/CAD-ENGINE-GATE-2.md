@@ -185,6 +185,6 @@ implementation is difficult. Interoperability is checked at the scope claimed;
 a file extension alone does not establish semantic manufacturing equivalence.
 
 The next supplied gate is `CAD-ENGINE-GATE-3.md`, advanced modeling and
-engineering. Its categories 1–10 are recorded; the six remaining groups in its
-16-category outline have not been supplied. XR stays a deferred separate-branch
-stretch, not a reason to skip Gates 1 or 2.
+engineering, containing ten groups. The user intentionally split the other six
+groups into a following Gate 4, whose description comes separately. XR stays a
+deferred separate-branch stretch, not a reason to skip Gates 1 or 2.
