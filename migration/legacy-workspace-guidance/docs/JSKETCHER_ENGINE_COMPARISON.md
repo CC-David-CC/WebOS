@@ -1,5 +1,25 @@
 # Geometry engine comparison
 
+## Current direction and scoped evidence as of 2026-11-04
+
+OpenCascade is the preferred engine; Native Mesh/Manifold is secondary. Both
+must receive proper support for their relevant library capabilities, beyond the
+subset today's apps use. Versioned swappable engine mounts and explicit
+conversion/composition are required; see ENG01–ENG08 in
+`CAD-CORE-SEPARATION.md`. They need not produce identical results. Unsupported,
+unbound, unexposed, untested, failing and passing are distinct inventory states.
+
+Later bounded source-built strict-CSP and signed desktop results supersede the
+early table below: `evidence/cad-files-combined-20261104.md` covers packaged
+fork `794c14a3`, Native Mesh intersection/history, OCC rotation/scale,
+independent windows and signed save/reopen at three viewport sizes. The new
+headless five-hole dependency path is source/candidate work, not a newly
+qualified desktop release. Native sketch extrusion there is explicitly
+unsupported. No complete capability, conversion or mount qualification is
+claimed. `HANDOFF-FILES-CAD-2026-11-04.md` names current roots and candidates.
+
+## Historical comparison and retained findings
+
 The user requested that the unified jSketcher retain both its existing OCCT
 path and the newer surfacing/native BREP/mesh path, compare them, and find
 flaws. This is a test plan and preliminary findings, not a claim of engine

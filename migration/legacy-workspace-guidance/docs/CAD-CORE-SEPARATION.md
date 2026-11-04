@@ -37,22 +37,71 @@ shims a DOM can expose a bug, but is not the qualified production core.
 ## Bounded packages
 
 `[x]` is complete for the exact scope; `[~]` is partial; `[ ]` is unqualified.
+The current checkout and candidate map is in
+`HANDOFF-FILES-CAD-2026-11-04.md`; that handoff does not close these gates.
 
 | ID | Package | Owner and order | State / evidence |
 |---|---|---|---|
 | ARC01 | Record rewrite authority, core boundaries and acceptance in the goal/checklist. | Lead, now. | [x] This document and linked goal/audit amendments; documentation only. |
-| ARC02 | Data-only sketch workspace and production worker using actual IO/solver. | Solver owner, parallel with Files and caller. | [~] `b448beaa` + `45dd89e1`: actual worker solves centered and four-corner plate fixtures, checks unreduced residuals and output geometry, no UI shims. Lead review/integration pending. |
-| ARC03 | Capture immutable sketch/boundary/parameter inputs; solve dependencies and publish only current validated results. | Regeneration owner after ARC02 contract. | [~] Caller/boundary controls and open/cancel preservation fix exist. Automatic solid regeneration is being integrated. Stale-boundary refusal alone is not completion. |
+| ARC02 | Data-only sketch workspace and production worker using actual IO/solver. | Solver owner, parallel with Files and caller. | [~] Root `8438a8d0` includes the restricted production worker/caller. Actual owner plate tests pass; later axis fix `9f588ca1` and admission candidate through `fbe6826e` remain unmerged. Exact combined rebuild/qualification remains. |
+| ARC03 | Capture immutable sketch/boundary/parameter inputs; solve dependencies and publish only current validated results. | Regeneration owner after ARC02 contract. | [~] Five-hole edit/reopen candidate passes; root retains the partial-publication path that failed the candidate's impossible-edit control. Combined root not rerun. ARC09/10 are required before safe publication is qualified. |
 | ARC04 | Normalize commands before execution/history and reserve feature identities across edits/replay/cancel/reload. | History changes integrated by lead. | [~] `e974cb76` includes normalization, feature IDs and typed constraint booleans; owner controls pass; combined rebuilt runtime qualification remains. |
 | ARC05 | Qualify whole-part editing, rejection, undo/redo and reopen through UI and discoverable commands. | Serial after core/caller; then host. | [ ] Full Gate 1 rectangle-edit, bracket and enclosure workflows remain. |
 | ARC06 | Migrate remaining editor-dependent computation behind document/command/representation boundaries as workflows require. | Separate bounded follow-ups. | [ ] Direction recorded; no claim all existing operations already meet it. |
-| ARC07 | Qualify budgets/cancellation across jobs and windows. | Resource owner plus independent review. | [~] Files admission passes lead two-tab/crash tests; signed 128 MiB owner test passes. CAD and combined multi-app resource qualification remains. |
+| ARC07 | Qualify budgets/cancellation across jobs and windows. | Resource owner plus independent review. | [~] Files admission passes lead two-tab/crash tests; signed 128 MiB owner test passes. CAD candidate `fbe6826e` has owner tests for one cooperating worker, queue/deadline/cancel and renderer-crash worker-target cleanup. Unmerged; not a total RAM or OS reclamation claim. |
 | ARC08 | Back up exact contracts, source, prerequisites, tests and evidence. | Lead after each reviewed slice. | [~] Ongoing box-git/R730 checkpoints; verify both refs. No GitHub publication. |
+| ARC09 | Monotonic document lifetime and current-owner guards across load/reset/restore and async work. | Lead owns project service/manager; callers consume agreed API. | [ ] Not implemented in root `8438a8d0`. A content hash or equal history cannot prevent reset/reopen ABA races. Hold an actual worker response, reset/reopen identical content, then prove the old result cannot publish. |
+| ARC10 | Atomic full-history replay and explicit last-complete geometry. | Replay owner, after agreeing ARC09; lead integrates. | [~] Owner prototype `089ed178` passes the real-browser impossible-edit control and labels retained geometry stale. Not merged; older base lacks normalization/allocator, plain typecheck fails generated declaration, and concurrency/input mutation/navigation/save guards remain unqualified. |
 
 Current lanes: Files/resource qualification; headless solver; dependent-feature
 regeneration. Agents use separate worktrees and owned paths. The lead owns
 shared contracts, review, packaging, combined acceptance and deployment. Finished
 lanes take another bounded package, without independently changing release state.
+
+## Swappable and composable geometry engines
+
+Latest explicit direction: **OpenCascade is preferred; Native Mesh/Manifold is
+secondary.** Properly support both libraries where their capabilities apply,
+including capabilities beyond the current app's used subset. Inventory the
+installed versions and actual compiled bindings: an upstream feature is not an
+available WebOS command merely because a library advertises it. Preserve
+engine-specific operations instead of forcing a lowest-common-denominator API.
+
+An engine mount is a versioned computational adapter with explicit initialization,
+discovery, execution, result/handle ownership and disposal. It does not own the
+authored document, user account, canvas or file-sync service. The document stores
+the chosen engine/operation semantics and source intent; derived handles can be
+recreated. New engine implementations can be installed under the contract without
+rewriting file persistence or UI/agent authorization.
+
+Composition is an explicit job graph, not silently running another engine after
+failure. B-rep-to-mesh, mesh-to-B-rep and other conversions declare units,
+tessellation/precision, source revision, provenance, supported metadata and lost
+identity or information. Validate converted output for its intended use. Never
+claim that a faceted B-rep recovered the original parametric or analytic model.
+
+| ID | Required work | Acceptance | State |
+|---|---|---|---|
+| ENG01 | Inventory both libraries, compiled bindings and existing integration. | Versioned per-operation matrix: upstream support, bound/unbound, exposed/unexposed, tested/unsupported, semantics and prerequisite. Include primitives, curves/surfaces, topology/Boolean, transformations, inspection, import/export and cleanup where provided. | [ ] Broad inventory required; existing bounded comparison is a starting point. |
+| ENG02 | Define engine mount lifecycle and capability discovery. | Stable engine/operation IDs and versioned request/result contracts; explicit representations, units/tolerances, ownership, limits and error classes. Mount/unmount/replacement invalidates owned handles and late jobs without altering saved intent. | [ ] Contract and implementation queued. |
+| ENG03 | Separate engine computation from editor/rendering/transport. | Worker or other explicit compute runtime consumes data without DOM/canvas/fake UI. Render adapters consume derived results. Real mounted engine tests, not just mocks. | [~] Restricted sketch core exists; general geometry-engine separation remains. |
+| ENG04 | Expand the preferred OpenCascade adapter beyond current used calls. | Expose appropriate library capabilities through typed, discoverable operations in bounded families with semantic/edge-case tests. Missing bindings have explicit tasks; no false support claims. | [~] Existing OCC operations and bounded tests; full coverage unqualified. |
+| ENG05 | Properly support Native Mesh/Manifold and its distinct strengths. | Preserve mesh/CSG/surfacing capabilities with actual precision, topology and lifetime rules. No pretend equivalence with OCC or implicit fallback. | [~] Existing native workflows and Boolean tests; broad coverage unqualified. |
+| ENG06 | Typed representation conversions and identity/provenance mapping. | Round-trip or measured-loss tests appropriate to each direction; materials/regions/transforms retained or explicit refusal; stale inputs cannot overwrite newer results. | [ ] General conversion boundary unqualified. |
+| ENG07 | Compose engines through explicit bounded jobs. | A real useful two-engine pipeline records conversions and evidence, survives cancellation/failure without corrupting the document, and preserves the final accept/reject transaction. | [ ] Future capability; not a blocker to repairing ordinary replay now. |
+| ENG08 | Reproducible mount installation, validation and resource cleanup. | Pinned source/runtime/notices, strict CSP, worker/cancel/crash/disposal tests, multi-window independence, no unauthorized file access; substituting an adapter is qualified against declared capabilities. | [~] Existing build/provenance and scoped host tests; full mount suite remains. |
+
+These packages broaden the implementation plan without replacing the first
+Files/Gate 1 finish line. Work on inventory/contracts in parallel; integrate
+capability families incrementally. Do not check ENG04/05 off after wrapping only
+what today's UI calls. No new top-level app or universal geometry format is
+required just to make adapters swappable.
+
+R730 storage and compute, llm-60 compute/testing, and creating/cloning repositories
+on box-git are authorized. Record dependencies and reproducible build inputs
+there rather than relying on one workstation. R730 is usable; llm-60 needs a
+trusted SSH host-key pin before access. No GitHub publication is authorized by
+this resource expansion.
 
 ## Worker contract and acceptance
 

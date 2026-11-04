@@ -102,17 +102,41 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [x] HANDOFF PLAN WRITTEN: `HANDOFF-FILES-CAD-2026-11-04.md` and
+  `goals/FILES-CAD-NEXT-AGENT.txt` give the successor verified refs, independent
+  lanes, reproduction commands, known failures and bounded acceptance. Source
+  and candidates are checkpointed; the full release remains active/incomplete.
+- [ ] ENGINE MOUNTS: user prefers OCC, with Native Mesh/Manifold secondary,
+  and requires proper broad library support beyond current used calls.
+  `CAD-CORE-SEPARATION.md` ENG01–ENG08 records versioned mounts, discovery,
+  explicit conversion/composition, lifecycle and qualification. R730 compute/
+  storage, llm-60 compute/testing and LAN repo creation/cloning are authorized;
+  llm-60 trusted SSH identity remains unverified.
+- [~] CURRENT CAD CHECKPOINT: root `8438a8d0` includes the headless core/caller
+  and the uncorrected replay path from the candidate's failed last-valid
+  impossible-edit control; the combined root has not been rerun. Atomic
+  candidate `089ed178` passes that single browser control and builds; plain
+  typecheck has a generated-declaration failure and the candidate needs the
+  combined normalization/allocator base plus the missing document-generation
+  hook and concurrency review. Candidate `fbe6826e` adds axis domains and CAD
+  worker admission with actual renderer/worker-target cleanup evidence. Both
+  are backed up, unmerged and not deployed. ARC09/10 are explicit next gates.
+- [~] FILES RELEASE READINESS: `0f2d5df76` integrates guarded-v1 metadata
+  migration evidence and `FILES-BETA-RELEASE-READINESS-2026-11-04.md`. Beta still
+  uses v1; exact immutable package/config/operator, forward-only v2 recovery
+  and filesystem headroom remain prerequisites. No whole-tree deployment.
 - [x] GOAL/ARCHITECTURE DOCUMENTED: user authorizes replacing coupled JSketcher
   internals and favors computational silos without canvas or fake browser UI.
-  `CAD-CORE-SEPARATION.md` adds ARC01–ARC08, ownership, boundaries and explicit
+  `CAD-CORE-SEPARATION.md` adds ARC01–ARC10, ownership, boundaries and explicit
   worker/regeneration acceptance. The saved goal, active audit and gate/execution
   indexes link it. Extend requirements with tests when needed. Documentation
   completion does not qualify the implementation.
 - [~] ACTIVE CORE SPLIT: the production headless solver candidate has actual
   worker evidence for center/corner positions, independent residual/geometry
   checks and editor-ID isolation. The separate caller owner has a first actual
-  five-hole solid resize and v2 reopen pass. Lead integration/review, the full
-  coupled Gate 1 chain and UI/agent equivalence remain open. Opening/cancelling
+  five-hole solid resize and v2 reopen pass. The core/caller is integrated in
+  source; exact combined rebuild/review, the full coupled Gate 1 chain and
+  UI/agent equivalence remain open. Opening/cancelling
   the in-place sketch no longer rewrites saved boundary snapshots in its scoped
   candidate; the separate legacy 2D view still needs review.
 - [~] CONFLICT UI: `2cec3e7e2`, integrated as `c955f1e50`, uses two independent

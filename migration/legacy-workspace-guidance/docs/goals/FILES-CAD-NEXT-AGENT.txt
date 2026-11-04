@@ -1,0 +1,88 @@
+Continue the Files and WebOS CAD foundation as integration lead. Do not restart
+the upstream merge or attempt all later CAD gates at once.
+
+Clone box-git:/srv/data/git/CodiServer-distro.git, branch
+integration/files-jsketcher-release-20261103, and
+box-git:/srv/data/git/JSKetcher.git, branch
+integration/files-cad-release-20261104. Verify current tips. Read
+docs/HANDOFF-FILES-CAD-2026-11-04.md first, then its five priority references.
+The handoff names exact code checkpoints, unmerged candidates, reproductions,
+known failures and deployment boundaries. Treat it as the starting point and
+update it when new evidence changes the plan.
+
+Use three subagents in separate branches/worktrees with explicit path ownership:
+1. Files: finish the beta-derived immutable storage package, migration and
+   forward-recovery qualification. No independent deployment.
+2. CAD regeneration: review and finish atomic full-history replay, retaining
+   the last complete valid model on failure and preserving authored intent.
+3. CAD core: review/integrate bounded headless solve, axis semantics and worker
+   admission; extend the actual failure tests as needed.
+
+You own shared contracts, document-lifetime generation, integration, independent
+review, exact packaging and deployment. Reassign agents as bounded packages
+finish. Serialize changes to shared files. Do not stop independent work because
+one lane needs a shared contract; agree that contract before dependent edits.
+
+First CAD finish line: on the combined build, resize the supported five-hole
+plate correctly, reject the impossible edit without replacing the previous
+complete solid, reject delayed results after reset/reopen (including identical
+content), and preserve intent through undo/redo and native save/reopen. Root
+8438a8d0 still contains the replay path from the failing last-valid-solid control
+and has no general documentGeneration hook; its combined build has not been
+rerun. Neither is fixed merely because a separate candidate exists.
+
+Then package the exact fork/worker assets in the desktop and run actual signed
+My files workflows. Continue Gate 1's shape/constraint/profile/kernel/history
+matrix and coupled rectangle edit. Both UI and agents must use the same typed,
+validated commands. Build/edit the bracket and enclosure before advancing to
+the material-aware core-3MF milestone. Keep later gates and XR queued.
+
+Architecture: JSketcher is a component/inspiration, not an untouchable boundary.
+Rewrite coupled code when needed, preserving useful evidence and components.
+Pure computation consumes explicit model data in workers without canvas, DOM,
+fake window or hidden editor. Separate authored intent, commands/transactions,
+formulas, simultaneous constraints, planar topology, kernels, references,
+derived representations, job lifetimes, saved files and evidence.
+
+OpenCascade is preferred; Native Mesh/Manifold is secondary. Mount engines behind
+versioned, swappable adapters with a broad capability inventory and real support
+for each library's applicable features, not only today's UI subset. Preserve
+engine-specific operations. Combining engines requires explicit conversions,
+units, tolerance/loss/provenance and identity rules. No silent fallback or
+pretended equivalence. ENG01-ENG08 in the core checklist define this work.
+
+Files must remain one browser-first, account-bound My files service backed by
+normal server files: saved bytes, isolation, opaque versions/CAS, conflicts,
+uncertain commits, interrupted transfer, recovery and changed-data sync through
+128 MiB. Heavy processing stays in workers with bounded admission and measured
+resources. Linux guest home is temporary and separate. No app-private mirror.
+
+Only Chromium is required. Use real signed services and real workers where those
+boundaries matter; distinguish emulated phones, process crashes and synthetic
+fixtures from physical devices/power loss. Keep the five CAD validation questions
+separate and preserve negative controls. Do not weaken assertions or count
+unsupported/untested behavior as passing. Existing broad gates remain open.
+
+Use beta.ksu.codes for qualified iteration, preserving main and /desktop/.
+Do not deploy the research tree wholesale. Beta still uses guarded v1; an OPFS
+v2 transition needs a sealed package, adequate capacity and tested forward
+recovery. The old hosting reconciler is plan-only. No hand edits to generated
+Caddy, clearing saved data to hide failures, or copying accounts/keys across
+origins. Build concrete reviewable artifacts before any hosting mutation.
+
+R730 storage/compute, llm-60 compute/testing, scoped installs/test accounts and
+creating/cloning LAN repositories on box-git are authorized. llm-60 has an
+unresolved trusted SSH pin; use R730 without blocking progress. Do not bypass
+host verification. No GitHub JSketcher publication now.
+
+Back up source/tests/recipes/notes to box-git and R730; verify remote hashes.
+Do not commit dependency directories, transient builds, private state or keys.
+Keep WEBOS-WORK-QUEUES.md, the release audit and relevant core/matrix checklist
+current. The first task includes closing fresh-checkout prerequisite gaps;
+do not rely on unrecorded /tmp assets or claim portability before testing it.
+
+Keep me informed of meaningful findings and decisions. Resolve ordinary choices
+yourself; ask only when my preference changes the outcome. Report exact tested,
+integrated, packaged and deployed versions separately. As bounded work finishes,
+take the next dependency-ready item. Do not mark the entire release complete or
+pause it merely because a handoff or one candidate is done.

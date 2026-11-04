@@ -18,8 +18,11 @@ future descriptions displace ongoing Files and Gate 1 implementation.
 
 **Core architecture:** [CAD-CORE-SEPARATION.md](CAD-CORE-SEPARATION.md) records
 the authority to replace coupled JSketcher internals and the required data-only
-workers without canvas or fake browser UI. Its ARC01–ARC08 packages and actual
+workers without canvas or fake browser UI. Its ARC01–ARC10 packages and actual
 dependent-sketch acceptance are current Gate 1 work, not completed later gates.
+ENG01–ENG08 records the preferred OpenCascade and secondary Native Mesh/Manifold
+paths, broad library coverage, swappable mounts and explicit engine composition.
+The successor's current starting point is `HANDOFF-FILES-CAD-2026-11-04.md`.
 
 ## Current capability and qualification status
 

@@ -135,3 +135,30 @@ test and bounded owner/package. This amendment changes architecture authority
 and adds boundaries; it does not waive Files, Gate 1, shared UI/agent part
 workflows or material-aware core 3MF acceptance. Later gates inform early
 contracts without replacing the active milestone.
+
+Engine and resource amendment — 2026-11-04, explicit user direction
+
+Keep both engines. OpenCascade is preferred; Native Mesh/Manifold is secondary.
+Properly support each library where its capabilities apply, not only what the
+current application happens to call. Maintain a broad installed-version and
+compiled-binding capability matrix. Missing bindings, unsupported operations,
+untested paths and verified functionality must remain distinguishable.
+
+Install engines through versioned, swappable computational mounts/adapters.
+Preserve engine-specific capabilities, explicit result/handle ownership and
+disposal, worker execution and shared document/command consistency. Engine
+combination uses explicit conversions and bounded job graphs with units,
+tolerances, lost-information/identity rules and source-revision provenance.
+Never silently substitute engines or treat a mesh approximation as exact CAD.
+CAD-CORE-SEPARATION.md ENG01-ENG08 gives the concrete work and tests.
+
+The user authorizes R730 for storage and compute, llm-60 for compute/testing,
+and creating/cloning useful repositories on box-git. Preserve trusted host
+verification and private data boundaries. No GitHub JSketcher publication now.
+
+The successor handoff is docs/HANDOFF-FILES-CAD-2026-11-04.md; the copyable next
+agent instruction is docs/goals/FILES-CAD-NEXT-AGENT.txt. ARC09 and ARC10 now
+explicitly require monotonic document lifetimes and atomic full-history replay
+preserving the last complete accepted model. Existing candidate passes do not
+close their combined integration or release gates. Update these documents as
+actual work progresses, without declaring the broad milestone complete.

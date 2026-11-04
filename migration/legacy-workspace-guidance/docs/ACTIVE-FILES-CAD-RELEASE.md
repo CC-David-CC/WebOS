@@ -9,7 +9,8 @@ preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
 The user authorizes using JSketcher as inspiration and replacing coupled code
 where needed. Keep useful proven components, but production computational
 workers must not require canvas, DOM, editor windows or fake browser UI.
-`CAD-CORE-SEPARATION.md` defines the required boundaries and ARC01–ARC08 packages.
+`CAD-CORE-SEPARATION.md` defines the required boundaries, ARC01–ARC10 packages
+and ENG01–ENG08 engine-mount work.
 Separate the revisioned authored model, shared human/agent commands, formulas
 and simultaneous constraints, computational core, jobs, generated references,
 derived representations and saved files/caches. Extend the checklist when a
@@ -19,6 +20,23 @@ Current work extracts a data-only sketch solver and connects it to automatic
 dependent-feature regeneration. A stale-boundary refusal protects the old model
 but does not qualify ordinary supported resizing. The full Gate 1 and
 bracket/enclosure/core-3MF acceptance remain required; later gates stay queued.
+
+Latest successor entry point: `HANDOFF-FILES-CAD-2026-11-04.md` and the
+copyable `goals/FILES-CAD-NEXT-AGENT.txt`. OpenCascade is preferred and Native
+Mesh/Manifold secondary; both need broad capability support through swappable,
+versioned mounts and explicit conversion/composition boundaries. R730 compute/
+storage, llm-60 compute/testing and LAN repository creation/cloning are authorized.
+This updates the goal, not the completion state of the implementation.
+
+Root fork `8438a8d0` includes the restricted headless worker and dependent plate
+caller, including the uncorrected replay path from the candidate's failing
+impossible-edit last-valid-solid control; the combined root is not rerun. Owner
+candidate `089ed178` passes that one control and the app build; it is unmerged,
+predates normalization/allocator integration, fails a plain typecheck on a
+generated declaration, and lacks general document-lifetime/atomicity proof.
+Axis/admission candidate `fbe6826e` is also unmerged. The monotonic document
+generation hook is not implemented. Keep these distinct from the older
+`794c14a3` packaged small-model signed host result.
 
 ## Integration ownership and verified starting state
 
@@ -93,10 +111,10 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | F06 | Cleanup cannot remove committed/in-flight data | partial | Explicit reader-aware collector has bounded paging, writer/reader/attempt/conflict and unlink/crash tests; automatic retention/UI and wider scale remain open (ADAPTER-2026-11-03.md). |
 | F07 | Heavy work stays in workers with measured responsiveness/resources | partial | 544480232: lead two-tab capture/read, cancellation, FIFO/deadline, worker failure and renderer-crash test passes with max 1 heavy content worker; SDK/app memory and whole-release qualification remain. |
 | F08 | Changed-data transfers and safe first/legacy reads through 128 MiB | partial | 7064310e1: signed 128 MiB plus queued/cancelled second-tab capture passes; one-byte edit 71,470 request-body bytes, sampled summed Chrome RSS 1.32 GiB, foreground heartbeat max 32.2 ms. These are observations, not a total-memory guarantee. |
-| F09 | Files create/open/rename/move/copy/delete/upload/download and truthful status | partial | 99bc3ba06 actual signed UI workflows and cancellation/stale/collision tests pass; physical phone, Linux and full fault/rollout qualification remain. |
+| F09 | Files create/open/rename/move/copy/delete/upload/download and truthful status | partial | 99bc3ba06 actual signed UI workflows and cancellation/stale/collision tests pass; later F10 covers real Linux separation. Physical phone, full catalog and final release remain. |
 | F10 | Temporary Linux remains separate; existing app contract compatible | partial | 9f753a95c: actual v86 guest-home Files/Text/signed-server separation and reboot reset pass; all-app compatibility and deployed qualification remain. |
 | C01 | One coherent buildable fork preserves intended existing integrated work | partial | Consolidation candidate a05a7433 with source build recipe; final solver integration/release remains |
-| C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; linked-source evidence and full capability qualification remain |
+| C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; ENG01–ENG08 add broad capability inventory, swappable mounts, explicit conversions/composition and qualification. Linked-source evidence remains open. |
 | C03 | Splines/history/selection/DXF/camera/reconstruction work together | partial | Consolidation owner ran real carried-feature checks; integrated host and final fork regression remain |
 | C04 | CAD My files, independent instances, disposal and shared commands | partial | Combined native-v2 signed host passes phone/1080p/4K small-model workflows, worker open, account isolation and closed-command rejection; full agent part and large-model gates remain. |
 | C05 | Agent-driven CAD uses the same validated operations as the UI | open | Discover commands and stable entity IDs; build/edit bracket, reject contradiction without damage, undo/redo and account-backed save/reopen; no AI provider required |
@@ -105,7 +123,7 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
 | M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
 | M04 | Typed parameters/formulas/dependencies/configurations | open | Bracket/enclosure edits with explicit errors |
-| M05 | Regeneration/reference repair preserves authored intent | active | ARC02/03 data-only worker and revision-checked dependency replay; owner five-hole resize and v2 reopen candidate passes, combined review and full Gate 1 chain remain. |
+| M05 | Regeneration/reference repair preserves authored intent | active | ARC02/03 five-hole resize and v2 reopen candidate passes. Root still loses last-complete solid after failed replay; ARC09 lifetime guard missing and ARC10 atomic prototype unmerged. Full Gate 1 remains. |
 | ARC | Computational core operates independently of UI and publishes only current validated results | active | CAD-CORE-SEPARATION.md: no canvas/DOM/fake UI; actual equations, bounded jobs, residual/geometry checks, cancellation, IDs/revisions and explicit failure. |
 | A01 | Mounting bracket substantial edits, contradictions, undo and reopen | open | Real integrated acceptance model |
 | A02 | Enclosure/separate lid substantial edits, contradictions, save/reopen | open | Real integrated acceptance model |
