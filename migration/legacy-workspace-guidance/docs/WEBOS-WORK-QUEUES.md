@@ -102,11 +102,29 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+**Main reduction LIVE:** e7e8 now selects Files, Text, Terminal, Calculator and
+Help, with CodeMirror dependency; broader apps/games remain on beta. These are
+priority integration targets with bounded workflow evidence, not fully validated
+System tools. The protected installer and forward launcher passed on the host;
+actual signed beta recovery passed before/after. Original beta 3ad floor and
+`/desktop/` bytes were preserved, journals cleared, and the renewal timer restored
+active/enabled. Public core browser checks are separate and running. See
+`evidence/main-core-activation-20261104.json`.
+
+**Files latest:** corrected 830 passed offline reproduction, real old/new-host
+coexistence, signed in-flight account switching with one-commit reconciliation,
+and two-profile conflict/cancel/stale-choice/fresh-reopen checks. Near-limit
+socket/resource tests carry at independently verified identical storage bytes.
+F06 failure/retention mapping, F10 current-host real Linux separation and R02's
+exact managed beta transition/public acceptance remain. Beta still serves 3ad;
+this main catalog change did not promote newer Files. The current exit matrix
+supersedes historical pending statements below.
+
 **Discovered old-client defect:** unexposed e359 replaced the global catalog,
 letting an old loaded host request new Files without document operations. Root
 candidate `830ca4f…` keeps the old global catalog and the new immutable catalog
-separate. Two builds and packaging controls pass; actual old/new-tab proof is
-active. Only global catalog/cache/service-worker bytes differ from e359; no
+separate. Two builds, packaging controls and actual old/new-tab proof pass.
+Only global catalog/cache/service-worker bytes differ from e359; no
 storage, SDK, app-bundle, immutable-host or shell-loader bytes changed. Preserve
 historical e359 test scope, never expose that rejected package.
 

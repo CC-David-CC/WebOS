@@ -16,9 +16,12 @@ pinned glue. Lead strict-CSP worker/parent checks and the owner's signed worker
 save/reopen fixture pass. The next bounded CAD task is the dependent centered
 through-hole contract (`effc3717`), starting with private candidate/source
 ownership; actual cut/topology and full plate remain open. Main e7e8 restriction
-is not deployed: changing its selector must preserve post-floor beta recovery
-through a separately qualified protected successor. See the handoff, work queues
-and exact receipts for current boundaries.
+is now deployed through the protected installer/forward launcher; actual beta
+recovery passed before/after, with original floor/prototype preserved. Core apps
+are priority integration targets with bounded evidence, not fully validated
+software. Corrected Files 830 passes isolated signed workflows but awaits its
+managed beta transition/public checks; 3ad remains on beta. See the work queues,
+activation receipt and `tests/files-foundation-exit-20261104.md`.
 
 Latest user clarification: **all JSketcher features are suspect and used for
 inspiration/reference.** Existing code earns reuse through an explicit contract
