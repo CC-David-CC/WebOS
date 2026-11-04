@@ -1,6 +1,19 @@
 # App review status
 
-Updated 2026-11-02. This is a compact index of the current review, not a claim
+Distribution update 2026-11-04: main now offers only Files, Text, Terminal,
+Calculator and Help, with CodeMirror as Text's dependency. These are essential
+integration targets with bounded workflow evidence, **not fully validated apps**.
+The broader app/tool catalog and all games stay on beta. Historical references
+to “live” in the 2026-11-02 review below describe those earlier tests, not current
+main availability. See [main activation](../evidence/main-core-activation-20261104.json)
+and [Files exit status](../tests/files-foundation-exit-20261104.md).
+
+Shared libraries require qualification through their actual consuming workflows;
+installation and a disabled menu entry do not establish correctness, lifecycle,
+resource limits or account/file integration. Priorities are Files first, then
+programming and design/3D printing. Games and other apps remain lower priority.
+
+Review updated 2026-11-02. This is a compact index of the review, not a claim
 that every feature has been tested. “Workflow checked” means the listed primary
 workflow has desktop and emulated-phone evidence; most also have live account
 checks. Physical touch is not established by emulation. The detailed test scope,
