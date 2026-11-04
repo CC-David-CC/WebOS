@@ -12,6 +12,51 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
+CAD `ec2e0156129c02c66fa11177077cc9c212ea318f` records implementation
+`07316f8f`: a core command evaluates an XY plane privately, runs the real
+rectangle worker, checks its exact intent/evidence, and publishes sketch bytes
+with matching history/model/registry/status. Read the fork's
+`docs/RECTANGLE-CREATION-20261104.md` and
+`test/webos/rectangle-creation-evidence-20261104.json` (SHA256
+`b45afb16a41549e1281e3c7e2b57ac951338df282c00677290ff2cdb8aefa369`).
+
+Lead app/helper builds, typecheck, seven pure workspace tests, stream coordinator
+and nine Chromium scripts pass against explicitly selected current assets. The
+new suite covers two sketches, nonzero plane/local origin, first-observer
+consistency, undo/redo, native reopen, held-worker cancel/stale work, same-counter
+service replacement, pre-install failure, post-commit reset, malformed worker
+intent/evidence and parent-frame arguments/AbortSignal.
+
+**Next:** register discovery and the core operation through the authorized
+host, connect a human-facing action, then prove editor edits and durable My files
+save/reopen. Parent-frame transport is not a signed host command qualification.
+`persistence: volatile-workspace` does not mean server save. The full Gate 1,
+named parameters, units, bracket/enclosure and core 3MF remain. The desktop
+package stays `d3d36bc5`; nothing deployed. Built files carry parent `c3c54f94`
+because implementation was built before commit; the receipt binds actual code
+and assets, not a clean post-commit build.
+
+Always set `JSKETCHER_TEST_URL` and `CODI_TEST_CDP`. An earlier run reached
+historical fixtures through old defaults and is retained but not current-build
+evidence. Identified retired CAD test browsers on 19331 and 19875 were closed.
+
+Parallel returns are backed separately: engine `0431dff0` on
+`research/occ-shapefix-repro-20261104` records controlled compiler differences,
+four matching per-process-no-ASLR trials and four direct gap cases. This is
+scoped correlation/behavior evidence, not full-build reproducibility or general
+semantic equivalence. Do not weaken production ASLR or promote the new WASM.
+Files `fa228b79c` adds the exact integration/capacity handoff under
+`research/beta-isolated-hosting/FILES-RELEASE-HANDOFF-2026-11-04.md`. The later
+`c204b753b` gate-recovery candidate has confirmed apply-finalization exposure
+and partial-asset inventory gaps found in independent review; its author is
+fixing both. Do not integrate that
+candidate as ready. Real loopback Caddy/disposable systemd checks still include
+explicit main/policy/unit/timer substitutions. No live activation. The account
+volume remains short of the 128 MiB test headroom above its 5 GiB reserve;
+separate `/srv/data` can hold public staging, not enlarge that account volume.
+
+### Previous workspace checkpoint (historical next-step wording)
+
 Fork `3e42030fa3d094afdb5a36ac13c00b5549a6ca5d` records private workspace
 implementation `67b8888f` and lead evidence. Seven pure workspace tests, the
 stream coordinator, six legacy staged-write adapter checks, build/typecheck,
@@ -137,7 +182,7 @@ The complete original goal and amendments are preserved in
 | Repository | Integration branch | Code checkpoint before this handoff |
 |---|---|---|
 | `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `541db60789a2910f2a92a1023fe765ea902d43a0` |
-| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `3e42030f` (workspace implementation `67b8888f`) |
+| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `ec2e0156` (rectangle implementation `07316f8f`) |
 
 The desktop branch's later handoff commit adds documentation to that code
 checkpoint. Verify branch tips with `git ls-remote` before starting; another

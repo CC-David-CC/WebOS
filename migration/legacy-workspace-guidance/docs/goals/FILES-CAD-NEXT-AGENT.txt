@@ -10,14 +10,19 @@ The handoff names exact code checkpoints, scoped candidate results, reproduction
 known failures and deployment boundaries. Treat it as the starting point and
 update it when new evidence changes the plan.
 
-Latest CAD checkpoint is 3e42030f (workspace implementation 67b8888f).
-Private sketch-byte preparation, lifetime-safe per-key notifications and stale
-geometry-ID removal pass lead core/adapter/build/typecheck and eight Chromium
-scripts. Compose this with evaluated craft publication and the validated worker
-factory next; do not rebuild another workspace store or call ARC11 complete.
-The handoff also names rectangle parity e6db73ea, clean engine research239c64b4
-with unexplained binary differences, and Files operator fixture6fdc8d5a0 with
-explicit simulated production boundaries. None changes the desktop package.
+Latest CAD checkpoint is ec2e0156 (rectangle implementation 07316f8f).
+The actual plane/worker-rectangle command composes private sketch bytes and
+matching craft publication. Lead build/typecheck, seven pure workspace tests,
+stream coordinator and nine current-build Chromium scripts pass, including two
+sketches, native reopen, stale/cancelled jobs and publication failures. Read the
+fork's RECTANGLE-CREATION-20261104.md and evidence JSON. Next register this core
+API through the authorized host and a human action, then prove editor edits and
+durable My files save/reopen. A volatile receipt is not durable persistence or
+completion of the whole-document transaction/Gate 1. Set explicit browser URL
+and CDP variables for old scripts. The handoff names engine 0431dff0 (scoped
+compiler/behavior evidence) and Files fa228b79c (integration/capacity); do not
+promote c204b753b until both independent review findings are fixed and qualified.
+No package/deployment change. Earlier paragraphs below are historical.
 
 Use three subagents in separate branches/worktrees with explicit path ownership:
 1. Files: review the existing sealed beta-derived package and isolated issuer/

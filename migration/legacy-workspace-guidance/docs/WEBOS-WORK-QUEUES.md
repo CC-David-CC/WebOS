@@ -102,6 +102,21 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] ATOMIC RECTANGLE CREATION: fork `ec2e0156` records `07316f8f`.
+  Lead build/typecheck, seven pure workspace tests, stream coordinator and nine
+  current-build Chromium scripts pass. Real plane/worker rectangle bytes and
+  history/geometry/registry publish together. Two sketches survive native reopen;
+  cancellation, stale services/revisions, pre-install failure, post-commit reset,
+  malformed worker output and parent-frame calls pass. Authorized host discovery,
+  human action and durable My files remain next (ARC12). Full Gate 1 and broader
+  document transactions remain open. No new package or deployment.
+- [~] PARALLEL QUALIFICATION: engine `0431dff0` records scoped compiler/behavior
+  evidence, not runtime promotion. Files `fa228b79c` records exact integration
+  and insufficient account-volume headroom. Later `c204b753b` has an independent
+  review findings in apply-finalization exposure and partial-asset verification;
+  both are being corrected. Do not
+  integrate it as ready. Existing disposable Caddy/systemd evidence retains
+  explicit production substitutions. The 5 GiB account reserve is unchanged.
 - [~] PRIVATE CAD WORKSPACE: fork `3e42030f` records implementation `67b8888f`.
   Lead seven pure core tests, stream coordinator, six legacy adapter checks,
   build/typecheck and eight actual Chromium scripts pass. Prepared bytes stay
@@ -109,8 +124,8 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   modified faces and removes stale loop/object IDs. Cancellation, service
   replacement, reentrant callbacks and bounded candidate/delivery controls pass.
   Receipt `test/webos/workspace-preparation-evidence-20261104.json` retains the
-  failing throttle control and corrected reset-test oracle. ARC11 still needs
-  the complete plane/worker-sketch/model transaction and common UI/agent command.
+  failing throttle control and corrected reset-test oracle. The bounded plane/worker-sketch composition is now above;
+  common UI/agent wiring remains.
   The new bounds do not qualify all legacy memory use or durable My files.
   Desktop package stays `d3d36bc5`; nothing deployed.
 - [~] PARALLEL RESEARCH RETURNS: rectangle parity/provenance `e6db73ea` keeps

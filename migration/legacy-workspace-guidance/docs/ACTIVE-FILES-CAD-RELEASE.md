@@ -21,6 +21,16 @@ dependent-feature regeneration. A stale-boundary refusal protects the old model
 but does not qualify ordinary supported resizing. The full Gate 1 and
 bracket/enclosure/core-3MF acceptance remain required; later gates stay queued.
 
+Latest bounded CAD checkpoint is `ec2e0156` (implementation `07316f8f`):
+worker-prepared plane/rectangle bytes and evaluated craft state publish together.
+Lead build/typecheck, seven pure workspace tests, stream coordinator and nine
+Chromium scripts pass, including two-sketch reopen, stale/cancelled work,
+pre-install failure and post-commit reset. The core API accepts parent-frame
+arguments/signals; authorized host discovery and a matching human action remain
+next. This is volatile publication, not durable My files acknowledgement,
+complete ARC11/full Gate 1 or deployment. Package stays `d3d36bc5`. See the latest
+handoff; earlier checkpoint paragraphs retain their historical scope.
+
 Latest successor entry point: `HANDOFF-FILES-CAD-2026-11-04.md` and the
 copyable `goals/FILES-CAD-NEXT-AGENT.txt`. OpenCascade is preferred and Native
 Mesh/Manifold secondary; both need broad capability support through swappable,
