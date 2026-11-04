@@ -34,7 +34,11 @@ lead's exact app `aff1befe` passes build/typecheck, 11 browser regressions and
 9 unit checks. Plate resize/native reopen, last-valid failed-edit recovery,
 occupied-open refusal, service replacement and surface cleanup/reload pass.
 Read the fork's `DOCUMENT-LIFETIME-REPLAY-20261104.md`. This is local evidence;
-keep it distinct from packaged small-model signed host `794c14a3`.
+the earlier `794c14a3` host package has now been superseded locally by
+`d3d36bc5`. Desktop `73c1e8b13` packages both workers and passes signed small
+model and dependent-plate save/reopen at phone/1080p/4K. Ordinary OCC fillet
+and chamfer, explicit Native refusal and useful wizard errors also pass.
+See `evidence/cad-packaged-workers-20261104.md`. This is not a public release.
 
 The Files beta candidate and issuer/config/session fixture are integrated at
 desktop `2e312b797`, but managed transition/recovery and public qualification
@@ -115,17 +119,17 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | F08 | Changed-data transfers and safe first/legacy reads through 128 MiB | partial | 7064310e1: signed 128 MiB plus queued/cancelled second-tab capture passes; one-byte edit 71,470 request-body bytes, sampled summed Chrome RSS 1.32 GiB, foreground heartbeat max 32.2 ms. These are observations, not a total-memory guarantee. |
 | F09 | Files create/open/rename/move/copy/delete/upload/download and truthful status | partial | 99bc3ba06 actual signed UI workflows and cancellation/stale/collision tests pass; later F10 covers real Linux separation. Physical phone, full catalog and final release remain. |
 | F10 | Temporary Linux remains separate; existing app contract compatible | partial | 9f753a95c: actual v86 guest-home Files/Text/signed-server separation and reboot reset pass; all-app compatibility and deployed qualification remain. |
-| C01 | One coherent buildable fork preserves intended existing integrated work | partial | Consolidation candidate a05a7433 with source build recipe; final solver integration/release remains |
+| C01 | One coherent buildable fork preserves intended existing integrated work | partial | Integrated replay/lifetime/solver and fillet fixes packaged at d3d36bc5; nine lead browser runs and worker inventory checks pass. Broad carried-feature and release qualification remain. |
 | C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; ENG01–ENG08 add broad capability inventory, swappable mounts, explicit conversions/composition and qualification. Linked-source evidence remains open. |
 | C03 | Splines/history/selection/DXF/camera/reconstruction work together | partial | Consolidation owner ran real carried-feature checks; integrated host and final fork regression remain |
-| C04 | CAD My files, independent instances, disposal and shared commands | partial | Combined native-v2 signed host passes phone/1080p/4K small-model workflows, worker open, account isolation and closed-command rejection; full agent part and large-model gates remain. |
+| C04 | CAD My files, independent instances, disposal and shared commands | partial | Desktop 73c1e8b13: signed native-v2 small models and dependent five-hole/fillet plate pass phone/1080p/4K, both packaged workers, exact server bytes, account denial and closed-command rejection. Full agent part, all lifetimes and large-model gates remain. |
 | C05 | Agent-driven CAD uses the same validated operations as the UI | open | Discover commands and stable entity IDs; build/edit bracket, reject contradiction without damage, undo/redo and account-backed save/reopen; no AI provider required |
 | A00 | Beginner single-part fixtures precede the bracket | open | Start from empty documents: dimensioned block, washer and drilled plate through UI/shared commands; see learning progression |
 | M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | partial | Reclassification/drag/restore fixes reviewed; independent cross-stage failure controls found further rollback work |
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
 | M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
 | M04 | Typed parameters/formulas/dependencies/configurations | open | Bracket/enclosure edits with explicit errors |
-| M05 | Regeneration/reference repair preserves authored intent | active | Combined ARC02/03/09/10 plate resize/reopen, last-valid failed-edit recovery and late-result/document replacement checks pass. Full Gate 1, all operation contexts and host packaging remain. |
+| M05 | Regeneration/reference repair preserves authored intent | active | Combined plate resize/reopen, ordinary OCC fillet/chamfer, last-valid failed-edit recovery and late-result/document replacement pass; new worker graph is signed-host tested. Feature patterns, units, full Gate 1 and all operation contexts remain. |
 | ARC | Computational core operates independently of UI and publishes only current validated results | active | CAD-CORE-SEPARATION.md: no canvas/DOM/fake UI; actual equations, bounded jobs, residual/geometry checks, cancellation, IDs/revisions and explicit failure. |
 | A01 | Mounting bracket substantial edits, contradictions, undo and reopen | open | Real integrated acceptance model |
 | A02 | Enclosure/separate lid substantial edits, contradictions, save/reopen | open | Real integrated acceptance model |

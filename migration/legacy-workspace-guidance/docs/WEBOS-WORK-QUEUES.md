@@ -106,25 +106,38 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   `goals/FILES-CAD-NEXT-AGENT.txt` give the successor verified refs, independent
   lanes, reproduction commands, known failures and bounded acceptance. Source
   and candidates are checkpointed; the full release remains active/incomplete.
-- [ ] ENGINE MOUNTS: user prefers OCC, with Native Mesh/Manifold secondary,
+- [~] ENGINE MOUNTS: user prefers OCC, with Native Mesh/Manifold secondary,
   and requires proper broad library support beyond current used calls.
   `CAD-CORE-SEPARATION.md` ENG01–ENG08 records versioned mounts, discovery,
   explicit conversion/composition, lifecycle and qualification. R730 compute/
   storage, llm-60 compute/testing and LAN repo creation/cloning are authorized;
-  llm-60 trusted SSH identity remains unverified.
+  llm-60 trusted SSH identity remains unverified. Fork `7d08c159` retains an
+  unconnected prototype: actual Manifold box and strict-CSP OCI box in a real
+  worker pass lead checks. Legacy SPI exports are absent in the selected
+  runtime. OCI uses a separately derived JS wrapper and whole-worker cleanup;
+  production loading, broad capabilities and resource qualification remain.
 - [~] CURRENT CAD CHECKPOINT: JSketcher `2b3f2c0f` integrates headless solve,
   axis/admission, normalized private replay and monotonic document lifetime.
   Lead rebuilt app `aff1befe`: typecheck/build, 11 Chromium scripts and 9 unit
   checks pass. Five-hole resize/reopen, impossible-edit last-valid/correction,
   held results, occupied-open refusal, surface reset/reload and feature-ID
   history controls pass. `docs/DOCUMENT-LIFETIME-REPLAY-20261104.md` in the fork
-  records evidence. Full Gate 1, engine mounts and signed host package remain.
+  records evidence. Packaged `d3d36bc5` additionally passes OCC fillet/chamfer
+  resize/reopen and explicit invalid-size/Native refusal controls. Desktop
+  `73c1e8b13` qualifies both packaged workers and signed small-model plus
+  dependent-plate workflows at phone/1080p/4K. See
+  `evidence/cad-packaged-workers-20261104.md`. True feature patterns, units,
+  bracket/enclosure, agent workflow and full Gate 1 remain; no deployment.
 - [~] FILES RELEASE READINESS: root `2e312b797` integrates beta-only sealed
   candidate `3ad04c48…`, actual controlled-tab migration and signed Files/Text/
   session tests, plus separate real issuer/guest opt-in config checks. Lead
   verified the 87-file sealed inventory. Old `feaa1c6f…` candidate is superseded.
-  Managed durable transition/recovery, native issuer signed-account continuity,
-  headroom, all-app qualification and public rollout remain open. No deployment.
+  `b391e259b` adds actual signed continuity across the exact issuer restart and
+  a real filesystem/process floor journal. Lead fault tests pass; the managed
+  binding remains separate research `e4a6c2ec6`, with damaged-journal, service,
+  custody and host qualification open. Account volume was only 208.8 MiB above
+  reserve at the recorded check. Headroom, full-app qualification and public
+  rollout remain open. No deployment.
 
 - [x] GOAL/ARCHITECTURE DOCUMENTED: user authorizes replacing coupled JSketcher
   internals and favors computational silos without canvas or fake browser UI.

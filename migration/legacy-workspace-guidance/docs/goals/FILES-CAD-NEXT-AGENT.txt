@@ -33,8 +33,15 @@ DOCUMENT-LIFETIME-REPLAY-20261104.md. Do not restart that merge or assume the
 old 8438 replay failure is still current. Broader kernel/context isolation,
 whole-browser budgets and the full Gate 1 model remain open.
 
-Then package the exact fork/worker assets in the desktop and run actual signed
-My files workflows. Continue Gate 1's shape/constraint/profile/kernel/history
+Desktop 73c1e8b13 now packages fork d3d36bc5 and both workers. Signed small
+models and the dependent five-hole/fillet plate pass phone/1080p/4K Save As,
+exact server bytes and fresh Files reopen. Read cad-packaged-workers-20261104.md
+under docs/evidence. Fork 7d08c159 adds unconnected engine-mount research,
+not a replacement packaged runtime. Files b391e259b records actual issuer
+continuity, tested floor journal and current capacity; managed binding
+e4a6c2ec6 remains on its separate hosting branch and is not deployable.
+
+Continue Gate 1's shape/constraint/profile/kernel/history
 matrix and coupled rectangle edit. Both UI and agents must use the same typed,
 validated commands. Build/edit the bracket and enclosure before advancing to
 the material-aware core-3MF milestone. Keep later gates and XR queued.

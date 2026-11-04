@@ -34,8 +34,8 @@ The complete original goal and amendments are preserved in
 
 | Repository | Integration branch | Code checkpoint before this handoff |
 |---|---|---|
-| `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `a5412605de6e15198862b54b7b4bb62140f59dc4` |
-| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `8ca9602267d0d463863f6f149ea9f60407948671` |
+| `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `73c1e8b13` |
+| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `7d08c15902de5bd7fcf3527a7b53842917b4e1a5` |
 
 The desktop branch's later handoff commit adds documentation to that code
 checkpoint. Verify branch tips with `git ls-remote` before starting; another
@@ -78,7 +78,23 @@ and 9 unit checks pass. Read the fork's
 `docs/DOCUMENT-LIFETIME-REPLAY-20261104.md` and machine-readable
 `test/webos/document-replay-evidence-20261104.json` for exact tested source,
 asset hashes, negative controls, commands and limits. This is not the full CAD
-gate or a newly packaged WebOS app.
+gate. The newer package and research results below supersede the old
+not-yet-packaged status.
+
+Desktop `73c1e8b13` packages fork `d3d36bc5`, including ordinary OCC fillet/
+chamfer guards and visible errors, with both required worker assets. Nine lead
+browser runs pass: two signed host workflows at phone/1080p/4K plus the three
+fillet/chamfer/refusal regressions. The dependent plate is opened through Files,
+saved through My files with exact server bytes, then reopened in a fresh signed
+session. See `evidence/cad-packaged-workers-20261104.md` and its JSON receipt.
+
+Fork `7d08c159` additionally merges `1a6e5b77` engine-mount research, which is
+not connected to the application or selected by the package. Real Manifold
+and OCI worker boxes pass independent lead checks. The selected interpreter
+does not export the legacy SPI box/dispose functions. Its original wrapper
+requires `window`; the research wrapper uses a portable exchange callback.
+Whole-worker termination is its current cleanup boundary. Broad bindings,
+trusted installation, resource budgets and production integration remain open.
 
 Desktop `2e312b7975d92882c9ff74803066abe089d9ca59` integrates the Files-only
 beta candidate builder and tests. Candidate `3ad04c48…` supersedes `feaa1c6f…`,
@@ -89,6 +105,15 @@ inventory. Actual derived issuer/guest config tests pass separately. These are
 isolated fixtures, not a durable managed activation/recovery operator. See
 `../research/beta-opfs-release/README.md`.
 
+Files checkpoint `b391e259b` adds signed account/file continuity across the exact
+issuer restart and a filesystem/process-tested forward-only floor journal.
+Lead journal fault tests pass. Managed adapter prototype `e4a6c2ec6` stays on
+`research/beta-opfs-managed-bind-20261104`, based on hosting `cf04068aa`; do not
+merge/deploy that unrelated hosting branch wholesale. Damaged-journal re-gating,
+actual protected launcher/issuer switching, custody and host capacity remain
+unqualified. The account volume had 208.8 MiB above its 5 GiB reserve at the
+recorded check. Read `../research/beta-opfs-release/CAPACITY-2026-11-04.md`.
+
 ## What works and what is still open
 
 These are bounded results. A passing small model is not a completed CAD gate;
@@ -96,15 +121,15 @@ one worker is not a browser-wide RAM guarantee.
 
 | Area | Demonstrated | Open or failing |
 |---|---|---|
-| Saved files | Opt-in OPFS My files; signed reopen and file operations; sealed beta-derived candidate and controlled old-tab migration. | Managed transition/recovery operator, signed continuity across actual issuer upgrade, headroom and full app compatibility. |
+| Saved files | Opt-in OPFS My files; signed operations; sealed candidate/controlled-tab migration; actual signed continuity across issuer restart and tested floor journal. | Qualified managed transition/recovery operator, headroom and full app compatibility. |
 | Conflicts | Two independent Chromium processes/profiles, actual Files/Text offline edits, cancellation, a newer edit during resolution, keep-both and fresh reopen. | Final assembled release and broader failure matrix. |
 | Interrupted transfer | Real committed-upload reply cut reconciles without blind duplicate write; actual download cuts preserve complete verified generations and earlier bytes. | Crash during publication, physical power loss, exact release transition. |
 | Changed data | A signed 128 MiB file's one-byte edit sent 71,470 request-body bytes in the recorded run; final local/server hashes agreed. | This excludes responses and HTTP/TLS overhead. SDK still builds a Blob before OPFS capture; no complete zero-copy or total-memory claim. |
 | File worker resources | One cooperating VerifiedContent worker across tabs; queue, cancellation, timeout and renderer-crash recovery. | SDK/app workers and allocations are outside that cap. Sampled summed Chromium RSS was about 1.32 GiB in the large-file run, with shared pages counted multiple times. |
 | Temporary Linux | Real v86 boot; Files can browse guest home; identically named My files stays separate; guest reboot resets temporary content. | This is not a synchronized Linux Account mount. All-app compatibility remains. |
-| CAD host integration | Packaged fork `794c14a3`: actual signed small-model save/reopen, independent OCC/Native windows, account denial and closed-command rejection at simulated phone, 1080p and 4K. | New root `2b3f2c0f` has passed the local combined build but is not repackaged/qualified through that host. Heavy native snapshot/stringification still needs work. |
+| CAD host integration | Packaged fork `d3d36bc5`: actual signed small-model and dependent-plate save/reopen with both workers, independent OCC/Native windows, account denial and closed-command rejection at simulated phone, 1080p and 4K. | Large-model resource qualification, shared agent workflow, heavy snapshot/stringification and public release remain. |
 | Headless sketch solve | Actual IO/solver in a real worker, no canvas/DOM/fake editor; restricted plate fixtures, residual and finite-geometry checks. | Not all entity/constraint families, exact general DOF, arbitrary region extraction or all kernels. |
-| Dependent plate | 100×50×20 → 150×30×20 with centered Ø10 hole and four constrained corner holes; undo/redo, hole rays and native-v2 reopen on the combined build. | Missing fillets/patterns/inch-display/full shared-agent workflow. Native sketch extrusion is explicitly unsupported in this path. |
+| Dependent plate | 100×50×20 → 150×30×20 with centered Ø10 hole and four constrained corner holes, ordinary OCC fillet/chamfer; undo/redo, geometry rays, native-v2 and signed reopen. | Feature patterns, inch display and full shared-agent workflow remain. Native sketch extrusion and fillets are explicitly unsupported in these paths. |
 | Rejected CAD regeneration | Impossible 15×15 edit retains last complete plate, marks it stale and refuses save/3MF; correcting it regenerates. Held replay leaves accepted registry/model intact. | Broader operation-context/native-handle isolation, full feature chain and resource bounds. |
 | Document lifetime | Monotonic generation plus exact service/storage ownership; held validator/replay reset, staged rollback, late reply, service replacement and surface cleanup/reload controls pass. | All async services and noncooperative kernel interruption are not qualified. |
 | Material-aware 3MF | Existing research and independent limited lib3mf fixtures. | Full editable enclosure/body/lid/inset workflow and manufacturing handoff remain unqualified. |
@@ -304,6 +329,18 @@ CODI_EMBED_NUMERIC=1 CODI_EMBED_MANIFOLD=1 ./node_modules/.bin/webpack --config 
 npm run check-code
 ```
 
+The exact eight preparer runtime inputs are also preserved, independently
+content-verified, at `r730:/mnt/data10tb/codi-cad-runtime-inputs-ced603b99f8d`.
+Its `manifest.json` SHA-256 is
+`ced603b99f8d27577ba43256e6c391627a7e52f7465784a28ebf63b6b01aa6a5`.
+Copy it to a private local directory, verify the closed file inventory and
+every recorded size/hash, then pass its `manifold/` and `occt/` directories to
+the desktop preparer. `evidence/cad-runtime-inputs-20261104.json` records paths
+and hashes. This is a LAN backup of selected research prerequisites, not public
+distribution clearance or a guarantee of a fully offline build; locked npm
+dependencies still require installation. No generated app/dependency tree is
+committed to Git.
+
 Serve `dist` with production-style CSP, permitting WebAssembly but not
 JavaScript `unsafe-eval`. Use the plate README and actual browser tests,
 including `plate-parametric-centered-browser.test.cjs`, the last-valid control,
@@ -320,9 +357,9 @@ requirements. Manifold's CSP-safe source build is documented in
 `test/webos/README-surfacing-research.md`. Do not substitute unverified npm
 binaries or publish runtime inputs before the recorded distribution gaps close.
 
-The desktop preparer at `apps/system/jsketcher/prepare.py` still pins the older
-qualified small-model fork. Updating it requires the new exact commit, emitted
-worker asset graph and notice/source inventory, followed by preparer/package
+The desktop preparer at `apps/system/jsketcher/prepare.py` now pins `d3d36bc5`,
+including both content-addressed workers. Further updates require an exact
+commit, emitted worker graph and notice/source inventory, followed by preparer/package
 tests and signed host tests. A stale `dist` can pass old tests while new source
 remains untested: always record the built commit and served asset hashes.
 
