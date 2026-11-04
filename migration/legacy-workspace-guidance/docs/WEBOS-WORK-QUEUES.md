@@ -102,19 +102,22 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
-- [~] CAD PROFILE WORKER: integrated `00e82cd7`, then lead qualification
-  `505fbcc4`. Seven data tests and actual Chromium worker-to-worker preparation
-  pass with strict CSP, exact source hashes, authored IDs, nonzero frame and
-  stale-digest refusal. This completes ARC13's narrow computational request,
-  not solid creation or editable-history publication. ARC14's real OCC prism
-  operation is active; a separate reviewer maps the model/provenance bridge.
-  `test/extrude/profile-evidence-20261104.json` in the fork records the bounds.
-  No runtime repin or deployment.
-- [ ] CAD MODEL VERTEX ID: the bridge review found `mshell.ts` supplies the
-  vertex object as an identifier. ARC15 owns the failing control, type/uniqueness
-  correction and real registry/selection/replay tests. This is an identified
-  defect, not a completed fix. The bridge plan keeps analytic topology and
-  provenance separate from mesh display and opaque worker handles.
+- [~] CAD PROFILE WORKER: integrated checkpoint `c672d0d1`, tested worker code
+  `25050c16`. Actual authored rectangle-to-OCC prism, unsnapped v2 profile,
+  polygon-area volume check and dense result validation pass. The optional
+  worker-local topology descriptor is limited to 16 KiB and is not sent to
+  ordinary controller callers. Lead seventeen data/math checks and actual
+  strict-CSP topology/profile/lifecycle tests pass; earlier box/Boolean
+  compatibility also passes. See fork `test/engine-extrude` and
+  `test/engine-topology` evidence JSON. ARC14 still needs the strict BREP reader,
+  worker ownership, durable references and accepted history publication. Mesh
+  closure/volume evidence is not BRepCheck/manufacturing certification. No repin
+  or deployment; public UI extrusion still uses the earlier in-page kernel.
+- [~] CAD MODEL VERTEX ID: `228cde72` fixes the object-as-ID defect. Lead fresh
+  build/typecheck and real OCC/Native Mesh registry, replay, authored extrusion
+  and publication tests pass. Producer labels remain unqualified and ordinal
+  fallback unstable; vertex picking and saved vertex-dependent features remain
+  queued under ARC15. See fork `test/webos/brep-vertex-ids-evidence-20261104.json`.
 - [~] FILES REAL-SERVICE FIXTURE: source through `ba65151d2` is integrated at
   `de71f56b8`. The implementation owner passed interrupted unit-write, reload,
   restart and timer-stop recovery using real sealed processes and distinct
@@ -126,7 +129,9 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   remain open. No live changes.
 - [~] FILES INSTALL READINESS: packet `ad25aaded` records live pins and missing
   protected bundle, floor-aware guard and dedicated probe. Source preparation
-  helper work is active in disposable tests only; no server install. Read
+  helper/bootstrap/quiescence work through agent branch `0f9d46d87` passes
+  independent disposable review; lead integration and actual supported-process
+  inventory/freeze remain open. No server install. Read
   `research/beta-isolated-hosting/FILES-INSTALL-READINESS-2026-11-04.md`.
 - [~] CAD HOST AND SIGNED FILES: desktop `64becedd8`, CAD code `9bde6b29`
   (boundary plan `cc2d46dd`). Lead rebuilt exact revision and passed command,

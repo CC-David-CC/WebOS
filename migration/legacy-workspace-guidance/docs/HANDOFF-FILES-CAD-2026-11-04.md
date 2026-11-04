@@ -12,24 +12,51 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
-The latest tested CAD checkpoint is `505fbcc448cab0a78affbcc99144f2539c910362`, integrating authored
-rectangle profile preparation `00e82cd7` over the earlier `cc2d46dd` boundary
-plan. The lead passed seven data tests and an actual Chromium test under strict
-CSP: the real sketch worker supplies the sketch, and a separate module worker
-prepares its selected profile without window/document/canvas. Authored edge IDs
-and nonzero frame coordinates survive; a changed source digest is refused.
-The reproducible allowlisted fixture records every served source hash. Read
-the fork's `test/extrude/README.md` and `profile-evidence-20261104.json`.
-This is ARC13's bounded request preparation, not kernel execution, a published
-solid, an installed mount or a new host command. Caller-side accepted-solver,
-native-document, actual frame and account/lifetime validation remain required.
-The owned lead fixture/browser ports 19982/19983 were closed after testing.
-The later docs-only bridge review is carried in
-`docs/research/WORKER-PRISM-MODEL-BRIDGE-20261104.md`: analytic topology and
-source-to-result provenance are needed beyond a mesh. It also identifies the
-legacy `MVertex` ID-type defect, now assigned with before/after tests as ARC15.
-The preferred pinned runtime remains separate from unpromoted replacement-build
-research; the worker operation does not require that replacement.
+The latest integrated CAD checkpoint is `c672d0d1` (tested worker code
+`25050c16`, tested full application `228cde72`). The lead combined actual
+authored-profile OCC extrusion, unsnapped version-2 profile input, polygon-area
+volume checks and dense response validation. Thirteen focused data/math tests,
+the real sketch-to-OCC worker workflow, lifecycle/forged-response controls and
+existing OCI box/Boolean suite pass serially under the research CSP. Source
+edge-to-swept-face ancestry is checked against actual kernel generation history;
+100/150 mm widths give the expected measured volume and bounds. See the fork's
+`test/engine-extrude/lead-evidence-20261104.json` for exact hashes and outputs.
+
+The retained reversed solver result has zero endpoint gap but a tiny axis
+deviation. Profile v2 preserves its actual endpoints rather than snapping;
+v1 keeps its original exact policy. A different thin trapezoid demonstrates
+that the old adjacent-edge-product volume check accepted a wrong mesh; the
+corrected authored polygon-area check refuses it without widening tolerance.
+These are mesh/structural checks, not BRepCheck, single-solid or manufacturing
+certification. The worker remains separate from editable model/history and
+production host commands. Caller-side solver/document/frame/account lifetime
+validation remains required. Whole-worker termination is the native cleanup
+boundary, with eight lifetime reservations; global worker budgets remain open.
+
+ARC15's concrete vertex ID-type defect is corrected at `228cde72`. A fresh
+lead build with matching embedded revision passes typechecking and the real
+OCC/Native Mesh registry/replay, rectangle extrusion and craft publication
+tests. See `test/webos/brep-vertex-ids-evidence-20261104.json`. Producer labels
+remain unqualified and ordinal IDs unstable; vertex picking and durable
+vertex-dependent features are not qualified. Root test ports 19982/19983/19986
+are closed and the disposable OCC fixture was removed.
+
+ARC14 now has a bounded portable analytic descriptor at `25050c16`, after
+independent review caught sparse plane-normal acceptance and unnecessary
+main-thread transfer in the first candidate. Dense-data checks, count limits,
+a 16 KiB UTF-8 serialized limit and explicit versioned research opt-in are
+enforced inside the worker before sending. Ordinary controller requests do
+not build or transfer it. The lead passes seventeen combined data/math tests,
+real normal/translated/reversed topology extraction, ordinary no-transfer,
+profile regression and lifecycle tests. See
+`test/engine-topology/lead-evidence-20261104.json`. These are response-local
+IDs and measured planes/loops, not durable references or an editable CAD model.
+Next: strict data-only JS BREP reader, mount ownership and guarded history
+publication. Read `docs/research/WORKER-PRISM-MODEL-BRIDGE-20261104.md`.
+The selected pinned OCC runtime is separate from replacement-build research.
+The legacy Shell/Face import graph eagerly reaches global Verb; ARC16 records
+this coupling. The reader prototype must use the real pinned library headlessly
+if needed, never a fake browser environment or fake engine implementation.
 
 Earlier tested CAD code is `9bde6b291f859660db3fe14613ceff9851148391`.
 Desktop `64becedd8` integrates the reviewed Add-menu dialog, scoped rectangle
@@ -52,12 +79,14 @@ packaged runtime pin remains `d3d36bc5`; nothing was deployed.
 
 **Next CAD boundary:** the existing extrusion kernel and topology work still
 run on the UI thread. Research OCC/Manifold mounts have box/Boolean operations,
-but do not yet connect authored regions, worker-owned BREP, persistent topology,
+and OCC now has a bounded authored-profile prism. They do not yet connect
+worker-owned BREP, persistent topology,
 history and downstream use. Do not expose raw `craft.modify`, substitute a BOX,
 or present a mesh preview as that integration. Read the fork's
 `docs/research/RECTANGLE-EXTRUSION-BOUNDARY-20261104.md`. ARC13's bounded profile
-preparation is now qualified above; ARC14 connects the actual worker operation,
-model/provenance bridge and guarded publication before shared command exposure.
+preparation and actual OCC worker operation are qualified within the scope
+above; ARC14 still needs the model/provenance bridge and guarded publication
+before shared command exposure.
 Keep both engines and explicit capability differences. Full Gate 1,
 bracket/enclosure, parameter/unit and core-3MF acceptance remain open.
 
@@ -75,7 +104,10 @@ are substituted; timer firing and protected installation are not qualified. See
 The protected-install readiness packet is integrated at `ad25aaded`:
 `research/beta-isolated-hosting/FILES-INSTALL-READINESS-2026-11-04.md`.
 It records observed live pins and required protected bundle/guard/probe work.
-No installer is qualified or installed yet. `/srv/data` has a user-owned
+Agent source through `0f9d46d87` now has independent disposable installer,
+bootstrap and known-preloaded-CLI quiescence checks. Lead integration, protected
+placement and actual production process inventory/freeze remain open. No
+installer is qualified on the real host or installed yet. `/srv/data` has a user-owned
 ancestor and is not the launcher's protected bundle destination; do not change
 all hosting ownership to bypass this check. A bounded preparation helper is
 being authored and tested in disposable paths, with deployment still lead-owned.

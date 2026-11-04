@@ -9,7 +9,7 @@ preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
 The user authorizes using JSketcher as inspiration and replacing coupled code
 where needed. Keep useful proven components, but production computational
 workers must not require canvas, DOM, editor windows or fake browser UI.
-`CAD-CORE-SEPARATION.md` defines the required boundaries, ARC01–ARC15 packages
+`CAD-CORE-SEPARATION.md` defines the required boundaries, ARC01–ARC16 packages
 and ENG01–ENG08 engine-mount work.
 Separate the revisioned authored model, shared human/agent commands, formulas
 and simultaneous constraints, computational core, jobs, generated references,
@@ -21,12 +21,17 @@ dependent-feature regeneration. A stale-boundary refusal protects the old model
 but does not qualify ordinary supported resizing. The full Gate 1 and
 bracket/enclosure/core-3MF acceptance remain required; later gates stay queued.
 
-Latest bounded CAD checkpoint is `505fbcc4`, qualifying `00e82cd7` selected
-rectangle profile preparation in a real data-only module worker. Seven data
-tests and strict-CSP Chromium source-hash/identity/frame/stale-digest controls
-pass; no kernel or editable-history publication is claimed. ARC13's narrow
-request slice is complete. Actual OCC worker prism execution and the model/
-reference/history bridge remain ARC14. See the fork's `test/extrude/README.md`.
+Latest bounded CAD checkpoint is `c672d0d1`, tested worker source `25050c16`.
+ARC13 prepares authored profiles; ARC14 now executes actual OCC prisms and
+optionally extracts a bounded portable plane/edge/vertex descriptor in workers.
+Lead seventeen data/math checks and real strict-CSP topology/profile/lifecycle
+tests pass. Unsnapped solver data, correct polygon volume and incomplete result
+refusal are covered. Ordinary calls do not transfer the optional descriptor.
+The strict BREP reader, mount ownership, persistent references and history
+publication remain unfinished. See the fork's `test/engine-extrude` and
+`test/engine-topology` evidence. ARC15's vertex ID-type fix `228cde72` passes a
+fresh full build and real two-engine registry/replay tests; durable vertex
+references remain unqualified. None of this repins or deploys the desktop.
 
 Earlier tested application code is `9bde6b29` (boundary plan `cc2d46dd`). Scoped
 command discovery and the Add-menu action use the atomic rectangle core.
@@ -34,9 +39,9 @@ Independent lead tests pass signed create/save, exact server bytes/hash,
 second-account denial, fresh-session reopen, real editor width change and a
 second signed save/reopen. Coordinate/precision refusal and post-publication
 supersession are tested separately. Existing UI extrusion has measured bounds,
-but still performs kernel/topology work on the UI thread. The next ARC13/14
-slice connects the qualified profile preparation to an actual worker-owned engine and
-model/reference/history bridge. Full Gate 1 remains open. Test-only packages
+but still performs kernel/topology work on the UI thread. The next ARC14
+slice connects the qualified worker result to the model/reference/history
+bridge. Full Gate 1 remains open. Test-only packages
 are not release artifacts; the normal pin stays `d3d36bc5`, with no deployment.
 See the latest handoff and rectangle host/diagnostics evidence JSON files.
 

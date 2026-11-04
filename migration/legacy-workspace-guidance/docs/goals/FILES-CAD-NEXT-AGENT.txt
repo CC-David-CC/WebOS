@@ -10,16 +10,18 @@ The handoff names exact code checkpoints, scoped candidate results, reproduction
 known failures and deployment boundaries. Treat it as the starting point and
 update it when new evidence changes the plan.
 
-Latest tested CAD source is 505fbcc4: ARC13 profile preparation 00e82cd7 plus lead
-seven-data-test and actual Chromium worker qualification. The real sketch
-worker feeds a separate profile worker under strict CSP; source hashes,
-authored edge IDs/nonzero frame and stale-digest refusal pass. This prepares
-bounded data only; no kernel, editable-history publication or public command.
-Read the fork's test/extrude/README.md and profile-evidence-20261104.json.
-The later WORKER-PRISM-MODEL-BRIDGE-20261104.md plan identifies the bounded
-analytic topology/provenance bridge and a concrete MVertex ID-type defect;
-ARC15 now owns that defect's failing control and correction. The replacement
-runtime build remains separate from the selected pinned worker runtime.
+Latest integrated CAD source is c672d0d1, with tested worker code 25050c16 and
+fresh full application build 228cde72. Actual authored rectangle-to-OCC prism,
+source-edge ancestry, unsnapped solver geometry, corrected polygon-volume
+comparison and dense response validation pass. Lead seventeen data/math checks
+and actual strict-CSP topology/profile/lifecycle suites pass. The optional
+worker-local portable descriptor is capped at 16 KiB; ordinary callers never
+request or receive it. Read test/engine-extrude and test/engine-topology lead
+evidence JSON. The strict BREP reader, mount ownership, persistent generated
+references and editable-history publication remain ARC14. ARC15's object-as-ID
+defect is fixed and tested in both engines, but vertex picking and durable
+vertex references are not qualified. The selected pinned runtime remains
+separate from unpromoted replacement-build research.
 
 Earlier application code is cc2d46dd (code tested at 9bde6b29, diagnostic change
 85b588c8). Desktop 64becedd8 integrates the scoped rectangle commands, Add-menu
@@ -33,11 +35,11 @@ docs/evidence. This is test-only packaging, not a deployed runtime or full Gate1
 
 The next concrete CAD dependency is ARC14. Existing EXTRUDE geometry and
 topology classification still run on the UI thread. The research engine mounts
-can make boxes/Booleans but cannot yet publish an authored extrusion with its
+can make boxes/Booleans and a bounded OCC profile prism but cannot yet publish it with its
 model/topology/provenance/history and downstream references. Read the fork's
 docs/research/RECTANGLE-EXTRUSION-BOUNDARY-20261104.md. Use the qualified selected
-profile preparation, then qualify the actual worker prism and
-model/ownership bridge, then integrate guarded replay/publication and the same
+profile/prism and optional analytic descriptor, then qualify the strict model
+reader/ownership bridge, then integrate guarded replay/publication and the same
 human/agent command. Do not expose raw craft.modify, invent a BOX surrogate or
 use a hidden editor. OCC is preferred; other capabilities refuse explicitly
 until their own implementation is qualified. Both engines remain in scope.
@@ -52,7 +54,9 @@ old/bad-unit controls. Production policy/paths/TLS/main readiness remain
 substituted; timer firing, protected installation and beta acceptance stay open.
 The install-readiness packet integrated at ad25aaded gives exact observed pins
 and remaining protected bundle/guard/probe work. A bounded preparation helper
-is being tested in disposable paths; it is not installed. Deployment remains
+and bootstrap/quiescence through agent source 0f9d46d87 pass independent
+disposable review. Lead source integration, protected placement and actual
+supported-process inventory/freeze remain open; nothing is installed. Deployment remains
 lead-owned, with no new user approval inferred from these review documents.
 Twelve unused public staging trees were verified and archived on /srv/data;
 webhost root now has 7,297,232,896 bytes free, 1,928,523,776 bytes above the unchanged 5 GiB
