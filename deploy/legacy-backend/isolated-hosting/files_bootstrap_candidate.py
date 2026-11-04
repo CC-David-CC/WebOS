@@ -3,30 +3,34 @@
 
 Fixed paths are deliberate. Review before use; no live installation performed.
 """
-import ctypes,errno,hashlib,os,socket,stat,tempfile
+import ctypes,errno,grp,hashlib,os,pwd,socket,stat,tempfile
 from pathlib import Path
-SOURCE=Path('/srv/codi-connected/operators/files-bootstrap-source')
+SOURCE=Path('/home/dflanag3/files-bootstrap-source')
 DEST=Path('/srv/codi-connected/operators/files-install-input-ce18b7794adc2472')
 SELF=Path('/srv/codi-connected/operators/files-bootstrap-v1.py')
 PINS='3fbabe6cd71b8d11e4347c0b8bb4a4d3df89263126a327e1ca368ca87d953667'
 
-def secure(p):
+def secure(p, source=False):
  p=Path(p)
  if not p.is_absolute() or '..' in p.parts: raise ValueError('absolute path required')
  for x in (p,*p.parents):
   s=x.lstat()
-  if stat.S_ISLNK(s.st_mode) or s.st_uid!=0 or s.st_mode&0o022: raise ValueError('unsafe custody: '+str(x))
+  if stat.S_ISLNK(s.st_mode) or s.st_uid not in ((0,1000) if source else (0,)) or s.st_mode&0o002: raise ValueError('unsafe custody: '+str(x))
+  if s.st_mode&0o020:
+   members={u.pw_uid for u in pwd.getpwall() if u.pw_gid==s.st_gid}
+   members.update(pwd.getpwnam(n).pw_uid for n in grp.getgrgid(s.st_gid).gr_mem)
+   if not source or not members<={0,1000}: raise ValueError('untrusted writable group: '+str(x))
   for name in ('system.posix_acl_access','system.posix_acl_default'):
    try: os.getxattr(x,name,follow_symlinks=False)
    except OSError as e:
     if e.errno not in (errno.ENODATA,errno.ENOTSUP): raise
    else: raise ValueError('extended ACL: '+str(x))
 
-def read(p):
- secure(p);fd=os.open(p,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK|os.O_CLOEXEC)
+def read(p, source=False):
+ secure(p,source=source);fd=os.open(p,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK|os.O_CLOEXEC)
  try:
   s=os.fstat(fd)
-  if not stat.S_ISREG(s.st_mode) or s.st_uid!=0 or s.st_nlink!=1 or s.st_mode&0o022 or s.st_size>8*1024*1024: raise ValueError('unsafe source')
+  if not stat.S_ISREG(s.st_mode) or s.st_uid not in ((0,1000) if source else (0,)) or s.st_nlink!=1 or s.st_mode&0o002 or (s.st_mode&0o020 and not source) or s.st_size>8*1024*1024: raise ValueError('unsafe source')
   data=bytearray()
   while len(data)<s.st_size:
    b=os.read(fd,min(65536,s.st_size-len(data)))
@@ -67,14 +71,14 @@ def verify(root,files):
 
 def main():
  if os.geteuid()!=0 or socket.gethostname()!='box-webhost' or Path(__file__).absolute()!=SELF: raise ValueError('wrong host or bootstrap path')
- secure(SELF);secure(SOURCE);secure(DEST.parent)
- files=parse(read(SOURCE/'ops/files_bootstrap_pins.txt'))
+ secure(SELF);secure(SOURCE,source=True);secure(DEST.parent)
+ files=parse(read(SOURCE/'ops/files_bootstrap_pins.txt',source=True))
  if DEST.exists() or DEST.is_symlink(): verify(DEST,files);print('verified existing input');return
  stage=Path(tempfile.mkdtemp(prefix='.files-input-stage-',dir=DEST.parent))
  # A killed/failed process leaves only an unpublished temporary directory.
  # It is never reused as an input; cleanup requires a separate review.
  for name,pin in files.items():
-  raw=read(SOURCE/name)
+  raw=read(SOURCE/name,source=True)
   if hashlib.sha256(raw).hexdigest()!=pin: raise ValueError('source digest mismatch: '+name)
   out=stage/name;out.parent.mkdir(mode=0o755,parents=True,exist_ok=True)
   fd=os.open(out,os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW|os.O_WRONLY,0o444)
