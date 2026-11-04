@@ -9,6 +9,16 @@ conversion/composition are required; see ENG01–ENG08 in
 `CAD-CORE-SEPARATION.md`. They need not produce identical results. Unsupported,
 unbound, unexposed, untested, failing and passing are distinct inventory states.
 
+Keep one authoritative authored design graph with explicit engine selections
+and references; BREP, mesh, visualization and analysis results are distinct
+derived representations. Do not demand feature parity or matching topology.
+Conversion must report its tolerance, lost information and provenance; turning
+a mesh into faces does not recover the original parametric intent. The current
+Native Mesh path includes JSketcher's native BREP/surfacing and Manifold mesh
+operations, so it must not be reduced to a misleading all-triangles description.
+Qualified mount/controller checkpoint `4b6528e9` retains both engines' supported
+behavior; worker-backed editable feature history is still in progress.
+
 Later bounded source-built strict-CSP and signed desktop results supersede the
 early table below: `evidence/cad-files-combined-20261104.md` covers packaged
 fork `794c14a3`, Native Mesh intersection/history, OCC rotation/scale,

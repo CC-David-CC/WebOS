@@ -102,6 +102,33 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] FILES V2 ACTIVE ON BETA: protected preparation, supported-CLI guard,
+  dedicated private probe, full public-artifact staging and the actual managed
+  plan/apply completed. Candidate `3ad04c48`, issuer `853c12e5`, unchanged
+  gateway `dd8cbea7`; beta reports OPFS/database version 2. The durable floor is
+  present and transient journals are cleared. Signed known-file health passed;
+  independent read-only inventory/unit/public checks also pass. See
+  `evidence/files-beta-activation-20261104.json` and protected-install/probe
+  receipts. Main and `/desktop/` remain on their existing releases. The browser
+  owner reports a Ready-gated Files→Text edit/save, second-account denial,
+  fresh-session reopen, 1 MiB one-byte changed transfer and independent-profile
+  conflict pass; lead review of those receipts remains. A controlled held-read
+  follow-up found Text intentionally noneditable until ready; the initial
+  empty-file test typed too early. Retain that failed test and readiness control;
+  no lost accepted edit was reproduced. Activation does not complete Files
+  acceptance. Public speech vendor JS returns 404, separately queued.
+- [~] CAD WORKER RESULT BRIDGE: integrated checkpoint `4b6528e9` includes the
+  strict headless analytic reader, deferred Verb initialization, exact live
+  mount/topology binding and structured authored rectangle face/perimeter-edge
+  roles. Independent review and lead real-worker tests pass width changes and
+  reversed/reordered solver output; changed shared-controller paths also pass
+  existing OCC and Manifold suites. Fork receipts are under
+  `test/portable-prism-reader`, `test/portable-mount-bridge` and
+  `test/prism-semantic`. Four connector edges/all vertices still lack qualified
+  durable authored identity. Next: bounded model projection, private candidate
+  and accepted mount ownership, atomic history publication, edit/undo/reopen.
+  No public CAD repin or full-plate qualification. Earlier checkpoint wording
+  below is historical; these results supersede its missing reader/mount status.
 - Foundation priority: the user explicitly accepts that usable workflows may
   lag component qualification. Continue correctness work and preserve failing
   cases; do not weaken a gate to meet a visible-progress deadline. Integrated
@@ -111,9 +138,9 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   lead tests pass on the integrated tree: preparation, interrupted installation,
   floor/metadata refusal, and both the old-process negative control and its
   supervised quiescence correction. Receipt:
-  `evidence/files-install-lead-20261104.json`. Protected host preparation,
-  actual process inventory and deployment remain lead-owned; these disposable
-  tests are not a live-install or account-storage acceptance claim.
+  `evidence/files-install-lead-20261104.json`. Those disposable tests remain
+  separately scoped from the subsequent actual protected install and beta
+  activation above; they do not alone establish account-storage acceptance.
 - [~] CAD PROFILE WORKER: integrated checkpoint `c672d0d1`, tested worker code
   `25050c16`. Actual authored rectangle-to-OCC prism, unsnapped v2 profile,
   polygon-area volume check and dense result validation pass. The optional

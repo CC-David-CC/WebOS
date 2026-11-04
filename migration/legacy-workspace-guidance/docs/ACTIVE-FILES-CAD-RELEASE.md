@@ -21,17 +21,24 @@ dependent-feature regeneration. A stale-boundary refusal protects the old model
 but does not qualify ordinary supported resizing. The full Gate 1 and
 bracket/enclosure/core-3MF acceptance remain required; later gates stay queued.
 
-Latest bounded CAD checkpoint is `c672d0d1`, tested worker source `25050c16`.
-ARC13 prepares authored profiles; ARC14 now executes actual OCC prisms and
-optionally extracts a bounded portable plane/edge/vertex descriptor in workers.
-Lead seventeen data/math checks and real strict-CSP topology/profile/lifecycle
-tests pass. Unsnapped solver data, correct polygon volume and incomplete result
-refusal are covered. Ordinary calls do not transfer the optional descriptor.
-The strict BREP reader, mount ownership, persistent references and history
-publication remain unfinished. See the fork's `test/engine-extrude` and
-`test/engine-topology` evidence. ARC15's vertex ID-type fix `228cde72` passes a
-fresh full build and real two-engine registry/replay tests; durable vertex
-references remain unqualified. None of this repins or deploys the desktop.
+Latest bounded CAD checkpoint is `4b6528e9`. ARC13's authored profile and
+ARC14's actual OCC prism now connect to a strict headless analytic reader,
+live mount binding and structured authored face/perimeter-edge roles. Combined
+actual-worker tests pass width edits and reversed/reordered solver output;
+both engine paths pass the changed shared controller's regressions. Ordinary
+calls do not transfer the optional 16 KiB descriptor. Model projection,
+candidate/accepted resource ownership, document/account guards, atomic history
+publication and edit/undo/native reopen remain. Connector edges and vertices
+lack qualified durable identity. Read the fork's portable-reader/mount/semantic
+evidence and refined worker-prism bridge note. No public CAD repin occurred.
+
+Files candidate `3ad04c48` with issuer `853c12e5` is now active on beta through
+the protected managed operator; gateway `dd8cbea7` is unchanged. The v2 floor
+persists and transient journals cleared. Signed known-file health and
+independent post-apply inventory/unit/public checks pass. Actual browser
+acceptance is running; activation does not close the storage gate. Main and
+`/desktop/` remain on existing releases. See the current handoff and
+`evidence/files-beta-activation-20261104.json` for exact pins and recovery path.
 
 Earlier tested application code is `9bde6b29` (boundary plan `cc2d46dd`). Scoped
 command discovery and the Add-menu action use the atomic rectangle core.

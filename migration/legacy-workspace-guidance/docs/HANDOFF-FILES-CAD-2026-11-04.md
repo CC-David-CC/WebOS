@@ -2,7 +2,8 @@
 
 Checkpoint date: 2026-11-04. This is the starting plan for another integration
 agent, including Sol. **Files and CAD Gate 1 are incomplete.** The new storage
-and CAD work is development code, not a completed beta release. Writing this
+and CAD work remains incomplete; Files v2 is now active on beta for acceptance.
+Writing this
 handoff does not declare the active goal complete or paused.
 
 The immediate job is to finish dependable saved data and safe dependent CAD
@@ -11,6 +12,63 @@ agent commands. The long-term CAD 1.0–6.0 program informs these boundaries;
 it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
+
+**Current, superseding the historical checkpoints below:** CAD
+`4b6528e9` on `integration/files-cad-release-20261104` includes the strict
+headless prism reader, deferred global Verb initialization, live mount binding
+and authored rectangle semantic roles. Lead fresh builds/typecheck and real
+strict-CSP workers pass; the shared controller also passes existing OCC and
+Manifold box/Boolean regressions. Exact receipts are in the fork's
+`test/portable-prism-reader/lead-evidence-20261104.json`,
+`test/portable-mount-bridge/lead-evidence-20261104.json`, and
+`test/prism-semantic/lead-evidence-20261104.json`. Width changes and reversed/
+reordered solved edges retain the supported structured source keys. Connector
+edges and vertices still lack qualified durable identity. Host projection,
+candidate/accepted engine-resource ownership, atomic history publication and
+edit/undo/native reopen remain unfinished; the full plate is not qualified on
+this new path. Read the refined bridge note in the fork. The ordinary desktop
+runtime remains `d3d36bc5`; no CAD runtime repin or deployment was made.
+
+**Files deployment:** the actual protected plan and apply passed on box-webhost,
+activating candidate `3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc`
+with issuer `853c12e581c9f89fc3d78507f43941dd16cd0b4b894b28cdb8317e8a58340f21`.
+Gateway `dd8cbea7` is unchanged. Signed known-file health passed. Independent
+inventory/unit/custody/public checks passed, and the protected v2 floor remains
+while all named transient journals are cleared. See
+`evidence/files-beta-activation-20261104.json`,
+`evidence/files-protected-install-20261104.json`, and
+`evidence/files-probe-entry-lead-20261104.json`.
+
+The exact protected forward/recovery entry is
+`/srv/codi-connected/operators/files-bundle-ce18b7794adc2472/ops/beta_files_launch.py`,
+run with `/srv/codi-connected/venvs/517179c/bin/python -I -B` as root.
+`plan` and `apply` are pre-floor actions and must not be rerun on the completed
+state. The reviewed `recover` action handles verified forward recovery if
+needed; never restore a v1 client below the floor. Do not hand-edit Caddy.
+The private probe remains solely on the server at
+`/var/lib/webhost-ops/beta-files-probe/probe.json`; no credentials belong in Git
+or another machine's checkout. The earlier probe provision entry is pre-floor.
+
+Current hosting pins: generator `d11755a1…`, manifest `2c3987d4…`, derived Caddy
+`95cecea4…`, guarded webctl `84c09e08…`; full hashes and service identities are
+in the activation receipt. Main and `/desktop/` remain on their existing
+releases. No account/key copying occurred. The 5 GiB account reserve is unchanged;
+7,301,079,040 bytes were free after activation, not a capacity guarantee.
+The main renewal timer is active/waiting; its renewal service remains failed
+with no PID as before this work, a separate existing issue.
+
+Public-browser acceptance is in progress. The browser owner reports a
+Ready-gated Files→Text edit/save, other-account denial, fresh-session reopen
+and 1 MiB one-byte transfer pass, plus independent-profile conflict handling;
+lead receipt review remains. The first test typed during initial load and
+observed an empty synced file. A held-read follow-up found Text intentionally
+noneditable until ready; no lost accepted edit was reproduced. Preserve both
+tests and review their receipts. The public speech vendor JS returns 404 as a
+separate issue. Do not claim complete Files acceptance yet. Beta has no consumers and the user permits
+replacing its services; main and the prototype remain protected. Activation is
+not large-file, crash, conflict or classroom-concurrency qualification.
+
+### Prior component checkpoint (historical next-step wording)
 
 The latest integrated CAD checkpoint is `c672d0d1` (tested worker code
 `25050c16`, tested full application `228cde72`). The lead combined actual
