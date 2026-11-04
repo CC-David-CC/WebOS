@@ -81,6 +81,38 @@ and the material-aware enclosure/core-3MF handoff. See
 Three isolated implementation lanes are active; the lead owns shared contracts,
 review, integration and deployment. Preserve main, beta data and guarded assets.
 
+### Active progress — 2026-11-04
+
+- [~] INTEGRATED SOURCE: opt-in OPFS content adapter/migration and guarded beta
+  mirror through `b81ea020e`, lead merge `c4ec9b527`; reentrant cancellation and
+  corrected signed-test provenance in `0ec753c33`. No deployment.
+- [~] TESTED: owner reports signed account isolation, injected lost reply and
+  independent-profile conflicting offline edits preserving both versions.
+  Earlier overlapping-fixture signed runs are provisional; corrected runs pin
+  the served mirror hash. Full real-interruption and product UI gates remain.
+- [~] TESTED: lead's public asset allowlist and account-scoped desktop backend
+  wiring pass six packaging tests plus actual-stage hardlink refusal and real
+  Chromium staged-worker save/reopen
+  under strict CSP. Explicit preview-only origin-wide selection; OPFS remains
+  off by default. See `docs/evidence/storage-product-integration-20261104.md`.
+- [~] RESEARCH: CAD consolidation `a05a7433` builds the candidate OCC runtime
+  from source, preserves Native Mesh and passes bounded strict-CSP feature tests.
+  This is not final solver integration or general CAD/3MF qualification.
+- [~] INTEGRATED SOURCE: snapshot lease candidate `242e9e951` protects cooperating
+  readers; no published-generation collector is enabled. Independent staged
+  account-scope/old-backend refusal tests are `eebc1f082`.
+- [~] INTEGRATED SOURCE: `78addd57d` bounds generation-lock acquisition and
+  backing-file size checks, and avoids the compatibility-copy path for byte
+  reads. Staged strict-CSP capture/reopen passed again after integration.
+- [~] TESTED CANDIDATE: lead combined CAD consolidation `a05a7433` and solver
+  checkpoint `81a214e5` in a separate integration worktree. Actual solver,
+  cross-stage/annotation rollback and admission IO suites pass there; rendered
+  and account-backed project round trips remain. One agent now develops the
+  Concentric feature while another completes solver correctness; lead reviews.
+- [ ] ACTIVE: reader-aware OPFS reclamation, integrated 128 MiB/resource/fault
+  tests, Files UI and origin-wide beta rollout; solver cross-stage rollback
+  controls, then the remaining mechanical/material-aware acceptance models.
+
 ## Historical progress ledger — 2026-11-02 pause
 
 - [x] LIVE: File-service non-JSON HTTP error status classification deployed and scoped two-account smoke passed. It does not fix server contention or guarantee exactly-once writes. See `evidence/file-http-status-errors-20261102.md`.

@@ -69,21 +69,21 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 
 | ID | Required outcome | State | Evidence / next gate |
 |---|---|---|---|
-| F01 | Saved browser data survives close/reopen and fresh-session recovery | open | OPFS research tests exist; product adapter/migration required |
-| F02 | Account invalidation, cancellation and independent sessions preserve isolation | open | Carry beta guards into product path; real signed regression |
-| F03 | Stale windows/concurrent devices preserve edits and explicit conflicts | open | Product and multi-device conflict/resolution tests |
-| F04 | Lost replies/uncertain writes reconcile without duplicate mutation | open | Real socket-cut baseline exists; retest integrated store |
+| F01 | Saved browser data survives close/reopen and fresh-session recovery | partial | Opt-in product adapter and complete-row migration integrated; staged Chromium reopen passes; deployed/fresh-session acceptance remains |
+| F02 | Account invalidation, cancellation and independent sessions preserve isolation | partial | Guarded beta source carried forward; signed owner tests and bounded-read worker cancellation pass; full integration remains |
+| F03 | Stale windows/concurrent devices preserve edits and explicit conflicts | partial | Owner's separate-profile offline conflict test preserves both copies; resolution and Files UI gates remain |
+| F04 | Lost replies/uncertain writes reconcile without duplicate mutation | partial | Signed injected lost-reply/newer-edit test passes; real socket-cut integrated retest remains |
 | F05 | Downloads publish only complete verified generations | open | Research pull exists; integrated fault and version races |
 | F06 | Cleanup cannot remove committed/in-flight data | open | Research staging journal exists; migration and crash tests |
-| F07 | Heavy work stays in workers with measured responsiveness/resources | open | Research is not proof of strict browser memory limits |
+| F07 | Heavy work stays in workers with measured responsiveness/resources | partial | Real staged strict-CSP worker capture/verification passes; full responsiveness/concurrency and resource qualification remain |
 | F08 | Changed-data transfers and safe first/legacy reads through 128 MiB | open | Product signed byte/resource measurements |
 | F09 | Files create/open/rename/move/copy/delete/upload/download and truthful status | open | Actual UI plus server/browser interruption tests |
 | F10 | Temporary Linux remains separate; existing app contract compatible | open | Existing callers and Linux-home integration tests |
-| C01 | One coherent buildable fork preserves intended existing integrated work | open | Reuse 518a4666 descendants; exact selected base and feature map |
-| C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | open | Actual build provenance and supported-operation evidence |
-| C03 | Splines/history/selection/DXF/camera/reconstruction work together | open | Existing focused tests; combined app regression |
+| C01 | One coherent buildable fork preserves intended existing integrated work | partial | Consolidation candidate a05a7433 with source build recipe; final solver integration/release remains |
+| C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; linked-source evidence and full capability qualification remain |
+| C03 | Splines/history/selection/DXF/camera/reconstruction work together | partial | Consolidation owner ran real carried-feature checks; integrated host and final fork regression remain |
 | C04 | CAD My files, independent instances, disposal and shared commands | partial | Bounded read helper: 7 tests and real CAD desktop/emulated-phone stand-in workflow passed; signed product host still required |
-| M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | open | Admission research baseline; remaining solver failures/performance |
+| M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | partial | Reclassification/drag/restore fixes reviewed; independent cross-stage failure controls found further rollback work |
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
 | M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
 | M04 | Typed parameters/formulas/dependencies/configurations | open | Bracket/enclosure edits with explicit errors |
@@ -99,6 +99,8 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | R03 | Source/tests/evidence/handoff backed up to box-git and R730 | active | Checkpoint each integrated slice; final remote-ref verification |
 
 ## Execution rules
+
+Current source/test details and limits: `docs/evidence/storage-product-integration-20261104.md`.
 
 Keep three independent implementation lanes active where their contracts permit.
 Review actual commits and representative runtime evidence before integration.
