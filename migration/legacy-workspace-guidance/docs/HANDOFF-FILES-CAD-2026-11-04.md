@@ -13,6 +13,12 @@ it is not the next agent's first implementation task.
 
 ## Current operational checkpoint
 
+**Latest user policy:** main and beta are both no-user test deployments. Replace
+the release; reloads are expected. Do not spend further work supporting old app
+windows/caches or qualifying historical release combinations. Retain actual
+file-integrity, account-isolation, resource/lifecycle and basic workflow checks.
+Already-proven deployment mechanisms may be reused without expanding them.
+
 Main now serves **e7e8fb9f**: Files, Text, Terminal, Calculator, Help and the
 CodeMirror dependency. These are priority integration targets with bounded
 workflow evidence, not fully validated tools. Broader apps/games remain on beta.

@@ -102,6 +102,15 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+**Latest user direction supersedes the earlier production-upgrade gates:** both
+main and beta are no-user test deployments. Replace the test release and require
+a reload; stop qualifying old windows, cached versions and extra historical
+recovery families solely for compatibility. Keep saved-file correctness,
+account isolation, worker cleanup and actual current-release workflows. Reuse
+the already-reviewed healthy deployment path, preserve other sites/prototype,
+and perform fresh public acceptance. Historical compatibility evidence remains
+recorded but is no longer a prerequisite that expands this milestone.
+
 **Main reduction LIVE:** e7e8 now selects Files, Text, Terminal, Calculator and
 Help, with CodeMirror dependency; broader apps/games remain on beta. These are
 priority integration targets with bounded workflow evidence, not fully validated

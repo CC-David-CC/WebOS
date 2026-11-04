@@ -1,5 +1,17 @@
 Finish dependable Files, consolidate our existing JSketcher fork, then deliver the next useful mechanical CAD features through the WebOS.
 
+Latest deployment-policy correction — 2026-11-04:
+Both beta.ksu.codes and ksu.codes are no-user test deployments. Prioritize rapid
+replacement and current-release validation. Old windows, cached app versions,
+session continuity and production-style backward-compatible upgrades are NOT
+release requirements now. Expect a reload after updates. Stop adding old-client
+or alternate-release recovery qualification solely for those guarantees. Reuse
+already reviewed deployment tools; do not expand a framework for this change.
+Keep file integrity, account isolation, worker/resource cleanup and basic app
+workflows as acceptance requirements. Preserve unrelated sites/prototype and
+private account/key boundaries. Keep existing test files when practical; there
+is no need to erase them merely to avoid supporting old app windows.
+
 Latest user amendment — 2026-11-04: all games and unfinished features belong on
 beta.ksu.codes; main must offer only qualified end-to-end features. Main-only
 removal is authorized through managed hosting. Preserve beta, /desktop, saved

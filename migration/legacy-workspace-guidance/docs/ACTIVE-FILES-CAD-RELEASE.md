@@ -6,6 +6,12 @@ preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
 
 ## Current architectural direction — 2026-11-04
 
+Deployment correction: both main and beta are no-user test sites. Current-release
+replacement and a reload are allowed; preserving old app windows/cached versions
+and adding production-style compatibility gates are no longer requirements.
+Stop extra compatibility work and finish current deployment/functional checks.
+Saved-data integrity, account isolation and worker/lifecycle correctness remain.
+
 **Current checkpoint (supersedes earlier implementation snapshots below):**
 shared mount operations are integrated into Text, Calculator, Files, Circuit
 Lab, Digital Logic and the CAD parent. Sixteen controller checks and lead
