@@ -7,6 +7,8 @@ spec=importlib.util.spec_from_file_location('main_forward',Path(__file__).with_n
 OLD=main.OLD_SELECTOR;NEW=main.NEW_SELECTOR
 class Ctl:
  def __init__(self):self.write=lambda p,b,*a,**k:Path(p).write_bytes(b.encode() if isinstance(b,str) else b)
+ def _check_floor_record(self):assert self._floor_guard_active
+ def _assert_v2_beta(self,data):assert data['codi_beta_simplified']=='beta'
  def validate(self,data):assert len(data['sites'])==1
  def dump(self,data):return 'codi_beta_simplified = "beta"\n[[sites]]\ndomain = "ksu.codes"\ncodi_simplified = "'+data['sites'][0]['codi_simplified']+'"\n'
  def caddy(self,data,mode):return '# production\nksu='+data['sites'][0]['codi_simplified']+'\nbeta.ksu.codes {\n static beta\n}\n'

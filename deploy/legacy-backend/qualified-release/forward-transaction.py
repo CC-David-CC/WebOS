@@ -39,10 +39,14 @@ class ForwardAdapter:
   self.inner=inner;self.check_candidate=check_candidate;self.check_floor=check_floor
  @contextlib.contextmanager
  def held(self):
-  self.inner.check_lock();yield
+  self.check_lock();yield
+ def check_lock(self):
+  self.inner.check_lock();self.check_floor();self.check_candidate()
+  ctl=self.inner.ctl;ctl._floor_guard_active=True;ctl._check_floor_record()
+  ctl._assert_v2_beta(tomllib.loads(self.inner.read()['manifest'].decode()))
  def __getattr__(self,name):return getattr(self.inner,name)
  def apply_caddy(self,manifest,common,recovery=False):
-  self.inner.check_lock();self.check_floor();self.check_candidate()
+  self.check_lock()
   ctl=self.inner.ctl;data=tomllib.loads(manifest.decode());expected=ctl.caddy(data,'production').encode();active=Path(self.inner.paths['caddy']);prior=ctl.write
   def forward_write(path,content,*args,**kwargs):
    raw=content.encode() if isinstance(content,str) else content
