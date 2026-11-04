@@ -71,5 +71,57 @@ async def main():
    await runner.cleanup()
    for args in pins:verify(*args)
    print('PASS complete native and gateway inventories after fixture',flush=True)
-try:asyncio.run(main())
+async def systemd_main():
+ """Real sealed processes in uniquely named DynamicUser systemd units."""
+ prefix=os.environ['CODI_REAL_SERVICES_PREFIX'];policy=pathlib.Path(os.environ['CODI_REAL_SERVICES_POLICY']);names=[prefix+'-'+role+'.service' for role in ('issuer','frontend','gateway')]
+ def ctl(*args):
+  result=subprocess.run(['sudo','-n','systemctl',*args],capture_output=True,text=True,timeout=40)
+  if result.returncode:
+   diagnostics=subprocess.run(['systemctl','show',args[-1],'-p','Result','-p','ExecMainStatus','-p','ActiveState'],capture_output=True,text=True,timeout=10)
+   raise RuntimeError('disposable systemd operation failed: '+diagnostics.stdout.strip())
+ def get(port,path):
+  with urllib.request.urlopen(urllib.request.Request(f'http://127.0.0.1:{port}'+path,headers={'Host':'127.0.0.1:19771'}),timeout=.5) as response:return json.load(response)
+ def wait(port,path):
+  for _ in range(200):
+   try:return get(port,path)
+   except (OSError,ValueError):time.sleep(.05)
+  raise RuntimeError('disposable systemd service did not become ready')
+ caddy=None;ctrl=None;thread=None
+ try:
+  ctl('start',names[0]);original=wait(IP,'/config.json');assert 'fileStorage' not in original
+  with tempfile.NamedTemporaryFile(mode='w',prefix='codi-public-policy-',delete=False) as out:
+   json.dump({'identity':original['identity']},out);source=pathlib.Path(out.name)
+  try:subprocess.run(['sudo','-n','install','-m','0644',str(source),str(policy)],check=True,capture_output=True,timeout=10)
+  finally:source.unlink()
+  ctl('start',names[1],names[2]);wait(GP,'/config.json');assert wait(19776,'/healthz')['status']=='ok'
+  with tempfile.TemporaryDirectory(prefix='codi-systemd-signed-') as temp:
+   conf=pathlib.Path(temp)/'Caddyfile';conf.write_text(f'''{{\n admin 127.0.0.1:{ADMIN}\n}}\n{origin} {{\n handle /gateway/* {{\n reverse_proxy 127.0.0.1:19776\n }}\n handle /config.json {{\n reverse_proxy 127.0.0.1:{GP}\n }}\n @issuer path /api/* /discovery.json /.well-known/*\n handle @issuer {{\n reverse_proxy 127.0.0.1:{IP}\n }}\n handle {{\n root * {B}\n file_server\n }}\n}}\n''')
+   caddy=subprocess.Popen([C,'run','--config',str(conf),'--adapter','caddyfile'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+   class Control(http.server.BaseHTTPRequestHandler):
+    def do_GET(self):
+     if self.path!='/restart':self.send_error(400);return
+     try:
+      updated=wait(IP,'/config.json');extra=updated.pop('fileStorage');assert extra=={'version':'codi-browser-file-content/1','backend':'opfs','databaseVersion':2};assert updated==original;self.send_response(200);self.end_headers()
+     except Exception:self.send_error(500)
+    def log_message(self,*args):pass
+   ctrl=http.server.HTTPServer(('127.0.0.1',CONTROL),Control);thread=threading.Thread(target=ctrl.serve_forever,daemon=True);thread.start()
+   for _ in range(100):
+    if caddy.poll() is not None:raise RuntimeError('disposable signed Caddy failed')
+    try:
+     with urllib.request.urlopen(origin+'/config.json',timeout=.5) as response:assert json.load(response)==original
+     break
+    except OSError:await asyncio.sleep(.1)
+   else:raise RuntimeError('signed systemd fixture did not start')
+   print('ready '+origin,flush=True);await asyncio.Event().wait()
+ finally:
+  if ctrl:await asyncio.to_thread(ctrl.shutdown);ctrl.server_close()
+  if thread:thread.join(2)
+  if caddy and caddy.poll() is None:caddy.terminate();caddy.wait(timeout=15)
+  for n in reversed(names):
+   subprocess.run(['sudo','-n','systemctl','stop',n],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
+  for n in names:
+   subprocess.run(['sudo','-n','systemctl','clean','--what=runtime',n],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=40)
+  for args in pins:verify(*args)
+  print('PASS complete native and gateway inventories after fixture',flush=True)
+try:asyncio.run(systemd_main() if os.environ.get('CODI_REAL_SERVICES_PREFIX') else main())
 except KeyboardInterrupt:pass

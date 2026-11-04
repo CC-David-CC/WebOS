@@ -6,6 +6,11 @@ state=ROOT/'timer.json'
 if not state.exists():state.write_text(json.dumps({'active':True,'enabled':True}))
 orig_exec=builtins.exec
 
+def pause_at(stage):
+ if (ROOT/'block').exists() and os.environ.get('CODI_FILES_KILL_STAGE','unit-write')==stage:
+  (ROOT/'blocked-pid').write_text(str(os.getpid()))
+  while (ROOT/'block').exists():time.sleep(.05)
+
 def systemctl(args):
  prefix=os.environ.get('CODI_FILES_SYSTEMD_PREFIX')
  if args[0]=='show':
@@ -16,21 +21,37 @@ def systemctl(args):
    return p.stdout+'FragmentPath=/etc/systemd/system/'+n+'\n'
   return f'ActiveState=active\nFragmentPath=/etc/systemd/system/{n}\nDropInPaths=\nNeedDaemonReload=no\n'
  if args[0]=='daemon-reload':
-  if (ROOT/'block').exists():(ROOT/'blocked-pid').write_text(str(os.getpid()))
-  while (ROOT/'block').exists():time.sleep(.05)
+  pause_at('unit-write')
   if prefix:subprocess.run(['/usr/bin/systemctl','daemon-reload'],check=True,timeout=30)
+  pause_at('reload')
   return ''
  if args[0]=='restart':
+  if os.environ.get('CODI_FILES_REAL_SERVICES')=='1':(ROOT/'coord/issuer-next').touch()
   if prefix:subprocess.run(['/usr/bin/systemctl','restart',prefix+'-issuer.service'],check=True,timeout=30)
-  if not (ROOT/'issuer-switched').exists():
+  if os.environ.get('CODI_FILES_REAL_SERVICES')=='1' or not (ROOT/'issuer-switched').exists():
    c=http.client.HTTPConnection('127.0.0.1',19774,timeout=30);c.request('GET','/restart');r=c.getresponse();assert r.status==200;r.read();c.close();(ROOT/'issuer-switched').touch()
+  pause_at('restart')
   return ''
  if args[0]=='start':
   if prefix:subprocess.run(['/usr/bin/systemctl','start',prefix+'-'+args[1].removeprefix('codi-beta-')],check=True,timeout=30)
+  if os.environ.get('CODI_FILES_REAL_SERVICES')=='1':
+   port,path=(19773,'/config.json') if args[1].endswith('frontend.service') else (19776,'/healthz')
+   for _ in range(200):
+    try:
+     c=http.client.HTTPConnection('127.0.0.1',port,timeout=.2);c.request('GET',path,headers={'Host':'127.0.0.1:19771'});r=c.getresponse();r.read();c.close()
+     if r.status==200:break
+    except OSError:pass
+    time.sleep(.05)
+   else:raise RuntimeError('disposable dependent did not become ready')
   return ''
  raise AssertionError(args)
 def hostrun(args):
  args=list(args);n=args[2] if len(args)>2 else ''
+ if os.environ.get('CODI_FILES_REAL_TIMER')=='1':
+  prefix=os.environ['CODI_FILES_SYSTEMD_PREFIX'];mapped=prefix+('-renew.timer' if n.endswith('.timer') else '-renew.service')
+  result=subprocess.run([args[0],args[1],mapped,*args[3:]],check=True,capture_output=True,text=True,timeout=30)
+  if args[1]=='stop' and mapped.endswith('.timer'):pause_at('timer-stopped')
+  return result.stdout
  if args[1]=='show' and n.endswith('.timer'):
   v=json.loads(state.read_text());return 'ActiveState='+('active' if v['active'] else 'inactive')+'\nUnitFileState='+('enabled' if v['enabled'] else 'disabled')+'\n'
  if args[1]=='show':return 'ActiveState=inactive\nMainPID=0\nControlPID=0\n'
