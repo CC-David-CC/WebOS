@@ -13,7 +13,30 @@ try:
  def check():
   if os.fstat(fd).st_ino!=lock.stat().st_ino: raise ValueError('changed lock')
  manifest=source/'ops/files_install_manifest.json';dest=parent/'generation'
+ # Actual process death during staging leaves only an unpublished temp tree.
+ pid=os.fork()
+ if pid==0:
+  old_read=m.read_file
+  def die_during_copy(path,*args,**kw):
+   value=old_read(path,*args,**kw)
+   if pathlib.Path(path).name=='beta_launcher.py': os.kill(os.getpid(),signal.SIGKILL)
+   return value
+  m.read_file=die_during_copy;m.stage(source,manifest,dest,check);os._exit(74)
+ _,status=os.waitpid(pid,0);assert os.waitstatus_to_exitcode(status)==-signal.SIGKILL
+ assert not dest.exists()
+ # Kill after publishing the directory but before reporting completion.
+ published=parent/'published'
+ pid=os.fork()
+ if pid==0:
+  old_sync=m.syncdir
+  def kill_after_publish(path):
+   old_sync(path)
+   if pathlib.Path(path)==parent and published.exists(): os.kill(os.getpid(),signal.SIGKILL)
+  m.syncdir=kill_after_publish;m.stage(source,manifest,published,check);os._exit(74)
+ _,status=os.waitpid(pid,0);assert os.waitstatus_to_exitcode(status)==-signal.SIGKILL
+ m.verify_bundle(published,manifest,check)
  m.stage(source,manifest,dest,check)
+ m.verify_bundle(dest,manifest,check)
  assert (dest/'ops/beta_files_launch.py').exists()
  try: m.stage(source,manifest,dest,check);raise AssertionError('overwrite accepted')
  except ValueError: pass
@@ -27,6 +50,19 @@ try:
  target=root/'webctl.py';shutil.copyfile(source/'ops/webctl_live.py',target);target.chmod(0o644)
  journal=state/'install.json';floor=state/'floor.json'
  original=m.atomic
+ # Real death immediately after the fsynced journal is recoverable.
+ pid=os.fork()
+ if pid==0:
+  def kill_after_journal(path,*args,**kw):
+   original(path,*args,**kw)
+   if path==journal: os.kill(os.getpid(),signal.SIGKILL)
+  m.atomic=kill_after_journal
+  m.guard_install(target=target,guard=source/'ops/webctl_floor_candidate.py',old_source=source/'ops/webctl_live.py',journal=journal,floor=floor,check_lock=check);os._exit(74)
+ _,status=os.waitpid(pid,0);assert os.waitstatus_to_exitcode(status)==-signal.SIGKILL
+ assert journal.exists() and m.digest(target.read_bytes())==m.OLD
+ m.guard_install(target=target,guard=source/'ops/webctl_floor_candidate.py',old_source=source/'ops/webctl_live.py',journal=journal,floor=floor,check_lock=check)
+ assert not journal.exists() and m.digest(target.read_bytes())==m.NEW
+ target.write_bytes((source/'ops/webctl_live.py').read_bytes())
  def interrupted(path,*args,**kw):
   original(path,*args,**kw)
   if path==journal: raise RuntimeError('interrupted after journal')
