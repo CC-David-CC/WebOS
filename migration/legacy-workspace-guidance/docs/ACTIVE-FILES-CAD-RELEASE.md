@@ -48,6 +48,14 @@ Signed command discovery confirms that agents cannot yet start a sketch;
 atomic data-only creation is the next command slice. Full units/part/agent,
 interrogation ownership, library coverage and release work remain open.
 
+Fork `5b77f71d` adds coherent craft publication (`ccb66be7`) with lead-tested
+build/typecheck, stream checks and 12 browser regressions. Rejected commands
+preserve the accepted history, geometry and validity; failed authored replay
+remains visibly stale. Nested reset and caller-error controls pass. This closes
+the evaluated-craft publication gap, not the entire document/storage transaction.
+Next integrate worker-prepared plane/sketch bytes under ARC11. The desktop
+package remains `d3d36bc5`; no deployment is claimed.
+
 The Files beta candidate and issuer/config/session fixture are integrated at
 desktop `2e312b797`, but managed transition/recovery and public qualification
 remain open. `research/beta-opfs-release/README.md` records exact pins.

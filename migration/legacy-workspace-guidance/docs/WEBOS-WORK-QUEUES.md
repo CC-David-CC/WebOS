@@ -102,6 +102,15 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] CONSISTENT CAD REVISION: fork `5b77f71d` records implementation
+  `ccb66be7`. Lead build/typecheck, actual stream tests and 12 Chromium scripts
+  pass. Successful/failed replay and reset publish matching geometry/history/
+  registry/status; rejected commands preserve the accepted valid revision.
+  Equal-value write revisions, nested notification/subscription cases and
+  caller exceptions are covered. See the fork's `CRAFT-PUBLICATION-20261104.md`
+  and `craft-publication-evidence-20261104.json`. Atomic sketch storage plus
+  prepared plane publication remains next (ARC11); full Gate 1 stays open.
+  No new package or deployment.
 - [~] COMBINED CAD CHECKPOINT: fork `bdc4ff2b` integrates verified OCI/Manifold
   workers, guarded associative circular-cut patterns and the discoverable seed
   picker. The lead independently passed both engine suites/four contract checks,
@@ -121,8 +130,9 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 - [~] AGENT ENTRY GAP: signed registry test confirms inspect/circular listing/
   concentricity exist, but sketch-start is unavailable and leaves the model
   unchanged. Desktop branch `research/cad-agent-plate-desktop-20261104` records
-  this and the data-only transaction proposal (`942f5edaf`). Fork `83f428f3`
-  has a worker-tested empty-sketch factory, not atomic document creation.
+  this and the data-only transaction proposal (`942f5edaf`). Fork `508d54e4`
+  has agent-tested empty-sketch and dimensioned XY rectangle factories, not
+  integrated atomic document creation.
   Next agree and test plane/sketch publication without a required editor view.
 - [~] FILES MANAGED TRANSITION: lead passed four `c2d6f696` inventory/controller/
   Caddy/recovery scripts. The separate hosting branch

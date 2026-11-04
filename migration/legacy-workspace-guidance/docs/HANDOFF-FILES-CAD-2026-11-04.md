@@ -12,6 +12,33 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
+Fork `5b77f71d` now includes craft publication implementation `ccb66be7` and
+its exact evidence. History, geometry, registry and failure status are installed
+together; reset stops stale delivery, and rejected commands preserve a valid,
+saveable accepted document. The lead passed build/typecheck, stream tests and
+12 actual Chromium regression scripts. Read the fork's
+`docs/CRAFT-PUBLICATION-20261104.md` and
+`test/webos/craft-publication-evidence-20261104.json`. The receipt preserves the
+failing before-control, fixture corrections and corrected pattern rollback
+oracle. This is evaluated craft-state publication, not yet atomic sketch-storage
+or entire-document publication. Desktop package still selects `d3d36bc5`.
+
+The next CAD dependency is a privately prepared plane plus strict sketch bytes,
+published with matching document generation/revision and model/history/registry
+in one transaction. A rejected or stale preparation must remain invisible;
+retain feature-ID gaps and require no rendered editor. Worker factory branch
+`research/cad-agent-plate-20261104` at `508d54e4` now prepares a validated,
+dimensioned XY rectangle, with agent-run worker tests. It is not yet integrated
+or exposed by the desktop command registry.
+
+Engine research `ce47a866` qualifies a non-instrumented session candidate from
+source `5a4e14ce`, independently of fault-instrumented source `4ef86f9e`.
+Agent tests cover bounded session ownership, partial construction/serialization
+failures, aliases, stale/foreign handles and termination. These are incremental
+relinks, not clean full builds or proof of allocator leak freedom. Legacy raw
+pointer paths remain; no runtime/package pin has changed. Keep these separate
+from the lead-tested craft publication results.
+
 Fork `bdc4ff2b` integrates verified OCI/Manifold worker mounts (`6486b1ef`),
 the bounded associative circular-cut pattern (`854dc3b3`), discoverable seed
 picker (`0680b40b`) and Boolean preprocessing control (`f83eec0c`). The lead
@@ -66,7 +93,7 @@ The complete original goal and amendments are preserved in
 | Repository | Integration branch | Code checkpoint before this handoff |
 |---|---|---|
 | `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `541db60789a2910f2a92a1023fe765ea902d43a0` |
-| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `bdc4ff2b` |
+| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `5b77f71d` (implementation `ccb66be7`) |
 
 The desktop branch's later handoff commit adds documentation to that code
 checkpoint. Verify branch tips with `git ls-remote` before starting; another

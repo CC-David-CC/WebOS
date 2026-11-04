@@ -32,6 +32,14 @@ The actual agent registry still cannot start a sketch from an empty document;
 the next data-only transaction slice addresses this. See the current handoff
 and the fork's `combined-pattern-mount-evidence-20261104.json`.
 
+Fork `5b77f71d` records the subsequent craft publication fix (`ccb66be7`).
+Lead build/typecheck, stream checks and 12 browser scripts pass. Accepted
+history/model/registry/status stay coherent, reset prevents stale notifications,
+and rejected commands leave the accepted design valid and saveable. The next
+boundary is an atomic plane/sketch-storage document command. This result does
+not qualify the full competency matrix, both-engine feature parity, complete
+agent workflow or a new release; see `CRAFT-PUBLICATION-20261104.md` in the fork.
+
 ## Gate definition and execution policy
 
 - [ ] Qualify all 12 competency areas below and the 22-exercise ladder.

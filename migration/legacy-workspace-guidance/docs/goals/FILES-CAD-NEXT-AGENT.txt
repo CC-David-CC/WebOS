@@ -52,6 +52,15 @@ Signed command discovery proves sketch-start is still missing; an empty-sketch
 worker factory exists, but atomic data-only plane/sketch publication does not.
 Do not replace that gap with a hidden or required rendered editor.
 
+Latest fork checkpoint 5b77f71d includes coherent craft publication ccb66be7:
+history/models/registry/status install together, rejected commands preserve the
+accepted document, resets stop stale delivery, and callback failures remain
+separate. Lead build/typecheck, stream tests and 12 Chromium scripts pass; read
+CRAFT-PUBLICATION-20261104.md and its evidence JSON. Next implement ARC11's
+sketch-storage plus prepared-plane transaction. The agent-tested rectangle
+factory at 508d54e4 is still on its research branch; do not claim a registered
+sketch-start command. The desktop package is unchanged.
+
 The Files lane is now research/beta-files-operator-20261104, beyond the early
 e4 managed prototype. Lead c2d6f696 controller/Caddy tests pass; real protected
 launcher, combined signed health and capacity are still release gates. Read the
