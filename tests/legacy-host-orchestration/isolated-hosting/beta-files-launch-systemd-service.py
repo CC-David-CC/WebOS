@@ -2,11 +2,12 @@
 """Systemd fixture trampoline; execs only caller-provided sealed test releases."""
 import hashlib,os,subprocess,sys
 from pathlib import Path
-role,python,old,new,gateway,root,prefix,fixture_data=sys.argv[1:]
+role,python,old,new,gateway,root,prefix,fixture_data,selection=sys.argv[1:]
 origin='http://127.0.0.1:19771';base=['--origin',origin]
 if role=='issuer':
  runtime=(Path('/run')/(prefix+'-issuer')).resolve(strict=True)
- release=new if (Path(root)/'issuer-next').exists() else old
+ if selection not in ('old','new'):raise ValueError('invalid mapped issuer unit selection')
+ release=new if selection=='new' else old
  args=[python,'-B',release+'/scripts/serve-connected.py','--port','19772','--runtime-dir',str(runtime),*base,'--user-files']
  if release==new:args.append('--beta-opfs-file-content')
 elif role=='frontend':args=[python,'-B',old+'/guest-relay/server.py','--port','19773',*base,'--identity-config-port','19772','--no-guest-network']

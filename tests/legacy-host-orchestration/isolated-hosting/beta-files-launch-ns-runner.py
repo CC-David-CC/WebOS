@@ -5,7 +5,7 @@ Requires noninteractive sudo, mount namespaces, the public sealed input paths,
 ports 19771–19775 free, and the specified pinned Caddy/Python executables.
 Never points at live private state or modifies host paths outside its temp dirs.
 """
-import argparse,hashlib,json,os,select,shlex,signal,socket,subprocess,sys,tempfile,time
+import argparse,hashlib,json,os,select,shlex,signal,socket,stat,subprocess,sys,tempfile,time
 from pathlib import Path
 HERE=Path(__file__).resolve().parent;OPS=HERE.parent/'ops';CAND='3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc';NATIVE='853c12e581c9f89fc3d78507f43941dd16cd0b4b894b28cdb8317e8a58340f21';GW='dd8cbea7de0a411eca100bdc3811eec1fc6bf3d7e8b6a7c0236fe509ceb9dbd1';BASE='0965a0cbdd022f588061cdc23e10eb6b18fa5977cc3f6a05569439eaf11d2020';OVERLAYS=('1d6b8f4e72e4c3f533afeea10589ac931a3dfe56d4bbaf03abec6d7d99a55d5a','bc3c7e659d40f853ed31bfec257079d65cd92c86011b1b1b86e80f32dd7a9c1c')
 p=argparse.ArgumentParser();
@@ -33,9 +33,11 @@ def verify_tree(root,manifest,pin):
  for parent,dirs,files in os.walk(root,followlinks=False):
   for name in dirs+files:
    path=Path(parent)/name
-   if path.is_symlink():raise ValueError('fixture release contains symlink')
+   info=path.lstat()
+   if path.is_symlink() or info.st_uid!=0 or info.st_mode&0o022 or not (stat.S_ISREG(info.st_mode) or stat.S_ISDIR(info.st_mode)):raise ValueError('unsafe fixture release entry')
   for name in files:
    path=Path(parent)/name;relative=path.relative_to(root).as_posix();seen.add(relative)
+   if path.stat().st_nlink!=1:raise ValueError('fixture release has linked file')
    if relative==manifest:continue
    h=hashlib.sha256();size=0
    with path.open('rb') as stream:
@@ -75,7 +77,9 @@ try:
  sudo('cp',OPS/'webctl_floor_candidate.py',home/'dflanag3/webhost-sites/ops/webctl.py');sudo('chown',f'{os.getuid()}:{os.getgid()}',home/'dflanag3/webhost-sites/ops/webctl.py');sudo('chmod','644',home/'dflanag3/webhost-sites/ops/webctl.py')
  boot=root/'bootstrap.py';setup=root/'setup.py';caddy_helper=root/'caddy-helper.py';sudo('cp',HERE/'beta-files-launch-ns-bootstrap.py',boot);sudo('cp',HERE/'beta-files-launch-ns-setup.py',setup);sudo('cp',HERE/'beta-files-launch-ns-caddy.py',caddy_helper);sudo('chown','root:root',boot,setup,caddy_helper);sudo('chmod','600',boot,setup,caddy_helper)
  service_helper=root/'systemd-service.py'
- if a.real_services:sudo('cp',HERE/'beta-files-launch-systemd-service.py',service_helper);sudo('chown','root:root',service_helper);sudo('chmod','755',service_helper)
+ unit_mapper=root/'systemd-map.py'
+ if a.real_services:
+  sudo('cp',HERE/'beta-files-launch-systemd-service.py',service_helper);sudo('cp',HERE/'beta-files-launch-systemd-map.py',unit_mapper);sudo('chown','root:root',service_helper,unit_mapper);sudo('chmod','755',service_helper,unit_mapper)
  mounts=((srv,'/srv'),(var,'/var/lib'),(backs,'/var/backups'),(logs,'/var/log'),(home,'/home'),(etc,'/etc'))
  prefix=' && '.join('mount --bind '+q(str(src))+' '+q(dst) for src,dst in mounts)+' && '
  env={'CODI_FILES_FIXTURE_ROOT':str(root),'CODI_FILES_FIXTURE_BUNDLE':str(bundle),'CODI_FILES_KILL_STAGE':a.kill_stage}
@@ -84,7 +88,7 @@ try:
   unit_prefix='codi-files-test-'+str(os.getpid())+'-'+os.urandom(4).hex();env['CODI_FILES_SYSTEMD_PREFIX']=unit_prefix
   names=[unit_prefix+'-'+x+'.service' for x in ('issuer','frontend','gateway')];planned_units=[Path('/run/systemd/system')/n for n in names]
   if a.real_services:
-   env['CODI_FILES_REAL_SERVICES']='1';env['CODI_FILES_REAL_TIMER']='1'
+   env['CODI_FILES_REAL_SERVICES']='1';env['CODI_FILES_REAL_TIMER']='1';env['CODI_FILES_UNIT_MAPPER']=str(unit_mapper)
    timer_names=[unit_prefix+'-renew.service',unit_prefix+'-renew.timer'];planned_timer=[Path('/run/systemd/system')/n for n in timer_names]
    mount_root=Path('/run')/(unit_prefix+'-inputs');sudo('mkdir',mount_root);sudo('chmod','755',mount_root)
    for name,source in (('old',srv/'data/codi-beta-native/1666491de4fe097285f02a5b6f7602fe57e4b9d3b2995bf016d4a9e809e36a51'),('new',srv/'data/codi-beta-native'/NATIVE),('gateway',srv/'codi-gateway/releases'/GW),('venv',Path(a.python).parent.parent),('coord',root/'coord')):
@@ -99,7 +103,7 @@ try:
    old=str(mount_root/'old');new=str(mount_root/'new');gateway=str(mount_root/'gateway')
    def unit(role):
     depends='' if role=='issuer' else 'Requires='+names[0]+'\nAfter='+names[0]+'\n'
-    args=' '.join((system_python,'-B',system_helper,role,system_python,old,new,gateway,str(mount_root/'coord'),unit_prefix,str(mount_root/'data')))
+    args=' '.join((system_python,'-B',system_helper,role,system_python,old,new,gateway,str(mount_root/'coord'),unit_prefix,str(mount_root/'data'),'old'))
     extra='Environment=TMPDIR='+str(mount_root/'data/tmp')+'\nReadWritePaths='+str(mount_root/'data')+'\n' if role=='gateway' else ''
     return '[Unit]\nDescription=Disposable Files '+role+'\nStartLimitIntervalSec=0\n'+depends+'[Service]\nType=exec\nDynamicUser=yes\nRuntimeDirectory='+unit_prefix+'-'+role+'\nRuntimeDirectoryMode=0700\nRuntimeDirectoryPreserve=yes\nNoNewPrivileges=yes\nStandardOutput=null\nStandardError=null\n'+extra+'ExecStart='+args+'\n'
    payload=json.dumps({str(planned_units[i]):unit(role) for i,role in enumerate(('issuer','frontend','gateway'))}|{str(planned_timer[0]):'[Unit]\nDescription=Disposable Files timer service\n[Service]\nType=oneshot\nExecStart=/usr/bin/true\n',str(planned_timer[1]):'[Unit]\nDescription=Disposable Files timer\n[Timer]\nOnActiveSec=1d\nUnit='+timer_names[0]+'\n[Install]\nWantedBy=timers.target\n'})
@@ -153,6 +157,17 @@ except BaseException:
    expected=(str(mount_root/'old/scripts/serve-connected.py'),str(mount_root/'old/guest-relay/server.py'),str(mount_root/'gateway/scripts/serve-user-files.py'))
    for pid,path in zip(pids,expected):
     if path.encode() not in (Path('/proc')/pid/'cmdline').read_bytes():raise AssertionError('unexpected fixture service executable')
+   # An old unit cannot be reported as 853, and a corrupt operator unit
+   # must not modify the mapped fixture systemd unit.
+   import http.client
+   c=http.client.HTTPConnection('127.0.0.1',19774,timeout=5);c.request('GET','/restart');response=c.getresponse();response.read();c.close()
+   if response.status!=500:raise AssertionError('old issuer falsely satisfied 853 health')
+   bad=root/'bad-issuer-unit';sudo('cp',etc/'systemd/system/codi-beta-issuer.service',bad);sudo('chmod','644',bad)
+   sudo('python3','-I','-B','-c','import sys;open(sys.argv[1],"ab").write(b"\\n# invalid\\n")',bad)
+   before=call('sudo','-n','sha256sum',units[0]).stdout.split()[0]
+   rejected=subprocess.run(['sudo','-n',a.python,'-I','-B',str(unit_mapper),str(bad),str(units[0])],capture_output=True,text=True,timeout=15)
+   after=call('sudo','-n','sha256sum',units[0]).stdout.split()[0];sudo('unlink',bad)
+   if rejected.returncode==0 or before!=after:raise AssertionError('corrupt operator unit changed fixture ExecStart')
    initial_issuer_pid=pids[0]
   return proc
  def stop_issuer():
@@ -166,13 +181,15 @@ except BaseException:
   try:sudo(a.python,'-I','-B','-c',code,bundle,a.gateway,etc/'codi-user-files/beta/issuer-policy.json',var/'webhost-ops/beta-files-probe')
   except subprocess.CalledProcessError as error:raise RuntimeError('disposable signed probe provisioning failed: '+error.stderr[-1500:]) from error
  def reset():
-  paths=[root/'timer.json',root/'issuer-switched',root/'coord/issuer-next',root/'coord/fixture-systemd-policy.json',root/'block',root/'block-gate',root/'blocked-pid',root/'fail-final-health']+[var/'webhost-ops'/n for n in ('opfs-floor.json','opfs-transition.json','files-issuer-switch.json','files-inner-hosting.json','files-normalization.json','files-emergency-gate.json','beta-files-probe/probe.json')]
+  paths=[root/'timer.json',root/'issuer-switched',root/'coord/fixture-systemd-policy.json',root/'block',root/'block-gate',root/'blocked-pid',root/'fail-final-health']+[var/'webhost-ops'/n for n in ('opfs-floor.json','opfs-transition.json','files-issuer-switch.json','files-inner-hosting.json','files-normalization.json','files-emergency-gate.json','beta-files-probe/probe.json')]
   code='from pathlib import Path; import sys; [Path(x).unlink(missing_ok=True) for x in sys.argv[1:]]'
   sudo('python3','-I','-B','-c',code,*paths)
   if a.real_services:
    code='import shutil,sys; from pathlib import Path; [shutil.rmtree(p) for x in sys.argv[1:] if (p:=Path(x)).exists()]'
    sudo('python3','-I','-B','-c',code,*[mount_root/'data'/name for name in ('state','data','tmp')])
   ns(setup)
+  if a.real_services:
+   sudo(a.python,'-I','-B',unit_mapper,etc/'systemd/system/codi-beta-issuer.service',units[0]);sudo('systemctl','daemon-reload')
  def check_final():
   output=call('sudo','-n','ls','-1',var/'webhost-ops').stdout.splitlines()
   if sorted(output)!=['beta-files-probe','opfs-floor.json']:raise AssertionError('unexpected remaining journals')

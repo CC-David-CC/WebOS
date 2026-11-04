@@ -22,11 +22,12 @@ def systemctl(args):
   return f'ActiveState=active\nFragmentPath=/etc/systemd/system/{n}\nDropInPaths=\nNeedDaemonReload=no\n'
  if args[0]=='daemon-reload':
   pause_at('unit-write')
+  if prefix and os.environ.get('CODI_FILES_REAL_SERVICES')=='1':
+   subprocess.run([sys.executable,'-I','-B',os.environ['CODI_FILES_UNIT_MAPPER'],'/etc/systemd/system/codi-beta-issuer.service','/run/systemd/system/'+prefix+'-issuer.service'],check=True,timeout=30)
   if prefix:subprocess.run(['/usr/bin/systemctl','daemon-reload'],check=True,timeout=30)
   pause_at('reload')
   return ''
  if args[0]=='restart':
-  if os.environ.get('CODI_FILES_REAL_SERVICES')=='1':(ROOT/'coord/issuer-next').touch()
   if prefix:subprocess.run(['/usr/bin/systemctl','restart',prefix+'-issuer.service'],check=True,timeout=30)
   if os.environ.get('CODI_FILES_REAL_SERVICES')=='1' or not (ROOT/'issuer-switched').exists():
    c=http.client.HTTPConnection('127.0.0.1',19774,timeout=30);c.request('GET','/restart');r=c.getresponse();assert r.status==200;r.read();c.close();(ROOT/'issuer-switched').touch()
