@@ -17,6 +17,11 @@ with tempfile.TemporaryDirectory() as td:
  probe=root/'source-probe';(probe/'alpha').mkdir(parents=True);(probe/'alpha'/'package.json').write_text('{"name":"alpha","version":"1"}');(probe/'alpha'/'escape').symlink_to('/etc/passwd')
  try:m.review_package_sources(probe,root/'probe.zip');raise AssertionError('source symlink accepted')
  except RuntimeError as e:assert 'Symlink' in str(e)
+ worker_input_dir=root/'worker-occ';worker_input_dir.mkdir();(worker_input_dir/'main.js').write_text('worker-js');(worker_input_dir/'main.wasm').write_text('worker-wasm')
+ m.WORKER_ENGINE_INPUTS={name:hashlib.sha256((worker_input_dir/name).read_bytes()).hexdigest() for name in ('main.js','main.wasm')}
+ m.WORKER_ENGINE_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=engine,text=True).strip()
+ m.WORKER_ENGINE_TREE=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=engine,text=True).strip()
+ m.WORKER_PORTABLE_SHA256=hashlib.sha256(b'portable').hexdigest();m.WORKER_BUNDLE_SHA256=hashlib.sha256(b'oci-worker').hexdigest()
  m.MDI_COMPONENTS=set();m.MDI_SVG_SHA256={};m.MDI_LICENSE_SHA256=hashlib.sha256(b'mdi license').hexdigest()
  m.FORK_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip();m.ENGINE_COMMIT=subprocess.check_output(['git','rev-parse','HEAD'],cwd=engine,text=True).strip();m.ENGINE_SHA256={n:hashlib.sha256(v.encode()).hexdigest() for n,v in [('occt.wasm','wasm'),('occt.js','js')]}
  m.ENGINE_TREE=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=engine,text=True).strip();m.ENGINE_SOURCE_NOTICES={n:(target,hashlib.sha256((engine/n).read_bytes()).hexdigest()) for n,(target,_) in m.ENGINE_SOURCE_NOTICES.items()}
@@ -41,6 +46,14 @@ elif sys.argv[1]=='run':
  main=d/'static/index.bundle.js';main.write_text(main.read_text()+' '+('wrong-sketch-worker' if os.environ.get('CODI_TEST_BAD_SKETCH_REF') else 'sketch-solver.0123456789abcdef0123.js'))
  if not os.environ.get('CODI_TEST_MISSING_SKETCH_WORKER'):(d/'static/sketch-solver.0123456789abcdef0123.js').write_text('/***/ "./node_modules/worker-only/index.js":' if os.environ.get('CODI_TEST_SKETCH_ONLY_MODULE') else 'sketch worker fixture')
  if os.environ.get('CODI_TEST_EXTRA_SKETCH_WORKER'):(d/'static/sketch-solver.123456789abcdef01234.js').write_text('extra sketch worker')
+ main.write_text(main.read_text()+' prism-semantic.0123456789abcdef0123.js oci-verified-worker.js occ-portable.js '+__import__('hashlib').sha256(b'worker-wasm').hexdigest()[:20]+'.wasm profile-topology.mjs centeredHolePlan.mjs centeredHoleTopology.mjs rectangleProfileRequest.mjs authoredRegions.mjs profilePlan.mjs')
+ (d/'static/prism-semantic.0123456789abcdef0123.js').write_text('prism worker')
+ (d/'static/oci-verified-worker.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_OCI_WORKER') else 'oci-worker');(d/'static/occ-portable.js').write_text('portable')
+ (d/'static'/(__import__('hashlib').sha256(b'worker-wasm').hexdigest()[:20]+'.wasm')).write_text('worker-wasm')
+ for name in ['profile-topology.mjs','centeredHolePlan.mjs','centeredHoleTopology.mjs']:
+  p=Path('modules/engine/mount')/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(name);(d/'static'/name).write_text(name)
+ for name in ['rectangleProfileRequest.mjs','authoredRegions.mjs','profilePlan.mjs']:
+  p=Path('modules/workbenches/modeler/features/extrude')/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(name);(d/'static'/name).write_text(name)
  (d/'static/webosTest.bundle.js').write_text('test helper must never enter runtime assets')
  e=d/'lib-assets/jsketcher-occ-engine';e.mkdir(parents=True);shutil.copyfile('node_modules/jsketcher-occ-engine/occt.wasm',e/'occt.wasm');shutil.copyfile('node_modules/jsketcher-occ-engine/occt.js',e/'occt.js')
 ''');npm.chmod(0o755);node=tools/'node';node.write_text('#!/bin/sh\necho v0.fixture\n');node.chmod(0o755)
@@ -62,7 +75,7 @@ elif sys.argv[1]=='run':
    (m.VENDOR_NOTICE_DIR/name).write_text(text);data.append((name,out,hashlib.sha256(text.encode()).hexdigest()))
   m.OTHER_VENDOR_INPUTS[asset]=(hashlib.sha256(content.encode()).hexdigest(),data)
  m.HERE=root/'output';m.HERE.mkdir();(m.HERE/'PROVENANCE-NOTES.md').write_text('fixture provenance');m.DESTINATION=m.HERE/'node_modules'/'jsketcher-build';m.PREFIX='node_modules/jsketcher-build/'
- def build(extra=()):sys.argv=['prepare.py','--repo',str(repo),'--engine-repo',str(engine),'--numeric-repo',str(numeric),'--experimental-local-only','--update-manifest','--manifold-research-input',str(manifold),*extra];m.main()
+ def build(extra=()):sys.argv=['prepare.py','--repo',str(repo),'--engine-repo',str(engine),'--worker-engine-repo',str(engine),'--worker-occt-input',str(worker_input_dir),'--numeric-repo',str(numeric),'--experimental-local-only','--update-manifest','--manifold-research-input',str(manifold),*extra];m.main()
  (manifold/'manifold.js').write_text('tampered')
  try:build();raise AssertionError('tampered Manifold input accepted')
  except RuntimeError as e:assert 'pinned hash' in str(e)
@@ -73,8 +86,21 @@ elif sys.argv[1]=='run':
   except RuntimeError as e:assert expected in str(e)
   finally:del os.environ[variable]
  build();assert (m.DESTINATION/'runtime-source-candidates.zip').is_file();assert (m.DESTINATION/'PNLTRI-LICENSE.txt').read_text()=='pnltri terms';r1=(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();man=(m.HERE/'app.json').read_bytes();build();assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();assert man==(m.HERE/'app.json').read_bytes()
- for key,prefix in [('projectValidatorWorker','project-validator'),('sketchSolverWorker','sketch-solver')]:
+ for key,prefix in [('projectValidatorWorker','project-validator'),('sketchSolverWorker','sketch-solver'),('prismSemanticWorker','prism-semantic')]:
   worker=json.loads(r1)[key];assert worker['path'].startswith('static/'+prefix+'.');assert worker['sha256']==hashlib.sha256((m.DESTINATION/worker['path']).read_bytes()).hexdigest();assert m.PREFIX+worker['path'] in json.loads(man)['assets']
+ os.environ['CODI_TEST_BAD_OCI_WORKER']='1'
+ try:build();raise AssertionError('tampered worker asset accepted')
+ except RuntimeError as e:assert 'Worker runtime asset missing, altered or unreferenced' in str(e)
+ finally:del os.environ['CODI_TEST_BAD_OCI_WORKER']
+ assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
+ assert (m.DESTINATION/'occt-worker-interpreter-source.zip').is_file()
+ assert json.loads(r1)['workerInterpreterCommit']==m.WORKER_ENGINE_COMMIT
+ for name in ('main.js','main.wasm'):
+  f=worker_input_dir/name; original=f.read_bytes();f.write_bytes(b'tampered')
+  try:build();raise AssertionError('tampered worker runtime accepted')
+  except RuntimeError as e:assert 'pinned hash' in str(e)
+  finally:f.write_bytes(original)
+  assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes()
  assert not (m.DESTINATION/'static/webosTest.bundle.js').exists()
  assert not any('webosTest' in path for path in json.loads(man)['assets'])
  mdi=m.VENDOR_NOTICE_DIR/'mdi-svg-2.2.43-LICENSE.txt';mdi.write_text('tampered')

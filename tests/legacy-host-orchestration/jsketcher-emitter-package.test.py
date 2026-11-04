@@ -9,15 +9,23 @@ if len(sys.argv) != 2:
     raise SystemExit('usage: python tests/jsketcher-emitter-package.test.py /path/to/jsketcher-build')
 runtime = Path(sys.argv[1])
 receipt = json.loads((runtime / 'BUILD-RECEIPT.json').read_text())
-assert receipt['forkCommit'] == 'd3d36bc5ee0876f22090be19d4861b68e5096421'
+assert receipt['forkCommit'] == '5b1f4c63a12826c32b0403c51425ceb61f119744'
 assert receipt['occtSelection'] == 'source-research'
 assert hashlib.sha256((runtime / 'lib-assets/jsketcher-occ-engine/occt.wasm').read_bytes()).hexdigest() == 'a2b2f7daf6a4eb98b975f8aec136f6cbaf2720295ea32e71edb13ff4c5ceaecb'
 code = (runtime / 'static/index.bundle.js').read_text(encoding='utf-8')
-for key, prefix in [('projectValidatorWorker', 'project-validator'), ('sketchSolverWorker', 'sketch-solver')]:
+for key, prefix in [('projectValidatorWorker', 'project-validator'), ('sketchSolverWorker', 'sketch-solver'), ('prismSemanticWorker', 'prism-semantic')]:
     worker = receipt[key]
     assert worker['path'].startswith('static/' + prefix + '.') and worker['path'].endswith('.js')
     assert hashlib.sha256((runtime / worker['path']).read_bytes()).hexdigest() == worker['sha256']
     assert Path(worker['path']).name in code
+assert receipt['workerInterpreterCommit'] == 'c4dce453420fe31123a6be1e66161c388b46308c'
+assert receipt['workerOcctInputs']['main.wasm'] == 'c39793b8aff34dc548b57fee1d901219e372702a5005ef92dfdf94994c012897'
+for name, digest in receipt['workerOccAssets'].items():
+    assert hashlib.sha256((runtime / 'static' / name).read_bytes()).hexdigest() == digest
+    assert name in code
+with zipfile.ZipFile(runtime / 'occt-worker-interpreter-source.zip') as worker_source:
+    for name in ['LICENSE', 'occt/LICENSE_LGPL_21.txt', 'occt/OCCT_LGPL_EXCEPTION.txt', 'shape-io/drilledTopologyV1.hpp']:
+        assert name in worker_source.namelist()
 assert 'node_modules/component-emitter/index.js' in code
 assert 'node_modules/emitter-component/index.js' not in code
 assert 'node_modules/stream/index.js' in code and 'node_modules/sax/lib/sax.js' in code
