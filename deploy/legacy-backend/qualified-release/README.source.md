@@ -232,3 +232,15 @@ The archive is a review input, not a root-custodied installation. Never execute
 checkout code as root on the host; trusted external bootstrap must establish
 and independently hash the exact package first. No live install or cutover
 was performed by this work.
+
+A further combined R730 namespace fixture ran the literal seven-file package:
+the fixed-path installer planned and installed the guard and successor, then
+the literal enabled main launcher planned, was killed during Caddy reload and
+recovered forward to e7 while preserving the 3ad beta selector. It used real
+translated loopback Caddy and a signed disposable beta fixture. Timer unit
+bytes/state, systemd and production main health were simulated; it did not
+exercise real hosting installation or the administrative freeze. The initial
+combined attempt failed because the fixture tried to modify its root-owned
+simulated timer file without sudo; the fixture was corrected and the clean rerun
+passed. Its own processes, loopback listeners and namespace directory were
+confirmed absent after cleanup. Test source: `main-full-ns-runner.py`.
