@@ -102,6 +102,32 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+- [~] CAD PROFILE WORKER: integrated `00e82cd7`, then lead qualification
+  `505fbcc4`. Seven data tests and actual Chromium worker-to-worker preparation
+  pass with strict CSP, exact source hashes, authored IDs, nonzero frame and
+  stale-digest refusal. This completes ARC13's narrow computational request,
+  not solid creation or editable-history publication. ARC14's real OCC prism
+  operation is active; a separate reviewer maps the model/provenance bridge.
+  `test/extrude/profile-evidence-20261104.json` in the fork records the bounds.
+  No runtime repin or deployment.
+- [ ] CAD MODEL VERTEX ID: the bridge review found `mshell.ts` supplies the
+  vertex object as an identifier. ARC15 owns the failing control, type/uniqueness
+  correction and real registry/selection/replay tests. This is an identified
+  defect, not a completed fix. The bridge plan keeps analytic topology and
+  provenance separate from mesh display and opaque worker handles.
+- [~] FILES REAL-SERVICE FIXTURE: source through `ba65151d2` is integrated at
+  `de71f56b8`. The implementation owner passed interrupted unit-write, reload,
+  restart and timer-stop recovery using real sealed processes and distinct
+  DynamicUsers; independent review reproduced unit-write and old/bad unit
+  controls. The marker is removed: exact operator-written unit bytes determine
+  the fixture executable. Lead checked exact subtree identity, changed Python
+  syntax and runner entrypoint. Production paths/policy/TLS/main readiness still
+  have fixture substitutions; timer firing, install and live beta acceptance
+  remain open. No live changes.
+- [~] FILES INSTALL READINESS: packet `ad25aaded` records live pins and missing
+  protected bundle, floor-aware guard and dedicated probe. Source preparation
+  helper work is active in disposable tests only; no server install. Read
+  `research/beta-isolated-hosting/FILES-INSTALL-READINESS-2026-11-04.md`.
 - [~] CAD HOST AND SIGNED FILES: desktop `64becedd8`, CAD code `9bde6b29`
   (boundary plan `cc2d46dd`). Lead rebuilt exact revision and passed command,
   menu, atomic creation, typed domain/precision refusal and notification tests.

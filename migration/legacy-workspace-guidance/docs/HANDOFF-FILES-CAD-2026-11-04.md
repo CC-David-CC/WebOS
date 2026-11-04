@@ -12,8 +12,26 @@ it is not the next agent's first implementation task.
 
 ## Latest integrated checkpoint
 
-CAD is now `cc2d46dd2c67a13d188a910841cc038e2f061c81` (a boundary-plan
-documentation commit over tested code `9bde6b291f859660db3fe14613ceff9851148391`).
+The latest tested CAD checkpoint is `505fbcc448cab0a78affbcc99144f2539c910362`, integrating authored
+rectangle profile preparation `00e82cd7` over the earlier `cc2d46dd` boundary
+plan. The lead passed seven data tests and an actual Chromium test under strict
+CSP: the real sketch worker supplies the sketch, and a separate module worker
+prepares its selected profile without window/document/canvas. Authored edge IDs
+and nonzero frame coordinates survive; a changed source digest is refused.
+The reproducible allowlisted fixture records every served source hash. Read
+the fork's `test/extrude/README.md` and `profile-evidence-20261104.json`.
+This is ARC13's bounded request preparation, not kernel execution, a published
+solid, an installed mount or a new host command. Caller-side accepted-solver,
+native-document, actual frame and account/lifetime validation remain required.
+The owned lead fixture/browser ports 19982/19983 were closed after testing.
+The later docs-only bridge review is carried in
+`docs/research/WORKER-PRISM-MODEL-BRIDGE-20261104.md`: analytic topology and
+source-to-result provenance are needed beyond a mesh. It also identifies the
+legacy `MVertex` ID-type defect, now assigned with before/after tests as ARC15.
+The preferred pinned runtime remains separate from unpromoted replacement-build
+research; the worker operation does not require that replacement.
+
+Earlier tested CAD code is `9bde6b291f859660db3fe14613ceff9851148391`.
 Desktop `64becedd8` integrates the reviewed Add-menu dialog, scoped rectangle
 commands and signed acceptance test. The lead independently built the actual
 CAD output with its matching revision, passed typechecking, eight command tests,
@@ -37,18 +55,30 @@ run on the UI thread. Research OCC/Manifold mounts have box/Boolean operations,
 but do not yet connect authored regions, worker-owned BREP, persistent topology,
 history and downstream use. Do not expose raw `craft.modify`, substitute a BOX,
 or present a mesh preview as that integration. Read the fork's
-`docs/research/RECTANGLE-EXTRUSION-BOUNDARY-20261104.md`. ARC13 starts with a
-data-only selected-profile contract; ARC14 connects the actual worker operation,
+`docs/research/RECTANGLE-EXTRUSION-BOUNDARY-20261104.md`. ARC13's bounded profile
+preparation is now qualified above; ARC14 connects the actual worker operation,
 model/provenance bridge and guarded publication before shared command exposure.
 Keep both engines and explicit capability differences. Full Gate 1,
 bracket/enclosure, parameter/unit and core-3MF acceptance remain open.
 
-Files recovery source is integrated at desktop `8dc0331bd`, importing only the
-reviewed subtree through `f6deb3251`. The `a1e9e215c` correction resolves the
+Files recovery source is integrated through desktop `de71f56b8`, taking only
+the reviewed subtree through `ba65151d2`. The `a1e9e215c` correction resolves the
 three gate-recovery findings; independent exact-launcher fault tests and seven
-lead integrated checks pass. Actual real-service/timer qualification is now in
-progress, not production proof. See
+lead integrated checks pass. The owner then passed four interruption stages
+using real sealed services, distinct DynamicUsers and a real disposable timer.
+The marker-free fixture derives the executable from exact operator-written unit
+bytes; independent review reproduced unit-write and old/bad-unit controls. Lead
+verified the integrated subtree exactly matches, Python syntax and entrypoint.
+This remains mapped fixture evidence: production paths/policy/TLS/main health
+are substituted; timer firing and protected installation are not qualified. See
 `evidence/files-operator-source-integration-20261104.md`.
+The protected-install readiness packet is integrated at `ad25aaded`:
+`research/beta-isolated-hosting/FILES-INSTALL-READINESS-2026-11-04.md`.
+It records observed live pins and required protected bundle/guard/probe work.
+No installer is qualified or installed yet. `/srv/data` has a user-owned
+ancestor and is not the launcher's protected bundle destination; do not change
+all hosting ownership to bypass this check. A bounded preparation helper is
+being authored and tested in disposable paths, with deployment still lead-owned.
 
 The root volume's immediate capacity shortage was removed by archiving twelve
 unused public staging directories onto the separate larger drive, comparing

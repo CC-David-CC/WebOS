@@ -4,11 +4,16 @@
 
 ## Candidate progress after the baseline assessment
 
-Current source update: desktop `8dc0331bd` imports only the independently reviewed
-Files operator subtree through `f6deb3251`. The three gate-recovery defects are
+Current source update: desktop `de71f56b8` imports only the independently reviewed
+Files operator subtree through `ba65151d2`. The three gate-recovery defects are
 fixed at `a1e9e215c`; exact-launcher fault checks and seven lead integrated tests
-pass. Actual sealed processes and a real disposable timer are the next fixture
-boundary, still in progress. Production installation and ingress are unqualified.
+pass. The owner passed four interruption stages with actual sealed processes,
+distinct DynamicUsers and a real disposable timer; independent review reproduced
+unit-write recovery and old/bad-unit controls. Fixture executable selection now
+comes from exact operator-written unit bytes. Production paths, policy, main
+readiness and public TLS still have substitutions; timer firing, production
+installation and ingress remain unqualified. Lead verified exact integrated
+subtree identity, five changed Python files' syntax and the runner entrypoint.
 See `evidence/files-operator-source-integration-20261104.md`.
 
 Capacity update at 2026-11-04 14:35 UTC: twelve inactive public `/tmp` staging
