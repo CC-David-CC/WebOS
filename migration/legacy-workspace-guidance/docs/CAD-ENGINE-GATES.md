@@ -16,6 +16,28 @@ defines the ordered delivery stages, 14 design-revision handoffs, five concrete
 acceptance workflows, failures/resources and bounded agent packages. Do not let
 future descriptions displace ongoing Files and Gate 1 implementation.
 
+## Current capability and qualification status
+
+Status checkpoint, 2026-11-04. Existing libraries and upstream features count as
+available implementation, not automatically as verified WebOS workflows. A gate
+can contain useful passing tests while remaining incomplete as a whole.
+
+| Gate | Existing implementation/evidence | Remaining qualification |
+|---|---|---|
+| 1 Foundation | Browser-created sketch entities; primitives and transforms; selected constraints/parameter edits; bounded OCC region/Boolean cases; native snapshot and Files research tests. | Combined candidate integration, complete entity/domain and both-engine matrix, truthful DOF/redundancy, unit semantics, dependent edit-chain, UI/API equivalence and signed save/reopen. Active and partial. |
+| 2 Intermediate | Existing JSketcher feature operations and related CAD apps supply a starting point. | Ten complete editable projects and the grouped controls, edge cases, references and persistence. No full project qualification claimed. |
+| 3 Advanced modeling and engineering | Geometry, numerical, visualization and browser computation components are available in the project. | Qualified surface/configuration/mechanism/study workflows with appropriate reference and convergence evidence. Queued. |
+| 4 Production and automation | Material/grouping and core 3MF research, existing export and command infrastructure. | Complete material-aware enclosure handoff, independent output checks and later manufacturing/batch/production packages. Queued; prototypes are partial. |
+| 5 Intent and synthesis | Recorded requirements, conceptual objects, contracts and bounded future slices. | Implement and qualify requirements/decision/evidence workflows, then experiments and research capabilities. Planned; no autonomous engineering claim. |
+
+**CAD 1.0 is not the same checklist as Gate 1.** The conceptual era emphasizes
+geometry authoring; Gate 1 deliberately also requires dependable parametric,
+units, topology, failure and persistence behavior. Six sketch entity kinds have
+bounded browser creation/serialization evidence, not six fully qualified
+geometry domains. There is no defensible overall validated percentage from the
+current uneven test coverage. No gate is fully passed yet; that does not mean
+there is no implementation. Use `JSKETCHER-FOUNDATION-MATRIX.md` for exact cases.
+
 ## Later gates inform earlier gates
 
 **Design knowledge flows backward; qualification progresses through the gates.**

@@ -57,11 +57,11 @@ exclusive enum values.
 |---|---|---|---|
 | P0 | Geometry primitives | Correct valid/degenerate classification, with declared domains. | Partial; primitive domain/basis fixes under review. |
 | P0 | Constraint solver | Distinguish underconstrained, fully constrained, redundant and contradictory; report numerical uncertainty. | Partial; false DOF and other defects reproduced. |
-| P0 | Driving dimensions | Edits propagate consistently or fail while preserving prior intent. | Partial; positive dimensions tested narrowly, authored invalid parameter text remains open. |
+| P0 | Driving dimensions | Edits propagate consistently or fail while preserving prior intent. | Partial; positive dimensions tested narrowly, validated source/edit candidate exists; integrated edit-chain remains open. |
 | P0 | Units and expressions | Typed, dimensionally valid formulas; conversion/display changes preserve physical size. | Partial; explicit native mm does not establish inch display or a complete units system. |
 | P0 | Planar region extraction | Disjoint, nested, intersecting and touching cases interpreted explicitly. | Incomplete; contour loops are not yet a complete arrangement/region model. |
-| P0 | Sketch selection | Entities and individual/multiple regions selected unambiguously with durable intent. | Incomplete; datum-face selection is not explicit selected-region intent. |
-| P1 | Extrude/revolve | Valid supported-profile solids, with direction and result/body policy. | Partial; selected-region extrusion still open. |
+| P0 | Sketch selection | Entities and individual/multiple regions selected unambiguously with durable intent. | Partial candidate for circles/axis-aligned rectangles; full selection/lifecycle scope remains open. |
+| P1 | Extrude/revolve | Valid supported-profile solids, with direction and result/body policy. | Partial; explicit selected-region OCC candidate passes scoped cases; complete feature matrix open. |
 | P1 | Boolean operations | Union/cut/intersection and correct empty/multi-body results. | Scoped tests exist; full boundary matrix open. |
 | P1 | Feature dependency graph | Deterministic downstream recomputation and attributable failure propagation. | Unqualified beyond scoped examples. |
 | P1 | Topological references | Survive supported changes or fail explicitly, never silently retarget. | Partial; complete change-chain test open. |
@@ -151,7 +151,7 @@ be relabeled passing merely to close the gate.
 | 2 | Fully constrain a rectangle | Correct freedoms and solver diagnostics; false DOF is a known blocker. |
 | 3 | Edit rectangle dimensions | Geometry and accepted authored dimensions remain consistent; partial parameter evidence. |
 | 4 | Two disconnected rectangles | Separate selectable regions and deliberate result-body policy; open. |
-| 5 | Three nested circles | Select disks/annuli/subsets unambiguously; region identity/selection is open. |
+| 5 | Three nested circles | Scoped OCC circle-region selections pass in candidate; broader identity/selection qualification open. |
 | 6 | Introduce a duplicate line | Classify overlap without inventing a valid extra region; open. |
 | 7 | Contradictory dimensions | Truthful conflict, prior model/intent preserved, remove/recover/reload; partial. |
 | 8 | Extruded plate | Measured solid, correct body count, units and selected profile; scoped evidence. |

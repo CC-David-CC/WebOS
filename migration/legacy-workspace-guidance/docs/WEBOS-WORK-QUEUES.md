@@ -110,8 +110,10 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   assumption be tested before further expansion. Use
   `docs/JSKETCHER-FOUNDATION-MATRIX.md`; preserve separate engine support states,
   real failing controls, UI/agent equivalence and beginner whole-part checks.
-  Nested circular-profile extrusion is confirmed wrong; angle-unit/orientation
-  handling is under investigation. No XR/physics implementation tonight.
+  Original nested circular-profile behavior was wrong; an explicit-region OCC
+  candidate now has scoped browser evidence. Angle-unit/branch corrections and
+  a narrow locked-length redundancy fix are in review. General arrangements,
+  truthful DOF and the coupled edit chain remain open. No XR/physics work tonight.
 
 - [~] INTEGRATED SOURCE: opt-in OPFS content adapter/migration and guarded beta
   mirror through `b81ea020e`, lead merge `c4ec9b527`; reentrant cancellation and
