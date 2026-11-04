@@ -118,3 +118,21 @@ def guard_install(*,target,guard,old_source,journal,floor,check_lock):
   check_lock();atomic(target,new,expected['mode'],expected['uid'],expected['gid'])
  if digest(read_file(target,root_owned=False))!=NEW: raise ValueError('guard verify failed')
  check_lock();journal.unlink();syncdir(journal.parent)
+
+def verify_bundle(destination,manifest_file,check_lock):
+ """Verify a published generation's exact entries and root custody."""
+ destination=Path(destination);root_path(destination,True);root_path(manifest_file);check_lock()
+ raw=read_file(manifest_file)
+ if digest(raw)!=MANIFEST: raise ValueError('manifest pin mismatch')
+ entries=json.loads(raw);found=set()
+ for base,dirs,files in os.walk(destination,followlinks=False):
+  for item in dirs+files:
+   path=Path(base)/item;root_path(path);rel=path.relative_to(destination).as_posix()
+   if path.is_dir():
+    if rel!='ops': raise ValueError('unexpected bundle directory')
+   elif path.is_file():
+    if rel not in entries or digest(read_file(path))!=entries[rel]: raise ValueError('bundle content mismatch: '+rel)
+    found.add(rel)
+   else: raise ValueError('unsafe bundle entry')
+ if found!=set(entries): raise ValueError('incomplete bundle')
+ check_lock()
