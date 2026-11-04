@@ -45,6 +45,14 @@ In particular owner checkpoint `bdf72e2e1` is not deployable: an old recovery
 entrypoint can create a conflicting journal at the shared gate before rejecting
 its stale controller pin. Recoverable retirement of callable old entrypoints is
 being qualified by the owner and independent reviewer. No live 830 action ran.
+The exact public 830 assets are now staged and verified, **not selected**, under
+`/srv/data/codi-beta-opfs/830ca4f…`; see
+`evidence/files-830-public-stage-20261104.json`. No controller/operator change.
+
+A separate main follow-up is correcting e7's ZIP actions: Files advertised the
+actions after the ZIP dependency was removed. The candidate removes the controls
+and guards their handlers; ZIP remains beta until worker/consumer qualification.
+Keep this exact new main family compatible with beta recovery before promotion.
 
 Desktop branch: `integration/files-jsketcher-release-20261103`, backed on both
 LAN repositories. CAD stays `effc3717740b2c3ba65269fd16bc392fc8b41388`; later

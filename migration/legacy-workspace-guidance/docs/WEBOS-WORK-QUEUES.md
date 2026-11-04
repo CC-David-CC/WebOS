@@ -137,6 +137,21 @@ are qualifying recoverable retirement of every callable old entrypoint together
 with the new guard/actors. Do not install that checkpoint or run its activation.
 The live main/beta services remain unchanged by this isolated review.
 
+The exact 830 public tree is now staged, verified twice and **not selected** on
+box-webhost's data drive. No operator or route changed. The candidate-only
+transport is backed up to R730; the staging helper and custody/manifest receipt
+are `research/beta-files-forward/stage-830-public.py` and
+`evidence/files-830-public-stage-20261104.json`. The old guarded beta remains 3ad.
+
+**Main dependency correction active:** e7's retained Files still advertises ZIP
+actions but the reduced catalog removed their dependency. An isolated signed
+browser reproduced the error without changing the source file. A separate
+candidate omits both unsupported actions and refuses synthetic invocation;
+ZIP stays on beta pending worker/consumer qualification. Its existing
+`useWebWorkers:false` implementation is not qualified for the main release.
+Main still serves e7 until the corrected candidate and compatible recovery
+family are reviewed and deployed together.
+
 **Discovered old-client defect:** unexposed e359 replaced the global catalog,
 letting an old loaded host request new Files without document operations. Root
 candidate `830ca4f…` keeps the old global catalog and the new immutable catalog
