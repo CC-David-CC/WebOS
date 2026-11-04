@@ -1148,3 +1148,20 @@ Latest CAD5b1f4c63 adds an independently reviewed generic mount representation
 check: only OCC worker-owned handles can advertise centered cutting. Default
 mount was already correct. Focused capability test passes. Desktop packaging
 lane targets that exact commit and the closed six-input/source-notice inventory.
+
+## Actual prepared package passes signed desktop workflow
+
+Desktop58c1253ee packages CAD5b1f4c63 through the actual preparer, not a
+test runtime overlay. Bundle eacaf005b707ffa28291784d7cea4426e277757ba32869067bacc39f32b4db07
+passes emitter/preparer checks and the signed rectangle/edit/extrude/centered-hole
+workflow, exact My files/server bytes, fresh-session reopen and second-account
+denial. Receipt: evidence/cad-prepared-package-signed-20261104.json.
+
+The earlier intermittent restore timeout remains open despite subsequent fresh
+profile passes. Manager-only cancellation/diagnostics, typed shared extrusion/hole
+commands, and concrete runtime sources/license discovery are independent active
+lanes. No public deployment or full CAD gate advancement is claimed.
+
+Current user direction: both sites are test deployments without real users;
+replace directly when qualified, without old-window compatibility campaigns.
+Preserve saved-data integrity, isolation, resource cleanup and unrelated sites.
