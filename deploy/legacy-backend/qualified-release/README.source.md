@@ -173,3 +173,14 @@ file under flock does not fence an old Python process that loaded it earlier.
 This procedure is not an installed tool or an instruction to mutate the host;
 the quiescence, installation journal, and complete cross-entrypoint fencing
 remain release gates.
+
+Lead staged the exact e7e8 public candidate on box-webhost at its fixed
+`/srv/codi-connected/simplified/e7e8fb9fc1f964ec1b206462468f91b60e8bac1d8117ed29c5f1099abdac3480`
+path under the real hosting lock. A root-private copy of the pinned 42,661,834-byte
+archive was verified before extraction; 238 files (236 listed plus cache manifest
+and offline worker) passed exact hashes, regular-file/link/xattr checks and
+root ownership with 0644 files/0755 directories. Files/directories were fsynced,
+then the staged directory was renamed into the absent final path and its parent
+fsynced. This stages public assets only: no selector, controller, timer, service,
+account or floor was changed. The literal managed plan must recheck it before
+activation. Main still serves 0965.
