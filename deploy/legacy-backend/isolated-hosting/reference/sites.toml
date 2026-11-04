@@ -1,0 +1,141 @@
+schema_version = 1
+codi_shared_ingress = true
+
+[[sites]]
+domain = "python.coach"
+slug = "python-coach"
+port = 8011
+service = "web-python-coach.service"
+user = "site-python-coach"
+workers = 1
+enabled = true
+theme = "Python, in practice"
+description = "A place taking shape for practical Python learning and coaching."
+accent = "#215e51"
+
+[[sites]]
+domain = "code.contractors"
+slug = "code-contractors"
+port = 8012
+service = "web-code-contractors.service"
+user = "site-code-contractors"
+workers = 1
+enabled = true
+theme = "Software & collaboration"
+description = "An early home for software projects and thoughtful contracting."
+accent = "#71412d"
+
+[[sites]]
+domain = "ksu.codes"
+slug = "ksu-codes"
+port = 8013
+service = "web-ksu-codes.service"
+user = "site-ksu-codes"
+workers = 1
+enabled = true
+theme = "Learn with peers"
+description = "Independent peer learning and computing resources, in development."
+accent = "#4b477b"
+codi_preview = true
+codi_mount = ""
+codi_files = true
+codi_rooms = true
+codi_chat_disabled = true
+codi_p2p_steward = true
+codi_official = true
+codi_readers = "active"
+codi_speech = "df759266dbd1cc339c4cd96df8265e274b9b9042abef275d00fc0809deed1f3b"
+codi_simplified = "0965a0cbdd022f588061cdc23e10eb6b18fa5977cc3f6a05569439eaf11d2020"
+codi_simplified_mode = "active"
+codi_microduck_runner = "1925e9462b81b93a61a1dad6f2e55011cc336c82d9ac54a3af6b04aa9ec0490d"
+codi_browser_relay = true
+codi_large_files = true
+codi_login_filter = true
+codi_browser_sources = true
+codi_turn_certificate = true
+
+[[sites]]
+domain = "arpa.net.ai"
+slug = "arpa-net-ai"
+port = 8014
+service = "web-arpa-net-ai.service"
+user = "site-arpa-net-ai"
+workers = 1
+enabled = true
+theme = "AI & systems"
+description = "A place for independent experiments in AI, software, and systems."
+accent = "#245777"
+
+[[sites]]
+domain = "plastic.download"
+slug = "plastic-download"
+port = 8015
+service = "web-plastic-download.service"
+user = "site-plastic-download"
+workers = 1
+enabled = true
+theme = "Ideas into objects"
+description = "A future collection of fabrication notes and downloadable designs."
+accent = "#925018"
+
+[[sites]]
+domain = "official.bid"
+slug = "official-bid"
+port = 8016
+service = "web-official-bid.service"
+user = "site-official-bid"
+workers = 1
+enabled = true
+theme = "Requests & quotations"
+description = "A future home for independent project requests and quotations."
+accent = "#5b5630"
+
+[[sites]]
+domain = "does.trade"
+slug = "does-trade"
+port = 8017
+service = "web-does-trade.service"
+user = "site-does-trade"
+workers = 1
+enabled = true
+theme = "Projects & services"
+description = "A project exploring useful connections between projects, services, and trade."
+accent = "#386777"
+
+[[sites]]
+domain = "codi.codes"
+slug = "codi-codes"
+port = 8018
+service = "web-codi-codes.service"
+user = "site-codi-codes"
+workers = 1
+enabled = true
+theme = "Codi Codes"
+description = "The home of Codi Codes, a digital agent. A place for her projects, ideas, and work in progress."
+accent = "#6554a4"
+
+[[sites]]
+domain = "cardboard.ksu.codes"
+slug = "cardboard-ksu-codes"
+port = 8019
+service = "web-cardboard-ksu-codes.service"
+user = "site-cardboard-ksu-codes"
+workers = 1
+enabled = true
+theme = "Cardboard Studio"
+description = "Layered cardboard design workshop"
+accent = "#244b43"
+cardboard_studio = true
+
+[[sites]]
+domain = "hardware.ksu.codes"
+slug = "hardware-ksu-codes"
+port = 8020
+service = "web-hardware-ksu-codes.service"
+user = "site-hardware-ksu-codes"
+workers = 1
+enabled = true
+theme = "Carbon"
+description = "Signal Studio synthetic hardware demo"
+accent = "#a5e9d2"
+hardware_studio = true
