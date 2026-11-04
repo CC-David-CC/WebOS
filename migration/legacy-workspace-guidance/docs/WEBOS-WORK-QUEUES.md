@@ -115,6 +115,12 @@ The exact 171-file beta asset candidate is
 two builds and packaging refusal controls pass. See
 `research/beta-files-forward/README.md`. Exact deployed-dd8 compatibility,
 retained v2 data/client transition and managed installation remain open.
+`tests/files-foundation-exit-20261104.md` is the reconciled F01–F10/R01–R02
+finish line. It distinguishes deployed 3ad evidence, current source tests and
+the unqualified e359 package. The public e359 candidate/input archive is now
+on R730 with matching local/remote SHA-256; its README records the path and
+remaining clean-source prerequisites. Independent exact-dd8 and retained-data
+qualification is active. Broad app migration remains deferred.
 
 **Latest integrated checkpoint; older entries below retain their original scope:**
 
