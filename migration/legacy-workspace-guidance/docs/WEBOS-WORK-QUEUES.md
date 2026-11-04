@@ -83,8 +83,11 @@ Files plus that foundation, not routine patch accumulation. The next gate is
 projects and four additional areas. Gate 3 is now recorded in
 `docs/CAD-ENGINE-GATE-3.md`: advanced modeling/engineering, with ten groups. The
 user intentionally moved the original groups 11–16 to a following Gate 4, whose
-description comes separately. Gates 2 and 3 stay queued behind the
-foundational work; none is declared complete by planning.
+description is now recorded in `docs/CAD-ENGINE-GATE-4.md`, including specialist
+projects, automation and representation boundaries. See
+`docs/CAD-ENGINE-GATES.md`: later gates inform earlier design contracts, while
+implementation stays focused on Files/Gate 1. Gates 2–4 remain queued; none is
+declared complete by planning.
 
 The user explicitly resumed Files, JSketcher consolidation, mechanical features
 and the material-aware enclosure/core-3MF handoff. See

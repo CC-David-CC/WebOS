@@ -173,8 +173,8 @@ dependencies, license entitlements or proof this engine already implements them.
 
 ## Following gate
 
-Gate 4 will hold the six groups the user separated from the initial outline.
-Do not invent them, fold them back into Gate 3 or let their not-yet-supplied
-description block definition of Gate 3. Gate 3 still requires implementation
-and evidence for all ten groups above. Previously recorded magnetic/physical-
-system plans remain in the overall program; they do not define Gate 4 by default.
+Gate 4 is now recorded in `CAD-ENGINE-GATE-4.md`: the six separated groups plus
+specialties, capstones, platform priorities and representation boundaries. Do
+not fold it back into Gate 3. Gate 3 still requires implementation and evidence
+for its ten groups. Later needs inform earlier interfaces according to
+`CAD-ENGINE-GATES.md`, without starting later feature implementation by default.

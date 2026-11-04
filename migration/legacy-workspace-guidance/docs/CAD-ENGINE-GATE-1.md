@@ -4,6 +4,10 @@ Authoritative user acceptance gate, 2026-11-04. This is an engine for future
 development, beyond ordinary JSketcher patches. The source fork is a candidate
 implementation; merging fixes is not the gate's completion criterion.
 
+Program index and backward design guidance: `CAD-ENGINE-GATES.md`. Later gates
+must inform early identities, parameter/units semantics and representation
+boundaries; their features remain separately qualified.
+
 Current status: **OPEN / PARTIAL**. Files and foundational corrections continue.
 Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
 
