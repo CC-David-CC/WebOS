@@ -1111,3 +1111,23 @@ Run with CODI_TEST_CENTERED_HOLE=1 and the existing signed rectangle test;
 CODI_TEST_URL/CDP must be loopback. Fixture port20054, browser20055, staged
 test bundle /tmp/codi-hole-signed-bundle-20261104-r2. Test setup remains the
 existing files-desktop-signed-fixture.py; no new storage stack.
+
+## Corrected display and signed recheck
+
+Cylinder nonplanar/tangent-frame fix is integrated as CAD8b02fdff; independent
+review passed. Signed test now asserts all seven face meshes have finite data
+and fails on observer or secondary-runtime startup errors. Both embedded
+numeric and Manifold build flags are enabled. Traced and subsequent untraced
+signed runs pass persistence, fresh reopen, views and account denial. One
+initial untraced run timed out rebuilding a saved prism; cause remains unknown
+and no timeout was increased. The exact-sandbox hidden-iframe control passed
+separately (CAD4f8b45f4). See evidence/cad-centered-hole-display-signed-20261104.json.
+Phone screenshot shows the part/hole but automatic camera framing is too small;
+this is not polished phone UX.
+
+Clean R730 OCC build and three actual worker suites passed, receipt integrated
+as CADf22dd5e9. Native agent is preparing normal-build clean-worker packaging;
+legacy main-thread consumers still use their separate existing dependency.
+Next: integrate clean-worker pins/source prerequisites and typecheck fixes,
+build the actual app normally, then rerun affected signed/display tests. No
+public CAD deployment changed.
