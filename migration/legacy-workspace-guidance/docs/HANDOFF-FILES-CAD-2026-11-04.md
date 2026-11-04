@@ -1176,3 +1176,31 @@ has a new `CODI_TEST_FEATURE_COMMANDS=1` path prepared; it is not yet executed.
 Do not confuse that pending run with the already-passing prepared5b receipt.
 Current root fixture20058 and browser20055 remain available for integration;
 fixture20058 still serves the earlier prepared5b package, not these WIP changes.
+
+## Combined typed commands and restore cancellation
+
+CAD2bef632f integrates typed worker feature commands and owned restore-timeout
+cancellation; CAD7cecd90d records independent normal-build evidence. Full normal
+build and tsc pass. Actual Chromium command suite proves discovery, extrusion,
+centered hole, rejected stale/wrong/oversized requests and scoped cancellation.
+The actual held-result timeout control passes on this same normal build: at
+30.020 seconds it aborts the document, terminates the candidate worker, rolls
+back staged bytes, and ignores an explicitly delivered late reply. This fixes
+cleanup after timeout, not the original intermittent latency cause.
+
+Desktop a2697da8a integrates concrete runtime source/notice packaging and an
+app-owned source index. The exact timers dependency has an upstream MIT label
+but no full grant/copyright notice; legacy link-member inventory remains bounded.
+Source/license static URLs currently return 200 anonymously as well as signed
+in; the File menu's login guard is discovery only, not server authentication.
+That requested source-access boundary remains unfinished.
+
+Root normal app fixture20059 serves2bef; command/timeout tests finished. The
+actual signed package command run awaits the preparer's2bef artifact. Source
+menu and desktop command/test wiring remain local WIP pending that test.
+
+Four-corner intent plan integrated as CAD3afab33f. Its headless planner proceeds
+independently; same-mount drilled-parent ancestry and multi-hole projection are
+required before publication. Main Files promotion audit found main lacks OPFS
+configuration and beta's issuer flag rejects main origin; explicit enablement
+and current-main gateway delta qualification are being prepared, not deployed.
