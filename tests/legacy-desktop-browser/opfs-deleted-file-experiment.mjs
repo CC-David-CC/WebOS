@@ -1,0 +1,6 @@
+import puppeteer from 'puppeteer-core';import {spawn} from 'node:child_process';import {mkdtemp,rm} from 'node:fs/promises';import {join} from 'node:path';import {tmpdir} from 'node:os';
+const profile=await mkdtemp(join(tmpdir(),'codi-opfs-snapshot-')),http=spawn('python3',['-m','http.server','19927','--bind','127.0.0.1'],{stdio:'ignore'});let browser;
+try{await new Promise(r=>setTimeout(r,250));browser=await puppeteer.launch({executablePath:process.env.CHROME,userDataDir:profile,headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});const page=await browser.newPage();await page.goto('http://127.0.0.1:19927/');
+ const result=await page.evaluate(async()=>{const root=await navigator.storage.getDirectory(),dir=await root.getDirectoryHandle('test',{create:true}),h=await dir.getFileHandle('x',{create:true}),out=await h.createWritable();await out.write('snapshot');await out.close();const file=await h.getFile(),blob=new Blob([file]);await dir.removeEntry('x');async function read(v){try{return await v.text()}catch(e){return e.name}}return {file:await read(file),blob:await read(blob)}});
+ console.log(JSON.stringify({result,scope:'single Chromium OPFS deletion experiment; no cross-platform or crash guarantee'}));
+}finally{await browser?.close();http.kill('SIGTERM');await rm(profile,{recursive:true,force:true})}
