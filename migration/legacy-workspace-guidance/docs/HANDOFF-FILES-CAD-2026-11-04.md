@@ -1,10 +1,10 @@
 # Files and CAD successor handoff
 
 Checkpoint date: 2026-11-04. This is the starting plan for another integration
-agent, including Sol. **Files and CAD Gate 1 are incomplete.** The new storage
-and CAD work remains incomplete; Files v2 is now active on beta for acceptance.
-Writing this
-handoff does not declare the active goal complete or paused.
+agent, including Sol. **The bounded Files beta foundation is accepted; CAD Gate 1
+is incomplete.** Main storage promotion, per-app integration, automatic retention
+and classroom/100-user capacity are separate open work. The full Files/CAD goal
+remains active; this handoff does not pause it.
 
 The immediate job is to finish dependable saved data and safe dependent CAD
 regeneration, then qualify useful parametric parts through the same UI and
@@ -19,50 +19,44 @@ windows/caches or qualifying historical release combinations. Retain actual
 file-integrity, account-isolation, resource/lifecycle and basic workflow checks.
 Already-proven deployment mechanisms may be reused without expanding them.
 
-Main now serves **e7e8fb9f**: Files, Text, Terminal, Calculator, Help and the
-CodeMirror dependency. These are priority integration targets with bounded
-workflow evidence, not fully validated tools. Broader apps/games remain on beta.
-Protected install/plan/apply and actual signed beta recovery passed; original
-floor/prototype bytes were preserved, journals cleared and the prior timer state
-restored. Exact pins: `evidence/main-core-activation-20261104.json`. Current beta
-recovery is `/srv/codi-connected/operators/beta-recovery-e7-v1/ops/beta_files_recover.py`
-through the protected venv; historical launchers have obsolete pins.
+Main now serves **0366e10a**: Files, Text, Terminal, Calculator, Help and the
+CodeMirror dependency. ZIP actions are omitted because their dependency is not
+in the main catalog. Broader apps/games remain on beta. These are integration
+targets with bounded evidence, not fully validated libraries or applications.
 
-Public Files→Text save/fresh reopen with signed hashes, Calculator, Help and
-guest boot/input passed desktop/phone emulation. The terminal input marker can
-match command echo, so independent execution proof is scoped to the isolated
-real-guest fixture. An initial unscrolled 800×600 file lookup was inconclusive;
-intended viewport and normal scrolling passed. Test files were version-cleaned;
-empty test accounts retain private cleanup records without passwords. See
-`tests/main-core-live-smoke-prepared.md`.
+Beta now serves **830ca4f1** with issuer **853c12e5**, gateway **dd8cbea7** and
+SDK **44da83bd**. The reviewed installer and asset actor plan/apply passed on the
+actual host. The existing managed controller then changed only main's static
+selector from e7 to 0366. Beta's route block stayed byte-identical. Both saved
+storage floors remain; transient journals are absent. All ten hosted-service
+health checks and both login entry pages passed; `/desktop/` remains byte-identical.
+The renewal timer is back to its prior active/enabled state; its service was
+already failed and this release does not claim to repair renewal.
 
-Beta stays **3ad04c48**/issuer853/gatewaydd8. Corrected **830ca4f1** is unexposed;
-offline reproduction, old/new clients, signed account-flight/conflicts, actual
-guest separation, injected quota failures and explicit origin-clear recovery
-pass. Near-limit socket/resource results carry at identical exercised bytes.
-Exact dd8 disk-failure and new-process recovery controls now pass, including an
-independent lead restart run. Actual 830/dd8 post-publication HTTP 503 reconciles
-without replaying the upload. See `tests/files-forward-foundation-carry-20261104.md`
-and `tests/files-foundation-exit-20261104.md` for bounded evidence. Remaining work
-is protected 3ad→830 transition/recovery plus public acceptance.
-`research/main-qualified-release/beta-asset-830c` remains source-only; preserve
-the original floor and do not run its unqualified installation on the host.
-In particular owner checkpoint `bdf72e2e1` is not deployable: an old recovery
-entrypoint can create a conflicting journal at the shared gate before rejecting
-its stale controller pin. Recoverable retirement of callable old entrypoints is
-being qualified by the owner and independent reviewer. No live 830 action ran.
-The exact public 830 assets are now staged and verified, **not selected**, under
-`/srv/data/codi-beta-opfs/830ca4f…`; see
-`evidence/files-830-public-stage-20261104.json`. No controller/operator change.
+Exact receipt: `evidence/files-830-and-main-0366-activation-20261104.json`.
+Guard ca25, generator e06f, hosting manifest e9fdd7bb and Caddy 7d17e426 are
+recorded there. The installed actor is
+`/srv/codi-connected/operators/beta-files-830c-v1/ops/asset-launch.py`; the four
+obsolete fixed entrypoints were retired. Do not run them. No further historical
+window/cache qualification is required. Fresh public Files/Text save/reopen and beta account-denial acceptance passed,
+including normal fresh login and Files opening with no manual storage calls.
+The main menus passed desktop and phone emulation. See
+`tests/files-public-830-continuity-20261104.md`. R02 is complete for this bounded
+beta release. Main's storage code remains older than beta; 0366 corrects its ZIP UI,
+not its storage engine.
 
-A separate main follow-up is correcting e7's ZIP actions: Files advertised the
-actions after the ZIP dependency was removed. The candidate removes the controls
-and guards their handlers; ZIP remains beta until worker/consumer qualification.
-Keep this exact new main family compatible with beta recovery before promotion.
+The bounded F01–F10 and R01 source evidence is reconciled in
+`tests/files-foundation-exit-20261104.md`: signed isolation/conflicts, 128 MiB
+socket interruption, changed-data transfer, worker cleanup, exact gateway disk/
+process faults, actual guest separation and offline reproduction. The fresh public acceptance now closes this bounded beta foundation release. Classroom load,
+automatic published-generation cleanup and all-app qualification remain separate.
 
-Desktop branch: `integration/files-jsketcher-release-20261103`, backed on both
-LAN repositories. CAD stays `effc3717740b2c3ba65269fd16bc392fc8b41388`; later
-cut/ownership research remains unintegrated and Gate 1 open. The goal is active.
+Desktop branch: `integration/files-jsketcher-release-20261103`. CAD integration
+is now `c55bce60`, with candidate association/projection invariants integrated
+and independently checked by 12 unit tests and two actual Chromium/OCC suites; the cylindrical through-cut and
+analytic inner-loop path are active. The full plate and CAD Gate 1 remain open.
+The lanes are CAD analytic hole projection and CAD worker cut/runtime qualification;
+the Files acceptance agent has completed its bounded package. Root owns integration and hosting.
 
 ## Prior integrated checkpoint (historical; superseded above)
 

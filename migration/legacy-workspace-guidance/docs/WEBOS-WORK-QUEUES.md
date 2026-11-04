@@ -111,55 +111,37 @@ the already-reviewed healthy deployment path, preserve other sites/prototype,
 and perform fresh public acceptance. Historical compatibility evidence remains
 recorded but is no longer a prerequisite that expands this milestone.
 
-**Main reduction LIVE:** e7e8 now selects Files, Text, Terminal, Calculator and
-Help, with CodeMirror dependency; broader apps/games remain on beta. These are
-priority integration targets with bounded workflow evidence, not fully validated
-System tools. The protected installer and forward launcher passed on the host;
-actual signed beta recovery passed before/after. Original beta 3ad floor and
-`/desktop/` bytes were preserved, journals cleared, and the renewal timer restored
-active/enabled. Public core browser checks passed bounded desktop/phone-emulated
-workflows; terminal input echo is not a command-execution oracle. See
-`evidence/main-core-activation-20261104.json`.
+**Current deployment:** beta **830ca4f1** and main **0366e10a** are selected.
+The reviewed actual-host install/plan/apply passed; the main selector change used
+the existing controller. Original/asset storage floors and beta routes were
+preserved, journals cleared, ten hosted-service health checks passed, and
+`/desktop/` bytes are unchanged. The known renewal timer was restored; its prior
+failed service state is not fixed by this release. See
+`evidence/files-830-and-main-0366-activation-20261104.json`.
 
-**Files latest:** corrected 830 passed offline reproduction, real old/new-host
-coexistence, signed in-flight account switching with one-commit reconciliation,
-and two-profile conflict/cancel/stale-choice/fresh-reopen checks. Near-limit
-socket/resource tests carry at independently verified identical storage bytes.
-F10 now passes with the actual guest and current host, and injected Worker quota
-failures preserve saved bytes and unsaved Text edits before successful retry.
-An explicit isolated browser-origin clear recovers synced files from the server;
-it does not prove spontaneous eviction or recovery of unsynced-only data. Exact
-dd8 server checks now pass six injected disk-failure controls and two process
-death/restart controls; the lead independently reran the latter against a fresh
-17-entry verified dd8 copy. Actual 830 client reconciliation after a committed
-write returned HTTP 503 acknowledges the same bytes/revision with one upload.
-See `tests/files-forward-foundation-carry-20261104.md` for fault boundaries.
-R02's managed beta transition/public acceptance remain. Beta still serves 3ad;
-this main catalog change did not promote newer Files. The current exit matrix
-supersedes historical pending statements below.
+Main retains Files, Text, Terminal, Calculator, Help and CodeMirror. Its ZIP
+actions are now omitted; ZIP stays beta until separately qualified. Main still
+uses the older storage graph. Broader apps and games remain beta. Essential
+System tools remain integration targets, not blanket validated capabilities.
 
-**Release review finding, not a live fault:** the proposed 830 operator checkpoint
-`bdf72e2e1` is not deployable. A previously installed recovery entrypoint can
-write an obsolete transition journal before detecting its stale controller pin
-when invoked at the shared maintenance gate. The owner and independent reviewer
-are qualifying recoverable retirement of every callable old entrypoint together
-with the new guard/actors. Do not install that checkpoint or run its activation.
-The live main/beta services remain unchanged by this isolated review.
+**Files latest:** F01–F10/R01 have bounded source evidence in
+`tests/files-foundation-exit-20261104.md`: signed account-flight/conflicts,
+128 MiB interruption and changed-data transfer, worker/resource behavior, quota,
+exact dd8 disk/restart faults, actual guest separation and offline reproduction.
+Fresh public 830 Text save/reopen/account-denial acceptance passed. Separate
+ordinary fresh-login → Files → Text checks on beta and main passed without
+manual storage calls. Main desktop/phone-emulated menus omit ZIP actions.
+Receipt: `tests/files-public-830-continuity-20261104.md`. Its initial harness
+sync/scroll/hidden-button corrections are preserved; normal UI behavior has its
+own later check. R02 and the bounded beta Files foundation are accepted. Main
+storage promotion, per-app qualification, automatic GC and classroom/100-user
+capacity remain open. No new historical window/cache campaign is required.
 
-The exact 830 public tree is now staged, verified twice and **not selected** on
-box-webhost's data drive. No operator or route changed. The candidate-only
-transport is backed up to R730; the staging helper and custody/manifest receipt
-are `research/beta-files-forward/stage-830-public.py` and
-`evidence/files-830-public-stage-20261104.json`. The old guarded beta remains 3ad.
-
-**Main dependency correction active:** e7's retained Files still advertises ZIP
-actions but the reduced catalog removed their dependency. An isolated signed
-browser reproduced the error without changing the source file. A separate
-candidate omits both unsupported actions and refuses synthetic invocation;
-ZIP stays on beta pending worker/consumer qualification. Its existing
-`useWebWorkers:false` implementation is not qualified for the main release.
-Main still serves e7 until the corrected candidate and compatible recovery
-family are reviewed and deployed together.
+**Current parallel CAD work:** c55bce60 integrates candidate association and
+projection invariants, independently passing 12 units and two real-worker
+Chromium suites. Next implement/qualify the same-worker centered through-cut
+and analytic hole projection. No full plate, CAD Gate 1, or new deployed
+CAD capability is claimed. Root serializes integration and dependent publication.
 
 **Discovered old-client defect:** unexposed e359 replaced the global catalog,
 letting an old loaded host request new Files without document operations. Root

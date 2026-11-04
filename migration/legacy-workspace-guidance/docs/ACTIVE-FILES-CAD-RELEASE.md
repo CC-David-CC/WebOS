@@ -13,21 +13,24 @@ Stop extra compatibility work and finish current deployment/functional checks.
 Saved-data integrity, account isolation and worker/lifecycle correctness remain.
 
 **Current checkpoint (supersedes earlier implementation snapshots below):**
-shared mount operations are integrated into Text, Calculator, Files, Circuit
-Lab, Digital Logic and the CAD parent. Sixteen controller checks and lead
-actual-app/engine tests pass; signed Files copy-worker close/reopen and ordinary
-UI workflows are recorded at `d62ccc3e5`. No all-app or deployment claim.
-CAD `715628d1` repairs the worker script-policy failure by statically embedding
-pinned glue. Lead strict-CSP worker/parent checks and the owner's signed worker
-save/reopen fixture pass. The next bounded CAD task is the dependent centered
-through-hole contract (`effc3717`), starting with private candidate/source
-ownership; actual cut/topology and full plate remain open. Main e7e8 restriction
-is now deployed through the protected installer/forward launcher; actual beta
-recovery passed before/after, with original floor/prototype preserved. Core apps
-are priority integration targets with bounded evidence, not fully validated
-software. Corrected Files 830 passes isolated signed workflows but awaits its
-managed beta transition/public checks; 3ad remains on beta. See the work queues,
-activation receipt and `tests/files-foundation-exit-20261104.md`.
+beta now selects Files **830ca4f1**; main selects **0366e10a**, retaining the five
+core apps and CodeMirror while omitting unsupported ZIP actions. Actual managed
+installation/apply, signed health, ten hosted-site checks and prototype bytes
+passed; original/asset floors persist and transient journals cleared. Fresh
+public Files/Text save/reopen and beta isolation acceptance passed, including
+ordinary fresh-login UI checks and main desktop/phone menu checks. The bounded
+Files beta foundation is accepted; main storage promotion and broader app/load/
+retention work remain open. See
+`evidence/files-830-and-main-0366-activation-20261104.json` and the reconciled
+`tests/files-foundation-exit-20261104.md`. Main storage is still older; the main
+change is the ZIP capability correction. Do not infer all-app validation.
+
+Shared mount operations are integrated into Text, Calculator, Files, Circuit
+Lab, Digital Logic and the CAD parent with bounded component/browser evidence.
+CAD is c55bce60 with strict-CSP worker extrusion, candidate association/projection
+guards and scoped signed native save/reopen proof. Actual dependent through-cut/
+runtime and analytic hole-model projection work are active in separate lanes. The full plate,
+Gate 1, bracket/enclosure and material-aware 3MF finish lines remain open.
 
 Latest user clarification: **all JSketcher features are suspect and used for
 inspiration/reference.** Existing code earns reuse through an explicit contract
@@ -210,21 +213,14 @@ changes are integrated. The lead owns changes to shared desktop wiring.
 
 ## Completion audit
 
-Each row needs actual source/artifact and matching runtime/test evidence.
-`open` includes partial implementations; it is not a claim no work exists.
+Files F01–F10 and R01/R02 are reconciled in
+[`tests/files-foundation-exit-20261104.md`](../tests/files-foundation-exit-20261104.md).
+Their bounded beta foundation is accepted with the exact isolated/public scopes
+recorded there; this does not qualify every app, automatic GC or classroom load.
+The earlier row-by-row Files summaries were stale and are replaced by that matrix.
 
 | ID | Required outcome | State | Evidence / next gate |
 |---|---|---|---|
-| F01 | Saved browser data survives close/reopen and fresh-session recovery | partial | Opt-in product adapter and complete-row migration integrated; staged Chromium reopen passes; deployed/fresh-session acceptance remains |
-| F02 | Account invalidation, cancellation and independent sessions preserve isolation | partial | Guarded beta source carried forward; signed owner tests and bounded-read worker cancellation pass; full integration remains |
-| F03 | Stale windows/concurrent devices preserve edits and explicit conflicts | partial | 2cec3e7e2: actual Files/Text UI, two independent Chromium processes/profiles, offline edits, stale resolution, preserving both copies and fresh signed reopen pass; final integrated rollout remains. |
-| F04 | Lost replies/uncertain writes reconcile without duplicate mutation | partial | Real committed-response socket cut reconciled with one upload; injected newer-edit tests also pass. Full release transition still open. |
-| F05 | Downloads publish only complete verified generations | partial | 218536add: real signed cold/replacement TCP cuts, OPFS row inspection, browser kill/restart and independent hashes pass; SDK still constructs a Blob before capture. |
-| F06 | Cleanup cannot remove committed/in-flight data | partial | Explicit reader-aware collector has bounded paging, writer/reader/attempt/conflict and unlink/crash tests; automatic retention/UI and wider scale remain open (ADAPTER-2026-11-03.md). |
-| F07 | Heavy work stays in workers with measured responsiveness/resources | partial | 544480232: lead two-tab capture/read, cancellation, FIFO/deadline, worker failure and renderer-crash test passes with max 1 heavy content worker; SDK/app memory and whole-release qualification remain. |
-| F08 | Changed-data transfers and safe first/legacy reads through 128 MiB | partial | 7064310e1: signed 128 MiB plus queued/cancelled second-tab capture passes; one-byte edit 71,470 request-body bytes, sampled summed Chrome RSS 1.32 GiB, foreground heartbeat max 32.2 ms. These are observations, not a total-memory guarantee. |
-| F09 | Files create/open/rename/move/copy/delete/upload/download and truthful status | partial | 99bc3ba06 actual signed UI workflows and cancellation/stale/collision tests pass; later F10 covers real Linux separation. Physical phone, full catalog and final release remain. |
-| F10 | Temporary Linux remains separate; existing app contract compatible | partial | 9f753a95c: actual v86 guest-home Files/Text/signed-server separation and reboot reset pass; all-app compatibility and deployed qualification remain. |
 | C01 | One coherent buildable fork preserves intended existing integrated work | partial | Integrated replay/lifetime/solver and fillet fixes packaged at d3d36bc5; nine lead browser runs and worker inventory checks pass. Broad carried-feature and release qualification remain. |
 | C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; ENG01–ENG08 add broad capability inventory, swappable mounts, explicit conversions/composition and qualification. Linked-source evidence remains open. |
 | C03 | Splines/history/selection/DXF/camera/reconstruction work together | partial | Consolidation owner ran real carried-feature checks; integrated host and final fork regression remain |
@@ -243,8 +239,8 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | E02 | Inset label remains deliberately grouped with lid | open | Alignment and assignment through parameter changes |
 | E03 | Model-derived core 3MF independently verified | open | Two build objects/three assigned regions; units/transforms/materials |
 | E04 | Invalid/unsupported geometry fails without replacing good output | open | Mesh/interface, cancellation and signed-save fault cases |
-| R01 | Reproducible source/runtime/test prerequisites on another machine | open | Clean checkout/build proof; source notes alone insufficient |
-| R02 | Beta-only qualified rollout preserves main/prototype and guarded floor | open | Exact staged artifact, transition/recovery and public tests |
+| R01 | Reproducible Files source/runtime/test prerequisites | bounded pass | Exact offline Linux x86_64 recipe and captured prerequisites backed on both LAN repositories; see Files exit matrix. CAD runtime portability remains its own gate. |
+| R02 | Qualified Files beta replacement preserves other sites and data boundaries | bounded pass | Actual 830 install/apply, signed health, fresh public save/reopen/account denial; main 0366 capability fix and ten-site/prototype checks. Old-window compatibility is not required. |
 | R03 | Source/tests/evidence/handoff backed up to box-git and R730 | active | Checkpoint each integrated slice; final remote-ref verification |
 
 ## Execution rules
