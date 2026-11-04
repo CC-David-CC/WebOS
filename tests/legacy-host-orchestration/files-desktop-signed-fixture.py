@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Disposable desktop + signed c046 gateway; Linux guest deliberately unavailable."""
+"""Disposable signed desktop; Linux guest enabled only by explicit test flag."""
 import asyncio, hashlib, importlib.util, os, pathlib, shutil, subprocess, sys, tempfile, threading
 from wsgiref.simple_server import make_server
 from aiohttp import web
@@ -25,9 +25,9 @@ class Issuer(Service):
 async def main():
  with tempfile.TemporaryDirectory(prefix='codi-desktop-files-') as tmp:
   root=pathlib.Path(tmp);public=staging.stage(root/'public',bundled=BUNDLE);(public/'gateway_service').mkdir(exist_ok=True);shutil.copy2(SDK,public/'gateway_service/client.mjs');shutil.copytree(ACTIVE/'gateway_service/vendor/js-sha256',public/'gateway_service/hash')
-  issuer=Issuer(Config(root/'issuer',public,origin=ORIGIN));server=make_server('127.0.0.1',0,GatewayAuthority(issuer),server_class=BoundedServer,handler_class=QuietHandler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+  issuer=Issuer(Config(root/'issuer',public,origin=ORIGIN));server=make_server('127.0.0.1',0,staging.HeadSupport(GatewayAuthority(issuer)),server_class=BoundedServer,handler_class=QuietHandler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
   state=root/'state';data=root/'data';state.mkdir(mode=0o700);data.mkdir(mode=0o700);store=UserStore(state,data);initialize_ledger(store);initialize_transfers(store);gateway=FileGateway(store,issuer.config()['identity'],max_requests_per_minute=2048);runner=web.AppRunner(gateway.app(),access_log=None);await runner.setup();site=web.TCPSite(runner,'127.0.0.1',0);await site.start();port=site._server.sockets[0].getsockname()[1]
-  cfg=root/'Caddyfile';cfg.write_text('{\n admin off\n}\n'+ORIGIN+' {\n handle /assets/terminal/v2/image.json {\n respond 404\n }\n handle /gateway/* {\n reverse_proxy 127.0.0.1:'+str(port)+'\n }\n handle {\n reverse_proxy 127.0.0.1:'+str(server.server_port)+'\n }\n}\n');caddy=subprocess.Popen([CADDY,'run','--config',str(cfg),'--adapter','caddyfile'],cwd=root,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
+  cfg=root/'Caddyfile';guest_rule='' if os.environ.get('CODI_TEST_REAL_LINUX')=='1' else ' handle /assets/terminal/v2/image.json {\n respond 404\n }\n';cfg.write_text('{\n admin off\n}\n'+ORIGIN+' {\n'+guest_rule+' handle /gateway/* {\n reverse_proxy 127.0.0.1:'+str(port)+'\n }\n handle {\n reverse_proxy 127.0.0.1:'+str(server.server_port)+'\n }\n}\n');caddy=subprocess.Popen([CADDY,'run','--config',str(cfg),'--adapter','caddyfile'],cwd=root,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE)
   try:
    for _ in range(100):
     if caddy.poll() is not None:raise RuntimeError(caddy.stderr.read().decode())
