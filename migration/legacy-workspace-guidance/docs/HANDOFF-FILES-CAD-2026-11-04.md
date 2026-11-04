@@ -34,8 +34,8 @@ The complete original goal and amendments are preserved in
 
 | Repository | Integration branch | Code checkpoint before this handoff |
 |---|---|---|
-| `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `0f2d5df76903bca30913d203d4d7cad17582917a` |
-| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `8438a8d04dde0333f3be2b63673909df60f60eb9` |
+| `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `a5412605de6e15198862b54b7b4bb62140f59dc4` |
+| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `8ca9602267d0d463863f6f149ea9f60407948671` |
 
 The desktop branch's later handoff commit adds documentation to that code
 checkpoint. Verify branch tips with `git ls-remote` before starting; another
@@ -64,19 +64,30 @@ integration worktrees on this workstation are `/tmp/codi-webos-cad-merge` and
 `/tmp/codi-jsketcher-release-integration-20261104`; they are conveniences, not
 the source of truth for another machine.
 
-### Candidates not yet merged into those checkpoints
+### Integrated since the initial handoff
 
-| Candidate | Ref and evidence | Integration action |
-|---|---|---|
-| Axis-domain correction and CAD worker admission | JSketcher `research/headless-sketch-core-20261104`, final `fbe6826e16442aceae4759053db7c7271bcfec24`, verified on box-git and R730. Axis fix `9f588ca1`, admission `043c9525`, cleanup evidence `fbe6826e`. | Review/merge the remaining changes without duplicating already integrated headless-core code. Rebuild and rerun meaningful controls. |
-| Plate volume check | JSketcher `47c78a2f`, descendant of `2d6bf4cf`. | Preserve its independent OCC volume assertion when reconciling the regeneration branch. |
-| Atomic full-history replay | JSketcher `research/plate-parametric-20261104`, `089ed178f7ff13dbc6d8c886f6e4032051f0e52f`, verified on box-git and R730. | One last-valid browser control and app build pass; plain typecheck fails. Reconcile with normalization/ID allocation and the missing document-lifetime token before integration. |
+JSketcher `2b3f2c0fdfd84bcda7db4f5244e1da40b4113813` now reconciles the
+axis/admission work (`68e51e03`), private atomic replay (`35f3e2ef`), lifetime
+and staging guards (`1be74426`, `274a361c`) and subsequent document/surfacing
+boundary fixes (`aff1befe`). Do not merge the older `089ed178` tree again or
+reintroduce its global registry overlay. Normalization and feature-ID allocation
+remain integrated.
 
-Root `8438a8d0` already merges `2d6bf4cf` on top of normalization, allocator
-and typed DistancePL changes. In particular, retain `646f9949` and the changes
-represented by `e974cb76`; the atomic candidate started from an older branch
-that did not contain all of them. Never resolve that divergence by copying
-its whole tree over the integration branch.
+The lead's combined app build/typecheck, 11 real Chromium regression scripts
+and 9 unit checks pass. Read the fork's
+`docs/DOCUMENT-LIFETIME-REPLAY-20261104.md` and machine-readable
+`test/webos/document-replay-evidence-20261104.json` for exact tested source,
+asset hashes, negative controls, commands and limits. This is not the full CAD
+gate or a newly packaged WebOS app.
+
+Desktop `2e312b7975d92882c9ff74803066abe089d9ca59` integrates the Files-only
+beta candidate builder and tests. Candidate `3ad04c48…` supersedes `feaa1c6f…`,
+which had a real session-layout return-value defect. The agent exercised signed
+controlled-tab migration, Files/Text, sign-out cancellation/failure/stale worker
+and second-account login; the lead independently verified the sealed 87-file
+inventory. Actual derived issuer/guest config tests pass separately. These are
+isolated fixtures, not a durable managed activation/recovery operator. See
+`../research/beta-opfs-release/README.md`.
 
 ## What works and what is still open
 
@@ -85,17 +96,17 @@ one worker is not a browser-wide RAM guarantee.
 
 | Area | Demonstrated | Open or failing |
 |---|---|---|
-| Saved files | Opt-in OPFS-backed My files, browser/server save and fresh signed reopen; ordinary file operations and account denial. | Exact beta package, v1→v2 transition, recovery operator, full app compatibility. |
+| Saved files | Opt-in OPFS My files; signed reopen and file operations; sealed beta-derived candidate and controlled old-tab migration. | Managed transition/recovery operator, signed continuity across actual issuer upgrade, headroom and full app compatibility. |
 | Conflicts | Two independent Chromium processes/profiles, actual Files/Text offline edits, cancellation, a newer edit during resolution, keep-both and fresh reopen. | Final assembled release and broader failure matrix. |
 | Interrupted transfer | Real committed-upload reply cut reconciles without blind duplicate write; actual download cuts preserve complete verified generations and earlier bytes. | Crash during publication, physical power loss, exact release transition. |
 | Changed data | A signed 128 MiB file's one-byte edit sent 71,470 request-body bytes in the recorded run; final local/server hashes agreed. | This excludes responses and HTTP/TLS overhead. SDK still builds a Blob before OPFS capture; no complete zero-copy or total-memory claim. |
 | File worker resources | One cooperating VerifiedContent worker across tabs; queue, cancellation, timeout and renderer-crash recovery. | SDK/app workers and allocations are outside that cap. Sampled summed Chromium RSS was about 1.32 GiB in the large-file run, with shared pages counted multiple times. |
 | Temporary Linux | Real v86 boot; Files can browse guest home; identically named My files stays separate; guest reboot resets temporary content. | This is not a synchronized Linux Account mount. All-app compatibility remains. |
-| CAD host integration | Packaged fork `794c14a3`: actual signed small-model save/reopen, independent OCC/Native windows, account denial and closed-command rejection at simulated phone, 1080p and 4K. | New root `8438a8d0` has not been rebuilt/repackaged and qualified through that host. Heavy native snapshot/stringification still needs work. |
+| CAD host integration | Packaged fork `794c14a3`: actual signed small-model save/reopen, independent OCC/Native windows, account denial and closed-command rejection at simulated phone, 1080p and 4K. | New root `2b3f2c0f` has passed the local combined build but is not repackaged/qualified through that host. Heavy native snapshot/stringification still needs work. |
 | Headless sketch solve | Actual IO/solver in a real worker, no canvas/DOM/fake editor; restricted plate fixtures, residual and finite-geometry checks. | Not all entity/constraint families, exact general DOF, arbitrary region extraction or all kernels. |
-| Dependent plate | 100×50×20 → 150×30×20 with centered Ø10 hole and four constrained corner holes; undo/redo, hole rays and native-v2 reopen on the owner's candidate. | Missing fillets/patterns/inch-display/full shared-agent workflow. Native sketch extrusion is explicitly unsupported in this path. |
-| Rejected CAD regeneration | Authored feature history and sketch definitions remain inspectable. | **Confirmed failure in the caller candidate, with its replay path still uncorrected in root:** impossible 15×15 edit exposes partial geometry instead of preserving the last complete plate. The new combined root has not been rerun. |
-| Document lifetime | Caller checks face, sketch bytes, parameters and history identity. | No general monotonic document-generation token yet; reset/reopen ABA races are not fully excluded. |
+| Dependent plate | 100×50×20 → 150×30×20 with centered Ø10 hole and four constrained corner holes; undo/redo, hole rays and native-v2 reopen on the combined build. | Missing fillets/patterns/inch-display/full shared-agent workflow. Native sketch extrusion is explicitly unsupported in this path. |
+| Rejected CAD regeneration | Impossible 15×15 edit retains last complete plate, marks it stale and refuses save/3MF; correcting it regenerates. Held replay leaves accepted registry/model intact. | Broader operation-context/native-handle isolation, full feature chain and resource bounds. |
+| Document lifetime | Monotonic generation plus exact service/storage ownership; held validator/replay reset, staged rollback, late reply, service replacement and surface cleanup/reload controls pass. | All async services and noncooperative kernel interruption are not qualified. |
 | Material-aware 3MF | Existing research and independent limited lib3mf fixtures. | Full editable enclosure/body/lid/inset workflow and manufacturing handoff remain unqualified. |
 
 Key desktop evidence: `evidence/storage-product-integration-20261104.md`,
@@ -147,6 +158,10 @@ Key desktop evidence: `evidence/storage-product-integration-20261104.md`,
 ## First bounded work packages
 
 Use one lead and three agents in isolated worktrees. Assign paths before edits.
+The bounded implementation/test work in packages 1A–1C and the local combined
+checks in package 2 have now passed the recorded controls. Extend unresolved
+coverage and proceed to host packaging; do not redo completed merges.
+
 Each agent returns a commit, tests/negative controls, limitations and evidence.
 Shared contracts, merge decisions, release packaging and hosting have one owner.
 
@@ -154,7 +169,7 @@ Shared contracts, merge decisions, release packaging and hosting have one owner.
 |---|---|---|---|
 | 0 | Lead | Verify refs, candidate ancestry, resources and prerequisite artifacts. | Clean branches; reproducible dependencies or explicitly recorded gaps; no accidental deployment. |
 | 1A | Lead | Document-lifetime contract: `projectBundle.ts`, `projectManager/projectManagerBundle.ts`; coordinate its API with replay owner. | Synchronous monotonic generation on document replacement/reset/restore entry; every async result checks captured generation and current owner. Reset/reopen of identical content cannot admit an old result. |
-| 1B | CAD replay agent | Atomic replay: `craft/craftBundle.ts`, registry overlay, non-rendering sketch initialization, narrow same-ID scene replacement. | Complete candidate evaluated privately; publish once only when all required operations and guards pass. Failed replay retains the last complete accepted solid and inspectable failed intent. No mutation of accepted inputs. |
+| 1B | CAD replay agent | Atomic replay: `craft/craftBundle.ts`, private evaluation registry, non-rendering sketch initialization, narrow same-ID scene replacement. | Complete candidate evaluated privately; publish once only when all required operations and guards pass. Failed replay retains the last complete accepted solid and inspectable failed intent. No mutation of accepted inputs. |
 | 1C | CAD core agent | Review axis-domain/admission candidate, own `sketcher/headless/` and its tests. | H/V domains correct; single cooperating CAD worker, bounded queue/total deadline, queued cancel, renderer-crash progress. No overlapping edits to replay or project lifetime. |
 | 1D | Files agent | Beta-derived immutable storage package and transition/operator work from the readiness plan. | Preserve selected guarded baseline and full catalog; prove v2 migration/forward recovery; no independent live mutation. Lead owns shared host changes. |
 | 2 | Lead | Merge 1A–1C and rebuild the exact fork; review rather than assuming each isolated pass composes. | Run last-valid, stale/reset, successful five-hole edit, undo/redo, save/reopen and normalization/allocator controls on the combined build. |
@@ -170,12 +185,19 @@ few operations currently used by the desktop.
 
 ### Document generation and atomic replay details
 
-The proposed API name is `ctx.projectService.documentGeneration`; **it is not
-implemented in root `8438a8d0`**. Agree the actual API before dependent changes.
-Increment synchronously when loading/resetting/replacing a document begins,
-not only after asynchronous parsing completes. Account/window lifetime checks
-remain separate. A content hash, equal history or re-created face ID does not
-distinguish an old document from a new identical one.
+The implemented API is `ctx.projectService.documentGeneration`,
+`documentSignal`, `beginDocumentChange()`, `isDocumentCurrent(generation)` and
+`dispose()`. The combined tests cover reset/reopen of identical content,
+service replacement, old callbacks, staging ownership and surface domains.
+Continue qualifying callers against this contract; do not recreate the API.
+Account/window lifetime checks remain separate. A content hash, equal history
+or re-created face ID cannot distinguish identical documents across lifetimes.
+
+An occupied-workspace restore must reject **before** starting a replacement;
+repeat the empty check after validation. `craftService.reset()` replaces craft
+history, not all document domains. Use `projectService.empty()` for a new blank
+document. Explicit same-project `loadStrict()` preserves its saved surface
+sidecar; a new native envelope supplies its own surface section.
 
 Guard both before and after worker/restore awaits. Restore must distinguish
 its own intentional generation transition from an unrelated replacement; do
@@ -211,7 +233,7 @@ that cloning either repository alone supplies a ready release.
 
 ### CAD worker checks without a canvas or CAD engine build
 
-On the headless-core candidate branch, with locked dependencies installed:
+On the current integrated fork, with locked dependencies installed:
 
 ```sh
 CYPRESS_INSTALL_BINARY=0 npm ci --ignore-scripts
@@ -285,7 +307,7 @@ npm run check-code
 Serve `dist` with production-style CSP, permitting WebAssembly but not
 JavaScript `unsafe-eval`. Use the plate README and actual browser tests,
 including `plate-parametric-centered-browser.test.cjs`, the last-valid control,
-stale-safety controls and `axis-domain-project-restore.test.cjs` after merge.
+the document/surface/service replacement controls and `axis-domain-project-restore.test.cjs`.
 Inspect assertions and their scope, not only the test's filename or exit code.
 
 OCCT source archive is on R730 at
@@ -357,7 +379,7 @@ Before any activation:
    more space; that does not automatically give the account filesystem room.
 2. Audit obsolete releases before any cleanup/move. Hardlinks invalidate naive
    sums of directory sizes. Preserve active/retained assets and account data.
-3. Assemble a minimal beta-derived host/config change, a complete immutable
+3. Review the existing `3ad04c48…` beta-derived candidate and `853c12e5…` issuer, then complete the managed transition. Preserve a complete immutable
    module/worker graph and a full catalog preserving unrelated applications.
    The research integration tree is not a deployable whole-site replacement.
 4. Qualify migration and recovery from the real guarded baseline, including old
@@ -385,27 +407,11 @@ counts as a percentage of CAD 1.0–6.0 or report a gate complete by weakening i
 When a package finishes, choose the next bounded dependency-ready item; keep
 shared-file edits and deployment serial.
 
-## Atomic replay checkpoint supplement
+## Historical replay failure retained as a control
 
-The regeneration owner finished and stopped at
-`089ed178f7ff13dbc6d8c886f6e4032051f0e52f` on
-`research/plate-parametric-20261104`; both remote refs were independently
-verified. Its full application build and actual browser last-valid test passed:
-the impossible 15×15 edit retained the previous solid and labeled it stale.
-This is owner evidence, not an independent combined-root qualification.
-
-Plain `tsc --noEmit` fails TS2307 because the generated
-`codi-headless-sketch-worker` declaration is unavailable to that invocation.
-Fix the reproducible declaration/build boundary; do not hide the error with an
-unchecked `any` declaration. The candidate predates root `8438a8d0` and must
-retain its normalization and identity allocator during reconciliation. It also
-requires the unimplemented document-lifetime token. Concurrency, private-registry
-visibility, mutation of accepted kernel objects, reset/reopen ABA, stale
-save/export and deliberate history navigation still need review and tests.
-
-The owner's candidate documentation records those limitations. Root `8438a8d0`
-still contains the replay path responsible for the known failure; its combined
-build has not been rerun. A reviewed merge and combined rerun are required.
-All three implementation agents have returned bounded
-checkpoints; no agent is expected to keep modifying these snapshots during
-handoff. Starting new work requires assigning a new package from the queue.
+The original `089ed178` owner prototype followed a confirmed failure where an
+impossible edit exposed only a partial solid. Its missing type declaration,
+older normalization base and absent lifetime hook were real blockers at that
+checkpoint. They are superseded by the integrated fixes and combined lead
+results above; do not restart the old merge or quote that failure as current.
+The full Gate 1 and release still remain open for the listed reasons.

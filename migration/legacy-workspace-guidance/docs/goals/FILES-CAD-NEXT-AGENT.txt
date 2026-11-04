@@ -6,30 +6,32 @@ integration/files-jsketcher-release-20261103, and
 box-git:/srv/data/git/JSKetcher.git, branch
 integration/files-cad-release-20261104. Verify current tips. Read
 docs/HANDOFF-FILES-CAD-2026-11-04.md first, then its five priority references.
-The handoff names exact code checkpoints, unmerged candidates, reproductions,
+The handoff names exact code checkpoints, scoped candidate results, reproductions,
 known failures and deployment boundaries. Treat it as the starting point and
 update it when new evidence changes the plan.
 
 Use three subagents in separate branches/worktrees with explicit path ownership:
-1. Files: finish the beta-derived immutable storage package, migration and
-   forward-recovery qualification. No independent deployment.
-2. CAD regeneration: review and finish atomic full-history replay, retaining
-   the last complete valid model on failure and preserving authored intent.
-3. CAD core: review/integrate bounded headless solve, axis semantics and worker
-   admission; extend the actual failure tests as needed.
+1. Files: review the existing sealed beta-derived package and isolated issuer/
+   session tests; finish managed transition, forward recovery and continuity
+   qualification. No independent deployment.
+2. CAD regeneration: extend the integrated private replay/lifetime tests to
+   the next Gate 1 feature chain and expose explicit unsupported boundaries.
+3. CAD core: extend the integrated headless solve and begin the agreed engine
+   capability/mount contract on owned paths; preserve existing failure tests.
 
 You own shared contracts, document-lifetime generation, integration, independent
 review, exact packaging and deployment. Reassign agents as bounded packages
 finish. Serialize changes to shared files. Do not stop independent work because
 one lane needs a shared contract; agree that contract before dependent edits.
 
-First CAD finish line: on the combined build, resize the supported five-hole
-plate correctly, reject the impossible edit without replacing the previous
-complete solid, reject delayed results after reset/reopen (including identical
-content), and preserve intent through undo/redo and native save/reopen. Root
-8438a8d0 still contains the replay path from the failing last-valid-solid control
-and has no general documentGeneration hook; its combined build has not been
-rerun. Neither is fixed merely because a separate candidate exists.
+The first bounded CAD slice is integrated and locally qualified at JSketcher
+2b3f2c0f: supported five-hole plate resize/reopen, impossible-edit last-valid
+preservation and correction, stale validator/replay rejection, document/service
+replacement, surface cleanup and feature-ID history controls. The lead's 11
+Chromium scripts, 9 unit checks, build and typecheck pass; see the fork's
+DOCUMENT-LIFETIME-REPLAY-20261104.md. Do not restart that merge or assume the
+old 8438 replay failure is still current. Broader kernel/context isolation,
+whole-browser budgets and the full Gate 1 model remain open.
 
 Then package the exact fork/worker assets in the desktop and run actual signed
 My files workflows. Continue Gate 1's shape/constraint/profile/kernel/history

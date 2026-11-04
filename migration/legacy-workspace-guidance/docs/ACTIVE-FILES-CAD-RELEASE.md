@@ -28,15 +28,17 @@ versioned mounts and explicit conversion/composition boundaries. R730 compute/
 storage, llm-60 compute/testing and LAN repository creation/cloning are authorized.
 This updates the goal, not the completion state of the implementation.
 
-Root fork `8438a8d0` includes the restricted headless worker and dependent plate
-caller, including the uncorrected replay path from the candidate's failing
-impossible-edit last-valid-solid control; the combined root is not rerun. Owner
-candidate `089ed178` passes that one control and the app build; it is unmerged,
-predates normalization/allocator integration, fails a plain typecheck on a
-generated declaration, and lacks general document-lifetime/atomicity proof.
-Axis/admission candidate `fbe6826e` is also unmerged. The monotonic document
-generation hook is not implemented. Keep these distinct from the older
-`794c14a3` packaged small-model signed host result.
+Root fork `2b3f2c0f` now integrates the headless worker/caller, corrected axis
+semantics/admission, private atomic replay and document-lifetime guards. The
+lead's exact app `aff1befe` passes build/typecheck, 11 browser regressions and
+9 unit checks. Plate resize/native reopen, last-valid failed-edit recovery,
+occupied-open refusal, service replacement and surface cleanup/reload pass.
+Read the fork's `DOCUMENT-LIFETIME-REPLAY-20261104.md`. This is local evidence;
+keep it distinct from packaged small-model signed host `794c14a3`.
+
+The Files beta candidate and issuer/config/session fixture are integrated at
+desktop `2e312b797`, but managed transition/recovery and public qualification
+remain open. `research/beta-opfs-release/README.md` records exact pins.
 
 ## Integration ownership and verified starting state
 
@@ -123,7 +125,7 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
 | M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
 | M04 | Typed parameters/formulas/dependencies/configurations | open | Bracket/enclosure edits with explicit errors |
-| M05 | Regeneration/reference repair preserves authored intent | active | ARC02/03 five-hole resize and v2 reopen candidate passes. Root still loses last-complete solid after failed replay; ARC09 lifetime guard missing and ARC10 atomic prototype unmerged. Full Gate 1 remains. |
+| M05 | Regeneration/reference repair preserves authored intent | active | Combined ARC02/03/09/10 plate resize/reopen, last-valid failed-edit recovery and late-result/document replacement checks pass. Full Gate 1, all operation contexts and host packaging remain. |
 | ARC | Computational core operates independently of UI and publishes only current validated results | active | CAD-CORE-SEPARATION.md: no canvas/DOM/fake UI; actual equations, bounded jobs, residual/geometry checks, cancellation, IDs/revisions and explicit failure. |
 | A01 | Mounting bracket substantial edits, contradictions, undo and reopen | open | Real integrated acceptance model |
 | A02 | Enclosure/separate lid substantial edits, contradictions, save/reopen | open | Real integrated acceptance model |

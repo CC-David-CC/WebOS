@@ -2,6 +2,24 @@
 
 **Decision: do not activate the OPFS Files candidate yet.** This is a staging and qualification plan, not an activation instruction. The integrated research tree includes unrelated desktop and CAD changes; it must not be deployed wholesale. No live state, routes, services or accounts were changed for this assessment.
 
+## Candidate progress after the baseline assessment
+
+Desktop `2e312b797` adds reproducible sealed candidate `3ad04c48…`, keeping the
+full non-Files catalog and guarded version floor. The isolated signed test
+covers an old controlled tab, v1 metadata migration, Files/Text save/reopen,
+sign-out cancel/save failure/stale worker and a second account. The lead verified
+the closed 87-file inventory. The earlier `feaa1c6f…` candidate had a layout
+return-value bug and is superseded.
+
+Separate real issuer/guest tests exercise derived native release `853c12e5…`
+from pinned `1666491d…`, preserving issuer config/identity except opt-in OPFS
+metadata. This is not the signed session fixture and does not prove signed
+account continuity across an issuer update. See
+`../research/beta-opfs-release/README.md` for source, pins and reproduction.
+The recovery model is a pure model; durable managed transition/recovery,
+capacity, retained routes, complete host review and public beta acceptance
+remain open. Nothing was activated.
+
 ## Observed beta baseline
 
 Read-only public HTTPS and service checks on 2026-11-04 found:
@@ -54,8 +72,8 @@ The three-app catalog hash is `262b2c125120fc95bec34ad2645febe115cf608bff04be0c4
 
 | Gate | Existing bounded evidence | Still open for release |
 |---|---|---|
-| F01 saved data | OPFS save/reopen and actual guarded-v1 metadata migration tests | Exact controlled beta v1→v2 transition and recovery; no destructive downgrade |
-| F02 account/session | Signed isolation and explicit teardown tests | Exact release/session transition and all app consumers |
+| F01 saved data | OPFS save/reopen and actual guarded-v1 metadata migration tests | Controlled beta-derived transition now passes; actual managed transition/recovery remains, with no destructive downgrade |
+| F02 account/session | Signed isolation and explicit teardown tests | Beta-derived sign-out/second-account controls pass; actual issuer upgrade continuity and all app consumers remain |
 | F03 conflict | `2cec3e7e2` two actual browser profiles, offline UI edits, stale choice and keep-both | Final assembled release and broader conflict cases |
 | F04 uncertain write | Actual committed-upload socket cut and reconciliation | Exact assembled release + route/issuer failures |
 | F05 download integrity | `218536add` real signed cuts, OPFS refs, Chromium kill after failed transfers | Crash during publication/power loss and full release transition |

@@ -11,6 +11,11 @@ boundaries; their features remain separately qualified.
 Current status: **OPEN / PARTIAL**. Files and foundational corrections continue.
 Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
 
+The 2026-11-04 combined fork `2b3f2c0f` passes the bounded five-hole plate
+resize/reopen, failed-edit recovery and document-lifetime/surface controls.
+See its `docs/DOCUMENT-LIFETIME-REPLAY-20261104.md`. This advances the foundation
+but does not complete the rectangle/fillet/pattern/unit/agent chain below.
+
 ## Gate definition and execution policy
 
 - [ ] Qualify all 12 competency areas below and the 22-exercise ladder.
