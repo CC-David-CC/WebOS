@@ -500,3 +500,20 @@ The worker should inspect the real code, run a bounded failing reproduction wher
 - [ ] **M4 — Enclosure vertical slice:** integrate M1–M3 with desktop/My files; build, edit and reopen the real enclosure/lid/label design, then export and independently verify the two-object 3MF. No Bambu or physical printer required. Record unsupported cases honestly.
 - [ ] **P1 — Physical document:** define regions, evidence-backed materials, orientations, interfaces, conditions, studies and revision/provenance without claiming a solver exists. Use the same operations and authorization for people and agents.
 - [ ] **P2 — Magnetic fixture:** after a qualified mesher and forward solver exist, implement the explicit bounded sensor-fixture study/search/reanalysis acceptance in section 12. Test known references and convergence; unknown data or failed solves are not valid candidates.
+
+## 16. Deferred spatial XR workshop — lower-priority stretch
+
+User clarified on 2026-11-04: keep this below foundational Files, useful CAD,
+single-part learning, human/agent commands and ordinary-browser CSG/motion work.
+Plan a separate fork branch (`research/xr-spatial-workshop`, reserved name only).
+It is not a requirement for the active Files/JSketcher/core-3MF release.
+
+- [ ] Follow `docs/planning/CAD-LEARNING-CSG-XR.md`: standard single-part learning
+  fixtures, explicit fast-interactive versus qualified-engineering paths, then
+  the deferred spatial workshop.
+- [ ] Reuse authored designs, stable IDs, account-bound files and validated
+  commands for phone/desktop, agents and eventual Galaxy XR browser interaction.
+- [ ] Prototype correct-scale viewing and minimal spatial manipulation before
+  whole-desktop panels, environments/artwork or complex XR authoring.
+- [ ] Qualify physical headset interaction, stereo performance, session
+  interruption, 2D return and saved-model integrity independently.

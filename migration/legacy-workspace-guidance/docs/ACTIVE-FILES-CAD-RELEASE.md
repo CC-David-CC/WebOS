@@ -84,6 +84,7 @@ Each row needs actual source/artifact and matching runtime/test evidence.
 | C03 | Splines/history/selection/DXF/camera/reconstruction work together | partial | Consolidation owner ran real carried-feature checks; integrated host and final fork regression remain |
 | C04 | CAD My files, independent instances, disposal and shared commands | partial | Bounded read helper: 7 tests and real CAD desktop/emulated-phone stand-in workflow passed; signed product host still required |
 | C05 | Agent-driven CAD uses the same validated operations as the UI | open | Discover commands and stable entity IDs; build/edit bracket, reject contradiction without damage, undo/redo and account-backed save/reopen; no AI provider required |
+| A00 | Beginner single-part fixtures precede the bracket | open | Start from empty documents: dimensioned block, washer and drilled plate through UI/shared commands; see learning progression |
 | M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | partial | Reclassification/drag/restore fixes reviewed; independent cross-stage failure controls found further rollback work |
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
 | M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
@@ -117,6 +118,12 @@ stale document IDs, closed windows or changed accounts cannot apply mutations.
 An AI provider, autonomous search or private agent-only solver is not required.
 The current existence of individual callable CAD actions is partial evidence,
 not proof of this end-to-end acceptance gate.
+
+The starting exercises and longer-term CSG/motion paths are in
+`docs/planning/CAD-LEARNING-CSG-XR.md`. XR is a lower-priority, separate-branch
+stretch goal and does not block this release. Fast interactive physics and
+qualified engineering analysis remain distinct future paths on shared authored
+designs; this milestone does not require either complete physics stack.
 
 Keep three independent implementation lanes active where their contracts permit.
 Review actual commits and representative runtime evidence before integration.

@@ -1,7 +1,8 @@
 # WebOS: separate work silos
 
-Planning decomposition, 2026-11-03. Development remains paused. This document
-organizes the existing program; it does not start new work or declare a release.
+Planning decomposition from the 2026-11-03 checkpoint. The user subsequently
+resumed the Files/CAD release; its current audit is `ACTIVE-FILES-CAD-RELEASE.md`.
+The other silos remain backlog, not a claim of an active release assignment.
 Use `WEBOS-WORK-QUEUES.md` for the complete acceptance criteria and current
 ledger, and `HANDOFF-STORAGE-BETA-2026-11-02.md` for the stopping point.
 Statuses below describe that saved checkpoint, not a new live audit.
@@ -239,6 +240,11 @@ Owns the mechanical CAD upgrade. Authoritative detailed roadmap is
 
 Finish line: predictable editable mechanical designs under documented limits.
 Constraint rejection/save-reload order and solver performance remain known gates.
+
+The beginner single-part and human/agent progression is in
+`planning/CAD-LEARNING-CSG-XR.md`. Its XR workshop is an explicitly lower-priority
+stretch on a future separate fork branch, after useful ordinary-browser CAD and
+motion workflows; it does not expand J02 into XR implementation.
 
 ## J03 — Geometry engines and build provenance
 
