@@ -23,6 +23,12 @@ isolated 128 MiB memory evidence `12b634976` are integrated. Network efficiency
 is sufficient for this milestone; memory/copy work stays open. The new PSS/private
 measurements include browser/test work and are not a pure transfer allocation bound.
 
+Latest Files clarification: a full detached copy is acceptable if it releases
+cleanly after use. Verify explicit consumer ownership, settled worker/lease
+lifetimes, object-URL cleanup and repeated open/close/cancel without retained
+copies. Immediate RSS reduction and zero-copy are not acceptance requirements;
+browser allocation/GC and persistent saved data have different lifetimes.
+
 The user authorizes using JSketcher as inspiration and replacing coupled code
 where needed. Keep useful proven components, but production computational
 workers must not require canvas, DOM, editor windows or fake browser UI.

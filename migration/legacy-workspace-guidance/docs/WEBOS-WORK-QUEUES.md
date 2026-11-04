@@ -130,7 +130,11 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
   after independent Chromium corruption, local-edit race and account-invalidation
   checks. It still creates a full detached Blob and has not been deployed or
   measured as a physical RAM improvement. Streaming contract `0480d3f52` is
-  documented; implementation and exact SDK/source qualification remain separate.
+  documented; `5974d91dd` reproduces the exact deployed SDK twice from LAN Git.
+  Latest user direction accepts full detached copies with clean ownership and
+  release. Repeated read/use/drop/close resource tests and actual consumer
+  cleanup now take priority; streaming implementation remains optional follow-up
+  based on measured need. Do not infer immediate GC/RSS return from release.
 
 - [x] CAD RESOURCE OWNERSHIP, BOUNDED SLICE: fork `efb96770` qualifies source
   `531cc24d` with nine focused pool tests and six actual-browser regressions.

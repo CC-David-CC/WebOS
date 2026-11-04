@@ -47,7 +47,18 @@ verification passes. Actual Chromium corruption, local-edit race and account
 invalidation controls pass. A full detached Blob still exists; no physical
 memory improvement or deployment is claimed. Cold-download streaming contract
 `0480d3f52` is recorded in `tests/files-cold-download-stream-contract-20261104.md`;
-SDK/source qualification and implementation remain separate work.
+SDK/source qualification is now recorded at `5974d91dd`: two clean R730 builds
+from `90a963920` reproduce the pinned deployed `44da` client byte for byte.
+Streaming implementation remains separate work.
+
+**Latest Files priority:** a full detached copy is explicitly acceptable when
+released cleanly after use. Prioritize ownership/lifecycle evidence and fixing
+retention over removing all full-file materialization. Consumers must clear
+references/revoke their object URLs, and jobs/leases must settle on completion,
+cancellation and disposal. Handed-out copies stay alive while their recipient
+owns them; release does not delete the saved file. Chromium controls physical
+reclamation timing, so no immediate RSS-drop guarantee. Repeated real-browser
+copy/use/drop cycles and representative host/app cleanup are being examined.
 
 **Earlier qualified ownership/projection checkpoint:** CAD `efb96770`
 qualifies internal candidate/accepted engine-resource ownership using source

@@ -175,3 +175,14 @@ list, a menu command and a successful demonstration are not complete acceptance
 evidence. Preserve useful scoped evidence without extending it to untested cases.
 Later gates inform early contracts; planned interfaces and stubs remain open
 work and never count as validated feature, simulation or engineering capability.
+
+File-copy clarification — 2026-11-04, explicit user direction
+
+A full detached file copy is acceptable when it releases cleanly once done.
+Prove ownership and cleanup on completion, close, cancellation and disposal:
+clear retained Blob/array references, revoke owned object URLs, terminate jobs
+and release leases. Preserve a copy while its recipient intentionally owns it
+and retain authoritative saved data. Browser garbage collection determines when
+physical pages are reclaimed; immediate RSS reduction and zero-copy are not
+requirements. Remove proven redundant verification/retention, and measure real
+lifecycle behavior before expanding memory-related implementation work.

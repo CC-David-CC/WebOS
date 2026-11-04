@@ -91,12 +91,17 @@ boundaries. Do not deploy the research checkout wholesale.
 My files stays browser-first and account-bound with normal server disk files:
 saved data, opaque versions/CAS, isolation, conflicts, uncertain-write recovery,
 verified interrupted transfers and bounded workers through 128 MiB. Temporary
-Linux remains separate. No app-private mirror or hidden full-file copy per app.
+Linux remains separate. No app-private mirror. The user explicitly accepts a
+full detached file copy when ownership is clear and it releases cleanly after
+use. Qualify repeated open/use/close/dispose/cancel, clearing references and
+object URLs and releasing workers/leases; do not require zero-copy or an
+immediate Chromium RSS drop. Saved authoritative bytes remain durable.
 Public small/128 MiB integrity, changed-data, conflicts and everyday Files UI
 receipts exist. UI fresh-session stat is metadata evidence; independent readback
 has separate hash receipts. Network efficiency is sufficient for this milestone.
-Remaining memory work must measure incremental transfer costs and remove proven
-unnecessary copies without discarding verification or leases. The 3.49 GB summed
+Remaining memory work prioritizes cleanup and bounded retention, then measured
+incremental costs. Remove proven redundant work without discarding verification
+or valid ownership. The 3.49 GB summed
 RSS was not file-only RAM. The new isolated 128 MiB PSS/private measurement still
 includes browser/test verification, and is not a pure allocation bound.
 A clean R730 checkout reproduced Files builds and focused signed tests using
