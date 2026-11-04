@@ -6,7 +6,7 @@ For separate app/domain assignments and their ordered finish lines, use
 `docs/WEBOS-SILOED-WORK.md`. That decomposition separates browser storage,
 server storage, synchronization, desktop/app ownership, JSketcher upgrades,
 geometry engines, manufacturing metadata, 3MF, physics and operations. The
-program remains paused; documenting the silos does not resume development.
+planning documents do not themselves resume development.
 Estimated effort, risk and working/partial/missing fields are in
 `docs/planning/SILO-MATRIX.html` (also Markdown/CSV/JSON). Estimates do not
 check off acceptance gates; use their stated assumptions and dependency notes.
@@ -72,7 +72,16 @@ depend on unsettled storage contracts; do not release a dependent workflow or
 create an app-specific competing storage system to bypass the storage gate.
 Refine the ordering when actual evidence shows a dependency is different.
 
-## Progress ledger — 2026-11-02 (paused)
+## Active release milestone — 2026-11-03
+
+The user explicitly resumed Files, JSketcher consolidation, mechanical features
+and the material-aware enclosure/core-3MF handoff. See
+`docs/ACTIVE-FILES-CAD-RELEASE.md` for ownership and the completion audit, and
+`docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt` for the full original goal.
+Three isolated implementation lanes are active; the lead owns shared contracts,
+review, integration and deployment. Preserve main, beta data and guarded assets.
+
+## Historical progress ledger — 2026-11-02 pause
 
 - [x] LIVE: File-service non-JSON HTTP error status classification deployed and scoped two-account smoke passed. It does not fix server contention or guarantee exactly-once writes. See `evidence/file-http-status-errors-20261102.md`.
 - [x] LIVE: G-code Preview rejects a stale file-session result; isolated race and live sync/isolation smokes passed. See `evidence/gcode-session-live-candidate-20261102.md`.
@@ -89,8 +98,8 @@ The following is the complete underlying checklist. Its unchecked boxes are acce
 
 ## Current bounded storage milestone
 
-**Paused at the user's request.** Handoff: `docs/HANDOFF-STORAGE-BETA-2026-11-02.md`.
-Resume only on request; preserve in-progress research and current beta data.
+**Resumed 2026-11-03 by the user's active release goal.** The prior handoff is
+`docs/HANDOFF-STORAGE-BETA-2026-11-02.md`; preserve its research and beta data.
 
 User priority: saved data, account isolation, conflicts, interruption and
 recovery, with heavy processing in workers. Work on these as one real
