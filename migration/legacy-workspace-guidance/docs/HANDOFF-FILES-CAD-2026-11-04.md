@@ -1063,3 +1063,28 @@ exercise the real history operation, parent edits, late mutation/cancellation,
 undo/redo and reopen. UI and agent commands must use that same history path.
 Detailed implementation queue and limits are in the CAD repository's
 `docs/research/CENTERED-THROUGH-HOLE-CONTRACT-20261104.md`.
+
+## Current continuation — test deployment policy and CAD metadata guards
+
+Both beta.ksu.codes and ksu.codes are test deployments without real users.
+The user authorizes direct replacement/reload of test services; do not add
+old-window or prior-test-version compatibility campaigns. Preserve saved-file
+correctness, account isolation, cleanup, unrelated sites and /desktop. Use
+the existing managed deployment workflow.
+
+CAD integration is now cb7c43bba6544728caaf42f6cf8413e7cf015980, backed up
+to box-git and R730. The centered-hole history operation is registered in
+source. Prism and drilled projection guards now detect metadata-container
+and transient edge/vertex identity replacement. Independent review reproduced
+the original defects in Chromium/OCC; independent post-fix review is pending.
+The implementation agent reports the added actual-browser mutation controls
+passing. Root's 10 plan/topology/section tests pass after integration. These
+are internal consistency guards, not hostile same-realm JavaScript isolation.
+
+Agent-reported full-app history checks pass resizing to 150×30, depth35,
+undo/redo, refusing an oversized edit of the existing hole while preserving
+history, and fresh-session native reopen. A wizard-helper run creates the
+same operation; this is not physical-pointer evidence. Final receipts rebuilt
+against metadata fixes are pending. Signed My files hole reopen remains open.
+R730 clean native build remains running (PID554079, last observed53%).
+No public deployment changed in this continuation.
