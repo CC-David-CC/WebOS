@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import hashlib,json,pathlib,shutil,subprocess,sys,tempfile
-root=pathlib.Path(__file__).resolve().parents[2];here=root/'research/beta-opfs-release';baseline=pathlib.Path(sys.argv[1]);bundle=pathlib.Path(sys.argv[2]);pin='feaa1c6fc273ca0b46c49827e20089218f11762973e20961625a8fc80e13f8ba'
+root=pathlib.Path(__file__).resolve().parents[2];here=root/'research/beta-opfs-release';baseline=pathlib.Path(sys.argv[1]);bundle=pathlib.Path(sys.argv[2]);pin='3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc'
 def build(base,files,out,ok=True):
  r=subprocess.run([sys.executable,str(here/'build.py'),'--baseline',str(base),'--files-bundle',str(files),'--out',str(out)],capture_output=True,text=True)
  assert (r.returncode==0)==ok,(r.stdout,r.stderr)

@@ -30,7 +30,12 @@ def main(base,bundle,out):
  replacement=section(desired_desktop,a,b).replace("'./storage/browser/mirror.mjs'",repr('./'+graphpath+'mirror.mjs')).replace("'./storage/browser/account-context.mjs'",repr('./'+graphpath+'account-context.mjs'))
  desktop=replace_one(original_desktop,section(original_desktop,a,b),replacement)
  desktop=replace_one(desktop,"  const view=win.appView;win.appView=null;view?.dispose(reason);","  const view=win.appView;win.appView=null;return view?.dispose(reason)||[];")
- original_app=inputs['app.js'].decode();desired_app=(SOURCE/'app.js').read_text();app=replace_one(original_app,section(original_app,'async function changeAccount(', 'async function maintainIdentity('),section(desired_app,'async function changeAccount(', 'async function maintainIdentity('))
+ original_app=inputs['app.js'].decode();desired_app=(SOURCE/'app.js').read_text();layout=section(original_app,'  saveLayout(){','\n  restoreLayout(){')
+ # The beta implementation previously returned undefined on success. The
+ # reviewed session transition requires a truthful result before sign-out.
+ safe_layout=replace_one(layout,'if(!owner||this.layoutOwner!==owner)return;','if(!owner||this.layoutOwner!==owner)return true;')
+ safe_layout=replace_one(safe_layout,"windows}));}catch(error){console.warn('Could not save window layout:',error.message);}}","windows}));return true;}catch(error){console.warn('Could not save window layout:',error.message);return false;}}")
+ app=replace_one(original_app,layout,safe_layout);app=replace_one(app,section(original_app,'async function changeAccount(', 'async function maintainIdentity('),section(desired_app,'async function changeAccount(', 'async function maintainIdentity('))
  # The new lifecycle section also depends on the candidate's dirty-state helper.
  helper=section(desired_app,'function windowHasChanges(', '\nclass Desktop') if '\nclass Desktop' in desired_app else None
  if helper is None or '\n' in helper.strip():raise ValueError('Unexpected dirty helper boundary')
