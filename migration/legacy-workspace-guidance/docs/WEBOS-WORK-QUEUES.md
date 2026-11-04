@@ -102,6 +102,14 @@ review, integration and deployment. Preserve main, beta data and guarded assets.
 
 ### Active progress — 2026-11-04
 
+**Discovered old-client defect:** unexposed e359 replaced the global catalog,
+letting an old loaded host request new Files without document operations. Root
+candidate `830ca4f…` keeps the old global catalog and the new immutable catalog
+separate. Two builds and packaging controls pass; actual old/new-tab proof is
+active. Only global catalog/cache/service-worker bytes differ from e359; no
+storage, SDK, app-bundle, immutable-host or shell-loader bytes changed. Preserve
+historical e359 test scope, never expose that rejected package.
+
 **Main/beta priorities reaffirmed:** reduce main to the useful core integration
 targets Files, Text, Terminal, Calculator and Help; CodeMirror remains a shared
 dependency. These have bounded workflow evidence, **not full app validation**.
