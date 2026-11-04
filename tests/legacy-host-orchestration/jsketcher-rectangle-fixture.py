@@ -13,7 +13,15 @@ if not (dist/'index-webos.html').is_file() or not (dist/'static/webosTest.bundle
     p.error('CAD dist and its test helper must already be built')
 a.output.mkdir(parents=True,exist_ok=False)
 out=a.output.resolve()
-shutil.copy2(root/'tests/fixtures/jsketcher-rectangle-host-harness.html',out/'index.html')
+harness=(root/'tests/fixtures/jsketcher-rectangle-host-harness.html').read_text()
+opening='<script type="module">'
+if harness.count(opening)!=1 or harness.count('</script>')!=1:
+    raise ValueError('Unexpected host harness script inventory')
+before,tail=harness.split(opening,1)
+script,after=tail.split('</script>',1)
+# Serve the fixture module externally so self-only script CSP also covers it.
+(out/'fixture-host.mjs').write_text(script)
+(out/'index.html').write_text(before+'<script type="module" src="./fixture-host.mjs"></script>'+after)
 for name in ['index.mjs','style.css','inspect-state.mjs','file-read.mjs','sketch-commands.mjs','rectangle-commands.mjs']:
     text=(root/'apps/system/jsketcher'/name).read_text()
     if name=='index.mjs':
