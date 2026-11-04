@@ -186,5 +186,5 @@ a file extension alone does not establish semantic manufacturing equivalence.
 
 The next supplied gate is `CAD-ENGINE-GATE-3.md`, advanced modeling and
 engineering, containing ten groups. The user intentionally split the other six
-groups into a following Gate 4, whose description comes separately. XR stays a
+groups into the following `CAD-ENGINE-GATE-4.md`. XR stays a
 deferred separate-branch stretch, not a reason to skip Gates 1 or 2.

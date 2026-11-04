@@ -6,7 +6,7 @@ Current work remains Files and foundational CAD-engine qualification.
 
 The user clarified that the original outline was deliberately split: the ten
 groups below are Gate 3. Original groups 11–16 belong to the following Gate 4,
-whose scope will be supplied separately. They are not missing Gate 3 requirements.
+now recorded in `CAD-ENGINE-GATE-4.md`. They are not missing Gate 3 requirements.
 Autodesk Fusion, Inventor and SolidWorks are capability references, not promised
 dependencies, license entitlements or proof this engine already implements them.
 
