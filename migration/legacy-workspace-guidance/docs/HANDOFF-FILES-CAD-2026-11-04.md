@@ -1088,3 +1088,26 @@ same operation; this is not physical-pointer evidence. Final receipts rebuilt
 against metadata fixes are pending. Signed My files hole reopen remains open.
 R730 clean native build remains running (PID554079, last observed53%).
 No public deployment changed in this continuation.
+
+## Signed hole workflow and newly found display failure
+
+The signed desktop continuation now saves the separate centered-hole history
+through My files and reopens it in a fresh authenticated session. Browser and
+server bytes/hashes match; bounds/rims and history survive; a second account
+is denied. See evidence/cad-centered-hole-signed-20261104.json. This is a
+disposable real issuer/gateway fixture, not public deployment.
+
+This test exposed an actual display integration defect: FaceView/updateSketch
+and MBrepFace/setSketch reach generic simple-surface detection on the analytic
+cylinder, which calls an unsupported degree operation. Save/reopen passing
+does not establish correct rendering. Browser agent owns the analytic surface
+consumer correction and a rebuild with CODI_EMBED_MANIFOLD=1; the previous
+fixture omitted that flag and the secondary runtime correctly failed strict
+CSP. Do not relax CSP. First fixture also reused feature ID3; corrected test
+uses the actual project counter generator. Split chunks are now copied by the
+test-only overlay builder. Rerun the signed check after these corrections.
+
+Run with CODI_TEST_CENTERED_HOLE=1 and the existing signed rectangle test;
+CODI_TEST_URL/CDP must be loopback. Fixture port20054, browser20055, staged
+test bundle /tmp/codi-hole-signed-bundle-20261104-r2. Test setup remains the
+existing files-desktop-signed-fixture.py; no new storage stack.
