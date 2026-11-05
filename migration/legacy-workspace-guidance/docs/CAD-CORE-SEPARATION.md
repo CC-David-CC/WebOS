@@ -23,6 +23,25 @@ program and handoffs remain in `CAD-ENGINE-GATES.md` and
 contracts below but remain queued. No complete Files or CAD gate is declared
 passed by this architectural decision.
 
+## Current bounded Worker-first follow-up — 2026-11-05
+
+The many-constraint test in CAD `test/capture-concurrency/README.md` now gives a concrete ARC06 blocker. In an actual pinned a9daf Chrome app, 514 segments/512 accepted locks occupy139,364 serialized bytes but LengthRelation admission and undo/redo take roughly515/676/767ms. Sampled stacks include synchronous solver reconstruction plus redraw. The separately measured one/two-sketch project capture is about10–14ms. Moving only JSON capture would leave the measured stall. A separate CAD browser context stayed responsive; this is not proof that all windows in one desktop renderer do.
+
+| Package | Ordered outcome | Owner / dependency | Current evidence |
+| --- | --- | --- | --- |
+| ARC17 | Preserve and reproduce the actual many-constraint counterexample, profile and bounded resource observations. | Resource lane, before choosing a fix. | [x] CAD ed87ef7ec, actual pinned app/profile/receipt. No implementation claim. |
+| ARC18 | Data-only candidate sketch transitions and validated native history replay in a disposable Worker, sharing the same LengthRelation admission semantics as UI. | Core lane plus pure operation owner; parallel with caller design. | [~] Implementation started. Inputs are immutable native sources, typed intent and external parameters; no DOM/canvas/fake editor/window or ToolManager. Pure helper extraction is a prerequisite, not a separate solver. |
+| ARC19 | Revision/lifetime-bound async transport, bounded queue/bytes/deadlines/cancellation and one-use owned result publication. | Lead after ARC18 response contract. | [ ] Reuse existing headless transport where appropriate. A public `validated:true` field must never authorize publication; ownership comes from the private verified request/result path. |
+| ARC20 | Hydrate or project an accepted candidate without repeating its heavy numerical solve on the UI thread; measure construction, notifications and repaint separately. | Lead and UI adapter owner after ARC18/19. | [ ] Existing strict live load still solves. Do not relabel it Worker-first merely because a Worker also solved first. No unvalidated skip-solve/import option. |
+| ARC21 | Wire both UI and agent mechanical commands and native undo/redo to that same asynchronous transition, preserving atomic rejection, exact intent and disposal. | Integration, serial after ARC20. | [ ] Pending work must not publish after source/identity/epoch/account changes. Callback changes belong to their caller and must not be rolled back as if owned by this transaction. |
+| ARC22 | Prove the combined path on the measured many-constraint sketch and ordinary bracket/enclosure/File/export workflows, with independent windows and cancellation/fault cases. | Browser/independent review after integration. | [ ] Record operation and heartbeat/long-task bounds, actual Worker creation/termination, source/result ownership, history release and measured memory scope. Final beta follows functional qualification. |
+
+The Worker input contract must bound UTF-8 bytes as well as string length, validate native entities/constraints/generators/parameters, preserve saved admission priority and reject unsupported or inconsistent intent. Replay must preserve the requested geometry and authored IDs, constants and relationships; numerical convergence alone is insufficient. Use the existing narrow legacy admission-hint rule rather than relaxing metadata generally. Keep a last-valid accepted state and machine-readable failures; do not silently reverse operands or choose another kernel.
+
+The main-thread adapter retains presentation and bounded input/publication work. It must not redo heavy solver/admission work during hydration. Revision/identity/epoch checks remain necessary; the realm-local epoch alone is not an authoritative mutation inventory. Undo/redo must not move a pointer or discard recovery state until a current validated result is installed. Cancellation closes only the owned job, and other windows retain their accepted state. Native authored snapshots remain authoritative; display meshes, measurements and worker handles remain derived/transient.
+
+ARC18 component tests do not close ARC20–22 or the release. This staged work addresses an observed existing workflow and keeps the original release objective and later CAD1–6 goals intact. No production/backend/default change is authorized by a test pass alone.
+
 ## Required boundaries
 
 | Separation | Invariant | Current and future purpose |
