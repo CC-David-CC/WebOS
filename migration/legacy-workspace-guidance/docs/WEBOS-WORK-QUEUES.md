@@ -17,6 +17,14 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- User priority correction: finish functional gates before source packaging.
+  Root discarded the pending prepare.py packaging edit. Source archives,
+  packaging/provenance expansion and new command-catalogue work are deferred.
+  Combined CAD `15a7e2a5` contains V2 authoring/materials, paired-interface
+  consumer and native check, autosave fix and Push/Pull Escape fix. TSC passes.
+  storage_browser is rebuilding every runtime worker from this exact candidate
+  and testing create/edit/save/fresh reopen/three-region export end to end.
+
 - [x] Signed V1 manufacturing receipt integrated as desktop `84f6299b0`; CAD
   tests integrated through `27264b6c`. Both actual signed files match recorded
   hashes and pass root's strengthened independent component-graph/identity
