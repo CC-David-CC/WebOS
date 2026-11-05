@@ -22,7 +22,20 @@ Files promotion check; broader app/load/retention claims remain open. See
 `evidence/main-opfs-f2-activation-20261104.json`. This supersedes the older
 main=`0366` and staged-only status below; those entries retain attempt history.
 
-Latest deployment attempt: `01080` failed its own native release allowlist
+**Current CAD integration:** `c9e76b84` on both LAN repositories includes the
+clean OCC runtime, authored four-corner side bindings, craft/UI command wiring,
+and history/cancellation tests. Root reran nine intent/side/mount controls and
+TypeScript successfully after integration. Full-app evidence at feature source
+`d77f44c3` covers creation, resize to 150×30, depth 35, rejected touching holes,
+undo/redo, native-project replay, wizard defaults and cancellation; see CAD
+`test/engine-four-corner-history/README.md`. Current combined build still needs
+desktop command bridging and signed My files qualification. No new public CAD
+deployment is claimed. Parallel work: authenticated source/license delivery and
+current provenance; geometry-only enclosure body/lid tests on both engines.
+Geometry experiments do not establish authored enclosure history. Bracket,
+complete enclosure, materials and core 3MF release gates remain open.
+
+Historical deployment attempt (superseded): `01080` failed its own native release allowlist
 check after paired config writes and before route changes. Exact prior configs
 and units were restored and previous services restarted; public main still
 uses `0366` and older storage. `/desktop/` remains byte-identical. See
@@ -30,7 +43,7 @@ uses `0366` and older storage. `/desktop/` remains byte-identical. See
 The next replacement must pass the actual native verifier before stopping
 services. The stale renewal timer remains stopped.
 
-Latest checkpoint: main OPFS public candidate `f2e2ed4d` and issuer
+Historical staging checkpoint (superseded): main OPFS public candidate `f2e2ed4d` and issuer
 `01080b86` are verified and staged on box-webhost; source and receipts are backed
 up to both LAN repositories (`59af1d92f`, `evidence/main-opfs-staged-20261104.json`).
 They are not selected by live routes/services. Assembled signed Chromium tests

@@ -15,6 +15,17 @@ main/surfacing integration and many adaptations are already present. Remaining
 J01 work is consolidation/regression qualification; see the corrected checkpoint
 in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
+## Current integrated checkpoint — 2026-11-04
+
+- [x] Bounded main Files promotion: normal UI save, fresh-login reopen, exact
+  server bytes and second-account denial; `tests/main-opfs-public-normal-20261104.md`.
+- [~] Four-corner CAD history integrated at `c9e76b84`, backed up to both LANs.
+  Nine root controls and TypeScript pass; full-app feature tests cover edits,
+  replay and cancellation. Signed desktop storage qualification remains open.
+- [ ] Authenticated source/license delivery and current runtime provenance.
+- [ ] Authored enclosure body/lid after independent dual-engine geometry tests.
+  Geometry experiments alone do not satisfy this gate.
+
 ## Queue notation and operating rule
 
 - `[x]` means the exact stated outcome is complete and supported by evidence.
