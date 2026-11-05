@@ -25,4 +25,7 @@ with tempfile.TemporaryDirectory(dir='/var/lib',prefix='codi-cad-source-registry
   except OSError:pass
   else:raise AssertionError('symlink accepted')
  finally:registry.close()
+ try:registry.open('source.zip')
+ except ValueError:pass
+ else:raise AssertionError('closed registry accepted read')
 print('PASS pinned immutable source registry, unknown/traversal/tamper/symlink rejection; authentication not tested')

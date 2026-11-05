@@ -58,11 +58,11 @@ elif sys.argv[1]=='run':
  main=d/'static/index.bundle.js';main.write_text(main.read_text()+' '+('wrong-sketch-worker' if os.environ.get('CODI_TEST_BAD_SKETCH_REF') else 'sketch-solver.0123456789abcdef0123.js'))
  if not os.environ.get('CODI_TEST_MISSING_SKETCH_WORKER'):(d/'static/sketch-solver.0123456789abcdef0123.js').write_text('/***/ "./node_modules/worker-only/index.js":' if os.environ.get('CODI_TEST_SKETCH_ONLY_MODULE') else 'sketch worker fixture')
  if os.environ.get('CODI_TEST_EXTRA_SKETCH_WORKER'):(d/'static/sketch-solver.123456789abcdef01234.js').write_text('extra sketch worker')
- main.write_text(main.read_text()+' prism-semantic.0123456789abcdef0123.js oci-verified-worker.js occ-portable.js '+__import__('hashlib').sha256(b'worker-wasm').hexdigest()[:20]+'.wasm profile-topology.mjs centeredHolePlan.mjs centeredHoleTopology.mjs rectangleProfileRequest.mjs authoredRegions.mjs profilePlan.mjs')
+ main.write_text(main.read_text()+' prism-semantic.0123456789abcdef0123.js oci-verified-worker.js occ-portable.js '+__import__('hashlib').sha256(b'worker-wasm').hexdigest()[:20]+'.wasm profile-topology.mjs centeredHolePlan.mjs centeredHoleTopology.mjs boundedPrismBoundary.mjs fourCornerHolePlan.mjs fourCornerHoleTopology.mjs fourCornerHoleProvenance.mjs rectangleProfileRequest.mjs authoredRegions.mjs profilePlan.mjs')
  (d/'static/prism-semantic.0123456789abcdef0123.js').write_text('prism worker')
  (d/'static/oci-verified-worker.js').write_text('tampered' if os.environ.get('CODI_TEST_BAD_OCI_WORKER') else 'oci-worker');(d/'static/occ-portable.js').write_text('portable')
  (d/'static'/(__import__('hashlib').sha256(b'worker-wasm').hexdigest()[:20]+'.wasm')).write_text('worker-wasm')
- for name in ['profile-topology.mjs','centeredHolePlan.mjs','centeredHoleTopology.mjs']:
+ for name in ['profile-topology.mjs','centeredHolePlan.mjs','centeredHoleTopology.mjs','boundedPrismBoundary.mjs','fourCornerHolePlan.mjs','fourCornerHoleTopology.mjs','fourCornerHoleProvenance.mjs']:
   p=Path('modules/engine/mount')/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(name);(d/'static'/name).write_text(name)
  for name in ['rectangleProfileRequest.mjs','authoredRegions.mjs','profilePlan.mjs']:
   p=Path('modules/workbenches/modeler/features/extrude')/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(name);(d/'static'/name).write_text(name)
@@ -97,7 +97,7 @@ elif sys.argv[1]=='run':
   try:build();raise AssertionError('invalid worker accepted')
   except RuntimeError as e:assert expected in str(e)
   finally:del os.environ[variable]
- build();assert (m.DESTINATION/'runtime-source-candidates.zip').is_file();assert (m.DESTINATION/'PNLTRI-LICENSE.txt').read_text()=='pnltri terms';r1=(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();man=(m.HERE/'app.json').read_bytes();build();assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();assert man==(m.HERE/'app.json').read_bytes()
+ build();assert (m.DESTINATION/'runtime-source-candidates.zip').is_file();assert (m.DESTINATION/'PNLTRI-LICENSE.txt').read_text()=='pnltri terms';assert m.PREFIX+'SOURCE-INDEX.html' not in json.loads((m.HERE/'app.json').read_bytes())['assets'];assert m.PREFIX+'runtime-source-candidates.zip' not in json.loads((m.HERE/'app.json').read_bytes())['assets'];r1=(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();man=(m.HERE/'app.json').read_bytes();build();assert r1==(m.DESTINATION/'BUILD-RECEIPT.json').read_bytes();assert man==(m.HERE/'app.json').read_bytes()
  for key,prefix in [('projectValidatorWorker','project-validator'),('sketchSolverWorker','sketch-solver'),('prismSemanticWorker','prism-semantic')]:
   worker=json.loads(r1)[key];assert worker['path'].startswith('static/'+prefix+'.');assert worker['sha256']==hashlib.sha256((m.DESTINATION/worker['path']).read_bytes()).hexdigest();assert m.PREFIX+worker['path'] in json.loads(man)['assets']
  os.environ['CODI_TEST_BAD_OCI_WORKER']='1'
