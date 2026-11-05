@@ -19,7 +19,15 @@ main/surfacing integration and many adaptations are already present. Remaining
 J01 work is consolidation/regression qualification; see the corrected checkpoint
 in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
-## Latest bounded acceptance — 2026-11-04
+## Latest integration — 2026-11-05
+
+- [x] CAD lead `70aebd73` includes original rectangle dimension discovery/editing, full-tip extrusion-depth undo/redo, early initialization-failure reporting, and cache-independent authored namespace revisions. Desktop `defb370bc` includes the actual desktop/emulated-phone rectangle dialog and startup-failure receipts. These are scoped component passes, not the final command-only signed gate.
+- [x] Desktop `bbb377ebd` adds bounded published geometry inspection, authored undo/redo and centered/corner-hole editing adapters. Lead ran 13 command boundary controls successfully.
+- [~] CAD candidate `4215009d` combines rectangle sketch travel, depth/hole journals and the shared hole wizard, with bounded retained strings/capture. Lead ran 15 pure journal/revision/capture controls and TypeScript successfully. Owner Chromium/OCC hole/depth receipt `3f7373c9` qualifies source `ef676d45`; it does not qualify the newer combined candidate automatically.
+- [~] Actual combined rectangle controls passed resize, exact-byte undo/redo, descendant geometry and Save between edits. Cancellation preserved state but returned the wrong error class; its correction is under test. Same-dimension no-op and held-dialog autosave controls are pending. Do not promote this candidate merely from the partial run.
+- [ ] Run the full signed command-only bracket acceptance on the final matching CAD/desktop build, then affected combined regressions and managed beta qualification. Broader mechanical/parameter gates remain open. No new CAD deployment is claimed.
+
+## Earlier bounded acceptance — 2026-11-04
 
 - [x] Grouped Equal Length/Radius/Coincident undo boundary and atomic conflicting-group refusal integrated through CAD `6d34d820`; five lead focused controls pass, owner real-browser scope is recorded separately.
 - [x] Bounded actual-window close/in-flight worker cancellation and other-window isolation tests integrated as CAD `bfb0fe56`; intermittent second-window startup remains unresolved.

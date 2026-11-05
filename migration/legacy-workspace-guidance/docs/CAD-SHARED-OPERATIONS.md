@@ -62,18 +62,22 @@ and journal cursor must be published together after validation.
   assignment commands have scoped browser evidence.
 - The ordinary signed bracket passes model/file acceptance, but its private
   sketch/history edits do not prove the complete supported agent path.
-- Narrow guarded extrusion depth editing passes actual-worker cancellation,
-  revision and other-document controls. It still requires feature-cursor
-  rewind; UI wizard and wrapper share the underlying coordinator, not yet one
-  fully unified editing interface.
+- Full-tip depth editing now retains descendants and has actual-browser authored
+  undo/redo evidence. Hole editing and its wizard share that path on source
+  ef676d45; see CAD test/webos/README-authored-edit-history.md. Earlier rewound
+  extrusion-only tests remain historical, not the current implementation.
 - Host Save and cheap complete-document revision pass focused/type checks and
   a rebuilt strict-CSP signed account gate: occupied filename, material/surface
   stale tokens, changed file version, exact local/server bytes and fresh Files
   reopen. See tests/jsketcher-agent-save-signed-20261104.md. Default validator
   builds now force prepared numeric; root independently checked the actual
   default-built worker under strict CSP using the same saved native bytes.
-- Original rectangle dimension commands, hole edits, true authored edit undo
-  and their combined signed acceptance remain open.
+- Original rectangle dimensions have actual host desktop/emulated-phone command
+  and Edit-menu evidence. Candidate 4215009d combines exact sketch-byte journal
+  travel with the depth/hole journal; pure controls/type checking pass. Actual
+  combined rectangle fault controls and the final signed command-only acceptance
+  remain open. A cancellation error-class defect is being corrected; partial
+  passing runs do not qualify the full candidate.
 - Multi-window close/in-flight cancellation and repeated worker cleanup have
   bounded passes. An intermittent second-window startup timeout is unexplained;
   later passing runs do not establish a fix.

@@ -16,4 +16,6 @@ The full objective in FILES-CAD-RELEASE-OBJECTIVE.txt remains intact. Scoped pas
 
 **User direction: source packaging comes after the functional gates.** The pending packaging edit was discarded. Defer archives, packaging/provenance expansion and new command-catalogue diversions. Final source/runtime delivery and managed beta activation remain in the full objective afterwards; neither is complete.
 
+November 5 update: original rectangle commands and actual desktop/emulated-phone Edit-menu controls now pass within their domain. Depth and hole authored undo/redo have actual-browser evidence on their branch. Combined candidate 4215009d has focused/type-check passes; combined rectangle fault controls and the signed command-only bracket remain pending. These supersede the narrower implementation-gap wording in row 5 without closing that gate. No new deployment.
+
 Intermediate/advanced CAD, assemblies, physics, inverse design and XR remain in later queues. This does not declare the entire CAD 1–6 program complete.
