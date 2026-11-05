@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Private loopback fixture: sealed candidate issuer and dd8, disposable state."""
-import asyncio,hashlib,json,os,pathlib,subprocess,sys,tempfile,time,urllib.request
+import asyncio,hashlib,json,os,pathlib,signal,subprocess,sys,tempfile,time,urllib.request
 from aiohttp import web
 P=pathlib.Path; root=P(__file__).resolve().parents[1]
 issuer=P(os.environ['CODI_ISSUER']);gw=P(os.environ['CODI_GATEWAY_ROOT']);assets=P(os.environ['CODI_MAIN_ASSETS']);port=int(os.environ.get('CODI_FORWARD_PORT','19920'));origin=f'http://127.0.0.1:{port}'; python=sys.executable
@@ -40,14 +40,14 @@ async def main():
    else:raise RuntimeError('issuer timeout')
    assert config['fileStorage']=={'version':'codi-browser-file-content/1','backend':'opfs','databaseVersion':2}
    (state/'state').mkdir(mode=0o700);(state/'data').mkdir(mode=0o700);store=UserStore(state/'state',state/'data');initialize_ledger(store);initialize_transfers(store);g=FileGateway(store,config['identity'],max_requests_per_minute=2048);runner=web.AppRunner(g.app(),access_log=None);await runner.setup();site=web.TCPSite(runner,'127.0.0.1',0);await site.start();gp=site._server.sockets[0].getsockname()[1]
-   conf=state/'Caddyfile';conf.write_text(f'''{{\n admin 127.0.0.1:{port+1}\n}}\n{origin} {{\n header Cache-Control no-store\n header Cross-Origin-Embedder-Policy require-corp\n header Cross-Origin-Opener-Policy same-origin\n header /assets/desktop/offline-worker.js Service-Worker-Allowed /\n handle /assets/terminal/v2/image.json {{\n  respond 404\n }}\n @issuer path /config.json /api/* /discovery.json /.well-known/*\n handle @issuer {{\n  reverse_proxy 127.0.0.1:{ip}\n }}\n handle /gateway/client.mjs {{\n  root * {gw}\n  rewrite * /gateway_service/client.mjs\n  file_server\n }}\n handle /gateway/* {{\n  reverse_proxy 127.0.0.1:{gp}\n }}\n handle {{\n  root * {assets}\n  file_server\n }}\n}}\n''')
+   conf=state/'Caddyfile';conf.write_text(f'''{{\n admin 127.0.0.1:{port+1}\n}}\n{origin} {{\n header Cache-Control no-store\n header Content-Security-Policy "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' wss://ksu.codes; font-src 'self' data:; frame-src 'self' blob: https://microduck-runner.ksu.codes; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'self'"\n header Cross-Origin-Embedder-Policy require-corp\n header Cross-Origin-Opener-Policy same-origin\n header /assets/desktop/offline-worker.js Service-Worker-Allowed /\n handle /assets/terminal/v2/image.json {{\n  respond 404\n }}\n @issuer path /config.json /api/* /discovery.json /.well-known/*\n handle @issuer {{\n  reverse_proxy 127.0.0.1:{ip}\n }}\n handle /gateway/client.mjs {{\n  root * {gw}\n  rewrite * /gateway_service/client.mjs\n  file_server\n }}\n handle /gateway/* {{\n  reverse_proxy 127.0.0.1:{gp}\n }}\n handle {{\n  root * {assets}\n  file_server\n }}\n}}\n''')
    caddy=subprocess.Popen([os.environ['CODI_CADDY'],'run','--config',str(conf),'--adapter','caddyfile'],stdout=log,stderr=log)
    for _ in range(100):
     if caddy.poll() is not None:raise RuntimeError('caddy exited')
     try:r,w=await asyncio.open_connection('127.0.0.1',port);w.close();await w.wait_closed();break
     except OSError:await asyncio.sleep(.1)
    else:raise RuntimeError('caddy timeout')
-   print('READY',origin,flush=True);await asyncio.Event().wait()
+   print('READY',origin,flush=True); stop=asyncio.Event(); asyncio.get_running_loop().add_signal_handler(signal.SIGTERM,stop.set); await stop.wait()
   finally:
    if caddy:caddy.terminate();caddy.wait(timeout=10)
    if runner:await runner.cleanup()
