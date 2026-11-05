@@ -1,5 +1,17 @@
 # Current functional gates: Files and CAD
 
+## Current checkpoint — 2026-11-05, integrated native union
+
+Files remains accepted within its documented foundation scope. CAD runtime `3bd196f3102db48ddeca5db458f6fb7969706c4c` is privately qualified; the desktop integration includes signed receipt `b1b6731b2` (root `d5d757c81`). No new public deployment; OCC remains default.
+
+- [x] Combined numerical admission-priority correction, Arc Mirror Save/replay and history comparison optimization. Direct2ad tests and signed bracket-family/material-review/core3MF/Arc Mirror workflows pass. Independent review adds275 prior/new equality controls. Near-1MiB single-run timing observations improved; this is not a general latency, memory or worker-first guarantee.
+- [x] Scoped native NVIDIA union fix6c99, selected experimentally at3bd: filled cavity1000mm³, upstream dimension edit1200mm³, stable output ID, edit undo/redo, native replay and signed host Save/fresh Files/account controls pass. Known invalid partial fill refuses without replacing accepted output. Direct test also proves only the never-reused ID counter advances, and explicit reverse returns892mm³. See CAD `test/solid-output-history/RESULT-3BD.md` and desktop `tests/jsketcher-guarded-union-signed-20261105.md`.
+- [~] Remaining wrapper limit: replace blanket multi-material-with-void refusal with a whole native result and explicit unavailable preview (`material-orientation-unqualified`). Source/contracts and independent review underway; not yet a qualified new runtime. Native partial-fill validity and raw mesh winding are separate unresolved engine issues.
+- [ ] Typed public failure propagation; complete mutation/currentness and worker-first/performance release audit; final managed beta qualification and reproducible delivery after functional gates. Full CAD1–6, arbitrary curves/STEP, generic SMLib manufacturing and physics remain open.
+
+Private source: CAD `/tmp/codi-cad-mechanical-candidate-20261105`, desktop `/tmp/codi-desktop-mechanical-candidate-20261105`, each `integration/*-mechanical-candidate-20261105`. Exact source/tests/notes are backed to box-git and R730. Runtime3bd build is R730 `/mnt/data10tb/codi-diag-final-guarded-union-20261105-r1`; direct loopback20477 and signed20372 are test fixtures, not deployment endpoints. Earlier checkpoints below retain their original evidence scope.
+
+
 ## Latest integration status — 2026-11-05
 
 The operative queue is [WEBOS-WORK-QUEUES.md](WEBOS-WORK-QUEUES.md). Later checkpoints supersede the older failure labels below only within their recorded scope. Files remains the accepted foundation; no new Files defect or CAD deployment is claimed.
