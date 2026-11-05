@@ -17,6 +17,18 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Root identified the initial export invalidation as a queued history autosave
+  rewriting the workspace after an explicit snapshot. CAD `6ff03e0f` consumes
+  that pending timer in explicit `projectService.save`; later edits still get
+  their own timer/revision. TypeScript passes; immediate-export/cancellation and
+  real-edit negative controls are being rerun by storage_browser, without delay.
+- [x] Versioned inset worker research integrated through CAD `19de82fd` from
+  `f9c56e58`. Root reviewed capture/triple ownership/common-volume semantics and
+  ran 20 integrated controls; both historical V1 3MF writer checks also pass
+  with available jszip. This does not qualify V2 manufacturing export/contact.
+  storage_server owns the explicit V2 history/UI operation and contact proof;
+  root owns material grouping/export integration. No deployment.
+
 - [x] CAD `88462732` adds V2 assignment/schema/discovery/UI groundwork: LABEL
   remains a distinct region within the LID printable object, with body separate.
   Six assignment controls and TypeScript pass; actual V2 history/material UI is
