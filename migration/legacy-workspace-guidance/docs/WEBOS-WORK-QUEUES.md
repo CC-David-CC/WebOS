@@ -17,6 +17,17 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] V2 signed native material persistence integrated as `3c6ab428d` from
+  `8ff159d92`: UI/shared-command assignment, matching local/server Save, fresh
+  Files reopen, width edit, stale-save refusal, rebind retaining IDs, second
+  Save/reopen and other-account denial. The passing fixture rebuilt its matching
+  validator; the copied old validator's failed open is not a product diagnosis.
+- [x] Root independent exact-combined `15a7e2a5` runtime controls pass V2
+  create/edit/undo/redo/native replay/rejected edit/cancellation and real-pointer
+  Push/Pull commit/Escape. Index SHA c35bce15493022ef28d0aa8b8d503f3bea4deeb980f4b1a3a8013e14515758bf.
+  Signed three-region export and bracket regression are running on that build;
+  source packaging remains deferred until functional gates are qualified.
+
 - User priority correction: finish functional gates before source packaging.
   Root discarded the pending prepare.py packaging edit. Source archives,
   packaging/provenance expansion and new command-catalogue work are deferred.
