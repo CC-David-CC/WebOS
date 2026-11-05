@@ -17,6 +17,13 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Root actual combined `15a7e2a5` V2 core workflow produced a 6,941-byte
+  3MF at `/tmp/codi-root-v2-functional.3mf`. Independent ZIP/XML checks pass:
+  millimeters, two build objects, three material/appearance regions, 84 oriented
+  closed triangles, expected body/lid/label bounds and volumes, identity component
+  transforms, and BODY separate from grouped LID/LABEL. This is native/core
+  export proof; signed desktop V2 export/recovery is still being tested.
+
 - [x] V2 signed native material persistence integrated as `3c6ab428d` from
   `8ff159d92`: UI/shared-command assignment, matching local/server Save, fresh
   Files reopen, width edit, stale-save refusal, rebind retaining IDs, second
