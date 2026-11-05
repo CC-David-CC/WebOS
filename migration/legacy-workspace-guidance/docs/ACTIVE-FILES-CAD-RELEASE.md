@@ -12,6 +12,14 @@ and adding production-style compatibility gates are no longer requirements.
 Stop extra compatibility work and finish current deployment/functional checks.
 Saved-data integrity, account isolation and worker/lifecycle correctness remain.
 
+Latest deployment attempt: `01080` failed its own native release allowlist
+check after paired config writes and before route changes. Exact prior configs
+and units were restored and previous services restarted; public main still
+uses `0366` and older storage. `/desktop/` remains byte-identical. See
+`evidence/main-opfs-01080-refusal-20261104.json`. Do not retry `01080` as-is.
+The next replacement must pass the actual native verifier before stopping
+services. The stale renewal timer remains stopped.
+
 Latest checkpoint: main OPFS public candidate `f2e2ed4d` and issuer
 `01080b86` are verified and staged on box-webhost; source and receipts are backed
 up to both LAN repositories (`59af1d92f`, `evidence/main-opfs-staged-20261104.json`).
