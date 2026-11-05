@@ -45,6 +45,15 @@ verified public exclusion of all source artifacts, but final-registry signed
 access and managed gateway configuration are still outstanding. It is not
 deployed and does not contain the newer diameter/enclosure changes.
 
+The source-access candidate is integrated through desktop `5d72e4cba`.
+Root independently passed static public-exclusion, private exporter,
+root-owned registry tamper/path checks, and the mocked preparer suite.
+The archive-input test was initially invoked without its two required paths
+and did not run; it is not counted as fresh independent evidence. Actual
+archived-input/full-build evidence remains the agent's R730 receipt.
+Review identified a source-dialog disposal gap; its fix and the managed
+operator successor remain in the source-access lane before deployment.
+
 ## Current integrated checkpoint — 2026-11-04
 
 - [x] Bounded main Files promotion: normal UI save, fresh-login reopen, exact
