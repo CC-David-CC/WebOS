@@ -55,7 +55,7 @@ with tempfile.TemporaryDirectory(prefix='codi-rectangle-override-') as temp:
                 'static/fourCornerHoleTopology.mjs','static/fourCornerHoleProvenance.mjs']:
         shutil.copy2(dist/rel,target/rel)
         assets.append('node_modules/jsketcher-build/'+rel)
-    for pattern in ['static/prism-semantic.*.js','static/'+a.wasm_name]:
+    for pattern in ['static/prism-semantic.*.js','static/manufacturing-hash.*.js','static/'+a.wasm_name]:
         workers=list(dist.glob(pattern))
         if len(workers)!=1:raise RuntimeError('Expected one '+pattern)
         for worker in workers:
