@@ -8,7 +8,7 @@ for(const u of [base,cdp])if(!['127.0.0.1','localhost','[::1]'].includes(u.hostn
 const path=process.env.CODI_NOOP_PATH||'/diameter-diag.jsketcher.json',user=process.env.CODI_NOOP_USER;
 if(!user)throw Error('Provide the owned fixture account.');
 const browser=await puppeteer.connect({browserURL:cdp.href,protocolTimeout:120000}),context=await browser.createBrowserContext();
-const result={source:'0b9e38394',user,path,phases:{}};let passed=false;
+const result={source:process.env.CODI_CAD_SOURCE||'0b9e38394',user,path,phases:{}};let passed=false;
 async function inspect(page){return page.evaluate(async()=>{const command=codiDesktopCommands.list().find(c=>c.appId==='jsketcher'&&c.id==='inspect');try{return await codiDesktopCommands.execute({windowId:command.windowId,command:'inspect',args:{}})}catch(error){return {error:error.message}}});}
 function changed(a,b,path='$',out=[]){if(JSON.stringify(a)===JSON.stringify(b))return out;if(a&&b&&typeof a==='object'&&typeof b==='object'){for(const key of new Set([...Object.keys(a),...Object.keys(b)]))changed(a[key],b[key],path+'.'+key,out);}else out.push({path,before:a,after:b});return out;}
 try{
@@ -30,7 +30,14 @@ try{
  result.serverAfter=await server();assert.equal(result.serverAfter.sha256,result.serverBefore.sha256,'No host Save/server write occurred');
  result.diffs={snapshotControl:changed(result.phases.fresh.native,result.phases.freshSnapshotControl.native),exitWithoutSave:changed(result.phases.fresh.native,result.phases.exitWithoutSave.native),saveAndExit:changed(result.phases.exitWithoutSave.native,result.phases.saveAndExitNoEdit.native)};
  result.storedSketchDiffs={exitWithoutSave:changed(JSON.parse(result.phases.fresh.storedAfter[faceId]),JSON.parse(result.phases.exitWithoutSave.storedAfter[faceId])),saveAndExit:changed(JSON.parse(result.phases.exitWithoutSave.storedAfter[faceId]),JSON.parse(result.phases.saveAndExitNoEdit.storedAfter[faceId]))};
- console.log('NOOP_DIFFS',JSON.stringify({diffs:result.diffs,storedSketchDiffs:result.storedSketchDiffs,dirty:Object.fromEntries(Object.entries(result.phases).map(([name,data])=>[name,data.hostInspect])),serverSha:result.serverAfter.sha256}));passed=true;
+ console.log('NOOP_DIFFS',JSON.stringify({diffs:result.diffs,storedSketchDiffs:result.storedSketchDiffs,dirty:Object.fromEntries(Object.entries(result.phases).map(([name,data])=>[name,data.hostInspect])),serverSha:result.serverAfter.sha256}));
+ if(process.env.CODI_NOOP_EXPECT_CLEAN==='1'){
+  assert.deepEqual(result.diffs,{snapshotControl:[],exitWithoutSave:[],saveAndExit:[]});
+  assert.deepEqual(result.storedSketchDiffs,{exitWithoutSave:[],saveAndExit:[]});
+  for(const phase of ['fresh','freshSnapshotControl','exitWithoutSave','saveAndExitNoEdit'])assert.equal(result.phases[phase].hostInspect.dirty,false,`${phase} remains clean`);
+  console.log('PASS signed fresh Files Open/no-edit Save-and-Exit preserves native, source, clean host and server bytes');
+ }
+ passed=true;
 }finally{
  await writeFile(process.env.CODI_NOOP_OUTPUT||'/tmp/codi-noop-editor-diamdiag-0b9-20261105.json',JSON.stringify(result,null,2)+'\n');
  if(passed)await context.close();else console.error('Retained investigation context',context.id);browser.disconnect();
