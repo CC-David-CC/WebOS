@@ -21,6 +21,9 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Scoped ordinary signed bracket integrated at `5988dbd8e`: edited five-hole model, rejection, undo/redo, actual Save and fresh Files reopen/account denial pass without diagnostic pre-Save preparation. Original blanket-interception stalls remain unproven.
+- [ ] Full supported agent bracket remains: private helper sketch/history edits are insufficient. Three current lanes cover mechanical action history, shared UI/agent edits and independent-instance worker disposal.
+
 - [x] Signed combined V2 export receipts/tests integrated as desktop `bd74ed906`
   and CAD `df27a17d`. Root independently reran the committed XML oracle on both
   actual signed files; hashes match the receipt. Both revisions have two print

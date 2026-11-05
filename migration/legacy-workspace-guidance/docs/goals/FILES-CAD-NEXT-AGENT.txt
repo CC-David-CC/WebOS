@@ -5,13 +5,15 @@ Read docs/FILES-CAD-RELEASE-OBJECTIVE.txt first. It preserves the full user obje
 CURRENT PRIORITY
 The bounded Files foundation is accepted and deployed. CAD is active. Do not restart Files or repeat completed storage campaigns without a relevant change or actual defect. Preserve its account/version/conflict/cancellation contract. Incomplete CAD persistence is not evidence of a Files-service defect.
 
-Finish the functional gates in order. Current work is sketch identity/replay, bracket native replay timeouts and ordinary save reliability. Do not merely increase deadlines, weaken validators or call a diagnostic-assisted pass an ordinary workflow pass. Preserve failed contexts and actual errors instead of repeated blind runs. Spline fix a22859f5 passes focused and owner rebuilt browser controls; integrate the matching receipt. Recent stall traces implicate browser/fixture request delivery before native execution; cause still needs proof.
+Finish the functional gates in order. The scoped ordinary signed bracket now passes actual Save/fresh Files reopen with unchanged app bytes and deadlines. Five independent scoped controls pass; the old blanket-interception timeout cause is not proven. Do not call that original failure fixed. Spline reservation c9e05a18 has owner and independent root desktop/emulated-phone browser passes and corrupt-data rejection.
+
+The active gap is a complete supported agent workflow: some successful bracket-test edits use private helpers. Unify UI/agent document operations with revision/lifetime/transaction checks. Implement guarded feature edits, history undo/redo and original rectangle dimension discovery/editing; test through supported APIs without direct sketch/history writes. Also fix demonstrated action-history defects and qualify independent instances/disposal.
 
 The signed two-object/three-region enclosure edit/save/reopen/core-3MF workflow passes within the recorded rectangular-insert domain. This does not qualify arbitrary CAD, engraving, physical printing or the full mechanical/parameter catalogue. Shared UI/agent operations, carried-feature and final combined-runtime gates remain.
 
 Latest user direction: no source packaging until all functional gates qualify. Pending prepare.py packaging changes were discarded. Defer source archives, packaging/provenance expansion and new command-catalogue diversions. Necessary runtime compilation and functional tests continue. Final source/runtime delivery and managed beta activation remain required afterwards.
 
-Use three agents with independent ownership; root integrates contracts and fixes. Current lanes: browser spline/functional replay, native worker/request stall diagnosis, bracket signed persistence. No fake browser UI or separate agent geometry model. Keep OCC preferred and Native Mesh honestly supported; previously unified source is not correctness evidence and must not be merged again from scratch.
+Use three agents with independent ownership; root integrates contracts and fixes. Current lanes: mechanical action history, worker/instance lifecycle, shared UI/agent part operations. No fake browser UI or separate agent geometry model. Keep OCC preferred and Native Mesh honestly supported; previously unified source is not correctness evidence and must not be merged again from scratch.
 
 Repositories:
 - box-git:/srv/data/git/CodiServer-distro.git, integration/files-jsketcher-release-20261103
