@@ -16,7 +16,9 @@ Saved-data integrity, account isolation and worker/lifecycle correctness remain.
 `adc693e4`, gateway `dd8cbea7`, and SDK `44da83bd`. Exact installed verifier,
 managed config, service/route/public-asset checks passed. Public OPFS policy and
 cache ID are confirmed; `/desktop/` remains unchanged. Signed fresh-browser
-acceptance on the deployed site is next. See
+normal UI save/fresh-login reopen, exact server bytes and second-account denial
+passed (`tests/main-opfs-public-normal-20261104.md`). This closes the bounded main
+Files promotion check; broader app/load/retention claims remain open. See
 `evidence/main-opfs-f2-activation-20261104.json`. This supersedes the older
 main=`0366` and staged-only status below; those entries retain attempt history.
 
