@@ -43,7 +43,9 @@ with tempfile.TemporaryDirectory(prefix='codi-rectangle-override-') as temp:
     for rel in ['static/oci-verified-worker.js','static/occ-portable.js',
                 'static/profile-topology.mjs','static/rectangleProfileRequest.mjs',
                 'static/authoredRegions.mjs','static/profilePlan.mjs',
-                'static/centeredHolePlan.mjs','static/centeredHoleTopology.mjs']:
+                'static/centeredHolePlan.mjs','static/centeredHoleTopology.mjs',
+                'static/boundedPrismBoundary.mjs','static/fourCornerHolePlan.mjs',
+                'static/fourCornerHoleTopology.mjs','static/fourCornerHoleProvenance.mjs']:
         shutil.copy2(dist/rel,target/rel)
         assets.append('node_modules/jsketcher-build/'+rel)
     for pattern in ['static/prism-semantic.*.js','static/'+a.wasm_name]:
