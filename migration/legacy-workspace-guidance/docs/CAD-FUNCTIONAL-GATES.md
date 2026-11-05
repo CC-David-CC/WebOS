@@ -16,6 +16,6 @@ The full objective in FILES-CAD-RELEASE-OBJECTIVE.txt remains intact. Scoped pas
 
 **User direction: source packaging comes after the functional gates.** The pending packaging edit was discarded. Defer archives, packaging/provenance expansion and new command-catalogue diversions. Final source/runtime delivery and managed beta activation remain in the full objective afterwards; neither is complete.
 
-November 5 update: combined d6253ea9 is promoted after actual rectangle fault/no-op controls, the held-dialog autosave control and the independently repeated signed command-only bracket pass. Native 3D authored Undo/Redo menu actions and broader M02/M03/M04 coverage remain open. No new deployment.
+November 5 update: combined d6253ea9 is promoted after actual rectangle fault/no-op controls, the held-dialog autosave control and the independently repeated signed command-only bracket pass. Native authored Undo/Redo actions are also integrated through 24d52ae8 after actual menu/key/focus/busy controls, signed menu save/reopen and reentrant reset checks repeated by root. Broader M02/M03/M04 coverage remains open. No new deployment.
 
 Intermediate/advanced CAD, assemblies, physics, inverse design and XR remain in later queues. This does not declare the entire CAD 1–6 program complete.

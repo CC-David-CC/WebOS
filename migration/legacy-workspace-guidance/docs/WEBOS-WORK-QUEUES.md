@@ -21,9 +21,13 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest integration — 2026-11-05
 
+- [x] Native authored Undo/Redo menu and keyboard actions are integrated through CAD `24d52ae8`. Root independently repeated actual menu/key/input/editor/busy/failure controls, strict-CSP signed bracket menu undo/redo with fresh Files reopen/account denial, and synchronous reset recovery. Desktop signed receipt is `77f864683`; no deployment. Feature-cursor navigation remains separate.
+- [~] M03 research `61fb21b1` introduces the common simultaneous physical length relation and corrects EqualLength to use physical magnitudes rather than signed polar parameters. Nine lead solver/native controls and TypeScript pass; independent review and actual UI/ID/Worker qualification continue. This is not a completed M03 gate.
+- [~] M04 research includes worker-evaluated unit-aware quantities and actual typed-source native restore with named extrusion depth; atomic apply/edit/journal and shared interfaces remain under test. A source codec or evaluator alone is not usable parametric editing.
+
 - [x] CAD `d6253ea9` is now promoted to the lead integration branch. Owner and independent lead runs of the exact-source signed command-only bracket gate both passed: discovery/create, rectangle/depth/hole edits, true authored undo/redo, rejection, Save/sync, second-account denial and fresh Files reopen preserving IDs, dimensions and measured geometry. Test/receipt integrated through desktop `28d2ccb6a`; see tests/jsketcher-agent-bracket-signed-20261105.md. No private authoring helpers were used.
 - [x] Rectangle journal cancellation/no-op corrections `ce55c687` passed actual five-hole worker fault controls. Autosave token fix `70aebd73` passed real open-dialog submission after two scheduled cache saves; authored rewrite/ABA still refuse stale submit (`c6036aac`). Lead also passed 17 journal/revision/capture controls and TypeScript.
-- [~] Remaining UI gap: expose the same authored Undo/Redo in the native 3D menu; feature cursor travel remains distinct. Dedicated action/menu qualification is in progress, without changing the already qualified signed-gate source.
+- [x] The native 3D authored Undo/Redo gap from this checkpoint is closed within the bounded worker-plate domain by the later `24d52ae8` acceptance above.
 - [~] Next independent mechanical lanes: signed X/Y/projected driving dimensions with explicit live-direction domains (M02), and worker-evaluated typed quantities/parameters with atomic candidate publication and persistence (M04). Both are isolated research until their actual shared operations qualify. M03 and broader mechanical coverage remain open.
 
 Earlier integration snapshots below retain their original source scopes; the signed pass above supersedes their pending combined-acceptance status.

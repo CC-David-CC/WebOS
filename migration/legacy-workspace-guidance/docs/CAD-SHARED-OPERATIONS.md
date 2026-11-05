@@ -63,9 +63,13 @@ and journal cursor must be published together after validation.
   lead. The test authors only through supported commands and checks native
   intent, measured BREP geometry, save/sync, another-account denial and fresh
   Files reopen. See tests/jsketcher-agent-bracket-signed-20261105.md.
-- Visible 3D authored Undo/Redo menu actions still need integration. Existing
-  HistoryBackward/Forward controls navigate the feature cursor; they must
-  remain separate and cannot stand in for this UI capability.
+- Visible 3D authored Undo/Redo menu/key actions are integrated through CAD
+  24d52ae8. Actual menu/keyboard, editor focus, busy worker and contained error
+  controls pass; owner and root repeated the signed bracket using real menu
+  travel and fresh Files reopen. A synchronous update-observer reset also
+  rejects stale work, drains processing and accepts a fresh operation.
+  HistoryBackward/Forward still navigate the separate feature cursor. See
+  tests/jsketcher-authored-menu-signed-20261105.md.
 - Rectangle, worker extrusion, centered/four-corner hole creation and enclosure
   assignment commands have scoped browser evidence.
 - The ordinary signed bracket passes model/file acceptance, but its private
