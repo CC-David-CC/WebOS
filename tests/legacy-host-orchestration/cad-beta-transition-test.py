@@ -52,3 +52,17 @@ with tempfile.TemporaryDirectory() as tmp:
  except ValueError:pass
  assert (d/'journal').exists() and (d/'unit').read_bytes()==b'foreign unit'
 print('PASS failed health rollback, missing-candidate recovery model, and foreign-unit refusal')
+# Host coordination must check both independently and reject a pending older
+# worker journal; the actual lock implementation remains the pinned adapter.
+class Lock:
+ def __init__(self):self.calls=0
+ def check(self):self.calls+=1
+class Worker:
+ def __init__(self,pending=False):self.calls=0;self.is_pending=pending
+ def _check_lock(self):self.calls+=1
+ def pending(self):return self.is_pending
+host=object.__new__(h.Host);host.lock=Lock();host.worker_lock=Worker();host.check();assert host.lock.calls==host.worker_lock.calls==1
+host.worker_lock.is_pending=True
+try:host.require_no_other_journals();raise AssertionError('pending worker switch accepted')
+except ValueError:pass
+print('PASS both lock checks and pending worker-switch refusal')
