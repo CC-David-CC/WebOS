@@ -17,6 +17,22 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] CAD worker-save sequence integrated through `6e7e615f`; root reran three
+  focused tests, TypeScript, and actual Chromium `worker-save-browser.test.cjs`
+  against the isolated `672aa235` build. Material/native replay, cancellation,
+  stale history edits and explicit material rebind pass. This is not a new
+  combined-build or signed desktop proof; see CAD's worker-save integration note.
+- [x] Desktop `d8a60a427` uses captured revision guards during Save rather than
+  repeated full snapshot comparisons. Serialized capture is the saved baseline;
+  dispatched earlier-version writes remain truthful. Signed caller/fault checks
+  are in progress. Workspace capture/host serialization still use the main thread.
+- [x] Enclosure manufacturing candidate integrated as `6833729d`; root geometric
+  review and sixteen Node controls pass on R730 and workstation. Export adapter,
+  inset-label region and signed end-to-end 3MF output remain incomplete.
+- [x] Stage 1 requirement/evidence matrix integrated as `16b589b5d`:
+  `docs/evidence/files-stage1-objective-audit-20261104.md`. The expiry-recovery
+  test has a first passing run; stronger final refusal control/receipt is pending.
+
 - [x] Source-gateway deployment research integrated through `c00f0c2d1` from
   candidate `9799a8cb2` and prerequisites. Root reviewed transition ordering and
   reran actor/transition tests: exact pins, unchanged routes/floors, three killed
