@@ -30,6 +30,13 @@ with tempfile.TemporaryDirectory(prefix='codi-rectangle-override-') as temp:
     target=app/'node_modules/jsketcher-build';shutil.copytree(old_app,target)
     manifest=json.loads((app/'app.json').read_text());assets=manifest['assets']
     assets[:]=[x for x in assets if 'static/sketch-solver.' not in x and 'static/project-validator.' not in x]
+    # The baseline's old OCC WASM is not referenced by the replacement app.
+    # Remove this exact test-fixture input before adding the new runtime so the
+    # bounded app builder does not retain two 35 MiB engines.
+    obsolete='node_modules/jsketcher-build/static/c39793b8aff34dc548b5.wasm'
+    assets[:]=[x for x in assets if x!=obsolete]
+    old_wasm=target/'static/c39793b8aff34dc548b5.wasm'
+    if old_wasm.exists():old_wasm.unlink()
     for rel in ['index-webos.html','static/index.bundle.js','static/sketcher.bundle.js']:
         if (dist/rel).is_file():shutil.copy2(dist/rel,target/rel)
     for pattern in ['static/sketch-solver.*.js','static/project-validator.*.js']:
