@@ -51,4 +51,17 @@ with tempfile.TemporaryDirectory() as d:
  op.atomic=original;assert b'--opfs-file-content-origin' in unit.read_bytes();assert tx.recover(op,current(),target)['status']=='opfs-switch-rolled-back';assert b'--opfs-file-content-origin' not in unit.read_bytes()
  reset();op.issuer_config=lambda c:{'identity':identity,'fileStorage':{'bad':True}} if c.get('opfsFileContentOrigin') else {'identity':identity}
  assert tx.configure(op,current(),target,config['origin'])['status']=='opfs-switch-rolled-back';assert 'opfsFileContentOrigin' not in current()
- print('PASS actual transaction/renderer with simulated systemd: apply, four phase deaths, unit/config split and bad metadata rollback')
+ reset();op.issuer_config=actual;original=op.atomic
+ def fail_after_commit(path,raw,*args):
+  original(path,raw,*args)
+  if pathlib.Path(path).name=='maintenance.json' and json.loads(raw).get('phase')=='committed':raise OSError('directory fsync after replace')
+ op.atomic=fail_after_commit
+ try:tx.configure(op,current(),target,config['origin'])
+ except ValueError as error:assert 'committed' in str(error)
+ else:raise AssertionError('commit sync failure was hidden')
+ assert current().get('opfsFileContentOrigin')==config['origin']
+ assert json.loads((p/'maintenance.json').read_text())['phase']=='committed'
+ op.atomic=original
+ assert tx.recover(op,current(),target)['status']=='opfs-switch-committed-recovered'
+ assert current().get('opfsFileContentOrigin')==config['origin'] and not (p/'maintenance.json').exists()
+ print('PASS actual transaction/renderer with simulated systemd: apply, four phase deaths, unit/config split, bad metadata rollback and post-replace commit failure')
