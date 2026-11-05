@@ -17,6 +17,23 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Signed save/close receipt integrated as `49c5fc218`: exact desktop
+  `d8a60a427` and CAD `672aa235` pass normal Save, fresh Files reopen and
+  other-account denial; busy sign-out refuses, confirmed window closure
+  terminates the held hash worker and creates no file. This tests cooperative
+  session admission/window cancellation, not a forced external account switch.
+- [x] Expiry-recovery test integrated as `a0a320cb9`; root reviewed the fixture
+  and assertions. Agent's exact f2/adc/dd8/44da run uses 40/90-second test-only
+  lifetimes, observes actual timer renewal, preserves pre-expiry pending bytes,
+  rejects the expired session locally and at issuer, and reconciles on same-account
+  sign-in; B gets 404. Receipt: `tests/files-session-expiry-20261104.md`.
+- [ ] CAD `f1ee0bb1` wires v1 OCC enclosure export to fresh native manufacturing
+  reads and the core 3MF writer. TypeScript and existing lifecycle/hash controls
+  pass; real app and signed export tests are assigned to storage_browser.
+  This is not a qualified 3MF workflow yet. Label v2, native contact/paired
+  surface proof, material UI/grouping and three-region export remain outstanding.
+  Desktop `090f189c7` forwards export cancellation/window guards.
+
 - [ ] Root export groundwork now includes disposable v1 manufacturing reconstruction
   with four passing lifecycle controls. It is not wired to desktop export yet;
   v2 inset label and a same-reconstruction contact proof are required before

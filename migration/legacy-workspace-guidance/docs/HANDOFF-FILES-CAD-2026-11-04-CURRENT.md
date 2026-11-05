@@ -242,6 +242,19 @@ mechanical designs, material-aware actual core 3MF handoff. Bambu/physical print
 physics, XR and the full CAD6 roadmap are deferred, not substitutes for this gate.
 # Continuation checkpoint: worker save and manufacturing review
 
+Successor: desktop `090f189c7` integrates signed-save receipt `49c5fc218` and
+Files expiry evidence `a0a320cb9`; see the newest entries in WEBOS-WORK-QUEUES.
+CAD `d7504677` includes the v1 worker-enclosure 3MF adapter `f1ee0bb1` and save
+qualification notes. The adapter is wired but not browser-qualified yet; it
+reconstructs fresh OCC manufacturing meshes instead of preview triangles.
+storage_browser owns real-app/signed export tests, storage_review independently
+reviews save capture, and storage_server owns the v2 inset-label kernel/worker
+research (latest candidate `334f6aae`, not integrated). V2 currently separates
+bounded zero common volume from the positive shared-surface contact proof still
+needed for grouped export. No new deployment. Both integration heads are on
+box-git and R730. Do not call the two-object/two-region v1 path the requested
+two-object/three-region manufacturing acceptance.
+
 Desktop `16b589b5d` adds the Stage 1 objective/evidence matrix at `docs/evidence/files-stage1-objective-audit-20261104.md`; `e015cfd7b` forwards desktop save cancellation/window guards to CAD preparation (syntax checked; combined signed cancellation qualification pending). The matrix identifies certificate renewal and absolute-session-expiry recovery as missing integrated evidence, not a demonstrated Files defect. The storage-review agent is testing that with a disposable short-TTL issuer.
 
 CAD `6833729d` integrates the bounded enclosure manufacturing mesh candidate. Integration review and 16 Node tests pass on both R730 and the integrated checkout. Real-engine Chromium evidence remains agent-produced; desktop export orchestration and the third inset-label region are not complete. The geometry agent is implementing a versioned optional centered inset label with a real lid pocket and distinct LABEL solid; no printer fit claim. The save-worker agent has additive operation-scoped `prepareHostSave({signal,valid}) -> {envelope,isCurrent}` in candidate `672aa235`, not yet integrated. Its currentness guard is not a persistent dirty baseline after operation completion. Keep existing desktop comparisons until caller integration is qualified.
