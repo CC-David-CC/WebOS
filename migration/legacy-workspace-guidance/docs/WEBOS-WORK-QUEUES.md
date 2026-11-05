@@ -1,5 +1,17 @@
 # WebOS work queues and progress ledger
 
+## Current checkpoint — 2026-11-05, public primitive authoring
+
+Files remains accepted within its documented scope. Private CAD1b2 + desktopccaec89b9 now passes actual public empty-plane/Point/Segment/Circle/Arc authoring, immutable ID discovery, invalid/stale refusal, four-step undo/redo, normal signed Save/sync, separate-account denial and fresh-login Files reopen. Signed closed-relation, bracket-family/configuration and material/core3MF regressions also pass; independent exports retain2 objects/3 regions/84 triangles. Root five-hole, multi-plane and plate/enclosure composition regressions pass. This is a real command-only basic-authoring slice, not all CAD1 or CAD2.
+
+- [x] Primitive mutations use the existing private full-history replay, source-frame checks and atomic workspace/model/sketch-byte journal. IDs are coordinator-owned; public callers provide bounded detached data, not native source or publication callbacks. Empty creation publishes real PLANE+strict native bytes together.
+- [x] Point is visible with a disposable projection and stable ID, without an invented edge/collider. All supported construction curves stay out of solid profiles. The narrow rectangle planner retains reference Point/construction geometry and refuses an extra ordinary curve rather than silently changing region intent. Candidate-module WebGL/curve comparisons pass; integrated final-runtime projection tests remain separately scoped.
+- [~] Reviewer found misleading readiness after unsupported box ancestry: creation succeeded but append could not discover the sketch. Final candidate997df3dbb reuses the existing strict ancestry classifier and reserves history/sketch capacity before creation; no unknown-consumer widening. Matching app997 passes the final signed primitive workflow on20382 (server SHA6301cde9acd338c74e7b1d2942d07a9357cf6d9c4b4aedc61a3034d698ccd3ce); integrated readiness/projection controls are being finalized separately. Synthetic controls and TSC pass.
+- [ ] General entity editing/deletion and profile selection, active2D hydration/legacy processing, dense responsiveness, full original-rectangle acceptance and broader references remain. Final combined release qualification and managed beta follow. No public deployment, source packaging or kernel-default change.
+
+CAD `test/public-primitive/README.md` records exact source/app/Worker pins, commands and limits. Initial direct20487 uses1b2; final direct20488 uses997. Desktop primitive corpus receipts record signed bundle/server/export hashes. Both source branches are backed on box-git and R730; no beta account state or keys go to main. Earlier checkpoint scopes below remain historical evidence.
+
+
 The agent-authoring versus human-viewing minimums are tracked in [AGENT-CAD-USABILITY-GATES.md](AGENT-CAD-USABILITY-GATES.md); bounded factory/constraint tests do not imply general primitive authoring or all profiles.
 
 ## Current checkpoint — 2026-11-05, immutable feature history
