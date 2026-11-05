@@ -19,6 +19,14 @@ main/surfacing integration and many adaptations are already present. Remaining
 J01 work is consolidation/regression qualification; see the corrected checkpoint
 in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
+## Current candidate hold — 2026-11-05
+
+- [x] Lead independently repeated clean CAD `185e1b9d3` / desktop `40d06d10d`: collinear/axis UI and real drags, role conversion, failed-rollback recovery, typed bracket propagation, six signed workflows and independent enclosure 3MF oracles pass. Exact scope and fixture identity: `tests/jsketcher-185-release-hold-20261105.md`.
+- [ ] **Release blocker:** ordinary sketch entry with typed parameters fails on 185 (`361c90a91`). Interim bridge restores entry/editing, but independent review `b200e20fa` proves an invalid Angle annotation edit can mutate and Save despite the error. Fix rejection-before-mutation, finite values, typed dependent empty/unchanged-boundary replay and currentness; then run final combined signed/browser qualification. Passing command tests do not waive ordinary UI failure.
+- [~] Whole-entity fix candidate `2f153907b` / desktop `402841a4c` and rigid groups `8645e7777` require combined review/qualification. Common bracket/enclosure/material/3MF candidate `c686fdbf3` has owner signed UI/agent passes (desktop receipt `d75be49fe`); independent root review remains. Configurations and worker-first capture/performance remain open.
+- [x] Identified unused Cypress 4.12.1 binary download cache removed after checking no Cypress process; 603.8 MiB recovered, source and installed dependencies preserved. Fully integrated clean disposal checkout retired with Git worktree removal. Workstation is still tight; use R730 for large builds.
+- [ ] Accepted lead stays CAD `36ac6cff3` / desktop `b27d3bed1` until the release hold is fixed. No new CAD deployment; preserve main and /desktop. The older combined acceptance below retains its original runtime scope.
+
 ## Latest integration — 2026-11-05
 
 - [x] Combined CAD runtime `28870335` and desktop runtime `f3b50ad9c` independently pass signed bracket, native Undo/Redo menu, typed extrusion UI/command, length relation and signed X/Y/projected commands through Save/sync/fresh Files reopen. Actual frame disposal, closed-CV identity, affected real Workers and desktop/390px parameter panels pass. The combined material/enclosure 3MF regression and independent mesh/XML oracle pass. See `tests/jsketcher-mechanical-combined-20261105.md` and its digest JSON. No deployment or full CAD1/M02/M03/M04 completion is claimed.

@@ -2,6 +2,32 @@
 
 The full goal remains active. This replaces older checkpoint status, not the original scope. Read FILES-CAD-RELEASE-OBJECTIVE.txt, then CAD-FUNCTIONAL-GATES.md and the latest WEBOS-WORK-QUEUES.md entries.
 
+## Latest candidate hold — 2026-11-05
+
+Read `tests/jsketcher-185-release-hold-20261105.md` first. Lead independently
+passed clean 185 direct/signed workflows, including typed bracket propagation,
+collinear/axis, role conversion/recovery and material-aware 3MF. Promotion is
+held: ordinary typed sketch entry fails; an interim bridge fixes entry but has
+a confirmed invalid-Angle-edit-and-Save counterexample (`b200e20fa`). No new
+CAD deployment or full CAD1/mechanical/parameter completion is claimed.
+
+Current unpromoted candidates: CAD `/tmp/codi-cad-mechanical-candidate-20261105`
+`2f153907b`, desktop `/tmp/codi-desktop-mechanical-candidate-20261105`
+`402841a4c`. Accepted lead branches below stay at `36ac6cff3` / `b27d3bed1`
+until later documentation-only commits; runtime acceptance stays 288/f3.
+Source pointers are checkpoints; inspect actual refs before resuming.
+
+Ownership now: storage_review fixes typed sketch prevalidation/IO/dependent
+replay; storage_server owns common parameter publication/currentness and typed
+enclosure/export; storage_browser independently reviews rigid groups. Root
+reviews and combines, runs independent exact-source qualification, updates this
+ledger and both LAN backups, then handles managed beta. No GitHub publication.
+
+Clean 185 signed test fixture is 20237; direct 20240/20241; CDP 19329/20212.
+Verify actual live processes before reuse; do not close unrelated contexts.
+The root failure context on CDP 20212 is D3C084AED08756D4112AE6B1EAD46D99.
+Older fixtures below are historical, not guaranteed live services.
+
 ## Current status
 
 - Accepted combined runtime is CAD `28870335` with desktop `f3b50ad9c` plus test/receipt followups. Lead independently qualifies signed bracket/menu, X/Y/projected dimensions, physical length relations, typed extrusion depth, Save/sync/fresh Files reopen and account denial within each receipt's scope. The combined enclosure/material/core-3MF test and independent oracle also pass. Actual iframe-close cleanup and desktop/phone-emulated parameter panel controls pass. Exact source, commands, limits and runtime hashes: `tests/jsketcher-mechanical-combined-20261105.md` and its JSON.
