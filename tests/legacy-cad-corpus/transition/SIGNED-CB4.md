@@ -1,0 +1,7 @@
+# Signed detached replay-history regression
+
+On disposable strict-CSP fixture `20378`, CAD `cb4a0dce8` and desktop runtime `8dc0295f34b6a829e6afb16a6bfb39feb2acf76a`, the existing `closed-length-signed.test.mjs` passed the public closed-sketch relation, stale/contradictory refusal, 120×60 dependent resize and incompatible resize refusal, undo/redo across both edits, host Save, account denial, fresh Files reopen, and held transition Worker/window-close AbortError. Server SHA256 `89224f5940903eefddde950cdc7f40e2482ed92b45f299cc0619547ac91ea701`; log `/tmp/codi-closed-length-signed-cb4-r1.log`, disposable accounts `cllength1793914716633` and suffix `b`.
+
+CAD app SHA256 `323878bd7c3ce662ae2ef57b9ece84fa4b7ebfb5c0fcd54fc20cd15a3cde1aac`; matching sketch Worker `d959fcb7282eaa3807d77d797c3ba80b708a7e95cd6efb8158a1f98ab8635c27`, helper `1b16d7936ce7caddf0eaad3b7f9dbe24c8da7152c84c0b243cd957ba3de26f9b`; test-only bundle `9a138e8dfed5338dfe75ad759eecdf0451267443af0efb4d35d3f45c3a942d5a`, catalog `5a65ed9f1afb690c915269f287f941c266c263f7188cd43d3ee593d7029618ff`. The fixture used a private hardlink-only view of the R730 dist excluding an unreferenced duplicate prism Worker; the original build was not modified. Logs are backed up at `/mnt/data10tb/codi-signed-closed-sketch-evidence-20261105`; fixtures `20377` and `20378` remain running for integration ownership.
+
+This validates the affected bounded public workflow; it does not by itself prove every alias/ABA fault, general sketch families or deployment.
