@@ -17,6 +17,22 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Signed combined V2 export receipts/tests integrated as desktop `bd74ed906`
+  and CAD `df27a17d`. Root independently reran the committed XML oracle on both
+  actual signed files; hashes match the receipt. Both revisions have two print
+  objects, three material regions, 84 closed triangles, expected bounds/volumes
+  and lid/insert alignment. Final serialized run also proves fresh-session exact
+  reads and second-account 404. The acceptance matrix now records bounded
+  enclosure/material/3MF passes with those scopes; no release completion claim.
+- [ ] Combined bracket regression creates the five-hole plate, edits dimensions
+  and depth, rejects a touching-hole edit, and undoes/redoes. Its final Save did
+  not advance file bytes; storage_review is capturing actual refusal/status
+  before diagnosis. Prior held-message and input-selection test-harness failures
+  remain distinguished from product failures. No packaging while this gate is open.
+- [ ] storage_server is exercising existing beginner block/washer functionality
+  (A00), not adding a new engine or feature catalogue. Source packaging stays
+  deferred until the functional gates qualify.
+
 - [x] Root actual combined `15a7e2a5` V2 core workflow produced a 6,941-byte
   3MF at `/tmp/codi-root-v2-functional.3mf`. Independent ZIP/XML checks pass:
   millimeters, two build objects, three material/appearance regions, 84 oriented
