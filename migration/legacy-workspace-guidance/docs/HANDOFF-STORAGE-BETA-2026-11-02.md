@@ -1,5 +1,7 @@
 # Storage and beta handoff — 2026-11-02
 
+**Historical handoff: its paused/incomplete status below is superseded.** Development resumed; the bounded Files foundation is accepted and CAD is active. Read [the current handoff](HANDOFF-FILES-CAD-2026-11-04-CURRENT.md) and [functional gates](CAD-FUNCTIONAL-GATES.md). Historical receipts keep their original scope.
+
 **Paused at the user's request.** Resume only on request. The current bounded
 priority is dependable saved data: account isolation, conflicts, interruption
 and recovery, and worker-based processing. Continue to maintain

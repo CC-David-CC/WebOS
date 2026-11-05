@@ -1,272 +1,44 @@
-# Current Files and CAD integration handoff
+# Current Files and CAD handoff
 
-This supersedes checkpoint status in `HANDOFF-FILES-CAD-2026-11-04.md`.
-The user requested a handoff, not a pause. The full goal remains active.
-Read `FILES-CAD-RELEASE-OBJECTIVE.txt` first: it is a verbatim copy of the active
-user objective, so another machine does not need the original chat attachment.
+The full goal remains active. This replaces older checkpoint status, not the original scope. Read FILES-CAD-RELEASE-OBJECTIVE.txt, then CAD-FUNCTIONAL-GATES.md and the latest WEBOS-WORK-QUEUES.md entries.
 
-Continuation update: desktop signed material tests/receipt are now integrated
-through `4b8fa41e9`, CAD browser receipt through `383e75ef`, both backed up.
-The root reviewed/syntax-checked the signed tests; it has not independently
-rerun the combined signed fixture. `storage_browser` now owns worker save/rebind
-preparation at `/tmp/codi-manufacturing-save-worker`, branch
-`research/manufacturing-save-worker-20261104`. Normal desktop Save already calls
-`snapshotForHostSave`; its surrounding repeated synchronous snapshot/JSON work
-still needs improvement. Do not add a duplicate validation call. `storage_review`
-is now auditing Stage1 Files requirements against existing evidence. These new
-assignments supersede the finished-agent status below; manufacturing continues.
+## Current status
 
-Deployment continuation: candidate `9799a8cb2` and prerequisites are integrated
-through desktop `c00f0c2d1`. Root independently reran actor-tree and modeled
-transition tests successfully. No source gateway/actor/route is installed.
-Protected staging/plan and final new-CAD packaging remain open.
+- Files foundation: accepted within its signed-account, representative-128-MiB scope. Persistence, isolation, conflicts, changed-chunk sync and interruption/crash recovery have evidence. No new Files-service defect is established. This does not qualify every app, automatic GC, classroom load or power-loss durability.
+- CAD: active and incomplete. Combined 15a7e2a5 passed signed enclosure/insert creation, material UI/shared command, edit/rebind, Save/fresh Files reopen and initial/edited core 3MF. Root independently checked the actual files: two print objects, three regions, units/grouping/appearance, closed meshes and expected bounds/volumes in the supported domain.
+- Bracket reliability: open. The signed five-hole workflow passed once; repeats exposed deadlines and reopen/save failures. Last-valid geometry is retained. Recent traced stalls include unanswered browser module/WASM requests before native execution; a direct request can succeed concurrently. Do not label these proven OCC hangs or fix them by extending deadlines. Diagnose fixture interception/request delivery and normal app behavior.
+- Splines: undo/redo reused numeric ID 86 for distinct points. Root fix a22859f5 reserves saved IDs before reconstruction; project preflight allocation is temporary. Three allocation controls, strict IO and owner rebuilt desktop/phone draw/history/drag/native replay pass. Corrupt duplicate-ID samples remain rejected. Matching browser receipt ff250ba6 is ready for integration.
+- Packaging: explicitly deferred until functional gates qualify. Pending packaging edit was discarded. No new CAD activation on main or beta.
 
-## Start here
+## Worktrees and backups
 
-1. Fetch current branches, inspect working trees and coordinate with running
-   agents before edits. Do not restart a test because its observation timed out.
-2. Read `WEBOS-WORK-QUEUES.md`, `WEBOS-SILOED-WORK.md`,
-   `HANDOFF-STORAGE-BETA-2026-11-02.md`, `JSKETCHER_UPSTREAM_WORK.md`,
-   `JSKETCHER_ENGINE_COMPARISON.md`, and CAD's `docs/MECHANICAL-CAD-AUDIT.md`
-   and `docs/MANUFACTURING-AND-PHYSICS-ROADMAP.md`.
-3. Review the signed material receipt and beta operator candidate below. Continue
-   manufacturing mesh/export and remaining CAD save processing. Do not restart
-   upstream merges or replace the existing Files service.
+Desktop: /tmp/codi-webos-cad-merge, branch integration/files-jsketcher-release-20261103.
+CAD: /tmp/codi-jsketcher-release-integration-20261104, branch integration/files-cad-release-20261104.
+Checkpoint before this documentation update: desktop 380974789, CAD a22859f5. Both were pushed to box-git and R730. Verify current Git refs rather than treating these pointers as permanent HEADs.
 
-## Repositories and current source
+Desktop remote: box-git:/srv/data/git/CodiServer-distro.git; backup r730:/mnt/data10tb/git/CodiServer.git.
+CAD remote: box-git:/srv/data/git/JSKetcher.git; backup r730:/mnt/data10tb/git/JSKetcher.git.
+No GitHub publication is part of current work.
 
-| Repository | Integration branch | Head before this handoff |
-|---|---|---|
-| `box-git:/srv/data/git/CodiServer-distro.git` | `integration/files-jsketcher-release-20261103` | `96e5faead6c15183c7af522f359112b51b9f3455` |
-| `box-git:/srv/data/git/JSKetcher.git` | `integration/files-cad-release-20261104` | `34bbabea6dc11a27842c92f6cb75b47180588da2` |
+## Reuse this evidence
 
-Backup repositories: `r730:/mnt/data10tb/git/CodiServer.git` and
-`r730:/mnt/data10tb/git/JSKetcher.git`. The desktop tip advances with this handoff.
-Use branch tips, not the historical source branches named in the objective.
-No GitHub publication is requested.
+- docs/evidence/files-stage1-objective-audit-20261104.md, tests/files-foundation-exit-20261104.md and tests/files-session-expiry-20261104.md cover Files and session recovery.
+- Desktop tests/jsketcher-enclosure-v2-export-signed-20261104.md; CAD test/enclosure-v2-functional/README.md and check-v2-3mf.py cover the signed three-region workflow. Root reran the oracle on both signed files and checked their hashes.
+- CAD test/webos/BASIC-SOLID-GATE-20261104.md covers bounded block/washer core and replay. Washer uses legacy OCC extrusion, not rectangle-worker inner-loop support.
+- CAD test/enclosure-history/LABEL-HISTORY-RESEARCH.md and surfacing receipts record history, cancellation and the Push/Pull Escape fix. These do not qualify all advanced CAD.
+- Bracket failure tests/evidence are on desktop research/signed-four-corner-combined-20261104 at d5aa62dd9; not yet integrated. Preserve the retained failure context while diagnosing it.
 
-Lead worktrees: `/tmp/codi-webos-cad-merge` and
-`/tmp/codi-jsketcher-release-integration-20261104`. CAD's untracked `.build/`
-contains useful build/cache inputs; do not blindly delete it. No private account
-data or keys should enter source or public bundles.
+## Immediate ownership and next actions
 
-## Working and tested
+1. Browser agent: matching spline-fix browser receipt and affected carried-feature tests. Root owns id-generator.js/io.ts integration.
+2. Native worker agent: isolate request/startup/native timing for intermittent bracket replay deadlines. Identical history can finish in seconds or stall; native execution is not established in every timeout.
+3. Bracket agent: ordinary edit/reject/undo/Save/fresh Files reopen, with actual status/error capture and failed-context preservation. Extra diagnostic preparation can affect timing; do not count it as a plain-Save proof.
+4. Root: integrate fixes/evidence and finish remaining mechanical/parameter/shared-command and combined-app gates. Only afterwards resume final source/runtime packaging and managed beta qualification. The full scope is in the unchanged objective and functional gates.
 
-### Files
+Shared combined fixture: loopback 19707 standalone CAD, 19708 signed desktop, CDP 19329. Combined app SHA c35bce15493022ef28d0aa8b8d503f3bea4deeb980f4b1a3a8013e14515758bf. New spline-fix build: 19709; verify its matching app/workers/helper before tests. Do not mix copied old workers with a new app. The fixture's old .rev is not its authoritative runtime identity.
 
-The accepted main release passes normal signed Files/Text creation, editing,
-Save, automatic sync, exact-byte recovery after fresh login, and second-account
-denial. See `tests/main-opfs-public-normal.test.cjs` and its evidence note.
-Broader fault/128 MiB evidence is in the storage handoff/queue; this one workflow
-does not prove every app, failure mode or concurrency target. My files is
-browser/server backed; temporary v86 files remain separate.
+A failed bracket context was retained on CDP 19329 (process session 21308), with /tmp/codi-signed-four-combined-review-r8.log and /tmp/inspect-preserved-bracket.cjs. Verify handles exist before use. Do not close the shared browser or unrelated contexts.
 
-Previously verified live main pins, not re-polled for this handoff:
+Node: /tmp/codi-files-move-node/bin/node. Puppeteer: /tmp/codi-occt-release-control/node_modules/puppeteer-core. Use R730 for large builds; workstation space is tight. Temporary Linux remains separate from My files. Essential source/tests/notes belong in Git; delete only identified disposable artifacts.
 
-- Frontend `f2e2ed4d3b75e8c40992a18bf83db7937fe90615bf1151e1b51ed3b0a8012f4a`.
-- Issuer `adc693e4bfe418f950eedd5be0f70ecc7b82c6268e14ebed6eeba64e95740414`.
-- Gateway `dd8cbea7de0a411eca100bdc3811eec1fc6bf3d7e8b6a7c0236fe509ceb9dbd1`.
-- SDK `44da83bdccf43a2b36ae4b3f48eaf94fc1006b88180456e26faba61aae344869`.
-- OPFS backend v1/database v2; main retains its restricted tested app selection.
-
-**None of the latest CAD/material/source-gateway changes is deployed.**
-
-### CAD geometry and lifecycle
-
-- Rectangle/plate, centered hole and four edge-offset holes have signed save/
-  reopen evidence in `tests/jsketcher-four-corner-signed-20261104.md`.
-  This is not the full bracket/fillet/pattern acceptance design.
-- `WORKER_ENCLOSURE_V1` creates an OCC body and separate lid, with stable
-  feature/role identities. Edits, rejection, undo/redo and native replay pass.
-- Keep OCC preferred and Native Mesh/Manifold supported honestly. Manifold
-  enclosure worker construction exists; current enclosure UI uses OCC.
-- Accepted evaluations release workers while keeping current copied model data.
-  Pool limits: two mounts per candidate, three total. Native replay reconstructs
-  geometry; detached owners cannot regain native capability.
-- Root independently ran three actual Chromium cleanup tests: composed model
-  created/terminated 13 workers, max two live; queued replay, injected cleanup
-  failure, observer-triggered reset and held-work cancellation pass. Cleanup
-  failure preserves accepted savable geometry and blocks further evaluation.
-- Evidence: CAD `test/enclosure-history/README.md` and three `codi-craft-*.cjs`
-  scripts. Root also passed 34 resource/ledger tests and TypeScript noEmit.
-- `34bbabea` makes command discovery reflect cleanup unavailability too.
-
-### Material controls and agent access
-
-- Integrated through `7c2fb6e0`: separate BODY/LID material/appearance,
-  preserved names/region identities/transforms, material-only revision fencing,
-  canonical string feature IDs from the wizard, incremental assignment hashing.
-- UI and agents call the same `projectManager.assignEnclosureMaterialRoles`.
-  Discovery is `inspectEnclosureMaterialRoles() -> {revision,featureIds}`.
-  Assignment takes `(featureId, roles, {revision,signal,valid})`; each BODY/LID
-  role has `{material:{id,name},appearance:{id,name,color}|null}`.
-- Desktop `012b0846b` adds `inspect-enclosure-materials` and
-  `assign-enclosure-materials`; the latter accepts `{featureId,revision,roles}`.
-  These are unsaved edits, not implicit writes. Root's 12 command boundary
-  tests and 10 assignment/hash/envelope tests pass; TypeScript passes.
-- Combined signed PASS is committed on desktop candidate `c70998a69`, in
-  `tests/jsketcher-enclosure-signed-20261104.md`: CAD `34bbabea`, actual wizard,
-  material UI and desktop commands, stale-token refusal, normal Save, fresh
-  Files reopen, exact metadata and other-account 404. Root read the receipt;
-  independent combined rerun/test-only integration remains to do.
-- R730 combined build: `/mnt/data10tb/codi-material-combined-34bb/dist`;
-  app bundle: `/mnt/data10tb/codi-material-combined-signed-bundle`.
-  Index SHA `4f762fb3e7855d6f0a4764339323aa4470f421ac83d5f0d1d3cc639c5ee98eab`;
-  hash worker `3f7cf784c31276d9cca6f700bb524fd3ecf6cf39763c686e43b5d350fdf08125`.
-
-## Remaining acceptance work
-
-1. **CAD manufacturing save/restore still has an 8 MiB research cap and
-   main-thread serialization/canonical work.** Assignment worker hashing does
-   not fix the whole path. Reuse existing incremental/worker modules, reliable
-   revision guards, and measure memory/responsiveness. Do not claim 128 MiB CAD.
-2. Finish manufacturing-qualified live-kernel mesh extraction. Preview triangles
-   remain explicitly unqualified. Bounds and volume alone miss shifted cavities.
-3. Add contrasting inset label, grouped with lid; export actual model-derived
-   core 3MF into My files with revision/account/cancellation guards. Independently
-   validate units, dimensions, transforms, materials, two objects/three regions.
-4. Existing 3MF research writer has 20 passing writer/adapter/envelope tests.
-   `6f05e4fb` independently checks noncommuting transforms and grouping using
-   Python ZIP/XML; `8b83aa92` prevents mm geometry being mislabeled as inches.
-   Neither proves current worker-enclosure manufacturing export.
-5. Finish specified bracket/enclosure parameter/contradiction/history workflows
-   and mechanical gates. Do not declare broad CAD 1/2/3 maturity from components.
-6. Clean release preparer still pins older CAD `67d34329`. Update source/runtime
-   pins, new hash-worker asset receipt and notices, then rebuild/qualify. Shared
-   dependency fixture builds are not clean release reproducibility evidence.
-
-## Agent ownership and pending branches
-
-### Material agent storage_browser
-
-Finished; fixture processes/profile cleaned. CAD worktree
-`/tmp/codi-enclosure-material`, branch `research/enclosure-material-assignment-20261104`,
-test/receipt tip `f4806f5c`. Desktop worktree `/tmp/codi-enclosure-signed-desktop`,
-branch `research/enclosure-signed-history-20261104`, tip `c70998a69`.
-Both branches backed up to both LANs. Review/integrate remaining test/receipt
-commits, including frame CSP scope `f5c7695b4`. Port protection `b6c4508a4`
-is already integrated as `96e5faead`.
-
-### Manufacturing agent storage_server
-
-**Still working** on R730 `/mnt/data10tb/codi-enclosure-manufacturing-mesh-20261104`,
-branch `research/enclosure-manufacturing-mesh-20261104`, based on `23d5b29b`.
-WIP `37512e2386e47d4479fbd2523e504da75c35fc4a` is backed up but explicitly not
-integration-ready. Owns new `modules/engine/mount/enclosureManufacturingMesh.mjs`,
-mount/controller/OCI/Manifold workers, build inclusion and
-`test/enclosure-manufacturing`. Do not edit these concurrently.
-
-Nine pure validator controls pass. Latest uncommitted actual-worker report:
-both engines' reconstructed body/lid return 16 indexed vertices, 28 triangles,
-11 checked surfaces; deviation/precision refusal, stale handles and copy isolation
-pass. Failure/cancellation and stronger coverage negatives are ongoing; obtain
-the final commit and inspect evidence before integration.
-
-Proposed API: `readEnclosureManufacturingMesh({op:'solid.enclosure.manufacturing-mesh',version:1,handle,maxDeviationMm},{signal})`
-on a newly reconstructed disposable mount. Private captured plan/role,
-exact-coordinate indexing, manifold/oriented topology, authored face coverage,
-bounds/volume and explicit per-engine deviation precede returned typed buffers.
-Root owns export orchestration/materials/3MF. Never relabel preview buffers or
-silently weld distinct nearby points. Terminate export owners on every outcome.
-
-### Deployment agent storage_review
-
-Finished candidate in `/tmp/codi-cad-source-access`, branch
-`research/cad-source-managed-20261104`, desktop tip
-`9799a8cb221eb3a5248e9fb79cce14260929b558`, backed up both LANs.
-Review ancestry from `d5f004430`; cherry-picking only the tip omits prerequisites.
-Read `research/cad-source-access/BETA-SWITCH-EVIDENCE.md` and `MANAGED-PLAN.md`.
-No live staging/mutation. Owned fixtures cleaned.
-
-Candidate gateway `a626ef11bf57a039529abc806a4b39a5881f470557d49f8c715a742c06b5ae08`
-adds authenticated source access with unchanged SDK bytes. Final switch bundle
-inventory `c1b44f84c081dc5bda8321b3c8a961be04369e765e8ced302a4e4a7aa3071452`;
-actor inventory `df0987cd6f38e6a0f2640734baf51ecdf6f0e122d89308a31c47b63182b90ce3`.
-Mapped tests cover real disposable systemd gateways, locks, three killed phases,
-wrong pins and signed source reads. Production callbacks were substituted there
-and separately checked with dependencies stubbed; hosting custody was checked
-read-only on box-webhost. Independently review these scopes/current host pins
-before use. Existing dd8 SDK-floor marker is historical, not an a626 release floor.
-
-## Deployment and test boundaries
-
-Use managed hosting locks/generation/recovery, never direct derived-Caddy edits.
-Preserve main, `/desktop/`, unrelated sites, saved data and account/key separation.
-Use beta for iteration. Do not publish all experimental apps/games on main.
-
-The host SDK uses Blob workers in `UserFiles.write`; CAD frame policy forbids
-them. Combined signed test retains existing host CSP and adds narrower CAD CSP.
-An attempted whole-host no-blob test correctly blocked file writes; do not
-misdiagnose that as storage corruption or weaken production policies to pass.
-
-Two Caddy fixtures once shared a port via reuse-port and alternated accounts/
-404s. The integrated fixture now checks free port and sole owning listener PID.
-Root independently exercised those guards with actual socket/ss. A proposed
-extra `files-fixture-port.test.py` was never dispatched; that file does not exist.
-
-## Reproduce and resume
-
-From CAD root:
-
-```sh
-node --test test/coreTests/evaluation-resources.test.mjs test/coreTests/evaluation-detachment.test.mjs test/coreTests/candidate-prism-ledger.test.mjs
-node --test test/enclosure-material/assignment.test.mjs test/manufacturing/incremental-hash.test.mjs test/project/project-envelope.test.mjs
-node --test tests/3mf/manufacturing-adapter.test.mjs tests/3mf/core3mf.test.mjs test/project/project-envelope.test.mjs
-node node_modules/typescript/bin/tsc --noEmit
-```
-
-Desktop: `node --test tests/jsketcher-material-commands.test.mjs tests/jsketcher-sketch-commands.test.mjs tests/jsketcher-feature-commands.test.mjs`.
-Browser commands/pins are in the respective evidence files; use actual workers,
-not fake geometry or fake browser UI.
-
-Current workstation conveniences: Node24 `/tmp/codi-files-move-node/bin/node`,
-Chromium `/snap/bin/chromium`, Puppeteer Core
-`/tmp/codi-occt-release-control/node_modules/puppeteer-core`. Install equivalents
-on another machine; these are not source dependencies. Python3 is needed for
-XML checks; separate lib3mf setup and fixture Python/Caddy/ss prerequisites are
-documented with those tests.
-
-Workstation has only 3.5 GiB free. Use R730 for large builds. Clean only owned
-disposable artifacts. Runtime inputs: R730
-`/mnt/data10tb/codi-occ-four-corner-clean-20261104/line-frame/main.js` and
-`main.wasm`; also box-git `/srv/data/codi-occ-four-corner-clean-20261104/line-frame-8c/`.
-WASM pin `13617eda9a2118edfd1244b5d46523e7d9628a87ec995a0237b2b5cc58d532f2`;
-current OCI worker `fc43d276fffc6e432b351cbba317fa98546c37ce754a4977018f8f24ecebe062`.
-Preserve/review exact source and license archives when rebuilding.
-
-Material agent stopped ports19691/19692/19694/19695 and Chromium19327; root's
-independent browsers closed. Other agents' processes must be checked, not killed.
-
-Finish the copied objective: saved-data integrity, consolidated CAD, specified
-mechanical designs, material-aware actual core 3MF handoff. Bambu/physical prints,
-physics, XR and the full CAD6 roadmap are deferred, not substitutes for this gate.
-# Continuation checkpoint: worker save and manufacturing review
-
-Latest integrated checkpoint: desktop `7a2e3538b`, CAD `64c40680`, both LANs.
-Signed V1 native export now has committed receipts and a root-reviewed,
-strengthened independent ZIP/XML graph oracle with mutation negatives. The
-surfacing mutation fence is integrated; actual Push/Pull Escape/blur cancellation
-exposed a follow-up defect being fixed by storage_review. storage_browser is
-qualifying V2 material UI/native My files replay; storage_server owns the native
-same-triple contact proof. V2 export consumption exists but awaits that proof
-and full signed qualification. No new production/beta activation. Use the top
-of WEBOS-WORK-QUEUES for the precise current evidence and limitations; older
-checkpoints below retain their original scope.
-
-Successor: desktop `090f189c7` integrates signed-save receipt `49c5fc218` and
-Files expiry evidence `a0a320cb9`; see the newest entries in WEBOS-WORK-QUEUES.
-CAD `d7504677` includes the v1 worker-enclosure 3MF adapter `f1ee0bb1` and save
-qualification notes. The adapter is wired but not browser-qualified yet; it
-reconstructs fresh OCC manufacturing meshes instead of preview triangles.
-storage_browser owns real-app/signed export tests, storage_review independently
-reviews save capture, and storage_server owns the v2 inset-label kernel/worker
-research (latest candidate `334f6aae`, not integrated). V2 currently separates
-bounded zero common volume from the positive shared-surface contact proof still
-needed for grouped export. No new deployment. Both integration heads are on
-box-git and R730. Do not call the two-object/two-region v1 path the requested
-two-object/three-region manufacturing acceptance.
-
-Desktop `16b589b5d` adds the Stage 1 objective/evidence matrix at `docs/evidence/files-stage1-objective-audit-20261104.md`; `e015cfd7b` forwards desktop save cancellation/window guards to CAD preparation (syntax checked; combined signed cancellation qualification pending). The matrix identifies certificate renewal and absolute-session-expiry recovery as missing integrated evidence, not a demonstrated Files defect. The storage-review agent is testing that with a disposable short-TTL issuer.
-
-CAD `6833729d` integrates the bounded enclosure manufacturing mesh candidate. Integration review and 16 Node tests pass on both R730 and the integrated checkout. Real-engine Chromium evidence remains agent-produced; desktop export orchestration and the third inset-label region are not complete. The geometry agent is implementing a versioned optional centered inset label with a real lid pocket and distinct LABEL solid; no printer fit claim. The save-worker agent has additive operation-scoped `prepareHostSave({signal,valid}) -> {envelope,isCurrent}` in candidate `672aa235`, not yet integrated. Its currentness guard is not a persistent dirty baseline after operation completion. Keep existing desktop comparisons until caller integration is qualified.
-
+Last verified Files deployment: main frontend f2e2ed4d, issuer adc693e4, gateway dd8cbea7, SDK44da; beta Files frontend 830ca4f1. These are earlier deployment receipts, not a fresh live health claim. Later activation must use managed hosting/recovery, preserve main and /desktop, and keep beta identities separate. Never hand-edit derived Caddy.

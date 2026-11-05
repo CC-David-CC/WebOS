@@ -1,5 +1,9 @@
 # WebOS work queues and progress ledger
 
+## Current focus — supersedes historical checkpoint status
+
+The bounded Files foundation is accepted and deployed; CAD is the active work. No new Files-service defect is established. CAD replay/Save reliability and the remaining mechanical, parameter, shared-command and final combined-app gates remain open. The signed three-region enclosure/core-3MF workflow passes within its stated domain. Source packaging is deferred until functional gates qualify. See [CAD-FUNCTIONAL-GATES.md](CAD-FUNCTIONAL-GATES.md); the full original objective remains unchanged.
+
 This is the operational queue for the complete WebOS program. **Use and update this file whenever work is started, tested, integrated, deployed, blocked, or handed off.** Preserve the full scope below. Add discovered work to the appropriate queue; do not remove an unfinished item merely because a prototype exists.
 
 For separate app/domain assignments and their ordered finish lines, use

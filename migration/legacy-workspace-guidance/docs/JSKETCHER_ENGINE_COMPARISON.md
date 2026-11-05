@@ -1,5 +1,9 @@
 # Geometry engine comparison
 
+## Current focus — supersedes historical checkpoint status
+
+The bounded Files foundation is accepted and deployed; CAD is the active work. No new Files-service defect is established. CAD replay/Save reliability and the remaining mechanical, parameter, shared-command and final combined-app gates remain open. The signed three-region enclosure/core-3MF workflow passes within its stated domain. Source packaging is deferred until functional gates qualify. See [CAD-FUNCTIONAL-GATES.md](CAD-FUNCTIONAL-GATES.md); the full original objective remains unchanged.
+
 ## Current direction and scoped evidence as of 2026-11-04
 
 OpenCascade is the preferred engine; Native Mesh/Manifold is secondary. Both

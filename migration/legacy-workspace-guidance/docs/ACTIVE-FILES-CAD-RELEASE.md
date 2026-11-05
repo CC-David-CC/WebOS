@@ -1,5 +1,9 @@
 # Active Files and JSketcher release milestone — 2026-11-03
 
+## Current focus — supersedes historical checkpoint status
+
+The bounded Files foundation is accepted and deployed; CAD is the active work. No new Files-service defect is established. CAD replay/Save reliability and the remaining mechanical, parameter, shared-command and final combined-app gates remain open. The signed three-region enclosure/core-3MF workflow passes within its stated domain. Source packaging is deferred until functional gates qualify. See [CAD-FUNCTIONAL-GATES.md](CAD-FUNCTIONAL-GATES.md); the full original objective remains unchanged.
+
 User resumed development through the attached goal. The complete goal is
 preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
 2026-11-04 architecture amendment. The completion audit below retains its scope.
