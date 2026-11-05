@@ -1,5 +1,17 @@
 # Geometry engine comparison
 
+## Current three-engine direction — 2026-11-05
+
+Evaluate OpenCascade, Native Mesh/Manifold and SMLib through the same browser-agent commands and authored history. Human UI is deferred. SMLib is a candidate default, conditional on independent integrated tests; OpenCascade remains the current default and the anticipated STEP translator. Native Mesh is retained as a genuine mesh/surfacing path. Engine-specific strengths, unsupported operations and numerical differences remain explicit.
+
+RandoTechNerd/smlib-wasm is an actual Emscripten SMLib/SM_API port, not merely USD metadata. Its upstream wrapper omits STEP and USD file I/O. Our private source build disables dynamic JS execution and targets workers; actual browser and application qualification are separate gates. NVIDIA public source exposes USD/SMLib I/O plus OCCT `.brep` conversion; do not infer STEP document I/O from `SmSTEPSurface` names.
+
+The intended design is one authored graph, multiple versioned derived geometry adapters, explicit conversion and no implicit engine fallback. Native projects retain parameters, feature/reference/material identity and operation engine provenance. STEP/3MF remain handoff outputs, not editable native history. A successful primitive test does not qualify profile topology, dependency references, manufacturing export or assemblies.
+
+New current evidence: CAD9e9dadf84 generic OCC/Manifold owned-mesh reads pass independent real strict-CSP browser box/Boolean metrics and handle/lifecycle checks. Three-engine shared history/native replay and SMLib default promotion are still open. See `WEBOS-WORK-QUEUES.md` for the operational acceptance list; historical comparison notes below retain their original scope.
+
+References: https://github.com/RandoTechNerd/smlib-wasm ; https://github.com/NVIDIA-Omniverse/usd-brep ; https://next.brep.io/ . next.BREP is an additional research/reference candidate, not a fourth supported engine or tested substitute. No claims about its advertised features have yet been independently reproduced here.
+
 ## Current focus — supersedes historical checkpoint status
 
 The bounded Files foundation is accepted and deployed; CAD is the active work. No new Files-service defect is established. CAD replay/Save reliability and the remaining mechanical, parameter, shared-command and final combined-app gates remain open. The signed three-region enclosure/core-3MF workflow passes within its stated domain. Source packaging is deferred until functional gates qualify. See [CAD-FUNCTIONAL-GATES.md](CAD-FUNCTIONAL-GATES.md); the full original objective remains unchanged.

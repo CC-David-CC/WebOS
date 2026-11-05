@@ -1,5 +1,21 @@
 # WebOS work queues and progress ledger
 
+## Current extension — browser-agent CAD and three engines (2026-11-05)
+
+Latest user direction: agent-driven browser CAD is the immediate target; human UI work is deferred. Keep the existing history, transactions, file authorization and native project model as the shared path. Evaluate OpenCascade, Native Mesh/Manifold and SMLib side by side. SMLib should become the default only after the shared agent/history/save/refusal/lifecycle acceptance passes; no default change is qualified yet.
+
+- [x] Located RandoTechNerd/smlib-wasm and pinned its source plus NVIDIA SMLib source. A private strict-CSP worker-only build is being qualified on R730. This does not establish integrated CAD support.
+- [x] CAD candidate `9e9dadf84` adds generic owned-solid display reads/binding checks for existing OCC and Manifold mounts. Real strict-CSP Chromium workers pass box6000/common3000/union9000/subtract3000 mm³, matching bounds, stale/disposed/foreign handles, public response/buffer mutation isolation and2/2 worker termination. Test: `test/webos/owned-solid-mesh-browser.test.cjs`. Display mesh is derived and never saved as design intent.
+- [~] Third-engine mount, registered data-only operations and shared-history commands are being integrated in separate lanes. Initial generic box/Boolean support is not arbitrary sketch, plate, enclosure, fillet or STEP qualification.
+- [ ] Real three-engine agent create/edit/reject/undo/redo/native Save/fresh replay through the same document pipeline. Record source/runtime pins, tolerances and unequal results, not a blanket parity claim.
+- [ ] Broaden meaningful operations and parameters, then retest the bracket/enclosure workflows on each engine where supported. Unsupported capabilities must be discoverable and reject explicitly without fallback.
+- [ ] Promote SMLib to the default only after the agreed common acceptance; persist engine/version provenance per operation and never silently reroute existing documents.
+- [ ] Build our own source-pinned WASM and dependable STEP exchange. NVIDIA's public source currently establishes USD/SMLib I/O and OCCT-BRep converters, not a STEP document translator. Keep OCC available for STEP and qualify precise cross-engine conversion separately. A triangulated approximation must not be advertised as equivalent editable CAD.
+
+The earlier9418 Save reentry/race browser gate now passes in `test/review-save-compat/ACTUAL-REENTRY-9418-20261105.md`; a later postcommit-notification correction and Circle Mirror correction have focused tests but still need final combined runtime qualification. CAD candidate9e9 includes those source changes. Current desktop candidate is not deployed; main and `/desktop/` remain unchanged. Files foundation remains accepted. The full bounded release objective and broader CAD1–6 backlog remain active; packaging stays deferred until functional gates qualify.
+
+Ownership: root shared registry/build/controller/integration; server lane SMLib source fork/mount; browser lane existing craft-history operation integration; review lane independent numeric/agent acceptance. Heavy processing remains in workers, builds on R730. Workstation has approximately11GiB free after the user's cleanup; do not confuse this with a durable storage guarantee.
+
 ## Qualified combined slices — 2026-11-05
 
 - [x] Files foundation remains accepted/deployed within its signed 128MiB persistence, isolation, changed-chunk, conflict and recovery scope. No new Files-service defect is established.
