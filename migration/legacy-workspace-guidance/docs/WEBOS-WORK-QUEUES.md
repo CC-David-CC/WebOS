@@ -24,8 +24,26 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 - [x] Cancellation during semantic side discovery preserves accepted geometry
   and history and terminates candidate worker (controlled dispatch stall).
 - [ ] Public CAD release with authenticated source/provenance packaging.
-- [ ] Driving diameter: UI/agent operation, contradiction and persistence proof.
+- [x] Driving diameter component: shared sketch UI/revision-bound action,
+  conflict rollback, undo/removal and native replay tested in CAD `02afdd70`.
+  Desktop command bridge `6598e4cb0` passes its scoped action-fixture tests.
+- [ ] Combined signed-desktop diameter workflow and deployment.
 - [ ] Authored enclosure, material regions and core 3MF remain incomplete.
+
+Enclosure integration source now includes bounded OCC and Manifold worker
+construction/preview (`fd88e9fd`), distinct engine metadata (`57e41ddb`), and
+explicit BODY/LID material binding (`7709fddc`). Root independently reran seven
+plan/mesh/capability tests and the pinned static Manifold builder test. These
+do not establish authored full-app acceptance or manufacturing tessellation.
+The authored OCC operation is in the browser agent's qualification lane;
+multi-feature composition and actual worker memory measurements remain open.
+Resource pool `63f946c8` supports an explicit two-mount candidate within the
+existing three-mount total ceiling; the app default remains one mount.
+
+Source-access candidate `4a22f864e` prepared exact CAD67d/clean8c runtime and
+verified public exclusion of all source artifacts, but final-registry signed
+access and managed gateway configuration are still outstanding. It is not
+deployed and does not contain the newer diameter/enclosure changes.
 
 ## Current integrated checkpoint — 2026-11-04
 
