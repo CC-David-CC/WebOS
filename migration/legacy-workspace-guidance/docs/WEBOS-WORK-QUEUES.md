@@ -17,6 +17,23 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Material controls source integrated into CAD `7c2fb6e0` (agent candidates
+  `f45514d5`, `dc75dee2`, `b3b505f7`) on top of worker cleanup. Separate BODY/LID
+  identities, appearance controls, preserved custom placement/names, material
+  revision fencing and canonical wizard string-ID discovery are included.
+  Root reran 10 assignment/hash/envelope tests plus TypeScript successfully.
+- [ ] Combined signed fixture qualification for that integration: agent's
+  standalone b3 candidate passed actual wizard/UI/desktop commands, stale-token
+  refusal, normal Save/fresh Files Open and second-account denial; await the
+  committed receipt and exact combined build. Its earlier alternating 404/login
+  failure was traced to two owned Caddy fixtures sharing a port, not product
+  data loss. Require exclusive fixture-port ownership on subsequent runs.
+- [ ] Clean release builder must include/pin the new manufacturing hash worker
+  and updated geometry runtime/source notices; existing 67d package is older.
+  New assignments hash incrementally in a worker, but the existing 8 MiB
+  manufacturing save/restore preparation still uses main-thread serialization.
+  Do not describe this as complete 128 MiB worker-based CAD persistence.
+
 - [x] CAD worker cleanup integrated as `51cea5c1` (reviewed `eed0a9af`):
   separate enclosure mount, two mounts per candidate/three total, accepted
   resource detachment before queued replay, separate visible cleanup failure.
