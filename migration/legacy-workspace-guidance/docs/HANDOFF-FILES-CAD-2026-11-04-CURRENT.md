@@ -18,6 +18,12 @@ Lead integration includes these qualified b2 slices. CAD3b8886e59 is runtime-equ
 
 Signed20350 was stopped gracefully and its private ephemeral account/data tree removed after all checks. The exact bundle/dist remain on R730. Direct20441/CDP19329 were live during qualification; verify processes and hashes before reuse. Earlier fixture handles below are historical. Full bounded objective and later CAD1–6 backlog remain active.
 
+## Active next candidate (not qualified or deployed)
+
+- CAD `0b9e38394` combines common atomic/revision boundaries for Concentric and Diameter, dimension-aware typed diameter resolution, Concentric UI refusal toasts and the readonly current-sketch diagnostic service. Focused combined source checks: TypeScript, 18 diagnostic/history controls and 61 mechanical controls pass. The installed app/Workers and same-bundle diagnostics still need browser qualification; this does not supersede qualified runtime b2.
+- Desktop `57cfc5b17` adds scoped `inspect-sketch-diagnostics` and `analyze-sketch` adapters. All 69 command-boundary controls pass. The public signed bridge is not yet browser-qualified. Diagnostic reports are estimates; unsupported/consumed faces explicitly refuse. No new GUI or physics certification is claimed.
+- Server lane owns the exact combined app/Worker build and same-bundle diagnostic controls. Browser lane owns a single signed fixture plus Diameter/diagnostic public-command and storage checks. Review lane owns rendered Concentric click/refusal and signed Concentric controls. Root owns source review, adapters, final integration and the next bounded worker/performance step. Large builds stay on R730; no deployment or source packaging yet.
+
 ## Historical b3 checkpoint — accepted only within its receipt scope
 
 - [x] CAD runtime `b3ccb284b` / desktop `680f79d88` is independently qualified and promoted to the lead integration branches with later test/receipt commits. CAD source checkpoint `38468797e` includes the independent composition review. Source is backed to both LAN repositories; no new CAD deployment.
