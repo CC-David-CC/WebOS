@@ -12,7 +12,13 @@ Files remains accepted within its documented foundation scope. CAD runtime `a9da
 
 Source worktrees: CAD `/tmp/codi-cad-mechanical-candidate-20261105`, desktop `/tmp/codi-desktop-mechanical-candidate-20261105`, branches `integration/*-mechanical-candidate-20261105`. Source/tests/notes are backed to box-git and R730. Exact app build: R730 `/mnt/data10tb/codi-diag-final-whole-cavity-reviewed-20261105-r1`; direct20478 and signed20374 are scoped fixtures, not deployment endpoints. Earlier checkpoints retain their original evidence scope.
 
-## Current work — remove CAD wrapper limitations (2026-11-05)
+## Current bounded release work — 2026-11-05
+
+The [row audit](../research/release-audit/current-reconciliation-20261105.md) and [completion table](ACTIVE-FILES-CAD-RELEASE.md#completion-audit) resolve the old bfc existing-edit, combined signed M05 and Concentric blockers within their recorded domains. Desktop 81aa proves the normal pending-export sign-out barrier, app-close cancellation and subsequent account isolation; it does not force an account switch past that barrier.
+
+The concrete functional blocker is CAD ed87's actual 139,364-byte constrained sketch: invoke 515 ms, undo 676.3 ms, redo 766.8 ms. Follow [ARC18–22](CAD-CORE-SEPARATION.md#current-bounded-worker-first-follow-up--2026-11-05) for Worker transitions/replay, current owned publication, hydration without repeating heavy solve, shared callers and combined qualification. JSON capture alone at 10–14 ms does not fix this. New source work is a candidate until matching runtime proof. Finish the finite accepted-operation currentness review and final affected-scope audit; delivery and managed beta follow functional qualification. CAD1–6 and experimental native limitations remain separate scope.
+
+## Previous wrapper work — retain recorded checkpoint scope (2026-11-05)
 
 The user explicitly rejected treating the third-party SMLib wrapper restriction as the WebOS CAD limit. Keep one authored graph, sketch solver and history; retain a whole native result for an evaluation. Empty results, one solid and multiple solids/regions are distinct outcomes. No automatic engine fallback, no invented component identity and no fake native volume. OCC remains default pending the full comparison; the experimental SMLib catalog now selects our direct NVIDIA-source provider.
 
@@ -27,7 +33,7 @@ The user explicitly rejected treating the third-party SMLib wrapper restriction 
 - [ ] Multi-material plus void support, arbitrary STEP/export, full CAD1 corpus, mechanical acceptance and final managed beta qualification remain open. The original bounded release objective and full later backlog remain unchanged. No new deployment or default promotion.
 
 
-## Current extension — browser-agent CAD and three engines (2026-11-05)
+## Earlier browser-agent/three-engine checkpoint — historical (2026-11-05)
 
 Latest user direction: agent-driven browser CAD is the immediate target; human UI work is deferred. Keep the existing history, transactions, file authorization and native project model as the shared path. Evaluate OpenCascade, Native Mesh/Manifold and SMLib side by side. SMLib should become the default only after the shared agent/history/save/refusal/lifecycle acceptance passes; no default change is qualified yet.
 

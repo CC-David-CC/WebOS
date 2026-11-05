@@ -12,6 +12,8 @@ Files remains accepted within its documented foundation scope. CAD runtime `a9da
 
 Source worktrees: CAD `/tmp/codi-cad-mechanical-candidate-20261105`, desktop `/tmp/codi-desktop-mechanical-candidate-20261105`, branches `integration/*-mechanical-candidate-20261105`. Source/tests/notes are backed to box-git and R730. Exact app build: R730 `/mnt/data10tb/codi-diag-final-whole-cavity-reviewed-20261105-r1`; direct20478 and signed20374 are scoped fixtures, not deployment endpoints. Earlier checkpoints retain their original evidence scope.
 
+Bounded release row reconciliation: [current audit](../research/release-audit/current-reconciliation-20261105.md) and [completion table](ACTIVE-FILES-CAD-RELEASE.md#completion-audit). The bfc existing-edit, combined signed M05 and Concentric gates have bounded passes. Desktop 81aa proves the actual normal export/sign-out barrier, app-close cancellation and subsequent account isolation. The concrete remaining functional blocker is ed87's 139,364-byte constrained sketch: invoke/undo/redo 515/676.3/766.8 ms. Follow ARC18–22 in CAD-CORE-SEPARATION.md, including hydration without repeating heavy solve; capture alone at 10–14 ms is not the fix. New transition source work remains a candidate. Finish finite accepted-entrypoint currentness and affected-scope review, then delivery and managed beta. CAD1–6 and experimental native limitations remain separate scope.
+
 ## Qualified combined slices — 2026-11-05
 
 - [x] Files foundation remains accepted/deployed within its signed 128MiB persistence, isolation, changed-chunk, conflict and recovery scope. No new Files-service defect is established.
