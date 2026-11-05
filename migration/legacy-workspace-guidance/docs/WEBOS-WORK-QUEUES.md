@@ -17,6 +17,22 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Signed V1 manufacturing receipt integrated as desktop `84f6299b0`; CAD
+  tests integrated through `27264b6c`. Both actual signed files match recorded
+  hashes and pass root's strengthened independent component-graph/identity
+  placement checks. Duplicate mesh references, translation and cycles refuse.
+  Raw outputs are backed on R730; this remains two objects/two regions, not V2.
+- [x] Surfacing capture invalidation source integrated as CAD `17cc1596` /
+  `23fa4b38`, with no-op/reentrant browser receipt through `3b38261b`. Root
+  reviewed mutation fences and TSC passes; source guards both sides of mutation.
+  Agent now tests actual Push/Pull pointer/cancel. That test found Escape could
+  commit typed distance on blur; a fix is being qualified. Surfacing's lack of
+  a dedicated undo stack is explicit, not a claimed mechanical-history feature.
+- [x] Root separated print-grouping checks from native contact proof and ran
+  ten grouping/lifecycle controls. Wrong label placement, separated label,
+  cross-feature pairing and merged body/lid refuse. No contact inference from
+  matching transforms is permitted.
+
 - [x] V2 authored history source integrated as CAD `0731e605` from `cc499ab8`.
   Root reviewed atomic role publication/versioned identity and passed five
   display controls (documented webpack harness), six material controls and TSC.
