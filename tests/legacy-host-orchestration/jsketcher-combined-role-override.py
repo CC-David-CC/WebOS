@@ -49,7 +49,7 @@ with tempfile.TemporaryDirectory(prefix='codi-rectangle-override-') as temp:
             assets.append('node_modules/jsketcher-build/static/'+worker.name)
     # Test-only versioned worker prism assets. The release packager must do
     # its own closed-inventory and source/notice qualification.
-    for rel in ['static/oci-verified-worker.js','static/occ-portable.js',
+    for rel in ['static/oci-verified-worker.js','static/manifold-verified-worker.js','static/occ-portable.js',
                 'static/profile-topology.mjs','static/rectangleProfileRequest.mjs',
                 'static/authoredRegions.mjs','static/profilePlan.mjs',
                 'static/centeredHolePlan.mjs','static/centeredHoleTopology.mjs',
