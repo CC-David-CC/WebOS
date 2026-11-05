@@ -17,6 +17,13 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [ ] Root export groundwork now includes disposable v1 manufacturing reconstruction
+  with four passing lifecycle controls. It is not wired to desktop export yet;
+  v2 inset label and a same-reconstruction contact proof are required before
+  grouped LID/LABEL can pass the existing overlap check. The geometry agent's
+  first real-engine v2 run produces a recessed lid and a distinct label, while
+  edit/fault/regression qualification remains in progress.
+
 - [x] CAD worker-save sequence integrated through `6e7e615f`; root reran three
   focused tests, TypeScript, and actual Chromium `worker-save-browser.test.cjs`
   against the isolated `672aa235` build. Material/native replay, cancellation,
