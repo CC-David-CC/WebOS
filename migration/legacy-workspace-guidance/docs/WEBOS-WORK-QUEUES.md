@@ -66,6 +66,14 @@ archived-input/full-build evidence remains the agent's R730 receipt.
 Review identified a source-dialog disposal gap; its fix and the managed
 operator successor remain in the source-access lane before deployment.
 
+Dialog fix integrated as `e7ac87443`. Root independently ran the real Chromium
+dialog control with an owned loopback server/browser: close abort, late-result
+refusal, URL revocation, invalid links and no index-triggered subresource load
+passed; the owned browser/server closed afterward. Actual mount-dispose
+independent-of-host-signal evidence remains the agent's separate browser test.
+Beta uses its own gateway unit and c543 recovery actor, not main's managed.json
+operator; beta-specific pin/recovery changes are still required before release.
+
 ## Current integrated checkpoint — 2026-11-04
 
 - [x] Bounded main Files promotion: normal UI save, fresh-login reopen, exact
