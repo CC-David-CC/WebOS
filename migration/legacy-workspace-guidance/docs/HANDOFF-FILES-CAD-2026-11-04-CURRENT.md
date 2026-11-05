@@ -1,5 +1,17 @@
 # Current Files and CAD handoff
 
+## Accepted bounded combined checkpoint — 2026-11-05
+
+- [x] CAD runtime `b3ccb284b` / desktop `680f79d88` is independently qualified and promoted to the lead integration branches with later test/receipt commits. CAD source checkpoint `38468797e` includes the independent composition review. Source is backed to both LAN repositories; no new CAD deployment.
+- [x] Typed original-sketch entry and invalid-Angle-save counterexamples are fixed. Lead actual annotation edit/undo/native restore and invalid width/NaN/Infinity/1e309 rejection pass; Save preserves the prior valid angle.
+- [x] Six strict-CSP signed regressions plus public rigid create/pose/refuse/dissolve/recreate/Save/fresh Files reopen pass. Independent oracles pass three material-aware 3MF files. 58 desktop command-boundary tests pass. Full scope, exact bundle/hashes and reproduction: `tests/jsketcher-b3-combined-signed-20261105.md`.
+- [x] Exact-build carried splines/DXF/history/selection/touch and bounded OCC/Native Mesh tests pass (`8205bff37`). Rigid bounds/whole-entity controls (`adf3f7a02`) and typed/common/material/placement composition review (`eb320d5e3`) pass. Do not infer engine equivalence, physical phone or generic profile support.
+- [~] Configurations at `e3c65523c` have isolated Worker/core/native UI/bracket+enclosure/3MF research evidence. Root owns desktop adapter/signed tests; storage_review owns combination and selected-v2 typed-dependent evaluation; storage_browser owns independent configuration review; storage_server prepares signed acceptance tests. Configurations are not integrated or released.
+- [ ] Complete mutation inventory, worker-first capture/performance, final functional/release audit and managed beta remain. No full M02/M03/M04 or CAD1 completion. Packaging stays deferred until functional gates qualify. Main and /desktop unchanged.
+- [x] Removed 605.1 MiB of identified obsolete compiler dist/.build outputs from inactive clean test worktrees after tracked-file/process checks, preserving source/dependencies/evidence. Workstation still has limited space; large builds use R730.
+
+Current runtime fixture: signed20263 (root session58092/tunnel13490), direct20260/CDP20261; signed CDP19329. Verify processes before reuse. Exact b3 dist is R730 `/mnt/data10tb/codi-7102-qualification-20261105/dist` despite its historical directory name. Older status below is superseded only within this accepted bounded scope.
+
 The full goal remains active. This replaces older checkpoint status, not the original scope. Read FILES-CAD-RELEASE-OBJECTIVE.txt, then CAD-FUNCTIONAL-GATES.md and the latest WEBOS-WORK-QUEUES.md entries.
 
 ## Latest candidate hold — 2026-11-05

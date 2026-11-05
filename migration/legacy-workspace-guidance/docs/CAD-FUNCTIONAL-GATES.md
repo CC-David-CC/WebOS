@@ -1,5 +1,12 @@
 # Current functional gates: Files and CAD
 
+Latest bounded acceptance: CAD runtime `b3ccb284b` / desktop `680f79d88`
+closes the typed-editor and rigid-boundary defects and passes signed bracket,
+shared parameters, role/rigid operations, material enclosure and core 3MF.
+See `tests/jsketcher-b3-combined-signed-20261105.md` and current work queue.
+Configurations, complete mutation/worker-performance and final beta remain open.
+Older pending states below are superseded only within that receipt's scope.
+
 The full objective in FILES-CAD-RELEASE-OBJECTIVE.txt remains intact. Scoped passes do not qualify an entire CAD feature family.
 
 **Files foundation is accepted within its tested scope. CAD is the active work.** Signed tests cover persistence, account isolation, conflicts, changed-chunk sync and interruption/crash recovery through representative 128 MiB files. No new Files-service defect is established. Every-app compatibility, automatic GC, classroom capacity and power-loss guarantees are not implied.

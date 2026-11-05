@@ -1,5 +1,12 @@
 # Active Files and JSketcher release milestone — 2026-11-03
 
+Latest bounded acceptance: CAD runtime `b3ccb284b` / desktop `680f79d88`
+closes the typed-editor and rigid-boundary defects and passes signed bracket,
+shared parameters, role/rigid operations, material enclosure and core 3MF.
+See `tests/jsketcher-b3-combined-signed-20261105.md` and current work queue.
+Configurations, complete mutation/worker-performance and final beta remain open.
+Older pending states below are superseded only within that receipt's scope.
+
 ## Current focus — supersedes historical checkpoint status
 
 The bounded Files foundation is accepted and deployed; CAD is the active work. No new Files-service defect is established. CAD replay/Save reliability and the remaining mechanical, parameter, shared-command and final combined-app gates remain open. The signed three-region enclosure/core-3MF workflow passes within its stated domain. Source packaging is deferred until functional gates qualify. See [CAD-FUNCTIONAL-GATES.md](CAD-FUNCTIONAL-GATES.md); the full original objective remains unchanged.

@@ -1,5 +1,12 @@
 # One authored CAD workflow for people and agents
 
+Latest bounded acceptance: CAD runtime `b3ccb284b` / desktop `680f79d88`
+closes the typed-editor and rigid-boundary defects and passes signed bracket,
+shared parameters, role/rigid operations, material enclosure and core 3MF.
+See `tests/jsketcher-b3-combined-signed-20261105.md` and current work queue.
+Configurations, complete mutation/worker-performance and final beta remain open.
+Older pending states below are superseded only within that receipt's scope.
+
 This implements the current functional gate; it does not replace the unchanged
 Files/CAD release objective with API discovery.
 
