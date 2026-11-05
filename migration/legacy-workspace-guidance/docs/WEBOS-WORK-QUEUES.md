@@ -1,5 +1,18 @@
 # WebOS work queues and progress ledger
 
+## Current work — remove CAD wrapper limitations (2026-11-05)
+
+The user explicitly rejected treating the third-party SMLib wrapper restriction as the WebOS CAD limit. Keep one authored graph, sketch solver and history; retain a whole native result for an evaluation. Empty results, one solid and multiple solids/regions are distinct outcomes. No automatic engine fallback, no invented component identity and no fake native volume. OCC remains default pending the full comparison; the experimental SMLib catalog now selects our direct NVIDIA-source provider.
+
+- [x] Direct NVIDIA provider corpus: edge/point/face/disjoint unions, cavity, genuine empty reuse, repeated through-cuts and bounded operand evidence/mesh preservation. Owner and independent root tests pass. Native source `e854d6c`, provider `ab8f97135`, corpus `9477806b8`, integrated on CAD candidate. Nonmanifold native volume is null by contract.
+- [x] OCC/Manifold worker adapters:14 actual Chrome cases preserve empty and multiple-solid results; empty outputs can feed a later union. Native solid counts and mesh connected components remain different facts. Source `9d7a399ba`; no shared-app claim from this provider test.
+- [x] Modern worker display projection: Float32 precision loss reports unavailable while native geometry remains valid. Main-thread publication uses transferred buffers and bounded metadata; shared-model integration is being reviewed.
+- [~] Common model/ledger/commands: canonical outputs including empties, stable output IDs, typed inspection, atomic publication, same graph/history. Source controls pass in owner lane; lead integration and actual app qualification pending.
+- [ ] Matched combined app: agent empty reuse, upstream empty↔nonempty regeneration, rejected edit, undo/redo and native save/reopen on all three backends. Prepared test `test/solid-output-history/` in CAD. Signed My files/desktop bridge qualification remains a separate release gate.
+- [x] Earlier matched807 metrics test passes on all three prior backends for500→700 mm³ edit, inspection, shared travel and fresh native replay. This does not qualify the newer raw provider or arbitrary geometry.
+- [ ] Multi-material plus void support, arbitrary STEP/export, full CAD1 corpus, mechanical acceptance and final managed beta qualification remain open. The original bounded release objective and full later backlog remain unchanged. No new deployment or default promotion.
+
+
 ## Current extension — browser-agent CAD and three engines (2026-11-05)
 
 Latest user direction: agent-driven browser CAD is the immediate target; human UI work is deferred. Keep the existing history, transactions, file authorization and native project model as the shared path. Evaluate OpenCascade, Native Mesh/Manifold and SMLib side by side. SMLib should become the default only after the shared agent/history/save/refusal/lifecycle acceptance passes; no default change is qualified yet.
