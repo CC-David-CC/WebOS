@@ -12,20 +12,30 @@ and adding production-style compatibility gates are no longer requirements.
 Stop extra compatibility work and finish current deployment/functional checks.
 Saved-data integrity, account isolation and worker/lifecycle correctness remain.
 
-Latest checkpoint: main OPFS public candidate `f2e2ed4d` is built reproducibly
-from verified main `0366` and beta `830` assets; builder integrated as
-`c0e205cd7`. This is source-only, not deployed or browser-qualified yet.
-Independent explicit-origin issuer and gateway continuity controls passed
-(`evidence/main-opfs-source-controls-20261104.json`). Signed Chromium
-qualification of the assembled services is next. The user's latest direction
-again permits direct replacement of both test sites, with no old-window
-compatibility campaign. Keep managed routing and unrelated sites intact.
+Latest checkpoint: main OPFS public candidate `f2e2ed4d` and issuer
+`01080b86` are verified and staged on box-webhost; source and receipts are backed
+up to both LAN repositories (`59af1d92f`, `evidence/main-opfs-staged-20261104.json`).
+They are not selected by live routes/services. Assembled signed Chromium tests
+passed file operations, account denial and fresh-session recovery; normal UI
+save/close/fresh-login/open also passed without internal sync calls (`10e9447b1`,
+`63e114235`). Current work is a bounded direct replacement of the linked native
+and gateway configurations/units and managed frontend route. No preservation of
+old test windows is required. Save-data/account boundaries and unrelated sites
+remain protected. The coordinator model alone is not deployment evidence.
 
-CAD four-corner research validator `6dc801fc` is not accepted: independent
-counterexamples accepted an outer vertex displaced by 1000, reversed surface
-UV bounds, and reversed line parameter ranges. Correct those checks and their
-single-hole equivalents before accepting four-corner geometry. This does not
-invalidate the separate planner or imply a completed bracket workflow.
+CAD source integration is `60179b61` on both LAN repositories. Independent
+counterexamples against the original four-corner validator were corrected:
+outer vertices, UV bounds and oriented line frames are now checked, and a real
+three-of-four native cut is refused. Fourteen focused controls passed on the
+integrated tree. An independent Chromium run passed centered-plus-four geometry,
+bindings, stale/cross-mount/tamper/touching refusals, source disposal, and candidate
+cancellation/failure without damaging a separate accepted mount. Nine packaging/
+mount controls passed after fixing missing helper imports. See JSketcher's
+`docs/research/FOUR-CORNER-MOUNT-20261104.md` and
+`docs/research/BOUNDARY-VALIDATION-20261104.md`.
+This proves a bounded worker/mount path on the incremental native runtime;
+authored history, projection, feature registration and clean-runtime qualification
+are still in progress. Do not count it as a complete plate or bracket workflow.
 
 **Current checkpoint (supersedes earlier implementation snapshots below):**
 beta now selects Files **830ca4f1**; main selects **0366e10a**, retaining the five
@@ -55,7 +65,7 @@ reopen and account denial (evidence/cad-shared-feature-signed-20261104.json).
 Owned restore timeout now cancels workers and rolls back staged writes, with
 actual held-reply/late-delivery evidence; original latency cause remains open.
 File-menu source discovery works, but server-side source authentication and
-precise notice gaps remain. Four-corner dependent-hole planning is next. No public CAD deployment, full plate, Gate1, bracket/enclosure
+precise notice gaps remain. Four-corner planning/worker/mount tests now pass; owner-ledger and feature-history integration are next. No public CAD deployment, full plate, Gate1, bracket/enclosure
 or material-aware 3MF completion is claimed.
 
 Latest user clarification: **all JSketcher features are suspect and used for
