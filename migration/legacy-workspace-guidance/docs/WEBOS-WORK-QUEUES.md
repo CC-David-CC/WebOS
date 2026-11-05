@@ -17,6 +17,15 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] CAD worker cleanup integrated as `51cea5c1` (reviewed `eed0a9af`):
+  separate enclosure mount, two mounts per candidate/three total, accepted
+  resource detachment before queued replay, separate visible cleanup failure.
+  Root reran 34 resource/ledger tests and TypeScript noEmit successfully.
+  Root independently reran all three actual Chromium composition/cancellation/
+  cleanup controls against the pinned no-blob fixture; all pass, browser closed.
+  Signed parent and combined material candidate still require
+  qualification. Both LAN backups contain the integration commit.
+
 - [x] CAD `6f05e4fb`: independent Python ZIP/XML verification of noncommuting
   placements and three synthetic box regions in two build objects; 20 focused
   writer/adapter/envelope tests pass. Worker enclosure/inset export not proven.
