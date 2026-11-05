@@ -1,20 +1,21 @@
 # Current functional gates: Files and CAD
 
-Accepted source checkpoint: CAD `353fdc843` / desktop `64311bb6a`, with
-configuration runtimes `aadc2426f` / `9a64462e1`. Signed UI/agent configurations,
-invalid-switch preservation, undo/redo, material review, Save/fresh Files reopen,
-account isolation and independently checked configured 3MF pass within the
-bounded designs/fields. See `tests/jsketcher-configurations-signed-20261105.md`.
-The earlier b3 bracket, parameters, role/rigid and material/export scope remains
-accepted. The existing-constraint editor defect (`bfc406bee`), M05 combined signed
-repair qualification, candidate history cleanup/performance qualification,
-complete mutation coverage and final app/beta gates remain open. No new deployment
-is claimed.
-Unaccepted candidates: CAD `75ffe6c3f` combines M05, accepted configurations,
-large history and `006d47d5f` finally cleanup; desktop `423e6e7c6` adds public
-parent-repair adapters with 58 command-boundary tests. Root independently passed
-three history controls and the core history runner. These checks do not qualify
-the final app: atomic-edit integration and actual combined signed gates remain.
+Latest combined functional checkpoint: CAD runtime `b2a66ca86` / desktop
+runtime `82bef8323`. Bounded atomic existing-dimension rejection, stale-dialog
+refusal, centered-hole parent repair, configurations, undo/redo, material review,
+signed Save/fresh Files reopen, account isolation, cancellation and independently
+checked core 3MF pass. Actual editor close faults release ownership/history,
+refuse reentry during exit and permit reopen. See
+`tests/jsketcher-combined-core-b2a-20261105.md` and the signed repair receipt.
+No deployment or full CAD baseline completion is claimed.
+
+Lead branches retain accepted CAD `353fdc843` / desktop `64311bb6a` while the
+candidate completes affected carried regressions. CAD source `699ecf901` differs
+from b2 runtime only in tests/docs. Near-1MiB history passes; relation invocations
+are 14.7–17.3ms, but undo still produced a 403ms task/461ms heartbeat. Remaining:
+concentric rejection unification, truthful local solver diagnostics, complete
+mutation/currentness coverage, worker-first capture/performance and final
+functional/release/beta gates. Source packaging stays deferred.
 Older checkpoints retain their original receipt scopes.
 
 The full objective in FILES-CAD-RELEASE-OBJECTIVE.txt remains intact. Scoped passes do not qualify an entire CAD feature family.
