@@ -14,6 +14,7 @@ p.add_argument('--cad-dist',type=Path,required=True)
 p.add_argument('--output',type=Path,required=True)
 p.add_argument('--builder',type=Path,required=True)
 p.add_argument('--node',type=Path,required=True)
+p.add_argument('--raw-smlib',action='store_true',help='Use raw SMLib test-only Worker from this matched CAD dist')
 p.add_argument('--wasm-name',default='a2b2f7daf6a4eb98b975.wasm',help='Exact emitted test runtime basename')
 a=p.parse_args()
 if not __import__('re').fullmatch(r'[a-f0-9]{20}\.wasm',a.wasm_name):p.error('Expected emitted WASM basename')
@@ -30,6 +31,7 @@ with tempfile.TemporaryDirectory(prefix='codi-rectangle-override-') as temp:
     target=app/'node_modules/jsketcher-build';shutil.copytree(old_app,target)
     manifest=json.loads((app/'app.json').read_text());assets=manifest['assets']
     assets[:]=[x for x in assets if not any(('static/'+name) in x for name in ('sketch-solver.','project-validator.','prism-semantic.','manufacturing-hash.','physical-parameters.'))]
+    if a.raw_smlib: assets[:]=[x for x in assets if 'static/smlib-worker.' not in x and 'static/a48a3283760c21337881.wasm' not in x]
     # The baseline's old OCC WASM is not referenced by the replacement app.
     # Remove this exact test-fixture input before adding the new runtime so the
     # bounded app builder does not retain two 35 MiB engines.
@@ -55,7 +57,7 @@ with tempfile.TemporaryDirectory(prefix='codi-rectangle-override-') as temp:
                 'static/fourCornerHoleTopology.mjs','static/fourCornerHoleProvenance.mjs']:
         shutil.copy2(dist/rel,target/rel)
         assets.append('node_modules/jsketcher-build/'+rel)
-    for pattern in ['static/physical-parameters.*.js','static/prism-semantic.*.js','static/manufacturing-hash.*.js','static/smlib-worker.*.js','static/'+a.wasm_name]:
+    for pattern in ['static/physical-parameters.*.js','static/prism-semantic.*.js','static/manufacturing-hash.*.js',('static/raw-smlib-worker.js' if a.raw_smlib else 'static/smlib-worker.*.js'),'static/'+a.wasm_name]:
         workers=list(dist.glob(pattern))
         if len(workers)!=1:raise RuntimeError('Expected one '+pattern)
         for worker in workers:
