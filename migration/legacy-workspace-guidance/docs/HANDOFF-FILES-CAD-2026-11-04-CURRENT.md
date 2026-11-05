@@ -5,6 +5,17 @@ The user requested a handoff, not a pause. The full goal remains active.
 Read `FILES-CAD-RELEASE-OBJECTIVE.txt` first: it is a verbatim copy of the active
 user objective, so another machine does not need the original chat attachment.
 
+Continuation update: desktop signed material tests/receipt are now integrated
+through `4b8fa41e9`, CAD browser receipt through `383e75ef`, both backed up.
+The root reviewed/syntax-checked the signed tests; it has not independently
+rerun the combined signed fixture. `storage_browser` now owns worker save/rebind
+preparation at `/tmp/codi-manufacturing-save-worker`, branch
+`research/manufacturing-save-worker-20261104`. Normal desktop Save already calls
+`snapshotForHostSave`; its surrounding repeated synchronous snapshot/JSON work
+still needs improvement. Do not add a duplicate validation call. `storage_review`
+is now auditing Stage1 Files requirements against existing evidence. These new
+assignments supersede the finished-agent status below; manufacturing continues.
+
 ## Start here
 
 1. Fetch current branches, inspect working trees and coordinate with running

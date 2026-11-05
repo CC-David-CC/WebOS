@@ -17,6 +17,17 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Combined signed material test/receipt integrated through desktop
+  `4b8fa41e9`; CAD identity/color/stale-token browser receipt integrated as
+  `383e75ef`. Root reviewed and syntax-checked scripts; agent's combined signed
+  execution is the existing evidence, not a claimed new root rerun.
+- [ ] Worker CAD save preparation: `storage_browser` owns new isolated branch
+  `research/manufacturing-save-worker-20261104`; root owns desktop integration.
+  Normal Save already awaits `snapshotForHostSave`; repeated main-thread JSON
+  work remains around/inside that path. Preserve one validated save operation.
+- [ ] `storage_review` is mapping full Stage1 Files requirements to receipts,
+  separating actual storage gaps from CAD serializer and deferred app/capacity work.
+
 - Current successor entry point: `HANDOFF-FILES-CAD-2026-11-04-CURRENT.md`.
   The exact active user objective is copied into `FILES-CAD-RELEASE-OBJECTIVE.txt`.
   Handoff requested; goal not paused. Combined material signed receipt is on
