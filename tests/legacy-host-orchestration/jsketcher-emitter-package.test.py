@@ -9,7 +9,7 @@ if len(sys.argv) != 2:
     raise SystemExit('usage: python tests/jsketcher-emitter-package.test.py /path/to/jsketcher-build')
 runtime = Path(sys.argv[1])
 receipt = json.loads((runtime / 'BUILD-RECEIPT.json').read_text())
-assert receipt['forkCommit'] == '5b1f4c63a12826c32b0403c51425ceb61f119744'
+assert receipt['forkCommit'] == '2bef632fbbc1c62c2c16c1bb06fa702ac121a506'
 assert receipt['occtSelection'] == 'source-research'
 assert hashlib.sha256((runtime / 'lib-assets/jsketcher-occ-engine/occt.wasm').read_bytes()).hexdigest() == 'a2b2f7daf6a4eb98b975f8aec136f6cbaf2720295ea32e71edb13ff4c5ceaecb'
 code = (runtime / 'static/index.bundle.js').read_text(encoding='utf-8')
