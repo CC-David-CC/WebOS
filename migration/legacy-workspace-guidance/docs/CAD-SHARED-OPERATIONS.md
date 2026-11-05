@@ -20,6 +20,16 @@ observe internal state to independently verify results. Private helpers must
 not perform a missing authoring step and then qualify the entire agent path.
 No AI provider is required.
 
+Combined runtime `28870335` and desktop `f3b50ad9c` qualify that bounded bracket
+path plus signed X/Y/projected, physical length relations and typed extrusion
+depth. Native Edit menu and public authored travel use the same core. Parent-
+owned async settlement releases CAD operations even if an iframe-owned Promise
+disappears on close. It never retries a possibly committed write. See
+`tests/jsketcher-mechanical-combined-20261105.md` for exact scopes. Typed rectangle/
+corner/enclosure dependencies and configurations remain open: changing shared
+definitions must regenerate all supported dependent source and results within
+one transaction, whichever public command initiated the edit.
+
 ## Common transaction boundary
 
 UI and agent adapters submit the same typed operation to the document

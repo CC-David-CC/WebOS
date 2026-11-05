@@ -8,6 +8,15 @@ User resumed development through the attached goal. The complete goal is
 preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
 2026-11-04 architecture amendment. The completion audit below retains its scope.
 
+Latest functional checkpoint: CAD runtime `28870335` combines the accepted menu,
+signed dimensions/epoch/closed-CV repair, length relations and typed-depth slice.
+Desktop runtime `f3b50ad9c` supplies public adapters and parent-owned cancellation.
+Lead passes signed bracket/menu/dimensions/relations/typed depth, fresh Files
+reopen/account denial where stated, actual-frame cleanup and combined material/
+core-3MF regression with independent oracle. See
+`tests/jsketcher-mechanical-combined-20261105.md`. This is not deployed. Full
+M02/M03/M04, worker-first sketch snapshots and final beta remain open.
+
 ## Current architectural direction — 2026-11-04
 
 Deployment correction: both main and beta are no-user test sites. Current-release
@@ -329,9 +338,9 @@ The earlier row-by-row Files summaries were stale and are replaced by that matri
 | C05 | Agent-driven CAD uses the same validated operations as the UI | bounded worker-plate pass; broader commands open | Exact d6253ea9 command gate and 24d52ae8 actual native-menu follow-up pass signed discovery/create/edit/reject/undo/save/sync/fresh Files reopen/account denial, independently repeated by root. Preserved authored IDs/dimensions and measured BREP geometry agree. Focus, actual sketch editor, held worker and reentrant reset controls also pass. No private authoring helpers or AI provider. Broader sketch/parameter commands remain open. See tests/jsketcher-authored-menu-signed-20261105.md. |
 | A00 | Beginner single-part fixtures precede the bracket | open | Start from empty documents: dimensioned block, washer and drilled plate through UI/shared commands; see learning progression |
 | M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | partial | Reclassification/drag/restore fixes reviewed; independent cross-stage failure controls found further rollback work |
-| M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | open | Actual model commands and mechanical sketches |
-| M03 | Equality/ratio/difference and driving/reference roles | open | Typed simultaneous relations and reference DOF tests |
-| M04 | Typed parameters/formulas/dependencies/configurations | open | Bracket/enclosure edits with explicit errors |
+| M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | partial | Combined X/Y/projected UI/agent/Worker/native pass plus earlier diameter/concentric scope. Collinear/axis lane, entity fixing, rigid groups, complete mutation inventory and worker snapshot performance remain. |
+| M03 | Equality/ratio/difference and driving/reference roles | partial | Combined simultaneous length relations, EqualLength Worker and reference-only measurement pass. Promotion/demotion, rollback-failure recovery, other measurements and rank diagnostics remain. |
+| M04 | Typed parameters/formulas/dependencies/configurations | partial | Typed source, unit/dependency errors and named extrusion depth pass atomic replay, UI/agent, undo and signed reopen. Shared rectangle/hole/enclosure dependencies and configurations remain. |
 | M05 | Regeneration/reference repair preserves authored intent | active | Combined plate resize/reopen, ordinary OCC fillet/chamfer, last-valid failed-edit recovery and late-result/document replacement pass; new worker graph is signed-host tested. Bounded associative cut pattern/picker passes locally; general patterns, units, full Gate 1 and all operation contexts remain. |
 | ARC | Computational core operates independently of UI and publishes only current validated results | active | CAD-CORE-SEPARATION.md: no canvas/DOM/fake UI; actual equations, bounded jobs, residual/geometry checks, cancellation, IDs/revisions and explicit failure. |
 | A01 | Mounting bracket substantial edits, contradictions, undo and reopen | bounded signed command pass | CAD d6253ea9 creates and edits a five-hole plate from 100×50×20 to 150×30×35 with changed corner offsets. True rectangle/depth/hole undo/redo, invalid-edit refusal, Save/sync and fresh Files reopen/account denial pass owner and independent root runs through supported commands. Original older blanket-interception timeout remains unexplained; this is not arbitrary bracket geometry or the complete Gate 1 catalogue. See tests/jsketcher-agent-bracket-signed-20261105.md. |
