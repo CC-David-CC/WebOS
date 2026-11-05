@@ -1,5 +1,16 @@
 # Current functional gates: Files and CAD
 
+## Latest integration status — 2026-11-05
+
+The operative queue is [WEBOS-WORK-QUEUES.md](WEBOS-WORK-QUEUES.md). Later checkpoints supersede the older failure labels below only within their recorded scope. Files remains the accepted foundation; no new Files defect or CAD deployment is claimed.
+
+- Qualified runtime CAD `1fddd2d1c`: common empty/compound outputs, native OCC topology census, direct NVIDIA experimental provider, shared agent history, signed My files persistence/account controls, bracket-family and material-aware3MF regressions. See `tests/jsketcher-solid-census-signed-20261105.md` and `tests/jsketcher-census-agent-regression-20261105.md`.
+- Current combined candidate CAD `147814d84` adds the reviewed numerical admission-priority correction and mirrored-arc Save support. Each has isolated actual app/Worker/native-replay proof; combined runtime qualification is underway. No physical DOF/rank or full CAD1 claim.
+- A separate NVIDIA native cavity-fill region-status defect is reproduced directly in C++; a scoped union correction is under independent review. Production multi-material+void guard and OCC default remain.
+- Final mutation/currentness and worker/main-thread performance qualification, final functional audit, reproducible runtime/source delivery and managed beta activation remain open. Source packaging follows the functional gates.
+
+## Earlier checkpoint details (retain original evidence scope)
+
 Current preliminary combined runtime **ae579c93a / desktop55d3662b4** passes signed ordinary and multi-sketch D12→14 regeneration, invalid-value rollback, unrelated plate preservation, undo/redo, Save/fresh Files/account controls, plus root's actual async/no-op Save and close cancellation. The no-edit false-dirty counterexample now passes signed with unchanged bytes. See `research/diameter-regeneration/ae579-signed.md` and `tests/jsketcher-async-save-ae579-20261105.md`.
 
 Release remains open: carried compatibility in universal Worker-validated Save (curves, registered constraints, curved boundaries, stages/generators), typed E naming consistency, and the measured large-label rendering fix need matching combined runtime tests. Bounded B-spline Worker controls and root's name/preview source fixes are candidates. No deployment, full worker-first, full CAD1 or later-gate completion is claimed. The following b2 checkpoint remains the previously accepted lead with its original proof scope.
