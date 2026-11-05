@@ -51,7 +51,7 @@ with tempfile.TemporaryDirectory(prefix='codi-rectangle-override-') as temp:
                 'static/profile-topology.mjs','static/rectangleProfileRequest.mjs',
                 'static/authoredRegions.mjs','static/profilePlan.mjs',
                 'static/centeredHolePlan.mjs','static/centeredHoleTopology.mjs',
-                'static/boundedPrismBoundary.mjs','static/enclosurePlan.mjs','static/enclosureMesh.mjs','static/enclosureManufacturingMesh.mjs','static/fourCornerHolePlan.mjs',
+                'static/boundedPrismBoundary.mjs','static/enclosurePlan.mjs','static/enclosureMesh.mjs','static/enclosureManufacturingMesh.mjs','static/enclosureLabelContact.mjs','static/fourCornerHolePlan.mjs',
                 'static/fourCornerHoleTopology.mjs','static/fourCornerHoleProvenance.mjs']:
         shutil.copy2(dist/rel,target/rel)
         assets.append('node_modules/jsketcher-build/'+rel)
