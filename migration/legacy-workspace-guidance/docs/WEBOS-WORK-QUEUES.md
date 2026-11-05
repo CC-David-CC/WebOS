@@ -21,6 +21,13 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest integration — 2026-11-05
 
+- [x] CAD `d6253ea9` is now promoted to the lead integration branch. Owner and independent lead runs of the exact-source signed command-only bracket gate both passed: discovery/create, rectangle/depth/hole edits, true authored undo/redo, rejection, Save/sync, second-account denial and fresh Files reopen preserving IDs, dimensions and measured geometry. Test/receipt integrated through desktop `28d2ccb6a`; see tests/jsketcher-agent-bracket-signed-20261105.md. No private authoring helpers were used.
+- [x] Rectangle journal cancellation/no-op corrections `ce55c687` passed actual five-hole worker fault controls. Autosave token fix `70aebd73` passed real open-dialog submission after two scheduled cache saves; authored rewrite/ABA still refuse stale submit (`c6036aac`). Lead also passed 17 journal/revision/capture controls and TypeScript.
+- [~] Remaining UI gap: expose the same authored Undo/Redo in the native 3D menu; feature cursor travel remains distinct. Dedicated action/menu qualification is in progress, without changing the already qualified signed-gate source.
+- [~] Next independent mechanical lanes: signed X/Y/projected driving dimensions with explicit live-direction domains (M02), and worker-evaluated typed quantities/parameters with atomic candidate publication and persistence (M04). Both are isolated research until their actual shared operations qualify. M03 and broader mechanical coverage remain open.
+
+Earlier integration snapshots below retain their original source scopes; the signed pass above supersedes their pending combined-acceptance status.
+
 - [x] CAD lead `70aebd73` includes original rectangle dimension discovery/editing, full-tip extrusion-depth undo/redo, early initialization-failure reporting, and cache-independent authored namespace revisions. Desktop `defb370bc` includes the actual desktop/emulated-phone rectangle dialog and startup-failure receipts. These are scoped component passes, not the final command-only signed gate.
 - [x] Desktop `bbb377ebd` adds bounded published geometry inspection, authored undo/redo and centered/corner-hole editing adapters. Lead ran 13 command boundary controls successfully.
 - [~] CAD candidate `4215009d` combines rectangle sketch travel, depth/hole journals and the shared hole wizard, with bounded retained strings/capture. Lead ran 15 pure journal/revision/capture controls and TypeScript successfully. Owner Chromium/OCC hole/depth receipt `3f7373c9` qualifies source `ef676d45`; it does not qualify the newer combined candidate automatically.

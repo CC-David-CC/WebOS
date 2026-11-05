@@ -58,6 +58,14 @@ and journal cursor must be published together after validation.
 
 ## Current evidence and gaps
 
+- Exact CAD d6253ea9 / desktop a5717a702 passed the complete bounded signed
+  command-only bracket workflow, repeated independently by the integration
+  lead. The test authors only through supported commands and checks native
+  intent, measured BREP geometry, save/sync, another-account denial and fresh
+  Files reopen. See tests/jsketcher-agent-bracket-signed-20261105.md.
+- Visible 3D authored Undo/Redo menu actions still need integration. Existing
+  HistoryBackward/Forward controls navigate the feature cursor; they must
+  remain separate and cannot stand in for this UI capability.
 - Rectangle, worker extrusion, centered/four-corner hole creation and enclosure
   assignment commands have scoped browser evidence.
 - The ordinary signed bracket passes model/file acceptance, but its private
@@ -73,11 +81,11 @@ and journal cursor must be published together after validation.
   builds now force prepared numeric; root independently checked the actual
   default-built worker under strict CSP using the same saved native bytes.
 - Original rectangle dimensions have actual host desktop/emulated-phone command
-  and Edit-menu evidence. Candidate 4215009d combines exact sketch-byte journal
-  travel with the depth/hole journal; pure controls/type checking pass. Actual
-  combined rectangle fault controls and the final signed command-only acceptance
-  remain open. A cancellation error-class defect is being corrected; partial
-  passing runs do not qualify the full candidate.
+  and Edit-menu evidence. The combined sketch/depth/hole journal is integrated
+  as d6253ea9 after actual worker fault checks and the signed gate above.
+  Cancellation now reports AbortError while preserving accepted state. Same-size
+  no-ops preserve the journal; cache autosaves do not stale the dialog. These
+  bounded passes do not qualify all sketch types or material/parameter undo.
 - Multi-window close/in-flight cancellation and repeated worker cleanup have
   bounded passes. An intermittent second-window startup timeout is unexplained;
   later passing runs do not establish a fix.
