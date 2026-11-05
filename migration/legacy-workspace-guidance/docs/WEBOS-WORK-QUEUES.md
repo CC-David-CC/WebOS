@@ -17,6 +17,16 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Source-gateway deployment research integrated through `c00f0c2d1` from
+  candidate `9799a8cb2` and prerequisites. Root reviewed transition ordering and
+  reran actor/transition tests: exact pins, unchanged routes/floors, three killed
+  child phases, failed-health recovery, foreign-unit refusal and locks pass.
+  Service actions in that transition test are modeled. No live deployment;
+  protected staging/plan and new-CAD packaging remain pending.
+- [ ] Files audit separates failed native steward/stopped timer from account
+  sessions. Read-only status confirms native state, not a Files data-loss bug.
+  Check account expiry/refresh evidence before restarting obsolete services.
+
 - [x] Combined signed material test/receipt integrated through desktop
   `4b8fa41e9`; CAD identity/color/stale-token browser receipt integrated as
   `383e75ef`. Root reviewed and syntax-checked scripts; agent's combined signed

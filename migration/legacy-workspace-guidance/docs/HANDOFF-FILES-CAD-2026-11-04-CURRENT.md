@@ -16,6 +16,11 @@ still needs improvement. Do not add a duplicate validation call. `storage_review
 is now auditing Stage1 Files requirements against existing evidence. These new
 assignments supersede the finished-agent status below; manufacturing continues.
 
+Deployment continuation: candidate `9799a8cb2` and prerequisites are integrated
+through desktop `c00f0c2d1`. Root independently reran actor-tree and modeled
+transition tests successfully. No source gateway/actor/route is installed.
+Protected staging/plan and final new-CAD packaging remain open.
+
 ## Start here
 
 1. Fetch current branches, inspect working trees and coordinate with running
