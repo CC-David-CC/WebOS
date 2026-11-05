@@ -22,6 +22,22 @@ Files promotion check; broader app/load/retention claims remain open. See
 `evidence/main-opfs-f2-activation-20261104.json`. This supersedes the older
 main=`0366` and staged-only status below; those entries retain attempt history.
 
+**Current integration follow-up:** CAD `67d34329` moves four-corner side
+discovery (including source sketch parse/hash) off the UI thread into the
+existing bounded semantic worker. TypeScript and worker compilation pass; full
+browser acceptance is pending. Desktop `ff74dcdcb` adds the typed four-corner
+command bridge, with independent session/abort/arguments/disposal checks passing.
+The signed create/save/reopen browser workflow is running against a rebuilt
+current CAD package; neither checkpoint alone claims that end-to-end gate.
+
+The enclosure investigation found an existing native `InspectAnalyticV1` export,
+so a new native build is not yet needed. Agent probes show valid-one-solid
+no-op subtraction and valid-zero-solid empty subtraction are possible. Enclosure
+publication must check validity, solid count and model-derived expected volume
+before making the result available. Test-only post-result inspection is not that
+production boundary. Reuse the existing material schema and core 3MF writer;
+their older Native Mesh adapters do not yet support these worker-owned bodies.
+
 **Current CAD integration:** `c9e76b84` on both LAN repositories includes the
 clean OCC runtime, authored four-corner side bindings, craft/UI command wiring,
 and history/cancellation tests. Root reran nine intent/side/mount controls and
