@@ -24,4 +24,15 @@ mixed=dict(x['candidate']);mixed['manifest']=old['candidate']['manifest']
 try:sel.select(snapshots=snapshots,current=mixed,original_floor=orig,asset_floor=floor,asset_journal=None,nested_journal=None,other_pending=False)
 except ValueError:pass
 else:raise AssertionError('mixed route accepted')
-print('PASS f2 exact render hashes, main-selector-only difference, floor gate/candidate selection and cross-family/mixed refusal')
+host=load('beta_launcher',p/'beta_launcher.py');host.protected=lambda p:None;host.unit_state=lambda n:{'ActiveState':'active','MainPID':'123','NeedDaemonReload':'no'};host.get=lambda *a:(200,b'{"identity":{"issuer":"https://ksu.codes"}}')
+oldpair=('6d72467c7dfabcdc65bc1216a31cf67bc6156b1d08f7a6c5d69778a595b2e6b8','8111fa0c926fbdb1878910aa7ba59b3d33426a7939569f60152dce0c565140d5');newpair=('c94795eba87805439cbc0cae69653670cfd119179706d427bb64920a393e4b6b','f3c97a07dc155e8239e533824de29e18503c515f4fb0a398cdae5e116200e79e')
+for expected in (oldpair,newpair):
+ for actual in (oldpair,newpair,(oldpair[0],newpair[1]),(newpair[0],oldpair[1])):
+  host.read=lambda path: (actual[0] if 'codi-connected' in str(path) else actual[1]).encode();host.sha=lambda raw:raw.decode()
+  try:host.main_ready(*expected)
+  except ValueError:
+   if actual==expected:raise
+  else:
+   if actual!=expected:raise AssertionError('mixed or wrong config pair accepted')
+actor=(p/'asset-launch.py').read_text();assert 'for name in (routermod.NEXT,routermod.F2)' in actor and "if family==routermod.F2:host.main_ready=lambda:original_main_ready(" in actor
+print('PASS f2 exact renders, floor selection, cross-family/mixed refusal and main managed config pair checks (service/health mocked)')
