@@ -12,6 +12,14 @@ and adding production-style compatibility gates are no longer requirements.
 Stop extra compatibility work and finish current deployment/functional checks.
 Saved-data integrity, account isolation and worker/lifecycle correctness remain.
 
+**Current main deployment:** main now selects frontend `f2e2ed4d`, issuer
+`adc693e4`, gateway `dd8cbea7`, and SDK `44da83bd`. Exact installed verifier,
+managed config, service/route/public-asset checks passed. Public OPFS policy and
+cache ID are confirmed; `/desktop/` remains unchanged. Signed fresh-browser
+acceptance on the deployed site is next. See
+`evidence/main-opfs-f2-activation-20261104.json`. This supersedes the older
+main=`0366` and staged-only status below; those entries retain attempt history.
+
 Latest deployment attempt: `01080` failed its own native release allowlist
 check after paired config writes and before route changes. Exact prior configs
 and units were restored and previous services restarted; public main still
