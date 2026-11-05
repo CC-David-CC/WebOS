@@ -15,6 +15,18 @@ main/surfacing integration and many adaptations are already present. Remaining
 J01 work is consolidation/regression qualification; see the corrected checkpoint
 in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
+## Latest bounded acceptance — 2026-11-04
+
+- [x] Four-hole CAD signed-fixture persistence: normal Save, automatic sync,
+  Files Open after fresh login, native history/geometry reconstruction, exact
+  server bytes and second-account denial. Desktop `e2ade56a9`, CAD `67d34329`;
+  `tests/jsketcher-four-corner-signed-20261104.md`.
+- [x] Cancellation during semantic side discovery preserves accepted geometry
+  and history and terminates candidate worker (controlled dispatch stall).
+- [ ] Public CAD release with authenticated source/provenance packaging.
+- [ ] Driving diameter: UI/agent operation, contradiction and persistence proof.
+- [ ] Authored enclosure, material regions and core 3MF remain incomplete.
+
 ## Current integrated checkpoint — 2026-11-04
 
 - [x] Bounded main Files promotion: normal UI save, fresh-login reopen, exact

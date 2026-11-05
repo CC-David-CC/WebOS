@@ -22,6 +22,20 @@ Files promotion check; broader app/load/retention claims remain open. See
 `evidence/main-opfs-f2-activation-20261104.json`. This supersedes the older
 main=`0366` and staged-only status below; those entries retain attempt history.
 
+**Signed CAD persistence gate passed in the isolated fixture:** desktop
+`e2ade56a9` integrates the corrected test/receipt for CAD `67d34329`. Normal Save,
+automatic sync observed without internal sync calls, Files selection/Open,
+fresh signed browser context, exact server bytes, native 11/27/18 reconstruction
+with five expected hole centers, and second-account denial passed. A stalled
+semantic side-ID job was cancelled without changing the accepted model/history;
+the candidate worker terminated. See `tests/jsketcher-four-corner-signed-20261104.md`
+for exact assets, commands and limitations. This supersedes pending qualification
+below. The fixture is not a public release, physical-phone or Linux/speech test.
+
+Next agent lanes: driving circle/arc diameter through UI and agent operations;
+authenticated source delivery/current package; checked enclosure worker admission.
+Root owns integration and the authored enclosure body/lid/material identity path.
+
 **Current integration follow-up:** CAD `67d34329` moves four-corner side
 discovery (including source sketch parse/hash) off the UI thread into the
 existing bounded semantic worker. TypeScript and worker compilation pass; full
