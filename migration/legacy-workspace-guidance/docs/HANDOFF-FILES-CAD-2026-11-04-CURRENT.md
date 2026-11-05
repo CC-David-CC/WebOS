@@ -1,5 +1,16 @@
 # Current Files and CAD handoff
 
+## Accepted configuration checkpoint — 2026-11-05
+
+- [x] Candidate CAD353fdc843 (runtimeaadc2426f over clean bfe70e534) and desktop9a64462e1 pass the lead signed configuration gate: native UI and agent variants, plate/enclosure regeneration, invalid-switch preservation, undo/redo, material review, Save/fresh Files reopen, positive other-account control/denial and independent configured3MF before/after reopen.
+- [x] Actual held v2 Worker/window-close test returns AbortError and preserves prior server bytes. Desktop61 command-boundary tests pass. Source and exact bundle/hash/attempt scopes: tests/jsketcher-configurations-signed-20261105.md. Configurations are accepted within these bounded field/design domains; no new deployment or full CAD1 claim.
+- [~] M05 actual deleted-parent repair is isolated research (1b543af8a and followups), not accepted: finish guard/placement/metadata review, pointer UI, faults and signed reopen. Failed-state undo must expose unresolved history/stale geometry and refuse validated Save.
+- [~] Performance evidencee59ce02be traced a real long operation to synchronous history diff. Candidate2f218/41bb/ece avoids large diff with bounded exact snapshots and has actual 1MiB history/native passes; independent integration remains. Guard snapshot serialization alone was a few milliseconds in measured cases; other long tasks remain. No worker-first or128MiB editing claim.
+- [~] M01 accepted geometry/residual/recovery controls pass41 tests plus Worker/UI. f091442c4 local Jacobian estimate is research, not a logical-redundancy or physical-DOF certificate; independent math and UI/agent integration remain.
+- [ ] Final affected functional audit, source/runtime delivery and managed beta remain. Main and /desktop unchanged. Large builds stay private on R730; source packaging stays deferred until functional qualification.
+
+Configured signed fixture20314 (session45810/tunnel42788), direct20312/CDP20311; verify live processes before reuse. Accepted previous b3 scope below remains valid. Active owners: browser parent repair; review history/performance and independent rank review; server scoped solver diagnostics. Root owns integration, signed tests and deployment.
+
 ## Accepted bounded combined checkpoint — 2026-11-05
 
 - [x] CAD runtime `b3ccb284b` / desktop `680f79d88` is independently qualified and promoted to the lead integration branches with later test/receipt commits. CAD source checkpoint `38468797e` includes the independent composition review. Source is backed to both LAN repositories; no new CAD deployment.
