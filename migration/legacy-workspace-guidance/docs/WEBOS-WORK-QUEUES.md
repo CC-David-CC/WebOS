@@ -17,6 +17,11 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- Current successor entry point: `HANDOFF-FILES-CAD-2026-11-04-CURRENT.md`.
+  The exact active user objective is copied into `FILES-CAD-RELEASE-OBJECTIVE.txt`.
+  Handoff requested; goal not paused. Combined material signed receipt is on
+  candidate desktop `c70998a69`; manufacturing WIP `37512e23` remains agent-owned.
+
 - [x] CAD `34bbabea` integrates cleanup-aware rectangle/feature discovery from
   `23d5b29b`: unavailable reason and inspection revision reflect cleanup failure.
   Root reviewed changes and TypeScript passes; agent's no-blob browser control

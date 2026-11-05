@@ -1,5 +1,9 @@
 # Files and CAD successor handoff
 
+Current checkpoint: [updated integration handoff](HANDOFF-FILES-CAD-2026-11-04-CURRENT.md).
+Use that document for current heads, agent ownership and deployment status;
+the details below describe the earlier checkpoint.
+
 Checkpoint date: 2026-11-04. This is the starting plan for another integration
 agent, including Sol. **The bounded Files beta foundation is accepted; CAD Gate 1
 is incomplete.** Main storage promotion, per-app integration, automatic retention
