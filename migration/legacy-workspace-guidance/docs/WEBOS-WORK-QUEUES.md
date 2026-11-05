@@ -17,6 +17,18 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] CAD `6f05e4fb`: independent Python ZIP/XML verification of noncommuting
+  placements and three synthetic box regions in two build objects; 20 focused
+  writer/adapter/envelope tests pass. Worker enclosure/inset export not proven.
+- [x] Desktop material-command bridge implemented through the shared CAD
+  operation with detached inputs and account/window/cancellation guards;
+  12 focused command tests pass using controlled managers, not real geometry.
+- [ ] Integrate material candidate and test actual signed command/Save/reopen.
+  Review of `dc75dee2` found assignment overwrites names/placement and inspection
+  omits material-only revisions. Agent is fixing both plus wizard string IDs.
+- [ ] Combine cleanup/material work under signed-parent CSP. Composition's
+  blob-permitting fixture does not prove the production no-blob policy.
+
 - [x] Four-hole CAD signed-fixture persistence: normal Save, automatic sync,
   Files Open after fresh login, native history/geometry reconstruction, exact
   server bytes and second-account denial. Desktop `e2ade56a9`, CAD `67d34329`;
