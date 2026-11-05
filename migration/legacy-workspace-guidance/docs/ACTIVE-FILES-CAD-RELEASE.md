@@ -1,5 +1,9 @@
 # Active Files and JSketcher release milestone — 2026-11-03
 
+Current preliminary combined runtime **ae579c93a / desktop55d3662b4** passes signed ordinary and multi-sketch D12→14 regeneration, invalid-value rollback, unrelated plate preservation, undo/redo, Save/fresh Files/account controls, plus root's actual async/no-op Save and close cancellation. The no-edit false-dirty counterexample now passes signed with unchanged bytes. See `research/diameter-regeneration/ae579-signed.md` and `tests/jsketcher-async-save-ae579-20261105.md`.
+
+Release remains open: carried compatibility in universal Worker-validated Save (curves, registered constraints, curved boundaries, stages/generators), typed E naming consistency, and the measured large-label rendering fix need matching combined runtime tests. Bounded B-spline Worker controls and root's name/preview source fixes are candidates. No deployment, full worker-first, full CAD1 or later-gate completion is claimed. The following b2 checkpoint remains the previously accepted lead with its original proof scope.
+
 Latest combined functional checkpoint: CAD runtime `b2a66ca86` / desktop
 runtime `82bef8323`. Bounded atomic existing-dimension rejection, stale-dialog
 refusal, centered-hole parent repair, configurations, undo/redo, material review,
