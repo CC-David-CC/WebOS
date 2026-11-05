@@ -25,7 +25,7 @@ try:sel.select(snapshots=snapshots,current=mixed,original_floor=orig,asset_floor
 except ValueError:pass
 else:raise AssertionError('mixed route accepted')
 host=load('beta_launcher',p/'beta_launcher.py');host.protected=lambda p:None;host.unit_state=lambda n:{'ActiveState':'active','MainPID':'123','NeedDaemonReload':'no'};host.get=lambda *a:(200,b'{"identity":{"issuer":"https://ksu.codes"}}')
-oldpair=('6d72467c7dfabcdc65bc1216a31cf67bc6156b1d08f7a6c5d69778a595b2e6b8','8111fa0c926fbdb1878910aa7ba59b3d33426a7939569f60152dce0c565140d5');newpair=('c9bfb2d5011b9b9d9a28fab5bde3328f0cb1e0afb4a3bd1c52cc5610c844b679','f3c97a07dc155e8239e533824de29e18503c515f4fb0a398cdae5e116200e79e')
+oldpair=('6d72467c7dfabcdc65bc1216a31cf67bc6156b1d08f7a6c5d69778a595b2e6b8','8111fa0c926fbdb1878910aa7ba59b3d33426a7939569f60152dce0c565140d5');newpair=('2d4b850633a1cd669942ddcafb00ca2cd9a47cba220b97a54315f8285222272a','f3c97a07dc155e8239e533824de29e18503c515f4fb0a398cdae5e116200e79e')
 for expected in (oldpair,newpair):
  for actual in (oldpair,newpair,(oldpair[0],newpair[1]),(newpair[0],oldpair[1])):
   host.read=lambda path: (actual[0] if 'codi-connected' in str(path) else actual[1]).encode();host.sha=lambda raw:raw.decode()
