@@ -17,6 +17,17 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] CAD `34bbabea` integrates cleanup-aware rectangle/feature discovery from
+  `23d5b29b`: unavailable reason and inspection revision reflect cleanup failure.
+  Root reviewed changes and TypeScript passes; agent's no-blob browser control
+  asserts both readiness reason and revision. Backed up to both LAN repositories.
+- [ ] Beta source gateway remains uninstalled: mapped launcher qualification
+  exposed recovery-receipt and admin-owned-hosting-checkout assumptions.
+  A root concern about repeated health-callback wrapping did not reproduce
+  because the loader creates fresh modules; agent is replacing that temporary
+  global override with a bound proxy and adding repeat-call coverage anyway.
+  Finish exact host-boundary qualification before deployment.
+
 - [x] Material controls source integrated into CAD `7c2fb6e0` (agent candidates
   `f45514d5`, `dc75dee2`, `b3b505f7`) on top of worker cleanup. Separate BODY/LID
   identities, appearance controls, preserved custom placement/names, material
