@@ -22,7 +22,7 @@ script,after=tail.split('</script>',1)
 # Serve the fixture module externally so self-only script CSP also covers it.
 (out/'fixture-host.mjs').write_text(script)
 (out/'index.html').write_text(before+'<script type="module" src="./fixture-host.mjs"></script>'+after)
-for name in ['index.mjs','style.css','inspect-state.mjs','file-read.mjs','sketch-commands.mjs','rectangle-commands.mjs','feature-commands.mjs','material-commands.mjs','document-commands.mjs','source-dialog.mjs','scoped-command.mjs']:
+for name in ['index.mjs','style.css','inspect-state.mjs','file-read.mjs','sketch-commands.mjs','rectangle-commands.mjs','feature-commands.mjs','material-commands.mjs','document-commands.mjs','source-dialog.mjs','scoped-command.mjs','parameter-commands.mjs']:
     text=(root/'apps/system/jsketcher'/name).read_text()
     if name=='index.mjs':
         if not text.startswith("import './style.css';\n"): raise ValueError('Unexpected CSS import')
