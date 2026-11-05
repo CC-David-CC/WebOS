@@ -17,6 +17,22 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] CAD `88462732` adds V2 assignment/schema/discovery/UI groundwork: LABEL
+  remains a distinct region within the LID printable object, with body separate.
+  Six assignment controls and TypeScript pass; actual V2 history/material UI is
+  not qualified yet. Desktop `0eff85164` accepts the optional label through the
+  same shared command (five command tests pass). Geometry/history remains agent-owned.
+- [ ] Independent review found a save-currentness risk during surfacing drag:
+  vertices mutate before the existing surface revision advances on drag end.
+  storage_review owns reproduction and surfacing mutation invalidation. Do not
+  extend existing save qualification to in-progress surfacing gestures.
+- [ ] Initial real-app V1 export test refused with an unexpected stale/cancel
+  error before bytes were produced. storage_browser is tracing the capture
+  invalidation; no qualified native manufacturing export is claimed yet.
+- [x] Additional signed held-save/history-travel refusal integrated as
+  `fcb5330f4`; the programmatic race produces no file and restores the valid tip.
+  Agent execution is recorded in the signed receipt; root reviewed/syntax-checked.
+
 - [x] Signed save/close receipt integrated as `49c5fc218`: exact desktop
   `d8a60a427` and CAD `672aa235` pass normal Save, fresh Files reopen and
   other-account denial; busy sign-out refuses, confirmed window closure
