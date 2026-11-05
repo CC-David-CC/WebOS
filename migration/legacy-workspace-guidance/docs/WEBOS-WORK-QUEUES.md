@@ -29,6 +29,18 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
   Desktop command bridge `6598e4cb0` passes its scoped action-fixture tests.
 - [ ] Combined signed-desktop diameter workflow and deployment.
 - [ ] Authored enclosure, material regions and core 3MF remain incomplete.
+- [x] Bounded OCC enclosure signed Files workflow: real wizard, normal Save,
+  automatic sync, fresh-session Files Open, BODY/LID identity and other-account
+  denial. CAD `7fde2965`, desktop evidence `757fa2f14`, receipt
+  `tests/jsketcher-enclosure-signed-20261104.md`. Regenerated roles also passed
+  the exact material resolver via a test-only import; no material UI claim.
+- [ ] Enclosure material UI, label, manufacturing mesh and core3MF handoff.
+- [ ] Composed plate/enclosure history with measured worker cleanup.
+
+Accepted-engine detachment is integrated in CAD `6d692867`; root reran 34
+resource/detachment/ledger tests. The capability distinguishes released native
+resources from a closed document, but craft has not enabled it yet. The next
+qualification must prove actual composed edits and cleanup in Chromium.
 
 Enclosure integration source now includes bounded OCC and Manifold worker
 construction/preview (`fd88e9fd`), distinct engine metadata (`57e41ddb`), and
