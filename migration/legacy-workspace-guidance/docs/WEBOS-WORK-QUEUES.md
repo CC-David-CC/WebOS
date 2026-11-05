@@ -21,6 +21,10 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] Grouped Equal Length/Radius/Coincident undo boundary and atomic conflicting-group refusal integrated through CAD `6d34d820`; five lead focused controls pass, owner real-browser scope is recorded separately.
+- [x] Bounded actual-window close/in-flight worker cancellation and other-window isolation tests integrated as CAD `bfb0fe56`; intermittent second-window startup remains unresolved.
+- [ ] Supported Save source `ae356553b` plus full-document revision `08e43c19` pass focused/type checks; matching signed-browser qualification is pending. True authored edit undo and original-sketch dimension APIs remain open. See CAD-SHARED-OPERATIONS.md.
+
 - [x] Scoped ordinary signed bracket integrated at `5988dbd8e`: edited five-hole model, rejection, undo/redo, actual Save and fresh Files reopen/account denial pass without diagnostic pre-Save preparation. Original blanket-interception stalls remain unproven.
 - [ ] Full supported agent bracket remains: private helper sketch/history edits are insufficient. Three current lanes cover mechanical action history, shared UI/agent edits and independent-instance worker disposal.
 
