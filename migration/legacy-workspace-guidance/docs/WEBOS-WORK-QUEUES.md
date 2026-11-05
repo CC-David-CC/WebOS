@@ -137,18 +137,20 @@ own later check. R02 and the bounded beta Files foundation are accepted. Main
 storage promotion, per-app qualification, automatic GC and classroom/100-user
 capacity remain open. No new historical window/cache campaign is required.
 
-**Current parallel CAD work:** Current CAD source: 5b1f4c63 (plus diagnostic notes3fb7d377) includes the clean worker runtime, centered-hole
+**Current parallel CAD work:** Current CAD runtime source: 2bef632f includes the clean worker runtime, centered-hole
 history, analytic projection, cylinder display fixes and type fixes. Normal
 exact-source build, full typecheck and 17 focused tests pass. Scoped actual-app
 edit/reject/recover/undo/native reopen and signed My files evidence are recorded
 in the handoff. Metadata guards and nonplanar display defects are fixed.
 However, the first clean-runtime signed test reproduced the saved-prism reopen
 timeout previously seen once with the incremental runtime. Cause is under
-investigation; no timeout was increased. Actual prepared package5b1 passes
-signed rectangle/edit/extrude/centered-hole/save/fresh-session reopen and account
-denial (evidence/cad-prepared-package-signed-20261104.json). Runtime source
-notice/discovery closure, manager-owned timeout cancellation and shared typed
-feature commands remain active. No public CAD deployment, full plate, Gate1, bracket/enclosure
+investigation; no timeout was increased. Actual prepared package2bef passes
+signed desktop command discovery/rectangle/edit/extrude/centered-hole/save/fresh-session
+reopen and account denial (evidence/cad-shared-feature-signed-20261104.json).
+Owned restore timeout now cancels workers and rolls back staged writes, with
+actual held-reply/late-delivery evidence; original latency cause remains open.
+File-menu source discovery works, but server-side source authentication and
+precise notice gaps remain. Four-corner dependent-hole planning is next. No public CAD deployment, full plate, Gate1, bracket/enclosure
 or material-aware 3MF completion is claimed.
 
 **Discovered old-client defect:** unexposed e359 replaced the global catalog,

@@ -1204,3 +1204,21 @@ independently; same-mount drilled-parent ancestry and multi-hole projection are
 required before publication. Main Files promotion audit found main lacks OPFS
 configuration and beta's issuer flag rejects main origin; explicit enablement
 and current-main gateway delta qualification are being prepared, not deployed.
+
+## Signed desktop command integration passes
+
+Desktop27112fac4 wires feature commands and native File-menu sources. Actual
+prepared CAD2bef bundle c4195572d2c14df0bf5dbef016f829790cce813a1d45461dd8b322b459dd792a
+passes the signed registry→rectangle→edit→extrude→centered-hole→save→fresh-session
+reopen test with second-account denial and source-index/link checks. See
+evidence/cad-shared-feature-signed-20261104.json. Initial run failed because
+the test helper omitted the CSP-safe numeric embedding; helper-only CADa96002ac
+fixes that build input and the repeated test passes without policy relaxation.
+Prior WIP wiring notes above are superseded. No public CAD deployment changed.
+
+Additional concrete dependency finding: browser-xml2js imports
+require('timers').setImmediate, but installed timers0.1.1 exports only every().
+Async XML parsing is therefore suspect; the upstream timer package is the same
+one with the incomplete license notice. Investigate a small browser scheduling
+adapter and actual async XML regression before removing it from shipped runtime
+inventory; do not claim an unverified import path works.
