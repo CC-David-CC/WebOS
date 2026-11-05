@@ -1,5 +1,7 @@
 # WebOS work queues and progress ledger
 
+The agent-authoring versus human-viewing minimums are tracked in [AGENT-CAD-USABILITY-GATES.md](AGENT-CAD-USABILITY-GATES.md); bounded factory/constraint tests do not imply general primitive authoring or all profiles.
+
 ## Current checkpoint — 2026-11-05, whole native CAD results
 
 Files remains accepted within its documented foundation scope. CAD runtime `a9dafce6e33c442c9ff16d0124c44236711eb5fc` is privately qualified, with signed desktop receipt `e3315cebb` (root `d2fc7b859`). OCC remains default. No new public deployment.
