@@ -8,17 +8,17 @@ const browser=await puppeteer.connect({browserURL:cdp.href,protocolTimeout:12000
 try{
  await page.evaluateOnNewDocument(()=>{
   if(window===top)return;
-  const timer=setInterval(()=>{
-   const manager=window.__CAD_APP?.projectManager;
-   if(typeof manager?.restoreSnapshotBytesInEmptyWorkspace!=='function')return;
-   clearInterval(timer);const original=manager.restoreSnapshotBytesInEmptyWorkspace;
+  if(Object.getOwnPropertyDescriptor(window,'__CAD_APP'))throw Error('Unexpected pre-existing CAD application descriptor.');
+  Object.defineProperty(window,'__CAD_APP',{configurable:true,enumerable:true,set(context){
+   const manager=context?.projectManager,original=manager?.restoreSnapshotBytesInEmptyWorkspace;
+   if(typeof original!=='function')throw Error('CAD restore hook unavailable at application publication.');
    manager.restoreSnapshotBytesInEmptyWorkspace=async function(...args){
     const result=await original.apply(this,args);
     if(parent.holdRestoreReturn){window.restoreReturnHeld=true;return new Promise(()=>{});}
     return result;
    };
-  },0);
-  addEventListener('pagehide',()=>clearInterval(timer),{once:true});
+   window.restoreHookInstalled=true;Object.defineProperty(window,'__CAD_APP',{configurable:true,enumerable:true,writable:true,value:context});
+  }});
  });
  await page.goto(base.href);await page.waitForFunction('window.launch');await page.evaluate(()=>launch());
  const ready=index=>page.waitForFunction(i=>views[i]?.view.element.querySelector('.app-status')?.textContent.startsWith('New model.'),{timeout:90000},index);
