@@ -1,17 +1,18 @@
 # Current Files and CAD handoff
 
-## Current checkpoint — 2026-11-05, Worker transition foundation
+## Current checkpoint — 2026-11-05, closed-sketch agent transactions
 
-Files remains accepted within its documented scope. Privately qualified CAD runtime `5163605d175b8fee3ea5d9507375546002eaf690` composes the existing editing paths with new internal Worker transitions; signed desktop receipt `a9f174e8c` is integrated. OCC remains default. No new public deployment or packaging.
+Files remains accepted within its documented scope. Private CAD runtime `cb4a0dce8` and desktop command adapters now pass the public closed-sketch rectangle workflow: discover geometry IDs, apply a2:1 relation, regenerate100x50x20 to120x60x20, reject an incompatible edit without changing accepted geometry, shared undo/redo, signed Save/account denial/fresh Files reopen and held-Worker close cancellation. See `test/agent-cad-corpus/transition/SIGNED-CB4.md`; OCC remains default. No public deployment or source packaging.
 
-- [x] Existing bracket-family/configuration, material review/core3MF, Arc Mirror Save and fresh Files/account/held-export-close controls pass. Both actual3MF exports independently retain2 objects/3 regions/84 triangles and expected geometry. See `tests/jsketcher-transition-notify-signed-20261105.md`.
-- [x] Actual installed Worker/client50-case Save suite and cancellation pass; all51 Workers terminate. Native IO duplicate notifications reduce3→1 with exact native state and final constraint stream retained. Per-viewer refresh512→1 paint, reentrant paint, independent viewers and disposal controls pass.
-- [x] Data-only replay/LengthRelation candidates share the editor's admission helper. Shape-specific solver fields preserve authored data; exotic parameter containers/accessors refuse and valid revisions survive refusal. Independent actual/source reviews pass. This is computed candidate data, not live publication.
-- [~] Internal transport enforces immutable captured input, queue/budget/deadline/cancellation and bounded frozen replies. Actual Worker and separately labeled protocol-double controls pass. Commit-time editor revision/lifetime fencing remains the publication owner's job.
-- [ ] ARC20–22: detached graph preparation, safe live installation, explicit solver/cache readiness and shared asynchronous UI/agent history remain. Skipping admission left empty caches falsely showing constructor-default success; that diagnostic was discarded, never published. Final516 many-constraint test still reports551ms edit/626.6ms undo/602ms redo; responsiveness is not closed.
-- [ ] General public primitive authoring/profile selection, full CAD1–6, native experimental partial-fill/tessellation issues and final combined/delivery/beta gates remain explicit. Prepared factories do not prove arbitrary sketches. See [agent usability gates](AGENT-CAD-USABILITY-GATES.md) and [ARC17–22](CAD-CORE-SEPARATION.md).
+- [x] Closed-sketch Worker computation reaches the existing atomic source/model/history publication. Recreated PLANE frames authenticate consumed sources; real multi-plane exact travel passes53/53 Worker cleanup. Root five-hole dimensional edit/rejection/replay/Save regressions also pass.
+- [x] Prepared replay now uses detached history bound to the accepted tip. Independent real-Worker fault testing reproduced old12mm geometry with saved/reopened10mm; fixedcb4 consistently produces10mm before/after reopen. This is our coordinator input-ownership issue, not a kernel or Files defect. CAD `test/closed-sketch-publication-review` retains before/after proof.
+- [~] ARC20/21/22 now have a bounded closed-sketch path. Active2D editor hydration/caches/legacy edits and the dense514-segment responsiveness gate remain unfinished. No unsafe skip-solve/cache-ready flag was added.
+- [ ] ARC23: inspect generic new-feature/direct-pipeline input ownership; the prepared-replay fix is not a universal alias audit. Public arbitrary primitive authoring and general region selection also remain open. A pure primitive Worker core is the next independent lane; no human UI or fake canvas is required for it.
+- [ ] Finish the full acceptance part, broader dependencies, affected combined regressions, delivery and managed beta. The affected signed bracket-family/configuration and material-review/core3MF regressions now pass oncb4, with independent2-object/3-region checks; Arc Mirror retains its prior pinned evidence. Original release scope and CAD1–6 backlog remain intact.
 
-Exact private build: R730 `/mnt/data10tb/codi-diag-final-transition-notify-20261105-r1`; direct20481/signed20376 are scoped fixtures. Core evidence: CAD `test/transition-combined-516/README.md`. Source/test/notes are backed to box-git and R730. Main and `/desktop/` remain preserved. Earlier checkpoints retain their original evidence scope.
+Current private build: R730 `/mnt/data10tb/codi-closed-sketch-transition-20261105-r2`, direct20483/signed20378. Root CAD `test/closed-sketch/README.md` carries exact runtime pins/reproduction/limits. Earlier checkpoints below retain their original evidence scope; main and `/desktop/` are preserved.
+
+Earlier Worker foundation runtime516 is documented in CAD `test/transition-combined-516/README.md` and desktop `tests/jsketcher-transition-notify-signed-20261105.md`. Its installed-Worker Save, strict CSP, material/3MF and performance observations keep their original scope.
 
 ## Qualified combined slices — 2026-11-05
 
