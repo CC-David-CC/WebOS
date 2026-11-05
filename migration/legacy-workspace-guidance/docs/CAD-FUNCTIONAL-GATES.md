@@ -9,9 +9,9 @@ refuse reentry during exit and permit reopen. See
 `tests/jsketcher-combined-core-b2a-20261105.md` and the signed repair receipt.
 No deployment or full CAD baseline completion is claimed.
 
-Lead branches retain accepted CAD `353fdc843` / desktop `64311bb6a` while the
-candidate completes affected carried regressions. CAD source `699ecf901` differs
-from b2 runtime only in tests/docs. Near-1MiB history passes; relation invocations
+The lead integration branches include these qualified b2 slices. CAD source
+`3b8886e59` differs from b2 runtime only in tests/docs. All 13 affected carried
+controls pass; OCC/Native Mesh thin-intersection results remain different. Near-1MiB history passes; relation invocations
 are 14.7–17.3ms, but undo still produced a 403ms task/461ms heartbeat. Remaining:
 concentric rejection unification, truthful local solver diagnostics, complete
 mutation/currentness coverage, worker-first capture/performance and final
@@ -30,7 +30,7 @@ The full objective in FILES-CAD-RELEASE-OBJECTIVE.txt remains intact. Scoped pas
 | 4 | Dependable parametric parts and reference repair | Bracket/enclosure and centered-hole parent repair bounded passes | Signed b2 passes real Delete, explicit inspected begin/repair, guarded suffix replay, unresolved undo with stale repaired-revision display/Save refusal, redo, unrelated enclosure assignments, reviewed Save, fresh Files reopen, account isolation and close cancellation. Pointer/nonidentity placement controls have separate research scope. Arbitrary ambiguous/split-topology repair remains open. |
 | 5 | Shared human/agent operations | Bounded b3/configuration/centered-parent paths pass | Public operations create/edit/reject/undo/save the listed bracket and enclosure designs; UI shares model operations. Signed rigid/line tests helper-seed geometry, so do not prove all public primitive creation. Current command suite64 passes including disposal; concentric and diameter transaction/guard differences remain under review. |
 | 6 | Material-aware core 3MF | Bounded b3 and configured b2 export pass | Independently checked configured exports before/after fresh reopen preserve two objects, three regions, units, grouping, transforms, materials and closed geometry. This is not arbitrary-body support, rendered lettering, printing or physics. |
-| 7 | Final combined app and beta | Open | Finish truthful diagnostics, current mutation/worker boundaries, concentric rejection unification and affected carried regressions; then functional release review, source/runtime delivery and managed beta. Atomic editor, signed M05 repair, configured export and cleanup composition pass within scope. No physical-device or complete-CAD claim. |
+| 7 | Final combined app and beta | Open | Finish truthful diagnostics, current mutation/worker boundaries, concentric rejection unification and remaining mutation/performance gates; then functional release review, source/runtime delivery and managed beta. Atomic editor, signed M05 repair, configured export and cleanup composition pass within scope. No physical-device or complete-CAD claim. |
 
 **User direction: source packaging comes after the functional gates.** The pending packaging edit was discarded. Defer archives, packaging/provenance expansion and new command-catalogue diversions. Final source/runtime delivery and managed beta activation remain in the full objective afterwards; neither is complete.
 

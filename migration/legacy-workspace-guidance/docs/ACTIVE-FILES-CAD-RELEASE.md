@@ -9,9 +9,9 @@ refuse reentry during exit and permit reopen. See
 `tests/jsketcher-combined-core-b2a-20261105.md` and the signed repair receipt.
 No deployment or full CAD baseline completion is claimed.
 
-Lead branches retain accepted CAD `353fdc843` / desktop `64311bb6a` while the
-candidate completes affected carried regressions. CAD source `699ecf901` differs
-from b2 runtime only in tests/docs. Near-1MiB history passes; relation invocations
+The lead integration branches include these qualified b2 slices. CAD source
+`3b8886e59` differs from b2 runtime only in tests/docs. All 13 affected carried
+controls pass; OCC/Native Mesh thin-intersection results remain different. Near-1MiB history passes; relation invocations
 are 14.7–17.3ms, but undo still produced a 403ms task/461ms heartbeat. Remaining:
 concentric rejection unification, truthful local solver diagnostics, complete
 mutation/currentness coverage, worker-first capture/performance and final
