@@ -12,6 +12,21 @@ and adding production-style compatibility gates are no longer requirements.
 Stop extra compatibility work and finish current deployment/functional checks.
 Saved-data integrity, account isolation and worker/lifecycle correctness remain.
 
+Latest checkpoint: main OPFS public candidate `f2e2ed4d` is built reproducibly
+from verified main `0366` and beta `830` assets; builder integrated as
+`c0e205cd7`. This is source-only, not deployed or browser-qualified yet.
+Independent explicit-origin issuer and gateway continuity controls passed
+(`evidence/main-opfs-source-controls-20261104.json`). Signed Chromium
+qualification of the assembled services is next. The user's latest direction
+again permits direct replacement of both test sites, with no old-window
+compatibility campaign. Keep managed routing and unrelated sites intact.
+
+CAD four-corner research validator `6dc801fc` is not accepted: independent
+counterexamples accepted an outer vertex displaced by 1000, reversed surface
+UV bounds, and reversed line parameter ranges. Correct those checks and their
+single-hole equivalents before accepting four-corner geometry. This does not
+invalidate the separate planner or imply a completed bracket workflow.
+
 **Current checkpoint (supersedes earlier implementation snapshots below):**
 beta now selects Files **830ca4f1**; main selects **0366e10a**, retaining the five
 core apps and CodeMirror while omitting unsupported ZIP actions. Actual managed
