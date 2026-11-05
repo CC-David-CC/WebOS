@@ -31,7 +31,7 @@ main/surfacing integration and many adaptations are already present. Remaining
 J01 work is consolidation/regression qualification; see the corrected checkpoint
 in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
-## Current candidate hold — 2026-11-05
+## Historical candidate hold — 2026-11-05 (resolved within b3 scope)
 
 - [x] Lead independently repeated clean CAD `185e1b9d3` / desktop `40d06d10d`: collinear/axis UI and real drags, role conversion, failed-rollback recovery, typed bracket propagation, six signed workflows and independent enclosure 3MF oracles pass. Exact scope and fixture identity: `tests/jsketcher-185-release-hold-20261105.md`.
 - [ ] **Release blocker:** ordinary sketch entry with typed parameters fails on 185 (`361c90a91`). Interim bridge restores entry/editing, but independent review `b200e20fa` proves an invalid Angle annotation edit can mutate and Save despite the error. Fix rejection-before-mutation, finite values, typed dependent empty/unchanged-boundary replay and currentness; then run final combined signed/browser qualification. Passing command tests do not waive ordinary UI failure.
