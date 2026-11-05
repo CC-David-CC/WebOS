@@ -242,6 +242,17 @@ mechanical designs, material-aware actual core 3MF handoff. Bambu/physical print
 physics, XR and the full CAD6 roadmap are deferred, not substitutes for this gate.
 # Continuation checkpoint: worker save and manufacturing review
 
+Latest integrated checkpoint: desktop `7a2e3538b`, CAD `64c40680`, both LANs.
+Signed V1 native export now has committed receipts and a root-reviewed,
+strengthened independent ZIP/XML graph oracle with mutation negatives. The
+surfacing mutation fence is integrated; actual Push/Pull Escape/blur cancellation
+exposed a follow-up defect being fixed by storage_review. storage_browser is
+qualifying V2 material UI/native My files replay; storage_server owns the native
+same-triple contact proof. V2 export consumption exists but awaits that proof
+and full signed qualification. No new production/beta activation. Use the top
+of WEBOS-WORK-QUEUES for the precise current evidence and limitations; older
+checkpoints below retain their original scope.
+
 Successor: desktop `090f189c7` integrates signed-save receipt `49c5fc218` and
 Files expiry evidence `a0a320cb9`; see the newest entries in WEBOS-WORK-QUEUES.
 CAD `d7504677` includes the v1 worker-enclosure 3MF adapter `f1ee0bb1` and save
