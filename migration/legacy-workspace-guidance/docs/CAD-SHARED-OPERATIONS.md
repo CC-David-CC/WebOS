@@ -1,11 +1,21 @@
 # One authored CAD workflow for people and agents
 
-Latest bounded acceptance: CAD runtime `b3ccb284b` / desktop `680f79d88`
-closes the typed-editor and rigid-boundary defects and passes signed bracket,
-shared parameters, role/rigid operations, material enclosure and core 3MF.
-See `tests/jsketcher-b3-combined-signed-20261105.md` and current work queue.
-Configurations, complete mutation/worker-performance and final beta remain open.
-Older pending states below are superseded only within that receipt's scope.
+Accepted source checkpoint: CAD `353fdc843` / desktop `64311bb6a`, with
+configuration runtimes `aadc2426f` / `9a64462e1`. Signed UI/agent configurations,
+invalid-switch preservation, undo/redo, material review, Save/fresh Files reopen,
+account isolation and independently checked configured 3MF pass within the
+bounded designs/fields. See `tests/jsketcher-configurations-signed-20261105.md`.
+The earlier b3 bracket, parameters, role/rigid and material/export scope remains
+accepted. The existing-constraint editor defect (`bfc406bee`), M05 combined signed
+repair qualification, candidate history cleanup/performance qualification,
+complete mutation coverage and final app/beta gates remain open. No new deployment
+is claimed.
+Unaccepted candidates: CAD `75ffe6c3f` combines M05, accepted configurations,
+large history and `006d47d5f` finally cleanup; desktop `423e6e7c6` adds public
+parent-repair adapters with 58 command-boundary tests. Root independently passed
+three history controls and the core history runner. These checks do not qualify
+the final app: atomic-edit integration and actual combined signed gates remain.
+Older checkpoints retain their original receipt scopes.
 
 This implements the current functional gate; it does not replace the unchanged
 Files/CAD release objective with API discovery.
@@ -32,10 +42,13 @@ path plus signed X/Y/projected, physical length relations and typed extrusion
 depth. Native Edit menu and public authored travel use the same core. Parent-
 owned async settlement releases CAD operations even if an iframe-owned Promise
 disappears on close. It never retries a possibly committed write. See
-`tests/jsketcher-mechanical-combined-20261105.md` for exact scopes. Typed rectangle/
-corner/enclosure dependencies and configurations remain open: changing shared
-definitions must regenerate all supported dependent source and results within
-one transaction, whichever public command initiated the edit.
+`tests/jsketcher-mechanical-combined-20261105.md` for that earlier scope. Later b3
+qualifies bounded shared rectangle/hole/enclosure propagation; CAD353/aadc and
+desktop643/9a qualify configurations through signed Save/reopen and held-Worker
+close. Broader fields remain unqualified. Existing annotation edits still have
+the bfc406bee atomicity blocker, and the repair adapter requires combined signed
+qualification. Shared definitions must regenerate supported source and results
+within one transaction, whichever public command initiated the edit.
 
 ## Common transaction boundary
 

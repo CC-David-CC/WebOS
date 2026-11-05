@@ -1,11 +1,21 @@
 # Active Files and JSketcher release milestone — 2026-11-03
 
-Latest bounded acceptance: CAD runtime `b3ccb284b` / desktop `680f79d88`
-closes the typed-editor and rigid-boundary defects and passes signed bracket,
-shared parameters, role/rigid operations, material enclosure and core 3MF.
-See `tests/jsketcher-b3-combined-signed-20261105.md` and current work queue.
-Configurations, complete mutation/worker-performance and final beta remain open.
-Older pending states below are superseded only within that receipt's scope.
+Accepted source checkpoint: CAD `353fdc843` / desktop `64311bb6a`, with
+configuration runtimes `aadc2426f` / `9a64462e1`. Signed UI/agent configurations,
+invalid-switch preservation, undo/redo, material review, Save/fresh Files reopen,
+account isolation and independently checked configured 3MF pass within the
+bounded designs/fields. See `tests/jsketcher-configurations-signed-20261105.md`.
+The earlier b3 bracket, parameters, role/rigid and material/export scope remains
+accepted. The existing-constraint editor defect (`bfc406bee`), M05 combined signed
+repair qualification, candidate history cleanup/performance qualification,
+complete mutation coverage and final app/beta gates remain open. No new deployment
+is claimed.
+Unaccepted candidates: CAD `75ffe6c3f` combines M05, accepted configurations,
+large history and `006d47d5f` finally cleanup; desktop `423e6e7c6` adds public
+parent-repair adapters with 58 command-boundary tests. Root independently passed
+three history controls and the core history runner. These checks do not qualify
+the final app: atomic-edit integration and actual combined signed gates remain.
+Older checkpoints retain their original receipt scopes.
 
 ## Current focus — supersedes historical checkpoint status
 
@@ -15,7 +25,7 @@ User resumed development through the attached goal. The complete goal is
 preserved in `docs/goals/FILES-JSKETCHER-RELEASE-20261103.txt`, with the
 2026-11-04 architecture amendment. The completion audit below retains its scope.
 
-Latest functional checkpoint: CAD runtime `28870335` combines the accepted menu,
+Historical 288/f3 functional checkpoint: CAD runtime `28870335` combines the accepted menu,
 signed dimensions/epoch/closed-CV repair, length relations and typed-depth slice.
 Desktop runtime `f3b50ad9c` supplies public adapters and parent-owned cancellation.
 Lead passes signed bracket/menu/dimensions/relations/typed depth, fresh Files
@@ -52,11 +62,11 @@ the candidate worker terminated. See `tests/jsketcher-four-corner-signed-2026110
 for exact assets, commands and limitations. This supersedes pending qualification
 below. The fixture is not a public release, physical-phone or Linux/speech test.
 
-Next agent lanes: driving circle/arc diameter through UI and agent operations;
+Historical agent assignments at 67d34329: driving circle/arc diameter through UI and agent operations;
 authenticated source delivery/current package; checked enclosure worker admission.
 Root owns integration and the authored enclosure body/lid/material identity path.
 
-**Current integration follow-up:** CAD `67d34329` moves four-corner side
+**Historical integration follow-up:** CAD `67d34329` moves four-corner side
 discovery (including source sketch parse/hash) off the UI thread into the
 existing bounded semantic worker. TypeScript and worker compilation pass; full
 browser acceptance is pending. Desktop `ff74dcdcb` adds the typed four-corner
@@ -72,7 +82,7 @@ before making the result available. Test-only post-result inspection is not that
 production boundary. Reuse the existing material schema and core 3MF writer;
 their older Native Mesh adapters do not yet support these worker-owned bodies.
 
-**Current CAD integration:** `c9e76b84` on both LAN repositories includes the
+**Historical CAD integration:** `c9e76b84` on both LAN repositories includes the
 clean OCC runtime, authored four-corner side bindings, craft/UI command wiring,
 and history/cancellation tests. Root reran nine intent/side/mount controls and
 TypeScript successfully after integration. Full-app evidence at feature source
@@ -338,27 +348,27 @@ The earlier row-by-row Files summaries were stale and are replaced by that matri
 
 | ID | Required outcome | State | Evidence / next gate |
 |---|---|---|---|
-| C01 | One coherent buildable fork preserves intended existing integrated work | bounded integration pass; release delivery open | CAD lead933703f7f/runtimeb3 combines accepted source/matching Workers; clean build67d821f35 and carried8205bff37. Final reproducible delivery follows functional gates. |
+| C01 | One coherent buildable fork preserves intended existing integrated work | bounded integration pass; release delivery open | Accepted CAD353/aadc and desktop643/9a add bounded signed configurations to carried b3 source/matching-Worker qualification, clean build67d821f35 and regressions8205bff37. Later candidate repairs/history/atomic edits require composition checks. Final reproducible delivery follows functional gates. |
 | C02 | OCC and Native Mesh capabilities, source/licenses and CSP are qualified | partial | Source-built OCC and both engines pass bounded strict-CSP checks; ENG01–ENG08 add broad capability inventory, swappable mounts, explicit conversions/composition and qualification. Linked-source evidence remains open. |
-| C03 | Splines/history/selection/DXF/camera/reconstruction work together | bounded combined pass | b3 splines/history/DXF/selection/touch/native replay pass; f546f7f5b adds desktop orbit/resize and emulated touch orbit/pinch. No physical-phone or full-catalogue claim. |
-| C04 | CAD My files, independent instances, disposal and shared commands | bounded combined pass | b3 signed Save/fresh Files/account isolation, parent-owned settlement and independent Worker/window controls pass. New configuration/repair lifetimes need matching qualification. |
+| C03 | Splines/history/selection/DXF/camera/reconstruction work together | bounded combined pass | Carried b3 splines/history/DXF/selection/touch/native replay pass; CAD353 records camera desktop orbit/resize and emulated touch orbit/pinch on the configuration app. No physical-phone or full-catalogue claim. |
+| C04 | CAD My files, independent instances, disposal and shared commands | bounded combined pass | Carried b3 Save/fresh Files/account isolation, parent-owned settlement and independent Worker/window controls pass. Configuration receipt adds actual held-v2-Worker/window-close AbortError and unchanged server bytes plus signed configuration reopen. Repair and later changed-runtime lifetimes still require matching qualification. |
 | C05 | Agent-driven CAD uses the same validated operations as the UI | bounded worker-plate pass; broader commands open | Exact d6253ea9 command gate and 24d52ae8 actual native-menu follow-up pass signed discovery/create/edit/reject/undo/save/sync/fresh Files reopen/account denial, independently repeated by root. Preserved authored IDs/dimensions and measured BREP geometry agree. Focus, actual sketch editor, held worker and reentrant reset controls also pass. No private authoring helpers or AI provider. Broader sketch/parameter commands remain open. See tests/jsketcher-authored-menu-signed-20261105.md. |
 | A00 | Beginner single-part fixtures precede the bracket | bounded preliminary evidence; broader curriculum open | CAD test/webos/BASIC-SOLID-GATE-20261104.md and public bracket tests cover relevant block/washer/plate parts, not the complete CAD1 exercises. |
-| M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | partial | Reclassification/drag/restore fixes reviewed; independent cross-stage failure controls found further rollback work |
+| M01 | Atomic acceptance/rejection, midpoint and deterministic persistence | partial; existing-edit blocker | Scoped admission/recovery and invalid-Angle numerical rejection pass. bfc406bee reproduces an ordinary existing length edit dropping a previously satisfied SignedX relation while reporting success. Atomic constants/geometry/membership/history preservation, valid edit/undo/native persistence and recovery need final combined qualification. Local Jacobian estimates remain research, not certified physical DOF or logical redundancy. |
 | M02 | Driving X/Y/projected/diameter and geometric relations/fix/groups/symmetry | bounded listed-operation pass; performance open | b3 includes signed/projected/diameter/concentric/collinear/axis, segment/circle/arc fixing and planar rigid groups with explicit domains. Complete mutation inventory and worker-first capture/performance remain. |
 | M03 | Equality/ratio/difference and driving/reference roles | bounded length-domain pass | b3 length equality/ratio/difference, reference/driving conversion, failed-rollback recovery, UI/ID/Worker/native and signed Files pass. Other domains and rank/DOF diagnostics remain broader work. |
 | M04 | Typed parameters/formulas/dependencies/configurations | Bounded acceptance-design pass | Configuration runtimeaadc/desktop9a passes UI/agent variants, invalid-switch retention, undo, material review, signed Save/fresh Files/account isolation and independent configured3MF. Broader physical fields/configuration domains remain unqualified. See tests/jsketcher-configurations-signed-20261105.md. |
-| M05 | Regeneration/reference repair preserves authored intent | explicit reference repair required | Review768/e68 real dependent-hole control reaches its wizard after parent deletion but cannot apply repair. Implement eligible-parent selection against current prefix, atomic suffix, state retention, undo/redo and signed reopen. No silent ordinal/nearest-face substitution. |
-| ARC | Computational core operates independently of UI and publishes only current validated results | active | CAD-CORE-SEPARATION.md: no canvas/DOM/fake UI; actual equations, bounded jobs, residual/geometry checks, cancellation, IDs/revisions and explicit failure. |
+| M05 | Regeneration/reference repair preserves authored intent | isolated repair controls; combined signed gate open | Review768/e68 records the baseline refusal. Research through ae8709536 has pointer/typed parent selection, guarded suffix replay, cancellation/currentness, unresolved undo/Save refusal and native restore. Source/metadata/placement review, combined human/agent lifetime/fault controls and signed Save/fresh Files reopen remain. No silent ordinal/nearest-face substitution. |
+| ARC | Computational core operates independently of UI and publishes only current validated results | active; mutation/performance open | CAD-CORE-SEPARATION.md retains data-only computation and current publication requirements. Candidate history f037/c5 plus e466 real-browser evidence bounds retained entry charge with an oversized-transition exception, not total heap. Independent aaba21310 exposed retained history on throwing tool disposal; candidate006d47d5f adds finally cleanup and passes three independent controls. Full combined cleanup/currentness, mutation coverage and worker-first/performance qualification remain. See current handoff for measured long-task limits. |
 | A01 | Mounting bracket substantial edits, contradictions, undo and reopen | bounded signed command pass | CAD d6253ea9 creates and edits a five-hole plate from 100×50×20 to 150×30×35 with changed corner offsets. True rectangle/depth/hole undo/redo, invalid-edit refusal, Save/sync and fresh Files reopen/account denial pass owner and independent root runs through supported commands. Original older blanket-interception timeout remains unexplained; this is not arbitrary bracket geometry or the complete Gate 1 catalogue. See tests/jsketcher-agent-bracket-signed-20261105.md. |
 | A02 | Enclosure/separate lid substantial edits, contradictions, save/reopen | bounded signed UI/agent pass | b3 actual Add/wizard and public enclosure creator, typed dimensions, rejection/cancellation, undo, material review and signed reopen pass. Rectangular body/lid/inset domain only. |
 | E01 | Named material/region/appearance/group/placement persists | bounded pass | Signed V2 preserves three role/material/appearance identities through width edit, explicit rebind, save and fresh Files reopen; two deliberate printable objects. Broader region/topology changes remain unqualified. |
 | E02 | Inset label remains deliberately grouped with lid | bounded pass | Exact combined runtime and independent XML oracle preserve the rectangular inset with lid as a distinct region, body separate, before/after width edit. This is an insert, not rendered text. |
-| E03 | Model-derived core 3MF independently verified | bounded independent pass | Three b3 signed core3MFs verify units/grouping/transforms/materials/closure/bounds/volumes/interface. Configured export has isolated evidence; signed test pending. |
+| E03 | Model-derived core 3MF independently verified | bounded independent pass | Three b3 signed core3MFs verify units/grouping/transforms/materials/closure/bounds/volumes/interface. The signed configuration receipt independently checks configured enclosure export before/after fresh Files reopen: two objects, three regions, expected geometry and materials. Mixed unassigned plate export explicitly refuses. |
 | E04 | Invalid/unsupported geometry fails without replacing good output | bounded refusal pass; final qualification open | b3 stale assignments refuse replacing good 3MF; unsupported mixed unassigned geometry and invalid mesh/interface domains reject. Final candidate cancellation/stale export checks remain. |
 | R01 | Reproducible Files source/runtime/test prerequisites | bounded pass | Exact offline Linux x86_64 recipe and captured prerequisites backed on both LAN repositories; see Files exit matrix. CAD runtime portability remains its own gate. |
 | R02 | Qualified Files beta replacement preserves other sites and data boundaries | bounded pass | Actual 830 install/apply, signed health, fresh public save/reopen/account denial; main 0366 capability fix and ten-site/prototype checks. Old-window compatibility is not required. |
-| R03 | Source/tests/evidence/handoff backed up to box-git and R730 | accepted checkpoints backed up; final audit open | Both LANs verified: desktop lead1dd2aac57, CAD lead933703f7f. Configuration source/tests/adapters remain separate backed-up candidates; reverify final refs. |
+| R03 | Source/tests/evidence/handoff backed up to box-git and R730 | accepted checkpoints backed up; final audit open | Read-only Git verification on 2026-11-05 found both LAN lead refs at desktop64311bb6a and CAD353fdc843, including bounded configuration source/tests/adapters. Later candidates and this documentation follow-up require their own backup refs; reverify final integrated refs before delivery. |
 
 ## Execution rules
 

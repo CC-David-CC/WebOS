@@ -2,16 +2,20 @@
 
 ## Accepted configuration checkpoint — 2026-11-05
 
-- [x] Candidate CAD353fdc843 (runtimeaadc2426f over clean bfe70e534) and desktop9a64462e1 pass the lead signed configuration gate: native UI and agent variants, plate/enclosure regeneration, invalid-switch preservation, undo/redo, material review, Save/fresh Files reopen, positive other-account control/denial and independent configured3MF before/after reopen.
+- [x] Accepted source CAD `353fdc843` / desktop `64311bb6a` (runtimes `aadc2426f` over clean `bfe70e534` / `9a64462e1`) pass the lead signed configuration gate: native UI and agent variants, plate/enclosure regeneration, invalid-switch preservation, undo/redo, material review, Save/fresh Files reopen, positive other-account control/denial and independent configured3MF before/after reopen.
 - [x] Actual held v2 Worker/window-close test returns AbortError and preserves prior server bytes. Desktop61 command-boundary tests pass. Source and exact bundle/hash/attempt scopes: tests/jsketcher-configurations-signed-20261105.md. Configurations are accepted within these bounded field/design domains; no new deployment or full CAD1 claim.
-- [~] M05 actual deleted-parent repair is isolated research (1b543af8a and followups), not accepted: finish guard/placement/metadata review, pointer UI, faults and signed reopen. Failed-state undo must expose unresolved history/stale geometry and refuse validated Save.
-- [~] Performance evidencee59ce02be traced a real long operation to synchronous history diff. Candidate2f218/41bb/ece avoids large diff with bounded exact snapshots and has actual 1MiB history/native passes; independent integration remains. Guard snapshot serialization alone was a few milliseconds in measured cases; other long tasks remain. No worker-first or128MiB editing claim.
-- [~] M01 accepted geometry/residual/recovery controls pass41 tests plus Worker/UI. f091442c4 local Jacobian estimate is research, not a logical-redundancy or physical-DOF certificate; independent math and UI/agent integration remain.
+- [~] M05 deleted-parent repair through `ae8709536` has isolated actual pointer/typed repair, private suffix replay, cancellation/currentness, unresolved undo/Save refusal and native-restore controls. It is not accepted: independent combined-source review, matching human/agent lifetime/fault checks and signed Save/fresh Files reopen remain. The research fixture permits script Blob; do not treat it as production-CSP proof. See CAD `test/review-reference-repair/BEGIN-CONTRACT.md`.
+- [~] Candidate history changes `f037c6b77` / `c5d77f17e`, browser receipt `e46692f0b`, replace large synchronous diffs with exact snapshots and have actual near-1MiB history/native passes. Independent review `aaba21310` finds retained history if tool cleanup throws before viewer reset. Candidate `006d47d5f` adds finally cleanup and inverts that defect control; root independently passes all three history controls and the core history runner. This is not final app acceptance. Entry charge is `max(8MiB, one transition)`, not a heap bound. The incremental research build still records 414–419ms long tasks and roughly 478–480ms heartbeat gaps. Combined qualification, complete mutation/worker-first capture and performance remain open; no 128MiB CAD-editing claim. See CAD `test/webos/SKETCH-LARGE-HISTORY-20261105.md` and `test/coreTests/SKETCH-HISTORY-INDEPENDENT-REVIEW-20261105.md`.
+- [ ] M01 release blocker `bfc406bee`: ordinary existing SegmentLength100 → 110 editing can reject previously satisfied SignedX100 while reporting success. The actual editor must use an atomic existing-edit boundary preserving prior intent, geometry, constants and history on refusal; valid edit/undo/native persistence and recovery need final combined qualification. This is distinct from the accepted invalid-Angle numerical rejection controls. See CAD `test/physical-parameters/CONSTRAINT-EDIT-PRESERVATION-20261105.md`.
+- [~] Scoped geometry/residual/recovery controls remain accepted; `f091442c4` local Jacobian diagnostics remain research, not a logical-redundancy or physical-DOF certificate. Independent mathematics and truthful revision-bound UI/agent integration remain.
+- [~] Separate unaccepted combined candidate CAD `75ffe6c3f` includes M05, accepted configurations, large history and finally cleanup; desktop `423e6e7c6` exposes guarded public parent-repair adapters with 58 command-boundary tests. Actual atomic-edit integration and combined signed qualification remain; do not promote these candidates based on pure tests or accepted ancestry.
 - [ ] Final affected functional audit, source/runtime delivery and managed beta remain. Main and /desktop unchanged. Large builds stay private on R730; source packaging stays deferred until functional qualification.
 
-Configured signed fixture20314 (session45810/tunnel42788), direct20312/CDP20311; verify live processes before reuse. Accepted previous b3 scope below remains valid. Active owners: browser parent repair; review history/performance and independent rank review; server scoped solver diagnostics. Root owns integration, signed tests and deployment.
+Accepted source checkpoints are CAD `353fdc843` and desktop `64311bb6a`; the configuration runtime identity is recorded above and in the signed receipt. The CAD mechanical candidate is `75ffe6c3f`, desktop adapter candidate `423e6e7c6`; their contents and open gates are stated above. The `bfc406bee` editor counterexample still requires an actual qualified fix. Later atomic-edit/repair/history research is not accepted by ancestry. Root owns runtime/source integration, independent final signed qualification and deployment; review lanes own atomic edits, parent-repair qualification and documentation as assigned. Verify current refs and ownership before resuming.
 
-## Accepted bounded combined checkpoint — 2026-11-05
+Configured signed fixture20314 (session45810/tunnel42788), direct20312/CDP20311, is a historical receipt handle; verify processes and served hashes before reuse. Prior b3 scope below remains valid.
+
+## Historical b3 checkpoint — accepted only within its receipt scope
 
 - [x] CAD runtime `b3ccb284b` / desktop `680f79d88` is independently qualified and promoted to the lead integration branches with later test/receipt commits. CAD source checkpoint `38468797e` includes the independent composition review. Source is backed to both LAN repositories; no new CAD deployment.
 - [x] Typed original-sketch entry and invalid-Angle-save counterexamples are fixed. Lead actual annotation edit/undo/native restore and invalid width/NaN/Infinity/1e309 rejection pass; Save preserves the prior valid angle.
@@ -25,7 +29,7 @@ Current runtime fixture: signed20263 (root session58092/tunnel13490), direct2026
 
 The full goal remains active. This replaces older checkpoint status, not the original scope. Read FILES-CAD-RELEASE-OBJECTIVE.txt, then CAD-FUNCTIONAL-GATES.md and the latest WEBOS-WORK-QUEUES.md entries.
 
-## Latest candidate hold — 2026-11-05
+## Historical 185 candidate hold — resolved within b3 scope
 
 Read `tests/jsketcher-185-release-hold-20261105.md` first. Lead independently
 passed clean 185 direct/signed workflows, including typed bracket propagation,
@@ -51,7 +55,7 @@ Verify actual live processes before reuse; do not close unrelated contexts.
 The root failure context on CDP 20212 is D3C084AED08756D4112AE6B1EAD46D99.
 Older fixtures below are historical, not guaranteed live services.
 
-## Current status
+## Historical 288/f3 status — superseded within later accepted scopes
 
 - Accepted combined runtime is CAD `28870335` with desktop `f3b50ad9c` plus test/receipt followups. Lead independently qualifies signed bracket/menu, X/Y/projected dimensions, physical length relations, typed extrusion depth, Save/sync/fresh Files reopen and account denial within each receipt's scope. The combined enclosure/material/core-3MF test and independent oracle also pass. Actual iframe-close cleanup and desktop/phone-emulated parameter panel controls pass. Exact source, commands, limits and runtime hashes: `tests/jsketcher-mechanical-combined-20261105.md` and its JSON.
 - Files foundation remains accepted within representative 128 MiB/account/conflict/recovery scope. Current CAD integration fixed destroyed-frame promises and snapshot lease cleanup; it did not change Files core. No new main/beta deployment is claimed.
@@ -73,7 +77,7 @@ Older fixtures below are historical, not guaranteed live services.
 
 Desktop: /tmp/codi-webos-cad-merge, branch integration/files-jsketcher-release-20261103.
 CAD: /tmp/codi-jsketcher-release-integration-20261104, branch integration/files-cad-release-20261104.
-Verify current Git refs rather than treating pointers as permanent HEADs. The old authored candidate `d6253ea9` is accepted/promoted, not an unqualified next task. The newer mechanical candidate is `/tmp/codi-cad-mechanical-candidate-20261105`, branch `integration/cad-mechanical-candidate-20261105`, runtime `28870335`; desktop candidate is `/tmp/codi-desktop-mechanical-candidate-20261105`, branch `integration/desktop-mechanical-candidate-20261105`. Its combined lead qualification is documented above. Later research must not be merged solely because pure tests pass.
+Verify current Git refs rather than treating pointers as permanent HEADs. Accepted checkpoint CAD `353fdc843` / desktop `64311bb6a` includes the bounded configuration acceptance above. The mechanical candidate worktrees are `/tmp/codi-cad-mechanical-candidate-20261105` (branch `integration/cad-mechanical-candidate-20261105`) and `/tmp/codi-desktop-mechanical-candidate-20261105` (branch `integration/desktop-mechanical-candidate-20261105`); inspect their actual refs and local edits. Research beyond the accepted checkpoint, including CAD75ffe6c3f / desktop423e6e7c6 and later atomic-edit changes, needs the stated review and combined gates. Pure tests or branch ancestry alone do not grant acceptance.
 
 Desktop remote: box-git:/srv/data/git/CodiServer-distro.git; backup r730:/mnt/data10tb/git/CodiServer.git.
 CAD remote: box-git:/srv/data/git/JSKetcher.git; backup r730:/mnt/data10tb/git/JSKetcher.git.
@@ -87,7 +91,7 @@ No GitHub publication is part of current work.
 - CAD test/enclosure-history/LABEL-HISTORY-RESEARCH.md and surfacing receipts record history, cancellation and the Push/Pull Escape fix. These do not qualify all advanced CAD.
 - Bracket failure tests/evidence from research/signed-four-corner-combined-20261104 are integrated through desktop 5988dbd8e. Preserve the retained failure context; its original cause remains unproven.
 
-## Immediate ownership and next actions
+## Historical assignments at 288/f3 — not current ownership
 
 1. `storage_browser`: collinear supporting-line and independent-axis symmetry lane, based on the qualified epoch/closed-CV checkpoint. Whole-entity fixing and rigid groups remain later M02 work. Keep main-thread snapshot/incomplete epoch limits explicit.
 2. `storage_review`: explicit reference/driving conversion and rapid reference-measurement validity; then coordinate a shared transaction/recovery helper with the M02 owner so rollback failures preserve a recoverable checkpoint rather than silently leaving partial state.
