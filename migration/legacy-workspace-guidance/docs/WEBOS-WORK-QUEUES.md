@@ -17,6 +17,22 @@ in `docs/JSKETCHER_UPSTREAM_WORK.md`. New mechanical CAD features remain J02.
 
 ## Latest bounded acceptance — 2026-11-04
 
+- [x] V2 authored history source integrated as CAD `0731e605` from `cc499ab8`.
+  Root reviewed atomic role publication/versioned identity and passed five
+  display controls (documented webpack harness), six material controls and TSC.
+  Agent's real-history browser receipt covers edit/undo/redo/native reopen,
+  invalid-edit preservation and held-worker host cancellation. Signed V2
+  material/history persistence remains to qualify.
+- [ ] Root V2 exporter consumer `a6bbca25` requires same-feature LID/LABEL in
+  one object, equal placement, and the exact mount-bound interface proof.
+  Six lifecycle controls pass; missing or mere zero-volume proof refuses.
+  Actual native contact proof and complete three-region output remain pending.
+- [ ] Immediate V1 export retest after `6ff03e0f` passes in the agent's actual
+  strict-CSP fixture, including cancellation/stale refusal and edited/rebound
+  re-export. Agent's independent Python ZIP/XML oracle checks two objects,
+  materials, mesh closure, dimensions and volume. Await committed receipt and
+  signed desktop export; do not count this as V2 manufacturing acceptance.
+
 - [x] Root identified the initial export invalidation as a queued history autosave
   rewriting the workspace after an explicit snapshot. CAD `6ff03e0f` consumes
   that pending timer in explicit `projectService.save`; later edits still get
