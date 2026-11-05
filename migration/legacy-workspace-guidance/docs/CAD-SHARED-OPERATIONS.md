@@ -66,8 +66,12 @@ and journal cursor must be published together after validation.
   revision and other-document controls. It still requires feature-cursor
   rewind; UI wizard and wrapper share the underlying coordinator, not yet one
   fully unified editing interface.
-- Host Save and cheap complete-document revision are implemented, with focused
-  adapter/type checks passing. Rebuilt signed-browser qualification is pending.
+- Host Save and cheap complete-document revision pass focused/type checks and
+  a rebuilt strict-CSP signed account gate: occupied filename, material/surface
+  stale tokens, changed file version, exact local/server bytes and fresh Files
+  reopen. See tests/jsketcher-agent-save-signed-20261104.md. Default validator
+  builds now force prepared numeric; root independently checked the actual
+  default-built worker under strict CSP using the same saved native bytes.
 - Original rectangle dimension commands, hole edits, true authored edit undo
   and their combined signed acceptance remain open.
 - Multi-window close/in-flight cancellation and repeated worker cleanup have
