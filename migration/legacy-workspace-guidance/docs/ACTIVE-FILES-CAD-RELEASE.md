@@ -22,7 +22,7 @@ Final real root namespace publication passes18 controls at19,440KiB peak RSS.
 Actual box-webhost tree/idempotence and unchanged hosting/floor pins pass.
 The protected final actor is still uninstalled. The exact installer/control inputs
 are root-protected, but its real no-write plan refused a known-process match
-(suspected own sudo ancestor); this is being reproduced and corrected narrowly. Public
+(confirmed own sudo invoker); this is being reproduced and corrected narrowly. Public
 acceptance drivers are prepared and their read-only admission currently refuses
 the unchanged baseline before registering accounts. These are delivery checks,
 not completion of full CAD1–6, general profiles, all active-editor performance,
