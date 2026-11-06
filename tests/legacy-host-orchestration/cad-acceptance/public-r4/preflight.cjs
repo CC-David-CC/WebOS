@@ -26,4 +26,8 @@ async function verifyMountedCad(page){
   appProof=Object.freeze({source:pins.core,path:asset.pathname,sha256:actual,bytes});
  }return {frameURL:src,...appProof};
 }
-module.exports={pins,assets,requiredPublicInputs,assertPublicCandidate,verifyMountedCad};
+async function launchPublicCad(page){
+ await page.locator('.app-menu-button').click();
+ for(const label of ['3D Printing','CAD Modeler (JSketcher inspired)'])await page.locator('.menu-pane button[aria-label='+JSON.stringify(label)+']').click();
+}
+module.exports={pins,assets,requiredPublicInputs,assertPublicCandidate,verifyMountedCad,launchPublicCad};

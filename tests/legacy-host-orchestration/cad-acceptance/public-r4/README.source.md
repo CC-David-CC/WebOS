@@ -1,5 +1,67 @@
 # Prepared public R4 Agent tools acceptance
 
+## Actual authorized public R4 result
+
+**PASS on https://beta.ksu.codes/** after root authorized execution following
+protected R4 activation. Target is artifact337b69de…, desktop29fea…,
+bundleD90/coree5/appd78/registry43a. These are new actual public receipts,
+not relabeled loopback/preactivation evidence. This establishes the B0 public
+workflow prerequisite, **not all22 Gate1 exercises**. No filesystem
+race/security test, reproduction or override was run.
+
+- Original Agent tools18 rows pass, exit0 in50.716s: actual Applications→CAD
+  and title; five-hole bracket; repeat-demo refusal; edits/rejected-change
+  preservation; undo/redo; native Save/server sync; dirty New/Open cancel and
+  accept; missing-file preservation; positive Circle DXF; honest unsupported
+  plate exports; sibling targeting and ordinary sibling Close.
+- Exact README42e8 Circle/enclosure fences pass, exit0 in31.307s. Their original
+ 682B/1169B source hashes are unchanged. Real native Save/server sync,
+  Circle(3,4)r5 millimeter DXF, exact pla/body-blue and pla/lid-blue#3366cc,
+  tpu/label-white#ffffff assignments, core3MF and fresh normal Files reopen
+  all pass, using own fresh registered test-account contexts.
+- Independent new-native parsing passes. The actual new6940B core3MF passes
+  the original74e350b7 geometry/group/interface oracle with only its predeclared
+  recipe material expectation substitution, plus directed reverse-edge winding:
+ 2objects,3regions,84triangles, analytic bounds/volumes and920mm² paired label
+  interface. No physical-printer/constitutive-law or general-kernel claim.
+
+Three real public shell/registry hashes were checked before browser/accounts;
+actual mounted D90 URL and streamed appd78 hash were verified. Normal trusted
+TLS stayed enabled. Own contexts were closed and shared Chrome disconnected,
+never closed or restarted. Geometry is the already scoped OCC worker path,
+not proof of every engine or all basic CAD features.
+
+### Preserved launcher failure and narrow correction
+
+The first actual attempt passed preflight but stopped before modeling at1.089s
+with `Missing actual control 3D Printing`. Receipt/log/pins are retained under
+evidence/public-r4-launch-text-before. The newly added Applications launcher
+incorrectly matched entire textContent, including its aria-hidden `‹` category
+arrow. An actual public menu-only diagnostic confirms text `‹3D Printing`,
+exact aria-label `3D Printing` and the expected CAD leaf; no CAD/model command
+ran in that diagnostic.
+
+Root confirmed the bounded correction: only that added launcher now clicks the
+existing exact aria-labels. No product source or original CAD/file assertion
+changed. Fresh prepared bodies were audited before rerun. Final driver hashes
+are b8ccd7e3… and d3ead927… with helperaaed4d46…. All original38+32 acceptance
+assertions remain; added title checks produce40+33. This was no timeout-based
+restart or weakened geometry oracle.
+
+Final packet: `/tmp/codi-beta-cad-agent-public-drivers-20261106-r4-aria`.
+Current prepare.py/preflight.cjs reproduce it. Final source/body records are
+evidence/public-prepared-aria.json and public-body-audit-aria.json. Actual
+results/runtime pins/oracles/timings are in evidence/public-r4/; historical
+preparation receipts retain their original helper hashes.
+
+Actual binary/native test files remain outside Git at
+`/tmp/codi-agent-public-exports-20261106-r4`, backed up and hash-reread at
+`/mnt/data10tb/codi-beta-cad-agent-public-acceptance-20261106-r4` on R730.
+Exact hashes/sizes are in public-r4/summary.json and the R730 hash receipt.
+No credentials/cookies/private account keys are stored in proof receipts.
+
+## Historical preactivation preparation
+
 Status: **PREPARED, PUBLIC FUNCTIONAL EXECUTION NOT RUN**. Root must authorize
 the browser/account run after activation. The only public requests made here
 are read-only code preflight GETs proving current BBC refuses safely. No CDP
