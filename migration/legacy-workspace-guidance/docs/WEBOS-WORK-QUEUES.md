@@ -2,6 +2,24 @@
 
 Current CAD file scope: [native saves open; DXF/3MF export only](CAD-FILE-SCOPE.md). External CAD import is not required by the user.
 
+## Latest bounded checkpoint — signed alias composition, 2026-11-06
+
+Files remains accepted. CAD source282c0f5ec/appc8b5e10f passes actual Axis core
+150Workers/17controls and new signed host20404's16 workflow rows, including
+normal Save/sync/account denial/fresh Files reopen and genuine cancellation.
+See test/agent-cad-corpus/axis-symmetry/combined-alias for exact pins. This
+includes the nonlinear alias correction, exact reader and Viewer disposal.
+The earlier36bf signed pass remains separately pinned historical evidence.
+
+Private selected-profile preparation/native/ledger/static-CSP components now
+pass their bounded tests. Root is connecting a distinct history operation,
+retaining the original source plane and unselected regions, with explicit
+runtime selection and no fabricated rectangular face provenance. Public
+Craft/history/parameter/signed persistence qualification remains open. ARC28
+numerical/domain rejection-cause preservation is a separate active lane.
+No public deployment or default native/runtime promotion; source packaging is
+still deferred. Consult CAD-FUNCTIONAL-GATES.md for the current serial queue.
+
 ## Current checkpoint — combined Axis and core correctness, 2026-11-06
 
 Files remains accepted. Combined CAD source36bf090f4/app6545abcb passes actual
