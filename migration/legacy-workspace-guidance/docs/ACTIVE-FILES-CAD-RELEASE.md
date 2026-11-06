@@ -9,7 +9,8 @@ below keep their original scope. Files remains accepted. CAD6f01/app85d passes
 the public32 capacity, signed bracket/typed/enclosure/material/core3MF and
 full beta-derived75-app shell/menu/native-file-routing proofs. Candidate is
 `bbc42921e10d830f25ca314c0989df154f2be9a315d88f512451c0141ba2ff9e`.
-Nothing has been staged or activated on box-webhost in this delivery checkpoint.
+The immutable BBC code bundle is now staged and independently verified on
+box-webhost; no actor/guard installation or beta selector activation yet.
 Main f2, beta830, both Files floors and /desktop remain preserved.
 
 Three bounded ownership lanes now close the release path: fixed protected
@@ -17,8 +18,9 @@ launcher/control closure; exact actor/guard installer and namespace recovery;
 independent publisher/launcher review. Root owns integration and any live
 mutation. Root92f35 publisher streams the pinned transport, closes all declared
 files/directories, and fsyncs the parent on retry after a rename crash gap.
-Initial real root namespace extraction measured19,480KiB peak RSS; final source
-proof remains pending. The protected final actor is still uninstalled. Public
+Final real root namespace publication passes18 controls at19,440KiB peak RSS.
+Actual box-webhost tree/idempotence and unchanged hosting/floor pins pass.
+The protected final actor is still uninstalled. Public
 acceptance drivers are prepared and their read-only admission currently refuses
 the unchanged baseline before registering accounts. These are delivery checks,
 not completion of full CAD1–6, general profiles, all active-editor performance,
