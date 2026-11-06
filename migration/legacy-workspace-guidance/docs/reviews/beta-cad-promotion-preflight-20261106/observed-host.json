@@ -1,0 +1,308 @@
+{
+  "observedAtUTC": "2026-11-06T09:50:35.959893+00:00",
+  "scope": "Read-only public code/config pins and service metadata. No private accounts, keys, probe data, service mutation, actor invocation or Files functional rerun.",
+  "hostingPins": {
+    "/home/dflanag3/webhost-sites/ops/common.py": {
+      "sha256": "e06fc8aa018ff048138fb2585ddb34ab9c6f1b061fb0022b06b14dca7df55928",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o644",
+      "symlink": false
+    },
+    "/home/dflanag3/webhost-sites/ops/webctl.py": {
+      "sha256": "ca25bb27799f0f306d7d901188d894d39ad22ea99ea2c1f1d224a2c6446ab8b9",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o644",
+      "symlink": false
+    },
+    "/home/dflanag3/webhost-sites/sites.toml": {
+      "sha256": "555c03041de1dd099f3d0e9d78c721ac1b1f5cc625a0bb0bba8bfc4284c13bb1",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o644",
+      "symlink": false
+    },
+    "/etc/caddy/Caddyfile": {
+      "sha256": "0a2cdcc3fe2913d55a7032a1258eb7c43952e14af6c9dfca39c074b678685cfb",
+      "uid": 0,
+      "gid": 984,
+      "mode": "0o640",
+      "symlink": false
+    }
+  },
+  "betaSelectors": {
+    "codi_beta_simplified": "0965a0cbdd022f588061cdc23e10eb6b18fa5977cc3f6a05569439eaf11d2020",
+    "codi_beta_maintenance": false,
+    "codi_beta_opfs": "830ca4f174a37cd499a05e07c373a0412fd94c3e6f232234a87645662170a1f0",
+    "codi_beta_active_overlay": "1d6b8f4e72e4c3f533afeea10589ac931a3dfe56d4bbaf03abec6d7d99a55d5a",
+    "codi_beta_retained_overlays": [
+      "bc3c7e659d40f853ed31bfec257079d65cd92c86011b1b1b86e80f32dd7a9c1c:0b9e14ead8e2be0ffb0f08d59fc2ee7aacc5bb1eb66bbac25edbcc32b2754088:2044b7585672ebf015a55d0b5cc6f40d56a3c4bd2d22b57a162f56f9c64e2234",
+      "1d6b8f4e72e4c3f533afeea10589ac931a3dfe56d4bbaf03abec6d7d99a55d5a:0d1cbcb4e6b23beb0c6b7eecce8b35244438fb4341c2e325203c739c64118b81:cbfafe53eae1afdac1f2a9af0bfdbd26cae59b1be8f5d96f6bebec2a56c158ed"
+    ]
+  },
+  "mainSelector": "f2e2ed4d3b75e8c40992a18bf83db7937fe90615bf1151e1b51ed3b0a8012f4a",
+  "betaActor": {
+    "path": "/srv/codi-connected/operators/beta-files-main-f2-v3",
+    "inventorySHA256": "c5437979fca4f41075a9052fedc339a659f022e2ddeefb6699cc74439bfe89a8",
+    "entries": 35,
+    "inventoryMismatch": [],
+    "codePins": {
+      "ops/asset-launch.py": "5183facff1799a7b5a710ce7eba79924f4fbdaa3f381e56c1db028be25a40a40",
+      "ops/asset_router.py": "40a66ce656440c0db5ea7795c72c3cbebbac603c2774ab35072a414fdfe6af74",
+      "ops/asset_select.py": "eda5fa3af4a4b2618667a28dfaf47acff0d3b4ccd3537ef83dea7009ac012b80",
+      "ops/beta_launcher.py": "5b8a0fe4f330257698843fb14db76e2ab4c824bea26f6ad94057cf6fd5a6d14a"
+    },
+    "launcherActions": [
+      "plan",
+      "apply",
+      "recover"
+    ],
+    "closure": "exact3ad/gate/830 endpoint families, main0366/f2; plan/apply admission not a new arbitrary selector"
+  },
+  "floors": {
+    "opfs-floor.json": {
+      "sha256": "90a476226aaaa2fe639c3642ef8d80be5a378e96b6c080345864b29db3ed596c",
+      "data": {
+        "baseline": "e7a5e64272c1d6b78de73c46f5105b9963e2272f40450e39e86a038293d9fb3b",
+        "candidate": "3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc",
+        "version": 1
+      },
+      "mode": "0o600",
+      "uid": 0
+    },
+    "files-asset-floor.json": {
+      "sha256": "21feaae39622361b838fc59dd03195c43c62a06616011ece5faa51bb1ea91c1d",
+      "data": {
+        "baseline": "3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc",
+        "candidate": "830ca4f174a37cd499a05e07c373a0412fd94c3e6f232234a87645662170a1f0",
+        "version": 1
+      },
+      "mode": "0o600",
+      "uid": 0
+    }
+  },
+  "journals": {
+    "main-restriction-journal.json": false,
+    "opfs-transition.json": false,
+    "files-inner-hosting.json": false,
+    "files-issuer-switch.json": false,
+    "files-emergency-gate.json": false,
+    "files-normalization.json": false,
+    "files-install.json": false,
+    "beta-hosting-journal.json": false,
+    "files-asset-transition.json": false,
+    "files-asset-inner-hosting.json": false,
+    "files-asset-emergency-gate.json": false
+  },
+  "betaArtifact": {
+    "path": "/srv/data/codi-beta-opfs/830ca4f174a37cd499a05e07c373a0412fd94c3e6f232234a87645662170a1f0",
+    "manifestSHA256": "830ca4f174a37cd499a05e07c373a0412fd94c3e6f232234a87645662170a1f0",
+    "hostGraph": "f8a27d0e69ecbd99cc7dee55b3664dd18f703cb3b90cfa7b904eda7aa514f17f",
+    "storageGraph": "3daf09a753455be1dc07ce183097b6535a999d2cc2124f9d0e6df25c7180be3a",
+    "fileCount": 171,
+    "sourceCommit": "72a1c86a55e22bb4768417dffa2f9c6ab965feac",
+    "appPins": {
+      "codemirror": "c61da9af5b23236d13903f04d906d83aff0cc93156f02d77ec8beefedc34b679",
+      "files": "b7e943c563ea83ad91988e595e1afcada8f31d71eda01e9915d104f32774d7b7",
+      "text": "241776677999e79b759ab00e077569a93f081ccb1cc9c04e42a192e9e6b9bcb3"
+    },
+    "catalogs": [
+      {
+        "path": "assets/desktop/apps-files-f8a27d0e69ecbd99cc7dee55b3664dd18f703cb3b90cfa7b904eda7aa514f17f.json",
+        "sha256": "553416ebb4d0043c96e31bb559acd915ca33b7102945c910b89f151ffcc2d8fd",
+        "appCount": 74,
+        "appIDs": [
+          "calculator",
+          "files",
+          "help",
+          "browser",
+          "codemirror",
+          "terminal",
+          "text",
+          "document-editor",
+          "pdf-viewer",
+          "spreadsheet",
+          "data-explorer",
+          "ffmpeg",
+          "wavesurfer",
+          "tone",
+          "audio-editor",
+          "zip",
+          "gcode-preview",
+          "grid-tools",
+          "mermaid",
+          "echarts",
+          "plotly",
+          "pdfme",
+          "maplibre",
+          "transformers",
+          "replicad",
+          "diagrams-net",
+          "notebook",
+          "excalidraw",
+          "svg-editor",
+          "arduino-simulator",
+          "pico-simulator",
+          "circuitjs",
+          "electronics-design",
+          "digital-logic",
+          "embroidery-studio",
+          "stitch-converter",
+          "personal-template",
+          "image-editor",
+          "trystero",
+          "tanstack-virtual",
+          "onnx-runtime",
+          "webtorrent",
+          "yjs",
+          "falling-blocks",
+          "owl-companion",
+          "physics-playground",
+          "snake-garden",
+          "chess-study",
+          "clockwork-quest",
+          "clockwork-room",
+          "crystal-defense",
+          "drone-circuit",
+          "expression-puppet",
+          "garden-defense",
+          "gravity-pinball",
+          "kinetic-relay",
+          "lantern-leap",
+          "marble-works",
+          "memory-garden",
+          "orbital-courier",
+          "pocket-golf",
+          "pocket-rally",
+          "reactive-control-desk",
+          "rhythm-garden",
+          "sky-courier",
+          "sling-targets",
+          "solitaire",
+          "stack-balance",
+          "story-cards",
+          "tabletop-bot-arena",
+          "target-garden",
+          "opencascade",
+          "gltf-transform",
+          "microduck"
+        ],
+        "relevantEntries": [
+          {
+            "id": "files",
+            "path": "assets/desktop/apps/files/b7e943c563ea83ad91988e595e1afcada8f31d71eda01e9915d104f32774d7b7/index.mjs",
+            "sha256": "8bf63824454c634e38b9d1b58f431205fb0e20da74ad8fec6f9cf48a2986399d",
+            "bundleSHA256": "b7e943c563ea83ad91988e595e1afcada8f31d71eda01e9915d104f32774d7b7",
+            "bytes": 3074769
+          },
+          {
+            "id": "codemirror",
+            "path": "assets/desktop/apps/codemirror/c61da9af5b23236d13903f04d906d83aff0cc93156f02d77ec8beefedc34b679/index.mjs",
+            "sha256": "117c3b7c9718655ab7dc7cc7531f81a8fb2a522bcadfd5515b516be4acad630a",
+            "bundleSHA256": "c61da9af5b23236d13903f04d906d83aff0cc93156f02d77ec8beefedc34b679",
+            "bytes": 1193175
+          },
+          {
+            "id": "text",
+            "path": "assets/desktop/apps/text/241776677999e79b759ab00e077569a93f081ccb1cc9c04e42a192e9e6b9bcb3/index.mjs",
+            "sha256": "34a99cc73f1ee1470f13c22ed454decadffc8d97e7ec88838a26ddb2919d13a1",
+            "bundleSHA256": "241776677999e79b759ab00e077569a93f081ccb1cc9c04e42a192e9e6b9bcb3",
+            "bytes": 60932
+          },
+          {
+            "id": "replicad",
+            "path": "assets/desktop/apps/replicad/9401672ca6d12483027091b890631842e709bbfaa527f79df5042e75e9bbf138/index.mjs",
+            "sha256": "4ccfc8b8871d18841902686b42a942e57f78a41384381c0389c275f07cb1b707",
+            "bundleSHA256": "9401672ca6d12483027091b890631842e709bbfaa527f79df5042e75e9bbf138",
+            "bytes": 1157015
+          }
+        ]
+      }
+    ],
+    "selectedShellPins": {
+      "shell/desktop-apps.js": {
+        "sha256": "192f4a989b50523f360e1e90705203e569ecf286632bc09a3e9165012e856135",
+        "bytes": 24778
+      },
+      "shell/app.js": {
+        "sha256": "df957ec69e3930a741a1680c637c88e98a74bdaaa0dcd4abfc64f5ff264dc932",
+        "bytes": 116873
+      }
+    }
+  },
+  "siteBlocks": {
+    "ksu.codes": {
+      "sha256": "5012427db5de82346517cabf8fb5abcf23c005c0751bbe410710ede8d49c4ea7",
+      "bytes": 6835
+    },
+    "beta.ksu.codes": {
+      "sha256": "b25aa6d01471730a27a73ec85569704f59d20bc7b6c30cb1e371e9b0e570d61c",
+      "bytes": 26031
+    }
+  },
+  "services": {
+    "codi-beta-issuer.service": {
+      "MainPID": "2148750",
+      "ExecStart": "{ path=/srv/codi-connected/venvs/517179c/bin/python ; argv[]=/srv/codi-connected/venvs/517179c/bin/python -I -B /srv/data/codi-beta-native/853c12e581c9f89fc3d78507f43941dd16cd0b4b894b28cdb8317e8a58340f21/scripts/serve-connected.py --port 28118 --runtime-dir /var/lib/codi-connected/beta/issuer --origin https://beta.ksu.codes --base-path  --user-files --beta-opfs-file-content ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+      "Id": "codi-beta-issuer.service",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/etc/systemd/system/codi-beta-issuer.service",
+      "DropInPaths": "",
+      "UnitFileState": "enabled",
+      "NeedDaemonReload": "no",
+      "unitSHA256": "d3ed82ddf87ff643288baac0a7476b35ed701a016b3d297ccb4a10cfaec224e4"
+    },
+    "codi-beta-frontend.service": {
+      "MainPID": "2148753",
+      "ExecStart": "{ path=/srv/codi-connected/venvs/517179c/bin/python ; argv[]=/srv/codi-connected/venvs/517179c/bin/python -I -B /srv/codi-connected/releases/microduck-issuer-1666491de4fe097285f02a5b6f7602fe57e4b9d3b2995bf016d4a9e809e36a51/guest-relay/server.py --port 28132 --origin https://beta.ksu.codes --identity-config-port 28118 --base-path  --no-guest-network --cookie-secret-file /run/credentials/codi-beta-frontend.service/guest-cookie.secret ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+      "Id": "codi-beta-frontend.service",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/etc/systemd/system/codi-beta-frontend.service",
+      "DropInPaths": "",
+      "UnitFileState": "enabled",
+      "NeedDaemonReload": "no",
+      "unitSHA256": "4b909882dfd879235e10bf3cbb004bd3e61db1786cfd99e122b7abbd39be5f78"
+    },
+    "codi-beta-gateway.service": {
+      "MainPID": "2148755",
+      "ExecStart": "{ path=/srv/codi-connected/venvs/517179c/bin/python ; argv[]=/srv/codi-connected/venvs/517179c/bin/python -I -B /srv/codi-gateway/releases/dd8cbea7de0a411eca100bdc3811eec1fc6bf3d7e8b6a7c0236fe509ceb9dbd1/scripts/serve-user-files.py serve --state-root /var/lib/codi-gateway/beta --data-root /var/lib/codi-user-files/beta --issuer-policy /run/credentials/codi-beta-gateway.service/issuer-policy.json --issuer-policy-sha256 71a7f2d380051ecde367bfc2517a77e2570d3797621e3e8f1cb4a141f8cd6dca --base-path  --port 28140 ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+      "Id": "codi-beta-gateway.service",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/etc/systemd/system/codi-beta-gateway.service",
+      "DropInPaths": "",
+      "UnitFileState": "enabled",
+      "NeedDaemonReload": "no",
+      "unitSHA256": "f7fe40291ed89df101e511673b201b5606ba526333b1f55743fdec8ed069b47e"
+    },
+    "caddy.service": {
+      "MainPID": "1223322",
+      "ExecStart": "{ path=/usr/bin/caddy ; argv[]=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+      "Id": "caddy.service",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/caddy.service",
+      "DropInPaths": "/etc/systemd/system/caddy.service.d/20-webhost-firewall.conf /etc/systemd/system/caddy.service.d/30-codi-ingress.conf /etc/systemd/system/caddy.service.d/40-codi-caddy-proxy-guard.conf /etc/systemd/system/caddy.service.d/50-codi-browser-relay.conf /etc/systemd/system/caddy.service.d/webhost.conf",
+      "UnitFileState": "enabled",
+      "NeedDaemonReload": "no",
+      "unitSHA256": "6c271e030644bd36a0c8956885934f16c928f88202bc126f12cde519ef9693ff"
+    },
+    "codi-ksu-live-root-renew.timer": {
+      "Id": "codi-ksu-live-root-renew.timer",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "FragmentPath": "/etc/systemd/system/codi-ksu-live-root-renew.timer",
+      "DropInPaths": "",
+      "UnitFileState": "enabled",
+      "NeedDaemonReload": "no",
+      "unitSHA256": "fe8fdcab3889ec2fb51a063e90487ed9f2efc9fccd185a9825c715c1d40a4718"
+    }
+  },
+  "availableBytes": {
+    "/var/lib/codi-user-files/beta": 6632144896,
+    "/srv/data": 318298349568
+  }
+}
