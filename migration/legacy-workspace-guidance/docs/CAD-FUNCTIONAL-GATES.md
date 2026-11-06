@@ -1,23 +1,40 @@
 # Current functional gates: Files and CAD
 
-## Active integration checkpoint — selected regions, 2026-11-06
+## Active integration checkpoint — 2026-11-06
 
-Files remains accepted within its recorded scope; its foundation is not being re-audited. No public site, default kernel or account state changed.
+Files remains accepted within its recorded scope. No public site, default
+kernel, account state or source package changed during this checkpoint.
 
-- [x] ARC28 rejection causes are integrated and qualified through actual public commands on source `aca23b2b3`: eight workflow rows, twelve transport/lifetime controls, and 99 terminated Workers. Causes describe the failed check; they do not prove global infeasibility. Exact pins/evidence: CAD `test/admission-causes/public/`.
-- [x] Source-region preparation/discovery, explicit selected-profile OCC build, generic ledger and registered `WORKER_SELECTED_PROFILE_EXTRUDE_V2` operation are integrated. Component evidence is separate from public workflow evidence.
-- [~] Public discovery/extrusion is wired. The first baseline rectangle path passed primitive creation → region discovery → native extrusion → normal native save/fresh reopen. Wider public correctness/persistence testing is running; this is not a complete CAD1 pass.
-- [x] Desktop commands `inspect-selected-profiles`, `inspect-selected-regions` and `create-selected-extrusion` pass eleven protocol controls plus eight genuine signed workflow rows on desktop478970d72/CADa0b363bce. Normal Save/sync, other-account404, two fresh Files reopens and genuine Open/Close late-reply controls pass. Exact evidence: `test/agent-cad-corpus/selected-profile/`; integrated proof91fb9856e. No deployment or full CAD1 claim.
-- [~] Independent real-browser tests reproduced ten reply-accessor controls on baseline source `d0d3abc01`. Corrected source `61a5ecdbc` captures reply fields before reading them, with bounded small native metadata capture and no mesh traversal. Its build/TSC and 27 focused controls pass; actual corrected browser controls are running.
-- [x] Selected-profile source dependency classification at15ed6c577 passes19 focused controls and actual public regeneration: annulus volume1500π→2625π after outer diameter40→50; unrelated Point, new plane and unrelated Circle creation succeed. An inner diameter60 edit that changes valid region membership refuses `STALE_REGION` and preserves accepted state. Fresh native replay retains both sources and authored intent. This is bounded source-regeneration evidence; generic feature-depth editing and atomic feature travel remain open.
-- [~] Actual held-reply tests reproduced false inspection cancellation after an identical project snapshot write. Candidatea0b363bce uses existing sketch-namespace membership/version counters, excluding unrelated snapshot keys while preserving source-ABA rejection. Its build/TSC and signed workflow pass. Genuine held-reply controls confirm identical snapshot writes allow success while real source edit+undo still refuses the stale candidate. The full adversarial receipt is finishing; original harness/oracle failures remain recorded.
-- [x] Earlier signed mechanical compositions also pass on exact CADa0/app8ae3/desktop478: five-hole bracket, typed bracket and real Parameters UI, enclosure/material/configuration/rebind/native persistence. The unchanged independent checker passes both core3MF exports:2 objects/3 regions/84 triangles/mm/expected bounds and volumes/920mm² paired interface. Evidence: `test/agent-cad-corpus/selected-profile/composition/`; integrated19b97e8be. This does not qualify 3MF from the new generic selected-profile outputs.
-- [ ] Finish public atomic feature-history/depth editing and the remaining full Gate1 corpus, then qualified managed beta delivery. Typed new-profile bindings, generated-face semantics and manufacturing export from these new outputs remain unqualified. Source-region retention and a few successful edits are not a complete CAD1/CAD2 pass.
+| Bounded workflow | Status and evidence |
+|---|---|
+| Public selected-region authoring | Six actual cases pass on matched builds: rectangle, disk, annulus, three nested circles, disjoint regions and XZ placement. Native saves reopen in fresh contexts. CAD `test/selected-profile-public/`, integrated `95782f1bf`. |
+| Source regeneration | On source `a0b363bce`, annulus outer diameter40→50 regenerates volume1500π→2625π. Unrelated Point/new-plane/Circle operations work. Invalid nesting refuses `STALE_REGION`, preserving accepted state. Fresh native replay retains both sources. |
+| Currentness and cancellation | Identical project snapshot writes permit inspection success. Source edit plus undo changes versions and cancels stale work even when bytes match. Genuine late results stay inert after source change or host Close. |
+| Signed My files | Eight rows pass on CAD `a0b363bce`, desktop `478970d72`, app `8ae3ddc83`, private fixture20406: public creation, exact nine-field intent, Save/sync, other-account404, two fresh Files reopens and genuine Open/Close controls. Proof `91fb9856e`, `test/agent-cad-corpus/selected-profile/`. |
+| Existing mechanical workflows | Five-hole bracket, typed bracket/real Parameters UI and enclosure/material/configuration/rebind/native persistence pass on that same signed build. Both core3MF exports independently pass two objects, three regions, 84 triangles, mm units, expected bounds/volumes and 920mm² paired interface. Proof `19b97e8be`, under the signed directory's `composition/`. |
+| Rejection diagnostics | Actual public tests pass eight workflows/twelve fault controls with 99 terminated Workers on source `aca23b2b3` and later `15ed6c577`. Causes describe the failed check, not proof of global infeasibility. CAD `test/admission-causes/public/` and integration-review evidence. |
+| Full adversarial controls | Source `a0b363bce` passes ten getter probes, two currentness controls and 35 request/forgery/lifetime/control rows, with all 270 observed Workers terminated. Proof `186113c7a`, CAD `test/selected-profile-public-adversarial/`. The separate after-commit outcome issue is not hidden by this pass. |
+| Profile edge cases | Twelve public cases pass explicit behavior/preservation checks. Independent checks verify nested volume, bounds, validity, runtime pins and disposal. Unsupported regions remain distinct from drawable entities. CAD `edca939f8`, `test/selected-profile-public-edge-cases/`. General polygons/arrangements remain open. |
+| Public Boolean composition | Actual r4 union exposed an old-default revision mismatch. Candidate `32386643a` preserves the operands' common registered runtime. Seven operand tests plus twelve ledger controls and fresh build/TSC pass. Actual union, subtraction and intersection now pass independent circle-lens volume/bounds checks and native fresh replay; proof is being committed. |
+| Selected-profile depth history | A separate candidate passes actual numeric depth edit, authored undo/redo, no-op/refusal/cancellation and native reopen. Independent review, shared-host integration and source-matched composition remain pending. Older core timeline replay is not equivalent evidence. |
+| After-commit outcome | A publication observer could invalidate the caller before receipt return yet receive success. Correction `0634a3c7c` reports cancellation with committed:true while preserving accepted geometry. Fresh app/TSC pass; independent after-commit qualification is running. |
 
-Newest work is on CAD `integration/cad-mechanical-candidate-20261105` and desktop `integration/desktop-mechanical-candidate-20261105`, backed on box-git and R730. Preserve earlier signed source `282c0f5ec`/app `c8b5e10f` proofs under their own pins. They do not qualify these later artifacts. Source packaging remains deferred until functional gates qualify. Keep the complete CAD1–6 checklist open and take the next bounded task when a lane finishes.
+Reply-field fix `61a5ecdbc`, dependency classification `15ed6c577` and
+sketch-namespace currentness `a0b363bce` are integrated. Each proof retains its
+exact source/app/Worker pins. Later description changes or candidates are not
+implicitly covered by older signed receipts. Original product and harness
+failures remain in the issue/evidence logs.
 
+Full CAD1/Gate1 and CAD2 remain open. New-profile typed bindings, generated-face
+references, manufacturing export from generic outputs, broader topology,
+atomic feature-history coverage and qualified managed beta delivery remain
+queued. Existing material-aware3MF evidence does not qualify generic outputs.
+Source packaging stays deferred until functional gates qualify.
 
-Current CAD file scope: [native saves open; DXF/3MF export only](CAD-FILE-SCOPE.md). External CAD import is not required by the user.
+Work continues on CAD `integration/cad-mechanical-candidate-20261105` and
+desktop `integration/desktop-mechanical-candidate-20261105`; source, tests and
+notes are backed on box-git and R730. Preserve the complete CAD1–6 checklist.
+
 
 ## Current implementation queue — 2026-11-06
 
