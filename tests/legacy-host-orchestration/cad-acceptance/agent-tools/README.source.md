@@ -31,6 +31,16 @@ The accepted app builder and capacity stage recipe are reused; no native provide
 
 This does not rerun all CAD/kernel correctness, Files foundation, every catalog app, production TLS/authentication or live release validation.
 
+## R3 registry-boundary correction
+
+Independent actual R2 controls established that candidate binding faults preserve the old state and immediate finish-observer Close retains `committed:true`. A queued Close could still run after the handler returned but before the shared registry resumed, losing the accepted publication marker. Root corrected that shared boundary in `2ea07fac2ab36d90bfb1440ae07f5da45a41b123`; its22 source controls include the original counterexamples. No microtask-delay workaround was added to CAD.
+
+The new producer `registry-artifact.py` leaves both old producers/artifacts intact. It adds only `assets/desktop/command-registry.43a7b8cfd70ffbbaf34a5e83d785b1a0c5f61d9ba7c29a4e640f63e4d9520e41.mjs`, replaces one registry import in the candidate desktop-apps shell, updates cache/offline/hostGraph metadata, and retains the old registry URI and every318 BBC path. Other74 catalog rows/order/types and storage remain exact. The inner core and outer CAD bundle are unchanged from R2.
+
+R3 artifact **`a6ed7b3986010e56c2cc52b6e8cef07febaaa7b5dcb17f5cb625627e5bf6397d`**,466 payload files,435,098,505 bytes; R730 `/mnt/data10tb/codi-beta-cad-agent-tools-artifact-20261106-r3/candidate-r3`. Source producer SHA `a82d0b88ca6233706a797fa310e4e3b4c1da86ea3a8a71f6c143678dde138b71`. Manifest registry path/SHA/source are explicit. Exact metadata is `r3-build-result.json`.
+
+`r3-functional-receipt.json` repeats all18 actual workflow rows PASS on fresh signed20415 and independently fetches the served versioned registry with HTTP200/exact43a7 SHA. Independent New/Open binding and immediate/queued Close fault controls are the separate final outcome gate; their receipt is owned by the reviewer, not inferred from these18 normal rows. There is still no live deployment claim.
+
 ## Reproduce
 
 Stage exact e5f/d78 runtime with the unchanged capacity `stage.py`, copy only code prerequisites and use the accepted app builder with the current source and `system/jsketcher/index.mjs` entry. Run `artifact.py` against exact BBC and the new bundle/pins into a fresh output. Start existing `research/beta-cad-final-artifact-20261106/fixture.py` with that exact selector and a fresh private TMP/port. Run `browser.cjs` with loopback `CODI_TEST_URL`, `CODI_TEST_CDP`, `PUPPETEER_CORE_PATH`, exact40-hex `CODI_SOURCE_PIN`,64-hex `CODI_ARTIFACT_PIN` and fresh `CODI_RECEIPT`. It closes only its own browser contexts.
