@@ -84,3 +84,22 @@ parentfixture20918 left for independent review/cleanup. No deployment occurred.
 This qualifies the bounded rectangular-source native through-hole/edit/persistence
 path. Generic feature-creation Undo, arbitrary source shapes, more complex hole
 systems, native-mesh parity, human UI and remaining Gate1 work stay open.
+
+## Independent root review and cleanup
+
+Root separately checks both entire native files, all six feature types and exact
+source/target/runtime bindings, one source rectangle at150×30, depth25, and the
+complete-document difference: only center diameter12→14 changes. It independently
+recomputes13 recorded native volumes/bounds and the one inherited source context.
+Run `python3 root-check.py evidence-r1`; `root-oracle.json` binds the portable
+receipt, while `root-raw-oracle.json` binds the original raw browser receipt.
+
+The first root checker incorrectly demanded bit-exact analytic zero bounds.
+Edge-treatment roundoff reached -1.7763568394002505e-15mm. No product/data change
+was needed: bounds use an explicit64 ULPs of model span; exact native document
+comparison remains unchanged. `root-check-before.json` retains that assumption
+failure and original checker hash. This is not manufacturing tolerance or snapping.
+
+`fixture-cleanup.json` records verified ownership before SIGINT and terminal exit0:
+Python/Caddy, private account state, port20918 and own targets are gone. Shared
+Chrome19329 remains. No beta/main deployment or filesystem-race test occurred.
