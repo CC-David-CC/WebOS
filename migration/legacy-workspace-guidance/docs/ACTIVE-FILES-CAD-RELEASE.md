@@ -69,16 +69,26 @@ read-verified on both LAN repositories. Its exact R2 build passes retained V2
 rectangle/circle/annulus controls and the polygon native checks. Independent
 Chrome R2 component evidence covers eight shapes,29 point classifications,
 authored ancestry, refusals, cancellation and Worker cleanup. Combined routing/
-journal controls29 and TypeScript pass. Genuine combined app authoring, edits,
-travel and normal Save/fresh reopen are under private qualification; none of
-these component results is a public polygon workflow pass.
+journal controls29 and TypeScript pass. The private genuine polygon app now
+passes14 public-command workflow rows and four independent saved-native oracles,
+including depth edits/travel, source refusal/replay, normal Save/sync/fresh Open
+and dependent box/Boolean replay. A clean rebuild matches all40 served assets.
+CAD source3103ad78f, appea2914df, and its exact scope are retained in
+`JSKetcher.git:test/polygon-profile-app-history/README.md`; root integrates its
+source/evidence at63973bcb2/842ebdc2a. V2 fresh reopen and human polygon selection
+remain unqualified in that slice. No public beta polygon promotion is claimed.
 
 Typed rectangle read-only inspection is integrated `417740e35`, with a separately
 pinned private signed nine-row proof. General typed mutations remain refused.
-E18 is still partial. New Worker-only authored edge keys and native fillet/
-chamfer bindings are in progress toward E11, which remains missing until the
-shared app/history path and independent geometry qualify. Beta still uses R4;
-main and the prototype are unchanged. Full Gate1 remains open.
+E18 is still partial. Worker-only authored edge-key reads now pass actual
+Chrome: nine inputs,32 classifications, real native edge renumbering with
+identical semantic IDs,14 Workers terminated. Native fillet/chamfer helper
+source08b19002 passes14 bounded cases; main export6d8395a6 compiles, with direct
+export qualification pending. These are component results; E11 remains missing
+until shared app/history, references and geometry qualify. The current plate's
+specialized ledger must genuinely share the selected-owned part/runtime before
+that chain can use the new features. Beta still uses R4; main and the prototype
+are unchanged. Full Gate1 remains open.
 
 The user explicitly cancelled filesystem-race testing. Do not run or resume
 those tests or try to override their review. Ordinary CAD functional checks
