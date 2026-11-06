@@ -23,6 +23,18 @@ program and handoffs remain in `CAD-ENGINE-GATES.md` and
 contracts below but remain queued. No complete Files or CAD gate is declared
 passed by this architectural decision.
 
+## Current checkpoint — matched R10; CAD1 remains open, 2026-11-05
+
+**Files is accepted within its recorded scope. CAD1 is not fully qualified.** Matched private CAD runtime `a3760b172` and desktop product source `120195b1e` pass root production browser controls and signed20393 My files workflows. CAD `test/combined-r10/README.md` and desktop [signed numeric-expression evidence](../test/agent-cad-corpus/numeric-expressions/README.md) bind app `fa1ba70a`, sketch Worker `6cda1dc9` and project validator `134e945d`. No public CAD deployment or kernel-default change.
+
+- [x] Real Worker numeric-source edits preserve global/local formula intent, solve dependent geometry, reject invalid/stale changes, undo/redo, and save/sync/reopen through signed My files. Actual Script draft/Reload, normal Open cancellation and visible Close release pending genuine Worker replies. Initial formula bindings remain explicitly seeded native fixtures; public initial-binding authoring is not established.
+- [x] Native full-sweep and short-partial Arc reconstruction corrections pass direct six-case and signed eleven-case regressions, including exact native source/reopen and supported DXF output. This resolves the preceding R7 loading failure within those scopes. Public creation of coincident-endpoint full Arcs is not claimed.
+- [x] Matched public point/Diameter and DXF regressions pass. Native project files remain editable inputs; DXF/core3MF are export handoffs. Another account cannot read the saved file; fresh Files reopen preserves accepted intent.
+- [~] Dense timeline retains all2,000 records/models/views with approximately22–28 mounted rows. View allocation/disposal fixes preserve owner/subscription cleanup. An isolated software-GPU test still measured approximately293ms sibling gaps; the earlier approximately1.3s software-compositor readback is a separate diagnosed environment cost, not an application readback fix. Large-scene responsiveness remains open.
+- [ ] Complete CAD1 requires broader primitive/constraint/region/selection and solid-operation qualification, full original-rectangle acceptance, dependable references and shared Worker coverage. Existing bracket/enclosure/core3MF passes are bounded slices, not blanket CAD1/CAD2 passes. Legacy active-editor/tools and raw-input ownership also remain partial.
+
+Current parallel work: shared Worker-backed signed X/Y/projected operations reusing existing UI mathematics; measured scene responsiveness; and an evidence-linked CAD1 qualification ledger. Root owns shared contracts, integration and affected-scope testing. CAD2 work may strengthen this foundation, but cannot mark unproved CAD1 rows complete. Final release/beta and source delivery remain queued after functional qualification. Earlier checkpoint entries below retain their original source and evidence scopes.
+
 ## Current bounded Worker-first follow-up — 2026-11-05
 
 The many-constraint test in CAD `test/capture-concurrency/README.md` now gives a concrete ARC06 blocker. In an actual pinned a9daf Chrome app, 514 segments/512 accepted locks occupy139,364 serialized bytes but LengthRelation admission and undo/redo take roughly515/676/767ms. Sampled stacks include synchronous solver reconstruction plus redraw. The separately measured one/two-sketch project capture is about10–14ms. Moving only JSON capture would leave the measured stall. A separate CAD browser context stayed responsive; this is not proof that all windows in one desktop renderer do.
