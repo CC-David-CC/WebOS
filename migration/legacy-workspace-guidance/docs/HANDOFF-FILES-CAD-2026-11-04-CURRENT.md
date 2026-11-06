@@ -1,5 +1,10 @@
 # Current Files and CAD handoff
 
+## Current checkpoint — Worker sketch view, 2026-11-05
+
+Files remains accepted. Private CAD runtime1c3f5dc3f / desktop1076ec10a passes actual Worker drawing/selection, shared Concentric, exact travel/refusal/close and signed Save/sync/account denial/fresh Files reopen. The new view owns no numerical PM/cache and explicitly reports omitted content and geometry-only selection. See [signed workflow evidence](../test/agent-cad-corpus/worker-view/README.md) and CAD test/worker-sketch-view plus adjacent transport/render/adversarial/performance/scheduling receipts. Legacy tools, broader rendering/mechanical/reference coverage, large3D display, raw-input ownership, final release and beta remain open. No full CAD1/CAD2, public deployment or source-packaging claim. Earlier entries retain their original pins/scopes.
+
+
 ## Current checkpoint — 2026-11-05, replay responsiveness and cancellation
 
 Files stays accepted within its recorded scope. Current qualified private CAD runtime427a5cda2 (R730 codi-replay-contour-20261105-r5, direct20491/signed20383) preserves signed primitive authoring, bracket variants, material rebind, normal My files Save/sync/fresh reopen/account isolation and independently checked2-object/3-region core3MF. Root actual five-hole regression and14-case exact contour comparisons also pass. Desktop test/agent-cad-corpus/primitive/SIGNED-427-20261105.md and CAD test/replay-contour/README.md hold pins and limits. No public deployment or source packaging; OCC remains default.
