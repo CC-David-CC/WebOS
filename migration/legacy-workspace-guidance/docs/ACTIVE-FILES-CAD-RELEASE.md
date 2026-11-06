@@ -21,8 +21,10 @@ files/directories, and fsyncs the parent on retry after a rename crash gap.
 Final real root namespace publication passes18 controls at19,440KiB peak RSS.
 Actual box-webhost tree/idempotence and unchanged hosting/floor pins pass.
 The protected final actor is still uninstalled. The exact installer/control inputs
-are root-protected, but its real no-write plan refused a known-process match
-(confirmed own sudo invoker); this is being reproduced and corrected narrowly. Public
+are root-protected. The own-sudo false alarm is corrected in66013e7fc; exact5de
+code inputs atomically replace knownc47, which remains retained. The literal
+actual server sudo plan now passes with all hosting/floor pins unchanged.
+Whole actor forward/rollback/recovery qualification remains open. Public
 acceptance drivers are prepared and their read-only admission currently refuses
 the unchanged baseline before registering accounts. These are delivery checks,
 not completion of full CAD1–6, general profiles, all active-editor performance,
