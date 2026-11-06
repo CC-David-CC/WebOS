@@ -14,3 +14,39 @@ Source stage, bundled apps, raw logs and temporary private fixture state are on 
 To reproduce, build the pinned CAD runtime, copy its reviewed runtime assets into `apps/system/jsketcher/node_modules/jsketcher-build`, refresh hashed runtime filenames in the isolated app manifest, and run `active-system/scripts/build-public-apps.py --apps jsketcher --node NODE --output OUTPUT`. Add the recorded Files/Text bundles to that test catalog. Run `tests/files-desktop-signed-fixture.py` with that `CODI_APPS_BUNDLE`, the established gateway/SDK paths and `CODI_TEST_STRICT_CSP=1` on a fresh loopback port. Run `signed.test.mjs` with `CODI_TEST_URL` and `CODI_TEST_CDP`. No accounts from any other fixture or hosting service are required.
 
 `menu-signed.test.mjs` is prepared for the next runtime's actual visible File menu link. It uses the production marker service solely to select the known publicly authored face (does not claim pointer picking), then actual menu, prompt and confirmation controls. It will check cancellation, source-message forgery refusal, signed persistence and a concurrent file revision during the replacement dialog. It is not yet qualified.
+
+## R7: visible menu passes; native full-Arc loader fails
+
+`signed-r7-receipt.json` records the independent `b249b5afb` r7 fixture `20390`.
+Every packaged current runtime asset was compared byte-for-byte with r7 dist.
+The ordinary public-agent/Files/lifecycle control passed again. The actual
+File menu → export face DXF → themed prompt → signed My files control passed,
+including cancel, forged top-window source-message rejection and preserving a
+competing file revision created while Replace confirmation was open. Known-face
+selection was set through the production marker service, so this is not proof
+of human pointer picking. An initial menu harness used the wrong prompt CSS
+class; correcting the selector required no product change. That timeout log is
+retained as `menu-before-selector-correction.log`.
+
+The separate `full-arc-signed.test.mjs` control remains failing on r7: its
+explicitly seeded native Arc with coincident endpoints is admitted by normal
+project validation, then ordinary rebuild fails before export. Passive
+`full-arc-restore-diagnostic.mjs` observes the genuine staged
+`craft.pipelineFailure$`: `Cannot read properties of null (reading 'u0')`,
+`retainedLastComplete:false`. No Worker, loader, geometry provider or input was
+substituted to get that diagnosis. Root owns the consumer correction. The test
+now stops promptly on the explicit open failure, rather than waiting for its
+older 90-second success-only timeout.
+
+The minimal 676-byte synthetic native fixture is tracked at
+`fixtures/full-sweep-arc-native.json`; it has one public XY plane, empty boundary
+and constraint lists, and one Arc with `a=b=(3,-3)`, `c=(3,7)`. This fixture
+contains no account or key material. The original private signed file and raw
+failed/diagnostic logs remain in the R730 r7 evidence directory. The pure DXF
+Worker's full-sweep support does not establish that this ordinary native-loader
+path works. Preserve that distinction when reporting progress.
+
+R7 source/bundles/private temporary state use the new
+`/mnt/data10tb/codi-real-dxf-signed-r7-{desktop,apps,evidence,tmp}-20261105`
+paths. Fixtures `20383`–`20389` and public hosting remain unchanged. All test
+contexts were closed. No whole CAD gate or app promotion is claimed.
