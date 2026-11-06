@@ -1,5 +1,7 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+Current mechanical integration: [qualified components, pending signed app path and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
+
 Authoritative user acceptance gate, 2026-11-04. This is an engine for future
 development, beyond ordinary JSketcher patches. The source fork is a candidate
 implementation; merging fixes is not the gate's completion criterion.

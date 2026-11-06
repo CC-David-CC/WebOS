@@ -1,5 +1,7 @@
 # WebOS work queues and progress ledger
 
+Current mechanical integration: [qualified components, pending signed app path and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
+
 ## User-confirmed stopping point — 2026-11-06
 
 The user explicitly selected **Full Gate 1: all 22 exercises**, including
