@@ -19,50 +19,46 @@ CAD2–6 plans for resumption.
 
 ## Current actual beta state — 2026-11-06
 
-CAD is active on **https://beta.ksu.codes/** at static
-`bbc42921e10d830f25ca314c0989df154f2be9a315d88f512451c0141ba2ff9e`.
-Actor79be and guard6f are installed; real root plan/apply succeeded.
-Independent readback matches commonbc0/sitesaf2/Caddy1cd3 with no pending
-transition journal. Mainf2, both accepted Files floors and byte-identical
-`/desktop/` remain preserved. Actual [activation/public receipts](../research/beta-cad-public-acceptance-20261106/README.md)
-include ten configured site GETs plus beta/prototype: reachable200 or protected401,
-not all-site app qualification.
+**https://beta.ksu.codes/** now selects R4
+`337b69de24aa84f726a5d3cedb8f16f7ade026baa206b4faa31281ff380d827e`.
+The actual protected installer completed, followed by real actor plan/apply
+and two successful Caddy validations. Independent post-activation readback
+matches common1868/guard36df/sitesb025/Caddyb1f1; no pending transition or
+installer journal remains. Mainf2, both accepted Files floors and byte-identical
+`/desktop/` are preserved. All ten configured site GETs plus beta/prototype
+return their expected reachable200/protected401 statuses. This health readback
+is not an app-workflow qualification.
 
-Four actual public-beta workflows pass on exact6f01/app85d: selected depth,
-bracket, typed bracket/Parameters UI and enclosure/materials/core3MF, including
-native Save/sync, foreign-account denial and fresh Files reopen. Full CAD1/Gate1
-and CAD2 remain open; Files remains accepted within its recorded scope.
+Visible **Agent tools** now sits immediately after File. The app says
+**CAD Modeler (JSketcher inspired)** and no longer exposes Donate/GitHub actions.
+Panel and reusable [JavaScript examples](../apps/system/jsketcher/examples/README.md)
+use the same public command helper, without an AI provider. Guarded New/Open
+and committed-outcome handling are included. R4 outer bundle isd90e75bb;
+inner CAD appd78d5333 and registry43a7b8cf. Eleven numerical Worker/native
+asset pins remain unchanged from the qualified core.
 
-The exact **CAD Modeler (JSketcher inspired)** label and removed Donate/GitHub
-actions pass a separate combined private-browser build. Visible **Agent tools**,
-guarded public New/Open and the reusable [JavaScript examples directory](../apps/system/jsketcher/examples/README.md)
-are source work being qualified together next, not yet deployed. Panel and
-console use the same helper, without an AI provider. Examples cover discovery,
-five-hole mounting plate creation/edit/refusal/travel, native Save/Open and
-scoped DXF/3MF exports with truthful persistence and support limits.
+Private functional and responsive proofs retain their exact runtime scopes:
+18 Agent tools workflow rows, six independent New/Open/publication/Close
+controls, exact circle-DXF and material-enclosure3MF recipes with normal
+Save/sync/fresh Files reopen, and12 responsive cases. Independent reviews
+qualify the R4 source/artifact closure and managed routing/operator inputs.
+Actual public R4 functional execution is in progress; do not substitute these
+private proofs or the health GETs for that acceptance. Earlier BBC public
+selected-depth/bracket/typed/enclosure results remain historical evidence.
 
-### Qualified privately; next beta update still pending
+Full Gate1 remains unfinished. The [22-exercise execution plan](../research/cad-gate1-qualification-plan-20261106/README.md)
+separates required primitives/solver/units/regions, dependent features,
+ordinary solids, assembly/drawings and export/native replay. Missing shared
+commands are implementation gaps, not passes. Finish the public hardcoded
+agent prerequisite, then execute/fix the complete required matrix and original
+rectangle workflow on a coherent build. No new Files defect, main-site promotion,
+kernel-default change or CAD1/2 completion is claimed.
 
-R3 `a6ed7b…` passes18 actual Agent tools workflows and six independent
-New/Open binding/publication/Close controls. New/Open retains one coherent
-model/file identity on setup failure, and queued Close preserves an explicit
-committed outcome. The exact documented circle-DXF and assigned-enclosure3MF
-recipes also pass native Save/server sync/fresh Files reopen and independent
-manufacturing checks. Proofs: `research/beta-cad-agent-tools-20261106/`,
-`beta-cad-agent-panel-review-20261106/` and `beta-cad-agent-recipes-20261106/`.
-
-R3 is staged unselected on box-webhost; independent streaming verification
-checks467 files/435208994bytes and unchanged hosting/Floors. Actual namespace
-reviews qualify artifact/cache/source closure, guard/Caddy routes, immutable
-publisher, and the corrected v2 operator/installer. None of these namespace
-proofs substitutes for a later real root plan/apply and actual public acceptance.
-
-Phone review found Agent tools initially off-screen (reachable by horizontal
-touch scrolling); placing it immediately after File is the remaining small
-interface correction. Qualify that exact new outer-app artifact, regenerate
-its sealed metadata, then finish protected beta activation/public checks.
-No new Files defect, main-site promotion, default-engine change or full CAD1/2
-completion is claimed. Source packaging remains deferred.
+The user explicitly cancelled filesystem-race testing. Do not run or resume
+those tests or try to override their review. Ordinary CAD functional checks
+continue. Source packaging remains deferred until functional qualification.
+Actual activation commands, retained failures and readback are recorded in
+[the R4 operator notes](../research/beta-cad-agent-operator-inputs-20261106/ACTIVATION.md).
 
 Continue the full bounded release/CAD1–6 queues. Source packaging stays deferred
 until functional qualification. Older checkpoints below retain original pins
