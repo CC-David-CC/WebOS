@@ -52,7 +52,7 @@ actual menu's accessible labels, with original CAD assertions unchanged.
 This clears the beta-and-agent prerequisite, not the complete Gate1. Earlier
 BBC public results remain historical evidence.
 
-Full Gate1 remains unfinished. The [22-exercise execution plan](../research/cad-gate1-qualification-plan-20261106/README.md)
+Full Gate1 remains unfinished. The [current22-exercise baseline](evidence/CAD-GATE1-BASELINE-20261106.md) records the actual public scoped passes and remaining gaps. The [22-exercise execution plan](../research/cad-gate1-qualification-plan-20261106/README.md)
 separates required primitives/solver/units/regions, dependent features,
 ordinary solids, assembly/drawings and export/native replay. Missing shared
 commands are implementation gaps, not passes. Execute/fix the complete required matrix and original
