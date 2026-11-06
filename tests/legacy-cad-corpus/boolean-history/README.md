@@ -1,7 +1,9 @@
 # Signed public Boolean-history plate workflow
 
-Status: prepared, **not run or qualified**. Await the parent's frozen matched
-full app/bundle/signed fixture pins. Tests only; no product files are changed.
+Status: **PASS17rows**, bounded actual signed public workflow on parent-owned
+private20917; test source0e8602104 after retained initial precondition failure.
+No product files changed. Exact core298e0e15139aa3f9bc9f67aad9ad80ed4d1c1630,
+desktop33f400f0c, appba24cc50/outera496820c are pinned in the receipt.
 
 The actual-command driver creates a fully constrained100×50 rectangle on XY0,
 extrudes20mm through the new registered dd666/8d5 build, then creates five
@@ -52,3 +54,31 @@ The corrected driver first accepts fillet3→3.5, verifies canUndo, then exercis
 Undo3/Redo3.5/Undo3 and stale refusal before Save. Source/native/lineage oracles
 remain unchanged. Creation undo/redo is separately unqualified Gate1 work; a
 passing edit-journal run must not be described as generic history undo coverage.
+
+
+## Actual signed R2 evidence
+
+The fresh corrected run passed all17 workflow rows, including the complete
+ordinary-public creation chain, native refusal preservation, accepted numeric
+edit travel, native Save/server sync, fresh Open/reedit, another Save and second
+fresh Open. Actual64 core files and mounted outer index were verified before
+authoring and on reopen. Own synthetic-account browser contexts were closed;
+sharedChrome19329 and the parent fixture remained available for parent review.
+No native file was used as an authoring seed; the two files are normally saved
+outputs of this genuine public workflow.
+
+| Saved state | Native volume mm³ | Data proof |
+|---|---:|---|
+|100×50×20, five bores, twoR3 fillets, two1mm chamfers|97326.63736287944|6profiles/5Booleans/2treatments/6source sketches|
+|Same chain reopened and fillets edited toR4|97266.54884863076|Same symbolic operands, source IDs and edge intents after second Open|
+
+`evidence-r2/` retains the exact receipt and both saved native outputs with
+SHA-verified server bytes. `check-saved.mjs` independently verifies exact source
+rectangle/circle geometry, fixed depths, symbolic operation ordering, engine
+revision and selected-edge intents; its passing output is retained. The original
+failure remains untouched under `evidence-before-creation-undo/`.
+
+This establishes a bounded public Boolean/edge-treatment and native persistence
+path through the new registered backend. It does not establish arbitrary
+Boolean naming, creation undo/redo, semantic through-all, true hole features,
+source/depth dependency editing, human UI or all22 Gate1 requirements.
