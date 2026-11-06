@@ -1,0 +1,5 @@
+# Sketch DXF host controls
+
+`host-stub-signed.test.mjs` is explicitly a test-only fake CAD DXF provider. On isolated fixture `20388`, desktop candidate `46a1f3322` and an existing CAD app, it exercised real host command registration and signed My files Blob writes. It verified direct `application/dxf` Blob write/sync, wrong MIME and >8 MiB rejection, new-path no-overwrite, and held fake-provider output after a changed revision failing without a server file. This does not validate CAD geometry, the real DXF Worker, the UI selected-face action or general Files behavior. Test-only app bundle `faf2651d56094ed4fcea3088f62936f2c6c74f399d8a65244e6ccd67333b44b0`. Test contexts are closed after each run; fixture is separate from live preview and other test accounts.
+
+`signed.test.mjs` is the prepared end-to-end control for the actual CAD backend: public Point/Segment/Circle/Arc creation, independent DXF code/value parse and millimeter units, stale/missing target/no-overwrite and account denial. It was syntax checked but has not yet run against a matching backend.
