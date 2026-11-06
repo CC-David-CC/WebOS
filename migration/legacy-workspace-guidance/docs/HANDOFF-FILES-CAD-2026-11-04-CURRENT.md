@@ -1,5 +1,33 @@
 # Current Files and CAD handoff
 
+## Current actual beta state — 2026-11-06
+
+CAD is active on **https://beta.ksu.codes/** at static
+`bbc42921e10d830f25ca314c0989df154f2be9a315d88f512451c0141ba2ff9e`.
+Actor79be and guard6f are installed; real root plan/apply succeeded.
+Independent readback matches commonbc0/sitesaf2/Caddy1cd3 with no pending
+transition journal. Mainf2, both accepted Files floors and byte-identical
+`/desktop/` remain preserved. Actual [activation/public receipts](../research/beta-cad-public-acceptance-20261106/README.md)
+include ten configured site GETs plus beta/prototype: reachable200 or protected401,
+not all-site app qualification.
+
+Four actual public-beta workflows pass on exact6f01/app85d: selected depth,
+bracket, typed bracket/Parameters UI and enclosure/materials/core3MF, including
+native Save/sync, foreign-account denial and fresh Files reopen. Full CAD1/Gate1
+and CAD2 remain open; Files remains accepted within its recorded scope.
+
+The exact **CAD Modeler (JSketcher inspired)** label and removed Donate/GitHub
+actions pass a separate combined private-browser build. Visible **Agent tools**,
+guarded public New/Open and the reusable [JavaScript examples directory](../apps/system/jsketcher/examples/README.md)
+are source work being qualified together next, not yet deployed. Panel and
+console use the same helper, without an AI provider. Examples cover discovery,
+five-hole mounting plate creation/edit/refusal/travel, native Save/Open and
+scoped DXF/3MF exports with truthful persistence and support limits.
+
+Continue the full bounded release/CAD1–6 queues. Source packaging stays deferred
+until functional qualification. Older checkpoints below retain original pins
+and are historical where this section supersedes their installation state.
+
 ## Active integration checkpoint — 2026-11-06
 
 Files remains accepted within its recorded scope. No public site, default
