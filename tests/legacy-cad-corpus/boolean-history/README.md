@@ -44,3 +44,11 @@ sha256,path}}`; every actual core file and mounted outer index is checked before
 authoring and after fresh Open. Own contexts are closed/disconnected only; the
 shared browser and parent's fixture remain running. No execution starts before
 the parent freezes the final bundle/assets.
+
+The first actual run is retained at `evidence-before-creation-undo/`: all creation
+and refusal-prefix geometry passed, but Undo was invoked before an accepted
+numeric edit. The advertised endpoint travels **edits**, not feature creation.
+The corrected driver first accepts fillet3→3.5, verifies canUndo, then exercises
+Undo3/Redo3.5/Undo3 and stale refusal before Save. Source/native/lineage oracles
+remain unchanged. Creation undo/redo is separately unqualified Gate1 work; a
+passing edit-journal run must not be described as generic history undo coverage.
