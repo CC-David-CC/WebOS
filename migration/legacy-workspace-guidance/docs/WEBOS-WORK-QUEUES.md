@@ -59,6 +59,27 @@ commands are implementation gaps, not passes. Execute/fix the complete required 
 rectangle workflow on a coherent build. No new Files defect, main-site promotion,
 kernel-default change or CAD1/2 completion is claimed.
 
+## Private foundation integration checkpoint — 2026-11-06
+
+The explicit polygon V3 source/preparation, native shared-vertex ancestry,
+mount/factory and whole-part history/save routing are integrated in CAD
+`186972b7d`; emitted WASM colocation is corrected in `86cae0378`. Both LAN CAD
+repositories contain the integrated source. Native source `b66472f8` is also
+read-verified on both LAN repositories. Its exact R2 build passes retained V2
+rectangle/circle/annulus controls and the polygon native checks. Independent
+Chrome R2 component evidence covers eight shapes,29 point classifications,
+authored ancestry, refusals, cancellation and Worker cleanup. Combined routing/
+journal controls29 and TypeScript pass. Genuine combined app authoring, edits,
+travel and normal Save/fresh reopen are under private qualification; none of
+these component results is a public polygon workflow pass.
+
+Typed rectangle read-only inspection is integrated `417740e35`, with a separately
+pinned private signed nine-row proof. General typed mutations remain refused.
+E18 is still partial. New Worker-only authored edge keys and native fillet/
+chamfer bindings are in progress toward E11, which remains missing until the
+shared app/history path and independent geometry qualify. Beta still uses R4;
+main and the prototype are unchanged. Full Gate1 remains open.
+
 The user explicitly cancelled filesystem-race testing. Do not run or resume
 those tests or try to override their review. Ordinary CAD functional checks
 continue. Source packaging remains deferred until functional qualification.
