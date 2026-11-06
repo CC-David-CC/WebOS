@@ -4,7 +4,7 @@ from pathlib import Path,PurePosixPath
 PARENT='bbc42921e10d830f25ca314c0989df154f2be9a315d88f512451c0141ba2ff9e'
 SOURCE='e5f603b609fe2b9948c4fa03181a706f4a9ee759'
 APP='d78d53333222222404fcd030d187b655a24132f750a429b0fa55cbd9b8c1b319'
-DESKTOP='3bcae0904c82c4abd27abef169144bc3f5db6cfe'
+DESKTOP='e80f04ca34f3e6b011714cb32709e824b0f00a07'
 MUTABLE={'shell/app.js','shell/desktop-apps.js','assets/desktop/cache-manifest.json','assets/desktop/offline-worker.js'}
 def digest(b):return hashlib.sha256(b).hexdigest()
 def encode(x):return (json.dumps(x,sort_keys=True,separators=(',',':'))+'\n').encode()
