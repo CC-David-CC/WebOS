@@ -1,0 +1,14 @@
+if ((await cad.newProject()).status !== 'opened') throw Error('New cancelled.');
+const creation = await cad.execute('inspect-sketch-creation');
+const plane = await cad.execute('create-empty-sketch-plane', {
+  revision: creation.revision, unit: 'millimeter', plane: 'XY', depth: 0
+});
+const sketches = await cad.execute('inspect-closed-sketches');
+const sketch = await cad.execute('inspect-closed-sketch', {
+  revision: sketches.revision, faceId: plane.faceId
+});
+await cad.execute('append-sketch-primitive', {
+  revision: sketch.revision, faceId: plane.faceId, stage: 0,
+  kind: 'Circle', role: null, data: {c: {x: 3, y: 4}, r: 5}
+});
+await cad.exportSketchDxf('/Agent-circle.dxf');
