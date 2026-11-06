@@ -1,5 +1,7 @@
 # Current Files and CAD handoff
 
+Current CAD file scope: [native saves open; DXF/3MF export only](CAD-FILE-SCOPE.md). External CAD import is not required by the user.
+
 ## Current checkpoint — DXF and timeline integration, 2026-11-05
 
 Files remains accepted within its recorded storage/isolation/recovery scope. Private CAD source `b249b5afb` (r7, direct20498) integrates Worker DXF export, the full-sweep Arc correction and the desktop File-menu action. Root actual-browser tests pass public point/Diameter edits, exact no-op/refusal/undo/redo/native reopen, Worker drawing/selection/Concentric and five-hole edit/cancel/Save/reopen. DXF production tests verify local millimeter coordinates, genuine unsaved face outlines, unchanged source/history and late-reply cancellation with all observed Workers terminated. CAD `test/dxf-production/README.md` and `test/point-diameter-full-app/final/*r7.json` record exact app/Worker pins and scopes.

@@ -100,3 +100,5 @@ Check available resources before large jobs, use R730 where appropriate, and cle
 Keep the checklist, per-silo status and handoff current. Commit source, tests, runtime prerequisites and notes to box-git and back them up to R730. Another machine must have documented prerequisites and reproducible commands; no essential source should depend on this workstation.
 
 Keep me informed about meaningful findings and decisions. Return exact commits, deployed versions, test evidence and remaining limitations. Finish the bounded release milestone before pausing.
+User clarification — 2026-11-05
+Only import/reopen our own native CAD saves. DXF and core model 3MF are export-only handoffs for this milestone. Third-party CAD importers are not required. Native save/reopen and the original modeling, account, lifecycle and export validation requirements remain. See docs/CAD-FILE-SCOPE.md.
