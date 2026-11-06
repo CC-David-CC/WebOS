@@ -56,6 +56,9 @@ group/interface oracle source SHA74e350b7… and changes only its single fixed
 material expectation to PLA/#3366CC, PLA/#3366CC, TPU/#FFFFFF. This variation was
 declared before execution; all volume, bounds, index, winding, manifold-edge,
 triangle-count, grouping, transform and interface-area assertions remain intact.
+The wrapper additionally checks every directed edge occurs once with exactly
+one reverse partner on all three meshes, independently confirming consistent
+closed-edge winding.
 It passes: millimeters; two independently arranged build objects; three named
 regions;84 triangles; analytic volumes/bounds; and920mm² matching lid/label
 contact on both sides. The two PLA/color resources remain separate because
