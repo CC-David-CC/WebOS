@@ -2,7 +2,30 @@
 
 Current CAD file scope: [native saves open; DXF/3MF export only](CAD-FILE-SCOPE.md). External CAD import is not required by the user.
 
-## Current checkpoint — shared Worker dimensions and R11 integration, 2026-11-05
+## Current checkpoint — combined Axis and core correctness, 2026-11-06
+
+Files remains accepted. Combined CAD source36bf090f4/app6545abcb passes actual
+AxisSymmetry core authoring, live-axis edits, refusals, exact travel and native
+reopen:150 tracked Workers terminate and17 fault/lifetime controls pass. The
+normal app build includes exact-coordinate reading and Viewer disposal; default
+native assets are unchanged and no private webosTest helper is packaged. The
+desktop adapter is integrated at708deffa5 and its eight boundary controls pass.
+Fresh signed host20403 is in progress; no signed Axis success or deployment is
+claimed yet. Independent offline normalization/harness composition passes228/228
+mechanical tests,9/9 normalization,5/5 AST guards and TypeScript. An inherited
+power-substitution algebra defect has its own correction/qualification lane;
+original equation residuals remain mandatory.
+
+The selected-profile OCC kernel component passes its native/browser corpus,
+including nested and disjoint region requests, mixed holes, transformed frames,
+strict data dispatch and cleanup. Public Craft/history/discovery, preservation
+of unselected source regions, parametric regeneration and signed persistence
+are the next serial integration work. See CAD test/combined-axis,
+test/selected-profile-kernel and [current functional gates](CAD-FUNCTIONAL-GATES.md).
+Full CAD1/Gate1, later gates and final managed beta remain open; source packaging
+remains deferred. Native NVIDIA issue fixes are separate LAN-only branches.
+
+## Earlier checkpoint — shared Worker dimensions and R11 integration, 2026-11-05
 
 **Files remains accepted within its recorded scope; full CAD1/Gate1 and CAD2 remain open.** The [qualification ledger](evidence/CAD1-GATE-LEDGER-2026-11-05.md) separates the full gate from bounded drawing, parametric and native-file passes. Root combined runtime607b1ea42 (private direct20614) integrates Worker signed X/Y/projected dimensions and exact planar display preparation. Root production-browser controls pass signed dimensions, live datum edits, refusal/cancellation, exact travel/native reopen (74 main-phase Workers terminated) and13 plane/corner cases with extension fallbacks and selection. CAD test/combined-r11 holds these matching receipts. App88d65535, sketch Worker9fa5dd2f, project validator134e945d. No public deployment or default change.
 
