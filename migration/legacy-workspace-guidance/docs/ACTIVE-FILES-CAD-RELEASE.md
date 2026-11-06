@@ -42,15 +42,20 @@ Private functional and responsive proofs retain their exact runtime scopes:
 controls, exact circle-DXF and material-enclosure3MF recipes with normal
 Save/sync/fresh Files reopen, and12 responsive cases. Independent reviews
 qualify the R4 source/artifact closure and managed routing/operator inputs.
-Actual public R4 functional execution is in progress; do not substitute these
-private proofs or the health GETs for that acceptance. Earlier BBC public
-selected-depth/bracket/typed/enclosure results remain historical evidence.
+Actual public R4 qualification now passes18 Agent tools rows and the exact
+README circle/enclosure recipes, normal Save/server sync/fresh Files Open and
+independent NEW native/3MF checks. The3MF has two objects, three regions and84
+triangles with expected dimensions, volumes and920mm² paired interface. See
+[public prerequisite receipts](../research/beta-cad-agent-public-acceptance-20261106/README.md).
+The first launcher-only test failure is retained; the test now selects the
+actual menu's accessible labels, with original CAD assertions unchanged.
+This clears the beta-and-agent prerequisite, not the complete Gate1. Earlier
+BBC public results remain historical evidence.
 
 Full Gate1 remains unfinished. The [22-exercise execution plan](../research/cad-gate1-qualification-plan-20261106/README.md)
 separates required primitives/solver/units/regions, dependent features,
 ordinary solids, assembly/drawings and export/native replay. Missing shared
-commands are implementation gaps, not passes. Finish the public hardcoded
-agent prerequisite, then execute/fix the complete required matrix and original
+commands are implementation gaps, not passes. Execute/fix the complete required matrix and original
 rectangle workflow on a coherent build. No new Files defect, main-site promotion,
 kernel-default change or CAD1/2 completion is claimed.
 
