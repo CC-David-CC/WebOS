@@ -2,6 +2,10 @@
 
 Current CAD file scope: [native saves open; DXF/3MF export only](CAD-FILE-SCOPE.md). External CAD import is not required by the user.
 
+## Latest bounded correctness finding — 2026-11-06
+
+CAD fix5fb0f7032/evidencea736c76c4 preserves exact authored sketch coordinates during model projection. The inherited1e-3 reader weld silently closed a1e-6 gap and moved circle centers toward nearby unrelated Points/construction endpoints. Private app655c7d15 passes15 public-command profile/coordinate rows, explicit solved/edited PCoincident rectangle behavior, native reopen and the existing full five-hole plate edit/refusal/cancellation/travel/native-save regression. Independent captured-output checks verify nested-region hierarchy and physical dimensions. See CAD test/public-region-corpus and docs/AGENT-CAD-ISSUES.md CAD-027. This exact reader build has no new signed-host/deployment qualification; earlier signed proofs retain their pins. General region/Worker discovery and remaining full CAD1/Gate1 requirements stay open. Files remains accepted.
+
 ## Current checkpoint — shared Worker dimensions and R11 integration, 2026-11-05
 
 **Files remains accepted within its recorded scope; full CAD1/Gate1 and CAD2 remain open.** The [qualification ledger](evidence/CAD1-GATE-LEDGER-2026-11-05.md) separates the full gate from bounded drawing, parametric and native-file passes. Root combined runtime607b1ea42 (private direct20614) integrates Worker signed X/Y/projected dimensions and exact planar display preparation. Root production-browser controls pass signed dimensions, live datum edits, refusal/cancellation, exact travel/native reopen (74 main-phase Workers terminated) and13 plane/corner cases with extension fallbacks and selection. CAD test/combined-r11 holds these matching receipts. App88d65535, sketch Worker9fa5dd2f, project validator134e945d. No public deployment or default change.
