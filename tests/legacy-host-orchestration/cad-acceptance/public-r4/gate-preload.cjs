@@ -1,0 +1,7 @@
+// Denial-only probe: real HTTPS code GETs; no browser connection can occur.
+const assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto');
+const p=require(process.env.CODI_GATE_PUPPETEER),realFetch=globalThis.fetch;
+const state={scope:'Actual public code preflight only; denial-only transport guards, no fake successes',browserConnectAttempts:0,browserContextsCreated:0,accountsCreated:0,requests:[]};
+const deny=async()=>{state.browserConnectAttempts++;throw Error('NEGATIVE_PROBE_FORBIDS_BROWSER_CONNECTION');};p.connect=deny;if(p.default)p.default.connect=deny;
+globalThis.fetch=async(url,options={})=>{const u=new URL(url);assert.equal(u.origin,'https://beta.ksu.codes');assert.equal(options.method||'GET','GET');assert.ok(['/app.js?simplified=1','/desktop-apps.js?simplified=1','/assets/desktop/command-registry.43a7b8cfd70ffbbaf34a5e83d785b1a0c5f61d9ba7c29a4e640f63e4d9520e41.mjs'].includes(u.pathname+u.search));const row={url:u.href,method:'GET'};state.requests.push(row);const r=await realFetch(url,options),hash=crypto.createHash('sha256');let bytes=0;for await(const part of r.clone().body){bytes+=part.length;assert.ok(bytes<=2*1024**2);hash.update(part);}Object.assign(row,{status:r.status,bytes,sha256:hash.digest('hex')});return r;};
+process.on('exit',code=>{state.exitCode=code;fs.writeFileSync(process.env.CODI_GATE_OUTPUT,JSON.stringify(state,null,2)+'\n');});
