@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+export {harness,cmd,launch,frame,sync,save,reopen,nativeOnly} from '../numeric-expressions/helpers.mjs';
+import {cmd,frame} from '../numeric-expressions/helpers.mjs';
+export async function inspect(p,faceId){const list=await cmd(p,'inspect-closed-sketches');assert.ok(list.candidates.some(c=>c.faceId===faceId));return cmd(p,'inspect-closed-sketch',{revision:list.revision,faceId});}
+export async function append(p,faceId,kind,data,role=null){const info=await inspect(p,faceId);const result=await cmd(p,'append-sketch-primitive',{revision:info.revision,faceId,stage:0,kind,data,role});assert.ok(result.primitive.id);return result.primitive.id;}
+export async function plane(p,name,depth){const info=await cmd(p,'inspect-sketch-creation');return cmd(p,'create-empty-sketch-plane',{revision:info.revision,unit:'millimeter',plane:name,depth});}
+export async function apply(p,faceId,axis,ids,distance){const info=await inspect(p,faceId);return cmd(p,'apply-closed-sketch-signed-distance',{revision:info.revision,faceId,axis,ids,distance});}
+export async function capture(p,faces){return {inspected:await Promise.all(faces.map(id=>inspect(p,id))),journal:await cmd(p,'inspect-authored-edits'),native:await(await frame(p)).evaluate(ids=>{const c=__CAD_APP;return {snapshot:JSON.stringify(c.projectManager.snapshotCurrentProject()),sketches:ids.map(id=>({id,source:c.sketchStorageService.getSketchData(id)}))};},faces)};}
+export function preserved(a,b){a=structuredClone(a);b=structuredClone(b);for(const o of [a,b]){delete o.journal.revision;for(const s of o.inspected)delete s.revision;}assert.deepEqual(a,b);}
+export function point(info,id){const p=info.points.find(p=>p.id===id);assert.ok(p,'Inspected point '+id);assert.ok(Number.isFinite(p.x)&&Number.isFinite(p.y));return p;}
+export function measure(info,axis,ids){const a=point(info,ids[0]),b=point(info,ids[1]);if(axis==='x')return b.x-a.x;if(axis==='y')return b.y-a.y;const d=info.objects.find(o=>o.id===ids[2]);assert.equal(d.type,'Segment');const x=point(info,d.id+':A'),y=point(info,d.id+':B'),dx=y.x-x.x,dy=y.y-x.y;assert.ok(Math.hypot(dx,dy)>1e-9);return ((b.x-a.x)*dx+(b.y-a.y)*dy)/Math.hypot(dx,dy);}
+export function closeEnough(actual,expected,label){assert.ok(Math.abs(actual-expected)<=1e-6,`${label}: ${actual} vs ${expected}`);}
+export async function check(p,faceId,axis,ids,distance){const info=await inspect(p,faceId);closeEnough(measure(info,axis,ids),distance,axis);return info;}
+export function accepted(result,axis,ids,distance,status){assert.equal(result.changed,true);assert.equal(result.authoredUndo,true);assert.equal(result.dimension.axis,axis);assert.deepEqual(result.dimension.objects,ids);assert.equal(result.dimension.distance,distance);assert.ok(['accepted','redundant'].includes(result.dimension.status));if(status)assert.equal(result.dimension.status,status);}
