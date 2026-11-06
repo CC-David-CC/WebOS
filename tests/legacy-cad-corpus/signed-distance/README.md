@@ -1,5 +1,7 @@
 # Signed sketch-distance qualification — scoped PASS
 
+Root combined R11 (CAD607b1ea42) now repeats the full same public signed workflow on20395, with authenticated served-byte pins matching app88d65535 / sketch9fa5dd2f / project134e945d. See [combined R11 receipt](signed-r11-receipt.json). This joins the plane-display optimization and signed-distance change on one tested host runtime. Prior r2 scope below remains its original proof; no public deployment or complete gate claim.
+
 The actual public host route passed in a new isolated signed fixture20394 with
 desktop `c30887c8e` (approved adapter `aaeea00623`) and CAD runtime `e1e7839e7`.
 Exact app, Worker, host-bundle/catalog and file hashes, observed rows and limits
