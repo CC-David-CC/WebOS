@@ -1,5 +1,22 @@
 # WebOS work queues and progress ledger
 
+## User-confirmed stopping point — 2026-11-06
+
+The user explicitly selected **Full Gate 1: all 22 exercises**, including
+assemblies and manufacturing drawings. First finish the beta update and tested
+hardcoded agent path; then qualify the full [Gate 1 contract](CAD-ENGINE-GATE-1.md):
+required competency rows,22 exercises and integrated original-rectangle change
+workflow. Fix failures. Missing/unsupported required functionality is unfinished,
+not a pass. Test both engines against explicit capabilities without forcing
+parity or silently switching kernels.
+
+Once the exact integrated build passes, update the full matrix/checklist and
+handoff, commit/back up source and required notes/prerequisites to box-git and
+R730, then **pause at the user's request**. Do not pause before these conditions,
+mark the larger program complete, or continue into later gates after this
+stopping point. Files stays accepted unless a concrete defect emerges. Preserve
+CAD2–6 plans for resumption.
+
 ## Current actual beta state — 2026-11-06
 
 CAD is active on **https://beta.ksu.codes/** at static
