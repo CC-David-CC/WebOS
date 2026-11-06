@@ -2,12 +2,18 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export {harness,cmd,launch,frame,sync,save,reopen,nativeOnly} from '../numeric-expressions/helpers.mjs';
 export {inspect,append,plane,point,closeEnough,check} from '../signed-distance/helpers.mjs';
-export {capture,preserved} from '../line-relations/helpers.mjs';
-// Existing controls retain a genuine successful production Worker message;
-// their request.kind argument supports the same line-relation protocol.
-export {cancelThenApply,closePending} from '../line-relations/lifecycle.mjs';
+export {preserved} from '../line-relations/helpers.mjs';
+import {capture as baseCapture} from '../line-relations/helpers.mjs';
 import {cmd,frame} from '../numeric-expressions/helpers.mjs';
 import {inspect,point,closeEnough} from '../signed-distance/helpers.mjs';
+// The inherited oracle supports two concurrent inspections. This lane has
+// three faces, so retain its exact oracles while respecting that public cap.
+export async function capture(p,faces){
+ const inspected=[];for(const id of faces)inspected.push(await inspect(p,id));
+ const state=await baseCapture(p,[]);state.inspected=inspected;
+ state.native.sketches=await(await frame(p)).evaluate(ids=>ids.map(id=>({id,source:__CAD_APP.sketchStorageService.getSketchData(id)})),faces);
+ return state;
+}
 export function requireReviewedPins(){
  for(const name of['CODI_EXPECTED_APP_SHA','CODI_EXPECTED_SKETCH_SHA','CODI_EXPECTED_PROJECT_SHA'])assert.match(process.env[name]||'',/^[a-f0-9]{64}$/,name+' must come from parent-reviewed combined runtime');
  assert.ok(process.env.CODI_SOURCE,'Reviewed combined CAD source required');

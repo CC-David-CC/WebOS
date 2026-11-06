@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {writeFileSync} from 'node:fs';
-import {harness,cmd,launch,sync,save,reopen,nativeOnly,inspect,append,plane,apply,capture,preserved,reflected,receipt,check,cancelThenApply,closePending,requireReviewedPins,verifyRuntime} from './helpers.mjs';
+import {harness,cmd,launch,sync,save,reopen,nativeOnly,inspect,append,plane,apply,capture,preserved,reflected,receipt,check,requireReviewedPins,verifyRuntime} from './helpers.mjs';
+import {cancelThenApply,closePending} from './lifecycle.mjs';
 // Do not substitute the older core-only app for the reviewed combined runtime.
 requireReviewedPins();
 const h=await harness(),user='axishost'+Date.now(),path='/axis-symmetry-plate.jsketcher.json',rows=[];
