@@ -21,7 +21,12 @@ export async function verifyRuntime(p){
  for(const [name,want] of[
   ['selected-profile-worker.js',process.env.CODI_EXPECTED_SELECTED_WORKER_SHA],
   ['selected-profile-occ-portable.js','cbd49d63d0900f50dda7fc53518d5f06183e85b1dea720522cc2994b0876adc9'],
-  ['a81af0b78dd585124f3f.wasm','a81af0b78dd585124f3f2d05d09b4a387b276bd1f655f0234002a6ab4646a637']
+  ['a81af0b78dd585124f3f.wasm','a81af0b78dd585124f3f2d05d09b4a387b276bd1f655f0234002a6ab4646a637'],
+  ['oci-verified-worker.js','6189a58b58667c4bca68c67e1593f8656d04ad0875162b301659392a82fd96e4'],
+  ['occ-portable.js','a84b31900e58e61a1d7e3f8d04978408455764ad149923359e7fba19d3d07884'],
+  ['manifold-verified-worker.js','35876bd7cd773b5eb243fde935599afb670314c192ba77ec11036dcb12aa79e4'],
+  ['07d763a05f35cd257501.wasm','07d763a05f35cd257501d339d9087df63c65bcaeb51a4f4f80832e333892e12e'],
+  ['7bb5f8ee10fcafdab787.wasm','7bb5f8ee10fcafdab78799b1e5dd2cdc7c282ea0bf8e7939c43f3ad34b823e3d']
  ]){
   const u=new URL('static/'+name,origin),r=await fetch(u,{headers:{cookie:cookies.map(c=>c.name+'='+c.value).join('; ')}});assert.equal(r.status,200);const hash=createHash('sha256');let bytes=0;for await(const block of r.body){hash.update(block);bytes+=block.length;}const actual=hash.digest('hex');assert.equal(actual,want);assets[name]={url:u.href,sha256:actual,bytes};
  }return assets;
