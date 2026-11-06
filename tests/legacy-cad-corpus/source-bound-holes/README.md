@@ -46,3 +46,11 @@ Initial native/copy assertions are provisional to the supplied facade contract;
 any actual signature changes will be grounded in final source before execution.
 No public deployment, Files re-audit, relay or filesystem-race work occurs here.
 This cannot establish all22 Gate1 requirements or generic hole/Boolean robustness.
+
+Facade source84406dea42e4c96613cf0bee54e96e8fc0380831 was read before execution:
+creation[kind] uses `nativeResultCost` (not the provisional cost spelling), and
+both global/target rows explicitly advertise sourceProfile:selected-rectangle
+with sourceQualification:requires-worker-validation. The test checks that honest
+qualification. History exposes full captured fields plus index/canEdit/reason,
+matching the prepared edit requests. No signature blocker is known; no runtime
+has been run yet.
