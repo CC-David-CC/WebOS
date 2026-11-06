@@ -1,4 +1,12 @@
 # CAD program end to end execution checklist
+## User-confirmed scope revision —2026-11-06
+
+Gate1 now covers21 exercises: E01–E16 and E18–E22. E17 hinged assembly and
+assembly-specific competency C10 move to Gate2; preserve original identifiers.
+Multibody parts/material regions/core3MF and linked part drawings E22 stay in
+Gate1. All other qualification, beta, handoff, backup and pause conditions remain.
+This supersedes earlier22-exercise/12-competency scope statements below.
+
 
 This is the execution map across the user-defined CAD gates. The detailed
 feature checklists remain in `CAD-ENGINE-GATE-1.md` through

@@ -1,5 +1,21 @@
 # Gate 2 — intermediate mechanical CAD
 
+## E17 hinged assembly transferred from Gate1 —2026-11-06
+
+The user moved E17 and assembly-specific C10 here. Gate1 no longer requires
+an assembly solver or joint persistence. Preserve original IDs.
+
+- [ ] Two reusable part/component instances with stable IDs and rigid placements.
+- [ ] Ground one instance; a revolute joint retains one relative rotational freedom.
+- [ ] Shared UI/agent operations author joint frames/references, angle and limits.
+- [ ] Motion derives poses without changing part geometry definitions.
+- [ ] Missing/ambiguous references and infeasible changes fail explicitly, preserving accepted state.
+- [ ] Undo/redo and native Save/fresh Open retain instances, joint intent, references, limits and editable motion.
+
+This is kinematic qualification. Later forces/contact/friction/dynamics remain
+separate. Inherited code and the host rejection are not a passing E17 result.
+
+
 User-defined next gate, 2026-11-04. **QUEUED behind Gate 1**, not implemented or
 declared passing by this document. `CAD-ENGINE-GATE-1.md` is the preceding
 foundation gate. The user will define a further gate separately.

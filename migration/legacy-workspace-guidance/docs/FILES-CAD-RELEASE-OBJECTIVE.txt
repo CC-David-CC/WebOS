@@ -1,4 +1,12 @@
 Finish dependable Files, consolidate our existing JSketcher fork, then deliver the next useful mechanical CAD features through the WebOS.
+## User-confirmed scope revision —2026-11-06
+
+Gate1 now covers21 exercises: E01–E16 and E18–E22. E17 hinged assembly and
+assembly-specific competency C10 move to Gate2; preserve original identifiers.
+Multibody parts/material regions/core3MF and linked part drawings E22 stay in
+Gate1. All other qualification, beta, handoff, backup and pause conditions remain.
+This supersedes earlier22-exercise/12-competency scope statements below.
+
 
 Act as the integration lead. Use three subagents in separate branches/worktrees, with explicit ownership:
 1. Files and storage: browser/server persistence, synchronization, conflicts, recovery and the Files app.

@@ -1,4 +1,12 @@
 # WebOS work queues and progress ledger
+## User-confirmed scope revision —2026-11-06
+
+Gate1 now covers21 exercises: E01–E16 and E18–E22. E17 hinged assembly and
+assembly-specific competency C10 move to Gate2; preserve original identifiers.
+Multibody parts/material regions/core3MF and linked part drawings E22 stay in
+Gate1. All other qualification, beta, handoff, backup and pause conditions remain.
+This supersedes earlier22-exercise/12-competency scope statements below.
+
 
 Visitor networking policy, 2026-11-06: **all server outbound relaying is disabled**. Main frontend runs in explicit offline mode; preserve it and the stopped relay units. [Installed policy, proofs and changed unit pin](../research/user-egress-off-20261106/README.md) supersede prior relay enablement notes. CAD work continues; Files remains accepted.
 
@@ -6,10 +14,10 @@ Current mechanical integration: [signed mechanical path, remaining integration a
 
 ## User-confirmed stopping point — 2026-11-06
 
-The user explicitly selected **Full Gate 1: all 22 exercises**, including
-assemblies and manufacturing drawings. First finish the beta update and tested
+The user revised **Full Gate1 to21 exercises**; E17 assembly/C10 moves to Gate2.
+Manufacturing drawings E22 remain required. First finish the beta update and tested
 hardcoded agent path; then qualify the full [Gate 1 contract](CAD-ENGINE-GATE-1.md):
-required competency rows,22 exercises and integrated original-rectangle change
+in-scope competency rows,21 exercises and integrated original-rectangle change
 workflow. Fix failures. Missing/unsupported required functionality is unfinished,
 not a pass. Test both engines against explicit capabilities without forcing
 parity or silently switching kernels.
@@ -56,9 +64,9 @@ actual menu's accessible labels, with original CAD assertions unchanged.
 This clears the beta-and-agent prerequisite, not the complete Gate1. Earlier
 BBC public results remain historical evidence.
 
-Full Gate1 remains unfinished. The [current22-exercise baseline](evidence/CAD-GATE1-BASELINE-20261106.md) records the actual public scoped passes and remaining gaps. The [22-exercise execution plan](../research/cad-gate1-qualification-plan-20261106/README.md)
+Full Gate1 remains unfinished. The [current21-exercise Gate1 baseline](evidence/CAD-GATE1-BASELINE-20261106.md) records the actual public scoped passes and remaining gaps. The [Gate1 execution plan](../research/cad-gate1-qualification-plan-20261106/README.md)
 separates required primitives/solver/units/regions, dependent features,
-ordinary solids, assembly/drawings and export/native replay. Missing shared
+ordinary solids, linked drawings and export/native replay. E17/C10 assembly is Gate2. Missing shared
 commands are implementation gaps, not passes. Execute/fix the complete required matrix and original
 rectangle workflow on a coherent build. No new Files defect, main-site promotion,
 kernel-default change or CAD1/2 completion is claimed.

@@ -1,4 +1,12 @@
 Continue the active Files and WebOS CAD release as integration lead.
+## User-confirmed scope revision —2026-11-06
+
+Gate1 now covers21 exercises: E01–E16 and E18–E22. E17 hinged assembly and
+assembly-specific competency C10 move to Gate2; preserve original identifiers.
+Multibody parts/material regions/core3MF and linked part drawings E22 stay in
+Gate1. All other qualification, beta, handoff, backup and pause conditions remain.
+This supersedes earlier22-exercise/12-competency scope statements below.
+
 
 Read docs/FILES-CAD-RELEASE-OBJECTIVE.txt first. It preserves the full user objective; this operational note does not narrow or replace it. Read docs/CAD-FUNCTIONAL-GATES.md, docs/HANDOFF-FILES-CAD-2026-11-04-CURRENT.md, docs/WEBOS-WORK-QUEUES.md and docs/ACTIVE-FILES-CAD-RELEASE.md.
 

@@ -1,4 +1,12 @@
 # CAD-engine gates and cross-gate design rule
+## User-confirmed scope revision —2026-11-06
+
+Gate1 now covers21 exercises: E01–E16 and E18–E22. E17 hinged assembly and
+assembly-specific competency C10 move to Gate2; preserve original identifiers.
+Multibody parts/material regions/core3MF and linked part drawings E22 stay in
+Gate1. All other qualification, beta, handoff, backup and pause conditions remain.
+This supersedes earlier22-exercise/12-competency scope statements below.
+
 
 User-defined program, 2026-11-04. These are qualification gates for a future
 engineering engine in the browser WebOS, beyond a set of JSketcher patches.
@@ -10,8 +18,8 @@ upstream compatibility nor a feature's presence establishes correctness.
 
 | Gate | Outcome | State |
 |---|---|---|
-| [1](CAD-ENGINE-GATE-1.md) | Foundational engine: 12 areas, P0/P1/P2 priorities, 22 exercises, five validation responsibilities and Change the original rectangle. | Active; incomplete. |
-| [2](CAD-ENGINE-GATE-2.md) | Intermediate CAD: 12 groups, ten ordinary mechanical projects and four specialist areas. | Queued. |
+| [1](CAD-ENGINE-GATE-1.md) | Part-authoring foundation:11 areas, P0/P1/P2 priorities,21 exercises (E17/C10 moved to Gate2), five validation responsibilities and Change the original rectangle. | Active; incomplete. |
+| [2](CAD-ENGINE-GATE-2.md) | Intermediate CAD: E17 hinged assembly/C10,12 groups, ten ordinary mechanical projects and four specialist areas. | Queued. |
 | [3](CAD-ENGINE-GATE-3.md) | Advanced modeling/engineering: original advanced groups 1–10. | Queued. |
 | [4](CAD-ENGINE-GATE-4.md) | Production, interoperability, automation: original groups 11–16 plus specialist/project/priority/architecture sections 17–20. | Queued. |
 | [5](CAD-ENGINE-GATE-5.md) | Requirements, functional intent, inverse design, experiments, evidence and system synthesis; six independently qualified slices including research. | Queued; not implemented by recording. |

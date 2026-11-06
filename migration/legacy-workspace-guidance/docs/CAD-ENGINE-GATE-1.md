@@ -1,4 +1,12 @@
 # Gate 1 — foundational parametric CAD engine competency
+## User-confirmed scope revision —2026-11-06
+
+Gate1 now covers21 exercises: E01–E16 and E18–E22. E17 hinged assembly and
+assembly-specific competency C10 move to Gate2; preserve original identifiers.
+Multibody parts/material regions/core3MF and linked part drawings E22 stay in
+Gate1. All other qualification, beta, handoff, backup and pause conditions remain.
+This supersedes earlier22-exercise/12-competency scope statements below.
+
 
 Current mechanical integration: [signed mechanical path, remaining integration and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
 
@@ -11,7 +19,7 @@ must inform early identities, parameter/units semantics and representation
 boundaries; their features remain separately qualified.
 
 Current status: **OPEN / PARTIAL**. Files is accepted; CAD qualification continues.
-The [current22-exercise baseline](evidence/CAD-GATE1-BASELINE-20261106.md)
+The [current21-exercise Gate1 baseline](evidence/CAD-GATE1-BASELINE-20261106.md)
 records public R4 scoped passes, missing shared workflows and the active queue.
 The beta-and-hardcoded-agent prerequisite passes; the full gate does not.
 Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
@@ -43,7 +51,7 @@ This does not qualify the entire gate or deploy a new public CAD runtime.
 Close the immediate substep by proving the same worker-created solid through
 dimension edit, explicit rejection, undo/redo and native/My files reopen. Then
 extend that path to dependent holes/cuts/fillets/patterns. Continue the full
-P0/P1/P2 matrix and 22 exercises below; do not shrink the gate to one rectangle.
+P0/P1/P2 matrix and21 in-scope exercises below; do not shrink the gate to one rectangle.
 
 The following dated checkpoints retain their original test scope and are
 historical where superseded by this section and the current handoff.
@@ -79,7 +87,7 @@ agent workflow or a new release; see `CRAFT-PUBLICATION-20261104.md` in the fork
 
 ## Gate definition and execution policy
 
-- [ ] Qualify all 12 competency areas below and the 22-exercise ladder.
+- [ ] Qualify all11 in-scope competency areas and21 exercises; C10/E17 is Gate2.
 - [ ] Pass the integrated Change the original rectangle test, supplemented by
   isolated edge cases so one demonstration cannot conceal deeper defects.
 - [ ] Human UI and authorized agent commands use the same validated operations,
@@ -135,7 +143,6 @@ exclusive enum values.
 | P1 | STEP/3MF export | Independently measurable geometry, units and intended structure preserved. | Partial research; complete coupled-model export open. |
 | P2 | Fillet/chamfer/shell | Ordinary and limiting cases behave robustly. | Partial; ordinary 2 mm OCC corner fillet/chamfer, resize/reopen, invalid-size and Native refusal controls pass. Broad edge/limit coverage and shell remain unqualified. |
 | P2 | Sweep/loft | Supported profiles/path correspondence and explicit failure cases. | Unqualified. |
-| P2 | Assemblies | Separate components and meaningful mechanical relationships. | Not qualified; host snapshot currently rejects assembly projects. |
 | P2 | Drawings/GD&T | Consistent manufacturing documentation tied to model intent. | Not qualified. |
 
 These are acceptance states, not percentages. Unknown/unsupported states cannot
@@ -194,10 +201,7 @@ be relabeled passing merely to close the gate.
    solver/geometric/manufacturing tolerances. 25.4 mm displayed in inches is
    1 inch with unchanged physical geometry. Reject mixed dimensions and unknown
    units; one global epsilon is not a universal numeric policy.
-10. **Assemblies and relationships.** Parts versus components/instances, ground,
-    fixed/revolute/slider/cylindrical/planar/ball joints, distance/angle/axis
-    relationships, gear coupling, limits, interference, clearance and basic
-    motion. Qualify 3D rigid-pose freedoms separately from 2D sketch solving.
+10. **Moved to Gate2: assemblies and relationships.** Excluded from Gate1 acceptance; retain stable part identities/local frames for later assembly use.
 11. **Drawings/manufacturing/exchange.** Orthographic/isometric/section/detail
     views, hidden/center lines, center marks, dimensions, baseline/ordinate
     callouts, datum/GD&T/finish, fits, BOM and manufacturing intent. Record
@@ -209,7 +213,7 @@ be relabeled passing merely to close the gate.
     identify stale geometry, and restore exact supported history and references
     through undo/redo/save/reload. Never claim an unknown solve succeeded.
 
-## The 22-exercise competency ladder
+## The21-exercise Gate1 ladder (original IDs retained)
 
 | Level | Exercise | Core acceptance / current evidence |
 |---|---|---|
@@ -229,7 +233,6 @@ be relabeled passing merely to close the gate.
 | 14 | Sweep along a curve | Path/profile alignment and supported valid result; open. |
 | 15 | Loft different profiles | Defined correspondence and explicit unsupported cases; open. |
 | 16 | Join/subtract solids | Correct empty/connected/disconnected and tool/body policies; scoped evidence. |
-| 17 | Hinged two-part assembly | Independent parts, intended joint freedoms and limits; unqualified. |
 | 18 | Parameter-driven geometry | Typed values, dependency graph, accepted edits and invalid-cycle recovery; partial. |
 | 19 | Break a referenced face | Explicit missing/ambiguous dependency, no silent retargeting; open. |
 | 20 | Export STEP and 3MF | Independent size, geometry, units and intended structure verification; partial research. |
