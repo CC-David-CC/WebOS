@@ -1,5 +1,7 @@
 # WebOS work queues and progress ledger
 
+Visitor networking policy, 2026-11-06: **all server outbound relaying is disabled**. Main frontend runs in explicit offline mode; preserve it and the stopped relay units. [Installed policy, proofs and changed unit pin](../research/user-egress-off-20261106/README.md) supersede prior relay enablement notes. CAD work continues; Files remains accepted.
+
 Current mechanical integration: [signed mechanical path, remaining integration and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
 
 ## User-confirmed stopping point — 2026-11-06
