@@ -2,6 +2,28 @@
 
 Current CAD file scope: [native saves open; DXF/3MF export only](CAD-FILE-SCOPE.md). External CAD import is not required by the user.
 
+## Current delivery checkpoint — 2026-11-06
+
+Read the current top ledger in `WEBOS-WORK-QUEUES.md`; historical checkpoints
+below keep their original scope. Files remains accepted. CAD6f01/app85d passes
+the public32 capacity, signed bracket/typed/enclosure/material/core3MF and
+full beta-derived75-app shell/menu/native-file-routing proofs. Candidate is
+`bbc42921e10d830f25ca314c0989df154f2be9a315d88f512451c0141ba2ff9e`.
+Nothing has been staged or activated on box-webhost in this delivery checkpoint.
+Main f2, beta830, both Files floors and /desktop remain preserved.
+
+Three bounded ownership lanes now close the release path: fixed protected
+launcher/control closure; exact actor/guard installer and namespace recovery;
+independent publisher/launcher review. Root owns integration and any live
+mutation. Root92f35 publisher streams the pinned transport, closes all declared
+files/directories, and fsyncs the parent on retry after a rename crash gap.
+Initial real root namespace extraction measured19,480KiB peak RSS; final source
+proof remains pending. The protected final actor is still uninstalled. Public
+acceptance drivers are prepared and their read-only admission currently refuses
+the unchanged baseline before registering accounts. These are delivery checks,
+not completion of full CAD1–6, general profiles, all active-editor performance,
+arbitrary references or manufacturing export from every generic result.
+
 ## Current checkpoint — shared Worker dimensions and R11 integration, 2026-11-05
 
 **Files remains accepted within its recorded scope; full CAD1/Gate1 and CAD2 remain open.** The [qualification ledger](evidence/CAD1-GATE-LEDGER-2026-11-05.md) separates the full gate from bounded drawing, parametric and native-file passes. Root combined runtime607b1ea42 (private direct20614) integrates Worker signed X/Y/projected dimensions and exact planar display preparation. Root production-browser controls pass signed dimensions, live datum edits, refusal/cancellation, exact travel/native reopen (74 main-phase Workers terminated) and13 plane/corner cases with extension fallbacks and selection. CAD test/combined-r11 holds these matching receipts. App88d65535, sketch Worker9fa5dd2f, project validator134e945d. No public deployment or default change.
