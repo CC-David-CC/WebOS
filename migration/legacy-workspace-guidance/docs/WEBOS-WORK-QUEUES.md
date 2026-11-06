@@ -24,6 +24,29 @@ console use the same helper, without an AI provider. Examples cover discovery,
 five-hole mounting plate creation/edit/refusal/travel, native Save/Open and
 scoped DXF/3MF exports with truthful persistence and support limits.
 
+### Qualified privately; next beta update still pending
+
+R3 `a6ed7b…` passes18 actual Agent tools workflows and six independent
+New/Open binding/publication/Close controls. New/Open retains one coherent
+model/file identity on setup failure, and queued Close preserves an explicit
+committed outcome. The exact documented circle-DXF and assigned-enclosure3MF
+recipes also pass native Save/server sync/fresh Files reopen and independent
+manufacturing checks. Proofs: `research/beta-cad-agent-tools-20261106/`,
+`beta-cad-agent-panel-review-20261106/` and `beta-cad-agent-recipes-20261106/`.
+
+R3 is staged unselected on box-webhost; independent streaming verification
+checks467 files/435208994bytes and unchanged hosting/Floors. Actual namespace
+reviews qualify artifact/cache/source closure, guard/Caddy routes, immutable
+publisher, and the corrected v2 operator/installer. None of these namespace
+proofs substitutes for a later real root plan/apply and actual public acceptance.
+
+Phone review found Agent tools initially off-screen (reachable by horizontal
+touch scrolling); placing it immediately after File is the remaining small
+interface correction. Qualify that exact new outer-app artifact, regenerate
+its sealed metadata, then finish protected beta activation/public checks.
+No new Files defect, main-site promotion, default-engine change or full CAD1/2
+completion is claimed. Source packaging remains deferred.
+
 Continue the full bounded release/CAD1–6 queues. Source packaging stays deferred
 until functional qualification. Older checkpoints below retain original pins
 and are historical where this section supersedes their installation state.
