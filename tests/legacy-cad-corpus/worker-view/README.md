@@ -1,0 +1,7 @@
+# Signed Worker view and Concentric workflow
+
+Public host commands only: create an empty plane and two Circles, inspect/open/select/close the Worker-backed view, reject bad IDs, apply Concentric, undo and redo with exact native sketch bytes checked after normal saves, and save/sync. A second signed account is denied the first account's file; a fresh login opens the file through Files and confirms Concentric intent, actual circle centers and reopened view. Server reads are test oracles. No private geometry seeding or live deployment is involved.
+
+Final CAD `1c3f5dc3f`, app SHA-256 `b55b1f47337d6cd23fe68c9cc91764b9727746f53e790687218e59b185c6c768`, sketch Worker `26dbefbbc7a69128730385a81f822cfe07def2cf2b63a46a451551ba22f3d0d6`; desktop `1076ec10a0e3982343cbbe1f02a37c7ebbf21ef8`. Isolated fixture `20385`, test-only app bundle `c93fe009f1bd1eba70669ea891af88990c1e6c407eef5524d5dfec415b6c65f9`, catalog `5414cad8a83b820c97cf215c71dedd4a4c85054d498e558d509080171fe8cdf5`. PASS: signed native server SHA-256 `2a72555e8927e0322850af70407025f1553717f439b0e7c8a09b35c09f094e73`. Log backed up separately on R730. A preliminary `0ac` run is not a final candidate claim. No general legacy-view migration or Files foundation reaudit is implied.
+
+Run `CODI_TEST_URL=http://127.0.0.1:20385/ CODI_TEST_CDP=http://127.0.0.1:19329/ node test/agent-cad-corpus/worker-view/signed.test.mjs` with existing local Puppeteer dependencies. Each run uses disposable unique accounts and closes only its own contexts.
