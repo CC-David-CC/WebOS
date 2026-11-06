@@ -4,6 +4,12 @@ const base=new URL(process.env.CODI_TEST_URL),cdp=new URL(process.env.CODI_TEST_
 async function login(register,name=user){const c=await browser.createBrowserContext();contexts.push(c);const p=await c.newPage();await p.goto(base);await p.waitForSelector('.login-toggle');if(register)await p.click('.login-toggle');await p.type('[aria-label=Username]',name);await p.type('[aria-label=Password]',password);if(register)await p.type('[aria-label="Confirm password"]',password);await p.click('.login-form button[type=submit]');await p.waitForFunction(()=>desktopLab?.session?.kind==='registered',{timeout:30000});return p;}
 async function cmd(p,id,args={}){return p.evaluate(({id,args})=>{const c=codiDesktopCommands.list().find(x=>x.appId==='jsketcher'&&x.id===id);if(!c)throw Error('Command unavailable: '+id);return codiDesktopCommands.execute({windowId:c.windowId,command:id,args})},{id,args});}
 async function sync(p,filePath=path){const end=Date.now()+60000;while(Date.now()<end){try{const r=await p.evaluate(async path=>{const l=await(await mirrorFileContext()).files.read(path),s=await(await serverFileContext()).files.read(path.slice(1));return {local:l.sha256,server:s.sha256,text:new TextDecoder().decode(s.data)}},filePath);if(r.local===r.server)return r}catch{}await new Promise(r=>setTimeout(r,500))}throw Error('Signed file did not sync');}
+async function assertMissing(p,path){
+ const absent=await p.evaluate(async path=>{
+  const missing=async fn=>{try{await fn();return false}catch(e){return e.message==='File not found.'||[403,404].includes(e.status)}};
+  return {browser:await missing(async()=> (await mirrorFileContext()).files.stat(path)),server:await missing(async()=> (await serverFileContext()).files.read(path.slice(1)))};
+ },path);assert.deepEqual(absent,{browser:true,server:true},'No browser/server file at '+path);
+}
 async function inspect(p,faceId){const list=await cmd(p,'inspect-closed-sketches');assert.equal(list.ready,true);assert.ok(list.candidates.some(c=>c.faceId===faceId));return cmd(p,'inspect-closed-sketch',{revision:list.revision,faceId})}
 function parseDxf(text){const lines=text.replace(/\r/g,'').split('\n');while(lines.at(-1)==='')lines.pop();assert.equal(lines.length%2,0,'DXF code/value pairs');const pairs=[];for(let i=0;i<lines.length;i+=2)pairs.push([lines[i].trim(),lines[i+1].trim()]);let section='',active=false,entities=[],current=null;for(let i=0;i<pairs.length;i++){const [code,value]=pairs[i];if(code==='0'&&value==='SECTION'){section=pairs[i+1]?.[1];active=section==='ENTITIES';current=null;continue}if(code==='0'&&value==='ENDSEC'){active=false;current=null;continue}if(active&&code==='0'){current={type:value,groups:[]};entities.push(current)}else if(active&&current)current.groups.push([code,value])}return {pairs,entities}}
 const number=(entity,code)=>Number(entity.groups.find(x=>x[0]===String(code))?.[1]);
@@ -41,13 +47,9 @@ try{
  assert.notEqual(await p.evaluate(()=>dxfDelivery.outcome),'unexpected success');
  await p.evaluate(()=>dxfDelivery.release());
  await new Promise(resolve=>setTimeout(resolve,500));
- const noLateFile=await p.evaluate(async path=>{
-  const absent=async fn=>{try{await fn();return false}catch(e){return e.message==='File not found.'||[403,404].includes(e.status)}};
-  return {browser:await absent(async()=> (await mirrorFileContext()).files.stat(path)),server:await absent(async()=> (await serverFileContext()).files.read(path.slice(1)))};
- },heldPath);
- assert.deepEqual(noLateFile,{browser:true,server:true});
+ await assertMissing(p,heldPath);for(const path of ['/bad-face.dxf','/bad-stale.dxf','/stale-after-edit.dxf'])await assertMissing(p,path);
  assert.ok(!(await p.evaluate(()=>codiDesktopCommands.list())).some(c=>c.appId==='jsketcher'));
  const old=p.browserContext();await old.close();contexts.splice(contexts.indexOf(old),1);
- p=await login(false);const reopened=await sync(p);assert.equal(reopened.server,written.server);assert.equal(reopened.text,written.text);assert.equal((await sync(p,xzPath)).server,xzSaved.server);
+ p=await login(false);await p.evaluate(()=>surfaces.get('Desktop').launch('files'));const reopened=await sync(p);assert.equal(reopened.server,written.server);assert.equal(reopened.text,written.text);assert.equal((await sync(p,xzPath)).server,xzSaved.server);
  console.log('SERVER_HASH',written.server);console.log('PASS real public sketch DXF export, independent entities/units, stale/no-overwrite, close before real-result delivery, account isolation and fresh-login durable read');
 }finally{for(const c of contexts)await c.close().catch(()=>{});browser.disconnect()}
