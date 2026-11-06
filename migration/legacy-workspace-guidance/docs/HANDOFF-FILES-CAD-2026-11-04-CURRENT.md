@@ -1,5 +1,20 @@
 # Current Files and CAD handoff
 
+## Active integration checkpoint — selected regions, 2026-11-06
+
+Files remains accepted within its recorded scope; its foundation is not being re-audited. No public site, default kernel or account state changed.
+
+- [x] ARC28 rejection causes are integrated and qualified through actual public commands on source `aca23b2b3`: eight workflow rows, twelve transport/lifetime controls, and 99 terminated Workers. Causes describe the failed check; they do not prove global infeasibility. Exact pins/evidence: CAD `test/admission-causes/public/`.
+- [x] Source-region preparation/discovery, explicit selected-profile OCC build, generic ledger and registered `WORKER_SELECTED_PROFILE_EXTRUDE_V2` operation are integrated. Component evidence is separate from public workflow evidence.
+- [~] Public discovery/extrusion is wired. The first baseline rectangle path passed primitive creation → region discovery → native extrusion → normal native save/fresh reopen. Wider public correctness/persistence testing is running; this is not a complete CAD1 pass.
+- [~] Desktop commands `inspect-selected-profiles`, `inspect-selected-regions` and `create-selected-extrusion` are registered through the existing window lifecycle at desktop `570a32b04`. Eleven adapter protocol controls pass locally and on R730. Genuine signed My files qualification of this new adapter remains pending.
+- [~] Independent real-browser tests reproduced ten reply-accessor controls on baseline source `d0d3abc01`. Corrected source `61a5ecdbc` captures reply fields before reading them, with bounded small native metadata capture and no mesh traversal. Its build/TSC and 27 focused controls pass; actual corrected browser controls are running.
+- [~] Baseline source edits/new-plane creation after a selected extrusion exposed the shared history allowlist gap. Candidate `15ed6c577` recognizes the exact nine-field source dependency, allows unrelated work and continues to forbid dependent fast-save. Nineteen focused controls pass; genuine full-replay regeneration and browser rejection/recovery tests are pending.
+- [ ] Complete source-matched public and signed Save/reopen, atomic history travel and the remaining full Gate1 corpus. Typed bindings, generated-face semantics and manufacturing export for the new selected-profile operation are not qualified.
+
+Newest work is on CAD `integration/cad-mechanical-candidate-20261105` and desktop `integration/desktop-mechanical-candidate-20261105`, backed on box-git and R730. Preserve earlier signed source `282c0f5ec`/app `c8b5e10f` proofs under their own pins. They do not qualify these later artifacts. Source packaging remains deferred until functional gates qualify. Keep the complete CAD1–6 checklist open and take the next bounded task when a lane finishes.
+
+
 Current CAD file scope: [native saves open; DXF/3MF export only](CAD-FILE-SCOPE.md). External CAD import is not required by the user.
 
 ## Latest bounded checkpoint — signed alias composition, 2026-11-06
