@@ -38,6 +38,20 @@ project import/reopen is required; general STEP/3MF import is not this gate.
 Every derived result must identify its source revision; stale/last-valid results
 must remain distinguishable from successful regeneration of the current design.
 
+Current exchange status (bounded qualification, not advertised engine potential):
+
+| Format | Gate role | Current state |
+|---|---|---|
+| Native project | Required editable source and reopen | Tested authored workflow subsets pass |
+| Core3MF | Required material-aware manufacturing export | Enclosure recipe passes; generic part export open |
+| STEP | Required evaluated CAD geometry export | Shared implementation missing |
+| DXF | 2D sketch export | Supported bounded sketch subset |
+| STL | Optional simple manufacturing mesh handoff | Legacy exporter exists; Worker solids explicitly refuse/unqualified |
+| glTF/GLB | Later visualization/sharing | Not implemented in this CAD path; no feature-history promise |
+
+Only native-project import is required now. Foreign imports and reconstructing
+parametric history from geometry/mesh files are outside this milestone.
+
 
 ## Current source-trust rule and immediate substep
 
