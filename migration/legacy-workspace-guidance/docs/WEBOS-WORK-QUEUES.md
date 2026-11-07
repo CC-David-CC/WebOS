@@ -519,6 +519,10 @@ No registered shared E15 workflow or full exercise pass is claimed.
 - [x] Desktop loft transport is registered with existing window disposal;27
   combined loft/sweep/revolve admission/lifetime controls pass. No native or
   complete application success is inferred from transport controls.
+- [x] Trusted installed-app inventory ceiling aligned at512MiB in builder/server
+  (bdbff555b);256MiB per asset and all user-file/transfer quotas unchanged.
+  Six cross-component sparse-file boundary cases and12 retained HTTP/cache
+  controls pass. Final loft package/runtime admission still needs qualification.
 - [ ] Finish E15 signed application create/edit/travel/Save/Open. Inherited build
   discovery/native point observation needs explicit staged-loft admission; source
   plane placement edit is still required. No automatic backend fallback/default switch.
