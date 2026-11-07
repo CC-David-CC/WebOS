@@ -1,6 +1,14 @@
 # WebOS work queues and progress ledger
 ## Current STEP composition —2026-11-07
 
+Signed R2 STEP workflow now passes on frozenCADf714/Desktop8f7:3cases,
+10exports,6nativeSaved/reopened/reedited files and exact raw revision/token/state
+preservation. Root repeats all3independent recorded-data checkers; same-OCCT
+reader confirms10files/345points. UI viewport tests remain pending. New explicit
+STEP backend only; no default promotion or saved-part migration. Full E20 still
+requires generic same-model3MF/material coverage and further qualification.
+[Proof](../test/agent-cad-corpus/step-shared/evidence-r2/README.md).
+
 Parallel E22 component update: exact analytic projection now passes genuine
 Chromium producer→main→consumer Worker tests (11views,4refusals,13runtime
 controls,5retained Native cohorts). Root independently checks its recorded data
