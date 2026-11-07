@@ -159,6 +159,15 @@ alone is insufficient. Explicit New/Open receipts and existing account/window
 committed/unknown outcomes must retain their semantics. Regression/repair and
 actual signed acceptance are pending; the sweep example remains unqualified.
 
+CMD01/U06 metadata admission: the registry's total 8,192-character JSON limit
+rejects a legal 8,192-character region identity once required command fields are
+included (8,571 serialized bytes, zero handler calls). This is a confirmed
+transport compatibility defect, not a native geometry failure. The retained
+source-bound reproduction is `test/command-argument-limit/before.json`.
+The repair lane is implementing one bounded UTF-8 metadata budget and boundary
+controls, preserving document revalidation after serialization. File payload
+limits are unrelated. Repair and combined-app validation remain pending.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |

@@ -265,6 +265,19 @@ must remain functional. Gate's final signed workflow must include the genuine
 replacement control before the example is called qualified. Core sweep discovery
 and public command implementation continue in a separate, nonconflicting lane.
 
+Sweep public core and component evidence are integrated from CAD882007517 /
+fa135fbc5 (root79c76a261). Root connected the four commands to Craft's actual
+submit/cancellation/build/history/budget policies; TypeScript passes. Native
+publication and signed Save/Open still await the combined runtime. Component
+controls deliberately reject NATIVE_NOT_RUN rather than synthesize success.
+
+CMD01 registry argument-budget mismatch is confirmed: a schema-legal 8,192-
+character region plus required fields serializes to8,571bytes and never reaches
+the handler. Source-bound before evidence is retained under
+`test/command-argument-limit/`. The RC01 owner is repairing the shared bounded
+UTF-8 metadata budget with Unicode/oversize controls. This changes metadata
+admission, not file transfer limits. No full Sweep acceptance is claimed.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
