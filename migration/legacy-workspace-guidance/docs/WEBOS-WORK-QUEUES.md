@@ -47,8 +47,12 @@ should wait for local Save acknowledgement (not server sync); shared host policy
 passes20 coordinator controls and5/5 actual signed CAD host scenarios at069/224f
 (evidence3ab74fadd), with4 saved-file checks. CAD/Text/Calculator opt in at actual
 local write. Files now adopts18 mutation sites at854787d91;32 callback controls
-pass, actual signed Files Close is pending. Other app writer migration remains
-queued. Neither069 host run qualifies laterc91 storage as a composed app. Forced lifetime loss still needs honest unknown
+pass. Actual signed Files evidence2b98ddcce passes7 main +3 resolution controls
+on exact8808 host/new Files bundle, including genuine upload/remove/use-server
+resolve acknowledgement, Close refusal and byte-preserving reopen. This proves
+three mutation classes; other15 sites retain callback coverage. Other app writer
+migration remains queued. The earlier069 CAD host run does not qualify laterc91
+storage; the new signed Files run has its own exact source/bundle pins. Forced lifetime loss still needs honest unknown
 outcomes. See test/state-machine-audit-cad-save/README.md.
 
 Strict Join R3 passes17 setups/70 rows/13 saved files; retained region R2 passes
@@ -73,6 +77,12 @@ shared authored feature: candidate catalog registration is integrated at
 CAD63bca3d0d with metadata tests and real factory/native proof in progress. The
 host five-command adapter has6 protocol controls; core wiring/authored replay,
 angle travel, native Save/Open and full E13 acceptance remain unqualified.
+Core wiring is now integrated as CADb83203e20/evidence1a8911de1:61 journal/contract
+controls and6 real source-Worker service controls pass, with23 Workers retired.
+The genuine native factory corpus is separately recorded at3d111e99d. A fresh
+combined normal app build of3d111e99d is running onR730 at
+/mnt/data10tb/codi-polygon-combined-revolve-app-20261107-r1, before packaging and
+public agent authoring/history/persistence qualification.
 
 The native Worker constructor and genuine new/retained kernel component evidence
 already exist. Next: explicitly register that exact experimental native revision

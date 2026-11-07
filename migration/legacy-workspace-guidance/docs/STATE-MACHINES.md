@@ -88,9 +88,12 @@ local acknowledgement. The new candidate host guard inspects the mounted ownerâ€
 request and final Discard action. CAD Save/Save As/3MF/DXF, Text and Calculator
 enter that phase immediately before writing;20 coordinator controls pass. Actual
 signed CAD host5/5 scenarios pass at069/224f, integrated evidence3ab74fadd. Files
-now adopts18 mutation sites at854787d91 with32 callback controls; actual signed
-Files Close remains pending. Other app write paths are not adopted, so this is
-not all-app qualification. Forced unload, account
+now adopts18 mutation sites at854787d91 with32 callback controls. Signed Files
+evidence2b98ddcce adds7 main controls and3 resolution controls: real held upload,
+remove and use-server-resolution receipts block ordinary Close; reads/chooser
+remain cancellable and explicit Save/Open retains exact bytes. The remaining15
+mutation-site classes have callback coverage, not all-UI qualification. Other
+app write paths are not adopted, so this is not all-app qualification. Forced unload, account
 revocation and process failure still require truthful unknown-outcome handling.
 Review shared per-window operation ownership rather than add app saving flags.
 
