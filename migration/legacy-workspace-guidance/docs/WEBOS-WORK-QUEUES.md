@@ -219,6 +219,15 @@ claim follows. Current lanes: core discovery/public commands, desktop command
 transport, genuine signed source/edit/Undo/Save acceptance preparation. Root owns
 their integration and the fresh combined runtime. E14 shared app gate stays open.
 
+Desktop public sweep bridge is integrated at a29fd9d1c: four scoped commands,
+strict detached source/path intent, account/document/realm cancellation and
+partial-registration cleanup. Owner32 transport/retained checks pass; root
+repeated the13 sweep+6 revolve controls after integration. Source example
+b595c116c exports `createSourceBoundSweepExample` and its on-disk guide. It uses
+only public authoring/discovery/creation/Save commands and explicitly remains
+unqualified until combined signed replay. Core semantic discovery/command lane
+and signed acceptance driver lane are still in progress; no beta activation.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
