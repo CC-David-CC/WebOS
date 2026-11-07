@@ -1,4 +1,21 @@
 # WebOS work queues and progress ledger
+## Local storage and private fixture — 2026-11-07
+
+New private20943 runs exact Desktope2da0e5b1/Coref714 Save repair; normal signed
+qualification is pending. Package303files/443523573bytes was independently
+stream-hashed against its catalog; all300 inner CAD assets are byte-identical
+to earlier STEP/export runtime. Package is retained on R730.
+
+Superseded20942 was stopped only after no browser targets and exact PID/cwd/argv
+checks. Every303file/443522615byte local package matched its R730 backup. Removed
+only generated package and served public tree:927290065bytes. Source/private
+state/notes remain. Receipt: native-save-outcomes/runtime-r1 under the corpus.
+Initial preflight compared Path/string order differently; equal sets and
+normalized sorted names confirmed before deletion. Current local free space
+rose from557MiB to about1.5GiB. R730 has5.2TiB free. Broader measured contributors:
+/tmp99GiB; CodiServer103GiB (including desktop-preview48,source-build33,downloads21).
+These totals include source/dependencies and are not blanket deletion targets.
+
 ## Current Save checkpoint — 2026-11-07
 
 Desktop **5c4fa703a** repairs native Save outcome loss and watcher cleanup
