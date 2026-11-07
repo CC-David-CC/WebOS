@@ -7,7 +7,8 @@ repeat with no token/journal churn → shared Undo/Redo → ordinary Save with o
 browser/server byte equality → fresh-session Open → byte-identical unchanged
 Save. Material/appearance/region/part IDs and original engine revision survive.
 No fake geometry/storage or filesystem race. Own context closed; shared Chrome
-preserved. [Evidence](../test/agent-cad-corpus/manufacturing-shared/evidence-r1/README.md).
+preserved. Owned private20944server/forward retired; source/assets/private state
+retained onR730. One closing-transport log observed; disconnect handling unqualified. [Evidence](../test/agent-cad-corpus/manufacturing-shared/evidence-r1/README.md).
 
 Core201444273 integrates genuine catalog/private ledger mesh proof: actual box
 volume6000mm³,8vertices/12triangles, accepted owner refuses observation read;
@@ -16,8 +17,8 @@ PASS. This component proof remains distinct from normal app public authoring.
 
 Independent review confirmed native AbortSignal own-property shadowing could
 permit an aborted manufacturing commit. BEFORE retained; source repaire8ae8c449
-integrated. New signal regression/retained proof and new composed runtime remain
-pending. Drawing V3custody proof is separate and not yet integrated/staged.
+integrated. Corec1627d293 adds37focused/171retained signal proof, root checker
+PASS. New composed runtime for that repair remains pending. Drawing V3custody proof is separate and not yet integrated/staged.
 Generic3MF still open. Gate1remains20partial/1missing(E22)/0full.
 
 ## Printable-part command integration — 2026-11-07
