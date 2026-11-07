@@ -578,7 +578,7 @@ Related families remain W02/W03; this does not add a second document coordinator
 
 | Issue | Confirmed counterexample | Current repair/evidence |
 |---|---|---|
-| STP03/W02 | Actual extracted3MF/DXF routes lose falsey causes or invoke error getters, forget known commit after finish/notice faults, and accept malformed browser receipts. | Desktop ea1a0c190 shares descriptor-only formatting/outcome settlement with STEP; null/no-write→pending→validated committed.27new +100retained Node controlsPASS, synthetic artifact/storage only. No new signed geometry/export proof yet. |
+| STP03/W02 | Actual extracted3MF/DXF routes lose falsey causes or invoke error getters, forget known commit after finish/notice faults, and accept malformed browser receipts. | Desktop ea1a0c190 shares descriptor-only formatting/outcome settlement with STEP; null/no-write→pending→validated committed.27new +100retained Node controlsPASS, synthetic artifact/storage only. Signed normal f714/5b export smoke also passes4exports, native Save/freshOpen, actual My files/server bytes and independent3MF/DXF oracles; no injected browser faults or generic3MF claim. |
 | WR07/W02 | Shared parent helper resolves rejected falsey values as success; synchronous registration cancellation starts an orphan interval after settlement. | Rejection/fulfillment use separate discriminants; input observed before registration, no timer after reentrant completion, intrinsic listener removal fallback and explicit opaque cleanup failure. Source-backed before2FAIL/1PASS; after rejection/lifetime/cleanup controlsPASS. |
 
 | State / event | Required transition and invariant |

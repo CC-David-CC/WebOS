@@ -1,12 +1,16 @@
 # WebOS work queues and progress ledger
 ## Current STEP composition —2026-11-07
 
-New source-only reliability repair: old3MF/DXF export settlement and shared
-parent-command falsey-rejection/reentrant-timer defects are fixed atDesktop
-ea1a0c190.27new+100retained Node controls pass, using actual route/coordinator
-code and explicitly synthetic artifact/storage replies. This is not a new signed
-app export proof; current20941 still runs frozenf714/f869. Native Save host
-settlement remains a follow-up. [Counterexamples and scope](../test/agent-cad-corpus/export-outcomes/README.md).
+Export settlement repair now has both source and signed normal-workflow proof:
+Desktopea1a0c190 fixes3MF/DXF outcome loss and shared scoped-command falsey/timer
+faults;27new+100retained Node controls pass with labeled synthetic faults. The
+actual signed f714/Core +5b5fb6432/Desktop runtime also passes4normal exports
+(enclosure3MF before/after native Save/freshOpen, sketchDXF, plateSTEP), exact
+receipts/state and matching browser/server bytes. Independent ZIP/XML mesh and
+DXF-coordinate checks pass. No new generic manufacturing or fresh STEP-reader
+claim. Current isolated fixture20942;20941 retired after exactR730backup,
+preserving source/private state. Native Save settlement remains a follow-up.
+[Proof and scope](../test/agent-cad-corpus/export-outcomes/signed-evidence-r1/README.md).
 
 Files remains accepted in its tested foundation scope. Gate1 remains **20 partial,
 1 missing complete workflow (E22),0 fully signed-off exercises**. Assemblies are
@@ -26,10 +30,10 @@ Gate2. No beta/live/prototype deployment occurred in this composition.
   failures remain preserved. Root independently checks the committed packet and
   actual phone screenshot. No physical-device/general-CAD-UI claim.
   [Proof](../test/agent-cad-corpus/step-ui/evidence-r3/README.md).
-- Current private fixture is20941: Coref714 +outerDesktopf869c9a9a. All300inner
+- The prior UI proof fixture20941 used Coref714 +outerDesktopf869c9a9a. All300inner
   CADfiles match the signed functional runtime byte-for-byte; only outer STEP
   class/style changed. Every303package file/443518733bytes matches R730 by
-  streamingSHA/size, below512MiB. Superseded20939/20940 were retired after exact
+  streamingSHA/size, below512MiB. Superseded20939/20940/20941 were retired after exact
   backup/no browser targets; source/private state remain. STEP is still an
   explicit backend choice for new parts; no default promotion or part migration.
 - Parallel E22 component passes genuine Chromium analytic projection transport:
