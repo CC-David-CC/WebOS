@@ -20,6 +20,25 @@ pure canonical capture; explicit autosave remains separate. Currentness uses the
 actual sketch namespace instead of unrelated project-cache writes. This new
 composition still requires its complete workflow run; no per-step testing next.
 
+##32hole scheduling result and next coherent recovery build — 2026-11-07
+
+The complete32hole rerun Corec985/Desktop775 reaches initial3MF RESOURCE_LIMIT
+in625ms rather than timing out. It charged2,000,001pair visits but only106,637
+pairs overlap their boxes. No file was written. Frozen32hole-evidence-r2 retains
+bounded actual work diagnostics. Source73b51 uses single-triangle BVH leaves;
+no work caps, counters or exact predicates were relaxed. Whole rerun pending.
+
+Modern reference run created actual A/B/C/H(A), then new service rejected
+standard PLANE numeric-string IDs as unsupported history. Corebb742 fixes that
+by existing plane-parameter admission, retaining saved representation/strict
+native-solid IDs. Complete reference run remains pending.
+
+Targeted unused Segment removal source is integrated (Worker-only processing,
+independent Worker verification, same sketch transaction/journal), with its public
+command. Selected-extrusion and through-hole creation now use shared append
+chronology as well; coherent complete recovery/export app is building. These
+source changes are not runtime-qualified by previous drawing/export evidence.
+
 ## Complete drawing workflow PASS — 2026-11-07
 
 Core15c0f1fb9/Desktop0e348d617 actual signed app, driver7031d5de1, passes both
