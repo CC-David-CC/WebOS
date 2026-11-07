@@ -1,4 +1,40 @@
 # WebOS work queues and progress ledger
+## Current STEP composition —2026-11-07
+
+Files remains accepted in its tested foundation scope. Gate1 remains **20 partial,
+1 missing complete workflow (E22),0 fully signed-off exercises**; assemblies
+remain Gate2. No beta/live deployment occurred in this composition.
+
+CAD `f714833e8` integrates the measured-owned-solid wrapper correction, the
+shared read-only STEP service and actual inner File-menu action. Native positive
+component tests now accept32/64/128-hole solids without the legacy32-face analytic
+inspection ceiling; private candidate-ledger/factory STEP evidence remains
+separately scoped. No Native/C++ cap, preferred build or saved intent changed.
+Explicit selected-profile inspection can now select the exact staged STEP build
+for a new part through the ordinary commands; existing parts cannot silently
+switch their whole-history backend. Root reran23 selection/metric/Join groups
+and full TypeScript, with no failures. Catalog controls use package-presence
+fixtures; actual service controls use real sketch/semantic Workers and error-only
+submission. They do not claim a real32-hole app export yet.
+
+Desktop integrates the shared STEP My files controller, exact source-revision
+checks, shared operation lease and mandatory local-write phase. Root reran82
+controls (76 host/router/storage plus6 transport-selection) and the source-bound
+host evidence checker: PASS. Synthetic artifact bytes are explicitly not STEP
+geometry. Confirmed arbitrary/falsey exception and error-getter defects are
+repaired with regression evidence; known committed outcomes survive completion
+faults and uncertain writes are never retried automatically. UI preparation for
+phone/1080p/4K is committed; browser acceptance has **not run**.
+
+Next serial boundary: normal combined build on R730 from exact CADf714833e8,
+then a fresh isolated signed application fixture. First prove ordinary plate,
+multibody and32-hole public STEP export→My files→native Save/fresh Open/reedit;
+then exercise the real File menu on three viewport sizes. Do not substitute a
+loft-built plate or component/metadata successes for that proof. Native
+orthographic projection evidence passes independently checked recorded oracles;
+its Worker transport is being tested separately. Linked drawings/dimensions and
+persistence remain missing E22 workflow. No Files race probe or visitor relay.
+
 ## User-confirmed scope revision —2026-11-06
 
 Gate1 now covers21 exercises: E01–E16 and E18–E22. E17 hinged assembly and

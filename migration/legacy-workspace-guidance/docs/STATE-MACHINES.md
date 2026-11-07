@@ -550,3 +550,24 @@ Each repair retains a failing reproducer, tests the real boundary, runs related
 retained controls, updates this inventory/queue and records applicable pins.
 Components alone do not sign off a signed app workflow. The cancelled filesystem
 race/security probes remain cancelled.
+
+
+## STEP composition and owned-solid inspection —2026-11-07
+
+This supplements existing W02/W03/WR04–WR06; it adds no authoritative busy flag.
+
+| Issue | Confirmed defect and scope | Repair / current evidence |
+|---|---|---|
+| NI01 | Nonempty owned solids could fail legacy analytic inspection above32 faces, despite valid Native owned facts. | CAD8c28a9a4e uses the strict owned V2 envelope for facts and summary, crosschecked with topology census. Genuine32/64/128-hole component results and retained old cohorts pass. Full authored app proof remains pending. |
+| STP01 / W02 | A null sentinel and truthiness discarded falsey exceptions; error accessors could replace the original write outcome. | Desktopb2a2e60a9/d41bbe648 use a tagged failure record and bounded descriptor-only reporting. Exact cause (including undefined), primary/finish precedence, confirmed/potential commit distinctions and no automatic retry are regression-tested. |
+| STP02 / W02+W03 | Reusing public readiness as the pending guard rejected the controller's own exclusive Core read because that read truthfully reports busy. | Host pending guard checks captured lifetime and token. Core checks immutable source during evaluation; host checks both revisions before/after preparation and prewrite. Source-backed before failure and repaired component control retained. |
+| SEL01 / W03 | New-part selected-profile discovery ignored explicit runtime revision and chose the old default, preventing ordinary STEP-enabled plate authoring. | Optional exact build request plus trusted staged inventory; no persisted selection flag or backend migration. Actual Worker discovery and unavailable/mixed/withdrawn/lifetime controls pass. Native creation remains for combined app proof. |
+
+STEP transition contract: capture current source → preparation lease → body/path
+choice → target claim and no-overwrite check → fresh read-only kernel replay →
+artifact/revision recheck → mandatory local-write admission → pending or confirmed
+browser receipt → finish. Cancellation before local write produces no claimed
+commit; failures after write admission explicitly retain possibly-committed or
+confirmed outcome. Export does not modify the native project's save baseline,
+path, title or dirty state. Crash/forced closure does not run cleanup or promise
+to rescue unsaved edits. A browser commit is distinct from server synchronization.
