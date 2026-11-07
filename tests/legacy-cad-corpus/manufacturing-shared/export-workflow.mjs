@@ -15,11 +15,11 @@ async function metadata(){return h.frame.evaluate(()=>globalThis.__CAD_APP.proje
 async function pin(){const outer=await h.pinOuter({bundle:pins.outer.bundleSHA256});a.equal(outer.sha256,pins.outer.sha256);const files=await h.pinFiles(Object.keys(pins.files));for(const f of files)a.equal(f.sha256,pins.files[f.name],f.name);record('Exact source-bound outer app and critical inner runtime',{outer,files})}
 async function exportFile(file,label){
  const before=await h.capture(binding.faceId),state=await h.command('inspect-manufacturing');
- const result=await h.command('export-core-3mf',{revision:state.revision,path:file});
+ const started=performance.now(),result=await h.command('export-core-3mf',{revision:state.revision,path:file}),browserCommitMs=performance.now()-started;
  a.equal(canonical(await h.capture(binding.faceId)),canonical(before),'Export changed authored state');
  const end=Date.now()+60000;let data;
  while(Date.now()<end){data=await h.page.evaluate(async file=>{try{const local=await(await mirrorFileContext()).files.read(file),server=await(await serverFileContext()).files.read(file.slice(1));return local.sha256===server.sha256?{sha256:local.sha256,bytes:Array.from(server.data)}:null;}catch{return null;}},file);if(data)break;await new Promise(r=>setTimeout(r,200));}
- a(data,'Export did not reach matching own browser/server storage');const bytes=Buffer.from(data.bytes);a.equal(sha(bytes),data.sha256);a.equal(bytes.readUInt32LE(0),0x04034b50);fs.writeFileSync(path.join(out,label+'.3mf'),bytes);record(label+' public 3MF export and matching browser/server bytes',{result,file,bytes:bytes.length,sha256:data.sha256,authoredStatePreserved:true});
+ a(data,'Export did not reach matching own browser/server storage');const bytes=Buffer.from(data.bytes);a.equal(sha(bytes),data.sha256);a.equal(bytes.readUInt32LE(0),0x04034b50);fs.writeFileSync(path.join(out,label+'.3mf'),bytes);record(label+' public 3MF export and matching browser/server bytes',{result,file,bytes:bytes.length,sha256:data.sha256,authoredStatePreserved:true,browserCommitMs,exportAndServerSyncMs:performance.now()-started});
 }
 let binding;
 try{
