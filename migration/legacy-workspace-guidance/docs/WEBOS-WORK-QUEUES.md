@@ -20,6 +20,27 @@ pure canonical capture; explicit autosave remains separate. Currentness uses the
 actual sketch namespace instead of unrelated project-cache writes. This new
 composition still requires its complete workflow run; no per-step testing next.
 
+## Drawing first complete run and current fixes — 2026-11-07
+
+The actual signed drawing run Coreb955/Desktop9b3 built the real part through
+hole/fillet/chamfer, then the first public drawing create refused foreign-realm
+plain data. The outer desktop and CAD iframe have different Object/Array
+intrinsics; exact own-data capture wrongly required local prototypes. Coree8ff
+repairs genuine cross-realm records/arrays with all field/density/semantic/byte
+limits retained; rebuild and complete rerun pending. Frozen first failure:
+Core test/linked-drawing-native-binding/evidence-r3. No drawing qualification.
+
+Prior integration review repaired truthful unresolved projection status, falsy
+failure settlement/cleanup and command-description limits. These were composed
+before the first actual run, not tested at every implementation step. Public
+JavaScript drawing examples now live in apps/system/jsketcher/examples with a
+README; caller supplies authentic discovered IDs and uses shared commands.
+
+Next independent E19 lane: guarded dependency-aware feature deletion and explicit
+modern through-hole parent repair, sharing the existing authored journal/replay.
+A refused deletion preserves the accepted design; explicit choices replace no
+reference by nearest geometry. Source work only; complete workflow not yet ready.
+
 ## Larger export workflow failure — 2026-11-07
 
 Complete two-independent-object workflow also browserPASS: plate with centered
