@@ -34,3 +34,19 @@ Use unchanged check-saved.mjs and check-served-saved.mjs over actual outputs.
 Retain first failures. Own contexts/targets must close; shared Chrome and root
 fixture stay alive for root cleanup. No full Gate1 claim from this one retained
 integrated plate workflow.
+
+Actual frozen-runtime result: **PASS22 signed rows +7 served-browser rows**.
+All original assertions and nine pinned source/dependency inputs are byte
+unchanged. Full native workflow reached150x30/depth25/seedD14, count/spacing
+travel and refusal preservation, normal native Save/sync/fresh Open/reedit and
+second Open. The separate actual served export accepted17/17 default-registry
+commands. Both unchanged offline checkers pass three raw native saved files and
+12 signed detached-preview replays plus the served preview observation.
+
+Every settled signed sample retained exactly one detached metadata owner and
+zero mounts/candidates/accepted native owners; cleanupFailed=false. These are
+ownership facts only. All four owned contexts released all targets; shared
+Chrome and root fixtures remain untouched. REVIEW.json records exact source,
+app/outer/native pins, source comparison, actual saved bytes/SHA and scope.
+No failures occurred. This closes only this retained integrated-plate regression,
+not the remaining active Gate1 exercises or broader geometry/manufacturing claims.
