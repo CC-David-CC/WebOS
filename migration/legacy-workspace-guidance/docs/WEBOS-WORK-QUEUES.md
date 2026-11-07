@@ -31,9 +31,10 @@ now bind the repaired bootstrap, without changing native binaries/defaults.
 
 ST02 is elevated to P1: both real storage backends lose unresolved local
 references in directory-only restoration and conflicted-file remote-absence
-traces. Earlier b911 candidate is not integrated; durable reconciliation and
-preservation repair is in progress. Logical reference loss is proven, physical
-byte erasure/public-account incidents are not. WR03 also affected three disposable
+traces. The durable repair is integrated at c91aee0b2 with8 new Node groups and10 actual
+IDB/OPFS browser scenarios, plus retained controls; combined signed app remains
+pending. Root coordinator/storage run38 groups and retained scan10 pass. Logical
+reference loss was proven; physical byte erasure/public-account incidents are not. WR03 also affected three disposable
 clients; repair is integrated at CAD625eed661 with51 bounded controls and9 actual
 Chromium CPU Worker checks. Later queued jobs refuse before allocation after a
 cleanup fault. Composed-app replay remains pending.

@@ -67,7 +67,7 @@ not automatically lifecycle machines. Unreviewed rows are not proof of safety.
 |---|---|---|---|
 | ST01/F02 | P1 silent stale data | Unrelated failing file retains checked progress; healthy remote changes are skipped, even on a pass reporting completion. | Fresh/continuation repair integrated;10 focused controls, retained suite and8 real IDB/OPFS browser scenarios pass; combined signed check pending. |
 | LR01/U03 | P1 unusable desktop | Late stopped recovery re-blocks roots without overlay; deadline admits overlapping recovery; failed recovery strands disabled Retry. | Owned-operation repair passes3 real Chromium regressions and5 retained checks; pins in tests/state-machine-audit-lifecycle/evidence/verification.json. |
-| ST02/F03 | P1 unresolved-side logical loss | A conflicted directory can lose its child reference when only the remote directory returns; a clean conflicted file loses its reference when remote disappears. | Both real IDB/OPFS traces fail on frozen b911, retained in desktop b95b646c7. Earlier candidate is not integrated. Durable protection/reconciliation repair in progress; physical byte erasure and public incidents are not established. |
+| ST02/F03 | P1 unresolved-side logical loss | A conflicted directory can lose its child reference when only the remote directory returns; a clean conflicted file loses its reference when remote disappears. | Both real IDB/OPFS traces fail on frozen b911, retained in desktop e6492bf63. Durable repair integrated at c91aee0b2;8 new Node groups and10 actual browser scenarios pass, plus retained controls. Root merged coordinator/storage run38 groups and retained scan10 pass. Signed composed-app replay pending; physical byte erasure/public incidents not established. |
 | WR01/W01 | P2 cleanup contract | Falsey cleanup throws fail to latch; throwing close accessor strands a reservation. | Injected faults, not observed kernel incidents; repair integrated at CAD061551b93;22 focused/retained resource controls pass. |
 | WR02/W02 | P2 direct Worker boundary | Duplicate initialization stalls; concurrent same-token work creates two native names but retains only one token. | Genuine Worker reproduction. Normal controller rejects concurrency; gate repair integrated at CAD920dc619d. Six direct-Worker controls plus new/retained native corpus pass; combined app replay pending. |
 | MG01/C05 | P2 service reentrancy | Final caller guard can accept a newer display edit/start a pipeline, then the old setter commits. | Repair integrated at CAD94cf5fa19;5 regressions +14 retained manager controls pass. No public incident/new signed-build claim. |
@@ -156,6 +156,27 @@ Feature-ID high-water is deliberately monotonic; refusal may skip IDs. It is not
 accepted geometry or another history. Native documents remain authoritative;
 tessellation/export/analysis are derived and revision-bound.
 
+## F03 durable conflict reconciliation
+
+| From | Event / proof | Publication or retained state |
+|---|---|---|
+| Accepted clean file/folder | Incompatible remote kind | Persist unresolved conflict; preserve local bytes/reference |
+| Unresolved file | Remote disappears or changes | Ordinary pull/deletion cannot resolve the choice; explicit existing local/server resolution remains available |
+| Unresolved directory | Remote directory returns without a retained clean child | Keep parent conflict and protected subtree through repeat scans/reopen |
+| Unresolved directory | Every retained clean child has matching remote kind and authenticated file SHA | Recheck complete local cohort membership/version/purpose atomically, then clear only parent conflict |
+| Candidate reconciliation | Local cohort changes, lifetime changes or metadata is unknown | Refuse publication; retain authoritative intent/conflict; a fresh scan may retry |
+| Ordinary nonconflicted clean row | Accepted remote absence | Existing ordinary deletion behavior is unchanged |
+
+Protection derives from current persisted conflict owners and canonical path
+segments, not a one-pass exemption or second journal. Pull and deletion both
+respect it. Dirty/deleted child intent stays in the existing CAS pipeline.
+Compatibility uses authenticated inventory SHA or at most64 extra metadata paths
+per pass, batched at most16 paths/8192 encoded path bytes; no whole-file fallback.
+Unknown/over-budget proof retains conflict, so broad large-subtree recovery
+liveness is not qualified. Metadata spans a bounded observation interval, not an
+atomic remote snapshot. Local parent/cohort publication is atomic. Evidence and
+limits: tests/state-machine-audit-storage/PERSISTENT-COHORT-REPAIR.md.
+
 ## W02/W03 Worker transitions and settlement
 
 | Owner / from | Event | Required transition and invariant | Qualified scope |
@@ -204,6 +225,13 @@ unchanged bytes, subsequent sync and fresh Open at1700mm³. It delays only the
 genuine receipt, with no concurrent write, account switch or cancelled filesystem
 race. This does not qualify every Save/export/logout boundary. New ordinary-close
 policy needs its own regression and must not erase this historical evidence.
+
+Crash/forced-tab-close scope: no guarantee of shutdown JavaScript execution and
+no requirement to rescue unsaved RAM edits. Preserve complete durable revisions
+and reconcile which revision survived. The old/new complete-version publication
+invariant remains required; a passed late-acknowledgement test is not itself a
+power-loss, browser-eviction or process-crash proof. No cancelled filesystem race
+or security probe is resumed to claim those results.
 
 ## U04/U05/U06 transition rules
 
