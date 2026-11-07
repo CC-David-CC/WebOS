@@ -20,3 +20,15 @@ CODI_SIGNED_PINS=/tmp/codi-region-reselection-apps-20261106-r1/runtime-pins.json
 ```
 
 The runner closes only its own contexts and disconnects from shared Chrome. Root owns the fixture and its cleanup. Failed receipts are retained, never overwritten.
+
+## Actual result
+
+[Receipt](evidence-r1/receipt.json): **6/6 setups and 30 rows PASS**, Node v24.22.1, Puppeteer 24.35.0, actual Chrome 155.0.8059.79. The four executing source hashes still matched after completion. Every setup independently fetched and matched all 73 core assets and the mounted outer bundle before authoring. App SHA256 `54335fda05642fd2f90c0e48c49706a46d3cb6fb63334e1a3473c23e3b84e8fa`; outer `ad3e613d746c01292b0b921ed12b3e68785b7a9d347ecfd88957d304bc50066d`.
+
+The independent [saved-file oracle](evidence-r1/saved-oracle.json) passes all four native saved files, checking actual authored circle/segment coordinates, one unchanged extrusion identity, exact saved region/runtime/depth/counter intent, child intent, and analytic volume/bounds against fresh Open measurements. The compatible Boolean subtract remains the same child feature/output and exact raw operation; reselection needs no child substitution. The incompatible child returns `UNRESOLVED_SELECTION` both before and after fresh Open, with exact accepted source/history/counters/geometry/mesh/journal preservation. Stale revision returns `STALE_HISTORY`; unknown opaque choice returns `STALE_REGION`. The actual unsupported polygon row is retained with a 9,104-character opaque identity and `INVALID_REQUEST` reason; it is not claimed geometrically nonexistent.
+
+The final real native candidate measured 1,500 mm³. Trusted visible Close terminated its Worker and returned an uncommitted refusal; releasing the held genuine reply did not revive commands or a window. A fresh signed Open retained the saved 1,000 mm³ accepted rectangle. All owned contexts closed; the shared browser remained open and fixture cleanup was left to root.
+
+No product/runtime changes or successful geometry substitutes were needed. An initial standalone saved-file checker looked for a prose event label even though the receipt used the native case label at that row. Its unchanged failing variant and reproduced stderr are retained under [oracle-first-failure](evidence-r1/oracle-first-failure/); the checker now selects the actual saved-file row by its case label plus intent/readback fields. No authoring assertions changed and the actual signed run passed on its first execution.
+
+Combined rejected-source-edit plus reselection repair (including the known source-edit nesting break), general circle winding semantics, typed selected-profile reselection, and broader human region-selection UI remain open. The successful numeric/public command path does not qualify these or full E05/Gate1. Strict Join and native ZIP were not present in this frozen runtime.
