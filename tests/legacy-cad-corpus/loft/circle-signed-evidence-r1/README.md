@@ -1,0 +1,5 @@
+# Preserved first signed failure
+
+Frozen driver948a39e39, core39ad07f365, Desktop90a4bcf48, fixture20938. Normal own-account signup succeeded; actual CAD application window showed “Could not load this app. App bundle too large.” There was no CAD iframe or command registration. The unmodified harness then reached its120s launch timeout. Native/source authoring, saved files and point queries are all zero; this is a host-load blocker, not evidence of a kernel defect.
+
+The exact inherited Desktop loader boundary is `active-system/assets/desktop/apps.mjs:18`: inventory sum above335544320 (320MiB) throws the same visible message. The parent-provided full app inventory is370857213 bytes, above that old ceiling. Root owns the host fix; no loader/product/driver changes were made by this test lane. Read-only actual-page observation and final failed receipt/log are retained. Driver/helper hashes match before/after. The own context closed in `finally`, shared browser disconnected only, parent fixture left running. Any corrected-runtime run must use fresh account/output/pins and retain this failure.
