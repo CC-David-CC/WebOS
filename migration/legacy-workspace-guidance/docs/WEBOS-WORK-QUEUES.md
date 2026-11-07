@@ -1,4 +1,26 @@
 # WebOS work queues and progress ledger
+## Current Save checkpoint — 2026-11-07
+
+Desktop **5c4fa703a** repairs native Save outcome loss and watcher cleanup
+custody: **181/181** component/retained controls pass. Original failing packet
+remains. Acknowledgement survives later errors; malformed receipts cannot
+publish association/baseline; falsey primary causes survive. Activation failure
+retains cleanup custody. Provider unsubscribe refusal is not reported released
+and does not stop other window cleanup. Fresh signed Save/server/freshOpen proof
+is pending; private20942 remains older Desktop5b5/Coref714. No deployment.
+[Evidence](../test/agent-cad-corpus/native-save-outcomes/repair-evidence-r1/README.md).
+
+CAD **8b8adfc7b** includes pure generic material preparation, drawing-definition
+metadata and shared metadata journal primitives. Root repeated **63** preparation
+and **124** journal/retained controls, all PASS, plus TypeScript. These are
+components, not shared publication/drawing workflows. Joint A/J/T manufacturing
+publication contract/before controls are next. Drawing publication remains
+unavailable until native persistence exists.
+
+Gate1 remains **20 partial / 1 missing complete workflow (E22) / 0 full signoffs**.
+Assemblies E17 stays Gate2. Next: signed Save proof; joint material history;
+generic manufacturing mesh/3MF; linked drawings; full acceptance expansion.
+
 ## Current STEP composition —2026-11-07
 
 Export settlement repair now has both source and signed normal-workflow proof:
@@ -9,7 +31,7 @@ actual signed f714/Core +5b5fb6432/Desktop runtime also passes4normal exports
 receipts/state and matching browser/server bytes. Independent ZIP/XML mesh and
 DXF-coordinate checks pass. No new generic manufacturing or fresh STEP-reader
 claim. Current isolated fixture20942;20941 retired after exactR730backup,
-preserving source/private state. Native Save settlement remains a follow-up.
+preserving source/private state. Native Save settlement has component repair; fresh signed proof remains pending.
 [Proof and scope](../test/agent-cad-corpus/export-outcomes/signed-evidence-r1/README.md).
 
 Files remains accepted in its tested foundation scope. Gate1 remains **20 partial,

@@ -7,6 +7,21 @@ competing specifications. This is a first pass, not exhaustive safety proof.
 Third-party editor/kernel internals, games and future physics are outside this
 pass unless they affect the shared workflow.
 
+## Save/watcher repair — 2026-11-07
+
+Desktop5c4fa703a shares no-write → pending → acknowledged settlement between
+Save/export. Own-data receipt validation precedes acknowledgement/publication.
+Later failure cannot downgrade acknowledgement. No receipt means uncertainty,
+not proof of rollback. Primary falsey errors survive reporting/finish faults.
+Browser acknowledgement is separate from server synchronization.
+
+Retain watcher unsubscribe custody until successful return. Activation failure
+preserves old custody; repeated successful release is a no-op. Provider failure
+leaves release unconfirmed; disposal reports it and continues other cleanup.
+No crash cleanup promise. 70 Save/cleanup plus111 retained controls pass using
+actual host functions and synthetic providers. Fresh signed proof remains next.
+See test/agent-cad-corpus/native-save-outcomes/repair-evidence-r1.
+
 ## Counting and representation
 
 Currently **21 identified workflow families**: 16 implicit, four hybrid, one
