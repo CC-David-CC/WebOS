@@ -130,7 +130,7 @@ exclusive enum values.
 | Priority | Capability | Acceptance standard | Current status |
 |---|---|---|---|
 | P0 | Geometry primitives | Correct valid/degenerate classification, with declared domains. | Partial; primitive domain/basis fixes under review. |
-| P0 | Constraint solver | Distinguish underconstrained, fully constrained, redundant and contradictory; report numerical uncertainty. | Partial; false DOF and other defects reproduced. |
+| P0 | Constraint solver | Distinguish underconstrained, fully constrained, redundant and contradictory; report numerical uncertainty. | Partial; physical DOF is honestly unknown; bounded local Jacobian diagnostics exist. Multi-stage diagnostics and broader solver qualification remain open. |
 | P0 | Driving dimensions | Edits propagate consistently or fail while preserving prior intent. | Partial; five-hole plate 100×50×20 → 150×30×20 and impossible-edit recovery pass. General dimensional/typed-expression coverage and full chain remain open. |
 | P0 | Units and expressions | Typed, dimensionally valid formulas; conversion/display changes preserve physical size. | Partial; explicit native mm does not establish inch display or a complete units system. |
 | P0 | Planar region extraction | Disjoint, nested, intersecting and touching cases interpreted explicitly. | Incomplete; contour loops are not yet a complete arrangement/region model. |
