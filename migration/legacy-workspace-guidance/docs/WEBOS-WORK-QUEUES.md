@@ -425,8 +425,13 @@ relay, source-format change or Gate1 signoff. Tally remains19partial/2missing/0f
 Host loft transport component now passes8 new admission/lifetime controls and
 20 retained sweep/point controls (28 combined). Exact ordered source/region/seam
 intent is detached; no native geometry success is fabricated. The module remains
-unregistered until the genuine Craft workflow exists. Root evaluator/ledger
-integration is in progress; source semantic adapter is a separate owned lane.
+unregistered until the genuine Craft workflow exists. Root evaluator/ledger integration now passes17 feature/admission controls and54
+retained ledger controls, with full TypeScript. Experimental loft catalog/history
+policy passes5 new+18 retained metadata controls. Authored nested source/seam
+journal capture, creation travel-by-value and exact bounded byte accounting pass
+5 new+11 retained controls. Genuine source semantic Worker proof remains a
+separate owned lane. These are components; app registration/mount staging,
+actual source edits/UndoRedo/Save/Open and human parity remain pending.
 [Transport-only evidence](../test/agent-cad-corpus/loft/host-transport/receipt.json).
 E15 remains missing as a shared app workflow; no deployed/Save/Open claim.
 
@@ -439,6 +444,19 @@ candidate/journal transaction, retain feature/source IDs and local sketch intent
 regenerate dependent solids, and prove rejection/Undo/Redo/Save/Open. Rebuilding
 fresh planes or adding saved loft coordinates is not equivalent acceptance.
 
+
+### Capacity R1 retained failure — 2026-11-07
+
+Actual20937 public run created32 measured sweep outputs, reportedplanned32/
+remaining0/withinLimittrue/canAppendfalse, and refused33rd RESOURCE_LIMIT without
+feature-ID advance or accepted-state/resource changes. Read-at-quota returned
+5 genuine native point classifications within the existing60s bound, with state
+and resources preserved. The runner then failed its own unsorted expected-key
+array assertion. R1 is retained; only that oracle key ordering correction and
+independent offline reply validation are authorized before a full rerun. No
+product/deadline/geometry/budget change. No Save/sync began in R1; full-capacity
+persistence remains unqualified. Owned browser context closed, allowing separate
+cache diagnostics to resume. Gate1 remains19partial/2missing/0full.
 
 ### Historical E13 integration checkpoints — superseded by the result above
 
