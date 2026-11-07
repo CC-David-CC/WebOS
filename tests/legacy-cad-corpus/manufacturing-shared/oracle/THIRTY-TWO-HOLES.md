@@ -31,3 +31,20 @@ provenance, browser/server file SHA, runtime/driver pins and exact saved-source
 bindings are checked as complete artifacts. Original primary and two-object
 oracles remain unchanged. No synthetic successful mesh, Native rerun, browser
 runtime, microtest or geometry mutation is part of this source-only preparation.
+
+Actual complete R4 outputs checked once: PASS. Frozen sourceebe589359 was run
+unchanged after the real public workflow completed on Core7ba1f6e7c and
+Desktopd5da87493. All three artifacts contain8072vertices/16268triangles,
+Euler−62, all32 source-bound bores and matching PLA/blue provenance. The independent
+initial volume residual3.332753833mm3 is below observed sag bound4.999494339mm3;
+edited/reopened residual4.165942291mm3 is below6.249367674mm3. All102 safe
+material/void windings pass. Edited/reopened canonical oriented triangles match
+exactly. Three native source files,32 public append receipts, opaque descriptors,
+file commits and runtime pins pass without oracle changes.
+
+Portable `32hole-evidence-r1/result.json` and `producer.json` bind the actual
+inputs and frozen oracle source. Driver custody uses the receipt's explicit
+driverSourceCommit and Git blob content hashes, independently of current checkout
+files or HEAD. Runtime Desktop/Core commits are recorded separately. This is
+complete artifact qualification for the stated fixture; native source authority,
+general solid embedding, slicer behavior and physical printing are separate.
