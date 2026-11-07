@@ -1,5 +1,15 @@
 # WebOS work queues and progress ledger
 
+## Active repository cutover —2026-11-07
+
+Engine work now belongs in independent ACAD/main (`box-git:/srv/data/git/ACAD.git`,
+backup `r730:/mnt/data10tb/git/ACAD.git`). Fresh parentless snapshot c700cac;
+no old Git ancestry imported. Normal fresh build and complete shell model/edit/
+Save/Open workflow PASS on ACADb053638. Shell material3MF and atomic source/region
+workflows are running next. JSketcher rollback to public webos-integration is
+still pending these cutover checks; no public site/GitHub changes.
+[Cutover checklist](ACAD-CUTOVER-20261107.md) tracks that separate requirement.
+
 ## Current complete-workflow results — 2026-11-07
 
 The real32-hole workflow now PASSes through creation UndoRedo, material assignment, native Save/sync/fresh Open, depth edit20→25 and all3exports including the final cold-browser reopen. Common Files readiness fix d5da87493 is qualified for this ordinary path. Independent unchanged oracle PASSes3exports/102probes/all32holes, measured volume error bounds, units/material/provenance, and exact edited/reopened geometry equality. Frozen actual outputs: test/agent-cad-corpus/manufacturing-shared/32hole-evidence-r4; oracle proof cb23dac6c. Earlier deadline/work-limit/cold-open failures below are historical and superseded for this workflow; broader Files/geometry coverage remains partial.

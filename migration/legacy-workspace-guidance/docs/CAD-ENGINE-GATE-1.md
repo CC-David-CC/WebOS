@@ -1,4 +1,14 @@
 # Gate 1 — foundational parametric CAD engine competency
+## Independent ACAD source —2026-11-07
+
+Current engine development is ACAD (Agent Computer-Aided Design), in
+`box-git:/srv/data/git/ACAD.git` and `r730:/mnt/data10tb/git/ACAD.git`, branch main.
+Its parentless source snapshot is c700cac; inherited JSketcher Git history is
+not part of ACAD. Historical proofs retain their original producing revisions;
+new ACAD results are qualified separately. See [cutover conditions](ACAD-CUTOVER-20261107.md).
+The prior GitHub JSketcher webos-integration remains the previous project's
+endpoint. Full Gate1 scope/requirements are unchanged.
+
 ## User-confirmed scope revision —2026-11-06
 
 Gate1 now covers21 exercises: E01–E16 and E18–E22. E17 hinged assembly and

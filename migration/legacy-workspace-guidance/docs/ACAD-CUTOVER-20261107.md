@@ -31,8 +31,8 @@ The first failure log is retained on R730 under the fresh ACAD build `.build/`.
 
 ## Pending cutover checks
 
-- [ ] Fresh ACAD normal application build with exact qualified Native inputs.
-- [ ] Actual full shell model/edit/history/native Save/Open workflow.
+- [x] Fresh ACAD normal application build with exact qualified Native inputs: ACADb053638, R730 fresh checkout, successful main/Worker/resource build.
+- [x] Actual full shell model/edit/history/native Save/Open workflow: ACADebcdd0e freezes `test/owned-shell-shared/acad-evidence-r1`,61rows/41commands/two native files; actual runtimeACADb053638/Desktopec98dcce9.
 - [ ] Actual full shell material/core3MF/save/reopen/export workflow and independent
       artifact oracle, including edited/reopened identity and geometry.
 - [ ] Actual atomic source-dimension/region-reselection workflow.
@@ -46,3 +46,9 @@ Read-only public head observed2026-11-07:
 `https://github.com/CC-David-CC/jsketcher`, branch `webos-integration`.
 Re-read the public head before rollback; this observation does not perform it.
 Full CAD Gate1 remains open and is separate from repository-cutover acceptance.
+
+Fresh build additionally exposed a missing retained selected-profile preparation
+step. ACADb053638 adds it to the normal Worker build chain with explicit exact
+Native input. Full new source-region and shell-export workflows are now being
+qualified on that fresh build. Later midpoint/angle source is separately
+integrated in ACAD and remains unqualified until its own complete workflow.
