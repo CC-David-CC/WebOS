@@ -1,0 +1,11 @@
+// Execute the actual host message router, not a recreated UI or CAD model.
+// No Core menu/DOM/native-export qualification is claimed by this protocol test.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const source=fs.readFileSync(new URL('../../../apps/system/jsketcher/index.mjs',import.meta.url),'utf8'),start=source.indexOf(' function receive(event){'),end=source.indexOf('\n window.addEventListener(\'message\',receive);',start);assert(start>=0&&end>start);const actual=source.slice(start,end);
+function fixture(){const contentWindow={},calls=[],notices=[],scope={active:{contentWindow},location:{origin:'http://owned.fixture'},valid:()=>true,busy:false,stepExport:{open(){calls.push('step');return Promise.resolve({protocolOnly:true})}},tell:message=>notices.push(message),openRectangleDialog(){throw Error('Unexpected rectangle branch')},openRectangleEditDialog(){throw Error('Unexpected rectangle branch')},openProject(){calls.push('open')},export3mf(){calls.push('3mf')},exportDxf(){calls.push('dxf')},saveProject(){calls.push('save')}};vm.createContext(scope);vm.runInContext(actual+';globalThis.route=receive;',scope);const event=()=>({origin:scope.location.origin,source:contentWindow,data:{codiJSketcher:{type:'file-action',action:'export-step'}}});return{scope,calls,notices,event,run:e=>scope.route(e)}}
+test('exact current-frame STEP event reaches the same host controller once',async()=>{const f=fixture();f.run(f.event());await Promise.resolve();assert.deepEqual(f.calls,['step']);});
+test('wrong origin/source, stale owner and extra STEP fields never dispatch',()=>{for(const alter of [(f,e)=>e.origin='http://foreign.fixture',(f,e)=>e.source={},(f,e)=>f.scope.valid=()=>false,(f,e)=>e.data.codiJSketcher.path='/unrequested.step',(f,e)=>Object.defineProperty(e.data.codiJSketcher,'hidden',{value:1}),(f,e)=>e.data.codiJSketcher[Symbol('extra')]=1]){const f=fixture(),e=f.event();alter(f,e);f.run(e);assert.equal(f.calls.length,0);}});
+test('busy file-operation route reports contention without a second export',()=>{const f=fixture();f.scope.busy=true;f.run(f.event());assert.equal(f.calls.length,0);assert.equal(f.notices.length,1);});

@@ -1,0 +1,7 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex'),manifest=JSON.parse(fs.readFileSync(new URL('./evidence/manifest.json',import.meta.url)));
+assert.equal(manifest.status,'COMPONENT_PASS');assert.equal(manifest.browserExecuted,false);assert.equal(manifest.nativeGeometryQualified,false);assert.equal(manifest.syntheticArtifactReplies,true);for(const [name,pin]of Object.entries(manifest.files)){const bytes=fs.readFileSync(new URL(name,import.meta.url));assert.equal(bytes.length,pin.bytes,name);assert.equal(sha(bytes),pin.sha256,name)}
+const log=fs.readFileSync(new URL('./evidence/tests.log',import.meta.url),'utf8');for(const expected of ['ℹ tests 64','ℹ pass 64','ℹ fail 0'])assert(log.includes(expected));const source=fs.readFileSync(new URL('../../../apps/system/jsketcher/index.mjs',import.meta.url),'utf8');for(const [name,row]of Object.entries(manifest.unchangedOldExportFunctions)){const a=source.indexOf(row.start),b=source.indexOf(row.end,a);assert(a>=0&&b>a);assert.equal(sha(source.slice(a,b)),row.sha256,name)}
+console.log(JSON.stringify({status:'PASS',scope:'STEP host metadata/storage/router component only; genuine Native/Core/menu/signed file acceptance NOT RUN',groups:64,newGroups:28,retainedGroups:36,sourceFiles:Object.keys(manifest.files).length,old3mfDxfFunctionsUnchanged:true},null,2));
