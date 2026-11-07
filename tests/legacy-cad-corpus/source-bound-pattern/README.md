@@ -15,7 +15,9 @@ The proxy does not qualify the example's browser import/loader availability.
 The recipe authors a constrained100×50 source, selected extrusion20, centeredD10,
 four cornerD4/offset8, twoR3 fillets, two1mm chamfers, then a source-local+X pattern
 count3 including the centered seed at20mm spacing. Source/region/outer connector
-IDs are discovered, not invented or extracted from private native indices.
+IDs are discovered, not invented or extracted from private native indices. The
+example takes four actual original line connector records, chooses one and its
+unique opposite by disjoint incident IDs, then chamfers the two remaining IDs.
 It uses the generic single-part owned path, never the old bracket helper.
 
 Planned checks: creation append Undo/Redo; source150×30/depth25 and seedD14 full
