@@ -13,7 +13,7 @@ test('exact signed scalar intent detaches/freezes before Craft and carries host 
 });
 test('foreign-realm own-data record is captured without a realm prototype restriction',async()=>{const f=fixture();try{await f.run('edit-source-plane-depth',vm.runInNewContext('('+JSON.stringify(intent())+')'));assert.equal(f.state.calls.length,1);}finally{f.stop()}});
 test('unknown/missing/symbol/nonenumerable/accessor/inherited fields refuse before target without getter calls',async()=>{
- let invoked=0;const accessor=intent();Object.defineProperty(accessor,'depth',{enumerable:true,get(){invoked++;return40}});const hidden=intent();Object.defineProperty(hidden,'depth',{value:40,enumerable:false});const inherited=Object.create({revision:'hidden'});Object.assign(inherited,{index:1,featureId:2,faceId:'f',depth:40});
+ let invoked=0;const accessor=intent();Object.defineProperty(accessor,'depth',{enumerable:true,get(){invoked++;return 40}});const hidden=intent();Object.defineProperty(hidden,'depth',{value:40,enumerable:false});const inherited=Object.create({revision:'hidden'});Object.assign(inherited,{index:1,featureId:2,faceId:'f',depth:40});
  for(const request of [{...intent(),orientation:'XY'},Object.fromEntries(Object.entries(intent()).filter(([key])=>key!=='faceId')),{...intent(),[Symbol('extra')]:1},accessor,hidden,inherited,[],null]){const f=fixture();try{await assert.rejects(f.run('edit-source-plane-depth',request));assert.equal(f.state.targets,0);assert.equal(f.state.calls.length,0);}finally{f.stop()}}assert.equal(invoked,0);
 });
 test('invalid numeric/string identities and signed-depth limits refuse before target',async()=>{
