@@ -12,6 +12,23 @@ Visitor networking policy, 2026-11-06: **all server outbound relaying is disable
 
 Current mechanical integration: [signed mechanical path, remaining integration and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
 
+## Active priority — strict mechanical Join
+
+User-approved author decision: a normal Join must produce one verified manifold
+connected solid, or reject without changing the accepted model. Separate bodies
+are explicit. Save the chosen result intent in feature history; do not silently
+repair geometry, weld vertices, switch backends or reinterpret failure as success.
+This applies to human and agent operations through the same model API. One part
+may still contain deliberate material regions; this is not a one-material rule.
+
+The common kernel-union corpus passes representation/persistence controls only.
+Strict Join implementation and its signed positive/refusal/UndoRedo/native-file
+qualification are **pending**. In particular NoError or raw mesh-component counts
+cannot certify a cavity or contact case by themselves. See Boolean contact and
+persisted Join acceptance in CAD-ENGINE-GATE-1.md. A bounded implementation/proof
+proposal is underway alongside region-reselection qualification; this decision
+must be qualified before claiming the corresponding Gate1 feature complete.
+
 ## Latest signed integration results
 
 Exact CAD3cc1eede5/desktop4748c13cb passes both new bounded workflows on the
