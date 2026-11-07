@@ -175,6 +175,22 @@ Repair dce53517e binds the reviewed aa7f6433 Worker with native pins unchanged.
 Fresh R2 staging passes; full normal build and independent negative controls
 remain in progress. This is a build integration defect, not native CAD failure.
 
+RC01/CMD01 repair integration: desktop64664b0c0/50ffd4e69 and
+source/evidenceb651786a4 are merged. Root independently runs61 combined command,
+recipe, lifetime and sweep-bridge controls: PASS. Review finds no concrete
+dispatch/receipt flaw. A legal region now reaches the actual bridge and the
+intentional NATIVE_NOT_RUN boundary (after.json), rather than failing registry
+metadata admission. These supersede pending source/component repair above;
+genuine signed same-window New/Open controls remain pending. Opaque token is
+derived from the authoritative document AbortSignal, not a second generation.
+
+B01 pin repair has six independent staging controls PASS (CADdb34c89f1),
+including actual reviewed native bytes and helper tamper/refusal checks.
+Separate full-prism-stager regression confirms prior-output deletion before an
+ordinary missing dependency; that staging atomicity defect remains OPEN. It is
+not a user file mutation. Fresh owned qualification directories avoid relying
+on old staged output, without claiming the defect is fixed.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |

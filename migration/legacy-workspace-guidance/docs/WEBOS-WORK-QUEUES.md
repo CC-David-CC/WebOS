@@ -302,6 +302,25 @@ owned directories. Next is repaired desktop bundling and genuine signed sweep
 creation/edit/history/Save/Open; full E14 and native public point queries remain
 unqualified. No live/beta deployment or visitor relay change occurred.
 
+RC01/CMD01 repair now merged64664b0c0/50ffd4e69, evidenceb651786a4.
+Root61combined controls PASS; separate independent read-only source review
+found no concrete dispatch/receipt defect. Source lane67controls retained.
+Actual legal metadata now reaches the real sweep bridge's intentional
+NATIVE_NOT_RUN component boundary. Signed document-replacement evidence remains
+pending. No new document-generation flag or Save/path token replacement.
+
+Private signed fixture http://127.0.0.1:20934 is running from frozen Desktop
+50ffd4e696babfffa696fbe8ab3d3de7e81b24dc and innerCAD9c6dc2eb2.
+226packagefiles/333,980,172bytes verified after transfer; exact pins retained
+in test/agent-cad-corpus/sweep/root-runtime-r1/pins.json. Existing experimental
+Manifold build receipt copied only after exact actual glue/WASM verification;
+initial missing-receipt bundle failure was not a native modeling failure.
+Outer bundle e1b216ee17ea52443d55cf82739edf5944103d5526b75a939dd972f55b243619;
+outer index e71681f51017d08f4178148d3ae67516e2cd9f0f9061bf240bee02cf55d6d6ea.
+Signed lane is preparing/running four genuine source-authored sweep cases, not
+model seeds. Shared Chrome19329 remains open; fixture has no guest/browser
+relay. Full E14 row remains open, including native point observation gap.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
