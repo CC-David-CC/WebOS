@@ -1,4 +1,33 @@
 # WebOS work queues and progress ledger
+## Drawing custody repaired; controlled3MF component integrated — 2026-11-07
+
+Core48379ca3c composes V3custody/activation authority and private3MFencoder.
+Rootfresh83manager/Worker/display/publication controls +10NativeSignal regressions
+PASS; Desktop77hostSave/dirty/settlement controls PASS; fullTSC0. Two independent
+managerreactivation defects are repaired by the same per-activation authority.
+Original failure assertions/receipts retained. V3authoring definitions survive
+normal/material-aware native Save, including valid unresolved references.
+Component-qualified; no new drawing browser/runtime or publication enabled.
+[Drawing evidence](evidence/drawing-custody-root-20261107/README.md).
+
+Private controlled3MFcomponent:19focused/10retained controls and16encoderWorker
+exports checked independently for ZIP/CRC/XML, every source vertex/triangle and
+part/region/material/resource mapping. Rootrepeats19+2legacy writer controls.
+Separate parts may each call their region main; original global-ID defect fixed.
+Optional provenance remains optional forTS/legacy callers. No publicgeneric3MF
+route yet: actualNative artifact custody belongs in the private protectedreplay
+bridge (active implementation). Raw buffer/metadata is NOT Native source authority.
+
+Measured next defect: unchanged approvedNative kernel creates closed curved
+cavity R5h12minusR2h8atz2 correctly (valid1solid/2shells,V268π,4pointstates);
+current encoder rejects overlapping shell bounds. Genuine proof/independentmesh
+checks are being frozen separately. Fix export nesting, not Native geometry;
+no validator bypass. Multi-region interfaces/typedexport/peakmemory remain open.
+
+Next parallel lanes: protected mesh export observation; Native drawing source
+binding; genuine curved-cavity validator qualification. FullGate1unchanged.
+Earlier open-custody entries below describe their historical source only.
+
 ## Drawing retention source integrated; custody remains open — 2026-11-07
 
 Coreafd6e4d46 +Desktop17d041eae compose V3codec, actual-manager retention,

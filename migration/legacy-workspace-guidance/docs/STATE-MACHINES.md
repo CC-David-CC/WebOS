@@ -7,6 +7,26 @@ competing specifications. This is a first pass, not exhaustive safety proof.
 Third-party editor/kernel internals, games and future physics are outside this
 pass unless they affect the shared workflow.
 
+## Activation authority repair and encoder custody — 2026-11-07
+
+Core9df225f4d repairs the previously open activation cases. The closure captures
+its manager installation authority once; jobs/snapshots may not adopt a later
+manager. Externalvalid callbacks are checked before destructive document change,
+and passive checks follow without invoking them again at that boundary. Late old
+failure cleanup cannot invalidate the replacement manager's project. Unchanged
+independent regressions plus83core/77host/10signal root repeats pass; no generic
+hot-reload metadata migration or browser drawing qualification is claimed.
+
+Controlled3MF encoder: admitted metadata/attached binary → transfer attempted
+(not consumed/consumed/unknown) → Worker encode → validated response → terminated.
+Failure always establishes no file write in this encoder layer; file settlement
+belongs to the existing host writer. Transfer uncertainty requires fresh private
+artifacts, not retrying detached input. Two parts may reuse a local region ID;
+resource IDs/bodies remain globally unique. Producer/currentness authority is
+outside serialized buffer metadata and must be held by the protected replay
+owner. Private batch orchestration remains in progress. Curved closed-cavity
+Native geometry is correct; the current nesting validator refuses it, openfix.
+
 ## Drawing manager-instance custody audit — 2026-11-07
 
 New source retains V3drawing definitions through normal and material-aware Save
