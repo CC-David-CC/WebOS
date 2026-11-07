@@ -332,6 +332,14 @@ geometry/history/counter assertions. No app/native source change; all four cases
 will rerun on the same immutable runtime. Curved/RC01 signed cases remain pending.
 Root review is test/agent-cad-corpus/sweep/root-runtime-r1/initial-run-review.json.
 
+Current Gate1 classification update:21active exercises,19partial,2missing
+shared workflows(E15/E22),0full row signoffs. E14 is now partial rather than
+missing: genuine shared disk sweep creation/source edits/UndoRedo/native
+Save/sync/fresh Open/re-edit passed. Do not interpret that bounded disk case as
+curved-sweep or full-row qualification. R2four-case browser rerun remains live;
+E17assembly remains Gate2. Updated full chart is
+`docs/evidence/CAD-GATE1-BASELINE-20261106.md`.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
