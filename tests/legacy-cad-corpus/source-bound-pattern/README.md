@@ -9,8 +9,10 @@ module `apps/system/jsketcher/examples/source-bound-pattern.mjs` is imported by
 the Node driver and called through a thin transport proxy: its command descriptor
 list is the real mounted window's public list; execute forwards to the real
 public registry in that window. No fake model/native output is supplied. The
-same module can run in the browser when later included in a qualified bundle.
-The proxy does not qualify the example's browser import/loader availability.
+driver separately imports the actual served outer module, checks its example
+export and invokes one readonly public inspection through the actual browser
+registry. That check qualifies import/export availability separately from the
+full recipe execution through Node transport.
 
 The recipe authors a constrained100×50 source, selected extrusion20, centeredD10,
 four cornerD4/offset8, twoR3 fillets, two1mm chamfers, then a source-local+X pattern
