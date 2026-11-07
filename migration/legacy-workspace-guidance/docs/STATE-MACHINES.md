@@ -63,6 +63,27 @@ Derived status is not another machine unless independently stored authority can
 drift. Validity/representation/qualification are revision-bound classifications,
 not automatically lifecycle machines. Unreviewed rows are not proof of safety.
 
+## Two-source sweep preparation — 2026-11-07
+
+C05/W03 extend to profile+path input capture: copy both frames and ordered
+source references before either digest suspends; verify each solved source's
+hash/frame/membership independently; retain a single document generation through
+later native publication. CAD8f093da6b has21 offline contract controls (36 with
+retained revolve controls), including mutation across asynchronous capture.
+Revision-string equality is not document ownership. This is preparation only;
+actual Worker lifecycle/publication/history and Save/Open remain unqualified.
+CAD45e0fc67d additionally passes six independent source probes and seven actual
+production semantic-Worker browser checks under strict CSP. The latter prove
+data preparation/refusal transport only, using hand-authored fixtures; native
+evaluation, app publication and signed document lifetime remain unqualified.
+No new independent lifecycle owner or parallel copy of authored geometry is
+introduced. The canonical runtime-family count remains21.
+
+Retained original-plate workflow on CAD73c888/desktop36b8 passes22 signed and7
+browser-only rows with3 saved files, stable settled ownership counts and four
+owned contexts released. This proves bounded ordinary composed lifetimes, not
+new termination-fault injection, RSS reclamation or every C05 transition.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |

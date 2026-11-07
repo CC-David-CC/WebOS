@@ -88,6 +88,41 @@ deployment. Latest beta has not advanced to this candidate. Next: retained
 original-plate regression on this composed runtime, then the separately scoped
 E14 sweep/E15 loft and E22 drawing work. Assembly E17 stays Gate2.
 
+## Retained original plate and next E14 slice — 2026-11-07
+
+The exact CAD73c888/desktop36b8 runtime also passes the ORIGINAL unchanged plate
+drivers:22 signed rows plus7 browser-only rows, all17 browser commands accepted,
+and3 native saved files independently checked. Source100×50×20, centered/corner
+holes, fillets/chamfers and pattern survive150×30/depth25 changes, seed/count/
+spacing edits, Undo/Redo, refused edits, display-unit changes and two native
+Save/sync/fresh Open cycles. The plate retains its recorded dd666/8d5 backend;
+it does not silently switch to the experimental revolve build. All four owned
+contexts/targets released; settled ledger counts are stable, not RSS evidence.
+[Evidence and exact pins](../test/agent-cad-corpus/retained-plate-after-revolve/REVIEW.json).
+Root repeated both saved checkers successfully. No public deployment occurred.
+
+Three lanes continue E14: independent analytic sweep checks, isolated owned
+OCCT native FFI, and shared source/intent/API integration. CAD8f093da6b adds the
+eleven-field authored sweep contract and Worker-only two-source preparation;
+21 new data tests plus15 retained revolve controls pass, with TypeScript clean.
+Both source frames/reference lists detach before asynchronous hashing. No
+runtime registration or native success follows from these source tests.
+CAD45e0fc67d adds shared semantic refusal dispatch: six additional independent
+behavior probes and the21 source controls pass (42 with retained revolve), plus
+seven actual production semantic-Worker Chromium checks under strict CSP. Those
+inputs are hand-authored data, not solver/native/app acceptance. The isolated
+owned OCCT native FFI build is running separately on R730; no native pass yet.
+Native execution, Worker cancellation/ownership, source/path edits, shared
+history, Save/Open and human-tool parity remain to implement/qualify. E14 is
+still missing as a complete shared workflow; Gate1 tally stays18 partial/3
+missing/0 fully signed off. E15 loft and E22 drawings remain separate work.
+
+Owned root fixtures20931/20932 and component20933 are stopped. The obsolete R1
+generated package was removed only after all205 files matched the retained
+R730 copy, reclaiming297762524 bytes; exact manifest/cleanup is retained in
+`test/agent-cad-corpus/retained-plate-after-revolve/root-cleanup.json`. R2 package
+and all source/evidence remain available; shared Chrome19329 is kept.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
