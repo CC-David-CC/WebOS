@@ -1,72 +1,49 @@
 # WebOS work queues and progress ledger
 ## Current STEP composition —2026-11-07
 
-STEP File-menu R3 now passes the actual390×844touch,1920×1080 and3840×2160
-flows on sameCADf714 +Desktopf869:3exports,6cancel paths, same model/source/
-revisions/resources/dirty/path and exact browser/server bytes. Phone targets are
-44px, font16; desktop remains compact. Root independently checks the committed
-packet and inspects the actual phone screenshot. The earlier R1harness and
-R2touch failures remain preserved. No physical-device/general-CAD-UI or extra
-STEP-reader claim. The inner300CADfiles are byte-identical to the signed STEP
-runtime; only outer STEP class/style changed. Current private fixture20941;
-20940retired after exact backup/no browser targets, preserving private state.
-[UI proof](../test/agent-cad-corpus/step-ui/evidence-r3/README.md).
-
-Confirmed UI qualification gap: actual390×844 STEP chooser is contained and
-uses16px text, but the selectable body row is19px high and buttons24px,
-below the frozen44px touch requirement. No phone export is qualified yet.
-A dedicated STEP-dialog style/class repair is in progress, followed by a fresh
-outer bundle and real browser rerun. The earlier preauthoring timeout was a
-separate harness viewport/login-order failure, retained without a product claim.
-
-Signed R2 STEP workflow now passes on frozenCADf714/Desktop8f7:3cases,
-10exports,6nativeSaved/reopened/reedited files and exact raw revision/token/state
-preservation. Root repeats all3independent recorded-data checkers; same-OCCT
-reader confirms10files/345points. UI viewport tests remain pending. New explicit
-STEP backend only; no default promotion or saved-part migration. Full E20 still
-requires generic same-model3MF/material coverage and further qualification.
-[Proof](../test/agent-cad-corpus/step-shared/evidence-r2/README.md).
-
-Parallel E22 component update: exact analytic projection now passes genuine
-Chromium producer→main→consumer Worker tests (11views,4refusals,13runtime
-controls,5retained Native cohorts). Root independently checks its recorded data
-and composes current code/TypeScript. Shared drawing authoring/dimensions and
-persistence remain missing; no E22 signoff or app deployment is inferred.
-[Root check and scope](evidence/orthographic-worker-root-check-20261107/README.md).
-
 Files remains accepted in its tested foundation scope. Gate1 remains **20 partial,
-1 missing complete workflow (E22),0 fully signed-off exercises**; assemblies
-remain Gate2. No beta/live deployment occurred in this composition.
+1 missing complete workflow (E22),0 fully signed-off exercises**. Assemblies are
+Gate2. No beta/live/prototype deployment occurred in this composition.
 
-CAD `f714833e8` integrates the measured-owned-solid wrapper correction, the
-shared read-only STEP service and actual inner File-menu action. Native positive
-component tests now accept32/64/128-hole solids without the legacy32-face analytic
-inspection ceiling; private candidate-ledger/factory STEP evidence remains
-separately scoped. No Native/C++ cap, preferred build or saved intent changed.
-Explicit selected-profile inspection can now select the exact staged STEP build
-for a new part through the ordinary commands; existing parts cannot silently
-switch their whole-history backend. Root reran23 selection/metric/Join groups
-and full TypeScript, with no failures. Catalog controls use package-presence
-fixtures; actual service controls use real sketch/semantic Workers and error-only
-submission. They do not claim a real32-hole app export yet.
+- Shared signed STEP R2 passes on Coref714833e8/Desktop8f7a1ba7d: ordinary plate
+  with hole, two separate outputs and32-hole plate;10exports,6native Saves/fresh
+  Opens/reedits and exact raw within-window revisions/tokens/accepted state.
+  Root repeats all3recorded-data checkers; separate same-OCCT reader confirms
+  10files/345analytic material/void/boundary points.32-hole STEP is190692bytes.
+  This is not an external independent reader or full E20 signoff.
+  [Proof](../test/agent-cad-corpus/step-shared/evidence-r2/README.md).
+- Actual File-menu UI R3 passes phone390×844touch,1080p and4K:3exports,
+  6cancellations, exact browser/server bytes and accepted model/resource/path/
+  dirty preservation. Confirmed19–24px phone targets are repaired with STEP-only
+  styling and44px targets/font16; desktop stays compact. R1harness/R2product
+  failures remain preserved. Root independently checks the committed packet and
+  actual phone screenshot. No physical-device/general-CAD-UI claim.
+  [Proof](../test/agent-cad-corpus/step-ui/evidence-r3/README.md).
+- Current private fixture is20941: Coref714 +outerDesktopf869c9a9a. All300inner
+  CADfiles match the signed functional runtime byte-for-byte; only outer STEP
+  class/style changed. Every303package file/443518733bytes matches R730 by
+  streamingSHA/size, below512MiB. Superseded20939/20940 were retired after exact
+  backup/no browser targets; source/private state remain. STEP is still an
+  explicit backend choice for new parts; no default promotion or part migration.
+- Parallel E22 component passes genuine Chromium analytic projection transport:
+  11views,4refusals,13runtime controls,5retained Native cohorts. Root checks
+  recorded analytic evidence and composed Node/TypeScript source. Core7b688c88d
+  contains this component, but current STEPfixture remains earlierf714. Shared
+  authored drawings/dimensions/persistence remain missing.
+  [Scope](evidence/orthographic-worker-root-check-20261107/README.md).
 
-Desktop integrates the shared STEP My files controller, exact source-revision
-checks, shared operation lease and mandatory local-write phase. Root reran82
-controls (76 host/router/storage plus6 transport-selection) and the source-bound
-host evidence checker: PASS. Synthetic artifact bytes are explicitly not STEP
-geometry. Confirmed arbitrary/falsey exception and error-getter defects are
-repaired with regression evidence; known committed outcomes survive completion
-faults and uncertain writes are never retried automatically. UI preparation for
-phone/1080p/4K is committed; browser acceptance has **not run**.
+Confirmed STEP/controller arbitrary-exception, cleanup and explicit profile-build
+selection repairs are source-integrated, regression-tested and backed up on both
+LANs. Native32/64/128-hole component inspection passes without raising the old
+32-face analytic cap or changing Native pairs/defaults. Component-only metadata
+fixtures remain labeled; they are not successful app geometry evidence.
 
-Next serial boundary: normal combined build on R730 from exact CADf714833e8,
-then a fresh isolated signed application fixture. First prove ordinary plate,
-multibody and32-hole public STEP export→My files→native Save/fresh Open/reedit;
-then exercise the real File menu on three viewport sizes. Do not substitute a
-loft-built plate or component/metadata successes for that proof. Native
-orthographic projection evidence passes independently checked recorded oracles;
-its Worker transport is being tested separately. Linked drawings/dimensions and
-persistence remain missing E22 workflow. No Files race probe or visitor relay.
+Next: generic same-model material-aware3MF assignment and controlled manufacturing
+mesh (not display triangles), then shared associative drawings; continue remaining
+Gate1 domains and human-tool qualification. The source-backed3MF assessment is
+[test/agent-cad-corpus/shared-3mf/CONTRACT.md](../test/agent-cad-corpus/shared-3mf/CONTRACT.md),
+a proposal rather than an implemented feature. No Files race/security probe or
+visitor relay is resumed. Full Gate1 and final coherent-build/beta proof remain open.
 
 ## User-confirmed scope revision —2026-11-06
 
