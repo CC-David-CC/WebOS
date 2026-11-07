@@ -420,6 +420,16 @@ that result to avoid performance interference. STEP export contract audit and E1
 source identity/semantic integration proceed separately. No public deployment,
 relay, source-format change or Gate1 signoff. Tally remains19partial/2missing/0full.
 
+### E15 shared integration checkpoint — 2026-11-07
+
+Host loft transport component now passes8 new admission/lifetime controls and
+20 retained sweep/point controls (28 combined). Exact ordered source/region/seam
+intent is detached; no native geometry success is fabricated. The module remains
+unregistered until the genuine Craft workflow exists. Root evaluator/ledger
+integration is in progress; source semantic adapter is a separate owned lane.
+[Transport-only evidence](../test/agent-cad-corpus/loft/host-transport/receipt.json).
+E15 remains missing as a shared app workflow; no deployed/Save/Open claim.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
