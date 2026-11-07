@@ -33,6 +33,23 @@ persisted Join acceptance in CAD-ENGINE-GATE-1.md. A bounded implementation/proo
 proposal is underway alongside region-reselection qualification; this decision
 must be qualified before claiming the corresponding Gate1 feature complete.
 
+## Corrected Join candidate: actual R2 readback
+
+CAD224f3302d/desktopcf97976d9 closes the first-box startup reproducer in the
+actual signed strict-CSP app. First-box creation, Undo to truly empty, Redo with
+the original ID, and mixed box/Join/dimension chronology pass. All8 OCCT setups
+pass, including face/overlap Join, edge/point/disjoint refusal, cavity retention,
+operand reversal and native Save/sync/fresh Open. Four initial SMLib setups pass.
+
+The run then stops at an over-specific SMLib point-contact error assertion:
+actual JOIN_MULTIPLE_SOLIDS versus expected JOIN_NONMANIFOLD. The requested Join
+was refused. Its post-refusal preservation check and the remaining four setups
+were not reached, so the17-case corpus is not yet qualified. [Unchanged failure
+and exact scope](../test/agent-cad-corpus/strict-join/FAILURE-R2.md).
+Only this expected point-contact classification is authorized to change, with
+an additional raw-native classification control; geometry/history requirements
+remain unchanged for the next frozen-runtime retry. No product relaxation.
+
 ## Current candidate qualification: first-box startup defect
 
 Strict-Join signed R1 fetched the exact CAD0d815e141/desktopcf97976d9 build,
