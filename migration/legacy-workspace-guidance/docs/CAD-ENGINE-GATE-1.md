@@ -74,6 +74,25 @@ remain separate checks. Manufacturing qualification must independently establish
 the intended object/region structure and geometry; the common edge-contact test
 passes observation/persistence assertions, not single-solid printability.
 
+Author decision: normal mechanical-CAD Join requests require one verified
+manifold solid. Separate bodies require explicit intent. Persist that intent in
+the authored feature, so regeneration cannot silently change one part into two.
+No automatic geometric offsets, bridges, vertex welds or backend substitutions.
+A failed Join leaves the accepted model intact and returns a specific,
+machine-readable failure shared by UI and agent callers. If available evidence
+cannot establish the requested validity, report it as unqualified rather than
+mislabel numerical failure as proof of geometric impossibility.
+
+- [ ] Shared Join/separate-result intent and capability discovery.
+- [ ] Persisted result requirement in normal native feature history.
+- [ ] Per-backend proof of requested connectivity/manifoldness; NoError alone is
+      insufficient, and shell-component count alone cannot classify cavities.
+- [ ] Accepted Join, edge/point-contact rejection, explicit separate-body results,
+      failed-change preservation, UndoRedo and Save/Open on the same model API.
+
+These are pending application-level checks. The current common union corpus
+qualifies truthful result representation/persistence, not this strict Join gate.
+
 ## Current source-trust rule and immediate substep
 
 Latest explicit user direction: **all JSketcher features are suspect and are
