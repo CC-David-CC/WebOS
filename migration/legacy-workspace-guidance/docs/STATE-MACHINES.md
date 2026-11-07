@@ -7,6 +7,20 @@ competing specifications. This is a first pass, not exhaustive safety proof.
 Third-party editor/kernel internals, games and future physics are outside this
 pass unless they affect the shared workflow.
 
+## Manufacturing normal path and signal truth — 2026-11-07
+
+Genuine signed public authoring/assignment/no-op/Undo/Redo/Save/freshOpen now
+passes for one Native plate. Exact assignments and unchanged native bytes survive
+reopen. This proves that normal path, without implying every failure transition.
+
+Review found actual preaborted AbortSignal with own aborted:false could pass old
+property-based guards and commit. Native-branded capture alone was insufficient.
+Coree8ae8c449 reads intrinsic native abort state and uses intrinsic listeners in
+document/hash/preparation ownership. Source integrated; new proof/rebuilt browser
+scope remains pending. This is a synthetic injected-signal contract defect, not
+an observed live incident. Preserve the original BEFORE packet. Do not infer
+cancellation from an overrideable convenience property.
+
 ## Manufacturing publication and observation authority — 2026-11-07
 
 Manufacturing proposal: preparing → privately prepared → synchronously committed
