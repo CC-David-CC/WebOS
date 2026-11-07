@@ -56,6 +56,24 @@ Only native-project import is required now. Foreign imports and reconstructing
 parametric history from geometry/mesh files are outside this milestone.
 
 
+## Boolean contact acceptance
+
+A successful kernel call is not sufficient evidence of one usable solid.
+Overlapping supported solids should produce valid manifold results where a
+single-solid join is intended. Edge-only or point-only contact does not create
+an ordinary manifold volumetric connection. Preserve separate touching bodies
+or explicitly reject a single-solid join; never add an invented bridge or
+silently weld unrelated vertices. Boolean union may return a container, an
+empty result or several bodies, with truthful topology/validity metadata.
+
+SMLib's explicit nonmanifold/no-volume result and Manifold's two accepted mesh
+components are different representation reports. Mesh NoError/positive volume
+alone does not prove one connected manufacturable part. Geometry representation,
+constraint satisfaction, planar topology, kernel validity and dependency meaning
+remain separate checks. Manufacturing qualification must independently establish
+the intended object/region structure and geometry; the common edge-contact test
+passes observation/persistence assertions, not single-solid printability.
+
 ## Current source-trust rule and immediate substep
 
 Latest explicit user direction: **all JSketcher features are suspect and are
