@@ -223,6 +223,24 @@ network cost is confirmed W02 initialization work; nativeHTTPcache integration
 is pending. Eligibility must derive from registered hashed software paths/body
 SHA, never account/API/userfile responses. No new workflow family introduced.
 
+W02 loft component now uses the existing pending request owner: preparation
+may refuse before any prepared binding; native execution begins only after one
+Worker-computed prepared binding, and the result must match that exact binding.
+Duplicate/out-of-order/missing preparation or changed source/seam metadata closes
+the request; late messages after cancellation cannot publish. The phase derives
+from binding presence, rather than an independently synchronized state flag.
+Component Chromium geometry/refusal/cancel/resource controls pass; root repeated
+40 focused controls, the retained analytic checker and TypeScript. Shared loft
+source-authoring/history/public command/persistence remain unqualified.
+
+W02 cache update is not qualified by build or headers: combined1668/d633 private
+runtime still transfers35,204,843 encoded WASM bytes in each of3 real passive
+queries, while geometry and accepted-state checks pass. Diagnostic setup also
+refuses on retained app Workers. Response headers are immutable; browser cache
+retention/eligibility and inspector assumptions remain under investigation.
+Account/API/My files responses are outside this software-only policy. No new
+state family or HTTP-cache success claim is introduced.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |
