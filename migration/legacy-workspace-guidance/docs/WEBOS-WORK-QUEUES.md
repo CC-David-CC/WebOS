@@ -138,6 +138,14 @@ The lane reports35 full-main FFI rows passing, including13 positive geometry,
 13 refusals, retained revolve and8 repeats with zero owned names afterward;
 broader input-preservation and actual Chromium Worker proof are still running.
 Root has not yet integrated/replayed that evidence; this is not E14 signoff.
+Root independently qualified the production JS planner→actual full-main WASM
+FFI in CAD437cda96b:12 cases cover straight/quarter paths, circle/annulus/
+asymmetric rectangle sections and both directions. Frozen oracle volume/bounds,
+all material/void/cap/roll probes, caller-buffer preservation and zero owned
+names after each case pass. Exact inputs/results are committed in CAD
+`test/selected-profile-sweep/evidence-native-plan`. This is actual native
+component interoperability; no production Worker/public authoring/history or
+Save/Open success is implied. Those integrations remain the next required work.
 Native execution, Worker cancellation/ownership, source/path edits, shared
 history, Save/Open and human-tool parity remain to implement/qualify. E14 is
 still missing as a complete shared workflow; Gate1 tally stays18 partial/3

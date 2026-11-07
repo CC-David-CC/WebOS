@@ -86,6 +86,11 @@ and positive valid single-solid output remain mandatory. Ten admission-only
 regressions pass (52 combined with retained controls), TypeScript passes. These
 refusal tests create no successful native geometry; actual publication proof
 remains pending with the shared operation and new Worker runtime.
+Root CAD437cda96b adds12 real planner→WASM FFI controls: native names return to
+zero per case and both input buffers remain unchanged while independent
+volume/bounds/material/void/roll observations pass. These are native component
+lifetimes, not a new production Worker cancellation or document-publication
+proof; those transitions remain pending.
 
 Retained original-plate workflow on CAD73c888/desktop36b8 passes22 signed and7
 browser-only rows with3 saved files, stable settled ownership counts and four
