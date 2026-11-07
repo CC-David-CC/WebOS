@@ -15,7 +15,7 @@ Current mechanical integration: [signed mechanical path, remaining integration a
 ## Active priority — workflow state machines
 
 User-requested reliability audit/fixes accompany CAD1. Canonical inventory:
-[STATE-MACHINES.md](STATE-MACHINES.md), initially20 identified families, not an
+[STATE-MACHINES.md](STATE-MACHINES.md), initially20 runtime families, now21 including native build staging, not an
 exhaustive project count. Prioritize confirmed impact: ST01 stale partial scans,
 LR01 recovery lifetime/retry/overlap, ST02 folder recovery, then bounded Worker,
 resource and metadata guard faults. Files/CAD scope remains; no cancelled race
@@ -58,7 +58,8 @@ outcomes. See test/state-machine-audit-cad-save/README.md.
 Strict Join R3 passes17 setups/70 rows/13 saved files; retained region R2 passes
 6 setups/30 rows/4 saved checks on frozen CAD224f/desktopcf979. These do not cover
 the newly composed reliability fixes. The full21-exercise gate remains open:
-17 partial,4 missing shared workflows (E13/E14/E15/E22), no full row sign-off.
+17 partial plus E13 implemented-but-unqualified,3 missing shared workflows
+(E14/E15/E22), no full row sign-off. E13 status is not a native success claim.
 
 Persistence policy reaffirmed: explicit Save/Open, unsaved RAM edits may be lost
 on close/crash. No shutdown autosave or compensating rollback write. Reopen the
@@ -79,10 +80,13 @@ host five-command adapter has6 protocol controls; core wiring/authored replay,
 angle travel, native Save/Open and full E13 acceptance remain unqualified.
 Core wiring is now integrated as CADb83203e20/evidence1a8911de1:61 journal/contract
 controls and6 real source-Worker service controls pass, with23 Workers retired.
-The genuine native factory corpus is separately recorded at3d111e99d. A fresh
-combined normal app build of3d111e99d is running onR730 at
-/mnt/data10tb/codi-polygon-combined-revolve-app-20261107-r1, before packaging and
-public agent authoring/history/persistence qualification.
+The genuine native factory corpus is separately recorded at3d111e99d. The fresh
+combined normal app build of3d111e99d passes workers/app/TypeScript and produces
+a verified203-file package (297707833bytes, below320MiB). Frozen desktop36b8a6818
+and CAD3d111 run privately under strict CSP on loopback20931 for genuine public
+agent authoring/history/persistence qualification. Package/native source pins
+remain separate from the later repeat-build repair CADb612285f3; no deployment
+or full E13 acceptance follows from build success.
 
 The native Worker constructor and genuine new/retained kernel component evidence
 already exist. Next: explicitly register that exact experimental native revision
