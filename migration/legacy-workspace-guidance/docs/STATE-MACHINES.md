@@ -91,6 +91,12 @@ zero per case and both input buffers remain unchanged while independent
 volume/bounds/material/void/roll observations pass. These are native component
 lifetimes, not a new production Worker cancellation or document-publication
 proof; those transitions remain pending.
+CAD54ce073a3 extends W02's existing machine with explicit pinned sweep init,
+request/binding capture, native result ownership and typed refusal admission.
+Five transport-double controls pass (54 with retained source/protocol controls),
+including pre-abort and fatal input-integrity failure. No fake native success
+reply is used. Actual production-adapter Chromium lifetime/publication proof
+remains pending, distinct from direct FFI and native-lane Worker tests.
 
 Retained original-plate workflow on CAD73c888/desktop36b8 passes22 signed and7
 browser-only rows with3 saved files, stable settled ownership counts and four

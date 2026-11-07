@@ -146,6 +146,15 @@ names after each case pass. Exact inputs/results are committed in CAD
 `test/selected-profile-sweep/evidence-native-plan`. This is actual native
 component interoperability; no production Worker/public authoring/history or
 Save/Open success is implied. Those integrations remain the next required work.
+CAD54ce073a3 adds production Worker/controller source wiring, explicit
+`createSweepProfileOccMount` and a pinned stager. Fifty-four source/protocol
+controls and TypeScript pass; five new controls test typed refusals, fatal
+integrity failure and pre-abort without fabricated native success. The exact
+staged adapter still needs real Chromium/WASM qualification before registration.
+Native checkpoint a62ba04f reports41 FFI rows,40 Chrome sweeps plus retained
+revolve,7 direct preservation controls and36 retained controls passing. This
+kernel-specific evidence does not replace production-adapter qualification;
+the native lane is now working on that adapter. Shared operation work continues.
 Native execution, Worker cancellation/ownership, source/path edits, shared
 history, Save/Open and human-tool parity remain to implement/qualify. E14 is
 still missing as a complete shared workflow; Gate1 tally stays18 partial/3
