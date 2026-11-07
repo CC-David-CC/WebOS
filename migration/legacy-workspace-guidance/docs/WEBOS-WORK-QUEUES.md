@@ -26,7 +26,8 @@ Strict Join postconditions are integrated as CAD abb52d229, with box/Boolean
 creation added to the shared bounded authored journal at 928dde9b2 and explicit
 Join source-ancestry preservation at 0d815e141. Component/protocol controls and
 TypeScript pass. Signed positive/refusal/UndoRedo/native-file qualification is
-**pending** on fresh CAD0d815e141/desktopcf97976d9; a packaged build is ready. In particular NoError or raw mesh-component counts
+**pending**. The first CAD0d815e141/desktopcf97976d9 run found the startup defect
+recorded below; corrected CAD224f3302d is being built for a fresh replay. In particular NoError or raw mesh-component counts
 cannot certify a cavity or contact case by themselves. See Boolean contact and
 persisted Join acceptance in CAD-ENGINE-GATE-1.md. A bounded implementation/proof
 proposal is underway alongside region-reselection qualification; this decision
