@@ -79,6 +79,14 @@ evaluation, app publication and signed document lifetime remain unqualified.
 No new independent lifecycle owner or parallel copy of authored geometry is
 introduced. The canonical runtime-family count remains21.
 
+CADa9e0c2933 extends W01/C05 ledger admission: exact source binding includes
+both face identities plus ordered path references/direction. Both faces must
+exist before allocation and match again at publication; native mount capability
+and positive valid single-solid output remain mandatory. Ten admission-only
+regressions pass (52 combined with retained controls), TypeScript passes. These
+refusal tests create no successful native geometry; actual publication proof
+remains pending with the shared operation and new Worker runtime.
+
 Retained original-plate workflow on CAD73c888/desktop36b8 passes22 signed and7
 browser-only rows with3 saved files, stable settled ownership counts and four
 owned contexts released. This proves bounded ordinary composed lifetimes, not

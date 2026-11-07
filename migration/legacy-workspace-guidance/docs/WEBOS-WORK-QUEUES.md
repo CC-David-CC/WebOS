@@ -122,6 +122,22 @@ arithmetic, asymmetric roll probes, both source bindings and preservation.
 Root reran all19. It generates no geometry and proves no native result.
 See [oracle contract](../test/agent-cad-corpus/sweep/README.md). Keep broader
 valid sweep domains distinct from this oracle's explicit unsupported domains.
+CADa9e0c2933 now binds owned sweep evaluation to both actual source faces and
+ordered directed path references, before allocation and through publication.
+Ten additional admission controls pass (52 combined); TypeScript passes. A
+mount without explicit sweep capability refuses before dispatch. No native
+success is faked and no prism/hole provenance is invented. The shared two-source
+operation is being implemented in an isolated CAD lane; registration/public
+commands/history remain unfinished.
+
+Native lane checkpoint c3e949db01cf646de540e8b6c52e39cd36ebfb8d is backed on
+both native LAN refs. Runtime pins independently read on R730 are JS
+`a9cfa6e53a8bc14f2fb035e33afd1a82d9ae36ace1cf9f66169c739d2de72580` and WASM
+`e105bdfe7c7bcb113eee5398d8202831cb8e8b1608dcc1730fc4461c9f24263d`.
+The lane reports35 full-main FFI rows passing, including13 positive geometry,
+13 refusals, retained revolve and8 repeats with zero owned names afterward;
+broader input-preservation and actual Chromium Worker proof are still running.
+Root has not yet integrated/replayed that evidence; this is not E14 signoff.
 Native execution, Worker cancellation/ownership, source/path edits, shared
 history, Save/Open and human-tool parity remain to implement/qualify. E14 is
 still missing as a complete shared workflow; Gate1 tally stays18 partial/3
