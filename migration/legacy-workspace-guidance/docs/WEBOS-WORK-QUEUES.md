@@ -289,6 +289,19 @@ preferred builds. Fresh normal R2 build is running at
 stage now passes. Independent tamper/no-output-replacement controls are being
 prepared. This is build-stage B01 evidence, not a modeling or signed-app pass.
 
+Normal combined CAD build R3 now PASSES at9c6dc2eb2, including webpack,
+resources and TypeScript(empty output). Dist228files/333,882,429bytes before
+outer packaging; compiled CAD index f0383b171013f094fbbaf3c6dd5e55baeef76072d6e95fc6670e6d9efd61e687.
+Actual build evidence is CAD test/public-worker-sweep/combined-build-r1,
+committed6c741fea0. A second stale bootstrap pin in embedded-oci-worker also
+needed alignment (9c6dc2eb2); native identities are unchanged. Independent
+staging controls remain active. The older full prism staging script can replace
+its private output before later validation fails; track this B01 gap separately,
+without claiming old-output preservation. Current qualification builds use fresh
+owned directories. Next is repaired desktop bundling and genuine signed sweep
+creation/edit/history/Save/Open; full E14 and native public point queries remain
+unqualified. No live/beta deployment or visitor relay change occurred.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
