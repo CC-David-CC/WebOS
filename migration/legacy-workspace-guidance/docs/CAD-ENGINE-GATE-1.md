@@ -218,7 +218,7 @@ be relabeled passing merely to close the gate.
 | Level | Exercise | Core acceptance / current evidence |
 |---|---|---|
 | 1 | Draw a line and circle | Real tool creation and native records; scoped creation evidence, edge cases open. |
-| 2 | Fully constrain a rectangle | Correct freedoms and solver diagnostics; false DOF is a known blocker. |
+| 2 | Fully constrain a rectangle | Scoped local-rank diagnostics exist; physical DOF remains unknown, with broader singular/redundant qualification open. |
 | 3 | Edit rectangle dimensions | Geometry and accepted authored dimensions remain consistent; partial parameter evidence. |
 | 4 | Two disconnected rectangles | Separate selectable regions and deliberate result-body policy; open. |
 | 5 | Three nested circles | Scoped OCC circle-region selections pass in candidate; broader identity/selection qualification open. |
