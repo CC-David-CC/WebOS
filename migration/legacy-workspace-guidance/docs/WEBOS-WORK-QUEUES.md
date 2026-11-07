@@ -38,6 +38,13 @@ checks; signed E04/E05 replay/save/reopen remains pending. Existing driving-
 dimension edit/removal is a separate active P0 lane.
 No new deployment or exercise signoff; Gate1 remains21 rows, E17/C10 is Gate2.
 
+## Native format decision
+
+[Our own `.cad` ZIP container](CAD-NATIVE-FORMAT.md) is the planned editable
+format; implementation and streaming/delta-memory acceptance remain open.
+Only our native project needs editable import. Other formats are exports or
+optional views. Existing JSON qualification is not archive qualification.
+
 ## Current integration defects and follow-up
 
 The signed E04 descriptor run on CAD74eb58278/desktop0fdc2a7f8 passed explicit

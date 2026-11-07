@@ -26,6 +26,9 @@ Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
 
 ## Representation and persistence contract —2026-11-06
 
+User format decision: [our ZIP-based `.cad` project](CAD-NATIVE-FORMAT.md).
+Archive implementation is pending; tested native fixtures are currently JSON.
+
 The native project preserves the authoritative design: parameters, sketches,
 constraints, feature dependencies/identities and material assignments. The
 selected kernel evaluates its B-rep geometry for a specific design revision.
