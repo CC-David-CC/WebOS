@@ -198,6 +198,17 @@ sweep catalog/assets source dc6881a7f/36f5d4438 is integrated; normal asset buil
 qualification is pending, defaults unchanged. Signed creation/history/source
 replay/native Save/Open and human equivalence remain unqualified.
 
+RV02 repair is integrated at CAD07f7677ad (source56de3f899): actual Circle path
+now reports SWEEP_UNSUPPORTED_PATH and missing identity remains STALE_PATH.
+Owner13 real Worker operation groups/153 starts+terminations and TypeScript
+pass; final source-bound evidence is being frozen. No geometry acceptance was
+relaxed. Modeler registration548e906a0 uses the real ledger/catalog mount and
+explicit sweep build policy; combined build recipe supplies the new pinned
+native directory. Public discovery/creation commands and fresh signed app replay
+remain pending. Earlier12-group root results retain their original source scope.
+The four-method public API is approved; its lane also owns source-only semantic
+discovery, with each source hash/parse captured once and no guessed selections.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as

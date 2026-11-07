@@ -120,8 +120,10 @@ unqualified until the genuine shared-operation replay.
 New RV02/C05, P3 (unpublished shared sweep): an actual current Circle selected
 as path is rejected as STALE_PATH instead of unsupported curve type. Existing
 rejection preserves accepted geometry; root's12 source controls did not cover
-this distinction. The owner is splitting absent identity from unsupported type
-and adding a real Worker regression. Full operation qualification remains open.
+this distinction. Repair CAD07f7677ad separates absent identity from unsupported
+type; the owner passes13 real Worker groups with153 started/153 terminated.
+Final source-bound evidence is being frozen. Actual combined native/app
+publication qualification remains open; no accepted geometry changed in this fix.
 
 Craft append admission now derives directly from its journal capture/key
 registry (CADa246e0d82), including sweep, instead of a separately synchronized
