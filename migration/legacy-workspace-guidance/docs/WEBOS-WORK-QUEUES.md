@@ -38,6 +38,24 @@ checks; signed E04/E05 replay/save/reopen remains pending. Existing driving-
 dimension edit/removal is a separate active P0 lane.
 No new deployment or exercise signoff; Gate1 remains21 rows, E17/C10 is Gate2.
 
+## Current integration defects and follow-up
+
+The signed E04 descriptor run on CAD74eb58278/desktop0fdc2a7f8 passed explicit
+geographic second-region selection and native500/1000mm³ extrusions, then
+refused the first valid atomic point batch. Root confirmed a realm-local
+Array.prototype check at the desktop→CAD iframe boundary. Its one-line fix
+retains Array.isArray, dense own data, bounds and duplicate guards; regression
+and a fresh compiled signed rerun are required before declaring that path fixed.
+
+Driving-dimension edit/remove core99a plus REQUIRED verifier correction215f is
+integrated (rootcf882/93cf), with normal desktop adapters and Craft declarations.
+The old verifier accepted an unrelated free-loop displacement; two actual
+negative cases reproduce that defect. Corrected verification independently
+recomputes the complete transition and passes20 groups/231 terminated Workers,
+including legitimate dependent motion and typed Arc travel. Root merged type
+check and14 host/retained adapter controls pass. Signed downstream/native-file
+qualification is still pending; component receipts are not retagged as app proof.
+
 ## Active next slices — 2026-11-06
 
 Pattern component/native proof and root ledger/authored operation are integrated;
