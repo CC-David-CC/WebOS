@@ -1,0 +1,28 @@
+# Shared STEP host export — component checkpoint
+
+This checkpoint adds the app-contained STEP controller and two commands, plus narrow index registration/disposal, busy-action and exact current-frame message routing. Root owns the actual inner CAD File action/menu and its Core readiness. There is no host-injected iframe menu, toolbar wrapper, PC download or rewrite of existing3MF/DXF exporters.
+
+Public commands are `inspect-worker-step-exports({})` and `export-worker-step({revision,geometryRevision,version:1,unit:'millimeter',engine:'occ',engineRevision,bodies:[{bodyId,featureId}],path})`. One to32 ordered distinct body/producer pairs are captured as detached frozen own data. Both UI and command use the same controller, body selection and new-path-only My files write. `.step`/`.stp` are accepted. Existing files refuse rather than replace. Only already-authenticated Craft metadata is structurally validated; calling exported validation helpers with arbitrary JSON is not a native geometry/STEP certificate.
+
+The exact Core12-field inspection,10-field artifact and7-field Native metadata are captured. Native metadata is STEP/AP214IS/geometric-solid-set with ordered shape/solid/transfer counts. A real Blob intrinsic must report application/octet-stream and byte length matching the native receipt, within the explicit8MiB Core limit (also below the unchanged128MiB user-file limit). No host hash, arrayBuffer, text parse, geometry conversion or whole-Blob copy occurs.
+
+The controller captures active frame/Craft/document lifetime separately from host busy state, so its own document lease does not invalidate itself. It checks both document and geometry revisions before/after preparation and immediately before persistence. The actual document operation token owns source and destination claims. `enterLocalWrite()` must return true immediately before `Mirror.write(path,blob,null)`; the local-write phase remains through receipt delivery and finish. Export never changes the CAD project path/title/baseline/watch or marks the project saved.
+
+One outcome record distinguishes preparation, pending write and validated committed receipt. Ordinary preparation/chooser cancellation is cancellable. A write error or malformed receipt is explicitly possiblyCommitted with instructions to inspect My files; there is no retry. A known browser commit remains committed:true through post-write lifetime loss, finish faults or notification faults. Source changes during/after writing retain the captured source revisions and return dirty:true for the earlier geometry. No old-account path/result is returned after lifetime loss.
+
+## State/invariant input for canonical W02
+
+Capture current part → select bodies/filename under prepare lease → claim new target/stat → genuine Core/native preparation → exact artifact/source recheck → mandatory local-write → pending or committed outcome → finish → current receipt or explicit committed/uncertain error. UI dialog instance and disposal are local lifetime data; busy/phase come from the shared coordinator. No second document, synchronized busy flag, journal, save baseline or file cache is introduced. Root maintains the canonical inventory.
+
+## Actual test scope
+
+64 Node groups pass:25 new boundary/storage groups, three actual index-router groups and36 retained document-operation/DXF/registry outcome groups. Real document coordinator/phase/claims are used; storage and native-artifact replies are explicitly synthetic component fixtures. Their payload literally says NOT STEP GEOMETRY. No Worker/kernel, successful shared CAD evaluation or native STEP producer is run or qualified by these tests. The router test executes the exact source function with metadata events; it is not browser UI proof.
+
+Controls cover foreign realms/getters/sparse/extra data, scalar/selection/build/path bounds, ordered outputs, real Blob brand/type/size, no main Blob buffering, no overwrite, stale source, held preparation cancellation/late reply, mandatory write-phase reentrant invalidation, delayed receipt phase/claims, earlier-source writing, unknown write outcome/no retry, malformed receipt, known commit across finish/Close/status/context faults, exact origin/source event guards and registration cleanup. Original two fixture failures are retained: a synchronous admission throw was incorrectly passed directly to assert.rejects; an aborted/disposed document’s derived busy flag truthfully means unavailable, while its phase is null and peer claims are released. Assertions now reflect those actual contracts; production code was not weakened. A separate real integration defect in the first host draft is retained under before-owned-read-guard/: public readiness becomes busy during the exclusive Core read, so re-entering it from the pending host guard self-aborted. The pending guard now checks lifetime/token only; Core owns source checks during replay, and host rechecks both revisions before/after preparation and before persistence. Its source-backed component control fails before and passes after.
+
+```sh
+node --test test/agent-cad-corpus/step-export/boundary.test.mjs test/agent-cad-corpus/step-export/route.test.mjs tests/document-operations.test.mjs tests/jsketcher-dxf-export-commands.test.mjs tests/command-registry-outcome.test.mjs
+node test/agent-cad-corpus/step-export/check-evidence.mjs
+```
+
+Genuine combined app, Core menu, Native geometry/STEP and signed My files acceptance are NOT RUN here. `ACCEPTANCE.md` defines the next source-matched proof. No Core/native/mirror/service/hosting/default/quota change, private state copy, Files re-audit or filesystem race/security test.
