@@ -203,6 +203,12 @@ external same-window New/Open make old helper refuse with accepted state intact.
 See sweep/signed-document-scope-evidence-r1. This closes bounded replacement
 proof, not all interrupted recipe-step cases or receipt adoption scenarios.
 
+AR01 after-fix signed app PASS:4source-authored sweep cases, forward/reverse
+Arc edits, UndoRedo and12native Save/reopens. Root independently checks24native
+observations from saved source. Same6725/50ffd runtime helper New/Open alsoPASS.
+This supersedes pending signed repair above; failedR2 retained. No full E14,
+general path or native-point-query qualification implied.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |

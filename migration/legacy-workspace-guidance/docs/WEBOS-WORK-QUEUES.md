@@ -367,6 +367,14 @@ Source/receipts/nativeexamples remain inGit; old package onR730. Current20935
 andsharedChrome19329 remain live. Disposable testissuer/account state discarded,
 never archived as public assets. Cleanup receipt under sweep/root-runtime-r1.
 
+Signed sweepR3 PASS all4setups/51rows/12native Save/sync/freshOpen files and
+24independent observations. Forward/reverse Arc edits now pass after AR01 fix;
+unchanged141631288 driver, exact6725/50ffd/a9cf-e105 runtime. Evidence8de7577df;
+root savedchecker alsoPASS. Same-runtime actual-helper New/Open6410da1aa PASS.
+OriginalR1/R2 retained. Bounded result: sweep/RESULT.md. FullE14 remainspartial:
+native points/general domains/interruption/human parity open. Gate1 stays
+19partial/2missing(E15/E22)/0full, E17assembly Gate2.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
