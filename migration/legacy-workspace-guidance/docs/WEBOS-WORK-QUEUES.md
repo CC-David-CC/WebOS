@@ -12,6 +12,30 @@ Visitor networking policy, 2026-11-06: **all server outbound relaying is disable
 
 Current mechanical integration: [signed mechanical path, remaining integration and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
 
+## Current bounded qualification — creation history and numerical reports
+
+The expanded [21-row Gate1 matrix](evidence/CAD-GATE1-BASELINE-20261106.md)
+records17 partial/four missing/zero fully qualified; E17/C10 is Gate2.
+The new edge-creation app source98fe85145 and desktop247b222e5 built and packaged
+successfully onR730; root independently checked177 package files/67 core assets.
+Fresh strict-CSP signed fixture20920 is the current private qualification path;
+no public deployment. Initial actual public creation Undo/Redo passes with exact
+feature IDs/accepted geometry and monotonic counter highwater. The first keyboard
+control stopped before any keys because iframe focus was absent; diagnosis is
+pending, not a classified creation-history defect. Prefix Save/Open, mixed
+chronology and resource cycles still need the completed run.
+
+The prior broad fixture20919 exited cleanly; root verified Python/Caddy gone,
+private account state removed, port closed and zero owned browser targets, while
+keeping the shared test browser. Evidence is under the broad-pass evidence folder.
+Per-stage solver diagnostics pass production Worker component tests; the normal
+service seam is being integrated separately. Exact mesh-volume production Worker
+integration is under actual Chromium qualification. Retained tiny-box endpoint
+analysis proves the observed native volume matches rounded global endpoints;
+that difference alone is not additional kernel-error evidence. Coordinate/scale
+accuracy policy remains open. Files remains accepted; filesystem-race testing is
+cancelled and visitor server relaying stays disabled.
+
 ## User-confirmed stopping point — 2026-11-06
 
 The user revised **Full Gate1 to21 exercises**; E17 assembly/C10 moves to Gate2.
