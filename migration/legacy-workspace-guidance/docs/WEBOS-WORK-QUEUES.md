@@ -209,6 +209,16 @@ remain pending. Earlier12-group root results retain their original source scope.
 The four-method public API is approved; its lane also owns source-only semantic
 discovery, with each source hash/parse captured once and no guessed selections.
 
+Final operation evidence is integrated as CAD7a812437a/e69e016a2; root combined
+rebuild/replay d33a929ea passes all13 operation controls,153 Workers started and
+terminated, including the RV02 regression. Exact pins/logs are retained separately
+from the earlier12-group run. Normal asset registration proof969c10395/f2fb05a0f
+also integrates:23 byte-exact files/36,024,511 bytes, identical repeated manifest,
+asset-only webpack and TypeScript passing. No full app or native-publication
+claim follows. Current lanes: core discovery/public commands, desktop command
+transport, genuine signed source/edit/Undo/Save acceptance preparation. Root owns
+their integration and the fresh combined runtime. E14 shared app gate stays open.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as

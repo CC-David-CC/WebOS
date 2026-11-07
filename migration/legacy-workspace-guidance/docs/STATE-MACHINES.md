@@ -122,8 +122,10 @@ as path is rejected as STALE_PATH instead of unsupported curve type. Existing
 rejection preserves accepted geometry; root's12 source controls did not cover
 this distinction. Repair CAD07f7677ad separates absent identity from unsupported
 type; the owner passes13 real Worker groups with153 started/153 terminated.
-Final source-bound evidence is being frozen. Actual combined native/app
-publication qualification remains open; no accepted geometry changed in this fix.
+Final source-bound evidence is integrated; root combined build d33a929ea repeats
+all13 actual operation Worker controls with153 starts/terminations and clean
+TypeScript. Actual combined native/app publication qualification remains open;
+no accepted geometry changed in this fix.
 
 Craft append admission now derives directly from its journal capture/key
 registry (CADa246e0d82), including sweep, instead of a separately synchronized
