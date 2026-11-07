@@ -26,3 +26,5 @@ PUPPETEER_CORE_PATH=/tmp/codi-occt-release-control/node_modules/puppeteer-core \
 ```
 
 The shared browser is disconnected only; own contexts close in `finally`. The parent fixture stays running. Reproduction does not create or alter a public deployment.
+
+The root adaptive comparison admits exactly one additional explicitly selected native pair: portable JS ed06b634a3e81f9a51c89f75b3d65e03b8ace1fc483900ea2858eae8eff970a4 / WASM bc8895ceb123e33aad68c8a1cf6322b5c0ccef9bfb129207defe1b8a5a7c893a. Only the runner build allowlist changes; flow, independent oracle, saved-byte checker, geometry assertions and tolerances remain unchanged. Historical failed runs retain their original runner hash and old runtime.
