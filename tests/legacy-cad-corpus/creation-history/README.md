@@ -36,3 +36,7 @@ PUPPETEER_CORE_PATH=/tmp/codi-occt-release-control/node_modules/puppeteer-core \
 Output must be new. The harness pins every declared core asset and the actual mounted outer index before authoring. Actual failures retain receipt/stack/source pins. Parent owns fixture cleanup; the runner closes only its own browser context and disconnects from shared Chrome.
 
 Preparation validation: Node `--check` on both modules only. Actual keyboard focus, new journal chronology, native generation, publication/persistence and resource stability remain **unexecuted** until the new app is supplied.
+
+## First actual R1 result — retained
+
+New98fe85145/desktop247b222e app on parent20920: genuine source-bound plate/fillet/chamfer creation and immediate public UndoCreate/RedoCreate passed independent geometry/source/opaque IDs/counter assertions. The keyboard helper then stopped **before sending CtrlZ** at `CAD iframe must have actual focus` after its canvas click. Session87878 exited1, own context closed. `evidence-r1/receipt.json` and its source pins retain this incomplete attempt. Actual keyboard, later mixed chronology/replacement/persistence/resource checks are not qualified by R1. Focus precondition is being diagnosed; no product defect is inferred from that assertion alone.
