@@ -1,6 +1,6 @@
-# Edge-treatment creation history acceptance — preparation
+# Edge-treatment creation history acceptance — actual R2
 
-**Prepared only. No browser execution or passing qualification is claimed.** Parent must provide the new frozen app, exact full runtime/outer pins and signed fixture before running. The previous broad-pass CAD84406/desktop792 app does not support creation Undo and is explicitly refused by this harness.
+**R2 actual signed public path passed10 rows on98fe85145/desktop247b222e.** Parent provided the frozen app and signed20920 fixture. The previous broad-pass CAD84406/desktop792 app does not support creation Undo and is explicitly refused by this harness.
 
 All source is confined to this new test directory. The harness derives from the qualified source-bound-hole public harness; all geometry mutations use existing registered desktop commands, except real trusted Ctrl+Z/Ctrl+Shift+Z keyboard input in a visibly focused CAD iframe. No private action invocation, timeline pointer, history writer/native seed, fake Worker output, UI mock, Files audit or filesystem-race test.
 
@@ -35,7 +35,7 @@ PUPPETEER_CORE_PATH=/tmp/codi-occt-release-control/node_modules/puppeteer-core \
 
 Output must be new. The harness pins every declared core asset and the actual mounted outer index before authoring. Actual failures retain receipt/stack/source pins. Parent owns fixture cleanup; the runner closes only its own browser context and disconnects from shared Chrome.
 
-Preparation validation: Node `--check` on both modules only. Actual keyboard focus, new journal chronology, native generation, publication/persistence and resource stability remain **unexecuted** until the new app is supplied.
+Preparation initially had Node syntax checks only. Actual R1 stopped at focus; actual R2 qualification and limits are below.
 
 ## First actual R1 result — retained
 
@@ -44,3 +44,16 @@ New98fe85145/desktop247b222e app on parent20920: genuine source-bound plate/fill
 ### Natural focus diagnosis / grounded keyboard precondition
 
 Three fresh actual focus diagnostics are retained. Both canvas-center clicks hit the true iframe while the top document remained focused/visible, activeBODY and inner document unfocused. Thus background-tab behavior was excluded. `CADTrackballControls.js` mousedown prevents default; root independently confirmed the input integration defect and owns its later product fix. A **real File menu click then Escape** naturally focuses top activeIFRAME/inner focusedBODY. Keyboard acceptance now uses that ordinary UI path followed by a trusted canvas click, with both actual focus assertions retained. No `focus()` call, synthetic event, key dispatcher or model mutation workaround. This can qualify the real shortcut once focused; it does not qualify natural canvas-first focus in the old98fe runtime.
+
+## Actual R2 scoped qualification
+
+- Exact core98fe85145d12dab8089a1cf6d75e114e679798bc, desktop247b222e522680e122b7697df0f8d0b41fa0511c, outerbbe367ef935ee79b1cc91f6704d71e686764b00eeb9f95fc2f615d5272032b2f/index940336b50da6260d6829fdfe321117c511a7da7008494d222d3d62cbcc0de3de; all67 declared core files checked through actual mounted frame, native dd666/8d5 unchanged.
+-10 actual recorded rows PASS, session3623exit0; rawreceipt/source pins unchanged in `evidence-r2/`. Own contexts closed, parent20920/shared19329 untouched. Keyboard uses the measured real File-menu focus path; canvas-first focus remains separately unqualified in this runtime/root-owned future fix.
+- Chronology and exact source/history/opaque selection identity assertions passed. Refused excessive chamfer returned `EDGE_TREATMENT_FAILED`, kept Redo and accepted geometry/journal while counter7→8 legitimately skipped an ID. Accepted replacement ID9 truncated Redo.
+- UNDONE-prefix native file5203B SHA0bbdd04123917760d704e4695d4e3cae677be3abe3924ad1daaab76dd30d20c2 has exactly5 history records: PLANE, selectedprofile, centerhole, fourcornerholes, fillet size4. No hidden future chamfer is saved. Highwater9 persists; session journal resets on fresh Open; new actual creation gets10.
+-3 bounded creation Undo/Redo cycles hold counters10 and identical resource census: owners1, detached1, mounts0, candidates0, accepted0, cleanupFailedfalse. These are actual detached accepted-result resource observations; not a heap/memory benchmark or indefinite leak proof.
+- `check-saved.mjs evidence-r2` independently verifies raw saved intent and5 recorded native metric states against analytical volume, expected bounds, full compound/compsolid/solid/shell/face/wire/edge/vertex census and real source contexts. No fresh native call/point classifier is claimed by that offline checker.
+
+Two checker-development errors are retained under `checker-development/`: first incorrectly assumed the native census contained only3 keys, then incorrectly required bitwise zero instead of geometric tolerance for bounds (actual−4.440892098500626e−16). The final checker checks all8 native census categories and1e−7mm geometric bounds; runtime exact replay/source/identity/counter assertions are unchanged. Both original failing checker sources/logs are preserved. This fixes oracle-schema/roundoff assumptions, not product geometry.
+
+No full Gate1 claim, generic feature-creation Undo claim, timeline travel, persistent journal future or arbitrary history-operation support follows. The bounded successful product scope is the existing same-journal EDGE operation append and accepted numeric edit history on this genuine source-bound plate.
