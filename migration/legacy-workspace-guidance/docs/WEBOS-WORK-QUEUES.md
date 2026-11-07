@@ -21,13 +21,34 @@ LR01 recovery lifetime/retry/overlap, ST02 folder recovery, then bounded Worker,
 resource and metadata guard faults. Files/CAD scope remains; no cancelled race
 or security probe is resumed. Every fix requires regression and documentation.
 
-LR01 source repair passes3 real Chromium regressions and5 original retained
-checks. One owned operation derives phase; late stopped continuations cannot
-block the desktop. No public deployment. Storage and CAD/Worker repairs are
-being integrated from separate lanes. Strict Join17/70 and retained region6/30
-pass on frozen224f; the full21-exercise gate remains open.
+Current root integration (no deployment): LR01 recovery repair passes3 real
+Chromium regressions +5 retained checks. ST01 fresh/continuation mirror repair
+passes10 focused controls, the retained suite and8 IDB/OPFS browser scenarios.
+CAD resource, direct-Worker admission, controller settlement and final metadata
+reentrancy repairs are integrated; their bounded evidence and remaining client
+recurrences are recorded in STATE-MACHINES.md. Build-time Worker staging pins
+now bind the repaired bootstrap, without changing native binaries/defaults.
 
-## Active priority — strict mechanical Join
+ST02 is elevated to P1: both real storage backends lose unresolved local
+references in directory-only restoration and conflicted-file remote-absence
+traces. Earlier b911 candidate is not integrated; durable reconciliation and
+preservation repair is in progress. Logical reference loss is proven, physical
+byte erasure/public-account incidents are not. WR03 also affects three disposable
+clients; confirmed injected-fault repairs are in progress.
+
+ST03 Save/late-Close passes the existing unknown-outcome contract: local commit
+is independently proven, caller loses acknowledgement, late receipt stays inert,
+and fresh Open restores the exact model. User-directed follow-up: ordinary Close
+should wait for local Save acknowledgement (not server sync); shared host policy
+and regression are still pending. Forced lifetime loss still needs honest unknown
+outcomes. See test/state-machine-audit-cad-save/README.md.
+
+Strict Join R3 passes17 setups/70 rows/13 saved files; retained region R2 passes
+6 setups/30 rows/4 saved checks on frozen CAD224f/desktopcf979. These do not cover
+the newly composed reliability fixes. The full21-exercise gate remains open:
+17 partial,4 missing shared workflows (E13/E14/E15/E22), no full row sign-off.
+
+## Strict mechanical Join policy and historical candidate checkpoints
 
 User-approved author decision: a normal Join must produce one verified manifold
 connected solid, or reject without changing the accepted model. Separate bodies
@@ -48,7 +69,7 @@ persisted Join acceptance in CAD-ENGINE-GATE-1.md. A bounded implementation/proo
 proposal is underway alongside region-reselection qualification; this decision
 must be qualified before claiming the corresponding Gate1 feature complete.
 
-## Corrected Join candidate: actual R2 readback
+## Historical Join R2 readback (superseded by R3 qualification)
 
 CAD224f3302d/desktopcf97976d9 closes the first-box startup reproducer in the
 actual signed strict-CSP app. First-box creation, Undo to truly empty, Redo with
@@ -65,7 +86,7 @@ Only this expected point-contact classification is authorized to change, with
 an additional raw-native classification control; geometry/history requirements
 remain unchanged for the next frozen-runtime retry. No product relaxation.
 
-## Current candidate qualification: first-box startup defect
+## Historical Join R1 startup defect (repaired and replayed in R3)
 
 Strict-Join signed R1 fetched the exact CAD0d815e141/desktopcf97976d9 build,
 then found a real regression in the new generic creation journal: the first box
