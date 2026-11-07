@@ -132,6 +132,14 @@ registry (CADa246e0d82), including sweep, instead of a separately synchronized
 allowlist. Seventy-seven retained controls/TSC pass. Actual signed replay is
 still required; this source change does not prove publication/Save correctness.
 
+Desktop sweep bridge a29fd9d1c reuses U06 scoped settlement for four commands.
+Nested path references detach before dispatch; account/document/realm/Close loss
+settles honestly and late results stay inert. Committed and unknown outcomes
+use the existing shared policy. Thirteen new transport controls and retained
+controls pass; root repeated sweep+revolve19 after integration. These are bridge
+controls, not actual CAD publication or native Save/Open evidence. No new
+lifecycle machine, retry policy or duplicate document state is introduced.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |
