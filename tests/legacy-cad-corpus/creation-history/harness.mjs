@@ -34,10 +34,19 @@ export async function harness(browser,base,out,record){
  async function ownership(){return frame.evaluate(()=>{const c=globalThis.__CAD_APP,craft=c.craftService,project=c.projectService;return{resources:{...craft.engineResourceUsage},counters:{...project.counterGenerator.projectCounters},processing:craft.isProcessing};});}
  async function keyboardTravel(direction,expectedFeatureId){
   assert(['undo','redo'].includes(direction));const before=await command('inspect-authored-edits');assert(before[direction==='undo'?'canUndo':'canRedo']);
+  await page.bringToFront();await frame.click('[data-action-id="menu.file"]');await page.keyboard.press('Escape');
   const canvas=await frame.$('canvas');assert(canvas,'Actual CAD viewport canvas required');const box=await canvas.boundingBox();assert(box&&box.width>0&&box.height>0);await page.bringToFront();await page.mouse.click(box.x+box.width/2,box.y+box.height/2);
-  assert(await page.evaluate(()=>document.activeElement?.tagName==='IFRAME'),'CAD iframe must have actual focus');
+  assert(await page.evaluate(()=>document.activeElement?.tagName==='IFRAME'),'CAD iframe must have actual focus');assert(await frame.evaluate(()=>document.hasFocus()),'Inner CAD document must actually have focus');
   await page.keyboard.down('Control');if(direction==='redo')await page.keyboard.down('Shift');await page.keyboard.press('KeyZ');if(direction==='redo')await page.keyboard.up('Shift');await page.keyboard.up('Control');
-  const end=Date.now()+120000;while(Date.now()<end){try{const j=await command('inspect-authored-edits'),b=await command('inspect-worker-solids'),o=await ownership();if(j.revision!==before.revision&&!o.processing&&b.bodies.length===1&&b.bodies[0].featureId===expectedFeatureId)return{before,after:j,ownership:o};}catch{}await new Promise(r=>setTimeout(r,100));}throw Error('Actual keyboard travel did not publish the expected feature');
+  const end=Date.now()+120000;while(Date.now()<end){try{const j=await command('inspect-authored-edits'),b=await command('inspect-worker-solids'),o=await ownership();if(j.revision!==before.revision&&!o.processing&&b.bodies.length===1&&b.bodies[0].featureId===expectedFeatureId)return{focusPath:'trusted File menu click then Escape, trusted canvas click',before,after:j,ownership:o};}catch{}await new Promise(r=>setTimeout(r,100));}throw Error('Actual keyboard travel did not publish the expected feature');
  }
- return{ownership,keyboardTravel,username,login,launch,command,inspect,capture,rejected,travel,retire,synchronize,save,freshOpen,pinFiles,pinOuter,displayPositions};
+
+ async function focusDiagnostic(){
+  await page.bringToFront();await new Promise(r=>setTimeout(r,200));
+  const canvases=await frame.$$('canvas'),rows=[];await page.bringToFront();
+  for(const canvas of canvases){const box=await canvas.boundingBox();if(!box||box.width<=0||box.height<=0)continue;const x=box.x+box.width/2,y=box.y+box.height/2;await page.mouse.click(x,y);rows.push({box,outer:await page.evaluate(({x,y})=>({focused:document.hasFocus(),visibility:document.visibilityState,active:{tag:document.activeElement?.tagName,cls:document.activeElement?.className},hit:{tag:document.elementFromPoint(x,y)?.tagName,cls:document.elementFromPoint(x,y)?.className},iframes:[...document.querySelectorAll('iframe')].map(e=>({src:e.getAttribute('src'),box:{x:e.getBoundingClientRect().x,y:e.getBoundingClientRect().y,width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height}}))}),{x,y}),inner:await frame.evaluate(()=>({focused:document.hasFocus(),active:{tag:document.activeElement?.tagName,cls:document.activeElement?.className},size:{width:innerWidth,height:innerHeight}}))});}
+  await frame.click('[data-action-id="menu.file"]');await page.keyboard.press('Escape');rows.push({control:'real File menu click then Escape',outer:await page.evaluate(()=>({focused:document.hasFocus(),active:document.activeElement?.tagName})),inner:await frame.evaluate(()=>({focused:document.hasFocus(),active:document.activeElement?.tagName}))});
+  return rows;
+ }
+ return{focusDiagnostic,ownership,keyboardTravel,username,login,launch,command,inspect,capture,rejected,travel,retire,synchronize,save,freshOpen,pinFiles,pinOuter,displayPositions};
 }
