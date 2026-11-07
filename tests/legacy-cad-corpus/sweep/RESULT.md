@@ -1,5 +1,16 @@
 # E14 shared sweep and native points — bounded signed workflow PASS
 
+## Latest capacity repair — 2026-11-07
+
+Original capacityR2 durably saved32 bodies but FAILED fresh Open at the fixed30s
+deadline. Separate repair on CAD594cc042b/desktopd63369feca passes normal Open
+44.063s, exact32 bodies/source/history/IDs, genuine five-point native query at
+quota43.031s, and unchanged original file SHA/21257bytes. Root independent checker
+passes. [Raw evidence and scope](signed-capacity-reopen-evidence-r1/README.md).
+This does not retroactively pass R2 or qualify all capacity/lifetime/performance.
+The point/cache measurements below remain their original frozen builds.
+
+
 Latest CAD72bcb6754/host9ff89c98c passes4setups/113rows,13nativequeries/77classes
 (19inside/29outside/29boundary),12native Save/reopens and exact read-only state,
 epoch/counter/material/resource preservation. Root independently repeats both
