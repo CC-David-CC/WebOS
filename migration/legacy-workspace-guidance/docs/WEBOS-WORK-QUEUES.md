@@ -53,6 +53,11 @@ Strict Join R3 passes17 setups/70 rows/13 saved files; retained region R2 passes
 the newly composed reliability fixes. The full21-exercise gate remains open:
 17 partial,4 missing shared workflows (E13/E14/E15/E22), no full row sign-off.
 
+Persistence policy reaffirmed: explicit Save/Open, unsaved RAM edits may be lost
+on close/crash. No shutdown autosave or compensating rollback write. Reopen the
+last committed revision; a completed commit survives acknowledgement loss.
+Ordinary mounted-view resource disposal remains separate from saving content.
+
 ## Strict mechanical Join policy and historical candidate checkpoints
 
 User-approved author decision: a normal Join must produce one verified manifold

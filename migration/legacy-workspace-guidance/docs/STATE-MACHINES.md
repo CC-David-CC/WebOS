@@ -226,9 +226,16 @@ genuine receipt, with no concurrent write, account switch or cancelled filesyste
 race. This does not qualify every Save/export/logout boundary. New ordinary-close
 policy needs its own regression and must not erase this historical evidence.
 
-Crash/forced-tab-close scope: no guarantee of shutdown JavaScript execution and
-no requirement to rescue unsaved RAM edits. Preserve complete durable revisions
-and reconcile which revision survived. The old/new complete-version publication
+User-confirmed persistence policy: explicit Save is the durable boundary; Open
+reads the last committed revision. Unsaved RAM edits can be lost on normal close
+or a crash. Do not add shutdown autosave, recovery writes or compensating rollback
+writes. “Rolled back” means reopening the last committed revision, not undoing a
+save that already committed before its acknowledgement was interrupted. Normal
+resource disposal remains required by the app mount contract; it does not save
+or repair document content.
+
+Crash/forced-tab-close scope: no guarantee of shutdown JavaScript execution.
+Preserve complete durable revisions and reconcile which revision survived. The old/new complete-version publication
 invariant remains required; a passed late-acknowledgement test is not itself a
 power-loss, browser-eviction or process-crash proof. No cancelled filesystem race
 or security probe is resumed to claim those results.
