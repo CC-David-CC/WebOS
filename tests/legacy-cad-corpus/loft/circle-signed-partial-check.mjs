@@ -1,0 +1,12 @@
+// Check completed checkpoints of FAILED R3, never promote the whole run.
+import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';
+import {checkBinding,checkDiscovery,checkPointReply,checkCapturedSaved,sameReadOnly,observation,sha} from './circle-signed-check.mjs';
+import {checkCircleLoftMetrics} from './circle-oracle.mjs';
+const file=process.argv[2];assert(file,'R3 receipt path required');const dir=path.dirname(file),r=JSON.parse(fs.readFileSync(file));
+assert.equal(r.status,'FAIL');assert.equal(r.error.message,'Native volume differs from saved-source analytic oracle');assert.equal(r.saved.length,3);assert.equal(r.pointQueries.length,6);
+assert.equal(r.sourceSeeds,false);assert.equal(r.fakeSuccessfulReplies,false);assert.deepEqual(r.sourceHashesAfter,r.sourcePins);for(const [name,want]of Object.entries(r.sourcePins))assert.equal(sha(fs.readFileSync(new URL(name,import.meta.url))),want,name);
+assert.deepEqual(r.cases.map(c=>[c.name,c.status]),[['phase0','PASS'],['phase90','FAIL']]);const files=new Map();
+for(const s of r.saved){assert(!files.has(s.savedFile));const bytes=fs.readFileSync(path.join(dir,s.savedFile));assert.equal(sha(bytes),s.sha256);const native=JSON.parse(bytes),e=checkBinding(native,s.binding);checkDiscovery(s.discovery,s.binding);for(const o of [s.before,s.after]){assert.equal(o.bodyId,s.binding.bodyId);assert.equal(o.featureId,s.binding.featureId);assert.equal(o.engineRevision,s.binding.engineRevision);checkCircleLoftMetrics(o.metrics,e);}files.set(s.savedFile,{native,e,s});}
+assert.deepEqual([...files.values()].map(x=>[x.s.binding.phase,x.s.binding.radii]),[[0,[2,4]],[0,[3,4]],[Math.PI/2,[2,4]]]);
+for(const q of r.pointQueries){const {native,e,s}=files.get(q.savedFile);assert.equal(q.savedSHA256,s.sha256);assert.equal(q.request.bodyId,s.binding.bodyId);assert.equal(q.request.featureId,s.binding.featureId);assert.equal(q.request.engineRevision,s.binding.engineRevision);checkCapturedSaved(q.before,native);checkCapturedSaved(q.after,native);sameReadOnly(q.before,q.after);for(const x of [q.before,q.after])checkCircleLoftMetrics(observation(x,s.binding).metrics,e);checkPointReply(q.request,q.response,e);}
+console.log(JSON.stringify({status:'SCOPED_CHECKPOINTS_PASS_RUN_REMAINS_FAIL',saved:files.size,queries:r.pointQueries.length,points:36,volumes:[...files.values()].map(x=>x.e.volumeMM3),open:'Quarter-phase radius edit metric discrepancy; full E15/Gate1'},null,2));
