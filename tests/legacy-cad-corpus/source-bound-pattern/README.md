@@ -74,8 +74,8 @@ WASM used-memory measurement. All3owncontexts/targets release; sharedChrome stay
 The actual served example import/export and readonly inspection passed in the
 browser. Full recipe execution in R2 remains the exact reusable module running
 in Node through actual public registry transport; a separate browser-only build
-control follows and will be recorded distinctly. This workflow does not qualify
-all22Gate1 features, arbitrary hole patterns, native point classification or
+control is recorded below. This workflow does not qualify
+all21 active Gate1 exercises, arbitrary hole patterns, native point classification or
 manufacturing fitness. Count1/project-parameter bindings remain unsupported.
 
 ## Independent root readback
@@ -89,6 +89,33 @@ records, not RSS/heap reclamation measurements. The initial root checker used
 the wrong display name DATUM_PLANE for the actual authored PLANE operation;
 correcting that test spelling required no product or geometry change.
 
-The served-browser-only full recipe is being checked separately. R2 executes
+The separate browser-only full recipe passed, as recorded below. R2 executes
 the exact example through Node transport into the real public registry; its
 actual served-module check covers export/import and readonly inspection only.
+## Wholly in-browser served example followup
+
+**PASS7rows**, same exact183bd/0fdc app and strict fixture20923, fresh account/
+context. `served-build.test.mjs` imports the actual outer module in the real
+browser and executes `createSourceBoundPatternExample({onStep}).build()` with its
+default public registry. All17commands start/accept, with no Node command proxy.
+The actual bundler compiles this input into index.mjs; source input hash and
+compiled outer/export-function hashes are recorded separately. BrowserR1's
+incorrect separate-resource-URL assumption is preserved as FAIL with its exact
+old driver. BrowserR2 checks the real compiled-export form without changing
+native geometry, identity or saved-intent assertions.
+
+The actual browser build measured native volume94185.04470928965, topology
+17faces/45edges/30vertices,7preview bore voids plus adjacent material. Native
+bounds are100×50×20 and validity/single-solid status pass. Normal My files native
+Save and server sync contain exactly one source sketch/profile, two source-bound
+hole features, two edge treatments and one semantic pattern; no tool sketches or
+internal Boolean operations. Independent `check-served-saved.mjs` replays saved
+intent, arithmetic, preview and cleanup facts. Own context/all targets release;
+sharedChrome stays alive. See evidence/browser-r2. This separate run closes the
+full browser-example execution gap; it does not add new general native geometry
+or manufacturing guarantees beyond the fixed plate workflow.
+
+```
+CODI_TEST_URL=http://127.0.0.1:PORT/ CODI_TEST_CDP=http://127.0.0.1:19329/ CODI_SIGNED_PINS=/path/exact-pins.json PUPPETEER_CORE_PATH=/path/puppeteer-core CODI_EVIDENCE=/tmp/new-browser-pattern-run node test/agent-cad-corpus/source-bound-pattern/served-build.test.mjs
+node test/agent-cad-corpus/source-bound-pattern/check-served-saved.mjs /tmp/new-browser-pattern-run
+```
