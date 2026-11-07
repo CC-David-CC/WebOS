@@ -2586,3 +2586,8 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
 - [x] BR02 actual browser launch now passes with the407168387byte combined package under unchanged512MiB policy.
 - [~] Source-plane depth signed driver is next on the same private fixture. Native component success alone does not establish dependent replay or publication.
 - [ ] E15 polygons/general domains/human parity, E20 shared STEP and E22 shared drawings remain open. Gate1 count remains20partial/1missing/0full.
+
+### Worker cancellation settlement — 2026-11-07
+
+- [x] WR04 confirmed error-only API contract defect: offered cancellation hooks can throw after/before custody changes and strand requests. Root integrates product e55f03573 plus final component evidence5a550d04b. 42 new +10 retained Node controls and6 actual Chromium same/cross-realm native-signal controls pass; root independently repeats42 and TypeScript. No native success was fabricated; no public corruption incident is claimed.
+- [~] Same callback-method pattern in source-plane command setup/finally is being reproduced independently before repair. The full signed circle/plane runtime remains pinned to19e0ef19b9 and does not claim the newer controller.
