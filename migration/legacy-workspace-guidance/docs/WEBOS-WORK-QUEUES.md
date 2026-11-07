@@ -595,7 +595,7 @@ No registered shared E15 workflow or full exercise pass is claimed.
   8.864s,5native points and exact saved/source/state preserved.
 - [~] Main observation is scoped: late staging install11.115ms leaves early
   blind spot; Open190/76ms tasks remain. No full responsiveness or RAM guarantee.
-  R1 missing-frame checker failure remains; final four-case proof awaits integration.
+  R1 missing-frame checker failure remains as historical evidence; the final unchanged four-case proof is integrated in dd4db0ad8. Root independently verifies 12 saved files and 13 native queries / 77 point classifications. This does not establish complete UI responsiveness or full E14 qualification.
 - [x] Same-BRep comparison0ffcca87 identifies default integration error.
   Adaptive1e-10 passes unchanged1e-6 oracle without geometry change. Native
   fix4d086f46/evidence39d47907 passes reporting/Boolean/plate controls.
@@ -2569,3 +2569,13 @@ It is not a requirement for the active Files/JSketcher/core-3MF release.
   whole-desktop panels, environments/artwork or complex XR authoring.
 - [ ] Qualify physical headset interaction, stereo performance, session
   interruption, 2D return and saved-model integrity independently.
+
+### Combined adaptive metrology and source-plane integration — 2026-11-07
+
+- [x] Integrated CAD source 19e0ef19b9085e5630bad67c1d42cb7129535c9f: separately selected checked adaptive native metrology plus atomic principal source-plane depth edits and authored Undo/Redo. Existing defaults and old native pins remain unchanged.
+- [x] Integrated desktop source-plane command adapter 7bedf9e6c; nine host command/lifetime controls pass independently. Root repeats 42 catalog, structured-error, loft protocol and plane-journal controls; full TypeScript checking passes. Original component evidence checker passes for 21 Worker/service/coordinator groups, 76 journal groups and 57 released Chromium Workers. These remain component evidence, not successful dependent native publication.
+- [~] Fresh combined normal Worker/application build is running on R730 in codi-polygon-combined-adaptive-plane-20261107-r10. No new signed application, beta or live result is claimed.
+- [ ] Repeat unchanged circle-loft acceptance against explicitly selected adaptive revision, then qualify source-plane movement, dependent replay/refusal, mixed Undo/Redo and Save/sync/fresh Open. Preserve the old failed precision report and unchanged independent tolerance.
+- [ ] E20 shared STEP export and E22 associative drawing workflow remain open. Gate1 remains 20 partial / 1 missing shared workflow / 0 complete rows; assembly E17 is Gate2.
+
+The accepted saved-32-body source-proof run now reports Open approximately 10.9 seconds and query 8.9 seconds, with 70/69 Workers and all retired. This is scoped functional and processing evidence: Open still has 190/76ms main-thread tasks, and the inner observer has an explicitly recorded early blind spot. No whole-transfer memory or general UI responsiveness claim follows.
