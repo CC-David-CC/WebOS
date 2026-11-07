@@ -18,12 +18,16 @@ The expanded [21-row Gate1 matrix](evidence/CAD-GATE1-BASELINE-20261106.md)
 records17 partial/four missing/zero fully qualified; E17/C10 is Gate2.
 The new edge-creation app source98fe85145 and desktop247b222e5 built and packaged
 successfully onR730; root independently checked177 package files/67 core assets.
-Fresh strict-CSP signed fixture20920 is the current private qualification path;
-no public deployment. Initial actual public creation Undo/Redo passes with exact
-feature IDs/accepted geometry and monotonic counter highwater. The first keyboard
-control stopped before any keys because iframe focus was absent; diagnosis is
-pending, not a classified creation-history defect. Prefix Save/Open, mixed
-chronology and resource cycles still need the completed run.
+Fresh strict-CSP signed fixture20920 completed10 actual creation-history checks:
+public creation travel, trusted shortcuts after genuine menu focus, mixed
+create/edit chronology, rejected/accepted replacement branches, undone-prefix
+Save/sync/fresh Open and three stable resource cycles. Root independently checks
+five native metric snapshots and full fixture cleanup. See
+[creation-history evidence](../test/agent-cad-corpus/creation-history/README.md).
+The first canvas-focus precondition failure is retained; camera controls suppress
+natural focus. Root candidate b2d16f30a makes the canvas focusable and explicitly
+focuses it during enabled mouse/touch interaction; actual new-runtime proof is
+pending. No public deployment or general creation-history qualification.
 
 The prior broad fixture20919 exited cleanly; root verified Python/Caddy gone,
 private account state removed, port closed and zero owned browser targets, while
