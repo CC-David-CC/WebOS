@@ -1,4 +1,18 @@
 # WebOS work queues and progress ledger
+## Drawing retention source integrated; custody remains open — 2026-11-07
+
+Coreafd6e4d46 +Desktop17d041eae compose V3codec, actual-manager retention,
+matching host envelope/dirty support and first replaced-manager guard. Root
+fresh Worker/service builds and34codec/retention/display controls PASS, including
+the2formerly red lost-drawing Save requirements. Source only, not staged.
+
+Independent review found2remaining actual-manager custody defects: replacement
+inside validity may begin a destructive document change before rejection;
+retained old manager may bless an old Save after new manager activation. Exact
+regressions/repair active. These block new combined drawing runtime/publication;
+positive retained checks are not fullqualification.
+[Evidence](evidence/drawing-custody-root-20261107/README.md).
+
 ## Genuine shared manufacturing workflow — 2026-11-07
 
 Frozen Core9ba304395/Desktop35918d0d4 normal signed desktop PASS: public plate

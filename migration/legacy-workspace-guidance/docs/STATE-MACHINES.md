@@ -7,6 +7,22 @@ competing specifications. This is a first pass, not exhaustive safety proof.
 Third-party editor/kernel internals, games and future physics are outside this
 pass unless they affect the shared workflow.
 
+## Drawing manager-instance custody audit — 2026-11-07
+
+New source retains V3drawing definitions through normal and material-aware Save
+using the actual validation Worker for string and byte entry points. Root34
+positive controls pass. Drawing lifetime follows its actual document signal;
+revision includes drawing identity, and absent getter fails closed in hostdirty
+inspection. These are not full workflow qualifications.
+
+Two open confirmed transitions require a per-activation manager authority:
+externalvalidcallback→managerreplacement→beginDocumentChange must refuse before
+advancing/aborting the document; old-manager Save→new-current-manager must never
+return currentness true for orphaned state. The initial after-await guard alone
+is insufficient. Preserve failed counterexamples and fix the related invariant
+once across relevant jobs, without inventing parallel document state. No new
+combined drawing runtime until repaired regressions pass.
+
 ## Manufacturing normal path and signal truth — 2026-11-07
 
 Genuine signed public authoring/assignment/no-op/Undo/Redo/Save/freshOpen now
