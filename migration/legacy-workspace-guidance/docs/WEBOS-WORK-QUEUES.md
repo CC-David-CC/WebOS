@@ -321,6 +321,17 @@ Signed lane is preparing/running four genuine source-authored sweep cases, not
 model seeds. Shared Chrome19329 remains open; fixture has no guest/browser
 relay. Full E14 row remains open, including native point observation gap.
 
+Initial signed sweep run stopped on a test expectation defect, preserved as
+/tmp/codi-sweep-signed-proof-r1. Disk completed its bounded full case. Annulus
+created, edited both sources, traveled history, refused stale/unsupported paths,
+and saved/reopened with correct geometry. Actual unsupported creation reserved
+ID high-water3→4; root independently read counters3/4 from genuine saved native
+files. A later Undo compared to the pre-refusal counter3 snapshot. Correct the
+runner to compare with the current accepted reopened baseline, keeping all exact
+geometry/history/counter assertions. No app/native source change; all four cases
+will rerun on the same immutable runtime. Curved/RC01 signed cases remain pending.
+Root review is test/agent-cad-corpus/sweep/root-runtime-r1/initial-run-review.json.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
