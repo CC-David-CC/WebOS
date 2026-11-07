@@ -1,6 +1,5 @@
 // Passive Puppeteer/CDP-backed lifecycle events on ONE owned page. No pause,
 // Worker replacement, message interception or model/product writes.
-import assert from 'node:assert/strict';
 export async function observeReplay(page,{label,frameURL,work}){
  const start=performance.now(),created=[],destroyed=[],samples=[],sampleErrors=[],rows=new Map(),ids=new WeakMap();let sequence=0,busy=false,stopped=false;
  const clock=()=>performance.now()-start,id=w=>{if(!ids.has(w))ids.set(w,++sequence);return ids.get(w);};
@@ -14,5 +13,5 @@ export async function observeReplay(page,{label,frameURL,work}){
  finally{stopped=true;clearInterval(interval);while(busy)await new Promise(r=>setTimeout(r,5));page.off('workercreated',onCreate);page.off('workerdestroyed',onDestroy);}
  const after=page.workers().map(w=>({id:id(w),url:w.url()})),byURL={};for(const r of created){const group=byURL[r.url]??={started:0,destroyed:0,observedLifetimesMS:[]};group.started++;if(r.destroyedMS!==null){group.destroyed++;group.observedLifetimesMS.push(r.lifetimeMS);}}
  const row={label,quality:'passive-owned-page-worker-lifecycle-and500ms-resource-sampling',commandWallMS,before,after,created,destroyed,byURL,resourceSamples:samples,sampleErrors,error,result,limits:['Worker lifecycle counts are actual CDP-backed page events, not message interception','Single-purpose operation/client source corroborates task kinds; request bodies are not captured','500ms resource samples can miss short-lived states and do not measure WASM memory/native shape count','Sampling changes latency; no uninstrumented performance or cold-cache claim','Only this owned page; other browser contexts/services unchanged']};
- if(error)return row;assert.deepEqual(after,before,'Observed Workers must return to their retained baseline.');assert(created.every(r=>r.destroyedMS!==null),'A measured Worker is still observed live.');return row;
+ return row; // Caller records raw lifecycle data before validating it.
 }
