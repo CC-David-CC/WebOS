@@ -1,4 +1,27 @@
 # WebOS work queues and progress ledger
+## Integrated shared manufacturing and observation ownership — 2026-11-07
+
+Core9ba304395: joint manufacturing assignment/journal/tip publication integrated;
+fresh27focused+171retained controls PASS, TSC0. Observation-only replay owners
+cannot become accepted before/during/after a mesh read;22pool controls PASS.
+Manufacturing mesh Worker source/proof integrated; root25source tests and
+recorded genuine Native corpora checker PASS. New exact optional catalog/ledger
+and normal build plumbing integrated; unset assets remain unavailable. Default
+build unchanged. New staged normal browser/Save/export acceptance is still open.
+[Scope and evidence](evidence/manufacturing-worker-root-20261107/README.md).
+
+Cylinder provenance own-getter defect fixed (17regression/retained,5positive,
+3fresh-record Worker checks PASS). Complete public binding remains open.
+Next: qualify composed optional build; finish V3 drawing custody across actual
+manager/host Save/Open; then drawing publication and generic3MF. Old boundary
+BEFORE failures below are historical and superseded only in the tested scope.
+No new deployment. Gate1 remains20partial/1missing/0full; assemblies Gate2.
+
+Local disk scan:98GiB/tmp,48GiBdesktop-preview,33GiBsource-build,21GiBdownloads;
+about1.2GiBfree. Large builds/assets stay onR730. Retire generated copies only
+after verifying backups and no process/browser ownership; preserve source and
+private state. This is development-PC usage, not a new webhost measurement.
+
 ## Fresh cylinder witness and cleanup — 2026-11-07
 
 Core73e5876b9 private measurement:15Worker/68retained controls and fresh3actual

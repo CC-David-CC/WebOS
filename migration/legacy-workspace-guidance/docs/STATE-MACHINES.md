@@ -7,6 +7,28 @@ competing specifications. This is a first pass, not exhaustive safety proof.
 Third-party editor/kernel internals, games and future physics are outside this
 pass unless they affect the shared workflow.
 
+## Manufacturing publication and observation authority — 2026-11-07
+
+Manufacturing proposal: preparing → privately prepared → synchronously committed
+assignment/journal/tip → notifying. Stale/aborted/refused preparation publishes
+nothing. No-op does not churn tokens or discard Redo. Once committed, observer
+failure cannot roll back or overwrite a newer reentrant edit; report committed
+outcome. Undo/Redo uses the same bounded authored journal and no Native replay.
+Worker cleanup must succeed before admission to publication. Service controls
+27focused+171retained pass; geometry is an explicit protocol fixture here.
+
+Evaluation ownership: captured purpose=model or observation at begin. Observation
+owners remain unpublishable across awaits and after successful reads. Currentness
+and private ledger bind actual owner/runtime/body. Cancel/failed read retires its
+observation candidate, preserving the separate accepted model. Recheck owner cap
+after external lifetime callbacks; use intrinsic native signal registration and
+removal so own-method overrides cannot strand custody. BEFORE6FAIL/1PASS;
+AFTER7new+15retained PASS. Actual NativeSignal, synthetic closable mounts.
+
+No additional top-level state-machine count is claimed. These tighten existing
+publication/resource families. Full drawing custody and combined browser runs
+remain open. See evidence/manufacturing-worker-root-20261107.
+
 ## Save/watcher repair — 2026-11-07
 
 Desktop5c4fa703a shares no-write → pending → acknowledged settlement between
