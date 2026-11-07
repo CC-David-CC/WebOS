@@ -500,6 +500,35 @@ Existing source API/native geometry remain unchanged. Root integrated source
 membership preparation45000c06d; the final framing repair/evidence is pending.
 No registered shared E15 workflow or full exercise pass is claimed.
 
+### Current integration superseding pending notes above — 2026-11-07
+
+- [x] RB01 saved32body Open repair integrated CAD594cc042b. Finite wait is
+  derived from validated authored history,60s+5s/entry capped600s; progress never
+  extends it. Cancellation/rollback ownership and native budgets remain enforced.
+  Separate genuine repair proof desktop909aa055f passes Open44.063s,32 measured
+  bodies, native query at quota43.031s and unchanged saved bytes. Independent
+  checker repeated by root. Original R2 remains FAIL; broad performance remains open.
+- [x] MD01 complete-envelope semantic repair integrated2f2e09afb/caa5a132e;
+  exact oversized genuine Worker reply now bounded RESOURCE_LIMIT.19 source groups
+  and24 real Chromium Workers pass. LP01 opaque circle identity repair904a28409
+  also integrated; root19-group/45 real Node Worker repeat passes.
+- [x] E15 shared loft commands, operation and explicit optional native loader
+  merged CAD3ce89aa35. Independent evidence checker reports11 coordinator groups,
+  53 genuine solver/semantic Workers,4 unavailable-runtime/4 staging groups,
+  2 actual native factory geometries and2 normal app compiles; full TypeScript pass.
+- [ ] Finish E15 signed application create/edit/travel/Save/Open. Inherited build
+  discovery/native point observation needs explicit staged-loft admission; source
+  plane placement edit is still required. No automatic backend fallback/default switch.
+- [~] E20 native STEP component passes7 exports/24 analytic points/16 exact
+  preservation pairs, native branchd1028c1a8 on both LANs. Shared Worker transport,
+  public command and MyFiles integration remain open; same-kernel reader is not an
+  independent implementation.
+- [~] E22 native exact orthographic component98ea0ad0d passes10 reads/8 typed
+  refusals, input/tolerance preservation and analytic hidden-line/transform controls.
+  Shared views, linked dimensions, transport, history and persistence remain open.
+- [ ] Gate1 remains19 partial/2 missing complete workflows/0 full signoffs;
+  E17 assemblies stays Gate2. No beta/live runtime promotion in this checkpoint.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
