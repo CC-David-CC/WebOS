@@ -22,12 +22,33 @@ This applies to human and agent operations through the same model API. One part
 may still contain deliberate material regions; this is not a one-material rule.
 
 The common kernel-union corpus passes representation/persistence controls only.
-Strict Join implementation and its signed positive/refusal/UndoRedo/native-file
-qualification are **pending**. In particular NoError or raw mesh-component counts
+Strict Join postconditions are integrated as CAD abb52d229, with box/Boolean
+creation added to the shared bounded authored journal at 928dde9b2 and explicit
+Join source-ancestry preservation at 0d815e141. Component/protocol controls and
+TypeScript pass. Signed positive/refusal/UndoRedo/native-file qualification is
+**pending** on fresh CAD0d815e141/desktopcf97976d9; a packaged build is ready. In particular NoError or raw mesh-component counts
 cannot certify a cavity or contact case by themselves. See Boolean contact and
 persisted Join acceptance in CAD-ENGINE-GATE-1.md. A bounded implementation/proof
 proposal is underway alongside region-reselection qualification; this decision
 must be qualified before claiming the corresponding Gate1 feature complete.
+
+## Same-feature region reselection: signed result
+
+Frozen CADb8712790e/desktop5c5eeba80 passes six actual signed strict-CSP setups
+and 30 rows: disconnected profiles, nested circle regions, compatible unchanged
+Boolean child replay, incompatible fillet-child atomic refusal, an explicitly
+unsupported real polygon descriptor, and closing during a genuine held native
+candidate with late-reply rejection. Same feature/output IDs, mixed depth/region
+UndoRedo and normal Save/sync/fresh Open/reedit are covered. Four saved-file
+source/intent/analytic checks pass independently, including 2700, 625π, 750 and
+998.926990817 mm³. Evidence is integrated at desktop5b9c23cdb.
+[Exact scope and evidence](../test/agent-cad-corpus/region-reselection/README.md).
+
+Typed reselection, combined source-edit/region repair, circle winding and broader
+human selection remain open. This does not close E04/E05 or full Gate1. Fixture
+20926 has been stopped after all readbacks; its port is closed, owned targets are
+gone and shared Chrome remains available. Gate1 remains 21 exercises, 17 partial,
+4 missing shared operations and 0 complete row sign-offs; E17 stays Gate2.
 
 ## Latest signed integration results
 
