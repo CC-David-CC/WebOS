@@ -1,0 +1,1 @@
+Root independently ran check-saved.mjs against the committed portable evidence-r1/receipt.json after integration0e634c069. PASS:6 actual native files,18 native queries/108 points,10 refusals. This is the same frozen signed run, not an extra browser repetition.
