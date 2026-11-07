@@ -43,9 +43,11 @@ No new deployment or exercise signoff; Gate1 remains21 rows, E17/C10 is Gate2.
 The signed E04 descriptor run on CAD74eb58278/desktop0fdc2a7f8 passed explicit
 geographic second-region selection and native500/1000mm³ extrusions, then
 refused the first valid atomic point batch. Root confirmed a realm-local
-Array.prototype check at the desktop→CAD iframe boundary. Its one-line fix
-retains Array.isArray, dense own data, bounds and duplicate guards; regression
-and a fresh compiled signed rerun are required before declaring that path fixed.
+Array.prototype check at the desktop→CAD iframe boundary. Root fix3cc1eede5
+retains Array.isArray, dense own data, bounds and duplicate guards. Twelve
+cross-realm coordinator admission controls pass on that exact source, including
+old-fail/new-admit and retained malformed-data refusals. The fresh complete app
+build is running; signed R2 is required before declaring the workflow fixed.
 
 Driving-dimension edit/remove core99a plus REQUIRED verifier correction215f is
 integrated (rootcf882/93cf), with normal desktop adapters and Craft declarations.
