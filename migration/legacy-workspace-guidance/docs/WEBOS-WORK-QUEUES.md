@@ -1,6 +1,13 @@
 # WebOS work queues and progress ledger
 ## Current STEP composition —2026-11-07
 
+New source-only reliability repair: old3MF/DXF export settlement and shared
+parent-command falsey-rejection/reentrant-timer defects are fixed atDesktop
+ea1a0c190.27new+100retained Node controls pass, using actual route/coordinator
+code and explicitly synthetic artifact/storage replies. This is not a new signed
+app export proof; current20941 still runs frozenf714/f869. Native Save host
+settlement remains a follow-up. [Counterexamples and scope](../test/agent-cad-corpus/export-outcomes/README.md).
+
 Files remains accepted in its tested foundation scope. Gate1 remains **20 partial,
 1 missing complete workflow (E22),0 fully signed-off exercises**. Assemblies are
 Gate2. No beta/live/prototype deployment occurred in this composition.

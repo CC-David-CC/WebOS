@@ -571,3 +571,26 @@ commit; failures after write admission explicitly retain possibly-committed or
 confirmed outcome. Export does not modify the native project's save baseline,
 path, title or dirty state. Crash/forced closure does not run cleanup or promise
 to rescue unsaved edits. A browser commit is distinct from server synchronization.
+
+## Legacy export and parent-command settlement repair —2026-11-07
+
+Related families remain W02/W03; this does not add a second document coordinator.
+
+| Issue | Confirmed counterexample | Current repair/evidence |
+|---|---|---|
+| STP03/W02 | Actual extracted3MF/DXF routes lose falsey causes or invoke error getters, forget known commit after finish/notice faults, and accept malformed browser receipts. | Desktop ea1a0c190 shares descriptor-only formatting/outcome settlement with STEP; null/no-write→pending→validated committed.27new +100retained Node controlsPASS, synthetic artifact/storage only. No new signed geometry/export proof yet. |
+| WR07/W02 | Shared parent helper resolves rejected falsey values as success; synchronous registration cancellation starts an orphan interval after settlement. | Rejection/fulfillment use separate discriminants; input observed before registration, no timer after reentrant completion, intrinsic listener removal fallback and explicit opaque cleanup failure. Source-backed before2FAIL/1PASS; after rejection/lifetime/cleanup controlsPASS. |
+
+| State / event | Required transition and invariant |
+|---|---|
+| Preparation / failure or UI cancellation | No write claim; release coordinator; preserve exact arbitrary cause. |
+| Local-write admission / reentrant lifetime loss | Recheck before storage invocation; no write after invalidation. |
+| Write submitted / throw or malformed receipt | Pending/possiblyCommitted, exact cause; no automatic retry. |
+| Valid browser receipt / later notice, finish or lifetime failure | Committed stays committed; never expose old-account path; server sync remains independent. |
+| Promise rejected / any value including undefined | Reject that value; never treat it as successful fulfillment. |
+| Listener setup reenters cancellation | Settle once; remove attempted listener; never allocate a later timer. |
+| Listener cleanup cannot be confirmed | Attempt all cleanup, retain primary cause and known commit marker; report cleanupUnconfirmed. |
+
+The native-project Save host catch has a similar source pattern and remains an
+open integration follow-up; export component tests do not qualify that route.
+No filesystem race/security test, private state copy or public deployment occurs.
