@@ -31,3 +31,13 @@ Offline reproduction:
 ```sh
 CODI_EVIDENCE=test/agent-cad-corpus/multi-engine-common/evidence-r1 node test/agent-cad-corpus/multi-engine-common/check-results.mjs
 ```
+
+## Interpreting the edge-contact PASS
+
+That PASS means the actual result and its saved/reopened meaning are reported
+correctly. It is not a valid single-solid manufacturing join. An ordinary union
+can preserve a multi-body container; requesting one manifold connected solid
+requires a different acceptance condition. Edge/point-only contact cannot be
+turned into a physical volumetric connection by welding vertices or inventing
+material. Manifold NoError is not a substitute for those application-level
+checks. See docs/CAD-ENGINE-GATE-1.md Boolean contact acceptance.
