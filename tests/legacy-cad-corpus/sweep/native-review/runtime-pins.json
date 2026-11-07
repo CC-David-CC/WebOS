@@ -1,0 +1,10 @@
+{
+  "jsSha256": "a9cfa6e53a8bc14f2fb035e33afd1a82d9ae36ace1cf9f66169c739d2de72580",
+  "wasmSha256": "e105bdfe7c7bcb113eee5398d8202831cb8e8b1608dcc1730fc4461c9f24263d",
+  "originalJS": "f3bb5f0985f41c65001d32824c920a61290adb29e6fd27021a25c0e8e4232366",
+  "sourceBase": "60877dac",
+  "sourceFiles": {
+    "shape-io/main.cpp": "ce019962f2d8ec0b448a45a23a1965e988351ef3b64b1c531d6bc6004ca3618f",
+    "shape-io/ownedSweepV1.hpp": "1ff8fc54a0ac71a5e0d8146e4a89824977e3e2b343e3b41ab493c7bfd69fd471"
+  }
+}
