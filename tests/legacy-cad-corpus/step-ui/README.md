@@ -16,3 +16,5 @@ PUPPETEER_CORE_PATH=/tmp/codi-occt-release-control/node_modules/puppeteer-core \
 ```
 
 Dependencies: existing signed sweep harness for normal account login/app launch/public command registry/read-only accepted-state observations; existing strict-join canonical serializer. Both are source-hashed in the run. Full served core hashes are checked once in the first case; actual outer index and Native runtime binding are checked in every case. This driver creates only its own synthetic test accounts through normal UI. Pure layout fixtures contain numeric rectangles only; they produce no successful browser/native claim.
+
+First run failed before authoring: mobile emulation was set after login and could reload the RAM session (evidence-r1). The UI-only harness subset now sets the frozen viewport before navigation/login; retained shared harness stays unchanged. This adaptation changes no authoring, geometry, font, touch, containment, cancellation or file-preservation expectations. All future diagnostic connections must set defaultViewport:null; no further connection is needed while the driver owns its page.
