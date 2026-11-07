@@ -140,6 +140,13 @@ controls pass; root repeated sweep+revolve19 after integration. These are bridge
 controls, not actual CAD publication or native Save/Open evidence. No new
 lifecycle machine, retry policy or duplicate document state is introduced.
 
+Sweep reply-binding controls CAD0b04f3c64 exercise W02's pre-handle publication
+gate with an actual recorded native reply:12 routing/tamper/accessor controls
+pass, without a new native execution. Public native point inspection remains an
+explicit gap: detached accepted models have no live native shape handles. Any
+new query path must own temporary re-evaluation and lifetime binding rather than
+borrow dead resources or silently promote preview classifications to native.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |
