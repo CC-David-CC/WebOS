@@ -468,6 +468,28 @@ no account/key state was archived. Current20937/shared19329 unchanged. CDP19515
 was unavailable and was neither stopped nor modified.
 [Exact cleanup receipt](../test/agent-cad-corpus/sweep/root-runtime-r3/cleanup.json).
 
+### Ordinary-profile native HTTP cache qualification — 2026-11-07
+
+Exact1668/d633/20937 genuine CAD proof passes3×64 native point classifications,
+accepted state/resources and7 created/retired Workers per query. Each actual
+35MB WASM Worker request is an HTTP cache hit with completed encoded transfer0,
+not a ServiceWorker. Warmed query times1.83/1.98/2.12s are observations, not cold
+or uncontended benchmark claims. Separate constant-memory streaming controls
+confirm ordinary-profile repeat hits versus isolated/private-context35MB misses;
+small JS repeats cache in both. Root independently repeats the captured-facts
+checker and10 instrumentation/lifecycle controls. No cache-size override, giant
+JS cache/copy layer, account/API cache, renderer/native substitution or product
+change was used to obtain ordinary-profile evidence. Owned browser/profile gone;
+shared19329/current20937 unchanged. Production Caddy still forces its old policy:
+this private result does not establish live/beta runtime cache delivery.
+[Results and limitations](../research/native-app-cache-proof-20261107/RESULTS.md).
+
+E20 STEP native contractd5831aec is approved for a separate bounded component:
+flat owned BRep solid sets, explicit mm/AP214, exact original preservation,
+Worker-only8MiB retained output/64KiB chunk resource. Header/probe work begins
+remotely; no app STEP export, native importer or native Save-format change yet.
+Native branch research/owned-step-export-review-20261107 is backed on both LANs.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as

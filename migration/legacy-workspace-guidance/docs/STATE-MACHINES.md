@@ -251,6 +251,15 @@ actual-data checker and two schema regression controls pass. Full-capacity nativ
 Save/Open was never started in R1 and remains pending; no complete run claim.
 [Raw and independent scope](../test/agent-cad-corpus/sweep/signed-capacity-evidence-r1/README.md).
 
+W02 ordinary-profile cache qualification supersedes the pending policy verdict
+above for private1668/d633 only:3 genuine192-point native observations pass with
+HTTP-cache flags and completed0 encoded WASM transfer; accepted state/resources
+and all21 Worker retirements preserved. Root repeats captured-facts checker and
+10 instrumentation controls. Isolated/private-context large-WASM misses remain;
+small JS caches in both profile types. No new retained JS buffer/cache authority
+was added. Live Caddy delivery and broader latency/RAM remain unqualified.
+[Exact cache scope](../research/native-app-cache-proof-20261107/RESULTS.md).
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |
