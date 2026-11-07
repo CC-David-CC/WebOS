@@ -4,7 +4,7 @@
 
 The real32-hole workflow now PASSes through creation UndoRedo, material assignment, native Save/sync/fresh Open, depth edit20→25 and all3exports including the final cold-browser reopen. Common Files readiness fix d5da87493 is qualified for this ordinary path. Independent unchanged oracle PASSes3exports/102probes/all32holes, measured volume error bounds, units/material/provenance, and exact edited/reopened geometry equality. Frozen actual outputs: test/agent-cad-corpus/manufacturing-shared/32hole-evidence-r4; oracle proof cb23dac6c. Earlier deadline/work-limit/cold-open failures below are historical and superseded for this workflow; broader Files/geometry coverage remains partial.
 
-E06 R2 now PASSes all four complete duplicate/overlap recovery cases:56rows/eight native files, retained unrelated Point, mixed travel, extrusion and fresh Open/reedit (Core21f316599 evidence-r2). Retained plate R4 full flow and unchanged independent artifact oracle PASS after actual through-hole creation Undo repair (Desktop16748416d). E19 R3 still FAILs: removing an earlier solid shifts later generated source-plane IDs, breaking independent geometry (Core25f69abfc evidence-r3). Durable authored identity source9df188d79 is integrated; full rerun pending. General shell source/Native build/shared integration is in progress, not qualified. Gate1 remains21partial/0full signoffs; E17assembly is Gate2. No public deployment or filesystem-race probes.
+E06 R2 now PASSes all four complete duplicate/overlap recovery cases:56rows/eight native files, retained unrelated Point, mixed travel, extrusion and fresh Open/reedit (Core21f316599 evidence-r2). Retained plate R4 full flow and unchanged independent artifact oracle PASS after actual through-hole creation Undo repair (Desktop16748416d). E19 R4 now PASSes both complete cases after durable authored source-plane identity9df188d79: explicit discovered parent repair, feature deletion, mixed travel, native Save/Open/reedit, incompatible-child refusal (Coree5a4d4f61 evidence-r4). R3 ordinal-shift failure remains historical. Full-tip saved-source adoption guardabbffc826/ce8f1f51f is integrated; its negative Open workflow awaits a composed build. General shell source/Native build/shared integration is in progress, not qualified. Gate1 remains21partial/0full signoffs; E17assembly is Gate2. No public deployment or filesystem-race probes.
 
 
 Canonical maintained inventory for the current WebOS Files/CAD foundation.
@@ -13,6 +13,26 @@ regression or integration status changes. Audit receipts are evidence, not
 competing specifications. This is a first pass, not exhaustive safety proof.
 Third-party editor/kernel internals, games and future physics are outside this
 pass unless they affect the shared workflow.
+
+## Authored source identity and native adoption — 2026-11-07
+
+Source-plane IDs derive from canonical saved producer IDs, independent of
+replay order or other model allocations. Explicit Worker body IDs do not
+consume the legacy generated-shell counter. Actual E19 R4 qualifies deletion
+and explicit parent repair with Save/reopen; arbitrary topology repair remains
+separate. Never reserve dummy ordinals or silently remap a missing source.
+
+| Native document transition | Required invariant | Evidence/state |
+|---|---|---|
+| Stage saved sources → evaluate candidate | Existing restore transaction owns staging and rollback | Existing shared native path |
+| Read and set a sketch on a real face | Record actual adoption privately, retain it if face is consumed | Registry sourcece8f1f51f |
+| Full tip → seal/publish | Every saved source ID was adopted | Source guardabbffc826; whole-flow pending |
+| Missing source owner → refuse | Typed UNRESOLVED_SKETCH_SOURCE; close candidate, roll back staging | Whole negative Open proof pending |
+| Prefix evaluation → display | Future saved sources may remain unevaluated | Completeness intentionally not claimed |
+
+No additional document model or synchronized acceptance flag is introduced.
+The current source-ID semantics do not require migration of obsolete test files;
+unmatched sources must be rejected clearly rather than opened as empty geometry.
 
 ## Cold-mirror absence and read readiness — 2026-11-07
 
