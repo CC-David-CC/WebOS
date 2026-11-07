@@ -24,6 +24,21 @@ records public R4 scoped passes, missing shared workflows and the active queue.
 The beta-and-hardcoded-agent prerequisite passes; the full gate does not.
 Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
 
+## Representation and persistence contract —2026-11-06
+
+The native project preserves the authoritative design: parameters, sketches,
+constraints, feature dependencies/identities and material assignments. The
+selected kernel evaluates its B-rep geometry for a specific design revision.
+Display tessellation, manufacturing tessellation and interchange exports are
+derived representations, with independent quality/tolerance requirements.
+STEP hands off evaluated CAD geometry; core3MF hands off manufacturing geometry,
+units, parts/groups and supported material information. Neither export replaces
+our editable native project or promises recovery of its feature history. Native
+project import/reopen is required; general STEP/3MF import is not this gate.
+Every derived result must identify its source revision; stale/last-valid results
+must remain distinguishable from successful regeneration of the current design.
+
+
 ## Current source-trust rule and immediate substep
 
 Latest explicit user direction: **all JSketcher features are suspect and are

@@ -29,6 +29,9 @@ The pattern test covers source/seed/count/spacing edits, creation/edit UndoRedo,
 refusals and native Save/server sync/two fresh Open cycles. Root independently
 checked12 native snapshots and both6627-byte native files.
 [Scope, retained first-run failure and portable evidence](../test/agent-cad-corpus/source-bound-pattern/README.md).
+A separate actual-browser run accepted all17 exported recipe commands and native
+Save/sync. Fixture20923 is now stopped; private state, Python/Caddy, port and
+owned browser targets are gone. Shared Chrome remains alive.
 Atomic edits and region descriptors are merged. Region descriptors passed44
 pure controls plus9 real semantic Worker cases and genuine client cancellation
 checks; signed E04/E05 replay/save/reopen remains pending. Existing driving-
