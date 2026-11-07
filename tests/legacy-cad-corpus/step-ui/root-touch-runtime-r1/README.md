@@ -20,3 +20,8 @@ Only new private test accounts; no account/key/state copying or public deploy.
 Superseded20940 had0matchingbrowser targets, verified exactargv/cwd and stopped
 normally. After exactR730backup comparison, only its generated package/public
 staging were removed (927281351bytes). Source/private state remain; receipt here.
+
+R3 completed: actual three viewports/three exports/six cancelsPASS. Root checks
+committed evidence independently; `root-committed-check.json` records scope.
+The title's original pending wording preserves the pre-run freeze; current
+result is `../evidence-r3/README.md`. No full Gate1/public deployment claim.
