@@ -1,4 +1,16 @@
 # WebOS work queues and progress ledger
+## Next shared boundary implementations — 2026-11-07
+
+CAD617da07c4 integrates3prepared contract packets. Root repeats13mesh/11drawing
+BEFORE observations PASS. Manufacturing9observational groups PASS;4required
+publication regressions remain FAIL (joint assignment/rebind journal+tip,
+no-op token churn, notifications). These are open requirements, not green gates.
+Implementation lanes: PM/Craft+Worker metadata preparation (one owner); isolated
+mesh Worker/bootstrap (no default/catalog); drawing codec/validation only (no
+concurrent manager edits). Do not enable drawing input before full manager/host
+retention. E22 remains missing; full Gate1 counts unchanged.
+[Root evidence](evidence/cad-next-shared-boundaries-root-20261107/README.md).
+
 ## Save UI qualification — 2026-11-07
 
 Actual File-menu Save **PASS** at phone390×844touch,1080p and4K:
