@@ -19,7 +19,9 @@ Retain watcher unsubscribe custody until successful return. Activation failure
 preserves old custody; repeated successful release is a no-op. Provider failure
 leaves release unconfirmed; disposal reports it and continues other cleanup.
 No crash cleanup promise. 70 Save/cleanup plus111 retained controls pass using
-actual host functions and synthetic providers. Fresh signed proof remains next.
+actual host functions and synthetic providers. Fresh signed normal proof also
+passes: three real native Saves, D10→D14 edit, fresh-session Open and unchanged
+reopened bytes. Scope/pins: native-save-outcomes/signed-evidence-r1.
 See test/agent-cad-corpus/native-save-outcomes/repair-evidence-r1.
 
 ## Counting and representation

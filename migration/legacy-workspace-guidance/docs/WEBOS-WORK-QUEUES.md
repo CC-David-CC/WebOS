@@ -41,7 +41,7 @@ remains. Acknowledgement survives later errors; malformed receipts cannot
 publish association/baseline; falsey primary causes survive. Activation failure
 retains cleanup custody. Provider unsubscribe refusal is not reported released
 and does not stop other window cleanup. Fresh signed Save/server/freshOpen proof
-is pending; private20942 remains older Desktop5b5/Coref714. No deployment.
+subsequently passes on20943; superseded20942 is retired. No deployment.
 [Evidence](../test/agent-cad-corpus/native-save-outcomes/repair-evidence-r1/README.md).
 
 CAD **8b8adfc7b** includes pure generic material preparation, drawing-definition
@@ -65,7 +65,7 @@ actual signed f714/Core +5b5fb6432/Desktop runtime also passes4normal exports
 receipts/state and matching browser/server bytes. Independent ZIP/XML mesh and
 DXF-coordinate checks pass. No new generic manufacturing or fresh STEP-reader
 claim. Current isolated fixture20942;20941 retired after exactR730backup,
-preserving source/private state. Native Save settlement has component repair; fresh signed proof remains pending.
+preserving source/private state. Native Save settlement subsequently has component and signed normal proof (latest checkpoint above).
 [Proof and scope](../test/agent-cad-corpus/export-outcomes/signed-evidence-r1/README.md).
 
 Files remains accepted in its tested foundation scope. Gate1 remains **20 partial,
