@@ -12,6 +12,21 @@ Visitor networking policy, 2026-11-06: **all server outbound relaying is disable
 
 Current mechanical integration: [signed mechanical path, remaining integration and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
 
+## Latest bounded result — signed document units
+
+Frozen CADf770a52a5/desktopf4c4d63e5 passes15 signed rows: actual menu/public
+unit changes, exact canonical model/mesh invariance, no new Worker dispatch,
+authored Undo, window isolation/New and normal Save/server sync/fresh Open.
+Root checked6 native snapshots and saved envelopes identical except presentation.
+Opaque journal inspection tokens can change; targets/cursor/authored state do not.
+[Evidence and remaining paint/UI limits](../test/agent-cad-corpus/display-units/RESULT.md).
+Fixture20922 is fully stopped and private state/processes/port/targets cleaned.
+
+Shared pattern commands/history/bridge are integrated and awaiting signed full
+part qualification. Atomic edits are merged; semantic region descriptors and
+existing driving-dimension edit/removal are separate active P0 lanes.
+No new deployment or exercise signoff; Gate1 remains21 rows, E17/C10 is Gate2.
+
 ## Active next slices — 2026-11-06
 
 Pattern component/native proof and root ledger/authored operation are integrated;
