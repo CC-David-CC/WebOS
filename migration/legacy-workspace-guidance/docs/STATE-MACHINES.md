@@ -191,6 +191,18 @@ ordinary missing dependency; that staging atomicity defect remains OPEN. It is
 not a user file mutation. Fresh owned qualification directories avoid relying
 on old staged output, without claiming the defect is fixed.
 
+AR01/C05 confirmed shared Arc edit gap: signed quarter-Arc sweep creates,
+saves and reopens, but inspection returned zero Arc point IDs and coordinate
+admission excluded Arc. CAD6725b03eb repairs both through existing native IDs,
+transactions, solver and independent verifier.8 genuine Worker controls and15
+retained service groups PASS;36 new-test Workers retired; TypeScript PASS.
+Independent review and repeat8controls pass. After-fix signed app run pending.
+
+RC01 actual immutable helper/browser controls PASS on9c6dc2eb2/50ffd4e69:
+external same-window New/Open make old helper refuse with accepted state intact.
+See sweep/signed-document-scope-evidence-r1. This closes bounded replacement
+proof, not all interrupted recipe-step cases or receipt adoption scenarios.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |

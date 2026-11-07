@@ -340,6 +340,22 @@ curved-sweep or full-row qualification. R2four-case browser rerun remains live;
 E17assembly remains Gate2. Updated full chart is
 `docs/evidence/CAD-GATE1-BASELINE-20261106.md`.
 
+SignedR2 is terminal FAIL: disk/annulus complete bounded workflows; forward
+quarter creation/UndoRedo/Save/sync/freshOpen pass. Actual missing Arc inspection
+and coordinate admission blocks public path editing, not native sweep creation.
+Raw evidence e599665e8 retained. CAD6725b03eb repairs actual Arc point discovery
+and editing:8new realWorker+15retained service controls, TSC and independent
+review/repeat PASS. Fresh R730 combined Arc R4 build is running; unchanged
+four-case runner waits newpins. No guessed IDs or rawsource workaround.
+
+RC01 actual-export browser control f45cf9436 PASSES external same-window
+New/Open refusal, preserving counters/material/journal/native state. Root repeats
+12savedfile/24native-observation checks from failedR1/R2; fullruns remainFAIL,
+pointclassification unavailable. Root23offline oracle/adapter controls pass.
+Evidence under sweep/root-runtime-r1. Native E15 ruled two-section loft and
+shared read-only native point observation proceed in separate lanes; neither
+is a completed shared workflow yet. All docs/source/evidence remain LAN-backed.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
