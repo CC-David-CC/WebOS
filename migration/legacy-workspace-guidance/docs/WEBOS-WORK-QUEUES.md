@@ -166,6 +166,14 @@ R730 copy, reclaiming297762524 bytes; exact manifest/cleanup is retained in
 `test/agent-cad-corpus/retained-plate-after-revolve/root-cleanup.json`. R2 package
 and all source/evidence remain available; shared Chrome19329 is kept.
 
+CAD62fcf04b3 unifies backend-history and resource-budget operation membership
+in one immutable vocabulary and adds sweep. Both profile/path sketches remain
+explicit fast-save dependencies, propagated through downstream generic bodies.
+Unknown/unqualified sweep builds still refuse; no catalog promotion. Five new
+policy controls pass (67 with retained source/protocol/revolve controls), with
+TypeScript clean. The production54ce component stages successfully with its
+manifest pinned; its actual browser driver is being prepared, not yet run.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as

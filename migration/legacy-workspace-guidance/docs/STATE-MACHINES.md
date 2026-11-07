@@ -103,6 +103,13 @@ browser-only rows with3 saved files, stable settled ownership counts and four
 owned contexts released. This proves bounded ordinary composed lifetimes, not
 new termination-fault injection, RSS reclamation or every C05 transition.
 
+CAD62fcf04b3 derives backend ownership and native-result budget membership from
+one immutable authored-solid vocabulary, including sweep. C05 fast-save source
+dependencies include both profile and path through generic body ancestry.
+Five policy controls pass (67 with retained controls), TypeScript passes. This
+does not register a backend or validate the new operation; unsupported builds
+remain explicit refusals and full source edits still require atomic replay.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |
