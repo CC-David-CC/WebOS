@@ -77,3 +77,18 @@ in Node through actual public registry transport; a separate browser-only build
 control follows and will be recorded distinctly. This workflow does not qualify
 all22Gate1 features, arbitrary hole patterns, native point classification or
 manufacturing fitness. Count1/project-parameter bindings remain unsupported.
+
+## Independent root readback
+
+`root-check.py`/`root-check.json` independently check12 recorded native
+volumes/bounds, two6627-byte saved source files and their SHA256/semantic feature
+chains. Largest analytic-volume difference is4.3655745685100555e-11mm³. Every
+settled sample has exactly one retained detached owner and zero native mounts,
+candidates or accepted owners, with cleanupFailed false. These are ownership
+records, not RSS/heap reclamation measurements. The initial root checker used
+the wrong display name DATUM_PLANE for the actual authored PLANE operation;
+correcting that test spelling required no product or geometry change.
+
+The served-browser-only full recipe is being checked separately. R2 executes
+the exact example through Node transport into the real public registry; its
+actual served-module check covers export/import and readonly inspection only.
