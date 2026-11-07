@@ -26,3 +26,11 @@ Source is frozen before this whole-file oracle runs. No isolated predicate tests
 runtime changes, new browser authoring or fabricated successful geometry are part
 of this extension. This remains a bounded measurable fixture oracle, not a
 general embedding validator or slicer/physical-print qualification.
+
+Actual complete-output check: PASS, source5e9d18e44. Three exported files, six
+independent part mesh checks: plate residuals0.650928483/0.813660604/0.813660604mm3
+are below measured sag bounds0.976464543/1.220580429/1.220580429mm3. Each box has
+exact volume6000mm3 and the identical oriented triangle digest before/after the
+plate edit and fresh Open. Edited/reopened plate triangles also agree exactly.
+Both scoped `main` region mappings and all runtime/file/assignment bindings pass.
+Portable result and source-bound producer record are in `two-object-evidence-r1/`.
