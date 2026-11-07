@@ -71,7 +71,7 @@ not automatically lifecycle machines. Unreviewed rows are not proof of safety.
 | WR01/W01 | P2 cleanup contract | Falsey cleanup throws fail to latch; throwing close accessor strands a reservation. | Injected faults, not observed kernel incidents; repair integrated at CAD061551b93;22 focused/retained resource controls pass. |
 | WR02/W02 | P2 direct Worker boundary | Duplicate initialization stalls; concurrent same-token work creates two native names but retains only one token. | Genuine Worker reproduction. Normal controller rejects concurrency; gate repair integrated at CAD920dc619d. Six direct-Worker controls plus new/retained native corpus pass; combined app replay pending. |
 | MG01/C05 | P2 service reentrancy | Final caller guard can accept a newer display edit/start a pipeline, then the old setter commits. | Repair integrated at CAD94cf5fa19;5 regressions +14 retained manager controls pass. No public incident/new signed-build claim. |
-| WR03/W02+W03 | P2 termination-fault contract | Throwing Worker termination strands readiness/pending promises; the same pattern occurs in three disposable clients. | Controller repair integrated at CAD334ceba19;44 metadata/resource controls and3 actual Chromium post-termination injected faults pass. Three client recurrences reproduced; repair and allocation fence in progress. No ordinary termination incident claim. |
+| WR03/W02+W03 | P2 termination-fault contract | Throwing Worker termination strands readiness/pending promises; the same pattern occurs in three disposable clients. | Controller repair integrated at CAD334ceba19;44 metadata/resource controls and3 actual Chromium post-termination injected faults pass. Three-client repair integrated at CAD625eed661:51 controls and9 genuine Chromium CPU Worker checks pass, including queued allocation fencing. No ordinary termination incident or composed-app claim. |
 | CG01/C03 | P1 regression, repaired | First creation required evaluated metadata; journal generation0 differed from project generation1. | CAD224f3302d signed17 Join setups plus retained6 region setups pass. |
 
 ST03 Save/late-close is a tested contract-consistent boundary, not a confirmed
@@ -164,7 +164,8 @@ tessellation/export/analysis are derived and revision-bound.
 | Controller / initializing,ready+pending | reply, deadline, abort or close | Settle each readiness/request once; clear timers/listeners even when terminate throws |44 metadata/resource controls and3 real Chromium post-termination faults |
 | Controller / closed | close again or late reply | No second termination; explicit close surfaces retained exact cleanup cause | A falsey thrown value still counts as cleanup failure |
 | Disposable source/semantic/parameter client / queued | WebLock admission | Capture lifetime/deadline/nonce before allocation; stale admission refuses | Inspected source; not implied by controller tests |
-| Disposable client / running | finish and terminate fault | Current code can strand promise/bookkeeping; repair must settle and fence later allocation | Reproduced in all three actual imported clients with injected transport; no geometry/math success claim |
+| Disposable client / running | finish and terminate fault | Settle exactly once, retire bookkeeping, retain exact cleanup cause/original operation failure; terminal module fence | Repaired in all three imported clients at CAD625eed661;51 controls +9 genuine Chromium CPU Worker checks; no full app/native claim |
+| Disposable client / queued | acquire WebLock after predecessor cleanup fails | Recheck module fence before Worker construction; refuse without allocation | Three queued-successor controls pass; one original Worker per trace |
 
 Controller busy derives from its pending owner. Native cumulative admission/name
 counters differ from live native object count; disposal does not reset the
@@ -173,12 +174,16 @@ facts into a second independent busy/ready authority.
 
 A cleanup error is terminal evidence, not proof that a Worker stopped. If
 termination throws before physical release, a client must not report successful
-cleanup or keep allocating replacement Workers. The proposed per-module failure
-fence must describe its real lifetime; closing/reopening an app does not
+cleanup or keep allocating replacement Workers. The integrated per-module failure
+fence lasts for that imported module instance; closing/reopening an app does not
 necessarily reload a shared JavaScript module. Project/hash-client coverage is
 still pending. Supporting evidence lives in the CAD repository under
-`test/state-machine-audit-workers/WORKER-CONTROLLER-FINDINGS.md`; this file remains
-the canonical inventory.
+`test/state-machine-audit-workers/WORKER-CONTROLLER-FINDINGS.md` and
+`test/state-machine-audit-disposable-clients/README.md`; this file remains the
+canonical inventory. Normal parameters compute mm(4)=4; the actual sketch Worker
+builds a10×5 rectangle and the semantic Worker prepares that generated source.
+Fault cases throw after genuine termination or hold a genuine reply through
+abort. These are component computations, not a native solid or full CAD workflow.
 
 ## F05/U06 Save acknowledgement boundary
 
