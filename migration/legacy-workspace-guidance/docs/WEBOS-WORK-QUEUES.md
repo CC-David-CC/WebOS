@@ -1,6 +1,17 @@
 # WebOS work queues and progress ledger
 ## Current STEP composition —2026-11-07
 
+STEP File-menu R3 now passes the actual390×844touch,1920×1080 and3840×2160
+flows on sameCADf714 +Desktopf869:3exports,6cancel paths, same model/source/
+revisions/resources/dirty/path and exact browser/server bytes. Phone targets are
+44px, font16; desktop remains compact. Root independently checks the committed
+packet and inspects the actual phone screenshot. The earlier R1harness and
+R2touch failures remain preserved. No physical-device/general-CAD-UI or extra
+STEP-reader claim. The inner300CADfiles are byte-identical to the signed STEP
+runtime; only outer STEP class/style changed. Current private fixture20941;
+20940retired after exact backup/no browser targets, preserving private state.
+[UI proof](../test/agent-cad-corpus/step-ui/evidence-r3/README.md).
+
 Confirmed UI qualification gap: actual390×844 STEP chooser is contained and
 uses16px text, but the selectable body row is19px high and buttons24px,
 below the frozen44px touch requirement. No phone export is qualified yet.
