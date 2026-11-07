@@ -1,0 +1,1 @@
+Complete32hole public creation/material/Undo/Redo/native Save/freshOpen passed up to initial3MF export, which exceeded encoder30s deadline. No export file written. Preserve failure; fix actual encoder and rerun fullworkflow. No filesystem race or cross-account probes.
