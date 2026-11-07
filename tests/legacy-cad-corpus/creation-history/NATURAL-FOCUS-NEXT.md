@@ -34,3 +34,7 @@ PUPPETEER_CORE_PATH=/tmp/codi-occt-release-control/node_modules/puppeteer-core \
 Repeat with a DIFFERENT new output directory and `touch-focus.test.mjs` for the separate touch control. Parent owns fixture cleanup. Actual failures/source/asset hashes must be retained. The existing offline `check-saved.mjs` can independently check a successful new creation receipt/native file without implying new native calls.
 
 Preparation validation only: Node `--check` on all3 new modules, plus unchanged historical R2 source-pin verification. No old98 app was rerun to pretend it supports the new focus expectation. No product edits or release changes.
+
+## Added current service compatibility check
+
+Before extrusion, the new runner also inspects and analyzes the genuinely public-authored rectangle's **saved single stage** using `inspect-sketch-diagnostics` and `analyze-sketch {revision,mode:'saved',faceId}`. It requires current saved-face availability and the supported version1 local estimate, with unambiguous local rank interval. Exact native snapshot/source/history and counters remain unchanged; journal content/capabilities/targets are unchanged (only its revision token is excluded from comparison). This adds one read-only row to the same10 creation rows. It is not a global freedom/satisfiability proof and supplies no multi-stage app qualification or native-file seed.
