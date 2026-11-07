@@ -12,6 +12,28 @@ Visitor networking policy, 2026-11-06: **all server outbound relaying is disable
 
 Current mechanical integration: [signed mechanical path, remaining integration and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
 
+## Latest signed integration results
+
+Exact CAD3cc1eede5/desktop4748c13cb passes both new bounded workflows on the
+real signed strict-CSP desktop. E04/E05: explicit disjoint/nested selection,
+atomic independent-loop edits, source regeneration/refusals, UndoRedo and four
+normal native Save/server sync/fresh Open/reedit files. The cross-frame array
+bug is fixed and passes the unchanged signed runner; root checked16 recorded
+native bodies and all4 saved files (maximum volume error1.82e-12mm³).
+[Region evidence](../test/agent-cad-corpus/region-descriptors/RESULTS-R2.md).
+
+Existing driving dimensions: actual SegmentLength/DiameterLength edit/removal,
+redundancy reactivation, unrelated free-loop preservation, typed length names,
+refusals, UndoRedo and three native Save/Open files pass34 recorded steps.
+Root independently checked3 native solid snapshots and the3 saved documents.
+[Dimension evidence](../test/agent-cad-corpus/driving-dimensions/README.md).
+These steps include cleanup/file rows, not34 separate CAD feature qualifications.
+
+Fixture20925 remains root-owned for the separate engine-capability test lane;
+all completed region/dimension test contexts have closed. No new beta release
+or broad Gate1 signoff. E17/C10 assembly stays Gate2;21 active rows remain open.
+Existing-feature region reselection is the next bounded shared workflow.
+
 ## Latest bounded result — signed document units
 
 Frozen CADf770a52a5/desktopf4c4d63e5 passes15 signed rows: actual menu/public
@@ -54,7 +76,7 @@ Array.prototype check at the desktop→CAD iframe boundary. Root fix3cc1eede5
 retains Array.isArray, dense own data, bounds and duplicate guards. Twelve
 cross-realm coordinator admission controls pass on that exact source, including
 old-fail/new-admit and retained malformed-data refusals. The fresh complete app
-build is running; signed R2 is required before declaring the workflow fixed.
+build and unchanged signed R2 now pass this workflow (see latest result).
 
 Driving-dimension edit/remove core99a plus REQUIRED verifier correction215f is
 integrated (rootcf882/93cf), with normal desktop adapters and Craft declarations.
@@ -63,7 +85,8 @@ negative cases reproduce that defect. Corrected verification independently
 recomputes the complete transition and passes20 groups/231 terminated Workers,
 including legitimate dependent motion and typed Arc travel. Root merged type
 check and14 host/retained adapter controls pass. Signed downstream/native-file
-qualification is still pending; component receipts are not retagged as app proof.
+qualification now passes separately on3cc1/4748; component receipts remain
+identified by their own source/build scope.
 
 ## Active next slices — 2026-11-06
 
