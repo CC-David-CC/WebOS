@@ -4,7 +4,7 @@
 
 The real32-hole workflow now PASSes through creation UndoRedo, material assignment, native Save/sync/fresh Open, depth edit20→25 and all3exports including the final cold-browser reopen. Common Files readiness fix d5da87493 is qualified for this ordinary path. Independent unchanged oracle PASSes3exports/102probes/all32holes, measured volume error bounds, units/material/provenance, and exact edited/reopened geometry equality. Frozen actual outputs: test/agent-cad-corpus/manufacturing-shared/32hole-evidence-r4; oracle proof cb23dac6c. Earlier deadline/work-limit/cold-open failures below are historical and superseded for this workflow; broader Files/geometry coverage remains partial.
 
-E06 R2 now PASSes all four complete duplicate/overlap recovery cases:56rows/eight native files, retained unrelated Point, mixed travel, extrusion and fresh Open/reedit (Core21f316599 evidence-r2). Retained plate R4 full flow and unchanged independent artifact oracle PASS after actual through-hole creation Undo repair (Desktop16748416d). E19 R4 now PASSes both complete cases after durable authored source-plane identity9df188d79: explicit discovered parent repair, feature deletion, mixed travel, native Save/Open/reedit, incompatible-child refusal (Coree5a4d4f61 evidence-r4). R3 ordinal-shift failure remains historical. Full-tip saved-source adoption guardabbffc826/ce8f1f51f is integrated; its negative Open workflow awaits a composed build. General shell source/Native build/shared integration is in progress, not qualified. Gate1 remains21partial/0full signoffs; E17assembly is Gate2. No public deployment or filesystem-race probes.
+E06 R2 now PASSes all four complete duplicate/overlap recovery cases:56rows/eight native files, retained unrelated Point, mixed travel, extrusion and fresh Open/reedit (Core21f316599 evidence-r2). Retained plate R4 full flow and unchanged independent artifact oracle PASS after actual through-hole creation Undo repair (Desktop16748416d). E19 R4 now PASSes both complete cases after durable authored source-plane identity9df188d79: explicit discovered parent repair, feature deletion, mixed travel, native Save/Open/reedit, incompatible-child refusal (Coree5a4d4f61 evidence-r4). R3 ordinal-shift failure remains historical. Full-tip saved-source adoption plus canonical duplicate-producer validation now PASS the complete native Open/recovery workflow (Core201c23e16 native-open-integrity-evidence-r2). Reference R5, retained plate R5 with independent3MF oracle, and contradiction recovery R1 also PASS (Coreb43054175). Mixed ordinary Segment/closed Circle authoring/extrusion/travel/native reopen passes (Core201c23e16 mixed-open evidence-r1). General shell source/Native build/shared history/public integration is composed and normal build succeeds. Complete R3 accepts box/shell but fails obsolete point-query build admission; source5779b218f fixes it and awaits full rerun. Shell geometry/workflow is NOT qualified. Gate1 remains21partial/0full signoffs; E17assembly is Gate2. No public deployment or filesystem-race probes.
 
 
 Canonical maintained inventory for the current WebOS Files/CAD foundation.
@@ -25,9 +25,9 @@ separate. Never reserve dummy ordinals or silently remap a missing source.
 | Native document transition | Required invariant | Evidence/state |
 |---|---|---|
 | Stage saved sources → evaluate candidate | Existing restore transaction owns staging and rollback | Existing shared native path |
-| Read and set a sketch on a real face | Record actual adoption privately, retain it if face is consumed | Registry sourcece8f1f51f |
-| Full tip → seal/publish | Every saved source ID was adopted | Source guardabbffc826; whole-flow pending |
-| Missing source owner → refuse | Typed UNRESOLVED_SKETCH_SOURCE; close candidate, roll back staging | Whole negative Open proof pending |
+| Read and set a sketch on a real face | Record actual adoption privately, retain it if face is consumed | Registry sourcece8f1f51f; complete Open proof PASS |
+| Full tip → seal/publish | Every saved source ID was adopted | Complete native Open integrity R2 PASS |
+| Missing source owner → refuse | Typed UNRESOLVED_SKETCH_SOURCE; close candidate, roll back staging | Native Open integrity R2 typed refusal/recovery PASS |
 | Prefix evaluation → display | Future saved sources may remain unevaluated | Completeness intentionally not claimed |
 
 No additional document model or synchronized acceptance flag is introduced.
@@ -782,3 +782,14 @@ Related families remain W02/W03; this does not add a second document coordinator
 The native-project Save host catch has a similar source pattern and remains an
 open integration follow-up; export component tests do not qualify that route.
 No filesystem race/security test, private state copy or public deployment occurs.
+
+## Registered engine publication proofs — shell whole-run finding
+
+Owner.requireCurrent orchestrates its synchronous registered proof set. Those
+proof callbacks must be leaf checks: use captured lifetime/source validity and
+private native/result checks, never recursively invoke owner.requireCurrent.
+Keep the owner's recursion guard. Full shell R2 exposed re-entry;05df0cc9c
+repairs the callback. R3 proceeds to accepted shell but later native-point
+capability admission still blocks full qualification. Source5779 uses the exact
+registered build singleton plus pointObservationVersion1 and installed policy,
+replacing a stale second whitelist. No caller-supplied capability is authority.
