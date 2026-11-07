@@ -20,6 +20,24 @@ pure canonical capture; explicit autosave remains separate. Currentness uses the
 actual sketch namespace instead of unrelated project-cache writes. This new
 composition still requires its complete workflow run; no per-step testing next.
 
+## Complete drawing workflow PASS — 2026-11-07
+
+Core15c0f1fb9/Desktop0e348d617 actual signed app, driver7031d5de1, passes both
+original and negative-datum cases:56rows,6nativeV3 Save/server-sync/freshOpen
+cycles,8SVG exports with matching browser/server bytes. Actual source/native
+measurements remain correct through150×30/depth25/D14 edits, mixed shared travel,
+reopen/reeditD12, valid unresolved references persisted/exported/reopened and
+explicitly repaired, drawing removal/travel and final Save/Open/export.
+Frozen evidence Core8d731c99d: test/linked-drawing-native-binding/evidence-r5.
+Named OCC agent drawing workflow qualified; broader references/layout/standards,
+human editing and other engines are not established. E22is now partial with a
+complete named workflow, not missing. Gate tally21partial/0missing complete
+workflows/0full exercise signoffs. All21active exercises remain in scope.
+
+Modern E19 services+journal and shared Craft/UI deletion source are integrated,
+public adapters pending. No E19runtime run yet.32hole export scheduling repair
+is still active; no claim that the timeout is fixed.
+
 ## Drawing first complete run and current fixes — 2026-11-07
 
 The actual signed drawing run Coreb955/Desktop9b3 built the real part through
