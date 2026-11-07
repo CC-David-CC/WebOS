@@ -13,3 +13,11 @@ Native runtime remained the real owned Boolean-history mount: JS `dd666902fe926d
 First failures are preserved: R1 inspected the lazily installed desktop command registry before launching its first app; the harness now treats an absent pre-launch registry as empty. R2 incorrectly required a per-feature `canEdit` field; the real selected-profile contract uses report-level `ready` and feature identity. The harness now uses that actual contract. No product change or expected app pin was needed for either correction. R3 used the same frozen app and passed.
 
 Actual annotation painting remains **untested**; source-method formatting tests are separately qualified in CAD `9934efc3f`. A genuine selectable Worker-solid MEdge measurement UI path was not exercised or claimed. Area/volume UI remains unqualified; only its dimension-correct formatter has source controls. This result establishes the bounded document presentation/shared menu/persistence workflow, not full Gate 1. All runner-owned contexts are closed; the parent retains fixture/process cleanup ownership.
+
+Root readback independently checks six recorded native metric snapshots and
+saved envelopes differing only by presentation. Worker counters remain15
+creations/21 messages across the unit switch. The initial root checker compared
+the complete journal object and stopped at a changed opaque inspection revision;
+before source/log are retained. All authored journal fields match when excluding
+only that token. No product/runtime assertion changed. Fixture20922 cleanup is
+verified: Python/Caddy/private state/port/targets gone, shared Chrome kept.
