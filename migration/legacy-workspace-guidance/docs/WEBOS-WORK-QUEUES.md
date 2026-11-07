@@ -536,6 +536,28 @@ No registered shared E15 workflow or full exercise pass is claimed.
 - [ ] Gate1 remains19 partial/2 missing complete workflows/0 full signoffs;
   E17 assemblies stays Gate2. No beta/live runtime promotion in this checkpoint.
 
+### Current loft fixture and measured replay cost — 2026-11-07
+
+- [x] Loft inherited discovery/native-point policy repaired fa7c89f42 and proof
+  39ad07f36 integrated. Root independent checker PASS:4 admission/5 policy/
+  24 retained groups,4 genuine native results/12 point classifications,0 live
+  owned Workers. Default/unstaged builds unchanged. Whole same-history exact
+  backend requirement remains enforced; no automatic kernel switching.
+- [x] Separate normal combined runtime39ad07f36/Desktop90a4bcf48 built and
+  private20938 started.251files/370857213bytes streamverified remotely+locally;
+  18 retained native assets byte-identical. Byte verification is not app acceptance.
+- [ ] Run signed two-circle loft create/radius-edit/travel/Save/freshOpen/native
+  point proof. Independent saved-source analytic oracle90a4bcf48 passes3 groups.
+  Full E15 still requires source-plane edits and remaining supported domains.
+- [x] Actual passive replay audit79a4bf7a7 independently passes: saved32 Open
+  created194 Workers (128 sketch/64 semantic/1 native/1 validator), query193
+  (128/64/1). All retired; saved bytes and read-only native state unchanged.
+  Wall observations44.685s/41.642s include sampling; not a general benchmark.
+- [ ] Qualify candidate-owner solved-source-pair reuse, preserving2 genuine
+  independent reconstructions per unique input, all semantic/native evaluations,
+  currentness/publication guards and prompt retirement. No cross-candidate cache
+  or native result sharing. Source proposal is not an achieved speedup.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
