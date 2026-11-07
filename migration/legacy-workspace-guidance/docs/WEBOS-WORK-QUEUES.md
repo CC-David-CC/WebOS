@@ -4,7 +4,7 @@
 
 The real32-hole workflow now PASSes through creation UndoRedo, material assignment, native Save/sync/fresh Open, depth edit20→25 and all3exports including the final cold-browser reopen. Common Files readiness fix d5da87493 is qualified for this ordinary path. Independent unchanged oracle PASSes3exports/102probes/all32holes, measured volume error bounds, units/material/provenance, and exact edited/reopened geometry equality. Frozen actual outputs: test/agent-cad-corpus/manufacturing-shared/32hole-evidence-r4; oracle proof cb23dac6c. Earlier deadline/work-limit/cold-open failures below are historical and superseded for this workflow; broader Files/geometry coverage remains partial.
 
-Complete E19 repair run currently FAILs: referenced-feature deletion reports AbortError instead of a dependency rejection. Complete E06 duplicate recovery passes removal, retained unrelated Point, mixed UndoRedo, extrusion and Save/fresh Open, then FAILs rectangle-dimension discovery with that Point present. Source repairs are in progress; do not count either workflow as complete. Gate1 remains21partial/0full exercise signoffs; E17assembly is Gate2. No public deployment or filesystem-race probes.
+E06 R2 now PASSes all four complete duplicate/overlap recovery cases:56rows/eight native files, retained unrelated Point, mixed travel, extrusion and fresh Open/reedit (Core21f316599 evidence-r2). Retained plate R4 full flow and unchanged independent artifact oracle PASS after actual through-hole creation Undo repair (Desktop16748416d). E19 R3 still FAILs: removing an earlier solid shifts later generated source-plane IDs, breaking independent geometry (Core25f69abfc evidence-r3). Durable authored identity source9df188d79 is integrated; full rerun pending. General shell source/Native build/shared integration is in progress, not qualified. Gate1 remains21partial/0full signoffs; E17assembly is Gate2. No public deployment or filesystem-race probes.
 
 ## Current execution directive — 2026-11-07
 
@@ -27,7 +27,7 @@ pure canonical capture; explicit autosave remains separate. Currentness uses the
 actual sketch namespace instead of unrelated project-cache writes. This new
 composition still requires its complete workflow run; no per-step testing next.
 
-## Shared cold-file Open defect blocks complete32hole signoff — 2026-11-07
+## Historical cold-file Open defect — resolved in complete32hole R4
 
 Core7ba/Desktop384 actual32hole run now completes both initial and depth-edited
 3MF exports with matching browser/server SHA, including feature-creation travel.
