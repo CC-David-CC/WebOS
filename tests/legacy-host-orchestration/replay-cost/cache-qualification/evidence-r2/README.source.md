@@ -1,0 +1,9 @@
+# Saved32 composed cache qualification R2
+
+Frozen executing source`6e011bcd1`, core`f21f91b7375f621019c830dd531e09c1569211ba`, host`dea2518a33afd944fb97757e6aa837b7c0aab2e0`. Exact251-file/runtime/body/source pins in receipt. No product/harness geometry assertion changes.
+
+Actual public Open10865.66ms:4sketch/64semantic/1native/1validator starts,70 total. Subsequent actual point query8863.63ms: fresh4sketch/64semantic/1native,69 total. All measured Workers retired and retained Worker baseline returned exact. The original32 outputs/source/body IDs/intents/history/counters/native40πmm³/bounds and5 actual native classifications passed unchanged readers/oracle. Accepted state/revisions/resources stayed exact for readonly query. Saved21257B SHA62747420b840c230cdb3b6eb29b552b5eb3c4045cf9455d087d226d5f7292529 unchanged. No Save/authoring/new account in this phase;0 owned fixture targets aftercleanup.
+
+Main observation is scoped, **not full responsiveness qualification**. Open staging fallback installed11.115ms into document/readystate loading; early-bootstrap blindspot=true, bufferedlongtask observation accepted. Both outer andCAD scopes saw190/76ms tasks and≈200ms max RAF gap; they overlap and are never summed. Query scopes saw no≥50ms task and≈16.67ms max RAF interval, with accepted object references unchanged. Buffered acceptance/absence of longtasks is not proof of complete/zero main work; hidden/staging RAF limits remainexplicit. Old R1 missing-staging checkerfailure and190/126ms observation stay unchanged.
+
+Independent checker status deliberately says PASS_FUNCTIONAL_COUNTS_WITH_SCOPED_MAIN_OBSERVATION. No zeroRAM/coldnetwork/phone/universal performance/fullGate1 claim. Source inspection for the oracle lies outside measuredquery interval. Latencies are observations from thisfixture, not controlled causal cache speedup estimates; prior594/d633194/193-worker proof remains original.
