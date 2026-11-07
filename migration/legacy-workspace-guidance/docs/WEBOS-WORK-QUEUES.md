@@ -586,6 +586,23 @@ No registered shared E15 workflow or full exercise pass is claimed.
 - [~] Current Gate1 tally:20 partial/1 missing shared workflow(E22)/0 full signoffs.
   E17 stays Gate2. Presence of a scoped working loft is not full E15 qualification.
 
+### Verified source-proof reuse and native metrology follow-up — 2026-11-07
+
+- [x] CADf21f91b73 integrates private candidate source-proof reuse; root genuine
+  10group/40Worker and15owner repeat plus TypeScript pass. No extra deep clone.
+- [x] Private20937 retains original saved32 bytes/account state. Root checks R2:
+  70Open/69query Workers,4source+64semantic+1native per owner, Open10.866s/query
+  8.864s,5native points and exact saved/source/state preserved.
+- [~] Main observation is scoped: late staging install11.115ms leaves early
+  blind spot; Open190/76ms tasks remain. No full responsiveness or RAM guarantee.
+  R1 missing-frame checker failure remains; final four-case proof awaits integration.
+- [x] Same-BRep comparison0ffcca87 identifies default integration error.
+  Adaptive1e-10 passes unchanged1e-6 oracle without geometry change. Native
+  fix4d086f46/evidence39d47907 passes reporting/Boolean/plate controls.
+- [ ] Experimental adaptive Worker registration and unchanged full-app loft rerun.
+  Old pinned builds/default remain; no silent backend substitution.
+- [ ] Shared source-plane-depth edit integration and signed qualification.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
