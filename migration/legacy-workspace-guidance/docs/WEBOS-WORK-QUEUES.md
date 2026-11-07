@@ -558,6 +558,18 @@ No registered shared E15 workflow or full exercise pass is claimed.
   currentness/publication guards and prompt retirement. No cross-candidate cache
   or native result sharing. Source proposal is not an achieved speedup.
 
+### Confirmed host loader blocker and repair — 2026-11-07
+
+- [x] First signed loft run failed before CAD/authoring: host apps.mjs retained
+  320MiB despite builder/backend512MiB. Frozen actual failure897cdcdf9 retained.
+- [x] BR02 repair dea2518a3 shares one JS inventory policy between browser and
+  builder.6 exact loader controls pass after2failures; sparse backend/builder
+  six-case agreement passes; R73072-app build/load and129 refusal pass.
+- [x] Private20938 normalrestart exit0 at0ownedtargets; SAME account directories,
+  CAD/native/outer bytes unchanged. New frozen Desktopdea2518a3 served loader
+  and policy hashes independently verified. Root receipt in loft/root-runtime-r1.
+- [ ] Unchanged948a signed driver rerun with newDesktoppins; no E15 pass yet.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
