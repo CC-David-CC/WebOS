@@ -7,6 +7,29 @@ competing specifications. This is a first pass, not exhaustive safety proof.
 Third-party editor/kernel internals, games and future physics are outside this
 pass unless they affect the shared workflow.
 
+## Cold-mirror absence and read readiness — 2026-11-07
+
+Confirmed ordinary workflow defect: a fresh browser could report an existing
+saved CAD file absent while initial remote hydration was still running. The
+server retained exact840a8c...SHA. Source repair d5da87493 is integrated with
+CAD metadata-signal forwarding78320; whole workflow rerun is active, not yet
+qualified. It reuses actual sync/scan state and existing install notifications.
+
+| Provider condition | Required/read transition | Source behavior |
+|---|---|---|
+| Cached row or local tombstone | Return immediately; preserve local intent | No new network wait or resurrection |
+| Local miss, hydration running | Subscribe/recheck; remain unknown | Join shared sync; no false File not found |
+| Requested verified row installs | Return that row immediately | Unrelated downloads continue |
+| Successful complete scan, still absent | Return known absence for that scan | Ordinary File not found |
+| Initial scan failed/incomplete | Report readiness failure | Do not disguise uncertainty as absence |
+| Caller cancelled | Reject own waiter and release listeners | Shared sync continues |
+| Account closed | Reject old-scope waits | Existing account abort owns lifecycle |
+
+Internal sync upload/delta snapshots use local-only acquisition so a sync job
+cannot wait on itself. Public stat supports optional signal; byte/Blob/snapshot
+reads retain their cancellation paths. This is a normal saved-file Open repair;
+filesystem-race/security/other-account probes remain cancelled.
+
 ## Current composed workflows — 2026-11-07
 
 The complete signed plate/material/nativeSave/freshOpen/generic3MF/edit/rebind/
