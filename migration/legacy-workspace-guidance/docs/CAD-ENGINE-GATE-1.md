@@ -20,7 +20,7 @@ boundaries; their features remain separately qualified.
 
 Current status: **OPEN / PARTIAL**. Files is accepted; CAD qualification continues.
 The [current21-exercise Gate1 baseline](evidence/CAD-GATE1-BASELINE-20261106.md)
-records public R4 scoped passes, missing shared workflows and the active queue.
+records the latest scoped passes, failures, missing shared workflows and active queue. Older implementation-status tables below are historical snapshots; use that matrix for current status.
 The beta-and-hardcoded-agent prerequisite passes; the full gate does not.
 Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
 
@@ -46,8 +46,8 @@ Current exchange status (bounded qualification, not advertised engine potential)
 | Format | Gate role | Current state |
 |---|---|---|
 | Native project | Required editable source and reopen | Tested authored workflow subsets pass |
-| Core3MF | Required material-aware manufacturing export | Enclosure recipe passes; generic part export open |
-| STEP | Required evaluated CAD geometry export | Shared implementation missing |
+| Core3MF | Required material-aware manufacturing export | Named generic plate, separate parts and32-hole workflows plus independent artifacts pass; same-part material interfaces remain open |
+| STEP | Required evaluated CAD geometry export | Scoped shared export/reader and File-menu workflows pass; broader interchange qualification remains open |
 | DXF | 2D sketch export | Supported bounded sketch subset |
 | STL | Optional simple manufacturing mesh handoff | Legacy exporter exists; Worker solids explicitly refuse/unqualified |
 | glTF/GLB | Later visualization/sharing | Not implemented in this CAD path; no feature-history promise |
