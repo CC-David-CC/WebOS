@@ -1,5 +1,12 @@
 # Workflow state machines and invariants
 
+## Current complete-workflow results — 2026-11-07
+
+The real32-hole workflow now PASSes through creation UndoRedo, material assignment, native Save/sync/fresh Open, depth edit20→25 and all3exports including the final cold-browser reopen. Common Files readiness fix d5da87493 is qualified for this ordinary path. Independent unchanged oracle PASSes3exports/102probes/all32holes, measured volume error bounds, units/material/provenance, and exact edited/reopened geometry equality. Frozen actual outputs: test/agent-cad-corpus/manufacturing-shared/32hole-evidence-r4; oracle proof cb23dac6c. Earlier deadline/work-limit/cold-open failures below are historical and superseded for this workflow; broader Files/geometry coverage remains partial.
+
+Complete E19 repair run currently FAILs: referenced-feature deletion reports AbortError instead of a dependency rejection. Complete E06 duplicate recovery passes removal, retained unrelated Point, mixed UndoRedo, extrusion and Save/fresh Open, then FAILs rectangle-dimension discovery with that Point present. Source repairs are in progress; do not count either workflow as complete. Gate1 remains21partial/0full exercise signoffs; E17assembly is Gate2. No public deployment or filesystem-race probes.
+
+
 Canonical maintained inventory for the current WebOS Files/CAD foundation.
 Update this file and WEBOS-WORK-QUEUES.md when a state, guard, transition, defect,
 regression or integration status changes. Audit receipts are evidence, not
