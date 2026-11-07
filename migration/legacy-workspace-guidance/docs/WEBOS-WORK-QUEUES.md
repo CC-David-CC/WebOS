@@ -356,6 +356,17 @@ Evidence under sweep/root-runtime-r1. Native E15 ruled two-section loft and
 shared read-only native point observation proceed in separate lanes; neither
 is a completed shared workflow yet. All docs/source/evidence remain LAN-backed.
 
+Arc repair normal combined build now PASS at6725b03eb (innerindex0b08d64b6e20eae48c108c6a41aa4759d5d6275383fff769b4008a33bee77f36).
+Fresh signed fixture20935 runs unchangedhost50ffd4e69 and nativea9cf/e105;
+226packagefiles333,980,631bytes verified. Exactpins:
+sweep/root-runtime-r2/pins.json. Unchanged141631288 fourcase driver runsR3
+against this runtime; no assertion/domain relaxation after product repair.
+Old20934 stopped normally after zeroCDPtargets, and duplicate local app/runtime
+removed after exactR730checksum comparison, recovering708,429,245bytes.
+Source/receipts/nativeexamples remain inGit; old package onR730. Current20935
+andsharedChrome19329 remain live. Disposable testissuer/account state discarded,
+never archived as public assets. Cleanup receipt under sweep/root-runtime-r1.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
