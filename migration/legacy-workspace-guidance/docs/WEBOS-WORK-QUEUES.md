@@ -20,6 +20,26 @@ pure canonical capture; explicit autosave remains separate. Currentness uses the
 actual sketch namespace instead of unrelated project-cache writes. This new
 composition still requires its complete workflow run; no per-step testing next.
 
+## Workflow integration checkpoint — 2026-11-07
+
+Core d0d8f1a0f integrates the generic protected Native-to-encoder export route,
+pure snapshots, normal encoder Worker build, and exact embedded-shell validation.
+This composition is implemented, not end-to-end qualified. The combined app build
+found a callback return-type declaration mismatch; corrected without changing
+currentness behavior. Assemble the complete app before workflow acceptance.
+The new export-workflow driver extends genuine public creation, materials,
+Undo/Redo, native Save/fresh Open with export, edit/rebind, export and reopened
+export through My files. No per-change tests were run after the cadence change.
+
+Inactive generated dependencies/dist in /tmp/jsketcher-basic-constraints and
+/tmp/codi-jsketcher-surfacing-merge were archived byte-for-byte to
+r730:/mnt/data10tb/codi-retired-local-builds-20261107/ before local removal.
+Their source remains local; 18 inactive dependency links to retired targets were
+removed. Active dependency/process references were checked before retirement.
+Recover generated inputs from that archive or reinstall from each lockfile.
+Local available space rose from about890MiB to2.3GiB. These are dependency/build
+copies, not user files, keys or account state.
+
 ## Drawing custody repaired; controlled3MF component integrated — 2026-11-07
 
 Core48379ca3c composes V3custody/activation authority and private3MFencoder.
