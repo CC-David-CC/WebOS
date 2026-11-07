@@ -1,4 +1,18 @@
 # WebOS work queues and progress ledger
+## Printable-part command integration — 2026-11-07
+
+Desktop source adds inspect-printable-parts/assign-printable-parts through the
+existing shared manager; no parallel writer or export certification.11adapter
+controls PASS, including retained enclosure commands, currentness, old-runtime
+refusal, committed/falsey errors and disposal. Example on disk in
+apps/system/jsketcher/examples/printable-parts.md. Browser acceptance pending.
+
+R730 composed Core9ba304395 normal webpack build and TSC PASS;30emitted optional
+manufacturing assets36,906,146bytes match source SHA/size exactly. No browser
+execution yet. First input-path failure retained; corrected approved packaged
+adaptive/STEP bytes verified against exact build-script pins. No product code
+change required for that operator path error.
+
 ## Integrated shared manufacturing and observation ownership — 2026-11-07
 
 Core9ba304395: joint manufacturing assignment/journal/tip publication integrated;
