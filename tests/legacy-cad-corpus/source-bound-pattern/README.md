@@ -1,8 +1,12 @@
 # Signed generic source-bound plate + linear hole pattern
 
-**Prepared, not executed.** This new driver must wait for exact fresh combined
-core/desktop/outer-bundle pins and the parent-owned signed fixture. No older
-app is substituted as qualification of the new commands.
+**PASS22rows on the first corrected signed run R2.** Exact CAD source
+183bd3a4d0a2a37463742aa2c6f93f9f77b978c0, desktop
+0fdc2a7f80808a2b84a1f3549f287f94010bcb74, appb32cf70a and outere867f675
+were verified on parent-owned strict signed fixture20923. All73inner assets and
+outer index54683d9b are pinned in evidence/r2/receipt.json. R1 remains FAIL from
+an incorrect new harness detached-metadata assumption; its receipt/log and exact
+source contract review remain in evidence/r1. No product changed for this fix.
 
 All mutations use the actual registered desktop commands. The exact reusable
 module `apps/system/jsketcher/examples/source-bound-pattern.mjs` is imported by
@@ -22,7 +26,7 @@ example takes four actual original line connector records, chooses one and its
 unique opposite by disjoint incident IDs, then chamfers the two remaining IDs.
 It uses the generic single-part owned path, never the old bracket helper.
 
-Planned checks: creation append Undo/Redo; source150×30/depth25 and seedD14 full
+Completed checks: creation append Undo/Redo; source150×30/depth25 and seedD14 full
 replay; count2/spacing30 edit Undo/Redo; count4/spacing15; overlap/outside/count1/
 over-budget/stale refusal preservation; public inch display without canonical
 model/chronology changes; normal native Save+server sync, fresh Open, count/
@@ -55,3 +59,21 @@ node test/agent-cad-corpus/source-bound-pattern/check-saved.mjs /tmp/new-pattern
 Puppeteer24.35.0 and trusted ordinary fixture origin are required. Source and all
 actual app/Worker/native asset bytes must match the supplied frozen pins. Initial
 failures are retained and reported; no weakened assertions or fake success path.
+
+The22rows include3context cleanup rows and2normal Save/sync rows. Source width/
+height, depth25 and seedD14 replay preserve all original IDs and the semantic
+pattern's immutable fields. Count4/spacing15 and reopened count3/spacing20 save
+only11pattern parameters. Independent Node replay checks both actual saved
+outputs and12detached preview observations. Initial native volume is
+94185.04470928965; count3 after source150×30/depth25/D14 is99576.43911015049.
+Each observed settled replay/open retains exactly one detached metadata owner,
+zero candidates/active accepted owners/native mounts and cleanupFailed=false;
+counts are exactly stable across repeated cycles. This is not a process RSS or
+WASM used-memory measurement. All3owncontexts/targets release; sharedChrome stays.
+
+The actual served example import/export and readonly inspection passed in the
+browser. Full recipe execution in R2 remains the exact reusable module running
+in Node through actual public registry transport; a separate browser-only build
+control follows and will be recorded distinctly. This workflow does not qualify
+all22Gate1 features, arbitrary hole patterns, native point classification or
+manufacturing fitness. Count1/project-parameter bindings remain unsupported.
