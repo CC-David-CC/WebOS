@@ -147,6 +147,18 @@ explicit gap: detached accepted models have no live native shape handles. Any
 new query path must own temporary re-evaluation and lifetime binding rather than
 borrow dead resources or silently promote preview classifications to native.
 
+RC01/U06 recipe-target lifetime (unpublished helper, transport counterexample):
+the window/session identity remains current after a successful same-window
+New/Open, so a multi-step recipe that reacquires fresh revisions can continue
+writing into the replacement document. Per-command scope does not establish
+whole-recipe intent. This is not an observed live corruption incident; the
+signed browser reproduction remains required. A repair lane now owns stable
+document binding through the public registry, with an atomic pre-dispatch
+expected-document guard and one pin across recipe steps. Inspect-then-execute
+alone is insufficient. Explicit New/Open receipts and existing account/window
+committed/unknown outcomes must retain their semantics. Regression/repair and
+actual signed acceptance are pending; the sweep example remains unqualified.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |

@@ -254,6 +254,17 @@ changes. Never expose/reuse dead native handles. Keep full E14/Gate1 open where
 the remaining qualification requires this evidence; the metric-only adapter is
 a bounded supplement, not a redefinition of full acceptance.
 
+Recipe review found RC01: source helper pins window/account, but not document
+across multiple accepted commands. A transport-only control reproduces later
+writes after same-window document replacement; no live/native incident claimed.
+The dedicated repair lane now owns registry-level expected-document dispatch
+guard, authoritative document-signal binding, whole-recipe pinning and regressions
+for New/Open/reentrant argument boundaries. A check-before-call without dispatch
+binding is not sufficient. Existing explicit New/Open and commit/outcome handling
+must remain functional. Gate's final signed workflow must include the genuine
+replacement control before the example is called qualified. Core sweep discovery
+and public command implementation continue in a separate, nonconflicting lane.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
