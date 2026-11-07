@@ -430,6 +430,16 @@ integration is in progress; source semantic adapter is a separate owned lane.
 [Transport-only evidence](../test/agent-cad-corpus/loft/host-transport/receipt.json).
 E15 remains missing as a shared app workflow; no deployed/Save/Open claim.
 
+Required E15 dependency: a shared authored source-plane placement edit. Loft
+separation derives from the actual two planes; it is not a loft depth field.
+The current empty-plane creation command authors placement, but no shared
+placement-edit command was found. A proper edit must atomically update PLANE
+intent plus the affected sketch boundary-frame metadata under the existing
+candidate/journal transaction, retain feature/source IDs and local sketch intent,
+regenerate dependent solids, and prove rejection/Undo/Redo/Save/Open. Rebuilding
+fresh planes or adding saved loft coordinates is not equivalent acceptance.
+
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
