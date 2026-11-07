@@ -4,8 +4,9 @@
 import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';
 import {canonical} from '../strict-join/oracle.mjs';
 export const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
-export async function harness(browser,base,out,record){
- let context,page,frame,windowId,registered=false;const username='g1sweep'+Date.now(),password='test1234';
+export async function harness(browser,base,out,record,{existingAccount=null}={}){
+ if(existingAccount!==null){assert.deepEqual(Object.keys(existingAccount).sort(),['password','username']);assert(typeof existingAccount.username==='string'&&/^[a-zA-Z0-9_-]{1,64}$/.test(existingAccount.username));assert(typeof existingAccount.password==='string'&&existingAccount.password.length>=1&&existingAccount.password.length<=128);}
+ let context,page,frame,windowId,registered=existingAccount!==null;const username=existingAccount?.username??('g1sweep'+Date.now()),password=existingAccount?.password??'test1234';
  async function login(){context=await browser.createBrowserContext();page=await context.newPage();page.setDefaultTimeout(120000);await page.setViewport({width:1600,height:1000});await page.goto(base);await page.waitForSelector('.login-toggle');if(!registered)await page.click('.login-toggle');await page.type('[aria-label=Username]',username);await page.type('[aria-label=Password]',password);if(!registered)await page.type('[aria-label="Confirm password"]',password);await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>globalThis.desktopLab?.session?.kind==='registered');registered=true;}
  async function selectWindow(id){windowId=String(id);const element=await page.$('[data-window="'+windowId+'"] .jsketcher-app iframe:not(.jsketcher-staging)');assert(element,'Owned CAD frame required');frame=await element.contentFrame();return windowId;}
  async function refreshFrame(){return selectWindow(windowId);}
