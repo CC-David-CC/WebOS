@@ -44,9 +44,11 @@ ST03 Save/late-Close passes the existing unknown-outcome contract: local commit
 is independently proven, caller loses acknowledgement, late receipt stays inert,
 and fresh Open restores the exact model. User-directed follow-up: ordinary Close
 should wait for local Save acknowledgement (not server sync); shared host policy
-is implemented as a candidate with20 coordinator controls passing; actual signed
-host regression is pending. CAD/Text/Calculator opt in at actual local write;
-other app writer migration remains queued. Forced lifetime loss still needs honest unknown
+passes20 coordinator controls and5/5 actual signed CAD host scenarios at069/224f
+(evidence3ab74fadd), with4 saved-file checks. CAD/Text/Calculator opt in at actual
+local write. Files now adopts18 mutation sites at854787d91;32 callback controls
+pass, actual signed Files Close is pending. Other app writer migration remains
+queued. Neither069 host run qualifies laterc91 storage as a composed app. Forced lifetime loss still needs honest unknown
 outcomes. See test/state-machine-audit-cad-save/README.md.
 
 Strict Join R3 passes17 setups/70 rows/13 saved files; retained region R2 passes
@@ -63,9 +65,14 @@ Ordinary mounted-view resource disposal remains separate from saving content.
 
 The previously checkpointed source-bound revolve adapters are now integrated as
 CAD6fffd21ee (source) /7d7af1f19 (evidence), retaining the repaired semantic client.
-Root replay of14 source/planner controls passes. This is preparation, not a
-shared authored feature: no public revolve command, registered app build,
-authored replay/angle travel, native Save/Open or full E13 acceptance is claimed.
+Root replay of14 source/planner controls passes. Root0e83a0253 adds the typed
+request and source-bound owned ledger admission;7 refusal controls plus19 retained
+source/ledger controls and TypeScript pass. Real native ledger success and full
+feature registration remain pending. This is preparation, not a
+shared authored feature: candidate catalog registration is integrated at
+CAD63bca3d0d with metadata tests and real factory/native proof in progress. The
+host five-command adapter has6 protocol controls; core wiring/authored replay,
+angle travel, native Save/Open and full E13 acceptance remain unqualified.
 
 The native Worker constructor and genuine new/retained kernel component evidence
 already exist. Next: explicitly register that exact experimental native revision
