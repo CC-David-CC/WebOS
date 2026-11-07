@@ -32,6 +32,34 @@ persisted Join acceptance in CAD-ENGINE-GATE-1.md. A bounded implementation/proo
 proposal is underway alongside region-reselection qualification; this decision
 must be qualified before claiming the corresponding Gate1 feature complete.
 
+## Current candidate qualification: first-box startup defect
+
+Strict-Join signed R1 fetched the exact CAD0d815e141/desktopcf97976d9 build,
+then found a real regression in the new generic creation journal: the first box
+from an empty project rejected before any Join. Startup had project generation1
+but an empty Craft journal generation0 and null full-tip metadata. All17 planned
+Join setups remain unqualified on that build. [Preserved failure and read-only
+startup evidence](../test/agent-cad-corpus/strict-join/FAILURE-R1.md).
+
+Candidate CAD224f3302d proposes the first journal entry only for a genuinely
+empty unbound baseline, preserves the captured journal during startup, and
+publishes the current-generation journal atomically with the evaluated model.
+Stale/nonempty history checks are unchanged. Component/transport checks and
+TypeScript pass; fresh signed replay is still required. Do not mark this fixed
+from source review alone. No public deployment changed.
+
+The optional native revolve Worker adapter and its real new/retained-kernel
+component evidence are integrated. Public source-axis commands, saved revolve
+feature, shared history and E13 qualification remain missing. The experiment
+also exposed retained build-time bootstrap pins; those were aligned to the same
+reviewed Worker source with unchanged native artifacts. This is not a default
+engine promotion.
+
+Manifold investigation retains23 actual native observations, including proper
+cavities versus point/edge contacts that current public diagnostics cannot
+separate. A separate native diagnostic fork is under evaluation; the active app
+runtime remains unchanged and strict mesh Join remains explicitly unqualified.
+
 ## Same-feature region reselection: signed result
 
 Frozen CADb8712790e/desktop5c5eeba80 passes six actual signed strict-CSP setups
