@@ -20,6 +20,19 @@ pure canonical capture; explicit autosave remains separate. Currentness uses the
 actual sketch namespace instead of unrelated project-cache writes. This new
 composition still requires its complete workflow run; no per-step testing next.
 
+## Larger export workflow failure — 2026-11-07
+
+Complete two-independent-object workflow also browserPASS: plate with centered
+hole plus separate10×20×30box at[120,0,0], editplate depth20→25, Save/export/
+freshOpen/export. Independent multi-object geometry oracle pending.
+
+Complete32hole public workflow reaches successful native Save/freshOpen, then
+initial3MF encoder exceeds30second deadline. No export file was written. This
+is an open confirmed end-to-end bottleneck, not a qualified export case. Repair
+bounded processing and rerun the complete workflow; do not bypass validation.
+Frozen successful and failed receipts are under manufacturing-shared in the
+agent CAD corpus. OrdinaryD10→D14plate independent geometry/material oraclePASS.
+
 ## Complete public generic export run — 2026-11-07
 
 Core d0d8f1a0f/Desktop1a0c56dbe actual normal signed app completed public
