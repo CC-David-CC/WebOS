@@ -7,6 +7,34 @@ competing specifications. This is a first pass, not exhaustive safety proof.
 Third-party editor/kernel internals, games and future physics are outside this
 pass unless they affect the shared workflow.
 
+## Current composed workflows — 2026-11-07
+
+The complete signed plate/material/nativeSave/freshOpen/generic3MF/edit/rebind/
+Save/export/freshOpen/export path passed through the normal desktop. Independent
+ZIP/CRC/XML, saved/native/public IDs, material resources, measured bounds,
+volume, winding probes and unchanged reopened geometry also pass. Two separate
+objects pass the browser workflow; independent multi-object oracle remains open.
+The32holecase reaches Save/freshOpen but encoder30seconddeadline refuses export;
+no file is written. It remains a confirmed performance defect requiring a full
+workflow rerun. These results supersede older generic-bridge-in-progress notes
+below without qualifying untested failure transitions or all Gate1.
+
+Drawing uses existing state families rather than a second document or journal:
+
+| Owner | Transition | Required invariant | Current evidence |
+|---|---|---|---|
+| Document metadata | absent/present → prepared → publish/unchanged/refused | Frozen authored definition; exact document+geometry revisions; atomic definition/journal/token; material identity unchanged | Source integrated; full drawing run pending |
+| Read-only Craft replay | current tip → frozen candidate → Native observation → candidate released → receipt | Accepted geometry/history unchanged; same manager/document/source/frames; discard-only; no replacement of unresolved references | Source integrated; full drawing run pending |
+| Drawing SVG Worker | private observed buffers → transfer → render/refuse → terminate | Bound IDs/revisions, reference values from observation, unresolved views/dimensions explicit; no new authored geometry | Integration review active; full run pending |
+| Host derived export | inspect → choose new path → observe/encode → currentness check → browser write acknowledgement → optional server sync | Existing exclusive file owner and write settlement; close does not pretend a failed/unknown save succeeded | Generic3MF workflow passes; SVG route integrated but unqualified |
+
+Native project retains editable intent. SVG/3MF are derived revision-specific
+handoffs. Native fact availability, projection availability, encoding outcome,
+browser persistence and server synchronization are separate states. A successful
+encoder does not establish that a file was saved; a successful browser save does
+not establish server synchronization. Existing earlier sections retain historical
+source-specific failures and receipts.
+
 ## Read-capture invariant and validation cadence — 2026-11-07
 
 Snapshots and preparation are observations, not cache writes. Canonical model
