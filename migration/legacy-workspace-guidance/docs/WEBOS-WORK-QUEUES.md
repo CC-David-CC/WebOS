@@ -12,33 +12,32 @@ Visitor networking policy, 2026-11-06: **all server outbound relaying is disable
 
 Current mechanical integration: [signed mechanical path, remaining integration and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
 
-## Current bounded qualification — creation history and numerical reports
+## Current combined qualification — 2026-11-06
 
-The expanded [21-row Gate1 matrix](evidence/CAD-GATE1-BASELINE-20261106.md)
-records17 partial/four missing/zero fully qualified; E17/C10 is Gate2.
-The new edge-creation app source98fe85145 and desktop247b222e5 built and packaged
-successfully onR730; root independently checked177 package files/67 core assets.
-Fresh strict-CSP signed fixture20920 completed10 actual creation-history checks:
-public creation travel, trusted shortcuts after genuine menu focus, mixed
-create/edit chronology, rejected/accepted replacement branches, undone-prefix
-Save/sync/fresh Open and three stable resource cycles. Root independently checks
-five native metric snapshots and full fixture cleanup. See
-[creation-history evidence](../test/agent-cad-corpus/creation-history/README.md).
-The first canvas-focus precondition failure is retained; camera controls suppress
-natural focus. Root candidate b2d16f30a makes the canvas focusable and explicitly
-focuses it during enabled mouse/touch interaction; actual new-runtime proof is
-pending. No public deployment or general creation-history qualification.
+Source69a476bfa/desktop1ef1390a4, appfb9565365, passes11 actual signed
+strict-CSP combined checks plus a separate trusted-touch focus control. Includes
+normal single-stage diagnostics without document changes, real source-bound
+plate/holes/treatments, creation and mixed edit travel, natural viewport-focused
+Ctrl+Z/Ctrl+Shift+Z, rejected/accepted replacements, undone-prefix Save/server
+sync/fresh Open and three stable resource cycles. Root independently checks
+five native metric snapshots and the touch event/focus receipt. See
+[combined result and exact scope](../test/agent-cad-corpus/creation-history/NATURAL-FOCUS-RESULT.md)
+and its natural-root-checks directory. Fixture20921 is stopped; root verified
+Python/Caddy, private state, port and owned targets cleaned, shared Chrome kept.
 
-The prior broad fixture20919 exited cleanly; root verified Python/Caddy gone,
-private account state removed, port closed and zero owned browser targets, while
-keeping the shared test browser. Evidence is under the broad-pass evidence folder.
-Per-stage solver diagnostics pass production Worker component tests; the normal
-service seam is being integrated separately. Exact mesh-volume production Worker
-integration is under actual Chromium qualification. Retained tiny-box endpoint
-analysis proves the observed native volume matches rounded global endpoints;
-that difference alone is not additional kernel-error evidence. Coordinate/scale
-accuracy policy remains open. Files remains accepted; filesystem-race testing is
-cancelled and visitor server relaying stays disabled.
+All three source lanes are integrated: creation history, exact Worker mesh
+integral, and normal per-stage diagnostics. Exact-volume components pass all
+five OCI paths/20 genuine meshes/Fraction oracles and retained native corpora.
+Normal diagnostic components pass32 groups/58 real Workers with explicit context
+doubles; signed app qualification is single-stage compatibility, not a new
+multi-stage authoring claim. Source/data/rank estimates stay distinguished.
+
+Gate1 remains21 exercises:17 partial/four missing/zero fully qualified. E17/C10
+is Gate2. Next active lanes: source-relative hole-pattern Worker integration,
+document display units/persistence, and focused disjoint/nested-region missing
+cases. Root owns host integration and combined proof. No new beta deployment,
+engine change, Files reaudit or filesystem-race testing; visitor relaying stays
+disabled. Older checkpoint pending statements below retain their original scopes.
 
 ## User-confirmed stopping point — 2026-11-06
 
