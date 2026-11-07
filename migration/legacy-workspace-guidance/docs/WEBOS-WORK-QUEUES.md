@@ -1,4 +1,21 @@
 # WebOS work queues and progress ledger
+## Latest qualified Save checkpoint — 2026-11-07
+
+Fresh normal signed Save **PASS**, Desktope2da0e5b1/Coref714, private20943.
+Public New → actual100×50×20plate/D10hole → Save → publicD14edit → Save →
+fresh-session Open → Save. Three browser acknowledgements/matching server bytes;
+genuine native analytic volume/bounds; only saved source difference is diameter.
+Reopened unchanged Save is byte-identical.181component/retained fault controls
+remain separate. No filesystem race, provider injection, other-account probe,
+forced Close or deployment.
+[Proof](../test/agent-cad-corpus/native-save-outcomes/signed-evidence-r1/README.md).
+
+Root reviews Native manufacturing meshc15e49df/product0e429519 and repeats
+recorded checks:14meshes/93points per Node/Chrome set plus lifecycle/retained
+geometry/STEP/HLR PASS. Worker transport and generic3MF remain pending. Joint
+manufacturing A/J/T before controls run in a parallel lane. E22 shared drawing
+workflow remains missing. Gate1:20partial/1missing/0full; E17 stays Gate2.
+
 ## Local storage and private fixture — 2026-11-07
 
 New private20943 runs exact Desktope2da0e5b1/Coref714 Save repair; normal signed
