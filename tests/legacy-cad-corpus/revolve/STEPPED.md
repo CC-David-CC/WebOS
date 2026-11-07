@@ -35,3 +35,14 @@ stepped-signed.test.mjs and a fresh CODI_EVIDENCE. Own fresh account/context onl
 root owns fixture and shared browser. Genuine stepped proof can inform bounded
 E13 exercise qualification after it passes; it is not a universal revolve-domain
 or full Gate1 claim. Typed/project binding/generated naming remain unsupported.
+
+Actual result at frozen R2 core73c888/host36b8: **PASS14rows,4saved files**.
+Independent stepped oracle passes4rows/8before-after observations. Creation,
+source and angle Undo/Redo retain the same feature/output/source/axis/region
+IDs and counters; all four normal native Save/sync/fresh Open readbacks preserve
+raw source and exact ten-field intent. Both stepped and earlier rectangular
+saved requested signed angles were independently checked (10files total).
+Source hashes stay unchanged after execution, including every f422 executing
+file. Literal untyped XY fixture only; no human wizard/general revolve-domain,
+typed/project binding, generated naming or full Gate1 claim. Owned context
+closed/shared Chrome and root fixtures retained for root cleanup.
