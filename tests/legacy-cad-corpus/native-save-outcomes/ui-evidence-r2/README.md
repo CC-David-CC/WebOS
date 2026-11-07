@@ -18,3 +18,8 @@ and clean state before idle; assertions/source/storage expectations unchanged.
 No product changes or relaxed tolerances. Sources unchanged through run.
 3owned contexts closed; shared Chrome only disconnected. No forced Close,
 filesystem race, account probes or deployments.
+
+Fixture20943 retired after no targets/connections and exact PID/cwd/argv plus
+complete local/served/R730 byte checks. Generated package/served app removed;
+source/private state/other static assets and R730package preserved. See
+../runtime-r1/retirement.json.

@@ -23,3 +23,8 @@ probe, filesystem race, forced Close or deployment. Owned context closed;
 shared Chrome only disconnected. Private20943 exec64217 remains; intentionally
 olderCoref714 excludes later8b metadata components. Normal Save proof plus
 separate synthetic fault controls is not full persistence/Gate1 qualification.
+
+Fixture20943 retired after no targets/connections and exact PID/cwd/argv plus
+complete local/served/R730 byte checks. Generated package/served app removed;
+source/private state/other static assets and R730package preserved. See
+../runtime-r1/retirement.json.
