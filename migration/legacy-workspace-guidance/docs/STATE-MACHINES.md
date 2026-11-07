@@ -4,7 +4,7 @@
 
 The real32-hole workflow now PASSes through creation UndoRedo, material assignment, native Save/sync/fresh Open, depth edit20→25 and all3exports including the final cold-browser reopen. Common Files readiness fix d5da87493 is qualified for this ordinary path. Independent unchanged oracle PASSes3exports/102probes/all32holes, measured volume error bounds, units/material/provenance, and exact edited/reopened geometry equality. Frozen actual outputs: test/agent-cad-corpus/manufacturing-shared/32hole-evidence-r4; oracle proof cb23dac6c. Earlier deadline/work-limit/cold-open failures below are historical and superseded for this workflow; broader Files/geometry coverage remains partial.
 
-E06 R2 now PASSes all four complete duplicate/overlap recovery cases:56rows/eight native files, retained unrelated Point, mixed travel, extrusion and fresh Open/reedit (Core21f316599 evidence-r2). Retained plate R4 full flow and unchanged independent artifact oracle PASS after actual through-hole creation Undo repair (Desktop16748416d). E19 R4 now PASSes both complete cases after durable authored source-plane identity9df188d79: explicit discovered parent repair, feature deletion, mixed travel, native Save/Open/reedit, incompatible-child refusal (Coree5a4d4f61 evidence-r4). R3 ordinal-shift failure remains historical. Full-tip saved-source adoption plus canonical duplicate-producer validation now PASS the complete native Open/recovery workflow (Core201c23e16 native-open-integrity-evidence-r2). Reference R5, retained plate R5 with independent3MF oracle, and contradiction recovery R1 also PASS (Coreb43054175). Mixed ordinary Segment/closed Circle authoring/extrusion/travel/native reopen passes (Core201c23e16 mixed-open evidence-r1). General shell source/Native build/shared history/public integration is composed and normal build succeeds. Complete R3 accepts box/shell but fails obsolete point-query build admission; source5779b218f fixes it and awaits full rerun. Shell geometry/workflow is NOT qualified. Gate1 remains21partial/0full signoffs; E17assembly is Gate2. No public deployment or filesystem-race probes.
+E06 R2 now PASSes all four complete duplicate/overlap recovery cases:56rows/eight native files, retained unrelated Point, mixed travel, extrusion and fresh Open/reedit (Core21f316599 evidence-r2). Retained plate R4 full flow and unchanged independent artifact oracle PASS after actual through-hole creation Undo repair (Desktop16748416d). E19 R4 now PASSes both complete cases after durable authored source-plane identity9df188d79: explicit discovered parent repair, feature deletion, mixed travel, native Save/Open/reedit, incompatible-child refusal (Coree5a4d4f61 evidence-r4). R3 ordinal-shift failure remains historical. Full-tip saved-source adoption plus canonical duplicate-producer validation now PASS the complete native Open/recovery workflow (Core201c23e16 native-open-integrity-evidence-r2). Reference R5, retained plate R5 with independent3MF oracle, and contradiction recovery R1 also PASS (Coreb43054175). Mixed ordinary Segment/closed Circle authoring/extrusion/travel/native reopen passes (Core201c23e16 mixed-open evidence-r1). General shell source/Native build/shared history/public integration is composed and normal build succeeds. Complete R4 now passes native geometry/point observations and thickness/source edit travel, then fails removed-face identity. Core1d25a7017 repairs authored retirement; full rerun/save/reopen pending. Shell full workflow is NOT qualified. Gate1 remains21partial/0full signoffs; E17assembly is Gate2. No public deployment or filesystem-race probes.
 
 
 Canonical maintained inventory for the current WebOS Files/CAD foundation.
@@ -793,3 +793,19 @@ repairs the callback. R3 proceeds to accepted shell but later native-point
 capability admission still blocks full qualification. Source5779 uses the exact
 registered build singleton plus pointObservationVersion1 and installed policy,
 replacing a stale second whitelist. No caller-supplied capability is authority.
+
+## Authored shell face retirement — 2026-11-07
+
+A requested shell opening is authored intent, distinct from Native builder
+ancestry. The kernel may report a rim descendant of the removed face. That
+does not authorize resolving the old authored face ID to the rim.
+
+| Transition | Invariant | Current evidence |
+|---|---|---|
+| Current source face → shell opening | Validate full Native copy/topology/ancestry before retiring the exact captured removedFaceIds in the result binding | R4 exposed missing retirement; Core1d25a7017 source repair |
+| Retired authored face → later operation | Preserve AUTHORED_REMOVAL with original retiring/source/origin feature identities; no resurrection through another lineage branch | Source integrated; complete rerun pending |
+| Undo shell → original source | Original source index remains unchanged; retirement belongs only to derived result | Existing creation travel passes before R4 failure; final repaired flow pending |
+
+AUTHORED_REMOVAL carries no invented reportedDeleted or candidateCount. Actual
+Native ancestry remains attributable independently. Saved removedFaceIds is the
+single authored intent; no second persisted removal flag is synchronized.
