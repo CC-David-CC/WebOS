@@ -570,6 +570,22 @@ No registered shared E15 workflow or full exercise pass is claimed.
   and policy hashes independently verified. Root receipt in loft/root-runtime-r1.
 - [ ] Unchanged948a signed driver rerun with newDesktoppins; no E15 pass yet.
 
+### Actual shared circle loft and remaining discrepancy — 2026-11-07
+
+- [x] Root independently checks R3's completed3 exact saved files and6 native
+  queries/36 analytic point classes. Phase0 radius2→3, UndoRedo and Save/freshOpen
+  pass; phase90 initial200π Save/freshOpen passes. Source/IDs/history/counters
+  and read-only accepted/resource state preserved. Original R3 remains FAIL.
+- [~] NM01: phase90 radius3 native volume is lower than250π by1.818095029e-6mm³,
+  relative2.314870487e-9. Exact source/frame/seam and discrepancy persist after
+  Save/freshOpen;6 diagnostic native points match. Cause under investigation.
+  Keep frozen1e-6mm³ tolerance. Do not infer wrong geometry from this alone.
+- [ ] Compare same native BRep default/adaptive volume integration independently;
+  retain source inputs and failure. Fix only after identifying cause, with regression.
+- [ ] E15 source-plane placement edits, polygons/general domains and human tools.
+- [~] Current Gate1 tally:20 partial/1 missing shared workflow(E22)/0 full signoffs.
+  E17 stays Gate2. Presence of a scoped working loft is not full E15 qualification.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
