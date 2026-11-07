@@ -9,8 +9,8 @@ pass unless they affect the shared workflow.
 
 ## Counting and representation
 
-Currently **20 identified workflow families**: 14 implicit, four hybrid, one
-explicit, one awaiting classification. These are logical families with named
+Currently **20 identified workflow families**: 15 implicit, four hybrid, one
+explicit. Classification is mapped for this inventory, not exhaustive coverage. These are logical families with named
 owners, not 20 independent minimized automata. Nested protocols may be split or
 merged after review; repeated windows and kernel instances do not increase the
 count. Classification and coverage below are provisional.
@@ -55,7 +55,7 @@ silently rerun. CAD sources live in the separate JSKetcher repository.
 | C05 | Sketch/parameter transaction | I | begin → edit/solve → accept/reject; interruption → recover | Equation validity, authored source and retained output differ. |
 | W01 | Evaluation owner, evaluationResources | E | candidate → accepted → detached → closed; candidate → closed | Reservation/cleanup follows ownership; WR01. |
 | W02 | Engine controller/Worker | H | controller: initializing → ready (+pending) → closed; Worker: new → initializing → ready↔busy → closed | One request owner, synchronous admission and bound replies; WR02/WR03. |
-| W03 | Source/semantic/project/hash clients | ? | queued → running → reply/refuse/cancel → settled/disposed | Late replies never publish; client families being reconciled. |
+| W03 | Source/semantic/parameter/project/hash clients | I | admission/queued → running → settled; healthy → cleanup-failed fence | Late replies never publish; exactly-once cleanup/settlement and module fencing mapped; client/manager component regressions pass. |
 
 Derived status is not another machine unless independently stored authority can
 drift. Validity/representation/qualification are revision-bound classifications,
@@ -71,7 +71,7 @@ not automatically lifecycle machines. Unreviewed rows are not proof of safety.
 | WR01/W01 | P2 cleanup contract | Falsey cleanup throws fail to latch; throwing close accessor strands a reservation. | Injected faults, not observed kernel incidents; repair integrated at CAD061551b93;22 focused/retained resource controls pass. |
 | WR02/W02 | P2 direct Worker boundary | Duplicate initialization stalls; concurrent same-token work creates two native names but retains only one token. | Genuine Worker reproduction. Normal controller rejects concurrency; gate repair integrated at CAD920dc619d. Six direct-Worker controls plus new/retained native corpus pass; combined app replay pending. |
 | MG01/C05 | P2 service reentrancy | Final caller guard can accept a newer display edit/start a pipeline, then the old setter commits. | Repair integrated at CAD94cf5fa19;5 regressions +14 retained manager controls pass. No public incident/new signed-build claim. |
-| WR03/W02+W03 | P2 termination-fault contract | Throwing Worker termination strands readiness/pending promises; the same pattern occurs in three disposable clients. | Controller repair integrated at CAD334ceba19;44 metadata/resource controls and3 actual Chromium post-termination injected faults pass. Three-client repair integrated at CAD625eed661:51 controls and9 genuine Chromium CPU Worker checks pass, including queued allocation fencing. No ordinary termination incident or composed-app claim. |
+| WR03/W02+W03 | P2 termination-fault contract | Throwing Worker termination strands readiness/pending promises; the same pattern occurs in three disposable clients. | Controller repair integrated at CAD334ceba19;44 metadata/resource controls and3 actual Chromium post-termination injected faults pass. Three-client repair integrated at CAD625eed661:51 controls and9 genuine Chromium CPU Worker checks pass. Project/hash repair integrated at CAD5a022f6a6:33 focused and36 retained controls pass, including real Node Workers; no ordinary termination incident or composed-app claim. |
 | CG01/C03 | P1 regression, repaired | First creation required evaluated metadata; journal generation0 differed from project generation1. | CAD224f3302d signed17 Join setups plus retained6 region setups pass. |
 
 ST03 Save/late-close is a tested contract-consistent boundary, not a confirmed
@@ -200,10 +200,19 @@ A cleanup error is terminal evidence, not proof that a Worker stopped. If
 termination throws before physical release, a client must not report successful
 cleanup or keep allocating replacement Workers. The integrated per-module failure
 fence lasts for that imported module instance; closing/reopening an app does not
-necessarily reload a shared JavaScript module. Project/hash-client coverage is
-still pending. Supporting evidence lives in the CAD repository under
+necessarily reload a shared JavaScript module. Project/hash-client cleanup coverage now includes actual whole-manager and real
+validation/hash Node Workers, with existing labeled UI/storage/pipeline doubles.
+Validation and every hash exchange settle once; the hash owner removes caller
+and document listeners even when release fails. A weak close-once record shares
+termination custody between hash abort and owner finally. It neither retains a
+strong Worker inventory nor retries failed termination. Material-role assignment
+now awaits successful owner cleanup, then rechecks currentness before mutation;
+the former ordering was a static finding, not a demonstrated native incident.
+Original3 focused failures are retained;33 repaired controls and36 retained
+manager/hash/material tests pass. A full browser Save/Open replay remains pending. Supporting evidence lives in the CAD repository under
 `test/state-machine-audit-workers/WORKER-CONTROLLER-FINDINGS.md` and
-`test/state-machine-audit-disposable-clients/README.md`; this file remains the
+`test/state-machine-audit-disposable-clients/README.md` and
+`test/state-machine-audit-project-workers/README.md`; this file remains the
 canonical inventory. Normal parameters compute mm(4)=4; the actual sketch Worker
 builds a10×5 rectangle and the semantic Worker prepares that generated source.
 Fault cases throw after genuine termination or hold a genuine reply through

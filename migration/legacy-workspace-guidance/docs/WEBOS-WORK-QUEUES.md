@@ -37,7 +37,8 @@ pending. Root coordinator/storage run38 groups and retained scan10 pass. Logical
 reference loss was proven; physical byte erasure/public-account incidents are not. WR03 also affected three disposable
 clients; repair is integrated at CAD625eed661 with51 bounded controls and9 actual
 Chromium CPU Worker checks. Later queued jobs refuse before allocation after a
-cleanup fault. Composed-app replay remains pending.
+cleanup fault. Project/hash Worker recurrence is integrated at CAD5a022f6a6 with33 focused and36
+retained controls. Composed-app replay remains pending.
 
 ST03 Save/late-Close passes the existing unknown-outcome contract: local commit
 is independently proven, caller loses acknowledgement, late receipt stays inert,
@@ -57,6 +58,24 @@ Persistence policy reaffirmed: explicit Save/Open, unsaved RAM edits may be lost
 on close/crash. No shutdown autosave or compensating rollback write. Reopen the
 last committed revision; a completed commit survives acknowledgement loss.
 Ordinary mounted-view resource disposal remains separate from saving content.
+
+## Next shared CAD feature — E13 revolve
+
+The previously checkpointed source-bound revolve adapters are now integrated as
+CAD6fffd21ee (source) /7d7af1f19 (evidence), retaining the repaired semantic client.
+Root replay of14 source/planner controls passes. This is preparation, not a
+shared authored feature: no public revolve command, registered app build,
+authored replay/angle travel, native Save/Open or full E13 acceptance is claimed.
+
+The native Worker constructor and genuine new/retained kernel component evidence
+already exist. Next: explicitly register that exact experimental native revision
+without changing defaults, wire the common typed operation and owned ledger,
+register the source-bound operation and shared creation/edit history, then expose
+the same commands to human/agent callers and qualify native Save/Open. Preserve
+source/region/axis/angle intent; no derived solved geometry in saved parameters,
+automatic fallback, prism substitution, or default promotion. Later source edits
+must regenerate or refuse atomically. E14 sweep, E15 loft and E22 linked drawings
+remain separate missing workflows; E17 assemblies remains Gate2.
 
 ## Strict mechanical Join policy and historical candidate checkpoints
 
