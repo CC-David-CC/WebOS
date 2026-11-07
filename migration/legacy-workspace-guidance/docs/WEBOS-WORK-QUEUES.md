@@ -1,6 +1,13 @@
 # WebOS work queues and progress ledger
 ## Current STEP composition —2026-11-07
 
+Parallel E22 component update: exact analytic projection now passes genuine
+Chromium producer→main→consumer Worker tests (11views,4refusals,13runtime
+controls,5retained Native cohorts). Root independently checks its recorded data
+and composes current code/TypeScript. Shared drawing authoring/dimensions and
+persistence remain missing; no E22 signoff or app deployment is inferred.
+[Root check and scope](evidence/orthographic-worker-root-check-20261107/README.md).
+
 Files remains accepted in its tested foundation scope. Gate1 remains **20 partial,
 1 missing complete workflow (E22),0 fully signed-off exercises**; assemblies
 remain Gate2. No beta/live deployment occurred in this composition.
