@@ -2579,3 +2579,10 @@ It is not a requirement for the active Files/JSketcher/core-3MF release.
 - [ ] E20 shared STEP export and E22 associative drawing workflow remain open. Gate1 remains 20 partial / 1 missing shared workflow / 0 complete rows; assembly E17 is Gate2.
 
 The accepted saved-32-body source-proof run now reports Open approximately 10.9 seconds and query 8.9 seconds, with 70/69 Workers and all retired. This is scoped functional and processing evidence: Open still has 190/76ms main-thread tasks, and the inner observer has an explicitly recorded early blind spot. No whole-transfer memory or general UI responsiveness claim follows.
+
+### Adaptive circle reporting defect — shared app qualified, 2026-11-07
+
+- [x] NM01 scoped repair: CAD19e0ef19b9 / desktop7095e1012 explicitly selected ed06b634/bc8895 cohort passes both circle fixtures, source-radius edits, Undo/Redo, four normal Saves/exact server bytes/fresh Opens and eight native queries/48 analytic points. Root independent saved-byte/oracle checker passes. Evidence482cc886f preserves original failed old-build runs and unchanged tolerances.
+- [x] BR02 actual browser launch now passes with the407168387byte combined package under unchanged512MiB policy.
+- [~] Source-plane depth signed driver is next on the same private fixture. Native component success alone does not establish dependent replay or publication.
+- [ ] E15 polygons/general domains/human parity, E20 shared STEP and E22 shared drawings remain open. Gate1 count remains20partial/1missing/0full.
