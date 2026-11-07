@@ -516,6 +516,9 @@ No registered shared E15 workflow or full exercise pass is claimed.
   merged CAD3ce89aa35. Independent evidence checker reports11 coordinator groups,
   53 genuine solver/semantic Workers,4 unavailable-runtime/4 staging groups,
   2 actual native factory geometries and2 normal app compiles; full TypeScript pass.
+- [x] Desktop loft transport is registered with existing window disposal;27
+  combined loft/sweep/revolve admission/lifetime controls pass. No native or
+  complete application success is inferred from transport controls.
 - [ ] Finish E15 signed application create/edit/travel/Save/Open. Inherited build
   discovery/native point observation needs explicit staged-loft admission; source
   plane placement edit is still required. No automatic backend fallback/default switch.
