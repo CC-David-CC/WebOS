@@ -20,6 +20,24 @@ pure canonical capture; explicit autosave remains separate. Currentness uses the
 actual sketch namespace instead of unrelated project-cache writes. This new
 composition still requires its complete workflow run; no per-step testing next.
 
+## Complete public generic export run — 2026-11-07
+
+Core d0d8f1a0f/Desktop1a0c56dbe actual normal signed app completed public
+part creation, materials, no-op, shared Undo/Redo, native Save/server sync, fresh
+Open, protected generic3MF export, D10→D14 edit, explicit material rebind,
+Save/export and fresh Open/export. Browser workflow PASS. Independent ZIP/XML
+and measurable geometry/material oracle is still pending. Frozen evidence:
+[test/agent-cad-corpus/manufacturing-shared/export-evidence-r2](../test/agent-cad-corpus/manufacturing-shared/export-evidence-r2/README.md).
+The owned private20945 server/forward was retired after the completed run;
+shared Chrome remains running. No live/beta/prototype deployment.
+
+New source after that frozen run: Native reference capture and shared drawing
+read, drawing metadata publication in the existing journal, exact capability/
+asset wiring, Worker SVG presentation and authorized My files export. These
+are implemented/integration work, not drawing E2E-qualified. Complete drawing
+workflow must run after composition; do not claim the3MF run covers it.
+FullGate1remains21exercises; assemblyE17belongsGate2.
+
 ## Workflow integration checkpoint — 2026-11-07
 
 Core d0d8f1a0f integrates the generic protected Native-to-encoder export route,
