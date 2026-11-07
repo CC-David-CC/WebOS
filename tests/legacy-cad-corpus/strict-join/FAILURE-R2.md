@@ -1,0 +1,9 @@
+# Actual R2 point-contact classification mismatch
+
+Frozen CAD224f3302d421957a9390879034102660f81d6ac0 and desktopcf97976d965f0b57689f1d2a8c87a060d0a49369, source1db0a91f6; all actual served assets matched. The executing source hashes still matched after completion. [Receipt](evidence-r2/receipt.json), [log](evidence-r2/browser.log), [status](evidence-r2/status.json).
+
+Twelve actual setups passed: all eight OCC setups, plus SMLib overlap/mixed history, face contact, disjoint refusal and edge-contact refusal. This closes R1's pristine first-box reproducer in the real signed app: creation now works, Undo reaches truly empty history/outputs and Redo retains the original ID. Both tested engines' mixed sequence, disconnecting width4 rejection, native Save/Open/reedit and session journal reset passed. OCC forward/reverse cavities retained one native solid/two shells and an empty cavity.
+
+SMLib POINT-contact Join refused with `JOIN_MULTIPLE_SOLIDS`. The frozen test expected `JOIN_NONMANIFOLD` (as for SMLib edge contact), so it stopped with exit1. No geometry was admitted as a successful Join. The product's native-domain policy checks validity/manifold predicates before the multiple-domain branch; thus this code is consistent with multiple individually manifold native geometric domains, and does not imply that point-contact Join succeeded. The test's point-contact classification expectation needs root review; it must not be blindly equated with the edge-contact result.
+
+The failing exact-code assertion precedes the point-case post-refusal accepted-state comparison. Consequently preservation for that point case remains unqualified in R2. SMLib cavity, SMLib operand reversal and the Manifold explicit-unqualified/raw-union case were not reached. No assertions or product source changed and no retry ran after this failure. Root owns the next authorization. The original R1 failure remains untouched.
