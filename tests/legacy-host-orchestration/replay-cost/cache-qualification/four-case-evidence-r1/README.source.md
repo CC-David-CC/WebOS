@@ -1,0 +1,9 @@
+# Unchanged four-case/native-point regression PASS
+
+Exact served coref21f91b7375f621019c830dd531e09c1569211ba, hostdea2518a33afd944fb97757e6aa837b7c0aab2e0; immutable251-file and actualouter pins inreceipt. The newwrapper invoked frozen authoritative signed-point.test.mjs intact; wrapper and child hashes stayed exact. No geometry/history/tolerance/refusal/oracle assertion changed.
+
+All4 genuine public workflows PASS: straight disk, straight annulus, quarter forward, quarter reversed. Actual public New/planes/primitives/discovery/create, source/profile/path edits, creation and edit UndoRedo, retained stale/unsupported/revision refusals, normal nativeSave/server synchronization/freshOpen/reedit passed.12 real native editable JSONfiles; independent saved-source metric checkerPASS.13 genuine native queries/77points; original independent pointcheckerPASS with exact source/history/counter/journal/material/presentation/revision/resource preservation. The historical metric-only checker's point-unqualified scope string remains unchanged; separate actual point evidence supplies these77 classifications, not a universal geometry certificate.
+
+Own fresh test accounts/contexts only; no private source/model seeds, successful reply substitutes, Canvas fake or parallel authored model. All submitted Saves/sync/readbacks settled normally; no deliberate cancellation/write race. No private account/session/key/issuer state archived. Cleanup found0 owned20937targets; rootfixture/shared Chrome retained.
+
+This composes with separate saved32 R2 functional-count proof (fresh4solve/64semantic/1native per candidate). It does not erase R1's staging-observer failure, the original128-count before-proof, or originalcapacityR2Openfailure. No fullGate1, coldnetwork, zeroRAM/mainwork, phone/universalperformance or fullresponsivenessclaim.
