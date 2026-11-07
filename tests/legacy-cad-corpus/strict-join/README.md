@@ -28,3 +28,16 @@ CODI_SIGNED_PINS="$STRICT_JOIN_PINS" CODI_EVIDENCE=/tmp/codi-strict-join-proof-r
 ```
 
 Use a new output directory for every run and preserve all failures. Product mismatches must be reported rather than changing geometry expectations.
+
+
+## Actual R3 result
+
+**17/17 setups and 70 rows PASS**, Node24.22.1/Puppeteer24.35/actual Chrome155.0.8059.79. [Receipt](evidence-r3/receipt.json), [source/environment readback](evidence-r3/environment.json), [runtime pins](evidence-r3/runtime-pins.json). All executing source hashes matched after completion. Each fresh setup verified all73 core assets and the mounted outer bundle. No product edits or private bootstrap were introduced.
+
+OCC and SMLib each passed all8 setups: overlap/face Join, proper cavity, operand reversal, explicit disjoint/edge/point refusals and shared creation/edit travel. The first-box-to-empty reproducer is closed in the actual signed app. Full mixed box/Join/edit Undo/Redo, same IDs, exact accepted source/model/material/journal preservation and native Save/sync/fresh Open/reedit passed. Failure ID reservations alone may advance: failed Join requests observed2→3; refused upstream width edits preserved3. Counters are reported separately in the receipt.
+
+The separate SMLib point diagnostic confirms validLevel0/2true, manifoldPredicatetrue, materialRegions2, void0, raw union2,000mm³ and bounds0..20, followed by ordinary Undo restoring both inputs. Its Join remains refused. The R2 error-classification mismatch is preserved unchanged; no successful one-solid admission was relaxed. Manifold explicitly refused Join with JOIN_UNQUALIFIED; only its separately requested raw union and chronology/persistence are qualified.
+
+Forward/reversed cavities retained1,092mm³ and bounds[0,0,0]..[11,10,10]: OCC one native solid/two shells; SMLib one native material region/one void. Genuine detached display probes verify[5,5,5] stays empty, including fresh Open. Distinct authored operand order persisted. The independent [13-file saved-intent/formula checker](evidence-r3/saved-oracle.json) passes every actual native file. Session Undo/Redo reset on Open. All owned contexts closed and shared Chrome stayed open; fixture cleanup remains root-owned.
+
+Native validity plus one-solid census is evidence within this tested ordinary boxed/contained-cavity domain, not a universal manifold certificate. The queued outer30cube/exterior-notch/inner-cube self-contact controls on OCC/SMLib remain unexecuted. Full E16/Gate1 and Manifold strict Join remain open. R1 and R2 failures are retained with their exact source-bound evidence.
