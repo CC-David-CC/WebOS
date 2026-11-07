@@ -1,0 +1,138 @@
+{
+  "status": "COMPONENT_PASS",
+  "baseDesktop": "a7db5ee1e",
+  "browserExecuted": false,
+  "nativeGeometryQualified": false,
+  "syntheticArtifactReplies": true,
+  "groups": {
+    "newBoundary": 33,
+    "actualRouter": 7,
+    "retained": 36
+  },
+  "unchangedOldExportFunctions": {
+    "3MF": {
+      "start": " async function export3mf(command=null){",
+      "end": " async function exportDxf(command=null,selectedFaceId=null){",
+      "sha256": "5f31659c229814569b2b5536fd78dc80bd798f396f5f3e528ca5efd13bbc92de"
+    },
+    "DXF": {
+      "start": " async function exportDxf(command=null,selectedFaceId=null){",
+      "end": " function receive(event){",
+      "sha256": "1d24d4b4b4a3618435f2ae7bba3775e087d279e6c0646c0daf310c9646b99236"
+    }
+  },
+  "files": {
+    "../../../apps/system/jsketcher/index.mjs": {
+      "sha256": "f958f3fdca8c5cca0a6efd097ab18614ac09418ffc3578678a5e4a0d3a460522",
+      "bytes": 53833
+    },
+    "../../../apps/system/jsketcher/step-export-commands.mjs": {
+      "sha256": "bffcfc59ad3e19beefec4d317e37a1714d6d03130e222824c9bcd9f8fd82a2dd",
+      "bytes": 19055
+    },
+    "boundary.test.mjs": {
+      "sha256": "5534b15e81f89008bdb570450f65800ed03c06874864dcc7c0dbcdd96c56cafb",
+      "bytes": 23609
+    },
+    "route.test.mjs": {
+      "sha256": "c557103a38330f9e910249336ba9329346197dd737c5b281e62e19a1b5d3aac6",
+      "bytes": 4205
+    },
+    "README.md": {
+      "sha256": "acfcb46b46846683054cf4e1a5a7c53e188e8f6f601c8be47fe66eafd21c8b8c",
+      "bytes": 8244
+    },
+    "ACCEPTANCE.md": {
+      "sha256": "b8ff7aa9f05ea6ebd8b5186a95e3ec247f6ec5dad2d2a9aee490cc908b2f8896",
+      "bytes": 3052
+    },
+    "check-evidence.mjs": {
+      "sha256": "a524b59f4bc1e9527c9281f497284ad2beb54dbd6c3b20164def2ff6bb6bc3cd",
+      "bytes": 1456
+    },
+    "evidence/tests.log": {
+      "sha256": "fd64d302181812c967b6509630894d8b6c70b08cc1ea29015045acda916b96ed",
+      "bytes": 5759
+    },
+    "before-fixture-expectations/tests.log": {
+      "sha256": "09c245cade80544b2e5b2b5783304cf64ddf71ab70a828a2956d160dee9e2e7f",
+      "bytes": 4255
+    },
+    "before-fixture-expectations/boundary.test.mjs.txt": {
+      "sha256": "23c7ec2ff1f9cebe6d24b3edb6e3241ffa77e58babe1a49a80c275116f13bb94",
+      "bytes": 16586
+    },
+    "before-owned-read-guard/tests.log": {
+      "sha256": "eb1b48df59981da163f409c5321b2a0657b0d2f58c9bed5922939052be61171d",
+      "bytes": 3462
+    },
+    "before-owned-read-guard/boundary.test.mjs.txt": {
+      "sha256": "3e88279760fc03142220355dce6878512d58ae645a4cc1fdd22506d3cfe0be2f",
+      "bytes": 18929
+    },
+    "before-owned-read-guard/step-export-commands.mjs.txt": {
+      "sha256": "e2bad35ac34c9d1d0631ab0b99ec611fdf043809b5509a10081cacebfdc626d8",
+      "bytes": 17804
+    },
+    "../../../active-system/assets/desktop/document-operations.mjs": {
+      "sha256": "f499a945222cd3608ed3473c5d9a80c326e2f1cfe2c2e08cd46a103ea9358337",
+      "bytes": 7879
+    },
+    "../../../apps/system/jsketcher/scoped-command.mjs": {
+      "sha256": "e3a6cea748e01ded5ea8ebf09eca72d1bac3839203e43697aafb546de9177640",
+      "bytes": 1041
+    },
+    "../../../tests/document-operations.test.mjs": {
+      "sha256": "a89c6fb02e21c75cba476f6d5593043e41a5eea1ffb725563e22a0b0c2cacdae",
+      "bytes": 14923
+    },
+    "../../../tests/jsketcher-dxf-export-commands.test.mjs": {
+      "sha256": "bfafa8f568e917743a71ad13f29f89e1a631ccd15a5d26986f1e4ef0d8077e0a",
+      "bytes": 3257
+    },
+    "../../../tests/command-registry-outcome.test.mjs": {
+      "sha256": "a1b9f006cbe70153868d4df46c6787aaf27a6c2abf34799b804ad5cc6bdf5a14",
+      "bytes": 3330
+    },
+    "before-falsey-outcomes/boundary.test.mjs.txt": {
+      "sha256": "5c836459a074adf1cacb40a22f27518a46d2a7274fca091c335cc2e2cb94de78",
+      "bytes": 22068
+    },
+    "before-falsey-outcomes/step-export-commands.mjs.txt": {
+      "sha256": "f771c54532d67ec4f024aaacb6d580056fdda4b6f79e078eb14cc476bc2264cd",
+      "bytes": 17855
+    },
+    "before-falsey-outcomes/tests.log": {
+      "sha256": "43ca7f824293b273d6d8a334491b6f1894dc00022e4161c6eef2005bd7e78205",
+      "bytes": 6696
+    },
+    "evidence-falsey/tests.log": {
+      "sha256": "81701535a016dc7c244c9d4d7f51a5dbf28ded744b039baf39a6a01ce0f9ab16",
+      "bytes": 6497
+    },
+    "before-route-message/index.mjs.txt": {
+      "sha256": "a74093f3a36a624594d7396626cbb0740eb2a43381838dffb5a190b5783653fa",
+      "bytes": 53794
+    },
+    "before-route-message/route.test.mjs.txt": {
+      "sha256": "645aaaf2babdf8485e3c09e17597de61393d8614c1268b54a90ca21c1ac0b46d",
+      "bytes": 3614
+    },
+    "before-route-message/tests.log": {
+      "sha256": "aae2b23b717b2885952b94bcda687463c9ca75b5e40dceb9238fa067319f1551",
+      "bytes": 6627
+    },
+    "evidence-route/tests.log": {
+      "sha256": "762ae24ec2e6ce614fe154d93fd3899ba447f90f2f3aec99759243e0dd251d97",
+      "bytes": 6858
+    }
+  },
+  "remaining": [
+    "Genuine Core/native STEP runtime",
+    "Actual Core File menu",
+    "Signed My files write/server bytes/independent STEP geometry read",
+    "Actual shared host Close while genuine write receipt held"
+  ],
+  "baseCheckpoint": "2fb93837a498279fb1007b66adf486f74949bbe6",
+  "productCommit": "0e5a04cf382035af27153c85bc7a0fc1503f4ef8"
+}
