@@ -209,6 +209,13 @@ observations from saved source. Same6725/50ffd runtime helper New/Open alsoPASS.
 This supersedes pending signed repair above; failedR2 retained. No full E14,
 general path or native-point-query qualification implied.
 
+W01/W02/C03 read-only native point replay now source-implemented and component
+controlled: genuine private pipeline, exclusive lease, complete frozen source,
+restored ID context, candidate-only handles, cleanup-before-receipt. No epoch,
+feature counter/history/model/source publication. First actual disk query/repeat
+pass accepted-state preservation; full geometry/performance corpus stillrunning.
+CAD64aac/72bcb, host9ff89. Added read transition, not another state family.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |

@@ -375,6 +375,21 @@ OriginalR1/R2 retained. Bounded result: sweep/RESULT.md. FullE14 remainspartial:
 native points/general domains/interruption/human parity open. Gate1 stays
 19partial/2missing(E15/E22)/0full, E17assembly Gate2.
 
+Native point core integratedCAD64aacbef1/72bcb6754, hostbridge9ff89c98c:
+root11core+TSC and7focused/59combinedhost controls PASS. Genuine private replay
+under shared serializer freezes all sources, checks exact native metrics/build/
+producer and restores ID context; no accepted source/history/model publication.
+Existing bounded mainthread metadata hydration disclosed; geometry/hash/solves
+remain Workers. Actual latency/network/longtasks measurement pending; source
+verifiedAsset cache:no-store merits measurement, no cache change yet.
+
+Private pointfixture20936/root66917, exact source72bcb6754 andhost9ff89c98c,
+a9cf/e105native unchanged.226files334,042,115bytes verified; pins under
+sweep/root-runtime-r3. Actualdriver94672 RUNNING: diskbaseline5nativeprobes and
+healthyrepeat pass full frozen oracle/exactstate/resource preservation. Full
+planned13queries/77points not yet qualified. Perf waits ownedcontexts retire.
+No beta/live/relay changes; full32/interruption/phoneperf remain open.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
