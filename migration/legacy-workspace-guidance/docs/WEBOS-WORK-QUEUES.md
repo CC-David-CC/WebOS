@@ -1,4 +1,25 @@
 # WebOS work queues and progress ledger
+## Current execution directive — 2026-11-07
+
+User: “stop doing tests for each step. tests are after the fact end to end”.
+Finish and integrate coherent complete workflows first. Then run end-to-end
+acceptance through the actual desktop/agent/file path. Stop the per-change unit,
+source-assertion, predicate-prototype, typecheck and retained-suite cycle; do not
+create more before/after proof packets for each implementation step. Existing
+regressions/evidence remain preserved. Build tools needed to produce the actual
+app are permitted; report implementation as untested until the complete flow
+runs. Failures found by that end-to-end run drive fixes and end-to-end reruns.
+
+Agents redirected: complete embedded-shell validation in the actual3MFwriter;
+complete protected manufacturing replay/encoder integration; complete Native
+reference capture/read for drawings. Human GUI polishing remains secondary to
+the agent-driven workflow and viewable outputs. No filesystem-race probes.
+
+Read-purity source07e0bc8b2/b3f9c9be9 is integrated: every native snapshot uses
+pure canonical capture; explicit autosave remains separate. Currentness uses the
+actual sketch namespace instead of unrelated project-cache writes. This new
+composition still requires its complete workflow run; no per-step testing next.
+
 ## Drawing custody repaired; controlled3MF component integrated — 2026-11-07
 
 Core48379ca3c composes V3custody/activation authority and private3MFencoder.

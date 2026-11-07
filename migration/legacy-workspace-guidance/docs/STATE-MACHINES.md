@@ -7,6 +7,21 @@ competing specifications. This is a first pass, not exhaustive safety proof.
 Third-party editor/kernel internals, games and future physics are outside this
 pass unless they affect the shared workflow.
 
+## Read-capture invariant and validation cadence — 2026-11-07
+
+Snapshots and preparation are observations, not cache writes. Canonical model
+capture now supplies all snapshot callers; explicit project.save/autosave owns
+cache persistence. A cache-only autosave is not an authored model edit. Relevant
+source currentness uses the actual sketch namespace identity/version together
+with existing model/history/expression/metadata/manager ownership guards.
+No global-revision fallback or content copying is added. Source integrated;
+complete workflow acceptance remains pending.
+
+User now requires testing after coherent end-to-end implementation/integration,
+not a new microtest/proof cycle at every transition fix. Preserve existing evidence
+and use the maintained invariants while coding; next acceptance exercises the
+actual shared human/agent/file path. Do not claim unrun integration as qualified.
+
 ## Activation authority repair and encoder custody — 2026-11-07
 
 Core9df225f4d repairs the previously open activation cases. The closure captures
