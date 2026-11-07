@@ -490,6 +490,16 @@ Worker-only8MiB retained output/64KiB chunk resource. Header/probe work begins
 remotely; no app STEP export, native importer or native Save-format change yet.
 Native branch research/owned-step-export-review-20261107 is backed on both LANs.
 
+### Loft semantic framing defect — in progress
+
+Actual production semantic Worker reproduces MD01: value65,406 bytes but full
+success envelope65,821 bytes with an allowed128-character job ID. The source
+lane is adding a loft-only complete-envelope64KiB check and bounded error echo,
+then rerunning the exact boundary plus retained genuine source/Worker controls.
+Existing source API/native geometry remain unchanged. Root integrated source
+membership preparation45000c06d; the final framing repair/evidence is pending.
+No registered shared E15 workflow or full exercise pass is claimed.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
