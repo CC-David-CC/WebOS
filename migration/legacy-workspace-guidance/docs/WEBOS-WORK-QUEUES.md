@@ -182,6 +182,22 @@ controls pass (72 combined), TypeScript passes. This does not qualify actual
 Craft/app creation Undo/Redo or native Save/Open; the shared operation and
 qualified native adapter still need registration and genuine signed replay.
 
+Production adapter evidence is integrated as CAD35b5cedc6 and cleanup5aaffd85e:
+actual Chromium18 positives/9 typed refusals/17 native queries, retained box/
+revolve, capacity limits, held genuine abort/late results and zero live owned
+Workers pass. Independent native R3 review is desktop9bc14f082; root repeated
+its3 controls. These remain component proofs, not a full signed E14 pass.
+
+Shared operation source is integrated as CAD5f17555e1. Root's actual production
+source/solve/semantic Worker run passes12 controls,140 started/140 terminated,
+ending at explicit evaluator refusals. A new actual Circle-as-path negative
+reveals incorrect STALE_PATH classification; owner repair/regression is pending.
+Craft append admission now derives from the same closed journal registry
+(CADa246e0d82), with77 retained controls/TSC passing. Explicit experimental
+sweep catalog/assets source dc6881a7f/36f5d4438 is integrated; normal asset build
+qualification is pending, defaults unchanged. Signed creation/history/source
+replay/native Save/Open and human equivalence remain unqualified.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as

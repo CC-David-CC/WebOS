@@ -117,6 +117,17 @@ size is charged in bounded fragments. Five pure journal controls pass (72
 combined); TypeScript passes. Live Craft/app Undo/Redo and Save/Open remain
 unqualified until the genuine shared-operation replay.
 
+New RV02/C05, P3 (unpublished shared sweep): an actual current Circle selected
+as path is rejected as STALE_PATH instead of unsupported curve type. Existing
+rejection preserves accepted geometry; root's12 source controls did not cover
+this distinction. The owner is splitting absent identity from unsupported type
+and adding a real Worker regression. Full operation qualification remains open.
+
+Craft append admission now derives directly from its journal capture/key
+registry (CADa246e0d82), including sweep, instead of a separately synchronized
+allowlist. Seventy-seven retained controls/TSC pass. Actual signed replay is
+still required; this source change does not prove publication/Save correctness.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |
