@@ -168,6 +168,13 @@ The repair lane is implementing one bounded UTF-8 metadata budget and boundary
 controls, preserving document revalidation after serialization. File payload
 limits are unrelated. Repair and combined-app validation remain pending.
 
+B01 retained staging pin drift: after reviewed sweep transport54ce073, the
+selected-profile stager still expected the old bootstrap hash. Actual normal
+build11558ed2a refuses before output replacement; native glue/WASM still match.
+Repair dce53517e binds the reviewed aa7f6433 Worker with native pins unchanged.
+Fresh R2 staging passes; full normal build and independent negative controls
+remain in progress. This is a build integration defect, not native CAD failure.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |

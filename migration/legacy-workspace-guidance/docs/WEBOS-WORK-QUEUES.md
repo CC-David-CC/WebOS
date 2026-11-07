@@ -278,6 +278,17 @@ the handler. Source-bound before evidence is retained under
 UTF-8 metadata budget with Unicode/oversize controls. This changes metadata
 admission, not file transfer limits. No full Sweep acceptance is claimed.
 
+Root Craft wiring is committed/backed as CAD11558ed2a; independent read-only
+integration review found no concrete wiring defect. Combined normal build attempt
+R730 `codi-polygon-combined-sweep-craft-20261107-r1` stopped before compilation:
+retained selected-profile stager expected pre-sweep Worker4e7072, while the
+reviewed source is aa7f6433 from54ce073. Native glue/WASM hashes still match.
+CADdce53517e updates that exact bootstrap pin, without changing native pins or
+preferred builds. Fresh normal R2 build is running at
+`/mnt/data10tb/codi-polygon-combined-sweep-craft-20261107-r2`; its selected-native
+stage now passes. Independent tamper/no-output-replacement controls are being
+prepared. This is build-stage B01 evidence, not a modeling or signed-app pass.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
