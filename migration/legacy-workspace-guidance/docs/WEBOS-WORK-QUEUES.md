@@ -111,7 +111,17 @@ CAD45e0fc67d adds shared semantic refusal dispatch: six additional independent
 behavior probes and the21 source controls pass (42 with retained revolve), plus
 seven actual production semantic-Worker Chromium checks under strict CSP. Those
 inputs are hand-authored data, not solver/native/app acceptance. The isolated
-owned OCCT native FFI build is running separately on R730; no native pass yet.
+owned OCCT native FFI compile completed successfully on R730 at
+`/mnt/data10tb/codi-occ-owned-sweep-main-20261107-r1`, source worktree
+`/mnt/data10tb/codi-occ-owned-sweep-20261107`, branch
+`feature/owned-sweep-v1-20261107` from60877dac. Actual FFI behavior, input
+preservation and retained-operation probes are in progress; no native pass yet.
+Independent oracle source9db942e06 is integrated as desktopa51b3da0b:
+19 offline tests pass, including line/circle/annulus/rectangle and quarter-pipe
+arithmetic, asymmetric roll probes, both source bindings and preservation.
+Root reran all19. It generates no geometry and proves no native result.
+See [oracle contract](../test/agent-cad-corpus/sweep/README.md). Keep broader
+valid sweep domains distinct from this oracle's explicit unsupported domains.
 Native execution, Worker cancellation/ownership, source/path edits, shared
 history, Save/Open and human-tool parity remain to implement/qualify. E14 is
 still missing as a complete shared workflow; Gate1 tally stays18 partial/3
