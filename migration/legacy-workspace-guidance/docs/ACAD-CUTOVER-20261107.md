@@ -33,8 +33,7 @@ The first failure log is retained on R730 under the fresh ACAD build `.build/`.
 
 - [x] Fresh ACAD normal application build with exact qualified Native inputs: ACADb053638, R730 fresh checkout, successful main/Worker/resource build.
 - [x] Actual full shell model/edit/history/native Save/Open workflow: ACADebcdd0e freezes `test/owned-shell-shared/acad-evidence-r1`,61rows/41commands/two native files; actual runtimeACADb053638/Desktopec98dcce9.
-- [ ] Actual full shell material/core3MF/save/reopen/export workflow and independent
-      artifact oracle, including edited/reopened identity and geometry.
+- [x] Actual full shell material/core3MF/save/reopen/export workflow and unchanged independent artifact oracle: Desktop01338594f `test/agent-cad-corpus/shell-manufacturing/evidence-r1`,36rows/four native files/three3MFexports; source and Native measurements, all11oriented planar patches, material identity and edited/reopened mesh agreement PASS.
 - [ ] Actual atomic source-dimension/region-reselection workflow.
 - [ ] Back up source, notes and actual results to both LAN repositories.
 - [ ] Only after ACAD checks pass: roll box-git's JSketcher source back to the
