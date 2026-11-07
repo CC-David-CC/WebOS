@@ -30,3 +30,10 @@ NEXT: genuine signed public-command STEP exercise, source/read-only preservation
 normal Save/sync/freshOpen/reedit, independent geometry checks; then actual
 File-menu chooser/path/cancel/export on phone/1080p/4K. BROWSER ACCEPTANCE PENDING.
 Native same-OCCT reader is not an independent kernel or third-party interchange.
+
+Superseded20939 was retired after zero matching Chrome targets and exact
+argv/cwd verification. Process exited and port refused. The old package matched
+its R730 backup with `rsync -rnic --delete` zero differences before deleting only
+the old generated local package and public staging tree (854581609bytes).
+Source, account/private state and R730 artifacts remain. Receipt is retained;
+old signed evidence keeps its exact earlier runtime scope.
