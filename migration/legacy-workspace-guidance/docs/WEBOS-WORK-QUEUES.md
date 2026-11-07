@@ -409,8 +409,14 @@ checked by bytes/SHA256 (334,085,580 bytes). Experimental Manifold receipt
 checked against actual JS/WASM before packaging; existing engine pins retained.
 [Preparation and pins](../research/native-app-cache-proof-20261107/root-runtime-r1/preparation.json).
 Actual Chromium cache/native oracle is running in its own signed context;
-header/build success does not establish cache reuse. Full32 capacity waits that
-result to avoid performance interference. STEP export contract audit and E15
+header/build success does not establish cache reuse. First browser run preserves
+geometry/state/resource checks in all3 passive queries but still transfers
+35,204,843 encoded bytes of WASM per query. Early diagnostic refuses because
+owned app Workers remain; that instrumentation assumption is separate from
+actual transfer evidence. Immutable WASM response headers independently confirmed.
+Cause remains under investigation, including off-the-record browser cache limits;
+no cache fix or browser-profile diagnosis is claimed yet. Full32 capacity waits
+that result to avoid performance interference. STEP export contract audit and E15
 source identity/semantic integration proceed separately. No public deployment,
 relay, source-format change or Gate1 signoff. Tally remains19partial/2missing/0full.
 
