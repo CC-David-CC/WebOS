@@ -9,6 +9,11 @@ only when its complete acceptance criteria are verified; record partial and
 research-only results honestly. Preserve the full program and newly discovered
 work. A paused goal remains paused until the user requests resumption.
 
+For Files/CAD workflow changes, maintain `docs/STATE-MACHINES.md` as the single
+canonical state/transition/invariant inventory. Derive redundant status instead
+of synchronizing flags. Confirmed defects require grouped repair, regression and
+documentation; record actual test scope and pending integration honestly.
+
 The user split this workspace into two independent targets:
 
 - desktop-lab/: backend-free desktop proportion controller and local browser VM.

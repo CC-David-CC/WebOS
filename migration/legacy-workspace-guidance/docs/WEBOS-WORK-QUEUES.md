@@ -12,6 +12,21 @@ Visitor networking policy, 2026-11-06: **all server outbound relaying is disable
 
 Current mechanical integration: [signed mechanical path, remaining integration and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
 
+## Active priority — workflow state machines
+
+User-requested reliability audit/fixes accompany CAD1. Canonical inventory:
+[STATE-MACHINES.md](STATE-MACHINES.md), initially20 identified families, not an
+exhaustive project count. Prioritize confirmed impact: ST01 stale partial scans,
+LR01 recovery lifetime/retry/overlap, ST02 folder recovery, then bounded Worker,
+resource and metadata guard faults. Files/CAD scope remains; no cancelled race
+or security probe is resumed. Every fix requires regression and documentation.
+
+LR01 source repair passes3 real Chromium regressions and5 original retained
+checks. One owned operation derives phase; late stopped continuations cannot
+block the desktop. No public deployment. Storage and CAD/Worker repairs are
+being integrated from separate lanes. Strict Join17/70 and retained region6/30
+pass on frozen224f; the full21-exercise gate remains open.
+
 ## Active priority — strict mechanical Join
 
 User-approved author decision: a normal Join must produce one verified manifold
