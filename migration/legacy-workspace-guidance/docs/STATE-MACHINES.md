@@ -24,6 +24,14 @@ passes: three real native Saves, D10→D14 edit, fresh-session Open and unchange
 reopened bytes. Scope/pins: native-save-outcomes/signed-evidence-r1.
 See test/agent-cad-corpus/native-save-outcomes/repair-evidence-r1.
 
+## Drawing witness invariant — 2026-11-07
+
+Pure cylinderCutWitness adds no state owner/family. Actual prism→original-source
+Cut B ancestry chooses the descendant; geometric comparison only verifies it.
+Never choose by nominal/nearest geometry, compose copy twice or save native slots.
+Fresh3Native/Node Worker cases pass. Production current owner/source/build/
+lifetime admission and full E22 remain open; family count unchanged.
+
 ## Counting and representation
 
 Currently **21 identified workflow families**: 16 implicit, four hybrid, one
