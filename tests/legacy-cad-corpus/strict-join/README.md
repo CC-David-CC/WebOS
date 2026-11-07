@@ -1,6 +1,6 @@
 # Signed strict Join corpus
 
-Prepared against frozen CAD `0d815e1418e9368c3f80c876820d2ebda0766dd3` and desktop `cf97976d965f0b57689f1d2a8c87a060d0a49369`. Only registered public commands author geometry/history. Read-only live intent, source, counters, material/presentation metadata, assembly constraints, measured model outputs and bounded detached Float32 display copies provide observations. No private source writes, raw native seeds, model replacement, fake UI or fabricated successful replies. Every fresh signed setup verifies all core asset hashes and the mounted outer bundle first.
+R2 prepared against frozen CAD `224f3302d421957a9390879034102660f81d6ac0` and desktop `cf97976d965f0b57689f1d2a8c87a060d0a49369`. Only registered public commands author geometry/history. Read-only live intent, source, counters, material/presentation metadata, assembly constraints, measured model outputs and bounded detached Float32 display copies provide observations. No private source writes, raw native seeds, model replacement, fake UI or fabricated successful replies. Every fresh signed setup verifies all core asset hashes and the mounted outer bundle first.
 
 Seventeen setups: eight each for OCC and SMLib plus one explicitly unqualified Manifold Join control.
 
@@ -17,10 +17,12 @@ Refusals compare every captured accepted field and mesh exactly, excluding opaqu
 
 Root owns the fixture and cleanup; the runner owns only fresh contexts and disconnects without closing shared Chrome. Native files in this frozen build remain `.jsketcher.json`; no ZIP or hosting change is assumed. This is a bounded strict Join/shared-history qualification, not full E16 or Gate1.
 
-After root authorizes the exact fixture:
+R1 found the genuine pristine first-box creation blocker; its exact evidence remains in [FAILURE-R1.md](FAILURE-R1.md). R2 changes only the expected CAD source pin. [R2 preparation](R2-PREPARATION.json) verifies the executing driver is byte-identical to R1 after that single source-string replacement; harness and geometry oracle hashes are unchanged. It remains unexecuted until root supplies fresh pins/fixture. Optional revolve changes in this candidate are outside this corpus.
+
+After root supplies and authorizes `STRICT_JOIN_PINS` and `STRICT_JOIN_FIXTURE`:
 
 ```sh
-CODI_SIGNED_PINS=/tmp/codi-strict-join-apps-20261106-r2/runtime-pins.json CODI_EVIDENCE=/tmp/codi-strict-join-proof-r1 CODI_TEST_URL=http://127.0.0.1:20927/ CODI_TEST_CDP=http://127.0.0.1:19329 PUPPETEER_CORE_PATH=/tmp/codi-occt-release-control/node_modules/puppeteer-core /tmp/codi-files-move-node/bin/node test/agent-cad-corpus/strict-join/signed.test.mjs
+CODI_SIGNED_PINS="$STRICT_JOIN_PINS" CODI_EVIDENCE=/tmp/codi-strict-join-proof-r2 CODI_TEST_URL="$STRICT_JOIN_FIXTURE" CODI_TEST_CDP=http://127.0.0.1:19329 PUPPETEER_CORE_PATH=/tmp/codi-occt-release-control/node_modules/puppeteer-core /tmp/codi-files-move-node/bin/node test/agent-cad-corpus/strict-join/signed.test.mjs
 ```
 
 Use a new output directory for every run and preserve all failures. Product mismatches must be reported rather than changing geometry expectations.
