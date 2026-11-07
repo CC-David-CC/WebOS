@@ -58,15 +58,37 @@ outcomes. See test/state-machine-audit-cad-save/README.md.
 Strict Join R3 passes17 setups/70 rows/13 saved files; retained region R2 passes
 6 setups/30 rows/4 saved checks on frozen CAD224f/desktopcf979. These do not cover
 the newly composed reliability fixes. The full21-exercise gate remains open:
-17 partial plus E13 implemented-but-unqualified,3 missing shared workflows
-(E14/E15/E22), no full row sign-off. E13 status is not a native success claim.
+18 partial,3 missing shared workflows (E14/E15/E22), no full row sign-off.
+E13 now has bounded genuine browser/native persistence evidence below; its
+remaining domains and human-tool parity are still unqualified.
 
 Persistence policy reaffirmed: explicit Save/Open, unsaved RAM edits may be lost
 on close/crash. No shutdown autosave or compensating rollback write. Reopen the
 last committed revision; a completed commit survives acknowledgement loss.
 Ordinary mounted-view resource disposal remains separate from saving content.
 
-## Next shared CAD feature — E13 revolve
+## E13 revolve — bounded workflow qualified, 2026-11-07
+
+Actual frozen CAD73c888372 / desktop36b8a6818 passes the unchanged original
+four-case driver:30 rows and6 native Save/sync/fresh Open files. The separate
+genuine six-edge stepped source passes14 rows and4 native files, including
+creation, source and angle Undo/Redo with original IDs/counters. Changing the
+upper band from x3 to3.5 changes full volume from39π to48.75π mm³; half-sweeps
+give19.5π and24.375π. Independent saved-source checks pass all10 files and20
+before/after observations; root repeated the stepped check and25 oracle tests.
+See [stepped evidence](../test/agent-cad-corpus/revolve/STEPPED.md) and
+[R2 retained driver](../test/agent-cad-corpus/revolve/evidence-r2/review.json).
+The real R1 angle-admission failure is retained; CADd81bb8b97 closes that bounded
+defect with the R2 evidence, rather than by weakening the frozen driver.
+
+This qualifies the named literal untyped XY stepped workflow, not arbitrary
+frames, typed/project bindings, generated topology naming, human modeling tools
+or the whole E13 row. No default engine change, automatic fallback or public
+deployment. Latest beta has not advanced to this candidate. Next: retained
+original-plate regression on this composed runtime, then the separately scoped
+E14 sweep/E15 loft and E22 drawing work. Assembly E17 stays Gate2.
+
+### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
 CAD6fffd21ee (source) /7d7af1f19 (evidence), retaining the repaired semantic client.
