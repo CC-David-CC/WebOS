@@ -110,6 +110,13 @@ Five policy controls pass (67 with retained controls), TypeScript passes. This
 does not register a backend or validate the new operation; unsupported builds
 remain explicit refusals and full source edits still require atomic replay.
 
+CAD6a796ba80 extends C04's existing operation-append transition to sweep,
+without a new journal or stored geometry. Directed path identity is compared by
+value after strict capture; nested arrays detach/freeze and their actual JSON
+size is charged in bounded fragments. Five pure journal controls pass (72
+combined); TypeScript passes. Live Craft/app Undo/Redo and Save/Open remain
+unqualified until the genuine shared-operation replay.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |

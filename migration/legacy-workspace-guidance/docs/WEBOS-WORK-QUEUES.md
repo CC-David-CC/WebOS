@@ -174,6 +174,14 @@ policy controls pass (67 with retained source/protocol/revolve controls), with
 TypeScript clean. The production54ce component stages successfully with its
 manifest pinned; its actual browser driver is being prepared, not yet run.
 
+CAD6a796ba80 adds sweep creation to the existing authored append chronology.
+Nested path rows are detached and compared by ordered ID/direction values;
+independent JSON copies can Undo correctly without object aliasing. Fragmented
+byte accounting includes escaped Unicode in nested path rows. Five journal
+controls pass (72 combined), TypeScript passes. This does not qualify actual
+Craft/app creation Undo/Redo or native Save/Open; the shared operation and
+qualified native adapter still need registration and genuine signed replay.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
