@@ -9,7 +9,7 @@ pass unless they affect the shared workflow.
 
 ## Counting and representation
 
-Currently **20 identified workflow families**: 15 implicit, three hybrid, one
+Currently **20 identified workflow families**: 14 implicit, four hybrid, one
 explicit, one awaiting classification. These are logical families with named
 owners, not 20 independent minimized automata. Nested protocols may be split or
 merged after review; repeated windows and kernel instances do not increase the
@@ -39,7 +39,7 @@ silently rerun. CAD sources live in the separate JSKetcher repository.
 | U01 | Account transition, app.js | I | signed out → signing in → active → ending/recovering | Credentials, revocation and retained work differ; review open. |
 | U02 | App mount, desktop-apps/app-instance | I | placeholder → loading → mounted → disposing → disposed | Late imports cannot resurrect removed windows; tests mapped. |
 | U03 | Desktop lifecycle.mjs | H | idle → checking → recovering → idle; live → stopped | One owned operation; stopped continuation cannot re-block UI; LR01. |
-| U04 | Per-window DocumentOperations | I | idle → operating(token) → idle; live → disposed | Stale finish cannot finish new work; busy derived; 16 controls mapped. |
+| U04 | Per-window DocumentOperations | H | idle → prepare(token) → local-write(token) → idle; live → disposed | Stale finish cannot finish new work; busy/phase derived from owner;20 coordinator controls pass. |
 | U05 | Session document claims | I | unclaimed → claimed(path/tree,owner) → released | No overlapping owners, including reentrant notifications. |
 | U06 | Command registry/scoped settlement | I | registered/current → pending → settled/lifetime-lost | No stale result payload; known commit outcome retained; ST03 bounded Save/Close contract passes. |
 | F01 | Mirror row, mirror.mjs | I | clean/dirty/tombstone/conflicted/moving → sync/conflict | Bytes, remote base and intent agree; combinations under review. |
@@ -84,8 +84,11 @@ specific proven gaps. Rank observed consequence, not invented incidents.
 
 User-directed close-policy follow-up: ordinary app Close should retain the
 window through pending local Save confirmation; remote sync may continue after
-local acknowledgement. Current host treats CAD busy as dirty and permits
-Discard, so this stricter behavior is not yet implemented. Forced unload, account
+local acknowledgement. The new candidate host guard inspects the mounted owner’s local-write phase at
+request and final Discard action. CAD Save/Save As/3MF/DXF, Text and Calculator
+enter that phase immediately before writing;20 coordinator controls pass, actual
+signed host regression is pending. Other app write paths have not adopted it, so
+this is not yet all-app qualification. Forced unload, account
 revocation and process failure still require truthful unknown-outcome handling.
 Review shared per-window operation ownership rather than add app saving flags.
 
@@ -213,6 +216,18 @@ policy needs its own regression and must not erase this historical evidence.
 | Public command | current→invoked | bounded inputs/lifetime; recheck after awaits |
 | Public command | caller lost after possible commit | retain known commit separately; inspect unknown outcome before retry |
 | Scoped command | pending→settled/lost | exactly once; release timer/listener even if iframe disappears |
+
+The local-write phase is owned by the existing operation record, not a new
+saving flag. `token.enterLocalWrite()` reserves it before notifications and
+rechecks owner/lifetime afterward. A false result forbids starting the write.
+The phase remains through the returned local receipt and baseline publication,
+then `finish()` retires it. Error paths also finish, so retry is available.
+Preparation, read/native work, peer contention and background server sync do not
+hold this close protection. Ordinary Close refuses while the live mounted owner
+is in local-write; it does not queue a future close that could discard later
+edits. Final Discard rechecks ownership after its dialog. Forced disposal still
+revokes work and can leave unknown outcomes; it does not masquerade as an
+ordinary successful Close. Adoption by other app writers remains queued.
 
 Controls are advisory derivatives. Writes still claim/check currentness at the
 actual boundary; correct disabled styling does not prove serialization.

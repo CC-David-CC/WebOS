@@ -42,7 +42,9 @@ ST03 Save/late-Close passes the existing unknown-outcome contract: local commit
 is independently proven, caller loses acknowledgement, late receipt stays inert,
 and fresh Open restores the exact model. User-directed follow-up: ordinary Close
 should wait for local Save acknowledgement (not server sync); shared host policy
-and regression are still pending. Forced lifetime loss still needs honest unknown
+is implemented as a candidate with20 coordinator controls passing; actual signed
+host regression is pending. CAD/Text/Calculator opt in at actual local write;
+other app writer migration remains queued. Forced lifetime loss still needs honest unknown
 outcomes. See test/state-machine-audit-cad-save/README.md.
 
 Strict Join R3 passes17 setups/70 rows/13 saved files; retained region R2 passes
