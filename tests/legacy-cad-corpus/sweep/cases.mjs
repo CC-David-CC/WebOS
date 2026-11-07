@@ -1,0 +1,8 @@
+// Explicit synthetic source definitions for offline units or real native component INPUTS.
+// These are not public authored documents or successful native replies.
+export const UNIT_TEST_REVISION='sha256:'+'a'.repeat(64)+':'+'b'.repeat(64),I={origin:[0,0,0],x:[1,0,0],y:[0,1,0],z:[0,0,1]},clone=structuredClone;
+const p=(x,y)=>({x,y}),circle=(id,r)=>({id,type:'Circle',stage:0,role:null,data:{c:p(0,0),r}}),segment=(id,a,b)=>({id,type:'Segment',stage:0,role:null,data:{a:p(...a),b:p(...b)}});
+export function makeSweepFixture({kind='circle',curved=false,reversed=false,engineRevision=UNIT_TEST_REVISION}={}){const outer=kind==='rectangle'?[[-2,-.5],[2,-.5],[2,.5],[-2,.5]].map((a,i,v)=>segment('profile edge '+i,a,v[(i+1)%4])):[circle('outer actual circle',2)],holes=kind==='annulus'?[circle('inner actual circle',1)]:[];
+ const profileFrame=curved?(reversed?{origin:[0,10,0],x:[0,1,0],y:[0,0,1],z:[1,0,0]}:{origin:[10,0,0],x:[1,0,0],y:[0,0,-1],z:[0,1,0]}):{...clone(I),origin:[0,0,reversed?10:0]},pathFrame=curved?clone(I):{origin:[0,0,0],x:[1,0,0],y:[0,0,1],z:[0,-1,0]};
+ return{unit:'millimeter',featureId:17,engineRevision,transport:'corrected-frenet',profile:{faceId:'actual profile face',digest:'c'.repeat(64),frame:profileFrame,sketch:{objects:[...outer,...holes]},region:{regionId:'opaque actual region',outerCurveIds:outer.map(o=>o.id),holeCurveIds:holes.map(o=>[o.id])}},path:{faceId:'actual separate path face',digest:'d'.repeat(64),frame:pathFrame,sketch:{objects:[curved?{id:'actual directed arc',type:'Arc',role:'construction',stage:0,data:{a:p(10,0),b:p(0,10),c:p(0,0)}}:segment('actual directed segment',[0,0],[0,10])]},refs:[{curveId:curved?'actual directed arc':'actual directed segment',reversed}]}};
+}
