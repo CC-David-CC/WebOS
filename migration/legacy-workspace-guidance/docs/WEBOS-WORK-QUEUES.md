@@ -23,8 +23,12 @@ Opaque journal inspection tokens can change; targets/cursor/authored state do no
 Fixture20922 is fully stopped and private state/processes/port/targets cleaned.
 
 Shared pattern commands/history/bridge are integrated. The exact combined
-CAD183bd3a4d/desktop0fdc2a7f8 package (183 files,73 core assets) is under signed
+CAD183bd3a4d/desktop0fdc2a7f8 package (183 files,73 core assets) passed signed
 full-part qualification at disposable strict-CSP fixture20923; no deployment.
+The pattern test covers source/seed/count/spacing edits, creation/edit UndoRedo,
+refusals and native Save/server sync/two fresh Open cycles. Root independently
+checked12 native snapshots and both6627-byte native files.
+[Scope, retained first-run failure and portable evidence](../test/agent-cad-corpus/source-bound-pattern/README.md).
 Atomic edits and region descriptors are merged. Region descriptors passed44
 pure controls plus9 real semantic Worker cases and genuine client cancellation
 checks; signed E04/E05 replay/save/reopen remains pending. Existing driving-
