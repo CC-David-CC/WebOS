@@ -22,9 +22,9 @@ export async function workflow(h,a,record,kind){
   assert(typeof b.initialProfileBuild==='string'&&b.initialProfileBuild!==b.engineRevision);const current=await a.discover(b);
   await a.refuse(b,'Recorded old build explicitly lacks sweep capability',()=>h.command('create-worker-sweep',{...request(current),engineRevision:b.initialProfileBuild}),{code:'UNSUPPORTED_SWEEP_BUILD'});
  }
- await a.persist(b,kind+'-source-edited');
+ await a.persist(b,kind+'-source-edited');const reopenedBaseline=await a.snapshot(b);
  // A fresh normal Open resets only the session journal. Re-edit the actual path.
- await a.pathEdit(b,kind.startsWith('straight')?20:14);const reopenedEdited=await a.snapshot(b);await h.travel('undo');sameIntent(bothEdited,await a.snapshot(b));await h.travel('redo');sameIntent(reopenedEdited,await a.snapshot(b));
+ await a.pathEdit(b,kind.startsWith('straight')?20:14);const reopenedEdited=await a.snapshot(b);await h.travel('undo');sameIntent(reopenedBaseline,await a.snapshot(b));await h.travel('redo');sameIntent(reopenedEdited,await a.snapshot(b));
  await a.persist(b,kind+'-reopened-reedit');record('Fresh Open supports actual path re-edit and normal UndoRedo',{binding:b,observation:reopenedEdited.observation});
  return b;
 }
