@@ -1,6 +1,16 @@
-# E14 shared sweep — bounded signed workflow PASS
+# E14 shared sweep and native points — bounded signed workflow PASS
 
-Actual immutable runtime: CAD6725b03eb13df92d70626b2a1b55f73c22e52d5c, desktop50ffd4e696babfffa696fbe8ab3d3de7e81b24dc; explicit OCC nativea9cfa6e5/e105bdfe. Exact asset hashes: root-runtime-r2/pins.json and signed-evidence-r3/receipt.json. Preferred/default builds unchanged; private loopback fixture, no beta/live deployment.
+Latest CAD72bcb6754/host9ff89c98c passes4setups/113rows,13nativequeries/77classes
+(19inside/29outside/29boundary),12native Save/reopens and exact read-only state,
+epoch/counter/material/resource preservation. Root independently repeats both
+point/saved-source checkers in root-runtime-r3. Raw: signed-point-evidence-r1.
+Independent measurement adds5queries/257analytic classes,35Workers retired,
+1.80–2.49s unprofiled wall and no observed ≥50ms outer/iframe tasks. Repeated
+35MB WASM transfers confirmed; cache repair in progress. Exact hydration wall,
+usedRAM/full32/lifetime/concurrency remain unqualified. See research/
+native-point-query-review-20261107/evidence-r1/RESULTS.md.
+
+Earlier immutable four-case runtime: CAD6725b03eb13df92d70626b2a1b55f73c22e52d5c, desktop50ffd4e696babfffa696fbe8ab3d3de7e81b24dc; explicit OCC nativea9cfa6e5/e105bdfe. Exact asset hashes: root-runtime-r2/pins.json and signed-evidence-r3/receipt.json. Preferred/default builds unchanged; private loopback fixture, no beta/live deployment.
 
 Four genuine public-command setups pass51 rows:
 
@@ -19,6 +29,6 @@ Same runtime separately passes actual immutable createCadAgent binding: external
 
 R1 failed on a test snapshot from before a rejected creation reserved an ID; compare now uses actual reopened accepted baseline with exact assertions retained. R2 exposed real missing Arc inspection/coordinate admission; product6725b03eb fixes actual endpoints/center through the existing guarded transaction and independent verifier. R3 unchanged corrected driver passes. Original failures retained.
 
-Full E14/Gate1 remains open: public native point classification, general path chains/curve/profile domains, typed/project sources, persistent generated naming, human-tool parity, held replies/closure/interruption. No preview/mesh classification substitute. Native point observation and two-section loft are separate active lanes.
+Full E14/Gate1 remains open: general paths/curves, typed/project sources, naming, human tools, held replies/closure/interruption and full capacity. Native point classification now qualifies the four named saved-source fixtures above. No preview substitute. Cache efficiency and shared two-section loft remain active lanes.
 
 Owned browser contexts retired; sharedChrome19329/root20935 fixture retained. No Files races/security tests, external relay or existing user data involved.
