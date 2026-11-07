@@ -390,6 +390,15 @@ healthyrepeat pass full frozen oracle/exactstate/resource preservation. Full
 planned13queries/77points not yet qualified. Perf waits ownedcontexts retire.
 No beta/live/relay changes; full32/interruption/phoneperf remain open.
 
+Latest point qualification:4setups/113rows,13nativequeries/77classes and12
+saved/reopened files PASS; root independent point/saved/rawprofile checks PASS.
+Independent5query/257point study:35Workers retired,1.80–2.49s, no observed≥50ms
+tasks. Exact hydrationwall/usedRAM not measured. Repeated35MB WASM transfers
+confirmed; cache-policy source2dae8f746 plus Worker force-cache/SHA/reload change
+inprogress. No endtoendcachehit/livehosting claim. NativeLoft8be261af component
+passes; JSadapter inprogress. Full32capacity test prepared, waits cachepins and
+never interrupts submittedSave. Gate1 stays19partial/2missing/0full.
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as

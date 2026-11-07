@@ -216,6 +216,13 @@ feature counter/history/model/source publication. First actual disk query/repeat
 pass accepted-state preservation; full geometry/performance corpus stillrunning.
 CAD64aac/72bcb, host9ff89. Added read transition, not another state family.
 
+Current W01/W02/C03 point-read evidence:13actualqueries/77nativeclasses pass
+with exact acceptedstate/netpool preservation; independent257points/35Workers
+also pass. Broad capacity/lifetime remains unqualified. Repeated immutableWASM
+network cost is confirmed W02 initialization work; nativeHTTPcache integration
+is pending. Eligibility must derive from registered hashed software paths/body
+SHA, never account/API/userfile responses. No new workflow family introduced.
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |
