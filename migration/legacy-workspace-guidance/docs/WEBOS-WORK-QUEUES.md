@@ -2605,3 +2605,10 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
 - [~] Actual STEP Worker component and positive ledger composition in progress. Shared Craft command, My files write/sync and signed reopen/export remain open.
 - [~] Polygon loft acceptance is being prepared against the frozen private adaptive fixture. E22 native projection ABI proposal is next in its independent lane.
 - [ ] New composed signed runtime must qualify all cleanup changes; existing circle/plane signed proof remains tied to19e0ef19b9. No beta/live change. Gate1 remains20partial/1missing/0full.
+
+### Polygon loft shared workflow — verified, 2026-11-07
+
+- [x] Frozen adaptive20939 rectangle-loft driver passes genuine dimensioned source creation/explicit returned vertex seams, width100→120→110, plane30→40, mixed Undo/Redo,3 normal Saves/server bytes/fresh Opens,10 native8-probe queries/80 points and3 refusals. Root independently checks actual saved files with the frozen source-derived oracle; this is not another browser run.
+- [x] Initial volume87500mm³ and edits100000,400000/3,125000 derive from saved source coordinates and exact quadratic section-area integration. No native/display result supplies expected geometry; lower-left anchoring and center shift remain explicit.
+- [~] Portable agent evidence freeze/integration pending. General correspondence/frames/human tools remain open; E15 stillpartial. No public deployment or Gate1 signoff.
+- [x] Retired20937/20938 only after zero owned Chrome targets and normal SIGINT exit. Their public packages were exact checksum matches to retained R730 copies before local deletion, recovering741851035bytes. All source/account/state dirs and current20939 are retained.
