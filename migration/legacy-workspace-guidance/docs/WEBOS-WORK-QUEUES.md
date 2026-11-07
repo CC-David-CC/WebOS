@@ -1,6 +1,13 @@
 # WebOS work queues and progress ledger
 ## Current STEP composition —2026-11-07
 
+Confirmed UI qualification gap: actual390×844 STEP chooser is contained and
+uses16px text, but the selectable body row is19px high and buttons24px,
+below the frozen44px touch requirement. No phone export is qualified yet.
+A dedicated STEP-dialog style/class repair is in progress, followed by a fresh
+outer bundle and real browser rerun. The earlier preauthoring timeout was a
+separate harness viewport/login-order failure, retained without a product claim.
+
 Signed R2 STEP workflow now passes on frozenCADf714/Desktop8f7:3cases,
 10exports,6nativeSaved/reopened/reedited files and exact raw revision/token/state
 preservation. Root repeats all3independent recorded-data checkers; same-OCCT
