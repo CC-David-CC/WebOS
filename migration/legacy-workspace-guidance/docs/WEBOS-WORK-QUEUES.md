@@ -1,4 +1,13 @@
 # WebOS work queues and progress ledger
+## Save UI qualification — 2026-11-07
+
+Actual File-menu Save **PASS** at phone390×844touch,1080p and4K:
+6normal Saves/3cancellations; own browser/server bytes; D10→D14only saved source
+change. Phone prompt controls≥44px and contained. R1 harness idle-before-message
+failure retained; R2 waits actual saved-path/clean state, then idle. Product
+source/assertions unchanged. Full CAD UI remains partial.
+[Evidence](../test/agent-cad-corpus/native-save-outcomes/ui-evidence-r2/README.md).
+
 ## Latest qualified Save checkpoint — 2026-11-07
 
 Fresh normal signed Save **PASS**, Desktope2da0e5b1/Coref714, private20943.
