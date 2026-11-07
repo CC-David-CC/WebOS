@@ -63,3 +63,47 @@ requires finite measurements, one actual valid solid and exact build identity.
 /tmp/codi-files-move-node/bin/node --test test/agent-cad-corpus/revolve/oracle.test.mjs
 /tmp/codi-files-move-node/bin/node test/agent-cad-corpus/revolve/check-saved.mjs OUTPUT_DIRECTORY
 ```
+
+## Separate stepped fixture (version1)
+
+`stepped-oracle.mjs` adds `deriveSteppedRevolveExpectation` without changing the
+original rectangle function or its twelve tests. A saved receipt row selects it
+with **`oracleKind:'stepped-orthogonal-v1'`**. An absent kind retains the old
+rectangle default; explicit `'rectangle-v1'` is also accepted. Every other kind,
+including explicit `undefined` or `null`, refuses as `ORACLE_UNSUPPORTED_KIND`.
+There is no fallback from unsupported stepped input to the rectangle oracle.
+
+The source schema remains identical except for **six real profile Segment IDs**,
+so the native source has exactly seven objects including the actual source axis.
+All native ten-field/public ID/axis/build/digest checks remain. The six profile
+edges must be nonzero and orthogonal, with six distinct coordinate vertices of
+degree two in one connected closed loop, perpendicular successive edges, no
+nonadjacent inclusive intersection/contact/overlap, and every vertex strictly
+right of the vertical axis. Coordinate incidence only proves this fixture's
+geometry; it never creates persistent IDs or performs approximate welding.
+
+Sorted distinct saved vertex heights define open bands. Vertical source edges
+must span each whole band; exactly two distinct crossings must define its one
+radial interval. No midpoint sample or coordinate rounding is used. The exact
+fixture arithmetic is `abs(angle)/2 * sum(dy*(Rout²-Rin²))`. Bounds take both
+radii of every band through the same analytic angular critical points as the
+rectangle oracle, then unite the band bounds.
+
+For `(2,0)→(4,0)→(4,2)→(3,2)→(3,5)→(2,5)→close`, +Y axis at x=0:
+
+- Bands y=[0,2], radii[2,4]; y=[2,5], radii[2,3]. Full volume39π, half19.5π.
+- Editing the two step x=3 endpoints to x=3.5 gives full48.75π, half24.375π.
+- Full bounds remain[-4,0,-4]→[4,5,4]; signed half-bounds follow axis direction.
+
+The stepped tests cover both axis and sweep signs, partial angular bounds,
+source/axis edits, genuine geometric predicates on synthetic authored data,
+binding refusals and strict dispatch. They generate **no native geometry** and
+make no public E13 claim. Disjoint, multihole, nonorthogonal, nonmonotone,
+cross-axis or other unknown source classes remain outside this bounded oracle.
+The same absolute1e-6 tolerances remain frozen; the separate driver's stricter
+bounds check remains unchanged.
+
+```sh
+/tmp/codi-files-move-node/bin/node --test test/agent-cad-corpus/revolve/oracle.test.mjs \
+  test/agent-cad-corpus/revolve/stepped-oracle.test.mjs
+```
