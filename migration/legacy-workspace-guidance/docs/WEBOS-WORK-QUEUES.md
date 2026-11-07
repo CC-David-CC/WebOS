@@ -20,6 +20,20 @@ pure canonical capture; explicit autosave remains separate. Currentness uses the
 actual sketch namespace instead of unrelated project-cache writes. This new
 composition still requires its complete workflow run; no per-step testing next.
 
+## Shared cold-file Open defect blocks complete32hole signoff — 2026-11-07
+
+Core7ba/Desktop384 actual32hole run now completes both initial and depth-edited
+3MF exports with matching browser/server SHA, including feature-creation travel.
+Final fresh-browser Open fails File not found. Exact native file remains onown
+server with expected840a8c...SHA. Confirmed source: mirrorFileContext starts
+background sync and returns; absent local stat/read/snapshot can report absence
+before hydration installs an existing saved file. Commonprovider repair active;
+no CAD sleep/retry or fake data, no cancelled filesystem-race/security probes.
+CAD bounded reader now forwards signal to optional metadata waits (78320).
+Whole workflow remainsFAIL until final reopen/export and independent checker.
+Frozen32hole-evidence-r3; raw exports archived R730. Prior Files acceptance is
+limited to its prior tested paths; cold absent-read readiness is an open defect.
+
 ##32hole scheduling result and next coherent recovery build — 2026-11-07
 
 The complete32hole rerun Corec985/Desktop775 reaches initial3MF RESOURCE_LIMIT
