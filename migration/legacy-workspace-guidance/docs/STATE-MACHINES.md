@@ -42,7 +42,7 @@ silently rerun. CAD sources live in the separate JSKetcher repository.
 | U03 | Desktop lifecycle.mjs | H | idle → checking → recovering → idle; live → stopped | One owned operation; stopped continuation cannot re-block UI; LR01. |
 | U04 | Per-window DocumentOperations | H | idle → prepare(token) → local-write(token) → idle; live → disposed | Stale finish cannot finish new work; busy/phase derived from owner;20 coordinator controls pass. |
 | U05 | Session document claims | I | unclaimed → claimed(path/tree,owner) → released | No overlapping owners, including reentrant notifications. |
-| U06 | Command registry/scoped settlement | I | registered/current → pending → settled/lifetime-lost | No stale result payload; known commit outcome retained; ST03 bounded Save/Close contract passes. |
+| U06 | Command registry/scoped settlement | I | registered/current document → guarded dispatch → pending → settled/lifetime-lost | Whole-recipe document token derives from authoritative signal; recheck after caller serialization; known commit outcome retained. RC01/CMD01 component regressions pass, signed New/Open pending. |
 | F01 | Mirror row, mirror.mjs | I | clean/dirty/tombstone/conflicted/moving → sync/conflict | Bytes, remote base and intent agree; combinations under review. |
 | F02 | Mirror scan/retry | I | fresh → running → continuation/backoff → completed/failed | Retained progress is not fresh verification; ST01. |
 | F03 | File/folder conflict | I | detected → resolution prepared → CAS/publication → resolved | Preserve both sides until accepted resolution; ST02. |
@@ -57,7 +57,7 @@ silently rerun. CAD sources live in the separate JSKetcher repository.
 | W01 | Evaluation owner, evaluationResources | E | candidate → accepted → detached → closed; candidate → closed | Reservation/cleanup follows ownership; WR01. |
 | W02 | Engine controller/Worker | H | controller: initializing → ready (+pending) → closed; Worker: new → initializing → ready↔busy → closed | One request owner, synchronous admission and bound replies; WR02/WR03. |
 | W03 | Source/semantic/parameter/project/hash clients | I | admission/queued → running → settled; healthy → cleanup-failed fence | Late replies never publish; exactly-once cleanup/settlement and module fencing mapped; client/manager component regressions pass. |
-| B01 | Native build staging, prepare-raw-smlib-assets.cjs | I | cache input → verified → private temporary copy → generated target; build failure refuses publication | Input/cache never rewritten; atomic verified WASM replacement; BR01. |
+| B01 | Native build staging | I | cache input → verified → private temporary copy → generated target | BR01 raw-SMLib atomic cache repair passes; sweep bootstrap pin controls pass. Full prism stager still deletes prior private output before later failure; atomicity OPEN, not covered by BR01. |
 
 Derived status is not another machine unless independently stored authority can
 drift. Validity/representation/qualification are revision-bound classifications,
@@ -303,6 +303,9 @@ pass locally; no signed/deployed-site claim.
 | C05 accepted source | Nesting-changing source edit plus existing-region replacement | No qualified combined public transition in this slice | Keep it explicitly unfinished; separate rejection/reselection success is not joint repair |
 | W01 candidate | Reserve/create/seal with document/lifetime/publication checks | Accept without external callback in atomic step, detach after publication, retire unused | Failed factory/candidate cleanup cannot release another owner's reservation or close accepted owner |
 | W01 live owner | Document abort or cleanup failure | Close exactly once; latch cleanup poison | WR01 now covers falsey/accessor cleanup faults; every cleanup failure fences new work |
+| U06 current | Caller JSON/toJSON or source reader replaces document before dispatch | Recheck entry/session/access and exact signal-derived document token; refuse before handler | No mutation in the replacement document; no revision recapture bypass |
+| U06 pending New/Open | Own operation publishes a replacement document | Capture published token before callbacks; retain committed receipt | Helper adopts only its own named New/Open receipt matching current token; later replacement keeps helper stale |
+| U06 metadata admission | Serialized arguments exceed 64 KiB UTF-8 | Refuse before handler with explicit metadata-contract error | File payload budget is separate; field maxima do not waive total metadata bound |
 | U06 pending | Core settles while scope current | Return exact receipt/error once, remove timer/listener | Preserve known committed outcome; lifetime-loss uncertainty is not a successful retry authorization |
 | U06 pending | Actual owned window closes before held genuine native reply | Cancel, terminate owned Worker; late reply inert | No command resurrection; freshly reopened saved document retains accepted intent |
 
