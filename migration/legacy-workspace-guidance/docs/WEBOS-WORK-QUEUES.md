@@ -12,6 +12,22 @@ Visitor networking policy, 2026-11-06: **all server outbound relaying is disable
 
 Current mechanical integration: [signed mechanical path, remaining integration and new P0 numerical gaps](evidence/CAD-MECHANICAL-INTEGRATION-20261106.md). This checkpoint supersedes older pending-export/integration statements below; full Gate1 remains open. Filesystem-race testing is cancelled.
 
+## Active next slices — 2026-11-06
+
+Pattern component/native proof and root ledger/authored operation are integrated;
+shared creation/edit/journal/public Save/Open wiring is underway. Count1 remains
+unsupported. Document display units core and host/menu/dirty-state integration
+are implemented;33 core controls,9 host controls and type checks pass. Frozen
+CADf770a52a5/desktopf4c4d63e5 built and all183 package/73 core assets match;
+signed fixture20922 is now the unit-presentation acceptance path, not deployment.
+
+Atomic multi-point edits are merged (CAD6fa489538/desktop2fac13a1b):16 new real
+Worker cases,61 retained single-point cases and15 host controls pass. These are
+component proofs; signed disjoint-profile replay/Undo/native reopen remain open.
+Selected-region descriptors are next so callers need not parse opaque region IDs.
+Current merged type check and24 relevant host controls pass. Files stays accepted,
+filesystem-race tests remain cancelled, egress remains disabled. E17/C10 is Gate2.
+
 ## Current combined qualification — 2026-11-06
 
 Source69a476bfa/desktop1ef1390a4, appfb9565365, passes11 actual signed
