@@ -241,6 +241,16 @@ retention/eligibility and inspector assumptions remain under investigation.
 Account/API/My files responses are outside this software-only policy. No new
 state family or HTTP-cache success claim is introduced.
 
+W01/W02/C03 capacity R1 now corroborates the read/write distinction at the
+native-result limit:32 actual accepted outputs, planned32/remaining0/withinLimit
+true/canAppendfalse,33rd create RESOURCE_LIMIT with unchanged feature high-water
+and accepted state. A5-point native observation returns at quota (~40.67s under
+existing60s limit) without accepted-state/resource changes. The runner then fails
+an unsorted expected-key assertion; original failure retained, root independent
+actual-data checker and two schema regression controls pass. Full-capacity native
+Save/Open was never started in R1 and remains pending; no complete run claim.
+[Raw and independent scope](../test/agent-cad-corpus/sweep/signed-capacity-evidence-r1/README.md).
+
 ## Confirmed issues, grouped by impact
 
 | Group | Impact | Confirmed behavior | Current repair/evidence |
