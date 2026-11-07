@@ -2591,3 +2591,9 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
 
 - [x] WR04 confirmed error-only API contract defect: offered cancellation hooks can throw after/before custody changes and strand requests. Root integrates product e55f03573 plus final component evidence5a550d04b. 42 new +10 retained Node controls and6 actual Chromium same/cross-realm native-signal controls pass; root independently repeats42 and TypeScript. No native success was fabricated; no public corruption incident is claimed.
 - [~] Same callback-method pattern in source-plane command setup/finally is being reproduced independently before repair. The full signed circle/plane runtime remains pinned to19e0ef19b9 and does not claim the newer controller.
+
+### Source-plane depth — signed acceptance verified, 2026-11-07
+
+- [x] Same explicit adaptive application19e0ef19b9/7095e1012 passes both phase0/pi2 circle fixtures through depth30→40→45, source-radius edit, exact plane and mixed-edit Undo/Redo, coplanar-dependent refusal, normal Save/server sync/fresh Open/reedit. Root independently checks actual six saved files,18 native queries/108 points and10 refusal cases from /tmp/codi-source-plane-depth-signed-r1. These are named principal-plane/circle workflows, not all loft domains. Agent is freezing portable evidence; its immutable commit will be added here.
+- [ ] Polygon-section correspondence/edits and human tools remain open. E15 stays partial. E20 shared STEP and E22 shared drawing are the other major missing workflow work.
+- [x] Root removes334688982bytes of unused old local test package only after checksum comparison shows exact R730 backup and no launcher uses it. Account data, source, keys and active fixtures remain intact; cleanup receipt is retained.
