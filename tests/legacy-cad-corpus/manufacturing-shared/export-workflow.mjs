@@ -34,4 +34,4 @@ try{
  await h.save(file,'edited-material-plate');await exportFile('/material-plate-edited.3mf','edited');
  await h.freshOpen(file);await pin();await exportFile('/material-plate-reopened.3mf','reopened');
  receipt.status='PASS';
-}catch(error){receipt.status='FAIL';receipt.error={name:error?.name,message:error?.message,stack:error?.stack};process.exitCode=1;console.error(error?.stack)}finally{await h.retire();receipt.ownedContextClosed=true;receipt.driverPinsAfter=hashes();a.deepEqual(receipt.driverPinsAfter,receipt.driverPins);await browser.disconnect();receipt.sharedBrowserDisconnectedOnly=true;flush()}
+}catch(error){receipt.status='FAIL';receipt.error={name:error?.name,message:error?.message,code:error?.code??null,work:error?.work??null,committed:error?.committed===true,possiblyCommitted:error?.possiblyCommitted===true,stack:error?.stack};process.exitCode=1;console.error(error?.stack)}finally{await h.retire();receipt.ownedContextClosed=true;receipt.driverPinsAfter=hashes();a.deepEqual(receipt.driverPinsAfter,receipt.driverPins);await browser.disconnect();receipt.sharedBrowserDisconnectedOnly=true;flush()}
