@@ -22,9 +22,13 @@ Opaque journal inspection tokens can change; targets/cursor/authored state do no
 [Evidence and remaining paint/UI limits](../test/agent-cad-corpus/display-units/RESULT.md).
 Fixture20922 is fully stopped and private state/processes/port/targets cleaned.
 
-Shared pattern commands/history/bridge are integrated and awaiting signed full
-part qualification. Atomic edits are merged; semantic region descriptors and
-existing driving-dimension edit/removal are separate active P0 lanes.
+Shared pattern commands/history/bridge are integrated. The exact combined
+CAD183bd3a4d/desktop0fdc2a7f8 package (183 files,73 core assets) is under signed
+full-part qualification at disposable strict-CSP fixture20923; no deployment.
+Atomic edits and region descriptors are merged. Region descriptors passed44
+pure controls plus9 real semantic Worker cases and genuine client cancellation
+checks; signed E04/E05 replay/save/reopen remains pending. Existing driving-
+dimension edit/removal is a separate active P0 lane.
 No new deployment or exercise signoff; Gate1 remains21 rows, E17/C10 is Gate2.
 
 ## Active next slices — 2026-11-06
@@ -39,7 +43,10 @@ signed fixture20922 is now the unit-presentation acceptance path, not deployment
 Atomic multi-point edits are merged (CAD6fa489538/desktop2fac13a1b):16 new real
 Worker cases,61 retained single-point cases and15 host controls pass. These are
 component proofs; signed disjoint-profile replay/Undo/native reopen remain open.
-Selected-region descriptors are next so callers need not parse opaque region IDs.
+Selected-region descriptors are merged (CAD06c4f85e1); callers now receive
+source-bound outer/hole memberships without parsing opaque region IDs. The
+component evidence and independent integration review live in the CAD repo
+at test/selected-region-descriptors/. Signed public E04/E05 remains pending.
 Current merged type check and24 relevant host controls pass. Files stays accepted,
 filesystem-race tests remain cancelled, egress remains disabled. E17/C10 is Gate2.
 
