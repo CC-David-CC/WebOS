@@ -458,6 +458,16 @@ product/deadline/geometry/budget change. No Save/sync began in R1; full-capacity
 persistence remains unqualified. Owned browser context closed, allowing separate
 cache diagnostics to resume. Gate1 remains19partial/2missing/0full.
 
+### Retained fixture cleanup — 2026-11-07
+
+Root-owned superseded20936 service stopped normally after exact command/cwd
+checks and zero matching19329 targets. Its code bundle checksum-matches retained
+R730 copy. Removed only the old duplicate local bundle/disposable isolated runtime,
+recovering708,546,188 regular-file bytes. Source worktree and Git receipts remain;
+no account/key state was archived. Current20937/shared19329 unchanged. CDP19515
+was unavailable and was neither stopped nor modified.
+[Exact cleanup receipt](../test/agent-cad-corpus/sweep/root-runtime-r3/cleanup.json).
+
 ### Historical E13 integration checkpoints — superseded by the result above
 
 The previously checkpointed source-bound revolve adapters are now integrated as
