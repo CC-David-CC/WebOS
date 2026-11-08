@@ -3384,3 +3384,15 @@ Worker reconstruction plus original-equation proof; no snapping/tolerance waiver
 Coordinate branch-edit repair is in source review, history controls still source
 work, reference/driving source integrated but not qualified. These are bounded
 remaining lanes, not full-gate completion or a reliable finish-date estimate.
+
+
+## CAD decision checkpoint — 2026-11-08
+
+Core ACAD `docs/CAD1-CHECKPOINT-20261108.md` records exact source/runtime state,
+workstreams, failures, remaining steps and difficulty for the user's pause
+consideration. This is a snapshot, not a new canonical status matrix or pause.
+Current matrix remains `docs/evidence/CAD-GATE1-BASELINE-20261106.md`.
+User explicitly chose50pm=0.05nm=5e-8mm small-design geometric error budget;
+full precision retained, other physical/model domains independently qualified.
+Gate1 comes first and will be frozen; later CAD projects/branches do not expand
+this acceptance scope. Files remains accepted, relay off, race probes canceled.
