@@ -1,5 +1,24 @@
 # Workflow state machines and invariants
 
+## Cubic source admission and actual native observations — 2026-11-08
+
+Scoped R2 qualification ACAD e381b70, runtimeCore26d7a55/Desktopf6d1c07d1.
+The first strict native sketch admission uses the same pure bounded spline
+policy required before native loading. A malformed knot/ambiguous alias returns
+INVALID_SPLINE_DATA; bounded resource exhaustion is SPLINE_RESOURCE_LIMIT;
+actual stale derived geometry is SPLINE_DERIVED_MISMATCH. The old earlier
+generic Error mapped a known domain failure to CAD_ARCHIVE_INVALID; original
+whole R1 failure remains frozen9882ef6. Archive checks/expected codes remain.
+
+Actual ordered control custody, preserved unrelated source and real native
+Worker samples are separate invariants. Native curve observations are read-only:
+full captured accepted state/J/resources is unchanged. Edits verify the original
+request independently and use the existing journal; exact no-op/refusal does not
+consume a change. Three normal .cad saves/server equality/fresh Open/reedit and
+five owned semantic bad-file refusals pass.672actual native points satisfy the
+independent50pm finite-fixture oracle; source controls and IDs are exact.
+No BRep/profile/tangency/3D/universal precision or full Gate1 claim follows.
+
 ## Latest real navigation/UI Undo qualification — 2026-11-08
 
 ACAD6895c51 freezes the complete R1 browser and independent checker PASS on
