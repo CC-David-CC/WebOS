@@ -3049,13 +3049,14 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
 - [x] Retained complete parent repair R6 on90e3419 PASS (ACAD09ba384):
  14rows/two cases/two native files, explicit repair/deletion/travel/persistence
  and incompatible-child atomic refusal; wider reference domains open.
-- [~] Original100×50→150×30 plate, holes, all4 outer fillets, pattern, inches,
-  mixed travel, native persistence and STEP/core3MF: complete coherent driver/
-  oracles integrated ACAD5151915. Actual application workflow R1 now running on
-  qualified90e3419/Desktopfa1ca19f3; separate artifact STEP reader compiling.
-  No PASS claim before whole flow and artifact checks settle.
-- [~] Exact +Z blind rectangular pocket and flush inset-label interface source
-  and full public workflow/oracle in independent R730 lane. No result yet.
+- [x] Original100×50→150×30 plate whole acceptance chain PASS (ACAD9afec3f):
+  50rows/four native saves/two STEP/two3MF exports, all4 outer fillets, pattern,
+  inches, mixed travel, fresh Open/reedit/material assignment and atomic
+  refusals. Independent mesh/source oracle and separate pinned same-OCCT STEP
+  reader PASS. Actual runtime90e3419/Desktopfa1ca19f3; broader Gate1 still open.
+- [~] Exact +Z blind rectangular pocket/flush inset label product integrated
+  ACADbc85c5f; complete public driver/oracle Desktop7ac1f0fd4. Normal composed
+  build passed; new private fixture staging underway. No runtime result yet.
 - [x] Retained whole plate/export R7 on ac5a82b PASS:18rows, native persistence,
   shared creation/material travel and three exports; unchanged independent
   artifact oracle PASS. R6 incomplete engine-revision launch refusal retained;

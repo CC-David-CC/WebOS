@@ -167,8 +167,11 @@ agent workflow or a new release; see `CRAFT-PUBLICATION-20261104.md` in the fork
 ## Gate definition and execution policy
 
 - [ ] Qualify all11 in-scope competency areas and21 exercises; C10/E17 is Gate2.
-- [ ] Pass the integrated Change the original rectangle test, supplemented by
-  isolated edge cases so one demonstration cannot conceal deeper defects.
+- [x] Pass the integrated Change the original rectangle test: ACAD9afec3f,
+  complete public workflow plus independent mesh oracle and separate same-OCCT
+  STEP reader. See the current baseline for exact cases/builds/limits.
+- [ ] Complete the required isolated edge-case corpus; the successful integrated
+  demonstration does not qualify every foundational domain.
 - [ ] Human UI and authorized agent commands use the same validated operations,
   document, parameters, entity identities, history and account-bound file service.
 - [ ] Test OCC and Native Mesh separately. Publish each capability's supported,
