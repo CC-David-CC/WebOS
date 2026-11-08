@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## Generic selected-source implementation review —2026-11-08
+
+IN PROGRESS: source review of ACAD58386b1/c89485a on PL candidate529e026.
+Generic preparation now uses the complete captured typed source; original/cold/
+captured-equation checks, exact-byte digest and independent semantic/Native
+publication checks remain required. Rectangle width/height binding gets separate
+fresh selected-region/registered-row proof using actual resolved extrusion depth.
+Root requested canonical selectedProfiles discovery with no Circle-as-rectangle
+compatibility alias. Source-only independent review and complete consumed-Circle
+recipe/archive oracle are underway; no new runtime qualification or count change.
+
+Next serial execution after coherent integration: normal build, unchanged full
+DistancePL workflow and consumed typed-Circle workflow, each followed by its
+independent actual-artifact oracle. No per-edit product tests, relay, canceled
+filesystem-race work or public deployment.20scoped/10of21 ordinary contracts
+remain qualified;11ordinary contracts Partial. Separate E10–E13 evidence review
+is prepared for root review, not yet an acceptance status change.
+
 ## Point-line composition ready for typed-profile dependency repair —2026-11-08
 
 Core PL packet7384555/692f675/fec74cc/f45a293/2170ac8 composed on qualified
