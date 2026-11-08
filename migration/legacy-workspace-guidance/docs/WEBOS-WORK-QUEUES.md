@@ -1,5 +1,18 @@
 # WebOS work queues and progress ledger
 
+## Coherent captured-profile / generic rectangle build started
+
+Core62b27e6de653516190ddfaaad94b839da2d5daf7 composes READ repairf801c84,
+PL observation correctionf6156cd and generic rectangle mutation7b8ff23 with
+eligibility correction62b27e6 (original83d672b→77e2f638). Root reviewed all
+production diffs; independent reviewer identified the eligibility issue and
+is checking the correction. Both ACAD LAN branch refs match62b27e6.
+Normal R730 build session36418 is running using unique guarded script
+/mnt/data10tb/codi-acad-captured-profile-e22-build-20261108-r1.sh;
+local log /tmp/codi-acad-captured-profile-e22-build-20261108-r1.log.
+No component test/probe was run. Next fresh fixture and UNCHANGED complete
+E22 R3; independent oracle only after whole terminal PASS. Counts unchanged.
+
 ## E22 exact-axis cause measured; captured-read repair composed, generic repair reviewed
 
 E22 unchanged whole R2 on Coreb9677ef/Desktop78cc169 failed at the same generic
