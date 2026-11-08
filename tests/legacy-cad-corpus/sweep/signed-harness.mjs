@@ -14,7 +14,26 @@ export async function harness(browser,base,out,record,{existingAccount=null}={})
  async function newProject(){const before=await command('inspect'),result=await command('new-project',{revision:before.revision});assert.equal(result.status,'opened');assert.equal(result.path,null);assert.equal(result.committed,true);await refreshFrame();const after=await command('inspect');assert.equal(after.operationCount,0);assert.equal(after.sketchCount,0);return{result,empty:after};}
  async function command(id,args={}){const r=await page.evaluate(async({windowId,id,args})=>{try{return{ok:true,value:await codiDesktopCommands.execute({windowId,command:id,args})};}catch(e){
  const diagnostic=error=>{try{let cause=error;for(let i=0;cause&&i<4;i++){const w=Object.getOwnPropertyDescriptor(cause,'work');if(w&&Object.hasOwn(w,'value')){let nodes=0;const copy=(v,depth)=>{if(++nodes>128||depth>4)throw Error('Diagnostic bound');if(v===null||typeof v==='boolean'||typeof v==='number'&&Number.isFinite(v))return v;if(typeof v==='string'&&v.length<=256)return v;if(!v||typeof v!=='object'||Array.isArray(v)||Reflect.ownKeys(v).length>32)throw Error('Diagnostic data');const out={};for(const key of Reflect.ownKeys(v)){const d=Object.getOwnPropertyDescriptor(v,key);if(typeof key!=='string'||key.length>64||key==='__proto__'||!d?.enumerable||!Object.hasOwn(d,'value'))throw Error('Diagnostic fields');out[key]=copy(d.value,depth+1);}return out;};const out=copy(w.value,0);return JSON.stringify(out).length<=2048?out:null;}const d=Object.getOwnPropertyDescriptor(cause,'cause');cause=d&&Object.hasOwn(d,'value')?d.value:null;}}catch{}return null;};
- return{ok:false,error:{name:e.name,message:e.message,code:typeof e.code==='string'?e.code:null,committed:e.committed===true,possiblyCommitted:e.possiblyCommitted===true,work:diagnostic(e)}};}},{windowId,id,args});if(!r.ok)throw Object.assign(Error(r.error.message),r.error);return r.value;}
+ // Copy only an actual strict admission-cause record from own data. This is
+ // diagnostic transport, never a solver/native proof or inferred failure kind.
+ const admissionDiagnostic=error=>{try{
+  const bases={'algebraic-contradiction':'exact-reduced-row','approximate-reduction-rejection':'approximate-reduced-row','original-residual-failure':'original-equations','invalid-domain':'domain-check','numerical-convergence-failure':'solver-status','nonfinite-result':'finite-check','resource-limit':'resource-check','retained-validation-failure':'retained-validation','unclassified-rejection':'admission-membership'};
+  // The real cause originates in the CAD iframe: parent-realm prototype
+  // identity is not a valid data admission test. Read exact own fields only.
+  const capture=value=>{
+   if(!value||typeof value!=='object'||Array.isArray(value))return;
+   const keys=Reflect.ownKeys(value);if(keys.length!==2||keys.some(k=>k!=='kind'&&k!=='basis'))return;
+   const kind=Object.getOwnPropertyDescriptor(value,'kind'),basis=Object.getOwnPropertyDescriptor(value,'basis');
+   if(!kind?.enumerable||!basis?.enumerable||!Object.hasOwn(kind,'value')||!Object.hasOwn(basis,'value')||typeof kind.value!=='string'||kind.value.length>64||typeof basis.value!=='string'||basis.value.length>64||!Object.hasOwn(bases,kind.value)||bases[kind.value]!==basis.value)return;
+   return{kind:kind.value,basis:basis.value};
+  };
+  let node=error;for(let depth=0;node&&(typeof node==='object'||typeof node==='function')&&depth<5;depth++){
+   for(const key of ['admissionCause','cause']){const d=Object.getOwnPropertyDescriptor(node,key);if(d&&Object.hasOwn(d,'value')){const captured=capture(d.value);if(captured)return captured;}}
+   const d=Object.getOwnPropertyDescriptor(node,'cause');node=d&&Object.hasOwn(d,'value')?d.value:null;
+  }
+ }catch{}return undefined;};
+ const cause=admissionDiagnostic(e);
+ return{ok:false,error:{name:e.name,message:e.message,code:typeof e.code==='string'?e.code:null,committed:e.committed===true,possiblyCommitted:e.possiblyCommitted===true,work:diagnostic(e),...(cause?{cause}:{})}};}},{windowId,id,args});if(!r.ok)throw Object.assign(Error(r.error.message),r.error);return r.value;}
  async function inspect(faceId){const list=await command('inspect-closed-sketches');assert(list.candidates.some(c=>c.faceId===faceId));return command('inspect-closed-sketch',{revision:list.revision,faceId});}
  async function capture(faceId){const native=await frame.evaluate(id=>{const c=globalThis.__CAD_APP,p=c.projectService,history=c.craftService.modifications$.value.history;return{history:JSON.parse(JSON.stringify(history)),source:id?c.sketchStorageService.getSketchData(id):null,expressions:c.expressionService.script$.value,counters:{...p.counterGenerator.projectCounters},materialRevision:c.projectManager.inspectMaterialSurfaceRevision(),sketches:c.sketchStorageService.getAllSketches().map(s=>({id:s.id,source:c.sketchStorageService.getSketchData(s.id)})).sort((a,b)=>a.id.localeCompare(b.id)),presentation:c.projectManager.getPresentationMetadata()};},faceId);return{native,solids:await command('inspect-worker-solids'),journal:await command('inspect-authored-edits')};}
  function accepted(value){const clone=structuredClone(value);delete clone.solids.revision;delete clone.journal.revision;return clone;}
