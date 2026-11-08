@@ -2,6 +2,15 @@
 
 ## Current CAD1 execution checkpoint — 2026-11-08
 
+Active root packet: Mirror source composed Core8a4bc6c/Desktop9bdb3a512; normal
+build94801 in progress, no Mirror qualification yet. C02 Native82028bb normal
+compile86376 PASS with unchanged source/SDK inputs; exact portable/WASM pair
+and loader transformation are recorded in ACAD
+docs/reviews/CIRCULAR-NATIVE-BUILD-20261108.md. That compile is not a geometry
+pass or available app cohort. Final C02 source f3b959e is frozen separately;
+root exact-pair/catalog/factory/closed staging integration remains required.
+
+
 Qualified finite principal Apply R4 ACAD25fc19e; actualCore6f6ccef /
 Desktopc8779dd83. Complete Chrome workflow and independent ZIP/source/analytic/
 chronology oracle PASS:199records/6real Apply paths/18UI travels/30Native sets/
