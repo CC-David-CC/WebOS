@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## E09 R1 retained; through-hole request code repair —2026-11-08
+
+Whole76131 terminalFAIL on actual0133698/95d8023b0 after18records/75public traces/
+13observations/161Native point checks/2fullychecked refusals/0saves. Immediate
+CORNER creation UndoRedo and subsequent positive edits/mixed travel pass. Zero
+numeric diameter correctly refuses before Craft but lacks INVALID_REQUEST code
+expected by the frozen test and used by other site's request envelopes.
+Original full failure ACADf1c3125 on both LANs; contexts retired/source unchanged,
+normalized accepted state preserved. E09 remains Partial;18scoped/9ordinary.
+
+Coherent Desktop repair adds one INVALID_REQUEST constructor only for through-hole
+argument record/field/domain validation in both create/edit (inspection envelopes
+reuse capture). Existing lifetime/Native/math errors, geometry/schema/ranges and
+driver/oracle stay unchanged. Normal app-bundle build with existing compiled
+Core013, fresh Desktop source/pins/privatefixture and full unchanged R2 planned;
+no independent artifact oracle until whole PASS. No browser workflow active now.
+
+
 ## Complete E09 corner creation lifecycle now running —2026-11-08
 
 Source-only frozen packetd9034fec composed af8145c on separate Core branch

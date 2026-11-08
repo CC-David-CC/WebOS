@@ -1,5 +1,26 @@
 # Workflow state machines and invariants
 
+## Through-hole request rejection boundary —2026-11-08
+
+Complete E09 attempt76131 on actual Core0133698/Desktop95d8023b0 failed at an
+uncoded zero-diameter request refusal, after actual corner creation UndoRedo and
+161 Native material/void point observations passed. Frozen ACADf1c3125 retains
+original driver/receipt/snapshots. Accepted state remained unchanged; no Native
+or mathematical failure is established. Whole E09 still unqualified.
+
+| Boundary | State invariant / repair |
+|---|---|
+| Raw argument → captured record | Exact own-data fields and types remain; malformed envelope reports INVALID_REQUEST before any Craft call |
+| Captured request → valid domain | Positive finite diameter/offsets and existing bounds unchanged; zero rejects with machine-readable INVALID_REQUEST |
+| Valid request → current target/Craft | Actual account/window/currentness and geometry errors keep their own codes; no catch-all code rewriting |
+| Request rejection → caller | No source/history/J/counter/publication change; driver retains raw before/after evidence |
+| Qualification | Rebuild ordinary app bundle against unchanged compiled Core013 runtime; fresh fixture and unchanged complete workflow, independent artifacts only after whole PASS |
+
+The repaired error constructor covers argument record/field/domain admission for
+both create/edit and inspection request envelopes. It changes no geometry/schema
+values, domain thresholds, numerical policy or existing downstream solver errors.
+
+
 ## Whole-entity Fix shared admission review — source only,2026-11-08
 
 Candidate ACAD e7884b4 composes2977e9e/14fa50e with two Craft service type
