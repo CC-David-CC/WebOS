@@ -3071,6 +3071,10 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   width/height/extrusion depth and semantic through-hole dimensions. Other
   feature families stay explicitly unsupported; numeric edits cannot erase a
   formula. Source work active; no runtime result.
+- [x] Retained full-face two-material R2 on expanded inset runtimebc85c5f:
+  39rows/five native saves/three exports plus unchanged independent oracle
+  PASS (Desktop6e42da655). Both material-domain dispatch paths now have
+  complete evidence on that same compiled build.
 - [~] Source-confirmed signed X/Y dimension discovery/edit/removal gap: public
   add works, but current driving targets expose only length/diameter. Approved
   narrow schema-aware signed edit path and full concentric+zero/negative/refusal/
