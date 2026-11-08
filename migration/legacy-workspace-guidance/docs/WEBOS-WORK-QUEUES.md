@@ -1,5 +1,22 @@
 # WebOS work queues and progress ledger
 
+## Four-corner R2 full workflow active after request-code repair —2026-11-08
+
+Normal app-bundle build70388 terminal0, reusing unchanged complete compiled
+Core013369861fad6123520065a4e06fafac752900e8, new actual
+Desktop68d66e4f8295af29e145d24d72d3b9571e550cac. Fresh stage-r2/pins-r2, private
+21016/state-r34; backend98211/forward8270 owned and live. Same explicit Native
+manufacturing32eec74e/abbf2aa0. No numerical/Worker/Core rebuild required for the
+Desktop argument-code-only repair. Full Chrome61817 now active on19329;
+output/tmp/codi-acad-four-corner-workflow-20261108-r2. Driver/oracle/geometry/
+tolerances unchanged; source files frozen. Independent oracle after wholePASS.
+
+Original R1f1c3125 remains retained. Counts18scoped/9ordinary, E09Partial. Fix
+complete source packet now available (throughcef6e588 plusDesktopbb1c7cb28),
+including human-policy corrections, but not yet fully composed/built/tested.
+Root completes this actual whole run before any next browser workflow.
+
+
 ## E09 R1 retained; through-hole request code repair —2026-11-08
 
 Whole76131 terminalFAIL on actual0133698/95d8023b0 after18records/75public traces/
