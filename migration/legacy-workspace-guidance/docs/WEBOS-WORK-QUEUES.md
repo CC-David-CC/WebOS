@@ -3041,9 +3041,11 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
 - [x] Same printable object/two materials, full-face boxes:39rows/five native
   files/three actual3MF exports plus unchanged independent artifact oracle PASS
   (Desktop eaefa358f). Inset/curved/partial interfaces remain unqualified.
-- [~] Shared ordinary primitive domain admission integrated ACAD2dbda5c;
-  complete public creation/edit/refusal/native-Open driver90e3419 prepared.
-  Needs coherent normal build and complete application run.
+- [x] Shared ordinary primitive domain admission complete workflow PASS
+  (ACAD7db5fe0), actual runtime90e3419/Desktopfa1ca19f3:45rows/two healthy
+  native files plus three own malformed source copies. Public creation/edit/
+  travel, typed pre-adoption refusal with state/file preservation, healthy
+  Save/server-sync/fresh Open/reedit/resave/second Open all pass. E01 partial.
 - [~] Original100×50→150×30 plate, holes, fillet, pattern, inches, travel,
   native persistence and exchange: one complete driver/oracle being prepared.
 - [~] Exact +Z blind rectangular pocket and flush inset-label interface source

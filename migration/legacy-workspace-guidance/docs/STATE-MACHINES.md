@@ -846,14 +846,16 @@ final signed receipts bind the final solved inserted row. No global tolerance,
 source equality or unrelated geometry relaxation. Complete unchanged R3 passes
 73rows/203commands/four native files; wider domains remain unqualified.
 
-## Ordinary native entity admission —source repair awaiting whole run
+## Ordinary native entity admission —complete named workflow PASS
 
 Native Open preflight establishes representability before staging any candidate,
 including unconsumed source planes. Segment length and Circle/Arc radii must
 exceed the same existing1e-9mm domain used by solve. Failure forwards typed
 INVALID_SKETCH_ENTITY_DOMAIN before adoption; it is not a constraint conflict,
 profile-topology verdict or downstream kernel failure. ACAD2dbda5c shares the
-predicate without changing thresholds or Arc branch policy. Prepared complete
-workflow90e3419 must prove public authoring, negative copies of own saved native
-source, unchanged accepted state/files, and healthy fresh Open/reedit. No runtime
-qualification is inferred from source inspection.
+predicate without changing thresholds or Arc branch policy. Complete unchanged workflow now PASS, frozen ACAD7db5fe0:45rows/two healthy
+native files plus three malformed own-source copies. Public authoring/edits/
+travel, typed pre-adoption refusal, unchanged accepted state/files and healthy
+fresh Open/reedit/resave are runtime-qualified on90e3419/Desktopfa1ca19f3.
+This establishes the ordinary source-domain boundary only; no general
+constraint, profile or kernel result is inferred.
