@@ -3033,18 +3033,28 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
 
 ## Latest active queue —2026-11-07
 
-- Completed whole flow: exact exterior corner/nested regions,55rows/four native
-  files, normal+negative/reversed cases (ACAD49de2af).
-- Fix next: signed-distance fresh-solve equivalence after real endpoint-lock
-  rejection. R2 actual insertion proof passes; exact complete JSON replay guard
-  now refuses. Preserve exact authoring and independently verified derived state.
-- Compose next: two-material SAME-part box interface source4dafbd5 plus Desktop
-  fe631a481 whole driver/independent oracle; no runtime qualification yet.
-- After coherent source/build: rerun unchanged complete midpoint/angle recipe,
-  then actual material-interface export and retained whole-source/plate flows.
-- Keep all source/evidence backed on ACAD +Desktop LAN repositories; no JSketcher
-  continuation or cancelled filesystem-race probes.
+- [x] Exact exterior corner/nested regions:55rows/four native files, two complete
+  ordinary and negative/reversed cases (ACAD49de2af).
+- [x] Unchanged complete midpoint/angle R3:73rows/203commands/four native files,
+  including redundant signed locks, conflict/no-op/travel and persistence
+  (ACAD631ca61). R1/R2 failures retained; no general solver claim.
+- [x] Same printable object/two materials, full-face boxes:39rows/five native
+  files/three actual3MF exports plus unchanged independent artifact oracle PASS
+  (Desktop eaefa358f). Inset/curved/partial interfaces remain unqualified.
+- [~] Shared ordinary primitive domain admission integrated ACAD2dbda5c;
+  complete public creation/edit/refusal/native-Open driver90e3419 prepared.
+  Needs coherent normal build and complete application run.
+- [~] Original100×50→150×30 plate, holes, fillet, pattern, inches, travel,
+  native persistence and exchange: one complete driver/oracle being prepared.
+- [~] Exact +Z blind rectangular pocket and flush inset-label interface source
+  and full public workflow/oracle in independent R730 lane. No result yet.
+- [~] Retained whole plate/export regression against replay/material runtime
+  ac5a82b running; initial launch with incomplete engine revision correctly
+  refused before authoring and is retained separately. Correct registered
+  JS+WASM revision supplied on the new complete run; no product change.
+- Keep source/evidence on both ACAD and Desktop LAN repositories. JSketcher is
+  retired to public-fork state. No cancelled filesystem-race probes or UI work.
 
-Local completed clean agent worktrees for resource-closure and material-interface
-source were removed only after exact branch readback on both LANs. Active signed
-replay worktree and sources remain. Build products stay on R730.
+Gate1 remains21Partial/0full. Named complete workflows do not sign off an entire
+exercise or every engine/human path. Local completed clean worktrees were removed
+only after exact branch readback on both LANs; builds/new checkouts stay on R730.

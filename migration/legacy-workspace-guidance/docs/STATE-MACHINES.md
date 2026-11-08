@@ -831,6 +831,29 @@ reconstruction and geometric measurement still precede publication.
 
 | Transition | Required invariant | Qualification |
 |---|---|---|
-| Accepted source → new signed relation candidate | One actual new constraint; all retained authored fields/order/identities preserved | Source71be4d1, full rerun pending |
-| Retained accepted ↔ redundant classification | Derived state agrees with actual current system, not a synchronized sticky flag | Source-only until complete unchanged workflow |
-| Candidate → published source/history | Independent reconstruction, existing atomic sketch workspace/journal replay | Complete R1 blocked before locks; repaired full flow pending |
+| Accepted source → new signed relation candidate | One actual new constraint; all retained authored fields/order/identities preserved | Complete unchanged R3 PASS, ACAD631ca61 |
+| Retained accepted ↔ redundant classification | Derived state agrees with actual current system, not a synchronized sticky flag | Complete unchanged R3 PASS with actual redundant locks and conflicts |
+| Candidate → published source/history | Independent reconstruction, existing atomic sketch workspace/journal replay | R1/R2 retained; repaired complete R3 travel/Save/Open PASS |
+
+
+The R2 exact whole-JSON replay guard also refused independently reconstructed
+constrained geometry. The scoped verifiedReplayGeometry helper preserves exact
+authored fields/identities/order, limits numerical differences to actual
+constraint-connected supported geometry within the existing1e-9mm diagnostic
+bound, preserves branches, and verifies derived admission against real solve
+evidence. Independent reconstruction still establishes authoritative results;
+final signed receipts bind the final solved inserted row. No global tolerance,
+source equality or unrelated geometry relaxation. Complete unchanged R3 passes
+73rows/203commands/four native files; wider domains remain unqualified.
+
+## Ordinary native entity admission —source repair awaiting whole run
+
+Native Open preflight establishes representability before staging any candidate,
+including unconsumed source planes. Segment length and Circle/Arc radii must
+exceed the same existing1e-9mm domain used by solve. Failure forwards typed
+INVALID_SKETCH_ENTITY_DOMAIN before adoption; it is not a constraint conflict,
+profile-topology verdict or downstream kernel failure. ACAD2dbda5c shares the
+predicate without changing thresholds or Arc branch policy. Prepared complete
+workflow90e3419 must prove public authoring, negative copies of own saved native
+source, unchanged accepted state/files, and healthy fresh Open/reedit. No runtime
+qualification is inferred from source inspection.
