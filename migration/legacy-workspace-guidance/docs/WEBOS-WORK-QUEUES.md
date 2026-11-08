@@ -1,5 +1,26 @@
 # WebOS work queues and progress ledger
 
+## E16 R1 counter mismatch preserved; detached-boundary repair building
+
+Complete Boolean46384 terminalFAIL1 after initial subtract19000 Native fact and
+immediate creation Undo. Driver compares post-Undo featureId high-water3 to
+precreation2. Proof ACADbaf95cc preserves three rows/14commands/oneNative
+observation/oneUndo/zeroSaves/zeroSTEP, sources unchanged and context retired.
+Independent source audit assigned: prove allocation contract and exact expected
+counter for each callsite; no blanket omission, product ID reset or passclaim.
+No after-whole oracle on incomplete run.
+
+Root reviewed one-line request correctioned1ad279 and composed5c13e06; sibling
+boundary is now structuredClone(authored.boundary), preserving inspectTree.
+Read regression source map57c6228 composed472a0ed. Both LANs exactbaf95cc.
+New normal R730 build72049 running frombaf95ccae09b915f1038286e01a674fb3a7fa6f2;
+unique /mnt/data10tb/codi-acad-detached-profile-e22-build-20261108-r1.sh,
+local sibling.log. No browser runs concurrently. After stage: unchanged E22R4.
+Follow E22 with four complete read-family regressions identified by map;
+nonempty sketch boundary and renamed legacy writer lack equivalent current
+whole .cad coverage and remain explicit gaps, not implicitly passed by Circle,
+loft or modern typed transactions. Counts19/21ordinary/23scoped unchanged.
+
 ## E22 R3 tree-alias failure retained; full E16 R1 started
 
 Whole68990 terminalFAIL1 at first generic width edit: INVALID, Sketch data must
