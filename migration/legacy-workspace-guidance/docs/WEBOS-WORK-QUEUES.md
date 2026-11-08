@@ -3339,3 +3339,19 @@ native .cad archive workflow. Default untouched-dialog precision regression,
 remaining finite Gate1 features and final composed beta still await qualification.
 Files remains accepted; filesystem races remain cancelled; no public deployment
 is part of this checkpoint. Canonical detailed matrix is CAD-GATE1-BASELINE.
+
+### Execution checkpoint — 2026-11-08
+
+PUSH: original orientation R8 first rectangle failure on8a79bde/Desktop640279b9f
+(ACAD5798a51), cause still unestablished; investigate real creation path before
+another coherent build/full run. Keep all earlier failed and successful runs.
+PUSH: native .cad R2 lifecycle failure (11 versus10 codecs, all retired), confirmed
+same-generation reset closes decoded archive owner; local restore custody fix
+and exact reuse/lifetime full workflow await qualification. Do not waive count.
+IN PROGRESS independently: shared ordinary Segment reference/driving conversion
+using one native ruler and existing source journal; no new format or stored role.
+BUILD ONLY: length affected closure/verifier, auxiliary ownership, nonzero math
+and circular seam fixes. Compilation is not acceptance. Main-thread ARC23 and
+large-source/cache performance, default human dialog precision, finite remaining
+history/drawing coverage and final composed beta remain open. Files accepted;
+no filesystem race, relay or public deployment authorized by this checkpoint.

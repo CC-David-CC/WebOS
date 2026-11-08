@@ -1098,3 +1098,21 @@ The corrected fixture must include and pin the actual Files module and its
 reviewed Chonky dependencies before a fresh complete workflow can qualify it.
 ARC23 main-thread dirty snapshot and large-source/cache performance remain open;
 compiled archive code alone is not proof of responsiveness or a memory bound.
+
+### Archive restore custody defect and repair contract — 2026-11-08
+
+R2 confirms resetDocumentState closes the new decoded managed archive owner
+while loading the SAME job generation. The later Save creates another Worker
+and cannot reuse the opened archive. Eleven targets retire; no leak claim.
+
+| Restore transition | Required custody / invariant |
+| --- | --- |
+| Establish replacement job | Fence/retire previous managed archive; current job signal owns new local codec |
+| Decode and replay | New codec stays restore-local; ordinary reset must not retire it via managed-owner slot |
+| Replay/metadata complete | Recheck exact job, manager, signal, pending state and competing owner before synchronous custody transfer |
+| Transfer complete | Same decoded codec becomes managed owner; clear local custody; no re-decode or extra Worker |
+| Failure/cancel | Retire only locally owned codec and perform existing exact-job restore failure handling; never close foreign replacement owner |
+| Reentrant acquisition | Refuse during restore pending; no second competing managed codec |
+
+This is the source repair contract, not a PASS. Keep10 expected codec targets
+and verify unchanged drawing compressed-span reuse after fresh Open/reedit.
