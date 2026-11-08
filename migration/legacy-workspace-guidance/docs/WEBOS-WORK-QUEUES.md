@@ -1,5 +1,21 @@
 # WebOS work queues and progress ledger
 
+## Build setup collision retained; unique construction build running
+
+Source-frame attempt26061 terminated1 before compilation: its guarded
+native-graphs-before-source-frame-20261108-r1 directory already existed from
+05:02UTC-era work. No older graph was replaced and no product compilation or
+browser ran in that attempt. Retain its original log; this is setup collision,
+not a source compile failure. New unique dimension-frame-construction-r1 label
+uses a separate graph backup and log. Normal build41824 now runs at actual
+e005eab on R730:
+/mnt/data10tb/codi-acad-dimension-frame-construction-build-20261108-r1.log.
+
+Current ordinary count19/21 and scoped23 unchanged. Fresh exact stage/whole
+unchangedPL R5 still required. Explicit-fit source packet is ready for independent
+root source review; E22/E16 source work continues. No deployment/main promotion.
+
+
 ## Source-frame construction repair composed; normal build started
 
 Source daa1666 composes as ACAD e005eab494e8ce1ea4dd7d26eb48d6eb9999bcdb,
