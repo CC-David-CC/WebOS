@@ -1,5 +1,23 @@
 # Workflow state machines and invariants
 
+## CAD-PL-FRAME-01: measured warm/replay side divergence on reversal
+
+R4 proof22b9712 (actual88a8181/06f630880) measures actual y2→-2mm, delta-4mm,
+at signed endpoint reversal. Warm native angle0/t=-10 and retained PL residuals0
+are directly observed; cold native angle/t are unavailable. Segment source
+stores endpoints and derives its initial frame on read, so signed warm frame
+and source-derived reconstruction have a known representation seam. No claim
+that an actual cold frame was captured. CURRENT_GEOMETRY_MISMATCH prevents
+publication and accepted state remains prior. Initial redundancy remains fixed.
+
+Next repair must construct a coherent candidate using authoritative endpoints
+and original rows before publication, preserving side/literals/exact untouched
+component scope and existing independent replay. Do not delete the guard, copy
+cold result over authored candidate, invert side flags, add DIRECTION_SIGN,
+persist duplicate authoritative geometry or force every solved signed length
+positive. One construction stage lifecycle is distinct from retries/polishing.
+No mathematical repair or qualification claimed by passive diagnostics.
+
 ## CAD-EXPORT-REFUSAL-01: current prewrite predicates omit machine codes
 
 Primary TR actual rows7–9 retain code:null plus actual explicit refusal messages,

@@ -1,5 +1,27 @@
 # WebOS work queues and progress ledger
 
+## PL R4 measures4mm side flip; export-code repair composed
+
+Unchanged whole84264 FAIL1 at signed endpoint reversal, actual88a8181/06f630880.
+First actual serialized difference: source.objects.5.data.y2→-2, delta-4mm.
+Actual warm native DistancePL rows report angle0/t=-10 with both original side
+residuals0. Actual cold native frame unavailable. Source reconstruction resets
+the derived frame from endpoints; this explains a candidate/replay side seam,
+not small drift. Refusal precedes commit.22records/261calls/12observations/
+4diagnostics/3refusals/0saves; sources unchanged, contexts retired. Frozen
+ACAD22b9712 under test/point-line-distance-public-workflow/evidence-r4, bothLAN.
+Source-only candidate-construction repair assigned; no original math/side edits.
+
+Export refusal-code repair composed as Core8908fb8/Desktop7c2b85f48:
+STALE_DOCUMENT at actual revision predicates, ENGINE_REVISION_MISMATCH separately,
+MANUFACTURING_REVIEW_REQUIRED at Worker-hashed material revision guard. Messages,
+actual cancellation and file settlement stay unchanged; both complete typed
+artifact/container drivers now require exact original codes. No qualification
+claim yet. Normal build13594 starts on R730,
+/mnt/data10tb/codi-acad-export-codes-build-20261108-r1.log; full .cad/export
+workflow follows normal stage. No active Chrome run. Counts16/23 unchanged.
+No main promotion, public deployment, relay/race testing or final packaging.
+
 ## Diagnostic build/stage PASS; unchanged full PL R4 running
 
 Normal build81205/stage10839 PASS0. ActualCore88a81819078cee0512adcd5cec26f7692a09e79b /
