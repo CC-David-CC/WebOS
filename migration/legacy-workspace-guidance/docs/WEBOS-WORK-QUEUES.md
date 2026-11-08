@@ -1,5 +1,24 @@
 # WebOS work queues and progress ledger
 
+## Fit/drawing normal build PASS; fresh stage underway
+
+Normal19814 PASS0 atCoredb278000a036dbc042183fc3a902633e848630fd. Fresh
+explicit-fit-drawing fixture71599 stages against Desktop6f708bd6feeb08aaf190229ac1a1c11e4881cb41;
+expanded pins include actual adaptive-metrology needed for whole loft. Root will
+run E22 full repair workflow, then full loft/view workflow strictly serial.
+No active Chrome/build now; no qualification from source or compilation alone.
+
+Before more real evidence is written, verified both LAN Core headsdb278 match
+and made38more old completed proof files sparse locally (Fix/E11/corner proofs).
+No tracked deletion: complete evidence remains in Git/both LANs. Reclaimed
+47665152bytes; free local space192430080bytes. Source and current required oracle
+modules remain. Receipt docs/evidence/cad-sparse-evidence-20261108-r2.json.
+Independent E16 analytic review found frozen volumes/contact dimensions consistent;
+downstream oracle must classify full-face internal material as inside and
+connected notch opening as void, not retained operand boundary. No execution or
+criterion change from that review. Counts19ordinary/23scoped unchanged.
+
+
 ## PL R5 retained; free-coordinate assumption identified; fit/drawing composed
 
 Whole10644 terminalFAIL1 at actuale005eab/5cf27cb1:41rows/442calls/21Native
