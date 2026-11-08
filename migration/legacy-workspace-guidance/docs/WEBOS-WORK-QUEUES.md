@@ -3040,7 +3040,8 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   (ACAD631ca61). R1/R2 failures retained; no general solver claim.
 - [x] Same printable object/two materials, full-face boxes:39rows/five native
   files/three actual3MF exports plus unchanged independent artifact oracle PASS
-  (Desktop eaefa358f). Inset/curved/partial interfaces remain unqualified.
+  (Desktop eaefa358f). This receipt covers full-face only; exact inset result
+  is recorded separately below. General/curved/partial interfaces remain open.
 - [x] Shared ordinary primitive domain admission complete workflow PASS
   (ACAD7db5fe0), actual runtime90e3419/Desktopfa1ca19f3:45rows/two healthy
   native files plus three own malformed source copies. Public creation/edit/
@@ -3071,7 +3072,11 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   width/height/extrusion depth and semantic through-hole dimensions. Other
   feature families stay explicitly unsupported; numeric edits cannot erase a
   formula. Product integrated ACAD19b412b/driver0e46c2b and Desktopebb58b2b0; normal
-  composed build running. No runtime result; typed export readers remain open.
+  composed build passed. First whole R1 fails at selected-rectangle manifest
+  admission before typed publication (ACAD737f3a7 retains four rows/zero saves).
+  Kind-aware exact family/source repair integrated1e293a8, rebuilding for the
+  unchanged complete R2. Literal part/native observations pass; no typed success
+  yet. Typed export readers remain open.
 - [x] Retained full-face two-material R2 on expanded inset runtimebc85c5f:
   39rows/five native saves/three exports plus unchanged independent oracle
   PASS (Desktop6e42da655). Both material-domain dispatch paths now have

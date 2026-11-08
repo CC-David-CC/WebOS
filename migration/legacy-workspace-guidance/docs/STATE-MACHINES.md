@@ -918,3 +918,13 @@ engine/build and exact captured Native scalar measurements before encoding.
 
 This is a sufficient exact domain, not arbitrary material-interface qualification.
 A separate body/lid/label combined document remains an integration task.
+
+
+Modern typed adoption R1 exposed a manifest-kind integration defect before
+candidate publication: the controller expects legacy rectangle instead of the
+captured modern selected-rectangle. ACAD737f3a7 retains the actual four-row
+failure on0e46c2b/fc5cc6747. Repair1e293a8 makes admission kind-aware and binds
+actual history index/feature/source/region, with legacy handling separate and
+no-op replies bound to the same identity. Full unchanged rerun still required.
+The literal part/native observations are passing controls; later typed states
+remain unqualified. No public corruption incident is claimed.
