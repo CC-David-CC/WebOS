@@ -1,5 +1,25 @@
 # WebOS work queues and progress ledger
 
+## Complete E09 corner creation lifecycle now running —2026-11-08
+
+Source-only frozen packetd9034fec composed af8145c on separate Core branch
+integration/four-corner-qualification-20261108. No product code changed: root
+reuses the already-complete normal build32673/fixture88551, actual
+Core013369861fad6123520065a4e06fafac752900e8 /
+Desktop95d8023b0209ad119ccfe92a34cdb6a55e87ef01 on private21015/state-r33.
+The explicitly staged manufacturing Native32eec74e/abbf2aa0 is the same full-part
+revision as prior HP/PL/IC, verified by actual signed asset pins and the driver's
+advertised capability checks; no fallback backend or substituted geometry.
+
+Whole Chrome76131 active, output/tmp/codi-acad-four-corner-workflow-20261108-r1:
+immediate four-corner operation creation UndoRedo, edits/refusals, actual Native
+material/void observations and three.cad Save/server/fresh Open cycles. No other
+Chrome workflow/build active. Independent oracle waits for whole terminalPASS.
+E09 stays Partial until both succeed; existing18scoped/9ordinary contracts remain.
+Fix packet e7884b4 and its human-policy correction6c9b45e remain source-only,
+Desktop adapter/whole driver/oracle still in preparation; no Fix qualification.
+
+
 ## Whole-entity Fix source composed; compatibility review before build —2026-11-08
 
 ACAD integration/fix-entity-runtime-20261108 e7884b49291019ee17e9b855785cd27be169e52e
