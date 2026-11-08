@@ -1,5 +1,16 @@
 # WebOS work queues and progress ledger
 
+## Consumed typed Circle complete workflow running —2026-11-08
+
+Frozen source packet ea0c278 composed as ACADd0fc0ee after normal build/stage
+of actuald790011/3ce2fec55. Original RadiusLength5→named radius path retained;
+no Diameter/rectangle substitute. Full driver43021 runs alone in pinned Chrome155
+against21019/state-r37. Evidence /tmp/codi-acad-typed-circle-workflow-20261108-r1,
+log sibling .log; independent source/archive/analytic-cylinder oracle follows
+whole terminal result only. No source/product patch during execution. Counts
+unchanged; PL first failure preserved and exact-frame proposal approved for
+source-only implementation, with branch/provenance and original equations kept.
+
 ## Named-radius build/stage PASS; Circle fixture ready —2026-11-08
 
 Normal build93484/stage65176 PASS0. Actual Core
