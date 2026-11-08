@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## Point coincidence R1 retained; realm repair rebuilding — 2026-11-08
+
+Whole Chrome77247 terminalFAIL after3rows/38public trace entries/1Native setup
+observation/0saves on Core53469d6/Desktop8eac41c9e. First request has two distinct
+real point IDs, but a same-realm Array.prototype identity check rejects the
+host's valid array across the CAD iframe. CodeCOINCIDENCE_TARGET, committedfalse;
+contexts retired/source unchanged. Complete first failure frozen Coreeba7ad6.
+
+Coherent source repaireadac5e (agent86df0d9) removes only realm identity from
+array capture and adopts existing realm-root plain-record policy. Array brand,
+exact dense own fields, bounded/distinct IDs, immutable copies and original
+request proof stay; host adapter was already realm-safe. Complete rebuild81958
+is running on R730 from eadac5e347a75b1f53684f288e28d141dbc50be5. Next fresh
+stage-coincidence-r2/pins-r2, loopback21010/state-r28, unchanged whole driver then
+independent artifacts. No active Chrome workflow and no coincidence qualification.
+Main235b8de stays latest qualified Core (16scopedpasses/all21formalPartial).
+ProjectedDistance source continues separately. No deployment or filesystem race.
+
 ## Next complete workflow active — point coincidence R1, 2026-11-08
 
 Qualified Coremain235b8de remains backed on both LANs. New source-only packet is

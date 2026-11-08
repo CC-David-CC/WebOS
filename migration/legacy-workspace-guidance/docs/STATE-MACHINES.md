@@ -1456,3 +1456,16 @@ repair, same-feature travel and fresh-session reedit. Four near-boundary cases
 only classify source topology. Entire ABI reentrancy/fault/rollback suite and
 all region topologies remain unqualified. R5 browser disappearance/cleanup error
 is retained with unknown cause; R6 fresh-process success is no diagnosis of it.
+
+
+## Public coincidence request realm boundary — 2026-11-08
+
+Desktop host data enters CAD iframe, then owned Worker messages. Realm identity
+is not semantic data validity: a genuine two-string Array has different
+Array.prototype objects in different realms. Whole77247 confirms strict identity
+incorrectly refuses a valid request before authoring (committedfalse). Repair
+Coreeadac5e captures realm-safe branded dense own-data arrays and root-plain/null
+records into fresh immutable values. Exact keys, bounded distinct identities and
+two original-request Worker proofs remain. This does not expose Native handles
+or bypass geometry/domain validation. First failureCoreeba7ad6 retained; complete
+normal build and unchanged whole regression are required before qualification.
