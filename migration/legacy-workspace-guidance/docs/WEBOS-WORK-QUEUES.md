@@ -3124,3 +3124,16 @@ complete R3 is running on private20968 with91 actual asset pins. No passing
 result is inferred from compilation. Profile-repair driver5f3353d is integrated
 but awaits its complete run. Orientation source/domain repair remains in its
 agent lane; it is not qualified or included in this runtime.
+
+### Signed/concentric R3 complete PASS — 2026-11-07
+
+ACAD41672f4 freezes85rows/two native files from actual compiled3d223ac/
+Desktop07b98a2a2 (91asset pins). Ordered signed X/Y edits/removal, independent
+diameters, named zero/negative propagation, refusal preservation, mixed travel,
+server byte equality and two fresh Open/reedit cycles pass. R1/R2 failures remain
+retained; the consumer-policy repair is now whole-workflow qualified. Evidence:
+ACAD `test/concentric-public-workflow/evidence-r3`. The finite closure audit is
+integrated as ACAD97352a8 `docs/reviews/GATE1-FINITE-CLOSURE-AUDIT-20261107.md`;
+it separates explicit exercise steps from remaining named competency cases.
+Profile-repair whole R1 is now running; typed artifact normal build passed,
+staging pending. No blanket Gate1 or deployment claim.

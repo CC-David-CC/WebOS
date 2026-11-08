@@ -956,3 +956,8 @@ from the same existing pure helper. Authored formulas remain authoritative; no
 new synchronized flags/cache/state were added. Build passed; complete R3 is
 pending. Typed artifact readers ebbf56a reuse current accepted physical state
 and observation guards; their source integration is not yet workflow proof.
+
+Signed/concentric R3 now PASS (ACAD41672f4):85rows/two native files on
+3d223ac/Desktop07b98a2a2 qualify actual typed signed propagation, ordinary
+travel and two fresh Opens. The prior policy-drift failure and repair evidence
+remain, rather than treating build success as proof.
