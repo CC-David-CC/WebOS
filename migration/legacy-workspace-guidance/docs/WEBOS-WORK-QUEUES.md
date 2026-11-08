@@ -3364,3 +3364,13 @@ and coefficients; repair the real reduction/solve contract before another
 coherent full run. Archive repair774c779 is in this build but not exercised by
 this early failure. Finite shared history controls proposal51f1ead is approved
 for isolated source implementation; reference/driving length lane continues.
+
+Current first failure is now R10 (84fe435/640279b9f, frozen ACADb2f3242):109rows
+reach anti-parallel endpoint edit170→190, then exact coordinate candidate/cold
+verification refuses. Earlier rectangle/mixed/append/length stops are passed;
+no saves run. Approved common capturedGeometryScope reuses actual parameter/
+equation ownership for length and coordinate transitions, retaining exact target
+and unaffected fields, all original math, independent request verification and
+existing replay bounds. No tolerance waiver or field/magnitude assumption.
+Shared ordinary reference/driving source/adapter registration is integrated,
+not built/qualified; finite history controls remain independent source work.
