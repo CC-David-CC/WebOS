@@ -3227,3 +3227,10 @@ builds, Worker resource graph/catalog splices, integration and sequential actual
 browser qualification. Orientation repair35a3606 normal build PASS; unchanged
 whole R2 and separate native-domain/alias workflow remain next. These lanes do
 not reopen Files race/security testing or add a human UI rewrite.
+
+Orientation repair35a3606 normal build/stage is complete; unchanged whole R2
+runs on private20971, exact source35a3606/Desktopd49071638 and91asset pins.
+No complete result yet. N4 rectangle report evidence is frozen/backed c52ef61;
+its new shared DistancePP source lane remains unqualified. Both arrangement and
+point-distance implementations are separate from the .cad container proposal;
+root integrates source before any complete application qualification.
