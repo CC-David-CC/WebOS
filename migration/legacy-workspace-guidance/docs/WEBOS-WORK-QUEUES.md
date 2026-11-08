@@ -1,5 +1,25 @@
 # WebOS work queues and progress ledger
 
+## Latest qualified workflow — RadiusLength R1, 2026-11-08
+
+Whole Chrome75672 PASS on Cored0069f0/Desktopdd58df71e, after normal build69766 /
+fixture73498. Independent artifact checker FIRST PASS:55records/495public trace
+entries/35observations/120Native points/5refusals/3.cad Save/server/freshOpen
+cycles. Contexts retired, source snapshots unchanged. Scoped proof ACADaf4d131
+backed on both LANs. Circle/quarter-Arc radius, real Diameter redundancy and
+reactivation/conflict, mixed travel, dependent Circle solid and units pass.
+Generator-bearing Radius/Arc BRep/all C03-C04 and formal exercises remain open.
+FIFTEEN recent named scoped proofs pass; all21 exercise signoffs remain Partial.
+
+C02 remains separate: retained R4 source interval-coverage failure513ae48;
+Native occurrence packet7bf611ce preserves actual per-cell edges and has normal
+compile50713 PASS (not geometry qualification). Exact portable/WASM pair
+9789a617/707facb3; adapter0e28fc06 and Native packet backed on both Native LANs.
+Matching occurrence-aware Worker source is still being prepared. No active
+build/Chrome workflow now. Next root work is coherent Native/Core consumer
+composition and unchanged complete circular workflow. No deployment.
+
+
 ## Circular R4 retained; independent Radius whole qualification starting — 2026-11-08
 
 Circular whole28237 terminalFAIL on Core25fc6c9/Desktop1298d63c4 after150 runtime

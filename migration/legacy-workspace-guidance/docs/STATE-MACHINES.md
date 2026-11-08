@@ -1406,3 +1406,19 @@ and cannot reuse the opened archive. Eleven targets retire; no leak claim.
 
 This is the source repair contract, not a PASS. Keep10 expected codec targets
 and verify unchanged drawing compressed-span reuse after fresh Open/reedit.
+
+
+## RadiusLength shared transition qualification — 2026-11-08
+
+Ordinary generator-free Circle/Arc: discovered source and dimension → captured
+original request/current document → private candidate/Worker reconstruction →
+original-request recorroboration/full suffix → one authored journal event →
+accepted state. Refusal and literal no-op preserve accepted source/J/redo;
+removing the active RadiusLength can reactivate a retained redundant diameter.
+Mixed undo/redo and .cad restore rebuild the same authored IDs/intent; display
+units do not change physical geometry. Whole Chrome75672 +independent archive/
+source/analytic oracle PASS on Cored0069f0/Desktopdd58df71e, with35observations,
+120Native points/5refusals/3save+server+freshOpen cycles. This verifies the finite
+public agent route, not all human dialogs, global DOF rank, generator-bearing
+radius regeneration or Arc BRep. Source radius numeric budget1e-9mm and Native
+volume/bounds budgets remain distinct. Frozen proof ACADaf4d131 on both LANs.
