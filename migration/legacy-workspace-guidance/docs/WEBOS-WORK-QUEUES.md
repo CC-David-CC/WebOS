@@ -1,5 +1,20 @@
 # WebOS work queues and progress ledger
 
+## Full .cad/export-code regression running after normal stage PASS
+
+Build13594/stage17641 PASS0; actual Core8908fb8bca8dacc3394777506137a63ff3792d01 /
+Desktop7c2b85f4884f03fe45101bcbe1f93cbf7c64d51e,150exact byte pins,
+469assets/564639039bytes. Fresh private21023/state-r41 backend95586/forward97719.
+Root alone runs complete Chrome47897 using current native-cad-container driver;
+evidence /tmp/codi-acad-native-container-export-codes-20261108-r7 and sibling.log.
+All prior source/Native/material/drawing/12-artifact/4.cad/malformed-own-Open/
+resource assertions retained, plus three exact original export refusal codes.
+No product/oracle/criterion change during run. Independent artifact oracle only
+after whole terminal success. PL R4 terminal failure remains frozen22b9712;
+source construction repair and E22 repair-travel packet continue separately.
+Counts16ordinary/23scoped unchanged. No main promotion, beta deployment,
+relay/race testing or final packaging.
+
 ## Export-code normal build PASS; local evidence sparsity verified
 
 Normal build13594 PASS0 atCore8908fb8. Fresh export-code fixture is staging
