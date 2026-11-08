@@ -1,5 +1,25 @@
 # WebOS work queues and progress ledger
 
+## Construction build/stage PASS; unchanged PL R5 running
+
+Normal41824/stage65823 PASS0. ActualCoree005eab494e8ce1ea4dd7d26eb48d6eb9999bcdb /
+Desktop5cf27cb1fb23fb215d9344f0966bce2dfc26bde9;150byte pins,
+469assets/564648273bytes. Fresh private21024/state-r42 backend93436/forward91010.
+Root alone runs unchanged wholeChrome10644, evidence
+/tmp/codi-acad-point-line-workflow-20261108-r5 and sibling.log. No product,
+source-driver/oracle or criterion patch during run. Independent original-equation
+source review found no blocker; all3auxfactory policies exist. No runtime pass
+claim until whole terminal +after-whole oracle. R1–R4 failures remain retained.
+
+E22 source f7c1c3 needs a narrow recipe-boundary correction before composition:
+its positive definition authoring reads private h.capture history solely for
+operationType. Author must use the public declared drawing schema/command
+instead; private capture remains permitted only as read-only test observation.
+No new model API needed if declared tag suffices. Explicit-fit packet source
+reviewed, frozen, held until current PL terminal; E16 source packet in progress.
+Counts19ordinary/23scoped unchanged. No main/deploy/relay/race/packaging.
+
+
 ## Construction build PASS; fresh exact fixture staging
 
 Normal build41824 PASS0 atCoree005eab. Fresh unique dimension-frame-construction
