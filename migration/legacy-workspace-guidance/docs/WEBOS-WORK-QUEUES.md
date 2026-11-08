@@ -1,5 +1,31 @@
 # WebOS work queues and progress ledger
 
+## Whole-entity Fix qualified/integrated;20 scoped workflows —2026-11-08
+
+Normal full build27552 and fixture91050 completed0, whole Chrome37811 and FIRST
+independent source/archive oracle PASS. Actual Coredb997744bcdd25cb0c18f2b4895886c9422f19e5 /
+Desktopbbf2d284b281188d8d59cbf593225f356b588a25, private21017/state-r35.
+72records/769public traces/50observations/9refusals/5local reports/3.cad saves/
+server byte equality/fresh signed Opens. Segment/Circle/quarter+major Arc Fix,
+actual redundancy/reactivation, no-op/redo, conflicts, raw typed binding and
+explicit Unfix/edit/Refix/mixed travel pass unchanged criteria. Contexts retired/
+source unchanged. Proof2dbcc2b integrated to ACADmain5fd5a56 on both LANs;
+subsequent doc-only Arc/EqualRadius contracts retain actual producing pins.
+
+Exact tested helper copied to examples/whole-entity-fix.mjs.20recent scoped
+workflows,10of21 ordinary exercise contracts Qualified(E01–E09/E21),11Partial.
+No active browser workflow/build, no public/beta deployment. Broader11competencies
+and final delivery/handoff remain open.
+
+Next serial product packet: DistancePL2170ac82/Core +f6bb89426/Desktop, including
+signed reversal and four.cad cycles. EqualRadius source preparation continues;
+explicit Arc branch contract7bcddae recorded for review. Source-backed gaps
+CAD-TYPED-PROFILE-01/ARC-PROFILE-01 are now canonical in STATE-MACHINES.md:
+consumed typed circular profiles and ordinary Arc manufacturing bridge are not
+closed by numeric/construction/unconsumed companions. No filesystem-race work,
+UI redesign or premature source packaging.
+
+
 ## Four-corner R2 qualified and backed;19 scoped/10 exercise contracts —2026-11-08
 
 Whole61817 +FIRST independent source/Native/archive oracle PASS: actual

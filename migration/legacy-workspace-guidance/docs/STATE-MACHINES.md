@@ -1,5 +1,43 @@
 # Workflow state machines and invariants
 
+## Whole-entity Fix closed workflow qualified —2026-11-08
+
+Whole37811 and FIRST independent source/archive oracle PASS, proof ACAD2dbcc2b,
+actualdb99774/bbf2d284b.72records/769traces/50observations/9refusals/5local
+reports/3actual .cad Save/server/fresh Open cycles. Source unchanged and owned
+contexts retired. Actual Segment/Circle/quarter+major Arc literal snapshots,
+new redundant Circle row/reactivation, no-op retaining redo, geometry/typed-
+formula refusal, explicit Unfix/edit/Refix and mixed travel now have whole-flow
+evidence. Raw names/IDs/other geometry remain authority through fresh Open.
+
+Source review preserved prior human recovery/duplicate semantics with a separate
+strict closed target gate; human gestures are NOT qualified by this test.
+Near-coincident full-Arc precision remains CAD-ARC-01, not inferred from ordinary
+Arc cases. No Native3D/global-rank/all-constraint-family claim.
+
+## CAD-TYPED-PROFILE-01 and CAD-ARC-PROFILE-01 — source integration gaps
+
+Source audit, not newly executed public failures. Generic typed Circle/Arc source
+bindings are real and now evidenced beside Fix. The typed-selected-profile-solve
+path in solveWorker.ts uses prepareTypedRectangle; modern physical history also
+restricts consumers. A consumed typed Circle profile is therefore not inferred
+from the already qualified numeric Circle Native body or unconsumed typed source.
+Generalize preparation through actual existing typed binding/strict source math
+where the selected backend supports the profile; preserve names/units/identities/
+full-suffix provenance and do not substitute a rectangle.
+
+selectedSketchProfile.extractSource also rejects ordinary Arc source, while
+explicit authored construction roles are excluded. A numeric Circle + genuinely
+construction Arc is a valid limited fixture, not proof of an ordinary Arc/Slot
+manufacturing profile. Keep that missing bridge explicit. Couple any future
+Arc profile support to CAD-ARC-01's authoritative partial/full branch contract,
+actual supported Native ABI, bounded regions and complete save/reopen/export
+qualification. Never hide ordinary geometry by changing its role after failure.
+
+Both gaps remain on the broader C01/C02/C04/C06/C07 plan despite finite current
+constraint workflows. No permanent wrapper limit or false capability signoff.
+
+
 ## Four-corner creation travel and request refusal qualified —2026-11-08
 
 Whole61817 and FIRST independent source/Native/archive oracle PASS, proof6511510,
