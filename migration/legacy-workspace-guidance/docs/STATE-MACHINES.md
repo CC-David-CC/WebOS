@@ -1,5 +1,16 @@
 # Workflow state machines and invariants
 
+## E11 treatment creation state transitions qualified
+
+Whole14232 and FIRST independent source/archive/Native oracle PASS: ACADfa6dc2b,
+actuald790011/3ce2fec55.52records/975Native points/four refusals/three.cad cycles.
+Both append→Undo actual predecessor→Redo SAME feature/output/opaque edge IDs
+are directly witnessed. Six-event creation/source/depth/size chronology restores;
+excessive/zero/stale/removed-edge refusals preserve accepted intent/resources;
+no-op preserves exact J/tokens. Browser commit/server SHA/fresh signed Open and
+reedit pass three times. Original fillet G6 closes; broader C06/final combined
+G10 do not follow. Canonical ACAD test/fillet-chamfer-public-workflow/evidence-r1.
+
 ## Generic typed source and named radius: finite consumed-Circle proof
 
 Whole Chrome43021 +FIRST independent source/archive/cylinder oracle PASS;

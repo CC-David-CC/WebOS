@@ -1,5 +1,28 @@
 # WebOS work queues and progress ledger
 
+## E10–E13 accepted:14of21 ordinary contracts qualified
+
+NEW E11 whole Chrome14232 and FIRST independent actual source/Native/archive
+oracle PASS0 on d7900110d3bc8e9ef0a0da5e871ea7d93a4015e5 /
+3ce2fec559b42cd1f56321bed0acd3edd914dbed.52records/204tracedpublic commands/
+39observations/975Native points/four refusals/two actual creation-travel chains/
+three.cad browser/server/fresh signed Open cycles. Actual FILLET G6 closes;
+original producers/opaque edges and full edit chronology persist. No post-run
+criterion/product/oracle repair. Source unchanged and contexts retired.
+Proof ACADfa6dc2be52b905e2e9a7a6da757159f1c19703d6 is backed both LANs.
+Exact tested helper copied to examples/fillet-chamfer.mjs with usage notes.
+
+Root and independent review of actual existing E10/E12/E13 drivers/receipts/
+artifacts establishes their finite plate-edit/shell/stepped-revolve tasks.
+Those three are evidence reconciliation, not new executions or historical JSON
+retagged as.cad. See ACAD docs/reviews/ORDINARY-E10-E13-SIGNOFF-20261108.md.
+
+**14of21 ordinary contracts Qualified (E01–E13/E21); seven Partial
+(E14/E15/E16/E18/E19/E20/E22).22recent scoped workflows is a separate counter.**
+Broader11competencies, PL redundancy defect and final combined.cad/viewable beta
+G10 remain open; main unchanged. No active browser/build. No public deployment,
+relay/race work or final packaging. Source-only PL repair/evidence review continue.
+
 ## E11 whole creation/edit/persistence workflow running —2026-11-08
 
 Frozen source cc82c39 composed as ACAD5089600; reviewed complete driver/recipe/
