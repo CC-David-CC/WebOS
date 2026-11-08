@@ -1,5 +1,24 @@
 # WebOS work queues and progress ledger
 
+## Loft creation whole workflow running —2026-11-08
+
+Reviewed packet49ab9ca composed as ACAD0fb84aa, backed both LANs. Root alone
+runs complete Chrome42040 on actualb097185/00e12613a private21020/state-r38.
+Actual adaptive Nativeed06b634/bc8895ce is staged; expanded178byte pins include
+its real assets. No fallback/product rebuild/private authoring. Two unequal
+rectangle sources, actual loft append removal/restoration, source/plane edits,
+refusals,250Native classes,16travels and three.cad cycles are mandatory.
+Evidence /tmp/codi-acad-loft-creation-workflow-20261108-r1, log sibling.log.
+Independent oracle waits for full terminal; no count/status change yet.
+
+PL R2 source cause: fixed witness proposals inspect only direct eliminations,
+missing datum coordinates fixed through actual retained aliases. Corrective
+source a088833 is ready for root review; its bounded exact alias proposals
+still require original unique registered-row witness authority and final actual
+Param/source/Polar checks. No current-value seed, gauge/threshold/driver change.
+No code patch during running loft. E16 source work held behind confirmed defect.
+Counts15ordinary/22scoped, no public deployment/relay/race or packaging.
+
 ## PL R2 repeats first redundancy failure; activation investigation
 
 Normal build22812/stage28117 PASS0, but unchanged whole Chrome26694 FAIL1
