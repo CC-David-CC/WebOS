@@ -3030,3 +3030,21 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
 - [x] Initial volume87500mm³ and edits100000,400000/3,125000 derive from saved source coordinates and exact quadratic section-area integration. No native/display result supplies expected geometry; lower-left anchoring and center shift remain explicit.
 - [~] Portable agent evidence integrated06f6175d9; root checker repeats against committed packet. General correspondence/frames/human tools remain open; E15 stillpartial. No public deployment or Gate1 signoff.
 - [x] Retired20937/20938 only after zero owned Chrome targets and normal SIGINT exit. Their public packages were exact checksum matches to retained R730 copies before local deletion, recovering741851035bytes. All source/account/state dirs and current20939 are retained.
+
+## Latest active queue —2026-11-07
+
+- Completed whole flow: exact exterior corner/nested regions,55rows/four native
+  files, normal+negative/reversed cases (ACAD49de2af).
+- Fix next: signed-distance fresh-solve equivalence after real endpoint-lock
+  rejection. R2 actual insertion proof passes; exact complete JSON replay guard
+  now refuses. Preserve exact authoring and independently verified derived state.
+- Compose next: two-material SAME-part box interface source4dafbd5 plus Desktop
+  fe631a481 whole driver/independent oracle; no runtime qualification yet.
+- After coherent source/build: rerun unchanged complete midpoint/angle recipe,
+  then actual material-interface export and retained whole-source/plate flows.
+- Keep all source/evidence backed on ACAD +Desktop LAN repositories; no JSketcher
+  continuation or cancelled filesystem-race probes.
+
+Local completed clean agent worktrees for resource-closure and material-interface
+source were removed only after exact branch readback on both LANs. Active signed
+replay worktree and sources remain. Build products stay on R730.
