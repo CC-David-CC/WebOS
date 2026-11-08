@@ -1,4 +1,14 @@
 # Gate 1 — foundational parametric CAD engine competency
+
+## Current ordinary exercise acceptance —2026-11-08
+
+**5 of21 exercise contracts qualified: E01/E02/E03/E07/E21;16 remain Partial.**
+Root evidence review is recorded in the canonical baseline and ACAD review
+FIVE-EXERCISE-SIGNOFF-PROPOSAL-20261108. This distinguishes literal exercise
+contracts from the broader11competencies and17recent scoped whole workflows.
+It does not qualify the complete Gate1 candidate, other engines/domains, final
+beta delivery or deferred human UI. No numerical target or evidence is changed.
+
 ## Independent ACAD source —2026-11-07
 
 Current engine development is ACAD (Agent Computer-Aided Design), in

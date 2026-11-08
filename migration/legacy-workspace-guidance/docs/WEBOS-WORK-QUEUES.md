@@ -1,5 +1,17 @@
 # WebOS work queues and progress ledger
 
+## Five ordinary exercise contracts accepted from retained evidence — 2026-11-08
+
+Root inspected actual complete P/O/REPORT/W/CR/CAD receipts and independent
+artifacts/source evidence mapped by ACAD65dd877. Canonical baseline and Gate1
+now accept E01/E02/E03/E07/E21 for the finite ordinary exercise contracts:
+5of21 Qualified,16Partial;17scoped workflows. Broader11competencies/final beta
+composition remain separate. No new execution, tolerance relaxation or retagging
+of historical runtime occurred. Earlier all21Partial notes are superseded.
+Current complete ProjectedR3 build remains active on Core0133698; source/
+parameter/travel repair has no whole-run pass yet.
+
+
 ## Typed point repair composed; complete projected R3 build — 2026-11-08
 
 Source013369861fad6123520065a4e06fafac752900e8 (agentf6448ee), backed both LANs,
