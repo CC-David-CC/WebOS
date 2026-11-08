@@ -809,3 +809,28 @@ does not authorize resolving the old authored face ID to the rim.
 AUTHORED_REMOVAL carries no invented reportedDeleted or candidateCount. Actual
 Native ancestry remains attributable independently. Saved removedFaceIds is the
 single authored intent; no second persisted removal flag is synchronized.
+
+## Signed-distance insertion and derived admission —2026-11-07
+
+Complete midpoint/angle R1 (ACAD e84b23b evidence) passes midpoint persistence
+and angle creation/edit travel, then signed endpoint-lock admission refuses.
+The old insertion proof treats the first changed serialized row as the new
+constraint. That is not an identity contract: adding a valid redundant relation
+can reclassify retained accepted/redundant rows without changing authored intent.
+The failed candidate was not logged, so no particular changed row or numeric
+precision cause is claimed from R1.
+
+ACAD71be4d1 captures the actual retained runtime object sequence, identifies the
+actual new constraint uniquely, and proves exactly one ordered insertion. Every
+serialized admission must match that live object's derived classification; only
+then is admission removed for exact retained authored-field comparison. Schema,
+stage, ordered target IDs and numeric distance remain exact. Source is detached
+before private workspace construction. No tolerance/coercion or skipped
+admission proof is introduced. Full solve/evidence, independent fresh-Worker
+reconstruction and geometric measurement still precede publication.
+
+| Transition | Required invariant | Qualification |
+|---|---|---|
+| Accepted source → new signed relation candidate | One actual new constraint; all retained authored fields/order/identities preserved | Source71be4d1, full rerun pending |
+| Retained accepted ↔ redundant classification | Derived state agrees with actual current system, not a synchronized sticky flag | Source-only until complete unchanged workflow |
+| Candidate → published source/history | Independent reconstruction, existing atomic sketch workspace/journal replay | Complete R1 blocked before locks; repaired full flow pending |
