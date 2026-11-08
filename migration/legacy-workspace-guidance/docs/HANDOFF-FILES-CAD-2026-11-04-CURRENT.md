@@ -1,5 +1,23 @@
 # Current Files and CAD handoff
 
+## Current ordinary checkpoint —20of21 qualified
+
+Root ACAD82cee5c70cbc0944e55570ec23862b77a8236933 accepts E22 from proof
+216b996cca59fc1dc085b0e70d931fea95a3d48c. Actualbaf95cc/78cc169 normal72049/
+stage25267/whole80886 and FIRST independent artifact oracle PASS0.138rows/
+530commands/44Native reads/440point classes/twelveSVG/six.cad browser+server+
+fresh signed Open cycles/26travels/two actual reference-repair sequences.
+Both datums and source/geometry/broken-ref/repair UndoRedo pass; sources unchanged,
+contexts retired. R1–R4 retained.20ordinary Qualified E01–E15/E18–E22; E16 Partial;
+E17/C10 Gate2.23historical scoped workflows remains a separate unchanged count.
+
+Broader11competencies/affected READ regressions/PL/final composed viewable beta
+G10/handoff/backups/pause remain open. Default viewport in E22 PNGs still shows
+a small part; do not infer automatic framing from geometry success. Explicit
+fit is separately qualified. No current main or beta promotion. Earlier headers
+below are historical. E16R2 terminalFAIL at stale error contract after creation
+UndoRedo/downstream width success; source audit pending, no new qualification.
+
 ## Latest checkpoint —19of21 ordinary exercises Qualified
 
 Root decision ACAD4fbc64605faa518e1e93dac7622c34bba7f6209f:

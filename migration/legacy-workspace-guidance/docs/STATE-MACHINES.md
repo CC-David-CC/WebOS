@@ -1,5 +1,23 @@
 # Workflow state machines and invariants
 
+## CAD-DRAWING-REPAIR-01 / CAD-THROUGHHOLE-AXIS-01 finite current qualification
+
+Proof ACAD216b996 whole80886+FIRST independent oracle PASS actualbaf95cc/78cc169.
+Mutation construction now preserves exact declared source; READ preserves captured
+coordinates with independent proof; detached private request respects tree rules.
+Drawing definition invalidation→unresolved Save/Open→explicit SAME-reference repair
+→immediate Undo restores unresolved→Redo restores corrected intent→Save/Open all
+pass in two datums, with positive source edits/geometry propagation.44Native reads,
+440point classifications/twelveSVG/six.cad cycles/26travels. This qualifies ordinary
+E22; arbitrary topology loss/default frame/all read consumers/finalG10 remain open.
+
+Refusal states: pre-candidate stale/invalid input preserves FULL captured state and
+all tokens. One failed guarded through-hole candidate increments epoch exactlyone,
+invalidates document+geometry read tokens and their linked drawing/journal aliases,
+while accepted source/body/definition/J chronology/counters/resources remain exact.
+Tokens are derived currentness identifiers, not independent authored drawing flags.
+Do not reuse an old request by silently substituting a new token.
+
 ## CAD-THROUGHHOLE-AXIS-01 generic request alias fails before construction
 
 E22R3 proofaabb4c5 actual62b27e6/78cc169: first generic width edit refuses
