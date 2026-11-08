@@ -208,21 +208,25 @@ exclusive enum values.
 
 | Priority | Capability | Acceptance standard | Current status |
 |---|---|---|---|
-| P0 | Geometry primitives | Correct valid/degenerate classification, with declared domains. | Partial; primitive domain/basis fixes under review. |
-| P0 | Constraint solver | Distinguish underconstrained, fully constrained, redundant and contradictory; report numerical uncertainty. | Partial; physical DOF is honestly unknown; bounded local Jacobian diagnostics exist. Multi-stage diagnostics and broader solver qualification remain open. |
-| P0 | Driving dimensions | Edits propagate consistently or fail while preserving prior intent. | Partial; five-hole plate 100×50×20 → 150×30×20 and impossible-edit recovery pass. General dimensional/typed-expression coverage and full chain remain open. |
-| P0 | Units and expressions | Typed, dimensionally valid formulas; conversion/display changes preserve physical size. | Partial; explicit native mm does not establish inch display or a complete units system. |
-| P0 | Planar region extraction | Disjoint, nested, intersecting and touching cases interpreted explicitly. | Incomplete; contour loops are not yet a complete arrangement/region model. |
-| P0 | Sketch selection | Entities and individual/multiple regions selected unambiguously with durable intent. | Partial candidate for circles/axis-aligned rectangles; full selection/lifecycle scope remains open. |
-| P1 | Extrude/revolve | Valid supported-profile solids, with direction and result/body policy. | Partial; explicit selected-region OCC candidate passes scoped cases; complete feature matrix open. |
-| P1 | Boolean operations | Union/cut/intersection and correct empty/multi-body results. | Scoped tests exist; full boundary matrix open. |
-| P1 | Feature dependency graph | Deterministic downstream recomputation and attributable failure propagation. | Partial; private full-history replay, dependent five-hole resize, fillet/chamfer and last-complete recovery pass. A bounded associative OCC cut pattern passes local resize/reopen/rejection controls; general patterns and the complete chain remain open. |
-| P1 | Topological references | Survive supported changes or fail explicitly, never silently retarget. | Partial; complete change-chain test open. |
-| P1 | Persistence | Native intent, references, units and history survive save/reload. | Partial; canonical v2, both packaged workers and actual signed My files/server save/reopen pass for small models and the dependent plate. Large models and all document domains remain open. |
-| P1 | STEP/3MF export | Independently measurable geometry, units and intended structure preserved. | Partial research; complete coupled-model export open. |
-| P2 | Fillet/chamfer/shell | Ordinary and limiting cases behave robustly. | Partial; ordinary 2 mm OCC corner fillet/chamfer, resize/reopen, invalid-size and Native refusal controls pass. Broad edge/limit coverage and shell remain unqualified. |
-| P2 | Sweep/loft | Supported profiles/path correspondence and explicit failure cases. | Unqualified. |
-| P2 | Drawings/GD&T | Consistent manufacturing documentation tied to model intent. | Not qualified. |
+| P0 | Geometry primitives | Correct valid/degenerate classification, with declared domains. | Partial; complete public Segment/Circle/quarter-major-full Arc edit/refusal/native-admission workflow PASS (ACAD7db5fe0). Wider primitives and human tools remain open. |
+| P0 | Constraint solver | Distinguish underconstrained, fully constrained, redundant and contradictory; report numerical uncertainty. | Partial; complete contradiction/recovery and midpoint/angle/redundancy workflows PASS in named domains. Rank/singular/multistage and general feasibility qualification remain open. |
+| P0 | Driving dimensions | Edits propagate consistently or fail while preserving prior intent. | Partial; source-bound plate edits, midpoint/angle and signed-lock replay PASS. Complete original-rectangle chain and wider typed dimensions remain open. |
+| P0 | Units and expressions | Typed, dimensionally valid formulas; conversion/display changes preserve physical size. | Partial; actual mm/inch presentation and reopen pass without changing physical geometry. Complete typed dependency/expression workflow and broader quantities remain open. |
+| P0 | Planar region extraction | Disjoint, nested, intersecting and touching cases interpreted explicitly. | Partial; disjoint/nested selected cells, literal source-region repair and exact exterior vertex contact PASS. General intersecting arrangements, near contacts and broader topology remain open. |
+| P0 | Sketch selection | Entities and individual/multiple regions selected unambiguously with durable intent. | Partial; descriptor-backed explicit region selection/reselection, source repair and persistence PASS in named circle/polygon domains. Wider selections and human parity remain open. |
+| P1 | Extrude/revolve | Valid supported-profile solids, with direction and result/body policy. | Partial; measured selected extrusions and complete stepped-revolve creation/edit/travel/persistence workflows PASS. Wider profiles, directions and frames remain open. |
+| P1 | Boolean operations | Union/cut/intersection and correct empty/multi-body results. | Partial; complete strict-Join corpus and scoped cut/common/empty/multibody cases pass with explicit result policy. Broader contact/scale domains and final integrated coverage remain open. |
+| P1 | Feature dependency graph | Deterministic downstream recomputation and attributable failure propagation. | Partial; source-bound hole/treatment/pattern replay, typed refusal, mixed history and native persistence PASS in named workflows. Original-rectangle complete chain and broader dependencies remain open. |
+| P1 | Topological references | Survive supported changes or fail explicitly, never silently retarget. | Partial; complete explicit parent repair, deletion/travel/persistence and incompatible-child refusal PASS. General face split/merge and reference domains remain open. |
+| P1 | Persistence | Native intent, references, units and history survive save/reload. | Partial; named primitive, constraint, plate, shell, revolve, sweep, loft, drawing and manufacturing workflows PASS through normal My files/server/fresh Open. Complete combined acceptance remains open. |
+| P1 | STEP/3MF export | Independently measurable geometry, units and intended structure preserved. | Partial; complete actual exports and independent artifact checks PASS for named STEP, plate,32-hole, separate-parts, shell and same-object two-material box cases. Inset/curved interfaces and broader exchange remain open. |
+| P2 | Fillet/chamfer/shell | Ordinary and limiting cases behave robustly. | Partial; named treatment and complete top-open rectangular shell/source/thickness/travel/persistence/export workflows PASS. Broader edge/wall/collapse domains remain open. |
+| P2 | Sweep/loft | Supported profiles/path correspondence and explicit failure cases. | Partial; named curved sweeps and adaptive circle/rectangle loft source/plane edit/travel/persistence workflows PASS. General correspondence, path and frame domains remain open. |
+| P2 | Drawings/GD&T | Consistent manufacturing documentation tied to model intent. | Partial; complete linked-drawing source/edit/refusal/repair/persistence/SVG workflows PASS. Broader annotation, standards/GD&T and human authoring remain open. |
+
+The [single current21-exercise status matrix](evidence/CAD-GATE1-BASELINE-20261106.md)
+contains exact evidence and remaining qualification. These capability summaries
+are bounded; a named PASS does not sign off an entire competency.
 
 These are acceptance states, not percentages. Unknown/unsupported states cannot
 be relabeled passing merely to close the gate.
@@ -296,27 +300,27 @@ be relabeled passing merely to close the gate.
 
 | Level | Exercise | Core acceptance / current evidence |
 |---|---|---|
-| 1 | Draw a line and circle | Real tool creation and native records; scoped creation evidence, edge cases open. |
+| 1 | Draw a line and circle | Ordinary source/domain/edit/native-admission complete workflow PASS; broader creation and human tools open. |
 | 2 | Fully constrain a rectangle | Scoped local-rank diagnostics exist; physical DOF remains unknown, with broader singular/redundant qualification open. |
-| 3 | Edit rectangle dimensions | Geometry and accepted authored dimensions remain consistent; partial parameter evidence. |
-| 4 | Two disconnected rectangles | Separate selectable regions and deliberate result-body policy; open. |
-| 5 | Three nested circles | Scoped OCC circle-region selections pass in candidate; broader identity/selection qualification open. |
-| 6 | Introduce a duplicate line | Classify overlap without inventing a valid extra region; open. |
-| 7 | Contradictory dimensions | Truthful conflict, prior model/intent preserved, remove/recover/reload; partial. |
+| 3 | Edit rectangle dimensions | Named dimensions and presentation/reopen PASS; general parameter workflow open. |
+| 4 | Two disconnected rectangles | Explicit independent regions/bodies and atomic source-region repair PASS; broader arrangements open. |
+| 5 | Three nested circles | Named nested-circle selection/reselection/persistence PASS; general topology open. |
+| 6 | Introduce a duplicate line | Four complete duplicate/overlap recovery workflows PASS; wider domains open. |
+| 7 | Contradictory dimensions | Complete conflict/redundancy/removal/reactivation/native persistence PASS; general solver completeness open. |
 | 8 | Extruded plate | Measured solid, correct body count, units and selected profile; scoped evidence. |
 | 9 | Four holes | Correct placement, hole/pattern semantics and measurable through geometry; partial audit. |
 | 10 | Edit plate width | Scoped five-hole 100×50 → 150×30 edit, fillet/chamfer, undo/redo, failed-edit recovery and native reopen pass; general dependencies and the complete chain remain open. |
 | 11 | Fillets and chamfers | Ordinary OCC corner operations through the wizard and invalid-size preservation pass; complete edge/limit matrix and both-engine support remain open. |
-| 12 | Hollow enclosure | Shell/wall intent and valid ordinary limits; open. |
-| 13 | Revolved stepped profile | Axis, profile and measurable rotational solid; open. |
-| 14 | Sweep along a curve | Path/profile alignment and supported valid result; open. |
-| 15 | Loft different profiles | Defined correspondence and explicit unsupported cases; open. |
+| 12 | Hollow enclosure | Complete ordinary top-open shell and independent manufacturing export PASS; broader wall/shape limits open. |
+| 13 | Revolved stepped profile | Complete measured stepped-revolve source/angle/travel/persistence PASS; broader profiles/frames open. |
+| 14 | Sweep along a curve | Four complete curved-sweep cases PASS; general paths/curves and naming open. |
+| 15 | Loft different profiles | Adaptive circle and rectangle loft/source-plane/edit/persistence PASS; general correspondence open. |
 | 16 | Join/subtract solids | Correct empty/connected/disconnected and tool/body policies; scoped evidence. |
 | 18 | Parameter-driven geometry | Typed values, dependency graph, accepted edits and invalid-cycle recovery; partial. |
-| 19 | Break a referenced face | Explicit missing/ambiguous dependency, no silent retargeting; open. |
-| 20 | Export STEP and 3MF | Independent size, geometry, units and intended structure verification; partial research. |
+| 19 | Break a referenced face | Complete explicit parent repair/deletion/refusal/travel/persistence PASS; general split/merge open. |
+| 20 | Export STEP and 3MF | Named STEP/core3MF workflows and independent artifact checks PASS; broader interfaces/exchange open. |
 | 21 | Reload saved native model | Signed Files → CAD → My files/server → fresh-session reopen passes for scoped native-v2 models, with exact bytes, IDs and geometry checks; broader document coverage remains partial. |
-| 22 | Dimensioned manufacturing drawing | Views/dimensions/reference meaning stay tied to the model; unqualified. |
+| 22 | Dimensioned manufacturing drawing | Complete linked drawing/source-edit/refusal/repair/SVG/persistence PASS; broader documentation/GD&T open. |
 
 For each level record UI and agent paths, engine support, isolated failure cases,
 dimension changes, undo/redo and account-backed persistence. Basic operation
