@@ -1,5 +1,27 @@
 # Workflow state machines and invariants
 
+## Dimension changes with generated dependents — 2026-11-08
+
+Mirror whole R1 exposed a PRIVATE candidate ordering defect, not an observed
+accepted-document corruption: algebraic transaction completion changed the
+Circle radius, but its generator had not regenerated before strict serialized
+stage/cache validation. The legitimate diameter edit was refused UNSUPPORTED.
+Frozen ACADbf8f096 preserves actual failure. Source repair104c24e is unqualified
+until the unchanged complete Mirror workflow and independent oracle pass.
+
+| Transition | Requirement |
+|---|---|
+| Original source → private dimension transaction | Authenticate current original equations, row and actual native ownership; no accepted-state change |
+| Raw algebra completion → ordered native stages | Generated geometry is still private/dirty. Run actual SolveStage preparation/solve/regeneration in dependency order before serialization |
+| Complete stages → verified candidate | Check stage/generator/source/output identity/order, unchanged earlier-stage Params, finite solve, original equations/domain/admission and independent original request |
+| Candidate → shared publication | Existing source/J/full-suffix/currentness protocol; no raw cache patch, copied radius or validation waiver |
+| Failure | Refuse atomically, preserve accepted state and actual failure cause |
+
+No-generator behavior remains unchanged. The initial raw transaction admission
+still precedes the completion callback; this finite repair is not a universal
+multistage convergence or all-generator qualification claim.
+
+
 ## Principal Apply, restored eligibility and trimmed J — 2026-11-08
 
 Qualified finite R4 ACAD25fc19e, actualCore6f6ccef/Desktopc8779dd83; whole

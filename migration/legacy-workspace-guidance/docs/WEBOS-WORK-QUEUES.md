@@ -2,13 +2,19 @@
 
 ## Current CAD1 execution checkpoint — 2026-11-08
 
-Active root packet: Mirror source composed Core8a4bc6c/Desktop9bdb3a512; normal
-build94801 in progress, no Mirror qualification yet. C02 Native82028bb normal
+Active root packet: Mirror R1 on Core8a4bc6c/Desktop9bdb3a512 FAILED at
+driving diameter edit after creation/save/UndoRedo/Point regeneration. Frozen
+ACADbf8f096 retains105records/59commands/3native-sketch observations/one .cad.
+The shared dimension transaction serialized before generator regeneration;
+source repair104c24e preserves validation and finishes real ordered stages.
+Normal fresh R2 build20967 is running; whole unchanged workflow/oracle remain
+required. No Mirror qualification yet. C02 Native82028bb normal
 compile86376 PASS with unchanged source/SDK inputs; exact portable/WASM pair
 and loader transformation are recorded in ACAD
 docs/reviews/CIRCULAR-NATIVE-BUILD-20261108.md. That compile is not a geometry
 pass or available app cohort. Final C02 source f3b959e is frozen separately;
-root exact-pair/catalog/factory/closed staging integration remains required.
+root exact-pair/catalog/factory/closed staging source is now frozen b8776ad
+on both LANs; its source review/normal app build/whole qualification remain.
 
 
 Qualified finite principal Apply R4 ACAD25fc19e; actualCore6f6ccef /
