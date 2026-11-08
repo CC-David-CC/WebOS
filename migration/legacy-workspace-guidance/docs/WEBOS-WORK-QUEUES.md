@@ -1,5 +1,24 @@
 # WebOS work queues and progress ledger
 
+## E22 R3 tree-alias failure retained; full E16 R1 started
+
+Whole68990 terminalFAIL1 at first generic width edit: INVALID, Sketch data must
+be a tree. Initial drawing/creation UndoRedo/SVG assertions pass; seven rows,
+50commands/twoNative observations/oneSVG/zero.cad. Exact source pins unchanged;
+owned context retired. Proof ACADaabb4c5 retains all raw observations/sources.
+New request sketch:authored and boundary:authored.boundary aliases one object;
+inspectTree correctly refuses it. Narrow detached-boundary fix assigned; keep
+validator and geometry/proof criteria unchanged. No after-whole oracle.
+
+Complete E16 public Boolean workflow session46384 now runs on SAME immutable
+62b27e6/78cc169 fixture21027, after E22 context retirement. Evidence
+/tmp/codi-acad-occ-boolean-public-20261108-r1 and sibling.log; frozen driver
+source23858efea3c9c6d09d61d70a3f79210f2c98564d and Desktophelper78cc169.
+Explicit MFG32eec/abbf2 pair, no alternate fallback. Source-box/history Boolean
+path does not use the failing rectangle mutation helper. No build or second
+browser workflow runs concurrently. Compile STEP reader/oracle only after
+complete whole PASS. Counts19/21ordinary and23scoped unchanged.
+
 ## Complete E22 R3 running on captured-profile repair cohort
 
 Normal build36418 and fresh stage65105 both PASS0. Actual fixture runtime

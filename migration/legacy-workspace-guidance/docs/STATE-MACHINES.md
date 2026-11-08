@@ -1,5 +1,15 @@
 # Workflow state machines and invariants
 
+## CAD-THROUGHHOLE-AXIS-01 generic request alias fails before construction
+
+E22R3 proofaabb4c5 actual62b27e6/78cc169: first generic width edit refuses
+INVALID Sketch data must be a tree. The new declaration request repeats the
+same boundary object inside captured sketch and its boundary argument. Existing
+inspectTree must remain unchanged; caller must create separate detached values.
+No geometry mutation or successful later repair is established by this run.
+Captured-read repair and generic math still require complete execution after
+this request-construction correction. Original R1/R2 remain separately retained.
+
 ## CAD-PROFILE-READ-01 / CAD-THROUGHHOLE-AXIS-01 authority boundaries
 
 E22R2 proofb26c60e records exact-axis failure with last corner
