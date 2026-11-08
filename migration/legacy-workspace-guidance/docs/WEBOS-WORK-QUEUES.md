@@ -3154,3 +3154,18 @@ Typed artifact whole R1 now runs sequentially on private20969, actual compiled
 0d15629/Desktop3142c9d9a with91pins. Its STEP/core3MF/SVG results remain pending.
 Orientation domain repair remains a separate source lane. No beta/public update
 or full21-exercise/competency signoff is inferred.
+
+### Shared orientation source integrated — 2026-11-07
+
+ACADa038a36/68a1e0f/d190b14/b378bb7 and Desktop1e4758221 integrate
+the common H/V/P/P admission plus registered bounded orientation command,
+complete ordinary workflow and separate own-saved-native angle-domain workflow.
+Parallel/perpendicular derive a periodic chart for the original linear angular
+equation; generic AngleBetween is unchanged. Schema/native preflight enforce
+named angle classes. Valid full-turn aliases retain raw saved literals while
+canonical derived classes drive dedup/replies. New product has no browser PASS
+yet; normal coherent build is running on R730. Drivers remain frozen.
+
+Typed artifact R1 is currently past actual initial/edited/reopened exports and
+fresh native Open, with final reedit/travel/exports and independent oracles
+pending. Exact private runtime0d15629/Desktop3142c9d9a,20969; no public deployment.

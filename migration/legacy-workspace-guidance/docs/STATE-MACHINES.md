@@ -968,3 +968,11 @@ Undo feature/repair → original malformed source/refusal → Redo → native
 Save/sync/Open/reedit. Four cases/eight native files and independent oracle
 PASS on3d223ac/Desktop07b98a2a2. Solver acceptance, planar validity and Native
 solid validity remain separate states; tiny gaps are never silently welded.
+
+Orientation integration (ACADa038a36/d190b14) derives periodic evaluation charts
+and canonical reply classes; raw authored branch literals remain the only
+persisted orientation intent. No second angle flag/chart is synchronized.
+Named class admission precedes native Open adoption; malformed named relations
+refuse rather than entering a differently named equation. Ordinary and alias
+whole workflows are prepared, not yet qualified. Generic directed angles retain
+their separate declared branch contract.
