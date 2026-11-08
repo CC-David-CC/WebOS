@@ -1,5 +1,21 @@
 # WebOS work queues and progress ledger
 
+## Exact-alias build/stage PASS; unchanged full PL R3 running
+
+Normal build21238/stage43751 PASS0. Actual Core40f5c921cec98fa50f37c36acb01b51192f86fcf /
+Desktopcb9292e8cc9f6e7a1a3ce358f50f7d0d5c1ac2de,150byte pins,
+469assets/564634453bytes. Fresh private21021/state-r39 (backend8606/forward92115).
+Root alone runs unchanged complete Chrome37611; evidence
+/tmp/codi-acad-point-line-workflow-20261108-r3, sibling.log. No product/driver
+patch during run. Independent oracle only after whole terminal. Prior R1/R2
+failures retained; no activation or passing claim from compilation alone.
+
+Independent source review of a088833 found no additional blocking issue in
+fixed-leaf alias proposals, exact evaluation/bounds and original witness/final
+custody. Actual effect must still be observed. Counts16ordinary/23scoped stay
+unchanged. E18/E19/E20 focused evidence map ready for root review; E22 actual
+repair UndoRedo source packet in preparation. No relay/race/deployment/packaging.
+
 ## Fixed-alias certificate correction composed; next normal build running
 
 Source a088833 composed as ACAD40f5c921cec98fa50f37c36acb01b51192f86fcf after
