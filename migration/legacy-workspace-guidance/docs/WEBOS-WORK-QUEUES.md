@@ -3137,3 +3137,20 @@ integrated as ACAD97352a8 `docs/reviews/GATE1-FINITE-CLOSURE-AUDIT-20261107.md`;
 it separates explicit exercise steps from remaining named competency cases.
 Profile-repair whole R1 is now running; typed artifact normal build passed,
 staging pending. No blanket Gate1 or deployment claim.
+
+### Explicit profile recovery R1 complete PASS — 2026-11-07
+
+ACADd131038 freezes164rows/four complete cases/eight native files on compiled
+3d223ac/Desktop07b98a2a2. Missing side, exact1e-3mm and1e-8mm open gaps,
+and bow-tie sources refuse at the planar layer, are explicitly repaired through
+registered public commands, and regenerate4000/4400/4800mm³ prisms. Unrelated
+source stays exact. Mixed source/creation/repair UndoRedo, Save/server sync,
+fresh Open/reedit/resave/second Open and independent saved-source/analytic
+oracle all PASS. This is explicit repair, not automatic welding or successful
+self-crossing arrangement. Evidence: ACAD
+`test/profile-repair-public-workflow/evidence-r1`.
+
+Typed artifact whole R1 now runs sequentially on private20969, actual compiled
+0d15629/Desktop3142c9d9a with91pins. Its STEP/core3MF/SVG results remain pending.
+Orientation domain repair remains a separate source lane. No beta/public update
+or full21-exercise/competency signoff is inferred.

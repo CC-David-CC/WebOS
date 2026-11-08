@@ -961,3 +961,10 @@ Signed/concentric R3 now PASS (ACAD41672f4):85rows/two native files on
 3d223ac/Desktop07b98a2a2 qualify actual typed signed propagation, ordinary
 travel and two fresh Opens. The prior policy-drift failure and repair evidence
 remain, rather than treating build success as proof.
+
+Profile repair R1 (ACADd131038) qualifies the transition sequence malformed
+source → precise planar refusal → explicit public repair → valid feature →
+Undo feature/repair → original malformed source/refusal → Redo → native
+Save/sync/Open/reedit. Four cases/eight native files and independent oracle
+PASS on3d223ac/Desktop07b98a2a2. Solver acceptance, planar validity and Native
+solid validity remain separate states; tiny gaps are never silently welded.
