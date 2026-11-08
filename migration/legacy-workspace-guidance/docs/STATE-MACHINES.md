@@ -871,3 +871,30 @@ Save/sync/fresh Open/reedit retains authored replacement intent. An unchanged
 A-specific child prevents repair to B atomically; no partial first-parent edit,
 resource leakage or silent retargeting.14rows/two cases/two native files PASS.
 General split/merge and arbitrary references remain outside this named proof.
+
+## Modern typed parameter adoption —approved integration, not qualified
+
+Source review confirms that the older typed-part path supports formulas while
+modern selected-profile/through-hole paths reject typed project input. That is
+an integration gap, not a formula-engine failure. The active extension reuses
+one authoritative typed source, dependency evaluator, physical transaction and
+authored journal. It does not introduce a second parameter document or claim
+support by removing all typed-input guards.
+
+| Transition | Required invariant | Current evidence |
+|---|---|---|
+| Numeric selected rectangle/profile/hole → typed proposal | Capture genuine current source/feature/constraint/build identities; caller supplies formulas, not Native geometry | Approved source plan only |
+| Proposal → validated typed candidate | Worker checks definitions, dimensional length types, dependencies and exact supported authored fields before materializing strict numeric requests | Implementation in progress |
+| Formula edit → replay | Rectangle width/height, extrusion depth and supported hole sizes/offsets derive from the same validated parameter revision; native ledger still accepts numeric-only geometry inputs | No runtime qualification yet |
+| Candidate → accepted document | Publish definitions, bindings, solved source and geometric history as one existing physical journal transaction | Required, not yet proven |
+| Bound field → ordinary numeric edit | Refuse explicitly rather than silently deleting the authored formula | Required, not yet proven |
+| Rejected/no-op/stale candidate → current document | Preserve accepted typed source, bindings, native state, journal, association and resource ownership; no partial source-only publication | Complete workflow pending |
+| Save/reopen → editable typed design | Native source preserves formulas/bindings; recomputation derives numeric requests using the selected real engine, without trusting a stored derived cache | Complete workflow pending |
+| Unsupported generic feature family → typed request | Explicit unsupported result; no backend substitution or inference from a coincidentally numeric current value | Existing guards remain outside the narrow supported extension |
+
+These formulas are an acyclic directed dependency graph. Relationships between
+free geometric unknowns remain simultaneous sketch constraints. A parsed formula
+error, a constraint conflict and a geometric-operation failure retain distinct
+meanings. The complete public plate workflow must establish independent native
+bounds/volume, units invariance, rejection preservation and native persistence
+before any modern typed capability is marked qualified.
