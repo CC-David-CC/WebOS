@@ -1,5 +1,18 @@
 # Workflow state machines and invariants
 
+## CAD-VIEW-01 explicit fit transition qualified; default framing separate
+
+Proof655db18 actualdb278/6f708: whole45501 and both FIRST after-whole geometry/
+archive and independent camera oracles PASS. Six real fit operations across
+perspective/orthographic and three genuine fresh .cad Opens retain exact authored
+source/body/J/tokens/resources and direction/up; all actual bound corners are
+visible at frozen ordinary span. Three stale/duplicate/source-plane refusals
+retain exact camera/model. Root actual perspective/orthographic/final-Open image
+review confirms readable centered geometry. Source planes/helpers remain visible.
+No default/autofit, phone/4K, every-engine, gesture-race or finalG10 claim. Explicit
+public operation and Views action share the same camera-only Core method.
+
+
 ## CAD-THROUGHHOLE-AXIS-01: generic dimension suffix refuses exact-axis source
 
 Actual E22R1 whole51685 ondb278/6f708 refuses generic rect-0 SegmentLength

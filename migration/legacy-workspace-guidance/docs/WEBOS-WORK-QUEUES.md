@@ -1,5 +1,30 @@
 # WebOS work queues and progress ledger
 
+## Explicit solid framing qualified by complete loft/view workflow
+
+Whole45501 +FIRST original geometry/archive oracle +FIRST independent real
+camera/matrix oracle PASS0, actualCoredb278000a036dbc042183fc3a902633e848630fd /
+Desktop6f708bd6feeb08aaf190229ac1a1c11e4881cb41.92records/212commands/25Native
+observations/250point classes/16travels/three.cad cycles; sources unchanged and
+contexts retired. Six fits preserve exact accepted state, direction/up and actual
+Native bounds visibility. Three view refusals preserve exact camera/model.
+Proof ACAD655db18db0f2e9db23446644213d9c151bf70ded is backed bothLAN.
+
+Root viewed actual perspective, orthographic and final-Open PNGs: large centered
+readable shaded solid; plane/helper outlines remain visible. CAD-VIEW-01 finite
+explicit framing closes; default/autofit/phone/4K/all-engine/gesture-race and final
+composed G10/beta remain open. New public loft example code uses the actual
+inspect-worker-solids→fit-worker-solids operation before explicit Save. No
+geometry rescale/mesh scan or authored state writes. Counts19ordinary/23unique
+scoped workflows unchanged; this is enhanced regression, not duplicate inflation.
+
+E22R1 axis refusal0bfdf5f remains; passive diagnostic6117be2 ready/uncomposed.
+PL originalR5 missing-anchor failure remains; new free+anchored complete packet
+12dfdda ready for independent source review. E16 complete packet23858ef ready
+for source review. No active Chrome/build now; all source/whole qualification
+remains private, no main promotion, deployment, relay/race or final packaging.
+
+
 ## E22 R1 first failure retained; complete loft/view run started
 
 E22 whole51685 terminalFAIL1 at generic SegmentLength width100→150, original
