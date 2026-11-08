@@ -1,5 +1,24 @@
 # Workflow state machines and invariants
 
+## Latest real draft/Cancel qualification — 2026-11-08
+
+C12R3 browser and independent checker PASS (ACAD9e7b7ea), actual
+Core4f5b2ca/Desktop18c621383. Two genuine PLANE wheel cycles exercise changed
+and exact round-trip no-op drafts; competing registered history refuses exact
+UNAVAILABLE without any accepted-state/token change. Actual Cancel keeps the
+same prefix/source/model/J and reissues the pristine preview. Registered journal
+Undo/Redo then restores the genuine prefix/tip chronology; ordinary box edits,
+14Native observations/42material-boundary queries and two `.cad` Save/sync/fresh
+Open cycles pass. Read-only accepted-definition inspection no longer borrows
+save permission; save/mutation guards are retained. Source hashes/owned context
+cleanup pass. No old raw-Cancel corruption incident is claimed: earlier R1/R2
+stopped at setup/read integration gates before those gestures.
+
+Apply, raw timeline migration, actual prefix UI Undo enablement and broader
+legacy/insertion/stale-handler gestures remain unqualified required work.
+The prior entries below retain their producing checkpoints; this finite PASS
+does not complete allC12 or Gate1.
+
 ## Accepted definition inspection and wizard repair candidate — 2026-11-08
 
 Current source Core4f5b2ca contains private origin/capture/discard for a real
