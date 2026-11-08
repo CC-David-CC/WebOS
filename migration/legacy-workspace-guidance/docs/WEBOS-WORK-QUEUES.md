@@ -1,5 +1,22 @@
 # WebOS work queues and progress ledger
 
+## Diagnostic build/stage PASS; unchanged full PL R4 running
+
+Normal build81205/stage10839 PASS0. ActualCore88a81819078cee0512adcd5cec26f7692a09e79b /
+Desktop06f630880f66dd171209d62f96ce5187fd91f57d;150exact byte pins,
+469assets/564638985bytes. Fresh private21022/state-r40 backend20898/forward6413.
+Root alone runs unchanged full Chrome84264, evidence
+/tmp/codi-acad-point-line-workflow-20261108-r4 and sibling.log. No edits during
+run; after-whole oracle only after terminal complete success. R1/R2/R3 retained.
+
+Primary E18/E19/E20 review found strong finite geometry/travel/persistence proof,
+but historical TR export refusals have code:null. Current throw sites still lack
+string codes (not a harness omission): stale STEP/drawing selection and unreviewed
+manufacturing save preparation. Source-only predicate-level repair assigned;
+no blanket catch/message classification or settlement-policy change. Counts stay
+16ordinary/23scoped. E22 repair travel packet remains independent/source-only.
+No public deployment, main promotion, relay/race tests or packaging.
+
 ## Passive reversal diagnostics composed; normal build started
 
 ACAD88a81819078cee0512adcd5cec26f7692a09e79b composes source packet1b9b524.

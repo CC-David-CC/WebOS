@@ -1,5 +1,21 @@
 # Workflow state machines and invariants
 
+## CAD-EXPORT-REFUSAL-01: current prewrite predicates omit machine codes
+
+Primary TR actual rows7–9 retain code:null plus actual explicit refusal messages,
+committed:false/possiblyCommitted:false and no file/state change. Current source
+still matches: stale STEP inspection uses aborted() without authored string code;
+stale drawing uses plain Error; manufacturing revision mismatch in Core
+workerSavePreparation uses plain Error. The harness/registry/scoped command and
+fileOutcomeError preserve existing string codes; they did not erase these.
+
+Repair at original authoritative predicates, distinguishing stale inspection,
+actual cancellation, build mismatch and MANUFACTURING_REVIEW_REQUIRED. Preserve
+last accepted state, resource cleanup and write-outcome markers. Do not infer
+codes from message text or classify all rejection/cancellation as staleness.
+Existing geometry/artifact proof remains valid; machine-code qualification is
+open pending coherent repair and complete workflow evidence.
+
 ## CAD-PL-ADMISSION-01 R3: redundancy passes; reversal publication refused
 
 Core5d61bf0 retains actual whole37611 on40f5c92/cb9292e8c. Original distinct
