@@ -2,6 +2,23 @@
 
 ## Current history review/draft boundary defect — 2026-11-08
 
+Update: bounded passive-preview provenance repair is now qualified for the named
+history R3 chain, Core33b8aa3/Desktop4c4862b7b (ACADd0964c8):78rows/4.cad files,
+prefix inspection/explicit branch/travel/redo-tail/refusals and independent
+artifact oracle pass. Source review and all old failures below remain. This is
+not a separate genuine human form/no-op/Cancel qualification.
+
+The next source-confirmed C12 seam is Cancel: WizardManager currently invokes
+raw historyTravel.end while editing history. At a journal-owned accepted prefix,
+that can publish pointer=tip without the corresponding journal proposal; the
+retained history-position entry still requires its afterPointer=prefix and
+subsequent shared travel rejects the mismatch. Geometry recovery alone is not
+journal recovery. A normal UI/registered-command whole workflow is being
+prepared; no runtime failure/recovery is claimed. Normative rule: discard the
+draft while retaining the SAME accepted prefix/J, then explicitly travel via
+the shared operation to return to tip. Provenance/currentness must distinguish
+this case from ordinary insertion/legacy edit; hints alone are insufficient.
+
 Complete history R2 on Core4d5a0e3/Desktop4c4862b7b failed after45checkpoints
 and two `.cad` Save/sync/fresh-Open cycles (ACAD697598a). The earlier exact-axis
 resize failure progressed: expected HOLE_OUTSIDE_PROFILE and unchanged accepted
