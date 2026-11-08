@@ -27,7 +27,8 @@ Native child closure, reopened agent editing and retained-D Cancel/travel after
 P eviction pass. R1/R2/R3 failures remain frozen. Two integration fixes preserve
 constituent currentness and derive restored readiness from actual owned data.
 
-Engine main3233e5b and desktop working branchc8a0fde9c are backed on bothLANs.
+Previous Apply integration main3233e5b/Desktopc8a0fde9c is retained; the newer
+Mirror24f4269 proof and source are integrated/backed separately.
 Fourteen recent named browser workflows pass; all21 formal Gate1 exercise
 signoffs remain Partial. E17/C10 assemblies are Gate2. Files remains accepted.
 No public/beta deployment follows this local qualification; no filesystem-race
