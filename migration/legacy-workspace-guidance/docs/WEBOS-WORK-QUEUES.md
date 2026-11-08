@@ -1,5 +1,16 @@
 # WebOS work queues and progress ledger
 
+## Generic selected-source normal build running —2026-11-08
+
+Root composed helpers/wiring2801f47/0c0c3e2 and selectedProfiles-only API
+cleanupf990b1c; Desktop current parameter recipe migrated26f233dbd. Independent
+source audit found no blocking proof/ownership issue. Normal product build is
+running on R730, session93553, actual Coref990b1caaed3a9150755c5f5f5bb8a97487fc168;
+log /mnt/data10tb/codi-acad-typed-selected-pl-build-20261108-r1.log. No Chrome
+workflow active. Circle acceptance source remains in preparation. Build and
+source review do not change20scoped/10ordinary qualified counts. Next: fresh
+isolated stage then serial unchanged PL and complete typed-Circle workflows.
+
 ## Generic selected-source implementation review —2026-11-08
 
 IN PROGRESS: source review of ACAD58386b1/c89485a on PL candidate529e026.
