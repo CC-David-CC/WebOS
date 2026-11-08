@@ -1,5 +1,32 @@
 # WebOS work queues and progress ledger
 
+## Point-line composition ready for typed-profile dependency repair —2026-11-08
+
+Core PL packet7384555/692f675/fec74cc/f45a293/2170ac8 composed on qualified
+Fix main. Root retained BOTH fixedEntities discovery and PL supporting-line
+metadata, both Worker/client routes and qualified typed/Fix travel. The incoming
+packet had committed coordinator conflict markers; source review removed these
+without a runtime attempt. Human-policy correctionc4d0cce is composed, preserving
+actual edited dialog constraint/custody and native admission; strict closed
+eligibility stays separate. Source hygiene/recurring policy lessons recorded in
+ACAD shared authoring guide. Desktop four source commits through1269b7513 expose
+PL and its exact public recipe. No PL build/browser qualification yet.
+
+Immediate source-confirmed dependency: frozen PL whole workflow has a real
+Native rectangle plus SAME-source ordinary Segment/Points and named DistancePL.
+Current typed-selected-profile-solve uses prepareTypedRectangle, whose isolated
+Point extras and rectangle-only named-field guards reject this valid mixed source.
+CAD-TYPED-PROFILE-01 therefore needs actual typed-source preparation integration
+before the unchanged full workflow. No fixture conversion to unconsumed source,
+rectangle proxy or narrower passing case. Source audit/proposal active with
+existing generic typed-dependent/registered math and source/history/units guards.
+
+No browser/build currently active;20scoped workflows/10ordinary contracts remain
+qualified,11Partial. EqualRadius corrective source packet prepared; consumed typed
+Circle/ordinary Arc Native gaps and explicit Arc branch contract remain open.
+Main's qualified code remainsFix; no public/beta deployment or canceled race work.
+
+
 ## Whole-entity Fix qualified/integrated;20 scoped workflows —2026-11-08
 
 Normal full build27552 and fixture91050 completed0, whole Chrome37811 and FIRST

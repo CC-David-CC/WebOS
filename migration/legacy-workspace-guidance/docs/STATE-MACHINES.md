@@ -1,5 +1,27 @@
 # Workflow state machines and invariants
 
+## Typed profile preparation dependency is now concrete —2026-11-08
+
+Source-only finding before PL's first normal build/whole execution. Its frozen
+fixture's real Native rectangle and ordinary extra Segment/Points are one source;
+later DistancePL binds a genuine length name. typed-selected-profile-solve calls
+prepareTypedRectangle, which permits only isolated Point extras and names only
+on original rectangle lengths. Generic typed-dependent source math supports the
+needed registered length fields already. This is an integration gap, not a failed
+field equation or permission to drop the extra source from the test.
+
+| Transition | Required invariant |
+|---|---|
+| Current typed definitions → source preparation | Use actual registered field policies/current quantities, retain raw names and literal booleans; no new grammar or copied-value rewrite |
+| Typed source → selected geometry | Solve the genuine full source and choose actual supported region/backend; no generic profile disguised as a rectangle |
+| Existing rectangle controls | Preserve actual width/height semantics and current public consumers; distinguish generic profile fields truthfully |
+| Preparation → full suffix | Current source/definition/history/frame/revision capture and original proof remain, including independent geometry and provenance |
+| Unsupported Native capability | Explicit actual capability failure; no construction-role change, source omission or backend substitution to pass |
+
+Source contract audit is active; no implementation or runtime positive is claimed
+for this missing boundary. The named PL full workflow/criteria remain unchanged.
+
+
 ## Whole-entity Fix closed workflow qualified —2026-11-08
 
 Whole37811 and FIRST independent source/archive oracle PASS, proof ACAD2dbcc2b,
