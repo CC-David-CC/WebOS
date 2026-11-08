@@ -1,5 +1,18 @@
 # Workflow state machines and invariants
 
+## Typed point/removal/persistence chain qualified — 2026-11-08
+
+Complete ProjectedR3 on actual0133698/95d8023b0 and FIRST independent oracle
+PASS, proof4325ef1.52records/501traces/37observations/7refusals/3actual archives.
+Named driving edit → removal → Undo/Redo → typed point move → Undo(point) →
+Undo(removal) restores exact raw binding; acknowledged Save/server equality →
+fresh signed Open → named negative edit → Save/Open pass. Existing request/
+currentness/publication/retirement invariants and finite1..32 changed-handle
+travel bound now have complete workflow evidence for this fixture. Source
+unchanged, owned contexts retired. R1/R2 retained; no universal typed-edit,
+all-stage/generator, physical DOF or Native BRep inference.
+
+
 ## Typed coordinate admission and travel repair — 2026-11-08
 
 Source-only composed0133698, normal complete build and whole workflow pending.

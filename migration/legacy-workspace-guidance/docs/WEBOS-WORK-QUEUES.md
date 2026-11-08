@@ -1,5 +1,28 @@
 # WebOS work queues and progress ledger
 
+## ProjectedR3 qualified and integrated to main on both LANs — 2026-11-08
+
+Whole Chrome16184 and FIRST AFTER-WHOLE independent source/archive oracle PASS:
+actual Core013369861fad6123520065a4e06fafac752900e8 /
+Desktop95d8023b0209ad119ccfe92a34cdb6a55e87ef01.52records/501public trace entries/
+37observations/7refusals/3actual .cad Save/server equality/fresh signed Opens.
+Owned contexts retired/source unchanged. Former point-move failure, Undo(point),
+Undo(removal) restoring named binding, further negative named edit and final Open
+all pass. Original R1/R2 and unchanged criteria retained; no polishing retries.
+
+Proof4325ef1; current ACAD mainb3fd5fcc6c944fefb2b23f421f78fb0c2a5d96ad read back
+exactly on box-git and R730. Exact tested helper copied to app examples with notes.
+**18scoped workflows;5of21 ordinary exercise contracts Qualified,16Partial.**
+Full11competencies/final composed beta/viewable-agent delivery stay open.
+No active browser workflow/build and no public/beta deployment.
+
+Next source-only parallel packets: point-to-supporting-line DistancePL
+(actual polar-normal two-constant semantics), whole-entity Fix/Unfix
+(Segment/Circle/Arc actual snapshot), and review of five further ordinary
+exercise evidence rows. Root integrates/builds/runs complete browser paths
+serially; no filesystem-race work or fake data/provider/UI diversion.
+
+
 ## Complete ProjectedR3 browser workflow active — 2026-11-08
 
 Normal full build32673 and fresh fixture88551 completed0 on exact
