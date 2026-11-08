@@ -1,5 +1,26 @@
 # JSketcher basic foundation matrix
 
+## Latest checkpoint —19of21 ordinary exercises Qualified
+
+Root decision ACAD4fbc64605faa518e1e93dac7622c34bba7f6209f:
+`docs/reviews/ORDINARY-E18-E20-SIGNOFF-20261108.md`. E18/E19/E20 finite tasks
+are accepted after primary evidence review and current .cad/export-code proof
+089dfc9: actual8908fb8/7c2b85f48, normal13594/stage17641, wholeChrome47897 and
+FIRST independent oracle PASS0.38rows/four .cad saves/twelve STEP/3MF/SVG files/
+six own malformed Open refusals/ten retired codec Workers. Actual stale STEP/SVG
+codes STALE_DOCUMENT and unreviewed3MF MANUFACTURING_REVIEW_REQUIRED preserve
+state/files/journal and settlement; broader error catalogue not inferred.
+
+**19of21 ordinary Qualified: E01–E15/E18/E19/E20/E21; E16/E22 Partial.**
+E17/C10 is Gate2.23unique recent scoped workflows remains unchanged by this
+repeated regression. Ordinary tasks, broader11competencies and finalG10/beta
+are separate. PL R4's measured4mm reversal flip is still rejected before commit;
+source repair awaits review/build. CAD-VIEW-01 explicit fitting and E22 repair
+travel source packets are pending. No active browser/build now, main promotion,
+public deployment, relay/race test or final packaging. Earlier dated status
+paragraphs below are historical checkpoints superseded by this header.
+
+
 Active direction, 2026-11-04: qualify basic geometry and behavior before further
 feature expansion. Files integration continues in parallel. XR, physics and
 advanced feature catalogues are not tonight's implementation work.

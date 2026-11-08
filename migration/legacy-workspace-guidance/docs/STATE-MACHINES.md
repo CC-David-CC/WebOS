@@ -1,5 +1,18 @@
 # Workflow state machines and invariants
 
+## CAD-EXPORT-REFUSAL-01 three original predicates qualified
+
+Whole47897 +FIRST independent oracle PASS on8908fb8/7c2b85f48; proof089dfc9.
+Actual stale STEP/SVG→STALE_DOCUMENT and material revision mismatch→
+MANUFACTURING_REVIEW_REQUIRED refuse before write, preserve accepted source/
+metadata/counters/resources, report no committed/unknown outcome and add no
+journal entry. Positive material review/export, mixed travel, four .cad saves,
+fresh signed Open/reedit/resave, six own malformed Open refusals and actual Files
+UI Open pass; ten codec Workers retire. Matching-revision engine mismatch and
+other uncoded errors are NOT directly qualified by these three predicates.
+No broad all-error or capacity/memory claim. PL frame divergence remains open.
+
+
 ## CAD-PL-FRAME-01: measured warm/replay side divergence on reversal
 
 R4 proof22b9712 (actual88a8181/06f630880) measures actual y2→-2mm, delta-4mm,
