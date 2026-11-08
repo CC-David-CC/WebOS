@@ -1,5 +1,21 @@
 # WebOS work queues and progress ledger
 
+## Whole-entity Fix source composed; compatibility review before build —2026-11-08
+
+ACAD integration/fix-entity-runtime-20261108 e7884b49291019ee17e9b855785cd27be169e52e
+on both LANs composes core2977e9e/routing14fa50e and root's two Craft optional
+service types. Main remains the qualified source plus docs e5e52c3. No Fix build,
+probe or browser execution yet; Desktop adapter/whole driver/oracle still being
+prepared. Source review requests preserving prior human generated-stage and
+prior-rejected-constraint behavior when extracting common capture/admission;
+keep strict ordinary closed-source eligibility separate. No silent narrowing
+for an easier fixture. Canonical transition inventory updated.
+
+Point-line and four-corner creation-travel packets continue separately. Current
+acceptance remains18scoped workflows and9/21 ordinary exercise contracts;12Partial.
+No overall Gate1/beta delivery claim, filesystem-race work or UI diversion.
+
+
 ## Nine ordinary exercise contracts accepted; explicit E09 gap retained —2026-11-08
 
 Root inspected the actual R/RS/AR/DUP/PR/W/L receipts/independent saved-source/

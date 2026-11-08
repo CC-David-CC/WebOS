@@ -1,5 +1,32 @@
 # Workflow state machines and invariants
 
+## Whole-entity Fix shared admission review — source only,2026-11-08
+
+Candidate ACAD e7884b4 composes2977e9e/14fa50e with two Craft service type
+exposures on a separate integration branch; no build/browser qualification yet.
+Normal source-only implementation now has genuine FixSegment/FixCircle/FixArc
+capture/discovery/create/remove and original-request/travel Worker proof.
+
+| Context/transition | Required invariant |
+|---|---|
+| Active human editor → shared pure capture | Preserve actual existing ownership/stage and prior-rejected-row recovery policy; do not impose a smaller closed-source target domain globally |
+| Closed source → Fix target | Its independently authored nongenerated ordinary root domain remains explicit before shared capture; no public caller bypass flag |
+| Genuine source → Fix | Capture full-precision literal snapshot from the actual entity; no caller-supplied pose/solver seed and no accepted geometry movement |
+| Fix present → duplicate request | Exact no-op retains source/J/redo and actual existing row; it is not a newly authored redundant equation |
+| Fix present → Unfix | Remove only the discovered actual row; retain current geometry, other constraints, typed definitions and identities |
+| Edit while fixed | Retain original equations/domain; actual rejection preserves accepted state |
+| Unfix → edit → Fix | One shared journal and validated full suffix; new snapshot captures the actual new pose |
+| Typed publication/travel | Current bindings and original-request independent Worker proof; no scalar editing of read-only Fix witnesses |
+
+Review found possible human-domain narrowing in initial extraction: every
+generated/consumed object and every preexisting rejected row became a blanket
+refusal. The prior human path distinguished same-stage generated targets and
+newly rejected constraints. Source correction is requested before coherent
+build/whole execution; no public regression incident is asserted. Closed strict
+admitted-source policy must not be weakened to preserve human recovery behavior.
+Arc near-coincident branch remains separately tracked as CAD-ARC-01 above.
+
+
 ## CAD-ARC-01: inferred full-turn branch needs qualification — 2026-11-08
 
 Source audit only; no new execution or observed public corruption incident.
