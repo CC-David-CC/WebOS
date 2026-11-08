@@ -1,5 +1,27 @@
 # WebOS work queues and progress ledger
 
+## Coincidence captured-lifecycle repair composed; R3 rebuild active — 2026-11-08
+
+R2 whole39712 on Coreeadac5e/Desktop8eac41c9e terminalFAIL after3rows/38commands/
+1Native setup/0saves. Actual COINCIDENCE_TARGET came from calling mutable prepare
+inside captureConnectedGeometryScope's deliberately open private captured
+transaction. Contexts retired/source unchanged. Failure frozen Core870b956.
+
+Coherent repair7afb2c4 (agentdc7ee58) splits pure inspectPointCoincidence from
+stateful prepare. Both retain actual owned-point/stage/generator/alias/row checks;
+pure capture creates a detached genuine PCoincident polynomial proposal only.
+Normal mutation guard remains; no transaction toggling/bypass/optimizer/_add or
+publication occurs in captured evaluation. Original-request proofs and entire
+driver/oracle/tolerances remain unchanged. Complete normal rebuild20370 is active
+from7afb2c4506d1ff0cc9274c05027728bca5bd7cf5 on R730. Next fresh stage-r3/pins-r3,
+loopback21011/state-r29, unchanged complete Chrome then independent artifacts.
+No active Chrome workflow. Main235b8de/16scopedpasses remains qualified baseline.
+
+ProjectedDistance source packet ready separately:10940466 contract,d342b855
+product,a538b850 complete driver/oracle. Existing creator/generic edit/remove,
+no new Desktop/Craft route. Root composition/qualification remains pending.
+No deployment/filesystem race; all21 formal exercise signoffs remain Partial.
+
 ## Point coincidence R1 retained; realm repair rebuilding — 2026-11-08
 
 Whole Chrome77247 terminalFAIL after3rows/38public trace entries/1Native setup

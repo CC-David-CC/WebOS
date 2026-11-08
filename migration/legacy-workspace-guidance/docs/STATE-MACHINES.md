@@ -1469,3 +1469,18 @@ records into fresh immutable values. Exact keys, bounded distinct identities and
 two original-request Worker proofs remain. This does not expose Native handles
 or bypass geometry/domain validation. First failureCoreeba7ad6 retained; complete
 normal build and unchanged whole regression are required before qualification.
+
+
+## Original-equation capture versus mutable coincidence admission — 2026-11-08
+
+IO.evaluateCapturedSketch opens a private single-use transaction to inspect the
+original source without optimizing/finishing/publishing it. Ordinary mutable
+preparation must instead start outside a transaction. Whole39712 exposed their
+conflation: preparePointCoincidence's correct pm.inTransaction guard refused
+read-only original capture. Source repairCore7afb2c4 separates pure actual-owned
+point/row/polynomial inspection from the guarded mutable wrapper. No public
+bypass flag, nested transaction, optimizer, row admission or publication is added
+to capture. Both paths share the original geometry/membership/identity checks.
+Whole failureCore870b956 retained; coherent build and unchanged full regression
+remain required before qualification. This is not a solver/geometry tolerance
+change or a reason to skip original-request reconstruction.
