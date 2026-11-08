@@ -3095,3 +3095,10 @@ backend2090005 stopped normally with SIGINT and its local forward2708975 was
 closed; service/listener absence verified. Source, evidence, stage/account dirs
 remain on R730. Current owned20963 fixture and shared Chrome remain available;
 no public deployment or relay change.
+
+Private fixture20963 retired after primitive/reference/original-rectangle whole
+runs and artifact checks settled. Shared-Chrome target census found zero20963
+targets; exact backend2095743 stopped with SIGINT and local forward2713422
+closed. PID/listener absence verified. Source, stages, saved test accounts/files
+and evidence remain on R730; current20964 fixture/shared Chrome remain available.
+No public deployment, filesystem race, guest relay or real account deletion.
