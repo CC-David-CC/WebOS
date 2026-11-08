@@ -1,5 +1,26 @@
 # WebOS work queues and progress ledger
 
+## Source-frame construction repair composed; normal build started
+
+Source daa1666 composes as ACAD e005eab494e8ce1ea4dd7d26eb48d6eb9999bcdb,
+backed bothLAN. Actual affected negative-t root Segment with DistancePL/TangentLC
+initializes derived frame from authoritative endpoints, then ONE original full
+stage/generator construction resolve. Whole warm/resolved results must satisfy
+original equations and exact outside-component/source intent before candidate
+construction. Strict independent replay and second-realm original-request
+reconstruction remain. No side/equation/threshold/driver change or copied cold
+geometry. Internal optional auxiliary observer adds no solve/public field.
+
+Root independently reviewed callback/custody and current registered auxiliary
+factories; all three allocating factories have policies, no current ordinary
+counterexample found. Future schema policies/boundary-size workloads and new
+negative generated cases remain unqualified. Root normal build26061 on R730,
+/mnt/data10tb/codi-acad-source-frame-build-20261108-r1.log. Fresh stage/unchanged
+whole PL R5 follows successful build; no active Chrome. Counts19ordinary/23scoped
+unchanged. E16 source packet resumes independently; E22/explicit-fit source work
+continues. No main promotion, public deployment, relay/race testing or packaging.
+
+
 ## Latest checkpoint —19of21 ordinary exercises Qualified
 
 Root decision ACAD4fbc64605faa518e1e93dac7622c34bba7f6209f:

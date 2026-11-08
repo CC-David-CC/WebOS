@@ -1,5 +1,21 @@
 # Workflow state machines and invariants
 
+## CAD-PL-FRAME-01 source construction candidate —not yet qualified
+
+ACAD e005eab composes daa1666. Original replay privately issues existing actual
+auxiliary witnesses; original registered-equation graph/fixed cuts bound the
+operation component. Actual warm result must satisfy original rows and exact
+untouched fields before frame initialization. Affected negative-t side-sensitive
+root Segment initializes derived ang/t from actual endpoints, then full original
+stage/generator lifecycle resolves once. Original raw angle/t constraints retain
+authority, including legitimate negative charts. Whole resolved source is checked
+again before applying authenticated component delta; invalid unrelated geometry
+is never repaired by coordinate restoration. Strict cold replay and independent
+original-request reconstruction remain. No passclaim until full unchanged flow.
+All current allocating factories have explicit auxiliary policies; future
+catalogue/boundary-size/generated-case equivalence is not inferred.
+
+
 ## CAD-EXPORT-REFUSAL-01 three original predicates qualified
 
 Whole47897 +FIRST independent oracle PASS on8908fb8/7c2b85f48; proof089dfc9.
