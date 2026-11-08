@@ -1439,3 +1439,20 @@ membership and all original geometric tolerances remain. Saved intent still
 contains source identities/semantic descriptors, never persistent Native indices.
 R4's actual global coverage rejection is retained; this source repair requires
 complete normal build and unchanged whole browser regression before qualification.
+
+
+## Circular occurrence-aware transition qualification — 2026-11-08
+
+The source→Native observation→independently qualified per-cell chains→owned
+construction→accepted source-bound feature→journal travel→native Save/Open
+chain now has finite whole proof: Chrome74062 +first independent artifact oracle
+PASS on Coref2574ea/Desktop70f096c23/Native7bf611ce, frozen ACAD235b8de. All actual
+cell occurrences are retained and checked, semantic source partition is derived,
+and no persistent Native indices or synchronized coverage flags are authored.
+178records/52Native observations/268classifications/15saved checkpoints include
+lens/crescents, separate externally tangent bodies, coincident owners, retained
+nested/disjoint paths, rejected stale/lost-cell changes, explicit source+region
+repair, same-feature travel and fresh-session reedit. Four near-boundary cases
+only classify source topology. Entire ABI reentrancy/fault/rollback suite and
+all region topologies remain unqualified. R5 browser disappearance/cleanup error
+is retained with unknown cause; R6 fresh-process success is no diagnosis of it.

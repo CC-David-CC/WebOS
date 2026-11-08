@@ -1,5 +1,25 @@
 # WebOS work queues and progress ledger
 
+## Latest scoped qualification — circular cells R6, 2026-11-08
+
+Complete Chrome74062 and FIRST independent artifact checker PASS on actual
+Coref2574ea/Desktop70f096c23, Native7bf611ce (9789a617/707facb3). Frozen proof
+ACAD235b8de is on main on box-git and R730.178records/488public trace entries/
+52Native observations/268actual classifications/15.cad Save/server/freshOpen
+checkpoints/4refusals. Lens/both crescents/tangent/coincident/nested/disjoint
+pass; contexts closed/source unchanged. Four near-boundary cases are SOURCE
+ONLY, not tiny Native constructions. Existing defaults stay; this cohort is
+explicit/experimental. No whole C02, ABI-fault-suite or all21 exercise claim.
+SIXTEEN recent scoped workflows pass; all21 formal exercise signoffs Partial.
+
+R1–R5 failures remain retained, including R5's unknown browser interruption and
+unconfirmed cleanup. Fresh R6 PASS does not diagnose that earlier disappearance.
+Next bounded packets: shared point coincidence is source-ready; ProjectedDistance
+live-direction/edit/remove source is in progress. Neither is runtime-qualified.
+No public/beta deployment. No active app build/Chrome workflow now; dedicated
+Chrome session5363 remains available for the next root-owned complete run.
+
+
 ## Circular R5 interrupted; same complete R6 running — 2026-11-08
 
 ActualCoref2574ea/Desktop70f096c23 app build98097 and fixture74853 completed0.
