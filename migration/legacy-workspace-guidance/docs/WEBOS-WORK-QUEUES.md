@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## ProjectedDistance composition and full build active — 2026-11-08
+
+Qualified Coremain6407d6b and Desktop95d8023b0 are backed on both LANs (17scoped
+proofs). Next packet composed on integration/projected-runtime-20261108:
+Core81d62ab from contract8e3961e/product5c8c09b/driver81d62ab. Four central-route
+merge conflicts were resolved additively, retaining BOTH qualified coincidence
+verification and new projected edit/remove verification imports/client task/
+Worker dispatch/export. No independent modeling system or new public creator.
+Actual live direction and raw typed identifiers remain original-request authority.
+
+Complete normal build56864 is running on R730 from
+81d62abf2237cc6dbf94636798489ef5f96d8e5c. Next Desktop95d8023b0, fresh projected
+stage-r1/pins-r1, isolated21013/state-r31, complete public live-direction/edit/
+remove/named-binding/saveOpen workflow then independent artifacts. No current
+Chrome workflow or ProjectedDistance qualification. Current metadata/code is
+source-ready, not a reference readout, broad measurement-role or Gate1 signoff.
+No public/beta deployment; all21 formal exercise signoffs remain Partial.
+
 ## Latest qualified path — point coincidence R4, 2026-11-08
 
 Whole Chrome41761 and FIRST independent artifact checker PASS on actual
