@@ -1,5 +1,28 @@
 # WebOS work queues and progress ledger
 
+## Circular R4 retained; independent Radius whole qualification starting — 2026-11-08
+
+Circular whole28237 terminalFAIL on Core25fc6c9/Desktop1298d63c4 after150 runtime
+pins and genuine source census. Native read returned status0; exact retained JS
+cause is `Actual Native intervals do not cover each original source circle.`
+No accepted solid/save qualification. Nine commands/two rows; contexts closed,
+source unchanged. Core513ae48 retains R4 on both LANs. R3's -5 did not establish
+owned construction: Native read can itself fail before corroboration. Specific
+R3 Native stage remains unknown. Do not attribute failures to Copy/orientation.
+
+Native/protocol source lanes are investigating actual per-cell fragment/semantic
+coverage across independently computed Common/Cut boundaries. Keep original
+source equations/tolerances and actual edge representations, without rounding
+or pretending globally identical Native partitions. No circular build/browser
+active now, and no circular qualification/promotion is claimed.
+
+Root integrated the independent Radius packet onto its qualified Mirror base:
+Cored0069f0; Desktop3a4465708+dd58df71e. Normal complete Radius app build69766 is
+running on R730. Next stage-radius-r1/pins-radius-r1, isolated21007/state-r25,
+unchanged full radius workflow then independent artifacts. This keeps progress
+moving while circular source repair proceeds. Both paths remain Gate1 work.
+Fourteen prior scoped passes; all21 formal exercise signoffs remain Partial.
+
 ## Native stage packet composed and rebuilding — 2026-11-08
 
 Native5a4f0a82 adds stack-owned15-stage failure location only; normal compile26577
