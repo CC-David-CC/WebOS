@@ -3070,7 +3070,8 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   dependency Worker, physical transaction and journal for selected rectangle
   width/height/extrusion depth and semantic through-hole dimensions. Other
   feature families stay explicitly unsupported; numeric edits cannot erase a
-  formula. Source work active; no runtime result.
+  formula. Product integrated ACAD19b412b/driver0e46c2b and Desktopebb58b2b0; normal
+  composed build running. No runtime result; typed export readers remain open.
 - [x] Retained full-face two-material R2 on expanded inset runtimebc85c5f:
   39rows/five native saves/three exports plus unchanged independent oracle
   PASS (Desktop6e42da655). Both material-domain dispatch paths now have
@@ -3079,8 +3080,13 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   add works, but current driving targets expose only length/diameter. Approved
   narrow schema-aware signed edit path and full concentric+zero/negative/refusal/
   persistence workflow underway. No remove/readd substitute or solver rewrite.
-- [~] Required rectangle width-domain100→120→1→0→negative→1e−6→1e6 whole
-  workflow being prepared, with separate sketch/solver/profile/Native outcomes.
+- [x] Complete width-domain100→120→1→0/negative refusals→1e−6→1e6 PASS
+  (ACADdfe9cc1):71rows/two native files plus independent source/Native-observation
+  oracle. Genuine micro sketch and precise PROFILE_BELOW_RESOLUTION refusal;
+  maximum actual Native prism, units/travel/persistence/reedit all pass.
+- [~] Combined enclosure body + separate inset-label lid public example/whole
+  driver/oracle source lane active: one explicit Shell-capable build, two authored
+  printable parts/three material regions. No runtime or implicit formula claim.
 - Keep source/evidence on both ACAD and Desktop LAN repositories. JSketcher is
   retired to public-fork state. No cancelled filesystem-race probes or UI work.
 
