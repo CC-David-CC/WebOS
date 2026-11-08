@@ -1,5 +1,23 @@
 # Workflow state machines and invariants
 
+## Typed coordinate admission and travel repair — 2026-11-08
+
+Source-only composed0133698, normal complete build and whole workflow pending.
+The existing coordinate producer stays unchanged. Private lexical typed access
+admits only point-coordinate tasks; the second original-request Worker proves
+requested geometry/receipt AND supported travel before shared publication.
+
+| Transition | Invariant |
+|---|---|
+| Current typed document → point request | Resolve actual length bindings; retain physical source/list/table revisions across awaits; other typed mutation tasks remain refused |
+| Private producer → independent typed verifier | Reconstruct unchanged original point request; exact candidate and receipt; no copied source/solver flags |
+| Verified candidate → travel admission |1..32 changed actual owned supported handles/one stage/unchanged authored non-geometry; derive permitted connected geometry only through genuine coordinate reconstruction |
+| Private Undo/Redo pair → typed dispatcher | Existing dimension delta uses existing dimension verifier; geometry pair uses bounded forward/reverse actual-operation reconstruction; never candidate-only solvability |
+| Unsupported travel → refusal | Refuse before publication; no accepted edit with knowingly unsupported Undo; keep original source/J/parameters and resource retirement |
+
+The finite scope does not qualify arbitrary stages/generators or enlarge numeric
+policies. Complete unchanged projected workflow R3 remains required.
+
 ## Typed point mutation after driving-row removal — 2026-11-08
 
 Projected whole R2 on Core6cfffc78/Desktop95d8023b0 reaches actual removal and

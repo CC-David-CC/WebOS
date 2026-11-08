@@ -1,5 +1,25 @@
 # WebOS work queues and progress ledger
 
+## Typed point repair composed; complete projected R3 build — 2026-11-08
+
+Source013369861fad6123520065a4e06fafac752900e8 (agentf6448ee), backed both LANs,
+admits only the existing single/batch point-coordinate tasks through private
+typed access. The original producer is unchanged; its independent second Worker
+also proves bounded journal travel before publication. Actual source/constraints/
+parameter definitions remain authority. Typed travel dispatch separates existing
+dimension deltas from an independently reconstructed coordinate operation.
+Supported typed coordinate travel is1..32 changed actual owned supported handles
+in one authored stage, existing1024object/coordinate limits; full actual connected
+geometry, including derived radii, is retained. Beyond this finite supported
+travel domain refuses before publication. No public skip flag or generic bypass.
+
+Current signed-driving regression expectation updated only for the truthful
+expanded capability string; original frozen evidence/snapshots remain unchanged.
+No driver/oracle/geometry/tolerance changes. Root complete normal R3 build on R730
+started; next fresh stage-r3/pins-r3/private21015/state-r33 and unchanged whole
+workflow, then first independent artifact oracle only after whole PASS.
+No new qualification claim yet:17scoped proofs, current formal ledger Partial.
+
 ## Projected R2 retained; typed point-edit gap under implementation — 2026-11-08
 
 Complete normal build14265/fresh fixture36647 completed0. Whole Chrome94668
