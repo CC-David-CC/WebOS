@@ -1,4 +1,8 @@
-# Contrasting rectangular inset label — whole workflow prepared, not run
+# Contrasting rectangular inset label
+
+Current qualification: [complete workflow and independent artifact PASS](evidence-r1/README.md),
+frozen Desktop2f8ec18c9. Source-preparation instructions below retain their
+original status; exact runtime and limits are in the evidence packet.
 
 Run only after root freezes the normal composed ACAD application. No tests,
 Native probes, builds, browser or services ran for this source preparation.
