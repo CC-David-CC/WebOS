@@ -3248,3 +3248,28 @@ and a full prepared units/area/volume/count/boolean native-persistence workflow.
 It reuses current Worker values, not UI-thread expression evaluation or new
 state. This source is unqualified; no current value/unit claim before a whole
 composed app run and independent arithmetic/source checker.
+
+### Measured replay displacement and candidate phase repair — 2026-11-07
+
+ACAD2e5e1c1 retains orientation R3 on compilede01f495/Desktopc12ccbe18:
+same.b.y80.00000002516768→80.0000000015683mm, displacement
+2.3599383780492644e-8mm. All three failed runs remain. Source review found
+in-memory internal Polar admission hints absent from serialized/cold rebuilding;
+that changes the equation-admission order. This is a concrete phase difference,
+not a claim that every numerical contribution has been isolated.
+
+Unqualified repair e95c377 constructs the actual returned candidate via the
+normal cold solve, then independently reconstructs that candidate. The unchanged
+1e-9mm source-stability bound, exact authored intent/unrelated data, identical
+authored admission classifications and exact original-request proof remain.
+The checked first cold candidate is returned; no unchecked last iterate, retry/
+polishing loop, global hint-order or solver tolerance change. Full R4 required.
+The user reaffirmed keeping this fixture's bound; general scale-aware tolerance
+policy is separate future work and cannot relabel this failure as success.
+
+Shared Euclidean point-distance source444f21a/driver6437352 and Desktop31985cbed
+are integrated, not qualified. Creation/edit/remove and typed nonnegative length
+reuse actual source/solver/journal authority; the complete singular-report/native
+workflow remains to run. Public quantities R1 is running on private20972; its
+latest actual states include unit checks, refusals, native Open and inch-driven
+geometry. Complete result remains pending.
