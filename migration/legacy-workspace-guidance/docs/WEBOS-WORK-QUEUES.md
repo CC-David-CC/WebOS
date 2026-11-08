@@ -3069,18 +3069,19 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   72rows/two native saves/76 recipe events; real Native geometry/points, formulas,
   mixed travel, typed/domain/geometric refusals, no-op/stale, units and native
   persistence/reedit. R1 product and R2/R3 harness failures preserved.
-- [~] Typed STEP/core3MF/drawing reader admission source integrated ACADebbf56a,
-  complete driver/independent artifact oracles0d15629. Reuses the accepted
-  expression service/observation pipeline; no new facade/snapshot state, Native
-  ABI or ledger change. Normal composed build and complete workflow still required.
+- [x] Typed STEP/core3MF/drawing complete application workflow and independent
+  artifacts PASS (ACADc5b68ec/514da9a):27rows/three native saves/twelve exports,
+  actual0d15629/Desktop3142c9d9a. Original independent-parser omission retained;
+  bounded typed LENGTH_MEASURE parsing repaired without relaxing geometry checks.
+  Only the declared canonical rectangle/extrusion/through-hole family is proved.
 - [x] Retained full-face two-material R2 on expanded inset runtimebc85c5f:
   39rows/five native saves/three exports plus unchanged independent oracle
   PASS (Desktop6e42da655). Both material-domain dispatch paths now have
   complete evidence on that same compiled build.
-- [~] Source-confirmed signed X/Y dimension discovery/edit/removal gap: public
-  add works, but current driving targets expose only length/diameter. Approved
-  schema-aware signed edit product integrated ACADdbd66f0/driverf580729 with
-  Desktopaaa602919; normal build/complete concentric qualification next. No remove/readd substitute or solver rewrite.
+- [x] Signed X/Y discovery/edit/removal and concentric typed propagation complete
+  R3 PASS (ACAD41672f4):85rows/two native files on3d223ac/Desktop07b98a2a2.
+  Numeric zero/negative, named binding/formula edits, refused provenance erasure,
+  mixed travel and Save/server-sync/two fresh Opens pass. R1/R2 retained.
 - [x] Complete width-domain100→120→1→0/negative refusals→1e−6→1e6 PASS
   (ACADdfe9cc1):71rows/two native files plus independent source/Native-observation
   oracle. Genuine micro sketch and precise PROFILE_BELOW_RESOLUTION refusal;
@@ -3190,3 +3191,20 @@ Desktop67326a656 with91pins. Normal app/Worker build passed; ordinary orientatio
 and separate native-domain/alias acceptance remain unqualified until complete
 runs. No beta/public deployment. Gate1 remains open; the finite competency audit
 separates proved exercise steps from actual remaining operation requirements.
+
+### Orientation R1 failure and current bounded repair — 2026-11-07
+
+ACAD75e6627 retains the complete66row failure onb378bb7/Desktop67326a656:
+a partially existing Parallel group reached exact candidate/re-solve comparison
+and refused CURRENT_GEOMETRY_MISMATCH. Source repair35a3606 uses the existing
+verified replay contract (exact authored intent/evidence; bounded supported
+connected fields/branches) and derives reply admission from the final independent
+reconstruction. Global history equality is unchanged. The failed diff is not
+asserted to be only roundoff; unchanged complete rerun is required. Normal build
+is running. Current solver-report whole R1 runs separately on existing20970.
+
+Private fixtures20964–20969 retired after their runs settled and shared Chrome
+had zero targets for those six ports. Exact backend PIDs2104400/2110703/2113805/
+2121641/2128330/2131983 received SIGINT; exact local forwards were closed.
+Listener census confirms only current20970 remains. Saved account files, source,
+stages and immutable evidence stay on R730. No public service/relay change.

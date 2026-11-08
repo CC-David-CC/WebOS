@@ -984,3 +984,9 @@ material refusal before file writes. Actual UndoRedo after refusal proves no
 hidden authored entry. Three native saves/two fresh Opens retain formulas,
 materials and drawing intent. One independent parser omission was fixed and
 retained separately; no production correction or geometry assertion relaxation.
+
+Orientation R1 (ACAD75e6627) refused mixed-group candidate replay after66rows;
+35a3606 is an unqualified source repair that reuses verified replay authority
+and derives group reply status from final independent reconstruction. No
+precursor admission flag becomes authoritative. Exact unrelated/authored intent
+checks and exact request reconstruction remain; no global equality relaxation.
