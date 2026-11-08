@@ -1,5 +1,22 @@
 # Workflow state machines and invariants
 
+## CAD-THROUGHHOLE-AXIS-01: generic dimension suffix refuses exact-axis source
+
+Actual E22R1 whole51685 ondb278/6f708 refuses generic rect-0 SegmentLength
+100→150 with UNSUPPORTED_PROFILE at ownedThroughHolePlan.mjs:48. Reports
+committed:false/possiblyCommitted:false. Original accepted source is exact four
+Segments/11rows at0..100×0..50; rejected candidate vertices are absent from
+receipt, so magnitude/edge/cause is unestablished. Prior E11 used declared
+rectangle-dimensions reconstruction, not this generic route. Preserve both
+command semantics: do not replace the tested generic path to hide the gap.
+
+Next passive bounded refusal data must report actual four prepared vertices,
+exact edge/minmax flags and unique count while preserving original predicate,
+code and512char transport. No rounding/snapping/epsilon or schema/API/solve
+change without established cause. Repair travel and negative datum remain
+unobserved in this failed E22 run; historical drawing evidence is separate.
+
+
 ## CAD-PL-FRAME-01 R5 finite repair evidence; free-coordinate case separated
 
 R5 proofdcc3bca actuale005eab/5cf27cb1 observes reversal, travel, .cad freshOpen

@@ -1,5 +1,33 @@
 # WebOS work queues and progress ledger
 
+## E22 R1 first failure retained; complete loft/view run started
+
+E22 whole51685 terminalFAIL1 at generic SegmentLength width100→150, original
+case before repair. UNSUPPORTED_PROFILE exact-axis predicate in
+ownedThroughHolePlan.mjs:48 reports no committed/unknown outcome.7rows/twoNative
+observations/oneSVG/zeroSaves; source pins unchanged, contexts retired. Canonical
+ACAD0bfdf5f: drawing-reference-repair-public-workflow/evidence-r1. No after-whole
+oracle or new qualification. Candidate vertices were not captured; tiny drift
+is unestablished. E11 used edit-rectangle-dimensions reconstruction, while this
+legitimate generic edit uses the optimizer path. Do not substitute the easier
+command or weaken the predicate. Source-only bounded diagnostic now assigned.
+
+Root next runs complete loft/view Chrome45501 on SAME exact db278/6f708 cohort
+private21025/state-r43; evidence /tmp/codi-acad-loft-view-fit-20261108-r1 and
+sibling.log. Includes unchanged actual loft creation/source/plane/travel/three
+.cad geometry criteria plus six perspective/orthographic fits, three view
+refusals, real matrices and actual viewport PNGs. Original loft and independent
+view oracles run only after whole terminal PASS; actual image review required.
+No concurrent browser/build/source edits. Counts19ordinary/23scoped unchanged.
+
+Free-and-anchored PL new full source12dfdda +contractdd6c914 ready for root
+review, originals R1–R5/driver/oracle remain. It adds actual free parameter
+math/travel/.cad before explicit anchors; preserves50pm and original anchored
+tail, five real saves. No smaller/easier-only substitute or product math change.
+E16 complete source remains in preparation. No publicdeploy/main/relay/race/
+final packaging changes.
+
+
 ## E22 complete drawing-repair workflow running on pinned fit cohort
 
 Normal19814/stage71599 PASS0. ActualCoredb278000a036dbc042183fc3a902633e848630fd /
