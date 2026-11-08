@@ -997,3 +997,9 @@ Save/sync/Open/reedit. The independent checker derives Cartesian rank from the
 original equations; it does not equate tangent nullity with global physical DOF.
 Singular and genuine numerical-failure transitions remain unqualified, rather
 than substituting an invalid-entity refusal as a solver-state demonstration.
+
+Orientation R2 (27e8af0) contradicts completion of repair35a3606: a reconstructed
+existing endpoint exceeds1e-9mm. Error e01f495 reports actual numbers; no bound
+relaxation or hidden retry. Public quantity projection7f8b1ea derives values
+only from the already accepted/current expression service and performs no new
+evaluation or duplicated state publication. Whole qualification remains open.

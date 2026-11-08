@@ -3234,3 +3234,17 @@ No complete result yet. N4 rectangle report evidence is frozen/backed c52ef61;
 its new shared DistancePP source lane remains unqualified. Both arrangement and
 point-distance implementations are separate from the .cad container proposal;
 root integrates source before any complete application qualification.
+
+### Orientation R2 and public quantity projection — 2026-11-07
+
+R2 fails66rows on35a3606/Desktopd49071638 (ACAD27e8af0 retained): independent
+reconstruction moves an existing horizontal peer endpoint beyond1e-9mm. The
+first repair did not qualify the group. Existing bound stays exact; e01f495
+adds actual before/after/delta to the bounded error, with no polishing loop or
+solver-tolerance change. Next complete run must expose the measured movement.
+
+ACAD7f8b1ea adds read-only accepted quantity projection to parameter inspection
+and a full prepared units/area/volume/count/boolean native-persistence workflow.
+It reuses current Worker values, not UI-thread expression evaluation or new
+state. This source is unqualified; no current value/unit claim before a whole
+composed app run and independent arithmetic/source checker.
