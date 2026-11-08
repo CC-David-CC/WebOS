@@ -2,7 +2,8 @@
 
 Decision,2026-11-06: use our own `.cad` project format. It may be a ZIP container;
 no third-party CAD format is required as its editable source. This is a recorded
-design decision, not an implemented archive reader/writer. Current qualified
+design decision. A new archive codec/host source packet now exists, pending its
+composed complete runtime qualification; this is not a working/deployed claim. Current qualified
 native Save/Open fixtures are JSON and remain evidence of those exact builds.
 Prototype accounts do not require a legacy-file migration project.
 
