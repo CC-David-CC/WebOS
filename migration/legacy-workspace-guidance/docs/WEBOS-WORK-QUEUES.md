@@ -1,5 +1,19 @@
 # WebOS work queues and progress ledger
 
+## Passive reversal diagnostics composed; normal build started
+
+ACAD88a81819078cee0512adcd5cec26f7692a09e79b composes source packet1b9b524.
+On the existing CURRENT_GEOMETRY_MISMATCH only, bounded refusal text reports
+first actual candidate/cold scalar difference and actual warm native PL frame/
+original residual. Cold native frame stays explicitly unavailable. No new solve,
+equation, threshold, wire shape or frozen driver change. No cause established.
+
+Root normal build starts on R730 with
+/mnt/data10tb/codi-acad-polar-diagnostic-build-20261108-r1.sh;
+log has the same basename ending.log. Fresh private fixture and unchanged whole
+PL R4 follow successful build/stage. No browser run active concurrently. Counts
+16ordinary/23scoped unchanged; no deployment, main promotion or race testing.
+
 ## PL R3 terminal failure retained; initial redundancy repair observed
 
 Unchanged whole Chrome37611 FAIL1 on actual Core40f5c92/Desktopcb9292e8c.
