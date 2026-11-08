@@ -1,5 +1,17 @@
 # WebOS work queues and progress ledger
 
+## Genuine named-radius prerequisite composed; Circle build running
+
+Source RadiusLength repair0cd66f1 composed as ACADd790011, backed both LANs.
+Numeric creation/human behavior unchanged. Named edit retains actual raw name,
+resolves only through captured dimensional authority, validates registered
+candidate constants and repeats original request in verifier/travel. Bound
+numeric replacement/removal still refuses. No Diameter substitute was adopted.
+Normal build93484 now runs on R730 (typed-selected-circle-build-20261108-r1.log),
+actuald7900110d3bc8e9ef0a0da5e871ea7d93a4015e5. Complete original typed-Circle
+recipe/oracle source still being finalized. No Chrome workflow active; PL R1
+redundancy repair investigation proceeds independently. Counts unchanged.
+
 ## PL R1 first full failure retained —2026-11-08
 
 Whole89587 terminal FAIL1: distinct mathematically redundant SignedDistanceY2
