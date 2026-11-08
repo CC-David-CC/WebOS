@@ -1,5 +1,28 @@
 # WebOS work queues and progress ledger
 
+## Local unused-temp cleanup active; R4 width repair succeeds, token assertion retained
+
+User explicitly requested PC cleanup and R730 execution. Removed13inactive clean
+Desktop linked checkouts ONLY after exact HEAD/clean including ignored/matching
+retained branch refs on BOTH LANs; receipts local-temp-cleanup-20261108-r1/r2.json.
+Six older Core checkouts (including generated files) archived to
+r730:/mnt/data10tb/a5500-cleanup-20261108/inactive-cad-worktrees-r1.tar,
+3966238720bytes SHA256581a9d5f58a79036112ee8d64b9aa42d7381a08f94246db9ed94971b4aa1381f.
+Remote archive streamed back through tar --compare against ALL original files,
+exit0 before those six removals. Common legacy Git also included in archive;
+local common Git retained. Receipt local-temp-cleanup-20261108-r3.json.
+PC free space rose from~147MiB to6.0GiB. ActiveRoot/dependencies/Chrome preserved.
+Remaining older temp copies being inventoried; broad user/home output dirs untouched.
+
+E22R4 actualbaf95cc/78cc169 normal72049/stage25267 PASS; whole34255 FAIL after
+width150 edit plus genuine UndoRedo and fiveNative reads PASS. At expected
+HOLE_OUTSIDE_PROFILE candidate refusal, epoch8→9 invalidates five linked read
+tokens. Exhaustive evidence/source review finds no other state difference.
+Proof ACAD8ac5992 preserves frozen sources/16rows/88commands/oneSVG/zeroSaves,
+source pins unchanged/contexts retired. No after-whole oracle. Exact candidate
+vs pre-candidate refusal predicates source3868c1d ready for root review, not
+runtime-qualified. Counts19/21ordinary/23scoped unchanged; no public deployment.
+
 ## E16 R1 counter mismatch preserved; detached-boundary repair building
 
 Complete Boolean46384 terminalFAIL1 after initial subtract19000 Native fact and
