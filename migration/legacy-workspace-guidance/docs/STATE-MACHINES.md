@@ -1,5 +1,38 @@
 # Workflow state machines and invariants
 
+## Accepted definition inspection and wizard repair candidate — 2026-11-08
+
+Current source Core4f5b2ca contains private origin/capture/discard for a real
+review draft and one guarded same-prefix Cancel. It reuses the actually applied
+history-position J entry and current source/material/document/stream ownership;
+value equality never recreates passivity. Legacy raw return requires a fixed
+historical vocabulary and EMPTY shared journal, so unknown/new source-frame
+operations cannot inherit it. The actual registry must be accepted, not a
+candidate registry. This source is not yet a qualified Cancel workflow.
+
+Whole C12R1 failed on root's unsupported advertised-box cohort selection;
+C12R2 used the advertised shell cohort, created an actual Native box and passed
+its full-tip observation, then failed after registered prefix at wrapper
+`inspect`. No draft/Cancel cycle or save completed. Evidence is retained in
+ACAD `test/wizard-draft-history-public-workflow/evidence-r1` / `evidence-r2`.
+The metadata wrapper formerly reused save readiness and refused every prefix.
+The narrow source repair now separates a current accepted-definition READ from
+SAVE authorization; unapplied wizard values are not serialized as accepted data.
+
+| Current condition | Accepted-definition read | Save/mutation meaning |
+|---|---|---|
+| Settled complete tip | Observe current definition/revision | Existing operation-specific guards apply |
+| Settled registered prefix | Observe full authored definition, including retained entries | A read token does not permit saving the prefix |
+| Real wizard draft at that prefix | Observe accepted definition only, excluding draft | Competing writes retain their draft/currentness refusals |
+| File busy, evaluation in flight, or in-place sketch editor | Refuse this bounded wrapper read | No readiness guard is bypassed |
+| Reentrant document/frame/revision loss during read | Refuse stale observation | No accepted-state write or guessed successful response |
+
+The unchanged complete C12 driver is the regression target for this repair.
+Actual Apply and raw timeline migration remain OPEN; their source plan is
+ACAD `test/plane-apply-history-plan/CONTRACT.md` on branch
+`docs/plane-apply-history-plan-20261108` (`25b91d5`). Later sections preserve
+their historical evidence/diagnosis and do not supersede this checkpoint.
+
 ## Current history review/draft boundary defect — 2026-11-08
 
 Update: bounded passive-preview provenance repair is now qualified for the named
