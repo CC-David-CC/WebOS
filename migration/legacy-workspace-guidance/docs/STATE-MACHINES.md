@@ -1073,3 +1073,28 @@ verification/accepted source are different lifecycle states; a warm classificati
 is not authority for a cold result. Length-route source repair must authenticate
 actual affected fields and final classification, preserve everything else exactly
 and independently reconstruct the original request before one publication.
+
+### Native .cad preparation, commit and reuse — source integrated, qualification open
+
+Core3f1e482/63786b8 and Desktop640279b9f add a document-owned archive codec.
+This does not introduce another editable geometry graph. Source roles remain
+model/sketch/surfacing/material/presentation/drawing; Native handles are rebuilt.
+
+| Transition | Authority / invariant |
+| --- | --- |
+| Current authored source → encoding | Same document/source owners; guarded cooperative credits; one codec operation; JSON/hash/compression in Worker |
+| Encoding → prepared bytes | Versioned strict manifest, role/content hashes and bounded ZIP profile; prepared output is not a saved file |
+| Prepared → browser commit | Existing Files CAS/version/operation owner; Save outcome establishes local persistence, not server synchronization |
+| Committed → reuse established | Actual verified file snapshot must match issued output bytes before rebase; one prior backing lease replaces the previous one |
+| Committed → reuse unavailable | Keep the committed file and association; retire private reuse state, never undo/overwrite the committed write |
+| Any owner → retired | Terminate codec then release its verified backing; cleanup failure is fenced, not claimed as a healthy release |
+| File bytes → staged Open | Worker archive/preflight/domain validation followed by real Native regeneration in a private empty workspace |
+| Staged Open → active | Existing guarded manager/frame adoption; bad Open leaves old accepted document intact |
+
+R1 completes four saves/native Opens, twelve exports and six bad archive
+rejections, but final Files UI Open times out: the fixture only packaged CAD.
+This is NOT a qualified Files-to-CAD route or an established storage failure.
+The corrected fixture must include and pin the actual Files module and its
+reviewed Chonky dependencies before a fresh complete workflow can qualify it.
+ARC23 main-thread dirty snapshot and large-source/cache performance remain open;
+compiled archive code alone is not proof of responsiveness or a memory bound.
