@@ -946,3 +946,13 @@ capability ticket or parameter state. Real typed point-read success and source
 inspection establish that current physical source/result/stream identity is
 already enforced. Three artifact-reader admission guards remain to integrate;
 all their existing source/frame/build/counter/file/cleanup checks must remain.
+
+### Signed consumer policy and artifact readers — 2026-11-07
+
+Concentric R2 exposed policy drift: signed X/Y could be authored and edited,
+but a later physical-definition update did not classify them as typed length
+consumers. ACAD3d223ac makes both source consumers derive field/domain policy
+from the same existing pure helper. Authored formulas remain authoritative; no
+new synchronized flags/cache/state were added. Build passed; complete R3 is
+pending. Typed artifact readers ebbf56a reuse current accepted physical state
+and observation guards; their source integration is not yet workflow proof.

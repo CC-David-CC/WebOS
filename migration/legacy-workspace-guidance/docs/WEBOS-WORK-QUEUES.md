@@ -3059,7 +3059,7 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   native saves/three3MF exports plus independent artifact oracle
   (Desktop2f8ec18c9), actualbc85c5f/7ac1f0fd4. Source edit/travel/material
   rebind/native persistence and six rejected interfaces preserve state; broader
-  interfaces and combined enclosure/lid model remain open.
+  interfaces remain open; the combined model result is recorded below.
 - [x] Retained whole plate/export R7 on ac5a82b PASS:18rows, native persistence,
   shared creation/material travel and three exports; unchanged independent
   artifact oracle PASS. R6 incomplete engine-revision launch refusal retained;
@@ -3069,10 +3069,10 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   72rows/two native saves/76 recipe events; real Native geometry/points, formulas,
   mixed travel, typed/domain/geometric refusals, no-op/stale, units and native
   persistence/reedit. R1 product and R2/R3 harness failures preserved.
-- [~] Typed STEP/core3MF/drawing readers remain unsupported. Approved narrow
-  admission extension reuses the proven current expression service/observation
-  pipeline; no new facade/snapshot state, Native ABI or ledger change. One full
-  typed artifact/save/reopen workflow and independent artifact checks are next.
+- [~] Typed STEP/core3MF/drawing reader admission source integrated ACADebbf56a,
+  complete driver/independent artifact oracles0d15629. Reuses the accepted
+  expression service/observation pipeline; no new facade/snapshot state, Native
+  ABI or ledger change. Normal composed build and complete workflow still required.
 - [x] Retained full-face two-material R2 on expanded inset runtimebc85c5f:
   39rows/five native saves/three exports plus unchanged independent oracle
   PASS (Desktop6e42da655). Both material-domain dispatch paths now have
@@ -3085,10 +3085,12 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   (ACADdfe9cc1):71rows/two native files plus independent source/Native-observation
   oracle. Genuine micro sketch and precise PROFILE_BELOW_RESOLUTION refusal;
   maximum actual Native prism, units/travel/persistence/reedit all pass.
-- [~] Combined enclosure body + separate inset-label lid public example/whole
-  driver/oracle source lane active: one explicit Shell-capable build, two authored
-  printable parts/three material regions. Source integrated Desktop02f1dc5f2;
-  composed build/complete application run next. No implicit formula claim.
+- [x] Combined enclosure body + separate inset-label lid complete workflow PASS
+  (Desktop07b98a2a2), actual Core399b80a/Desktop21a7c18cf:77rows/four native
+  saves/three3MF exports plus unchanged independent artifact oracle. Genuine
+  shell, pocket/subtract and flush inset; two build objects/three material
+  regions, explicit width/thickness/label edits, mixed travel and Save/sync/Open.
+  This proves separate authored edits, not a shared enclosure/lid formula.
 - Keep source/evidence on both ACAD and Desktop LAN repositories. JSketcher is
   retired to public-fork state. No cancelled filesystem-race probes or UI work.
 
@@ -3110,3 +3112,15 @@ targets; exact backend2095743 stopped with SIGINT and local forward2713422
 closed. PID/listener absence verified. Source, stages, saved test accounts/files
 and evidence remain on R730; current20964 fixture/shared Chrome remain available.
 No public deployment, filesystem race, guest relay or real account deletion.
+
+### Current signed-dimension consumer repair — 2026-11-07
+
+Concentric R1 and R2 whole runs are retained in ACAD7a0ee2d/3d223ac.
+R1 had an incorrect expected refusal-code list; R2 reached57rows then failed
+real typed signed-definition propagation because the consumer scanner still
+accepted only length/diameter fields. ACAD3d223ac unifies both consumers on the
+existing pure driving-field/domain policy. Its normal app/Worker build passed;
+complete R3 is running on private20968 with91 actual asset pins. No passing
+result is inferred from compilation. Profile-repair driver5f3353d is integrated
+but awaits its complete run. Orientation source/domain repair remains in its
+agent lane; it is not qualified or included in this runtime.
