@@ -1,5 +1,21 @@
 # WebOS work queues and progress ledger
 
+## Nine ordinary exercise contracts accepted; explicit E09 gap retained —2026-11-08
+
+Root inspected the actual R/RS/AR/DUP/PR/W/L receipts/independent saved-source/
+Native arithmetic in ACAD review4962d57. E04/E05/E06/E08 join the previous five:
+9of21 ordinary exercise contracts Qualified,12Partial;18scoped workflows remain
+separate. This is evidence reconciliation, not new execution or relaxed targets.
+Core mainf5ffee2 records the decision; both LAN backups required as usual.
+
+E09 remains Partial: same publisher/transaction as center holes is real, but
+four-corner creation UndoRedo is still unobserved under G6. Source-only complete
+current public four-corner creation/travel/three.cad-cycle workflow and independent
+oracle are being prepared. Point-line and Fix/Unfix product packets continue
+independently. Root alone composes/builds/executes normal complete paths serially.
+No active browser workflow/build, deployment, canceled race or UI diversion.
+
+
 ## Current closure guide reconciled; Arc branch source issue queued — 2026-11-08
 
 ACAD1416452 on both LANs reconciles old source-era absent labels for the already

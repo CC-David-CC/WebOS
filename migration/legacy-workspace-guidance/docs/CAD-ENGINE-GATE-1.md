@@ -1,5 +1,16 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+## Current ordinary exercise acceptance —nine contracts,2026-11-08
+
+**9of21 Qualified: E01/E02/E03/E04/E05/E06/E07/E08/E21;12 Partial.**
+Root inspected complete retained artifacts mapped by the two ACAD exercise
+reviews and canonical baseline. E09 specifically still needs observed four-corner
+creation UndoRedo (existing G6), not merely edit/reopen geometry.18scoped whole
+workflows and11broader competencies are separate counters. The complete Gate1
+candidate/final beta/viewable-agent delivery remains unqualified. Earlier dated
+five-contract counts below are historical review checkpoints.
+
+
 ## Current ordinary exercise acceptance —2026-11-08
 
 **5 of21 exercise contracts qualified: E01/E02/E03/E07/E21;16 remain Partial.**
