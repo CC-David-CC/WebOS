@@ -1,10 +1,22 @@
 # WebOS work queues and progress ledger
 
+## Construction build PASS; fresh exact fixture staging
+
+Normal build41824 PASS0 atCoree005eab. Fresh unique dimension-frame-construction
+fixture now stages with Desktop5cf27cb1fb23fb215d9344f0966bce2dfc26bde9;
+no source change or repeated build is needed. Unchanged completePL R5 follows
+exact stage success. No active Chrome run or qualification claim from build.
+Explicit-fit source packet27c868a/0fa45a1/68a33f9 +Desktop19cc6b4b is source-
+reviewed independently; it is not yet composed or executed. E16 analytical
+truth c7c7404 is frozen before execution; full acceptance source still pending.
+Counts19ordinary/23scoped remain; known4mm reversal remains open until measured.
+
+
 ## Build setup collision retained; unique construction build running
 
 Source-frame attempt26061 terminated1 before compilation: its guarded
 native-graphs-before-source-frame-20261108-r1 directory already existed from
-05:02UTC-era work. No older graph was replaced and no product compilation or
+older work (host listingmtime05:02; no timezone claim). No older graph was replaced and no product compilation or
 browser ran in that attempt. Retain its original log; this is setup collision,
 not a source compile failure. New unique dimension-frame-construction-r1 label
 uses a separate graph backup and log. Normal build41824 now runs at actual
