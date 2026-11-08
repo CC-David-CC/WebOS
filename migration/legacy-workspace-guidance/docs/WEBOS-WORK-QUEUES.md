@@ -1,5 +1,21 @@
 # WebOS work queues and progress ledger
 
+## Complete ProjectedR3 browser workflow active — 2026-11-08
+
+Normal full build32673 and fresh fixture88551 completed0 on exact
+Core013369861fad6123520065a4e06fafac752900e8 /Desktop95d8023b0209ad119ccfe92a34cdb6a55e87ef01.
+Fresh stage-r3/pins-r3/private21015/state-r33. Backend61653/forward84337 are
+owned fixture handles. Root started unchanged complete Chrome workflow16184 on
+pinned Chrome155/CDP19329; source remains frozen for its entire run. Output
+/tmp/codi-acad-projected-workflow-20261108-r3. No per-edit probes/microtests or
+independent oracle before the whole run finishes. No new PASS claim yet.
+
+Five ordinary exercise contracts accepted separately from retained complete
+evidence (E01/E02/E03/E07/E21);16Partial/17scoped workflows. This current new
+workflow remains unqualified until complete browser and independent artifact
+proof both pass. No public/beta deployment or canceled filesystem-race work.
+
+
 ## Five ordinary exercise contracts accepted from retained evidence — 2026-11-08
 
 Root inspected actual complete P/O/REPORT/W/CR/CAD receipts and independent
