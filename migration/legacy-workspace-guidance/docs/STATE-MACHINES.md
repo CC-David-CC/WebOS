@@ -1058,3 +1058,18 @@ reduced coordinate may receive one deterministic target-derived starting value.
 This is a private numerical transition, never a successful solve/publication or
 new persistent intent. Locked/aliased representatives and original-equation
 validation remain authoritative; complete seven-setup acceptance is pending.
+
+
+DistancePP seven-setup acceptance is now PASS (ACAD31049d6),89rows/ten native
+files plus independent original-equation/source oracle. Numerical initialization
+still never authorizes publication by itself. Exact lock/alias preservation,
+feasible separation, zero singular state, typed raw intent, ordinary rollback/
+travel and Save/Open are qualified for that bounded isolation.
+
+Append R7 passes the former failing transition; the complete orientation chain
+stops later in older LengthRelation candidate verification. That failure is kept
+separate from append progress. Raw numerical input/candidate/construction/
+verification/accepted source are different lifecycle states; a warm classification
+is not authority for a cold result. Length-route source repair must authenticate
+actual affected fields and final classification, preserve everything else exactly
+and independently reconstruct the original request before one publication.

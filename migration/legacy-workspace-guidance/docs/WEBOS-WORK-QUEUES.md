@@ -3322,3 +3322,20 @@ full available Number string. Real noninteger human Diameter acceptance/source
 oracle is prepared4296f34, not yet exercised. Explicit supplied-value commands
 do not stand in for the default-dialog regression. Arrangement implementation/
 resource-graph integration and native archive source lanes continue separately.
+
+
+### Current CAD queue checkpoint — 2026-11-07
+
+Completed scoped workflows: Base/Compact configuration1f037a2 (37rows/4files),
+intersecting rectangle/source-span8749e8c (159rows/6files), retained current
+rectangle reports875a9bc (21rows/2files), singular Point-distance31049d6
+(89rows/10files). Frozen independent oracles and actual source/asset pins are
+under their ACAD evidence directories; these are not whole-gate signoffs.
+
+In flight: LengthRelation scoped-source/independent-verifier repair after R7;
+registered descendant/auxiliary ownership in captured geometry; nonzero
+coefficient/offset preservation and deferred original-row validation; complete
+native .cad archive workflow. Default untouched-dialog precision regression,
+remaining finite Gate1 features and final composed beta still await qualification.
+Files remains accepted; filesystem races remain cancelled; no public deployment
+is part of this checkpoint. Canonical detailed matrix is CAD-GATE1-BASELINE.
