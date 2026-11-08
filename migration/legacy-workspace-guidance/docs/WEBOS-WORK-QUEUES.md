@@ -3296,3 +3296,29 @@ Corrected source causality audit5114708 preserves actual displacement
 0.023599383780492644nm=23.599383780492644pm. Cold-candidate phase e95c377
 and final receipt corroboration1648694 are source repairs pending unchanged
 whole R4 qualification. No global solver-setting/hint-order change.
+
+### Point-distance proof and shared ordering repair — 2026-11-07
+
+ACAD04d8d19 freezes complete Euclidean point-distance R1 PASS:52rows/four native
+files plus independent original-equation/quantity/source checker on578b865/
+Desktopfaac58663. Real zero-distance/distinct Point singular report, positive
+ordinary edits, typed names/zero, removal/travel/refusals and Save/sync/Open pass.
+A free coincident positive-distance seed produces actual RESIDUAL rejection with
+accepted state preserved; an explicit constructive solution proves this is a
+numerical limitation, not infeasibility. General singular escape remains open.
+
+Orientation R5 reaches82rows; original mixed group/no-op/stale/invalid-target/
+zero append refusals pass, then adding a disconnected Segment fails exact old
+state comparison. ACAD336b492 preserves the run; its changed field was not yet
+exposed. Shared repair656f37c derives intrinsic-first evaluation and admission
+in the common solver, clears only nonserialized internal hints, retains stored
+authored order/precedence, and keeps both LockPoint batch optimizations behind
+a zero-internals guard. The primitive diagnostic now reports the first retained
+field difference if still rejected. No old-state waiver, solver tolerance or
+coefficient threshold change; complete R6 and retained workflows required.
+
+ACAD1eaaed4 removes authoritative default toFixed(2) rounding, preserving the
+full available Number string. Real noninteger human Diameter acceptance/source
+oracle is prepared4296f34, not yet exercised. Explicit supplied-value commands
+do not stand in for the default-dialog regression. Arrangement implementation/
+resource-graph integration and native archive source lanes continue separately.

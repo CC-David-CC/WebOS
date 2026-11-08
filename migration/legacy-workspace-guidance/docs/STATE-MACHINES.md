@@ -1012,3 +1012,18 @@ may publish through existing coordinator/currentness/journal ownership. A failed
 verification leaves the accepted document unchanged; there is no solve-until-
 green loop or altered tolerance. Numeric source fidelity and authored-intent
 identity remain separate invariants.
+
+Shared intrinsic ordering (656f37c, unqualified): allConstraints/authored locators
+stay stored in original order. Evaluation derives internal-first traversal;
+admission derives internal-first plus existing authored hint precedence. Internal
+hints cannot be hidden warm-only priority state. Actual conflicts/redundancy
+remain computed; fast-path preparation rechecks intrinsic equations. Both
+point-lock batch shortcuts require zero intrinsic rows. Rollback preserves
+existing values, classifications, solver state and source history. R5 does not
+identify its changed field; primitive first-difference diagnostics and complete
+R6 must verify/refute the source repair, without relaxing strict unrelated state.
+
+DistancePP R1 (04d8d19) qualifies distinct coincident valid Points as a singular
+constraint state, not degenerate entity geometry. Its positive-distance singular
+seed failure preserves the model and reports original-equation residual failure;
+an independent constructive witness prevents an incorrect infeasibility claim.
