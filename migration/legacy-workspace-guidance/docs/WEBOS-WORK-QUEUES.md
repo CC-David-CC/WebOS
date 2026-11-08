@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## E11 whole creation/edit/persistence workflow running —2026-11-08
+
+Frozen source cc82c39 composed as ACAD5089600; reviewed complete driver/recipe/
+independent source/native/archive oracle before execution. Root alone runs full
+Chrome14232 against existing actuald790011/3ce2fec55 private21019/state-r37;
+no product change/rebuild or concurrent browser run. Immediate FILLET and chamfer
+creation UndoRedo, original producers/opaque edges, mixed edits/refusals and
+three.cad cycles are mandatory. Frozen analytic two-diagonal alternatives and
+source50pm/Native volume1e-6/bounds1e-7 are unchanged.
+Evidence /tmp/codi-acad-fillet-chamfer-workflow-20261108-r1; log sibling.log.
+Independent oracle waits for whole terminal. No count change or E11 signoff yet.
+
+Removed only own completed PL/Circle original receipt/source duplicates after
+full byte equality against tracked canonical copies and exact both-LAN refs;
+6954342bytes reclaimed. Cleanup receipt docs/evidence/cad-completed-duplicate-
+cleanup-20261108-r2.json. Canonical proofs/notes and working tools untouched.
+PL exact-frame repair source and E10/E12/E13 independent evidence review continue.
+
 ## Genuine consumed typed Circle R1 qualified —2026-11-08
 
 Normal build93484/stage65176, complete Chrome43021 and FIRST independent
