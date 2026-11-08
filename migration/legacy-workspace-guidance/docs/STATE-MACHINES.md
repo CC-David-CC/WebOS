@@ -1,5 +1,30 @@
 # Workflow state machines and invariants
 
+## Native attachment causal replay and travel — 2026-11-08
+
+QUALIFIED scoped R2 ACADd82b3c1, actualCoreeff8af0/Desktop719a4049a. One current
+owned native last cap supplies the source datum. Structural history admission
+requires an earlier live producer, same exact build and actual selected-source
+origin/face/region; it confers no Native face authority. The candidate ledger
+still resolves the exact opaque selection against actual recreated topology.
+Native source bytes are prepared causally before their genuine SOURCE_FRAME
+producer returns, then source/J/model participants publish together once.
+Read/Open validates existing caches and never heals them.
+
+R1 creation Undo failed because the older structural policy required plane
+parents. Repair6e9 updates that same policy, retains consuming-source fast-save
+refusals, and allows only the structurally bound Native domain. The unchanged
+whole R2 passes creation UndoRedo, depth/pose edits, explicit earlier-parent
+repair/travel, four native saves and fresh Opens. Five refusals include actual
+source-region invalidation, stale revision/locator and own bad native caches/
+parents; healthy continuation and independent artifact/source/Native checks pass.
+19Native sets/95material points. OriginalR1e87d70e remains frozen.
+
+The full-tip last-cap workflow is qualified; arbitrary faces, typed placement,
+prefix wizard Apply and allC08/Gate1 remain separate. New Apply must preserve
+full definition versus projected prefix ownership, and Cancel must discard an
+invalid numeric draft without parsing its proposed values or changing J.
+
 ## Cubic source admission and actual native observations — 2026-11-08
 
 Scoped R2 qualification ACAD e381b70, runtimeCore26d7a55/Desktopf6d1c07d1.
