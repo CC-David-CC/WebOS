@@ -1,5 +1,29 @@
 # Workflow state machines and invariants
 
+## CAD-ARC-01: inferred full-turn branch needs qualification — 2026-11-08
+
+Source audit only; no new execution or observed public corruption incident.
+Arc.write/read persists only start/end/center coordinates. Arc.drawImpl uses
+math/equality TOLERANCE=1e-6mm to infer a full turn from near endpoint equality;
+renderSketchProjection.full and fixedEntityDomain.sweep use the same1e-6mm
+coordinate comparison. A discrete full-turn versus partial-arc branch is thus
+inferred from a numerical proximity policy rather than separately authored.
+
+| State/transition | Invariant and open work |
+|---|---|
+| Exact endpoint coincidence | Current convention means full2π; this source convention must remain explicit in current feature capability notes |
+| Distinct endpoints inside1e-6mm window | Current drawing/projection/Fix sweep treats them as full; this is not a50pm branch-accuracy proof and may disagree with other consumers. Actual cross-layer effects remain untested |
+| Save/cold reconstruction/Fix/Mirror/profile conversion | Audit every consumer against one intended branch contract; no renderer flag may become independent geometry authority |
+| Future repair | Preserve explicit intended full/minor/major/zero semantics through edits and serialization; separate geometric branch intent from solver/display tolerance; do not merely tighten a global epsilon |
+| Qualification | One complete original-source edit/travel/save/reopen run with exact-full, near-full and near-zero cases, independent high-precision locus/branch oracle after the entire run |
+
+This is finite C01/C04/C05 correctness work, not a new gate or a claim that the
+already qualified ordinary quarter/major/full fixtures failed. Do not advertise
+small near-coincident Arc branch correctness from unrelated coordinate proofs.
+Implementation order: finish the current shared Fix/Unfix and point-line
+packets, then resolve this underlying branch contract before claiming wholeC01.
+
+
 ## Typed point/removal/persistence chain qualified — 2026-11-08
 
 Complete ProjectedR3 on actual0133698/95d8023b0 and FIRST independent oracle

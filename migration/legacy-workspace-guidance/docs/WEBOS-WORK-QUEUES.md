@@ -1,5 +1,20 @@
 # WebOS work queues and progress ledger
 
+## Current closure guide reconciled; Arc branch source issue queued — 2026-11-08
+
+ACAD1416452 on both LANs reconciles old source-era absent labels for the already
+qualified Ellipse/cubic/Slot/Mirror/Circle cells/Projected routes. Current proof
+counts remain18 scoped and5 ordinary exercise contracts. No additional workflow
+was run or retagged. DistancePL and whole-entity Fix source packets remain active.
+
+Source audit CAD-ARC-01 is in canonical STATE-MACHINES.md: start/end/center-only
+Arc source infers full turn from1e-6mm endpoint proximity in drawing/projection/
+Fix sweep. Near-coincident branch intent needs its own cross-layer contract and
+whole qualification, rather than borrowing50pm coordinate evidence or changing
+a global epsilon. No public incident/runtime reproduction is claimed. Resolve
+following current shared route packets before wholeC01 signoff.
+
+
 ## ProjectedR3 qualified and integrated to main on both LANs — 2026-11-08
 
 Whole Chrome16184 and FIRST AFTER-WHOLE independent source/archive oracle PASS:
