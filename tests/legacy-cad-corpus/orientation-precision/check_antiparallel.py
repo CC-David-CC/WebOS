@@ -121,18 +121,21 @@ def capture(receipt, label, bindings):
     inspection = row['inspection']
     need(inspection['faceId'] == receipt['binding']['faceId'] and inspection['boundaryFrame'] == frame and source['metadata']['boundaryFrame'] == frame, 'Source/inspection frame binding mismatch')
     need(all(source['boundary'][k] == [] for k in ('lines', 'arcs', 'circles', 'nurbses')), 'Unsupported fixed boundary', 'ORACLE_UNSUPPORTED')
-    observed = {}
+    observed = {'retained-source': {}, 'replayed-inspection': {}}
     for key, binding in bindings.items():
         obj = one([o for o in source['objects'] if o['id'] == binding['id'] and o['type'] == 'Segment'], 'actual source Segment')
         public_obj = one([o for o in inspection['objects'] if o['id'] == binding['id']], 'inspected Segment')
         need(public_obj['type'] == 'Segment' and obj['stage'] == public_obj['stage'] == 0, 'Segment ownership mismatch')
-        ends = []
+        retained_ends, replayed_ends = [], []
         for field, endpoint_id in (('a', binding['aId']), ('b', binding['bId'])):
             p = one([p for p in inspection['points'] if p['id'] == endpoint_id and p['parentId'] == binding['id']], 'bound inspected endpoint')
             value = point({'x': p['x'], 'y': p['y']})
-            need(value == point(obj['data'][field]), 'Full source/inspection endpoint mismatch')
-            ends.append(value)
-        observed[key] = ends
+            # Inspection projects a separately solved replay; retain both actual
+            # datasets, never substitute one for the accepted stored source.
+            retained_ends.append(point(obj['data'][field]))
+            replayed_ends.append(value)
+        observed['retained-source'][key] = retained_ends
+        observed['replayed-inspection'][key] = replayed_ends
     return {'rowIndex': index, 'row': row, 'source': source, 'inspection': inspection, 'observed': observed,
             'sourceSha256': hashlib.sha256(raw.encode()).hexdigest()}
 
@@ -181,7 +184,8 @@ def reference(receipt, snapshot, a, b):
     meaning = [{k: row.get(k) for k in ('typeId', 'objects', 'constants', 'stage')} for row in relevant]
     return anchors, lengths, origin, point({'x': datum['x'], 'y': datum['y']}), meaning
 
-def evaluate(receipt, snapshot, bindings, requested):
+def evaluate(receipt, snapshot, bindings, requested, observation):
+    observed = snapshot['observed'][observation]
     a, b = bindings['A'], bindings['B']
     anchors, lengths, origin, datum, meaning = reference(receipt, snapshot, a, b)
     direction = tuple(requested[k] - anchors['A'][k] for k in (0, 1))
@@ -189,20 +193,21 @@ def evaluate(receipt, snapshot, bindings, requested):
     coordinates = [('datum.' + axis, datum[i], (origin[i], origin[i])) for i, axis in enumerate(('x', 'y'))]
     for key in ('A', 'B'):
         for i, axis in enumerate(('x', 'y')):
-            coordinates.append((key + '.a.' + axis, snapshot['observed'][key][0][i], (anchors[key][i], anchors[key][i])))
+            coordinates.append((key + '.a.' + axis, observed[key][0][i], (anchors[key][i], anchors[key][i])))
             target = (requested[i], requested[i]) if key == 'A' else expected_b[i]
-            coordinates.append((key + '.b.' + axis, snapshot['observed'][key][1][i], target))
+            coordinates.append((key + '.b.' + axis, observed[key][1][i], target))
     errors, maximum = {}, Fraction(0)
     for field, actual, expected in coordinates:
         result, upper = error_interval(actual, expected)
         errors[field] = result
         maximum = max(maximum, upper)
-    va = tuple(snapshot['observed']['A'][1][i] - snapshot['observed']['A'][0][i] for i in (0, 1))
-    vb = tuple(snapshot['observed']['B'][1][i] - snapshot['observed']['B'][0][i] for i in (0, 1))
+    va = tuple(observed['A'][1][i] - observed['A'][0][i] for i in (0, 1))
+    vb = tuple(observed['B'][1][i] - observed['B'][0][i] for i in (0, 1))
     dot, cross = va[0] * vb[0] + va[1] * vb[1], va[0] * vb[1] - va[1] * vb[0]
     norm = norm_interval(direction)
     _, length_error = error_interval(lengths['A'], norm)
-    return {'label': snapshot['row']['label'], 'rowIndex': snapshot['rowIndex'], 'sourceSha256': snapshot['sourceSha256'],
+    return {'label': snapshot['row']['label'], 'rowIndex': snapshot['rowIndex'], 'observationKind': observation, 'retainedSourceSha256': snapshot['sourceSha256'],
+            'replayedSerializedSourceAvailable': False, 'requestedAEndExact': observed['A'][1] == requested,
             'inspectionRevision': snapshot['inspection']['revision'],
             'evaluatedSolidsRevision': snapshot['row']['before']['accepted']['solids']['revision'],
             'sourceAnchorsMm': {k: [text(x) for x in v] for k, v in anchors.items()},
@@ -253,19 +258,36 @@ def check(args):
     need(post['inspection']['revision'] != pre['inspection']['revision'], 'Changed public edit lacks new source revision')
     requested = point({k: command['args']['points'][0][k] for k in ('x', 'y')})
     initial = point(ac['args']['data']['b'])
-    need(post['observed']['A'][1] == requested, 'Published A endpoint differs from exact requested source coordinates')
-    # Prior to the endpoint edit, this pair has a free angular DOF. Its measured
-    # A direction is conditional reference input, not a separate A-angle proof.
-    before, old_meaning = evaluate(receipt, pre, bindings, pre['observed']['A'][1])
-    before['directionReference'] = 'Observed pre-edit A with free angular DOF; no independent A-end accuracy claim'
-    before['initialPublicAppendAEndMm'] = [text(v) for v in initial]
-    after, new_meaning = evaluate(receipt, post, bindings, requested)
-    after['directionReference'] = 'Actual public requested endpoint plus independently checked source anchors'
-    need(pre['observed']['A'][1][0] < number(a['a'][0]) and pre['observed']['A'][1][1] > number(a['a'][1])
+    retained_pre = pre['observed']['retained-source']
+    need(post['observed']['retained-source']['A'][1] == requested, 'Published A endpoint differs from exact requested source coordinates')
+    # One reference per phase. Pre-edit A is free-angle conditional input from
+    # retained source; post-edit A is the actual public requested endpoint.
+    # Never use replay A as a separate reference to hide its coordinate error.
+    observations, meanings = [], []
+    for snapshot, target, description in [(pre, retained_pre['A'][1], 'Retained pre-edit free-angle A; no independent A-end accuracy claim'),
+                                           (post, requested, 'Actual public requested endpoint plus independently checked source anchors')]:
+        for view in ('retained-source', 'replayed-inspection'):
+            result, meaning = evaluate(receipt, snapshot, bindings, target, view)
+            result['directionReference'] = description
+            if snapshot is pre: result['initialPublicAppendAEndMm'] = [text(v) for v in initial]
+            observations.append(result)
+            meanings.append(meaning)
+    need(retained_pre['A'][1][0] < number(a['a'][0]) and retained_pre['A'][1][1] > number(a['a'][1])
          and requested[0] < number(a['a'][0]) and requested[1] < number(a['a'][1]), 'Actual request did not cross the left directed angular chart as specified')
-    need(old_meaning == new_meaning, 'Anchor, length or branch authored intent changed during coordinate edit')
-    passed = all(o['within50pmPerCoordinate'] and o['opposedDirectedBranch'] and o['requestedLengthCompatibleWithin50pm'] for o in (before, after))
-    return {'status': 'PASS_SCOPED_ANTIPARALLEL_50PM_COORDINATES' if passed else 'FAIL_SCOPED_ANTIPARALLEL_COORDINATES',
+    need(all(meaning == meanings[0] for meaning in meanings), 'Anchor, length or branch authored intent changed during coordinate edit')
+    reconstruction = []
+    for snapshot in (pre, post):
+        changes = {}
+        maximum = Fraction(0)
+        for key in ('A', 'B'):
+            for end, field in enumerate(('a', 'b')):
+                for axis, coordinate in enumerate(('x', 'y')):
+                    delta = abs(snapshot['observed']['retained-source'][key][end][axis] - snapshot['observed']['replayed-inspection'][key][end][axis])
+                    changes[key + '.' + field + '.' + coordinate] = {'displacementMm': text(delta), 'displacementPm': text(delta * 10**9), 'within50pm': delta <= BUDGET}
+                    maximum = max(maximum, delta)
+        reconstruction.append({'label': snapshot['row']['label'], 'coordinateChanges': changes, 'maxDisplacementPm': text(maximum * 10**9), 'within50pm': maximum <= BUDGET})
+    passed = all(o['within50pmPerCoordinate'] and o['opposedDirectedBranch'] and o['requestedLengthCompatibleWithin50pm'] for o in observations) and all(r['within50pm'] for r in reconstruction)
+    return {'oracleVersion': 2, 'status': 'PASS_SCOPED_ANTIPARALLEL_50PM_COORDINATES' if passed else 'FAIL_SCOPED_ANTIPARALLEL_COORDINATES',
             'wholeWorkflowStatus': receipt['status'], 'receiptSha256': hashlib.sha256(raw).hexdigest(),
             'runtime': {'core': args.runtime_core, 'desktop': args.runtime_desktop}, 'verifiedProducerGitObjects': verified,
             'coordinateBudget': {'millimeter': '0.00000005', 'nanometer': '0.05', 'picometer': '50'},
@@ -273,10 +295,13 @@ def check(args):
             'binding': {'faceId': receipt['binding']['faceId'], 'A': a, 'B': b,
                         'publicAppendCommandIndices': [ai, bi], 'publicEndpointEditCommandIndex': index,
                         'publicEndpointEditRequest': command['args']},
-            'observations': [before, after],
+            'observations': observations, 'retainedToInspectionReconstruction': reconstruction,
+            'inspectionContract': 'Cold solved read-only replay; supported connected coordinates may reconstruct within50pm and are not promised bit-identical to retained source or former transient endpoint drivers',
             'limits': ['Only this terminal workflow pre/post A170-to190 ordered antiparallel pair; no other operation accuracy signoff.',
                        'The public requested A vector and original literal length differ slightly; compatibility error is reported, not called an exact joint solution.',
                        'Revision tokens from sketch inspection and evaluated solids are distinct domains and are recorded separately.',
+                       'Retained source and replayed public inspection are distinct actual observations, each checked against the same independent reference. Inspection does not promise exact transient endpoint coordinates; exactness is separately reported, while retained requested A must remain exact.',
+                       'No full replayed serialized sketch was recorded; its point/constraint/frame observations are available, not a fabricated replay-source hash.',
                        'This checks genuine recorded full vectors; it is not a live Native probe or an adversarial receipt-authentication certificate.',
                        'No BRep, atomistic, nanoscale material, fabrication or universal solver accuracy claim.']}
 
