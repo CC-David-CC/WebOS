@@ -4,8 +4,9 @@
 
 Scoped R1 PASS ACAD5c82504, actualCore79c9c86/Desktopddab73b45. One actual
 StraightSlot relation declares the native axis/segments/arcs; native intrinsics
-and four genuine junction rows remain. Ten mm residuals preserve four regular
-axis freedoms without forcing admission. Native directed-side and declaration
+and four genuine junction rows remain. Ten mm residuals express the relation; four axis freedoms are the regular
+mathematical expectation, not a claimed solver rank certificate. Admissions
+are never forced. Native directed-side and declaration
 checks remain separate from equation residuals; wrong semicircle, missing
 junction or ambiguous member ownership cannot be adopted as a qualified Slot.
 Create/edit use one source/J transaction and independent original-request proof.
