@@ -1027,3 +1027,34 @@ DistancePP R1 (04d8d19) qualifies distinct coincident valid Points as a singular
 constraint state, not degenerate entity geometry. Its positive-distance singular
 seed failure preserves the model and reports original-equation residual failure;
 an independent constructive witness prevents an incorrect infeasibility claim.
+
+### Disconnected authoring versus coupled execution — R6 checkpoint
+
+“No authored connection” is a statement about actual object/constraint/generator
+references, not an assertion that the current implementation isolates execution.
+R6 (ACAD7007f55) confirms repeated whole-stage load/admission/solve during a new
+primitive append can move a prior endpoint by~1.96e-12mm (0.00196pm). The exact
+retained-state guard rejects before publication. No public corruption or
+infeasibility is inferred from this refused private candidate.
+
+| Transition | Required invariant | Current evidence |
+| --- | --- | --- |
+| Captured accepted source → validated baseline | Actual revisions, owned IDs, source domains and original equations checked | Existing replay path; may run optimization |
+| Baseline → appended private candidate | Fresh primitive/children have no retained references; all old authored state stays exact | R6 FAIL: repeated global solve moves prior coordinate |
+| Private candidate → independent validation | Whole candidate admission/currentness and original residuals; exact retained intent/geometry | Existing guard refuses R6; no tolerance waiver |
+| Validated candidate → publication | Same coordinator revision/owner; one source/journal commit | Not reached by failed append |
+| Failed candidate → retired | Accepted source/history untouched, candidate owners released | R6 retained refusal/cleanup evidence |
+
+The coherent repair is in source implementation: prove actual affected closure,
+solve only the new disconnected intrinsic component, freshly validate the full
+candidate at retained coordinates and independently establish whole-candidate
+admission/replay bounds. Saved classification flags never authorize acceptance.
+No copying old coordinates over an invalid optimized result, temporary locking,
+rounding, persistent second graph or weaker comparison is accepted. That new
+path remains unqualified until the complete public workflow passes.
+
+DistancePP initializer0c6d44c is also source-only: one eligible actual free
+reduced coordinate may receive one deterministic target-derived starting value.
+This is a private numerical transition, never a successful solve/publication or
+new persistent intent. Locked/aliased representatives and original-equation
+validation remain authoritative; complete seven-setup acceptance is pending.
