@@ -2,13 +2,15 @@
 
 ## Current CAD1 execution checkpoint — 2026-11-08
 
-Active root packet: Mirror R1 on Core8a4bc6c/Desktop9bdb3a512 FAILED at
-driving diameter edit after creation/save/UndoRedo/Point regeneration. Frozen
-ACADbf8f096 retains105records/59commands/3native-sketch observations/one .cad.
-The shared dimension transaction serialized before generator regeneration;
-source repair104c24e preserves validation and finishes real ordered stages.
-Normal fresh R2 build20967 is running; whole unchanged workflow/oracle remain
-required. No Mirror qualification yet. C02 Native82028bb normal
+Latest root exit: Mirror R2 whole browser +independent oracle PASS ACAD24f4269,
+actualCore104c24e/Desktop9bdb3a512:214records/194commands/21native-sketch
+observations/3.cad saves/19refusals/6own malformed Opens/two fresh Opens.
+Generator-stage dimension lifecycle repair104c24e is qualified in this finite
+scope. First R1 failure and original checker NameError are retained; bde8e20 adds
+only exact missing point extraction, no truth/budget changes. FOURTEEN recent
+named browser workflows pass; all21 formal exercises remain Partial.
+
+C02 Native82028bb normal
 compile86376 PASS with unchanged source/SDK inputs; exact portable/WASM pair
 and loader transformation are recorded in ACAD
 docs/reviews/CIRCULAR-NATIVE-BUILD-20261108.md. That compile is not a geometry
@@ -26,12 +28,12 @@ P eviction pass. R1/R2/R3 failures remain frozen. Two integration fixes preserve
 constituent currentness and derive restored readiness from actual owned data.
 
 Engine main3233e5b and desktop working branchc8a0fde9c are backed on bothLANs.
-Thirteen recent named browser workflows pass; all21 formal Gate1 exercise
+Fourteen recent named browser workflows pass; all21 formal Gate1 exercise
 signoffs remain Partial. E17/C10 assemblies are Gate2. Files remains accepted.
 No public/beta deployment follows this local qualification; no filesystem-race
 or visitor-relay testing is resumed. Human UI redesign remains deferred.
 
-Current source lanes: C01 genuine Mirror; C02 two-circle Native arrangement,
+Current source lanes: broader finite C01 after qualified Mirror; C02 two-circle Native arrangement,
 exact ABI/cohort and actual provenance; C03/C04 Circle/quarter-Arc RadiusLength.
 Root reviews/composes, builds and runs one whole Chrome workflow at a time.
 No per-change microtests. Final source/runtime packaging waits for functional

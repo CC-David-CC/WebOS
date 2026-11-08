@@ -1,13 +1,35 @@
 # Workflow state machines and invariants
 
+## Mirror source and derived geometry custody — 2026-11-08
+
+Finite whole R2 PASS ACAD24f4269 on Core104c24e/Desktop9bdb3a512. Independent
+Fraction/90-digit Arc-locus/ZIP source oracle PASS; first checker NameError and
+its exact point-extractor correction are recorded separately. No geometry or
+tolerance change was used to pass analysis. Original R1 lifecycle defect remains.
+
+| Transition | Invariant |
+|---|---|
+| Inspected actual roots → Mirror creation | Genuine native generator, ordered source/output IDs and source stage; no caller-generated geometry or second feature model |
+| Source/axis/dimension edit → generated outputs | Real stage solve/regeneration precedes private serialization. Actual outputs remain readonly and retain owner/IDs; original equations and captured request are independently checked |
+| No-op/refusal | Source/J/counters/material/presentation/resources stay exact; actual axis lock conflict is rejected, explicit real lock removal permits editing |
+| Native Open | Original strict references/constraints/domain first; detached geometry-only native regeneration proves supported cached output and custody before adoption. No cache healing or constraint replacement |
+| Unsupported carried generator domain | Keep honest unsupported reason; no new ellipse/cubic/group capability inferred. New shared creation refuses unsupported roots |
+| Save/sync/Open/edit/travel | Three actual .cad files match server bytes/SHA; two fresh signed Opens retain source/generator/IDs and allow reedit |
+
+Point/Segment/Circle/minor-major Arc/on-axis/overlap scope only. No BRep/profile,
+all-C01 or universal multistage claim. Stored/cold coordinates independently
+meet50pm against one retained-source truth; no source=replay assumption.
+
+
 ## Dimension changes with generated dependents — 2026-11-08
 
 Mirror whole R1 exposed a PRIVATE candidate ordering defect, not an observed
 accepted-document corruption: algebraic transaction completion changed the
 Circle radius, but its generator had not regenerated before strict serialized
 stage/cache validation. The legitimate diameter edit was refused UNSUPPORTED.
-Frozen ACADbf8f096 preserves actual failure. Source repair104c24e is unqualified
-until the unchanged complete Mirror workflow and independent oracle pass.
+Frozen ACADbf8f096 preserves actual failure. Source repair104c24e now has finite whole R2 qualification24f4269.
+The independent oracle passes after a separately recorded missing-helper repair;
+its original NameError, producer source pins and all acceptance limits remain.
 
 | Transition | Requirement |
 |---|---|
