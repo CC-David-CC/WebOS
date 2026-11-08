@@ -1,5 +1,33 @@
 # Workflow state machines and invariants
 
+## Current history review/draft boundary defect — 2026-11-08
+
+Complete history R2 on Core4d5a0e3/Desktop4c4862b7b failed after45checkpoints
+and two `.cad` Save/sync/fresh-Open cycles (ACAD697598a). The earlier exact-axis
+resize failure progressed: expected HOLE_OUTSIDE_PROFILE and unchanged accepted
+model/journal passed. New trace records accepted prefix(null), then UNAVAILABLE
+from history-controls inspection. The intended branch request was never issued.
+
+Wizard workingRequest is an implicit union of a real insertion/edit draft and
+a clone of the next feature derived from history position. History controls
+currently treat either nonnull value as an active draft. After intentional
+noWizardFocus prefix review, the derived preview therefore blocks its own next
+control inspection. Actual other readiness flags were not captured; this source
+blocking condition is confirmed without claiming it was the only live flag.
+
+| Derived workflow condition | Required transition/invariant | Current evidence |
+|---|---|---|
+| Idle complete tip, no real draft | Inspect controls; accept guarded authored operation | R2 prefix and earlier named flows |
+| Intentional passive history review | Inspect position, return through shared travel, or explicitly branch under existing dependency/source rules | R2 inspection blocked; repair pending |
+| Genuine insertion or user-modified feature draft | Refuse competing controls; preserve that draft and accepted model | Existing guard retained; no blanket relaxation authorized |
+| Prefix before source ownership boundary | Report BRANCH_SOURCE_OWNERSHIP without deleting source | R2 did not reach request; still unqualified |
+| Receipt after accepted position | Its actual new derived state must support the next advertised control | R2 contradicts current integration |
+
+Repair must distinguish actual pristine history-derived preview provenance from
+active/modified draft. A noWizardFocus flag alone, retry delay, duplicate journal
+or synchronized “accepted” flag is not proof. No new state machine implementation
+or regression PASS is claimed here; complete unchanged workflow must rerun.
+
 ## Current complete-workflow results — 2026-11-07
 
 The real32-hole workflow now PASSes through creation UndoRedo, material assignment, native Save/sync/fresh Open, depth edit20→25 and all3exports including the final cold-browser reopen. Common Files readiness fix d5da87493 is qualified for this ordinary path. Independent unchanged oracle PASSes3exports/102probes/all32holes, measured volume error bounds, units/material/provenance, and exact edited/reopened geometry equality. Frozen actual outputs: test/agent-cad-corpus/manufacturing-shared/32hole-evidence-r4; oracle proof cb23dac6c. Earlier deadline/work-limit/cold-open failures below are historical and superseded for this workflow; broader Files/geometry coverage remains partial.
