@@ -1,5 +1,35 @@
 # WebOS work queues and progress ledger
 
+## PL R5 retained; free-coordinate assumption identified; fit/drawing composed
+
+Whole10644 terminalFAIL1 at actuale005eab/5cf27cb1:41rows/442calls/21Native
+observations/4diagnostics/11refusals/one.cad. Signed reversal, UndoRedo, Save/
+server equality/fresh Open and both live rotations pass their assertions.
+Later definition2→3 yields B.x~-10.00317 while old driver expects-10. R5 retained
+in ACADdcc3bca, point-line-distance-public-workflow/evidence-r5; contexts retired,
+source pins unchanged; no after-whole oracle or full qualification.
+
+TWO independent source/evidence reviews confirm B's coordinate locks and P's
+tangential lock were removed. B is coupled/free via actual Polar/DistancePL;
+actual inspected sides remain3/-2/0 with <6e-16mm independently evaluated
+residuals, rectangle/Q exact. Current coordinate edits explicitly are not
+persistent dimensions. This is a missing-anchor expectation, not demonstrated
+constraint corruption. Original driver/oracle/R1–R5 stay frozen. New complete
+acceptance must cover genuine free parameter change +travel/.cad/independent
+equations, then explicit public re-anchoring for the fixed-line named phase;
+no solver/tolerance rewrite or hiding the free case. Source-only packet assigned.
+
+Explicit fit product+whole-loft/refusal source and corrected public-authoring
+E22 packet compose as Coredb278000a036dbc042183fc3a902633e848630fd /
+Desktop6f708bd6feeb08aaf190229ac1a1c11e4881cb41. Current Native bounds/placement
+fit is camera-only, shared with Views action; no source-plane/mesh scan. E22
+recipe uses public operation discovery, no private authoring capture. Normal
+new build starts on R730, log
+/mnt/data10tb/codi-acad-explicit-fit-drawing-build-20261108-r1.log. Complete
+E22 and loft/view flows follow exact stage success, strictly serial. Counts
+19ordinary/23scoped unchanged. No beta/main/relay/race/packaging changes.
+
+
 ## Construction build/stage PASS; unchanged PL R5 running
 
 Normal41824/stage65823 PASS0. ActualCoree005eab494e8ce1ea4dd7d26eb48d6eb9999bcdb /

@@ -1,5 +1,29 @@
 # Workflow state machines and invariants
 
+## CAD-PL-FRAME-01 R5 finite repair evidence; free-coordinate case separated
+
+R5 proofdcc3bca actuale005eab/5cf27cb1 observes reversal, travel, .cad freshOpen
+and both live rotations passing. No complete PL qualification follows: later
+old endpoint-equality assertion fails after named parameter update. Independent
+reviews establish that endpoint B and P tangent were explicitly unlocked;
+actual final PL sides3/-2/0 satisfy original rows, with rectangle/Q exact.
+A coordinate edit is not a persistent dimension. Do not silently freeze free
+connected geometry or call it unrelated/corrupt. Preserve R5 failure and budgets.
+New complete acceptance must prove free equations/persistence and explicitly
+anchor the line for a fixed-coordinate phase; no smaller anchored-only substitute.
+
+## CAD-VIEW-01 explicit camera-only source composed; qualification pending
+
+Core4cb9a35/Desktop6f708bd6f add fit-worker-solids plus Views action through
+one shared operation. At most32 current Native outputs/256authenticated affine
+bounds corners, real display availability, document/owner/revision/placement
+custody and active-gesture refusal precede camera writes. Preserve camera mode/
+orientation/up; no authored fields/J/dirty/files change. Full loft source adds
+six actual fits and three view refusals plus unchanged geometry/travel/.cad
+criteria. Independent real matrix projection and human screenshot review still
+required. No autoscaling geometry, scene-helper fit or default-camera reset.
+
+
 ## CAD-PL-FRAME-01 source construction candidate —not yet qualified
 
 ACAD e005eab composes daa1666. Original replay privately issues existing actual
