@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## Latest qualified path — point coincidence R4, 2026-11-08
+
+Whole Chrome41761 and FIRST independent artifact checker PASS on actual
+Core8353d12/Desktop8eac41c9e. Frozen proof6407d6b is now Coremain on both LANs.
+47records/335public traces/28observations/140Native points/4refusals/3.cad
+Save/server/freshOpen cycles. Real A-B/B-C and distinct redundant A-C, symmetric
+no-ops with original row order, exact rational nullities6→4→2→2, rejected signed
+conflict/alias/unknown/stale, source/Native depth mixed travel and reopen/reedit
+pass. Contexts retired/source unchanged. R1–R3 and the separate native-writer
+shape correction remain retained. Python oracle and all semantic tolerances
+unchanged. SEVENTEEN recent scoped proofs pass; all21 exercise signoffs Partial.
+
+Moving generator-dependent coincidence, broad human gestures and all C03/C04
+remain open. ProjectedDistance source10940466/d342b855/a538b850 is prepared but
+unqualified; root composition/whole execution next. No root build or Chrome
+workflow active now. No public/beta deployment; final packaging stays deferred.
+
+
 ## Coincidence R3 writer contract repaired; R4 rebuild active — 2026-11-08
 
 R3 whole93486 on Core7afb2c4/Desktop8eac41c9e fails first authored pair after
