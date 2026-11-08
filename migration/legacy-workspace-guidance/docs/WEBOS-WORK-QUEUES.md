@@ -1,5 +1,26 @@
 # WebOS work queues and progress ledger
 
+## Native stage packet composed and rebuilding — 2026-11-08
+
+Native5a4f0a82 adds stack-owned15-stage failure location only; normal compile26577
+completed0 with recorded inputs unchanged. Exact loader adaptation71405a03 and
+Native source are backed on both Native LANs. Pair9789a617/ad06c43b is registered
+in Core25fc6c9, with strict failure-capture3659072 (agent00acfef). Status codes,
+success schemas, input preservation and rollback remain; malformed/missing
+failure diagnostics terminate the Worker. Unpublished BUSY diagnostics deliberately
+fail closed rather than overwrite an outer reentrant exchange.
+
+Source-reviewed seam repair764e38e is composed too. No geometric cause for R3
+has yet been established. Normal complete app build71071 is running on R730;
+next fixture stage-r5/pins-r6, loopback21006/state-r24 and unchanged full Chrome
+workflow will identify the actual failing Native stage. No Chrome active now.
+
+Radius source composition is ready, backed separately: Cored0069f0 and Desktop
+10d3dfb1 then2b015c5e. It wires real Craft/lazy-target registration, preserves
+qualified Mirror regeneration and original workflow expectations. No Radius
+execution or qualification yet. Fourteen prior scoped passes remain;21 formal
+Gate1 exercise signoffs remain Partial. No public/beta deployment.
+
 ## Current bounded source lanes — 2026-11-08
 
 Root: execute coherent native/app builds and entire Chrome workflows sequentially;
