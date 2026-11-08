@@ -1484,3 +1484,18 @@ to capture. Both paths share the original geometry/membership/identity checks.
 Whole failureCore870b956 retained; coherent build and unchanged full regression
 remain required before qualification. This is not a solver/geometry tolerance
 change or a reason to skip original-request reconstruction.
+
+
+## Genuine constraint object versus native serialized row — 2026-11-08
+
+AlgNumConstraint PCoincident has zero constants. Its live write() may expose
+constantsundefined; JSON native serialization omits the optional field. These
+representations must not be compared by invented required{} membership. Whole
+93486 exposed that producer error; Corefbfd3b5 retains its full failure. Repair
+08aed59 derives the admitted row from actual serialized warm source, verifies
+its type/stage/ordered references/no authored constants, and carries that exact
+row into the candidate. Actual admission hints are derived by AlgNumSystem's
+transaction completion before IO serialization. No manual status flags or global
+format change. Separate driver correction8353d12 removes only the same invalid
+constants{} assumption; original failures and all semantic assertions remain.
+Normal rebuild and complete whole regression are pending before qualification.

@@ -1,5 +1,28 @@
 # WebOS work queues and progress ledger
 
+## Coincidence R3 writer contract repaired; R4 rebuild active — 2026-11-08
+
+R3 whole93486 on Core7afb2c4/Desktop8eac41c9e fails first authored pair after
+3rows/38commands/1Native setup/0saves. Actual INTENT_CHANGED: Coincidence differs
+from its original point-only request. Contexts retired/source unchanged; whole
+failure and original driver frozen Corefbfd3b5 on both LANs.
+
+Genuine PCoincident constructor has undefined constants; its actual JSON writer
+omits that field. New producer incorrectly required a constants object and copied
+raw JS undefined membership. Repair08aed59 derives and verifies the genuine
+canonical appended row from actual serialized warm source, preserving all
+annotations/admission/IDs without fabricating{} or changing format. Separate
+8353d12 corrects the source-proven future driver assumption to require no authored
+constants (absence or exact empty plain data), retaining all geometry/equations/
+intent/history/tolerances. Original R1–R3 tests remain frozen. Python oracle and
+recipe unchanged. Real AlgNumSystem hints are derived, not manual status flags.
+
+Complete rebuild33446 is active on R730 from8353d12a195e65f71260bd495750d6205195a2cb.
+Next stage-r4/pins-r4, isolated21012/state-r30, complete corrected-contract driver,
+then independent actual artifacts. No active Chrome and no coincidence PASS.
+Main235b8de remains qualified (16scopedpasses/all21formalPartial). ProjectedDistance
+source packet ready separately; root composition/qualification pending.
+
 ## Coincidence captured-lifecycle repair composed; R3 rebuild active — 2026-11-08
 
 R2 whole39712 on Coreeadac5e/Desktop8eac41c9e terminalFAIL after3rows/38commands/
