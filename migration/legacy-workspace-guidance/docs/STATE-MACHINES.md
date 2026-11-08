@@ -1,5 +1,28 @@
 # Workflow state machines and invariants
 
+## Principal Apply, restored eligibility and trimmed J — 2026-11-08
+
+Qualified finite R4 ACAD25fc19e, actualCore6f6ccef/Desktopc8779dd83; whole
+browser and independent ZIP/source/analytic/chronology oracle PASS. Original
+R1/R2/R3 failures remain frozen. No acceptance limits changed.
+
+| Transition | Invariant |
+|---|---|
+| Complete S0 → prefix P → draft | Real navigation binds full definition/position; draft leaves accepted source/H/J/geometry unchanged |
+| Apply private preparation → S1 tip | Fresh complete source basis/Native closure; one source/J publication with before-prefix/after-tip positions, no temporary accepted tip |
+| Owned evaluation begins | Composite PM token checked before owned scope; exact owned epoch and actual service/H/J/source/stream/counter/metadata guards retained afterward |
+| Refusal / supersession | Preserve last accepted state; old handler cannot publish into a replacement document or draft |
+| Undo D / Undo P / Redo P / Redo D | Restore recorded definition/source/position, no borrowed retired Native owner |
+| Native Open → idle part | Regenerate persistent intent, empty session J; readiness derives from actual owned complete head/source/material, not prior-session event signature |
+| FIFO evicts P, retains D | D proves its own actual sides. Invalid-draft Cancel at BEFORE side never parses edited fields or fabricates P; subsequent Redo remains coherent |
+| Save → sync → Open | Four actual .cad cycles match server bytes/SHA, retain intent and allow reopened agent editing |
+
+R4:6real Apply cases/18UI travels/30Native sets/153points/9refusals/4file cycles
+and64real trim edits. Numeric principal placement only. Broader formula/datum/
+legacy/insertion/stale families and all-C12/Gate1 remain open. Finite50pm bounds
+and volume1e-6mm3 are separate, not general Native-surface certification.
+
+
 ## Declared Slot source, equations and native member custody — 2026-11-08
 
 Scoped R1 PASS ACAD5c82504, actualCore79c9c86/Desktopddab73b45. One actual
