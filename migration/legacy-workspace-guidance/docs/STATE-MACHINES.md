@@ -898,3 +898,23 @@ error, a constraint conflict and a geometric-operation failure retain distinct
 meanings. The complete public plate workflow must establish independent native
 bounds/volume, units invariance, rejection preservation and native persistence
 before any modern typed capability is marked qualified.
+
+
+## Material-region construction evidence —exact inset workflow qualified
+
+Only actual checked Native publication may issue private box/subtract witnesses.
+The authored model retains source operations and material assignments; no saved
+interface-valid flag becomes authority. A genuine two-box subtract may retain
+optional derived provenance without changing general Boolean success if that
+provenance is unavailable. Current artifact reading checks actual body/feature/
+engine/build and exact captured Native scalar measurements before encoding.
+
+| Transition | Invariant | Qualified scope |
+|---|---|---|
+| Current two-region lid → export candidate | Worker proves exact +Z blind pocket, positive floor/walls, exact clipped flush label,11+6 oriented patches and five positive shared interfaces | Desktop2f8ec18c9 complete46row workflow +independent rational-clipping oracle PASS |
+| Derived interface candidate → artifact | Existing full per-region embedding/manifold/orientation checks still finish; interface proof never bypasses those checks | Three actual3MF exports PASS |
+| Pocket/label source edit → current assignment | Shared history retains original identities; explicit current material rebind; old derived proof is not synchronized forward | width30→36/travel/save/reopen PASS |
+| Unsupported fill/contact domain → export | UNQUALIFIED_REGION_INTERFACE with unchanged accepted source/history/association and no output; valid source is not called unsatisfiable or invalid geometry | Under/overfill, protrusion/displacement, through/edge cuts and healthy continuation PASS |
+
+This is a sufficient exact domain, not arbitrary material-interface qualification.
+A separate body/lid/label combined document remains an integration task.

@@ -3054,9 +3054,11 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   inches, mixed travel, fresh Open/reedit/material assignment and atomic
   refusals. Independent mesh/source oracle and separate pinned same-OCCT STEP
   reader PASS. Actual runtime90e3419/Desktopfa1ca19f3; broader Gate1 still open.
-- [~] Exact +Z blind rectangular pocket/flush inset label product integrated
-  ACADbc85c5f; complete public driver/oracle Desktop7ac1f0fd4. Normal composed
-  build passed; new private fixture staging underway. No runtime result yet.
+- [x] Exact +Z blind-pocket/flush inset label whole flow PASS:46rows/five
+  native saves/three3MF exports plus independent artifact oracle
+  (Desktop2f8ec18c9), actualbc85c5f/7ac1f0fd4. Source edit/travel/material
+  rebind/native persistence and six rejected interfaces preserve state; broader
+  interfaces and combined enclosure/lid model remain open.
 - [x] Retained whole plate/export R7 on ac5a82b PASS:18rows, native persistence,
   shared creation/material travel and three exports; unchanged independent
   artifact oracle PASS. R6 incomplete engine-revision launch refusal retained;
@@ -3069,6 +3071,12 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   width/height/extrusion depth and semantic through-hole dimensions. Other
   feature families stay explicitly unsupported; numeric edits cannot erase a
   formula. Source work active; no runtime result.
+- [~] Source-confirmed signed X/Y dimension discovery/edit/removal gap: public
+  add works, but current driving targets expose only length/diameter. Approved
+  narrow schema-aware signed edit path and full concentric+zero/negative/refusal/
+  persistence workflow underway. No remove/readd substitute or solver rewrite.
+- [~] Required rectangle width-domain100→120→1→0→negative→1e−6→1e6 whole
+  workflow being prepared, with separate sketch/solver/profile/Native outcomes.
 - Keep source/evidence on both ACAD and Desktop LAN repositories. JSketcher is
   retired to public-fork state. No cancelled filesystem-race probes or UI work.
 
