@@ -1,5 +1,22 @@
 # WebOS work queues and progress ledger
 
+## Generic selected-source build PASS; PL whole workflow running —2026-11-08
+
+Normal build93553 and stage48331 PASS0. Actual Core
+f990b1caaed3a9150755c5f5f5bb8a97487fc168 / Desktop
+3ce2fec559b42cd1f56321bed0acd3edd914dbed;150declared byte pins,
+469assets/564489765bytes. Fresh private21018/state-r36 (backend81399,
+forward13350); no relay. Complete unchanged PL driver89587 is running in
+pinned Chrome155/CDP19329, evidence /tmp/codi-acad-point-line-workflow-20261108-r1,
+log sibling .log. Independent artifact oracle waits for whole terminal result.
+No qualification/count change. Circle acceptance packet still in preparation;
+next serial workflow after PL, never concurrent browser execution.
+
+Source review found RadiusLength public edit still rejects named lengths even
+though its typed scanner accepts them. Root requires fixing that shared path
+for the approved consumed-Circle radius workflow, not substituting Diameter
+just to obtain a passing test. Source repair pending; no new radius claim.
+
 ## Generic selected-source normal build running —2026-11-08
 
 Root composed helpers/wiring2801f47/0c0c3e2 and selectedProfiles-only API
