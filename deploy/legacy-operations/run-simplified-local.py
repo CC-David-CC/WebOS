@@ -29,15 +29,23 @@ from origin_service.gateway_authority import GatewayAuthority
 from origin_service.http_server import BoundedServer, QuietHandler
 from gateway_service.auth import initialize_ledger, MAX_REQUEST_BYTES
 from gateway_service.transfers import initialize_transfers
-from gateway_service.user_store import UserStore, DEFAULT_ACCOUNT_FOLDERS
+from gateway_service.user_store import UserStore, DEFAULT_ACCOUNT_FOLDERS, private_directory
 from gateway_service.http import FileGateway
 
 spec=importlib.util.spec_from_file_location('codi_staging',ROOT/'scripts/serve-connected.py')
 staging=importlib.util.module_from_spec(spec);spec.loader.exec_module(staging)
 
-async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None,browser_relay=False,apps_bundle=None,report_admin=None,listen_socket=None,microduck_runner_origin=None):
+async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=None,browser_relay=False,apps_bundle=None,report_admin=None,listen_socket=None,microduck_runner_origin=None,runtime_root=None):
     origin=f'http://127.0.0.1:{port}'
-    runtime=ROOT/'.build'/('simplified-local-test-'+str(port) if isolated else 'simplified-local');runtime.mkdir(parents=True,exist_ok=True,mode=0o700)
+    if runtime_root is not None:
+        if not isolated:raise ValueError('An explicit runtime root requires an isolated fixture')
+        runtime=Path(runtime_root).absolute()
+        if '..' in runtime.parts or any(part.is_symlink() for part in [runtime,*runtime.parents]):raise ValueError('Fixture runtime must use a direct directory path')
+        # Never repurpose existing account or service state through this option.
+        runtime.mkdir(parents=True,exist_ok=False,mode=0o700)
+        runtime=private_directory(runtime)
+    else:
+        runtime=ROOT/'.build'/('simplified-local-test-'+str(port) if isolated else 'simplified-local');runtime.mkdir(parents=True,exist_ok=True,mode=0o700)
     public=runtime/'public'
     if public.exists():shutil.rmtree(public)
     staging.stage(public,bundled=apps_bundle)
@@ -141,7 +149,10 @@ async def main(port,speech_assets=None,isolated=False,access_policy=None,geoip=N
         if geo:geo.close()
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');parser.add_argument('--browser-relay',action='store_true',help='Enable the experimental registered-only Browser relay locally');parser.add_argument('--apps-bundle',type=Path,help='Optional separately built app catalog');parser.add_argument('--report-admin',help='Registered test subject for the isolated report fixture');parser.add_argument('--microduck-runner-origin',help='Separate loopback runner origin for isolated Microduck tests');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--port',type=int,default=18130);parser.add_argument('--speech-assets',type=Path,help='Optional local speech model and runtime directory');parser.add_argument('--isolated',action='store_true',help='Use separate disposable state for testing');parser.add_argument('--access-policy',type=Path,help='Optional local IP/country policy');parser.add_argument('--geoip',type=Path,help='Optional local DB-IP Country Lite database');parser.add_argument('--browser-relay',action='store_true',help='Enable the experimental registered-only Browser relay locally');parser.add_argument('--apps-bundle',type=Path,help='Optional separately built app catalog');parser.add_argument('--report-admin',help='Registered test subject for the isolated report fixture');parser.add_argument('--microduck-runner-origin',help='Separate loopback runner origin for isolated Microduck tests')
+    parser.add_argument('--runtime-root',type=Path,help='Fresh private directory on a selected disk; isolated fixtures only')
+    args=parser.parse_args()
+    if args.runtime_root is not None and not args.isolated:parser.error('--runtime-root requires --isolated')
     if args.microduck_runner_origin:
         try:
             parsed=urlsplit(args.microduck_runner_origin)
@@ -160,5 +171,5 @@ if __name__=='__main__':
             listen_socket.bind(('127.0.0.1', args.port));listen_socket.listen(socket.SOMAXCONN)
         except OSError as error:
             parser.exit(1, f'Cannot start preview on 127.0.0.1:{args.port}: {error}\n')
-        try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip,args.browser_relay,args.apps_bundle,args.report_admin,listen_socket,args.microduck_runner_origin))
+        try:asyncio.run(main(args.port,args.speech_assets,args.isolated,args.access_policy,args.geoip,args.browser_relay,args.apps_bundle,args.report_admin,listen_socket,args.microduck_runner_origin,args.runtime_root))
         except KeyboardInterrupt:pass
