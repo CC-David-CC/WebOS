@@ -1,5 +1,30 @@
 # Workflow state machines and invariants
 
+## Latest real navigation/UI Undo qualification — 2026-11-08
+
+ACAD6895c51 freezes the complete R1 browser and independent checker PASS on
+runtimeCore2e14280/Desktop18c621383. Eighteen genuine timeline/selected EDIT/
+floating/shortcut/keyboard UndoRedo events use shared guarded history services.
+Passive prefixes derive Undo readiness from the actual journal and current
+operation/lifetime state. No failed modern navigation falls back to raw pointer
+mutation. Unknown histories/shared journals cannot borrow the fixed empty-J
+legacy exception. Floating raw truncating delete is disabled and directs users
+to checked deletion. Two .cad Save-sync-freshOpen cycles,16Native observations/
+48points, source hashes and owned-context cleanup pass.
+
+| State / event | Transition and invariant | Evidence |
+|---|---|---|
+| Settled owned full tip → real navigation | Same shared position transaction as registered command; full definition retained | Splitter, selected EDIT, arrows, shortcuts, floating rows |
+| Passive prefix → UI Undo/Redo | Actual journal position row consumed/replayed; matching source/model projection | Genuine keyboard events and inspected journal chronology |
+| Active draft → navigation | Visible UNAVAILABLE; accepted state and draft unchanged | Raw before/after equality |
+| Active draft → Cancel | Same accepted prefix/source/J; no authored edit from discard | Actual Cancel then UI Undo |
+| Box edit → UI travel → Save/Open | Geometry/source intent retained; new context resets session Undo | Width10/12/14 analytic facts, native point replies, independent archive checks |
+| Replaced/aborted owner | Captured document/native signal/services/current rendered history required | Source-enforced; broad stale-handler/concurrency gestures not qualified by this ordinary run |
+
+Principal PLANE Apply and broader legacy/insertion/stale cases remain required
+and open. This bounded result does not sign off allC12 or Gate1. Earlier entries
+below preserve their original source/qualification states.
+
 ## Latest real draft/Cancel qualification — 2026-11-08
 
 C12R3 browser and independent checker PASS (ACAD9e7b7ea), actual
@@ -14,8 +39,9 @@ save permission; save/mutation guards are retained. Source hashes/owned context
 cleanup pass. No old raw-Cancel corruption incident is claimed: earlier R1/R2
 stopped at setup/read integration gates before those gestures.
 
-Apply, raw timeline migration, actual prefix UI Undo enablement and broader
-legacy/insertion/stale-handler gestures remain unqualified required work.
+At that Cancel checkpoint, Apply, raw timeline migration, actual prefix UI Undo
+enablement and broader legacy/insertion/stale-handler gestures were unqualified.
+The latest navigation result above supersedes the finite navigation/UI Undo gap.
 The prior entries below retain their producing checkpoints; this finite PASS
 does not complete allC12 or Gate1.
 
