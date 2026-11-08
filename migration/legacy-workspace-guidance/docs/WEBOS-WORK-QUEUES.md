@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## Export-code normal build PASS; local evidence sparsity verified
+
+Normal build13594 PASS0 atCore8908fb8. Fresh export-code fixture is staging
+against Desktop7c2b85f48, without rebuilding or mutating source. Full native
+.cad/artifact driver will require all three exact refusal codes while retaining
+existing actual geometry/source/SaveOpen/material/drawing/settlement assertions.
+No browser workflow active concurrently; no qualification claim from build.
+
+Local disk reached116MiB free. Verified both LAN heads8908fb8, then used Git
+sparse checkout to omit60tracked older evidence files in15directories locally.
+No tracked deletion/source change: all files remain in Git and both LAN repos,
+R730 build remains full. This reclaimed about79MiB (195MiB free). Current source,
+active evidence and required oracle modules remain. Empty nested directories
+may remain; actual tracked-file absence and clean index were verified. Receipt:
+docs/evidence/cad-sparse-evidence-20261108-r1.json. For any omitted old proof use
+git show HEAD:path or temporarily widen sparse checkout; no claim of missing
+backup or modified historical result. No packaging/deployment/user data deletion.
+
 ## PL R4 measures4mm side flip; export-code repair composed
 
 Unchanged whole84264 FAIL1 at signed endpoint reversal, actual88a8181/06f630880.
