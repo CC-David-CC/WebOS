@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## Circular occurrence repair composed; complete rebuild active — 2026-11-08
+
+Root candidatef2574ea composes Native occurrence7bf611ce, Worker consumerf2574ea
+(agent942d1ec), exact9789a617/707facb3 runtime pair, qualified Radius mainaf4d131
+and existing seam/error-stage repairs. Every real per-cell fragment is retained;
+per-cell source-event chains establish source partition without cross-cell
+numeric deduplication or summing neighboring copies. Derived trimmed4/full2
+per-span and2/1 per-cell bounds retain aggregate16/64KiB and original1e-9mm
+qualification. No coordinate rounding/welding or geometry tolerance change.
+
+Root complete build98097 is running on R730 from exact
+f2574eaee3bc0c2e32590fd69ce5743dd9f1a000. Initial R5 invocation supplied an
+incorrect full hash and stopped at fetch before checkout/build; that operator
+log is retained separately as r5-invalid-source-invocation.log, not a product
+failure. Next Desktop70f096c23, fresh stage-r6/pins-r7, loopback21008/state-r26,
+unchanged full circular workflow, then independent actual-artifact analysis.
+Fifteen previous scoped passes remain; no circular qualification is claimed.
+
 ## Latest qualified workflow — RadiusLength R1, 2026-11-08
 
 Whole Chrome75672 PASS on Cored0069f0/Desktopdd58df71e, after normal build69766 /

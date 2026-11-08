@@ -1422,3 +1422,20 @@ source/analytic oracle PASS on Cored0069f0/Desktopdd58df71e, with35observations,
 public agent route, not all human dialogs, global DOF rank, generator-bearing
 radius regeneration or Arc BRep. Source radius numeric budget1e-9mm and Native
 volume/bounds budgets remain distinct. Frozen proof ACADaf4d131 on both LANs.
+
+
+## Circular source spans versus Native cell occurrences — 2026-11-08
+
+A source span names an authored circle/event/range relationship. A response-local
+Native fragment identifies one actual boundary occurrence in one computed cell;
+neighboring independently computed cells need not share that parameterization.
+Native7bf611ce removes cross-cell numeric deduplication and retains each Use.edge.
+Consumer942d1ec/composedf2574ea validates every actual cell's directed cyclic
+chain against original supports/events/branches, continuity and traversal before
+deriving the complete semantic source partition. No record is discarded or
+snapped to make a neighboring cell agree. Derived per-span bounds allow two cells
+times two trimmed seam fragments; aggregate16/64KiB remain. Actual cap/swept
+membership and all original geometric tolerances remain. Saved intent still
+contains source identities/semantic descriptors, never persistent Native indices.
+R4's actual global coverage rejection is retained; this source repair requires
+complete normal build and unchanged whole browser regression before qualification.
