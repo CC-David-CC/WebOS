@@ -1,5 +1,22 @@
 # WebOS work queues and progress ledger
 
+## Current bounded source lanes — 2026-11-08
+
+Root: execute coherent native/app builds and entire Chrome workflows sequentially;
+C02 remains current. No active build/browser after terminal R3 failure63998.
+- Native source lane: review actual circular constructor provenance and add
+  per-call closed failure-stage labels, preserving int status codes, input bytes,
+  name ownership, success schemas and rollback. No source-lane execution.
+- Circular protocol lane: strict bounded capture of that failure-stage schema;
+  do not widen recoverable codes or bypass observation/geometric checks. The
+  separate semantic seam repair is already composed764e38e.
+- Radius preparation lane: compose existing1891c96/013b29d99 against qualified
+  Mirror main and current Desktop policy, add actual Craft/adapter registration,
+  preserve generator regeneration; source only, whole qualification after C02.
+
+All product/source changes require normal root build and unchanged complete
+workflow proof before promotion. Fourteen prior scoped passes; no new C02 pass.
+
 ## Circular R3 typed provenance failure — 2026-11-08
 
 Complete normal app build85515 and fixture94247 completed0. Whole Chrome63998
