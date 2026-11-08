@@ -1,5 +1,15 @@
 # WebOS work queues and progress ledger
 
+## Circular staging capacity repair — 2026-11-08
+
+Normal app build64586 completed successfully on Core9189366. Actual fixture
+staging72947 failed at installed-app aggregate inventory512MiB, before Chrome;
+retain `/mnt/data10tb/codi-acad-circular-fixture-20261108-r1.log`. Apply the
+user-approved1GiB installed-code allowance consistently in builder/browser and
+server cache admission. This does not change user-file quotas, per-asset limits,
+geometry tolerances, workflow expectations or execution deadlines. R2 staging
+and complete browser qualification remain required. No new workflow PASS.
+
 ## Circular-region qualification in progress — 2026-11-08
 
 Root composed circular source9189366 with the qualified Mirror main. Native

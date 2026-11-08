@@ -747,6 +747,19 @@ Review shared per-window operation ownership rather than add app saving flags.
 
 ## B01 build-staging boundary
 
+Current policy update — 2026-11-08: apply the user's approved1GiB trusted
+installed-app inventory allowance in the shared builder/browser policy and
+server immutable-asset cache admission. The256MiB individual asset limit and
+4096-file app admission remain. This is a metadata bound, not permission to
+buffer1GiB; user-file limits, transfer quotas and memory bounds are separate.
+Circular fixture R1 failed at the actual builder512MiB aggregate admission
+before browser execution. Preserve its log; R2 must rebuild the app bundle and
+run the full browser workflow with actual runtime hash verification. No claim
+that increasing inventory capacity qualifies geometry or peak memory.
+
+Historical512MiB checkpoint follows:
+
+
 Installed trusted app inventory now has a512MiB bound shared by builder and
 server admission (desktopbdbff555b), with256MiB/file and4096files/app retained.
 Six cross-component boundary cases use real sparse catalog files and pure builder
