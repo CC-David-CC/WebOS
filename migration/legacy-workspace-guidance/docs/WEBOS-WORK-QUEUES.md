@@ -3374,3 +3374,13 @@ and unaffected fields, all original math, independent request verification and
 existing replay bounds. No tolerance waiver or field/magnitude assumption.
 Shared ordinary reference/driving source/adapter registration is integrated,
 not built/qualified; finite history controls remain independent source work.
+
+Precision scoped workflow POP: ACAD33ff549,70rows/6 native cycles/independent
+1pm-budget checker PASS. Source arithmetic/persistence only; Native nanoscale
+claims remain open. Latest archive R3 PUSH: ACAD015f354,7rows/2saves/3initial
+exports then typed width100→120 exact-axis refusal. Fresh Open/lifetime/reuse
+assertions not reached; one codec retires. Approved authenticated typed-rectangle
+Worker reconstruction plus original-equation proof; no snapping/tolerance waiver.
+Coordinate branch-edit repair is in source review, history controls still source
+work, reference/driving source integrated but not qualified. These are bounded
+remaining lanes, not full-gate completion or a reliable finish-date estimate.
