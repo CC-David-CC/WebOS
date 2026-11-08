@@ -1,5 +1,16 @@
 # WebOS work queues and progress ledger
 
+## Local evidence checkout reduced; all proofs retained in Git and both LANs
+
+Before the next whole run, root confirmed clean ACAD index and both LAN refs
+exact62b27e6. Seven completed proof directories (88tracked files/46,431,631bytes)
+were removed ONLY from the local sparse working checkout; Git blobs, both LAN
+repositories and full R730 build checkout retain them. Receipt:
+docs/evidence/cad-sparse-evidence-20261108-r3.json. This is not source deletion.
+Local available space rose to170,983,424bytes; continue monitoring.
+Independent source reviewer accepted77e2f638 eligibility correction: no further
+blocker. Normal build36418 remains live; no whole test started yet.
+
 ## Coherent captured-profile / generic rectangle build started
 
 Core62b27e6de653516190ddfaaad94b839da2d5daf7 composes READ repairf801c84,
