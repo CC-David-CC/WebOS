@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## Circular R3 typed provenance failure — 2026-11-08
+
+Complete normal app build85515 and fixture94247 completed0. Whole Chrome63998
+on Coreb7d6590/Desktop1298d63c4 verified150 runtime pins/source census, then
+first create-selected-extrusion failed CIRCULAR_PROVENANCE_UNRESOLVED. Nine
+public commands/two rows/no solid or save qualification. Own contexts closed,
+source snapshots unchanged. ACADf5d5b36 retains the whole R3 failure on both LANs.
+No build or Chrome workflow remains active. Fixtures21003/21004/21005 remain
+private loopback only; no external relay or public/beta deployment.
+
+Separately reviewed seam-order bug is repaired in composed764e38e (agent0cf3482):
+coalesce adjacent/cyclic semantic uses before canonical rotation, keeping full
+Native fragment/source-equation/orientation checks. This is not an attribution
+of either R2 or R3's actual failure. Native C++ source review is checking read vs
+construction provenance and safe bounded failure-stage diagnostics. Root must
+compose a coherent repair before next native/app build and whole regression.
+Fourteen scoped workflow passes remain;21 formal exercise signoffs Partial.
+
 ## Circular R2 result and next unchanged whole run — 2026-11-08
 
 Corea26fbc6 normal rebuild86809 and fixture3091 completed0. Whole Chrome78204
