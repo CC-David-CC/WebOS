@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## Named-radius build/stage PASS; Circle fixture ready —2026-11-08
+
+Normal build93484/stage65176 PASS0. Actual Core
+ d7900110d3bc8e9ef0a0da5e871ea7d93a4015e5 / Desktop
+3ce2fec559b42cd1f56321bed0acd3edd914dbed,150byte pins,
+469assets/564490173bytes. Fresh isolated21019/state-r37 (backend67607,
+forward81391) stages the original RadiusLength Circle example. No relay and no
+active Chrome workflow. Source-only full driver/oracle still being finalized;
+no unreviewed/ad-hoc probe substitutes for that complete run.
+
+PL R1 source diagnosis: fixed endpoint coordinates leave retained intrinsic
+Polar equations nonlinear in angle/t. Adding Y2 can pivot P.y without reducing
+the earlier PL equation to a certified literal zero; neither becomes classified
+redundant. This is missing structural-dependence proof, not observed geometry
+drift. A shared exact-frame certificate proposal is under review; no residual-
+based relabel, forced positive-t gauge or rounding is approved. First failure
+retained3dadc33.20scoped/10of21 ordinary qualified counts remain unchanged.
+
 ## Genuine named-radius prerequisite composed; Circle build running
 
 Source RadiusLength repair0cd66f1 composed as ACADd790011, backed both LANs.
