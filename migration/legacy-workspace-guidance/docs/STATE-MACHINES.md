@@ -1,5 +1,27 @@
 # Workflow state machines and invariants
 
+## CAD-PL-ADMISSION-01 — actual redundant-row classification failure
+
+Complete PL R1 driver89587 terminated FAIL on actual Coref990b1c/Desktop3ce2fec55,
+retained ACAD3dadc33/test/point-line-distance-public-workflow/evidence-r1.
+After the line endpoints are fixed on +X, DistancePL2 plus signed P.x20 already
+fix P.y2. Adding the distinct SignedDistanceY2 row reports accepted, not the
+expected redundant; fresh inspection retains both rows as accepted.7records/
+92public calls/2Native observations/0saves; original criteria unchanged. Cause
+under investigation; do not infer global physical DOF or claim a repaired solver.
+
+| Transition | Invariant / current evidence |
+|---|---|
+| Independent relation → duplicate mathematical restriction | Original equations and actual owned parameter support determine redundancy; no per-schema duplicate bypass or synchronized saved flag |
+| Warm admission → cold reconstruction → public inspection | Classification must derive from actual equation admission and remain reproducible; current R1 violates the declared redundant-row acceptance |
+| Failed qualification → repair | Preserve first receipt/driver/math/tolerances, repair actual relevant reduction/admission path, rerun complete workflow |
+
+No signed endpoint reversal, typed PL update or save/reopen was reached. Generic
+selected-source product compiled successfully but its typed positive acceptance
+remains unproved. Source review also found RadiusLength numeric-only edit gate;
+that shared-path prerequisite must be fixed for the approved genuine typed Circle
+workflow, not avoided by replacing the radius exercise with DiameterLength.
+
 ## Typed profile preparation dependency is now concrete —2026-11-08
 
 Source-only finding before PL's first normal build/whole execution. Its frozen

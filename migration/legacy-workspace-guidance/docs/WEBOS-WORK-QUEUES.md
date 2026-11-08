@@ -1,5 +1,21 @@
 # WebOS work queues and progress ledger
 
+## PL R1 first full failure retained —2026-11-08
+
+Whole89587 terminal FAIL1: distinct mathematically redundant SignedDistanceY2
+reports accepted with existing DistancePL2 on fixed +X line.7records/92calls/
+2Native observations/0saves. Actual Coref990b1c/Desktop3ce2fec55; proof3dadc33
+backed both LANs. Source unchanged, owned contexts retired. No independent
+qualification oracle on incomplete failed flow. Redundancy cause investigation
+active; no driver/math/tolerance changes. Signed reversal/typed update/persistence
+not reached. Normal build93553/stage48331 PASS remains compilation only.
+
+Canonical state ticket CAD-PL-ADMISSION-01 records transitions/invariants. Generic
+typed profile positive qualification and genuine RadiusLength named-binding
+prerequisite remain open; source-only agents address radius and E11 lifecycle.
+No active Chrome workflow; private fixture21018 remains. Counts20scoped/10of21
+ordinary Qualified/11Partial unchanged. No relay/public deployment/race tests.
+
 ## Generic selected-source build PASS; PL whole workflow running —2026-11-08
 
 Normal build93553 and stage48331 PASS0. Actual Core
