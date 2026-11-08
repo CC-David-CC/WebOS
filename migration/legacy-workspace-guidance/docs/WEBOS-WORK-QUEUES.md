@@ -3169,3 +3169,24 @@ yet; normal coherent build is running on R730. Drivers remain frozen.
 Typed artifact R1 is currently past actual initial/edited/reopened exports and
 fresh native Open, with final reedit/travel/exports and independent oracles
 pending. Exact private runtime0d15629/Desktop3142c9d9a,20969; no public deployment.
+
+### Typed part artifact qualification complete — 2026-11-07
+
+Actual browser workflow PASS:27rows/three native saves/twelve real artifacts
+(four sets each STEP/core3MF/SVG), compiled0d15629/Desktop3142c9d9a with91pins.
+Real formulas, material review, six linked drawing dimensions, stale/unreviewed
+export refusal, units, mixed travel, Save/sync/fresh Open/reedit all pass.
+ACADc5b68ec preserves the complete run and first independent-checker failure:
+its STEP parser omitted valid LENGTH_MEASURE typed uncertainty syntax. The
+bounded parser addition dc73497 changes no geometry assertions. Independent
+source/STEP21 topology+analytic measurement/3MF mesh+material/SVG checks over
+the unchanged actual files now PASS, frozen514da9a
+`test/typed-part-artifacts/oracle-evidence-r2`. Original failure remains.
+This is the supported canonical rectangle/extrusion/through-hole typed family,
+not arbitrary typed geometry or an independent general CAD importer.
+
+Orientation whole R1 now runs on private20970, actual compiledb378bb7/
+Desktop67326a656 with91pins. Normal app/Worker build passed; ordinary orientation
+and separate native-domain/alias acceptance remain unqualified until complete
+runs. No beta/public deployment. Gate1 remains open; the finite competency audit
+separates proved exercise steps from actual remaining operation requirements.

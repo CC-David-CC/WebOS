@@ -976,3 +976,11 @@ Named class admission precedes native Open adoption; malformed named relations
 refuse rather than entering a differently named equation. Ordinary and alias
 whole workflows are prepared, not yet qualified. Generic directed angles retain
 their separate declared branch contract.
+
+Typed artifact workflow c5b68ec and independent artifact proof514da9a qualify
+current accepted typed source → observation replay → My files export without
+changing source/history/association/resources, plus stale STEP/SVG and unreviewed
+material refusal before file writes. Actual UndoRedo after refusal proves no
+hidden authored entry. Three native saves/two fresh Opens retain formulas,
+materials and drawing intent. One independent parser omission was fixed and
+retained separately; no production correction or geometry assertion relaxation.
