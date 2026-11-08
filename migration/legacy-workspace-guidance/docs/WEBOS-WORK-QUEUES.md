@@ -1,5 +1,28 @@
 # WebOS work queues and progress ledger
 
+## Circular R5 interrupted; same complete R6 running — 2026-11-08
+
+ActualCoref2574ea/Desktop70f096c23 app build98097 and fixture74853 completed0.
+Whole Chrome52120 passed finite lens/left/right branches and reached tangent
+fresh Open, then CDP target/connection closed. Whole runFAIL,97rows/33Native
+sets/8saves. Cleanup also lost its connection; contextsClosed is not claimed.
+Source hashes unchanged. CDP19329 became unavailable; cause is unknown. No
+geometry failure/OOM diagnosis or circular qualification is inferred. Complete
+failure/artifacts are frozen ACAD01dbf32 on both LANs.
+
+New dedicated Chrome155.0.8059.79 session5363/PID2895440 uses its own RAM-backed
+profile/cache, no certificate bypass, existing other browsers untouched. CDP is
+listening again. Whole R6 session74062 is active with SAME app/source/Native/pins/
+fixture and unchanged driver, fresh evidence-r6, restarting every case. Do not
+restart while this live handle exists. Only after terminal wholePASS run the
+independent artifact checker. Fifteen previous scoped passes remain.
+
+Completed owned duplicate evidence copies RadiusR1/CircularR1–R4 were retired
+only after every original file matched retained tracked evidence;13MB freed.
+Canonical proofs and both LAN Git backups stay. Cleanup inventory is
+`docs/evidence/cad-completed-duplicate-cleanup-20261108.json`. ActiveR6 and the
+interruptedR5 originals are untouched. No deployment or external relay.
+
 ## Circular occurrence repair composed; complete rebuild active — 2026-11-08
 
 Root candidatef2574ea composes Native occurrence7bf611ce, Worker consumerf2574ea
