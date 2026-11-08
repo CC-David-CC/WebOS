@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## Fixed-alias certificate correction composed; next normal build running
+
+Source a088833 composed as ACAD40f5c921cec98fa50f37c36acb01b51192f86fcf after
+root review. Actual strict POW1 substitution chains with fixed leaves provide
+proposals only; exact represented sums must match candidates and the ORIGINAL
+unique registered-row DAG still proves each fixed value. Approximate/cyclic/
+unfixed/nonfinite/inexact/over-depth chains keep the existing numerical path.
+No current-coordinate seed, equation/threshold/gauge or PL driver change.
+Final actual Param/source/Polar checks stay mandatory. No activation claim yet.
+
+Normal build21238 runs on R730, log
+/mnt/data10tb/codi-acad-polar-alias-build-20261108-r1.log. Loft whole42040 and
+first independent oracle already passed/frozen150f399 before this code change.
+No concurrent Chrome workflow or public deployment; new isolated stage/full
+unchanged PL R3 follows build. Counts16ordinary/23scoped unchanged. E22 actual
+reference-repair UndoRedo was identified as a finite missing observation; do
+not infer it from title replacement/removal travel. Other evidence audit active.
+
 ## E15 loft qualified:16of21 ordinary contracts
 
 Complete Chrome42040 and FIRST independent source/archive/section oracle PASS0
