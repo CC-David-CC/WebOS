@@ -859,3 +859,15 @@ travel, typed pre-adoption refusal, unchanged accepted state/files and healthy
 fresh Open/reedit/resave are runtime-qualified on90e3419/Desktopfa1ca19f3.
 This establishes the ordinary source-domain boundary only; no general
 constraint, profile or kernel result is inferred.
+
+
+## Retained parent-reference transition qualification on composed ACAD
+
+Actual runtime90e3419/Desktopfa1ca19f3, frozen ACAD09ba384, repeats the complete
+public E19 workflow after replay/admission changes. Referenced parent deletion
+refuses; explicit discovered replacement B updates H(A)→H(B) before A deletion.
+Mixed travel restores original/repaired dependencies without counter reuse.
+Save/sync/fresh Open/reedit retains authored replacement intent. An unchanged
+A-specific child prevents repair to B atomically; no partial first-parent edit,
+resource leakage or silent retargeting.14rows/two cases/two native files PASS.
+General split/merge and arbitrary references remain outside this named proof.

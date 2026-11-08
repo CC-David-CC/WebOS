@@ -3046,6 +3046,9 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   native files plus three own malformed source copies. Public creation/edit/
   travel, typed pre-adoption refusal with state/file preservation, healthy
   Save/server-sync/fresh Open/reedit/resave/second Open all pass. E01 partial.
+- [x] Retained complete parent repair R6 on90e3419 PASS (ACAD09ba384):
+ 14rows/two cases/two native files, explicit repair/deletion/travel/persistence
+ and incompatible-child atomic refusal; wider reference domains open.
 - [~] Original100×50→150×30 plate, holes, fillet, pattern, inches, travel,
   native persistence and exchange: one complete driver/oracle being prepared.
 - [~] Exact +Z blind rectangular pocket and flush inset-label interface source
@@ -3061,3 +3064,11 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
 Gate1 remains21Partial/0full. Named complete workflows do not sign off an entire
 exercise or every engine/human path. Local completed clean worktrees were removed
 only after exact branch readback on both LANs; builds/new checkouts stay on R730.
+
+
+Private fixture20962 was retired after all its complete runs settled and a
+read-only shared-Chrome target census found zero20962 targets. Exact remote
+backend2090005 stopped normally with SIGINT and its local forward2708975 was
+closed; service/listener absence verified. Source, evidence, stage/account dirs
+remain on R730. Current owned20963 fixture and shared Chrome remain available;
+no public deployment or relay change.
