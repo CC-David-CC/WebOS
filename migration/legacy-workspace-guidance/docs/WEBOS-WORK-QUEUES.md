@@ -3048,10 +3048,11 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   native persistence and exchange: one complete driver/oracle being prepared.
 - [~] Exact +Z blind rectangular pocket and flush inset-label interface source
   and full public workflow/oracle in independent R730 lane. No result yet.
-- [~] Retained whole plate/export regression against replay/material runtime
-  ac5a82b running; initial launch with incomplete engine revision correctly
-  refused before authoring and is retained separately. Correct registered
-  JS+WASM revision supplied on the new complete run; no product change.
+- [x] Retained whole plate/export R7 on ac5a82b PASS:18rows, native persistence,
+  shared creation/material travel and three exports; unchanged independent
+  artifact oracle PASS. R6 incomplete engine-revision launch refusal retained;
+  corrected environment only, no product/driver change. See manufacturing-shared/
+  retained-replay-evidence-r7.
 - Keep source/evidence on both ACAD and Desktop LAN repositories. JSketcher is
   retired to public-fork state. No cancelled filesystem-race probes or UI work.
 
