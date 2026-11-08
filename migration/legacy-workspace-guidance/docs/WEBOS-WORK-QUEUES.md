@@ -1,5 +1,20 @@
 # WebOS work queues and progress ledger
 
+## Circular-region qualification in progress — 2026-11-08
+
+Root composed circular source9189366 with the qualified Mirror main. Native
+pair compilation is complete; no circular geometry qualification is claimed.
+Registration review found two source omissions (webpack resource emission and
+ambient module declaration), fixed in f1cb134 before the whole app build.
+Root normal app build is running on R730 (session64586), with all eleven native
+graphs regenerated and the exact circular Native pair supplied explicitly.
+The next fixture uses Desktop4e35fc856, isolated loopback21003/state-r21;
+no public/beta deployment or external traffic relay. The explicit new circular
+asset subtree will be browser-hashed using source-only pin helper b4b261d.
+After the build: stage the real apps, run the complete circular lifecycle,
+then independently analyze actual saved artifacts. Preserve first failures.
+Fourteen scoped workflows pass; all21 formal exercises remain Partial.
+
 ## Current CAD1 execution checkpoint — 2026-11-08
 
 Latest root exit: Mirror R2 whole browser +independent oracle PASS ACAD24f4269,
