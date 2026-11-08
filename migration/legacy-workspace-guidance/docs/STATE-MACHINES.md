@@ -1516,3 +1516,17 @@ same source/object/feature identities and healthy edit/travel. R1realm/R2capture
 transaction/R3writer failures retained. Zero-constant metadata is actual native
 writer intent, not a fabricated{} flag. Broad human gesture/moving generator
 and all-family/global physical rank claims remain outside this finite proof.
+
+
+## Projected original constants in captured equation removal proof — 2026-11-08
+
+A freshly loaded original constraint is not a solved/resolved constraint cache.
+IO.evaluateCapturedSketch deliberately avoids optimization. Whole62806 exposed
+remove calling ProjectedDistance.collectPolynomials with undefined resolved
+constants after a legitimate named-binding save/Open/reedit. Core624e28a retains
+that complete failure. Source repair6cfffc7 explicitly resolves and validates
+actual original c through current pm.constantResolver before collecting its
+original equations; raw named constants remain authored and no manual cache or
+mutable admission is introduced. Edit still uses its separately resolved genuine
+proposed row. Coherent build and unchanged complete regression remain required;
+partial earlier direction/edit checks are not a whole lifecycle qualification.

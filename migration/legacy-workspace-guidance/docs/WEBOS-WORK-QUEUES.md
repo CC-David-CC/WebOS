@@ -1,5 +1,27 @@
 # WebOS work queues and progress ledger
 
+## Projected R1 retained; original-constant lifecycle repair rebuilding — 2026-11-08
+
+R1 whole62806 on Core81d62ab/Desktop95d8023b0 reaches38records/400commands/
+27observations/7refusals/1.cad Save/server/freshOpen, then actual projected removal
+fails PROJECTED_DISTANCE_FAILED: reading distance from undefined. Commit624e28a
+retains original full failure/driver/saved archive on both LANs. Contexts retired,
+source unchanged. Partial live-direction/named/save successes are not qualification.
+
+Captured IO loads original constraints without optimizing/resolving them. The
+remove proof called actual c.collectPolynomials without c.resolveConstants,
+while edit correctly resolved its proposed row. Repair6cfffc7 (agentb27a87d)
+resolves and validates the ACTUAL original row with its current authoritative
+resolver before equation collection, preserving raw binding. No manual cache,
+optimizer, mutable admission or transaction finish in captured evaluation.
+Driver/recipe/oracle/metadata/tolerances unchanged.
+
+Complete build14265 active from6cfffc78cf9fd9607e728a9e33386514c08883ff on R730;
+next fresh projected stage-r2/pins-r2, private21014/state-r32, SAME entire workflow
+and independent artifacts only after wholePASS. No active Chrome workflow.
+Coremainb5cc011 is docs-only after qualified6407d6b;17scopedproofs/21formalPartial.
+No public/beta deployment or canceled filesystem-race work.
+
 ## ProjectedDistance composition and full build active — 2026-11-08
 
 Qualified Coremain6407d6b and Desktop95d8023b0 are backed on both LANs (17scoped
