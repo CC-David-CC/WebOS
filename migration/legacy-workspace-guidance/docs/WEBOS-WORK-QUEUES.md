@@ -1,5 +1,37 @@
 # WebOS work queues and progress ledger
 
+## E22 exact-axis cause measured; captured-read repair composed, generic repair reviewed
+
+E22 unchanged whole R2 on Coreb9677ef/Desktop78cc169 failed at the same generic
+width edit. Actual prepared vertices were [[0,0],[150,0],[150,50],
+[9.325873406851315e-15,50.000000000000014]]. Original exact-axis refusal remains;
+proof ACADb26c60e retains the first measured failure. This is a source-authority
+boundary issue, not permission to snap coordinates or loosen an epsilon.
+
+Coref801c84 composes reviewed source8703e18: profile READ validates independent
+cold replay but returns the captured coordinates after original-equation proof.
+Its one actual legacy writer now has an explicit regeneration task. Ten read
+sites were inventoried; full affected-family regressions remain required.
+Generic mutation source83d672b constructs only authenticated declared rectangles;
+independent review found a recognizer eligibility narrowing for named H/V or
+anchor constants. Correction is underway before composition/build. No runtime
+qualification claim for either repair yet.
+
+New free/anchored PL whole R1 onb967/78cc failed a mixed saved/cold normal
+comparison. Its reported cold normal agrees with its OWN inspected endpoints
+at machine precision. Proof75f8f89 retains this failure; no raw-before-assertion
+artifact existed to prove the complete remaining geometry. Sourcea7a5e1d,
+composed asf6156cd, now checks each observation against its own equations, every
+raw/cold point at50pm, normals at1e-12, and records raw state before assertions.
+No budget/tail/five-save-cycle reduction. Original failures remain unchanged.
+
+Root reviewed and composed f801c84/f6156cd; exact refs backed to both LANs.
+Next: compose the corrected generic mutation, normal build and unchanged E22
+whole R3, then independent oracles only after terminal whole PASS. Complete
+PL, Boolean and affected profile regressions follow serially. Counts remain
+19/21 ordinary and23unique scoped; E16/E22 and broader Gate1 remain open.
+No main promotion, public deployment, relay/race, or final packaging.
+
 ## Exact-axis diagnostic build PASS; fresh common acceptance cohort staging
 
 Normal95405 PASS0 atCoreb9677ef668b1cff59e9d0d6081ae8dd91e918780. Source6117be2

@@ -1,5 +1,30 @@
 # Workflow state machines and invariants
 
+## CAD-PROFILE-READ-01 / CAD-THROUGHHOLE-AXIS-01 authority boundaries
+
+E22R2 proofb26c60e records exact-axis failure with last corner
+(9.325873406851315e-15,50.000000000000014), not the declared (0,50).
+A mutation may construct declared geometry only from authenticated owned rows.
+A READ must preserve captured geometry and may use independent cold output
+only as bounded replay/admission evidence. It must validate every original
+captured equation, branch, ownership and domain before returning that geometry.
+Actual writers must remain explicit mutations, not silently become reads.
+Source8703e18/rootf801c84 implements this boundary; whole qualification pending.
+Named constants unsupported by a specialized declaration recognizer make it
+ineligible for that helper, preserving the generic path; actual proof failures
+must remain hard refusals. Source83d672b requires this review correction.
+
+## CAD-PL-FRAME-01 observation provenance in the free phase
+
+New free/anchored R1 proof75f8f89 failed a test comparing a cold normal with
+saved endpoints. Cold normal/endpoints were internally consistent (~1e-16).
+Sourcea7a5e1d/rootf6156cd separates saved and cold equations, retains every
+raw/cold point comparison at50pm and normal agreement at1e-12, and records
+both observations before geometric assertions. This is a test correction,
+not a product qualification or loosened tolerance. Five .cad cycles, free
+parameter edit before explicit anchors, Native controls and original failures
+remain. No unowned coordinate may be treated as a persistent constraint.
+
 ## CAD-VIEW-01 explicit fit transition qualified; default framing separate
 
 Proof655db18 actualdb278/6f708: whole45501 and both FIRST after-whole geometry/
