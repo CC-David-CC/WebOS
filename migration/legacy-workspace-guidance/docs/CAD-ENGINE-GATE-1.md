@@ -47,7 +47,9 @@ Gate 2 is `CAD-ENGINE-GATE-2.md`; later gate descriptions remain separate.
 ## Representation and persistence contract —2026-11-06
 
 User format decision: [our ZIP-based `.cad` project](CAD-NATIVE-FORMAT.md).
-Archive implementation is pending; tested native fixtures are currently JSON.
+The `.cad` archive lifecycle is implemented and qualified for the ordinary
+supported reload contract (E21). Older retained fixtures also include Native
+JSON; those proofs keep their actual producing format and revision.
 
 The native project preserves the authoritative design: parameters, sketches,
 constraints, feature dependencies/identities and material assignments. The
