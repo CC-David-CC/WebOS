@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## Next complete workflow active — point coincidence R1, 2026-11-08
+
+Qualified Coremain235b8de remains backed on both LANs. New source-only packet is
+composed on integration/coincidence-runtime-20261108: Core53469d6 (agentfdd872f
+then ca5a870), Desktop8eac41c9e (adapterc8b83e38a plus actual lazy-target host
+registration). Original Mirror/Radius/circular source retained. Generic human
+atomic star and public symmetric two-point coincidence share genuine PCoincident
+admission; original-request verification and same journal/full suffix remain.
+
+Normal complete build24495 and fixture8081 completed0. Whole Chrome77247 is
+running now on private21009/state-r27, exact53469d6/Desktop8eac41c9e, explicit
+existing Shell57b74074/60dc956b runtime, actual fixture pins (also include circular
+assets). Fresh evidence /tmp/codi-acad-coincidence-workflow-20261108-r1. Preserve
+any first failure; independent artifact analysis only after complete wholePASS.
+No coincidence qualification/promotion yet;16 scoped passes/all21 formalPartial.
+ProjectedDistance live-direction/edit/remove source is a separate active lane.
+No deployment; source/dependency/build packaging remains deferred.
+
 ## Latest scoped qualification — circular cells R6, 2026-11-08
 
 Complete Chrome74062 and FIRST independent artifact checker PASS on actual
