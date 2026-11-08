@@ -3208,3 +3208,22 @@ had zero targets for those six ports. Exact backend PIDs2104400/2110703/2113805/
 2121641/2128330/2131983 received SIGINT; exact local forwards were closed.
 Listener census confirms only current20970 remains. Saved account files, source,
 stages and immutable evidence stay on R730. No public service/relay change.
+
+### Current solver reports: scoped whole-workflow PASS — 2026-11-07
+
+ACADc52ef61 retains21rows/two native files and independent original-equation/
+Cartesian-rank proof on compiledb378bb7/Desktop67326a656. Current rectangle
+under/full/redundant/contradictory handling, actual free-width edits, shared
+travel, normal Save/server sync/fresh Open/reedit/resave/second Open pass.
+The checker deliberately reports PASS_SCOPED_CURRENT_RECTANGLE_REPORTS and
+n4Complete:false: genuine zero-gradient singular and numerical-nonconvergence
+cases remain open. No physical-DOF/global-solvability conclusion is inferred.
+Evidence: ACAD `test/current-solver-report-workflow/evidence-r1`.
+
+Active independent source lanes: shared Euclidean Point-distance author/edit/
+remove for a real singular case; exact rectangle arrangement with honest derived
+source-span ownership; .cad archive implementation proposal. Root owns composed
+builds, Worker resource graph/catalog splices, integration and sequential actual
+browser qualification. Orientation repair35a3606 normal build PASS; unchanged
+whole R2 and separate native-domain/alias workflow remain next. These lanes do
+not reopen Files race/security testing or add a human UI rewrite.

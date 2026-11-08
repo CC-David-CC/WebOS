@@ -990,3 +990,10 @@ Orientation R1 (ACAD75e6627) refused mixed-group candidate replay after66rows;
 and derives group reply status from final independent reconstruction. No
 precursor admission flag becomes authoritative. Exact unrelated/authored intent
 checks and exact request reconstruction remain; no global equality relaxation.
+
+Current rectangle report workflow c52ef61 qualifies real under/full/redundant/
+contradictory source states, exact refusal preservation, shared travel and native
+Save/sync/Open/reedit. The independent checker derives Cartesian rank from the
+original equations; it does not equate tangent nullity with global physical DOF.
+Singular and genuine numerical-failure transitions remain unqualified, rather
+than substituting an invalid-entity refusal as a solver-state demonstration.
