@@ -1,5 +1,25 @@
 # WebOS work queues and progress ledger
 
+## Exact-axis diagnostic build PASS; fresh common acceptance cohort staging
+
+Normal95405 PASS0 atCoreb9677ef668b1cff59e9d0d6081ae8dd91e918780. Source6117be2
+composes asb9677ef: original exact-axis predicate/code retained; existing failure
+adds bounded actual four vertices/edge flags/unique count. No math/tolerance or
+acceptance change. Fresh throughhole-axis-e22 fixture stages with
+Desktop78cc1694eca1a88623f33e7ff748673c909a6017. Unchanged E22 fullR2 follows
+exact stage. New free/anchored PL source and E16 packets are composed, with
+original contracts/firstfailures retained. Browser executions remain serial;
+independent oracles only after whole terminal passes. Counts19ordinary/23scoped
+unchanged. Explicit view proof655db18 remains qualified, not finalG10/beta.
+
+Source audit finds H/V authored as floating angles+intrinsicPolar, while hole
+planning requires exact axis coordinates. Generic mutation and TWO later untyped
+profile cold solves are distinct possible sources of non-axis data; no failed
+candidate field/magnitude/pivot is established yet. Do not snap, raise epsilon,
+swap to convenience editing or bypass source geometry. No build/browser active
+concurrently now. No main promotion, public deploy, relay/race or final packaging.
+
+
 ## Explicit solid framing qualified by complete loft/view workflow
 
 Whole45501 +FIRST original geometry/archive oracle +FIRST independent real
