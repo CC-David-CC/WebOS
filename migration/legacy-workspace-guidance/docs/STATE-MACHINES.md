@@ -1,5 +1,26 @@
 # Workflow state machines and invariants
 
+## Generic typed source and named radius: finite consumed-Circle proof
+
+Whole Chrome43021 +FIRST independent source/archive/cylinder oracle PASS;
+ACAD proof1e8856c, actuald790011/3ce2fec55.38records/305calls/20observations/
+100Native point classes/7refusals/3.cad cycles. Entire actual Circle+unrelated
+Point source is retained. Literal engine/unit text is not mistaken for a name.
+
+| Transition | Qualified finite invariant |
+|---|---|
+| Numeric RadiusLength → named radius | Retain real registered row/raw name; captured typed length is authority, original-request verifier and Native suffix validate publication |
+| radius5 →6/7/8; height4*radius | Same source/region/body identity and original equation; actual cylinder volume/bounds/material follow coherent definitions |
+| Failed formula/binding/rectangle request | Last accepted source/history/J/geometry/resources preserved, only established derived inspection tokens may reissue |
+| Creation/binding/formula UndoRedo | Same shared chronology and high-water; removal/restoration of actual consumed extrusion is observed |
+| Save/server/fresh Open | Actual ZIP/CRC/SHA/source/formulas/frame/IDs/units survive; edits continue after Open |
+
+This qualifies a generic typed Circle boundary and named RadiusLength path,
+not all CAD-TYPED-PROFILE-01 cases. PL R1's actual redundancy failure remains
+CAD-PL-ADMISSION-01; its typed phase was not reached. Ordinary Arc manufacturing
+and authoritative near-full branches remain separately open. Experimental
+candidate evidence is not a production/main promotion or deployment.
+
 ## CAD-PL-ADMISSION-01 — actual redundant-row classification failure
 
 Complete PL R1 driver89587 terminated FAIL on actual Coref990b1c/Desktop3ce2fec55,

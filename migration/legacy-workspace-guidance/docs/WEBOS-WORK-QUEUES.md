@@ -1,5 +1,28 @@
 # WebOS work queues and progress ledger
 
+## Genuine consumed typed Circle R1 qualified —2026-11-08
+
+Normal build93484/stage65176, complete Chrome43021 and FIRST independent
+source/archive/analytic-cylinder oracle all PASS0. Actual Core
+ d7900110d3bc8e9ef0a0da5e871ea7d93a4015e5 / Desktop
+3ce2fec559b42cd1f56321bed0acd3edd914dbed.38records/305public commands/
+20observations/100Native point classes/7refusals/3actual .cad browser commits,
+server SHA equality and fresh signed Opens. Named radius6/7/8 plus height4*r,
+units, mixed creation/formula/sketch travel, no-op and refusal preservation pass.
+No rectangle proxy, Diameter substitute or misleading rectangle discovery alias.
+Producer bytes unchanged, contexts retired. Frozen proof ACAD1e8856c9fb0ae8c33a44511ca4611fbc082c97df
+verified on BOTH box-git and R730; canonical evidence is test/typed-circle-native-
+workflow/evidence-r1 in ACAD. No deployment or main promotion: PL sibling still
+fails redundant-row admission and its branch-local source repair is pending.
+
+**21recent scoped workflows;10of21 ordinary exercise contracts Qualified,
+11Partial.** These counters are separate. Generic typed profile and named Radius
+now have this finite consumed-Circle evidence, not general Arc/derived profiles,
+all typed feature histories or full Gate1. Broader11competencies/final composed
+beta/viewable delivery remain open. No active browser/build now; private fixtures
+21018/21019 stay available. Source-only E11 creation lifecycle preparation and PL
+exact-frame reduction work continue. Files accepted; races canceled; relay off.
+
 ## Consumed typed Circle complete workflow running —2026-11-08
 
 Frozen source packet ea0c278 composed as ACADd0fc0ee after normal build/stage
