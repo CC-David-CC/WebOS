@@ -1,5 +1,24 @@
 # Workflow state machines and invariants
 
+## Typed point mutation after driving-row removal — 2026-11-08
+
+Projected whole R2 on Core6cfffc78/Desktop95d8023b0 reaches actual removal and
+Undo/Redo after saved fresh Open, then explicitly refuses a valid point move
+TYPED_SKETCH_MUTATION_UNSUPPORTED. This is an unsupported transition, not
+accepted-state corruption. Full failure frozen ACAD5df687a/evidence-r2.
+
+| Transition | Required invariant / current status |
+|---|---|
+| Named dimension removal → typed document | Keep authored parameter definitions; removal does not silently convert the document to literal mode |
+| Typed document → point-coordinate proposal | Currently refused; implement actual current binding resolution and independent original-request producer/verifier proof |
+| Validated point edit → publication | Existing complete suffix/currentness/transaction contract; unsupported geometry and inconsistent constraints still refuse atomically |
+| Point edit → Undo/Redo | Journal validation must explicitly support the point delta with preserved bindings; dimension-only travel proof cannot certify an unrelated mutation |
+| Failure/no-op | Preserve accepted source/history/geometry/resources; never erase definitions merely to admit a point edit |
+
+Whole-workflow qualification pending; original criteria and unchanged recipe
+remain authoritative.
+
+
 ## Mirror source and derived geometry custody — 2026-11-08
 
 Finite whole R2 PASS ACAD24f4269 on Core104c24e/Desktop9bdb3a512. Independent

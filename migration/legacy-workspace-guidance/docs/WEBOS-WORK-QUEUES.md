@@ -1,5 +1,26 @@
 # WebOS work queues and progress ledger
 
+## Projected R2 retained; typed point-edit gap under implementation — 2026-11-08
+
+Complete normal build14265/fresh fixture36647 completed0. Whole Chrome94668
+on actual Core6cfffc78/Desktop95d8023b0 terminates FAIL at the next point move
+after named dimension removal, Undo and Redo now pass. 41records/427public trace
+entries/30observations/7refusals/1.cad Save/server/fresh Open. Core5df687a freezes
+the complete original evidence-r2, including actual archive and source snapshots.
+Owned contexts retired; no current Chrome workflow or build.
+
+Confirmed explicit capability gap: captureJob rejects typed source mutations
+except dimension access. The genuine point target remains valid after removal;
+parameter definitions must remain intact. Source-only agent work extends typed
+point editing and journal travel with original-request proof/currentness. No
+global guard bypass, driver shortcut or numerical-policy change. Root owns
+normal build and the unchanged complete next run, then independent artifacts.
+
+Latest qualified main remains b5cc011 (docs after6407d6b);17scoped proofs and
+21formal exercise signoffs Partial. No public/beta deployment, canceled race
+testing or redefinition of Gate1.
+
+
 ## Projected R1 retained; original-constant lifecycle repair rebuilding — 2026-11-08
 
 R1 whole62806 on Core81d62ab/Desktop95d8023b0 reaches38records/400commands/
