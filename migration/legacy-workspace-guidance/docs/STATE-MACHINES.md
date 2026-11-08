@@ -1,5 +1,17 @@
 # Workflow state machines and invariants
 
+## CAD-PL-ADMISSION-01: exact-frame candidate did not close R2
+
+Actual whole26694 on b097185/00e12613a repeats the same redundant SignedY2
+assertion after normal build/stage passed.7records/92calls/0saves; actual fresh
+inspection still reports native angle0/t10 and correct source geometry. Core
+proofd644662 retains all source/runtime/first-failure evidence. No proof yet
+that the optional certificate activated; source review is not activation proof.
+Trace actual capture/reduction path, preserve original retained equations and
+uncertified numerical fallback. Do not fix the status by assigning a label or
+weaken the unchanged complete workflow. Signed reversal/named/persistence phases
+remain unobserved. No accepted model corruption or new physical DOF conclusion.
+
 ## E11 treatment creation state transitions qualified
 
 Whole14232 and FIRST independent source/archive/Native oracle PASS: ACADfa6dc2b,

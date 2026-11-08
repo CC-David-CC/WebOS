@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## PL R2 repeats first redundancy failure; activation investigation
+
+Normal build22812/stage28117 PASS0, but unchanged whole Chrome26694 FAIL1
+on actualb097185/00e12613a at SAME distinct SignedY2: accepted vs expected
+redundant.7records/92public calls/2Native observations/three diagnostics/0saves.
+Fresh public metadata still has actual angle0/t10 and correct geometry. Source
+unchanged and owned contexts retired. Proof ACADd64466227cb69ed21142a1fb55173fca9ab4b651
+backed both LANs; canonical test/point-line-distance-public-workflow/evidence-r2.
+First R1 retained. No qualification oracle on incomplete failed flow.
+
+Exact-frame source compiled but actual certificate activation/effect is not
+proved. Investigate actual reduction/capture path before further repair; no
+criterion/math/threshold change or guessed success. Signed reversal/typed phase/
+persistence still not reached. No active browser/build. Private21020/state-r38
+(backend43482/forward24232) remains. Next whole loft packet49ab9ca is source-ready
+for root review independently. Counts15ordinary/22scoped unchanged; main stays
+qualified prior source. No public deployment/relay/race tests or packaging.
+
 ## PL exact-frame repair composed; normal build running
 
 Root composed1b8dbe3/c48331e as ACADf53ef5b/b097185 after direct and independent
