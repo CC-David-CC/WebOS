@@ -1,5 +1,22 @@
 # WebOS work queues and progress ledger
 
+## PL exact-frame repair composed; normal build running
+
+Root composed1b8dbe3/c48331e as ACADf53ef5b/b097185 after direct and independent
+math/lifecycle source review. Actual fixed endpoint equations and exact represented
+arithmetic certify only the zero-angle regular Polar chart; signed t remains
+signed, other gauge selectors/unknown directions keep original numerical path.
+Original equations/domain/ownership and private retained witness are rechecked
+before publication. No residual-based redundant label, tiny-angle rounding,
+threshold change or saved flag. BigInt arithmetic is in a narrow.mjs leaf;
+existing declared TS target/library stay unchanged. Review is not runtime proof.
+
+Normal build22812 runs on R730, actualb09718518965f1c47a0ca9a169f91316505cb594,
+log /mnt/data10tb/codi-acad-polar-frame-build-20261108-r1.log. Root alone will
+stage a fresh isolated fixture and rerun the unchanged whole PL driver after
+build completion; R1 retained. No active browser workflow, source count changes,
+relay/public deployment or filesystem-race work. Counts15ordinary/22scoped.
+
 ## E14 finite curved sweep accepted:15of21 ordinary contracts
 
 Root reviewed the actual retained four-case sweep drivers,113-row receipt,
