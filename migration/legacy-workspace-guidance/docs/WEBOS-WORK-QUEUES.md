@@ -8,6 +8,19 @@ no old Git ancestry imported. Normal fresh build and complete shell model/edit/
 Save/Open workflow PASS on ACADb053638. Shell material3MF with independent oracle and atomic source/region workflows also PASS (Desktop01338594f/7e81040ba). Box-git JSketcher now exactly matches public branch heads, defaultwebos-integration518a466;444extra refs removed after backups/tests. No public site/GitHub changes.
 [Cutover checklist](ACAD-CUTOVER-20261107.md) tracks that separate requirement.
 
+## Current composed workflow repair —2026-11-07
+
+Independent ACAD1382092 includes full midpoint/angle public source integration
+and exact exterior-corner region interpretation. First midpoint case passes all
+source/history/native Save/Open expectations; overall angle continuation fails
+at a real signed-X endpoint lock (INTENT_CHANGED), frozenACAD e84b23b. Trace
+and fix that confirmed producer/intent-verification issue, then rerun the same
+complete driver. Corner Native qualification waits for the coherent emitted
+resource-closure fix1382092 normal build. No microtest/typecheck loops.
+
+A separate agent is building the first independently provable same-print-object
+two-material-region domain; it remains source work, not a qualified export.
+
 ## Current complete-workflow results — 2026-11-07
 
 The real32-hole workflow now PASSes through creation UndoRedo, material assignment, native Save/sync/fresh Open, depth edit20→25 and all3exports including the final cold-browser reopen. Common Files readiness fix d5da87493 is qualified for this ordinary path. Independent unchanged oracle PASSes3exports/102probes/all32holes, measured volume error bounds, units/material/provenance, and exact edited/reopened geometry equality. Frozen actual outputs: test/agent-cad-corpus/manufacturing-shared/32hole-evidence-r4; oracle proof cb23dac6c. Earlier deadline/work-limit/cold-open failures below are historical and superseded for this workflow; broader Files/geometry coverage remains partial.
