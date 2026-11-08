@@ -1,5 +1,21 @@
 # Workflow state machines and invariants
 
+## Declared Slot source, equations and native member custody — 2026-11-08
+
+Scoped R1 PASS ACAD5c82504, actualCore79c9c86/Desktopddab73b45. One actual
+StraightSlot relation declares the native axis/segments/arcs; native intrinsics
+and four genuine junction rows remain. Ten mm residuals preserve four regular
+axis freedoms without forcing admission. Native directed-side and declaration
+checks remain separate from equation residuals; wrong semicircle, missing
+junction or ambiguous member ownership cannot be adopted as a qualified Slot.
+Create/edit use one source/J transaction and independent original-request proof.
+No-op/refusal retains source, journal, counters and resources. Retained diameter
+conflict rejects a radius edit; actual constraint removal restores editability.
+Three browser/server .cad saves and two fresh Opens retain IDs and equations;
+five semantic malformed files reject before adoption, followed by healthy use.
+Independent native-sketch geometry/source/archive checks pass; no early rounding
+or post-failure assertion/tolerance change. BRep/profile/extrusion remains open.
+
 ## Native attachment causal replay and travel — 2026-11-08
 
 QUALIFIED scoped R2 ACADd82b3c1, actualCoreeff8af0/Desktop719a4049a. One current
