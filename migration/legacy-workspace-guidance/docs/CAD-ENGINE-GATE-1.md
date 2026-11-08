@@ -363,3 +363,14 @@ Use `ACTIVE-FILES-CAD-RELEASE.md` for that audit, not an app-private CAD mirror.
 Use `JSKETCHER-FOUNDATION-MATRIX.md` for individual current findings and
 `WEBOS-WORK-QUEUES.md` for scheduling. Evidence is scoped; all unqualified rows
 stay open. Tonight's implementation stays on Files and Gate 1 foundations.
+
+## Precision requirement clarification — 2026-11-07
+
+Photonic chip/defect workflows include0.xnm features; user accepted0.001nm
+(1pm) geometric error. The current mechanical proofs and1e-9mm replay guard
+are not proof of that geometric accuracy. ACAD `docs/CAD-PRECISION-CONTRACT.md`
+records exact units/current lower-domain limits, required operating-envelope
+qualification and representation-specific budgets. C05/C09 remain open for
+this target; source identity, solver residuals, replay stability, BRep/mesh error
+and physical manufacturing uncertainty must stay separate. No existing proof
+is retroactively relabeled or thresholds changed by the requirement.

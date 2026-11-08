@@ -3273,3 +3273,26 @@ reuse actual source/solver/journal authority; the complete singular-report/nativ
 workflow remains to run. Public quantities R1 is running on private20972; its
 latest actual states include unit checks, refusals, native Open and inch-driven
 geometry. Complete result remains pending.
+
+### Quantities complete proof and explicit precision requirement — 2026-11-07
+
+ACAD578b865 freezes physical-quantity R1 PASS:32rows/three native files/twelve
+precise refusal cases plus independent arithmetic/source/Native-observation
+checker on compilede01f495/Desktopc12ccbe18. Public accepted values include
+2in/area/volume/angle/count/boolean and units; actual width inch(4)→101.6mm,
+equivalent mm spelling, mixed travel, Save/server sync/three fresh Opens pass.
+This proves typed dimensional semantics for the tested mechanical model, not
+nanoscale geometric accuracy or manufacturing performance.
+
+User explicitly needs photonic chips/defects at0.xnm and accepted0.001nm=1pm
+geometric error. See ACAD41ef9f9 `docs/CAD-PRECISION-CONTRACT.md` for distinct
+source identity/replay stability/geometric accuracy/mesh/physical uncertainty
+contracts. Current profile100nm and typed rectangle1000nm domain floors are
+not qualified for that feature scale. Overall extent/coordinate offsets remain
+unspecified. No threshold was silently relaxed or lowered. Precision remains
+an explicit open C05/C09 requirement informing subsequent engine work.
+
+Corrected source causality audit5114708 preserves actual displacement
+0.023599383780492644nm=23.599383780492644pm. Cold-candidate phase e95c377
+and final receipt corroboration1648694 are source repairs pending unchanged
+whole R4 qualification. No global solver-setting/hint-order change.
