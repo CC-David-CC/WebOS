@@ -14,6 +14,8 @@ Read-only inventory of selected box-webhost serving roots, menus and catalogs. P
 | R730 actual build checkout | `/mnt/data10tb/codi-acad-build-20261107-r2/` — test/build pin, not necessarily latest source |
 | Older original checkout | `/home/dflanag3/CodiServer/desktop-preview/SIMPLIFIED/` — simplified@c78b40341, nine tracked local edits preserved |
 
+`served_apps_public/` and other older copies are separate historical/reference or unfinished inputs, not proof of the latest integrated version. Do not automatically synchronize them. Server hash directories are built serving assets; edit app source instead.
+
 Current desktop integration contains the committed simplified history. Uncommitted SIMPLIFIED edits are separate preserved work. CURRENT-CODE stays fixed. R730 source worktrees are detached inspection checkpoints, updated only when clean; dependencies are separate. App folders contain source/adapters and pinned dependency specifications, not necessarily complete upstream libraries. ACAD core is independent.
 
 ## Git locations

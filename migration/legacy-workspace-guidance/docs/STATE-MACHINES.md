@@ -1,5 +1,18 @@
 # Workflow state machines and invariants
 
+## CAD-AUTHORED-STALE-01 precise preflight failure layer
+
+E16R2 proof sourceactualbaf95cc/78cc169 showed plain Error/no code at Craft,
+not transport loss or cancellation. Stale authored revision rejects BEFORE
+history capture/Native work/allocation/publication; FULL state and high-water4
+remain exact. New product1bd2a236/rootee3db52 adds STALE_HISTORY to the two
+existing authored feature/edit-travel preflight guards, retaining Error names,
+messages and ordering. Registry STALE_DOCUMENT, cancellations AbortError and
+Native domain refusals retain their own meanings. No blanket exception wrapper.
+Complete E16R3 now checks BOTH stale edit and stale Undo using the SAME actual
+old revision and exact whole-state equality; source and runtime scopes are in
+the work queue. Whole qualification still pending, not inferred from review.
+
 ## CAD-DRAWING-REPAIR-01 / CAD-THROUGHHOLE-AXIS-01 finite current qualification
 
 Proof ACAD216b996 whole80886+FIRST independent oracle PASS actualbaf95cc/78cc169.
