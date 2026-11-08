@@ -1,5 +1,14 @@
 # Principal placement transport composition
 
+Numeric principal Apply now has finite whole R4 qualification ACAD25fc19e,
+actualCore6f6ccef/Desktopc8779dd83:6real Apply cases/18UI travels/4.cad file
+cycles/Native child regeneration/reopened agent editing/64-entry trim recovery
+and independent oracle PASS. Public inspect-source-plane-placements and
+edit-source-plane-placement share the real wizard OK operation. Broader formula,
+datum, legacy, insertion and stale-gesture Apply remains open. Earlier source-era
+notes below do not supersede this proof or broaden it. See examples/README.md.
+
+
 Source-only, unbuilt and unqualified. Root integration branch includes the
 agent48e91927 adapter plus the real app index import and onDispose registration.
 It uses exactly the same rectangle.target callback/custody as existing depth
