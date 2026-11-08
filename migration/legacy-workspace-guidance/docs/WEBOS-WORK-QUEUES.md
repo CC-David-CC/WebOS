@@ -3355,3 +3355,12 @@ and circular seam fixes. Compilation is not acceptance. Main-thread ARC23 and
 large-source/cache performance, default human dialog precision, finite remaining
 history/drawing coverage and final composed beta remain open. Files accepted;
 no filesystem race, relay or public deployment authorized by this checkpoint.
+
+Latest complete attempt: R9 on2157a85/Desktop640279b9f, frozen ACAD7a2c802.
+First rectangle still rejects, now with actual INVALID independent-solve /
+Degenerate sketch segment diagnostic. Input-versus-output collapse location
+and exact mathematical root cause remain unestablished. Keep original cases
+and coefficients; repair the real reduction/solve contract before another
+coherent full run. Archive repair774c779 is in this build but not exercised by
+this early failure. Finite shared history controls proposal51f1ead is approved
+for isolated source implementation; reference/driving length lane continues.
