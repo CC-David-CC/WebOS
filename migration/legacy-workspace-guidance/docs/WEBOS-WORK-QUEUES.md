@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## E14 finite curved sweep accepted:15of21 ordinary contracts
+
+Root reviewed the actual retained four-case sweep drivers,113-row receipt,
+twelve producing-format JSON saves, thirteen Native queries/77classes and
+independent saved-source/point oracles. Both quarter-Arc traversal cases directly
+Undo creation to two source planes/zero bodies and Redo original IDs, then
+edit/reopen/reedit/refuse correctly. ActualCoref21f91b/Desktopdea2518a3,
+Nativea9cfa6e5/e105bdfe. Root decision ACADa17ed2335f44eb5efd37a41a3a82d737411f138d:
+docs/reviews/ORDINARY-E14-SIGNOFF-20261108.md. No new run or JSON→.cad retagging.
+
+**15of21 ordinary contracts Qualified (E01–E14/E21); six Partial
+(E15/E16/E18/E19/E20/E22).22recent scoped workflows is a separate count.**
+Final combined.cad/viewable beta G10 and broader11competencies remain required.
+PL exact-zero frame source repair is under independent review; no build/run
+claim yet. Next source-only full loft workflow adds missing actual loft-creation
+travel; subtraction creation remains another finite missing observation.
+No active browser/build, main promotion, relay/race tests or public deployment.
+
 ## E10–E13 accepted:14of21 ordinary contracts qualified
 
 NEW E11 whole Chrome14232 and FIRST independent actual source/Native/archive
