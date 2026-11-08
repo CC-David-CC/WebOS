@@ -5,9 +5,7 @@
 Engine work now belongs in independent ACAD/main (`box-git:/srv/data/git/ACAD.git`,
 backup `r730:/mnt/data10tb/git/ACAD.git`). Fresh parentless snapshot c700cac;
 no old Git ancestry imported. Normal fresh build and complete shell model/edit/
-Save/Open workflow PASS on ACADb053638. Shell material3MF and atomic source/region
-workflows are running next. JSketcher rollback to public webos-integration is
-still pending these cutover checks; no public site/GitHub changes.
+Save/Open workflow PASS on ACADb053638. Shell material3MF with independent oracle and atomic source/region workflows also PASS (Desktop01338594f/7e81040ba). Box-git JSketcher now exactly matches public branch heads, defaultwebos-integration518a466;444extra refs removed after backups/tests. No public site/GitHub changes.
 [Cutover checklist](ACAD-CUTOVER-20261107.md) tracks that separate requirement.
 
 ## Current complete-workflow results — 2026-11-07
