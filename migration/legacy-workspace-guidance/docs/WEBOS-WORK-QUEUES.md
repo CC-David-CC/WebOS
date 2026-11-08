@@ -1,5 +1,26 @@
 # WebOS work queues and progress ledger
 
+## Circular R2 result and next unchanged whole run — 2026-11-08
+
+Corea26fbc6 normal rebuild86809 and fixture3091 completed0. Whole Chrome78204
+verified150 actual asset hashes including colocated circular WASM, then reached
+actual source census. First Native cell create failed strict observation
+corroboration with ENGINE_FAILURE;9 public commands/two rows/no saves. Own
+contexts closed and driver sources unchanged. This exercises the graph repair
+but is NOT a circular geometry PASS. Both original browser failures are retained
+on the ACAD integration branch on box-git and R730.
+
+Coreb7d6590 retains R2 and preserves up to256characters of the internal strict
+observation rejection in the normal public failure message. It keeps all
+validation assertions, ENGINE_FAILURE classification and original nested cause;
+no Native payload exposure or budget relaxation. New complete build85515 is
+running on R730 from that source, fresh graph backup r3. Next: fresh stage-r4,
+pins-r5, loopback21005/state-r23, unchanged full workflow then actual cause repair
+if needed. Existing fixture21004/state-r22 remains available; no Chrome workflow
+is active. Source-only comparison of C++/JS corroboration is ongoing; do not
+assert a cause before evidence. Fourteen earlier scoped passes remain;21 formal
+exercise signoffs remain Partial. No public/beta deployment.
+
 ## Circular first browser failure retained; repair building — 2026-11-08
 
 Whole Chrome9716 on Core9189366/Desktop1298d63c4 failed after6 public commands:

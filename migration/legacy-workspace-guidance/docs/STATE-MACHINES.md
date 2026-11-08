@@ -745,6 +745,19 @@ app write paths are not adopted, so this is not all-app qualification. Forced un
 revocation and process failure still require truthful unknown-outcome handling.
 Review shared per-window operation ownership rather than add app saving flags.
 
+## Circular Native observation admission — 2026-11-08
+
+After Worker readiness, read-only Native arrangement observation must preserve
+owned-name count and original input bytes, pass strict bounded data capture,
+then corroborate original circle equations, event branches, interval coverage
+and directed cell boundaries before any owned cell construction is admitted.
+Whole Chrome78204 passes resource colocation but fails this observation gate;
+no owned solid creation or file save is qualified. The detailed inner rejection
+was lost at the Worker error serialization boundary. ACADb7d6590 retains a
+bounded internal reason in the outer message without relaxing admission or
+exposing the raw observation. Underlying geometric/contract cause is unresolved;
+next regression is the unchanged complete browser workflow after normal build.
+
 ## Circular Worker resource graph — 2026-11-08
 
 States: source registered → native bytes verified → closed graph staged → asset
