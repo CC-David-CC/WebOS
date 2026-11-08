@@ -1,5 +1,26 @@
 # WebOS work queues and progress ledger
 
+## E15 loft qualified:16of21 ordinary contracts
+
+Complete Chrome42040 and FIRST independent source/archive/section oracle PASS0
+on actualCoreb09718518965f1c47a0ca9a169f91316505cb594 /
+Desktop00e12613a55ab4ce4df919d1ae0a63a0066625c0; adaptive Nativeed06b634/bc8895ce.
+77records/185tracedpublic commands/25solid observations/three source-only states/
+250Native classes/four refusals/two no-ops/16travels/three.cad browser/server/
+fresh signed Open cycles. Actual LOFT append removal/restoration and width/plane
+edits preserve source/feature/output/region/seam/counters. Source unchanged,
+contexts retired; no post-run product/criterion/oracle repair. Frozen proof
+ACAD150f399fddaed8d87345fec434755dc5707b3e80. Exact helper copied to
+examples/loft-creation.mjs with actual public-inspection adapter documented.
+
+Root viewed the real unedited screenshot: the solid is tiny beside large source
+planes. This does NOT qualify final framing/visibility; CAD-VIEW-01/G10 remains
+open without assuming its cause or redesigning UI. Geometry/measurement proof
+and viewing are separate. **16of21 ordinary Qualified(E01–E15/E21), five Partial
+E16/E18/E19/E20/E22;23recent scoped workflows is a separate counter.**
+PL R2 failure remains; fixed-alias correction source ready/reviewed but not yet
+built/run. No active browser/build, beta/main promotion or final packaging.
+
 ## Loft creation whole workflow running —2026-11-08
 
 Reviewed packet49ab9ca composed as ACAD0fb84aa, backed both LANs. Root alone

@@ -1,5 +1,22 @@
 # Workflow state machines and invariants
 
+## E15 loft creation transitions qualified; CAD-VIEW-01 remains open
+
+Whole42040 +FIRST independent oracle PASS, ACAD150f399 actualb097185/00e12613a.
+Two original editable section sources→loft append→Undo no body/two sources→Redo
+SAME feature/output/regions/seams/counters are directly observed. Source-width/
+plane edits, sixteen shared travels, four atomic refusals/two no-ops and three
+browser commit/server SHA/fresh signed Open/reedit cycles pass.250actual Native
+material/taper classes and actual source/archive integrals prove geometry.
+
+CAD-VIEW-01: actual final screenshot shows tiny part framing beside large source
+planes. Cause is not yet established. Final G10 must prove readable derived
+geometry framing/visibility using the real viewport and accepted geometry bounds,
+without treating pixels as geometry truth, modifying authored units/coordinates,
+adding a parallel model or claiming active human gestures qualified. Human UI
+redesign stays deferred; existing viewing operations/lifetime may be used.
+This is separate from the successful ordinary geometry and native persistence.
+
 ## CAD-PL-ADMISSION-01: exact-frame candidate did not close R2
 
 Actual whole26694 on b097185/00e12613a repeats the same redundant SignedY2
