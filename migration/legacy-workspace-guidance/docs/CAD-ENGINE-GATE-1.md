@@ -1,5 +1,15 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+## Current ordinary exercise acceptance —ten contracts,2026-11-08
+
+**10of21 Qualified: E01–E09 andE21;11Partial.19recent scoped whole workflows.**
+The four-corner creation/travel/.cad gap is now actually qualified by complete
+workflow61817 and FIRST independent source/Native/archive oracle, ACAD6511510.
+This supersedes the prior nine-contract checkpoint below. Complete broader
+competencies and final beta/viewable-agent delivery remain open; counts are
+not a time-completion percentage or all-engine qualification.
+
+
 ## Current ordinary exercise acceptance —nine contracts,2026-11-08
 
 **9of21 Qualified: E01/E02/E03/E04/E05/E06/E07/E08/E21;12 Partial.**

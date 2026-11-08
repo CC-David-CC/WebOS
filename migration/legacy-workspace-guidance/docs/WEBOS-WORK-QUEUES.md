@@ -1,5 +1,25 @@
 # WebOS work queues and progress ledger
 
+## Four-corner R2 qualified and backed;19 scoped/10 exercise contracts —2026-11-08
+
+Whole61817 +FIRST independent source/Native/archive oracle PASS: actual
+Core013369861fad6123520065a4e06fafac752900e8 /
+Desktop68d66e4f8295af29e145d24d72d3b9571e550cac, Native32eec74e/abbf2aa0.
+39records/141traces/27observations/343Native points/4refusals/3.cad saves/server
+byte equality/3fresh signed Opens. Actual CORNER creation UndoRedo and complete
+edit/refusal/travel/reopen chain pass. Original R1 remains; code repair affects
+only malformed/domain request codes. Driver/oracle/geometry/accuracy unchanged.
+Contexts retired/source unchanged; no active browser workflow/build.
+
+Proof6511510; ACAD main78a70d2ac7ec44b259d65e7fb20bbe5a43dfbeb7 backed both LANs.
+Exact tested recipe copied to examples/four-corner-plate.mjs. Canonical E09 now
+Qualified:10of21 ordinary contracts (E01–E09/E21),11Partial;19scoped workflows.
+Full11competencies/final composed beta delivery remain open. Next root serial
+work: compose complete Fix source/corrections/adapter, normalbuild/wholeworkflow.
+DistancePL source packet continues independently. No deployment/canceled race/UI
+or source packaging diversion.
+
+
 ## Four-corner R2 full workflow active after request-code repair —2026-11-08
 
 Normal app-bundle build70388 terminal0, reusing unchanged complete compiled

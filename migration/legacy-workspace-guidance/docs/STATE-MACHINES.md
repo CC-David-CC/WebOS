@@ -1,5 +1,18 @@
 # Workflow state machines and invariants
 
+## Four-corner creation travel and request refusal qualified —2026-11-08
+
+Whole61817 and FIRST independent source/Native/archive oracle PASS, proof6511510,
+actual0133698/68d66e4f8 with explicit32eec74e/abbf2aa0.39records/27observations/
+343Native points/4refusals/3actual .cad cycles. CORNER append → Undo restores
+center-holed producer with original source and monotonic high-water → Redo
+restores SAME corner feature/output/four bores; source/depth/diameter/offset edits,
+mixed travel, precise request/geometry/stale refusal and fresh Open/reedit pass.
+Source hashes unchanged and owned contexts retired. Original uncoded-request R1
+retained; no driver/oracle/geometric tolerance changes. This closes the named
+E09/G6 lifecycle gap without a general hole-type/engine-domain claim.
+
+
 ## Through-hole request rejection boundary —2026-11-08
 
 Complete E09 attempt76131 on actual Core0133698/Desktop95d8023b0 failed at an
