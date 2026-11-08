@@ -1,5 +1,32 @@
 # WebOS work queues and progress ledger
 
+## Current CAD1 execution checkpoint — 2026-11-08
+
+Qualified finite principal Apply R4 ACAD25fc19e; actualCore6f6ccef /
+Desktopc8779dd83. Complete Chrome workflow and independent ZIP/source/analytic/
+chronology oracle PASS:199records/6real Apply paths/18UI travels/30Native sets/
+153points/9refusals/4.cad Save/server/fresh Open cycles/64real trim edits.
+Native child closure, reopened agent editing and retained-D Cancel/travel after
+P eviction pass. R1/R2/R3 failures remain frozen. Two integration fixes preserve
+constituent currentness and derive restored readiness from actual owned data.
+
+Engine main3233e5b and desktop working branchc8a0fde9c are backed on bothLANs.
+Thirteen recent named browser workflows pass; all21 formal Gate1 exercise
+signoffs remain Partial. E17/C10 assemblies are Gate2. Files remains accepted.
+No public/beta deployment follows this local qualification; no filesystem-race
+or visitor-relay testing is resumed. Human UI redesign remains deferred.
+
+Current source lanes: C01 genuine Mirror; C02 two-circle Native arrangement,
+exact ABI/cohort and actual provenance; C03/C04 Circle/quarter-Arc RadiusLength.
+Root reviews/composes, builds and runs one whole Chrome workflow at a time.
+No per-change microtests. Final source/runtime packaging waits for functional
+gates. The detailed authority stays CAD-GATE1-BASELINE-20261106.md,
+STATE-MACHINES.md and ACAD docs/CAD1-CLOSURE-SEQUENCE.md.
+
+Earlier dated 'current' entries below are historical milestones; retain their
+producing pins and failures, do not treat them as current blockers/assignments.
+
+
 ## Active repository cutover —2026-11-07
 
 Engine work now belongs in independent ACAD/main (`box-git:/srv/data/git/ACAD.git`,
