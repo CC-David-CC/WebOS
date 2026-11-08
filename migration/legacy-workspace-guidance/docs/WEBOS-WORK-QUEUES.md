@@ -1,5 +1,26 @@
 # WebOS work queues and progress ledger
 
+## Unused-temp cleanup: 89 more exact-backed Desktop copies removed
+
+Receipt docs/evidence/local-temp-cleanup-20261108-r4.json records89 completed
+older clean checkouts removed after fresh root exact remote-branch readbacks and
+per-tree HEAD/common/status including ignored checks. Full source inventory
+local-temp-cleanup-candidates-20261108.json SHA256
+05b48ebd5e5437eeccf167a73b8f2e4954ec00a5a9f450ed3eea733dddaf7a38.
+10,051,129,344allocatedbytes targeted; activeRoot/dependencies/Chrome excluded.
+Combined cleanup PC free16GiB (initial~150MiB); /tmp initially99GiB accumulated
+copies. Older Core Git archive extracted on R730; connectivity fsck PASS0,
+no alternates. More unused Core copies being inventoried, not blindly removed.
+
+Root composed Boolean acceptancecf77 as33d0d0e and exact E22 refusal3868 asae3cee1;
+source provenance review61ae asd04dc82; public legacy writer mapbdd asb6e1912.
+BothLAN exactb6e1912. No product build needed: real runtime remainsbaf95cc/78cc169.
+E22 wholeR5 session80886 now running on21028/state-r46; evidence
+/tmp/codi-acad-drawing-reference-repair-20261108-r5 and sibling.log. Six .cad
+cycles/2datums/budgets/repair travel unchanged; full pre-candidate equality plus
+explicit exact candidate epoch/token relationships. No before-whole oracle.
+Counts19/21ordinary/23scoped unchanged, no deployment/finalGate1 claim.
+
 ## Local unused-temp cleanup active; R4 width repair succeeds, token assertion retained
 
 User explicitly requested PC cleanup and R730 execution. Removed13inactive clean
