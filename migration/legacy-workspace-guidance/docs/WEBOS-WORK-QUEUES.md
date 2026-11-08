@@ -1,5 +1,28 @@
 # WebOS work queues and progress ledger
 
+## E22 complete drawing-repair workflow running on pinned fit cohort
+
+Normal19814/stage71599 PASS0. ActualCoredb278000a036dbc042183fc3a902633e848630fd /
+Desktop6f708bd6feeb08aaf190229ac1a1c11e4881cb41;178exact byte pins,
+469assets/564666954bytes. Fresh private21025/state-r43 backend7477/forward14001.
+Root alone runs complete Chrome51685 using new public-only E22 recipe;
+evidence /tmp/codi-acad-drawing-reference-repair-20261108-r1 and sibling.log.
+Both datum cases, actual fillet-ID invalidation, immediate actual repair UndoRedo,
+six .cad cycles/twelveSVGs/440Native points are required. Original evidence and
+budgets remain. No source/criterion/oracle patch during run; independent oracle
+only after whole terminal success. Full loft/view run follows strictly serial
+on the same exact cohort, including six real fits/three view refusals and actual
+human screenshot review. Compilation/source alone do not qualify viewing.
+
+PL free/anchored NEW contract dd6c914 is frozen before execution: retain original
+controls and free motion; add actual free named update/travel/.cad/math proof,
+then explicit anchors for fixed-line phase. OriginalPL driver/oracle/R1–R5 remain
+unchanged; no smaller anchored-only substitute or budget relaxation. Full source
+still in preparation. E16 frozen analytic source passed independent review; whole
+packet remains pending. Counts19ordinary/23scoped unchanged. No public deploy,
+main promotion, relay/race testing or final packaging.
+
+
 ## Fit/drawing normal build PASS; fresh stage underway
 
 Normal19814 PASS0 atCoredb278000a036dbc042183fc3a902633e848630fd. Fresh
