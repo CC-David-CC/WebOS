@@ -1,5 +1,20 @@
 # Workflow state machines and invariants
 
+## CAD-PL-ADMISSION-01 R3: redundancy passes; reversal publication refused
+
+Core5d61bf0 retains actual whole37611 on40f5c92/cb9292e8c. Original distinct
+SignedY2 redundancy and preceding controls pass. Signed endpoint B reversal
+then fails CURRENT_GEOMETRY_MISMATCH before publication: the warm candidate and
+fresh reconstructed solve disagree under existing equivalence. No successful
+reversal or persistence claimed. Exact fields/cause require investigation;
+canonical-frame/gauge and numeric drift are hypotheses, not findings.
+
+Invariant: a rejected dimension transition cannot publish a candidate whose
+reconstruction changes its accepted geometry. Repair must establish coherent
+original-equation solving and replay, without overriding retained geometry or
+loosening tolerances. Original R1/R2 failures remain historical evidence; this
+R3 supersedes their unobserved-activation status only for the initial assertion.
+
 ## E15 loft creation transitions qualified; CAD-VIEW-01 remains open
 
 Whole42040 +FIRST independent oracle PASS, ACAD150f399 actualb097185/00e12613a.

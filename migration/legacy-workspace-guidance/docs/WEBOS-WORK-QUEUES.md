@@ -1,5 +1,25 @@
 # WebOS work queues and progress ledger
 
+## PL R3 terminal failure retained; initial redundancy repair observed
+
+Unchanged whole Chrome37611 FAIL1 on actual Core40f5c92/Desktopcb9292e8c.
+22records/261public commands/12Native observations/four diagnostics/three
+refusals/zero saves; owned contexts retired. The distinct redundant SignedY2
+assertion and preceding freedom/conflict/zero/no-op/opposite-side/alias controls
+now pass. Signed endpoint dimension reversal at driver47 is rejected with
+CURRENT_GEOMETRY_MISMATCH: independent replay changed solved geometry. No edit
+committed; the exact divergence cause remains unestablished. No tolerance,
+mathematics, driver or qualification criterion changed. Core5d61bf0 retains the
+terminal receipt and all source snapshots under
+ test/point-line-distance-public-workflow/evidence-r3.
+
+Next: source-only investigation of warm candidate versus reconstructed solve;
+add bounded diagnostics only if needed to identify the differing fields. Initial
+repair is finite progress, not complete workflow qualification. Counts remain
+16of21 ordinary Qualified and23 scoped workflows. E16/E18/E19/E20/E22 remain
+Partial; E22 repair travel packet continues independently. No deployment,
+main promotion, relay, filesystem-race testing or packaging.
+
 ## Exact-alias build/stage PASS; unchanged full PL R3 running
 
 Normal build21238/stage43751 PASS0. Actual Core40f5c921cec98fa50f37c36acb01b51192f86fcf /
