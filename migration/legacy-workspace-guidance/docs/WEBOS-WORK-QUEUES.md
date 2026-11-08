@@ -1,5 +1,19 @@
 # WebOS work queues and progress ledger
 
+## Circular first browser failure retained; repair building — 2026-11-08
+
+Whole Chrome9716 on Core9189366/Desktop1298d63c4 failed after6 public commands:
+`Loft Worker module graph is not colocated`. Exact149 asset pins passed; genuine
+Circle sources were created, but no solid or .cad save was reached. All owned
+contexts closed and driver source snapshots stayed unchanged. ACADa26fbc6
+preserves the original whole receipt/source snapshots and both staging logs.
+Confirmed wiring defect: generic WASM file-loader omitted circular-assets from
+its exclusions, rehashing the WASM outside its required closed Worker subtree.
+Repair adds that one exclusion; closed graph validation and test expectations
+remain unchanged. Normal complete rebuild86809 is running on R730. Then stage
+fresh, rerun the unchanged full workflow, and analyze saved artifacts afterward.
+Fourteen prior scoped workflow passes remain; no new circular qualification.
+
 ## Circular staging capacity repair — 2026-11-08
 
 Normal app build64586 completed successfully on Core9189366. Actual fixture

@@ -745,6 +745,19 @@ app write paths are not adopted, so this is not all-app qualification. Forced un
 revocation and process failure still require truthful unknown-outcome handling.
 Review shared per-window operation ownership rather than add app saving flags.
 
+## Circular Worker resource graph — 2026-11-08
+
+States: source registered → native bytes verified → closed graph staged → asset
+URLs emitted → app inventory admitted → browser hashes verified → colocated
+mount accepted → Worker ready. A registered catalog entry alone is insufficient.
+Every module, loader and WASM URL must preserve the same cohort directory;
+Native byte identity does not replace this resource-location invariant.
+Whole Chrome9716 reached browser hash verification, then correctly refused the
+mount because generic WASM emission moved circular-occ.wasm outside the graph.
+ACADa26fbc6 excludes that exact cohort from the generic loader, retaining the
+cohort resource rule and strict mount refusal. Original whole failure retained.
+The unchanged full browser regression and independent artifact proof are pending.
+
 ## B01 build-staging boundary
 
 Current policy update — 2026-11-08: apply the user's approved1GiB trusted
