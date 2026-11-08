@@ -1,5 +1,18 @@
 # WebOS work queues and progress ledger
 
+## Complete E22 R3 running on captured-profile repair cohort
+
+Normal build36418 and fresh stage65105 both PASS0. Actual fixture runtime
+Core62b27e6de653516190ddfaaad94b839da2d5daf7 /
+Desktop78cc1694eca1a88623f33e7ff748673c909a6017; 469assets/564684156bytes,
+178exact pins. Private21027/state-r45 backend33009/forward40516, no relay flag.
+UNCHANGED whole drawing-reference-repair driver session68990 is running;
+evidence /tmp/codi-acad-drawing-reference-repair-20261108-r3, sibling.log.
+No microtests/oracle before the whole terminal result. Source fixes passed
+root and independent review, including77e2f638 named-placement optout. Same
+original 2datum cases/6.cad cycles/repair travel/geometry and artifact criteria.
+Counts stay19/21ordinary,23unique; no deployment or finalGate1 claim.
+
 ## Local evidence checkout reduced; all proofs retained in Git and both LANs
 
 Before the next whole run, root confirmed clean ACAD index and both LAN refs
