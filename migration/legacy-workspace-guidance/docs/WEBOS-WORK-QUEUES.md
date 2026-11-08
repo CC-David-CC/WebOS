@@ -1,5 +1,23 @@
 # WebOS work queues and progress ledger
 
+## 168 clean legacy Core checkouts removed against verified archived Git
+
+Root reverified every HEAD/tree in R730 archived commonGit with batch object
+reads; original commonGit has no alternates and archived connectivity fsckPASS0.
+Each local tree then rechecked exactHEAD/tree/common and completely clean status
+including ignored files before normal git worktree remove.168 removed, no force
+and no old-history push into rolled-back JSKetcher. Sources/branches are preserved
+in full local commonGit and immutable R730 archive. Receipt
+local-temp-cleanup-20261108-r5.json; inventory
+local-legacy-core-cleanup-candidates-20261108.json SHA256
+ af65002626ba38cb8336a3aa831fd6cc916b4fc3c0f6e02b009748579e862029.
+7,058,964,480allocatedbytes targeted. PC free22GiB, initially~150MiB. Dirty or
+ignored old trees remain held for FULL archive/compare, not discarded from Git
+assumptions. Root current source/Chrome/dependencies and activeE22R5 preserved.
+E22R5 currently reaches first actual .cad/browser/server equality/freshOpen and
+post-Open semantic hole edit; full repair/second datum/remaining cycles ongoing.
+No additional qualification until complete whole+independent artifacts.
+
 ## Unused-temp cleanup: 89 more exact-backed Desktop copies removed
 
 Receipt docs/evidence/local-temp-cleanup-20261108-r4.json records89 completed
