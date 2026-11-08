@@ -872,24 +872,24 @@ A-specific child prevents repair to B atomically; no partial first-parent edit,
 resource leakage or silent retargeting.14rows/two cases/two native files PASS.
 General split/merge and arbitrary references remain outside this named proof.
 
-## Modern typed parameter adoption —approved integration, not qualified
+## Modern typed parameter adoption —named complete workflow qualified
 
-Source review confirms that the older typed-part path supports formulas while
-modern selected-profile/through-hole paths reject typed project input. That is
-an integration gap, not a formula-engine failure. The active extension reuses
+The initial modern selected-profile/through-hole typed-input gap is repaired
+for the explicit selected-rectangle family. Complete R4 is qualified below;
+broader typed families remain unsupported. The extension reuses
 one authoritative typed source, dependency evaluator, physical transaction and
 authored journal. It does not introduce a second parameter document or claim
 support by removing all typed-input guards.
 
 | Transition | Required invariant | Current evidence |
 |---|---|---|
-| Numeric selected rectangle/profile/hole → typed proposal | Capture genuine current source/feature/constraint/build identities; caller supplies formulas, not Native geometry | Approved source plan only |
-| Proposal → validated typed candidate | Worker checks definitions, dimensional length types, dependencies and exact supported authored fields before materializing strict numeric requests | Implementation in progress |
-| Formula edit → replay | Rectangle width/height, extrusion depth and supported hole sizes/offsets derive from the same validated parameter revision; native ledger still accepts numeric-only geometry inputs | No runtime qualification yet |
-| Candidate → accepted document | Publish definitions, bindings, solved source and geometric history as one existing physical journal transaction | Required, not yet proven |
-| Bound field → ordinary numeric edit | Refuse explicitly rather than silently deleting the authored formula | Required, not yet proven |
-| Rejected/no-op/stale candidate → current document | Preserve accepted typed source, bindings, native state, journal, association and resource ownership; no partial source-only publication | Complete workflow pending |
-| Save/reopen → editable typed design | Native source preserves formulas/bindings; recomputation derives numeric requests using the selected real engine, without trusting a stored derived cache | Complete workflow pending |
+| Numeric selected rectangle/profile/hole → typed proposal | Capture genuine current source/feature/constraint/build identities; caller supplies formulas, not Native geometry | Complete R4 PASS, ACAD399b80a |
+| Proposal → validated typed candidate | Worker checks definitions, dimensional length types, dependencies and exact supported authored fields before materializing strict numeric requests | Complete R4 PASS in named modern family |
+| Formula edit → replay | Rectangle width/height, extrusion depth and supported hole sizes/offsets derive from the same validated parameter revision; native ledger still accepts numeric-only geometry inputs | Native metrics and actual point reads R4 PASS |
+| Candidate → accepted document | Publish definitions, bindings, solved source and geometric history as one existing physical journal transaction | Complete R4 source/creation/physical travel PASS |
+| Bound field → ordinary numeric edit | Refuse explicitly rather than silently deleting the authored formula | Complete R4 source/creation/physical travel PASS |
+| Rejected/no-op/stale candidate → current document | Preserve accepted typed source, bindings, native state, journal, association and resource ownership; no partial source-only publication | Complete R4 refusals/native persistence PASS |
+| Save/reopen → editable typed design | Native source preserves formulas/bindings; recomputation derives numeric requests using the selected real engine, without trusting a stored derived cache | Complete R4 refusals/native persistence PASS |
 | Unsupported generic feature family → typed request | Explicit unsupported result; no backend substitution or inference from a coincidentally numeric current value | Existing guards remain outside the narrow supported extension |
 
 These formulas are an acyclic directed dependency graph. Relationships between
@@ -928,3 +928,21 @@ actual history index/feature/source/region, with legacy handling separate and
 no-op replies bound to the same identity. Full unchanged rerun still required.
 The literal part/native observations are passing controls; later typed states
 remain unqualified. No public corruption incident is claimed.
+
+
+Modern parameter R4 (ACAD399b80a) passes72rows/two native saves on1e293a8/
+5198eee94, including actual formula geometry/point reads and fresh Open/reedit.
+R2's wrong JSON definition-wrapper assumption and R3's incomplete opaque-token
+normalization are retained separately from the R1 product admission defect.
+After evaluated refusal, host/physical/journal/solid inspection tokens may
+refresh; source/history/formulas/geometry/journal contents/counters/association/
+resources remain exact. Actual Undo reaches the preceding genuine formula edit,
+and Redo restores it: refreshing inspection tokens is not an authored operation.
+Read-only and no-op comparisons remain exact including all tokens.
+
+Typed artifact-read integration should reuse the accepted guarded expression
+service and the existing observation pipeline, not invent another facade cache,
+capability ticket or parameter state. Real typed point-read success and source
+inspection establish that current physical source/result/stream identity is
+already enforced. Three artifact-reader admission guards remain to integrate;
+all their existing source/frame/build/counter/file/cleanup checks must remain.
