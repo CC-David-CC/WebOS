@@ -3049,8 +3049,11 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
 - [x] Retained complete parent repair R6 on90e3419 PASS (ACAD09ba384):
  14rows/two cases/two native files, explicit repair/deletion/travel/persistence
  and incompatible-child atomic refusal; wider reference domains open.
-- [~] Original100×50→150×30 plate, holes, fillet, pattern, inches, travel,
-  native persistence and exchange: one complete driver/oracle being prepared.
+- [~] Original100×50→150×30 plate, holes, all4 outer fillets, pattern, inches,
+  mixed travel, native persistence and STEP/core3MF: complete coherent driver/
+  oracles integrated ACAD5151915. Actual application workflow R1 now running on
+  qualified90e3419/Desktopfa1ca19f3; separate artifact STEP reader compiling.
+  No PASS claim before whole flow and artifact checks settle.
 - [~] Exact +Z blind rectangular pocket and flush inset-label interface source
   and full public workflow/oracle in independent R730 lane. No result yet.
 - [x] Retained whole plate/export R7 on ac5a82b PASS:18rows, native persistence,
@@ -3058,6 +3061,13 @@ The accepted saved-32-body source-proof run now reports Open approximately 10.9 
   artifact oracle PASS. R6 incomplete engine-revision launch refusal retained;
   corrected environment only, no product/driver change. See manufacturing-shared/
   retained-replay-evidence-r7.
+- [~] Modern generic-part E18 typed parameters: confirmed selected-profile/
+  through-hole paths currently refuse typed bindings while legacy typed parts
+  work. Approved coherent extension reuses existing authoritative typed source,
+  dependency Worker, physical transaction and journal for selected rectangle
+  width/height/extrusion depth and semantic through-hole dimensions. Other
+  feature families stay explicitly unsupported; numeric edits cannot erase a
+  formula. Source work active; no runtime result.
 - Keep source/evidence on both ACAD and Desktop LAN repositories. JSketcher is
   retired to public-fork state. No cancelled filesystem-race probes or UI work.
 
