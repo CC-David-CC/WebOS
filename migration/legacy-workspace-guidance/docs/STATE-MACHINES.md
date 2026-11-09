@@ -1,5 +1,16 @@
 # Workflow state machines and invariants
 
+### Latest C11 R5 result — 2026-11-09
+
+Whole66328 PASS:42Native observations,3 Opens,7SVG,15 settled writes and owned
+cleanup. FIRST reader69539 FAIL KeyError windowId: pre-launch top-field capture
+was undefined, while all15 actual write actors/four own proofs remain recorded.
+Exact-R5 bounded historical reader/future capture repair in progress; original
+receipt/FIRST immutable, no artifact/visual qualification claimed. Full Gate1
+OPEN;21/21 ordinary scope retained. No Root runtime job active. Exact evidence
+and next action in WEBOS-WORK-QUEUES.md / ACAD evidence-r5/STATUS.json.
+
+
 ### Latest C11 R5 execution — 2026-11-09
 
 R5 whole66328 is RUNNING on actual unchanged Core82866bf / NEW Host796c90513 /

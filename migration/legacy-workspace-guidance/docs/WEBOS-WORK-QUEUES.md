@@ -1,5 +1,44 @@
 # WebOS work queues and progress ledger
 
+## C11 R5 whole PASS; FIRST reader defect — 2026-11-09 latest
+
+Whole66328 terminal PASS0 on producing Core82866bf / Host796c90513 /
+acceptance615716f / Shell57b/60dc.85rows/1073commands/42Native observation
+sets/seven SVGs/four native Saves/three fresh Opens/fifteen write attempts;
+all writes settled, source pins unchanged, owned contexts retired. Actual
+blocked-anchor/refusal/shared Undo, genuine repaired SVG, repair Undo/Redo,
+third Open/D14/source+requirement reedit/final resave all completed.
+
+FIRST artifact reader69539 terminal FAIL1 with KeyError windowId at check.py77.
+Driver captured receipt.windowId BEFORE h.launch(); undefined is omitted by JSON.
+Original receipt7e063f524b934f245d90ab7c75e8f403e08fa94276612cfd190568cdf39787cb
+and FIRSTa743533920f6d7dddf49eaee76885d765c9c9fb155a3629a036421a9d8b44e6f
+are immutable. Every one of the15 actual submissions contemporaneously records
+its window; four guarded own registered-window/root-list proofs agree. Value11
+is page-local across fresh contexts, not a global persistent window identity.
+Independent source/evidence review5462f33 finds sufficient actor binding for an
+exact-R5 reader-local correction, not a fabricated missing field or broad fallback.
+
+Dxf is preparing future capture after actual launch + strict historical reader
+bound to exact raw receipt/producer/example/acceptance/source identities and all
+actual write/proof rows. Root will review, then execute against unchanged whole
+into NEW AFTER output with before/after verifier/input custody. No whole rerun
+solely for this redundant missing field if evidence remains sufficient. Every
+original geometry/source/J/archive/visible SVG condition remains. No complete
+artifact PASS or SVG visual qualification is claimed yet; full C11/Gate1 OPEN.
+
+Evidence: ACAD test/drawing-requirement-public-workflow/evidence-r5/STATUS.json.
+No Root runtime/reader job active; service87004/private21057/forward81017 and
+Chrome155 CDP19551 remain for controlled reuse. Original R3/R4 and FIRST R5
+failures are preserved. Ordinary21/21 remain scoped. Public rollout/relay OFF.
+
+Parallel source progress: finite Native d3b2afa compile/static ABI b45d9a0;
+private unmounted adapter10dcb60; actual portable candidate f2545dd with pair
+479f0620/746da919 and exact lossless input/output custody. No Native query or
+module execution or new-cohort adoption occurred. Further source-query bridge
+and broader Gate1 legacy/curve/reference/resource/beta obligations remain.
+
+
 ## Corrected template / obstruction recovery R5 running — 2026-11-09 latest
 
 Actual producing Core82866bf0ee852f1d3b3892972f07d8af4cd8b9b0 is unchanged.
