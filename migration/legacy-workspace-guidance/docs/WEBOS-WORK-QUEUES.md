@@ -1,5 +1,42 @@
 # WebOS work queues and progress ledger
 
+## Routed C11 R4 running — 2026-11-09 latest
+
+The actual new producer is Core82866bf0ee852f1d3b3892972f07d8af4cd8b9b0 /
+Host6b2a1fbe806175bddafa6c0e0f54c486487d1749, acceptance82866bf,293pins,
+genuine Shell57b/60dc. The current branch can advance with evidence/source-only
+notes; that does not change these frozen producing identities.
+
+Normal build5762, stage44215 and source audit18642 all terminal PASS0: ten
+webpack completions,587 CAD assets/605478574 bytes,660 app files,twelve component
+manifests/116 unique exact Git sources. Native pairs unchanged; raw finite-curve
+pair was NOT adopted. Reused dependency tree was not independently rehashed.
+Custody: ACAD test/drawing-requirement-public-workflow/build-composed-r3/.
+Independent routed-leaf source reviewc28724a found no confirmed blocker.
+
+**Complete whole R4 session81269 is RUNNING.** Output is R730
+/mnt/data10tb/codi-acad-drawing-requirements-20261109-r4/whole; state/log under
+/mnt/data10tb/codi-acad-drawing-requirements-evidence-20261109-r3/whole-r4-*.
+Observe this exact handle before any new runtime job. Fresh isolated service
+95125 reused private21057 after actual old write settlement, confirmed absent
+old own browser context/pages and exact oldPID2939519 graceful SIGINT/exit.
+Forward81017 and existing Chrome155 CDP19551 remain; no public route/relay change.
+
+Routed forms preserve exact authored labels, Native anchors, midpoint ports,
+quantity values and original clear direct paths. Worker-only bounded visibility
+routing uses exact dyadic legality; independent Fraction checks every output
+segment. No C11 workflow/artifact/visual qualification is claimed until whole
+PASS, FIRST independent oracle and all seven actual SVG reviews. Failed R3 and
+its separate settled prewrite proof remain unchanged. Full Gate1 stays OPEN;
+ordinary21/21 stays scoped to its original qualified evidence.
+
+Raw finite-curve Native compilation/static ABI custody b45d9a0 is complete.
+Private invocation adapter with actual same-memory growth support is separate
+SOURCE work; no mount/public command/finite-event certification is claimed.
+After current C11: ordered affected legacy regressions, curve/source bridge,
+broader sketch/reference/resource and final combined beta qualifications remain.
+
+
 ## C11 R3 terminal result — 2026-11-09 latest
 
 **Full Gate1 OPEN; ordinary exercises21/21 unchanged.** Actual frozen

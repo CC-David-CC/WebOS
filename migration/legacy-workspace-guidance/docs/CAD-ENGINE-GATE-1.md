@@ -1,5 +1,16 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+### Current routed C11 producer — 2026-11-09 latest
+
+Core82866bf / Host6b2a1fbe,293pins build5762/stage44215/audit18642 PASS0.
+Whole R4 session81269 is RUNNING at private21057 on genuine Shell57b/60dc;
+no new C11 qualification is claimed. Original R3 layout refusal and separately
+settled own prewrite proof remain immutable. Worker routed forms and independent
+per-segment artifact oracle are composed. Observe the existing job before any
+new runtime run. Ordinary21/21 remains scoped; full Gate1 OPEN. Exact paths and
+frozen source identities are in WEBOS-WORK-QUEUES.md and ACAD build-composed-r3.
+
+
 ### Latest C11 qualification checkpoint — 2026-11-09
 
 Ordinary21/21 remain qualified; full Gate1 OPEN. Corrected producer82f9/Host33
