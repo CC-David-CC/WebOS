@@ -24,6 +24,25 @@ aperture bounds; no persisted caption flags or physical geometry changes.
 
 [Work queues](WEBOS-WORK-QUEUES.md) contains exact current refs/next actions.
 
+### CONICAL-EARLY-FAILURE-PUBLICATION-01 — source-only OPEN
+
+Independent source review of Native04ad4cd found that a single captured flag
+was set only after complete request/snapshot admission. The constructor could
+therefore skip a bounded name/frame post-error fence after invalid dimensions;
+the reader could skip known census/name/lookup fences after unknown-name or
+snapshot failure. Returning true for unavailable capture falsely certifies a
+state that was not established. This is one related service-level contract
+issue, not a demonstrated public callback incident. Current qualified Native
+pairs do not contain these new ports.
+
+The approved repair keeps explicit staged capture knowledge, independently
+fences established request/name/frame/census/lookup facts before and after error
+delivery, and refuses to certify a found input without its required snapshot.
+Terminal JS failure must occur only after C++ locals retire. No guessed cleanup,
+caller-state repair, old-port changes or callback-mutation probes are allowed.
+Source repair, independent review, normal compilation and complete workflow
+qualification are distinct; none may substitute for the later stages.
+
 ### CAD-COUNTERBORE-NATIVE-CUSTODY-01 (source-composed; unqualified)
 
 One accepted parent, one authored feature, four attempted Native results. Each
