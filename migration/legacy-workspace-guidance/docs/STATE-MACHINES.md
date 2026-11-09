@@ -1,5 +1,20 @@
 # Workflow state machines and invariants
 
+## CAD-TYPED-COORDINATE-01 — qualified free/partial/full anchoring
+
+Proof ACAD6da5233, actualb3a7bb2/78cc169 complete browser32372 plus FIRST
+independent artifact oracle PASS. The genuine free sketch may change its
+coupled realization after a named2→3 edit; exact accepted source survives
+UndoRedo and native Save/Open. Adding literal signed X after typed definitions
+uses captured private dimension access and original-request verification.
+The resulting X-only state leaves By free. Adding Y then anchors both.
+BOTH insertions have immediate Undo restoring exact prior captured source,
+then Redo restoring the same row and geometry; original forward insertion
+proves creation travel instead of assuming numerical removal is an inverse.
+Five native/browser/server/fresh Open cycles, side/reversal/removal/point move,
+mm/inch display and11 exact refusals finish. Full Gate1 and other typed mutations
+remain separate; no flags/hidden anchors/solver tolerance changes grant authority.
+
 ## CAD-BOOLEAN-ALLOCATION-01 — qualified finite transitions
 
 E16 R4 proof7680027 / signoff5100922: successful creation reserves an ID then

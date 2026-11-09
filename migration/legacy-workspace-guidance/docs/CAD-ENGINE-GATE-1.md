@@ -14,10 +14,13 @@ The separate23historical scoped-workflow count is unchanged.
 
 This does NOT close full Gate1. Raw point/edge-contact manifold proof remains
 OPEN; app multi-solid point API UNSUPPORTED; reader is same-OCCT, not external
-independent kernel. Named competencies, complete typed PL free/anchored workflow,
-captured-profile READ consumer regressions/legacy writer and final composed
-beta/agent/viewable G10 still require evidence. Product03a5391/acceptanceb3a7bb2
-is building normally for the PL defect; no runtime pass claimed yet. No main or
+independent kernel. Complete typed PL free/anchored workflow NOW qualified by
+ACAD6da5233: actualb3a7bb2/78cc169, normal29572/stage43106, browser32372 and
+FIRST independent artifact oracle PASS.753commands/49Native observations/
+11refusals/five.cad browser+server+fresh Open cycles; BOTH X/Y actual creation
+UndoRedo and genuinely free/partial-X phases pass. First R1/R2 failures retained.
+Named competencies, captured-profile READ consumer regressions/legacy writer
+and final composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
