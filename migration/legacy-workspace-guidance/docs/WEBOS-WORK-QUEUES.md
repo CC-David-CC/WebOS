@@ -25,24 +25,35 @@ resource evidence remains PARTIAL and final coherent beta delivery is pending.
 New tangency/v3 bore annotations are built source, not qualified from that fact.
 No main/beta/prototype release, relay, Files races or source packaging.
 
-## Active serial lane — four-bore whole45800 RUNNING
+## Active serial lane — bore dispatch repaired; fresh whole rerun pending
 
-ACAD6cb0975 freezes the complete new four-bore drawing packet (original091254).
-Whole45800 is RUNNING, evidence /tmp/codi-acad-four-bore-drawing-20261108-r1,
-sibling.log. Exact actualf418/c6d/189pins/private21035/backend37441/forward30224,
-data /mnt/data10tb/codi-acad-three-silos-state-20261108-r1, owned CDP19329.
-Explicit Shell57b74074/60dc956b pair, not primary MFG32eec74/abbf2aa.
-Expect56Native read/discovery/21point observations, two datum families,6.cad,
-14SVG and real split/consume/cover controls; these are planned, NOT achieved.
-FIRST independent checker only after terminal wholePASS; preserve first failure,
-unknown write settlement and actual Native/source/ref/cleanup evidence. No
-simultaneous builds/browser workflows or criterion/tolerance substitutions.
+First four-bore whole45800 terminated FAIL1 on actualf418/c6d/private21035.
+ACAD4957c0f preserves its complete first failure: inspect-linked-part-bore-
+references reached an unsupported selected-owned operation admission guard,
+before the existing solid-drawing-bores handler. Two rows/14 commands, no
+observations/SVGs/Saves; contexts retired and source stayed unchanged. This
+was a confirmed dispatch mismatch, not a demonstrated bore geometry failure.
 
-Next root review/whole queues: tangencyd09fd33 and C04center-distance/parallel-
-offset1e530e3→4830c9d source-only packets, no further product changes required.
-Agents now have docs-only next contracts: C03EqualLength, C01offset/projection,
-C11section/detail; any actual root-reported failure overrides that plan work.
-No new feature qualification or source-variant freeze follows from preparation.
+ACAD7f01f97 admits that existing read under the existing drawingReferencesMode
+capability gate and updates all nine OCI source pins to975a33cd. Native result
+allocation, ownership, validity and currentness checks remain intact. Normal
+build28432 finished through mark-revision/Done at actualCore
+5e80f0d9dda72515738f3a4f0cf6fc861e84aef7 / unchanged Host
+c6d2bfe91f1e04dcbf099e7c992dceba93356eac. Fresh bore-dispatch staging15953 completed PASS0 with 189 actual-byte pins. The unchanged complete packet6cb0975 must run on this fresh
+fixture; the fix is not workflow-qualified merely because it builds.
+
+R2 whole20649 RUNNING; evidence /tmp/codi-acad-four-bore-drawing-20261108-r2.
+Actual private21036/backend57682/forward14573, explicit Shell57b74074/60dc956b pair, owned CDP19329. Expected
+56Native read/discovery/21point observations, two datum families, six.cad,
+14SVG and actual split/consume/cover controls remain planned, not achieved.
+FIRST independent checker only after terminal wholePASS; retain any new first
+failure. No simultaneous builds/browser workflows or criterion substitutions.
+
+Next serial queues: tangencyd09fd33 (root5e80f0d) and C04center-distance/
+parallel-offset1e530e3→4830c9d complete source-only packets. Docs-only proposals
+EqualLength09bf4c1, offset/projection60bd732 and section/detail do not expand
+qualified scope. Ordinary21/21 remains; full Gate1 OPEN. No main/beta release,
+relay, Files races, source packaging or tolerance changes.
 
 ## Archive checkpoint — functional PASS, measured resources PARTIAL
 
