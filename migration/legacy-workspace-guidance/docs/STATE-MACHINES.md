@@ -159,15 +159,44 @@ uses actual distinct Circle/Arc radius Params rA-rB, no scalar or copied radius.
 Actual radius freedoms3→1→0 plus unrelatedPoint2 yield local estimates5→3→2;
 these do not imply global physical DOF.38Native sets/152points/five.cad cycles.
 
-## CAD-DRAWING-PREPARED-COUNTS-01 — confirmed four-view guard repair pending
+## CAD-DRAWING-PREPARED-COUNTS-01 — finite four-view guard repair qualified
 
-Isometric firstR1 a6150ec fails before publication: Worker after-definition4,
+Isometric firstR1 a6150ec failed before publication: Worker after-definition4,
 client literalmax3. Patchda0f597 uses shared definition maxima and binds returned
 summary view/dimension counts to actual after-definition before preparation:
 normal→result.after; no-op→before; removal/creation Undo→null counts0;
 journal travel→its exact selected before/after. No synchronized extra flag or
-summary-based geometry authority. Build/full unchanged isometric qualification
-remain pending; v1<=3/v2exact4 and all metadata/byte/Native guards remain.
+summary-based geometry authority. Complete isometric d1dd873 and affected current
+consumer compatibility9e61a52 are qualified in their exact recorded scopes;
+the old pending claim is superseded. Native bytes, limits, metadata ownership
+and definition v1/v2 guards stayed intact; new v3 annotations are separate.
+
+## CAD-DRAWING-OWNED-READ-01 — dispatch repaired; whole qualification pending
+
+Confirmed first public bore whole45800/f418/c6d failed ENGINE_FAILURE before
+its existing Native handler: controller sent solid-drawing-bores, but the
+preceding safeOwnedMode gate admitted only solid-drawing-references for the
+same drawingReferencesMode. Repair7f01f97 adds the missing existing read verb
+under that SAME capability and regenerates all nine exact-source pins. Read
+never enters the create/new-native-token branch. Source review/audit is in
+ACAD docs/reviews/C11-BORE-READ-DISPATCH-R1-20261108.md.
+
+| State/event | Guard and effect / evidence boundary |
+| --- | --- |
+| Malformed public request → refuse | Exact fields/types required before source/candidate preparation; accepted model/J/resources and preparation epoch unchanged. Bore R2 supplies an incomplete edit and correctly gets INVALID_REQUEST. That is a harness failure, not a geometry refusal. |
+| Current supported read → capture | Capture exact document/window/source/geometry revisions, actual producer/source/region/Native runtime and observation-only candidate owner. No caller flag or Native name establishes authority. |
+| Captured read → dispatch | Catalog capability, controller verb and gated OCI allowlist must agree with the existing handler. Repair is scoped to that mapping; unsupported capability remains refused. |
+| Owned dispatch → observe | Validate current token/producer/source membership and Native validity, then derive diameter/trim/cap/through facts. Diameter availability alone does not certify THRU. No result token allocation or authored-source publication. |
+| Awaited observation → return | Recheck full owner/currentness; bound and validate exact response. Retire only this observation candidate; no accepted-body disposal or fabricated empty success. |
+| Valid mutation → prepared geometric refusal | Real domain/candidate failure can advance the documented preparation epoch and invalidate discovery tokens while preserving exact accepted source/history/J/material/geometry/resources. Do not expect this transition from malformed admission. |
+| Stale/disposed/unsupported/error | Preserve originating cause and prior accepted state; no late publish, nearest-reference repair, generic success or blind durable-write retry. |
+
+Normal build actual5e80/c6d/189pins. Complete bore R2 reached15 Native sets,
+threeSVGs/two.cad server matches/fresh Opens/explicit repair but failed its
+malformed negative request: retained ACADbe9fb7a. No after-whole oracle ran and
+no full-family PASS is claimed. R3 uses complete actual diameter/offset fields,
+keeps HOLE_OUTSIDE_PROFILE and last-good/epoch criteria unchanged, and is running.
+Ordinary21/21 remains; full C11/Gate1 and split/consume/cover proof remain open.
 
 ## CAD-COMMAND-SCHEMA-BUDGET-01 — source-confirmed startup blocker
 
