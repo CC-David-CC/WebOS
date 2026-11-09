@@ -5608,3 +5608,12 @@ User explicitly chose50pm=0.05nm=5e-8mm small-design geometric error budget;
 full precision retained, other physical/model domains independently qualified.
 Gate1 comes first and will be frozen; later CAD projects/branches do not expand
 this acceptance scope. Files remains accepted, relay off, race probes canceled.
+
+### Library coverage continuation — 2026-11-09
+
+Planar exact-coverage adapter build90308 PASS0; actual source420ea4e and build
+custody2e95108 in ACAD. Bounded invokerfe502d8 is source integrated. Complete
+indexed patch/source-role composition and six-mesh/six-STEP/two-SVG corrected
+artifact verification remain pending; original outputs and FIRST failure are
+unchanged. This does not close the extent family or full Gate1. Native finite-
+curve source eea7128b and Core protocol56eeb1c are source-only, not mounted.

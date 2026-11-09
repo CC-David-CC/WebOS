@@ -634,3 +634,12 @@ qualification and representation-specific budgets. C05/C09 remain open for
 this target; source identity, solver residuals, replay stability, BRep/mesh error
 and physical manufacturing uncertainty must stay separate. No existing proof
 is retroactively relabeled or thresholds changed by the requirement.
+
+### Library coverage continuation — 2026-11-09
+
+Planar exact-coverage adapter build90308 PASS0; actual source420ea4e and build
+custody2e95108 in ACAD. Bounded invokerfe502d8 is source integrated. Complete
+indexed patch/source-role composition and six-mesh/six-STEP/two-SVG corrected
+artifact verification remain pending; original outputs and FIRST failure are
+unchanged. This does not close the extent family or full Gate1. Native finite-
+curve source eea7128b and Core protocol56eeb1c are source-only, not mounted.

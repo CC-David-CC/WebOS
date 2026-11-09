@@ -48,11 +48,23 @@ No Root qualification process is active.
 
 L1 inventory41f7189 maps mature OCCT APIs to actual binding/history gaps. The
 small finite-curve BEFORE8a16108 and Root source approval8f1a17a freeze the first
-analytic-support query packet. Native header source is being implemented on an
-isolated branch; Root owns common splices and compilation. No public actionable
+analytic-support query packet. Native header source eea7128b and Core protocol56eeb1c are frozen on both LANs;
+Root still owns common splices, compilation and public finite-event integration. No public actionable
 query/trim or new runtime is claimed. Existing history, transactions and ownership
 remain authoritative. L3 full-surface proof and actual SVG reviews still precede
 extent-family qualification, then remaining broader Gate1 obligations.
+
+## Exact coverage composition checkpoint
+
+The exact planar CGAL adapter compiled successfully (session90308 exit0,
+source420ea4e, executable SHA256
+3fb756c5abe43539408bd7a40357f412f762027c3063d669215e1b317c70e612).
+Core2e95108 retains actual logs, flags, links and source/executable identities.
+The ~1.49GiB peak was compiler RSS; checker/browser runtime has not been measured.
+Independent planar/cylinder source reviews are integrated. The bounded invoker
+is source integrated fe502d8; indexed boundary-role caller composition and the
+complete corrected artifact run remain pending. Geometry output is unchanged;
+original FIRST failure is preserved. No new family qualification is claimed.
 
 ## Library boundaries and serial/parallel queue
 

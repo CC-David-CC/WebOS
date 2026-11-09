@@ -343,3 +343,12 @@ qualified working operation until the fix and combined controls pass.
 Every row remains open or partial until a matching integrated result is linked.
 Unsupported output is acceptable as an honest capability limit; silently wrong
 geometry, lost intent or a false success is a failure that must be repaired.
+
+### Library coverage continuation — 2026-11-09
+
+Planar exact-coverage adapter build90308 PASS0; actual source420ea4e and build
+custody2e95108 in ACAD. Bounded invokerfe502d8 is source integrated. Complete
+indexed patch/source-role composition and six-mesh/six-STEP/two-SVG corrected
+artifact verification remain pending; original outputs and FIRST failure are
+unchanged. This does not close the extent family or full Gate1. Native finite-
+curve source eea7128b and Core protocol56eeb1c are source-only, not mounted.
