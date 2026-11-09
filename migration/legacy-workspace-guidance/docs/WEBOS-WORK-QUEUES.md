@@ -9,10 +9,14 @@ transition tables and existing-versus-pending evidence. Each silo must report
 actual ownership/invalid transitions/complete proof coverage; no second graph,
 synced validity flags or blanket qualification was added.
 
-Archive attribution whole9180 is RUNNING on current da0/caa9 private21034,
+Archive attribution first whole9180 terminalFAIL1 (ACAD946a137); R2 whole16981 now RUNNING on current da0/caa9 private21034,
 dedicated ordinary Chromium PID3051121/CDP19330/profile
-/tmp/codi-cad-cost-chrome-20261108-r1. Evidence /tmp/codi-acad-native-cost-20261108-r1
-and sibling.log. 500ms own Chrome-tree samples,5000ms post-close observation;
+/tmp/codi-cad-cost-chrome-20261108-r1. R2 evidence /tmp/codi-acad-native-cost-20261108-r2
+and sibling.log; R1 first failure retained. Source-reviewed acceptance repair
+be0dd4d closes saved clean ordinary windows through actual title-bar Close
+before page retirement/relogin, retaining exact one-instance/registration and
+all native geometry/archive criteria. No product/layout reset or forced GC.
+ 500ms own Chrome-tree samples,5000ms post-close observation;
 no forced GC/cache/TLS alteration, no other app build/browser workflow parallel.
 Only FIRST independent oracle after whole terminal PASS. Cost coverage gaps
 remain PARTIAL, never fabricated zero or full capacity proof.

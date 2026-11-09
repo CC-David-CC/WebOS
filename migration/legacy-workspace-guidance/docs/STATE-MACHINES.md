@@ -1,5 +1,34 @@
 # Workflow state machines and invariants
 
+## APP-WINDOW-REGISTRATION-OBSERVATION-01 — ordinary-profile harness finding
+
+Archive attribution R1 (ACAD946a137 evidence-r1) reaches three.cad Saves/six
+exports, then fails first fresh-login launch: two newly registered CAD windows
+versus helper's expectedone. First failure/cost stream retained; no after-whole
+oracle or cost qualification. Bounded diagnostic shows windows11/12 loading.
+
+Source restoreLayout saves ordinary account windows before page retirement;
+on next login the window exists while its app module loads. The helper read
+only registered commands, then clicked menu, so restoration and the deliberate
+new launch both completed. No saved-data corruption/product duplicate-creation
+bug is proved: the user action legitimately opened another window.
+
+| Conceptual state | Observation invariant |
+| --- | --- |
+| Saved account layout | Browser-persistent layout intent; not a mounted or ready instance. |
+| Restoring/created window | Real DOM/window identity can exist without registered commands. Absence from command list does not imply no window. |
+| Ready instance | Actual app registration/lifetime and visible readiness; command discovery authorizes only that exact current instance. |
+| Failed load | Visible error may remain without successful registration. Do not pretend ready or silently retry creation. |
+| Closing/disposed | Window and commands retire through normal owning lifecycle; late work cannot recreate authority. |
+
+Coherent acceptance-only repairbe0dd4d explicitly requires dirty===false and
+uses actual title-bar Close before ordinary page retirement, verifying window
+removal and command unregistration. Fresh login/menu/native Open criteria are
+unchanged. Final success closes the clean window the same way. No storage reset,
+window-count waiver, discard, retry, private successful seed or source model
+change. Ordinary auto-restored-document acceptance is a different route and is
+not inferred. The complete repaired cost R2 is pending, not qualified.
+
 ## CAD-SKETCH-LIFECYCLES-20261108 — explicit contracts, scoped evidence
 
 User requested formalization around relationships, region selection, offsets
