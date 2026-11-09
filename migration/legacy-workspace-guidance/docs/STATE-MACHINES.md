@@ -14,7 +14,7 @@ This checkpoint supersedes running/unmerged descriptions below; those describe e
 - Extrusion variants remain an independent source/acceptance lane, OFF and unqualified. Remaining broader Gate 1 work includes profile/feature variants, references/numerical cases, drawing semantics/layout, large-project resources and final composed beta acceptance. No full-gate signoff.
 
 
-## COUNTERSINK-PREFLIGHT-RETIREMENT-01 — confirmed source defect; repair in progress
+## COUNTERSINK-PREFLIGHT-RETIREMENT-01 — SOURCE-REPAIRED; runtime qualification open
 
 In unregistered coordinator `d5a5c0d`, actual Native census/catalog/metric calls
 occur before the later four-result try/finally. Terminal scratch, exchange and
@@ -32,8 +32,9 @@ this is a source-confirmed contract defect, not an observed user incident.
 | Owned intermediate | Positive exclusive-owner obligation; cumulative work remains charged | Acknowledged exact retirement, or unknown/realm retirement |
 | Final candidate | Input/currentness preserved; exactly one prospective final result | Guarded ledger adoption, or exact retirement |
 
-Repair must cover the outer preflight boundary and post-call decoding while
-preserving original ordinary domain/preallocation refusals and error identity.
+Repair ff7e747 (root23283e0) now covers the outer preflight boundary and post-call
+decoding while preserving original ordinary domain/preallocation refusals and
+error identity. Root composition97adb2e does not enable or execute this code.
 Matching name/count/catalog/metrics does not prove adversarial BRep identity.
 Regression remains the complete composed public workflow after real integration;
 source review or compilation alone does not close this issue.
