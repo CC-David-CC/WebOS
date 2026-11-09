@@ -1,18 +1,20 @@
 # JSketcher basic foundation matrix
 
-## Current ACAD checkpoint
+## Current ACAD checkpoint — ordinary21/21; full Gate1 open
 
-This historically named document follows ACAD's independent engine work.
-Ordinary21/21 remains qualified, with assembly E17 moved to Gate2; full Gate1
-is OPEN. Finite equality/ratio675a4a3, tangency8b0dbf3, semantic Offset998864a,
-bore-warning layout82dd692 and support/center3392019 are qualified in their
-recorded scopes. The radius/tangent removal-promotion whole workflows use actual
-Core8771a56/Host7fc7a508f: EqualRadius57233 and FIRST oracle passed, qualified
-b2b8117; Tangency38715 is still running/unqualified. Blind-hole
-acceptance repairs and section/detail implementation remain open.
-[Current operational ledger](WEBOS-WORK-QUEUES.md) and
-[expanded acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md) supersede
-older historical checkpoint labels below; no broader requirements are waived.
+Finite equality/ratio675a4a3, tangency8b0dbf3, semantic Offset998864a,
+bore-warning layout82dd692 and support/center3392019 remain qualified. The
+complete augmented EqualRadius **b2b8117** and Tangency **4b8026c** removal
+workflows now also passed their FIRST independent oracles: nine/fourteen native
+Save/server-equality/fresh Open cycles on actual8771a56/7fc7a508f. Both entire
+original families and genuine survivor promotions are retained. Assembly E17
+stays Gate2; ordinary21/21 does not waive broader Gate1 requirements below.
+Blind-hole composition, section/detail review, counterbore source and remaining
+competencies remain open. No public/main promotion. Exact current evidence and
+next steps: [work queues](WEBOS-WORK-QUEUES.md) and
+[acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md). Older checkpoint
+labels below describe historical states. This historically JSketcher-named
+matrix follows the independent ACAD engine work.
 
 ## Latest bore checkpoint — semantics qualified, presentation partial
 

@@ -1,17 +1,20 @@
 # Gate 1 — foundational parametric CAD engine competency
 
-## Current checkpoint — ordinary21/21; full Gate1 remains open
+## Current ACAD checkpoint — ordinary21/21; full Gate1 open
 
-Current queue/evidence, including exact producing commits and active handles:
-[work queues](WEBOS-WORK-QUEUES.md) and [acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md).
-Assembly E17 stays in Gate2. Finite equality/ratio675a4a3, tangency8b0dbf3,
-semantic Offset998864a, bore-warning layout82dd692 and support/center3392019
-are qualified in their recorded scopes. Related radius/tangent removal
-promotion additions use actual Core8771a56/Host7fc7a508f after normal build/stage
-PASS. EqualRadius57233 and FIRST oracle passed, qualifiedb2b8117; Tangency38715
-is still running/unqualified. Blind-hole acceptance repairs and section/detail implementation
-remain separate. All broader requirements below remain; older checkpoint
-headings describe historical states, not current open/closed disposition.
+Finite equality/ratio675a4a3, tangency8b0dbf3, semantic Offset998864a,
+bore-warning layout82dd692 and support/center3392019 remain qualified. The
+complete augmented EqualRadius **b2b8117** and Tangency **4b8026c** removal
+workflows now also passed their FIRST independent oracles: nine/fourteen native
+Save/server-equality/fresh Open cycles on actual8771a56/7fc7a508f. Both entire
+original families and genuine survivor promotions are retained. Assembly E17
+stays Gate2; ordinary21/21 does not waive broader Gate1 requirements below.
+Blind-hole composition, section/detail review, counterbore source and remaining
+competencies remain open. No public/main promotion. Exact current evidence and
+next steps: [work queues](WEBOS-WORK-QUEUES.md) and
+[acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md). Older checkpoint
+labels below describe historical states. This historically JSketcher-named
+matrix follows the independent ACAD engine work.
 
 ## Latest bore checkpoint — semantics qualified, presentation partial
 
