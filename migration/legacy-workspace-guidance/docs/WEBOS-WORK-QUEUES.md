@@ -1,5 +1,12 @@
 # WebOS work queues and progress ledger
 
+## Source integration checkpoint — 2026-11-09
+
+Separate integration branch `integration/foundation-next-20261109` composes EqualLength and semantic Segment/Circle Offset without changing the original test-bound checkouts. Core77b4229 / Desktopf65295e7b are source-only; no normal build or runtime qualification yet. Shared task/envelope/no-op handling retains both families; ratio replacement dependency scope and Offset functional dependency groups are both preserved. Desktop registers Offset against the same current document target and disposal owner. Pending TangentCC fixed-input repair must preserve equality deferred-row verification. Review details: ACAD `docs/reviews/C03-OFFSET-EQUALITY-COMPOSITION-20261109.md`.
+
+Drawing-warning R4 has produced a PASS receipt:174 rows/770commands/56 Native observations/14SVG/six.cad Saves and six fresh Opens on unchanged e2a3027/c6d. This is a whole-run result, not final qualification: terminal custody, FIRST independent oracle and root rendered-artifact review remain separate. Prior qualified scopes and 21/21 ordinary exercises remain; full Gate1 is OPEN. Tangency redundant-classification defect remains open. No public/main deployment, Files race, relay or source packaging.
+
+
 ## Latest bore checkpoint — semantics qualified, presentation partial
 
 ACAD e98166d62f9bd14fffb643772b8b5f6db87966a1 preserves complete bore whole7482
