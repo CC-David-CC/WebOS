@@ -28,6 +28,24 @@ composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Current source checkpoint — isometric composed; combined EqualRadius source pending
+
+Root Core4d8473dd99e3a84ff4859b46293f69e6c8d6e405 contains reviewed isometric
+contract3db66e8/product3973ad1/complete acceptance4d8473d. Desktopd6d8938b86cde04e1a2762be01cdb8540240d1a2
+contains public schema17cc2f89f and exact native Save whitelistd6d8938b8.
+Both named integration refs read back exact on box-git and R730. Independent
+source review of projection/treated-outline/conic/SVG/ownership/settlement found
+no blocker. This is SOURCE-READY/UNQUALIFIED, not a new running release.
+
+No active browser/app build. Qualified four-READ batch uses actualb3a7bb2/78cc169
+and is preserved below; ordinary21/21 unchanged, full Gate1 OPEN. The existing
+private21030/state48 remains the old tested candidate; public beta unchanged.
+Agent is SOURCE-composing minimal EqualRadius chain atop its isometric branch,
+retaining allb3 guards; root will inspect adapted commits then one normal
+combined build/new isolated data-drive fixture and complete workflows serially.
+Do not build these source HEADs expecting EqualRadius before that composition.
+C11 source-review docs and N8 cost plan are proposals, not scope/qualification.
+
 ## Current checkpoint — all four queued captured-profile READ consumers PASS
 
 Loft+fit complete49252 and FIRST independent geometry/source/archive and camera
