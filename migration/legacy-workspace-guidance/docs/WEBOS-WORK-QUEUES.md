@@ -1,5 +1,12 @@
 # WebOS work queues and progress ledger
 
+## Equality removal regression R2 running — fresh pinned candidate
+
+Normal rebuild3605 PASS0 with no actual warning/error/missing-export matches; stage47323 PASS0,551 bundle files/189 pins. Runtime Corea5343ddf0ee3b1757321c615fc8df3384d2d6d5b / frozen product Host7fc7a508f4d6d90b846227ee5feb8d3b93109261. This supersedes prior rebuild-running entries, not first failure evidence.
+
+UNCHANGED complete equality workflow7031 is active on fresh loopback21041/CDP19331, existing exact Chromium3559 PID3094784. Backend73019, forward12322; new private account data/state/issuer `/mnt/data10tb/codi-acad-foundation-next-equality-state-20261109-r2`. Actual evidence `/tmp/codi-acad-foundation-next-equality-20261109-r2/`, pins `/tmp/codi-acad-foundation-next-pins-20261109-r2.json`. All seven original driver/helper source hashes matched before launch; no relaxed expectations or standalone probes. Preserve live handle until authoritative terminal result; FIRST independent checker only after whole PASS. Keep all failed receipts. Other source agents remain isolated; no relay/public promotion. Full Gate1 OPEN.
+
+
 ## Semantic Offset qualified; equality removal defect found and repaired in source
 
 ACAD998864a retains both actual outcomes on Core7683eb2/Host7fc7a508f,189 pins. Offset whole62009 PASS0 and FIRST independent oracle PASS0:83rows/965commands/61source observations/32travels/15refusals/two.cad server-equal Saves and fresh Opens. All9 source/helper hashes unchanged. Qualified finite Segment/full Circle offset creation/edit/side/source propagation/named distances/typed formula/unit/travel/removal/current-cache validation. Authentic cache-only mutation of own .cad is refused on normal Open as OFFSET_CACHE_CHANGED. No Arc/loop/projection/generated-profile solid or BRep precision qualification. Both own contexts retired after settled writes. Evidence: ACAD `test/semantic-offset-public-workflow/evidence-r1`.
