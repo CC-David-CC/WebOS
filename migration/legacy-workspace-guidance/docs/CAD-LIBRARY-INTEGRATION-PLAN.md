@@ -1,5 +1,37 @@
 # CAD library integration: current queue
 
+## Current C11 requirements checkpoint — 2026-11-09
+
+**Finite C11 datum/position/Ra/declared-clearance workflow QUALIFIED. Full Gate 1
+remains OPEN; ordinary exercises remain 21/21 scoped, assembly E17 remains Gate 2.**
+Whole66328 PASS0: 85 rows, 1073 commands, 42 protected Native observation sets,
+seven SVGs, four native Saves, three fresh Opens and fifteen accounted writes.
+Original Core82866bf0ee852f1d3b3892972f07d8af4cd8b9b0 / Host796c9051331054746d81ea4ea0bb8ec8e8cf2bbd /
+acceptance615716f87f74efc34ed6cd41660db07aa377f4a1 / Shell57b/60dc are unchanged.
+
+Independent AFTER reader28626 PASS0 at d2256a5bf60708a9f86140f9395056808a4694ba.
+Actual input, verifier and original FIRST hashes remained unchanged. The original
+actor-summary failure and three later observer-assumption failures are retained.
+The final SVG uses the recorded native Save as an explicit strict bridge to the
+original protected read: the ONLY state change is host.dirty true→false. No
+fresh read is invented and no Source/Native/geometry/SVG criterion was waived.
+Root individually inspected all seven actual full A2 SVGs in Chrome155: PASS.
+
+Evidence in ACAD: test/drawing-requirement-public-workflow/evidence-r5/
+QUALIFICATION.json, AFTER-SAVE-READ-BRIDGE.json, after-save-bridge-custody.json,
+svg-review/VISUAL-REVIEW.json. This qualifies authored requirements and their
+geometry binding, visible export, unresolved/repair/UndoRedo and persistence
+lifecycle. It does not certify manufactured conformance or standards compliance.
+No new runtime compile, Native pair adoption or public/beta rollout is implied.
+
+Next serial queue: four complete affected legacy drawing regressions and the
+existing Boolean producer regression, then remaining curve/reference/resource
+and final combined beta obligations. Separate finite-curve raw/portable source
+candidate remains UNMOUNTED/UNEXECUTED/UNQUALIFIED. Server external relay OFF;
+filesystem-race/foreign-account/fault-injection tests remain cancelled. Historical
+checkpoint entries below retain their original states and are superseded here.
+
+
 Updated 2026-11-09. Strategy approved; native assessment and the finite extent corpus are qualified in scope. Browser library integration remains
 unqualified and the production runtime is unchanged. This is the Host coordination entry, not a second CAD model.
 
