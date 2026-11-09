@@ -1,5 +1,12 @@
 # WebOS work queues and progress ledger
 
+## Next-candidate build checkpoint — 2026-11-09
+
+EqualLength and semantic Offset are composed in `integration/foundation-next-20261109`. First normal build63243 on Core82dd692 failed at the Offset failure-envelope syntax before staging or any browser run. Original log retained in ACAD `test/semantic-offset-public-workflow/build-r1`. Corrective Core7683eb256ea0a38c1256dfacdfe076007a674250 closes the missing object brace and formats the envelope; no geometry/domain/tolerance change. Full normal rebuild49049 is running on r730, log `/tmp/codi-acad-foundation-next-build-20261109-r3.log`; pending stage uses frozen product Host7fc7a508f4d6d90b846227ee5feb8d3b93109261. One abbreviated-hash launcher invocation refused before executing build; the full-hash launch is the running handle. No accepted build or workflow proof yet. Do not stage stale outputs or mark these families qualified.
+
+After terminal build PASS: inspect all actual compiler warnings/missing exports, stage a fresh immutable bundle, pin exact bytes, run complete public equality/Offset flows, and run first independent artifact oracles only after each whole PASS. Keep all first failures. TCC source is not frozen yet and is deliberately outside this candidate. Broad Gate1 and final delivery remain open.
+
+
 ## Drawing warning regression qualified — 2026-11-09
 
 ACAD82dd692 retains Bore R4 whole54248 PASS0 and FIRST oracle12636 PASS0 on actual e2a3027/c6d with189 byte pins and Shell57b74074/60dc956b.174rows/770commands/56Native sets/1176point classes/14SVG/six.cad server-equal Saves and six fresh Opens. Root rendered and inspected all14 actual sheets. Four invalid corner warnings now have distinct readable bottom-legend lines in both coordinate cases. CAD-DRAWING-ERROR-LAYOUT-01 is CLOSED for this finite regression. Fixed authored leaders still cross geometry; professional automatic layout and remaining C11 semantics stay OPEN. No small-sheet resource-limit, main-thread or performance claim. Evidence: ACAD `test/four-bore-drawing-public-workflow/evidence-r4`.
