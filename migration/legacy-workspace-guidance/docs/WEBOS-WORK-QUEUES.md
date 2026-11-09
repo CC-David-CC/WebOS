@@ -1,5 +1,20 @@
 # WebOS work queues and progress ledger
 
+## Active browser lane after C11 qualification — 2026-11-09
+
+Next complete affected regression is RUNNING: session6481, R730 childPID2980517,
+actual Core82866bf / Host796c90513 / acceptance82866bf /293pins/MFG32e/abb.
+Frozen driver: test/isometric-current-drawing-compatibility-workflow/desktop-driver.mjs.
+Evidence /mnt/data10tb/codi-acad-c11-legacy-regressions-20261109-r1/isometric/whole;
+wrapper/state/log in its parent codi-acad-c11-legacy-regressions-20261109-r1.
+Private service87004/forward81017 at21057 and existing Chrome155 CDP19551.
+Poll this exact job before another runtime execution; do not start a duplicate.
+After terminal whole PASS, run this workflow's unchanged independent checker,
+retain FIRST output and individually review its actual SVGs. If a submitted
+write remains unresolved, retain only its own context until actual outcome is
+known. No regression result or broader Gate1 signoff is anticipated here.
+
+
 ## Current C11 requirements checkpoint — 2026-11-09
 
 **Finite C11 datum/position/Ra/declared-clearance workflow QUALIFIED. Full Gate 1
