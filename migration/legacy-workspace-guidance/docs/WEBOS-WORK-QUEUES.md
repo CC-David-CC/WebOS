@@ -1,5 +1,44 @@
 # WebOS work queues and progress ledger
 
+## Corrected template / obstruction recovery R5 running — 2026-11-09 latest
+
+Actual producing Core82866bf0ee852f1d3b3892972f07d8af4cd8b9b0 is unchanged.
+NEW producing Host796c9051331054746d81ea4ea0bb8ec8e8cf2bbd publishes the
+identical corrected example. NEW frozen acceptance615716f87f74efc34ed6cd41660db07aa377f4a1
+runs from /mnt/data10tb/codi-acad-drawing-requirements-acceptance-20261109-r5.
+These identities must remain separate; no new Core compile is implied.
+
+Stage reuse72466 PASS0: only the published example changed among actual Host
+apps/active-system files, and ALL293 actual Core frame/Native hashes equal the
+original build-r3 pins. Scope/custody is ACAD test/drawing-requirement-public-
+workflow/stage-reuse-r4/STAGE-REUSE-CUSTODY.json. New apps/stage/pins are R730
+codi-acad-drawing-requirements-{desktop,stage,pins}-20261109-r4 (stage-apps).
+Native pairs/defaults/graphs and dependency custody are unchanged.
+
+**Complete R5 whole session66328 is RUNNING**, output
+/mnt/data10tb/codi-acad-drawing-requirements-20261109-r5/whole; state/log
+/mnt/data10tb/codi-acad-drawing-requirements-evidence-20261109-r4/whole-r5-*.
+Observe this exact existing job before any other runtime run. Isolated service
+87004/private21057/forward81017 and Chrome155 CDP19551 are current. Previous
+service95125/PID2956325 gracefully exited only after R4 write settlement and
+confirmation its exact owned context/pages were absent. No public changes.
+
+Initial height label is40; an explicit later metadata80 obstruction must preserve
+available Native facts, refuse before file creation, and shared Undo must restore
+40 before original repair travel/third Open/D14/final flow. Exactly15 attempts,
+seven successful SVGs/four native Saves/three Opens/two malformed fixtures.
+Independent checker additionally proves actual anchors inside the bad box,
+source/native/visible height clearance for good layouts and a necessary actual
+routed repaired A leader. No successful waypoint/search is copied into truth.
+No whole/artifact/visual qualification is claimed before actual results.
+
+Separate curve source work: raw d3b2afa compiled/static ABI b45d9a0; private
+unmounted adapter10dcb60 and actual lossless portable candidate f2545dd. Actual
+portable pair479f0620/746da919 remains UNMOUNTED/UNEXECUTED/UNQUALIFIED; no
+existing factory aliases it. Full new-cohort/source/certificate bridge remains.
+Ordinary21/21 original evidence stays scoped; full Gate1/C11 OPEN.
+
+
 ## C11 R4 terminal; exact authored obstruction — 2026-11-09 latest
 
 Whole R4 session81269 is TERMINAL FAIL1 on exact Core82866bf / Host6b2a1fbe /

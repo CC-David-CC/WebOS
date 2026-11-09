@@ -1,5 +1,15 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+### Latest C11 R5 execution — 2026-11-09
+
+R5 whole66328 is RUNNING on actual unchanged Core82866bf / NEW Host796c90513 /
+acceptance615716f, private21057. Stage72466 PASS with ALL293 old Core/Native
+hashes identical; source vs acceptance provenance kept distinct. New initial
+height40 and explicit bad80/refusal/Undo recovery retain original full lifecycle
+and require a genuinely routed repaired SVG. No new qualification yet. Full
+Gate1 OPEN, ordinary21/21 scoped; exact paths/jobs in WEBOS-WORK-QUEUES.md.
+
+
 ### C11 current actual checkpoint — 2026-11-09 latest
 
 R4 whole81269 terminal FAIL on82866bf/Host6b2a1fbe after33Native observations
