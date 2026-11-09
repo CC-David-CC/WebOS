@@ -1,5 +1,19 @@
 # WebOS work queues and progress ledger
 
+## Composed candidate — build PASS, two whole workflows active
+
+Full normal build49049 PASS0 on Core7683eb256ea0a38c1256dfacdfe076007a674250; actual log review finds no compiler warnings, missing exports or errors. Stage57821 PASS0 on frozen Host7fc7a508f4d6d90b846227ee5feb8d3b93109261:551 bundle files,189 runtime byte pins. No Native pair/ABI/default change. This supersedes the older build-running entry, not the retained first syntax failure.
+
+Root-owned complete browser executions (not qualification yet):
+
+| Whole | Handle | Fixture / browser | Evidence |
+| --- | --- | --- | --- |
+| EqualLength and literal ratio lifecycle |92872 RUNNING|21039/CDP19331, Chromium3559 PID3094784|`/tmp/codi-acad-foundation-next-equality-20261109-r1/`|
+| Source-owned semantic Segment/Circle Offset |62009 RUNNING|21040/CDP19329, Chromium3559 PID2895440|`/tmp/codi-acad-foundation-next-offset-20261109-r1/`|
+
+Each fixture has its own account data/state/issuer root on r730. Backend handles66535/38815; loopback forwarding89220. Same immutable staged application, independent browser contexts/profiles; concurrent functional evidence only. No relay flag. Runtime pins `/tmp/codi-acad-foundation-next-pins-20261109-r1.json`; each lane has `custody-before.json`, exact `run-whole.sh` and `whole.log`. Preserve live handles and source bytes. Do not restart on an observation timeout. Run FIRST independent checker only after its own terminal whole PASS; preserve failures. TCC repair remains separate source work, not included.
+
+
 ## Next-candidate build checkpoint — 2026-11-09
 
 EqualLength and semantic Offset are composed in `integration/foundation-next-20261109`. First normal build63243 on Core82dd692 failed at the Offset failure-envelope syntax before staging or any browser run. Original log retained in ACAD `test/semantic-offset-public-workflow/build-r1`. Corrective Core7683eb256ea0a38c1256dfacdfe076007a674250 closes the missing object brace and formats the envelope; no geometry/domain/tolerance change. Full normal rebuild49049 is running on r730, log `/tmp/codi-acad-foundation-next-build-20261109-r3.log`; pending stage uses frozen product Host7fc7a508f4d6d90b846227ee5feb8d3b93109261. One abbreviated-hash launcher invocation refused before executing build; the full-hash launch is the running handle. No accepted build or workflow proof yet. Do not stage stale outputs or mark these families qualified.
