@@ -29,7 +29,22 @@ resource envelope and final composed beta/agent/viewable G10 remain open. No mai
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
-## Active isometric R2 — shared-summary repair built/staged
+## Active isometric R3 — host inspection reader compatibility repair
+
+R2 whole39849 FAIL preserved in ACAD fcb3980, evidence-r2. Actual da0f597/fab1:
+42commands/five rows/two Native sets, successful v2 replace returns changed:true,
+authoredUndo:true, four views/six dimensions; subsequent public inspect rejects
+Drawing metadata is unavailable. No SVGs/saves/oracle reached. Confirmed host
+inspectedProjectIsDirty drawing reader independently required version1.
+
+Minimal host repair admits exactly supported definition versions1/2; project
+envelope versions2/3, unit/presence guards and full serialized authored comparison
+remain. No geometry/Native/source tolerance or acceptance changes. Stage a fresh
+private fixture from the existing da0 Core dist and corrected actual Host, then
+rerun the complete unchanged isometric workflow before any oracle/qualification.
+Earlier EqualRadius/READ/ordinary proof source bindings stay unchanged.
+
+## Prior isometric R2 — shared-summary repair built/staged
 
 Normalbuild25270/stage87342 PASS at actual Coreda0f597ac9ccff68ad0c461b1427a76c8a54be25 /
 Desktopfab1c75f828030647eb582db3da160c8b6afe14f. New private21033 backend99404/
