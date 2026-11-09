@@ -1,5 +1,12 @@
 # Workflow state machines and invariants
 
+## Drawing warning regression qualified — 2026-11-09
+
+ACAD82dd692 retains Bore R4 whole54248 PASS0 and FIRST oracle12636 PASS0 on actual e2a3027/c6d with189 byte pins and Shell57b74074/60dc956b.174rows/770commands/56Native sets/1176point classes/14SVG/six.cad server-equal Saves and six fresh Opens. Root rendered and inspected all14 actual sheets. Four invalid corner warnings now have distinct readable bottom-legend lines in both coordinate cases. CAD-DRAWING-ERROR-LAYOUT-01 is CLOSED for this finite regression. Fixed authored leaders still cross geometry; professional automatic layout and remaining C11 semantics stay OPEN. No small-sheet resource-limit, main-thread or performance claim. Evidence: ACAD `test/four-bore-drawing-public-workflow/evidence-r4`.
+
+Separate next-source integration has EqualLength plus semantic Offset and host registration. Source review also fixed the prepared Offset driver to retain its owned context if a submitted Save or negative-fixture write has unknown settlement; that guard is not a crash/race qualification. The composed source is not yet built or runtime-qualified. TangentCC fixed-input redundancy repair, blind-hole source work and section/detail contracts remain in their independent lanes. Ordinary21/21 remains; full Gate1 OPEN; no deployment/main promotion.
+
+
 
 ## CAD-BUILD-EXPORT-CONTRACT-01 — missed warning repaired
 
