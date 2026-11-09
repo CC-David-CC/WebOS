@@ -1,5 +1,32 @@
 # JSketcher basic foundation matrix
 
+## Archive checkpoint — functional PASS, measured resources PARTIAL
+
+ACADd7fd0c7 (decisionebb46f6), actualda0f597/caa9c50, complete whole16981
+and FIRST independent oracle PASS. Four.cad Saves/two fresh signed Opens/
+twelve STEP-core3MF-SVG exports/nine Native observations/three codec retirements
+pass. Actual title-bar Close of saved clean windows and command unregistration
+also pass; R1 ordinary-layout harness failure remains preserved.
+
+Changed-entry reuse is genuine on tiny3814..4058B archives: unchanged0changed
+UTF8/2411Bcompressed reuse; edited5647/956 and reedited5614/956 after Open.
+Full prepared/rebase hashes remain required. Chrome-tree sampled maxPSS
+1291816960B (~1.20GiB), post-normal-close333892608B (~318MiB); whole app/workers,
+not archive copies or continuous peak. Open overlapped178/198ms main tasks;
+exact CPU cause unobserved. No recorded Save-overlapping longtask in this small
+fixture, not a zero-main-work theorem. Native capacity/transient network/process
+and short-phase sample gaps remain PARTIAL_OBSERVATION_COVERAGE. ARC23 main
+capture/hydration, meaningful large-source capacity and full N8 stay OPEN.
+
+Next root lane: review/compose source-complete three silo packets when their
+whole drivers/oracles are frozen, then normal build and affected complete
+workflows serially. C03tangency, C11bore annotations and C02side/full-edge contact
+remain SOURCE WORK, not qualified. Explicit lifecycle tables are in
+STATE-MACHINES.md; no validity flags or second authoring model were added.
+Ordinary21/21 and finite isometricd1dd873 remain; full Gate1 OPEN. No beta/main/
+prototype promotion, relay, Files races or source packaging. Latest finite
+checkpoint below supersedes older running/pending notes as specified.
+
 ## Latest finite qualification — linked isometric PASS; full Gate1 OPEN
 
 ACAD d1dd873 qualifies the finite isometric workflow at actual Core

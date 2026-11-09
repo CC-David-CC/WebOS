@@ -27,7 +27,7 @@ removal and command unregistration. Fresh login/menu/native Open criteria are
 unchanged. Final success closes the clean window the same way. No storage reset,
 window-count waiver, discard, retry, private successful seed or source model
 change. Ordinary auto-restored-document acceptance is a different route and is
-not inferred. The complete repaired cost R2 is pending, not qualified.
+not inferred. The complete repaired R2 now PASS (ACADd7fd0c7 whole16981+FIRST oracle): three normal clean closes/unregistrations, four Saves/two Opens and three actual codec retirements. Cost observations remain PARTIAL; automatic restored-document acceptance is not qualified.
 
 ## CAD-SKETCH-LIFECYCLES-20261108 — explicit contracts, scoped evidence
 
