@@ -26,8 +26,10 @@ source and fresh-session edits. Public bounds/hole facts, not Native mass.
 Captured-profile READ regressions now pass for Circle/current Native frame
 (ACADc225cea: whole9639+FIRST oracle,4.cad/19Native sets) and stepped profile+axis
 (Desktop04419466e: whole30244+FIRST saved-source oracle,fourJSONv2 checkpoints).
-The latter is retained READ regression, NOT additional.cad qualification.
-Curved sweep/unequal-section loft, named competencies and final composed
+Four-case curved/annular sweep also passes Desktop14b1d24f2: whole19908+
+FIRST independent oracle,12JSONv2 saves/13Native queries/77point classes.
+The retained JSON READ regressions are NOT additional.cad qualification.
+Unequal-section loft+fit, named competencies and final composed
 beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.

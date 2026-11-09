@@ -28,6 +28,30 @@ composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Current execution — three affected READ consumers PASS; loft/fit running
+
+Four-case sweep whole19908 terminal PASS and FIRST independent artifact oracle
+PASS, proof Desktop14b1d24f2 on both LAN.113rows/twelve JSONv2 saves/server
+integrity/fresh Opens/13genuine Native queries/77classes/allfour owned contexts
+retired. Profile/path edits/travel/curved reversal/material/void and exact
+readonly preservation pass. Retained JSON scope is explicit; not new.cad proof.
+Circle/current framec225cea and stepped profile+axis04419466e remain accepted.
+
+Complete unequal-section loft+fit49252 RUNNING, same actualb3a7bb2/78cc169,
+explicit adaptiveed06b634/bc8895ce, original178 pins containing its full graph.
+Evidence /tmp/codi-acad-loft-fit-read-20261108-r1, sibling.log. Require terminal
+whole PASS then FIRST geometry/source/archive check.py, separate FIRST
+worker-solid-view/check.py and root actual-PNG review. This is the last queued
+captured-profile READ consumer chain; nonempty boundary coverage stays separate.
+
+Isometric Core0bd562b/Desktop0572062 source review finds no initial blocker;
+complete acceptance being prepared on isolated branch. EqualRadius contract
+4c89cf2 +acceptanceedeb24a source-ready, not composed/built/qualified. N8/ARC23
+source-cost review0dac44f composed ACAD2823669; only source-confirmed main
+snapshot/hydration seam, not a proven new codec leak or large-CAD peak result.
+Agent prepares one genuine whole attribution packet; no quotas/SLA/races changed.
+No new build/public promotion while current READ workflow runs.
+
 ## Current execution — two affected READ consumers PASS; curved sweep running
 
 Circle/current Native frame: ACADc225cea, complete9639+FIRST independent oracle
