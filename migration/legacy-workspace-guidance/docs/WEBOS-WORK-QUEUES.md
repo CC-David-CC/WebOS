@@ -24,6 +24,22 @@ and final composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Active regression — legacy physical sketch writer
+
+PL R3 is terminal PASS and first artifact oracle PASS, preserved ACAD6da5233.
+Next complete source-compatible legacy packet015b060 is composedfa66d67;
+old metadata audit16ca599→85981be and separate current helpera5d53ce→d37ae14.
+Runtime remains actualb3a7bb2/78cc169, unchanged normal built candidate21030.
+The current helper stream-verified four existing legacy files and exclusively
+prepared NEW182 pins while preserving all178 old entries and every metadata field;
+it changes neither stage nor service nor backend. Actual legacy a84/07d pair.
+Complete browser14503 is RUNNING, evidence
+/tmp/codi-acad-legacy-physical-writer-20261108-r1 and sibling.log. Fourteen intended
+observations/two.cad cycles/eight real physical travels/actual renamed writer
+issuance, then first independent oracle ONLY after terminal whole PASS.
+Captured-profile Circle/attachment, revolve, sweep and loft regressions remain
+queued, as do final composed beta/G10 and wider competency closure.
+
 ## Active complete workflow — PL R3 on built typed-coordinate repair
 
 Normal build29572 and stage43106 PASS at actual Coreb3a7bb227da38524309e8cc0c6c8a8646d00b854 /
