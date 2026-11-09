@@ -60,8 +60,10 @@ modules, not restore duplicated allowlists or drop existing leaves.
 Counterbore source must preserve the genuine two-step private ancestry under one
 authored feature identity; no fabricated intermediate producer. Its acceptance
 has independently confirmed source/proof gaps and is being repaired, not run.
-Section/detail product and acceptance repairs are delivered for independent
-review, not qualified. No public/main promotion. Earlier labels are historical.
+Section/detail product/acceptance and peer bare-defs repairs are now composed
+as Core725c380/Host2633c23a4; normal build16850 is running, not qualified.
+The closed dispatch table and all prior blind behavior remain; independent
+merge review is read-only. No public/main promotion. Earlier labels are historical.
 
 ## Tangency qualified — current constraint batch closed in its tested scope
 
