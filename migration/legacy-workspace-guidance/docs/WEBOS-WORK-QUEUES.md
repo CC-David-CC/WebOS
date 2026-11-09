@@ -1,5 +1,33 @@
 # WebOS work queues and progress ledger
 
+## Active composed candidate — normal build PASS, drawing whole regression RUNNING
+
+Corebuild5723/hoststage94440 PASS at actualCore
+f4189e75f52531428b4d7d108144a994e8f2ecca / Host
+c6d2bfe91f1e04dcbf099e7c992dceba93356eac. Evidence ACAD225436d retains
+scripts/logs/189byte pins (full MFG/Shell/circular/adaptive graphs). Private
+21035 backend37441/forward30224; data runtime
+/mnt/data10tb/codi-acad-three-silos-state-20261108-r1; no --browser-relay.
+
+Composed source: C11bb9d95b/985318a, contact6d1ebfc/c23085c,
+tangency98c6dbb/b355ffb/f4189e7; hostc74c6bc1d/c6d2bfe91. New features
+remain UNQUALIFIED. Review14b63c8 and component lifecycle notes keep actual
+owners/derived predicates/refusals explicit, not new saved flags.
+
+Affected whole isometric regression RUNNING79755: ACAD8b11ed1 NEW
+isometric-current-drawing-compatibility-workflow. Sole executable expectation
+change: advertised versions[1,2,3]. Original v1→v2 geometry,25Native sets,
+250points,15travels,six refusals,three.cad Opens,sixSVG and independent math
+criteria unchanged. Evidence /tmp/codi-acad-isometric-current-20261108-r1,
+sibling.log. FIRST oracle only after terminalwholePASS; preserve first failure.
+Old driver/evidence immutable. No simultaneous browser/build.
+
+Three complete new-feature drivers/oracles are finishing source-only. Batch
+routine internal updates to avoid interrupting their source writes. Do not
+qualify from source/build or retag old ordinary21/21/isometric/archive proofs.
+Resource evidence PARTIAL/full Gate1 OPEN. No main/beta/prototype release,
+filesystem race, relay or source-distribution packaging.
+
 ## Archive checkpoint — functional PASS, measured resources PARTIAL
 
 Post-evidence cleanup: dedicated cost ChromePID3051121 was normally closed
