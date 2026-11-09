@@ -7,18 +7,18 @@ records preserve their exact producer versions; old RUNNING/OFF/UNMERGED labels
 must not restart terminal jobs or extend their qualifications.
 
 - **Ordinary exercises: 21/21 QUALIFIED. Full Gate 1: OPEN.** E17 assembly belongs to Gate 2. These finite passes do not close the broader sketch/feature/reference/drawing/resource catalogue.
-- **Last qualified regression producer:** CoreD7 `d7b478ae9b0d679223240674ea43beada4b2f099` / Hosteab `eabff28ae7dea4946fa81a576f37eac55acad509`,276pins. Counterbore28ad691, complete C11 section/detail3e8b881 and positive-blindba80198 each passed complete whole/FIRST actual artifact checks/all exported SVG reviews. Original failures and exact evidence remain unchanged.
+- **Earlier qualified regression producer:** CoreD7 `d7b478ae9b0d679223240674ea43beada4b2f099` / Hosteab `eabff28ae7dea4946fa81a576f37eac55acad509`,276pins. Counterbore28ad691, complete C11 section/detail3e8b881 and positive-blindba80198 each passed complete whole/FIRST actual artifact checks/all exported SVG reviews. Original failures and exact evidence remain unchanged.
 - **New census-repaired build/stage/source custody PASS `b1081cd`:** actual Core `7f20b38140eabe0ae393c2def20f952ac3290088` / Host `f23c5164b5bf747d7b55f8550ac7b260bcfc7aec`; build28044/stage4354/audit38807 terminal0,ten webpack completions,579 CAD assets/652 app files/285pins,12 manifests/114 exact unique sources. ACAD `test/selected-profile-extents-workflow/build-composed-r2/BUILD-CUSTODY.json`. This source fixes the actual first discovery mismatch; it does not have full new-family qualification.
 - **Complete extent R2 FAILED, retained443c70f:** whole76298 on7f/Hostf23/285pins with acceptance7750d400 progressed73rows/861commands/45Native observations/two native Saves/fresh Opens/three malformed own Opens. Signed/symmetric/two-sided/named edits and real cap reads progressed; actual STEP/3MF writes completed. SVG export then rejected INVALID_OPERAND because the private candidate drawing-kind map omitted profile-extents. No FIRST artifact oracle or STEP reader ran after failure. Initial census failuree43acec is retained separately.
 - **R2 file outcome settled without retry:** original failed receipt still records submitted SVG/retained context. Separate readonly own-root proofs and actual prewrite call chain establish absent SVG, exact prior STEP/3MF hashes and unchanged accepted host; repeated proof then retired only that own context. ACAD evidence-r2/settled-prewrite-refusal.json supplements the untouched first receipt. No file deletion, write retry, source mutation, foreign-account test or forced unknown-write close occurred. Initial reconciliation script's public-session snapshot identity mistake and corrected stable-ID/private-context checks are both retained.
 - **Candidate drawing identity repair BUILT, UNQUALIFIED `d778da4`:** one complete genuine kind/type map derives the unchanged ordered14-type vocabulary and serves candidate drawing/bore target checks. All owner/model/engine/source/capability/native checks remain. Extent is the observed incident; omitted shell/countersink entries are source findings. Actual new producer0af includes this repair; full runtime/artifact qualification remains pending.
 - **Derived warning placement BUILT, UNQUALIFIED:** producta6c1aed, complete-family acceptance2a26956, independent product review68ddb27, acceptance closurec7c4ce7 and countersink runtime-leaf rosterf259255. Actual geometry/cap/aperture/stroke/label/caption obstacles bound full fixed-size visible diagnostics; no-space rejects before writing. Successful authored anchors/labels and qualified captions are unchanged. General successful leader routing stays OPEN. No warning runtime qualification or special crowded-sheet test is claimed.
-- **Countersink complete source/acceptance composed, UNQUALIFIED:** product Main/backend/native-signal is in7f; complete six-step/three-native-cycle/nine-artifact packet8649b84 is composed. Independent checker repair34346ab preserves canonical PLANE string/public numeric identity and rejects per-triangle material overrides; current future warning-source roster is f259255. Actual ten bootstrap guards match8a150c70; Native pair04fc7768/688c9d11 and old defaults unchanged. Do not execute7f countersink SVG with the known omitted candidate-kind map; the coherent0af producer includes the repair and corrected full acceptance; its complete whole93317 is now running.
+- **Centered countersink QUALIFIED06b7fe6:** actual0af/Hostbe24/285pins/frozen0af acceptance. Entire whole93317 PASS0, FIRST independent oracle75755 PASS0, all three actual SVG renders individually reviewed.82rows/967commands/45Native observations/694points/21refusals/16travels/three native Saves/fresh Opens/nine STEP-core3MF-SVG artifacts/five own malformed controls/18settled-or-proven-prewrite writes.18 executed sources unchanged/exact Git; owned contexts retired; genuine retained old cohort refuses then remains healthy. Actual full-angle cone/shank/shared rim/no floor and complete source/persistence/material/SVG proof; finite rectangular-parent scope, not all C06 or general layout/resource qualification.
 - **Shared publication/file invariants retained:** actual acceptance determines committed status; errors/known receipts/cleanup evidence remain distinct from source-only qualification. Source50pm, Native/mesh/paper budgets stay separate. All server external relay including ping remains OFF; filesystem race and foreign-account tests remain cancelled.
 - **Coherent repaired producer build/stage/source audit PASS:** actual Core `0afb07fe8e216ba9a03cf21923e0ab70aed72546` / Host `be24fbc232c967912f529053d34a9d407b369a39`,285pins. Build42930/stage15292/audit17139 terminal0;ten webpack completions;579 CAD assets/605244145 bytes/652 app files/two apps;12 component manifests/114 exact unique sources. ACAD `test/selected-profile-extents-workflow/build-composed-r3/BUILD-CUSTODY.json` retains actual logs, recipes, pins and source-byte proof. Reused dependency tree was not independently rehashed. This is build custody, not geometry qualification.
-- **Complete extent R3 whole8167 terminal FAIL1, retained2af4873:** actual0af/Hostbe24/285pins, frozen acceptance0af.116rows/1355commands/68Native observations/seven native Saves/fresh Opens/ten artifacts/20settled writes;18 executed snapshots match exact Git blobs and sources unchanged; own contexts retired/no pending write. Failure after accepted history-prefix rollback: test state() asks full-tip-only inspect-manufacturing. Actual Host Saveguard refuses isEditingHistory; physical/drawing reads say ready:false. This is a confirmed acceptance-observation mismatch, not a failed prefix or corrupted part. No FIRST artifact oracle/STEP reader ran. Narrow acceptance correction under review; preserve real prefix refusal and every original geometry/travel/full-tip/file assertion.
-- **Current full countersink whole93317 RUNNING:** exact coherent0af/Hostbe24/285pins, frozen acceptance0af, unchanged product. Independent entire six-step/three-native-cycle/nine-artifact packet; PC log `/tmp/codi-acad-primary-countersink-20261109-r1.log`, new R730 output `/mnt/data10tb/codi-acad-primary-countersink-20261109-r1/whole`; launcher832e47c. Original extent is terminal/settled; one browser whole at a time. Poll exact93317; no pass from partial progress. FIRST independent artifacts only after terminal wholePASS, then all three actual SVG reviews.
-- **Current private fixture21055:**0af/Hostbe24/285pins, service86185/site-forward54596/reverse16681(R73019551 to PC19331), own `/mnt/data10tb/codi-acad-drawing-contract-state-20261109-r1`. Relay OFF. Both failed R2/R3 extent contexts are retired;21053/D7 unchanged. After countersink settles: reviewed acceptance-only complete extent rerun on unchanged producer, then affected complete drawing families/FIRST artifacts/every actual SVG review. No public/main/beta promotion or working runtime packaging.
+- **Complete extent R3 whole8167 terminal FAIL1, retained2af4873:** actual0af/Hostbe24/285pins, frozen acceptance0af.116rows/1355commands/68Native observations/seven native Saves/fresh Opens/ten artifacts/20settled writes;18 executed snapshots match exact Git blobs and sources unchanged; own contexts retired/no pending write. Failure after accepted history-prefix rollback: test state() asks full-tip-only inspect-manufacturing. Actual Host Saveguard refuses isEditingHistory; physical/drawing reads say ready:false. This is a confirmed acceptance-observation mismatch, not a failed prefix or corrupted part. No FIRST artifact oracle/STEP reader ran. Narrow acceptance correctiona2045aa and independent review7e1e2b6 are integrated; all original branch/travel/full-tip geometry/source/file assertions remain, plus exact real prefix refusal/discovery and retained-source checks.
+- **Current full extent R4 whole26910 RUNNING:** unchanged actual0af/Hostbe24/285pins, separately frozen acceptance `7e1e2b6d8eafac4411f1cc63d5b5dc67c5de994a` including corrected public prefix observationsa2045aa and independent review7e1e2b6. Actual clean acceptance checkout `/mnt/data10tb/codi-acad-extent-acceptance-20261109-r4`; new output `/mnt/data10tb/codi-acad-primary-extents-20261109-r4/whole`; PC log `/tmp/codi-acad-primary-extents-20261109-r4.log`; launcher29c0bef. No product/frozen failed-source/geometry/tolerance change; no shortened flow. Poll exact26910, never restart on observation timeout. FIRST separate STEP reader/oracle only after terminal wholePASS, then both actual SVG reviews.
+- **Current private fixture21055:**0af/Hostbe24/285pins, service86185/site-forward54596/reverse16681(R73019551 to PC19331), own `/mnt/data10tb/codi-acad-drawing-contract-state-20261109-r1`; relay OFF. Counter93317 and failed R2/R3 extent contexts retired; old21053/D7 unchanged. Sole active browser whole is extent26910; affected complete drawing families follow. Later C11 v4 datum/position/Ra/declared-fit source contract approvedaab4c2e; three bounded source lanes implement on separate branches, not this frozen runtime. No public/main/beta promotion or working runtime packaging.
 
 ## QUALIFICATION-HISTORY-PREFIX-OBSERVATION-01 — real read contract, not Save mutation
 
@@ -43,10 +43,11 @@ whole artifact oracle/STEP reader ran.
 | Branch / branch Undo / prefix Undo | Preserve original full timeline and exact supported geometry/identity/counter/travel checks; real full tip restores normal manufacturing inspection. |
 | Save/export | Full-tip/draft/processing/owner guards stay unchanged. A test observation failure does not permit skipping or weakening file acceptance. |
 
-Narrow acceptance correction is under source/independent review. New complete
-attempt must use separately frozen acceptance source against unchanged actual0af
-runtime; no edited frozen helpers, shortened whole or product guard waiver.
-The independent countersink whole93317 runs only after R3 is terminal/settled.
+Acceptance correctiona2045aa/independent review7e1e2b6 are integrated. Entire
+R4 whole26910 runs separately frozen7e acceptance against unchanged actual0af;
+no edited failed helpers, shortened flow or product guard waiver. Countersink
+whole93317/FIRST75755/all3 actual SVG review subsequently qualified06b7fe6;
+no overlap of browser whole runs and no unsettled write/context remains.
 
 ## CAD file-export finish audit — bounded source conclusion, no repair required
 
@@ -235,14 +236,14 @@ Ordinary refusal codes, original cause, exact source geometry, monotone work
 and unchanged quotas remain. Source-only, capabilityOFF; complete composed
 workflow regression is required before closing this issue.
 
-## COUNTERSINK-PREFLIGHT-RETIREMENT-01 — SOURCE-REPAIRED; runtime qualification open
+## COUNTERSINK-PREFLIGHT-RETIREMENT-01 — source-repaired; ordinary full lifecycle qualified
 
-In unregistered coordinator `d5a5c0d`, actual Native census/catalog/metric calls
-occur before the later four-result try/finally. Terminal scratch, exchange and
+At the original source review, unregistered coordinator `d5a5c0d` placed actual
+Native census/catalog/metric calls before the later four-result try/finally. Terminal scratch, exchange and
 malformed-result failures can therefore escape without the promised realm
 retirement marker. Some post-call DTO decoders also throw errors lacking the
-adapter's private failure classification. No public countersink is enabled;
-this is a source-confirmed contract defect, not an observed user incident.
+adapter's private failure classification. The public feature was not enabled
+at that review; this was a source-confirmed contract defect, not a user incident.
 
 | State | Required invariant | Allowed next transition |
 |---|---|---|
@@ -255,12 +256,18 @@ this is a source-confirmed contract defect, not an observed user incident.
 
 Repair ff7e747 (root23283e0) now covers the outer preflight boundary and post-call
 decoding while preserving original ordinary domain/preallocation refusals and
-error identity. Root composition97adb2e does not enable or execute this code.
+error identity. At historical root composition97adb2e this remained source-only.
 Matching name/count/catalog/metrics does not prove adversarial BRep identity.
-Regression remains the complete composed public workflow after real integration;
-source review or compilation alone does not close this issue.
+Current ordinary full lifecycle is qualified06b7fe6 on actual0af/Hostbe24/285pins:
+whole93317/FIRST75755/all3 original SVG reviews PASS.45Native observations,
+21precise refusals, three native cycles/nine artifacts/five malformed Open controls
+and healthy continuation retain genuine source/geometry/ownership/currentness.
+This establishes the tested ordinary path and real refusal retirement, not an
+injected scratch/exchange/malformed-Native/cleanup fault result. Unknown-outcome
+policy remains enforced by source contract; no cancelled fault/race/account probe
+is resumed or claimed by this finite qualification.
 
-## Current state contracts — 2026-11-09
+## Historical state contracts — superseded by current authoritative checkpoint
 
 Ordinary21/21 remains qualified; fullGate1OPEN. Current finite counterbore66b68d8
 and C11 regression64bbaad both passed whole/FIRST/actual-SVG review on frozen
