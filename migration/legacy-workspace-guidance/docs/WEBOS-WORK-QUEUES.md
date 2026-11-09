@@ -1,5 +1,12 @@
 # WebOS work queues and progress ledger
 
+## Next solver candidate composed — equality rejection boundary plus TangentCC proof
+
+Root2039a0d75f85a815b47a9c1b0ceb3033b4ddd41b on both LANs composes equality candidate-proof rejection fixd993b9a and TangentCC6298314/9014b22 (rootf4b52e0/b2172a2). Root reviewed the full helper and shared utilities, found and obtained correction for recursive domain validation before integration. Both equality forest and TCC fixed-input proof paths and prior-redundant obligations remain, with the shared per-pass callback once. Offset scope/travel, native removal transaction and original strict read validation remain unchanged. Source review: ACAD `docs/reviews/C03-COMPOSED-CERTIFICATES-20261109.md`.
+
+The equality error conversion applies ONLY to NEW candidate proof RESIDUAL plus original-residual-failure, preserving cause and message. Original accepted-source validation and other failure classes retain their codes; it is not proof of global infeasibility. Source repair is not qualification. Normal coherent build4917 is running on r730; log `/tmp/codi-acad-foundation-next-build-20261109-r5.log`. After terminal PASS and actual warning review, freeze a fresh189-pin stage and run UNCHANGED whole equality and tangency packets separately, then first independent oracles only after whole PASS. No existing failure or criterion is removed. Broad Gate1 remains OPEN.
+
+
 ## Equality R2 terminal failure — removal fixed, later error contract unresolved
 
 ACAD98ebd58 retains unchanged whole7031 FAIL1 on actuala5343dd/7fc7a508f:54rows/465commands/22 Native observations/seven diagnostics/two.cad server-equal Saves/fresh Opens. Original removal failure now passes, followed by nonzero/zero ratio edits and removal/travel. Later fixed physical A14 versus B8 equality correctly refuses mutation, but returns RESIDUAL/original-residual-failure rather than expected LENGTH_RELATION_REJECTED. Root independently compared the complete raw before/after snapshots: exactly equal. Error reports neither committed nor possiblyCommitted. All seven source/helper hashes unchanged, owned context retired; no failed-whole oracle. Later final reversal/rotation/archive controls remain unexecuted. Evidence: `test/equal-length-public-workflow/evidence-r2`; original R1 preserved.
