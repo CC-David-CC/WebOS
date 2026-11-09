@@ -29,6 +29,28 @@ resource envelope and final composed beta/agent/viewable G10 remain open. No mai
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Current first combined whole failure — app launch, zero CAD operations
+
+EqualRadius41533 terminalFAIL1 at120000ms signed-harness launch waiting for
+newly registered CAD window. Login completed; ZERO CADcommands/rows/Native
+observations/saves. Exact actual Core1d8fa59/Desktop728456989 had normalbuild
+47393/stage37347 PASS. First full failure/source snapshots/producing scripts/
+logs/pins preserved ACAD8939c7b on both LAN. Owned contexts retired, no writes
+or independent artifact oracle. Neither new feature is qualified. Oldb3/78cc
+and ordinary21/21/fourREAD proofs remain accepted on their producing cohort.
+
+Source audit checks new host command registration, including original4096char
+parameter-description budget vs expanded drawing schema. No original page
+error/DOM startup diagnostic was captured; causal diagnosis stays OPEN until
+source/runtime evidence supports it. Do NOT raise timeout/schema limits, run
+per-step mocks/probes or relabel as geometry/Files failure. If needed add bounded
+actual startup-error capture to the COMPLETE harness and retain firstfailure,
+then rerun the full workflow after coherent fix with NEW output/pins as needed.
+Do not run isometric through the known same launch boundary until it is addressed.
+No active app build/browser campaign now; private21031/data-drive state remains.
+Public/main/beta unchanged, no relay/races. Core/host source integration remains
+on named branches; N8cost/nextC03/C11 proposals do not change qualification.
+
 ## Active whole qualification — combined build/stage PASS; EqualRadius running
 
 Normalbuild47393 and stage37347 PASS at actual Core1d8fa59ca01f0d0b5f9ef9e17495bcd26eda1f2d /
