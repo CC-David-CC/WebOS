@@ -23,6 +23,31 @@ aperture bounds; no persisted caption flags or physical geometry changes.
 
 [Work queues](WEBOS-WORK-QUEUES.md) contains exact current refs/next actions.
 
+### CAD-COUNTERBORE-NATIVE-CUSTODY-01 (source-composed; unqualified)
+
+One accepted parent, one authored feature, four attempted Native results. Each
+fresh monotone name is registered before dispatch. The exact name and real
+Native census/topology corroborate release authority; aggregate counts alone
+never identify an arbitrary object to delete.
+
+| Current state | Observed transition | Result / invariant |
+| --- | --- | --- |
+| attempting | Census increases exactly one and this exact name has valid topology | owned; a thrown dispatch still carries a positively identified cleanup obligation. |
+| attempting | Census unchanged | absent; no release is attempted. |
+| attempting | Unexpected census or exact name unprovable | unknown; candidate fails, no guessed release or retry. |
+| owned | Release starts after exact topology/census confirmation | releasing before Native dispatch. |
+| releasing | Release returns and census decreases exactly one | released. |
+| releasing | Throw or uncertain census | unknown; never retry a potentially completed release. |
+| owned | Triangle-budget helper must retire this exact over-budget result | releasing first; only its exact RESOURCE_LIMIT plus census decrease establishes released. |
+| all four owned/retired as intended | Source topology/metrics/handles unchanged; work receipt complete; sole final result accounts for baseline+1 | final publication may proceed. |
+| any failure or unresolved cleanup obligation | Positively owned other attempts retire once; final prospective result revoked | accepted parent remains authoritative; unknown ownership is terminal ENGINE_CLEANUP_FAILED. |
+
+No new arbitrary callback, concurrency, security or crash probe qualifies these
+source branches. The pending complete counterbore workflow checks ordinary
+Native continuation, exact accepted-state refusals, publication, travel,
+resources and persistence. Forced allocation/release-failure behavior remains a
+separate unqualified boundary; no public corruption incident is inferred.
+
 ### CAD-PHYSICAL-INSPECTION-PRESENTATION-01
 
 | Actual authored source/state | Invariant |
