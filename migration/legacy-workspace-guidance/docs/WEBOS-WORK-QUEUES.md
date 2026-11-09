@@ -1,5 +1,14 @@
 # WebOS work queues and progress ledger
 
+## C11 section/detail — source implementation approved
+
+Root reviewed full design17dadad9ee8101a64d3a438d228306a0cd5405bd (`docs/reviews/C11-SECTION-DETAIL-CONTRACT-20261109.md` in ACAD), then approved isolated source implementation. This is a future capability, NOT qualified or present in the staged7683 candidate. Agent gate1_plan owns source and future complete workflow packet; no probes/build/Native execution until root review.
+
+Approved boundaries: existing exact Shell57b/60dc actual box/Common ancestry yields complete line-trim cut-cap sets, with no fabricated author featureId or weakening of general unique-face selectors. Section uses two temporary results within existing32 cumulative work limit; section-at31/32 is explicitly unavailable, without narrowing existing projection/bore reads. V3≤6 views comprises≤4 projections+one section+one detail; total role buffers≤3426304B/11 unique handles. V1/V2 remain unchanged. Detail uses actual TOP curve subintervals and genuine corner-bore references, absolute2:1 paper/model scale and unchanged physicalØ4. Worker geometry/validation and complete schema/PM/archive/export/discovery consumers must agree before advertising either capability. No new Native pair/ABI/default/backend fallback. Unknown topology or cleanup uncertainty is an explicit failure, never nominal geometry.
+
+Root requires the contract's stale opening runtime label be corrected to its actual e2/c6d freeze. Existing bore-warning proof82dd692 remains independently qualified. Future whole must include true section material/roof behavior, partial-conic clipping, source edits, shared travel, actual save/reopen and first independent geometry/archive/XML oracle; source approval is not acceptance evidence.
+
+
 ## Composed candidate — build PASS, two whole workflows active
 
 Full normal build49049 PASS0 on Core7683eb256ea0a38c1256dfacdfe076007a674250; actual log review finds no compiler warnings, missing exports or errors. Stage57821 PASS0 on frozen Host7fc7a508f4d6d90b846227ee5feb8d3b93109261:551 bundle files,189 runtime byte pins. No Native pair/ABI/default change. This supersedes the older build-running entry, not the retained first syntax failure.
