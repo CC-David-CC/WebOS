@@ -1,5 +1,18 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+## Current checkpoint — ordinary21/21; full Gate1 remains open
+
+Current queue/evidence, including exact producing commits and active handles:
+[work queues](WEBOS-WORK-QUEUES.md) and [acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md).
+Assembly E17 stays in Gate2. Finite equality/ratio675a4a3, tangency8b0dbf3,
+semantic Offset998864a, bore-warning layout82dd692 and support/center3392019
+are qualified in their recorded scopes. Related radius/tangent removal
+promotion additions are now running as entire augmented workflows57233/38715
+on actual Core8771a56/Host7fc7a508f after normal build/stage PASS; they are not
+qualified yet. Blind-hole acceptance repairs and section/detail implementation
+remain separate. All broader requirements below remain; older checkpoint
+headings describe historical states, not current open/closed disposition.
+
 ## Latest bore checkpoint — semantics qualified, presentation partial
 
 ACAD e98166d62f9bd14fffb643772b8b5f6db87966a1 preserves complete bore whole7482

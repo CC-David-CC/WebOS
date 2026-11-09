@@ -1,5 +1,18 @@
 # JSketcher basic foundation matrix
 
+## Current ACAD checkpoint
+
+This historically named document follows ACAD's independent engine work.
+Ordinary21/21 remains qualified, with assembly E17 moved to Gate2; full Gate1
+is OPEN. Finite equality/ratio675a4a3, tangency8b0dbf3, semantic Offset998864a,
+bore-warning layout82dd692 and support/center3392019 are qualified in their
+recorded scopes. The next radius/tangent removal-promotion whole workflows
+are running on actual Core8771a56/Host7fc7a508f, not yet qualified. Blind-hole
+acceptance repairs and section/detail implementation remain open.
+[Current operational ledger](WEBOS-WORK-QUEUES.md) and
+[expanded acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md) supersede
+older historical checkpoint labels below; no broader requirements are waived.
+
 ## Latest bore checkpoint — semantics qualified, presentation partial
 
 ACAD e98166d62f9bd14fffb643772b8b5f6db87966a1 preserves complete bore whole7482
