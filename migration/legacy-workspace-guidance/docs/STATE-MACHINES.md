@@ -1,5 +1,32 @@
 # Workflow state machines and invariants
 
+## CAD-EQUAL-RADIUS-01 — finite row lifecycle qualified
+
+Proof6be89ae actual1d8fa59/fab1c75f8 complete35273+FIRST oracle PASS. Equality
+uses actual distinct Circle/Arc radius Params rA-rB, no scalar or copied radius.
+
+| State/event | Guard and accepted effect |
+| --- | --- |
+| Absent unordered pair → create | Actual owned source/bindings, original equations/connected scope and separate original-request proof; append one real row. |
+| Existing pair → reversed create | Semantic no-op retains exact row order/source and live redo branch. |
+| Distinct transitive pair → create | Actual new row classified redundant by current admission; not duplicate no-op. |
+| Present row → remove | Current exact locator; remove equation with original coordinates, fresh proof and exact shared source travel. |
+| Stale/self/fixed-conflict → reject | Preserve accepted source/history/geometry; temporary work retires and healthy continuation succeeds. |
+| Typed radius edit/Open | Preserve original formula names/units and explicit independent components; no silent numeric erasure. |
+
+Actual radius freedoms3→1→0 plus unrelatedPoint2 yield local estimates5→3→2;
+these do not imply global physical DOF.38Native sets/152points/five.cad cycles.
+
+## CAD-DRAWING-PREPARED-COUNTS-01 — confirmed four-view guard repair pending
+
+Isometric firstR1 a6150ec fails before publication: Worker after-definition4,
+client literalmax3. Patchda0f597 uses shared definition maxima and binds returned
+summary view/dimension counts to actual after-definition before preparation:
+normal→result.after; no-op→before; removal/creation Undo→null counts0;
+journal travel→its exact selected before/after. No synchronized extra flag or
+summary-based geometry authority. Build/full unchanged isometric qualification
+remain pending; v1<=3/v2exact4 and all metadata/byte/Native guards remain.
+
 ## CAD-COMMAND-SCHEMA-BUDGET-01 — source-confirmed startup blocker
 
 Registry descriptor.description <=512 chars and serialized parameters <=4096
@@ -9,7 +36,9 @@ before mount readiness. Source fixfab1c75f8 preserves all data/Core/Native guard
 moves version prose to top-level description and compacts dimension prose,
 yielding3954/4026; caps remain unchanged. R1 actually observed only startup
 timeout/zero commands before retirement, not the missing original pageexception.
-Full R2 qualification is pending. Source app-instance.mountApp catches failed
+Full EqualRadiusR2 complete35273 and FIRST artifact oracle PASS on this host
+(proof6be89ae); repaired registration now reaches real commands/five native
+cycles. Isometric projection remains separate. Source app-instance.mountApp catches failed
 mount, disposes registered callbacks then rethrows; no new cleanup claim comes
 from a timeout alone. Whole-harness failure diagnostics now retain bounded
 actual visible startup/status messages without retrying/changing acceptance.

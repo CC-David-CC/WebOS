@@ -33,7 +33,13 @@ archive and camera checkers PASS,3.cad/250Native classes/six fits; root reviewed
 ALL six fitted canvas PNGs and final desktop image as readable shaded geometry.
 All four queued captured-profile READ consumer regressions are complete onb3.
 The retained JSON READ regressions are NOT additional.cad qualification.
-Nonempty source.boundary coverage, named competencies and final composed
+Finite EqualRadius now qualifies ACAD6be89ae, actual1d8fa59/fab1c75f8:
+whole35273+FIRST oracle PASS,622commands/38observations/152Native points/
+five.cad cycles/six refusals; numeric Circle/constructionArc and typed ordinary
+Arc preserve actual formulas/source. Local5→3→2 includes unrelatedPoint2,
+not global physical DOF. Isometric R1 fails at old preparation viewCount>3;
+fixda0f597 imports shared maxima and binds actual authored counts, rebuilding.
+Nonempty source.boundary coverage, other named competencies and final composed
 beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.

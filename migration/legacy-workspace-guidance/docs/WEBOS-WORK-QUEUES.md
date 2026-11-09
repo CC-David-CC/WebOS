@@ -29,6 +29,31 @@ resource envelope and final composed beta/agent/viewable G10 remain open. No mai
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Current checkpoint — EqualRadius PASS; isometric summary repair rebuilding
+
+EqualRadius complete35273 and FIRST independent check.py PASS, proofACAD6be89ae
+on both LAN. Actual1d8fa59/fab1c75f8,75rows/622commands/38observations/152Native
+points/three local diagnostics/six refusals/FIVE.cad browser+server+freshOpen
+cycles; source custody and owned retirement PASS. Numeric/typed equality,
+transitive redundancy, liveRedo no-op, disconnected fixed-radius conflict,
+formula retention and shared travel are finite qualified. FullC03 remains open.
+
+Isometric firstwhole1840 terminalFAIL at initial v2 replace, after v1 baseline/
+create travel: INVALID_RESPONSE Invalid drawing preparation summary.;41calls/
+two observations/zeroSVG/saves; no publication. FirstfailureACADa6150ec preserved.
+Source manufacturingPublicationClient.mjs retainedviewCount>3; Worker correctly
+derives4. Rootfixda0f597 imports sharedMAX_VIEWS/MAX_DIMENSIONS and compares
+summary counts with actualafter definition (normal/noop/remove/travel), no byte/
+Native/custody/currentness cap changes. Normalbuild25270 RUNNING on R730,
+log /tmp/codi-acad-isometric-summary-build-20261108-r1.log; uniquegraphbackup.
+After complete build/stage: new21033/data-drive fixture/pins and wholeunchanged
+isometric R2, then FIRST independent oracle. No active browser during build.
+
+Historical23scoped inventory is retained as historical, not a newly audited
+current total. New post-inventory proofs are individually linked; ordinary21/21
+unchanged. Public/main/beta, oldtestedb3 and qualified1d8/fab remain unchanged;
+no filesystem/account/race tests, relay, quota or packaging work.
+
 ## Current retry — compact host schema staged; full EqualRadius R2 running
 
 Source-confirmed deterministic registration blocker: initial drawing create4320/
