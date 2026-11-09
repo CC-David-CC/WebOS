@@ -1,40 +1,40 @@
 # WebOS work queues and progress ledger
 
-## E16 structured stale-history build PASS; complete R3 running
+## Current execution checkpoint — Boolean checks PASS; typed-anchor repair building
 
-ACAD source1bd2a236 composesee3db52: exactlytwo Craft preflight checks retain
-Error/name/message/ordering and gain owncode STALE_HISTORY. No cancellation,
-registry/document errors, commit flags or geometry logic changed. Acceptance
-5cc3c077 composesa4a65a67 (actual root4a65a67d104d9866580d3bd1681ae960476343c2);
-followupe806eaab composesbdaedd6, adds genuine old-revision Undo refusal with
-exact same old token and full raw state equality. Both current code and tests
-backed to bothLAN. Normal8572/stage46611 PASS0 at actual4a65a67/78cc169,
-469assets/564684297bytes/178pins. New private21029/state-r47 backend32755/
-forward6650, no relay. WholeR3 session64547 runs frozen drivere806eaab and
-explicit MFG32eec/abbf2. Evidence /tmp/codi-acad-occ-boolean-public-20261108-r3,
-sibling.log. Three.cad Save/browser/server equality/freshOpen cycles, original
-source edits and creation travel already observed; overlapping union/common
-both orders proceed. No whole/oracle qualification yet; E16 remains Partial.
-After complete PASS only: compile NEW separate same-OCCT STEP reader with
-reviewed SDK, inherited NODE_OPTIONS --no-experimental-fetch, then first frozen
-artifact oracle. Never substitute old reader or claim independent kernel.
+ACAD7680027 preserves E16 R4 complete browser35376 PASS and FIRST independent
+artifact oracle PASS, actual4a65a67/78cc169.116 rows/447 commands/48 Native
+observations/three .cad saves+fresh Opens/13 refusals/one actual multi-solid STEP.
+Separate same-OCCT reader build44704/readback PASS; first launch rejected an
+obsolete Node flag BEFORE reading geometry. Explicit filesystem-loader preload
+and that first failure are retained. No independent-kernel claim. Raw point/edge
+contact manifold gate remains OPEN. Ordinary root signoff review is in progress;
+the earlier20/21 count below remains authoritative until that decision.
 
-Cleanup20additional inactive old Core copies COMPLETE after full private archive
-+streamed decompression/tar --compare. Receipt local-temp-cleanup-20261108-r6.json,
-8,760,778,752allocatedbytes targeted. Archive1,417,160,096bytes SHA256
-2788efab39ff05b2f39ed12dc73e0c1a283e8ff6078022102b4d463aae221771 atR730 private
-cleanup root. PC free~29GiB. Complete Desktop history bundle also preserved/
-verified/mirrored privately; source metadata in desktop-history-private-backup-
-20261108.json. Own temporary439,950,817byte bundle removed after exactreadback.
-Remaining308inactive dirty/ignored copies (27,144,560,640allocatedbytes) are
-being FULLY archived, job7636; FIVE tracked-WIP trees also preserve independent
-staged/working binary patches. No removal until full archive comparison passes.
-Seven actual old process-reference trees stay excluded. CURRENT-CODE user
-inspection snapshot is byte-verified/fixed and must NOT be updated or removed.
-Current R730 stable source copies exist at /mnt/data10tb/workspaces/webos-desktop
-and /mnt/data10tb/workspaces/acad; source-only detached checkpoints, update only
-when clean. Full75-entry actual site/source inventory is committed as08c106d8c.
-Counts20/21ordinary and separate23historical scoped unchanged; fullGate1 open.
+PL free/anchored R2 FAIL is frozen in ACADabbd1f5: genuine free named2→3 edits,
+travel, .cad save/server equality/fresh Open pass, then adding literal signed X
+after typed definitions is blocked by TYPED_SKETCH_MUTATION_UNSUPPORTED.
+Producta6c1c1c and acceptancea4301e8 are composed as03a5391/b3a7bb2 after root
+source review. Exactly literal X/Y uses existing captured typed-dimension access;
+original-request Worker verification and exact source travel remain mandatory.
+Acceptance adds immediate Undo/Redo for BOTH actual anchor creations and retains
+the genuinely free and partial-X phases. Both LAN refs containb3a7bb2. Normal
+R730 build29572 is running; no successful runtime claim for this repair yet.
+Next: stage fresh fixture, complete entire PL workflow, then FIRST artifact oracle.
+
+Cleanup308 remaining inactive dirty/ignored copies COMPLETE after full private
+archive and streamed decompression/tar --compare. Receipt
+local-temp-cleanup-20261108-r7.json records every removal and scoped recovery of
+read-only generated directories.27,144,560,640allocatedbytes targeted; archive
+10,165,463,130bytes SHA256
+c092d320e01b96f762d760d9967c7cf11dee5d97c12fb82709cbefc9af78475d at
+R730 /mnt/data10tb/a5500-cleanup-20261108/inactive-generated-r3.tar.zst.
+Five tracked-WIP trees include independent staged/working binary patches.
+PC free about52GiB. Seven actual process-reference trees remain excluded;
+no blanket temporary/dependency deletion. Older cleanup/history receipts remain.
+CURRENT-CODE user snapshot is fixed: do NOT refresh/remove it. Heavy builds run
+on R730.75-entry site inventory remains docs/APP-LOCATIONS-AND-SITE-STATUS-20261108.md.
+Public main/beta unchanged; visitor external relay stays disabled.
 
 ## Current ordinary checkpoint —20of21 qualified
 
