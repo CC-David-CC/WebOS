@@ -2,6 +2,14 @@
 
 ## Archive checkpoint — functional PASS, measured resources PARTIAL
 
+Post-evidence cleanup: dedicated cost ChromePID3051121 was normally closed
+through its own CDP connection after verifying the saved process start-time
+and onlyblank pages. Session65698 terminalPASS0. Its measurement data predates
+this cleanup and is unchanged. Shared Chrome19329/current private21034 remain
+available; no public/user browser or other service was closed. Three source
+silos remain active; root has no running qualification workflow at this checkpoint.
+
+
 ACADd7fd0c7 (decisionebb46f6), actualda0f597/caa9c50, complete whole16981
 and FIRST independent oracle PASS. Four.cad Saves/two fresh signed Opens/
 twelve STEP-core3MF-SVG exports/nine Native observations/three codec retirements
