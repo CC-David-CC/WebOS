@@ -28,6 +28,31 @@ composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Current captured-profile READ progress — Circle PASS; revolve running
+
+Actualb3a7bb2/78cc169 current Circle/native last-cap whole9639 and FIRST
+independent check.py PASS. Proof ACADc225cea on both LAN:52rows/271commands/
+19Native observation sets/95points/four.cad cycles/five refusals. Parent depth,
+non-origin pose, source-creation and edit travel, explicit locator repair and
+malformed own cache/parent refusals pass. Captured numeric Circle/current frame
+is covered; nonempty source.boundary remains separate. Ordinary21/21 unchanged.
+
+Retained profile delivery02c7067 composedb2ed517; actual helper12791 PASS
+stream-verifies50 existing graph records/74,251,690bytes and exclusively creates
+NEW228 metadata pins (178+23revolve+26sweep+sharedsemantic), preserving old fields.
+No runtime/build/substitution changes. Complete stepped revolve30244 RUNNING,
+evidence /tmp/codi-acad-read-stepped-revolve-20261108-r1 and sibling.log.
+Same private21030/state48, retained567419/ad9475 pair. This unchanged runner
+uses four JSONv2 own saves; it is current READ regression, NOT new.cad proof.
+First independent saved checker only after terminal whole PASS; then four-case
+curved-sweep point workflow, then unequal-section loft+fit complete workflow.
+
+Full remaining-contract reviewcd8b499 composed58bcc82 and C11 decomposition
+4f0457f composeddf3b781 are source-only notes, not new qualification/scope.
+Three existing agent silos: bounded linked isometric implementation; EqualRadius
+source/coverage reconciliation; N8/ARC memory/cost evidence plan. Root alone
+builds/runs browser checks serially. No public/main/beta promotion or relay.
+
 ## Active regression — Circle/Native last-cap attachment READ
 
 Root composed source-only helperbaf2d2e as ACADd02bed7, both LAN. Actual helper
