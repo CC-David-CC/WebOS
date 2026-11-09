@@ -23,10 +23,33 @@ Renamed legacy physical writer NOW qualified ACAD56bfc01: same builtb3a7bb2,
 whole14503 and FIRST independent artifact oracle PASS;14observations/eight
 physical travels/two.cad cycles/actual renamed task forwarding, numeric↔named
 source and fresh-session edits. Public bounds/hole facts, not Native mass.
-Named competencies, captured-profile READ consumer regressions and final
-composed beta/agent/viewable G10 still require evidence. No main or
+All four queued captured-profile READ regressions now pass onb3/78cc; evidence
+is indexed below. Nonempty source.boundary coverage, named competencies, archive
+resource envelope and final composed beta/agent/viewable G10 remain open. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
+
+## Current combined candidate — source composed; normal R730 build running
+
+Root reviewed/additively composed EqualRadius af2e544→4d53e8a→82815cc→764d28e→
+0fdee6e→05302aa→f5c124a→ab02795 over the reviewed isometric packet. Actual root
+Core1d8fa59ca01f0d0b5f9ef9e17495bcd26eda1f2d / Desktop728456989f0af1422556c65b702c2605cd5e366a,
+both LAN tips pushed. Desktop adds exact EqualRadius adapter+two registration
+lines while retaining isometric Save whitelist. Fixed-first typed travel,
+signed-coordinate forward proof, PL/READ/writer/currentness/independent request
+guards remain. EqualRadius has no scalar; edit through actual RadiusLength.
+
+Normal complete build47393 RUNNING on R730, log
+/tmp/codi-acad-isometric-equalradius-build-20261108-r1.log. Unique graph backup
+label is isometric-equalradius-20261108-r1. No browser workflow runs during build.
+After successful build: fresh exact728 Desktop/stage, fixture21031 with runtime
+state on /mnt/data10tb (not the small root disk), new signed pins, then whole
+EqualRadius and isometric flows SERIAL, FIRST independent oracles only after
+each complete terminal PASS. Neither feature is runtime-qualified yet.
+
+Old testedb3/78cc private21030/state48 and all four READ proofs remain separate;
+ordinary21/21 unchanged, fullGate1OPEN. Public/main/beta unchanged; no relay,
+Native binary/default change, quota update, source packaging or race tests.
 
 ## Current source checkpoint — isometric composed; combined EqualRadius source pending
 
