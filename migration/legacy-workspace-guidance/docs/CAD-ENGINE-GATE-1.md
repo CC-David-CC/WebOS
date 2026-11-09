@@ -1,5 +1,21 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+### Finite extent family qualified — 2026-11-09 latest
+
+ACAD d68ecb2 retains complete artifact session15053 PASS0 on verifier95af055,
+original runtime0af/Hostbe24/285pins/R4 whole26910. Six meshes, six STEP files,
+two SVGs, nine native cycles,29 exact planar patches/seven exact cylinder
+certificates; both complete original SVG renders individually reviewed PASS.
+All51 input files and eleven verifier sources unchanged before/after; no
+geometry, tolerance or production runtime changes. Original FIRST62543 failure
+is preserved. Evidence: test/selected-profile-extents-workflow/evidence-r5/.
+
+Ordinary exercises remain21/21; full Gate1 remains OPEN. Next serial work is
+current C11 source/read/render/Host/workflow composition and whole qualification.
+Finite-curve protected binding/event qualification, broader sketch/solid/reference/
+drawing/resource and combined beta obligations remain. This supersedes earlier
+L3-pending status only for the qualified finite extent family.
+
 ## Current authoritative checkpoint — 2026-11-09
 
 This section and the current work table describe present status. Older dated

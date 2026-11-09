@@ -1,10 +1,10 @@
 # CAD library integration: current queue
 
-Updated 2026-11-09. Strategy approved; native assessment is PARTIAL. Browser integration remains
+Updated 2026-11-09. Strategy approved; native assessment and the finite extent corpus are qualified in scope. Browser library integration remains
 unqualified and the production runtime is unchanged. This is the Host coordination entry, not a second CAD model.
 
 The full plan is in ACAD commit
-`b9ee65959b5476793b3f178d15451ea92c8bbd50`, file
+`d68ecb283c96149f9649346ef793df89204567f9`, file
 `docs/proposals/CAD1-LIBRARY-FIRST-INTEGRATION-20261109.md`.
 Retrieve that commit from `box-git:/srv/data/git/ACAD.git` or
 `r730:/mnt/data10tb/git/ACAD.git`. Local working copy:
@@ -26,8 +26,8 @@ required to understand it. Actual run outputs remain separately bound evidence.
 - FIRST artifact oracle62543 **FAIL1**: exact two-XY cylindrical-strip assumption.
   Actual blind mesh generator coordinates differ by nine ULP. This finding
   does not qualify the complete mesh or establish a kernel defect.
-- Complete mesh/finite-surface/intent proof and both actual SVG reviews remain
-  open. No Root whole/reader/oracle job is currently active. Countersink06b7fe6
+- Complete finite extent artifact15053 and both actual SVG reviews now PASS;
+  actual evidence is ACAD d68ecb2. No Root whole/reader/oracle job is active. Countersink06b7fe6
   retains its separate completed qualification.
 
 ## Native corpus read now passes; full surface proof remains open
@@ -51,8 +51,8 @@ small finite-curve BEFORE8a16108 and Root source approval8f1a17a freeze the firs
 analytic-support query packet. Native header source eea7128b and Core protocol56eeb1c are frozen on both LANs;
 Root still owns common splices, compilation and public finite-event integration. No public actionable
 query/trim or new runtime is claimed. Existing history, transactions and ownership
-remain authoritative. L3 full-surface proof and actual SVG reviews still precede
-extent-family qualification, then remaining broader Gate1 obligations.
+remain authoritative. L3 now qualifies the finite extent family; C11 producer integration and the
+remaining broader Gate1 obligations follow.
 
 ## Exact coverage composition checkpoint
 
@@ -95,8 +95,8 @@ Pinned native evaluation on R730 precedes any selected production WASM adoption.
 The detailed plan records precision, license, raw-input preservation, uncertainty,
 resource measurements, lane ownership, estimates and final acceptance conditions.
 
-Initial native six-file assessment passes in scope. Independent full-surface
-accuracy and broader scene/material/browser qualification still need closure. Provisional
+Initial native six-file assessment passes in scope. The current finite extent full-surface proof is qualified.
+Broader scene/material/browser qualification still needs closure. Provisional
 remaining work after extrusion qualification stays 1–2 weeks, with a third-week
 contingency; it is not a countdown from today. No estimate reduction is claimed
 before coverage and integration costs are measured.
