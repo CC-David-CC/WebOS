@@ -1,5 +1,27 @@
 # Workflow state machines and invariants
 
+## CAD-REGION-CONTACT-QUALIFICATION-20261108 — finite lifecycle now proved
+
+ACAD6a2aca0 actualf418/c6d: whole46700+FIRST independent oracle PASS.47Native
+sets/88bodyqueries/264points/eight precise refusals/six.cad browser/server/fresh
+Open cycles. This supersedes the pending labels for partial-side/full-edge
+contact and collinear repair below, within the exact8axis-Segment domain only.
+
+| Transition | Actual whole result |
+| --- | --- |
+| Whole source → discovery | Partial8events/9spans or full6events/7spans,2 genuine cells, every actual owner retained; no new stored geometric classification flag. |
+| Discovery → independent source-cell solids | Both selected bodies are valid; common side boundary for EACH, not one joined manifold. |
+| Same feature → other discovered cell → travel | Explicit reselection/UndoRedoUndo uses actual refs, no nearest-cell replacement. |
+| Source far-boundary/depth/reversal edit → regenerate | Intended source/IDs/ownership remain; genuine Native results and exact unaffected source checked. |
+| Stale/foreign/lost reference → reject | Exact accepted state retained, with only proved one candidate epoch/token invalidation when evaluation actually began. |
+| Collinear profile → refuse → explicit repair | Nonzero entities remain represented; discovery OVERLAPPING_EDGES before Native. Repair yields triangle, Undo restores source/refusal, Redo real IDs/result. |
+| Save/Open/reedit | Six real archives pass independent source/CRC/SHA/counter/geometry checks, owned contexts retire. |
+
+Current isometric compatibility9e61a52 also passes onf418/c6d with drawing
+advertised versions[1,2,3]; same finite v1/v2 geometry+three Opens/six SVG.
+New v3 bore/tangency semantics remain separately unqualified. Broader C02/C05,
+projection/offset and all-engine/precision claims are not implied.
+
 ## APP-WINDOW-REGISTRATION-OBSERVATION-01 — ordinary-profile harness finding
 
 Archive attribution R1 (ACAD946a137 evidence-r1) reaches three.cad Saves/six

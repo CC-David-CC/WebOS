@@ -1,5 +1,30 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+## Latest finite closures — isometric/contact PASS; full Gate1 OPEN
+
+Current normal actualCore f4189e75f52531428b4d7d108144a994e8f2ecca / Host
+c6d2bfe91f1e04dcbf099e7c992dceba93356eac, build5723/stage94440,
+189actual byte pins/private21035. Source composition/build proof225436d.
+
+ACAD9e61a52: affected complete isometric whole79755+FIRST oracle PASS;
+78rows/308commands/25Native sets/250points/15travels/six refusals/three.cad
+browser-server-fresh Opens/sixSVG, ALL six actual sheets visually reviewed.
+Sole changed expectation is advertised definition versions[1,2,3]; old geometry,
+projection, source, persistence and tolerance criteria unchanged.
+
+ACAD6a2aca0: complete contact/zero-area whole46700+FIRST Fraction/ZIP oracle
+PASS;102rows/430commands/20discoveries/47Native sets/88body queries/264points/
+eight refusals/six.cad browser-server-fresh Opens. Actual partial/full shared
+side cells, reselection, far edits/reversal/creation/depth/source travel and
+reopened reedit pass. Collinear nonzero boundary refuses OVERLAPPING_EDGES;
+explicit triangle repair/Undo/refusal/Redo/reopen passes with control preserved.
+This closes these finite C02/C05 cases, NOT joined-manifold/near-Circle/fullC02.
+
+Ordinary21/21 remains, assemblyE17 Gate2. Full named-competency Gate1 staysOPEN;
+resource evidence remains PARTIAL and final coherent beta delivery is pending.
+New tangency/v3 bore annotations are built source, not qualified from that fact.
+No main/beta/prototype release, relay, Files races or source packaging.
+
 ## Archive checkpoint — functional PASS, measured resources PARTIAL
 
 ACADd7fd0c7 (decisionebb46f6), actualda0f597/caa9c50, complete whole16981

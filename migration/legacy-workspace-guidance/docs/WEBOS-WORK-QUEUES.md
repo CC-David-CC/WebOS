@@ -1,32 +1,48 @@
 # WebOS work queues and progress ledger
 
-## Active composed candidate — normal build PASS, drawing whole regression RUNNING
+## Latest finite closures — isometric/contact PASS; full Gate1 OPEN
 
-Corebuild5723/hoststage94440 PASS at actualCore
-f4189e75f52531428b4d7d108144a994e8f2ecca / Host
-c6d2bfe91f1e04dcbf099e7c992dceba93356eac. Evidence ACAD225436d retains
-scripts/logs/189byte pins (full MFG/Shell/circular/adaptive graphs). Private
-21035 backend37441/forward30224; data runtime
-/mnt/data10tb/codi-acad-three-silos-state-20261108-r1; no --browser-relay.
+Current normal actualCore f4189e75f52531428b4d7d108144a994e8f2ecca / Host
+c6d2bfe91f1e04dcbf099e7c992dceba93356eac, build5723/stage94440,
+189actual byte pins/private21035. Source composition/build proof225436d.
 
-Composed source: C11bb9d95b/985318a, contact6d1ebfc/c23085c,
-tangency98c6dbb/b355ffb/f4189e7; hostc74c6bc1d/c6d2bfe91. New features
-remain UNQUALIFIED. Review14b63c8 and component lifecycle notes keep actual
-owners/derived predicates/refusals explicit, not new saved flags.
+ACAD9e61a52: affected complete isometric whole79755+FIRST oracle PASS;
+78rows/308commands/25Native sets/250points/15travels/six refusals/three.cad
+browser-server-fresh Opens/sixSVG, ALL six actual sheets visually reviewed.
+Sole changed expectation is advertised definition versions[1,2,3]; old geometry,
+projection, source, persistence and tolerance criteria unchanged.
 
-Affected whole isometric regression RUNNING79755: ACAD8b11ed1 NEW
-isometric-current-drawing-compatibility-workflow. Sole executable expectation
-change: advertised versions[1,2,3]. Original v1→v2 geometry,25Native sets,
-250points,15travels,six refusals,three.cad Opens,sixSVG and independent math
-criteria unchanged. Evidence /tmp/codi-acad-isometric-current-20261108-r1,
-sibling.log. FIRST oracle only after terminalwholePASS; preserve first failure.
-Old driver/evidence immutable. No simultaneous browser/build.
+ACAD6a2aca0: complete contact/zero-area whole46700+FIRST Fraction/ZIP oracle
+PASS;102rows/430commands/20discoveries/47Native sets/88body queries/264points/
+eight refusals/six.cad browser-server-fresh Opens. Actual partial/full shared
+side cells, reselection, far edits/reversal/creation/depth/source travel and
+reopened reedit pass. Collinear nonzero boundary refuses OVERLAPPING_EDGES;
+explicit triangle repair/Undo/refusal/Redo/reopen passes with control preserved.
+This closes these finite C02/C05 cases, NOT joined-manifold/near-Circle/fullC02.
 
-Three complete new-feature drivers/oracles are finishing source-only. Batch
-routine internal updates to avoid interrupting their source writes. Do not
-qualify from source/build or retag old ordinary21/21/isometric/archive proofs.
-Resource evidence PARTIAL/full Gate1 OPEN. No main/beta/prototype release,
-filesystem race, relay or source-distribution packaging.
+Ordinary21/21 remains, assemblyE17 Gate2. Full named-competency Gate1 staysOPEN;
+resource evidence remains PARTIAL and final coherent beta delivery is pending.
+New tangency/v3 bore annotations are built source, not qualified from that fact.
+No main/beta/prototype release, relay, Files races or source packaging.
+
+## Active serial lane — four-bore whole45800 RUNNING
+
+ACAD6cb0975 freezes the complete new four-bore drawing packet (original091254).
+Whole45800 is RUNNING, evidence /tmp/codi-acad-four-bore-drawing-20261108-r1,
+sibling.log. Exact actualf418/c6d/189pins/private21035/backend37441/forward30224,
+data /mnt/data10tb/codi-acad-three-silos-state-20261108-r1, owned CDP19329.
+Explicit Shell57b74074/60dc956b pair, not primary MFG32eec74/abbf2aa.
+Expect56Native read/discovery/21point observations, two datum families,6.cad,
+14SVG and real split/consume/cover controls; these are planned, NOT achieved.
+FIRST independent checker only after terminal wholePASS; preserve first failure,
+unknown write settlement and actual Native/source/ref/cleanup evidence. No
+simultaneous builds/browser workflows or criterion/tolerance substitutions.
+
+Next root review/whole queues: tangencyd09fd33 and C04center-distance/parallel-
+offset1e530e3→4830c9d source-only packets, no further product changes required.
+Agents now have docs-only next contracts: C03EqualLength, C01offset/projection,
+C11section/detail; any actual root-reported failure overrides that plan work.
+No new feature qualification or source-variant freeze follows from preparation.
 
 ## Archive checkpoint — functional PASS, measured resources PARTIAL
 
