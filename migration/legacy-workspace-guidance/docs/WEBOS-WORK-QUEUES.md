@@ -28,6 +28,21 @@ composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Active regression — Circle/Native last-cap attachment READ
+
+Root composed source-only helperbaf2d2e as ACADd02bed7, both LAN. Actual helper
+execution5053 PASS stream-verifies staged entries/all178 original assets and two
+missing Shell module URLs, creating NEW180 pins exclusively; original178 and
+runtime unchanged. Exact producing Coreb3a7bb2/Desktop78cc169, original Shell
+57b74074/60dc956b. Whole9639 is RUNNING, evidence
+/tmp/codi-acad-native-face-attachment-read-20261108-r1 and sibling.log,
+private21030/state48/backend24668/forward31241/sharedChrome19329. No relay.
+Unchanged retained recipe covers actual Circle child, parent depth/placement,
+source-creation and edit travel, native parent repair/four.cad cycles and explicit
+malformed own-archive refusals. FIRST independent oracle only after terminal
+whole PASS. Numeric Circle/current frame coverage is distinct from nonempty
+sketch-boundary coverage. Revolve/sweep/loft and wider/final G10 remain queued.
+
 ## Current next action — captured-profile READ consumer regressions
 
 Legacy whole14503 terminal PASS and FIRST artifact oracle PASS, proof56bfc01
