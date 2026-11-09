@@ -1,5 +1,19 @@
 # Workflow state machines and invariants
 
+## CAD-BOOLEAN-ALLOCATION-01 — qualified finite transitions
+
+E16 R4 proof7680027 / signoff5100922: successful creation reserves an ID then
+publishes its feature; Undo restores parents without decrementing high-water;
+Redo restores the same identity. A refused strict Join reserves exactly one ID,
+publishes NO accepted source/feature, advances evaluation epoch once and updates
+only its derived inspection tokens. The next successful SAME-project creation
+uses ID4 after failed3, retaining parents1/2; actual Native V24 verifies it.
+No blanket counter normalization or acceptance of arbitrary rejected-state drift.
+Stale authored edits AND stale Undo fail before allocation with STALE_HISTORY
+and FULL captured state equality. Both are observed in the complete workflow.
+Raw point/edge output manifold validation remains OPEN and distinct from this
+qualified transaction/allocation contract. Full Gate1 stays open.
+
 ## CAD-AUTHORED-STALE-01 precise preflight failure layer
 
 E16R2 proof sourceactualbaf95cc/78cc169 showed plain Error/no code at Craft,

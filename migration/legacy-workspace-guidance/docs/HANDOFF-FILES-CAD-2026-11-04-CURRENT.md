@@ -1,5 +1,26 @@
 # Current Files and CAD handoff
 
+## Current ordinary checkpoint —21of21 qualified; full Gate1 OPEN
+
+Root ACAD5100922 accepts finite ordinary E16 from evidence7680027:
+actual4a65a67/78cc169, complete browser35376 PASS, separate same-OCCT STEP
+reader build/readback PASS and FIRST independent artifact oracle PASS.
+116rows/447commands/48Native observations/302point classifications/three.cad
+browser commits+server equality+fresh Opens/13refusals/one real two-solid STEP.
+Creation/source edit travel, healthy continuation after reserved failed IDs and
+both exact stale edit/stale Undo refusals pass. All first failures remain retained.
+The ordinary set E01–E16/E18–E22 is Qualified; E17 assembly remains Gate2.
+The separate23historical scoped-workflow count is unchanged.
+
+This does NOT close full Gate1. Raw point/edge-contact manifold proof remains
+OPEN; app multi-solid point API UNSUPPORTED; reader is same-OCCT, not external
+independent kernel. Named competencies, complete typed PL free/anchored workflow,
+captured-profile READ consumer regressions/legacy writer and final composed
+beta/agent/viewable G10 still require evidence. Product03a5391/acceptanceb3a7bb2
+is building normally for the PL defect; no runtime pass claimed yet. No main or
+public beta promotion, visitor external relay, Files race or source packaging.
+Earlier checkpoint headers below are historical and superseded by this one.
+
 ## Current ordinary checkpoint —20of21 qualified
 
 Root ACAD82cee5c70cbc0944e55570ec23862b77a8236933 accepts E22 from proof
