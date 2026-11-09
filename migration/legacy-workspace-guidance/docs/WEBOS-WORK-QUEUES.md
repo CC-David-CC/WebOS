@@ -26,21 +26,28 @@ qualified. Full C11/G10 remain OPEN. Ordinary21/21 remains; E17 assembly Gate2.
 Other named competencies/resources and final coherent beta delivery still open.
 No public/main/prototype promotion, relay, Files race or source packaging.
 
-## Active serial lane — tangency whole79048 RUNNING
+## Active serial lane — first tangency FAIL retained; source repair in progress
 
-Actual application remains Core5e80/Hostc6d/private21036/backend57682/forward14573,
-189pins and owned CDP19329. Tangency frozen acceptance d09fd336, helperc6d;
-explicit primary MFG32eec74/abbf2aa Native pair. Source checks bind the actual
-Git objects before execution. Evidence /tmp/codi-acad-tangency-20261109-r1,
-sibling.log. One complete supporting/finite/ordered Circle-Circle lifecycle;
-no success or family qualification merely from starting. FIRST independent
-oracle only after terminal wholePASS, preserve any first whole failure.
+Whole79048 terminal FAIL1, actualCore5e80/Hostc6d/private21036/189pins/owned
+CDP19329, MFG32eec74/abbf2aa. Frozen driverd09fd336/helperc6d. Proofae1e597
+on BOTH LANs retains /tmp/codi-acad-tangency-20261109-r1 and sibling.log.
+46 rows/429 commands/22 Native sets/two.cad browser-server/fresh Opens before
+failure. Supporting phase and actual finite Circle/Arc positives passed WITHIN
+the failed whole, not as a new qualified family.
+
+FIRST outside-finite-contact refusal expected FINITE_CONTACT_OUTSIDE but got
+TANGENCY_FAILED; actual message registeredDomainFailureCause is not a function
+from registeredConstraintPolicy runtime import. No independent oracle ran.
+Owned contexts retired and source pins unchanged. Priority source repair lane
+is investigating exact export/import/compiled consumer seam; unchanged complete
+whole criteria after normal rebuild. No loosening math/domain/error expectations.
+
 
 Next serial queue: C04 center-distance/parallel-offset root83e44f7 (original
 4830c9d, contract91436dc/original1e530e3); complete reviewed source-only packet.
-No new product source needed for this packet. Three independent lanes are
-EqualLength shared lifecycle, semantic Offset generator and docs-only C11
-section/detail. Root owns composition, normal build and complete runs.
+No new product source needed for this packet. Agent lanes are tangency error repair (EqualLength WIP safely isolated), semantic
+Offset generator and derived drawing-warning layout; section/detail planning
+remains secondary. Root owns composition, normal build and complete runs.
 
 Retained previous checkpoints: contact6a2aca0 and isometric compatibility9e61a52
 remain scoped qualified. Bore dispatch first failure4957c0f was repaired7f01f97;
