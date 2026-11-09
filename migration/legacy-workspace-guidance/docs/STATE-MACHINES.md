@@ -1,5 +1,74 @@
 # Workflow state machines and invariants
 
+## CAD-SKETCH-LIFECYCLES-20261108 — explicit contracts, scoped evidence
+
+User requested formalization around relationships, region selection, offsets
+and projections. These are conceptual lifecycle contracts, NOT new persisted
+enums, blanket support/qualification, a second geometry graph or a framework.
+Each silo must map them to actual owners, source comments and whole proofs.
+
+Persist authored entities/relations, explicit branch, source references,
+operation inputs and source journal. DERIVE residual/satisfaction, finite
+contact, disjoint/touch/overlap, region inventory, projected/offset result and
+measurement availability from exact current source. Do not synchronize saved
+isTangent/isTouching/regionValid/projectionValid/canMeasure flags as authority.
+A declared relationship differs from accidentally satisfying its equation.
+Identity differs from equal coordinates; stale differs from unresolved.
+
+### CAD-RELATION-01 — shared relationship transaction
+
+| State / event | Required transition and invariant | Actual evidence/status |
+| --- | --- | --- |
+| Absent / create | Capture real owned source, target IDs, revision and branch; prepare through original equations/domains before accepted mutation. | EqualRadius6be89ae qualified finite domain; new tangency pending. |
+| Candidate / admit | Publish one source transaction. Genuine redundant new row differs from exact duplicate no-op. Satisfaction remains independently derived. | Qualified finite families; no global DOF theorem. |
+| Candidate / reject | Preserve accepted source/history/intent/last-valid result; retire temporary ownership. Distinguish geometry, domain, solver and execution failures. Permit only documented allocator/revision effects. | Existing scoped refusals; tangency needs its own whole cases. |
+| Accepted / parameter edit | Solve original relations, preserve explicit branch/formulas and validate domain before publication. Never silently flip side, erase formula, or move endpoints to fake finite contact. | Existing signed/PL/EqualRadius; finite tangency pending. |
+| Accepted / remove or travel | Exact row locator and same journal; restore original IDs/branch/equations. Exact no-op retains nonempty redo. | Qualified families only; new schemas need whole proof. |
+| Saved / Open | Reconstruct and validate original domains/branches before adopting candidate. No alternate agent model. | Existing .cad slices; tangency native Open/reedit pending. |
+
+Supporting-line and finite Segment/Arc contact are different durable semantics.
+Branch is authored intent, not an automatically toggled state. Shared operations
+must preserve valid native-human carry/recovery domains as well as agent use.
+
+### CAD-REGION-REFERENCE-01 — discovery and selected-cell dependency
+
+| State / event | Required transition and invariant | Actual evidence/status |
+| --- | --- | --- |
+| Current source / discover | Derive actual cells and EVERY source-owner interval; bind exact source/revision/frame. Read-only, no accepted ID allocation. | Qualified rectangle overlap/circular/profile-repair slices; new side/full-edge contacts pending. |
+| Current discovery / create | Revalidate descriptor/currentness before publication. Use discovered opaque IDs, not parsed grammar, caller grouping or nearest cell. | Existing selected-feature workflows. |
+| Discovery / intervening edit or New/Open | Old read cannot authorize mutation, even if numbers happen to match. Refuse stale/foreign requests; rediscover. | Existing stale controls; new routes require affected whole proof. |
+| Selected cell / source edit | Regenerate same intent. Preserve identity only when semantic membership remains meaningful; missing/ambiguous descendants stay explicit or reject proposed edit under actual contract. | Existing history/repair proofs; contact chain pending. |
+| Invalid candidate / reject | Keep last valid source/result/journal and distinguish planar/topology/solid failure from constraint inconsistency. No automatic replacement. | Existing finite refusals; collinear zero-area control pending. |
+| Selection / travel or native Open | Restore source/dependencies and recompute cells, not a second saved solved-region graph. Fresh-session journal behavior explicit. | Existing persistence; contact packet pending. |
+
+Disjoint→touch→overlap is derived classification. The consuming operation and
+reference have a lifecycle; those predicates need no synchronized flags.
+
+### CAD-DERIVED-REFERENCE-01 — semantic offset/projection
+
+| State / event | Required transition and invariant | Actual evidence/status |
+| --- | --- | --- |
+| Absent / author | Save real source refs and offset distance/direction or destination frame/domain. Flattened independent copies do not count as associative intent. | Remaining named C01 work, not universally qualified. |
+| Authored / evaluate | Derive current result with same manager/source/epoch ownership; stale or late work never publishes. | Reuse unchanged qualified infrastructure; new producer needs whole proof. |
+| Current result / upstream edit | Recompute from same inputs; no silent disconnected copy, weld or branch substitution. | Producer-specific offset/projection proof pending. |
+| Failed evaluation or broken ref | Preserve authored definition/last-valid data; label retained old output stale/unresolved. Do not present it as current or repair by proximity. | Must bind actual producer contract before signoff. |
+| Explicit repair / travel / Open | Actual current discovery, same operation/journal; serialize intent and rebuild. Failed repair retains accepted state. | Pending exact producer proof; unrelated attachment is not a substitute. |
+
+### Ownership, invalid transitions and regressions
+
+Silo reports must identify actual state owner/entrypoint/currentness witness,
+cancellation/late-result behavior, cleanup and successful/failed whole coverage.
+Keep useful implicit state with clear source comments if an explicit state
+object would only duplicate authority. Group confirmed bugs by invariant;
+retain first failure, coherent repair, docs and complete after-fix regression.
+Absent coverage alone is not evidence of corruption or a fixed bug.
+
+Confirmed drawing consumer mismatches: R1 independently retained max3; R2
+host dirty-reader accepted definitionv1 only. Isometricd1dd873 finite complete
+proof covers actual v1↔v2, no-op/remove/travel and unresolved/repair through
+three native Opens. Fixing contract consumers needed no extra synced flags.
+These proofs do not qualify new tangency/contact/offset/projection semantics.
+
 ## CAD-DRAWING-VERSION-LIFECYCLE-01 — finite v1/v2 qualified
 
 ACADd1dd873 actualda0f597/caa9c50: whole13565+FIRST artifact oracle PASS,

@@ -2,6 +2,22 @@
 
 ## Latest finite qualification — linked isometric PASS; full Gate1 OPEN
 
+User-requested lifecycle formalization is now in STATE-MACHINES.md under
+CAD-SKETCH-LIFECYCLES-20261108: relationship transaction, discovery/reference and
+associative offset/projection contracts, derived-vs-authored authority,
+transition tables and existing-versus-pending evidence. Each silo must report
+actual ownership/invalid transitions/complete proof coverage; no second graph,
+synced validity flags or blanket qualification was added.
+
+Archive attribution whole9180 is RUNNING on current da0/caa9 private21034,
+dedicated ordinary Chromium PID3051121/CDP19330/profile
+/tmp/codi-cad-cost-chrome-20261108-r1. Evidence /tmp/codi-acad-native-cost-20261108-r1
+and sibling.log. 500ms own Chrome-tree samples,5000ms post-close observation;
+no forced GC/cache/TLS alteration, no other app build/browser workflow parallel.
+Only FIRST independent oracle after whole terminal PASS. Cost coverage gaps
+remain PARTIAL, never fabricated zero or full capacity proof.
+
+
 ACAD d1dd873 qualifies the finite isometric workflow at actual Core
 **da0f597ac9ccff68ad0c461b1427a76c8a54be25** / Host
 **caa9c50e6a7d443f980467c9679d6d09a1e81921**. Whole13565 and FIRST independent
