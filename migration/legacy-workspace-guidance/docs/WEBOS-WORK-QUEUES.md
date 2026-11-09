@@ -1,8 +1,15 @@
 # WebOS work queues and progress ledger
 
-## Current: related removal candidate integrated; normal build running
+## Current: related removal complete workflows running
 
-Core `8771a5699c3a0e6d89fa6e840000803b921b175e` is on both LAN remotes. It composes related EqualRadius/Tangency removal `5a6b9dd`, complete augmented workflows `da645f8`, and root review `docs/reviews/C03-REMOVAL-ROOT-COMPOSITION-20261109.md`. Original geometry remains authoritative; actual PM removal derives survivor admission before unchanged strict cold/replay checks. Actual `validateEqualRadiusStages` export was inspected. Root normal build **71026** is running on r730; local log `/tmp/codi-acad-foundation-next-build-20261109-r6.log`. No runtime qualification of this addition yet. Frozen Host remains `7fc7a508f4d6d90b846227ee5feb8d3b93109261`.
+Core `8771a5699c3a0e6d89fa6e840000803b921b175e` is on both LAN remotes. It composes related EqualRadius/Tangency removal `5a6b9dd`, complete augmented workflows `da645f8`, and root review `docs/reviews/C03-REMOVAL-ROOT-COMPOSITION-20261109.md`. Original geometry remains authoritative; actual PM removal derives survivor admission before unchanged strict cold/replay checks. Actual `validateEqualRadiusStages` export was inspected. Normal build **71026 PASS0**, actual compiler output has no warning/error/missing-export matches; stage **89185 PASS0**,551 bundle files and189 actual byte pins. Custody is ACAD026aa1f, `test/related-removal-public-workflows/build-composed-r1`. Independent read-only source review reported no additional material finding. No runtime qualification of this addition yet. Frozen Host remains `7fc7a508f4d6d90b846227ee5feb8d3b93109261`.
+
+| Entire augmented workflow | Live handle / isolated fixture | Actual evidence root |
+| --- | --- | --- |
+| EqualRadius including original typed/numeric phases and three genuine promotion cases |57233, loopback21044/CDP19331|`/tmp/codi-acad-foundation-next-equalradius-20261109-r1/`|
+| Tangency including original support/finite/CC phases and four promotion companions |38715, loopback21045/CDP19329|`/tmp/codi-acad-foundation-next-tangency-20261109-r4/`|
+
+Both use exact Chromium3559/155.0.8059.79 and primary MFG32e/abb with seven actual driver/helper Git-object byte bindings verified before launch. Separate new r730 account roots, one immutable bundle; services25222/14948, forwarding30033. No relay. Preserve live handles and first failures; source/runtime metadata and partial rows are not a whole pass. Functional concurrency is not isolated resource evidence.
 
 Recent qualified finite scopes remain EqualLength/ratio675a4a3, tangency8b0dbf3, Offset998864a, warning layout82dd692 and C04 support/center3392019. Ordinary **21/21** remains; full Gate1 OPEN. Next complete runs must retain old coverage and add nine EqualRadius and fourteen Tangency native archive/Open cycles, then first independent oracles only after whole PASS. Independent source review continues; no public/main promotion.
 
