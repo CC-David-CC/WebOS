@@ -28,6 +28,26 @@ composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Current execution — two affected READ consumers PASS; curved sweep running
+
+Circle/current Native frame: ACADc225cea, complete9639+FIRST independent oracle
+PASS,4.cad/19Native sets/95points/five refusals. Stepped source+axis:
+Desktop04419466e, complete30244+FIRST saved-source oracle PASS,14rows/four
+JSONv2 saves/server integrity/fresh Opens. Neither proof is retagged across
+formats; full Gate1 remains open and ordinary21/21 is unchanged.
+
+Four-case signed-point sweep19908 RUNNING on same actualb3a7bb2/78cc169,
+private21030/state48, exact retaineda9cfa6/e105bd Native pair, NEW228 graph pins.
+Evidence /tmp/codi-acad-read-sweep-point-20261108-r1, sibling.log. No filtered
+case override. Require complete terminal PASS, allfour cases/12saved files and
+13queries/77points before FIRST independent signed-point-check.mjs. Then
+remaining unequal-section loft+explicit-fit complete flow and separate oracles.
+
+Source-only C11 isometric contract88b5bdc frozen; isolated implementation in
+progress. EqualRadius source/product/prerequisite reconciliation and N8/ARC
+memory/resource plan are separate agent silos. No new build/browser run by
+agents, public/main/beta deployment, relay/race probes or compatibility migration.
+
 ## Current captured-profile READ progress — Circle PASS; revolve running
 
 Actualb3a7bb2/78cc169 current Circle/native last-cap whole9639 and FIRST

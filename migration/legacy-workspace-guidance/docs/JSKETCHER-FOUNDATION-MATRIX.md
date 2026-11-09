@@ -23,8 +23,12 @@ Renamed legacy physical writer NOW qualified ACAD56bfc01: same builtb3a7bb2,
 whole14503 and FIRST independent artifact oracle PASS;14observations/eight
 physical travels/two.cad cycles/actual renamed task forwarding, numeric↔named
 source and fresh-session edits. Public bounds/hole facts, not Native mass.
-Named competencies, captured-profile READ consumer regressions and final
-composed beta/agent/viewable G10 still require evidence. No main or
+Captured-profile READ regressions now pass for Circle/current Native frame
+(ACADc225cea: whole9639+FIRST oracle,4.cad/19Native sets) and stepped profile+axis
+(Desktop04419466e: whole30244+FIRST saved-source oracle,fourJSONv2 checkpoints).
+The latter is retained READ regression, NOT additional.cad qualification.
+Curved sweep/unequal-section loft, named competencies and final composed
+beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
