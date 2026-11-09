@@ -14,6 +14,24 @@ This checkpoint supersedes running/unmerged descriptions below; those describe e
 - Extrusion variants remain an independent source/acceptance lane, OFF and unqualified. Remaining broader Gate 1 work includes profile/feature variants, references/numerical cases, drawing semantics/layout, large-project resources and final composed beta acceptance. No full-gate signoff.
 
 
+## PROFILE-EXTENT-CHARGE-RETIREMENT-01 — confirmed source defect; repair pending
+
+Independent BEFORE review8f7b06e of extent9f9bac8 confirms that the actual OCI
+chargeSelectedResult retires its known result before RESOURCE_LIMIT; the new
+extent helper then attempts the same name release again and accepts0. This is
+redundant Native name retirement, **not demonstrated heap double-free or foreign
+object deletion**. A redundant rollback pointer allocation/free failure can
+turn an already-settled quota refusal into terminal cleanup failure.
+
+The source owner is repairing the single-result obligation so acknowledged
+charge-owned retirement, constructor refusal/absence, owned result, release
+pending/confirmed and unknown outcome remain distinct. Actual existing OCI
+already closes on unknown dispatch/schema/scratch/input/precision outcomes;
+this review found no countersink-style missing outer settlement boundary here.
+Keep ordinary refusal codes, original operation cause, exact source geometry,
+monotone highwater/cumulative work and all9 shared guard closure. Source-only,
+capability OFF; complete workflow regression remains required after composition.
+
 ## COUNTERSINK-PREFLIGHT-RETIREMENT-01 — SOURCE-REPAIRED; runtime qualification open
 
 In unregistered coordinator `d5a5c0d`, actual Native census/catalog/metric calls
