@@ -2806,3 +2806,27 @@ original equations; raw named constants remain authored and no manual cache or
 mutable admission is introduced. Edit still uses its separately resolved genuine
 proposed row. Coherent build and unchanged complete regression remain required;
 partial earlier direction/edit checks are not a whole lifecycle qualification.
+
+## Offline derived-export qualification — exact coverage continuation
+
+This is an evidence workflow, separate from the accepted CAD document lifecycle.
+A successful compiler job does not transition a model to qualified. The current
+planar build90308 is BUILT only; general six-file assessment55504 is a scoped
+PASS, while the complete extent artifact family remains OPEN.
+
+| State | Permitted next event | Result / invariant |
+|---|---|---|
+| Source prepared | Review and freeze source/inputs/build anchors | FROZEN; no geometry pass inferred |
+| FROZEN | One complete owned artifact invocation | RUNNING; historical browser outputs remain immutable |
+| RUNNING | Actual child exits and streams settle | Evaluate complete report plus before/after source/input custody |
+| RUNNING | Parent interruption or unsettled child | UNKNOWN until exact owned outcome is reconciled; no success inferred |
+| Settled with complete current passing evidence | Required source/mesh/STEP/SVG obligations all pass | ARTIFACT_PASS in the stated finite scope |
+| Settled with any failed/missing obligation | Retain original reports and geometry | FAIL/INCOMPLETE; correction gets a new source revision/output directory |
+| ARTIFACT_PASS | Review both actual SVG renders and remaining family requirements | Family qualification only after every required independent obligation closes |
+
+No automatic retry, overwriting a FIRST report, silent repair/welding, or treating
+unknown execution as invalid geometry. Exact planar set coverage, global mesh
+validity, source intent, finite-surface accuracy and native editable persistence
+remain distinct proofs. Derived qualification changes no accepted model state.
+Historical eighteen-source R4 custody remains fixed; later verifier sources have
+separate Git before/after custody. New browser wholes capture the expanded roster.
