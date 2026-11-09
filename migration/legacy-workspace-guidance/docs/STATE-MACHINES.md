@@ -1,5 +1,16 @@
 # Workflow state machines and invariants
 
+## EqualLength/literal ratio lifecycle qualified — tangency still running
+
+ACAD675a4a3 retains unchanged whole86799 PASS0 and FIRST independent oracle PASS0 on actual2039a0d/7fc7a508f,189 pins/MFG32e/abb.72rows/596commands/31 Native observations/124point classifications/seven diagnostics/eight refusals/three.cad browser-server SHA-equal Saves and fresh Opens. All seven original source/helper bytes unchanged. Both prior failure paths now pass: removal promotes the surviving ratio correctly after Open, and fixed A14/B8 refusal preserves exact state/cause with the length-family rejection code, followed by healthy reversal/rotation and final persistence. Original R1/R2 remain retained. Proof: ACAD `test/equal-length-public-workflow/evidence-r3`.
+
+Qualified finite real EqualLength, transitive/fixed dependence, original local freedom transitions, literal factor/offset editing/removal (including factor0 disconnection), signed endpoint reversal, actual rotation, no-op/redo and shared history/persistence. Not a general typed/named-ratio mutation, universal global DOF or BRep equality/50pm Native claim. Unknown-write guard was not exercised; functional concurrency is not isolated resource evidence.
+
+Tangency whole93442 remains running at21043/CDP19329. It has passed the original fully-fixed external redundancy failure and proceeded through ordered internal branches, but no whole/oracle pass is claimed. EqualLength86799 is terminal; contexts retired after settled writes. Broad Gate1 OPEN; ordinary21/21 and prior finite Offset/drawing qualifiers unchanged.
+
+Blind packet6ef1b014/c7b91e8 and Hosted07e228 is SOURCE-READY, not integrated/qualified. Root review found finite-code forwarding and uncertain-allocation cleanup-accounting seams; owner is preparing source follow-up. Actual retained Native source/pair linkage was independently read; new blind entry/floor behavior still needs whole qualification. Review note ACAD `docs/reviews/C06-BLIND-ROOT-REVIEW-20261109.md`. No public/main promotion, Files race or relay.
+
+
 ## CAD-CONSTRAINT-REMOVAL-ADMISSION-01 — missing derived-state transition
 
 Confirmed in EqualLength whole92872; retained proof ACAD998864a. Source repaira5343dd is rebuilding, not qualified. Admission hints are replay evidence for actual authored rows; they cannot be blindly carried through a mutation that changes which relationships are independent. They are not a substitute for satisfiability, geometry validity, remaining physical freedom or profile validity.
