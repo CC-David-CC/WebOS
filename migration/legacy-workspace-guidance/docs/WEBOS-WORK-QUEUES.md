@@ -55,9 +55,14 @@ unchanged. No product, oracle, tolerance or native asset changes.
 R3 whole7482 RUNNING on SAME actual5e80/c6d/189pins/private21036/backend57682/
 forward14573/owned CDP19329, fresh own account/context. Evidence
 /tmp/codi-acad-four-bore-drawing-20261108-r3 and sibling.log. Explicit Shell
-57b74074/60dc956b, not MFG. Expected56Native sets/21points, two datum families,
-six.cad/14SVG and actual split/consume/cover controls remain planned. FIRST
-independent oracle only after terminal wholePASS; keep all first failures.
+57b74074/60dc956b, not MFG. Original [0,0] case now records PASS within the still-running whole:28Native
+sets/three.cad browser-server Saves and fresh Opens/sevenSVG/three actual split,
+consume and cover controls with full Undo recovery. Covered bores retain
+measurable diameter while THRU is unqualified. Healthy subsequent reedit and
+third Open pass. The translated-negative [-70,-35] case is RUNNING, so no whole
+or family qualification follows yet. Expected total56Native sets/21points,
+six.cad/14SVG remain pending. FIRST independent oracle only after terminal
+wholePASS; keep all first failures.
 
 Next serial queues: tangencyd09fd33 (root5e80f0d) and C04center-distance/
 parallel-offset1e530e3→4830c9d complete source-only packets. Docs-only proposals
