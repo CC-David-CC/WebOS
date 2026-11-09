@@ -1,5 +1,27 @@
 # Workflow state machines and invariants
 
+## CAD-DRAWING-VERSION-LIFECYCLE-01 — finite v1/v2 qualified
+
+ACADd1dd873 actualda0f597/caa9c50: whole13565+FIRST artifact oracle PASS,
+three.cad browser/server/fresh Opens and six SVGs; all sheets visually reviewed.
+This qualifies the finite lifecycle below, not every drawing or full C11.
+
+| State/event | Guard and accepted effect |
+| --- | --- |
+| Three orthographic v1 → replace v2 | One canonical four-view definition, six unchanged physical dimensions; summary counts bound to the actual proposed definition before publication. |
+| Accepted v2 → inspect/dirty comparison | Same exact supported definition reader for current and saved baseline; full serialized envelope comparison, no stripped versions or counts-only equality. |
+| v2 → Undo/Redo | Restore exact three-/four-view authored definitions using the same metadata journal; no second history or transient isometric flag. |
+| Source edit → current read/export | Derive actual Native geometry and unchanged authored references; no stored measured dimensions. |
+| Broken reference → Save/Open | Preserve structurally valid unresolved intent, render explicit UNRESOLVED instead of invented measurements. |
+| Explicit discovered repair → travel | Repair the same references; Undo restores exact unresolved definition, Redo exact repaired one. |
+| Remove/Undo and no-op | Removal uses null/zero summary; exact no-op preserves source/journal. |
+| Invalid/stale/unsupported request | Preserve accepted source/geometry/metadata; no false success. |
+
+R1clientmax3 and R2hostdefinitionv1 failures remain preserved. Their older pending
+notes below are historical. Definition versions1/2 are distinct from envelope
+versions2/3, inspection wire1, native-container receipt1 and presentation1.
+All runtime/Native byte, unit, currentness and cleanup guards remain.
+
 ## CAD-EQUAL-RADIUS-01 — finite row lifecycle qualified
 
 Proof6be89ae actual1d8fa59/fab1c75f8 complete35273+FIRST oracle PASS. Equality

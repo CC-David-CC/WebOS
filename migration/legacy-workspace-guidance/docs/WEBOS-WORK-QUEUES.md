@@ -1,5 +1,32 @@
 # WebOS work queues and progress ledger
 
+## Latest finite qualification — linked isometric PASS; full Gate1 OPEN
+
+ACAD d1dd873 qualifies the finite isometric workflow at actual Core
+**da0f597ac9ccff68ad0c461b1427a76c8a54be25** / Host
+**caa9c50e6a7d443f980467c9679d6d09a1e81921**. Whole13565 and FIRST independent
+artifact oracle PASS; all six actual exported sheets visually reviewed.
+78rows/308commands/25Native sets/250points/15travels/six refusals/three.cad
+browser commits+server equality+fresh signed Opens/six SVGs. Four-view
+replace/no-op/create/remove/travel, source edits, persisted unresolved refs and
+explicit same-reference repair pass. R1/R2 failures remain preserved.
+
+Ordinary21/21 remains; E17 assembly is Gate2. EqualRadius6be89ae and all four
+READ proofs keep their actual earlier pins. This is not full C11/Gate1 or a
+new beta release. Remaining named competencies, source.boundary producer,
+archive/resource envelope, explicit backend/format policy and final coherent
+beta/agent/viewable delivery remain open. The default viewport still needs an
+explicit fit for a readable part; only the existing explicit-fit slice is
+qualified. Historical pending-isometric notes below are superseded here.
+
+Next serial root task: one genuine complete native-archive cost-attribution
+workflow on the current normal da0/caa9 fixture, with a separate owned ordinary
+Chrome profile, actual command/sync/audit phases and sampled memory. Prepared
+packet ACAD5735f8b is source-reviewed, not yet executed/qualified; tiny CAD is
+not large-source capacity proof. Three agents have independent source-only
+C11 bore annotations, C03 tangency, and finite C02/C05 case reconciliation.
+No public/main/prototype change, relay, Files races or source packaging.
+
 ## Current ordinary checkpoint —21of21 qualified; full Gate1 OPEN
 
 Root ACAD5100922 accepts finite ordinary E16 from evidence7680027:
@@ -29,7 +56,7 @@ resource envelope and final composed beta/agent/viewable G10 remain open. No mai
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
-## Active isometric R3 — host inspection reader compatibility repair
+## Historical isometric R3 launch — now qualified d1dd873
 
 R3 COMPLETE whole workflow now RUNNING session13565 at private21034. Actual
 Core da0f597ac9ccff68ad0c461b1427a76c8a54be25 / Host
