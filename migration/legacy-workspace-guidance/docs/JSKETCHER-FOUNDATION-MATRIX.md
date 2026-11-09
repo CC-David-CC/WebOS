@@ -15,8 +15,10 @@ exports and both exact malformed archive refusals. Finite section/detail now
 qualifies **771f66e**: whole61449 +FIRST oracle40502 PASS;16 actual SVGs
 reviewed/eight Saves/six fresh Opens. Caption placement and general label layout
 remain open. Caption/counterbore source is now composed (Coree521860/Host843aee31a);
-normal build12568/stage85873 PASS0/209pins; complete C11 browser38312 RUNNING,
-full independent oracle/artifact review and counterbore workflow still pending.
+normal build12568/stage85873 PASS0/209pins. C11 own-view caption regression
+QUALIFIED010f9f6: whole38312/corrected oracle68408/all16 rendered reviews PASS;
+FIRST syntax failure retainedfe181dd, one-bracket checker repaird8b300b. Caption
+cross-view collisions remain open. Full counterbore51937 now RUNNING on same runtime.
 Counterbore, extents, mechanical/conical source, resource/backend/
 format and final composed Gate1 delivery remain unfinished. No public/main promotion. Exact current evidence and
 next steps: [work queues](WEBOS-WORK-QUEUES.md) and
