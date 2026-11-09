@@ -1,5 +1,19 @@
 # Workflow state machines and invariants
 
+## CAD-COMMAND-SCHEMA-BUDGET-01 — source-confirmed startup blocker
+
+Registry descriptor.description <=512 chars and serialized parameters <=4096
+chars are distinct admission guards. New drawing variant prose nested inside
+parameters made create4320/replace4392; registration deterministically rejects
+before mount readiness. Source fixfab1c75f8 preserves all data/Core/Native guards,
+moves version prose to top-level description and compacts dimension prose,
+yielding3954/4026; caps remain unchanged. R1 actually observed only startup
+timeout/zero commands before retirement, not the missing original pageexception.
+Full R2 qualification is pending. Source app-instance.mountApp catches failed
+mount, disposes registered callbacks then rethrows; no new cleanup claim comes
+from a timeout alone. Whole-harness failure diagnostics now retain bounded
+actual visible startup/status messages without retrying/changing acceptance.
+
 ## CAD-CAPTURED-PROFILE-READ-01 — bounded affected-consumer batch qualified
 
 Currentb3a7bb2/78cc169 after capture/READ repair: Circle/current attached Native

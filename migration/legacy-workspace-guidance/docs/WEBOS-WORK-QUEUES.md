@@ -29,6 +29,27 @@ resource envelope and final composed beta/agent/viewable G10 remain open. No mai
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Current retry — compact host schema staged; full EqualRadius R2 running
+
+Source-confirmed deterministic registration blocker: initial drawing create4320/
+replace4392 serialized schema characters exceed original registry4096. Original
+R1 remains a launch-timeout observation with no captured pageexception; do NOT
+rewrite it into that missing browser evidence. Minimal Desktopabec1ad composed
+fab1c75f828030647eb582db3da160c8b6afe14f: schema prose compacted/moved outside
+parameters; create3954/replace4026/remove373, all data/Core/Native/caps unchanged.
+Failure-only actual bounded DOM startup diagnostic added to shared whole harness
+3a9d7feef/e8d5e7f0e; original gestures/waits/criteria/error remain unchanged.
+
+Exact compiled Core1d8fa59 artifact reused (no Core source change), normal host
+restage82252 PASS. Actual new cohort1d8fa59/fab1c75f8, new178 pins, private21032
+backend68568/forward37706/data-drive state-r2. Complete EqualRadius35273 RUNNING,
+evidence /tmp/codi-acad-equal-radius-public-20261108-r2 and sibling.log; frozen
+driveredeb24a +actual helperfab1c75f8 Git custody. Runtime pin checkpoint reached:
+launch now gets past ready registration. NO whole/newfeature qualification yet.
+Only terminalwhole PASS permits FIRST oracle. Then complete isometric samecohort.
+First failure8939c7b/oldqualifiedb3/publicbeta remain untouched. No probes,
+timeout/cap increase, repeated Core compile, relay/race or public promotion.
+
 ## Current first combined whole failure — app launch, zero CAD operations
 
 EqualRadius41533 terminalFAIL1 at120000ms signed-harness launch waiting for
