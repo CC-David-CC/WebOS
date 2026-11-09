@@ -1,5 +1,19 @@
 # Workflow state machines and invariants
 
+## CAD-CAPTURED-PROFILE-READ-01 — bounded affected-consumer batch qualified
+
+Currentb3a7bb2/78cc169 after capture/READ repair: Circle/current attached Native
+framec225cea, stepped profile+axis04419466e, four curved/annular sweep cases
+14b1d24f2 and unequal loft+fit6f621d9 all complete with FIRST independent artifact
+checks. Reads validate original equations/current frames while retaining captured
+authored coordinates; discovery does not reconstruct/edit the accepted model.
+Actual edit/travel/refusal/Open chains cover their stated domains and preserve
+source identities/history/counters/intent. Explicit parent reference repair is
+authored; stale/missing references do not silently heal. Six real fitted loft
+PNGs and final desktop manually reviewed. Retained revolve/sweep files are
+JSONv2; the Circle/loft cycles are.cad. Nonempty source.boundary/all faces/all
+engines/default framing/finalG10 are not inferred from these finite proofs.
+
 ## CAD-LEGACY-PHYSICAL-WRITER-01 — actual named/literal restoration
 
 Proof56bfc01: actualb3a7bb2/78cc169 browser14503 and FIRST artifact oracle PASS.

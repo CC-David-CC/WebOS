@@ -28,8 +28,12 @@ Captured-profile READ regressions now pass for Circle/current Native frame
 (Desktop04419466e: whole30244+FIRST saved-source oracle,fourJSONv2 checkpoints).
 Four-case curved/annular sweep also passes Desktop14b1d24f2: whole19908+
 FIRST independent oracle,12JSONv2 saves/13Native queries/77point classes.
+Unequal-section loft+fit also passes ACAD6f621d9: whole49252, FIRST geometry/
+archive and camera checkers PASS,3.cad/250Native classes/six fits; root reviewed
+ALL six fitted canvas PNGs and final desktop image as readable shaded geometry.
+All four queued captured-profile READ consumer regressions are complete onb3.
 The retained JSON READ regressions are NOT additional.cad qualification.
-Unequal-section loft+fit, named competencies and final composed
+Nonempty source.boundary coverage, named competencies and final composed
 beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.

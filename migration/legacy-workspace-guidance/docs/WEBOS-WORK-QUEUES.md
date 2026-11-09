@@ -28,6 +28,32 @@ composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Current checkpoint — all four queued captured-profile READ consumers PASS
+
+Loft+fit complete49252 and FIRST independent geometry/source/archive and camera
+oracles PASS, ACAD6f621d9 on both LAN.92rows/212commands/25Native observations/
+250classes/three.cad cycles/16travels/six fits/threeview refusals/fourdomain
+refusals. Root manually reviewed ALL six actual fitted PNGs plus final desktop:
+readable shaded geometry, no image changes. Explicit fitting only, not default
+framing/all devices/final G10. This completes the bounded READ batch with
+Circlec225cea, stepped revolve04419466e and four-case sweep14b1d24f2.
+Nonempty source.boundary remains separate; ordinary21/21 and fullGate1OPEN.
+No active browser workflow or app build now; same private21030/state48 remains.
+
+Next coherent source candidate: bounded isometric Core88b5bdc→0bd562b→64b2845,
+Desktop0572062→a3342e5 (important exact drawingv1/2 supportedEnvelope Save guard).
+Root preliminary product review no block; independent acceptance review running.
+EqualRadius contract4c89cf2/acceptanceedeb24a requires minimal product chain;
+agent prepares additive composition preserving ALLcurrentb3 guards and isometric
+changes on own worktrees. Do NOT apply duplicated humanhelper646/4ded twice.
+No normal build until root reviews exact combined source/host commits. Root
+alone runs complete EqualRadius and isometric workflows serially AFTER build.
+
+N8/ARC source review2823669 confirms remaining main snapshot/hydration work;
+no new measured codec leak/large-CAD peak claim. Separate complete cost packet
+is in preparation;1GiB installed-code budget is NOT a RAM budget. No quotas,
+public promotion, source packaging, relay or Files/account/security races.
+
 ## Current execution — three affected READ consumers PASS; loft/fit running
 
 Four-case sweep whole19908 terminal PASS and FIRST independent artifact oracle
