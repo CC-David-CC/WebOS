@@ -26,33 +26,41 @@ qualified. Full C11/G10 remain OPEN. Ordinary21/21 remains; E17 assembly Gate2.
 Other named competencies/resources and final coherent beta delivery still open.
 No public/main/prototype promotion, relay, Files race or source packaging.
 
-## Active serial lane — first tangency FAIL retained; source repair in progress
+## Current composed candidate and two functional lanes
 
-Whole79048 terminal FAIL1, actualCore5e80/Hostc6d/private21036/189pins/owned
-CDP19329, MFG32eec74/abbf2aa. Frozen driverd09fd336/helperc6d. Proofae1e597
-on BOTH LANs retains /tmp/codi-acad-tangency-20261109-r1 and sibling.log.
-46 rows/429 commands/22 Native sets/two.cad browser-server/fresh Opens before
-failure. Supporting phase and actual finite Circle/Arc positives passed WITHIN
-the failed whole, not as a new qualified family.
+Normal build87519/stage99964 PASS0, no missing-export/compiler-warning matches.
+ActualCoree2a3027fd5fff516cbcda412e8f5f9d9b3531f57 / Host
+c6d2bfe91f1e04dcbf099e7c992dceba93356eac,189 actual pins. Root fixture21037/
+backend34189/forward39257/CDP19329; separate fixture21038/backend67603/
+forward51843/CDP19331, exact owned Chromium3559/PID3094784. Separate account
+storage roots/profiles, same immutable bundle. Functional concurrency only;
+no isolated memory/performance claim. Relay remains disabled.
 
-FIRST outside-finite-contact refusal expected FINITE_CONTACT_OUTSIDE but got
-TANGENCY_FAILED; actual message registeredDomainFailureCause is not a function
-from registeredConstraintPolicy runtime import. No independent oracle ran.
-Owned contexts retired and source pins unchanged. Priority source repair lane
-is investigating exact export/import/compiled consumer seam; unchanged complete
-whole criteria after normal rebuild. No loosening math/domain/error expectations.
+C04 root3392019 QUALIFIED finite Circle-center spacing and Parallel-authorized
+offset: ONE whole56938 plus FIRST oracle PASS;48rows/558commands/33observations/
+16travels/eight refusals/two.cad browser-server Saves and fresh Opens. Seven
+source/helper hashes unchanged; owned contexts retired. Driverb0eccc7. No repeat.
 
+Tangency R2 whole45432 terminated FAIL1, proof0ebf046 on BOTH LANs:67rows/
+656commands/30 Native sets/three.cad cycles. Missing export repair passes original
+outside-contact failure. Complete finite phase passes within failed whole, then
+a fully fixed external Circle-Circle row is accepted rather than redundant.
+Original fixed-row/exact-polynomial certificate source repair is priority;
+unchanged expectations, no failed-whole oracle. Source unchanged/contexts retired.
 
-Next serial queue: C04 center-distance/parallel-offset root83e44f7 (original
-4830c9d, contract91436dc/original1e530e3); complete reviewed source-only packet.
-No new product source needed for this packet. Agent lanes are tangency error repair (EqualLength WIP safely isolated), semantic
-Offset generator and derived drawing-warning layout; section/detail planning
-remains secondary. Root owns composition, normal build and complete runs.
+Second lane bore/warning R4 whole54248 RUNNING, evidence
+/tmp/codi-acad-four-bore-drawing-20261109-r4 and sibling.log; Shell57b74074/
+60dc956b, samee2/c6d/189pins. All12 source/helper Git bytes verified. Complete
+56Native/1176points/six.cad/14SVG/all negatives/refusals/travel plus distinct
+bounded ALL FOUR error legend criteria remain. FIRST oracle only after whole
+PASS; keep any first failure. Root rendered-artifact review afterward.
 
-Retained previous checkpoints: contact6a2aca0 and isometric compatibility9e61a52
-remain scoped qualified. Bore dispatch first failure4957c0f was repaired7f01f97;
-R2 malformed negative requestbe9fb7a was corrected without changing its expected
-geometry refusal. R3 complete evidencee98166d now supersedes old running notes.
+Queued source: EqualLength4a044c6/Host42285b83 and Offset243660ae/Hosteb84b13,
+source-complete, NOT built/qualified. Root merges shared solver/coordinator
+contracts carefully. C06 rootd54629c preserves qualified domains and missing
+named routes/bindings. Blind contracte930e46 and section/detail are planning,
+not runtime capability. Ordinary21/21/contact6a2aca0/isometric9e61a52/boree98166d
+retain their actual scopes. No public/main promotion or source packaging.
 
 ## Archive checkpoint — functional PASS, measured resources PARTIAL
 

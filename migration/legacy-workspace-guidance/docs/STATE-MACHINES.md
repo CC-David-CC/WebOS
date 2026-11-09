@@ -1,5 +1,42 @@
 # Workflow state machines and invariants
 
+
+## CAD-BUILD-EXPORT-CONTRACT-01 — missed warning repaired
+
+R1 tangency's missing compatibility export was already a webpack warning in
+its earlier normal build; root missed that diagnostic before the whole run.
+Repaire330db8 re-exports the SAME authoritative helper, no equations/domains
+changed. New normal87519 actuale2a3027 PASS0 and compiler/import-export scan
+zero matches BEFORE stage99964 or browser qualification. Exit0 alone is not enough.
+
+| Transition | Required guard |
+| --- | --- |
+| Composed source -> build | Exact source and dependent Worker closures, no stale served-worker substitution. |
+| Build terminal -> stage | Inspect real errors/warnings. Missing used import/export blocks staging until repaired/dispositioned. |
+| Stage -> whole | Actual source/host/asset pins and complete negative path, no positive-path inference. |
+| Whole failure -> repair | Preserve first failure; no oracle or broad qualification from partial success. |
+
+R2 passes original outside-contact control; later fully-fixed Circle-Circle
+redundant-status failure0ebf046 is separate. Exact fixed-input proof repair is
+pending; original domain/residual expectations remain and whole stays unqualified.
+
+## CAD-C04-CENTER-SUPPORT-01 — finite shared lifecycle qualified
+
+Proof3392019: actuale2a3027/c6d, first whole56938 plus FIRST oracle PASS.
+33observations/16travels/eight refusals/two.cad server/fresh Opens. Actual Circle
+child centers and PCoincident/direction rows supply spacing; Horizontal+Parallel+
+DistancePL govern BOTH support endpoints. Independent original equations/raw
+source/formulas/IDs/units/counters/ZIP proof remains distinct from cold inspection.
+
+Create -> edit/remove -> mixed ordinary/typed travel -> Save/server equality ->
+fresh Open/reedit/resave uses existing source/J. Actual stale/foreign-source/
+contradiction/named-erasure refusals preserve accepted state. No-op preserves
+redo. Pre-execution b0eccc7 custody guard retains owned context for unknown
+submitted Save settlement; that failure was NOT exercised, no Files race/crash
+proof. Normal own contexts retired after known settlement. Concurrent separate
+fixture/profile proves functionality, not isolated performance/broadC04/BRep.
+
+
 ## CAD-REGION-CONTACT-QUALIFICATION-20261108 — finite lifecycle now proved
 
 ACAD6a2aca0 actualf418/c6d: whole46700+FIRST independent oracle PASS.47Native
