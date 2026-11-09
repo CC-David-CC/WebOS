@@ -17,7 +17,7 @@ export async function harness(browser,base,out,record,{existingAccount=null}={})
    // Capture only bounded visible startup/status messages in actual windows;
    // never serialize editor content, account fields, files or full page text.
    try{
-    const observed=await page.evaluate(()=>({windows:[...document.querySelectorAll('[data-window]')].slice(-8).map(w=>({windowId:String(w.getAttribute('data-window')||'').slice(0,128),messages:[...w.querySelectorAll('p,.app-status')].map(n=>({status:n.classList.contains('app-status'),text:n.textContent||''})).filter(r=>r.status||r.text.startsWith('Could not load this app.')).slice(0,4).map(r=>r.text.slice(0,512)),frames:w.querySelectorAll('iframe').length}))}));
+    const observed=await page.evaluate(()=>({windows:[...document.querySelectorAll('[data-window]')].slice(-8).map(w=>({windowId:String(w.getAttribute('data-window')||'').slice(0,128),messages:[...w.querySelectorAll('p,.app-status')].slice(0,32).map(n=>({status:n.classList.contains('app-status'),text:(n.textContent||'').slice(0,512)})).filter(r=>r.status||r.text.startsWith('Could not load this app.')).slice(0,4).map(r=>r.text.slice(0,512)),frames:w.querySelectorAll('iframe').length}))}));
     try{record('Actual CAD launch did not reach ready registered window',observed);}catch{}
    }catch{}
    throw cause;
