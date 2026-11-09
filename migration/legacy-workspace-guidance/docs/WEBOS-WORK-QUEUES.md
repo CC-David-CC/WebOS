@@ -1,5 +1,14 @@
 # WebOS work queues and progress ledger
 
+## Equality R2 terminal failure — removal fixed, later error contract unresolved
+
+ACAD98ebd58 retains unchanged whole7031 FAIL1 on actuala5343dd/7fc7a508f:54rows/465commands/22 Native observations/seven diagnostics/two.cad server-equal Saves/fresh Opens. Original removal failure now passes, followed by nonzero/zero ratio edits and removal/travel. Later fixed physical A14 versus B8 equality correctly refuses mutation, but returns RESIDUAL/original-residual-failure rather than expected LENGTH_RELATION_REJECTED. Root independently compared the complete raw before/after snapshots: exactly equal. Error reports neither committed nor possiblyCommitted. All seven source/helper hashes unchanged, owned context retired; no failed-whole oracle. Later final reversal/rotation/archive controls remain unexecuted. Evidence: `test/equal-length-public-workflow/evidence-r2`; original R1 preserved.
+
+NEXT root action: trace the actual residual rejection path and settle public error semantics without weakening original-equation validation or changing unchanged acceptance expectations to obtain a pass. This observation does not establish a successful contradictory edit or prove global infeasibility. Family qualification remains OPEN. Offset998864a and drawing82dd692 retain their finite qualifications; ordinary21/21 unchanged.
+
+Tangency source6298314 was delivered and reviewed, not integrated. Root found `domain(c)` recursively calling itself rather than assertRegisteredConstraintDomain(c); its owner is correcting that source defect before integration. Preserve both equality and TCC certificate hooks when composing. Blind-hole and section/detail source remain independent. No current root browser workflow is running after7031 terminal; backend fixtures remain available. No public/main deployment, Files race or relay.
+
+
 ## Equality removal regression R2 running — fresh pinned candidate
 
 Normal rebuild3605 PASS0 with no actual warning/error/missing-export matches; stage47323 PASS0,551 bundle files/189 pins. Runtime Corea5343ddf0ee3b1757321c615fc8df3384d2d6d5b / frozen product Host7fc7a508f4d6d90b846227ee5feb8d3b93109261. This supersedes prior rebuild-running entries, not first failure evidence.
