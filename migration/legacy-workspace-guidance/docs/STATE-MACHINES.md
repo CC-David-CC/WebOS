@@ -1,5 +1,35 @@
 # Workflow state machines and invariants
 
+## C11 source identity, derived facts and presentation — 2026-11-09 latest
+
+Core82f9/Host33fc809 whole54111 is terminal FAIL at repaired SVG layout,
+not at producer discovery or discovered reference repair. Evidence and separate
+settled own prewrite proof are in ACAD drawing-requirement-public-workflow/
+evidence-r3. Full Gate1 remains OPEN; ordinary21/21 unchanged. No Root browser
+job is running. Historical RUNNING records below must not start duplicates.
+
+Current producer identity is derived from the actual accepted history row,
+active pointer and own output feature/origin fields. The public solid inspector
+returns a detached tuple; it grants no history-edit eligibility. Drawing
+requirements are authored intent. Their available/unresolved binding is derived
+from each current protected observation, never synchronized as a persisted flag.
+
+| Transition | Invariant / result | Current evidence boundary |
+| --- | --- | --- |
+| Current source + accepted v4 definition → protected read | Same actual document/source/geometry/runtime; return current Native facts or typed unresolved rows with null facts. No HLR for metadata-only reads. | R3 progressed actual observations; whole not qualified. |
+| Boolean consumes body → explicit target replacement | Discover actual new producer; retain old authored references. Target replacement cannot silently repair an old cap by proximity or ordinal. | R3 real union and retarget progressed. |
+| Lost cap → Save/fresh Open | Serialize original reference intent, then independently derive unresolved after actual re-evaluation. Saved status flags are not authority. | R3 unresolved native cycle progressed. |
+| Current discovery → explicit repair | Replace only requested references with actually discovered selectors; preserve authored quantities, labels, geometry, identities. | R3 lower-A/B/C repair and actual Native read progressed; later travel/third Open unproved. |
+| Metadata Undo/Redo | Use same journal/definition publication; preserve geometric source, counters and Native ownership. | Earlier R3 metadata travel progressed; complete repair travel remains unrun. |
+| Facts → Worker presentation | Derive geometry/form/leader presentation without changing model or accepted definition. Text collisions reject before export bytes/file write. | R3 repaired leader collision caused RESOURCE_LIMIT. Bounded text-obstacle routing in progress; no qualification. |
+| Render refusal → submitted-write reconciliation | Preserve original failure. Prove exact own path absent browser/server, retained content hashes/current host; retire only exact settled own context. | Supplemental proof passed; original whole remains FAIL. |
+| Fresh browser context pulls saved content | A new local Mirror version UUID may be installed; durable identity is content hash plus account/path. Compare local optimistic versions only within their actual storage lifetime. | First reconciliation assumption failure retained; source-confirmed corrected proof compares current versions twice and original hashes. |
+
+Unknown write outcomes remain retained. No crash cleanup or unsaved recovery is
+promised. Rendering success, native Save, browser commit and server equality
+remain separate evidence; none substitutes for complete workflow/artifact proof.
+
+
 ### Finite extent family qualified — 2026-11-09 latest
 
 ACAD d68ecb2 retains complete artifact session15053 PASS0 on verifier95af055,
