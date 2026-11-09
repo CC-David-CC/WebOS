@@ -31,6 +31,19 @@ Earlier checkpoint headers below are historical and superseded by this one.
 
 ## Active isometric R3 — host inspection reader compatibility repair
 
+R3 COMPLETE whole workflow now RUNNING session13565 at private21034. Actual
+Core da0f597ac9ccff68ad0c461b1427a76c8a54be25 / Host
+caa9c50e6a7d443f980467c9679d6d09a1e81921. Normal host stage23134 PASS;
+existing Core dist unchanged. Backend96137, forward42822, data-drive runtime
+/mnt/data10tb/codi-acad-isometric-reader-state-20261108-r1; fresh178 pins
+/tmp/codi-acad-isometric-reader-pins-20261108-r1.json. Evidence
+/tmp/codi-acad-isometric-drawing-public-20261108-r3 with sibling.log.
+Independent source review confirms both saved baseline and current definition
+use the same repaired reader; unrelated wire/container/presentation v1 gates
+remain correct. Only after whole terminal PASS run FIRST check.py artifact
+oracle, then root actual SVG review. Preserve any first failure; do not alter
+criteria or retag earlier proofs. No public changes/relay/races/packaging.
+
 R2 whole39849 FAIL preserved in ACAD fcb3980, evidence-r2. Actual da0f597/fab1:
 42commands/five rows/two Native sets, successful v2 replace returns changed:true,
 authoredUndo:true, four views/six dimensions; subsequent public inspect rejects
