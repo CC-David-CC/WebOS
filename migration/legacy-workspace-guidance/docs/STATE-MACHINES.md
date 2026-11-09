@@ -2,21 +2,22 @@
 
 ## Current authoritative checkpoint — 2026-11-09
 
-Only this checkpoint and its linked current work table describe present status.
-Older checkpoint sections preserve evidence of their own source versions; their
-old RUNNING/UNMERGED labels are historical, not instructions to restart them.
+This section and the current work table describe present status. Older dated
+records preserve their exact source versions; their RUNNING/OFF/UNMERGED labels
+must not restart old jobs or override this checkpoint.
 
-- **Ordinary exercises: 21/21 QUALIFIED. Full Gate 1: OPEN.** Assembly E17 belongs to Gate 2. Finite workflow passes do not qualify the entire sketch/feature/drawing/resource catalogue.
-- **Counterbore regression QUALIFIED66b68d8:** whole17458 PASS0, FIRST independent25492 PASS0, both actual SVGs reviewed. Actual Coread5bb96eb7ce0ff5d22b5b93b5b0266bd906f830/Host9ea4a1993ad8afa10ea9a24e9c9a4f7955e47420/213pins;57rows/814commands/32Native observations/336points/16refusals/two native Saves and fresh Opens/six exports/12settled writes. Exact evidence ACAD test/centered-counterbore-workflow/evidence-r4/QUALIFICATION.json;59executing source files unchanged/69Git custody rows.
-- **Complete C11 regression QUALIFIED64bbaade18fa83078c77b8f2b400e07013ce9ac7:** whole13634 PASS0, FIRST independent70794 PASS0, all16 actual SVGs individually reviewed and byte-identical to prior reviewed renders. SAME actual Coread5/Host9ea/213pins;190rows/1039commands/63Native observations/1323points/eight Saves/six fresh Opens/24travels/eight refusals/31+32 work limits/24feature issuances;19sources unchanged, own contexts retired. Exact evidence ACAD test/section-detail-drawing-public-workflow/evidence-r4/QUALIFICATION.json. No whole/oracle/render job remains running for this batch.
-- **New source composed, UNBUILT/UNQUALIFIED:** extent root14b21b0340475a06f5b18c927b546ce5403f5466 with Host7636a38024e77335f83ba28daa79cb37cd39dfe7; actual new-pair constructor-binding roota8f3491264c436382cbc46e379b45db42f6416b4. Counterbore, extent, typed history, source ownership and refusal paths are retained together. Current shared OCI source27ca268a2f372bcfac7e0e03f8b6a9d9874a7f967f61f49cb2d27e06189b7e0e is pinned by all9 guards. Both source roots are LAN-backed. Extent capability remains OFF; its complete acceptance packet is still a source draft.
-- **Caption repair source composed, UNBUILT/UNQUALIFIED:** bb9e269/ca64f83/a8a3eda and counter caption migration3d26538. New raw XML acceptance closure9027650 rejects unsupported raw declarations/PIs/comments/NUL before parsing; no geometry criterion changed. The qualifiedad5 artifacts still contain the known cross-view caption collisions. Authored leader/unresolved-label placement is a separate open obligation.
-- **Countersink: compiled ingredients and repaired private coordinator; not an integrated feature.** Native sourcefc1654ee5d4471584073d4d8e3363d8c9b324566 compiled with42,958 inputs unchanged (root custodye2ee5c7); portable candidate97adb2e pins JS04fc776837d6e87e7ddf9c31b66428ec191f3120600fd0794c86a5fd533c0a7b/WASM688c9d11ececf67d5187445491b4269647d810528e37161bcd7e676bc8d9125c. Private failure-boundary repair23283e0 and constructor bindinga8f3491 are source-only. Actual optional cohort factory/catalog/closed graph and later shared feature/history/persistence/host adapters still need completion and whole-workflow qualification. New cohort entry remains OFF until actual admission is composed; old pairs/defaults are unchanged.
-- **Confirmed source-only post-commit reporting defect:** CAD-AUTHORED-EDIT-POSTCOMMIT-RECEIPT-01 in immutable14b/currenta8f. The new extent edit/travel can commit, then a receipt/revision-reader or listener-cleanup exception may escape without committed:true. Independent reviewer is freezing BEFORE and repairing the actual shared settlement boundary; no public runtime incident or qualification claim. This is a dependency before enabling/qualifying extents.
-- **Next serial dependency:** finish optional mechanical cohort source/closed graphs and freeze extent acceptance, then a normal coherent build and complete old counter/C11/blind plus new capability workflows, FIRST independent artifacts and actual SVG review. Remaining sketch/profile/feature/reference/numerical cases, drawing semantics/layout and resource limits are still open; final composed beta acceptance follows them.
-- Last confirmed private fixture21052: frozen Coread5/Host9ea/213pins, service21333/site-forward18344, reverseCDP16681(remote19551→PC19331); runtime /mnt/data10tb/codi-acad-pure-intent-state-20261109-r1. Build75654/stage35919 custody5d63df2. No public/main/beta/prototype promotion, server relay, filesystem race or premature runtime packaging.
+- **Ordinary exercises: 21/21 QUALIFIED. Full Gate 1: OPEN.** Assembly E17 belongs to Gate 2. These finite passes do not qualify the entire sketch/feature/drawing/resource catalogue.
+- **New composed build/stage PASS:** actual Core `d7b478ae9b0d679223240674ea43beada4b2f099`, Host `eabff28ae7dea4946fa81a576f37eac55acad509`; build28218/stage57584 terminal0, ten successful webpack completions, 570 CAD assets/643 app files/276 signed pins. Source/byte audit41896 checked 12 manifests, all listed file sizes/digests and 107 unique staged source files against exact Git blobs. Custody: ACAD `test/selected-profile-extents-workflow/build-composed-r1/BUILD-CUSTODY.json`. Reused dependencies were not independently rehashed. No final runtime assets packaged.
+- **Counterbore regression QUALIFIED `28ad691baa41031a3855f3db25d06f397bdbb2ae`:** whole92272/FIRST81476 terminalPASS0 and both actual SVGs reviewed, on that exact D7/Hosteab/276-pin candidate. 57 rows/814 commands/32 Native observations/336 points/16 refusals/two native Saves and fresh Opens/six exports/12 settled writes; 61 executing files unchanged/71 Git custody rows. ACAD `test/centered-counterbore-workflow/evidence-r5/QUALIFICATION.json`. Prior failures and older qualifications remain unchanged.
+- **Complete section/detail drawing regression RUNNING:** exact session71239, same frozen producer, log `/tmp/codi-acad-primary-extent-section-20261109-r1.log`, output R730 `/mnt/data10tb/codi-acad-primary-extent-section-20261109-r1/whole`. Original-origin and translated-negative cases are progressing; no terminal pass or FIRST artifact result is claimed. Do not restart on a tool wait timeout. After wholePASS, run the frozen FIRST checker, then render/review every actual SVG. Older `64bbaade` qualifies only its ad5/Host9ea candidate, whose known caption collisions remain in its original evidence.
+- **Primary signed/symmetric/two-sided extents BUILT/ADMITTED, WORKFLOW UNQUALIFIED:** root14b21b0/Host7636a3802 plus exact primary admission8082b77 are in D7. The complete extent packet f5d06dd/roota527efc and stronger artifact checker e5461de/d39d05d/b9f8c8f are composed as acceptance source, not executed. Preserve producer D7 separately from later acceptance source. New ordinary positive-blind regression and full extent workflow/independent STEP/mesh/native archive/SVG checks remain serial work.
+- **Caption repair BUILT, qualification in progress:** cross-view layout repairs bb9e269/ca64f83/a8a3eda are in D7; new counterbore captions passed actual review. Complete C11 is running. General authored leader/unresolved-label placement remains independently OPEN. The later strict SVG grammar/accepted-definition/revision repair b9f8c8f is acceptance source-only and does not rewrite frozen D7 checkers or historical FIRST evidence.
+- **Initial optional mechanical cohort BUILT/STAGED; countersink integration packets UNMERGED:** root4bfef32 includes its exact factory/catalog/closed graph and JS04fc7768/WASM688c9d11 pair; no Native behavior qualification follows from presence. Authored/shared source95fff9d, backendb7786ea and Host9be437f are frozen and LAN-backed, independently cross-reviewed ff3295b/3da3a6d. Compose the identical pure intent constants once. Root Host import/registration splice and complete countersink workflow still remain; its full acceptance packet is being authored. Old pairs/defaults unchanged.
+- **Shared postcommit settlement SOURCE-REPAIRED `2e46616`:** actual acceptance determines committed status; primary errors, completed receipts and cleanup causes are preserved. Ordinary counterbore regression on D7 passed; deliberate postcommit/cancellation fault coverage is not claimed. Separate inherited signal-shadowing finding3da3a6d has narrow native-operation repair32092f8 on an isolated branch, not yet composed or runtime-qualified.
+- **Next serial work:** finish the current C11 whole/FIRST/all actual SVG reviews; run complete positive-blind regression and new extent qualification. Separately compose the reviewed countersink/shared cancellation packets, then normal build and its complete public workflow/FIRST artifacts. Remaining sketch/profile/feature/reference/numerical cases, drawing semantics/layout, resource limits and final composed beta qualification remain OPEN. No percentage or short ETA follows from ordinary21/21.
+- **Current private fixture21053:** D7/Hosteab/276pins; service12701/site-forward55985, reverse16681 (R73019551 to PC19331); separate runtime `/mnt/data10tb/codi-acad-extent-caption-state-20261109-r1`. Old21052/ad5 fixture and evidence are retained. No public/main/beta/prototype promotion, external server relay, filesystem race, foreign-account test or premature runtime packaging.
 
-## CAD-AUTHORED-EDIT-POSTCOMMIT-RECEIPT-01 — confirmed source defect; repair pending
+## CAD-AUTHORED-EDIT-POSTCOMMIT-RECEIPT-01 — source-repaired; complete extent qualification open
 
 Independent review of immutable Core14b21b0340475a06f5b18c927b546ce5403f5466
 found the generic authoredFeatureOperation receipt at Craft1476–1480 can throw
@@ -24,7 +25,7 @@ from inspectAuthoredEdits/revision readers after accepted publication without
 committed:true. Blind/counterbore have local receipt catches; new extent edit/
 travel uses the generic branch. Common listener removal in finally can also
 replace the post-publication result. Root read the actual same block ata8f3491.
-No runtime incident or fault-injection result is claimed; extents remainOFF.
+No runtime incident or fault-injection result is claimed. Repair2e46616 is in actual D7; primary extent admission8082b77 is private and workflow-unqualified.
 
 | State | Required invariant | Allowed outcome |
 |---|---|---|
@@ -34,13 +35,33 @@ No runtime incident or fault-injection result is claimed; extents remainOFF.
 | Listener cleanup | Cleanup must not overwrite knowledge of publication | Preserve prior operation result/error and cleanup cause with truthful committed status |
 | Caller reports unknown outcome | Lack of receipt is not proof of no change | Reconcile actual document/operation; no blind duplicate edit |
 
-The reviewer is freezing the BEFORE record and preparing a narrow common
-settlement repair froma8f3491 in its isolated branch. Any widened common path
-must retain old return shapes, codes, ordinary refusals, owner fences and
-original causes. No source-only fix closes the issue: the complete composed
-extent edit/travel/Save/Open plus old affected workflow regressions remain
-required after the coherent source build. No callback-mutation probe, server
-relay, foreign-account test or filesystem race is authorized.
+BEFOREadc6e9c/root777107b and repair899f87a/root2e46616 are retained. The
+common method records actual onAccepted before resolving and preserves bounded
+publication identity, original family errors/receipts and cleanup causes. The
+new composed counterbore whole/FIRST/actual SVG regression qualified28ad691;
+complete extent edit/travel/Save/Open qualification and other affected regressions
+remain open. Ordinary success is not deliberate postcommit fault coverage. No
+callback-mutation probe, relay, foreign-account test or filesystem race occurred.
+
+## Shared authored cancellation — inherited source seam; isolated repair pending composition
+
+Review3da3a6d found genuine AbortSignal branding was followed by instance reads
+and add/remove calls. A shadowed aborted property could contradict native signal
+state, and an overridden cleanup method could fail independently. This is a
+source-confirmed contract gap; no runtime corruption incident is claimed.
+Isolated32092f8 uses existing captured native getter/listener operations in six
+shared authored edit/travel sites. It is not yet root-composed or qualified.
+
+| Transition | Invariant |
+|---|---|
+| Validate caller signal | Native getter establishes genuine signal identity. |
+| Prepare / evaluate / await acceptance | Native signal state governs cancellation; shadow properties do not. |
+| Accepted publication / later caller loss | Preserve actual committed knowledge; do not invent rollback or retry. |
+| Listener cleanup | Use native removal; preserve primary error, completed receipt and all bounded cleanup causes. |
+
+The source repair does not alter geometry, journal rules, error families or
+operation return shapes. Actual coherent build and applicable whole workflows
+remain required; no callback-mutation experiment is authorized.
 
 ## PROFILE-EXTENT-CHARGE-RETIREMENT-01 — SOURCE-REPAIRED; runtime qualification open
 
