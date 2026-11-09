@@ -1,10 +1,10 @@
 # CAD library integration: current queue
 
-Updated 2026-11-09. Strategy approved; library candidates remain unimplemented
-and unqualified. This is the Host coordination entry, not a second CAD model.
+Updated 2026-11-09. Strategy approved; native assessment is PARTIAL. Browser integration remains
+unqualified and the production runtime is unchanged. This is the Host coordination entry, not a second CAD model.
 
 The full plan is in ACAD commit
-`09c7bc881ebc9cf2ef8f1daa0b111f654e113b79`, file
+`b6a530e0f8c2de828a022a58ba713e7c62c0125a`, file
 `docs/proposals/CAD1-LIBRARY-FIRST-INTEGRATION-20261109.md`.
 Retrieve that commit from `box-git:/srv/data/git/ACAD.git` or
 `r730:/mnt/data10tb/git/ACAD.git`. Local working copy:
@@ -29,6 +29,28 @@ required to understand it. Actual run outputs remain separately bound evidence.
 - Complete mesh/finite-surface/intent proof and both actual SVG reviews remain
   open. No Root whole/reader/oracle job is currently active. Countersink06b7fe6
   retains its separate completed qualification.
+
+## Native evaluation now completed, full proof still open
+
+Pinned environment and readonly adapter executed on R730. Original six meshes
+pass raw indexed topology, Trimesh winding/watertightness and CGAL exact-input
+graph/degeneracy/self-intersection/closed-volume checks. All original arrays and
+archives remain unchanged. Actual evidence: Core test/library-validation/
+evidence-first/ (dc27a53) and evidence-r2/ (b6a530e).
+
+First lib3mf material mismatch was an observer namespace error, diagnosed from
+v2.5.0 source3665ff8: XML base indices are not API PropertyIDs. Correction2355b7c
+maps actual enumerations, without changing exported material assignments. Its
+whole six-file assessment97661 still says package UNCERTAIN at the later metadata
+comparison. Missing metadata observations are added in current source, UNRUN.
+Do not infer an exporter defect or waive requirements from this incomplete read.
+Both batches are terminal; no Root qualification process is active.
+
+L1 inventory41f7189 maps mature OCCT APIs to actual binding/history gaps. A single
+source-bound finite-curve interface is the first small package: intersections,
+then atomic trim/extend, reused later by projection/offset. Existing history,
+transactions and ownership stay authoritative. Native acquisition/adapters do
+not close the finite-surface accuracy proof, SVG review or remaining Gate1 scope.
 
 ## Library boundaries and serial/parallel queue
 
@@ -59,7 +81,8 @@ Pinned native evaluation on R730 precedes any selected production WASM adoption.
 The detailed plan records precision, license, raw-input preservation, uncertainty,
 resource measurements, lane ownership, estimates and final acceptance conditions.
 
-Initial fit assessment: 0.5–2 focused days, overlapping source work. Provisional
+Initial fit assessment remains partial: native geometry results exist; package
+metadata and independent full-surface accuracy still need closure. Provisional
 remaining work after extrusion qualification stays 1–2 weeks, with a third-week
 contingency; it is not a countdown from today. No estimate reduction is claimed
 before coverage and integration costs are measured.
