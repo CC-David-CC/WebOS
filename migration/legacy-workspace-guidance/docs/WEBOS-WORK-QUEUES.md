@@ -1,5 +1,14 @@
 # WebOS work queues and progress ledger
 
+## Semantic Offset qualified; equality removal defect found and repaired in source
+
+ACAD998864a retains both actual outcomes on Core7683eb2/Host7fc7a508f,189 pins. Offset whole62009 PASS0 and FIRST independent oracle PASS0:83rows/965commands/61source observations/32travels/15refusals/two.cad server-equal Saves and fresh Opens. All9 source/helper hashes unchanged. Qualified finite Segment/full Circle offset creation/edit/side/source propagation/named distances/typed formula/unit/travel/removal/current-cache validation. Authentic cache-only mutation of own .cad is refused on normal Open as OFFSET_CACHE_CHANGED. No Arc/loop/projection/generated-profile solid or BRep precision qualification. Both own contexts retired after settled writes. Evidence: ACAD `test/semantic-offset-public-workflow/evidence-r1`.
+
+EqualLength whole92872 FAIL1, same commit `test/equal-length-public-workflow/evidence-r1`:30rows/304commands/nine Native observations/seven diagnostics/two refusals/one.cad Save/fresh Open before failure. Actual AB/BC, transitive/fixed/ratio redundancy and freedom transitions passed inside failed whole; not family qualification. After removing AC and BC, AB removal fails INTENT_CHANGED because retained ratio1/0 must promote from redundant to independent, but old removal source skipped the actual native transaction/classification step. No post-failure runtime comparison was captured; do not invent one. No failed-whole oracle.
+
+Source repair a5343dd uses the actual prepared native removal transaction, derives current remaining-row admission, constructs from exact original geometry plus one row deletion, verifies all other authored fields and then strict cold/second-cold/captured proof. incomingIntent stays strict; no read-time automatic reclassification, equation/tolerance or fixture change. Normal coherent rebuild is active root session3605, exact a5343ddf0ee3b1757321c615fc8df3384d2d6d5b, log `/tmp/codi-acad-foundation-next-build-20261109-r4.log`. Follow with unchanged full equality workflow and first oracle only if whole passes. TCC remains separate source work. Full Gate1 stays open; ordinary21/21 unchanged.
+
+
 ## C11 section/detail — source implementation approved
 
 Root reviewed full design17dadad9ee8101a64d3a438d228306a0cd5405bd (`docs/reviews/C11-SECTION-DETAIL-CONTRACT-20261109.md` in ACAD), then approved isolated source implementation. This is a future capability, NOT qualified or present in the staged7683 candidate. Agent gate1_plan owns source and future complete workflow packet; no probes/build/Native execution until root review.
