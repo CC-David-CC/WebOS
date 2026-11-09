@@ -1,5 +1,17 @@
 # JSketcher basic foundation matrix
 
+### C11 current actual checkpoint — 2026-11-09 latest
+
+R4 whole81269 terminal FAIL on82866bf/Host6b2a1fbe after33Native observations
+and two native cycles. Actual repaired anchor[100,70] lies inside existing
+height text box[79,66]..[117,72]; router correctly refuses fixed-anchor/text
+collision. Own write settled absent and exact context retired separately;
+original failure immutable. Initial-template label correction + deliberate
+blocked-anchor/Undo recovery + real routed artifact criterion are next source
+work. No Root runtime job is running. Full Gate1 OPEN; ordinary21/21 remain
+scoped. See WEBOS-WORK-QUEUES.md / ACAD evidence-r4 for exact state and paths.
+
+
 ### Current routed C11 producer — 2026-11-09 latest
 
 Core82866bf / Host6b2a1fbe,293pins build5762/stage44215/audit18642 PASS0.

@@ -1,5 +1,41 @@
 # WebOS work queues and progress ledger
 
+## C11 R4 terminal; exact authored obstruction — 2026-11-09 latest
+
+Whole R4 session81269 is TERMINAL FAIL1 on exact Core82866bf / Host6b2a1fbe /
+Shell57b/60dc.70rows/875commands/33Native observations/two native Saves+fresh
+Opens/four SVGs. Source unchanged; no FIRST artifact oracle ran. It progressed
+through actual Boolean target, unresolved native Open and discovered lower-A/B/C
+repair, then refused repaired SVG with RESOURCE_LIMIT/no-clear-paper-domain.
+
+Actual repaired datum-A/finish anchor[0,30,0] projects to[100,70], inside the
+height text 'ΔY 30.000 mm' declared box[79,66]..[117,72]. A route cannot leave
+that fixed point without crossing the text obstacle. The earlier routing repair
+was composed before Root identified this exact obstruction; no routing success
+or renderer defect is claimed for R4. Independent actual-observation diagnosis
+Rootd4fa238 confirms no second endpoint-domain blocker. After moving the INITIAL
+height label conventionally left to[40,70], datum-A's direct line still crosses
+the nominal-hole text, so a real routed path remains required.
+
+Separate own-root/current-host proof and repetition settled the prewrite refusal
+and retired only that own context (24299); seven prior latest acknowledged
+paths retain browser/server hashes. Original receipt/pending/context fields are
+unchanged, supplemented by evidence-r4/settled-prewrite-refusal.json. No retry,
+authoring, file deletion, foreign account or filesystem-race test occurred.
+
+Next source packet is being prepared by dxf: identical Core/Host INITIAL label
+correction plus an explicit later blocked-anchor negative/Undo recovery in the
+complete workflow and an independent actual-routed-leader criterion. Geometry
+repair remains references-only; labels never silently move. No new Root runtime
+job is active. Keep isolated service95125/forward81017/private21057 for controlled
+reuse; no public changes/external relay. Ordinary21/21 qualified evidence stays
+scoped, full Gate1/C11 OPEN.
+
+Current raw Native query build custodyb45d9a0 and private adapter10dcb60 /
+Rootreview0118221 are separate unmounted source ingredients. New raw pair is not
+adopted; portable adaptation/new-cohort graph/source binding/certification remain.
+
+
 ## Routed C11 R4 running — 2026-11-09 latest
 
 The actual new producer is Core82866bf0ee852f1d3b3892972f07d8af4cd8b9b0 /
