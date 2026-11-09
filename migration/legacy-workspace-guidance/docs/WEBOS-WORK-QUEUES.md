@@ -29,6 +29,23 @@ resource envelope and final composed beta/agent/viewable G10 remain open. No mai
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Active isometric R2 — shared-summary repair built/staged
+
+Normalbuild25270/stage87342 PASS at actual Coreda0f597ac9ccff68ad0c461b1427a76c8a54be25 /
+Desktopfab1c75f828030647eb582db3da160c8b6afe14f. New private21033 backend99404/
+forward53157, data-drive /mnt/data10tb/codi-acad-isometric-summary-state-20261108-r1,
+new178 byte pins. No Native binary/default/host/criteria changes beyond the
+reviewed preparation-client guard repair. Independent source review confirms
+normal/noop/remove/travel summary binding before publication token creation.
+
+Complete unchanged isometric39849 RUNNING, evidence
+/tmp/codi-acad-isometric-drawing-public-20261108-r2 and sibling.log. Preserve
+R1a6150ec. Only after complete terminal PASS run FIRST independent check.py;
+root reviews actual SVG/viewable output. Existing EqualRadius6be89ae remains
+qualified on1d8/fab; no automatic retagging to this later Core. Ordinary21/21,
+allfourb3 READ proofs and fullGate1OPEN remain as recorded. Public beta/main,
+relay/races/source packaging unchanged. No simultaneous build/browser run.
+
 ## Current checkpoint — EqualRadius PASS; isometric summary repair rebuilding
 
 EqualRadius complete35273 and FIRST independent check.py PASS, proofACAD6be89ae
