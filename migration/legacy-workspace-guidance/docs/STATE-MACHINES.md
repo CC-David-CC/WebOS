@@ -1,5 +1,16 @@
 # Workflow state machines and invariants
 
+## Tangency qualified — current constraint batch closed in its tested scope
+
+ACAD8b0dbf3 retains unchanged d09 whole93442 PASS0 + FIRST independent oracle PASS0 on actual2039a0d/7fc7a508f,189 pins/MFG32e+abb.120rows/1091commands/59 Native observations/236 rectangle suffix point classifications/seven diagnostics/15refusals/26travels/three no-ops/six.cad browser-server Saves/fresh Opens/three own malformed-archive refusals. All seven original source/helper bytes match producing Git objects and retained failed packets, unchanged before/after. Owned contexts retired after settled writes; observer disconnected only. Proof: `test/tangency-public-workflow/evidence-r3`. No root whole workflow is still running.
+
+Finite supporting/finite Segment-Circle/actual Arc contact, rotated endpoint/seam/uncertainty/outside refusals, external and both ordered internal Circle branches, fixed8/5/3 redundancy, named radii, reedit/travel/no-op and persistence are QUALIFIED. Original missing-export and redundancy failures remain retained. Not general arbitrary curve pairing/BRep tangency/global rank or a transitive four-Circle certificate. Functional concurrent runs do not qualify isolated resource costs.
+
+Recent finite batch now has C04 support/center3392019, warning layout82dd692, semantic Offset998864a, equality/ratio675a4a3 and tangency8b0dbf3. This closes those tested packets, NOT all C03 or Gate1. Related EqualRadius/Tangency survivor-promotion removal source548d187 + augmented whole/oracles9e5038f remains unintegrated/unqualified. Ordinary21/21 unchanged; broader sketch/profile/reference/solid/drawing/resource and final beta obligations remain open.
+
+Blind source sequence6ef1b014+c7b91e8+907764f8+0e7e1183 and Hosted07e228 awaits completed root/independent review before integration. Root reviewed exact Native source linkage and allocation/failure followups; ShapeResult op union now includes blind. No runtime claim. Independent reviewer checks Craft/PM/J/physical/whole/host; owner prepares DESIGN-ONLY counterbore next contract while section/detail source continues separately. No new schema/ABI/quota/default or automatic backend change authorized. No public/main promotion or source packaging.
+
+
 ## EqualLength/literal ratio lifecycle qualified — tangency still running
 
 ACAD675a4a3 retains unchanged whole86799 PASS0 and FIRST independent oracle PASS0 on actual2039a0d/7fc7a508f,189 pins/MFG32e/abb.72rows/596commands/31 Native observations/124point classifications/seven diagnostics/eight refusals/three.cad browser-server SHA-equal Saves and fresh Opens. All seven original source/helper bytes unchanged. Both prior failure paths now pass: removal promotes the surviving ratio correctly after Open, and fixed A14/B8 refusal preserves exact state/cause with the length-family rejection code, followed by healthy reversal/rotation and final persistence. Original R1/R2 remain retained. Proof: ACAD `test/equal-length-public-workflow/evidence-r3`.
