@@ -17,6 +17,32 @@ must not restart old jobs or override this checkpoint.
 - **Next serial work:** complete positive-blind regression RUNNING37114 on D7/private21053, then FIRST artifacts/SVG review; full new extent workflow follows with frozen acceptance7750d400 and actual D7 producer. Its first attempt stopped before login-page load because the old PC SSH forward ended: retained3c5b355, zero rows/commands/writes, source pins equal, owned context retired. New forward44399 restored HTTP200 without restarting the original R730 service; new complete output r2 is separate. For countersink, finish full acceptance source then its complete public workflow/FIRST artifacts on the separately built candidate. Broader sketch/profile/feature/reference/numerical/drawing/resource/final-beta obligations remain OPEN.
 - **Current private fixture21053:** D7/Hosteab/276pins; service12701/site-forward44399, reverse16681 (R73019551 to PC19331); separate runtime `/mnt/data10tb/codi-acad-extent-caption-state-20261109-r1`. Old21052/ad5 fixture and evidence are retained. No public/main/beta/prototype promotion, external server relay, filesystem race, foreign-account test or premature runtime packaging.
 
+## QUALIFICATION-SITE-FORWARD-01 — separate service and browser-route lifetimes
+
+The first new D7 blind regression stopped before login-page load with
+ERR_CONNECTION_REFUSED. Original SSH site-forward55985 was authoritatively
+terminal0 and PC21053 had no listener; R730 service12701 was still live at
+PID2815231 and listening on its own21053. The reason the forward ended is
+unknown. This is a confirmed test-transport interruption, not a geometry or
+saved-data defect. First receipt/logs are retained in ACAD3c5b355 with zero
+commands/writes, unchanged source pins and the owned context retired.
+
+| Observed state | Invariant / next transition |
+|---|---|
+| Service live, PC site forward absent | Browser route is unavailable; service lifetime alone is not readiness. Do not restart the service or infer an application defect. |
+| Forward live, endpoint not checked | Readiness remains unproven. Before starting a whole workflow, inspect the actual PC route and request its loopback HTTP endpoint. |
+| Service and PC route verified | Start one complete workflow into a new exclusive evidence root; CDP/reverse forwarding remains an independent prerequisite. |
+| Observation timeout, existing handle live | Keep polling that handle. A wait timeout does not authorize replacement or a second workflow. |
+| Terminal attempt before any write | Preserve the original receipt and prove no pending write/owned context remains; after restoring the route, a new complete attempt may use a separate output root. |
+| Submitted write with unknown outcome | Keep its exact account/context/path alive for reconciliation. Transport failure does not authorize forced closure or blind retry. |
+
+Root restored only the missing PC forward as44399, with SSH keepalive30/3;
+the unchanged endpoint returned HTTP200. New full blind attempt37114 uses its
+own r2 output and has passed actual app creation/edit/native Save/Open phases.
+Keepalives do not guarantee route survival or replace the readiness check.
+No automatic application retry, service restart, public relay or geometry
+tolerance change was introduced. Full blind qualification is still pending.
+
 ## CAD-AUTHORED-EDIT-POSTCOMMIT-RECEIPT-01 — source-repaired; complete extent qualification open
 
 Independent review of immutable Core14b21b0340475a06f5b18c927b546ce5403f5466
