@@ -1,5 +1,15 @@
 # WebOS work queues and progress ledger
 
+## Current: related removal candidate integrated; normal build running
+
+Core `8771a5699c3a0e6d89fa6e840000803b921b175e` is on both LAN remotes. It composes related EqualRadius/Tangency removal `5a6b9dd`, complete augmented workflows `da645f8`, and root review `docs/reviews/C03-REMOVAL-ROOT-COMPOSITION-20261109.md`. Original geometry remains authoritative; actual PM removal derives survivor admission before unchanged strict cold/replay checks. Actual `validateEqualRadiusStages` export was inspected. Root normal build **71026** is running on r730; local log `/tmp/codi-acad-foundation-next-build-20261109-r6.log`. No runtime qualification of this addition yet. Frozen Host remains `7fc7a508f4d6d90b846227ee5feb8d3b93109261`.
+
+Recent qualified finite scopes remain EqualLength/ratio675a4a3, tangency8b0dbf3, Offset998864a, warning layout82dd692 and C04 support/center3392019. Ordinary **21/21** remains; full Gate1 OPEN. Next complete runs must retain old coverage and add nine EqualRadius and fourteen Tangency native archive/Open cycles, then first independent oracles only after whole PASS. Independent source review continues; no public/main promotion.
+
+Blind independent consumer/acceptance review `5344b84` is complete, with no additional confirmed product blocker in reviewed Craft/PM/J/physical/host paths. Three material acceptance defects require correction before execution: exports/own malformed-file writes lack unknown-settlement custody, mesh support/volume checks do not establish a circular recess, and STEP LINE geometry is not checked against topological endpoints/supports. Additional state/producer/roster coverage gaps are recorded in that report. Timeline owns isolated source follow-ups; no blind integration/runtime claim. Counterbore design-only contract `f547814` is frozen on both LANs, not implemented. Section/detail implementation continues separately.
+
+Earlier checkpoint entries below retain their contemporary states; this current entry supersedes their running/unintegrated labels.
+
 ## Tangency qualified — current constraint batch closed in its tested scope
 
 ACAD8b0dbf3 retains unchanged d09 whole93442 PASS0 + FIRST independent oracle PASS0 on actual2039a0d/7fc7a508f,189 pins/MFG32e+abb.120rows/1091commands/59 Native observations/236 rectangle suffix point classifications/seven diagnostics/15refusals/26travels/three no-ops/six.cad browser-server Saves/fresh Opens/three own malformed-archive refusals. All seven original source/helper bytes match producing Git objects and retained failed packets, unchanged before/after. Owned contexts retired after settled writes; observer disconnected only. Proof: `test/tangency-public-workflow/evidence-r3`. No root whole workflow is still running.

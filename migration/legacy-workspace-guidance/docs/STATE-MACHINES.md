@@ -1,5 +1,11 @@
 # Workflow state machines and invariants
 
+## Current removal transition and acceptance custody
+
+Related EqualRadius/Tangency removal is integrated source-only in Core `8771a56`; normal build71026 is running. Actual PM removal must classify surviving original rows, and the candidate must retain original geometry with exactly one row deletion plus actual admission changes. Read/Open remain strict and never heal hints. Root composition review: ACAD `docs/reviews/C03-REMOVAL-ROOT-COMPOSITION-20261109.md`. The earlier EqualLength removal incident is qualified by675a4a3; augmented related-family cases remain unqualified. Existing scopes and ordinary21/21 are retained, full Gate1 OPEN.
+
+Blind acceptance review5344b84 found that its export/own-invalid-file write paths do not retain unsettled-write ownership consistently. This is a confirmed driver contract gap, not a reproduced product data-loss incident. Timeline is correcting every submitted-write/readback path before the first complete run. Unknown settlement must retain its owned context without blind retry/forced close; positive readback allows normal retirement. Actual export geometry also needs independent finite circular and STEP LINE consistency evidence. See current queue entry for source custody and other lanes. Historical checkpoint labels below are superseded by the current entry.
+
 ## Tangency qualified — current constraint batch closed in its tested scope
 
 ACAD8b0dbf3 retains unchanged d09 whole93442 PASS0 + FIRST independent oracle PASS0 on actual2039a0d/7fc7a508f,189 pins/MFG32e+abb.120rows/1091commands/59 Native observations/236 rectangle suffix point classifications/seven diagnostics/15refusals/26travels/three no-ops/six.cad browser-server Saves/fresh Opens/three own malformed-archive refusals. All seven original source/helper bytes match producing Git objects and retained failed packets, unchanged before/after. Owned contexts retired after settled writes; observer disconnected only. Proof: `test/tangency-public-workflow/evidence-r3`. No root whole workflow is still running.
