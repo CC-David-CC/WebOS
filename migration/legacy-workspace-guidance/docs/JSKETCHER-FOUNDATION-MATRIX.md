@@ -18,7 +18,8 @@ remain open. Caption/counterbore source is now composed (Coree521860/Host843aee3
 normal build12568/stage85873 PASS0/209pins. C11 own-view caption regression
 QUALIFIED010f9f6: whole38312/corrected oracle68408/all16 rendered reviews PASS;
 FIRST syntax failure retainedfe181dd, one-bracket checker repaird8b300b. Caption
-cross-view collisions remain open. Full counterbore51937 now RUNNING on same runtime.
+cross-view collisions remain open. Counter R1 failed at example discovery revision (8e76fa5); recipe7b451c2/Host9ea4a1993
+repair now in full whole54341 RUNNING, SAME Coree521860/209pins/private21051.
 Counterbore, extents, mechanical/conical source, resource/backend/
 format and final composed Gate1 delivery remain unfinished. No public/main promotion. Exact current evidence and
 next steps: [work queues](WEBOS-WORK-QUEUES.md) and

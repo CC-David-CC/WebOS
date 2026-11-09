@@ -17,11 +17,13 @@ geometry and authored label/leader collisions stay open; not fullC11/layout.
 Root C11 whole38312 finishedPASS, corrected full oracle68408 PASS; FIRST
 syntax failure retainedfe181dd and one-bracket correctiond8b300b separately
 bound. All16 actual renders reviewed; own-view caption policy qualified010f9f6.
-Full cross-view layout remains open. Counterbore51937 is now RUNNING on private21050;
+Full cross-view layout remains open. Counterbore51937 failed at example missing public discovery revision, before
+any durable write; retained8e76fa5, contexts retired. Recipe7b451c2/Host9ea4a1993
+now run as whole54341/private21051 on unchanged compiled Coree521860;
 unknown writes are never force-closed. Source compositionCoree521860/Host843aee31a
 now retains one closed producing/read-only Worker kind map and every prior
 blind/derived finite error branch while adding counterbore. All9 actual OCI
-guards bind7864b6ca. Normal build12568/stage85873 PASS0/209pins; counterbore whole51937 RUNNING,
+guards bind7864b6ca. Normal build12568/stage85873 PASS0/209pins; counterbore corrected-example whole54341 RUNNING,
 source composition/build is not counterbore qualification. Caption position derives from actual current projection/cap/
 aperture bounds; no persisted caption flags or physical geometry changes.
 
