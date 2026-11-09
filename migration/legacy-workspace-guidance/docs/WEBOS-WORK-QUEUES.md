@@ -1,5 +1,37 @@
 # WebOS work queues and progress ledger
 
+## C11 current composition checkpoint — 2026-11-09
+
+Ordinary exercises remain **21/21 QUALIFIED; full Gate 1 OPEN**. Finite extent
+family qualification d68ecb2 remains unchanged. The complete C11 v4 producer
+4a6ff8efa0984d587d1530e9a58f69b8ed1933ee / Host
+c2ba7ef85626d42c77f1a99efc705eca6e6a90c5 built/staged/audited successfully:
+ten webpack completions, 293 pins, twelve manifests/116 exact unique sources.
+Reused dependencies were not independently rehashed.
+
+The first whole2090 refused before modeling because the recipe selected a build
+absent from the public box-build availability. Corrected cohort selection uses
+the genuine advertised Shell pair with box and drawing-requirement capabilities.
+Complete whole95743 then progressed63 rows/782 commands/30 Native observations,
+one native Save/fresh Open and three SVGs. Real union succeeded. It stopped
+when the example misused narrow history-edit controls to discover a Boolean
+producer. Both failures are retained; no artifact qualification follows a failed
+whole. Source custody, settled writes and own-context retirement were confirmed.
+
+The correction exposes authenticated producer index/featureId/operationType in
+the general solid inspector (cee7e73), and the public example discovers it there
+with complete public history/currentness checks (8c164c7, Host74680b7f8).
+The independent truth checker validates producer provenance against actual
+captured Native history. Narrow edit-control support is deliberately unchanged.
+**These corrections are SOURCE ONLY until a fresh coherent build and complete
+run pass.** Next: fresh R2 build/stage/audit; complete R3 whole; FIRST independent
+artifact checks only after whole PASS; seven actual SVG reviews; affected
+regressions. Do not rerun or relabel the original failures.
+
+Evidence: ACAD test/drawing-requirement-public-workflow/{build-composed-r1,
+evidence-r1,evidence-r2}/. No external relay, public deployment, filesystem race,
+foreign-account test or runtime packaging was enabled.
+
 ### Finite extent family qualified — 2026-11-09 latest
 
 ACAD d68ecb2 retains complete artifact session15053 PASS0 on verifier95af055,
