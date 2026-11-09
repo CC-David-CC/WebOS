@@ -24,7 +24,7 @@ aperture bounds; no persisted caption flags or physical geometry changes.
 
 [Work queues](WEBOS-WORK-QUEUES.md) contains exact current refs/next actions.
 
-### CONICAL-EARLY-FAILURE-PUBLICATION-01 — source-only OPEN
+### CONICAL-EARLY-FAILURE-PUBLICATION-01 — SOURCE-REPAIRED; runtime qualification OPEN
 
 Independent source review of Native04ad4cd found that a single captured flag
 was set only after complete request/snapshot admission. The constructor could
@@ -35,9 +35,12 @@ state that was not established. This is one related service-level contract
 issue, not a demonstrated public callback incident. Current qualified Native
 pairs do not contain these new ports.
 
-The approved repair keeps explicit staged capture knowledge, independently
+Nativefc1654e (root source review6e92b9e) keeps explicit staged capture knowledge, independently
 fences established request/name/frame/census/lookup facts before and after error
 delivery, and refuses to certify a found input without its required snapshot.
+Malformed input is explicit absence of admitted input; failure to capture a
+found input is not preservation. Name/frame/census/lookup/snapshot capture facts
+are distinct and never inferred from one full-admission flag.
 Terminal JS failure must occur only after C++ locals retire. No guessed cleanup,
 caller-state repair, old-port changes or callback-mutation probes are allowed.
 Source repair, independent review, normal compilation and complete workflow
