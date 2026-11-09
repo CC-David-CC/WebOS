@@ -1,5 +1,31 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+## Latest bore checkpoint — semantics qualified, presentation partial
+
+ACAD e98166d62f9bd14fffb643772b8b5f6db87966a1 preserves complete bore whole7482
+PASS0 on actualCore5e80f0d9dda72515738f3a4f0cf6fc861e84aef7 / Host
+c6d2bfe91f1e04dcbf099e7c992dceba93356eac,189 exact pins/private21036,
+Shell57b74074/60dc956b. Both [0,0] and [-70,-35] cases pass:56 Native sets,
+1176 point classifications, six.cad browser-server Saves/fresh Opens,14SVG,
+six actual split/consume/cover controls, explicit reference repair and shared
+travel/no-op/refusal/source editing. Scoped finite C11 semantics qualified.
+
+The FIRST artifact checker failed; its next two attempts also failed due to
+checker assumptions. All are retained. Corrected oracle-r4 PASS0 validates exact
+PLANE string/public numeric ID dialects, actual flat box history schema and the
+independent constant-cross-section fact that unaffected bores can remain THRU
+after full-depth removal. Removed wall remains unresolved; split/cover remain
+THRU-unqualified. No application/artifact/physical tolerance was changed for the
+checker. See evidence-r3/CHECKER-RUNS.json and corrected-checker.py.
+
+All14 actual sheets were rendered and reviewed. CAD-DRAWING-ERROR-LAYOUT-01 is
+confirmed OPEN: unresolved center-mark warnings share a fallback view origin and
+text overlaps. Error facts are correct; individual warning layout needs repair.
+Fixed authored leaders cross geometry; professional automatic layout is not
+qualified. Full C11/G10 remain OPEN. Ordinary21/21 remains; E17 assembly Gate2.
+Other named competencies/resources and final coherent beta delivery still open.
+No public/main/prototype promotion, relay, Files race or source packaging.
+
 ## Latest finite closures — isometric/contact PASS; full Gate1 OPEN
 
 Current normal actualCore f4189e75f52531428b4d7d108144a994e8f2ecca / Host

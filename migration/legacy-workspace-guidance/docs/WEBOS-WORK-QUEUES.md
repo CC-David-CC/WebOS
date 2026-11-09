@@ -1,74 +1,51 @@
 # WebOS work queues and progress ledger
 
-## Latest finite closures — isometric/contact PASS; full Gate1 OPEN
+## Latest bore checkpoint — semantics qualified, presentation partial
 
-Current normal actualCore f4189e75f52531428b4d7d108144a994e8f2ecca / Host
-c6d2bfe91f1e04dcbf099e7c992dceba93356eac, build5723/stage94440,
-189actual byte pins/private21035. Source composition/build proof225436d.
+ACAD e98166d62f9bd14fffb643772b8b5f6db87966a1 preserves complete bore whole7482
+PASS0 on actualCore5e80f0d9dda72515738f3a4f0cf6fc861e84aef7 / Host
+c6d2bfe91f1e04dcbf099e7c992dceba93356eac,189 exact pins/private21036,
+Shell57b74074/60dc956b. Both [0,0] and [-70,-35] cases pass:56 Native sets,
+1176 point classifications, six.cad browser-server Saves/fresh Opens,14SVG,
+six actual split/consume/cover controls, explicit reference repair and shared
+travel/no-op/refusal/source editing. Scoped finite C11 semantics qualified.
 
-ACAD9e61a52: affected complete isometric whole79755+FIRST oracle PASS;
-78rows/308commands/25Native sets/250points/15travels/six refusals/three.cad
-browser-server-fresh Opens/sixSVG, ALL six actual sheets visually reviewed.
-Sole changed expectation is advertised definition versions[1,2,3]; old geometry,
-projection, source, persistence and tolerance criteria unchanged.
+The FIRST artifact checker failed; its next two attempts also failed due to
+checker assumptions. All are retained. Corrected oracle-r4 PASS0 validates exact
+PLANE string/public numeric ID dialects, actual flat box history schema and the
+independent constant-cross-section fact that unaffected bores can remain THRU
+after full-depth removal. Removed wall remains unresolved; split/cover remain
+THRU-unqualified. No application/artifact/physical tolerance was changed for the
+checker. See evidence-r3/CHECKER-RUNS.json and corrected-checker.py.
 
-ACAD6a2aca0: complete contact/zero-area whole46700+FIRST Fraction/ZIP oracle
-PASS;102rows/430commands/20discoveries/47Native sets/88body queries/264points/
-eight refusals/six.cad browser-server-fresh Opens. Actual partial/full shared
-side cells, reselection, far edits/reversal/creation/depth/source travel and
-reopened reedit pass. Collinear nonzero boundary refuses OVERLAPPING_EDGES;
-explicit triangle repair/Undo/refusal/Redo/reopen passes with control preserved.
-This closes these finite C02/C05 cases, NOT joined-manifold/near-Circle/fullC02.
+All14 actual sheets were rendered and reviewed. CAD-DRAWING-ERROR-LAYOUT-01 is
+confirmed OPEN: unresolved center-mark warnings share a fallback view origin and
+text overlaps. Error facts are correct; individual warning layout needs repair.
+Fixed authored leaders cross geometry; professional automatic layout is not
+qualified. Full C11/G10 remain OPEN. Ordinary21/21 remains; E17 assembly Gate2.
+Other named competencies/resources and final coherent beta delivery still open.
+No public/main/prototype promotion, relay, Files race or source packaging.
 
-Ordinary21/21 remains, assemblyE17 Gate2. Full named-competency Gate1 staysOPEN;
-resource evidence remains PARTIAL and final coherent beta delivery is pending.
-New tangency/v3 bore annotations are built source, not qualified from that fact.
-No main/beta/prototype release, relay, Files races or source packaging.
+## Active serial lane — tangency whole79048 RUNNING
 
-## Active serial lane — bore dispatch repaired; fresh whole rerun pending
+Actual application remains Core5e80/Hostc6d/private21036/backend57682/forward14573,
+189pins and owned CDP19329. Tangency frozen acceptance d09fd336, helperc6d;
+explicit primary MFG32eec74/abbf2aa Native pair. Source checks bind the actual
+Git objects before execution. Evidence /tmp/codi-acad-tangency-20261109-r1,
+sibling.log. One complete supporting/finite/ordered Circle-Circle lifecycle;
+no success or family qualification merely from starting. FIRST independent
+oracle only after terminal wholePASS, preserve any first whole failure.
 
-First four-bore whole45800 terminated FAIL1 on actualf418/c6d/private21035.
-ACAD4957c0f preserves its complete first failure: inspect-linked-part-bore-
-references reached an unsupported selected-owned operation admission guard,
-before the existing solid-drawing-bores handler. Two rows/14 commands, no
-observations/SVGs/Saves; contexts retired and source stayed unchanged. This
-was a confirmed dispatch mismatch, not a demonstrated bore geometry failure.
+Next serial queue: C04 center-distance/parallel-offset root83e44f7 (original
+4830c9d, contract91436dc/original1e530e3); complete reviewed source-only packet.
+No new product source needed for this packet. Three independent lanes are
+EqualLength shared lifecycle, semantic Offset generator and docs-only C11
+section/detail. Root owns composition, normal build and complete runs.
 
-ACAD7f01f97 admits that existing read under the existing drawingReferencesMode
-capability gate and updates all nine OCI source pins to975a33cd. Native result
-allocation, ownership, validity and currentness checks remain intact. Normal
-build28432 finished through mark-revision/Done at actualCore
-5e80f0d9dda72515738f3a4f0cf6fc861e84aef7 / unchanged Host
-c6d2bfe91f1e04dcbf099e7c992dceba93356eac. Fresh bore-dispatch staging15953 completed PASS0 with 189 actual-byte pins. The unchanged complete packet6cb0975 must run on this fresh
-fixture; the fix is not workflow-qualified merely because it builds.
-
-R2 whole20649 terminated FAIL1:45 rows/207 commands/15 Native sets/threeSVG/
-two.cad server-matched Saves and fresh Opens/one reference repair. ACADbe9fb7a
-preserves the first failure and full artifacts on both LANs. The invalid-offset
-control omitted required diameter and offsetY fields, so exact public schema
-admission correctly returned INVALID_REQUEST before geometry preparation. This
-is an acceptance request defect, not a demonstrated application geometry defect.
-The driver now supplies the current real diameter/offsetY with offsetX1e6;
-expected HOLE_OUTSIDE_PROFILE, candidate epoch and exact last-good checks remain
-unchanged. No product, oracle, tolerance or native asset changes.
-
-R3 whole7482 RUNNING on SAME actual5e80/c6d/189pins/private21036/backend57682/
-forward14573/owned CDP19329, fresh own account/context. Evidence
-/tmp/codi-acad-four-bore-drawing-20261108-r3 and sibling.log. Explicit Shell
-57b74074/60dc956b, not MFG. Original [0,0] case now records PASS within the still-running whole:28Native
-sets/three.cad browser-server Saves and fresh Opens/sevenSVG/three actual split,
-consume and cover controls with full Undo recovery. Covered bores retain
-measurable diameter while THRU is unqualified. Healthy subsequent reedit and
-third Open pass. The translated-negative [-70,-35] case is RUNNING, so no whole
-or family qualification follows yet. Expected total56Native sets/21points,
-six.cad/14SVG remain pending. FIRST independent oracle only after terminal
-wholePASS; keep all first failures.
-
-Next serial queues: tangencyd09fd33 (root5e80f0d) and C04center-distance/
-parallel-offset1e530e3→4830c9d complete source-only packets. Docs-only proposals
-EqualLength09bf4c1, offset/projection60bd732 and section/detail do not expand
-qualified scope. Ordinary21/21 remains; full Gate1 OPEN. No main/beta release,
-relay, Files races, source packaging or tolerance changes.
+Retained previous checkpoints: contact6a2aca0 and isometric compatibility9e61a52
+remain scoped qualified. Bore dispatch first failure4957c0f was repaired7f01f97;
+R2 malformed negative requestbe9fb7a was corrected without changing its expected
+geometry refusal. R3 complete evidencee98166d now supersedes old running notes.
 
 ## Archive checkpoint — functional PASS, measured resources PARTIAL
 

@@ -171,7 +171,7 @@ consumer compatibility9e61a52 are qualified in their exact recorded scopes;
 the old pending claim is superseded. Native bytes, limits, metadata ownership
 and definition v1/v2 guards stayed intact; new v3 annotations are separate.
 
-## CAD-DRAWING-OWNED-READ-01 — dispatch repaired; whole qualification pending
+## CAD-DRAWING-OWNED-READ-01 — scoped semantic lifecycle qualified
 
 Confirmed first public bore whole45800/f418/c6d failed ENGINE_FAILURE before
 its existing Native handler: controller sent solid-drawing-bores, but the
@@ -191,12 +191,24 @@ ACAD docs/reviews/C11-BORE-READ-DISPATCH-R1-20261108.md.
 | Valid mutation → prepared geometric refusal | Real domain/candidate failure can advance the documented preparation epoch and invalidate discovery tokens while preserving exact accepted source/history/J/material/geometry/resources. Do not expect this transition from malformed admission. |
 | Stale/disposed/unsupported/error | Preserve originating cause and prior accepted state; no late publish, nearest-reference repair, generic success or blind durable-write retry. |
 
-Normal build actual5e80/c6d/189pins. Complete bore R2 reached15 Native sets,
-threeSVGs/two.cad server matches/fresh Opens/explicit repair but failed its
-malformed negative request: retained ACADbe9fb7a. No after-whole oracle ran and
-no full-family PASS is claimed. R3 uses complete actual diameter/offset fields,
-keeps HOLE_OUTSIDE_PROFILE and last-good/epoch criteria unchanged, and is running.
-Ordinary21/21 remains; full C11/Gate1 and split/consume/cover proof remain open.
+Normal build actual5e80/c6d/189pins. R2 malformed negative request is preserved
+inbe9fb7a. Complete R3 whole7482 and corrected independent oracle-r4 now pass:
+proofe98166d,56 Native observations/1176 point classes/six.cad server/fresh Opens/
+14SVG/two actual datum families/six real topology-negative controls. First three
+checker failures are preserved and explained, not called first-pass success.
+
+Per-bore finite facts and whole-slab certification stay separate: full-depth
+removal preserves constant cross-section, so intact bores may still be THRU;
+the removed wall is unresolved. Interior split changes cap levels; cover changes
+the source end-plane extent; both lose THRU certification. Reads derive facts
+from current actual topology/trim/rim/cap/void/material evidence, no saved flags.
+
+CAD-DRAWING-ERROR-LAYOUT-01 is OPEN: multiple unresolved center-mark texts fall
+back to one view origin and overlap in actual rendered SVGs. Semantic error
+identity and no-ghost-value proof pass; individual failure readability remains
+pending. Preserve authored label intent; derive distinct warning placement,
+validate actual rendered artifacts in the next affected complete drawing run.
+Full C11/G10/Gate1 remain OPEN; ordinary21/21 and assemblyE17 Gate2 unchanged.
 
 ## CAD-COMMAND-SCHEMA-BUDGET-01 — source-confirmed startup blocker
 
