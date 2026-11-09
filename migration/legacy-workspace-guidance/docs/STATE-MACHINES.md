@@ -1,10 +1,67 @@
 # Workflow state machines and invariants
 
-## Current: related survivor-admission transitions qualified
+## Current state contracts — 2026-11-09
 
-EqualRadius **b2b8117** and Tangency **4b8026c** qualify their entire augmented workflows and FIRST independent oracles on actual8771a56/7fc7a508f. Nine/fourteen actual native browser-server Saves and fresh Opens cover Circle/quarter-Arc/retained-dimension and both support/finite removal-order promotions. Actual PM deletion derives survivor admission; original geometry plus exactly one row deletion remains authoritative, with independent original-row necessity and unchanged strict cold/replay checks. Reads/Open do not heal hints. Earlier EqualLength incident remains qualified675a4a3. Whole57233/38715 are terminal PASS0, owned contexts retired after settled writes; no root whole is running. Ordinary21/21 retained, full Gate1 OPEN.
+Ordinary21/21 remains qualified; full Gate1 OPEN. EqualRadius `b2b8117` and
+Tangency `4b8026c` include the genuine survivor-admission transitions. Current
+blind whole R3 is terminal FAIL, not running or qualified: actual Core323ee19 /
+Hostef45ae478, acceptance386df4f; two.cad cycles/six exports were reached before
+an incorrectly constructed malformed fixture was refused at the material digest
+guard. See [work queues](WEBOS-WORK-QUEUES.md) for exact commits and next steps.
 
-Blind source review and complete acceptance corrections030fe10/baceaf3 are now composed as Core267dd3d/Hostef45ae478; normal build39023 is running, not runtime-qualified. Submitted export/Save/own-negative-file write stays pending until acknowledged own-path browser/server readback; unknown settlement retains its owned context without blind retry or forced close. Independent actual circular mesh, STEP support and effective bound/edge/face orientation remain separate from Native point/volume observations. Full malformed Open retention and exact executed-source/phase rosters are explicit. Counterbore source additionally needs actual private two-step ancestry with no synthetic authored producer. Section/detail is delivered source under independent review. Current queue: `WEBOS-WORK-QUEUES.md`. Historical labels below are superseded.
+### CAD-PHYSICAL-INSPECTION-PRESENTATION-01
+
+| Actual authored source/state | Invariant |
+| --- | --- |
+| Literal-empty expressions, ready=true/reason=null | presentationRevision=null; definitions/quantities/configurations empty; activeConfigurationId=null. Do not invent a typed presentation token. |
+| Supported actual typed v1/v2 source, ready=true | Actual quantity presentation binds the current host revision, including a typed source with zero definitions. Derive this branch from authored source, not definition count or an app flag. |
+| Unsupported/unready source | Separate failure state; do not classify it as ready literal/typed by absence of quantities. |
+| Refusal before candidate | Complete accepted state, epoch and every token unchanged. |
+| One rejected actual candidate | Epoch advances once; actual old inspection tokens invalidate. Same journal generation/revision prefix plus current document suffix; accepted source/history/geometry/material/parameters/ownership remain exact. Literal null stays null. |
+
+R1 evidence7420e82 and acceptance repaird4ab4d2 establish the current source
+contract and preserve the first failure. This is acceptance correction, not an
+unsupported public data-corruption claim.
+
+### CAD-OWN-WRITE-SETTLEMENT-01
+
+| State/transition | Required evidence and permitted next state |
+| --- | --- |
+| Submit Save/export/own negative fixture | Record actual own account/window/path and retain pending custody. |
+| Acknowledged write | Match actual own browser/server bytes and SHA before settlement and the next durable write. |
+| Known authoritative prewrite refusal | Explicit noncommitted result plus valid matching own contexts and complete own browser/server directory listings excluding that exact path; accepted state remains exact. Only then settle and retire. |
+| Unknown rejection, incomplete readback, lost ownership | Preserve pending custody and owned context. No guessed absence, forced close or automatic retry. |
+| Crash/forced tab loss | Saved data may recover; no promise to rescue unsaved RAM or run cleanup on close. |
+
+Mirror stat for a missing file throws untyped Error('File not found.'); it does
+not return null or a typed NOT_FOUND. R2 dd62e52 preserves the initial failure
+and passive post-terminal reconciliation;386df4f uses actual scoped directory
+observations. No cancelled filesystem-race or account-boundary probe was run.
+
+### CAD-ARCHIVE-NEGATIVE-DOMAIN-01
+
+Manufacturing revision binds the canonical domain-separated authored project.
+Changing a malformed test's model while retaining its old material digest must
+first yield MANUFACTURING_REVIEW_REQUIRED; a rebuilt ZIP/manifest alone cannot
+make it a test of deeper geometric semantics. A negative intended to reach
+BLIND_DEPTH_NOT_INTERIOR must coherently update only its required digest records
+and retain independent exact source-delta evidence. Do not weaken product guards
+or treat a stale material record as proof of a blind-depth failure.
+
+### CAD-WORKER-DISPATCH-AND-RESOURCE-CLOSURE-01
+
+Root072805f derives admission and fresh-result requirements from ONE closed
+ownedKinds table; reads/disposal are explicitly non-producing. Mode guards are
+preserved. Root323ee19 emits the five actual blind MFG dependencies; staged
+inventory and actual worker import closure must agree before browser testing.
+Future feature composition must extend this table and union required emitted
+modules, not restore duplicated allowlists or drop existing leaves.
+
+Counterbore source must preserve the genuine two-step private ancestry under one
+authored feature identity; no fabricated intermediate producer. Its acceptance
+has independently confirmed source/proof gaps and is being repaired, not run.
+Section/detail product and acceptance repairs are delivered for independent
+review, not qualified. No public/main promotion. Earlier labels are historical.
 
 ## Tangency qualified — current constraint batch closed in its tested scope
 

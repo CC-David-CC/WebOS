@@ -9,8 +9,11 @@ workflows now also passed their FIRST independent oracles: nine/fourteen native
 Save/server-equality/fresh Open cycles on actual8771a56/7fc7a508f. Both entire
 original families and genuine survivor promotions are retained. Assembly E17
 stays Gate2; ordinary21/21 does not waive broader Gate1 requirements below.
-Blind-hole composition, section/detail review, counterbore source and remaining
-competencies remain open. No public/main promotion. Exact current evidence and
+Blind whole R3 is terminal FAIL, not qualified: two native save/reopen cycles
+and six exports were reached, then a stale material digest in the malformed
+negative fixture prevented the intended depth check. Fixture repair,
+section/detail composition, counterbore acceptance repair and the remaining
+competencies are open. No public/main promotion. Exact current evidence and
 next steps: [work queues](WEBOS-WORK-QUEUES.md) and
 [acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md). Older checkpoint
 labels below describe historical states. This historically JSketcher-named

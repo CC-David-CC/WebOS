@@ -1,25 +1,52 @@
 # WebOS work queues and progress ledger
 
-## Current: complete related-removal workflows qualified
+## Current checkpoint — 2026-11-09: ordinary 21/21; full Gate 1 OPEN
 
-Actual product Core `8771a5699c3a0e6d89fa6e840000803b921b175e` / frozen Host `7fc7a508f4d6d90b846227ee5feb8d3b93109261`,189 actual byte pins, primary MFG32e/abb and exact Chromium3559/155.0.8059.79. Normal build71026/stage89185 PASS0 with no compiler warning/error/missing-export matches; build/source-review custody ACAD026aa1f. No root whole remains running.
+The 21 ordinary exercises remain qualified; assembly E17 remains Gate 2. This
+count does not close the broader competency catalogue or final composed beta
+qualification. No public/main/beta promotion has been made.
 
-| Complete augmented workflow | Whole and FIRST independent oracle | Actual evidence |
-| --- | --- | --- |
-| EqualRadius: all original numeric/typed phases, Circle/quarter-Arc/retained RadiusLength survivor promotion |57233 terminal PASS0; oracle PASS0; **qualified b2b8117**.126rows/945commands/58Native observations/232point classes/three diagnostics/seven refusals/nine.cad browser-server SHA-equal Saves and nine fresh Opens |ACAD `test/equal-radius-public-workflow/evidence-r3`|
-| Tangency: all original support/finite/external/both ordered-internal CC phases plus four support/finite/quarter-Arc promotion companions |38715 terminal PASS0; oracle PASS0; **qualified 4b8026c**.200rows/1746commands/103Native observations/412point classes/seven diagnostics/15refusals/42travels/three no-ops/fourteen.cad browser-server SHA-equal Saves and fourteen fresh Opens/three own malformed archive refusals |ACAD `test/tangency-public-workflow/evidence-r4`|
+| Work packet | Current evidence and next action |
+| --- | --- |
+| EqualRadius survivor promotion | **QUALIFIED** `b2b8117`: entire whole57233 and FIRST independent oracle PASS; nine native browser/server-equal Saves and fresh Opens. |
+| Tangency survivor promotion | **QUALIFIED** `4b8026c`: entire whole38715 and FIRST independent oracle PASS; fourteen native Saves/fresh Opens. Original family and additional promotion controls remain. |
+| Centered blind hole | **NOT QUALIFIED**. Actual built Core `323ee19168a6850ec368eb5ac92846976e8ad32a` / Host `ef45ae4783841cdcf90c60e31a9434229ef8d9e9`,194 actual byte pins. Whole R3 (`96285`, acceptance `386df4f`) terminal **FAIL** after49rows/656commands/27Native observations/13refusals, two native Save/fresh-Open cycles and six STEP/core3MF/SVG artifacts. All submitted writes settled; own context retired; twelve producer/helper files unchanged. These reached phases are partial evidence, not a whole qualifier. |
+| Blind R3 blocker | Own malformed archive generator changed the hole but retained the old manufacturing geometry digest. Actual Open correctly stopped at `MANUFACTURING_REVIEW_REQUIRED`, before the intended `BLIND_DEPTH_NOT_INTERIOR` check. Source-only fixture repair is underway; preserve original failure. FIRST independent oracle and SVG visual review have NOT run. |
+| Linked section/detail drawing | Source `e6755a8`/`6230d080`/`efd39af`, Host `c8c92598`, independent product review `d5a9864`, product repair `b9a09d9`, acceptance repair `8549a94` delivered. **Not integrated or qualified**; independent acceptance review and root composition remain. |
+| Counterbore | Product `1bb303a`, acceptance `ff82057`/`66c6d3c`, Host `ccef9df` delivered. **Not integrated or qualified**. Independent source review found invalid unquoted roster literals, incomplete write-settlement evidence, finite mesh/STEP/SVG/source-custody/phase proof gaps. Coherent acceptance repair assigned; no execution yet. No additional product defect was established by that review. |
+| Signed/symmetric/two-sided extrusion | Contract `e22dd69` delivered; design only. |
+| Countersink | Contract `c2c8b21` delivered; design only. Actual conical construction exists, but genuine finite cone support/provenance and typed-angle closure require explicit Native work and a new qualified pair; no current pair/default change. |
+| Remaining full Gate 1 | Broader sketch/profile/reference/solid variants, drawing semantics, resource/backend/format and final composed beta obligations remain. Use the detailed matrix below; no percentage or short completion ETA is inferred from the ordinary exercise count. |
 
-Seven actual driver/helper/source files per workflow match separate producing Git objects before/after. Original geometry remains authoritative through exactly the selected deletion and actual survivor admission; independent original Fraction equations prove dependence before and necessity afterward. Finite contact/domain and original row satisfaction are separate obligations. Undo/Redo, subsequent edits, native persistence and original negative controls remain. Owned contexts retired after settled writes; shared browsers disconnected only. Unknown-write guards were not exercised. Functional concurrent runs are not isolated resource/performance evidence. Not general physical freedom, arbitrary curve pairs, BRep tangency, typed consumed-Circle profiles or a transitive four-Circle certificate.
+Build custody: first267dd3d build39023/stage7996 completed, superseded before any
+whole. Root source repairs `7e60615`/`072805f` closed blind admission/fresh-result
+dispatch through one closed ownedKinds table; `323ee19` added the five actual
+required MFG module emissions. Actual OCI digest `37922cb8` matches all nine
+bootstrap guards. Current normal final application build34193/stage82355 PASS0
+with483 assetfiles/556 bundlefiles/194pins. Build evidence is retained in ACAD
+`test/centered-blind-hole-workflow/build-composed-r2` (`2e3b096`).
 
-Ordinary **21/21** remains qualified; assembly E17 stays Gate2. Full Gate1 is **OPEN**. Prior finite equality/ratio675a4a3, Offset998864a, warning layout82dd692, support/center3392019 and their original failures/proofs remain. Broader sketch/profile/reference/solid/drawing/resource/backend/format and composed final beta obligations remain; no public/main/beta promotion or source packaging.
+Blind prior failures remain: R1 `7420e82` exposed an acceptance assumption that
+literal-empty physical source had a presentation token; corrected `d4ab4d2`
+keeps literal null and requires a token for actual typed source. R2 `dd62e52`
+exposed an acceptance assumption that missing mirror stat returns null; it
+actually throws an untyped Error. `386df4f` observes complete scoped own browser
+and server root listings instead. R2's pending negative write was passively
+reconciled absent before its own context retired; original receipt is unchanged.
+No filesystem race, foreign account probe, relay, forced unknown-write close or
+blind retry occurred. R3 logs/receipt reside at
+`/tmp/codi-acad-foundation-next-blind-20261109-r3`; retain in ACAD evidence-r3
+before further source edits. No oracle may turn a failed whole into a pass.
 
-Next active candidate: reviewed blind product and full corrected acceptance are composed as **Core267dd3df76819a20158adc17e2de616d925191f4 / Hostef45ae4783841cdcf90c60e31a9434229ef8d9e9** on both LANs. Core product62db6b4/d15f315/2e669db, acceptance245af67/6da7679/11dca31 and root composition review267dd3d preserve original geometry/precision/source requirements. Host76ee48e9e plus ef45ae478 registers thin commands with the existing rectangle target/disposal owner. Three core conflicts were additive imports/explicit finite-code rosters; newer Offset and typed-dependent-sketch validation remain. Actual OCI source9d3823b3 matches all nine exact bootstrap guards. **Normal complete build39023 is running on r730**, local log `/tmp/codi-acad-foundation-next-build-20261109-r7.log`; no blind runtime qualification yet. Proposed stage5 remains pending terminal build/compiler review.
+Next serial chain: correct malformed-negative source and review it → freeze
+actual acceptance/helper bytes → ONE entire blind browser workflow against the
+same immutable runtime → only after whole PASS run FIRST independent oracle →
+actual SVG render/review → qualified evidence. Section/detail and counterbore
+source review/repair can proceed in isolated parallel lanes; root composition,
+normal builds and final composed qualification remain serial. Existing source,
+Native tolerances, modes, limits and all original negative criteria stay intact.
 
-Complete acceptance repairs address all-write settlement, finite circular mesh evidence, STEP LINE/face-bound/edge orientation, full malformed-Open retention, exact producer/transitive roster and high-water/phase specificity. Root verified retained same-pair STEP artifact hash and all three referenced Native source blobs; source/artifact evidence is not new runtime proof. After build/stage, execute ONE entire blind workflow; FIRST independent oracle only after whole PASS, then actual SVG visual review. Retain first failure. Earlier radius/tangency qualification remains on actual8771a56/7fc; no new-source composed regression claim.
-
-Section/detail source e6755a8/6230d080/efd39af and Hostc8c92598 are delivered, not integrated/qualified. Independent review is underway; preliminary acceptance gaps concern complete section/hatch paths, conic chord-error proof and transitive source/Git custody. Counterbore designf547814 is retained (root a8717e3) and isolated source implementation is authorized. Actual sequential ancestry needs a bounded two-step private binding helper, not a fabricated intermediate authored ID. Signed/two-sided/symmetric extrusion is a separate bounded design lane. No filesystem race, security probes, relay or new Native pair/ABI/quota/default change.
-
-Earlier checkpoint entries below retain their contemporary states; this entry supersedes older running/unintegrated labels.
+Earlier checkpoint entries below are historical and superseded by this one.
 
 ## Tangency qualified — current constraint batch closed in its tested scope
 
