@@ -21,6 +21,17 @@ is building normally for the PL defect; no runtime pass claimed yet. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Active complete workflow — PL R3 on built typed-coordinate repair
+
+Normal build29572 and stage43106 PASS at actual Coreb3a7bb227da38524309e8cc0c6c8a8646d00b854 /
+Desktop78cc1694eca1a88623f33e7ff748673c909a6017. Fresh private21030/state-r48,
+backend24668/forward31241; no browser-relay flag. Complete workflow32372 runs
+unchanged genuine public recipe with immediate X/Y anchor creation travel,
+free and partial-X phases, FIVE intended .cad save/reopen cycles and original
+equations/budgets. Evidence /tmp/codi-acad-point-line-free-anchored-20261108-r3,
+sibling.log. No PL runtime qualification until terminal whole PASS plus first
+independent artifact oracle. Complete first R1/R2 failures remain retained.
+
 ## Current execution checkpoint — Boolean checks PASS; typed-anchor repair building
 
 ACAD7680027 preserves E16 R4 complete browser35376 PASS and FIRST independent
