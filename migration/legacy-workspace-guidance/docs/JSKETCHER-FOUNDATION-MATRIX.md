@@ -1,5 +1,16 @@
 # JSketcher basic foundation matrix
 
+### Latest C11 qualification checkpoint — 2026-11-09
+
+Ordinary21/21 remain qualified; full Gate1 OPEN. Corrected producer82f9/Host33
+whole54111 reached70rows/33Native observations/two native cycles, then refused
+repaired SVG for a leader/text-box crossing. Producer discovery/Boolean retarget/
+unresolved native Open/discovered reference repair progressed; C11 is NOT qualified.
+Original failure and separate settled prewrite/own-context retirement proof are
+retained in ACAD drawing-requirement-public-workflow/evidence-r3. Next bounded
+Worker leader routing and complete rerun; see [work queues](WEBOS-WORK-QUEUES.md) for exact status.
+
+
 ### Finite extent family qualified — 2026-11-09 latest
 
 ACAD d68ecb2 retains complete artifact session15053 PASS0 on verifier95af055,

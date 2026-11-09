@@ -1,5 +1,39 @@
 # WebOS work queues and progress ledger
 
+## C11 R3 terminal result — 2026-11-09 latest
+
+**Full Gate1 OPEN; ordinary exercises21/21 unchanged.** Actual frozen
+Core82f9f01 / Host33fc809 / Shell57b/60dc whole54111 terminal FAIL1 after
+70 rows/875 commands/33 Native observations/two native Saves+fresh Opens/four
+SVGs. The general producer correction passed: real Boolean target discovery,
+retargeting, saved unresolved upper-cap intent, fresh Open and actual discovered
+lower-A/B/C repair all progressed with independent Native observations.
+
+Repaired SVG export refused RESOURCE_LIMIT because a requirement leader crosses
+an existing declared text box. This is the current confirmed presentation
+limitation; no failed union or source repair is claimed. No FIRST artifact oracle
+ran after failed whole. Original source pins unchanged. Original receipt retains
+the submitted write/context; separate exact own-root/source proofs establish
+prewrite refusal, absent SVG and seven latest acknowledged paths with unchanged
+browser/server hashes. Repeated current-context version/host proof then retired
+only that own context. Initial helper wrongly compared local UUID versions
+across fresh browser contexts; that diagnostic is retained, and the corrected
+proof respects Mirror installation semantics. No retry, deletion or file race.
+
+ACAD evidence: test/drawing-requirement-public-workflow/evidence-r3/STATUS.json
+and settled-prewrite-refusal.json. Next: bounded Worker leader routing around
+text boxes, independent per-segment paper checks, fresh complete build/whole;
+all authored labels/anchors/geometry/quantities and collision guards stay intact.
+Legacy affected regression acceptance and ordered plan are source-prepared
+(3217426/7e7565c, primary cohort correction2ad9bef), not run. No job remains
+active on Root's browser lane; private service21057 remains for controlled reuse.
+
+Finite-curve next source packet: Native d3b2afa (BEFORE913267d) adds only the
+thin query export on the consolidated header source. No Native compile/new pair,
+mount capability or actionable query is claimed. Root bridge planb620264 remains
+next after current C11. Public deployment and external relay remain OFF.
+
+
 ## C11 fresh corrected-producer execution — 2026-11-09 latest
 
 Root built/staged/audited actual Core82f9f01 / Host33fc809: sessions33313,
