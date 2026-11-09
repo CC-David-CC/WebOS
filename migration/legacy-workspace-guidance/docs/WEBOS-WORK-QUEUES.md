@@ -29,6 +29,24 @@ resource envelope and final composed beta/agent/viewable G10 remain open. No mai
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 
+## Active whole qualification — combined build/stage PASS; EqualRadius running
+
+Normalbuild47393 and stage37347 PASS at actual Core1d8fa59ca01f0d0b5f9ef9e17495bcd26eda1f2d /
+Desktop728456989f0af1422556c65b702c2605cd5e366a, new signed178 pins. Fresh private
+21031/backend32554/forward74851; runtime/account state is on R730 data drive
+/mnt/data10tb/codi-acad-isometric-equalradius-state-20261108-r1. No relay flag.
+Qualified oldb3/78cc21030 remains separate; no public beta/main changes.
+
+Complete EqualRadius41533 RUNNING, evidence
+/tmp/codi-acad-equal-radius-public-20261108-r1 and sibling.log. Frozen driver
+edeb24ae606505313f599461fd2862d2fa9a46ed, actual Desktop helper728456989,
+explicit MFG32eec74e/abbf2aa0. Allfive intended.cad cycles/typed andnumeric
+fixtures/actual local freedoms/redundancy/conflict/removal/travel retained.
+Only after terminalwhole PASS: FIRST independent check.py. Then complete
+isometric workflow on SAME exact runtime/pins, followed by its FIRST oracle.
+Neither feature is qualified merely by build/source review. No simultaneous
+build/browser campaign or per-step tests. Keep first failures unchanged.
+
 ## Current combined candidate — source composed; normal R730 build running
 
 Root reviewed/additively composed EqualRadius af2e544→4d53e8a→82815cc→764d28e→
