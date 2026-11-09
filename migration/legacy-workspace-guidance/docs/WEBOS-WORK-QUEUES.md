@@ -19,13 +19,19 @@ qualification. No public/main/beta promotion has been made.
 | Countersink | Native source consolidationc29d45e combines primary/Shell/circular/conical. New-port publication-fence source repair04ad4cd (notes9b6ebc2) delivered after review62b301. All UNCOMPILED/UNQUALIFIED; old pairs/default unchanged. Typed-role00babda also source-only, countersink angle declaration INACTIVE. Root review/build/real pair+wrapper registration/full workflow remain. |
 | Remaining full Gate 1 | Broader sketch/profile/reference/solid variants, drawing semantics, resource/backend/format and final composed beta obligations remain. Use the detailed matrix below; no percentage or short completion ETA is inferred from the ordinary exercise count. |
 
-Build custody: first267dd3d build39023/stage7996 completed, superseded before any
-whole. Root source repairs `7e60615`/`072805f` closed blind admission/fresh-result
-dispatch through one closed ownedKinds table; `323ee19` added the five actual
-required MFG module emissions. Actual OCI digest `37922cb8` matches all nine
-bootstrap guards. Current normal final application build34193/stage82355 PASS0
-with483 assetfiles/556 bundlefiles/194pins. Build evidence is retained in ACAD
-`test/centered-blind-hole-workflow/build-composed-r2` (`2e3b096`).
+Current build custody **c77f531**: Coree521860/Host843aee31a, actual
+OCI7864b6ca/all9guards. Normal build12568 PASS0 (ten webpack completions, zero
+warning/error/missing-export lines), stage85873 PASS0:498assets/571appfiles/
+209pins. C11 whole38312 is RUNNING on private21050/Chrome19331; service2503,
+forward16681. Native pairs/defaults unchanged; external relay absent. Initial
+staging launcher84729 rejected a mistyped nonexistent host ref before creating
+its fixture; original failure retained alongside corrected verified stage.
+
+Historical blind build custody: first267dd3d build39023/stage7996 completed,
+superseded before any whole. Repairs7e60615/072805f closed blind admission and
+fresh-result dispatch;323ee19 added its five actual required MFG emissions.
+Blind build34193/stage82355 PASS0/194pins remains retained2e3b096 and used by
+qualified11ac347; it is not the current composed build.
 
 Blind prior failures remain: R1 `7420e82` exposed an acceptance assumption that
 literal-empty physical source had a presentation token; corrected `d4ab4d2`
@@ -35,9 +41,8 @@ actually throws an untyped Error. `386df4f` observes complete scoped own browser
 and server root listings instead. R2's pending negative write was passively
 reconciled absent before its own context retired; original receipt is unchanged.
 No filesystem race, foreign account probe, relay, forced unknown-write close or
-blind retry occurred. R3 logs/receipt reside at
-`/tmp/codi-acad-foundation-next-blind-20261109-r3`; retain in ACAD evidence-r3
-before further source edits. No oracle may turn a failed whole into a pass.
+blind retry occurred. R3 original logs/receipt are retained24464c3 in ACAD evidence-r3; the
+later healthy qualification11ac347 does not overwrite them. No oracle may turn a failed whole into a pass.
 
 Next serial chain: build12568/stage85873 PASS0 (custody ACADc77f531);
 complete C11 caption whole38312 RUNNING on private21050/Chrome19331 → FIRST
