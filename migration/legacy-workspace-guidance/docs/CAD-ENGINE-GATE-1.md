@@ -11,10 +11,11 @@ original families and genuine survivor promotions are retained. Assembly E17
 stays Gate2; ordinary21/21 does not waive broader Gate1 requirements below.
 Centered blind holes now qualify as **11ac347**: whole91100, FIRST independent
 oracle and two actual SVG reviews PASS; two native save/reopen cycles, six
-exports and both exact malformed archive refusals. Section/detail is composed
-and built; its first whole exposed an overlong host command description,
-now repaired and in whole61449. Counterbore acceptance, extrusion/conical source
-and remaining full-gate competencies are open. No public/main promotion. Exact current evidence and
+exports and both exact malformed archive refusals. Finite section/detail now
+qualifies **771f66e**: whole61449 +FIRST oracle40502 PASS;16 actual SVGs
+reviewed/eight Saves/six fresh Opens. Caption placement and general label layout
+remain open. Counterbore, extents, mechanical/conical source, resource/backend/
+format and final composed Gate1 delivery remain unfinished. No public/main promotion. Exact current evidence and
 next steps: [work queues](WEBOS-WORK-QUEUES.md) and
 [acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md). Older checkpoint
 labels below describe historical states. This historically JSketcher-named

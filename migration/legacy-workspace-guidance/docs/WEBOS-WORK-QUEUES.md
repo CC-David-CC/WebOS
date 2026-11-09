@@ -12,10 +12,11 @@ qualification. No public/main/beta promotion has been made.
 | Tangency survivor promotion | **QUALIFIED** `4b8026c`: entire whole38715 and FIRST independent oracle PASS; fourteen native Saves/fresh Opens. Original family and additional promotion controls remain. |
 | Centered blind hole | **QUALIFIED11ac347**: whole91100 and FIRST independent oracle PASS0, both actual SVG renders reviewed. Actual Core323/Hostef45/194pins, acceptance24ad11c;51rows/696commands/29Native observations/195points/13refusals/two.cad Saves/fresh Opens/six exports/two exact own malformed native refusals. All13 sources unchanged, writes settled, context retired. Finite rectangular-source scope; not all C06. |
 | Blind R3 blocker | **Repaired and whole-qualified**. Prior R1/R2/R3 failures retained. Negative helper preserves original numeric tokens, authenticates the saved project digest, changes one authored string plus dependent manufacturing/archive hashes. Independent after-whole exact source/entry/ZIP-span differences and original expected errors now pass. |
-| Linked section/detail drawing | **Not qualified**. Core725/Host2633 normal build16850 and stage46813 PASS0:495assets/568bundlefiles/206pins, no compiler warnings/errors/missing exports. Independent merge audit865730 found no dropped behavior. First whole31686 failed startup before modeling:626-character description exceeded registry512. Failureb7b0a2f retained; prose-only Host5ea92e084 restaged1359 PASS0. WholeR2 **61449 running** on private21048/206pins; actual startup, first section/detail SVG and replacement UndoRedo reached. Partial phases do not qualify the whole. |
-| Counterbore | Product1bb303a/Hostccef9df; acceptance repair0813b1b atop66c6d3c delivered on bothLANs, addressing audit2a3b917 including dependent negative-file metadata hashes. No product changes/execution in repair. Root review/composition/build/full whole and FIRST oracle remain; not qualified. |
+| Linked section/detail drawing | **Finite workflow QUALIFIED771f66e**. Whole61449 and FIRST oracle40502 PASS0; all16 actual SVGs reviewed. Actual Core725/Host5ea/206pins:190rows/1039commands/63Native observations/1323points/eight.cad Saves/six fresh Opens/24travels/eight refusals/31+32 boundaries.19 sources unchanged, writes settled, contexts retired. Not fullC11/layout; first startup failureb7b0a2f retained. |
+| Confirmed drawing presentation follow-up | OPEN C11-VIEW-CAPTION-PLACEMENT-01: datum-anchored captions overlay translated/isometric geometry. Worker-bound caption correction +independent oracle splice underway. Authored leader/unresolved-label collisions remain C11-REFERENCE-LABEL-LAYOUT-01; no general layout claim. |
+| Counterbore | Product1bb303a/Hostccef9df; repaired acceptance0813b1b, independent reviewd08853e and strict visible SVG follow-upc968f2c delivered. Root review/composition/build/whole/FIRST oracle remain. Caption-related oracle splice must follow queued renderer correction. Not runtime-qualified. |
 | Signed/symmetric/two-sided extrusion | Contracte22dd69 reviewed; isolated source implementation underway from24ad11c. One original source and direct prism interval; new actual lower/upper cap identities and shared typed/J/reader/persistence paths. Not qualified; old positive-depth consumers may not be relabeled. |
-| Countersink | Contractc2c8b21 and Native schema77d97b checkpointed. Isolated c15-based genuine frustum/provenance and coupled cone-topology source underway. Typed-angle/wrapper/workflow closure remains; no new binary/pair/default or runtime claim. |
+| Countersink | Native source consolidationc29d45e combines primary/Shell/circular/conical. New-port publication-fence source repair04ad4cd (notes9b6ebc2) delivered after review62b301. All UNCOMPILED/UNQUALIFIED; old pairs/default unchanged. Typed-role00babda also source-only, countersink angle declaration INACTIVE. Root review/build/real pair+wrapper registration/full workflow remain. |
 | Remaining full Gate 1 | Broader sketch/profile/reference/solid variants, drawing semantics, resource/backend/format and final composed beta obligations remain. Use the detailed matrix below; no percentage or short completion ETA is inferred from the ordinary exercise count. |
 
 Build custody: first267dd3d build39023/stage7996 completed, superseded before any
@@ -38,13 +39,18 @@ blind retry occurred. R3 logs/receipt reside at
 `/tmp/codi-acad-foundation-next-blind-20261109-r3`; retain in ACAD evidence-r3
 before further source edits. No oracle may turn a failed whole into a pass.
 
-Next serial chain: finish the active whole61449 on unchanged Core725 /
-Host5ea → only after whole PASS run FIRST
-independent oracle → actual SVG render/review → qualification. Counterbore
-review/repair, extrusion extents and conical source proceed in isolated lanes.
-Root composition/build/final qualification remains serial. Blind R4 completed
-scope is retained as11ac347 evidence-r4; no new-source composed regression or
-public/main promotion is implied. Ordinary21/21 remains; full Gate1 OPEN.
+Next serial chain: review/compose counterbore product and repaired acceptance,
+keeping the queued caption correction/coherent oracle splice explicit. Normal
+build/stage → ONE full whole → FIRST oracle only after PASS → actual artifact
+review. Shared typed/extents and mechanical Native source remain isolated until
+review/coherent composition. New Native source needs normal compilation, actual
+hash/explicit pair/closed graph bindings and cross-feature qualification; no
+per-feature conversions or fallback. No root whole remains running.
+
+Completed blind11ac347 and drawing771f66e are finite qualifiers. Broader sketch/
+profile/reference/solid/drawing/resource/backend/format and final composed beta
+requirements remain. Ordinary21/21; assemblyE17 Gate2; fullGate1 OPEN. No public/
+main/beta promotion or premature source packaging.
 
 Earlier checkpoint entries below are historical and superseded by this one.
 

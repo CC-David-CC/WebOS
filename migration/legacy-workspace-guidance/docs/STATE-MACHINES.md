@@ -9,11 +9,13 @@ actualCore323/Hostef45/194pins; two native Saves/fresh Opens and both exact
 malformed archive refusals followed by healthy Native continuation. All13
 executed sources unchanged; own writes settled/context retired.
 
-C11 normal build16850/stage46813 passed on Core725/Host2633/206pins. First whole
-31686 failed startup before modeling: description626 exceeded existing512.
-Failureb7b0a2f retained; prose-only Host5ea92e084 restage1359 passed. Whole61449
-is running; actual startup/section/detail SVG and replacement travel reached.
-FIRST independent oracle remains forbidden until the complete whole passes.
+Finite section/detail whole61449 and FIRST oracle40502 now PASS as771f66e;
+all16 actual SVGs viewed.63Native observations/1323points/eight Saves/six fresh
+Opens on actualCore725/Host5ea/206pins.19sources unchanged, own contexts retired.
+First startup failureb7b0a2f remains. Confirmed caption placement over translated
+geometry and authored label/leader collisions stay open; not fullC11/layout.
+No root whole remains running.
+
 [Work queues](WEBOS-WORK-QUEUES.md) contains exact current refs/next actions.
 
 ### CAD-PHYSICAL-INSPECTION-PRESENTATION-01
@@ -63,6 +65,21 @@ description. C11 whole31686 reached login but actual CAD startup rejected
 626-character prose; no modeling commands ran. Host5ea92e084 shortens only prose
 while preserving registry limits/shared semantics. A complete successful public
 launch in the next whole remains required regression evidence.
+
+### CAD-NATIVE-CROSS-FEATURE-01 — new source not qualified
+
+One authored part history selects one Native revision through its operations;
+no hidden per-feature conversion, automatic fallback or competing source model.
+Sourcec29d45e composes primary, Shell/BoxFaces, circular and conical; new-port
+publication-fence repair04ad4cd is delivered after source review62b301. Both are
+UNCOMPILED/UNQUALIFIED; old pairs remain unchanged. Root review/build, real
+explicit pair/factory/controller/graph bindings and shared corpus remain.
+
+New conical success requires actual post-publication name/frame/census/result
+or read snapshot fences. Unknown publication/cleanup fails closed. Roll back
+only a provably owned original output, never an unrelated replacement; do not
+claim caller-side mutation was repaired. This is a service-level source repair,
+not evidence of a public callback exposure/incident. No callback probes ran.
 
 ### CAD-WORKER-DISPATCH-AND-RESOURCE-CLOSURE-01
 
