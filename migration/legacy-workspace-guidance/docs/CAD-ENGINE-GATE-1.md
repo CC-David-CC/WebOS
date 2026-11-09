@@ -1,5 +1,17 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+## Current authoritative checkpoint — 2026-11-09
+
+This checkpoint supersedes running/unmerged descriptions below; those describe earlier attempts.
+
+- Ordinary Gate 1 exercise workflows: **21/21 qualified**. Exercise 17 (assembly) belongs to Gate 2. The broader Gate 1 competency catalogue remains **OPEN**.
+- Centered counterbore: **finite workflow QUALIFIED**, ACAD `b531480`. Whole session 28480 and FIRST independent oracle 81754 both exited 0; both actual SVG renders were reviewed. Evidence: `test/centered-counterbore-workflow/evidence-r3/QUALIFICATION.json` in ACAD. Includes 814 commands, 32 Native observations, 336 point classifications, two saves/reopens, six exports, and all 12 writes settled. Earlier failed runs are retained; none is still running.
+- C11 own-view caption regression: qualified at `010f9f6`; cross-view caption collisions and general drawing leader layout remain partial.
+- Pure intent/identity source composition: reviewed at Core `ad5bb96eb7ce0ff5d22b5b93b5b0266bd906f830`. Normal build 75654 passed all ten webpack completions; stage 35919 passed with 507 assets, 580 app files and 213 pins against Host `9ea4a1993ad8afa10ea9a24e9c9a4f7955e47420`. This is build evidence, **not runtime qualification**. Next: grouped counterbore and C11 regressions against this build, then independent checking and actual artifact review.
+- New private fixture port 21052 was checked after interrupted orchestration: no remote listener or service log exists. Do not describe it as running; start deliberately before the grouped regression.
+- Countersink Native early-failure repair `fc1654ee5d4471584073d4d8e3363d8c9b324566`: source repaired, not compiled/qualified. Private coordinator source delivered at `d5a5c0d0fb73de8f10d232b3ccb50e7558ac053d` on both LAN Git servers; constructor-time source binding and integration remain prerequisites. No countersink registration or public availability.
+- Remaining Gate 1 work includes profile/feature variants and reference/numerical cases, drawing semantics/layout, large-project resource qualification, and final composed beta acceptance. No full-gate signoff or public/beta promotion has occurred.
+
 ## Current ACAD checkpoint — ordinary21/21; full Gate1 open
 
 Finite equality/ratio675a4a3, tangency8b0dbf3, semantic Offset998864a,
