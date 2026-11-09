@@ -1,19 +1,24 @@
 # WebOS work queues and progress ledger
 
-## Active browser lane after C11 qualification — 2026-11-09
+## Current affected-regression lane — 2026-11-09
 
-Next complete affected regression is RUNNING: session6481, R730 childPID2980517,
-actual Core82866bf / Host796c90513 / acceptance82866bf /293pins/MFG32e/abb.
-Frozen driver: test/isometric-current-drawing-compatibility-workflow/desktop-driver.mjs.
-Evidence /mnt/data10tb/codi-acad-c11-legacy-regressions-20261109-r1/isometric/whole;
-wrapper/state/log in its parent codi-acad-c11-legacy-regressions-20261109-r1.
-Private service87004/forward81017 at21057 and existing Chrome155 CDP19551.
-Poll this exact job before another runtime execution; do not start a duplicate.
-After terminal whole PASS, run this workflow's unchanged independent checker,
-retain FIRST output and individually review its actual SVGs. If a submitted
-write remains unresolved, retain only its own context until actual outcome is
-known. No regression result or broader Gate1 signoff is anticipated here.
+**1/5 complete affected legacy regressions QUALIFIED.** Isometric whole6481
+PASS0, FIRST independent reader66458 PASS0, all six actual SVGs individually
+reviewed PASS in Chrome155. 78 rows/308 commands/25 Native observation sets/
+three native Saves/three fresh Opens/15 travels/six refusals. Frozen producer and
+acceptance Core82866bf / Host796c90513 /293pins/MFG32e/abb are unchanged; all
+source/input custody passed, every write settled and own contexts retired.
+Evidence: ACAD test/c11-affected-regressions/evidence-r1/isometric/QUALIFICATION.json.
 
+Next complete reference-repair whole is RUNNING session18059, actual R730 child
+PID2985115, same Core/Host/acceptance/pins/cohort. Both original and translated-
+negative families are required. Evidence /mnt/data10tb/codi-acad-c11-legacy-
+regressions-20261109-r1/reference/whole; state/log/scripts in parent. Private
+service87004/forward81017 at21057 and Chrome155 CDP19551 are unchanged. Poll this
+exact job before any new runtime run; no duplicate or partial phase replacement.
+Only terminal whole PASS permits this family's independent reader/actual SVG
+reviews. Four-bore, section/detail and Boolean producer regressions remain queued.
+Full Gate1 OPEN. Finite C11 requirements qualification below remains unchanged.
 
 ## Current C11 requirements checkpoint — 2026-11-09
 
