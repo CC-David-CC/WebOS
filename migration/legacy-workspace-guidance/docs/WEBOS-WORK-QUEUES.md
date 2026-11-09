@@ -19,10 +19,27 @@ ACAD6da5233: actualb3a7bb2/78cc169, normal29572/stage43106, browser32372 and
 FIRST independent artifact oracle PASS.753commands/49Native observations/
 11refusals/five.cad browser+server+fresh Open cycles; BOTH X/Y actual creation
 UndoRedo and genuinely free/partial-X phases pass. First R1/R2 failures retained.
-Named competencies, captured-profile READ consumer regressions/legacy writer
-and final composed beta/agent/viewable G10 still require evidence. No main or
+Renamed legacy physical writer NOW qualified ACAD56bfc01: same builtb3a7bb2,
+whole14503 and FIRST independent artifact oracle PASS;14observations/eight
+physical travels/two.cad cycles/actual renamed task forwarding, numeric↔named
+source and fresh-session edits. Public bounds/hole facts, not Native mass.
+Named competencies, captured-profile READ consumer regressions and final
+composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
+
+## Current next action — captured-profile READ consumer regressions
+
+Legacy whole14503 terminal PASS and FIRST artifact oracle PASS, proof56bfc01
+on both LAN. Source-compatible acceptance only; actual runtime staysb3a7bb2/78cc169.
+Circle/Native attachment is next: existing driver/oracle remains byte-identical
+to its historical qualified recipe, original Shell57b/60dc pair already staged.
+Source review found TWO actual Shell module URLs missing from178-pin subset;
+prepare a NEW exact-current180-pin manifest before this whole run, preserving
+all old entries/metadata. Agentgate1_plan prepares SOURCE-ONLY helper; root alone
+executes it and the entire browser flow. No Native rebuild, runtime/driver or
+acceptance-budget change required. Then revolve, sweep and loft/fit consumer
+regressions; nonempty sketch-boundary scope remains explicitly separate.
 
 ## Active regression — legacy physical sketch writer
 

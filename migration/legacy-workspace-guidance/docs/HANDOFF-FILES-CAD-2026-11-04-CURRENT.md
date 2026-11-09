@@ -19,8 +19,12 @@ ACAD6da5233: actualb3a7bb2/78cc169, normal29572/stage43106, browser32372 and
 FIRST independent artifact oracle PASS.753commands/49Native observations/
 11refusals/five.cad browser+server+fresh Open cycles; BOTH X/Y actual creation
 UndoRedo and genuinely free/partial-X phases pass. First R1/R2 failures retained.
-Named competencies, captured-profile READ consumer regressions/legacy writer
-and final composed beta/agent/viewable G10 still require evidence. No main or
+Renamed legacy physical writer NOW qualified ACAD56bfc01: same builtb3a7bb2,
+whole14503 and FIRST independent artifact oracle PASS;14observations/eight
+physical travels/two.cad cycles/actual renamed task forwarding, numeric↔named
+source and fresh-session edits. Public bounds/hole facts, not Native mass.
+Named competencies, captured-profile READ consumer regressions and final
+composed beta/agent/viewable G10 still require evidence. No main or
 public beta promotion, visitor external relay, Files race or source packaging.
 Earlier checkpoint headers below are historical and superseded by this one.
 

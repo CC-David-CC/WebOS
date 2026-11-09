@@ -1,5 +1,17 @@
 # Workflow state machines and invariants
 
+## CAD-LEGACY-PHYSICAL-WRITER-01 — actual named/literal restoration
+
+Proof56bfc01: actualb3a7bb2/78cc169 browser14503 and FIRST artifact oracle PASS.
+Public bracket creation→named physical binding→immediate Undo restores literal
+sketch/empty expression source using actually forwarded renamed legacy writer
+→Redo restores SAME named intent. Later definition edits/UndoRedo and a rejected
+area-valued length preserve chronology; two.cad commits/server equality/fresh
+Opens preserve source/history/IDs/definitions, with fresh-session travel reset.
+Task evidence uses bounded own-iframe headers while preserving actual calls and
+throws. It establishes issuance, not timing/lifetime guarantees. Published
+analytic geometry is checked; no nonexistent mass/point API is inferred.
+
 ## CAD-TYPED-COORDINATE-01 — qualified free/partial/full anchoring
 
 Proof ACAD6da5233, actualb3a7bb2/78cc169 complete browser32372 plus FIRST
