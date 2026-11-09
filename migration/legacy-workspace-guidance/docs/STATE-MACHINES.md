@@ -1,5 +1,22 @@
 # Workflow state machines and invariants
 
+## CAD-CONSTRAINT-REMOVAL-ADMISSION-01 — missing derived-state transition
+
+Confirmed in EqualLength whole92872; retained proof ACAD998864a. Source repaira5343dd is rebuilding, not qualified. Admission hints are replay evidence for actual authored rows; they cannot be blindly carried through a mutation that changes which relationships are independent. They are not a substitute for satisfiability, geometry validity, remaining physical freedom or profile validity.
+
+| State / event | Required transition and guard | Current evidence |
+| --- | --- | --- |
+| Accepted source / read or cold replay | Same authored rows, geometry and replay admission; mismatch is refused. Reads must not normalize or silently reclassify the document. | Strict incomingIntent retained; first failure demonstrates guard firing. |
+| Accepted source / selected row removal | Resolve exact current row and start actual native transaction. Remove only that row, validate all retained relationships and derive actual remaining admission. | Missing in failed source; implemented a5343dd. |
+| Remaining redundant row / independent support removed | May become accepted/independent if actual admission establishes it. No copied previous flag or residual-only inference. | Actual ratio1/0 was redundant before final AB removal; corrected transition pending full rerun. |
+| Native transaction result / candidate construction | Build from ORIGINAL coordinates plus exact selected deletion. All other authored fields match. Only actual remaining classifications may change. Warm coordinates have no publication authority. | Source check plus original/cold/second-cold/captured proofs; execution pending. |
+| Candidate / publication | All original geometry/equations/domains and stable actual membership/classification pass. Publish once through shared J; UI and agent use the same operation. | Existing shared publication path unchanged. |
+| Transaction or proof refusal | Reject; no successful mutation or file acknowledgement. Preserve exact failure evidence. A missing runtime before/after snapshot is not silently counted as a comparison. | Whole92872 has error and no successful removal receipt; no post-failure state snapshot. |
+| Undo/redo removal / reopening | Reconstruct the actual historical operation with its own classifications; complete source/intent/native archive round trips required. | Whole regression includes save/reopen/removal/ratio editing/mixed travel; currently failed, not waived. |
+
+Related source-review candidates: EqualRadius and Tangency removals also splice a row before cold proof. The equality failure alone does not prove those runtime cases fail. Group their eventual admission-promotion controls with their full family workflows; do not weaken ordinary reads to hide a missing mutation step. No new persisted status flag, alternative journal, generic admission bypass or global tolerance adjustment is approved.
+
+
 ## Semantic Offset qualified; equality removal defect found and repaired in source
 
 ACAD998864a retains both actual outcomes on Core7683eb2/Host7fc7a508f,189 pins. Offset whole62009 PASS0 and FIRST independent oracle PASS0:83rows/965commands/61source observations/32travels/15refusals/two.cad server-equal Saves and fresh Opens. All9 source/helper hashes unchanged. Qualified finite Segment/full Circle offset creation/edit/side/source propagation/named distances/typed formula/unit/travel/removal/current-cache validation. Authentic cache-only mutation of own .cad is refused on normal Open as OFFSET_CACHE_CHANGED. No Arc/loop/projection/generated-profile solid or BRep precision qualification. Both own contexts retired after settled writes. Evidence: ACAD `test/semantic-offset-public-workflow/evidence-r1`.
