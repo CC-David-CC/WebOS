@@ -3,23 +3,52 @@
 ## Current authoritative checkpoint — 2026-11-09
 
 This section and the current work table describe present status. Older dated
-records preserve their exact source versions; their RUNNING/OFF/UNMERGED labels
-must not restart old jobs or override this checkpoint.
+records preserve their exact producer versions; old RUNNING/OFF/UNMERGED labels
+must not restart terminal jobs or extend their qualifications.
 
-- **Ordinary exercises: 21/21 QUALIFIED. Full Gate 1: OPEN.** Assembly E17 belongs to Gate 2. These finite passes do not qualify the entire sketch/feature/drawing/resource catalogue.
-- **New composed build/stage PASS:** actual Core `d7b478ae9b0d679223240674ea43beada4b2f099`, Host `eabff28ae7dea4946fa81a576f37eac55acad509`; build28218/stage57584 terminal0, ten successful webpack completions, 570 CAD assets/643 app files/276 signed pins. Source/byte audit41896 checked 12 manifests, all listed file sizes/digests and 107 unique staged source files against exact Git blobs. Custody: ACAD `test/selected-profile-extents-workflow/build-composed-r1/BUILD-CUSTODY.json`. Reused dependencies were not independently rehashed. No final runtime assets packaged.
-- **Counterbore regression QUALIFIED `28ad691baa41031a3855f3db25d06f397bdbb2ae`:** whole92272/FIRST81476 terminalPASS0 and both actual SVGs reviewed, on that exact D7/Hosteab/276-pin candidate. 57 rows/814 commands/32 Native observations/336 points/16 refusals/two native Saves and fresh Opens/six exports/12 settled writes; 61 executing files unchanged/71 Git custody rows. ACAD `test/centered-counterbore-workflow/evidence-r5/QUALIFICATION.json`. Prior failures and older qualifications remain unchanged.
-- **Complete section/detail drawing regression QUALIFIED `3e8b881`:** whole71239/FIRST90667/render5052 terminalPASS0 and all16 actual sheets individually reviewed on frozen D7/Hosteab/276pins. 190 rows/1039 commands/63 Native observations/1323 point classes/eight native Saves/six fresh Opens/24 travels/eight refusals/31+32 work limits;21 executing source files unchanged, writes settled and own contexts retired. ACAD `test/section-detail-drawing-public-workflow/evidence-r5/QUALIFICATION.json`. Finite own/cross-view caption repair passes; general authored leaders/unresolved dimension warning layout remains OPEN. No whole/oracle/render from this C11 batch is running.
-- **Primary extents: first complete whole FAILED; source repair51d8c4d independently reviewed03e7d8d.** Whole68967 on D7/Hosteab/276pins/acceptance7750d400 stopped at genuine rectangle region discovery with INVALID_RESPONSE; zero writes, source pins unchanged, own context retired. Retainede43acec. Actual depth-free Worker returned binding/regions while strict Main required sourceAnalysis. Repair supplies the real closed-source census and third field, retaining strict receiver, full source coverage/currentness, face-only whole-curve semantics and no fabricated depth. Independent review found no confirmed blocker. It is UNBUILT/UNQUALIFIED; no oracle or STEP reader followed the failed whole. Rebuild the coherent repair, then repeat the entire acceptance into a new output root.
-- **Finite derived caption repair QUALIFIED:** cross-view layout repairs bb9e269/ca64f83/a8a3eda are in D7; new counterbore28ad691 and complete C11/FIRST/all16 actual SVG reviews3e8b881 passed. General authored leader/unresolved dimension warning placement remains independently OPEN. The later strict SVG grammar/accepted-definition/revision repairb9f8c8f is acceptance source-only; frozen D7 checker bytes and historical FIRST evidence remain unchanged.
-- **Countersink source COMPOSED; normal build/stage/source custody PASS `ea898d7`:** actual Core `7320473cb0d3e8dd13c08f0fe5f32e33cf2cf2c1`, Host `a3af6e519649acc5c9cf235f199b1c75b237874b`; build97481/stage50264/audit69261 terminal0, ten webpack completions,579 CAD assets/652 app files/285 signed pins,12 manifests/114 exact unique sources. Reviewed shared authoring/backend/native-signal source and actual Host import/onDispose registration composed. Actual OCI8a150c70 matches all ten guards; exact cohort pair/old defaults unchanged. ACAD `test/centered-countersink-workflow/build-composed-r1/BUILD-CUSTODY.json`. This staged candidate has no service or countersink browser/Native workflow run yet; full acceptance packet is now composed and under independent source review. No geometry qualification follows from build presence.
-- **Shared postcommit settlement SOURCE-REPAIRED `2e46616`:** actual acceptance determines committed status; primary errors, completed receipts and cleanup causes are preserved. Ordinary counterbore regression on D7 passed; deliberate postcommit/cancellation fault coverage is not claimed. Separate inherited signal-shadowing finding3da3a6d has native-operation repair32092f8 composed as30fa70d; it is included in the new build, not D7, and remains runtime-unqualified.
-- **Complete positive-blind regression QUALIFIED `ba80198`:** D7/Hosteab/276pins, whole37114/FIRST independent checker terminalPASS0 and both actual SVGs reviewed.51rows/696commands/29 Native observations/195point classes/13refusals/two native Saves and fresh Opens/six exports/two own malformed-archive proofs/11settled writes;13 sources unchanged, own contexts retired. ACAD `test/centered-blind-hole-workflow/evidence-r5/QUALIFICATION.json`. Initial pre-login forward failure3c5b355 is retained; only missing forward was restored, no application criterion changed.
-- **Current private fixture21053:** D7/Hosteab/276pins; service12701/site-forward44399, reverse16681 (R73019551 to PC19331); separate runtime `/mnt/data10tb/codi-acad-extent-caption-state-20261109-r1`. Old21052/ad5 fixture and evidence are retained. No public/main/beta/prototype promotion, external server relay, filesystem race, foreign-account test or premature runtime packaging.
+- **Ordinary exercises: 21/21 QUALIFIED. Full Gate 1: OPEN.** E17 assembly belongs to Gate 2. These finite passes do not close the broader sketch/feature/reference/drawing/resource catalogue.
+- **Last qualified regression producer:** CoreD7 `d7b478ae9b0d679223240674ea43beada4b2f099` / Hosteab `eabff28ae7dea4946fa81a576f37eac55acad509`,276pins. Counterbore28ad691, complete C11 section/detail3e8b881 and positive-blindba80198 each passed complete whole/FIRST actual artifact checks/all exported SVG reviews. Original failures and exact evidence remain unchanged.
+- **New census-repaired build/stage/source custody PASS `b1081cd`:** actual Core `7f20b38140eabe0ae393c2def20f952ac3290088` / Host `f23c5164b5bf747d7b55f8550ac7b260bcfc7aec`; build28044/stage4354/audit38807 terminal0,ten webpack completions,579 CAD assets/652 app files/285pins,12 manifests/114 exact unique sources. ACAD `test/selected-profile-extents-workflow/build-composed-r2/BUILD-CUSTODY.json`. This source fixes the actual first discovery mismatch; it does not have full new-family qualification.
+- **Complete extent R2 FAILED, retained443c70f:** whole76298 on7f/Hostf23/285pins with acceptance7750d400 progressed73rows/861commands/45Native observations/two native Saves/fresh Opens/three malformed own Opens. Signed/symmetric/two-sided/named edits and real cap reads progressed; actual STEP/3MF writes completed. SVG export then rejected INVALID_OPERAND because the private candidate drawing-kind map omitted profile-extents. No FIRST artifact oracle or STEP reader ran after failure. Initial census failuree43acec is retained separately.
+- **R2 file outcome settled without retry:** original failed receipt still records submitted SVG/retained context. Separate readonly own-root proofs and actual prewrite call chain establish absent SVG, exact prior STEP/3MF hashes and unchanged accepted host; repeated proof then retired only that own context. ACAD evidence-r2/settled-prewrite-refusal.json supplements the untouched first receipt. No file deletion, write retry, source mutation, foreign-account test or forced unknown-write close occurred. Initial reconciliation script's public-session snapshot identity mistake and corrected stable-ID/private-context checks are both retained.
+- **Candidate drawing identity repair SOURCE-COMPOSED `d778da4`:** one complete genuine kind/type map now derives the unchanged ordered14-type vocabulary and serves candidate drawing/bore target checks. All owner/model/engine/source/capability/native checks remain. Extent is the observed incident; omitted shell/countersink entries are source findings. New batch remains UNBUILT/UNQUALIFIED.
+- **Derived warning placement SOURCE-COMPOSED:** producta6c1aed, complete-family acceptance2a26956, independent product review68ddb27, acceptance closurec7c4ce7 and countersink runtime-leaf rosterf259255. Actual geometry/cap/aperture/stroke/label/caption obstacles bound full fixed-size visible diagnostics; no-space rejects before writing. Successful authored anchors/labels and qualified captions are unchanged. General successful leader routing stays OPEN. No warning runtime qualification or special crowded-sheet test is claimed.
+- **Countersink complete source/acceptance composed, UNQUALIFIED:** product Main/backend/native-signal is in7f; complete six-step/three-native-cycle/nine-artifact packet8649b84 is composed. Independent checker repair34346ab preserves canonical PLANE string/public numeric identity and rejects per-triangle material overrides; current future warning-source roster is f259255. Actual ten bootstrap guards match8a150c70; Native pair04fc7768/688c9d11 and old defaults unchanged. Do not execute7f countersink SVG with the known omitted candidate-kind map; use the next coherent repaired batch.
+- **Shared publication/file invariants retained:** actual acceptance determines committed status; errors/known receipts/cleanup evidence remain distinct from source-only qualification. Source50pm, Native/mesh/paper budgets stay separate. All server external relay including ping remains OFF; filesystem race and foreign-account tests remain cancelled.
+- **Current private fixture21054:**7f/Hostf23/285pins, service50280/site-forward38960/reverse16681(R73019551 to PC19331), fresh `/mnt/data10tb/codi-acad-extent-census-state-20261109-r1`. All R2 own contexts are now retired. Older21053/D7 fixture remains unchanged. No browser/oracle/build job is active at this checkpoint; next is one coherent normal build of mapping+warning repairs, then entire new extent/countersink and affected drawing-family workflows/FIRST artifacts/SVG review. No public/main/beta promotion or working runtime packaging.
 
-- **Next coherent batch:** census repair51d8c4d and independent review03e7d8d are composed; full countersink acceptance source97728e0/root8649b84 and byte-identical Host example4eacf1706/root3a997c0d4 are also composed, unexecuted. Gate independently reviews artifact oracles. Normal coherent repaired build/stage comes next, then full new extent and countersink workflows/FIRST actual artifacts serially. Timeline implements approved source-only derived-warning proposal0b0df97 for a later batch; successful authored leader routing remains open. Normal repaired build28044 is RUNNING on exact Core7f20b38140eabe0ae393c2def20f952ac3290088, planned Hostf23c5164b5bf747d7b55f8550ac7b260bcfc7aec. Fresh R730 builder `/mnt/data10tb/codi-acad-extent-census-build-20261109-r1`, PC log `/tmp/codi-extent-census-build-20261109-r1.log`. No browser/artifact workflow is active. Poll28044 to terminal; do not restart on observation timeout. Stage only after terminal buildPASS. Broad Gate1 remains OPEN.
+## CAD-CANDIDATE-DRAWING-KIND-01 — runtime omission; canonical identity source repair
 
-## PROFILE-EXTENT-DISCOVERY-CENSUS-01 — actual protocol failure; source-repaired, unqualified
+Full extent76298 on7f/Hostf23/285pins failed during SVG candidate observation:
+the actual profile-extents output and accepted target definition matched, but
+the local operationKinds map omitted that kind. Its separate authored vocabulary
+already contained all14 types. Shell and countersink are also omitted in that
+old map; those are source findings, not reproduced runtime incidents.
+
+Source repair78732f8/rootd778da4 makes the complete genuine ledger-kind/type map
+authoritative and derives the existing immutable type array in its original
+order. Candidate drawing and bore checks require an own known key and its exact
+authored type. No owner/model/handle/engine/source/capability or Native geometry
+condition is removed. Identity membership does not grant feature support.
+
+| Transition | Invariant |
+|---|---|
+| Capture accepted drawing/bore target | Exact schema, feature ID, operation type and engine revision remain authoritative. |
+| Locate candidate output | Require same current owner, model identity, output body, feature, engine and mount. |
+| Bind operation identity | Derive the target type from the single genuine ledger-kind map; unknown kinds reject, no fallback. |
+| Admit observation capability | Exact build/mount operation descriptors and retained source/metrics still required. |
+| Read Native geometry | Same source/handle/currentness checks and finite geometry proof; no invented bore facts. |
+| Export rejection before file write | Preserve accepted H/S/J/model; keep exact submitted context until the write outcome is established. |
+
+Failure443c70f retains the original submitted SVG/ownedContextsRetired:false
+receipt. Source export control flow plus two complete own browser/server absence
+observations, preserved prior STEP/3MF hashes and unchanged accepted host proved
+prewrite refusal. A separate receipt then records exact own context retirement.
+No retry/deletion/forced unknown close or failed-whole artifact oracle occurred.
+The canonical mapping repair is source-composed with the warning batch and is
+not yet built or qualified.
+
+## PROFILE-EXTENT-DISCOVERY-CENSUS-01 — actual protocol failure; repaired stage passed, full family unqualified
 
 Full extent whole68967 failed at the first genuine rectangle's public region
 inspection with INVALID_RESPONSE. Exact D7 Worker reply has binding/regions;
@@ -32,8 +61,9 @@ same actual parsed whole curves and validated profiles for depth-free faces,
 then transports that real third field. Main admission is unchanged. Face-only
 mixed=false/open=[] stays unchanged: no invented depth, arrangement, source
 rewrite, open-chain admission or missing-curve tolerance is introduced.
-Independent reviewce0f7f9/root03e7d8d found no confirmed blocker; normal build
-and complete public qualification are still required.
+Independent reviewce0f7f9/root03e7d8d found no confirmed blocker; normal repaired build7f/stage/source custody passed. Whole76298 then passed
+actual discovery/constructor/cap steps and later failed at independent candidate
+drawing type-map admission. Full extent qualification remains open.
 
 | Transition | Required invariant |
 |---|---|
