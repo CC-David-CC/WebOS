@@ -13,7 +13,7 @@ Centered blind holes now qualify as **11ac347**: whole91100, FIRST independent
 oracle and two actual SVG reviews PASS; two native save/reopen cycles, six
 exports and both exact malformed archive refusals. Section/detail is composed
 and built; its first whole exposed an overlong host command description,
-now repaired for restaging. Counterbore acceptance, extrusion/conical source
+now repaired and in whole61449. Counterbore acceptance, extrusion/conical source
 and remaining full-gate competencies are open. No public/main promotion. Exact current evidence and
 next steps: [work queues](WEBOS-WORK-QUEUES.md) and
 [acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md). Older checkpoint

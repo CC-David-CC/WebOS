@@ -12,7 +12,7 @@ qualification. No public/main/beta promotion has been made.
 | Tangency survivor promotion | **QUALIFIED** `4b8026c`: entire whole38715 and FIRST independent oracle PASS; fourteen native Saves/fresh Opens. Original family and additional promotion controls remain. |
 | Centered blind hole | **QUALIFIED11ac347**: whole91100 and FIRST independent oracle PASS0, both actual SVG renders reviewed. Actual Core323/Hostef45/194pins, acceptance24ad11c;51rows/696commands/29Native observations/195points/13refusals/two.cad Saves/fresh Opens/six exports/two exact own malformed native refusals. All13 sources unchanged, writes settled, context retired. Finite rectangular-source scope; not all C06. |
 | Blind R3 blocker | **Repaired and whole-qualified**. Prior R1/R2/R3 failures retained. Negative helper preserves original numeric tokens, authenticates the saved project digest, changes one authored string plus dependent manufacturing/archive hashes. Independent after-whole exact source/entry/ZIP-span differences and original expected errors now pass. |
-| Linked section/detail drawing | **Not qualified**. Core725/Host2633 normal build16850 and stage46813 PASS0:495assets/568bundlefiles/206pins, no compiler warnings/errors/missing exports. Independent merge audit865730 found no dropped behavior. First whole31686 failed startup before modeling:626-character description exceeded registry512. Failureb7b0a2f retained; prose-only Host5ea92e084 preserves limits, awaiting new stage/whole. |
+| Linked section/detail drawing | **Not qualified**. Core725/Host2633 normal build16850 and stage46813 PASS0:495assets/568bundlefiles/206pins, no compiler warnings/errors/missing exports. Independent merge audit865730 found no dropped behavior. First whole31686 failed startup before modeling:626-character description exceeded registry512. Failureb7b0a2f retained; prose-only Host5ea92e084 restaged1359 PASS0. WholeR2 **61449 running** on private21048/206pins; actual startup, first section/detail SVG and replacement UndoRedo reached. Partial phases do not qualify the whole. |
 | Counterbore | Product1bb303a/Hostccef9df; acceptance repair0813b1b atop66c6d3c delivered on bothLANs, addressing audit2a3b917 including dependent negative-file metadata hashes. No product changes/execution in repair. Root review/composition/build/full whole and FIRST oracle remain; not qualified. |
 | Signed/symmetric/two-sided extrusion | Contracte22dd69 reviewed; isolated source implementation underway from24ad11c. One original source and direct prism interval; new actual lower/upper cap identities and shared typed/J/reader/persistence paths. Not qualified; old positive-depth consumers may not be relabeled. |
 | Countersink | Contractc2c8b21 and Native schema77d97b checkpointed. Isolated c15-based genuine frustum/provenance and coupled cone-topology source underway. Typed-angle/wrapper/workflow closure remains; no new binary/pair/default or runtime claim. |
@@ -38,8 +38,8 @@ blind retry occurred. R3 logs/receipt reside at
 `/tmp/codi-acad-foundation-next-blind-20261109-r3`; retain in ACAD evidence-r3
 before further source edits. No oracle may turn a failed whole into a pass.
 
-Next serial chain: restage the prose-only C11 host fix against unchanged built
-Core725 → ONE complete section/detail whole → only after whole PASS run FIRST
+Next serial chain: finish the active whole61449 on unchanged Core725 /
+Host5ea → only after whole PASS run FIRST
 independent oracle → actual SVG render/review → qualification. Counterbore
 review/repair, extrusion extents and conical source proceed in isolated lanes.
 Root composition/build/final qualification remains serial. Blind R4 completed

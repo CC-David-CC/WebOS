@@ -11,7 +11,9 @@ executed sources unchanged; own writes settled/context retired.
 
 C11 normal build16850/stage46813 passed on Core725/Host2633/206pins. First whole
 31686 failed startup before modeling: description626 exceeded existing512.
-Failureb7b0a2f retained; prose-only Host5ea92e084 awaits restaging/full workflow.
+Failureb7b0a2f retained; prose-only Host5ea92e084 restage1359 passed. Whole61449
+is running; actual startup/section/detail SVG and replacement travel reached.
+FIRST independent oracle remains forbidden until the complete whole passes.
 [Work queues](WEBOS-WORK-QUEUES.md) contains exact current refs/next actions.
 
 ### CAD-PHYSICAL-INSPECTION-PRESENTATION-01
