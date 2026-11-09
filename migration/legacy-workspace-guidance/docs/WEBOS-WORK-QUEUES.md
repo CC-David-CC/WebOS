@@ -1,5 +1,19 @@
 # WebOS work queues and progress ledger
 
+## Combined solver candidate — two unchanged full workflows running
+
+Normal build4917 PASS0 with no compiler warning/error/missing-export matches; stage64975 PASS0,551 bundle files/189 byte pins. Actual Core2039a0d75f85a815b47a9c1b0ceb3033b4ddd41b / Host7fc7a508f4d6d90b846227ee5feb8d3b93109261. TangentCC and equality fixes remain UNQUALIFIED until complete workflows/oracles. No Native pair/default/ABI change.
+
+| Current whole | Exact live handle and isolated fixture | Evidence |
+| --- | --- | --- |
+| EqualLength R3, original complete criteria |86799, loopback21042/CDP19331, Chromium3559 PID3094784|`/tmp/codi-acad-foundation-next-equality-20261109-r3/`|
+| Tangency R3, original complete d09 criteria |93442, loopback21043/CDP19329, Chromium3559 PID2895440|`/tmp/codi-acad-foundation-next-tangency-20261109-r3/`|
+
+Both lanes verified all seven original driver/helper source bytes against historical wholes and actual producing Git objects before launch. Separate new account data/state/issuer runtime roots on r730; same immutable signed bundle, explicit primary MFG32e/abb. Backends17870/63287, forwarding92117. Pins `/tmp/codi-acad-foundation-next-pins-20261109-r3.json`. Actual full logs/ownership retained per lane. Functional concurrency is not isolated resource/performance qualification. No relay. Preserve live handles and freeze source/helper bytes; first independent oracle only after each terminal whole PASS. No current qualification claims from partial rows.
+
+Root reviewed b875a3d source audit and approved isolated future EqualRadius/Tangency removal-readmission source and complete-family augmentation packets. Static related gaps are not additional reproduced incidents. Owner dxf_files_qualification must retain original/cold validation, actual native removal transaction, exact original geometry and one-row delta, genuine survivor classification and original-request proof. Existing root whole packets remain unchanged. Broad Gate1 OPEN; ordinary21/21 and finite Offset/drawing qualifications retained.
+
+
 ## Next solver candidate composed — equality rejection boundary plus TangentCC proof
 
 Root2039a0d75f85a815b47a9c1b0ceb3033b4ddd41b on both LANs composes equality candidate-proof rejection fixd993b9a and TangentCC6298314/9014b22 (rootf4b52e0/b2172a2). Root reviewed the full helper and shared utilities, found and obtained correction for recursive domain validation before integration. Both equality forest and TCC fixed-input proof paths and prior-redundant obligations remain, with the shared per-pass callback once. Offset scope/travel, native removal transaction and original strict read validation remain unchanged. Source review: ACAD `docs/reviews/C03-COMPOSED-CERTIFICATES-20261109.md`.
