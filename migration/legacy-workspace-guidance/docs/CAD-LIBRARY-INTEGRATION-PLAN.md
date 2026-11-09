@@ -4,7 +4,7 @@ Updated 2026-11-09. Strategy approved; native assessment is PARTIAL. Browser int
 unqualified and the production runtime is unchanged. This is the Host coordination entry, not a second CAD model.
 
 The full plan is in ACAD commit
-`b6a530e0f8c2de828a022a58ba713e7c62c0125a`, file
+`b9ee65959b5476793b3f178d15451ea92c8bbd50`, file
 `docs/proposals/CAD1-LIBRARY-FIRST-INTEGRATION-20261109.md`.
 Retrieve that commit from `box-git:/srv/data/git/ACAD.git` or
 `r730:/mnt/data10tb/git/ACAD.git`. Local working copy:
@@ -30,27 +30,29 @@ required to understand it. Actual run outputs remain separately bound evidence.
   open. No Root whole/reader/oracle job is currently active. Countersink06b7fe6
   retains its separate completed qualification.
 
-## Native evaluation now completed, full proof still open
+## Native corpus read now passes; full surface proof remains open
 
-Pinned environment and readonly adapter executed on R730. Original six meshes
-pass raw indexed topology, Trimesh winding/watertightness and CGAL exact-input
-graph/degeneracy/self-intersection/closed-volume checks. All original arrays and
-archives remain unchanged. Actual evidence: Core test/library-validation/
-evidence-first/ (dc27a53) and evidence-r2/ (b6a530e).
+Pinned isolated environment and readonly adapter executed on R730. Complete
+R3 assessment55504 terminal0 on observer32700df now passes all six scoped package
+units/material/scene/metadata-content comparisons and raw topology/Trimesh/CGAL
+geometric checks. Original Float64 arrays, indices, archives and source remain
+unchanged. Actual evidence: Core test/library-validation/evidence-r3/0523b3f.
 
-First lib3mf material mismatch was an observer namespace error, diagnosed from
-v2.5.0 source3665ff8: XML base indices are not API PropertyIDs. Correction2355b7c
-maps actual enumerations, without changing exported material assignments. Its
-whole six-file assessment97661 still says package UNCERTAIN at the later metadata
-comparison. Missing metadata observations are added in current source, UNRUN.
-Do not infer an exporter defect or waive requirements from this incomplete read.
-Both batches are terminal; no Root qualification process is active.
+Earlier material/QName mismatches were reader-observer namespace errors; first
+and R2 reports are unchanged. No exporter change was needed. Actual Float32
+conversion and lib3mf preserve-default limitations remain separately recorded;
+no geometric authority or preservation/roundtrip claim is made for those views.
+The first six-file corpus is scoped evidence, not a full finite-surface design
+certificate, broad material/scene coverage or browser resource qualification.
+No Root qualification process is active.
 
-L1 inventory41f7189 maps mature OCCT APIs to actual binding/history gaps. A single
-source-bound finite-curve interface is the first small package: intersections,
-then atomic trim/extend, reused later by projection/offset. Existing history,
-transactions and ownership stay authoritative. Native acquisition/adapters do
-not close the finite-surface accuracy proof, SVG review or remaining Gate1 scope.
+L1 inventory41f7189 maps mature OCCT APIs to actual binding/history gaps. The
+small finite-curve BEFORE8a16108 and Root source approval8f1a17a freeze the first
+analytic-support query packet. Native header source is being implemented on an
+isolated branch; Root owns common splices and compilation. No public actionable
+query/trim or new runtime is claimed. Existing history, transactions and ownership
+remain authoritative. L3 full-surface proof and actual SVG reviews still precede
+extent-family qualification, then remaining broader Gate1 obligations.
 
 ## Library boundaries and serial/parallel queue
 
@@ -81,8 +83,8 @@ Pinned native evaluation on R730 precedes any selected production WASM adoption.
 The detailed plan records precision, license, raw-input preservation, uncertainty,
 resource measurements, lane ownership, estimates and final acceptance conditions.
 
-Initial fit assessment remains partial: native geometry results exist; package
-metadata and independent full-surface accuracy still need closure. Provisional
+Initial native six-file assessment passes in scope. Independent full-surface
+accuracy and broader scene/material/browser qualification still need closure. Provisional
 remaining work after extrusion qualification stays 1–2 weeks, with a third-week
 contingency; it is not a countdown from today. No estimate reduction is claimed
 before coverage and integration costs are measured.
