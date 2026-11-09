@@ -2,44 +2,38 @@
 
 ## Current authoritative checkpoint — 2026-11-09
 
-This checkpoint supersedes running/unmerged descriptions below; those describe earlier attempts.
+Only this checkpoint and its linked current work table describe present status.
+Older checkpoint sections preserve evidence of their own source versions; their
+old RUNNING/UNMERGED labels are historical, not instructions to restart them.
 
-- Ordinary Gate 1 exercise workflows remain **21/21 qualified**; assembly E17 belongs to Gate 2. The broader competency catalogue remains **OPEN**.
-- **Latest centered counterbore regression QUALIFIED at ACAD `66b68d8`**, actual Core `ad5bb96eb7ce0ff5d22b5b93b5b0266bd906f830`, Host `9ea4a1993ad8afa10ea9a24e9c9a4f7955e47420`, 213 pins. Whole17458 PASS0; FIRST independent oracle25492 PASS0; both actual Chrome SVG renders viewed. 57 rows/814 commands/32 Native observations/336 point classifications/16 refusals/two Saves and fresh Opens/six exports/12 settled writes; 59 executed source files unchanged and 69 exact Git custody rows. Evidence: ACAD `test/centered-counterbore-workflow/evidence-r4/QUALIFICATION.json`. Prior finite qualification `b531480` and its earlier failures remain retained.
-- The complete composed-build C11 regression is now **QUALIFIED64bbaade18fa83078c77b8f2b400e07013ce9ac7**: whole13634 PASS0, FIRST independent oracle70794 PASS0, all16 actual SVG renders individually reviewed and byte-identical to prior reviewed renders. Actual Coread5bb96/Host9ea4a1993/213pins; 190 rows/1039 commands/63 Native observations/1323 point classifications/eight Saves/six fresh Opens/24 travels/eight refusals/31+32 work-limit checks/24 feature issuances;19 sources unchanged and own contexts retired. Evidence: ACAD `test/section-detail-drawing-public-workflow/evidence-r4/QUALIFICATION.json`. No whole/oracle/render job remains running for this batch. Build75654/stage35919 custody remains5d63df2.
-- Private fixture21052 is now live: service21333, forward18344, reverseCDP remote19551→PC19331 remains on16681. Runtime root `/mnt/data10tb/codi-acad-pure-intent-state-20261109-r1`. Relay OFF. No prior service-state copy or public/beta promotion.
-- New cross-view caption repair source is now root-composed `bb9e269`, full C11 caption-policy packet `ca64f83` corrected at `a8a3eda` after source review caught a misplaced duplicate block (BEFORE `b8b2b19`); counterbore caption-only acceptance migrated at `3d26538`, with the exact helper added to source custody. **This later renderer/policy is UNBUILT/UNQUALIFIED**. It changes only derived caption presentation, retaining all geometry/history/persistence/Native/export criteria. Original cross-view collisions remain in qualifiedad5 artifacts; general authored label/leader layout stays open. Next coherent build must execute both complete revised workflows and FIRST independent checks/actual reviews.
-- Countersink Native source `fc1654ee5d4471584073d4d8e3363d8c9b324566` now **COMPILED, NOT QUALIFIED**. Compile custody `d76ced6` (root `e2ee5c7`): 42,958 recorded inputs unchanged, raw JS `5783cd8900f94e4661bec7f7b65a1e24dfa48ffa3cce695c9314994c7a6eba09`, WASM `688c9d11ececf67d5187445491b4269647d810528e37161bcd7e676bc8d9125c`; ten retained-source warnings/no errors. Portable adaptation and closed cohort preparation are underway; no runtime assets or capability enabled.
-- Private countersink coordinator and terminal preflight/decoder repair are now root-composed at `23283e0`, reviewed in `48c345b`; source-repaired, **unregistered and unqualified**. Portable candidate ingredients `97adb2e` pin actual JS `04fc776837d6e87e7ddf9c31b66428ec191f3120600fd0794c86a5fd533c0a7b` + WASM `688c9d11ececf67d5187445491b4269647d810528e37161bcd7e676bc8d9125c`, with literal-null OFF entry; the old 71-module inventory is explicitly not final and must be regenerated after root composition. Constructor-time source binding/shared feature/history/persistence/public adapters and complete actual workflow qualification remain prerequisites. The running/qualified ad5 build does not execute this new code.
-- Extrusion variants remain an independent source/acceptance lane, OFF and unqualified. Remaining broader Gate 1 work includes profile/feature variants, references/numerical cases, drawing semantics/layout, large-project resources and final composed beta acceptance. No full-gate signoff.
-
+- **Ordinary exercises: 21/21 QUALIFIED. Full Gate 1: OPEN.** Assembly E17 belongs to Gate 2. Finite workflow passes do not qualify the entire sketch/feature/drawing/resource catalogue.
+- **Counterbore regression QUALIFIED66b68d8:** whole17458 PASS0, FIRST independent25492 PASS0, both actual SVGs reviewed. Actual Coread5bb96eb7ce0ff5d22b5b93b5b0266bd906f830/Host9ea4a1993ad8afa10ea9a24e9c9a4f7955e47420/213pins;57rows/814commands/32Native observations/336points/16refusals/two native Saves and fresh Opens/six exports/12settled writes. Exact evidence ACAD test/centered-counterbore-workflow/evidence-r4/QUALIFICATION.json;59executing source files unchanged/69Git custody rows.
+- **Complete C11 regression QUALIFIED64bbaade18fa83078c77b8f2b400e07013ce9ac7:** whole13634 PASS0, FIRST independent70794 PASS0, all16 actual SVGs individually reviewed and byte-identical to prior reviewed renders. SAME actual Coread5/Host9ea/213pins;190rows/1039commands/63Native observations/1323points/eight Saves/six fresh Opens/24travels/eight refusals/31+32 work limits/24feature issuances;19sources unchanged, own contexts retired. Exact evidence ACAD test/section-detail-drawing-public-workflow/evidence-r4/QUALIFICATION.json. No whole/oracle/render job remains running for this batch.
+- **New source composed, UNBUILT/UNQUALIFIED:** extent root14b21b0340475a06f5b18c927b546ce5403f5466 with Host7636a38024e77335f83ba28daa79cb37cd39dfe7; actual new-pair constructor-binding roota8f3491264c436382cbc46e379b45db42f6416b4. Counterbore, extent, typed history, source ownership and refusal paths are retained together. Current shared OCI source27ca268a2f372bcfac7e0e03f8b6a9d9874a7f967f61f49cb2d27e06189b7e0e is pinned by all9 guards. Both source roots are LAN-backed. Extent capability remains OFF; its complete acceptance packet is still a source draft.
+- **Caption repair source composed, UNBUILT/UNQUALIFIED:** bb9e269/ca64f83/a8a3eda and counter caption migration3d26538. New raw XML acceptance closure9027650 rejects unsupported raw declarations/PIs/comments/NUL before parsing; no geometry criterion changed. The qualifiedad5 artifacts still contain the known cross-view caption collisions. Authored leader/unresolved-label placement is a separate open obligation.
+- **Countersink: compiled ingredients and repaired private coordinator; not an integrated feature.** Native sourcefc1654ee5d4471584073d4d8e3363d8c9b324566 compiled with42,958 inputs unchanged (root custodye2ee5c7); portable candidate97adb2e pins JS04fc776837d6e87e7ddf9c31b66428ec191f3120600fd0794c86a5fd533c0a7b/WASM688c9d11ececf67d5187445491b4269647d810528e37161bcd7e676bc8d9125c. Private failure-boundary repair23283e0 and constructor bindinga8f3491 are source-only. Actual optional cohort factory/catalog/closed graph and later shared feature/history/persistence/host adapters still need completion and whole-workflow qualification. New cohort entry remains OFF until actual admission is composed; old pairs/defaults are unchanged.
+- **Confirmed source-only post-commit reporting defect:** CAD-AUTHORED-EDIT-POSTCOMMIT-RECEIPT-01 in immutable14b/currenta8f. The new extent edit/travel can commit, then a receipt/revision-reader or listener-cleanup exception may escape without committed:true. Independent reviewer is freezing BEFORE and repairing the actual shared settlement boundary; no public runtime incident or qualification claim. This is a dependency before enabling/qualifying extents.
+- **Next serial dependency:** finish optional mechanical cohort source/closed graphs and freeze extent acceptance, then a normal coherent build and complete old counter/C11/blind plus new capability workflows, FIRST independent artifacts and actual SVG review. Remaining sketch/profile/feature/reference/numerical cases, drawing semantics/layout and resource limits are still open; final composed beta acceptance follows them.
+- Last confirmed private fixture21052: frozen Coread5/Host9ea/213pins, service21333/site-forward18344, reverseCDP16681(remote19551→PC19331); runtime /mnt/data10tb/codi-acad-pure-intent-state-20261109-r1. Build75654/stage35919 custody5d63df2. No public/main/beta/prototype promotion, server relay, filesystem race or premature runtime packaging.
 
 ## Current ACAD checkpoint — ordinary21/21; full Gate1 open
 
-Finite equality/ratio675a4a3, tangency8b0dbf3, semantic Offset998864a,
-bore-warning layout82dd692 and support/center3392019 remain qualified. The
-complete augmented EqualRadius **b2b8117** and Tangency **4b8026c** removal
-workflows now also passed their FIRST independent oracles: nine/fourteen native
-Save/server-equality/fresh Open cycles on actual8771a56/7fc7a508f. Both entire
-original families and genuine survivor promotions are retained. Assembly E17
-stays Gate2; ordinary21/21 does not waive broader Gate1 requirements below.
-Centered blind holes now qualify as **11ac347**: whole91100, FIRST independent
-oracle and two actual SVG reviews PASS; two native save/reopen cycles, six
-exports and both exact malformed archive refusals. Finite section/detail now
-qualifies **771f66e**: whole61449 +FIRST oracle40502 PASS;16 actual SVGs
-reviewed/eight Saves/six fresh Opens. Caption placement and general label layout
-remain open. Caption/counterbore source is now composed (Coree521860/Host843aee31a);
-normal build12568/stage85873 PASS0/209pins. C11 own-view caption regression
-QUALIFIED010f9f6: whole38312/corrected oracle68408/all16 rendered reviews PASS;
-FIRST syntax failure retainedfe181dd, one-bracket checker repaird8b300b. Caption
-cross-view collisions remain open. Counter R1 failed at example discovery revision (8e76fa5); recipe7b451c2/Host9ea4a1993
-repair now in full whole54341 RUNNING, SAME Coree521860/209pins/private21051.
-Counterbore, extents, mechanical/conical source, resource/backend/
-format and final composed Gate1 delivery remain unfinished. No public/main promotion. Exact current evidence and
-next steps: [work queues](WEBOS-WORK-QUEUES.md) and
-[acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md). Older checkpoint
-labels below describe historical states. This historically JSketcher-named
-matrix follows the independent ACAD engine work.
+The ordinary exercise ladder is qualified in its recorded finite contracts;
+assemblyE17 stays Gate2. Counterbore66b68d8 and complete C11 regression64bbaad
+now passed their whole workflows, FIRST independent checks and all actual SVG
+reviews on frozen Coread5/Host9ea/213pins. Prior finite equality, tangency,
+Offset, blind, support/center and material workflows remain qualified only in
+their recorded scopes. The new extent/constructor/caption source composition is
+UNBUILT/UNQUALIFIED, optional mechanical cohort is still unavailable, and broad
+Gate1 sketch/profile/feature/reference/drawing/resource/final-beta obligations
+remain OPEN. No current whole/oracle/render remains running for the frozen batch.
+
+[Work queues](WEBOS-WORK-QUEUES.md) and
+[acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md) carry exact current
+source/runtime/evidence distinctions and next serial dependencies. Earlier
+checkpoint labels below are historical; they do not reopen terminal jobs or
+waive unfinished competencies. This historically JSketcher-named matrix follows
+the independent ACAD engine work.
 
 ## Latest bore checkpoint — semantics qualified, presentation partial
 
