@@ -10,12 +10,43 @@ must not restart old jobs or override this checkpoint.
 - **New composed build/stage PASS:** actual Core `d7b478ae9b0d679223240674ea43beada4b2f099`, Host `eabff28ae7dea4946fa81a576f37eac55acad509`; build28218/stage57584 terminal0, ten successful webpack completions, 570 CAD assets/643 app files/276 signed pins. Source/byte audit41896 checked 12 manifests, all listed file sizes/digests and 107 unique staged source files against exact Git blobs. Custody: ACAD `test/selected-profile-extents-workflow/build-composed-r1/BUILD-CUSTODY.json`. Reused dependencies were not independently rehashed. No final runtime assets packaged.
 - **Counterbore regression QUALIFIED `28ad691baa41031a3855f3db25d06f397bdbb2ae`:** whole92272/FIRST81476 terminalPASS0 and both actual SVGs reviewed, on that exact D7/Hosteab/276-pin candidate. 57 rows/814 commands/32 Native observations/336 points/16 refusals/two native Saves and fresh Opens/six exports/12 settled writes; 61 executing files unchanged/71 Git custody rows. ACAD `test/centered-counterbore-workflow/evidence-r5/QUALIFICATION.json`. Prior failures and older qualifications remain unchanged.
 - **Complete section/detail drawing regression QUALIFIED `3e8b881`:** whole71239/FIRST90667/render5052 terminalPASS0 and all16 actual sheets individually reviewed on frozen D7/Hosteab/276pins. 190 rows/1039 commands/63 Native observations/1323 point classes/eight native Saves/six fresh Opens/24 travels/eight refusals/31+32 work limits;21 executing source files unchanged, writes settled and own contexts retired. ACAD `test/section-detail-drawing-public-workflow/evidence-r5/QUALIFICATION.json`. Finite own/cross-view caption repair passes; general authored leaders/unresolved dimension warning layout remains OPEN. No whole/oracle/render from this C11 batch is running.
-- **Primary signed/symmetric/two-sided extents BUILT/ADMITTED, WORKFLOW UNQUALIFIED:** root14b21b0/Host7636a3802 plus exact primary admission8082b77 are in D7. The complete extent packet f5d06dd/roota527efc and stronger artifact checker e5461de/d39d05d/b9f8c8f are composed as acceptance source, not executed. Preserve producer D7 separately from later acceptance source. New ordinary positive-blind regression and full extent workflow/independent STEP/mesh/native archive/SVG checks remain serial work.
+- **Primary extents: first complete whole FAILED; source repair51d8c4d independently reviewed03e7d8d.** Whole68967 on D7/Hosteab/276pins/acceptance7750d400 stopped at genuine rectangle region discovery with INVALID_RESPONSE; zero writes, source pins unchanged, own context retired. Retainede43acec. Actual depth-free Worker returned binding/regions while strict Main required sourceAnalysis. Repair supplies the real closed-source census and third field, retaining strict receiver, full source coverage/currentness, face-only whole-curve semantics and no fabricated depth. Independent review found no confirmed blocker. It is UNBUILT/UNQUALIFIED; no oracle or STEP reader followed the failed whole. Rebuild the coherent repair, then repeat the entire acceptance into a new output root.
 - **Finite derived caption repair QUALIFIED:** cross-view layout repairs bb9e269/ca64f83/a8a3eda are in D7; new counterbore28ad691 and complete C11/FIRST/all16 actual SVG reviews3e8b881 passed. General authored leader/unresolved dimension warning placement remains independently OPEN. The later strict SVG grammar/accepted-definition/revision repairb9f8c8f is acceptance source-only; frozen D7 checker bytes and historical FIRST evidence remain unchanged.
-- **Countersink source COMPOSED; normal build/stage/source custody PASS `ea898d7`:** actual Core `7320473cb0d3e8dd13c08f0fe5f32e33cf2cf2c1`, Host `a3af6e519649acc5c9cf235f199b1c75b237874b`; build97481/stage50264/audit69261 terminal0, ten webpack completions,579 CAD assets/652 app files/285 signed pins,12 manifests/114 exact unique sources. Reviewed shared authoring/backend/native-signal source and actual Host import/onDispose registration composed. Actual OCI8a150c70 matches all ten guards; exact cohort pair/old defaults unchanged. ACAD `test/centered-countersink-workflow/build-composed-r1/BUILD-CUSTODY.json`. This staged candidate has no service or countersink browser/Native workflow run yet; complete acceptance source is pending. No geometry qualification follows from build presence.
+- **Countersink source COMPOSED; normal build/stage/source custody PASS `ea898d7`:** actual Core `7320473cb0d3e8dd13c08f0fe5f32e33cf2cf2c1`, Host `a3af6e519649acc5c9cf235f199b1c75b237874b`; build97481/stage50264/audit69261 terminal0, ten webpack completions,579 CAD assets/652 app files/285 signed pins,12 manifests/114 exact unique sources. Reviewed shared authoring/backend/native-signal source and actual Host import/onDispose registration composed. Actual OCI8a150c70 matches all ten guards; exact cohort pair/old defaults unchanged. ACAD `test/centered-countersink-workflow/build-composed-r1/BUILD-CUSTODY.json`. This staged candidate has no service or countersink browser/Native workflow run yet; full acceptance packet is now composed and under independent source review. No geometry qualification follows from build presence.
 - **Shared postcommit settlement SOURCE-REPAIRED `2e46616`:** actual acceptance determines committed status; primary errors, completed receipts and cleanup causes are preserved. Ordinary counterbore regression on D7 passed; deliberate postcommit/cancellation fault coverage is not claimed. Separate inherited signal-shadowing finding3da3a6d has native-operation repair32092f8 composed as30fa70d; it is included in the new build, not D7, and remains runtime-unqualified.
-- **Next serial work:** complete positive-blind regression RUNNING37114 on D7/private21053, then FIRST artifacts/SVG review; full new extent workflow follows with frozen acceptance7750d400 and actual D7 producer. Its first attempt stopped before login-page load because the old PC SSH forward ended: retained3c5b355, zero rows/commands/writes, source pins equal, owned context retired. New forward44399 restored HTTP200 without restarting the original R730 service; new complete output r2 is separate. For countersink, finish full acceptance source then its complete public workflow/FIRST artifacts on the separately built candidate. Broader sketch/profile/feature/reference/numerical/drawing/resource/final-beta obligations remain OPEN.
+- **Complete positive-blind regression QUALIFIED `ba80198`:** D7/Hosteab/276pins, whole37114/FIRST independent checker terminalPASS0 and both actual SVGs reviewed.51rows/696commands/29 Native observations/195point classes/13refusals/two native Saves and fresh Opens/six exports/two own malformed-archive proofs/11settled writes;13 sources unchanged, own contexts retired. ACAD `test/centered-blind-hole-workflow/evidence-r5/QUALIFICATION.json`. Initial pre-login forward failure3c5b355 is retained; only missing forward was restored, no application criterion changed.
 - **Current private fixture21053:** D7/Hosteab/276pins; service12701/site-forward44399, reverse16681 (R73019551 to PC19331); separate runtime `/mnt/data10tb/codi-acad-extent-caption-state-20261109-r1`. Old21052/ad5 fixture and evidence are retained. No public/main/beta/prototype promotion, external server relay, filesystem race, foreign-account test or premature runtime packaging.
+
+- **Next coherent batch:** census repair51d8c4d and independent review03e7d8d are composed; full countersink acceptance source97728e0/root8649b84 and byte-identical Host example4eacf1706/root3a997c0d4 are also composed, unexecuted. Gate independently reviews artifact oracles. Normal coherent repaired build/stage comes next, then full new extent and countersink workflows/FIRST actual artifacts serially. Timeline implements approved source-only derived-warning proposal0b0df97 for a later batch; successful authored leader routing remains open. No runtime/build job is currently active. Broad Gate1 remains OPEN.
+
+## PROFILE-EXTENT-DISCOVERY-CENSUS-01 — actual protocol failure; source-repaired, unqualified
+
+Full extent whole68967 failed at the first genuine rectangle's public region
+inspection with INVALID_RESPONSE. Exact D7 Worker reply has binding/regions;
+Main requires binding/regions/sourceAnalysis. Evidence e43acec retains the
+terminal failure, unchanged source pins, zero writes and retired own context.
+No solid creation, independent artifact oracle or STEP reader followed it.
+
+Repair51d8c4d derives the complete existing closed-component census from the
+same actual parsed whole curves and validated profiles for depth-free faces,
+then transports that real third field. Main admission is unchanged. Face-only
+mixed=false/open=[] stays unchanged: no invented depth, arrangement, source
+rewrite, open-chain admission or missing-curve tolerance is introduced.
+Independent reviewce0f7f9/root03e7d8d found no confirmed blocker; normal build
+and complete public qualification are still required.
+
+| Transition | Required invariant |
+|---|---|
+| Capture source | Exact current source bytes/hash/frame and genuine source IDs; no Native allocation or caller proof. |
+| Solve / extract | Two original solved observations agree; depth-free extraction validates every ordinary whole curve. |
+| Produce regions | Binding, supported/unsupported region descriptors and actual complete source census travel together. |
+| Admit metadata | Exact three-field reply; each source curve occurs in the real component census, region IDs and coverage reconcile. Missing census rejects; no permissive fallback. |
+| Compare / publish discovery | Independent metadata observations agree and source/document/currentness fences still hold. Discovery is read-only; eligibility is not Native success. |
+| Reject / retire inspection | Preserve the actual error and cleanup outcome; no partial region success, new feature, write or blind retry. |
+
+This is derived source evidence, not a persisted status flag or second authored
+model. Shared face-only consumers gain genuine metadata without changing their
+geometry requests, topology restrictions, source identities or Native ABI.
 
 ## QUALIFICATION-SITE-FORWARD-01 — separate service and browser-route lifetimes
 
@@ -41,7 +72,8 @@ the unchanged endpoint returned HTTP200. New full blind attempt37114 uses its
 own r2 output and has passed actual app creation/edit/native Save/Open phases.
 Keepalives do not guarantee route survival or replace the readiness check.
 No automatic application retry, service restart, public relay or geometry
-tolerance change was introduced. Full blind qualification is still pending.
+tolerance change was introduced. Full unchanged blind workflow/FIRST/two actual SVG reviews subsequently
+qualifiedba80198; the first transport failure remains retained.
 
 ## CAD-AUTHORED-EDIT-POSTCOMMIT-RECEIPT-01 — source-repaired; complete extent qualification open
 
