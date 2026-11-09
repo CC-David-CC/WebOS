@@ -2,12 +2,17 @@
 
 ## Current state contracts — 2026-11-09
 
-Ordinary21/21 remains qualified; full Gate1 OPEN. EqualRadius `b2b8117` and
-Tangency `4b8026c` include the genuine survivor-admission transitions. Current
-blind whole R3 is terminal FAIL, not running or qualified: actual Core323ee19 /
-Hostef45ae478, acceptance386df4f; two.cad cycles/six exports were reached before
-an incorrectly constructed malformed fixture was refused at the material digest
-guard. See [work queues](WEBOS-WORK-QUEUES.md) for exact commits and next steps.
+Ordinary21/21 remains qualified; full Gate1 OPEN. EqualRadius b2b8117 and
+Tangency4b8026c retain genuine survivor-admission qualification. Blind whole91100,
+FIRST independent oracle and two actual SVG reviews now PASS as **11ac347**:
+actualCore323/Hostef45/194pins; two native Saves/fresh Opens and both exact
+malformed archive refusals followed by healthy Native continuation. All13
+executed sources unchanged; own writes settled/context retired.
+
+C11 normal build16850/stage46813 passed on Core725/Host2633/206pins. First whole
+31686 failed startup before modeling: description626 exceeded existing512.
+Failureb7b0a2f retained; prose-only Host5ea92e084 awaits restaging/full workflow.
+[Work queues](WEBOS-WORK-QUEUES.md) contains exact current refs/next actions.
 
 ### CAD-PHYSICAL-INSPECTION-PRESENTATION-01
 
@@ -48,6 +53,15 @@ BLIND_DEPTH_NOT_INTERIOR must coherently update only its required digest records
 and retain independent exact source-delta evidence. Do not weaken product guards
 or treat a stale material record as proof of a blind-depth failure.
 
+### CAD-COMMAND-REGISTRATION-01
+
+Description <=512 characters and parameter schema <=4096 serialized characters
+are independent requirements. A valid schema does not admit an overlong
+description. C11 whole31686 reached login but actual CAD startup rejected
+626-character prose; no modeling commands ran. Host5ea92e084 shortens only prose
+while preserving registry limits/shared semantics. A complete successful public
+launch in the next whole remains required regression evidence.
+
 ### CAD-WORKER-DISPATCH-AND-RESOURCE-CLOSURE-01
 
 Root072805f derives admission and fresh-result requirements from ONE closed
@@ -61,7 +75,7 @@ Counterbore source must preserve the genuine two-step private ancestry under one
 authored feature identity; no fabricated intermediate producer. Its acceptance
 has independently confirmed source/proof gaps and is being repaired, not run.
 Section/detail product/acceptance and peer bare-defs repairs are now composed
-as Core725c380/Host2633c23a4; normal build16850 is running, not qualified.
+as Core725c380/Host2633c23a4; normal build16850 passed; first whole31686 failed startup, not qualified.
 The closed dispatch table and all prior blind behavior remain; independent
 merge review is read-only. No public/main promotion. Earlier labels are historical.
 
