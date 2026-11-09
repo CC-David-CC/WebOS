@@ -14,7 +14,9 @@ oracle and two actual SVG reviews PASS; two native save/reopen cycles, six
 exports and both exact malformed archive refusals. Finite section/detail now
 qualifies **771f66e**: whole61449 +FIRST oracle40502 PASS;16 actual SVGs
 reviewed/eight Saves/six fresh Opens. Caption placement and general label layout
-remain open. Counterbore, extents, mechanical/conical source, resource/backend/
+remain open. Caption/counterbore source is now composed (Coree521860/Host843aee31a);
+normal build12568 active, full browser/oracle/artifact qualification still pending.
+Counterbore, extents, mechanical/conical source, resource/backend/
 format and final composed Gate1 delivery remain unfinished. No public/main promotion. Exact current evidence and
 next steps: [work queues](WEBOS-WORK-QUEUES.md) and
 [acceptance matrix](evidence/CAD-GATE1-BASELINE-20261106.md). Older checkpoint

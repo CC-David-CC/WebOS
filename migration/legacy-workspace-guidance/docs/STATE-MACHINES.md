@@ -14,7 +14,12 @@ all16 actual SVGs viewed.63Native observations/1323points/eight Saves/six fresh
 Opens on actualCore725/Host5ea/206pins.19sources unchanged, own contexts retired.
 First startup failureb7b0a2f remains. Confirmed caption placement over translated
 geometry and authored label/leader collisions stay open; not fullC11/layout.
-No root whole remains running.
+No root whole remains running. Source compositionCoree521860/Host843aee31a
+now retains one closed producing/read-only Worker kind map and every prior
+blind/derived finite error branch while adding counterbore. All9 actual OCI
+guards bind7864b6ca. Normal build12568 active; source composition is not
+qualification. Caption position derives from actual current projection/cap/
+aperture bounds; no persisted caption flags or physical geometry changes.
 
 [Work queues](WEBOS-WORK-QUEUES.md) contains exact current refs/next actions.
 
