@@ -19,6 +19,32 @@ must not restart terminal jobs or extend their qualifications.
 - **Current complete extent R3 whole8167 RUNNING:** exact producer0af/Hostbe24 and frozen acceptance0af; original entire workflow, new exclusive R730 output `/mnt/data10tb/codi-acad-primary-extents-20261109-r3/whole`, PC log `/tmp/codi-acad-primary-extents-20261109-r3.log`; launcherccaea9e. Former discovery/candidate stages and first protected exports progressed, but no wholePASS or FIRST oracle is claimed. Poll this exact handle; do not restart on wait timeout. FIRST separate STEP reader and independent artifact oracle only after terminal wholePASS, then render/review both actual SVGs.
 - **Current private fixture21055:**0af/Hostbe24/285pins, service86185/site-forward54596/reverse16681(R73019551 to PC19331), fresh `/mnt/data10tb/codi-acad-drawing-contract-state-20261109-r1`. Relay OFF. Earlier21054/7f failed R2 contexts are retired;21053/D7 unchanged. After current extent settles: complete countersink then affected complete drawing-family workflows, FIRST artifacts and every actual SVG review. No public/main/beta promotion or working runtime packaging.
 
+## CAD file-export finish audit — bounded source conclusion, no repair required
+
+Root reviewed exact Hostbe24 and integrated source review40e894638. Actual
+mountApp creates the real frozen document-operation token and private per-session
+coordinator. finish(false) releases only its exact active record's Map claims;
+coordinator/local notifications catch subscriber failures. It performs no file,
+lease, Worker, Native or archive cleanup. A stale/repeated token cannot retire a
+newer record. No reachable ordinary throwing finish was found; an arbitrary
+injected token is not a production defect. No product change or runtime/fault
+injection qualification follows from this source review.
+
+| Actual run outcome | Required knowledge retained through settlement |
+|---|---|
+| No write started | Preserve original exception; do not invent commit or absence evidence. |
+| Submitted, receipt uncertain | Preserve cause and possiblyCommitted; cancellation/claim release does not establish file absence. |
+| Browser receipt accepted | Preserve committed and original cause; acknowledgement does not claim server synchronization. |
+| Operation finish | Release exact record only; do not classify file outcome from release/close/disposal. |
+| Late finish after replacement | No-op against the newer owner; no cross-window/account claim retirement. |
+
+Actual Save capture/backing cleanup executes separately inside run/finally,
+not token.finish. This is not a blanket certification of every cleanup/error
+precedence chain. If the actual token contract later gains fallible cleanup,
+review that real implementation and its evidence requirements then. Exact paths,
+Git blobs and callback/ownership graph are in
+[the bounded source review](reviews/CAD-FILE-EXPORT-FINISH-SOURCE-REVIEW-20261109.md).
+
 ## CAD-CANDIDATE-DRAWING-KIND-01 — runtime omission; canonical identity source repair
 
 Full extent76298 on7f/Hostf23/285pins failed during SVG candidate observation:

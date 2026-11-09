@@ -26,8 +26,9 @@ assemblyE17 stays Gate2. D7 counterbore28ad691/C113e8b881/blindba80198 remain
 qualified on their exact producer. New7f build/stage/source custody passed, but
 complete extent R2 stopped at the candidate drawing type map; failure and later
 own prewrite settlement are retained443c70f. Canonical14-type mapping and derived
-warning-layout repairs are now composed, unbuilt/unqualified. The next coherent
-batch must pass complete new-family and affected drawing regressions. Broader
+warning-layout repairs are built on actual0af/Hostbe24/285pins; normal build,
+stage and source audit PASS. Full new extent8167 is RUNNING, not qualified.
+Complete countersink and affected drawing regressions follow serially. Broader
 sketch/profile/reference/solid/drawing/resource/final-beta obligations remain open.
 Current [work queues](WEBOS-WORK-QUEUES.md) preserve the full scope and exact
 source/runtime distinctions; no older evidence is relabeled or publicly promoted.
