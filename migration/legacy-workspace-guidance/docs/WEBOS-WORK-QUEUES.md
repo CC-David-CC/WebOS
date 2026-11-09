@@ -42,12 +42,22 @@ build28432 finished through mark-revision/Done at actualCore
 c6d2bfe91f1e04dcbf099e7c992dceba93356eac. Fresh bore-dispatch staging15953 completed PASS0 with 189 actual-byte pins. The unchanged complete packet6cb0975 must run on this fresh
 fixture; the fix is not workflow-qualified merely because it builds.
 
-R2 whole20649 RUNNING; evidence /tmp/codi-acad-four-bore-drawing-20261108-r2.
-Actual private21036/backend57682/forward14573, explicit Shell57b74074/60dc956b pair, owned CDP19329. Expected
-56Native read/discovery/21point observations, two datum families, six.cad,
-14SVG and actual split/consume/cover controls remain planned, not achieved.
-FIRST independent checker only after terminal wholePASS; retain any new first
-failure. No simultaneous builds/browser workflows or criterion substitutions.
+R2 whole20649 terminated FAIL1:45 rows/207 commands/15 Native sets/threeSVG/
+two.cad server-matched Saves and fresh Opens/one reference repair. ACADbe9fb7a
+preserves the first failure and full artifacts on both LANs. The invalid-offset
+control omitted required diameter and offsetY fields, so exact public schema
+admission correctly returned INVALID_REQUEST before geometry preparation. This
+is an acceptance request defect, not a demonstrated application geometry defect.
+The driver now supplies the current real diameter/offsetY with offsetX1e6;
+expected HOLE_OUTSIDE_PROFILE, candidate epoch and exact last-good checks remain
+unchanged. No product, oracle, tolerance or native asset changes.
+
+R3 whole7482 RUNNING on SAME actual5e80/c6d/189pins/private21036/backend57682/
+forward14573/owned CDP19329, fresh own account/context. Evidence
+/tmp/codi-acad-four-bore-drawing-20261108-r3 and sibling.log. Explicit Shell
+57b74074/60dc956b, not MFG. Expected56Native sets/21points, two datum families,
+six.cad/14SVG and actual split/consume/cover controls remain planned. FIRST
+independent oracle only after terminal wholePASS; keep all first failures.
 
 Next serial queues: tangencyd09fd33 (root5e80f0d) and C04center-distance/
 parallel-offset1e530e3→4830c9d complete source-only packets. Docs-only proposals
