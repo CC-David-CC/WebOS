@@ -17,8 +17,9 @@ must not restart terminal jobs or extend their qualifications.
 - **Shared publication/file invariants retained:** actual acceptance determines committed status; errors/known receipts/cleanup evidence remain distinct from source-only qualification. Source50pm, Native/mesh/paper budgets stay separate. All server external relay including ping remains OFF; filesystem race and foreign-account tests remain cancelled.
 - **Coherent repaired producer build/stage/source audit PASS:** actual Core `0afb07fe8e216ba9a03cf21923e0ab70aed72546` / Host `be24fbc232c967912f529053d34a9d407b369a39`,285pins. Build42930/stage15292/audit17139 terminal0;ten webpack completions;579 CAD assets/605244145 bytes/652 app files/two apps;12 component manifests/114 exact unique sources. ACAD `test/selected-profile-extents-workflow/build-composed-r3/BUILD-CUSTODY.json` retains actual logs, recipes, pins and source-byte proof. Reused dependency tree was not independently rehashed. This is build custody, not geometry qualification.
 - **Complete extent R3 whole8167 terminal FAIL1, retained2af4873:** actual0af/Hostbe24/285pins, frozen acceptance0af.116rows/1355commands/68Native observations/seven native Saves/fresh Opens/ten artifacts/20settled writes;18 executed snapshots match exact Git blobs and sources unchanged; own contexts retired/no pending write. Failure after accepted history-prefix rollback: test state() asks full-tip-only inspect-manufacturing. Actual Host Saveguard refuses isEditingHistory; physical/drawing reads say ready:false. This is a confirmed acceptance-observation mismatch, not a failed prefix or corrupted part. No FIRST artifact oracle/STEP reader ran. Narrow acceptance correctiona2045aa and independent review7e1e2b6 are integrated; all original branch/travel/full-tip geometry/source/file assertions remain, plus exact real prefix refusal/discovery and retained-source checks.
-- **Current full extent R4 whole26910 RUNNING:** unchanged actual0af/Hostbe24/285pins, separately frozen acceptance `7e1e2b6d8eafac4411f1cc63d5b5dc67c5de994a` including corrected public prefix observationsa2045aa and independent review7e1e2b6. Actual clean acceptance checkout `/mnt/data10tb/codi-acad-extent-acceptance-20261109-r4`; new output `/mnt/data10tb/codi-acad-primary-extents-20261109-r4/whole`; PC log `/tmp/codi-acad-primary-extents-20261109-r4.log`; launcher29c0bef. No product/frozen failed-source/geometry/tolerance change; no shortened flow. Poll exact26910, never restart on observation timeout. FIRST separate STEP reader/oracle only after terminal wholePASS, then both actual SVG reviews.
-- **Current private fixture21055:**0af/Hostbe24/285pins, service86185/site-forward54596/reverse16681(R73019551 to PC19331), own `/mnt/data10tb/codi-acad-drawing-contract-state-20261109-r1`; relay OFF. Counter93317 and failed R2/R3 extent contexts retired; old21053/D7 unchanged. Sole active browser whole is extent26910; affected complete drawing families follow. Later C11 v4 datum/position/Ra/declared-fit source contract approvedaab4c2e; three bounded source lanes implement on separate branches, not this frozen runtime. No public/main/beta promotion or working runtime packaging.
+- **Extent R4 whole26910 terminal PASS0; family qualification OPEN:** actual0af/Hostbe24/285pins, frozen7e1e2b6 acceptance;144rows/1674commands/89Native observations/nine native Saves/fresh Opens/14artifacts/26settled writes. Sources unchanged; owned contexts retired. First reader42619 failed on removed Node24 CLI flag before geometry; correctionf3da26b gives reader84131 PASS0/all six STEP files, unchanged compiled reader. FIRST artifact oracle62543 FAIL1 on exact cylindrical-generator-strip assumption; full mesh correctness is not yet proved. Retained Core evidence141cb1e plus diagnostics0a25090/ffb1a89 and library proposal0275d5d. No tolerance/weld/product edits; both actual SVG reviews remain pending.
+- **Last recorded private fixture21055:**0af/Hostbe24/285pins, service86185/site-forward54596/reverse16681(R73019551 to PC19331); relay OFF. No Root whole/reader/oracle job remains active. Verify service readiness before use. C11 v4 source packets remain separate/unintegrated. No public/main/beta promotion or working runtime packaging.
+- **Library-first implementation plan:** [integration sequence and ownership](CAD-LIBRARY-INTEGRATION-PLAN.md); full Core plan09c7bc8. Assess native tools over actual exports first, retain native intent/history, and ship only useful Worker adapters. Candidate libraries are not installed or qualified by this plan.
 
 ## QUALIFICATION-HISTORY-PREFIX-OBSERVATION-01 — real read contract, not Save mutation
 
@@ -44,10 +45,26 @@ whole artifact oracle/STEP reader ran.
 | Save/export | Full-tip/draft/processing/owner guards stay unchanged. A test observation failure does not permit skipping or weakening file acceptance. |
 
 Acceptance correctiona2045aa/independent review7e1e2b6 are integrated. Entire
-R4 whole26910 runs separately frozen7e acceptance against unchanged actual0af;
-no edited failed helpers, shortened flow or product guard waiver. Countersink
+R4 whole26910 terminal PASS with separately frozen7e acceptance against unchanged
+actual0af. Six STEP reads PASS after Node24 helper correction; FIRST artifact
+oracle62543 FAIL on exact generator-strip assumption. Full mesh proof is OPEN;
+no shortened flow, tolerance change or product guard waiver. Countersink
 whole93317/FIRST75755/all3 actual SVG review subsequently qualified06b7fe6;
 no overlap of browser whole runs and no unsettled write/context remains.
+
+## Library validation evidence state contract
+
+See [integration queue](CAD-LIBRARY-INTEGRATION-PLAN.md). This is the planned
+adapter contract; no candidate implementation is claimed by this table.
+
+| Transition | Invariant / outcome |
+|---|---|
+| Select immutable exported input | Bind exact bytes, owner/snapshot, source/geometry revision, units and adapter/library versions. Original data stays unchanged. |
+| Run a check | Check prerequisites first. Emit PASS, FAIL, UNSUPPORTED, UNCERTAIN, RESOURCE_LIMIT or NOT_RUN; exceptions do not prove invalid geometry. |
+| Finish report | Derive qualification from all required outcomes and currentness; do not maintain an independently mutable success flag. |
+| Edit geometry/material/source | Existing report remains attributable historical evidence; it cannot publish as current for a new revision. |
+| Cancel / retire | Retire only the exact operation/owner handles. No automatic repair, stale publication or global document cache. Existing unknown-write settlement rules remain unchanged. |
+| Promote capability | Whole workflow plus required artifact/source-intent/deviation/resource proof must pass. Generic watertightness/volume cannot substitute for full design correctness. |
 
 ## CAD file-export finish audit — bounded source conclusion, no repair required
 
