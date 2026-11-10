@@ -2,23 +2,32 @@
 
 ## Current affected-regression lane — 2026-11-09
 
-**1/5 complete affected legacy regressions QUALIFIED.** Isometric whole6481
-PASS0, FIRST independent reader66458 PASS0, all six actual SVGs individually
-reviewed PASS in Chrome155. 78 rows/308 commands/25 Native observation sets/
-three native Saves/three fresh Opens/15 travels/six refusals. Frozen producer and
-acceptance Core82866bf / Host796c90513 /293pins/MFG32e/abb are unchanged; all
-source/input custody passed, every write settled and own contexts retired.
-Evidence: ACAD test/c11-affected-regressions/evidence-r1/isometric/QUALIFICATION.json.
+**2/5 complete affected legacy regressions QUALIFIED in their finite contracts.**
+Isometric6481/FIRST66458/six actual visual reviews passed. Reference repair18059/
+FIRST60080/all twelve actual full-sheet reviews passed for both original and
+translated-negative coordinates:138rows/530commands/44Native observation sets/
+six native Saves/six fresh Opens/26travels/six refusals. All source/input custody
+passed, writes settled, own contexts retired. Reference review explicitly retains
+the existing fixed ordinary dimension label/leader crossing limitation; general
+annotation layout remains OPEN, not certified by this finite regression.
 
-Next complete reference-repair whole is RUNNING session18059, actual R730 child
-PID2985115, same Core/Host/acceptance/pins/cohort. Both original and translated-
-negative families are required. Evidence /mnt/data10tb/codi-acad-c11-legacy-
-regressions-20261109-r1/reference/whole; state/log/scripts in parent. Private
-service87004/forward81017 at21057 and Chrome155 CDP19551 are unchanged. Poll this
-exact job before any new runtime run; no duplicate or partial phase replacement.
-Only terminal whole PASS permits this family's independent reader/actual SVG
-reviews. Four-bore, section/detail and Boolean producer regressions remain queued.
-Full Gate1 OPEN. Finite C11 requirements qualification below remains unchanged.
+Evidence in ACAD: test/c11-affected-regressions/evidence-r1/{isometric,reference}/
+QUALIFICATION.json. Actual unchanged Core82866bf / Host796c90513 / acceptance82866bf /
+293pins/MFG32e/abb. No new geometry/criteria/runtime changes were needed.
+
+Next complete four-bore drawing whole is RUNNING session17788, actual R730 child
+PID2995025, same Core/Host/acceptance/pins with Shell57b/60dc. Evidence
+/mnt/data10tb/codi-acad-c11-legacy-regressions-20261109-r1/four-bore/whole;
+state/log/scripts in parent. Private service87004/forward81017 at21057 and
+Chrome155 CDP19551 unchanged. Poll this exact job before any new runtime run;
+no duplicate/partial substitute. Only whole PASS permits its independent reader
+and actual SVG review. Section/detail and Boolean producer remain queued.
+
+Three source BEFORE packets are integrated and approved: original extraction
+1458f41/9aa3e75, mathematical certification44f884a, query-only wiringe27e04c;
+Root approvals4710a66/e36de15. Isolated NEW leaf implementations are in progress,
+not mounted/executed/qualified. CAD-ARC-01 remains OPEN with a source-confirmed
+radius1e-7mm quarter-Arc/full-turn counterexample. Full Gate1 stays OPEN.
 
 ## Current C11 requirements checkpoint — 2026-11-09
 

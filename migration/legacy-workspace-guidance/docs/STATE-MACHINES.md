@@ -1326,6 +1326,13 @@ Arc near-coincident branch remains separately tracked as CAD-ARC-01 above.
 
 ## CAD-ARC-01: inferred full-turn branch needs qualification — 2026-11-08
 
+2026-11-09 Root source confirmation: distinct endpoints(1e-7,0)/(0,1e-7),
+center(0,0) define a proper quarter Arc above the ordinary positive minimum,
+yet enter Arc.drawImpl's1e-6 full-turn branch. No new browser test is claimed.
+Root4710a66 retains this defect OPEN and requires coherent branch semantics;
+the initial finite-query certifier must refuse inherited ambiguity, not treat
+its unsupported result as a fix for drawing/projection/Fix/persistence.
+
 Source audit only; no new execution or observed public corruption incident.
 Arc.write/read persists only start/end/center coordinates. Arc.drawImpl uses
 math/equality TOLERANCE=1e-6mm to infer a full turn from near endpoint equality;
