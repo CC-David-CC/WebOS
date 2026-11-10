@@ -1,3 +1,9 @@
+## Surface workspace checkpoint — 2026-11-10
+
+Current authoritative working copies are sibling repositories at `/home/dflanag3/Documents/KSU.CODES/Desktop-Preview/` and `/home/dflanag3/Documents/KSU.CODES/ACAD/` on surface16-1. Read `/home/dflanag3/Documents/KSU.CODES/START-HERE.md` then `Workspace-Guide/START-HERE.md`. The independent guide is `box-git:/srv/data/git/WebOS-workspace.git` (R730 mirror `/mnt/data10tb/git/WebOS-workspace.git`). No active SIMPLIFIED or historical JSketcher checkout, application mirrors or source shortcuts are needed.
+
+Fresh Surface builds,100-command saved-content whole/independent artifact reader, the combined desktop workflow and current Notebook/chart/widget/light-file workflow passed their bounded migration contracts using Surface Chromium without an original-PC or R730 browser tunnel. Full52-history and66-WIP recovery proofs are retained. Migration is independent of CAD Gate1; full Gate1 remains OPEN. Final hashes, private backup custody and stopped-fixture disposition are in the workspace CHECKPOINT and guide. No product deployment or CAD feature work was performed. Honor the requested pause after backup verification.
+
 # CAD 1.0 restart handoff — 10 November 2026
 
 This is the entry point for resuming ACAD within the WebOS. The user requested a verified portable checkpoint, then a pause. Read VERIFICATION.md before trusting any restart claim. Gate 1 remains OPEN. Do not resume implementation until the user resumes it.
