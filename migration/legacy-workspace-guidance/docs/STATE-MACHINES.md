@@ -8,8 +8,10 @@ certificatione91d240/Rootreview058b592 are composed as source only. Common
 controller/OCI query-only transport3160501 and asset producerb485433/7ad55ad
 are also composed but UNEXECUTED. Dedicated catalog/build76df950/declaration
 0c0321e and actual eleven9254 guards are source-reviewed; source extract/verify
-routesdf6d8ad use separate disposable Workers. Certificate Worker/current-source
-owner/public shared lifecycle remain unimplemented/unqualified.
+routesdf6d8ad use separate disposable Workers. Certificate envelopef455c8b and
+actual Worker route69a08c1 are composed/source-reviewed but UNEXECUTED. Private
+endpoint producer/verifier0541373 is composed but not routed or qualified.
+Current-source owner/public shared lifecycle remain unimplemented/unqualified.
 These rows are obligations, not new persisted flags or an implemented enum.
 
 | Transition | Required invariant |
@@ -1349,6 +1351,19 @@ build/whole execution; no public regression incident is asserted. Closed strict
 admitted-source policy must not be weakened to preserve human recovery behavior.
 Arc near-coincident branch remains separately tracked as CAD-ARC-01 above.
 
+
+## CAD-ARC-01 latest source checkpoint — 2026-11-09
+
+Mandatory proper/full authored branch product2c1d979e +followupbf0cb4c and Host
+0b02c0318 are frozen/reviewed, NOT yet composed/executed. Confirmed source defects
+addressed by followup: nonstrict IO previously cleared accepted geometry before
+missing/unknown branch rejection; successful tool Finish omitted final B reference.
+Both read modes now preflight before cleanup; owned successful Finish updates the
+actual reference before notification and rechecks before release. This is source
+review, not a claimed live corruption incident or runtime qualification.
+Root common captures/inspection/closure splices and complete whole validation
+remain pending. Genuine NURBS geometry stays retained; owned analytic Native
+trim/boundary handoff, ordinary Arc profiles and full Arc queries remain OPEN.
 
 ## CAD-ARC-01: inferred full-turn branch needs qualification — 2026-11-08
 

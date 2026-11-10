@@ -2,21 +2,21 @@
 
 ## Latest regression checkpoint — 2026-11-09
 
-Affected drawing/producer batch is now **3/5 qualified**: isometric, reference
-repair, four-bore. Four-bore actual whole174rows/770commands/56 Native observations/
-14 actual SVG reviews/six Saves/six fresh Opens passed. Original FIRST failed an
-outdated schema advertisement; separate corrected61c8dfc reader passed with
-whole, original source, FIRST and verifier Git custody unchanged. Authoredv3/four
-views stay unchanged; general annotation placement remains OPEN. Section/detail
-whole15376/child3008595 RUNNING on frozen Core82866bf/Host796c90513; Boolean producer
-queued. ACAD test/c11-affected-regressions/evidence-r1/four-bore/QUALIFICATION.json
-and docs/handoffs/CAD1-CAPTION-COUNTERBORE-CHECKPOINT-20261109.md bind actual evidence.
-Common query transport3160501, asset sourceb485433/7ad55ad, dedicated catalog/
-build76df950/declaration0c0321e and disposable source Worker routesdf6d8ad are
-composed but UNEXECUTED/UNMOUNTED. Arc branch implementation is active separately;
-certificate/current-job orchestration, public shared trim/extend, resource and
-final delivery remain OPEN. 21/21 ordinary exercise passes do not close full Gate1; E17 remains Gate2.
+Affected batch **4/5 qualified**: isometric, reference repair, four-bore and
+section/detail. Section/detail15376/FIRST42285/all16 actual sheet reviews passed:
+190rows/1039commands/63 Native observations/eight Saves/six fresh Opens/24travels.
+Original82866bf reader and separate617c2fc custodian/source/whole bytes unchanged.
+Boolean whole9837/child3022563 RUNNING on unchanged82866bf/796c90513/MFG32e/abb;
+actual STEP artifact/oracle follows full PASS. General annotation layout remains
+OPEN. See ACAD section-detail/QUALIFICATION.json and current continuation checkpoint.
 
+Query transport/catalog/source Workers plus certificate envelopef455c8b/Worker
+route69a08c1 are composed, source-reviewed, UNEXECUTED/UNMOUNTED. Private semantic
+endpoint0541373 is composed but unregistered/unexecuted. Arc2c1d979e/a1bf4821/
+bf0cb4c +Host0b02c0318 reviewed/frozen, composition next. Actual shared current-
+source query/edit/J/replay, remaining curve/Native boundary/profile, resource
+and final delivery obligations stay OPEN.21/21 historical ordinary exercise
+passes do not qualify this unbuilt candidate or full Gate1; E17 remains Gate2.
 
 ## Current C11 requirements checkpoint — 2026-11-09
 

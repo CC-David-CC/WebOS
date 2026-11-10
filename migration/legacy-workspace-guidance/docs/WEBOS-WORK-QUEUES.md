@@ -2,57 +2,55 @@
 
 ## Current affected-regression lane — 2026-11-09
 
-**3/5 complete affected legacy regressions QUALIFIED in their finite contracts.**
-Isometric6481/FIRST66458/six actual SVG reviews and reference18059/FIRST60080/
-twelve actual SVG reviews remain passed. Four-bore17788 whole PASS0 now has
-174 rows/770 commands/56 Native observation sets/14 SVGs/six native Saves/six
-fresh Opens/12 travels/two creation travels and settled own-context cleanup.
-FIRST31060 failed an obsolete advertised schema assertion, not geometry. The
-corrected AFTER reader at61c8dfccef8030d85ec77817c3844bc60f410003 passed with
-original whole/source/FIRST and executing verifier Git custody unchanged.
-Actual advertisement is [1,2,3,4]/six overall views; authored documents remain
-v3/four views. No source/Native/archive/topology/SVG assertion was removed.
-Root individually reviewed all14 actual full-sheet SVGs: PASS in that finite
-content/reference/warning scope. Existing fixed labels/leaders cross model
-strokes on some sheets; automatic annotation placement remains OPEN.
+**4/5 complete affected legacy regressions QUALIFIED in their finite contracts.**
+Isometric, reference repair and four-bore retain their prior scoped passes.
+Section/detail15376 whole PASS0 now has190rows/1039commands/63 Native observation
+sets/16 SVGs/eight Saves/six fresh Opens/24 travels/eight refusals/two quota checks.
+FIRST42285/actual reader3020994 PASS0 on original82866bf. Separate custodian617c2fc
+binds its actual own source before/after independently of that historical reader;
+all original source/input/verifier/custodian custody PASS. Root individually
+reviewed all16 actual full-sheet SVGs: PASS for current cap/crop/scale/reference/
+warning content. Existing fixed dimension labels/leaders crossing model strokes
+remain a presentation limitation; automatic layout/full C11/Gate1 stay OPEN.
 
-Evidence in ACAD: test/c11-affected-regressions/evidence-r1/
-{isometric,reference,four-bore}/QUALIFICATION.json. Actual producing Core82866bf /
-Host796c90513 / acceptance82866bf /293pins remain unchanged. Four-bore receipt
-SHA2563afbadaadc26e1e471c6e6ea0eef4293dc6480548dff20be6b39899c66ba6efb;
-AFTER oracle3e820330e553d790cedba2114d9cb3287795f3c8f4ddaec10ed99d7a34d00ec8.
+ACAD evidence: test/c11-affected-regressions/evidence-r1/
+{isometric,reference,four-bore,section-detail}/QUALIFICATION.json.
+Section receipt87cc4a41236a6e1c8b1f83839b4ebb7ef670f5d8a0c42a85d5620a46c7ccc97c;
+FIRST oraclefda937dc2451936d87c613e2e85f63910a52461e0223ace0d87cb261fe2dccc6.
+Actual runtime unchanged: Core82866bf/Host796c90513/293pins; section Shell57b/60dc.
 
-Section/detail whole is RUNNING session15376, R730 child3008595, same frozen
-Core/Host/acceptance/pins and Shell57b/60dc. Evidence/control files:
-/mnt/data10tb/codi-acad-c11-legacy-regressions-20261109-r1/section-detail/whole
-and parent section-detail-whole-state.json/log. Poll this exact job; never
-restart on observer timeout. Private service87004/forward81017 at21057 and
-Chrome155 CDP19551 preserved. Independent reader and sixteen actual SVG reviews
-follow whole PASS only. E16 Boolean producer remains queued.
+Boolean whole9837 is RUNNING, actual R730 child3022563, using original frozen
+82866bf driver/796c90513 helper and explicit MFG32e/abb on the same private fixture.
+Evidence /mnt/data10tb/codi-acad-c11-legacy-regressions-20261109-r1/boolean/whole;
+parent boolean-whole-state.json/log and run-boolean.sh. Poll that exact job;
+never restart on observer timeout. Only complete PASS permits the actual exported
+STEP readback and independent existing oracle. Four drawing contexts/renderers
+are retired. Service87004/forward81017/Chrome155 CDP19551 preserved.
 
-All THREE reviewed curve source packets are composed: query candidate/request/
-factory328d22f, original-source extraction2a58266/05d690e, bounded mathematical
-certificatee91d240 with Root058b592 and independent reviewf9a5560. Actual common
-controller/OCI query-only transport3160501 and exact optional asset producer
-b485433/Root7ad55ad are also composed SOURCE ONLY. No Native/module/new Worker
-execution, mounted availability, public command or trim/extend qualification is
-claimed. Dedicated query catalog/build graph76df950 and exact virtual-entry
-declaration0c0321e are composed and independently source-reviewed; all eleven
-bootstrap guards bind actual9254d17d. Private source extract/verify routesdf6d8ad
-now use separate disposable Workers, still UNEXECUTED. Remaining Root work:
-certificate Worker/current-job orchestration, public commands and shared
-source/J/full-suffix replay. Revised publicwhole573f0a2 is approved for
-implementation by df6d8ad; the required consumed-source edit is not substituted.
+Curve source candidate/request/extraction/math, common query-only transport,
+optional catalog/build and separate source-extraction Workers remain composed
+UNEXECUTED/UNMOUNTED. Light complete-envelopef455c8b and actual mathematical
+Worker route69a08c1 are now composed and source-reviewed; heavy math stays Worker
+only. Private semantic endpoint producer/verifier0541373 is composed, source-
+reviewed, and UNROUTED/UNEXECUTED. The inherited typed travel verifier accepts
+its first successful reconstruction direction; it does not prove both actual
+Undo and Redo. Full public whole preparation is active in an isolated agent lane.
+Host query adapterd2a8a203c is source only and intentionally unregistered.
 
-Arc BEFORE18b69dd and Root8fda31f approve mandatory authored branch
-proper-ccw/full-ccw, with no inferred full turn or saved missing-field default.
-Coherent implementation is in an isolated agent lane, uncomposed/unexecuted.
-Root must preserve branch through BOTH transitionClient Arc captures before
-building. Native projected boundary promotion still lacks owned trim proof:
-keep genuine NURBS geometry, remove only unsupported Arc/Circle promotion, and
-leave analytic Native boundary bridge explicitly OPEN. Full Gate1 remains OPEN;
-21 ordinary exercises stay scoped passes, assembly E17 stays Gate2. Host relay
-OFF; filesystem-race/foreign-account/fault-injection testing remains cancelled.
+Arc product2c1d979e/handoffa1bf4821 plus followupbf0cb4c and Host0b02c0318 are
+frozen on both LANs, reviewed but not yet composed. Followup repairs confirmed
+nonstrict read-before-cleanup and successful final endpoint reference gaps.
+Root must add mandatory branch in BOTH transitionClient Arc captures, inspection
+branch DTO and actual source rosters before a coherent build. Native analytic
+boundary handoff, ordinary Arc profiles and full-Arc queries remain required OPEN.
+
+Remaining Root work: compose Arc/coherent source closures, actual current-source
+query/selection lifetime and shared endpoint source/J/full-suffix publication,
+register Host, run complete public positives/refusals/travel/.cad workflow, then
+remaining curve/reference/resource/final beta obligations. 21 ordinary exercises
+remain historical scoped passes, not proof of this unbuilt candidate. E17 remains
+Gate2. Host external relay OFF; filesystem-race/foreign-account/fault injection
+remain cancelled. No live/beta/runtime/source-distribution packaging change.
 
 ## Current C11 requirements checkpoint — 2026-11-09
 
