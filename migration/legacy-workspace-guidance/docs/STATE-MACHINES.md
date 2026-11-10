@@ -1,5 +1,26 @@
 # Workflow state machines and invariants
 
+## CAD-CURVE-QUERY-01 — approved source contract, not mounted — 2026-11-09
+
+Root4710a66/e36de15/3624519 in ACAD define the shape-free query boundary.
+Query leaves328d22f and source extraction2a58266/05d690e are source-reviewed;
+common wiring and full public lifecycle remain unimplemented/unqualified.
+These rows are obligations, not new persisted flags or an implemented enum.
+
+| Transition | Required invariant |
+|---|---|
+| Current source → two independent extractions | Same original text/parameters/frame and actual current job; separate fresh Workers prove original equations/admission/ownership and return complete matching F64-bound receipts. Cold optimizer coordinates never replace source. |
+| Verified preparation → raw Native read | Actual exact new479/746 query-only mount, one lexical job owner, one bounded invocation, no shape/name/ledger/replay or observation.accept(). |
+| Native return → raw observation | Invocation, input bits, same-memory growth, counted exchange and scratch cleanup settled before payload use. Known code alone is not settled custody. |
+| Raw observation → finite facts | Independent exact candidate census/domain/branch/error proof; no raw IsEmpty/identical/tangent shortcut and no missing-root/nearest/fallback construction. Mathematical proof alone grants no current-source edit authority. |
+| Current finite fact → future authored edit | Explicit current response-local occurrence, retained original intent and shared source/J/full-suffix transaction; stale source/owner revokes the fact. Query answers are not persisted. |
+| Uncertain / resource / stale / terminal | Preserve original accepted model; unsupported or numerical uncertainty is never empty geometry. Cleanup/input/publication uncertainty retires actual owner and invalidates every payload. |
+
+Derived readiness must follow actual assets/ABI, owned resources and current
+source; no independent availability or geometry-success flag is synchronized.
+CAD-ARC-01 remains separate required branch correctness work.
+
+
 ## Current C11 requirements checkpoint — 2026-11-09
 
 **Finite C11 datum/position/Ra/declared-clearance workflow QUALIFIED. Full Gate 1

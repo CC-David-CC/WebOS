@@ -23,11 +23,17 @@ Chrome155 CDP19551 unchanged. Poll this exact job before any new runtime run;
 no duplicate/partial substitute. Only whole PASS permits its independent reader
 and actual SVG review. Section/detail and Boolean producer remain queued.
 
-Three source BEFORE packets are integrated and approved: original extraction
-1458f41/9aa3e75, mathematical certification44f884a, query-only wiringe27e04c;
-Root approvals4710a66/e36de15. Isolated NEW leaf implementations are in progress,
-not mounted/executed/qualified. CAD-ARC-01 remains OPEN with a source-confirmed
-radius1e-7mm quarter-Arc/full-turn counterexample. Full Gate1 stays OPEN.
+Three BEFORE contracts and Root approvals4710a66/e36de15 are integrated.
+Two independently source-reviewed NEW leaf packets are now composed: query-only
+candidate/resources/request/declarations/factory328d22f and original-owned source
+extraction+independent re-extraction2a58266/05d690e. Review3624519 records both
+crossed reviews and actual remaining Root splices. These are UNMOUNTED/UNEXECUTED/
+UNQUALIFIED; neither raw codec nor pure extraction confers current-source authority.
+Mathematical candidate verification, isolated exact-asset producer source and a
+coherent CAD-ARC-01 branch repair BEFORE plan are active separate source lanes.
+Root still owns common controller/OCI/catalog/tasks/current-source owner and later
+complete shared trim/extend qualification. CAD-ARC-01 remains OPEN; radius1e-7mm
+quarter-Arc/full-turn counterexample is source-confirmed. Full Gate1 stays OPEN.
 
 ## Current C11 requirements checkpoint — 2026-11-09
 
