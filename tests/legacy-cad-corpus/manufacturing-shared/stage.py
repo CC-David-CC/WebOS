@@ -26,8 +26,12 @@ for original in sorted(dist.rglob('*')):
  if original.suffix.lower() not in allowed or original.name=='webosTest.bundle.js' or rel.as_posix() in {'index.html','sketcher.html'}:
   excluded.append(rel.as_posix());continue
  destination=target/rel;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,destination)
- data=destination.read_bytes();name='node_modules/jsketcher-build/'+rel.as_posix();assets.append(name)
- pins[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+ digest=hashlib.sha256();size=0
+ with destination.open('rb') as copied:
+  while chunk:=copied.read(1024*1024):
+   size+=len(chunk);digest.update(chunk)
+ name='node_modules/jsketcher-build/'+rel.as_posix();assets.append(name)
+ pins[name]={'bytes':size,'sha256':digest.hexdigest()}
 assert 'node_modules/jsketcher-build/index-webos.html' in assets
 manifest=json.loads((app/'app.json').read_text());assert set(manifest)=={'assets'},'Review new manifest fields explicitly'
 manifest['assets']=assets;(app/'app.json').write_text(json.dumps(manifest,indent=2)+'\n')
