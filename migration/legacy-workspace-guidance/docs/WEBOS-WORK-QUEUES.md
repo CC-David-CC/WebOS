@@ -1,5 +1,16 @@
 # WebOS work queues and progress ledger
 
+## Curve whole R1 launch failure — 2026-11-09
+
+The first complete finite-curve whole on Core `4cd85e6`, Host `bdd83c2f2`,
+acceptance `0e5a6f38` timed out during app launch. Its recorded app error was
+`Invalid command parameters description.` The actual primitive command schema
+is 4,131 characters; the command registry accepts at most 4,096. Adding the
+Arc branch crossed that pre-existing limit. The retained failure is on R730 at
+`/mnt/data10tb/codi-acad-finite-curve-whole-20261109-r1/whole/receipt.json`.
+The source correction shares the point definition in the Arc schema. It needs a
+new host build and a fresh full workflow; R1 must remain unchanged.
+
 ## Curve command composition — 2026-11-09
 
 The source-only desktop entry now registers the three prepared curve query and
