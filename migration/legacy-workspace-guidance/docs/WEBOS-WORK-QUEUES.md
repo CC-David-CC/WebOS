@@ -2,45 +2,52 @@
 
 ## Current affected-regression lane — 2026-11-09
 
-**2/5 complete affected legacy regressions QUALIFIED in their finite contracts.**
-Isometric6481/FIRST66458/six actual visual reviews passed. Reference repair18059/
-FIRST60080/all twelve actual full-sheet reviews passed for both original and
-translated-negative coordinates:138rows/530commands/44Native observation sets/
-six native Saves/six fresh Opens/26travels/six refusals. All source/input custody
-passed, writes settled, own contexts retired. Reference review explicitly retains
-the existing fixed ordinary dimension label/leader crossing limitation; general
-annotation layout remains OPEN, not certified by this finite regression.
+**3/5 complete affected legacy regressions QUALIFIED in their finite contracts.**
+Isometric6481/FIRST66458/six actual SVG reviews and reference18059/FIRST60080/
+twelve actual SVG reviews remain passed. Four-bore17788 whole PASS0 now has
+174 rows/770 commands/56 Native observation sets/14 SVGs/six native Saves/six
+fresh Opens/12 travels/two creation travels and settled own-context cleanup.
+FIRST31060 failed an obsolete advertised schema assertion, not geometry. The
+corrected AFTER reader at61c8dfccef8030d85ec77817c3844bc60f410003 passed with
+original whole/source/FIRST and executing verifier Git custody unchanged.
+Actual advertisement is [1,2,3,4]/six overall views; authored documents remain
+v3/four views. No source/Native/archive/topology/SVG assertion was removed.
+Root individually reviewed all14 actual full-sheet SVGs: PASS in that finite
+content/reference/warning scope. Existing fixed labels/leaders cross model
+strokes on some sheets; automatic annotation placement remains OPEN.
 
-Evidence in ACAD: test/c11-affected-regressions/evidence-r1/{isometric,reference}/
-QUALIFICATION.json. Actual unchanged Core82866bf / Host796c90513 / acceptance82866bf /
-293pins/MFG32e/abb. No new geometry/criteria/runtime changes were needed.
+Evidence in ACAD: test/c11-affected-regressions/evidence-r1/
+{isometric,reference,four-bore}/QUALIFICATION.json. Actual producing Core82866bf /
+Host796c90513 / acceptance82866bf /293pins remain unchanged. Four-bore receipt
+SHA2563afbadaadc26e1e471c6e6ea0eef4293dc6480548dff20be6b39899c66ba6efb;
+AFTER oracle3e820330e553d790cedba2114d9cb3287795f3c8f4ddaec10ed99d7a34d00ec8.
 
-Next complete four-bore drawing whole is RUNNING session17788, actual R730 child
-PID2995025, same Core/Host/acceptance/pins with Shell57b/60dc. Evidence
-/mnt/data10tb/codi-acad-c11-legacy-regressions-20261109-r1/four-bore/whole;
-state/log/scripts in parent. Private service87004/forward81017 at21057 and
-Chrome155 CDP19551 unchanged. Poll this exact job before any new runtime run;
-no duplicate/partial substitute. Only whole PASS permits its independent reader
-and actual SVG review. Section/detail and Boolean producer remain queued.
+Section/detail whole is RUNNING session15376, R730 child3008595, same frozen
+Core/Host/acceptance/pins and Shell57b/60dc. Evidence/control files:
+/mnt/data10tb/codi-acad-c11-legacy-regressions-20261109-r1/section-detail/whole
+and parent section-detail-whole-state.json/log. Poll this exact job; never
+restart on observer timeout. Private service87004/forward81017 at21057 and
+Chrome155 CDP19551 preserved. Independent reader and sixteen actual SVG reviews
+follow whole PASS only. E16 Boolean producer remains queued.
 
-Three BEFORE contracts and Root approvals4710a66/e36de15 are integrated.
-Two independently source-reviewed NEW leaf packets are now composed: query-only
-candidate/resources/request/declarations/factory328d22f and original-owned source
-extraction+independent re-extraction2a58266/05d690e. Review3624519 records both
-crossed reviews and actual remaining Root splices. These are UNMOUNTED/UNEXECUTED/
-UNQUALIFIED; neither raw codec nor pure extraction confers current-source authority.
-Third mathematical-certificate source packet e25f37e is now composed ase91d240
-following Root's full source review058b592. All THREE source lanes are integrated;
-none is mounted/executed/qualified. Additional certificate peer review is active.
-Pending uncomposed refs: Arc BEFOREa9a400121c4c769d74a41c3c1c2d64e39295ba65
-(branch docs/arc-branch-before-20261109, dxf independent review active) and optional
-asset leavesb055a600b5e6f92ee0a98bff17a9137c0a60ea4d (branch
-feature/finite-curve-support-asset-leaves-20261109, Root review next). These are
-frozen on BOTH LANs; do not execute before actual common wiring/hash admission.
-Root still owns common controller/OCI/catalog/tasks/current-
-source owner and later complete shared trim/extend qualification. CAD-ARC-01
-remains OPEN; radius1e-7mm quarter-Arc/full-turn counterexample is source-confirmed.
-Full Gate1 stays OPEN. Poll current four-bore17788 before another runtime run.
+All THREE reviewed curve source packets are composed: query candidate/request/
+factory328d22f, original-source extraction2a58266/05d690e, bounded mathematical
+certificatee91d240 with Root058b592 and independent reviewf9a5560. Actual common
+controller/OCI query-only transport3160501 and exact optional asset producer
+b485433/Root7ad55ad are also composed SOURCE ONLY. No Native/module/new Worker
+execution, mounted availability, public command or trim/extend qualification is
+claimed. Remaining Root work: catalog/package/webpack, coherent bootstrap guard
+refresh, source/current-job Workers, public commands and shared source/J/replay.
+
+Arc BEFORE18b69dd and Root8fda31f approve mandatory authored branch
+proper-ccw/full-ccw, with no inferred full turn or saved missing-field default.
+Coherent implementation is in an isolated agent lane, uncomposed/unexecuted.
+Root must preserve branch through BOTH transitionClient Arc captures before
+building. Native projected boundary promotion still lacks owned trim proof:
+keep genuine NURBS geometry, remove only unsupported Arc/Circle promotion, and
+leave analytic Native boundary bridge explicitly OPEN. Full Gate1 remains OPEN;
+21 ordinary exercises stay scoped passes, assembly E17 stays Gate2. Host relay
+OFF; filesystem-race/foreign-account/fault-injection testing remains cancelled.
 
 ## Current C11 requirements checkpoint — 2026-11-09
 

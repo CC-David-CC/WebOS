@@ -1,5 +1,22 @@
 # JSketcher basic foundation matrix
 
+## Latest regression checkpoint — 2026-11-09
+
+Affected drawing/producer batch is now **3/5 qualified**: isometric, reference
+repair, four-bore. Four-bore actual whole174rows/770commands/56 Native observations/
+14 actual SVG reviews/six Saves/six fresh Opens passed. Original FIRST failed an
+outdated schema advertisement; separate corrected61c8dfc reader passed with
+whole, original source, FIRST and verifier Git custody unchanged. Authoredv3/four
+views stay unchanged; general annotation placement remains OPEN. Section/detail
+whole15376/child3008595 RUNNING on frozen Core82866bf/Host796c90513; Boolean producer
+queued. ACAD test/c11-affected-regressions/evidence-r1/four-bore/QUALIFICATION.json
+and docs/handoffs/CAD1-CAPTION-COUNTERBORE-CHECKPOINT-20261109.md bind actual evidence.
+Common query transport3160501 and asset sourceb485433/7ad55ad are composed but
+UNEXECUTED/UNMOUNTED. Arc branch implementation is active separately; catalog,
+source/job Workers, public shared trim/extend, resource and final delivery remain
+OPEN. 21/21 ordinary exercise passes do not close full Gate1; E17 remains Gate2.
+
+
 ## Current C11 requirements checkpoint — 2026-11-09
 
 **Finite C11 datum/position/Ra/declared-clearance workflow QUALIFIED. Full Gate 1
