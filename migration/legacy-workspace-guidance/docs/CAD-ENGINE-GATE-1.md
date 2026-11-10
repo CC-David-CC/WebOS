@@ -7,6 +7,14 @@ passes; assembly exercise 17 belongs to Gate 2. Those passes do not qualify the
 latest combined source or every remaining sketch, topology, drawing, resource,
 and human/agent workflow.
 
+Update: the combined whole has finished **FAIL**, after the previously failing
+profile refusal and the first Save/fresh Open succeeded. After a typed
+parameter edit, the old curve event was safely rejected as stale, but reported
+`revoked` where the workflow expected eager `unavailable`. The private
+selection-retirement fix is in progress; the remainder of that whole was not
+executed. The earlier fixture-connection failure and this actual lifecycle
+mismatch are separately retained on R730. See the ACAD handoff for hashes.
+
 Source work after the staged Host `1a2435fee`: the shared scoped-command
 settler now marks lifetime loss during an already-started operation as an
 unknown possible commit, retaining a confirmed committed receipt when one was
@@ -17,8 +25,8 @@ not present in the already-running Host fixture.
 
 The assembled Core `14299d0f9038cee40d7a985d4e7827215234479c` built on R730;
 Host `1a2435fee7cb70210645d2600109ba665e0d63c5` adds an explicit agent example
-for the existing camera-only solid fit. The grouped finite-curve workflow is
-running on the isolated R730 fixture as session `41290`; poll that exact run.
+for the existing camera-only solid fit. The grouped finite-curve workflow ran
+on the isolated R730 fixture as session `41290` and ended with the failure above.
 Its first attempt could not navigate because the workstation-to-R730 loopback
 forward was absent; that failure is preserved and the corrected run has begun.
 No current candidate-wide or Gate 1 pass is implied.
