@@ -3,8 +3,9 @@
 ## CAD-CURVE-QUERY-01 — approved source contract, not mounted — 2026-11-09
 
 Root4710a66/e36de15/3624519 in ACAD define the shape-free query boundary.
-Query leaves328d22f and source extraction2a58266/05d690e are source-reviewed;
-common wiring and full public lifecycle remain unimplemented/unqualified.
+Query leaves328d22f, source extraction2a58266/05d690e and pure candidate
+certificatione91d240/Rootreview058b592 are composed as source only; common wiring
+and full public lifecycle remain unimplemented/unqualified.
 These rows are obligations, not new persisted flags or an implemented enum.
 
 | Transition | Required invariant |
