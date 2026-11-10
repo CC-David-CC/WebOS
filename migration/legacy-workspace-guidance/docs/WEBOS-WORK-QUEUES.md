@@ -1,5 +1,9 @@
 # WebOS work queues and progress ledger
 
+## Migration game-source cleanup — 2026-11-10
+
+On surface16-1, removed the obsolete unfinished game staging tree after matching all 28 designs to current app entries. Unique per-game requirements now live beside their canonical app under `design/`; shared plans are in `docs/games/design-reference/`. Retired package status/checksum/validator files remain recoverable in Git. Existing game runtime files, app IDs, catalog, registration and deployment are unchanged. This is organizational cleanup during migration, not game qualification or resumed CAD work.
+
 ## Handoff freeze — 2026-11-10
 
 The user requested a complete portable handoff, verification from another machine with no PC dependency, and then PAUSE. Implementation and new feature qualification are stopped; only checkpoint/build/browser/backup recovery verification is authorized for this stop point. Start at `docs/handoffs/CAD1-20261110/START-HERE.md`. Its STATUS supersedes old chronological RUNNING notes below. Gate1 remains OPEN; assemblies/E17 are Gate2. New associative source-projection whole/FIRST passed in its exact R8 scope in addition to rectangle, ArcLength and saved-content finite passes. Typed roles, D5 layout packet, C06 finite operations, large-project resources and final beta remain unfinished. No deployment or release/source-distribution packaging occurred. The handoff's VERIFICATION and private final CHECKPOINT record what has actually been verified; do not assume pause until that completes.
