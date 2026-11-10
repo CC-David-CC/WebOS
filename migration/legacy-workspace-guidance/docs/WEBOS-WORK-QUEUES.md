@@ -36,8 +36,13 @@ certificatee91d240 with Root058b592 and independent reviewf9a5560. Actual common
 controller/OCI query-only transport3160501 and exact optional asset producer
 b485433/Root7ad55ad are also composed SOURCE ONLY. No Native/module/new Worker
 execution, mounted availability, public command or trim/extend qualification is
-claimed. Remaining Root work: catalog/package/webpack, coherent bootstrap guard
-refresh, source/current-job Workers, public commands and shared source/J/replay.
+claimed. Dedicated query catalog/build graph76df950 and exact virtual-entry
+declaration0c0321e are composed and independently source-reviewed; all eleven
+bootstrap guards bind actual9254d17d. Private source extract/verify routesdf6d8ad
+now use separate disposable Workers, still UNEXECUTED. Remaining Root work:
+certificate Worker/current-job orchestration, public commands and shared
+source/J/full-suffix replay. Revised publicwhole573f0a2 is approved for
+implementation by df6d8ad; the required consumed-source edit is not substituted.
 
 Arc BEFORE18b69dd and Root8fda31f approve mandatory authored branch
 proper-ccw/full-ccw, with no inferred full turn or saved missing-field default.

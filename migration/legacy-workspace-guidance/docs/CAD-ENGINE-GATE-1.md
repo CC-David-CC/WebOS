@@ -11,10 +11,11 @@ views stay unchanged; general annotation placement remains OPEN. Section/detail
 whole15376/child3008595 RUNNING on frozen Core82866bf/Host796c90513; Boolean producer
 queued. ACAD test/c11-affected-regressions/evidence-r1/four-bore/QUALIFICATION.json
 and docs/handoffs/CAD1-CAPTION-COUNTERBORE-CHECKPOINT-20261109.md bind actual evidence.
-Common query transport3160501 and asset sourceb485433/7ad55ad are composed but
-UNEXECUTED/UNMOUNTED. Arc branch implementation is active separately; catalog,
-source/job Workers, public shared trim/extend, resource and final delivery remain
-OPEN. 21/21 ordinary exercise passes do not close full Gate1; E17 remains Gate2.
+Common query transport3160501, asset sourceb485433/7ad55ad, dedicated catalog/
+build76df950/declaration0c0321e and disposable source Worker routesdf6d8ad are
+composed but UNEXECUTED/UNMOUNTED. Arc branch implementation is active separately;
+certificate/current-job orchestration, public shared trim/extend, resource and
+final delivery remain OPEN. 21/21 ordinary exercise passes do not close full Gate1; E17 remains Gate2.
 
 
 ## Current C11 requirements checkpoint — 2026-11-09
