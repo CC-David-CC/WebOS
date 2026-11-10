@@ -1,3 +1,5 @@
+> Original design reference from 2026-10-30. This describes intended behavior, not current implementation or qualification. The current app README is authoritative for status. Pseudocode and template JSON here are documentation, not build entries.
+
 # Integration handoff — read before writing runtime code
 
 You are integrating external design/pseudocode into an existing desktop whose real code you can inspect. The author of this package did **not** inspect the live ksu.codes repository or validate its build and service APIs. Treat every internal helper and dependency choice as a reviewable best-effort proposal. Preserve the user's outcome and hard contract, not accidental placeholder names.

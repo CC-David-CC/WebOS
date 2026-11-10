@@ -1,3 +1,5 @@
+> Original design reference from 2026-10-30. This describes intended behavior, not current implementation or qualification. The current app README is authoritative for status. Pseudocode and template JSON here are documentation, not build entries.
+
 # Official source register
 
 Reviewed 30 October 2026. URLs are documentation references, not a pinned tested dependency set. Author-created game mechanics, budgets and architecture proposals are design choices, not upstream guarantees.

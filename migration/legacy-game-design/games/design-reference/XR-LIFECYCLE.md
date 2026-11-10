@@ -1,6 +1,8 @@
+> Original design reference from 2026-10-30. This describes intended behavior, not current implementation or qualification. The current app README is authoritative for status. Pseudocode and template JSON here are documentation, not build entries.
+
 # XR lifecycle — implemented by each 3D app
 
-Sources: S05, S09, S12, S13 and S18 in [SOURCES.md](../SOURCES.md). The design below is a proposed lifecycle, not a tested engine adapter.
+Sources: S05, S09, S12, S13 and S18 in [SOURCES.md](SOURCES.md). The design below is a proposed lifecycle, not a tested engine adapter.
 
 ## States and transitions
 

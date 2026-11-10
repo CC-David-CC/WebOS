@@ -1,3 +1,5 @@
+> Original design reference from 2026-10-30. This describes intended behavior, not current implementation or qualification. The current app README is authoritative for status. Pseudocode and template JSON here are documentation, not build entries.
+
 # Desktop, phone and headset input
 
 Every app is fully playable on a normal phone screen. XR is an additional presentation, never the phone-control fallback. Responsive means the size of the **app window**, not a user-agent string.

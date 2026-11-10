@@ -1,3 +1,5 @@
+> Original design reference from 2026-10-30. This describes intended behavior, not current implementation or qualification. The current app README is authoritative for status. Pseudocode and template JSON here are documentation, not build entries.
+
 # One document, explicit semantics
 
 No invented `host.files.saveGame` API appears here. Integrator: bind the existing authorized file service after inspecting it. If no suitable service exists, the app can implement ordinary user-selected import and browser download as its document I/O. Choose that boundary explicitly; do not maintain two hidden durable databases and call it synchronization.

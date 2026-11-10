@@ -1,3 +1,5 @@
+> Original design reference from 2026-10-30. This describes intended behavior, not current implementation or qualification. The current app README is authoritative for status. Pseudocode and template JSON here are documentation, not build entries.
+
 # Common runtime gates — all NOT RUN
 
 These gates apply to each implemented app. Document validation does not execute them.

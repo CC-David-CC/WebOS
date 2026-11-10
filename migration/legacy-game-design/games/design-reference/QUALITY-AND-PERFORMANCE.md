@@ -1,3 +1,5 @@
+> Original design reference from 2026-10-30. This describes intended behavior, not current implementation or qualification. The current app README is authoritative for status. Pseudocode and template JSON here are documentation, not build entries.
+
 # What “polished” means here
 
 A title screen and a cube do not meet these designs. A finished small game has a complete loop, clear goal or activity, understandable failure/success, tutorial affordances, settings, deliberate save behavior, restart, original coherent assets, feedback and measured reliability. Keep content small enough to finish, not so broad that everything becomes placeholder.

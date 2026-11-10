@@ -1,3 +1,5 @@
+> Original design reference from 2026-10-30. This describes intended behavior, not current implementation or qualification. The current app README is authoritative for status. Pseudocode and template JSON here are documentation, not build entries.
+
 # Rive inside the games
 
 Sources: S03, S06, S10 and S14–S18. This is a proposed composition design; there is no tested official Phaser/Three/Babylon Rive adapter supplied here.
