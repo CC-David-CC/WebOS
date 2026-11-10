@@ -148,3 +148,16 @@ A Worker receiving `snapshotCurrentProject()` has merely moved the final
 comparison after the costly Main clone. Encoding full ZIPs after every edit
 would move unnecessary work into a Worker without removing it. The Core
 capture authority and Host baseline publication must therefore land together.
+
+## Implementation status update
+
+Source packet now exists across Core branch fix/cad-saved-content-worker-20261110
+and this Host branch. Host index no longer serializes/clones full documents for
+close/inspect/operation fences/native save. Core owns exact baseline comparison
+and both native/legacy JSON encoding. Async inspect and idle refresh establish
+content equality; synchronous close remains conservative for unknown or drafts.
+Save adopts its captured source after a confirmed Files write, before optional
+rebase. Hidden New/Open candidates establish their own baseline before atomic
+publication. Implementation is source-only: independent review, build and
+one grouped E2E/resource packet remain pending. This supersedes only the earlier
+implementation-pending status, not its acceptance obligations.

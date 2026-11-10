@@ -5977,3 +5977,8 @@ inspect and native Save. Contract and bounded Core/Host implementation sequence:
 must survive Undo; opaque mutation revision alone is insufficient. Status:
 plan prepared, product unchanged, implementation/build/grouped E2E pending.
 No test, Worker performance, memory improvement or qualification claim.
+
+CAD dirty-state continuation: coupled Core/Host implementation is prepared in
+owned worktrees; full Host JSON snapshots removed, Worker baseline/comparison
+and legacy JSON Blob encoding connected. Status source-only, independent review
+and grouped build/E2E/resource qualification pending. Do not mark ARC23 done.

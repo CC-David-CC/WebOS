@@ -3036,3 +3036,11 @@ unknown/stale/failure is never clean. Confirmed Save adopts its captured source,
 not the source current when the write resolves. Current implementation is
 unchanged; coordinated Core/Host implementation and grouped regression remain
 pending. No runtime or memory qualification is claimed by this entry.
+
+CAD saved-content source implementation follow-up: paired Core/Host source now
+adds Worker-owned exact equality, baseline adoption generation and cache fencing.
+Mutation stamps only fence operations. Hidden candidates and known Files writes
+own baseline adoption. Sync close reports unknown/draft/busy as dirty. Idle
+refresh is coalesced and file operations await it; source-stale comparison drops
+its pending capture without erasing the saved Worker baseline. Source review,
+build and grouped E2E remain pending; no ARC23 completion or memory claim.
