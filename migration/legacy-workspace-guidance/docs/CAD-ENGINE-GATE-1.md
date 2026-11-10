@@ -1,5 +1,29 @@
 # Gate 1 — foundational parametric CAD engine competency
 
+## Current combined-candidate checkpoint — 2026-11-09
+
+**Gate 1 remains open.** The 21 ordinary exercises have historical scoped
+passes; assembly exercise 17 belongs to Gate 2. Those passes do not qualify the
+latest combined source or every remaining sketch, topology, drawing, resource,
+and human/agent workflow.
+
+The assembled Core `14299d0f9038cee40d7a985d4e7827215234479c` built on R730;
+Host `1a2435fee7cb70210645d2600109ba665e0d63c5` adds an explicit agent example
+for the existing camera-only solid fit. The grouped finite-curve workflow is
+running on the isolated R730 fixture as session `41290`; poll that exact run.
+Its first attempt could not navigate because the workstation-to-R730 loopback
+forward was absent; that failure is preserved and the corrected run has begun.
+No current candidate-wide or Gate 1 pass is implied.
+
+Corrected-Worker Boolean and isometric workflows passed their finite artifact
+checks on the previous Core `5ccde8a` / Host `b522e7793`. The separate drawing
+reference whole completed with PASS on those pins, but its artifact reader and
+visual review remain pending. Independent source work is underway for
+associative projection, analytic arc-containing profiles, and drawing layout.
+Per the user, finish coherent implementation packets and perform grouped
+end-to-end qualification; do not insert per-edit tests. See the ACAD
+`docs/handoffs/CAD1-CURRENT-GOALS.md` for exact paths, sessions and evidence.
+
 ## Latest regression checkpoint — 2026-11-09
 
 Affected batch **4/5 qualified**: isometric, reference repair, four-bore and
