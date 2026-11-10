@@ -1,5 +1,14 @@
 # WebOS work queues and progress ledger
 
+## Curve command composition — 2026-11-09
+
+The source-only desktop entry now registers the three prepared curve query and
+endpoint commands against the shared Craft methods. This is not a deployment or
+qualification claim: build the matching current ACAD/desktop tuple and run the
+complete public agent, history, save/reopen and independent-artifact workflow.
+Review failure transport, selection lifetime and cleanup before signoff. The
+older checkpoint immediately below describes its earlier source state.
+
 ## Current affected-regression lane — 2026-11-09
 
 **4/5 complete affected legacy regressions QUALIFIED in their finite contracts.**
