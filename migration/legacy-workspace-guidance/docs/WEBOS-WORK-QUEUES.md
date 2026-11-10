@@ -31,9 +31,13 @@ crossed reviews and actual remaining Root splices. These are UNMOUNTED/UNEXECUTE
 UNQUALIFIED; neither raw codec nor pure extraction confers current-source authority.
 Third mathematical-certificate source packet e25f37e is now composed ase91d240
 following Root's full source review058b592. All THREE source lanes are integrated;
-none is mounted/executed/qualified. Additional certificate peer review is queued
-behind the coherent CAD-ARC-01 repair BEFORE plan; isolated exact-asset producer
-source is in progress. Root still owns common controller/OCI/catalog/tasks/current-
+none is mounted/executed/qualified. Additional certificate peer review is active.
+Pending uncomposed refs: Arc BEFOREa9a400121c4c769d74a41c3c1c2d64e39295ba65
+(branch docs/arc-branch-before-20261109, dxf independent review active) and optional
+asset leavesb055a600b5e6f92ee0a98bff17a9137c0a60ea4d (branch
+feature/finite-curve-support-asset-leaves-20261109, Root review next). These are
+frozen on BOTH LANs; do not execute before actual common wiring/hash admission.
+Root still owns common controller/OCI/catalog/tasks/current-
 source owner and later complete shared trim/extend qualification. CAD-ARC-01
 remains OPEN; radius1e-7mm quarter-Arc/full-turn counterexample is source-confirmed.
 Full Gate1 stays OPEN. Poll current four-bore17788 before another runtime run.
