@@ -2292,6 +2292,30 @@ pass locally; no signed/deployed-site claim.
 | W01 native evaluation custody | `craft/evaluationResources.mjs` and Craft accepted/lastComplete resource references | Candidate(unsealed/sealed)→accepted→detached→closed; candidate→closed on refusal/cancel. Pool reservation precedes factory allocation; close is idempotent. Cleanup-poisoned blocks new work. | Pool usage counters expose ownership; they do not establish native geometric validity or global memory limits. Detaching native handles does not create a second authored model. |
 | U06 command lifetime/outcome | Desktop command registry, `apps/system/jsketcher/scoped-command.mjs`, core guarded facades | Registered/current→pending→settled; lifetime loss may yield unknown outcome. Core committed outcome, cancellation and unavailable outcome differ. Hidden-frame publication and native model publication are separate boundaries. | A timeout/window disappearance or missing committed flag alone does not prove that a submitted operation did not commit. Inspect before retry when outcome is unavailable. |
 
+U06 source candidate: `settleScopedCommand` receives an already-started
+operation. If its lifetime ends before a settled result can be delivered, its
+cancellation reports `possiblyCommitted: true`; the generic wrapper cannot
+determine whether a particular command was read-only. If a received accepted
+receipt explicitly has `committed: true`, that fact is retained instead. The
+underlying rejection and cleanup-failure handling remain separate. This change
+is source-only until the combined runtime workflow verifies it.
+
+The finite-curve event selection has one private slot per command owner:
+
+| State | Event | Next state and observable result |
+| --- | --- | --- |
+| Empty | A query produces selectable events for a current document | Current slot bound to that query, source and revision. |
+| Current | No-op or an invalid event ID | Retained when the source remains current; the invalid event is refused. |
+| Current | Actual mutation submission, history travel, a new query, document close or owner disposal | Empty; an old query ID is unavailable. A submitted candidate may still fail without changing the accepted model. |
+| Current but stale | A mutation path failed to retire the slot, or another guarded dependency changed | First use rechecks the owner, refuses as stale, and revokes the slot; it never applies the old event. |
+| Empty | An old or foreign query ID is presented | Refused as unavailable; it cannot replace a different current selection. |
+
+The assembled R2 workflow observed the stale fallback after a physical
+parameter edit (`revoked`, rather than the expected eager `unavailable`). A
+source correction is in progress to retire the slot at that transaction's
+candidate-submission boundary while preserving no-op behavior. Neither that
+correction nor the complete R2 workflow has been qualified.
+
 ### CAD transition table
 
 | Family / from | Event and guard | Publication / next | Required failure behavior |

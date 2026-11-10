@@ -7,6 +7,14 @@ passes; assembly exercise 17 belongs to Gate 2. Those passes do not qualify the
 latest combined source or every remaining sketch, topology, drawing, resource,
 and human/agent workflow.
 
+Source work after the staged Host `1a2435fee`: the shared scoped-command
+settler now marks lifetime loss during an already-started operation as an
+unknown possible commit, retaining a confirmed committed receipt when one was
+actually received. This prevents callers from treating cancellation as proof
+that a mutation did not happen. The wrapper cannot classify every use as
+read-only. This source change awaits the grouped runtime qualification and is
+not present in the already-running Host fixture.
+
 The assembled Core `14299d0f9038cee40d7a985d4e7827215234479c` built on R730;
 Host `1a2435fee7cb70210645d2600109ba665e0d63c5` adds an explicit agent example
 for the existing camera-only solid fit. The grouped finite-curve workflow is
