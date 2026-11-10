@@ -1,5 +1,10 @@
 # WebOS work queues and progress ledger
 
+## Handoff freeze — 2026-11-10
+
+The user requested a complete portable handoff, verification from another machine with no PC dependency, and then PAUSE. Implementation and new feature qualification are stopped; only checkpoint/build/browser/backup recovery verification is authorized for this stop point. Start at `docs/handoffs/CAD1-20261110/START-HERE.md`. Its STATUS supersedes old chronological RUNNING notes below. Gate1 remains OPEN; assemblies/E17 are Gate2. New associative source-projection whole/FIRST passed in its exact R8 scope in addition to rectangle, ArcLength and saved-content finite passes. Typed roles, D5 layout packet, C06 finite operations, large-project resources and final beta remain unfinished. No deployment or release/source-distribution packaging occurred. The handoff's VERIFICATION and private final CHECKPOINT record what has actually been verified; do not assume pause until that completes.
+
+
 ## Curve whole R1 launch failure — 2026-11-09
 
 The first complete finite-curve whole on Core `4cd85e6`, Host `bdd83c2f2`,
