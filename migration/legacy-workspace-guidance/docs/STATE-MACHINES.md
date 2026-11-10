@@ -3024,3 +3024,15 @@ validity, source intent, finite-surface accuracy and native editable persistence
 remain distinct proofs. Derived qualification changes no accepted model state.
 Historical eighteen-source R4 custody remains fixed; later verifier sources have
 separate Git before/after custody. New browser wholes capture the expanded roster.
+
+### CAD saved-content comparison preparation — 2026-11-10
+
+Confirmed Main-thread full JSON snapshot/clone costs remain in the Host CAD
+adapter. Source contract: `docs/reviews/CAD-DIRTY-WORKER-CONTRACT-20261110.md`.
+Mutation revision and saved-content equality are distinct states: Undo can
+restore saved content under a new revision. A future Worker comparison must
+publish only for the current document revision and baseline generation;
+unknown/stale/failure is never clean. Confirmed Save adopts its captured source,
+not the source current when the write resolves. Current implementation is
+unchanged; coordinated Core/Host implementation and grouped regression remain
+pending. No runtime or memory qualification is claimed by this entry.

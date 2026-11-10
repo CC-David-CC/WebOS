@@ -5968,3 +5968,12 @@ indexed patch/source-role composition and six-mesh/six-STEP/two-SVG corrected
 artifact verification remain pending; original outputs and FIRST failure are
 unchanged. This does not close the extent family or full Gate1. Native finite-
 curve source eea7128b and Core protocol56eeb1c are source-only, not mounted.
+
+### CAD dirty-state resource packet — 2026-11-10, source investigation
+
+Confirmed whole-document JSON snapshot/clone costs persist in Host CAD close,
+inspect and native Save. Contract and bounded Core/Host implementation sequence:
+`docs/reviews/CAD-DIRTY-WORKER-CONTRACT-20261110.md`. Exact saved-content equality
+must survive Undo; opaque mutation revision alone is insufficient. Status:
+plan prepared, product unchanged, implementation/build/grouped E2E pending.
+No test, Worker performance, memory improvement or qualification claim.
