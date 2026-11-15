@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has2,615 unresolved entries plus33 unqualified blob candidates, after
+ledger now has2,582 unresolved entries plus33 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -269,3 +269,5 @@ Phase48 retains eight statically referenced original CAD review inputs, closing1
 Phase49 retains79 original JavaScript operator/browser-fixture sources with their selected histories, after language-specific syntax and bounded literal screening. No old operator or driver executed and no component functionality changed. See [legacy JavaScript operations](LEGACY-JS-OPERATIONS.md).
 
 Phase50 retains350 original Python operator/check sources after bounded AST/literal and selected-history review.57 other current Python sources remain private for context review. No old operator/driver ran and no app functionality changed. See [context-reviewed Python source](LEGACY-PYTHON-CONTEXT.md).
+
+Phase52 organizes33 original game design sources: seven rule documents in their individual game repositories and26 shared integration/experience references in the parent. Source bodies/histories retained; no gameplay or current rule/API compatibility claim. See [game design ownership](GAME-DESIGN-OWNERSHIP.md).

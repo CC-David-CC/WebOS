@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has2,615 unresolved dispositions and33 unqualified blob candidates among
+still has2,582 unresolved dispositions and33 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -192,7 +192,7 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-50-python-operator-context/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-52-game-design-ownership/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
 Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
@@ -249,3 +249,5 @@ Phase48 retains eight statically referenced original CAD review inputs, closing1
 Phase49 retains79 original JavaScript operator/browser-fixture sources with their selected histories, after language-specific syntax and bounded literal screening. No old operator or driver executed and no component functionality changed. See [legacy JavaScript operations](migration/LEGACY-JS-OPERATIONS.md).
 
 Phase50 retains350 original Python operator/check sources after bounded AST/literal and selected-history review.57 other current Python sources remain private for context review. No old operator/driver ran and no app functionality changed. See [context-reviewed Python source](migration/LEGACY-PYTHON-CONTEXT.md).
+
+Phase52 organizes33 original game design sources: seven rule documents in their individual game repositories and26 shared integration/experience references in the parent. Source bodies/histories retained; no gameplay or current rule/API compatibility claim. See [game design ownership](migration/GAME-DESIGN-OWNERSHIP.md).

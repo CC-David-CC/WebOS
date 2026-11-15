@@ -1,0 +1,5 @@
+# Historical shared game design
+
+These original cross-game plans, requirements, source links, templates and pseudocode are retained for rebuild context. They are not current operating instructions or implementation/asset/license acceptance. Historical NOT RUN/PASS/status/budget statements do not qualify the selected WebOS components. Current user decisions and AGENTS govern the rebuild, including one independently owned app per game, shared human/agent operations and each XR app retaining its own immersive WebXR session.
+
+Seven game-specific core-rule documents belong to their individual app repositories under docs/CORE-RULES.md. Shared integration/presentation contracts remain parent-owned here. Runtime/model/asset/phone/XR/account-storage and authorization gates must be proven separately. Do not execute historical commands or enable speculative interfaces merely because a plan describes them. Templates and pseudocode are design inputs only. See ../GAME-DESIGN-OWNERSHIP.md and private phase52 for original path/history maps.
