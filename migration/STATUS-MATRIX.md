@@ -75,7 +75,7 @@ Hosted Rooms is unused historical code, not a new service.
 | spreadsheet | `apps/spreadsheet/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | stitch-converter | `apps/stitch-converter/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | svg-editor | `apps/svg-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| terminal | `apps/terminal/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| terminal | `apps/terminal/` | PASS | PASS three original startup-output assertions; VM reference only | OPEN legacy host/guest APIs, xterm build and lifecycle/agent integration; optional outside minimum |
 | text | `apps/text/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 
 ## Craft apps (17)
@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has3,325 unresolved entries plus33 unqualified blob candidates, after
+ledger now has3,319 unresolved entries plus33 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -253,3 +253,5 @@ Phase40 retains85 original desktop visual/license inputs with history in Desktop
 Phase41 assigns53 remaining legacy backend/configuration/documentation paths across seven existing components and parent deployment composition, preserving source/history and keeping all old entrypoints inactive. Current implementations and minimum dependencies are unchanged. See [backend ownership](BACKEND-OWNERSHIP.md).
 
 Phase42 adds the independent local speech engine with34 verified static inputs (97,100,582 bytes), an offline graph builder and successful real CPU/WASM spoken-sample recognition. Inputs live at `artifacts/inputs/speech/`; no user audio is copied and Desktop voice is not enabled. See [speech engine](SPEECH-ENGINE.md).
+
+Phase43 retains Terminal’s original PTY/startup glue, unchanged three-assertion reference test and historical notes. Real guest/current host/agent integration remain OPEN, and no optional guest dependency is enabled. See [terminal source](TERMINAL-SOURCE.md).
