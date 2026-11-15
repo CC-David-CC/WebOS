@@ -27,14 +27,18 @@ For Craft Cargo commands in this layout, see
 [shared build inputs](migration/CRAFT-BUILD-INPUTS.md). All 17 workspace metadata
 checks pass. The selected shared fonts now include the verified Latin catalogue;
 DeckCraft's font crate and complete browser target pass offline WebAssembly
-compile checks with required fonts. Browser launch and host integration remain
-OPEN; metadata and compilation are not runtime acceptance.
+compile checks with required fonts. Desktop hosting and account integration
+remain OPEN; metadata and compilation alone are not runtime acceptance.
+DeckCraft also has a [standalone source-built browser pass](migration/DECKCRAFT-BROWSER-BASELINE.md):
+real slide rendering, command insertion and undo. Desktop/account integration
+is still OPEN.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
 still has 1,969 unresolved dispositions and 25 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
-count. The remaining16 Craft apps and broader apps/games require real browser
-builds, complete assets, lifecycle and shared-operation qualification.
+count. The remaining16 Craft apps and broader apps/games still need complete host,
+file, lifecycle and shared-operation qualification. Browser build status is
+recorded individually in the matrix.
 
 Browser backend source is now organized under `apps/browser/server/`, with an
 installable package using Accounts' public JOSE interface. Its56 Python tests
