@@ -55,3 +55,6 @@
 [submodule "filmcraft"]
 	path = filmcraft
 	url = ../filmcraft.git
+[submodule "effectcraft"]
+	path = effectcraft
+	url = ../effectcraft.git
