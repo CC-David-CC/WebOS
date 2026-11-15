@@ -48,6 +48,8 @@ try {
  const first = await context(true); await launch(first.p, 'wordcraft');
  await first.p.waitForSelector('.webos-wordcraft iframe'); const handle = await first.p.$('.webos-wordcraft iframe'), frame = await handle.contentFrame();
  await first.p.waitForFunction(() => document.querySelector('.webos-wordcraft-status')?.textContent.startsWith('New document;'), {timeout:120000});
+ const availableFonts=await command(frame,'font.list',{all:true});
+ assert(availableFonts.families?.includes('STIX Two Math'),'Pinned math font is absent from the actual WASM font database');
  await command(frame, 'para.heading1'); await command(frame, 'text.insert', {text:'WebOS authoring heading'});
  await command(frame, 'text.newParagraph'); await command(frame, 'para.normal'); await command(frame, 'text.insert', {text:'A paragraph saved through the shared account storage service.'});
  await command(frame, 'text.newParagraph'); await command(frame, 'para.bullets'); await command(frame, 'text.insert', {text:'First list item'}); await command(frame, 'text.newParagraph'); await command(frame, 'text.insert', {text:'Second list item'});
@@ -61,7 +63,7 @@ try {
  const reloaded=await openAuthored(first.p);assert.deepEqual(await structure(reloaded),original);
  const second=await context();const remote=await openAuthored(second.p);assert.deepEqual(await structure(remote),original);
  await second.p.screenshot({path:path.join(output,'wordcraft-heading-paragraph-list.png')});assert.deepEqual(errors,[]);assert(!requests.some(name=>/v86|\/vm\/|terminal/.test(name)));
- Object.assign(report,{status:'PASS',createdInActualEngine:true,headingParagraphAndTwoListItems:true,savedToAccount:true,closeAndFilesReopenPreservesFormatting:true,reloadPreservesFormatting:true,secondCleanContextPreservesFormatting:true,noGuestRequests:true,pageErrors:0});
+ Object.assign(report,{status:'PASS',createdInActualEngine:true,builtInMathFont:true,headingParagraphAndTwoListItems:true,savedToAccount:true,closeAndFilesReopenPreservesFormatting:true,reloadPreservesFormatting:true,secondCleanContextPreservesFormatting:true,noGuestRequests:true,pageErrors:0});
 } catch (error) { report.error = {name: error.name, message: error.message}; report.pageErrors = errors; report.diagnostics = diagnostics; if(browser){let i=0;for(const p of await browser.pages())await p.screenshot({path:path.join(output,'failure-'+i+++'.png')}).catch(()=>{});} throw error; }
 finally { if (browser) await browser.close(); if (server) { server.kill('SIGTERM'); await new Promise(resolve => {if (server.exitCode !== null || server.signalCode) resolve(); else server.once('exit', resolve)}); } await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n'); await writeFile(path.join(output, 'server-errors.log'), Buffer.concat(serverErrors)); await writeFile(path.join(output, 'diagnostics.json'), JSON.stringify({pageErrors:errors, events:diagnostics},null,2)+'\n'); }
 console.log(JSON.stringify(report));
