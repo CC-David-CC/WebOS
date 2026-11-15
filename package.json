@@ -11,6 +11,7 @@
     "apps/files",
     "apps/wordcraft/webos",
     "apps/calculator",
+    "apps/help",
     "libraries/codemirror",
     "apps/text"
   ],
