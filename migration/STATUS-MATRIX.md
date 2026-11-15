@@ -1,27 +1,28 @@
 # Current source and rebuild status matrix
 
-This chart covers the parent selection at `58dd6244f449cd1f1a15647d7121c17bd9449bec`.
-Git links select exact revisions. All112 pins match the clean first-slice source
-proof and remain in local bare origins. That browser qualification initialized
-eleven components; it does not prove all112 components build or work.
+Git links select exact revisions. The assembly now has120 independent source
+repositories:112 retained selections plus eight planned-game extraction packages.
+The earlier browser qualification initialized eleven components; planned-game
+checks cover their domain packages. Neither proves all120 components build or work.
 
-There are111 component repositories plus1 preserved legacy repository:
-78 apps (33 system/CAD,17 Craft,28 games),8 engines,5 platform components,
-17 libraries,2 shared asset projects and1 shared tooling project, plus legacy Rooms.
+There are119 component repositories plus1 preserved legacy repository:
+85 apps (33 system/CAD,17 Craft,35 games including7 planned cores),8 engines,
+5 platform components,18 libraries,2 shared asset projects and1 shared tooling
+project, plus legacy Rooms.
 
 **PASS** covers the stated check. **OPEN** means incomplete or unverified.
 Retained baseline tests are separate from new runtime acceptance.
 
 | Gate | Current result |
 |---|---|
-| Registered component source layout | PASS:112 independent repositories listed below |
+| Registered component source layout | PASS:120 independent repositories listed below |
 | Entire original source-area reconciliation | OPEN: preserved backend, scripts, research, tests and WIP still need final disposition |
 | Calculator → Files → Text → WordCraft | PASS local/clean workflows and disposable-account checks on ksu.codes |
 | Server account files | PASS signed persistence, conflicts, restart and second clean browser context |
 | Physical second-machine acceptance | OPEN; browser contexts are not a second machine |
 | Human/agent operations | Live routing and Accounts core checks PASS; authenticated transport, consent and scoped agent file authority OPEN |
 | Remaining16 Craft apps and old app/game integration | OPEN; source presence is not app support |
-| Native/font review | Math-font cause fixed in review; WordCraft main4,969 tests PASS; full application CI OPEN; shared default-workspace checks PASS in review |
+| Native/font review | WordCraft review all9 CI stages PASS; shared default-workspace checks PASS; source-pinned browser artifact/qualification OPEN |
 | Historical assets and old-user migration | Not prerequisites for the fresh rebuild; preserve existing recovery |
 | External Git publication | Not authorized or attempted; local origins are not off-machine backups |
 
@@ -101,7 +102,7 @@ Hosted Rooms is unused historical code, not a new service.
 | vectorcraft | `apps/vectorcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | wordcraft | `apps/wordcraft/` | PASS | PASS real WASM authoring, formatting, account persistence, conflicts and lifecycle | PASS local/clean and earlier hosted pin; newer native/font review and delegated agents OPEN |
 
-## Games (28)
+## Games (35:28 registered,7 source-only planned cores)
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
@@ -133,6 +134,13 @@ Hosted Rooms is unused historical code, not a new service.
 | story-cards | `apps/story-cards/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
 | tabletop-bot-arena | `apps/tabletop-bot-arena/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
 | target-garden | `apps/target-garden/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| math-path | `apps/math-path/` | PASS | PASS: original domain/snapshot tests after independent public-package port | OPEN: planned core only; no Desktop view, renderer or server storage adapter |
+| fraction-farm | `apps/fraction-farm/` | PASS | PASS: original domain/snapshot tests after independent public-package port | OPEN: planned core only; no Desktop view, renderer or server storage adapter |
+| word-weaver | `apps/word-weaver/` | PASS | PASS: original domain/snapshot tests after independent public-package port | OPEN: planned core only; no Desktop view, renderer or server storage adapter |
+| market-math | `apps/market-math/` | PASS | PASS: original domain/snapshot tests after independent public-package port | OPEN: planned core only; no Desktop view, renderer or server storage adapter |
+| rule-detective | `apps/rule-detective/` | PASS | PASS: original domain/snapshot tests after independent public-package port | OPEN: planned core only; no Desktop view, renderer or server storage adapter |
+| pocket-conquest | `apps/pocket-conquest/` | PASS | PASS: original domain/snapshot tests after independent public-package port | OPEN: planned core only; no Desktop view, renderer or server storage adapter |
+| tile-islands | `apps/tile-islands/` | PASS | PASS: original domain/snapshot tests after independent public-package port | OPEN: planned core only; no Desktop view, renderer or server storage adapter |
 
 ## Engines (8)
 
@@ -147,7 +155,7 @@ Hosted Rooms is unused historical code, not a new service.
 | engine-usd-brep | `engines/usd-brep/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | engine-v86 | `engines/v86/` | PASS | PASS engine source/history and optional static inputs | OPEN optional guest integration; excluded from minimum dependencies |
 
-## Shared libraries and tools (17)
+## Shared libraries and tools (18)
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
@@ -168,6 +176,7 @@ Hosted Rooms is unused historical code, not a new service.
 | webtorrent | `libraries/webtorrent/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | yjs | `libraries/yjs/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | zip | `libraries/zip/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| learning-game-core | `libraries/learning-game-core/` | PASS | PASS: shared validation/report/odds modules, original experience tests and parent cross-game tests | Public package used by7 planned cores; no independent Desktop view |
 
 ## Shared asset projects (2)
 
@@ -190,9 +199,10 @@ Hosted Rooms is unused historical code, not a new service.
 
 ## Remaining organization and build work
 
-The112-row chart does not close original-source reconciliation. An earlier
-tracked-source ledger still had6,026 entries without verified final disposition.
-That stale audit count is not proof that6,026 files are missing. Baseline histories,
+The120-row chart does not close original-source reconciliation. The tracked-source
+ledger now has6,003 unresolved entries plus100 unqualified blob candidates, after
+23 planned-game/metadata dispositions were verified. These counts do not mean
+those files are missing. Baseline histories,
 new path maps, generated evidence and deliberately preserved historical material
 must be compared explicitly. Backend/network/build/test/research areas and WIP
 remain preserved privately. Required current source must get an owner; obsolete
@@ -209,9 +219,8 @@ Browser/Microduck baseline failures remain evidence; no assertions were weakened
 Every additional app needs its actual asset graph, lifecycle, shared operations
 and browser acceptance checked at the selected source revision.
 
-The unresolved ledger also contains seven source-only planned game cores:
-Math Path, Fraction Farm, Word Weaver, Market Math, Rule Detective, Pocket Conquest
-and Tile Islands. They have rules and tests but no Desktop view. Their separate
-repositories and shared-helper ownership still need extraction/review; they are
-not included in the28 registered-game count above. The inspected source prefix
-has no staged, unstaged or untracked work at the current audit boundary.
+Seven planned game cores now have independent histories/packages and one shared
+library. All57 original tests pass through public exports after separation.
+They remain source-only prototypes, separate from the28 previously registered
+games. See [their exact qualification and save-version limits](LEARNING-GAMES.md).
+The inspected original prefix had no staged, unstaged or untracked work.

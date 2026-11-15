@@ -334,3 +334,27 @@
 [submodule "rooms"]
 	path = legacy/rooms
 	url = ../rooms.git
+[submodule "math-path"]
+	path = apps/math-path
+	url = ../math-path.git
+[submodule "fraction-farm"]
+	path = apps/fraction-farm
+	url = ../fraction-farm.git
+[submodule "word-weaver"]
+	path = apps/word-weaver
+	url = ../word-weaver.git
+[submodule "market-math"]
+	path = apps/market-math
+	url = ../market-math.git
+[submodule "rule-detective"]
+	path = apps/rule-detective
+	url = ../rule-detective.git
+[submodule "pocket-conquest"]
+	path = apps/pocket-conquest
+	url = ../pocket-conquest.git
+[submodule "tile-islands"]
+	path = apps/tile-islands
+	url = ../tile-islands.git
+[submodule "learning-game-core"]
+	path = libraries/learning-game-core
+	url = ../learning-game-core.git
