@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 import subprocess
 
-PLATFORM = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage'))
+PLATFORM = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage', 'rooms'))
 SHARED_ROLES = {name: 'libraries' for name in (
     'craft-libs', 'egui', 'codemirror', 'gltf-transform', 'wavesurfer', 'tone',
     'zip', 'mermaid', 'echarts', 'plotly', 'pdfme', 'maplibre', 'transformers',

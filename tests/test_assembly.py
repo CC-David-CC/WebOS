@@ -34,6 +34,11 @@ class OrganizedLayoutTests(unittest.TestCase):
             self.assertFalse(inspection.organized_path(component, component))
             self.assertFalse(inspection.organized_path(component, 'platform/' + component))
 
+    def test_optional_rooms_has_platform_ownership(self):
+        self.assertTrue(inspection.organized_path('rooms', 'platform/rooms'))
+        self.assertFalse(inspection.organized_path('rooms', 'apps/rooms'))
+        self.assertNotIn('rooms', inspection.CORE)
+
     def test_shared_projects_have_distinct_owners(self):
         for component, role in [('craft-libs', 'libraries'), ('egui', 'libraries'),
                                 ('craft-fonts', 'assets'), ('craft-i18n', 'assets'),

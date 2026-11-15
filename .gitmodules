@@ -331,3 +331,6 @@
 [submodule "pcb-design"]
 	path = apps/pcb-design
 	url = ../pcb-design.git
+[submodule "rooms"]
+	path = platform/rooms
+	url = ../rooms.git
