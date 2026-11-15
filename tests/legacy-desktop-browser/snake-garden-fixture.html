@@ -1,0 +1,68 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Snake Garden isolated harness</title>
+<body>
+<script type="module">
+const entry = new URLSearchParams(location.search).get('app');
+if (!entry || !entry.startsWith('/apps/snake-garden/')) throw Error('Missing Snake Garden bundle');
+const styles = document.createElement('link');
+styles.rel = 'stylesheet';
+styles.href = entry.replace('index.mjs', 'index.css');
+document.head.append(styles);
+const {mount} = await import(entry);
+
+const files = new Map();
+let sequence = 0;
+const context = {
+  owner: 'test',
+  path(value) { return value.startsWith('/') ? value : '/' + value; },
+  name(value) { return String(value).replaceAll('/', ''); },
+  valid() { return true; },
+  files: {
+    async read(path) {
+      if (!files.has(path)) throw Error('File not found.');
+      return files.get(path);
+    },
+    async write(path, data, expected) {
+      const current = files.get(path)?.version ?? null;
+      if (current !== expected) throw Error('File changed');
+      const out = {data: typeof data === 'string' ? new TextEncoder().encode(data) : data, version: String(++sequence), status: 'synced'};
+      files.set(path, out);
+      return out;
+    },
+    async stat(path) {
+      const file = files.get(path);
+      if (!file) throw Error('File not found.');
+      return {version: file.version, status: file.status, bytes: file.data.byteLength};
+    },
+    subscribe() { return () => {}; },
+  },
+};
+const make = (tag, className = '', text = '') => {
+  const element = document.createElement(tag);
+  element.className = className;
+  element.textContent = text;
+  return element;
+};
+window.fileStore = files;
+window.targetPath = '/Snake Garden.game.json';
+window.makeSnake = () => {
+  const controller = new AbortController();
+  const app = mount({
+    signal: controller.signal,
+    ui: {
+      make,
+      confirm: async () => true, // Desktop uses an in-page dialog; account tests cover cancellation.
+    },
+    storage: {
+      signedInSubject: () => 'test',
+      mirrorFileContext: async () => context,
+      pickFile: async () => window.targetPath,
+      pickFolder: async () => '/',
+    },
+  });
+  document.body.append(app.element);
+  return {app, controller};
+};
+window.instances = [makeSnake(), makeSnake()];
+</script>

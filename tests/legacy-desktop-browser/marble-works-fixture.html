@@ -1,0 +1,29 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Marble Works isolated harness</title>
+<body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get('app');
+if(!entry||!entry.startsWith('/apps/marble-works/'))throw Error('Missing Marble Works bundle');
+const style=document.createElement('link');style.rel='stylesheet';style.href=entry.replace('index.mjs','index.css');document.head.append(style);
+const {mount}=await import(entry);
+const files=new Map();let version=0;
+const make=(tag,className='',text='')=>{const node=document.createElement(tag);node.className=className;node.textContent=text;return node};
+const context={owner:'test',valid:()=>true,path:value=>value.startsWith('/')?value:'/'+value,name:value=>String(value).replaceAll('/',''),files:{
+ async read(path){if(!files.has(path))throw Error('File not found.');return files.get(path)},
+ async stat(path){const file=await context.files.read(path);return {version:file.version,status:file.status,bytes:file.data.byteLength}},
+ async write(path,data){const item={data:typeof data==='string'?new TextEncoder().encode(data):data,version:String(++version),status:'synced'};files.set(path,item);return item},
+ subscribe(){return()=>{}}
+}};
+window.fileStore=files;window.target=null;
+window.makeMarble=(launchPath=null)=>{
+ const controller=new AbortController();
+ const host={signal:controller.signal,w:launchPath?{launchContext:{version:1,storage:'mirror',path:launchPath,owner:'test'}}:{},ui:{
+  make,textButton:(label,action)=>{const node=make('button','',label);node.setAttribute('aria-label',label);node.addEventListener('click',action);return node},
+  appInput:(label,value)=>{const node=make('input');node.setAttribute('aria-label',label);node.value=value??'';return node},
+  confirm:async message=>window.confirm(message),
+ },storage:{signedInSubject:()=>'test',mirrorFileContext:async()=>context,pickFile:async()=>window.target,pickFolder:async()=>'/'}};
+ const app=mount(host);document.body.append(app.element);return {app,controller};
+};
+window.instances=[makeMarble(),makeMarble()];
+</script>

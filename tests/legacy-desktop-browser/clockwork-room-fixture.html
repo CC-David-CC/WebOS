@@ -1,0 +1,94 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Clockwork Room isolated harness</title>
+<body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get('app');
+if(!entry||!entry.startsWith('/apps/clockwork-room/'))throw Error('Missing Clockwork Room bundle');
+const styles=document.createElement('link');
+styles.rel='stylesheet';
+styles.href=entry.replace('index.mjs','index.css');
+document.head.append(styles);
+const {mount}=await import(entry);
+
+const files=new Map();
+let sequence=0;
+const context={
+ owner:'test',
+ valid:()=>true,
+ path:value=>value.startsWith('/')?value:'/'+value,
+ name:value=>String(value).replaceAll('/',''),
+ files:{
+  async read(pathValue){
+   if(!files.has(pathValue))throw Error('File not found.');
+   return files.get(pathValue);
+  },
+  async write(pathValue,data,expected){
+   const current=files.get(pathValue)?.version??null;
+   if(current!==expected)throw Error('File changed');
+   const output={
+    data:typeof data==='string'?new TextEncoder().encode(data):data,
+    version:String(++sequence),
+    status:'synced',
+   };
+   files.set(pathValue,output);
+   return output;
+  },
+  async stat(pathValue){
+   const file=files.get(pathValue);
+   if(!file)throw Error('File not found.');
+   return file;
+  },
+  subscribe(){return()=>{}},
+ },
+};
+
+const make=(tag,className='',text='')=>{
+ const element=document.createElement(tag);
+ element.className=className;
+ element.textContent=text;
+ return element;
+};
+const button=(label,action)=>{
+ const element=make('button','',label);
+ element.setAttribute('aria-label',label);
+ element.addEventListener('click',action);
+ return element;
+};
+const input=(label,value)=>{
+ const element=make('input');
+ element.setAttribute('aria-label',label);
+ element.value=value;
+ return element;
+};
+
+window.fileStore=files;
+window.clockworkContext=context;
+window.target='/Clockwork Room.game.json';
+window.confirmAnswer=true;
+window.makeRoom=()=>{
+ const controller=new AbortController();
+ const desktopWindow={};
+ const app=mount({
+  signal:controller.signal,
+  w:desktopWindow,
+  ui:{
+   make,
+   textButton:button,
+   appInput:input,
+   confirm:async message=>window.confirmAnswer?window.confirm(message):false,
+  },
+  storage:{
+   signedInSubject:()=> 'test',
+   mirrorFileContext:async()=>context,
+   pickFile:async()=>window.target,
+   pickFolder:async()=>'/',
+  },
+ });
+ const wrapper=make('div','window focused');
+ wrapper.append(app.element);
+ document.body.append(wrapper);
+ return {app,controller,w:desktopWindow,wrapper};
+};
+window.instances=[makeRoom(),makeRoom()];
+</script>

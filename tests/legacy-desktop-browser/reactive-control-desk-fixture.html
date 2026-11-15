@@ -1,0 +1,30 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Reactive Control Desk isolated harness</title>
+<body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get('app');
+if(!entry||!entry.startsWith('/apps/reactive-control-desk/'))throw Error('Missing Reactive Control Desk bundle');
+const style=document.createElement('link');style.rel='stylesheet';style.href=entry.replace('index.mjs','index.css');document.head.append(style);
+const {mount}=await import(entry);
+const files=new Map();let version=0;
+const context={owner:'test',valid:()=>true,path:value=>value.startsWith('/')?value:'/'+value,name:value=>String(value).replaceAll('/',''),files:{
+ async read(path){if(!files.has(path))throw Error('File not found.');return files.get(path)},
+ async write(path,data,expected){if((files.get(path)?.version??null)!==expected)throw Error('File changed');const out={data:typeof data==='string'?new TextEncoder().encode(data):data,version:String(++version),status:'synced'};files.set(path,out);return out},
+ async stat(path){const file=files.get(path);if(!file)throw Error('File not found.');return {...file,bytes:file.data.byteLength}},
+ subscribe(){return()=>{}},async sync(){}
+}};
+const make=(tag,className='',text='')=>{const node=document.createElement(tag);node.className=className;node.textContent=text;return node};
+window.fileStore=files;window.fileContext=context;window.target='/Reactive Control Desk.game.json';
+window.makeDesk=()=>{
+ const controller=new AbortController(),w={reactiveControlDesk:{dirty:false}};
+ const app=mount({w,signal:controller.signal,ui:{
+  make,
+  textButton(label,action){const node=make('button','',label);node.setAttribute('aria-label',label);node.addEventListener('click',action);return node},
+  appInput(label,value=''){const node=make('input');node.setAttribute('aria-label',label);node.value=value;return node},
+  confirm:async message=>window.confirm(message),
+ },storage:{signedInSubject:()=> 'test',mirrorFileContext:async()=>context,pickFile:async()=>window.target,pickFolder:async()=>'/'}});
+ const win=make('section','window focused');win.append(app.element);document.body.append(win);return{app,controller,w};
+};
+window.instances=[makeDesk(),makeDesk()];
+</script>

@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><title>Document operations isolated fixture</title>
+<script type="module">
+import {mountApp} from './app-instance.mjs';
+import * as circuit from './circuit.mjs';
+import * as logic from './logic.mjs';
+
+const session={}, subject='fixture-account', filesData=new Map([['/a.cir',{data:'test\nR1 1 0 1k\n.op\n.end\n',version:'v1'}]]), versions=new Map(), deferred={};
+const hold=async(kind,path)=>{if(deferred[kind]?.path===path){deferred[kind].started=true;await new Promise((resolve,reject)=>{deferred[kind].resolve=resolve;deferred[kind].reject=reject;});}};
+const files={async read(path){await hold('read',path);const f=filesData.get(path);if(!f)throw Error('File not found.');return {...f,data:new TextEncoder().encode(f.data),status:'local'}},async readBounded(path,limit,{signal}={}){window.lastReadSignal=signal;return this.read(path)},async write(path,data,expected){await hold('write',path);const old=filesData.get(path);if((old?.version??null)!==expected)throw Error('This file changed; reload it before saving.');const version='v'+((versions.get(path)||1)+1);versions.set(path,(versions.get(path)||1)+1);filesData.set(path,{data:typeof data==='string'?data:new TextDecoder().decode(data),version});return {version,status:'local'}},async stat(path){const f=filesData.get(path);if(!f)throw Error('File not found.');return {...f,status:'local'}},async sync(){await hold('sync','/sync')},subscribe(){return ()=>{}}};
+window.writeCalls=0;const originalWrite=files.write;files.write=async function(...args){window.writeCalls++;return originalWrite.apply(this,args)};
+const context={files,path:p=>'/'+String(p).split('/').filter(Boolean).join('/'),name:n=>n,valid:()=>true};
+const make=(tag,cls='',content)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(content!=null)e.textContent=content;return e;};
+const textButton=(label,action)=>{const b=make('button','',label);b.type='button';b.addEventListener('click',action);return b;};
+const appInput=(label,value)=>{const e=make('input');e.setAttribute('aria-label',label);e.value=value;return e;};
+const views=[];
+function mount(which,path){const commands=new Map(),w={launchContext:which==='logic'&&path?{owner:subject,storage:'mirror',path}:null},host={w,session:()=>session,storage:{signedInSubject:()=>subject,mirrorFileContext:async()=>context,pickFile:async()=>window.nextPick||null,pickFolder:async()=>null},ui:{make,textButton,appInput,confirm:async()=>true,applyInputMode(){}},tools:{},commands:{register(spec,run){commands.set(spec.id,run);return()=>commands.delete(spec.id);}}};const app=mountApp(which==='logic'?logic:circuit,host);document.body.append(app.element);const v={app,w,commands};views.push(v);return views.length-1;}
+window.fixture={mount,views,filesData,deferred,backgroundSync:()=>files.sync(),hold(kind,path){deferred[kind]={path,started:false};},release(kind){deferred[kind].resolve();delete deferred[kind]},fail(kind){deferred[kind].reject(Error('injected failure'));delete deferred[kind]},async command(i,name,args){return views[i].commands.get(name)(args)}};
+</script>

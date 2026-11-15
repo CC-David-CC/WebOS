@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';import puppeteer from 'puppeteer-core';import {spawn} from 'node:child_process';import {mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
+const profile=await mkdtemp(join(tmpdir(),'codi-gc-attempt-')),http=spawn('python3',['-m','http.server','19936','--bind','127.0.0.1'],{stdio:'ignore'});let browser;
+try{await new Promise(r=>setTimeout(r,250));browser=await puppeteer.launch({executablePath:process.env.CHROME,userDataDir:profile,headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});const page=await browser.newPage();await page.goto('http://127.0.0.1:19936/');
+const result=await page.evaluate(async()=>{const {MirroredFiles}=await import('/active-system/storage/browser/mirror.mjs'),{VerifiedContent}=await import('/active-system/storage/browser/verified-content.mjs'),scope='gc-attempt',server={async list(){throw Error('offline')}},m=new MirroredFiles({scope,server,content:new VerifiedContent(scope),retryMs:0});let old=await m.write('/x','attempted');await m.write('/x','newer',old.version);
+ const db=await new Promise((res,rej)=>{const q=indexedDB.open('codi-mirrored-files-v1',2);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)});
+ await new Promise((res,rej)=>{const tx=db.transaction('files','readwrite'),store=tx.objectStore('files'),q=store.get([scope,'/x']);q.onsuccess=()=>{const row=q.result;row.attempted={base:null,sha256:old.sha256};row.conflict=true;store.put(row)};tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});db.close();
+ let cursor=null,removed=0,retained=0;do{const p=await m.collectGarbage({cursor,limit:1});removed+=p.removed;retained+=p.referenced;cursor=p.next}while(cursor);
+ const row=await m.read('/x'),status=row.status,text=new TextDecoder().decode(row.data);m.close();return {removed,retained,status,text}});
+assert.deepEqual(result,{removed:0,retained:2,status:'conflict',text:'newer'});console.log('PASS collector retains conflicted current and uncertain attempted content');
+}finally{await browser?.close();http.kill('SIGTERM');await rm(profile,{recursive:true,force:true})}

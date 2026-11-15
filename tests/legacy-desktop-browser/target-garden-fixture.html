@@ -1,0 +1,37 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Target Garden isolated harness</title>
+<body>
+<script type="module">
+const entry=new URLSearchParams(location.search).get('app');
+if(!entry||!entry.startsWith('/apps/target-garden/'))throw Error('Missing Target Garden bundle');
+const styles=document.createElement('link');styles.rel='stylesheet';styles.href=entry.replace('index.mjs','index.css');document.head.append(styles);
+const {mount}=await import(entry);
+const files=new Map();let sequence=0;
+const context={
+ owner:'test',path:value=>value.startsWith('/')?value:'/'+value,name:value=>String(value).replaceAll('/',''),valid:()=>true,
+ files:{
+  async read(path){if(!files.has(path))throw Error('File not found.');return files.get(path)},
+  async write(path,data,expected){const current=files.get(path)?.version??null;if(current!==expected)throw Error('File changed');const out={data:typeof data==='string'?new TextEncoder().encode(data):data,version:String(++sequence),status:'synced'};files.set(path,out);return out},
+  async stat(path){const file=files.get(path);if(!file)throw Error('File not found.');return {version:file.version,status:file.status,bytes:file.data.byteLength}},
+  subscribe(){return()=>{}},async sync(){}
+ }
+};
+const make=(tag,className='',text='')=>{const element=document.createElement(tag);element.className=className;element.textContent=text;return element};
+window.fileStore=files;window.targetPath='/Target Garden.game.json';
+window.createInstance=()=>{
+ const controller=new AbortController();
+ const app=mount({
+  signal:controller.signal,
+  ui:{
+   make,
+   textButton:(label,action)=>{const button=make('button','',label);button.setAttribute('aria-label',label);button.addEventListener('click',action);return button},
+   appInput:(label,value)=>{const input=make('input');input.setAttribute('aria-label',label);input.value=value;return input},
+   confirm:async message=>window.confirm(message),
+  },
+  storage:{signedInSubject:()=>'test',mirrorFileContext:async()=>context,pickFile:async()=>window.targetPath,pickFolder:async()=>'/'}
+ });
+ const win=document.createElement('section');win.className='window focused';win.append(app.element);document.body.append(win);return{app,win,controller};
+};
+window.instances=[createInstance(),createInstance()];
+</script>
