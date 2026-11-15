@@ -94,3 +94,21 @@
 [submodule "solitaire"]
 	path = apps/solitaire
 	url = ../solitaire.git
+[submodule "craft-libs"]
+	path = libraries/craft-libs
+	url = ../craft-libs.git
+[submodule "egui"]
+	path = libraries/egui
+	url = ../egui.git
+[submodule "craft-fonts"]
+	path = assets/craft-fonts
+	url = ../craft-fonts.git
+[submodule "craft-i18n"]
+	path = assets/craft-i18n
+	url = ../craft-i18n.git
+[submodule "craft-common-actions"]
+	path = tooling/craft-common-actions
+	url = ../craft-common-actions.git
+[submodule "engine-ffmpeg"]
+	path = engines/ffmpeg
+	url = ../engine-ffmpeg.git

@@ -6,7 +6,7 @@ Read `migration/scope.json` for the registered catalog, source ownership candida
 
 ## Verified source assembly
 
-The assembly currently pins 32 source components. ACAD, original JSketcher, and four engines retain their independent histories. All 17 selected upstream fork histories are attached as source baselines; they are not qualified releases. Help, Calculator, and Files were mechanically extracted from verified recovery copies, preserving earlier source paths and commit maps. Their current app trees retain the exact original Git tree identities. Six existing unit scripts passed in the recovered monorepo, extracted repositories, and a fresh recursive clone. Help has no extracted unit script. A fresh recursive local clone passed for the first 26 source components and was advanced to include Runtime. Organized-layout clone verification is recorded separately. WordCraft passed its unmodified WASM compile check; its isolated fresh-clone check also passed with the original workspace hidden and networking disabled. These results do not prove browser integration, full asset builds, persistence, or human/agent parity.
+The assembly currently pins 38 source components. ACAD, original JSketcher, and four engines retain their independent histories. All 17 selected upstream fork histories are attached as source baselines; they are not qualified releases. Help, Calculator, and Files were mechanically extracted from verified recovery copies, preserving earlier source paths and commit maps. Their current app trees retain the exact original Git tree identities. Six existing unit scripts passed in the recovered monorepo, extracted repositories, and a fresh recursive clone. Help has no extracted unit script. A fresh recursive local clone passed for the first 26 source components and was advanced to include Runtime. Organized-layout clone verification is recorded separately. WordCraft passed its unmodified WASM compile check; its isolated fresh-clone check also passed with the original workspace hidden and networking disabled. These results do not prove browser integration, full asset builds, persistence, or human/agent parity.
 
 The `.gitmodules` entries and Git links select component commits. They are the source version authority. Component source is never copied into parent-owned files. Whole-system tests and composition belong to this parent. Mechanical extraction and functional changes are separate commits.
 
@@ -36,7 +36,7 @@ SolidCraft includes a separate brand/interface license. Preserve its notices and
 
 Platform components live at `platform/{runtime,desktop,login,accounts,storage}/`. All applications live under `apps/`, including Files, WordCraft and original JSketcher. Reusable engines live under `engines/`. Shared library, asset and build-tool projects will be attached under `libraries/`, `assets/` and `tooling/` after ownership review. Each meaningful component remains an independent repository; these grouping directories are not grouped source repositories. `tests/`, `scripts/`, and `deploy/` belong to the parent.
 
-Disk organization is incomplete. Many existing beta apps and tools still await extraction. Existing editors remain in scope alongside their replacements. Shared Craft libraries and FFmpeg have been identified but are not yet assembled here. The current priority is complete source organization, followed by remaining integration work.
+Disk organization is incomplete. Many existing beta apps and tools still await extraction. Existing editors remain in scope alongside their replacements. Shared Craft libraries and FFmpeg are now attached; their host/build wiring remains separate work. The current priority is complete source organization, followed by remaining integration work.
 
 Run `python3 scripts/inspect_assembly.py` to inspect actual source wiring without network calls. Add `--require-core` to require all seven core sources. Run `python3 -m unittest discover -s tests -v` for source composition acceptance. All seven required component sources are present. Source composition tests remain separate from browser/backend acceptance.
 
@@ -69,3 +69,17 @@ The first Desktop/Files port is functional but does not claim all legacy feature
 ## Next independently owned game
 
 Solitaire now lives in `apps/solitaire/` as its own pinned repository. Its 24-file original source tree, three historical directory locations, package lock, design/WIP and tests were preserved with a commit map. Typecheck and all 16 existing tests passed both before filtering and in a fresh independent clone. A separate metadata commit adds generated-output exclusions and a migration note. Its old Desktop/mirror host still requires a functional port; it is not enabled or claimed as browser-qualified. Earlier whole-system game tests remain preserved and assigned to parent porting work. Private extraction evidence is in `run-20261114-05/`.
+
+## Shared Craft source and FFmpeg
+
+Shared Craft source now has explicit owners: `libraries/craft-libs/`, `libraries/egui/`, `assets/craft-fonts/`, `assets/craft-i18n/`, and `tooling/craft-common-actions/`. These preserve full upstream Git histories and selected immutable revisions. The 16 consuming Craft apps retain their existing manifest/lock pins, including different revisions within one app. A library checkout does not silently replace those dependencies. The reusable workflow source is preserved only; no publishing workflow was run. Its missing top-level license remains a distribution review item.
+
+`engines/ffmpeg/` preserves the existing six-file background tool, worker, dependency lock and license notice with exact source blobs/modes and filtered history. It has no standalone window in the original implementation. Audio/editor callers and build-asset wiring still need deliberate ports. The `@ffmpeg/core` dependency remains pinned to 0.12.10; extraction is not a qualified engine build.
+
+The `egui` history uses Git LFS. Install Git LFS on a development machine before materializing its image assets. Local sibling origins retain all 2,144 historical payloads (277,667,063 bytes), with SHA256/size verified. With `git-lfs` on PATH, a trusted recursive local clone can enable filters for that command only:
+
+```sh
+git -c protocol.file.allow=always -c filter.lfs.process='git-lfs filter-process' -c filter.lfs.required=true clone --recurse-submodules ../.webos-local-git/workspace.git /a/new/disposable/path
+```
+
+No global Git configuration is required. Source wiring checks alone do not verify LFS payload materialization. Private preservation, extraction maps and asset verification for this step are under `run-20261115-07-shared-source/`. Full disk organization remains incomplete; the remaining beta tools, games, editors and nonregistered source remain in scope.
