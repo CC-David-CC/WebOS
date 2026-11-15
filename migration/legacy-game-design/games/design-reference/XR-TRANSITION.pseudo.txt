@@ -1,0 +1,43 @@
+PSEUDOCODE — state continuity and ownership, not an engine API
+
+AT APP INITIALIZATION
+  create a playable window scene/model
+  prepare the engine's one XR entry path and its lifecycle observers
+  independently probe supported modes; expose only meaningful ones for this game
+  allocate world-space UI/Rive textures; do not request immersion yet
+
+ON ENTER XR CLICK
+  reject if not ready, disposed or another request is already pending in this app
+  pause at current committed state; clear held input; remember desktop presentation
+  invoke prepared request path NOW within the user gesture (no preceding awaited fetch)
+  store the pending request's identity
+
+ON SESSION ACQUIRED
+  if app disposed / request stale: end this late session; release its resources; stop
+  adopt only this session; bind the existing scene and the same world/model
+  show placement/ready UI and require explicit Resume
+  one XR-aware frame loop advances simulation once per tick and Rive once per frame
+
+ON EXIT CLICK
+  pause and clear input
+  call end on this app's session, not navigator/global state or another window's session
+  remain in ending until session end is observed; handle failure honestly
+
+ON SESSION END (app button OR system)
+  ignore stale/foreign session event
+  detach XR input and temporary handles; clear time debt
+  if disposing: release owned engine/resources once and finish
+  restore desktop camera/layout but preserve CURRENT game state
+  show original window paused with Resume
+
+ON DISPOSE WHILE REQUEST PENDING
+  synchronously mark dead, stop gameplay/input/audio and invalidate other work
+  keep only the cleanup continuation needed to see the request resolve/reject
+  any late session is ended, never activated
+  release the engine after the session/entry path is detached safely
+
+ON LOAD FILE IN XR
+  explain and exit if a system picker cannot operate in immersion
+  import through the reviewed document boundary in the original window
+  validate then atomically replace current state; show paused result
+  re-entry requires a NEW user gesture, never auto-request

@@ -1,0 +1,63 @@
+{
+  "status": "unbound",
+  "note": "Review and bind in the actual project lockfile; no versions tested by this handoff.",
+  "dependencies": {
+    "phaser": {
+      "version": null,
+      "lockHash": null,
+      "licenseReviewed": false,
+      "sourceReviewed": false,
+      "browserTested": false
+    },
+    "three": {
+      "version": null,
+      "lockHash": null,
+      "licenseReviewed": false,
+      "sourceReviewed": false,
+      "browserTested": false
+    },
+    "@dimforge/rapier3d-compat": {
+      "version": null,
+      "lockHash": null,
+      "licenseReviewed": false,
+      "sourceReviewed": false,
+      "browserTested": false
+    },
+    "@babylonjs/core": {
+      "version": null,
+      "lockHash": null,
+      "licenseReviewed": false,
+      "sourceReviewed": false,
+      "browserTested": false
+    },
+    "@babylonjs/havok": {
+      "version": null,
+      "lockHash": null,
+      "licenseReviewed": false,
+      "sourceReviewed": false,
+      "browserTested": false
+    },
+    "@rive-app/canvas-advanced": {
+      "version": null,
+      "lockHash": null,
+      "licenseReviewed": false,
+      "sourceReviewed": false,
+      "browserTested": false
+    },
+    "@rive-app/webgl2-advanced": {
+      "version": null,
+      "lockHash": null,
+      "licenseReviewed": false,
+      "sourceReviewed": false,
+      "browserTested": false
+    },
+    "chess.js": {
+      "version": null,
+      "lockHash": null,
+      "licenseReviewed": false,
+      "sourceReviewed": false,
+      "browserTested": false
+    }
+  },
+  "riveRendererNote": "Choose the smallest renderer profile that faithfully draws each authored asset; do not load both variants by default."
+}
