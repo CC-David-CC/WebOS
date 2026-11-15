@@ -88,8 +88,9 @@ python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 The LFS setup affects only the new egui checkout. Verified local origins retain
 all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
 outside Git and web roots, under `/path/to/workspace/Projects/.webos-migration/`.
-Latest active checkpoint: `run-20261115-16-operation-authority/checkpoint.json` and
-`RESUME.md`; phase15 records the current test deployment and renderer
+Latest active checkpoint: `run-20261115-18-native-ci/checkpoint.json` and
+`RESUME.md`; phase17 records clean qualification of the selected authority
+fixes; phase16 retains red/green evidence. Phase15 records the current test deployment and renderer
 qualification; phase13 records earlier local/clean-clone acceptance. Earlier phases retain
 preservation and extraction evidence.
 
@@ -101,12 +102,13 @@ points to the new loopback service; beta.ksu.codes remains unchanged. Read
 
 ## WordCraft artifact and acceptance
 
-Selected WordCraft source is `0d48f9a1bd5a2bb88d8431760a14b0ba55161563`, with
+Selected WordCraft source is `d7a2ab62d793225463750e440796ba8084e3cc46`, with
 shared egui renderer `2d0ae4b4270e76c431fd62d3512237579ed6c26f`.
 This renderer passed local regression and clean-checkout authoring checks.
-The updated frontend is now served on ksu.codes. Hosted startup, account and
-formatting regression checks passed. The existing backend stayed running.
-See `deploy/TEST-STATUS.md`.
+The renderer update is served on ksu.codes using the earlier WordCraft0d48
+source. Hosted startup, account and formatting checks passed there. The newer
+selected authority fixes are locally qualified but not deployed. The existing
+backend stayed running. See `deploy/TEST-STATUS.md`.
 `webos/build.py` builds the complete browser graph with Rust/Cargo1.95.0,
 Trunk0.21.14 and source-pinned fonts/translations. Supply the explicit
 `--egui-origin` local bare fork provider as documented in WordCraft
@@ -127,17 +129,22 @@ acceptance scripts can target the user-designated test site by setting
 `WEBOS_TEST_ORIGIN=https://ksu.codes`; this mode creates disposable test accounts
 and does not start or stop the remote server. Other remote origins are refused.
 
-## Local operation-authority review
+## Qualified operation-authority changes
 
-Files, Text and WordCraft checkout HEADs now contain separately committed local
-review changes beyond the parent-selected pins. These bind permission decisions
-to captured commands and resources; WordCraft requires an explicit caller.
-Eight WordCraft boundary tests,11 Files tests and5 Text tests pass. Real local
-Files/Text browser acceptance and WordCraft host/account checks pass too. The
-WordCraft browser check reused its unchanged, previously verified native WASM;
-a new source-pinned artifact and clean composition remain required before pin
-promotion. Full native WordCraft CI stopped on three Clippy diagnostics in two
-unchanged baseline Rust files; later CI steps were not run. No lint threshold
-was lowered. See the phase16 checkpoint for exact commits and red/green evidence.
-The ksu.codes deployment remains the phase15 release. Delegated-agent transport
-is not yet enabled or qualified.
+The parent now selects Files `2cf80ef94bd2d340807d6966d1267a7527785245`,
+Text `d7c53dd5754aca023f21a28e9b236377c44d090a` and WordCraft
+`d7a2ab62d793225463750e440796ba8084e3cc46`. Permission decisions bind to captured
+commands and resources; WordCraft requires an explicit caller. All24 focused
+tests pass. A new source-pinned WordCraft artifact and a clean pinned assembly
+passed actual Files, Text, WordCraft account/conflict and formatted authoring
+browser workflows. Original/primary/recovery source was hidden and external
+networking disabled. All112 component pins have retaining refs in their verified
+local bare origins; this browser qualification covers the ten-component first
+slice, not the entire suite.
+
+The baseline native WordCraft CI stopped on three Clippy diagnostics in two
+unchanged Rust files; later CI steps were not run. That remains an explicit
+quality gate. A separate isolated native review in phase18 simplifies those
+conditions and runs required CI without lowering lint thresholds. It has not
+changed these selected pins. The ksu.codes deployment remains the phase15
+release. Delegated-agent transport is not yet enabled or qualified.
