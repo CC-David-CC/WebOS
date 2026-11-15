@@ -16,7 +16,7 @@ Preserve and account for every existing app, game, tool, library, required asset
 
 Build real server-backed account files with existing identity and file ownership compatibility. Human, authorized agent, and test operations share the same domain implementations. One authoritative live document per session and server-authoritative saved revisions are mandatory. No browser cache may masquerade as a confirmed server save. Linux/v86, Terminal, MailCraft, and Craft Anything are not minimum dependencies; preserve existing excluded source separately.
 
-This assembly has no bootable minimum yet. No whole-system or existing-user continuity result is claimed.
+A partial development assembly now boots Login → Desktop → Files against real signed account storage. WordCraft and delegated agents are not connected, so the seven-component minimum and full-suite gates remain incomplete. No existing-user continuity result is claimed.
 
 ## Local Git and recovery
 
@@ -46,14 +46,20 @@ Desktop, Accounts, and Storage source histories are now attached. Their extracte
 
 Accounts and Storage now expose installable Python packages. Four Accounts retained-state tests and four Storage durable/revision/permission tests pass using real generated temporary SQLite/filesystem state. They also pass from a clean recursive clone with the old workspace and primary new checkout both hidden and networking disabled. This is domain-level evidence, not signed HTTP/browser/agent acceptance or production-user compatibility.
 
-`python3 scripts/bootstrap_backend.py --venv /absolute/new/private/environment` prepares Runtime, Accounts and Storage packages and locked third-party dependencies outside source, starting no server. See deploy/README.md. Login is now independently extracted and built. The legacy Desktop is not yet bootable as the new assembly. The next task is to port its public window/workspace interface and connect the Files and WordCraft views.
+`python3 scripts/bootstrap_backend.py --venv /absolute/new/private/environment` prepares Runtime, Accounts and Storage packages and locked third-party dependencies outside source, starting no server. See deploy/README.md. Login is now independently extracted and built. The Desktop public window/workspace controller and Files server-backed view now boot in development. Next connect WordCraft with real asynchronous save confirmation and editor operations.
 
 ## Signed development foundation
 
 The public browser packages are installed with `npm ci` in this parent workspace. Accounts owns private credentials and exposes public inspection plus an epoch-bound human file capability. Storage consumes that capability and builds its real hashing/verification worker. Runtime owns their shared stateless wire contract. Login mounts synchronously and reports asynchronous readiness/cancellation; it never authenticates itself. Agent delegation remains pending.
 
-`scripts/run_development.py --public-root /absolute/built/public --private-root /absolute/new/private/state --port 18140` composes the real Accounts and Storage services on loopback. Run it with the environment prepared by `scripts/bootstrap_backend.py`. Public assets must be built first; no assembled Desktop frontend is supplied yet. The launcher refuses unknown or incomplete private state, retains keys and files on restart, and changes no production service.
+`scripts/run_development.py --public-root /absolute/built/public --private-root /absolute/new/private/state --port 18140` composes the real Accounts and Storage services on loopback. Run it with the environment prepared by `scripts/bootstrap_backend.py`. Build the development frontend first with `node scripts/build_development.mjs /absolute/new/public/output`. It includes independent Login, Desktop and Files plus the complete verification-worker graph. WordCraft is not connected yet. The launcher refuses unknown or incomplete private state, retains keys and files on restart, and changes no production service.
 
 Real Chromium tests `tests/login_browser.mjs` and `tests/account_files_browser.mjs` require `WEBOS_TEST_PYTHON` and a new external `WEBOS_TEST_OUTPUT` directory. The signed-file test passed using five clean browser contexts, including a graceful server restart followed by sign-in and retrieval of the same account-owned bytes/revision. It also verifies stale-save rejection, cross-account denial, unsigned request denial, logout fencing, closed-view service retention, and zero guest dependencies/page errors. These are component integration tests, not Desktop, WordCraft, agent parity, production-user continuity, or a second physical machine.
 
 Latest private evidence: `run-20261114-04/account-files-browser-r2/result.json`, `run-20261114-04/login-browser-r2/result.json`, and `run-20261114-04/checkpoint.json` under the private migration root. Earlier `run-20261114-03/checkpoint.json` covers baseline backend isolation; earlier preservation records remain authoritative for their stated scope.
+
+## Assembled Desktop and Files progress
+
+`tests/desktop_files_browser.mjs` builds the actual development frontend and tests it with disposable signed Accounts/Storage state in two clean Chromium contexts. It verifies human upload, cross-client listing, exact-revision rename/delete, cancelled delete, interrupted upload reported as unconfirmed, workspace/window controls, close/reopen, and sign-out cleanup. The development launcher and these tests stop their temporary servers on exit. No production service is changed.
+
+The first Desktop/Files port is functional but does not claim all legacy features. Read each component README for preserved features still needing a deliberate port. The launcher lists only integrated apps. Opening an editor reports that integration is unavailable; it does not pretend a document was opened. Full WordCraft browser assets, durable editor save/Save As/export, scoped agents, resource policy, all remaining suite extraction/integration and existing-user continuity remain explicit work.

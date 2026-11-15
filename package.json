@@ -6,7 +6,9 @@
     "runtime",
     "accounts",
     "login",
-    "storage"
+    "storage",
+    "desktop",
+    "files"
   ],
   "devDependencies": {
     "esbuild": "0.28.2",
