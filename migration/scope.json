@@ -2869,5 +2869,15 @@
     "private_marker_records_not_publication_cleared": 1,
     "qualification": "Private retention and historical role only, not current acceptance or every-future-consumer unused proof",
     "evidence": "migration/PRIVATE-EVIDENCE-RETENTION.md and private phase57"
+  },
+  "legacy_native_design_control_references": {
+    "source_paths": 9,
+    "native_engine_reference_files": 3,
+    "parent_cross_design_control_files": 6,
+    "selected_capture_history_blobs": 9,
+    "copied_upstream_snapshot_records_still_unqualified": 6,
+    "compiler_control_publisher_deployment_executions": 0,
+    "native_implementation_or_build_recipe_changes": false,
+    "evidence": "migration/NATIVE-REFERENCE-OWNERSHIP.md and private phase58"
   }
 }

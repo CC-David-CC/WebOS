@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has 1,984 unresolved dispositions and 26 unqualified blob candidates among
+still has 1,976 unresolved dispositions and 25 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -192,7 +192,7 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-57-private-evidence-disposition/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-58-native-rebuild-references/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
 Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
@@ -261,3 +261,5 @@ Phase55 retains283 original test/fixture sources with histories. Python/JS/HTML 
 Phase56 assigns12 original Node test sources and one frozen vector fixture to actual owners. Eight locator-only ports report15 passing Node subtests; the original baseline has25 passes and one pre-existing stale negative-control failure, retained unchanged and unqualified. Browser relay and cross-component references remain inert. See [owned Node references](migration/OWNED-NODE-REFERENCES.md).
 
 Phase57 verifies127 historical records in existing private recovery without copying them into Git/web roots.109 possible source/design/input/unclear records remain unresolved. Current tracked-source counts come from [the generated summary](migration/SOURCE-RECONCILIATION-SUMMARY.json). A fresh minimum frontend build reuses fully rehashed WordCraft from unchanged selected source; no new browser or full-suite acceptance follows. See [private evidence retention](migration/PRIVATE-EVIDENCE-RETENTION.md).
+
+Phase58 retains nine original native build/design/prototype-control references with histories and exact source bodies. One engine pin changes by reference files only;123 other pins and all active implementations are unchanged. Six copied upstream records remain unqualified despite byte matches, and no old build/control/publisher ran. See [native reference ownership](migration/NATIVE-REFERENCE-OWNERSHIP.md).
