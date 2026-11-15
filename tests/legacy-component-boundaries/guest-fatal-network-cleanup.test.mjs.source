@@ -1,0 +1,13 @@
+// Real GuestWorkerClient and app failure handlers; Worker and network adapter are doubles.
+import test from 'node:test';import assert from 'node:assert/strict';import vm from 'node:vm';import {readFileSync} from 'node:fs';import {GuestWorkerClient} from '../active-system/assets/desktop/guest-worker-client.mjs';
+const source=readFileSync(new URL('../active-system/app.js',import.meta.url),'utf8'),handlers=source.slice(source.indexOf('function failGuest('),source.indexOf('async function startGuest('));assert.match(handlers,/function reportGuestWorkerFailure/);
+for(const scenario of ['normal','network-failure','both-fail','stale'])test(`worker fatal reports correct app state: ${scenario}`,async()=>{
+ const previous=globalThis.Worker;let worker;globalThis.Worker=class{constructor(){worker=this}postMessage(){}terminate(){if(scenario==='both-fail')throw Error('injected terminate')}};
+ try{const c=vm.createContext({console,scenario});vm.runInContext(`let bootEpoch=1,bootFailed=false,guestState='ready',guestMessage='',guestFiles={ready:true},serialFrame=0,feedbacks=[],serial=[],refreshes=0,cleanups=0;let guestNetworkAdapter={destroy(){cleanups++;if(scenario==='network-failure'||scenario==='both-fail')throw Error('injected network cleanup')}};function appendSerial(s){serial.push(s)}function flushSerial(){}function feedback(s){feedbacks.push(s)}function refreshTerminals(){refreshes++}${handlers};globalThis.report=error=>reportGuestWorkerFailure(error,scenario==='stale'?0:1);globalThis.state=()=>({bootFailed,guestState,guestMessage,ready:guestFiles.ready,adapter:!!guestNetworkAdapter,feedbacks,serial,refreshes,cleanups});`,c);
+ const client=new GuestWorkerClient('http://127.0.0.1/worker',{onFatal:c.report});const pending=assert.rejects(client.read_file('/test'),/in-flight operation may have completed/);worker.onerror({message:'injected worker failure'});await pending;const state=c.state();
+ if(scenario==='stale'){assert.equal(state.guestState,'ready');assert.equal(state.cleanups,0);assert.equal(state.refreshes,0);return}
+ assert.equal(state.guestState,'error');assert.equal(state.bootFailed,true);assert.equal(state.ready,false);assert.equal(state.cleanups,1);assert.equal(state.refreshes,1);assert.match(state.guestMessage,/injected worker failure/);assert.match(state.feedbacks[0],/injected worker failure/);
+ if(scenario==='normal'){assert.equal(state.adapter,false);assert.doesNotMatch(state.guestMessage,/cleanup was incomplete/)}else{assert.equal(state.adapter,true);assert.match(state.guestMessage,/network cleanup was incomplete/)}
+ if(scenario==='both-fail'){assert.match(state.guestMessage,/termination could not be confirmed/);await assert.rejects(client.stop(),/injected terminate/)}
+ }finally{globalThis.Worker=previous}
+});
