@@ -1,0 +1,5 @@
+# Corpus extraction provenance
+
+Captured desktop source: `4f72ea86928666189b32f6f05c2c697a37341d06`. Original prefix `test/agent-cad-corpus/` maps to this parent-owned legacy test area. Audit baseline `45188ce874d44ea934e84b6eb3fa4da9aa5b31dd`, final mechanical baseline `cd424b4980296b9fcc41bdb7a363fcb07f98d299`, mechanical merge `8dd4882c93643ce6139b97f5ac50ae7a60ed73d5`. Two fresh private filters separate reviewed source from a selected-history literal flag. Both commit/ref maps and a composed source-to-parent map are retained in private phase33. No original history was rewritten.
+
+243 exact source blobs/modes/paths verified. Distinct copy ancestry is recorded rather than importing an engine or other lane wholesale into the parent. Original histories, withheld current/history source, original case documentation and input/result artifacts remain privately preserved. Parent metadata/porting notes are a separate commit after the mechanical merge. No test body/assertion changed and no acceptance driver executed.

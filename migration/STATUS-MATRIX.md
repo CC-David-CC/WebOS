@@ -202,7 +202,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The122-row chart does not close original-source reconciliation. The tracked-source
-ledger now has5,604 unresolved entries plus63 unqualified blob candidates, after
+ledger now has5,346 unresolved entries plus44 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -234,3 +234,8 @@ library. All57 original tests pass through public exports after separation.
 They remain source-only prototypes, separate from the28 previously registered
 games. See [their exact qualification and save-version limits](LEARNING-GAMES.md).
 The inspected original prefix had no staged, unstaged or untracked work.
+
+The [CAD corpus catalogue](CAD-CORPUS.md) adds243 unchanged parent-owned legacy
+acceptance source files and34 privately retained frozen build/catalog records.
+Syntax and history are verified; no legacy CAD driver or qualification ran.
+Helpers/inputs/target/runtime/authorization ports and33 source reviews remain OPEN.

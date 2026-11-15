@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has5,604 unresolved dispositions and63 unqualified blob candidates among
+still has5,346 unresolved dispositions and44 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -57,6 +57,11 @@ A separate [historical-output disposition](migration/HISTORICAL-EVIDENCE.md)
 accounts for315 preserved reports/logs. Their old PASS/FAIL text is not current
 acceptance evidence. Possible fixture/build-input reuse remains explicit review;
 no raw output was copied into active source or discarded.
+
+The [legacy CAD corpus catalogue](migration/CAD-CORPUS.md) records243
+byte-identical parent-owned test sources and separately preserved old runtime
+metadata. These drivers are unexecuted and need a deliberate public-interface,
+fixture and source-path port; they are not current ACAD/JSketcher acceptance.
 
 ## Current working slice
 
@@ -187,8 +192,9 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-32-historical-evidence/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-33-cad-corpus/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
+Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
 Phase31 records28 publication command/test sources preserved unchanged and unexecuted.
 Phase30 records32 unchanged publication modules, their structural fixture, and complete ownership of the former44-file steward area.
