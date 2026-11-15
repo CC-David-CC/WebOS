@@ -25,3 +25,6 @@
 [submodule "legacy-jsketcher"]
 	path = legacy-jsketcher
 	url = ../legacy-jsketcher.git
+[submodule "wordcraft"]
+	path = wordcraft
+	url = ../wordcraft.git
