@@ -22,8 +22,11 @@ source presence does not establish functional support.
   Files, edit/save/close/reopen, Save As preserving the original, Cancel/Save
   on unsaved-close, reload and retrieval from a second clean browser context.
   Saves use the same Storage service and exact saved revision as Files.
-- WordCraft: preserved baseline and separate review work exist; the new account
-  authoring workflow is not yet qualified. This is the next product stage.
+- WordCraft: real WASM authoring with a heading, paragraph and list; confirmed
+  account save; close/reopen from Files; reload and second-context retrieval
+  preserve exact paragraph styles and list structure. The clean pinned assembly
+  passed too. Stale saves are rejected; Save As/PDF identities stay separate;
+  closing Files does not stop editor saves. Delegated agents remain unqualified.
 
 These are local development results, not a deployed-site or physical second-
 machine acceptance claim. Delegated agent authorization and broader suite
@@ -87,8 +90,24 @@ outside Git and web roots, under `/path/to/workspace/Projects/.webos-migration/`
 Latest active checkpoint: `run-20261115-13-fresh-bringup/checkpoint.json` and
 `RESUME.md`; earlier phases retain preservation and extraction evidence.
 
-The primary checkout retains separate WordCraft review/build WIP and a completed
-historical-input lock update. Do not stage all files or silently promote that
-work. Original source has not been modified; no ksu.codes deployment change has
+The tested WordCraft source/build integration is committed. The primary
+checkout still retains a historical-input lock update and a historical baseline
+browser test outside this milestone. Preserve that unrelated work. Original source has not been modified; no ksu.codes deployment change has
 been made in this bring-up phase. Verify the test deployment target and prepared
 artifacts before changing server configuration or starting the new test system.
+
+## WordCraft artifact and acceptance
+
+Selected WordCraft source is `5ee1726037e6ff97ae4f69d46213ef75a32e0c83`.
+`webos/build.py` builds the complete browser graph with Rust/Cargo1.95.0,
+Trunk0.21.14 and source-pinned fonts/translations. The verified development
+artifact contains26 files totaling91,513,638bytes. Its component-build receipt
+checks source identity, tool versions and every artifact digest. Build output
+is external, never written into the original workspace.
+
+With a verified source-matching artifact directory, run
+`tests/wordcraft_authoring_browser.mjs` or `tests/wordcraft_browser.mjs` using
+`WEBOS_WORDCRAFT_SITE`, `WEBOS_TEST_PYTHON` and a new `WEBOS_TEST_OUTPUT`.
+The authoring test checks new-document formatting, save/reopen, reload and
+second-context persistence. The broader test checks actual typing/native
+commands, undo/redo, conflicts, Files-independent saving and close guards.
