@@ -9,6 +9,7 @@
     "platform/storage",
     "platform/desktop",
     "apps/files",
+    "apps/wordcraft/webos",
     "apps/calculator",
     "libraries/codemirror",
     "apps/text"
