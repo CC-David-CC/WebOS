@@ -43,3 +43,6 @@
 [submodule "vectorcraft"]
 	path = vectorcraft
 	url = ../vectorcraft.git
+[submodule "designcraft"]
+	path = designcraft
+	url = ../designcraft.git
