@@ -58,3 +58,6 @@
 [submodule "effectcraft"]
 	path = effectcraft
 	url = ../effectcraft.git
+[submodule "soundcraft"]
+	path = soundcraft
+	url = ../soundcraft.git
