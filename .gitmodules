@@ -46,3 +46,6 @@
 [submodule "designcraft"]
 	path = designcraft
 	url = ../designcraft.git
+[submodule "figcraft"]
+	path = figcraft
+	url = ../figcraft.git
