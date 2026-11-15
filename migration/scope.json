@@ -2650,5 +2650,34 @@
     "activation": "Not enabled in current src renderer or bundle",
     "open": "Per-image upstream/license mapping, release notices and actual theme integration if selected",
     "evidence": "migration/DESKTOP-ASSETS.md and private phase40"
+  },
+  "legacy_backend_ownership": {
+    "source_paths": 53,
+    "component_source_paths": 23,
+    "parent_deployment_source_paths": 30,
+    "component_counts": {
+      "browser": 3,
+      "linux": 4,
+      "microduck": 1,
+      "parent": 30,
+      "publication": 3,
+      "rendezvous": 7,
+      "rooms": 2,
+      "storage": 3
+    },
+    "source_locations": {
+      "browser": "apps/browser",
+      "linux": "apps/linux",
+      "microduck": "apps/microduck",
+      "parent": ".",
+      "publication": "platform/publication",
+      "rendezvous": "platform/rendezvous",
+      "rooms": "legacy/rooms",
+      "storage": "platform/storage"
+    },
+    "qualification": "Legacy source only, not a current supported import path or command. Original cross-package namespaces, private imports, target paths, key/account custody, host/network/process actions and fixtures must be ported deliberately before use. Do not add sys.path shims, privileged globals, fake storage or automatic service/firewall actions to make it run. No old module/driver is imported or executed by this extraction; no active backend or minimum dependency changes.",
+    "historical_source_blobs_reviewed": 63,
+    "runtime_enablement": false,
+    "evidence": "migration/BACKEND-OWNERSHIP.md and private phase41"
   }
 }
