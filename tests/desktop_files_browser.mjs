@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {spawn, spawnSync} from 'node:child_process';
 import {createInterface} from 'node:readline';
 import {randomBytes} from 'node:crypto';
-import {mkdir, writeFile} from 'node:fs/promises';
+import {mkdir, writeFile, readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import puppeteer from 'puppeteer-core';
@@ -48,6 +48,26 @@ try {
  await first.p.waitForFunction(() => document.querySelector('.webos-files-browser')?.innerText.includes('migration-proof.txt'));
  const second = await context(); await signin(second.p); await openFiles(second.p);
  await second.p.waitForFunction(() => document.querySelector('.webos-files-browser')?.innerText.includes('migration-proof.txt'));
+ await actionButton(first.p, 'New folder'); await first.p.waitForSelector('.webos-files-dialog input');
+ await first.p.type('.webos-files-dialog input', 'acceptance'); await first.p.click('.webos-files-dialog [type=submit]');
+ await first.p.waitForFunction(() => document.querySelector('.webos-files-status')?.textContent.includes('Folder created on the server'));
+ await selectFile(first.p, 'migration-proof.txt'); await actionButton(first.p, 'Move'); await first.p.waitForSelector('.webos-files-dialog input');
+ await first.p.$eval('.webos-files-dialog input', input => {input.value = ''}); await first.p.type('.webos-files-dialog input', 'acceptance/migration-proof.txt'); await first.p.click('.webos-files-dialog [type=submit]');
+ await first.p.waitForFunction(() => document.querySelector('.webos-files-status')?.textContent.includes('Moved on the server'));
+ assert.equal(await first.p.$eval('.webos-files-browser', el => el.innerText.includes('migration-proof.txt')), false);
+ async function enterFolder(p, name) { const handle = await p.evaluateHandle(name => [...document.querySelectorAll('.webos-files-browser [title]')].find(el => el.getAttribute('title') === name), name); await handle.asElement().click(); await handle.asElement().click(); await handle.dispose(); await p.waitForFunction(() => document.querySelector('.webos-files-browser')?.innerText.includes('migration-proof.txt')); }
+ await enterFolder(first.p, 'acceptance');
+ const downloads = path.join(output, 'downloads'); await mkdir(downloads);
+ const downloadSession = await first.p.createCDPSession(); await downloadSession.send('Page.setDownloadBehavior', {behavior: 'allow', downloadPath: downloads});
+ await selectFile(first.p, 'migration-proof.txt'); await actionButton(first.p, 'Download');
+ let downloaded; for (let i = 0; i < 100; i++) { try { downloaded = await readFile(path.join(downloads, 'migration-proof.txt'), 'utf8'); break; } catch (error) { if (error.code !== 'ENOENT') throw error; await new Promise(resolve => setTimeout(resolve, 50)); } }
+ assert.equal(downloaded, 'Synthetic browser upload to server-backed account storage.\n'); await downloadSession.detach();
+ await second.p.reload({waitUntil: 'networkidle0'}); await second.p.waitForSelector('.login-gate[data-phase=ready]'); await signin(second.p); await openFiles(second.p); await enterFolder(second.p, 'acceptance');
+ await selectFile(first.p, 'migration-proof.txt'); await actionButton(first.p, 'Move'); await first.p.waitForSelector('.webos-files-dialog input');
+ await first.p.$eval('.webos-files-dialog input', input => {input.value = ''}); await first.p.type('.webos-files-dialog input', 'migration-proof.txt'); await first.p.click('.webos-files-dialog [type=submit]');
+ await first.p.waitForFunction(() => document.querySelector('.webos-files-status')?.textContent.includes('Moved on the server'));
+ await first.p.click('[aria-label="Parent folder"]'); await first.p.waitForFunction(() => document.querySelector('.webos-files-browser')?.innerText.includes('migration-proof.txt'));
+ await second.p.click('[aria-label="Parent folder"]'); await second.p.waitForFunction(() => document.querySelector('.webos-files-browser')?.innerText.includes('migration-proof.txt'));
  await first.p.click('[aria-label="Workspace 2"]'); assert.equal(await first.p.$eval('.webos-window', el => el.hidden), true);
  await first.p.click('[aria-label="Workspace 1"]'); assert.equal(await first.p.$eval('.webos-window', el => el.hidden), false);
  await first.p.click('[aria-label=Minimize]'); assert.equal(await first.p.$eval('.webos-window', el => el.hidden), true);
@@ -78,7 +98,7 @@ try {
  await openFiles(first.p); await first.p.waitForFunction(() => document.querySelector('.webos-files-browser')?.innerText.includes('migration-proof.txt'));
  await first.p.click('.webos-signout'); await first.p.waitForSelector('.login-gate[data-phase=ready]'); assert.equal(await first.p.$('.webos-files'), null);
  assert(!requests.some(value => /v86|\/vm\/|terminal/.test(value))); assert.deepEqual(errors, []);
- Object.assign(report, {status: 'PASS', realBrowserContexts: 2, authenticatedCalculatorInstances: true, humanUploadConfirmedByServer: true, cleanSecondContextListsUpload: true, windowWorkspaceMinimizeMaximize: true, revisionCheckedRenameAndDelete: true, cancelledDeleteRetainsFile: true, interruptedUploadNeverClaimsSaved: true, closeAndReopenRetainsAccountFiles: true, signoutDisposesViews: true, noGuestRequests: true, pageErrors: 0});
-} catch (error) {report.error = {name: error.name, message: error.message}; throw error;}
+ Object.assign(report, {status: 'PASS', realBrowserContexts: 2, authenticatedCalculatorInstances: true, folderCreatedOnServer: true, revisionCheckedMove: true, downloadedBytesVerified: true, reloadAndSecondContextRetrieveMovedFile: true, humanUploadConfirmedByServer: true, cleanSecondContextListsUpload: true, windowWorkspaceMinimizeMaximize: true, revisionCheckedRenameAndDelete: true, cancelledDeleteRetainsFile: true, interruptedUploadNeverClaimsSaved: true, closeAndReopenRetainsAccountFiles: true, signoutDisposesViews: true, noGuestRequests: true, pageErrors: 0});
+} catch (error) {report.error = {name: error.name, message: error.message}; if (browser) { const pages = await browser.pages(); for (let i=0;i<pages.length;i++) { await pages[i].screenshot({path:path.join(output, 'failure-'+i+'.png')}).catch(()=>{}); } } throw error;}
 finally { if (browser) await browser.close(); server.kill('SIGTERM'); await new Promise(resolve => { if (server.exitCode !== null || server.signalCode) resolve(); else server.once('exit', resolve); }); await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n'); await writeFile(path.join(output, 'server-errors.log'), Buffer.concat(serverErrors)); }
 console.log(JSON.stringify(report));
