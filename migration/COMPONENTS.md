@@ -1,8 +1,8 @@
 # Complete assembled component chart
 
-All paths are relative to /path/to/webos/. There are112 independent source repositories currently attached:78 apps (33 system/CAD,17 Craft,28 games),8 engines,6 platform components,17 libraries,2 shared asset projects and1 shared build-tool project. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
+All paths are relative to /path/to/webos/. There are112 independent source repositories currently attached:78 apps (33 system/CAD,17 Craft,28 games),8 engines,5 platform components,17 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
 
-## Platform (6)
+## Platform (5)
 
 | Component | Actual directory |
 |---|---|
@@ -10,7 +10,6 @@ All paths are relative to /path/to/webos/. There are112 independent source repos
 | desktop | `platform/desktop/` |
 | login | `platform/login/` |
 | runtime | `platform/runtime/` |
-| rooms — optional preserved backend; integration OPEN | `platform/rooms/` |
 | storage | `platform/storage/` |
 
 ## System and CAD apps (33)
@@ -174,3 +173,9 @@ Payloads are ignored by Git; locks/docs/verification commands are parent-owned. 
 - Complete site/core assets, ignored inputs and source-to-owner coverage must still be verified before claiming the whole disk restart point complete.
 
 Craft provenance:16 ArtCraft first-party projects plus community SolidCraft (Tangency Labs). Craft Anything and MailCraft are not selected.
+
+## Legacy source — excluded from current system
+
+| Component | Actual directory | Disposition |
+|---|---|---|
+| Hosted Rooms | `legacy/rooms/` | Old code; user confirms current site does not use it. Preserved only, no rebuild integration required. |
