@@ -2369,7 +2369,8 @@
       "word-weaver": "apps/word-weaver",
       "wordcraft": "apps/wordcraft",
       "yjs": "libraries/yjs",
-      "zip": "libraries/zip"
+      "zip": "libraries/zip",
+      "network-policy": "libraries/network-policy"
     },
     "missing_core_sources": [],
     "platform": "platform/<component>/",
@@ -2617,5 +2618,18 @@
     "source_files_copied": 0,
     "qualification": "Exact historical tree witness and rename lineage, no new functional qualification",
     "evidence": "migration/HISTORY-RECONCILIATION.md and private phase37"
+  },
+  "shared_network_policy": {
+    "component_path": "libraries/network-policy",
+    "source_paths": 11,
+    "source_history": "Verified independent history with mechanical extraction baseline, separate package/lazy-optional-import commits",
+    "checks": "Original and installed-wheel tests10 pass/1 existing optional-country-data skip;8 installed modules;CLI help; clean-source wheel build",
+    "activation": "Not enabled, not a minimum dependency; no listener, database download or host firewall change",
+    "open": [
+      "actual GeoIP dependency/database pin and lookup",
+      "live proxy/listener/guest composition",
+      "human/agent operation acceptance"
+    ],
+    "evidence": "migration/NETWORK-POLICY.md and private phase38"
   }
 }

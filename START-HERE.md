@@ -8,9 +8,9 @@ the latest local qualification.
 
 ## Source organization and remaining scope
 
-The parent selects121 component repositories plus1 preserved legacy repository:
+The parent selects122 component repositories plus1 preserved legacy repository:
 85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),
-8 engines,7 platform components,18 libraries,2 asset projects and1 tooling project,
+8 engines,7 platform components,19 libraries,2 asset projects and1 tooling project,
 plus legacy Rooms. Applications, including Files and WordCraft, live in `apps/`.
 Reusable engines live in `engines/`; shared Craft code is `libraries/craft-libs/`.
 FFmpeg is an engine; TanStack Virtual is a library. Neither directory alone means
@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has4,550 unresolved dispositions and38 unqualified blob candidates among
+still has4,539 unresolved dispositions and38 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -192,7 +192,7 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-37-history-reconciliation/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-38-network-policy/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
 Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
@@ -223,3 +223,5 @@ Phase35 completes retention of all276 identified legacy CAD corpus code files, i
 Phase36 retains760 unchanged historical desktop browser-test sources with selected histories, syntax checked and disabled pending deliberate ports. See [legacy desktop tests](migration/LEGACY-DESKTOP-TESTS.md). No current app or browser qualification follows from this extraction.
 
 Phase37 verifies nine previously unresolved identity/file-client/verifier/loader-test records already retained in selected component histories, using exact blob/mode and rename-lineage witnesses. No duplicate extraction or behavior change. See [history reconciliation](migration/HISTORY-RECONCILIATION.md).
+
+Phase38 adds independent shared network-policy source at `libraries/network-policy/`:11 retained source/config/test paths, original and installed-wheel10 passes/1 existing optional database skip. No firewall, listener or desktop policy enabled. See [network policy](migration/NETWORK-POLICY.md).
