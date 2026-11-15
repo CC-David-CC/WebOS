@@ -44,39 +44,39 @@ Hosted Rooms is unused historical code, not a new service.
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
-| acad | `apps/acad/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| arduino-simulator | `apps/arduino-simulator/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| audio-editor | `apps/audio-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| browser | `apps/browser/` | PASS including separate backend extraction | PASS56 Python tests and installed-wheel isolation; JS93 PASS/1 pre-existing host-contract failure | OPEN: complete browser build and new host integration not qualified |
+| acad | `apps/acad/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 214 pass/3 captured fail | OPEN: complete browser build and new host integration not qualified |
+| arduino-simulator | `apps/arduino-simulator/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 2 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
+| audio-editor | `apps/audio-editor/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 6 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
+| browser | `apps/browser/` | PASS including separate backend extraction | PASS56 Python tests and installed-wheel isolation; JS93 PASS/1 pre-existing host-contract failure; phase44 Node reference 9 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | calculator | `apps/calculator/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 | circuit-lab | `apps/circuit-lab/` | PASS | PASS retained extraction/domain probes; browser and distribution qualification OPEN | OPEN: complete browser build and new host integration not qualified |
 | circuitjs | `apps/circuitjs/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| data-explorer | `apps/data-explorer/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| data-explorer | `apps/data-explorer/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 7 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | diagrams-net | `apps/diagrams-net/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | digital-logic | `apps/digital-logic/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| document-editor | `apps/document-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| document-editor | `apps/document-editor/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 6 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | electronics-design | `apps/electronics-design/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| embroidery-studio | `apps/embroidery-studio/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| excalidraw | `apps/excalidraw/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| embroidery-studio | `apps/embroidery-studio/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 1 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
+| excalidraw | `apps/excalidraw/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 3 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | files | `apps/files/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
-| gcode-preview | `apps/gcode-preview/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| grid-tools | `apps/grid-tools/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| gcode-preview | `apps/gcode-preview/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 7 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
+| grid-tools | `apps/grid-tools/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 3 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | help | `apps/help/` | PASS | PASS:5 boundary checks and signed Desktop lifecycle | PASS local/clean; not in hosted phase15 release |
-| image-editor | `apps/image-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| image-editor | `apps/image-editor/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 8 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | legacy-jsketcher | `apps/jsketcher/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | linux | `apps/linux/` | PASS including optional guest backend history | PASS34 installed-wheel Python tests and12 module imports; static base inputs retained | OPEN optional host port; excluded from minimum dependencies |
 | microduck | `apps/microduck/` | PASS | FAIL - 200 pass / 11 missing-fixture failures; baseline and extraction match | OPEN: complete browser build and new host integration not qualified |
-| notebook | `apps/notebook/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| notebook | `apps/notebook/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 6 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | pdf-viewer | `apps/pdf-viewer/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | pcb-design | `apps/pcb-design/` | PASS | PASS retained extraction/domain probes; browser and distribution qualification OPEN | OPEN: complete browser build and new host integration not qualified |
 | personal-template | `apps/personal-template/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| pico-simulator | `apps/pico-simulator/` | PASS | PASS - four configured simulator test commands | OPEN: complete browser build and new host integration not qualified |
-| replicad | `apps/replicad/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| spreadsheet | `apps/spreadsheet/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| pico-simulator | `apps/pico-simulator/` | PASS | PASS - four configured simulator test commands; phase44 Node reference 2 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
+| replicad | `apps/replicad/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 1 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
+| spreadsheet | `apps/spreadsheet/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 13 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | stitch-converter | `apps/stitch-converter/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| svg-editor | `apps/svg-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| svg-editor | `apps/svg-editor/` | PASS | OPEN - no component behavior qualification claimed; phase44 Node reference 1 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | terminal | `apps/terminal/` | PASS | PASS three original startup-output assertions; VM reference only | OPEN legacy host/guest APIs, xterm build and lifecycle/agent integration; optional outside minimum |
-| text | `apps/text/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
+| text | `apps/text/` | PASS | PASS selected first-slice component and actual browser workflows; phase44 Node reference 5 pass/0 captured fail | PASS local/clean composition; see deployment status for the earlier hosted pins |
 
 ## Craft apps (17)
 
@@ -110,7 +110,7 @@ Hosted Rooms is unused historical code, not a new service.
 | crystal-defense | `apps/crystal-defense/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
 | drone-circuit | `apps/drone-circuit/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
 | expression-puppet | `apps/expression-puppet/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
-| falling-blocks | `apps/falling-blocks/` | PASS | OPEN - no original package suite; coach render/rebuild not run | OPEN: complete browser build and new host integration not qualified |
+| falling-blocks | `apps/falling-blocks/` | PASS | OPEN - no original package suite; coach render/rebuild not run; phase44 Node reference 2 pass/0 captured fail | OPEN: complete browser build and new host integration not qualified |
 | garden-defense | `apps/garden-defense/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
 | gravity-pinball | `apps/gravity-pinball/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
 | kinetic-relay | `apps/kinetic-relay/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has3,319 unresolved entries plus33 unqualified blob candidates, after
+ledger now has3,240 unresolved entries plus33 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -255,3 +255,5 @@ Phase41 assigns53 remaining legacy backend/configuration/documentation paths acr
 Phase42 adds the independent local speech engine with34 verified static inputs (97,100,582 bytes), an offline graph builder and successful real CPU/WASM spoken-sample recognition. Inputs live at `artifacts/inputs/speech/`; no user audio is copied and Desktop voice is not enabled. See [speech engine](SPEECH-ENGINE.md).
 
 Phase43 retains Terminal’s original PTY/startup glue, unchanged three-assertion reference test and historical notes. Real guest/current host/agent integration remain OPEN, and no optional guest dependency is enabled. See [terminal source](TERMINAL-SOURCE.md).
+
+Phase44 assigns79 original Node reference-test files to18 application owners, porting only owned imports/fixture URLs with unchanged assertions. Original/current totals match:296 pass,3 captured ACAD failures retained, no skipped/cancelled cases. This is unit/reference scope, not new app hosting. See [app reference tests](APP-REFERENCE-TESTS.md).
