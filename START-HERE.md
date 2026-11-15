@@ -95,8 +95,9 @@ python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 The LFS setup affects only the new egui checkout. Verified local origins retain
 all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
 outside Git and web roots, under `/path/to/workspace/Projects/.webos-migration/`.
-Latest active checkpoint: `run-20261115-20-live-operations/checkpoint.json` and
-`RESUME.md`; phase18 records the separate, still-running native CI review.
+Latest active checkpoint: `run-20261115-21-scoped-delegation/checkpoint.json` and
+`RESUME.md`. Phase20 records live view routing. Phase18 records the separate
+native CI review, which terminated with a PDF text test failure.
 Phase17 records clean qualification of the selected authority
 fixes; phase16 retains red/green evidence. Phase15 records the current test deployment and renderer
 qualification; phase13 records earlier local/clean-clone acceptance. Earlier phases retain
@@ -151,10 +152,13 @@ local bare origins; this browser qualification covers the ten-component first
 slice, not the entire suite.
 
 The baseline native WordCraft CI stopped on three Clippy diagnostics in two
-unchanged Rust files; later CI steps were not run. That remains an explicit
-quality gate. A separate isolated native review in phase18 simplifies those
-conditions and runs required CI without lowering lint thresholds. It has not
-changed these selected pins. The ksu.codes deployment remains the phase15
+unchanged Rust files. A separate isolated phase18 review simplifies those
+conditions without lowering lint thresholds. Formatting and Clippy passed;
+tests reported3,547 passes,1 failure and5 ignored. The PDF test
+`chart_and_equation_text_keep_their_pdf_bytes` also fails in standalone
+reproduction: extracted text lacks mathematical italic x U+1D465. Font-input
+causality remains under investigation; later CI stages were not run. This
+review has not changed the selected WordCraft pin. The ksu.codes deployment remains the phase15
 release. Delegated-agent transport is not yet enabled or qualified.
 
 The selected Help commit is `e68a507ea52235d282e1e2496f24e9ff8f98c948`.
@@ -182,3 +186,26 @@ The capability-routing test uses synthetic in-page callers. The parent still
 accepts only its human capability: Accounts-issued delegation, an authenticated
 agent transport and agent file authority remain incomplete. These new Desktop
 bits are not deployed to ksu.codes. Native CI continues separately in phase18.
+
+
+## Accounts delegation core selected locally
+
+Accounts `76dad308d12d0750538602e77ba34212478d5256` adds an optional,
+proof-bound delegation core. Registered owners approve exact desktop/session/
+instance/resource/command scope for an independent agent key. Short operation
+grants bind exact intent bytes, require owner consumption, and are single use.
+Owner logout, persisted revocation, disabled accounts and password-generation
+changes invalidate authority. Ordinary inspection omits credentials.
+
+All21 Accounts tests pass from a clean eleven-component checkout with the
+original, primary and recovery source hidden and external networking disabled.
+Real signed account-file browser checks, retained-state restart, Login/Help and
+three issuer-origin checks pass too. All112 parent pins remain retrievable
+from local bare origins. The restart test now retains its original issuer port;
+the development listener permits address reuse after stopping. Prior failed
+runs remain in phase21 evidence.
+
+This core is not mounted by the launcher. Owner consent UI, authenticated agent
+transport, unforgeable browser invocation context and scoped agent file authority
+remain required. Existing human file authority must not stand in for an agent.
+The test deployment is unchanged; this selection is local only.
