@@ -1,0 +1,15 @@
+{
+  "name": "webos-assembly",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "runtime",
+    "accounts",
+    "login",
+    "storage"
+  ],
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "puppeteer-core": "25.17.0"
+  }
+}
