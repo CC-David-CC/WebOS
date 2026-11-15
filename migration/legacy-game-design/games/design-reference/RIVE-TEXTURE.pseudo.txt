@@ -1,0 +1,31 @@
+PSEUDOCODE — candidate integration, no tested plugin implied
+
+CREATE
+  load exact pinned Rive runtime + matching WASM
+  load authorized .riv bytes; validate artboard, state-machine and typed data names
+  create one bounded source surface and app-owned artboard instances
+  create engine texture ONCE from source surface
+  create scene sprite/panel/face and material using that texture
+
+FRAME (called by the engine's single presentation loop)
+  project authoritative game state into Rive view-model properties
+  drain committed presentation events (do not generate score here)
+  if active/dirty animation:
+    advance each artboard/state machine ONCE with presentation delta
+    draw into source surface using chosen fit transform
+    mark texture updated / upload only after draw completes
+  render game scene; do not repeat animation advancement for each XR eye
+
+PANEL INPUT
+  route pointer or XR target ray to panel mesh/hit region
+  convert hit UV through texture orientation and inverse fit/letterbox transform
+  dispatch one pointer/action path to the artboard or semantic control
+  validate any returned UI intent against the current game phase
+  consume gesture so the world behind the menu does not also activate
+
+DISPOSE
+  remove panel listeners and input ownership
+  stop artboard advancement
+  release per-instance state machines/artboards in documented order
+  release engine texture/material/source surface and runtime instance resources
+  do not tear down a shared immutable/module runtime used by another window
