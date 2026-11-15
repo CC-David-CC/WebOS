@@ -202,13 +202,16 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The122-row chart does not close original-source reconciliation. The tracked-source
-ledger now has5,896 unresolved entries plus86 unqualified blob candidates, after
+ledger now has5,604 unresolved entries plus63 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
 dispositions, plus28 publication command/test sources, were verified.
 All44 original steward-area paths now have source owners;
-this does not qualify either service as active. These counts do not mean
+this does not qualify either service as active. A further315 historical output records
+are verified in private recovery, with three byte/mode restore samples. Their old
+reported results are not new acceptance proof; possible fixture/input reuse remains
+separate review. See [historical evidence](HISTORICAL-EVIDENCE.md). These counts do not mean
 those files are missing. Baseline histories,
 new path maps, generated evidence and deliberately preserved historical material
 must be compared explicitly. Backend/network/build/test/research areas and WIP
