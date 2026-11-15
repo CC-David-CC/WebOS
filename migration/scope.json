@@ -1596,7 +1596,9 @@
       "stitch-converter": "apps/stitch-converter",
       "personal-template": "apps/personal-template",
       "engine-v86": "engines/v86",
-      "linux": "apps/linux"
+      "linux": "apps/linux",
+      "circuit-lab": "apps/circuit-lab",
+      "pcb-design": "apps/pcb-design"
     },
     "missing_core_sources": [],
     "platform": "platform/<component>/",
@@ -1628,13 +1630,15 @@
       "source": "apps/system/circuit-lab",
       "entry_exists": true,
       "package_exists": true,
-      "state": "preserved; ownership and integration disposition pending; not in registered builder list"
+      "state": "Source/history extracted exactly and attached; existing scoped baseline/repeat commands PASS; browser/host and distribution gates remain OPEN",
+      "component_path": "apps/circuit-lab"
     },
     {
       "source": "apps/system/pcb-design",
       "entry_exists": false,
       "package_exists": true,
-      "state": "preserved; ownership and integration disposition pending; not in registered builder list"
+      "state": "Source/history extracted exactly and attached; existing scoped baseline/repeat commands PASS; browser/host and distribution gates remain OPEN",
+      "component_path": "apps/pcb-design"
     }
   ],
   "minimum_progress": {
@@ -1739,8 +1743,9 @@
     "files": 6143,
     "bytes": 1028162239,
     "build_inputs": "artifacts/inputs/microduck",
-    "input_files": 44,
+    "input_files": 49,
     "verify": "python3 scripts/verify_artifacts.py",
-    "scope": "All catalog-listed public app payload bytes and selected recovered immutable build inputs; not a full rebuilt release or whole-source completion claim"
+    "scope": "All catalog-listed public app payload bytes and selected recovered immutable build inputs; not a full rebuilt release or whole-source completion claim",
+    "restricted_inputs": "CircuitLab five-file local-research-only runtime/relink inputs, explicitly not public-release assets; original model/license/relink review gates retained"
   }
 }

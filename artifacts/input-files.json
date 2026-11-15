@@ -220,7 +220,42 @@
       "path": "inputs/microduck/space/app/public/robot/mjlab/meshes/yaw_roll_motion.stl",
       "bytes": 62184,
       "sha256": "ae3740fde29a261b79650a25825baedd84d538fc67b6b20b79589125e5e05592"
+    },
+    {
+      "path": "inputs/circuit-lab/local-research-runtime/LICENSE",
+      "bytes": 1066,
+      "sha256": "05b5629164ed0e846fd9f3ee34b64aced9d1ffef01e6fc30c39c8c68b9fea4ed",
+      "component": "circuit-lab",
+      "release_gate": "LOCAL RESEARCH ONLY; existing source/model/relink distribution review unresolved; never automatically serve or ship this cache"
+    },
+    {
+      "path": "inputs/circuit-lab/local-research-runtime/NOTICES.txt",
+      "bytes": 297187,
+      "sha256": "5cc152f5609b0638739c056c2a0ec67a8f7af8d2237e93a8dcd0fd10b915550a",
+      "component": "circuit-lab",
+      "release_gate": "LOCAL RESEARCH ONLY; existing source/model/relink distribution review unresolved; never automatically serve or ship this cache"
+    },
+    {
+      "path": "inputs/circuit-lab/local-research-runtime/dist/eecircuit-engine.mjs",
+      "bytes": 16441993,
+      "sha256": "534904ee934de1ab70050e17cd7b5e1484b9abb2f4721786a5571de23223249b",
+      "component": "circuit-lab",
+      "release_gate": "LOCAL RESEARCH ONLY; existing source/model/relink distribution review unresolved; never automatically serve or ship this cache"
+    },
+    {
+      "path": "inputs/circuit-lab/local-research-runtime/package.json",
+      "bytes": 90,
+      "sha256": "d5a07e6977829e2120ae3084b5bbd121691597e1d9096af572af6fb79023bbb3",
+      "component": "circuit-lab",
+      "release_gate": "LOCAL RESEARCH ONLY; existing source/model/relink distribution review unresolved; never automatically serve or ship this cache"
+    },
+    {
+      "path": "inputs/circuit-lab/local-research-runtime/source-relink.zip",
+      "bytes": 48526164,
+      "sha256": "db2b6b6f0c9862ff991a88ece9b8d3401c28c7a4b3785bec3332ca63412872ce",
+      "component": "circuit-lab",
+      "release_gate": "LOCAL RESEARCH ONLY; existing source/model/relink distribution review unresolved; never automatically serve or ship this cache"
     }
   ],
-  "scope": "Verified immutable Microduck source/engine inputs; no credentials/user documents; engine source rebuild is not claimed"
+  "scope": "Verified immutable source/runtime inputs; CircuitLab cache is local-research-only with existing distribution gates; no credentials/user documents"
 }
