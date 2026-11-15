@@ -2843,5 +2843,20 @@
     "current_python_literal_holds_private": 13,
     "test_fixture_browser_worker_guest_compiler_executions": 0,
     "evidence": "migration/TEST-ORCHESTRATION-SOURCE.md and private phase55"
+  },
+  "owned_node_reference_tests": {
+    "original_tests": 12,
+    "original_frozen_vector_fixture": 1,
+    "component_owners": 4,
+    "parent_cross_reference": 1,
+    "qualified_test_files": 8,
+    "qualified_node_subtests": 15,
+    "original_baseline_subtests": 26,
+    "original_baseline_pass": 25,
+    "original_baseline_existing_failures": 1,
+    "assertions_weakened": false,
+    "component_implementation_or_dependencies_changed": false,
+    "real_browser_guest_storage_agent_acceptance": false,
+    "evidence": "migration/OWNED-NODE-REFERENCES.md and private phase56"
   }
 }
