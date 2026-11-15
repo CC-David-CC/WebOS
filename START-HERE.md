@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has2,104 unresolved dispositions and33 unqualified blob candidates among
+still has1,984 unresolved dispositions and26 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -192,7 +192,7 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-56-owned-node-references/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-57-private-evidence-disposition/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
 Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
@@ -203,13 +203,13 @@ Phase28 records42 retained identity-core tests,4 current-policy checks and4 core
 Phase27 records optional guest backend extraction and installed-wheel checks.
 Phase26 records Browser backend extraction and isolated tests.
 Phase25 records static Python role review and16 verified Accounts/Storage retentions.
-Phase24 remains the last browser-qualified working-system checkpoint.
+Phase34 is the latest local human browser/account-file workflow evidence; phase24 is the last recorded test-site observation.
 Phase23 records the120-source clone and planned-core extraction.
 Phase22 records shared/native CI and artifact verification; phase18 holds the
 committed build source and artifact. Earlier failed checks remain retained.
 Phases21/20 cover Accounts/live routing; earlier phases retain preservation.
 
-ksu.codes still serves the earlier phase15 release, including WordCraft0d48;
+The last recorded test-site observation served the earlier phase15 release, including WordCraft0d48; this phase did not recheck it.
 newer local Help, authority/routing and native/font changes are not deployed.
 Read [deploy/TEST-STATUS.md](deploy/TEST-STATUS.md) for the actual hosted revisions,
 backend state, evidence and rollback. Hosted acceptance scripts allow only the
@@ -259,3 +259,5 @@ Phase54 retains76 original system fixture/operator/guidance sources and selected
 Phase55 retains283 original test/fixture sources with histories. Python/JS/HTML source checks and exact byte/mode/assembly checks pass; old routes/dependencies/fixture/generated compiler inputs remain explicit ports.13 more current Python literal cases remain private. No old test, fixture, app module, browser, Worker, compiler or guest ran. See [test orchestration source](migration/TEST-ORCHESTRATION-SOURCE.md).
 
 Phase56 assigns12 original Node test sources and one frozen vector fixture to actual owners. Eight locator-only ports report15 passing Node subtests; the original baseline has25 passes and one pre-existing stale negative-control failure, retained unchanged and unqualified. Browser relay and cross-component references remain inert. See [owned Node references](migration/OWNED-NODE-REFERENCES.md).
+
+Phase57 verifies127 historical records in existing private recovery without copying them into Git/web roots.109 possible source/design/input/unclear records remain unresolved. Current tracked-source counts come from [the generated summary](migration/SOURCE-RECONCILIATION-SUMMARY.json). A fresh minimum frontend build reuses fully rehashed WordCraft from unchanged selected source; no new browser or full-suite acceptance follows. See [private evidence retention](migration/PRIVATE-EVIDENCE-RETENTION.md).
