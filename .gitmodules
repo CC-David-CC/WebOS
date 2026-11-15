@@ -37,3 +37,6 @@
 [submodule "pdfcraft"]
 	path = pdfcraft
 	url = ../pdfcraft.git
+[submodule "photocraft"]
+	path = photocraft
+	url = ../photocraft.git
