@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has3,044 unresolved entries plus33 unqualified blob candidates, after
+ledger now has2,965 unresolved entries plus33 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -265,3 +265,5 @@ Phase46 retains 35 additional original cross-component browser test sources with
 Phase47 retains 145 original CAD case notes beside the archived cross-component test source, with original bytes/modes and selected histories. Historical PASS claims do not qualify the new build; old run outputs remain private and required test-input closure is still open. See [CAD case documentation](CAD-CASE-DOCUMENTATION.md).
 
 Phase48 retains eight statically referenced original CAD review inputs, closing12 known read sites. Three original offline recorded-data reviewer tests pass in isolated snapshot and clean assembly; no native/browser/account-storage acceptance is claimed. Required fixture closure remains open for dynamic and Python paths. See [CAD reference inputs](CAD-REFERENCE-INPUTS.md).
+
+Phase49 retains79 original JavaScript operator/browser-fixture sources with their selected histories, after language-specific syntax and bounded literal screening. No old operator or driver executed and no component functionality changed. See [legacy JavaScript operations](LEGACY-JS-OPERATIONS.md).

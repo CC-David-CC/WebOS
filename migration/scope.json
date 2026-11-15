@@ -2776,5 +2776,16 @@
     "current_native_browser_storage_acceptance": false,
     "required_fixture_closure_complete": false,
     "evidence": "migration/CAD-REFERENCE-INPUTS.md and private phase48"
+  },
+  "legacy_js_operation_source": {
+    "parent_source_paths": 79,
+    "source_location": "deploy/legacy-operations/",
+    "source_bodies_and_modes": "Exact original baseline verified",
+    "execution": "disabled; no supported command entrypoint",
+    "selected_history_blobs": 79,
+    "static_import_declarations": 321,
+    "dynamic_import_expressions": 37,
+    "runtime_dependency_closure": false,
+    "evidence": "migration/LEGACY-JS-OPERATIONS.md and private phase49"
   }
 }
