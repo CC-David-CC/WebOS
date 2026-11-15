@@ -73,3 +73,6 @@
 [submodule "texturecraft"]
 	path = texturecraft
 	url = ../texturecraft.git
+[submodule "materialcraft"]
+	path = materialcraft
+	url = ../materialcraft.git
