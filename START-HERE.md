@@ -242,5 +242,15 @@ The newer WordCraft review `a41d6f9286458a5b460b02fd2f65f2110b969d1c`
 passed all9 required CI stages, including translation audit and wasm. Shared
 craft-libs review `3b3271f4` passes its workspace fmt/Clippy/tests after explicit
 baseline quality fixes; no assertions were removed. A new source-pinned browser
-artifact is being built privately. These reviews and the math-font update are
+artifact has been built privately:27 files totaling92,417,572bytes, with every
+payload digest and the math-font license verified. These reviews and the math-font update are
 not parent-selected or deployed; browser qualification remains required.
+
+
+The planned-game assembly also passed a fresh recursive clone of all120 source
+repositories. All7 source/layout checks and57 domain/snapshot tests pass. Real
+signed Login/Desktop/Help and account-file regressions pass with original,
+primary and recovery source hidden and external networking disabled. This
+qualifies repository assembly and the stated first-slice/domain checks, not the
+runtime or release assets of every app. See the phase23 checkpoint for commands,
+exact selected commits, verified source dispositions and remaining work.
