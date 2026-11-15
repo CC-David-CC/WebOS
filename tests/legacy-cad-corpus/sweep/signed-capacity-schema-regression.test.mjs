@@ -1,0 +1,6 @@
+// Real retained Native reply; no new geometry/model/history/reply fabrication.
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+import {normalizeCapacity} from './signed-capacity-measure.mjs';
+const r=JSON.parse(fs.readFileSync(new URL('./signed-capacity-evidence-r1/receipt.json',import.meta.url))),states=r.rows.find(x=>x.sourceBefore&&x.sourceAfter&&x.before&&x.after),raw=r.rows.find(x=>x.response?.quality==='native-re-evaluation-observation'),request=r.rows.find(x=>x.request&&x.expected&&x.sourceBefore&&!x.sourceAfter).request;
+test('correct exact-field assertion admits the actual R1 five-point reply',()=>{const q=normalizeCapacity(raw.response,request,r.binding,states.before,states.after,states.sourceBefore,states.sourceAfter,r.creations);assert.equal(q.checked.probes,5);assert(Math.abs(q.checked.volumeMM3-40*Math.PI)<=1e-6);});
+test('extra field still refuses: correction does not widen response schema',()=>{const changed=structuredClone(raw.response);changed.points[0].extra='schema-negative-only';assert.throws(()=>normalizeCapacity(changed,request,r.binding,states.before,states.after,states.sourceBefore,states.sourceAfter,r.creations));});

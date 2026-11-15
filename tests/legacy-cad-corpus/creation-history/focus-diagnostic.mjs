@@ -1,0 +1,3 @@
+// Ordinary trusted clicks + readonly DOM focus observation; no CAD mutations.
+import fs from'node:fs';import assert from'node:assert/strict';import{createRequire}from'node:module';import{harness}from'./harness.mjs';
+const out=process.env.CODI_EVIDENCE;assert(out&&!fs.existsSync(out));fs.mkdirSync(out,{recursive:true});const b=await createRequire(import.meta.url)(process.env.PUPPETEER_CORE_PATH).connect({browserURL:process.env.CODI_TEST_CDP}),h=await harness(b,process.env.CODI_TEST_URL,out,()=>{});try{await h.login();await h.launch();const rows=await h.focusDiagnostic();fs.writeFileSync(out+'/focus.json',JSON.stringify(rows,null,2)+'\n');console.log(JSON.stringify(rows));}finally{await h.retire();b.disconnect();}
