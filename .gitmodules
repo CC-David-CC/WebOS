@@ -82,3 +82,6 @@
 [submodule "accounts"]
 	path = accounts
 	url = ../accounts.git
+[submodule "storage"]
+	path = storage
+	url = ../storage.git
