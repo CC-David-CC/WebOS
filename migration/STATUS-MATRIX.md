@@ -199,7 +199,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The123-row chart does not close original-source reconciliation. The tracked-source
-ledger now has3,464 unresolved entries plus38 unqualified blob candidates, after
+ledger now has3,382 unresolved entries plus35 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -246,3 +246,5 @@ Phase37 verifies nine previously unresolved identity/file-client/verifier/loader
 Phase38 adds independent shared network-policy source at `libraries/network-policy/`:11 retained source/config/test paths, original and installed-wheel10 passes/1 existing optional database skip. No firewall, listener or desktop policy enabled. See [network policy](NETWORK-POLICY.md).
 
 Phase39 retains1075 unchanged historical operations/build/check Python sources and selected histories at `deploy/legacy-operations/`, disabled pending deliberate authorization/target/interface/side-effect ports. Syntax/history only; no old driver executed. See [legacy operations](LEGACY-OPERATIONS.md).
+
+Phase40 retains85 original desktop visual/license inputs with history in Desktop, including74 launcher icons and wallpaper. Asset bytes/modes, PNG data and representative decoding are verified; active rendering is unchanged. See [desktop assets](DESKTOP-ASSETS.md).

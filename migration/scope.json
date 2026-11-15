@@ -2639,5 +2639,16 @@
     "execution": "disabled; no supported command entrypoint",
     "qualification": "Disabled historical operation/build/check sources, not current supported assembly commands. Do not import, run, bulk-discover or replay them. Before reuse, review actual host identity, credentials/custody, authorization, writable paths, external/network/process actions, source/interface dependencies, fixtures and rollback. Port against owned public interfaces; do not restore old privileged globals, publish from an old script, or make old host addresses authoritative.",
     "evidence": "migration/LEGACY-OPERATIONS.md and private phase39 maps/reviews"
+  },
+  "legacy_desktop_visual_inputs": {
+    "component_path": "platform/desktop/",
+    "source_paths": 85,
+    "pngs": 74,
+    "wallpaper_jpegs": 1,
+    "captured_legal_texts": 10,
+    "verification": "Exact bytes/modes/history; PNG CRC/decompression and representative image decode/view; unchanged Desktop tests",
+    "activation": "Not enabled in current src renderer or bundle",
+    "open": "Per-image upstream/license mapping, release notices and actual theme integration if selected",
+    "evidence": "migration/DESKTOP-ASSETS.md and private phase40"
   }
 }
