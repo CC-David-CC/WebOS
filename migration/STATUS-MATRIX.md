@@ -182,7 +182,7 @@ Hosted Rooms is unused historical code, not a new service.
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
-| craft-fonts | `assets/craft-fonts/` | PASS | PASS selected e5f6cc5, clean glyph/MATH/license checks and actual WASM font | PASS selected WordCraft artifact; other consumers OPEN |
+| craft-fonts | `assets/craft-fonts/` | PASS | PASS selected9ffb3a7: 66 font entries hashed,42 tests, fmt/Clippy/embed checks; DeckCraft font crate and browser target compile for wasm with required fonts | WordCraft generated font inputs unchanged; DeckCraft linked artifact/browser/host acceptance OPEN |
 | craft-i18n | `assets/craft-i18n/` | PASS | PASS pinned WordCraft translation/proofing build input | PASS selected WordCraft composition; other consumers OPEN |
 
 ## Shared build tooling (1)

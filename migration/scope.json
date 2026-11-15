@@ -2427,28 +2427,29 @@
     "craft-libs": {
       "path": "libraries/craft-libs",
       "consumers": 16,
-      "selected_snapshot": "92d392cff132eaf53e13afff77f38b5c11b73aa0",
-      "pin_policy": "All existing app manifests/locks unchanged; 50 declared and locked historical revisions retained as local origin refs. Checkout snapshot is not a forced suite-wide dependency version."
+      "pin_policy": "All existing app manifests/locks unchanged; 50 declared and locked historical revisions retained as local origin refs. Checkout snapshot is not a forced suite-wide dependency version.",
+      "organization_snapshot": "92d392cff132eaf53e13afff77f38b5c11b73aa0"
     },
     "egui": {
       "path": "libraries/egui",
-      "selected_snapshot": "6d518fc799681571963842f95b55a6b68431b15a",
-      "assets": "Git LFS required; all 2144 reachable historical payloads verified and retained in local origin"
+      "assets": "Git LFS required; all 2144 reachable historical payloads verified and retained in local origin",
+      "organization_snapshot": "6d518fc799681571963842f95b55a6b68431b15a"
     },
     "craft-fonts": {
       "path": "assets/craft-fonts",
-      "selected_snapshot": "b076417b5880bd4154bd22f00695b1d28c6bea83"
+      "organization_snapshot": "b076417b5880bd4154bd22f00695b1d28c6bea83"
     },
     "craft-i18n": {
       "path": "assets/craft-i18n",
-      "selected_snapshot": "e56d26244bbac099bfd42e23fb12f78a4be418a7"
+      "organization_snapshot": "e56d26244bbac099bfd42e23fb12f78a4be418a7"
     },
     "craft-common-actions": {
       "path": "tooling/craft-common-actions",
-      "selected_snapshot": "c8f4b6ec2a894285213c341611b6b023b0b3e469",
-      "status": "Source preserved; release/publishing workflows not executed. No top-level license found at selected revision; distribution review required."
+      "status": "Source preserved; release/publishing workflows not executed. No top-level license found at selected revision; distribution review required.",
+      "organization_snapshot": "c8f4b6ec2a894285213c341611b6b023b0b3e469"
     },
-    "functional_wiring": "Not changed by source organization; app dependency resolution/build integration remains separate."
+    "functional_wiring": "Not changed by source organization; app dependency resolution/build integration remains separate.",
+    "snapshot_note": "Snapshot fields record historical source organization. Current selected revisions are authoritative in parent Git links, not these historical snapshots."
   },
   "beta_shared_tools": {
     "status": "16 additional library/engine source histories mechanically extracted; no functional changes",
@@ -2893,5 +2894,15 @@
     "production_source_or_dependencies_changed": false,
     "real_storage_or_browser_or_account_sync_qualified": false,
     "evidence": "migration/STORAGE-MIRROR-REFERENCES.md and private phase59"
+  },
+  "craft_build_input_qualification": {
+    "documentation": "migration/CRAFT-BUILD-INPUTS.md",
+    "metadata_workspaces_passed": 17,
+    "shared_font_manifest_entries_sha_verified": 66,
+    "deckcraft_required_font_wasm_crate_check": "pass",
+    "deckcraft_complete_wasm_target_check": "pass",
+    "wordcraft_required_font_generated_input_equivalence": "byte-identical wasm/native",
+    "runtime_support_claimed_from_compile_check": false,
+    "browser_artifact_launch_and_host_integration": "open"
   }
 }
