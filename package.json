@@ -3,12 +3,12 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "runtime",
-    "accounts",
-    "login",
-    "storage",
-    "desktop",
-    "files"
+    "platform/runtime",
+    "platform/accounts",
+    "platform/login",
+    "platform/storage",
+    "platform/desktop",
+    "apps/files"
   ],
   "devDependencies": {
     "esbuild": "0.28.2",
