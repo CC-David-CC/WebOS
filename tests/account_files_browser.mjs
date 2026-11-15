@@ -54,9 +54,11 @@ try {
  assert(!requests.some(p=>/v86|\/vm\/|terminal/.test(p)),'Login required guest assets');assert.deepEqual(errors,[]);
  await first.p.screenshot({path:path.join(output,'login.png')});
  await first.c.close();await second.c.close();await third.c.close();
+ const retainedOrigin=origin;
  server.kill('SIGTERM');await new Promise(resolve=>server.once('exit',resolve));
- server=spawn(python,['-u',path.join(root,'scripts/run_development.py'),'--public-root',publicRoot,'--private-root',path.join(output,'state'),'--port','0'],{stdio:['ignore','pipe','pipe']});server.stderr.on('data',data=>serverErrors.push(data));
+ server=spawn(python,['-u',path.join(root,'scripts/run_development.py'),'--public-root',publicRoot,'--private-root',path.join(output,'state'),'--port',new URL(retainedOrigin).port],{stdio:['ignore','pipe','pipe']});server.stderr.on('data',data=>serverErrors.push(data));
  origin=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Restart did not become ready.')),15000);const lines=createInterface({input:server.stdout});lines.once('line',line=>{clearTimeout(timer);resolve(JSON.parse(line).origin)});server.once('exit',()=>{clearTimeout(timer);reject(Error('Restart failed.'))});});
+ assert.equal(origin,retainedOrigin,'Retained account state must restart at the same issuer origin');
  const resumed=await context();await submit(resumed.p,name,secret);await resumed.p.waitForFunction(()=>window.__loginHarness.inspect().account.phase==='authenticated');assert.equal((await resumed.p.evaluate(()=>window.__loginHarness.inspect())).account.accountId,a.account.accountId);const durable=await resumed.p.evaluate(()=>window.__loginHarness.read('Documents/shared.txt'));assert.equal(durable.text,'Server document revision two');assert.equal(durable.revision,changed.sha256);
 
  Object.assign(report,{status:'PASS',realBrowserContexts:5,serverRestartPreservesIdentityAndFileRevision:true,realSignedServerFiles:true,verificationWorker:true,secondContextFetchesServerBytes:true,staleSaveRejected:true,anotherAccountDenied:true,unsignedFileRequestDenied:true,logoutFencesOldFileAuthority:true,closingViewPreservesFileService:true,sharedAccountDistinctSessions:true,unknownSigninDoesNotRegister:true,inspectionContainsNoCredentials:true,viewClosePreservesAccountService:true,pendingViewCloseRevokesLateSession:true,logoutAndRenew:true,noGuestRequests:true,pageErrors:0});
