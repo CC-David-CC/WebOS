@@ -2575,5 +2575,18 @@
     "beta": "source route block/page bytes verified unchanged",
     "report": "deploy/TEST-STATUS.md",
     "supplemental_concurrency": "OPEN: third simultaneous WordCraft startup timed out; first two editors save/conflict checks passed; preserved evidence"
+  },
+  "historical_evidence_disposition": {
+    "captured_source_commit": "4f72ea86928666189b32f6f05c2c697a37341d06",
+    "records": 315,
+    "roles": {
+      "historical-terminal-output-format": 189,
+      "historical-outcome-report-schema": 105,
+      "empty-captured-output-channel": 21
+    },
+    "retention": "Verified self-contained private recovery; raw records remain outside source control/web roots",
+    "verification": "All classified Git blobs read/hash checked;3 representative byte/Git-mode restores with old/primary paths hidden",
+    "qualification": "Historical reported outcomes are not current acceptance. Possible fixture/build/provenance reuse remains a separate review. No source or data discarded.",
+    "evidence": "Private phase32 index and restore proof; migration/HISTORICAL-EVIDENCE.md is the sanitized summary"
   }
 }

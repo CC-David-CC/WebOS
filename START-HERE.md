@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has5,896 unresolved dispositions and86 unqualified blob candidates among
+still has5,604 unresolved dispositions and63 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -52,6 +52,11 @@ full build/operational qualification explicitly OPEN. Its unsigned reconstructio
 fixture passes with old source hidden. An additional28 publication command/test
 files are preserved under `platform/publication/legacy/scripts/`; none was run or
 installed as an entrypoint. Neither service is enabled.
+
+A separate [historical-output disposition](migration/HISTORICAL-EVIDENCE.md)
+accounts for315 preserved reports/logs. Their old PASS/FAIL text is not current
+acceptance evidence. Possible fixture/build-input reuse remains explicit review;
+no raw output was copied into active source or discarded.
 
 ## Current working slice
 
@@ -182,8 +187,9 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-31-publication-tools/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-32-historical-evidence/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
+Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
 Phase31 records28 publication command/test sources preserved unchanged and unexecuted.
 Phase30 records32 unchanged publication modules, their structural fixture, and complete ownership of the former44-file steward area.
 Phase29 records rendezvous extraction,37 unchanged lease tests and registry/chart reconciliation.
