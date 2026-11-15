@@ -22,3 +22,6 @@
 [submodule "engine-usd-brep"]
 	path = engine-usd-brep
 	url = ../engine-usd-brep.git
+[submodule "legacy-jsketcher"]
+	path = legacy-jsketcher
+	url = ../legacy-jsketcher.git
