@@ -1,0 +1,3 @@
+# Source extraction provenance
+
+Desktop snapshot `4f72ea86928666189b32f6f05c2c697a37341d06`; audit baseline `cdbc7bd4477024363815bef899b653fe20e775f9`; final filtered baseline `cdbc7bd4477024363815bef899b653fe20e775f9`; mechanical parent merge `dc5f4aa58798a6acbc67a12c13789b74bfc0e69a`. Explicit current/earlier paths and distinct copy notes, two commit/ref maps and a composed map remain in private phase39. Metadata follows the mechanical merge separately. Source bodies and Git modes are unchanged. All original histories remain privately retained; historical copies are not imported wholesale from another component.

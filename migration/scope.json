@@ -2631,5 +2631,13 @@
       "human/agent operation acceptance"
     ],
     "evidence": "migration/NETWORK-POLICY.md and private phase38"
+  },
+  "legacy_operation_source": {
+    "parent_source_paths": 1075,
+    "source_location": "deploy/legacy-operations/",
+    "source_bodies_and_modes": "Exact original baseline verified",
+    "execution": "disabled; no supported command entrypoint",
+    "qualification": "Disabled historical operation/build/check sources, not current supported assembly commands. Do not import, run, bulk-discover or replay them. Before reuse, review actual host identity, credentials/custody, authorization, writable paths, external/network/process actions, source/interface dependencies, fixtures and rollback. Port against owned public interfaces; do not restore old privileged globals, publish from an old script, or make old host addresses authoritative.",
+    "evidence": "migration/LEGACY-OPERATIONS.md and private phase39 maps/reviews"
   }
 }
