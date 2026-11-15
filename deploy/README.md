@@ -56,3 +56,7 @@ on target Python3.12. The package contains55 files (105,646,592bytes), no accoun
 state and no source Git histories. Its receipt records the exact parent/child
 commits and complete WordCraft artifact hashes. Remote staging evidence stays
 in the private migration checkpoint. Staging is not hosted acceptance.
+
+The test route is now active. See `TEST-STATUS.md` for the hosted four-stage
+results, service identity and rollback. A supplemental third-concurrent-editor
+startup timeout remains open; it is not hidden by the passing core workflows.
