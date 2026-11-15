@@ -23,6 +23,11 @@ See [every component path](migration/COMPONENTS.md), the
 Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
+For Craft Cargo commands in this layout, see
+[shared build inputs](migration/CRAFT-BUILD-INPUTS.md). All 17 workspace metadata
+checks pass; DeckCraft's required font input check exposes missing Inter faces
+in the currently pinned shared font set. Metadata success is not a build pass.
+
 Source layout is not complete runtime support. The tracked-source reconciliation
 still has 1,969 unresolved dispositions and 25 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
