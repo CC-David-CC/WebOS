@@ -189,3 +189,9 @@ The beta catalog-listed artifact sweep is now recovered, verified and placed und
 ## Nonregistered prototype source addition
 
 Circuit Lab and PCB Design are now organized in independent repositories, taking the source assembly to111 components. Exact22-file source/history extraction verified. Circuit Lab real ngspice suite and PCB Node-only rendering probe PASS both before/after separation. Existing browser, usability, manufacturing and distribution gates remain OPEN; source copies are not enabled releases. Circuit Lab's5 runtime/source-relink cache files are explicitly local-research-only. Locked artifact verification PASS6192 files. The whole-source ownership pass remains incomplete.
+
+## Hosted Rooms source addition — current total112
+
+The current assembly adds `platform/rooms/`: seven recovered hosted-room Python source files, with the available one-snapshot path history retained. Exact source blobs and modes are verified against private recovery from the existing site Git repository. Contract bytes also match the reviewed official-service release manifest. This increases platform repositories from5 to6; the seven-component minimum is unchanged.
+
+Rooms is optional preserved source, not an enabled service. Legacy codiauth imports, runtime tests, license/distribution provenance and broader room-history recovery remain OPEN. The37 passing rendezvous lease-state checks cover the separate legacy steward state model only; they are not Rooms test results. Full source/asset organization remains OPEN.

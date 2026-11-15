@@ -1,8 +1,8 @@
 # Complete assembled component chart
 
-All paths are relative to /path/to/webos/. There are111 independent source repositories currently attached:78 apps (33 system/CAD,17 Craft,28 games),8 engines,5 platform components,17 libraries,2 shared asset projects and1 shared build-tool project. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
+All paths are relative to /path/to/webos/. There are112 independent source repositories currently attached:78 apps (33 system/CAD,17 Craft,28 games),8 engines,6 platform components,17 libraries,2 shared asset projects and1 shared build-tool project. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
 
-## Platform (5)
+## Platform (6)
 
 | Component | Actual directory |
 |---|---|
@@ -10,6 +10,7 @@ All paths are relative to /path/to/webos/. There are111 independent source repos
 | desktop | `platform/desktop/` |
 | login | `platform/login/` |
 | runtime | `platform/runtime/` |
+| rooms — optional preserved backend; integration OPEN | `platform/rooms/` |
 | storage | `platform/storage/` |
 
 ## System and CAD apps (33)
