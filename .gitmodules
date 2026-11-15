@@ -85,3 +85,6 @@
 [submodule "storage"]
 	path = storage
 	url = ../storage.git
+[submodule "desktop"]
+	path = desktop
+	url = ../desktop.git
