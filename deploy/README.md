@@ -1,13 +1,41 @@
-# Development composition inputs
+# Fresh ksu.codes test composition
 
-`backend-requirements.lock` pins the 15 third-party packages needed by the current Accounts/Storage implementation. It derives from the captured backend lock and excludes unrelated chess, WebSocket, and geolocation dependencies. Component source versions come from the parent Git links.
+The user identifies ksu.codes as a test site with test users only. The fresh
+rebuild uses one loopback process assembling Accounts, signed file authority,
+Storage and built static assets. Calculator → Files → Text → WordCraft has
+passed local browser acceptance; hosted acceptance remains separate.
 
-Prepare a new environment outside the checkout:
+`backend-requirements.lock` pins the third-party backend dependencies. Component
+source comes from the parent Git links, never from the old laptop workspace.
+Prepare a new external environment with `scripts/bootstrap_backend.py`.
+
+For a trusted HTTPS proxy that preserves the original Host and Origin headers:
 
 ```sh
-python3 scripts/bootstrap_backend.py --venv /absolute/new/private/environment
+/path/to/backend-env/bin/python scripts/run_development.py \
+  --public-root /a/new/release/public \
+  --private-root /a/new/private/test-state \
+  --port 18140 --origin https://ksu.codes
 ```
 
-This command installs the trusted local Runtime, Accounts and Storage packages plus locked dependencies. It refuses an existing environment and starts no services. It must never be pointed at the original workspace. Account keys/databases/files belong in separately configured private directories outside source and public asset roots.
+The socket still binds127.0.0.1. Without `--origin`, the selected loopback URL is
+the identity origin, preserving local development behavior. Credentials, URL
+paths, queries, invalid ports and non-loopback plain HTTP origins are refused.
+The server does not trust forwarded headers to invent its identity origin.
 
-`scripts/run_development.py` supplies an executable loopback HTTP composition of Accounts, file authority, Storage, and explicit built public assets. It requires a separate private state directory. The signed-file browser test builds its own component harness and verifies persistence across restart. Production deployment definitions are still pending. This directory does not constitute a deployment or a working assembled desktop. Existing-user compatibility, delegated agents, full editor save confirmation, release provenance and full-suite browser acceptance remain separate gates. No production changes or external publication are authorized.
+New private state uses `webos-development-state/2` and binds its origin. Existing
+state from another origin or older unbound development markers is refused and
+preserved; no migration, repair or reset runs automatically. Keys, databases and
+account documents stay outside the release/source/public directories.
+
+The current server is a test/development composition, not an official identity
+service. Before activating the test deployment, verify the exact Caddy site
+block, selected artifact receipt, loopback port, filesystem ownership, separate
+state and rollback. Preserve beta.ksu.codes routing and existing service state.
+Do not publish Git repositories or infer authorization to alter unrelated sites.
+
+`tests/test_development_origin.py` checks canonical origins and uses a real
+loopback HTTP server to verify HTTPS identity plus Host/Origin rejection and
+state-origin binding. Existing browser tests remain the account/document
+acceptance authority. Deployment files and local tests alone are not proof that
+the hosted system works.
