@@ -2588,5 +2588,16 @@
     "verification": "All classified Git blobs read/hash checked;3 representative byte/Git-mode restores with old/primary paths hidden",
     "qualification": "Historical reported outcomes are not current acceptance. Possible fixture/build/provenance reuse remains a separate review. No source or data discarded.",
     "evidence": "Private phase32 index and restore proof; migration/HISTORICAL-EVIDENCE.md is the sanitized summary"
+  },
+  "legacy_cad_acceptance_source": {
+    "source_records": 1299,
+    "parent_legacy_code_paths": 243,
+    "private_frozen_metadata_records": 34,
+    "withheld_source_paths": 33,
+    "deferred_frozen_metadata_paths": 9,
+    "source_location": "tests/legacy-cad-corpus/",
+    "scope": "Frozen desktop/CAD/Files integration sources; ownership does not merge ACAD and original JSketcher",
+    "qualification": "Exact code bytes/modes/history and syntax verified. No legacy driver run, no active suite/compatibility/current CAD result claimed. Required interface/helper/fixture/source/identity/runtime ports remain open.",
+    "evidence": "migration/CAD-CORPUS.md and private phase33 index/maps"
   }
 }
