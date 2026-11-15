@@ -1917,7 +1917,15 @@
       "build_status": "PASS release wasm source build with required shared fonts; nine-file standalone package, real Chromium rendering and command insert/undo (2\u21923\u21922 shapes),0 page errors/external requests; desktop/account/delegated-agent integration OPEN",
       "component_path": "apps/deckcraft",
       "project_origin": "ArtCraft first-party project",
-      "browser_baseline_documentation": "migration/DECKCRAFT-BROWSER-BASELINE.md"
+      "browser_baseline_documentation": "migration/DECKCRAFT-BROWSER-BASELINE.md",
+      "host_save_qualification": {
+        "status": "fail",
+        "documentation": "migration/DECKCRAFT-HOST-SAVE.md",
+        "test": "tests/deckcraft_host_save_browser.mjs",
+        "expected": "Retain dirty until durable correlated acknowledgement",
+        "observed": "Clears dirty after dispatch; no save ID; fixture stored nothing and sent no acknowledgement",
+        "current_minimum_enabled": false
+      }
     },
     {
       "id": "pdfcraft",

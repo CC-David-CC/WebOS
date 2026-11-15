@@ -63,3 +63,7 @@ sends save bytes to the parent; sending bytes alone does not confirm a durable
 account save. No platform agent authority was exercised by this standalone page
 API test. Full feature coverage, production release notices and deployment are
 separate gates. Original source and deployments remain unchanged.
+
+The subsequent [host-save regression](DECKCRAFT-HOST-SAVE.md) reproduces premature
+save completion in the selected app. Its failing result is separate from this
+standalone render/edit/undo pass.
