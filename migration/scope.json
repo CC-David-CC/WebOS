@@ -441,7 +441,8 @@
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "files"
+      "component_path": "files",
+      "integration": "Public server-backed Files view verified in actual development composition; remaining old features explicitly pending"
     },
     {
       "id": "help",
@@ -1330,23 +1331,23 @@
   "system_components": [
     {
       "id": "runtime",
-      "state": "49 files/history extracted; dispatcher/coordinator/loader unit baselines preserved; public interface rebuild pending"
+      "state": "Independent source/history; public JS contracts and shared stateless Python account-file wire contract; existing unit baselines pass; broad runtime/resource policy port remains pending"
     },
     {
       "id": "desktop",
-      "state": "seven current source files/history extracted; legacy Login/account/storage/guest coupling must be refactored before boot"
+      "state": "Independent source/history; public window/workspace controller and synchronous view; 4 domain tests and actual Login/Desktop/Files browser composition pass; remaining old UI features explicitly pending"
     },
     {
       "id": "login",
-      "state": "ownership/dependency separation pending"
+      "state": "Independently separated with structural history provenance and functional public mount; real browser registration/signin/renew/logout/cancellation checks pass"
     },
     {
       "id": "accounts",
-      "state": "history extracted; retained authority ported to installable public Python package; four isolated real-state tests pass; browser/HTTP/grant integration pending"
+      "state": "Retained identity/session authority in public Python and browser packages; credentials private in closure; real signed HTTP/browser/file-grant tests pass; scoped agent delegation and real-user staging continuity pending"
     },
     {
       "id": "storage",
-      "state": "history and separate OPFS research preserved; installable Python package consumes Accounts public proof API; four isolated persistence/revision/permission tests pass; signed HTTP/browser integration pending"
+      "state": "Independent retained persistence and OPFS research history; real signed browser transport and verification worker, revision/permission checks and restart persistence pass; remaining mirror/draft/full-suite policies pending"
     }
   ],
   "independent_existing_projects": [
@@ -1400,14 +1401,17 @@
     "account_data": "not copied; approved backup/staging remains pending"
   },
   "verification": {
-    "source_transport": "Organized recursive clone advanced to 30 pinned source components; local wiring has no reported errors. Login source is still missing.",
-    "wordcraft_wasm": "Unmodified compile check passed twice, including fresh clone/fresh target with original workspace hidden and network disabled; browser build/host persistence pending",
+    "source_transport": "Recursive local clone advanced to32 components; all3 source-wiring/core-presence tests pass after correcting Solitaire canonical submodule identity. Local origins only, no external publication.",
+    "wordcraft_wasm": "Unmodified isolated checks and full release WASM build pass. Complete font/translation browser graph and functional fork/browser acceptance are still in progress.",
     "app_unit_baselines": "Six existing scripts passed in recovery, extracted repos and fresh clone",
-    "minimum_and_whole_suite_functionality": "not implemented/verified",
+    "minimum_and_whole_suite_functionality": "Partial minimum verified through actual Login/Desktop/Files with signed server storage; WordCraft/scoped agents/full suite remain incomplete.",
     "runtime_regression": "Old over512 failure reproduced in baseline/extracted/fresh clone; separate new-source test correction adds exact/over-1GiB cases; all four Runtime scripts pass",
-    "core_source_acceptance": "Fails only for missing Login; Desktop/Accounts/Storage source baselines now present. No browser functionality claim.",
+    "core_source_acceptance": "All seven core sources present;32 source components consistent in independent clone. Product qualification is separate.",
     "isolated_backend_domains": "Accounts four tests and Storage four tests passed from the clean clone with both the old source workspace and primary new checkout hidden; networking disabled; real generated temporary SQLite/filesystem state",
-    "development_bootstrap": "Parent bootstrap_backend.py installs locked dependencies and trusted local Accounts/Storage packages into a new external environment; actual command tested; starts no server"
+    "development_bootstrap": "Parent script installs locked third-party and trusted local Runtime/Accounts/Storage packages into external environments; executable loopback development composition tested with synthetic state only.",
+    "actual_signed_files_browser": "5 clean Chromium contexts include restart-preserved account/file revision, stale409, unsigned401, other-account denial, logout fencing and worker hashing; source-isolated clone passes.",
+    "actual_desktop_files_browser": "2 clean contexts, actual build/UI against signed backend: upload, cross-client listing, rename/delete/cancel, interrupted mutation uncertainty, workspace/window controls and close/reopen/logout; source-isolated clone passes.",
+    "solitaire_baseline": "24 original files and Git modes/tree verified across3 historical app locations; typecheck and16 existing tests pass in baseline/extracted clone and isolated run hiding original, primary assembly and recovery."
   },
   "component_layout": {
     "core": "runtime/, desktop/, login/, accounts/, storage/, files/, wordcraft/",
@@ -1482,12 +1486,12 @@
     }
   ],
   "minimum_progress": {
-    "runtime": "source/lifecycle unit baseline; full new host port pending",
-    "desktop": "source/history present; functional interface separation pending",
-    "login": "not extracted; deliberate structural separation from Desktop required",
-    "accounts": "packaged server and retained-state regressions pass; browser/signed HTTP/delegation incomplete",
-    "storage": "packaged durable domain and stale-save/permission tests pass; signed transport/browser save confirmation incomplete",
-    "files": "source/history and unit baseline; new public host integration pending",
-    "wordcraft": "maintained source plus isolated WASM compile check; complete browser build, save acknowledgements and live command integration pending"
+    "runtime": "Independent source/history; public JS contracts and shared stateless Python account-file wire contract; existing unit baselines pass; broad runtime/resource policy port remains pending",
+    "desktop": "Independent source/history; public window/workspace controller and synchronous view; 4 domain tests and actual Login/Desktop/Files browser composition pass; remaining old UI features explicitly pending",
+    "login": "Independently separated with structural history provenance and functional public mount; real browser registration/signin/renew/logout/cancellation checks pass",
+    "accounts": "Retained identity/session authority in public Python and browser packages; credentials private in closure; real signed HTTP/browser/file-grant tests pass; scoped agent delegation and real-user staging continuity pending",
+    "storage": "Independent retained persistence and OPFS research history; real signed browser transport and verification worker, revision/permission checks and restart persistence pass; remaining mirror/draft/full-suite policies pending",
+    "files": "Public server-authoritative Chonky/controller port passes human upload, cross-client listing, revision-checked rename/delete, interrupted upload uncertainty, close/reopen and logout; old copy/zip/drag/mirror features pending",
+    "wordcraft": "Baseline full release WASM compilation passes; pinned font/translation Trunk packaging running. New engine/host completion changes compile in working branch; native tests and actual browser/editor acceptance remain pending; not yet selected by parent"
   }
 }
