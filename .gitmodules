@@ -34,3 +34,6 @@
 [submodule "deckcraft"]
 	path = deckcraft
 	url = ../deckcraft.git
+[submodule "pdfcraft"]
+	path = pdfcraft
+	url = ../pdfcraft.git
