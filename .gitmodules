@@ -76,3 +76,6 @@
 [submodule "materialcraft"]
 	path = materialcraft
 	url = ../materialcraft.git
+[submodule "runtime"]
+	path = runtime
+	url = ../runtime.git
