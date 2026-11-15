@@ -15,3 +15,5 @@ For a Microduck build, point `MICRODUCK_SPACE_DIR` to this directory's `inputs/m
 Full disk organization is not complete until the remaining nonregistered/platform/source areas and additional site/guest assets are reconciled. This cache closes the catalog-listed public app payload recovery only.
 
 Circuit Lab local research inputs now live at `inputs/circuit-lab/local-research-runtime/`:5 exact runtime/relink/notice files recovered from the previously verified archive. They are NOT public-release assets. The retained source/relink archive has unresolved model distribution terms, and the source app is not enabled; keep that gate intact. `input-files.json` explicitly records the restriction. The49 total locked input/license files remain ignored payloads, with hashes tracked for local recovery and testing.
+
+Notebook pinned widget inputs are stored under `inputs/notebook/`: two wheels verified against source SHA256 pins and nineteen declared files recovered from their contents. They are offline build inputs, not a qualified complete JupyterLite build. See `input-files.json` and `migration/ASSET-COVERAGE.md`.

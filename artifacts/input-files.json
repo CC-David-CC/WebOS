@@ -255,6 +255,172 @@
       "sha256": "db2b6b6f0c9862ff991a88ece9b8d3401c28c7a4b3785bec3332ca63412872ce",
       "component": "circuit-lab",
       "release_gate": "LOCAL RESEARCH ONLY; existing source/model/relink distribution review unresolved; never automatically serve or ship this cache"
+    },
+    {
+      "path": "inputs/notebook/wheels/ipywidgets-8.1.8-py3-none-any.whl",
+      "bytes": 139808,
+      "sha256": "ecaca67aed704a338f88f67b1181b58f821ab5dc89c1f0f5ef99db43c1c2921e",
+      "source": "https://files.pythonhosted.org/packages/56/6d/0d9848617b9f753b87f214f1c682592f7ca42de085f564352f10f0843026/ipywidgets-8.1.8-py3-none-any.whl",
+      "scope": "Pinned Notebook build input wheel; no package installation performed"
+    },
+    {
+      "path": "inputs/notebook/wheels/jupyterlab_widgets-3.0.16-py3-none-any.whl",
+      "bytes": 914926,
+      "sha256": "45fa36d9c6422cf2559198e4db481aa243c7a32d9926b500781c830c80f7ecf8",
+      "source": "https://files.pythonhosted.org/packages/ab/b5/36c712098e6191d1b4e349304ef73a8d06aed77e56ceaac8c0a306c7bda1/jupyterlab_widgets-3.0.16-py3-none-any.whl",
+      "scope": "Pinned Notebook build input wheel; no package installation performed"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/install.json",
+      "bytes": 197,
+      "sha256": "7bae4a70336d75a038699805d662c7221c1aa08ce91fd2e652e786e22258988d",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/install.json"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/package.json",
+      "bytes": 3494,
+      "sha256": "d6349b62440fa5c3e3cc9d327c452c4f074ebd16649f6ac266fa67fd80f585a1",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/package.json"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/schemas/@jupyter-widgets/jupyterlab-manager/plugin.json",
+      "bytes": 375,
+      "sha256": "2163419819be1930130abce16b99be2a1d06b7a1f82b31ac9f372e4a2823c760",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/schemas/@jupyter-widgets/jupyterlab-manager/plugin.json"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/lib_index_js.56f37fb50492d0d63a45.js",
+      "bytes": 249887,
+      "sha256": "58b5a35431bb99452059dec1a6f92071f277069285430cef0ca2fa118fce4067",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/lib_index_js.56f37fb50492d0d63a45.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_base-manager_lib_index_js.13941b475e5b5a1ab133.js",
+      "bytes": 43985,
+      "sha256": "d82aa844c8645a0348485490aba99273bb2771935453a12e70fe0b4077a462d2",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_base-manager_lib_index_js.13941b475e5b5a1ab133.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_base_lib_index_js-webpack_sharing_consume_default_jquery_jquery.5dd13f8e980fa3c50bfe.js",
+      "bytes": 97211,
+      "sha256": "164bf26681c864dfa68e5275ba6590f5821afee02aac21223b537d86e220a0e6",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_base_lib_index_js-webpack_sharing_consume_default_jquery_jquery.5dd13f8e980fa3c50bfe.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_controls_lib_index_js.6d5d05e0ec5e0c9f8185.js",
+      "bytes": 305982,
+      "sha256": "535b652b0ca9b9f7435550a64ecf5fa86657e876bc8d905301511003c815e68d",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_controls_lib_index_js.6d5d05e0ec5e0c9f8185.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_controls_lib_version_js.105c0edf5e497d01e132.js",
+      "bytes": 1042,
+      "sha256": "ee78e1f24d597e05d6847edd04dfefc6e39fefabd2ed2a8c1f634bed311762df",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_controls_lib_version_js.105c0edf5e497d01e132.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_output_lib_index_js.49c9e4037a3b9e9e3b18.js",
+      "bytes": 2758,
+      "sha256": "79c965055b3290c2f22054ca16f60a38492d80790e0a0bcd70cb2ed68d446967",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/packages_output_lib_index_js.49c9e4037a3b9e9e3b18.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/remoteEntry.9077b3d2deaffb329dfc.js",
+      "bytes": 40542,
+      "sha256": "7158f353d6b3d40f5263e1eb6c14f7dee5708f4c82e546d66da6e02bc68ccfa1",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/remoteEntry.9077b3d2deaffb329dfc.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/style.js",
+      "bytes": 118,
+      "sha256": "f8242dd194cf6824efad188b7339f17e501b7ef20a94e5738cea2cfa6b9a5d0f",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/style.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_backbone_backbone_js-node_modules_lodash_isEqual_js.ab532abfb6832a50f59e.js",
+      "bytes": 452958,
+      "sha256": "2d33302125ce4359214ef8412ecce4174b153bbd721214bf6baa3ef1b311ed75",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_backbone_backbone_js-node_modules_lodash_isEqual_js.ab532abfb6832a50f59e.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_base64-js_index_js-node_modules_sanitize-html_index_js.c79fc2bcc3f69676beda.js",
+      "bytes": 432665,
+      "sha256": "3b8b52a666a7b45573fdf018f24822a78767b7fe9bf1893bdda72e8723686f71",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_base64-js_index_js-node_modules_sanitize-html_index_js.c79fc2bcc3f69676beda.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_d3-color_src_color_js-node_modules_d3-format_src_defaultLocale_js-node_m-09b215.2643c43f22ad111f4f82.js",
+      "bytes": 138294,
+      "sha256": "7caf3eee8facdb9f9b3d503132d8603ee163b547537834f91b1ed9ccdbf2f0c9",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_d3-color_src_color_js-node_modules_d3-format_src_defaultLocale_js-node_m-09b215.2643c43f22ad111f4f82.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_jquery_dist_jquery_js.3afdf979a9caffdf15a7.js",
+      "bytes": 286044,
+      "sha256": "5397e4818e85213012990bd837f32de182a9f2290304cf20771c7f914b3eb72d",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_jquery_dist_jquery_js.3afdf979a9caffdf15a7.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_semver_index_js.7a90c08b9ce3dac425c6.js",
+      "bytes": 90893,
+      "sha256": "c8ea69f6364aacbd9d1114db3e62100e2939cd9d787362b33251803b0efb1117",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyter-widgets/jupyterlab-manager/static/vendors-node_modules_semver_index_js.7a90c08b9ce3dac425c6.js"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/ipywidgets-8.1.8-py3-none-any.whl",
+      "bytes": 139808,
+      "sha256": "ecaca67aed704a338f88f67b1181b58f821ab5dc89c1f0f5ef99db43c1c2921e",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/ipywidgets-8.1.8-py3-none-any.whl"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/jupyterlab_widgets-3.0.16-py3-none-any.whl",
+      "bytes": 914926,
+      "sha256": "45fa36d9c6422cf2559198e4db481aa243c7a32d9926b500781c830c80f7ecf8",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/jupyterlab_widgets-3.0.16-py3-none-any.whl"
+    },
+    {
+      "path": "inputs/notebook/prepared/node_modules/jupyterlite/static/pyodide/ipywidgets-8.1.8-py3-none-any.whl",
+      "bytes": 139808,
+      "sha256": "ecaca67aed704a338f88f67b1181b58f821ab5dc89c1f0f5ef99db43c1c2921e",
+      "source": "Exact member or wheel from source-pinned jupyterlab_widgets/ipywidgets wheel",
+      "app": "notebook",
+      "declared_path": "node_modules/jupyterlite/static/pyodide/ipywidgets-8.1.8-py3-none-any.whl"
     }
   ],
   "scope": "Verified immutable source/runtime inputs; CircuitLab cache is local-research-only with existing distribution gates; no credentials/user documents"

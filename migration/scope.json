@@ -15,7 +15,9 @@
         "verified_beta_reference_available": 4,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -37,7 +39,9 @@
         "verified_beta_reference_available": 3,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -61,7 +65,9 @@
         "verified_beta_reference_available": 3,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -85,7 +91,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -109,7 +117,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [
         "apps/games/04-rive-interactives/owl-companion/src/model/owlSession.js",
@@ -136,7 +146,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -160,7 +172,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -184,7 +198,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -209,7 +225,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -233,7 +251,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -257,7 +277,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -281,7 +303,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -305,7 +329,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -329,7 +355,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -353,7 +381,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -377,7 +407,9 @@
         "verified_beta_reference_available": 3,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -401,7 +433,9 @@
         "verified_beta_reference_available": 2,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -425,7 +459,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -449,7 +485,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -473,7 +511,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -497,7 +537,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -521,7 +563,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -545,7 +589,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -569,7 +615,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -593,7 +641,9 @@
         "verified_beta_reference_available": 1,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -617,7 +667,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -641,7 +693,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -665,7 +719,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -689,7 +745,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -713,7 +771,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -735,7 +795,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -758,7 +820,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -780,7 +844,9 @@
         "verified_beta_reference_available": 27,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -802,7 +868,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -824,7 +892,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -846,7 +916,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -868,7 +940,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -890,7 +964,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [
@@ -914,7 +990,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -936,7 +1014,9 @@
         "verified_beta_reference_available": 1,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -958,7 +1038,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -980,7 +1062,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1002,7 +1086,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1024,7 +1110,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1046,7 +1134,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1068,7 +1158,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1090,7 +1182,9 @@
         "verified_beta_reference_available": 44,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1112,7 +1206,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1134,7 +1230,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1156,7 +1254,9 @@
         "verified_beta_reference_available": 48,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1178,7 +1278,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1200,7 +1302,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1222,7 +1326,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1244,7 +1350,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1266,7 +1374,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1288,7 +1398,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1310,7 +1422,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1332,7 +1446,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1354,7 +1470,9 @@
         "verified_beta_reference_available": 1,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1376,7 +1494,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1398,7 +1518,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1420,7 +1542,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1442,7 +1566,9 @@
         "verified_beta_reference_available": 2765,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1464,7 +1590,9 @@
         "verified_beta_reference_available": 551,
         "absent_from_source_and_reference": 36,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 19,
+        "absent_from_all_checked_locations": 17
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1486,7 +1614,9 @@
         "verified_beta_reference_available": 234,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1508,7 +1638,9 @@
         "verified_beta_reference_available": 264,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1530,7 +1662,9 @@
         "verified_beta_reference_available": 9,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1552,7 +1686,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1574,7 +1710,9 @@
         "verified_beta_reference_available": 411,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1596,7 +1734,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 130,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 130
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1619,7 +1759,9 @@
         "verified_beta_reference_available": 18,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1641,7 +1783,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1663,7 +1807,9 @@
         "verified_beta_reference_available": 49,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": true
+        "manifest_present": true,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1685,7 +1831,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -1707,7 +1855,9 @@
         "verified_beta_reference_available": 0,
         "absent_from_source_and_reference": 0,
         "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
-        "manifest_present": false
+        "manifest_present": false,
+        "verified_prepared_inputs_available": 0,
+        "absent_from_all_checked_locations": 0
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
@@ -2343,10 +2493,11 @@
     "files": 6143,
     "bytes": 1028162239,
     "build_inputs": "artifacts/inputs/microduck",
-    "input_files": 49,
+    "input_files": 70,
     "verify": "python3 scripts/verify_artifacts.py",
     "scope": "All catalog-listed public app payload bytes and selected recovered immutable build inputs; not a full rebuilt release or whole-source completion claim",
-    "restricted_inputs": "CircuitLab five-file local-research-only runtime/relink inputs, explicitly not public-release assets; original model/license/relink review gates retained"
+    "restricted_inputs": "CircuitLab five-file local-research-only runtime/relink inputs, explicitly not public-release assets; original model/license/relink review gates retained",
+    "notebook_inputs": "artifacts/inputs/notebook:2 exact pinned wheels and19 mapped declared files"
   },
   "legacy_hosted_rooms": {
     "id": "rooms",
@@ -2367,6 +2518,7 @@
     "declared_assets": 4609,
     "source_present": 62,
     "verified_reference_available": 4438,
-    "missing_from_source_and_reference": 166
+    "verified_prepared_inputs_available": 19,
+    "missing_from_all_checked_locations": 147
   }
 }
