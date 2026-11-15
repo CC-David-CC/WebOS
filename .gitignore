@@ -7,3 +7,9 @@ dist/
 .private/
 __pycache__/
 *.py[cod]
+
+# Verified immutable public reference and build inputs; payloads stay outside Git.
+artifacts/*
+!artifacts/README.md
+!artifacts/input-files.json
+!artifacts/reference-beta.lock.json
