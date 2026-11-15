@@ -1704,7 +1704,7 @@
     "source_only_id": "jsketcher (ACAD host integration)",
     "source_files_new_phase_verified": 797,
     "source_readiness": "All registered source entrypoints placed; complete disk restart point still needs nonregistered source/platform/asset ownership and final verification.",
-    "tests": "Pico configured suite passes baseline/extraction. Browser one pre-existing stale host-contract failure unchanged. Microduck source generation of project and visual assets passes;211 domain checks:200 pass/11 fail in both copies because four original pinned fixtures are absent.",
+    "tests": "Pico configured suite passes baseline/extraction. Browser one pre-existing stale host-contract failure unchanged. Microduck source generation of project and visual assets passes;211 domain checks:200 pass/11 fail in both copies because one original pinned PNG fixture are absent.",
     "no_application_behavior_port": true
   },
   "optional_linux_v86": {
