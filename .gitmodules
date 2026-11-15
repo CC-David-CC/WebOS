@@ -14,7 +14,7 @@
 	path = engines/manifold
 	url = ../engine-manifold.git
 [submodule "engine-opencascade"]
-	path = engines/opencascade
+	path = engines/occt-interpreter
 	url = ../engine-opencascade.git
 [submodule "engine-smlib-wasm"]
 	path = engines/smlib-wasm
