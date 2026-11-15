@@ -36,7 +36,7 @@ Hosted Rooms is unused historical code, not a new service.
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
-| accounts | `platform/accounts/` | PASS | PASS:21 retained-identity/delegation tests and signed browser regression | PASS human account policy; optional delegation core inactive, transport/file authority OPEN |
+| accounts | `platform/accounts/` | PASS | PASS:67 layered tests (42 retained core,25 policy/delegation); historical policy differences documented | PASS human account policy; optional delegation core inactive, transport/file authority OPEN |
 | desktop | `platform/desktop/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 | login | `platform/login/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 | runtime | `platform/runtime/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
@@ -200,9 +200,10 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The120-row chart does not close original-source reconciliation. The tracked-source
-ledger now has5,973 unresolved entries plus88 unqualified blob candidates, after
+ledger now has5,970 unresolved entries plus86 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
-10 Browser backend/test and16 optional guest backend/test extractions were verified. These counts do not mean
+10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
+plus4 identity-core history retentions were verified. These counts do not mean
 those files are missing. Baseline histories,
 new path maps, generated evidence and deliberately preserved historical material
 must be compared explicitly. Backend/network/build/test/research areas and WIP
