@@ -2738,5 +2738,18 @@
     "implementation_or_dependency_changes": false,
     "runtime_qualification": false,
     "evidence": "migration/APP-REFERENCE-TESTS.md and private phase44"
+  },
+  "legacy_boundary_references": {
+    "parent_source_paths": 8,
+    "cross_component_reference_tests": 4,
+    "shared_browser_helpers": 4,
+    "captured_reference_tests_executed": 3,
+    "captured_node_subtests": 33,
+    "unrun_dom_mirror_reference": 1,
+    "restored_static_helper_edges": 0,
+    "current_whole_system_acceptance": false,
+    "component_implementation_copies": 0,
+    "private_import_runtime_wiring_added": false,
+    "evidence": "migration/COMPONENT-BOUNDARIES.md and private phase45"
   }
 }
