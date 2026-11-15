@@ -8,7 +8,8 @@
     "platform/login",
     "platform/storage",
     "platform/desktop",
-    "apps/files"
+    "apps/files",
+    "apps/calculator"
   ],
   "devDependencies": {
     "esbuild": "0.28.2",
