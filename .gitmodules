@@ -28,3 +28,6 @@
 [submodule "wordcraft"]
 	path = wordcraft
 	url = ../wordcraft.git
+[submodule "gridcraft"]
+	path = gridcraft
+	url = ../gridcraft.git
