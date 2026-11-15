@@ -1873,7 +1873,7 @@
       "id": "wordcraft",
       "upstream_candidate": "https://github.com/storytold/wordcraft.git",
       "repository_reachable": true,
-      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "state": "maintained fork selected with tested local account-backed authoring; hosted deployment and agent qualification pending",
       "license_files": [
         "ATTRIBUTION.md",
         "LICENSE-APACHE",
@@ -1881,7 +1881,7 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "unmodified WASM compile check passed; browser build not yet verified",
+      "build_status": "Complete isolated development artifact PASS:26files91513638bytes source5ee17260; authoring/account integration real-browser PASS including clean pinned assembly",
       "component_path": "apps/wordcraft",
       "project_origin": "ArtCraft first-party project"
     },
@@ -2534,5 +2534,15 @@
     "old_user_data_migration_required": false,
     "original_workspace": "preserve unchanged",
     "acceptance": "migration/REBUILD-SEQUENCE.md"
+  },
+  "fresh_bringup_acceptance": {
+    "calculator": "PASS local standalone and authenticated Desktop hosting",
+    "files": "PASS local real signed server folder/upload/rename/move/download/delete/reload/two-context workflow",
+    "text": "PASS local and clean pinned checkout: two-doc roundtrip, SaveAs, closeguards, reload/secondcontext",
+    "wordcraft": "PASS local and clean pinned checkout: new heading/paragraph/list, durable accountsave, Filesreopen, reload/secondcontext exactformatting; broader conflict/SaveAs/PDF/closeguards suite PASS",
+    "hosted_test_deployment": "not changed yet; target routing being verified",
+    "physical_second_machine": "not tested",
+    "delegated_agent_qualification": "OPEN",
+    "entire_suite_complete": false
   }
 }
