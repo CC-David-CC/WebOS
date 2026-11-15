@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has1,984 unresolved entries plus26 unqualified blob candidates, after
+ledger now has 1,984 unresolved entries plus 26 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata

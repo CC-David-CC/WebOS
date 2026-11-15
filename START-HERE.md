@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has1,984 unresolved dispositions and26 unqualified blob candidates among
+still has 1,984 unresolved dispositions and 26 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
