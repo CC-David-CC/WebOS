@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has3,232 unresolved entries plus33 unqualified blob candidates, after
+ledger now has3,197 unresolved entries plus33 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -259,3 +259,5 @@ Phase43 retains Terminal’s original PTY/startup glue, unchanged three-assertio
 Phase44 assigns79 original Node reference-test files to18 application owners, porting only owned imports/fixture URLs with unchanged assertions. Original/current totals match:296 pass,3 captured ACAD failures retained, no skipped/cancelled cases. This is unit/reference scope, not new app hosting. See [app reference tests](APP-REFERENCE-TESTS.md).
 
 Phase45 retains four legacy cross-component references and four shared browser-test helpers in the parent, restoring0 source import edges without copying component implementations. Three original Node reference tests pass in private snapshots; one old DOM/mirror reference remains unrun and all current interface ports remain explicit. See [component boundaries](COMPONENT-BOUNDARIES.md).
+
+Phase46 retains 35 additional original cross-component browser test sources with histories, resolving 41 relative helper imports. Node syntax and exact byte/mode checks pass; no legacy browser driver was executed and no application integration status changed. See [browser helper consumers](BROWSER-HELPER-CONSUMERS.md).

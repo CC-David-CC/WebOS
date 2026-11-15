@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has3,232 unresolved dispositions and33 unqualified blob candidates among
+still has3,197 unresolved dispositions and33 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -192,7 +192,7 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-45-cross-boundaries/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-46-browser-helper-consumers/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
 Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
@@ -239,3 +239,5 @@ Phase43 retains Terminal’s original PTY/startup glue, unchanged three-assertio
 Phase44 assigns79 original Node reference-test files to18 application owners, porting only owned imports/fixture URLs with unchanged assertions. Original/current totals match:296 pass,3 captured ACAD failures retained, no skipped/cancelled cases. This is unit/reference scope, not new app hosting. See [app reference tests](migration/APP-REFERENCE-TESTS.md).
 
 Phase45 retains four legacy cross-component references and four shared browser-test helpers in the parent, restoring0 source import edges without copying component implementations. Three original Node reference tests pass in private snapshots; one old DOM/mirror reference remains unrun and all current interface ports remain explicit. See [component boundaries](migration/COMPONENT-BOUNDARIES.md).
+
+Phase46 retains 35 additional original cross-component browser test sources with histories, resolving 41 relative helper imports. Node syntax and exact byte/mode checks pass; no legacy browser driver was executed and no application integration status changed. See [browser helper consumers](migration/BROWSER-HELPER-CONSUMERS.md).

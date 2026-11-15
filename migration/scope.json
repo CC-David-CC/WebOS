@@ -2751,5 +2751,13 @@
     "component_implementation_copies": 0,
     "private_import_runtime_wiring_added": false,
     "evidence": "migration/COMPONENT-BOUNDARIES.md and private phase45"
+  },
+  "legacy_browser_helper_consumers": {
+    "additional_parent_sources": 35,
+    "static_helper_import_edges": 41,
+    "selected_history_blobs": 93,
+    "legacy_drivers_executed": 0,
+    "current_whole_system_acceptance": false,
+    "evidence": "migration/BROWSER-HELPER-CONSUMERS.md and private phase46"
   }
 }
