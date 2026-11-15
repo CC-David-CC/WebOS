@@ -2715,5 +2715,28 @@
       "real cleanup, clipboard/touch/microphone and scoped human-agent operations"
     ],
     "evidence": "migration/TERMINAL-SOURCE.md and private phase43"
+  },
+  "owned_app_reference_tests": {
+    "source_files": 79,
+    "app_owners": 18,
+    "location": "Each owning app tests/reference/",
+    "ported_only": "Own imports and verified fixture/resource URLs; complete remaining AST/assertions unchanged",
+    "baseline_and_ported_subtests": {
+      "tests": 299,
+      "pass": 296,
+      "fail": 3,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "captured_failures": {
+      "acad": [
+        "malformed value, extra addressing fields and absent locators refuse before dispatch",
+        "discovery, plane and all primitive kinds use same guarded craft and detached data",
+        "register five explicit selected-profile commands with data-only schemas and no fallback/save payload"
+      ]
+    },
+    "implementation_or_dependency_changes": false,
+    "runtime_qualification": false,
+    "evidence": "migration/APP-REFERENCE-TESTS.md and private phase44"
   }
 }
