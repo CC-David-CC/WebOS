@@ -1,3 +1,6 @@
 [submodule "acad"]
 	path = acad
 	url = ../acad.git
+[submodule "help"]
+	path = help
+	url = ../help.git
