@@ -22,7 +22,26 @@ try {
  const name = 'test' + randomBytes(6).toString('hex'), secret = randomBytes(16).toString('base64url');
  async function signin(p, register = false) { if (register) await p.click('.login-toggle'); await p.type('[name=username]', name); await p.type('[name=password]', secret); if (register) await p.type('[name=confirmation]', secret); await p.click('[type=submit]'); await p.waitForSelector('.webos-desktop'); }
  async function openFiles(p) { await p.click('[aria-label=Applications]'); await p.click('[data-app-id=files]'); await p.waitForSelector('.webos-window[data-phase=ready]'); await p.waitForFunction(() => document.querySelector('.webos-files-status')?.textContent.includes('Showing account files')); }
- const first = await context(); await signin(first.p, true); await openFiles(first.p);
+ const first = await context(); await signin(first.p, true);
+ async function openCalculator(p) { await p.click('[aria-label=Applications]'); await p.click('[data-app-id=calculator]'); await p.waitForFunction(() => [...document.querySelectorAll('.webos-window')].every(w => w.dataset.phase === 'ready')); }
+ await openCalculator(first.p);
+ const calculatorOne = await first.p.$eval('.webos-window', el => el.dataset.windowId);
+ await first.p.type('.webos-calculator input', '18/3'); await first.p.keyboard.press('Enter');
+ await first.p.waitForFunction(() => document.querySelector('.webos-calculator output')?.textContent === '6');
+ await openCalculator(first.p);
+ const calculatorWindows = await first.p.$$('.webos-window'); assert.equal(calculatorWindows.length, 2);
+ const calculatorTwo = await calculatorWindows[1].evaluate(el => el.dataset.windowId);
+ const secondCalculator = `.webos-window[data-window-id="${calculatorTwo}"]`;
+ await first.p.type(secondCalculator + ' input', '7*8'); await first.p.keyboard.press('Enter');
+ await first.p.waitForFunction(sel => document.querySelector(sel + ' output')?.textContent === '56', {}, secondCalculator);
+ assert.equal(await first.p.$eval(`.webos-window[data-window-id="${calculatorOne}"] output`, el => el.textContent), '6');
+ await first.p.click(`.webos-task[data-window-id="${calculatorOne}"]`);
+ await first.p.click(`.webos-window[data-window-id="${calculatorOne}"] [aria-label=Close]`);
+ await first.p.waitForFunction(() => document.querySelectorAll('.webos-window').length === 1);
+ assert.equal(await first.p.$eval(secondCalculator + ' output', el => el.textContent), '56');
+ await first.p.click(secondCalculator + ' [aria-label=Close]');
+ await first.p.waitForFunction(() => !document.querySelector('.webos-window'));
+ await openFiles(first.p);
  await writeFile(path.join(output, 'migration-proof.txt'), 'Synthetic browser upload to server-backed account storage.\n');
  await (await first.p.$('input[type=file]')).uploadFile(path.join(output, 'migration-proof.txt'));
  await first.p.waitForFunction(() => document.querySelector('.webos-files-status')?.textContent.includes('Saved to your account: migration-proof.txt'));
@@ -59,7 +78,7 @@ try {
  await openFiles(first.p); await first.p.waitForFunction(() => document.querySelector('.webos-files-browser')?.innerText.includes('migration-proof.txt'));
  await first.p.click('.webos-signout'); await first.p.waitForSelector('.login-gate[data-phase=ready]'); assert.equal(await first.p.$('.webos-files'), null);
  assert(!requests.some(value => /v86|\/vm\/|terminal/.test(value))); assert.deepEqual(errors, []);
- Object.assign(report, {status: 'PASS', realBrowserContexts: 2, humanUploadConfirmedByServer: true, cleanSecondContextListsUpload: true, windowWorkspaceMinimizeMaximize: true, revisionCheckedRenameAndDelete: true, cancelledDeleteRetainsFile: true, interruptedUploadNeverClaimsSaved: true, closeAndReopenRetainsAccountFiles: true, signoutDisposesViews: true, noGuestRequests: true, pageErrors: 0});
+ Object.assign(report, {status: 'PASS', realBrowserContexts: 2, authenticatedCalculatorInstances: true, humanUploadConfirmedByServer: true, cleanSecondContextListsUpload: true, windowWorkspaceMinimizeMaximize: true, revisionCheckedRenameAndDelete: true, cancelledDeleteRetainsFile: true, interruptedUploadNeverClaimsSaved: true, closeAndReopenRetainsAccountFiles: true, signoutDisposesViews: true, noGuestRequests: true, pageErrors: 0});
 } catch (error) {report.error = {name: error.name, message: error.message}; throw error;}
 finally { if (browser) await browser.close(); server.kill('SIGTERM'); await new Promise(resolve => { if (server.exitCode !== null || server.signalCode) resolve(); else server.once('exit', resolve); }); await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n'); await writeFile(path.join(output, 'server-errors.log'), Buffer.concat(serverErrors)); }
 console.log(JSON.stringify(report));

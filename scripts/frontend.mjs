@@ -3,6 +3,7 @@ import {createAccountsClient} from '@webos/accounts';
 import {mount as mountLogin} from '@webos/login';
 import {mount as mountDesktop, createDesktopController} from '@webos/desktop';
 import {mount as mountFiles} from '@webos/files';
+import {mount as mountCalculator} from '@webos/calculator';
 import {UserFiles} from '@webos/storage';
 
 export function mountAssembly(root) {
@@ -17,7 +18,7 @@ export function mountAssembly(root) {
     const authority = Object.freeze({}), files = new UserFiles(accounts.createFileAuthority(), {workerUrl: new URL('./workers/storage-verify.mjs', import.meta.url)});
     const authorize = candidate => candidate === authority && accounts.inspect().sessionId === session.sessionId;
     const nextDesktop = createDesktopController({sessionId: session.sessionId, accountId: session.accountId, authorize,
-      applications: [{id: 'files', title: 'Files', mount: host => mountFiles({...host, files, authority, authorize,
+      applications: [{id: 'calculator', title: 'Calculator', width: 420, height: 640, mount: host => mountCalculator({...host, authority, authorize})}, {id: 'files', title: 'Files', mount: host => mountFiles({...host, files, authority, authorize,
         openFile: async () => { throw Error('An editor is not connected yet. Use Download to retrieve this account file.'); }})}]});
     let nextView;
     try { nextView = mountDesktop({desktop: nextDesktop, authority, displayName: session.displayName, onSignOut: () => accounts.logout()}); }
