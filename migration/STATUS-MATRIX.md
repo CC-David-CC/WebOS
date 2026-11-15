@@ -179,3 +179,9 @@ The source column below is PASS for selected source presence, retained/extracted
 - Complete an original-source-to-new-owner/asset reconciliation and verify the resulting restart point independently. Repository count alone does not close this gate.
 
 Live account databases, credentials and private documents are not source assets. External publication, deployment changes and service restarts remain unperformed.
+
+## Latest organization additions
+
+Optional Linux guest source now lives at apps/linux/ and the pinned full-history v86 engine at engines/v86/. The existing Worker bridge, static base image/kernel and guest build/init sources are preserved with exact file maps and history; its optional Desktop view is not yet ported. Complete current109-component paths are in COMPONENTS.md.
+
+The beta catalog-listed artifact sweep is now recovered, verified and placed under artifacts/reference-beta/ (6143 files/1.03GB). Microduck inputs are under artifacts/inputs/microduck/ with44 locked files. This closes declared public app payload recovery, not full dynamic graph/release/whole-source readiness. Remaining source/platform/site-asset reconciliation stays OPEN.
