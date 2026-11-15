@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has5,924 unresolved dispositions and86 unqualified blob candidates among
+still has5,896 unresolved dispositions and86 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -49,7 +49,9 @@ and component sources hidden. It is disabled; signed transport, operational
 custody and browser/agent integration remain OPEN. Official Chat/Chess publication
 source is organized at `platform/publication/`, with legacy interface imports and
 full build/operational qualification explicitly OPEN. Its unsigned reconstruction
-fixture passes with old source hidden. Neither service is enabled.
+fixture passes with old source hidden. An additional28 publication command/test
+files are preserved under `platform/publication/legacy/scripts/`; none was run or
+installed as an entrypoint. Neither service is enabled.
 
 ## Current working slice
 
@@ -180,8 +182,9 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-30-publication/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-31-publication-tools/checkpoint.json` and
 `RESUME.md` under the owner-only `/home/dflanag3/Projects/.webos-migration/`.
+Phase31 records28 publication command/test sources preserved unchanged and unexecuted.
 Phase30 records32 unchanged publication modules, their structural fixture, and complete ownership of the former44-file steward area.
 Phase29 records rendezvous extraction,37 unchanged lease tests and registry/chart reconciliation.
 Phase28 records42 retained identity-core tests,4 current-policy checks and4 core retentions.
