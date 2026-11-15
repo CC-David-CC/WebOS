@@ -67,3 +67,6 @@
 [submodule "cadcraft"]
 	path = cadcraft
 	url = ../cadcraft.git
+[submodule "solidcraft"]
+	path = solidcraft
+	url = ../solidcraft.git
