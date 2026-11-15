@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>Delivery ancestry check</title>
+<p id="result">RUNNING</p>
+<script type="module">
+import {confirmedOfficialMessages} from '../assets/desktop/official-delivery.mjs';
+import '../assets/desktop/device-channel-session.mjs';
+const entries=Array.from({length:70},(_,i)=>{const height=70-i;return {height,head:`head-${height}`,block:{header:{parent:`head-${height-1}`},operations:[]}};});
+const archive={async load(){return {position:{height:70,head:'head-70'}};},async history({before,limit}){const start=before??0,selected=entries.slice(start,start+limit);return {entries:selected,next:start+selected.length<entries.length?start+selected.length:null};},policy(){return {};}};
+const expectFailure=async(job,term)=>{try{await job();}catch(e){if(String(e).includes(term))return;throw e;}throw Error('Expected '+term);};
+try{
+ if((await confirmedOfficialMessages(archive,{height:1,head:'head-1'},'actor')).length)throw Error('Unexpected message');
+ if((await confirmedOfficialMessages(archive,{height:71,head:'future'},'actor')).length)throw Error('Future receipt accepted');
+ await expectFailure(()=>confirmedOfficialMessages(archive,{height:1,head:'wrong'},'actor'),'different history');
+ const broken={...archive,async history(o){const page=await archive.history(o);if(o.before!==null)page.entries[0]={...page.entries[0],head:'broken'};return page;}};
+ await expectFailure(()=>confirmedOfficialMessages(broken,{height:1,head:'head-1'},'actor'),'ancestry differs');
+ document.querySelector('#result').textContent='PASS';
+}catch(e){document.querySelector('#result').textContent='FAIL: '+(e.stack||e);}
+</script>

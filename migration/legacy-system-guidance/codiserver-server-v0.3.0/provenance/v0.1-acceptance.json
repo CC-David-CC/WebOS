@@ -1,0 +1,441 @@
+{
+  "schema": "codiserver-browser-os-acceptance/1",
+  "note": "This is a planned test inventory; all cases start NOT_RUN, not asserted passing. Keep honest status and actual evidence externally in test runs.",
+  "counts": {
+    "total": 53,
+    "per_gate": {
+      "G00": 4,
+      "G01": 9,
+      "G02": 9,
+      "G03": 11,
+      "G04": 14,
+      "G05": 6
+    }
+  },
+  "cases": [
+    {
+      "id": "G00-01",
+      "gate": "G00",
+      "category": "static-http",
+      "requirement": "Loopback static server serves index.html and local CSS/JS; no /api/login or /api/jobs backend.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G00-02",
+      "gate": "G00",
+      "category": "inventory",
+      "requirement": "Record exact real-worktree v86 JS/WASM/BIOS/kernel/initrd/root hashes or mark missing.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G00-03",
+      "gate": "G00",
+      "category": "baseline",
+      "requirement": "Run present geometry tests against disposable Chromium and distinguish historical results.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G00-04",
+      "gate": "G00",
+      "category": "source-safety",
+      "requirement": "No modifications to distro ISO pipeline, host package config or public network listeners.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G01-01",
+      "gate": "G01",
+      "category": "entry",
+      "requirement": "First load shows Username, Password, ANON, SIGNIN, not a fake ready terminal.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G01-02",
+      "gate": "G01",
+      "category": "anon",
+      "requirement": "ANON with blank username immediately creates a nonempty randomized in-RAM name.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G01-03",
+      "gate": "G01",
+      "category": "anon",
+      "requirement": "ANON with supplied username renders that name with textContent; HTML/script input not executed.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G01-04",
+      "gate": "G01",
+      "category": "anon",
+      "requirement": "ANON never requires password, does not inspect it, clears password field if populated.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G01-05",
+      "gate": "G01",
+      "category": "anon",
+      "requirement": "Two sequential anonymous entries yield distinct session IDs.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G01-06",
+      "gate": "G01",
+      "category": "anon",
+      "requirement": "ANON action creates no IndexedDB account record, OPFS guest files, or localStorage session data.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G01-07",
+      "gate": "G01",
+      "category": "session",
+      "requirement": "Logout clears current browser session, terminal buffer and username/password fields.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G01-08",
+      "gate": "G01",
+      "category": "session",
+      "requirement": "Repeated rapid ANON clicks cause one session and one guest launch, not duplicate instances.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G01-09",
+      "gate": "G01",
+      "category": "ui-regression",
+      "requirement": "Existing menu, window drag, resize, minimize, workspaces and preset import/export remain functional.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G02-01",
+      "gate": "G02",
+      "category": "v86",
+      "requirement": "Bundled v86 JS/WASM/BIOS assets are served from local origin without CDN.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G02-02",
+      "gate": "G02",
+      "category": "v86",
+      "requirement": "Browser constructs and runs exactly one actual pinned v86 instance per session.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G02-03",
+      "gate": "G02",
+      "category": "v86",
+      "requirement": "An actual Debian i386 kernel boots inside Chromium to a working serial shell.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G02-04",
+      "gate": "G02",
+      "category": "guest-command",
+      "requirement": "Guest serial uname and id commands return real guest output, not canned strings.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G02-05",
+      "gate": "G02",
+      "category": "guest-command",
+      "requirement": "Guest Python arithmetic command yields expected answer through serial I/O.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G02-06",
+      "gate": "G02",
+      "category": "guest-command",
+      "requirement": "Guest python3 sqlite3 module imports and reports version through serial I/O.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G02-07",
+      "gate": "G02",
+      "category": "guest-command",
+      "requirement": "Guest compiles and executes a small C program or reports missing GCC honestly.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G02-08",
+      "gate": "G02",
+      "category": "failed-asset",
+      "requirement": "Missing WASM/BIOS/kernel/manifest produces visible failure with an actionable diagnostic, no fake ready prompt.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G02-09",
+      "gate": "G02",
+      "category": "execution-location",
+      "requirement": "Static web server serves artifacts but executes no v86 guest commands; browser resource use is observed.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-01",
+      "gate": "G03",
+      "category": "terminal",
+      "requirement": "Keyboard/enter typed into real terminal reaches guest serial port; output returns to DOM.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-02",
+      "gate": "G03",
+      "category": "terminal",
+      "requirement": "Terminal output survives window close/reopen/minimize without rebooting guest.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-03",
+      "gate": "G03",
+      "category": "terminal",
+      "requirement": "Resize, preset switch and compare/reference rendering preserve the one v86 instance.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-04",
+      "gate": "G03",
+      "category": "terminal",
+      "requirement": "Rerender does not duplicate serial listeners or send a key twice.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-05",
+      "gate": "G03",
+      "category": "guest-metadata",
+      "requirement": "Guest reads sessionId, kind and sanitized displayName from actual guest-visible 9p file.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-06",
+      "gate": "G03",
+      "category": "guest-metadata",
+      "requirement": "Guest-visible metadata contains no password, private key, local auth token or host path grant.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-07",
+      "gate": "G03",
+      "category": "ephemeral",
+      "requirement": "Guest writes a unique file and reads it back during the same anonymous session.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-08",
+      "gate": "G03",
+      "category": "ephemeral",
+      "requirement": "After logout and a new anon session the previous file and guest metadata are gone.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-09",
+      "gate": "G03",
+      "category": "ephemeral",
+      "requirement": "After page reload anonymous guest state is gone and no guest write appears in browser persistent stores.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-10",
+      "gate": "G03",
+      "category": "isolation",
+      "requirement": "Guest cannot access arbitrary host filesystem files or obtain raw host privileged handle via 9p.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G03-11",
+      "gate": "G03",
+      "category": "lifecycle",
+      "requirement": "Logout during boot destroys or cancels the guest; no stale ready callback opens previous session.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-01",
+      "gate": "G04",
+      "category": "signin",
+      "requirement": "Unknown normalized local username + acceptable password automatically creates local encrypted identity and starts guest.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-02",
+      "gate": "G04",
+      "category": "signin",
+      "requirement": "UI clearly reports creation is browser-local, not synced and not global account registration.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-03",
+      "gate": "G04",
+      "category": "signin",
+      "requirement": "Known username + correct password after reload unlocks same public-key fingerprint.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-04",
+      "gate": "G04",
+      "category": "signin",
+      "requirement": "Known username + wrong password fails, creates no guest and does not overwrite record.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-05",
+      "gate": "G04",
+      "category": "signin",
+      "requirement": "Password never stored or logged in plaintext, and never transmitted over HTTP/WebRTC/into guest.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-06",
+      "gate": "G04",
+      "category": "crypto",
+      "requirement": "Local record has unique salt, AES-GCM IV, ciphertext, SPKI, version and >=600k PBKDF2-SHA256 iterations.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-07",
+      "gate": "G04",
+      "category": "crypto",
+      "requirement": "Private signing key encrypted at rest, decrypts/imports on unlock and correctly signs a challenge.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-08",
+      "gate": "G04",
+      "category": "crypto",
+      "requirement": "Corrupt AES-GCM ciphertext and malformed KDF metadata reject without account overwrite or guest boot.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-09",
+      "gate": "G04",
+      "category": "signin",
+      "requirement": "Case folding and username normalization produce one canonical local account key.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-10",
+      "gate": "G04",
+      "category": "signin",
+      "requirement": "A clean browser profile does not inherit the first profile account and can create same username independently.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-11",
+      "gate": "G04",
+      "category": "signin",
+      "requirement": "Two-tab concurrent creation cannot overwrite a previously committed account record.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-12",
+      "gate": "G04",
+      "category": "signin",
+      "requirement": "Local usernames admin, owner, root or host username confer no server role or host file rights.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-13",
+      "gate": "G04",
+      "category": "guest",
+      "requirement": "Registered identity uses same v86 controller, ephemeral guest FS and guest command flow as ANON.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G04-14",
+      "gate": "G04",
+      "category": "secrets",
+      "requirement": "Logout releases active credential references; no credential included in public session descriptor.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G05-01",
+      "gate": "G05",
+      "category": "regression",
+      "requirement": "Existing geometry/multi-workspace browser regression tests pass after real terminal integration.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G05-02",
+      "gate": "G05",
+      "category": "docs",
+      "requirement": "Docs accurately distinguish implemented features, not-run features and limits.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G05-03",
+      "gate": "G05",
+      "category": "network",
+      "requirement": "No application backend, P2P signaling service, runtime CDN or public listener introduced in phase 0.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G05-04",
+      "gate": "G05",
+      "category": "network",
+      "requirement": "No accidental /api calls to the static server from ANON/SIGNIN guest path.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G05-05",
+      "gate": "G05",
+      "category": "receipt",
+      "requirement": "Report exact browser, OS, asset hashes, guest console transcript and acceptance ID statuses.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "G05-06",
+      "gate": "G05",
+      "category": "permissions",
+      "requirement": "No host filesystem or Linux UID credentials have been exposed to either mode.",
+      "phase": "phase0",
+      "status": "NOT_RUN"
+    }
+  ]
+}

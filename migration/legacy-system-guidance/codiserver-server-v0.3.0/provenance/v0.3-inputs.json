@@ -1,0 +1,15 @@
+{
+  "version": "0.3.0",
+  "inputs": [
+    {
+      "file": "codiserver-web-v0.2.0.zip",
+      "sha256": "6ec8dee9c1be781b50310ba73e864709e902e99e2a6e2307265a91e4ed204601"
+    },
+    {
+      "file": "codiserver-server-v0.2.0.zip",
+      "sha256": "f2c809f6de7427c9c28bae98a73f90c640b2e12a459e5d6be294b6386335f190"
+    }
+  ],
+  "planning_assumption": "login and v86 treated as solved prerequisites per user; not re-verified here",
+  "runtime_status": "v0.2 executable sources preserved; new mesh is a plan plus isolated models"
+}

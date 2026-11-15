@@ -1,0 +1,13 @@
+{
+  "identity": {
+    "mode": "local-development",
+    "apiBase": null,
+    "issuer": null,
+    "audience": "codiserver-peers-v1",
+    "authorityClass": "none",
+    "authorityKeys": []
+  },
+  "vm": {
+    "manifest": "/vm/manifest.json"
+  }
+}

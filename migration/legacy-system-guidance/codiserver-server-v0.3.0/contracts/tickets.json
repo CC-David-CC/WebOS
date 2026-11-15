@@ -1,0 +1,1145 @@
+[
+  {
+    "id": "G00-T01",
+    "gate": "G00",
+    "title": "Source, authority boundaries and reproducible package / slice 1",
+    "requires": [],
+    "acceptance": [
+      "G00-01",
+      "G00-02",
+      "G00-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": []
+  },
+  {
+    "id": "G00-T02",
+    "gate": "G00",
+    "title": "Source, authority boundaries and reproducible package / slice 2",
+    "requires": [
+      "G00-T01"
+    ],
+    "acceptance": [
+      "G00-04",
+      "G00-05",
+      "G00-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": []
+  },
+  {
+    "id": "W01-T01",
+    "gate": "W01",
+    "title": "Backend-free anonymous entry and destruction / slice 1",
+    "requires": [],
+    "acceptance": [
+      "W01-01",
+      "W01-02",
+      "W01-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00"
+    ]
+  },
+  {
+    "id": "W01-T02",
+    "gate": "W01",
+    "title": "Backend-free anonymous entry and destruction / slice 2",
+    "requires": [
+      "W01-T01"
+    ],
+    "acceptance": [
+      "W01-04",
+      "W01-05",
+      "W01-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00"
+    ]
+  },
+  {
+    "id": "W01-T03",
+    "gate": "W01",
+    "title": "Backend-free anonymous entry and destruction / slice 3",
+    "requires": [
+      "W01-T02"
+    ],
+    "acceptance": [
+      "W01-07",
+      "W01-08"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00"
+    ]
+  },
+  {
+    "id": "W02-T01",
+    "gate": "W02",
+    "title": "Real peer transport and signed application packets / slice 1",
+    "requires": [],
+    "acceptance": [
+      "W02-01",
+      "W02-02",
+      "W02-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W01"
+    ]
+  },
+  {
+    "id": "W02-T02",
+    "gate": "W02",
+    "title": "Real peer transport and signed application packets / slice 2",
+    "requires": [
+      "W02-T01"
+    ],
+    "acceptance": [
+      "W02-04",
+      "W02-05",
+      "W02-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W01"
+    ]
+  },
+  {
+    "id": "W02-T03",
+    "gate": "W02",
+    "title": "Real peer transport and signed application packets / slice 3",
+    "requires": [
+      "W02-T02"
+    ],
+    "acceptance": [
+      "W02-07",
+      "W02-08",
+      "W02-09"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W01"
+    ]
+  },
+  {
+    "id": "W02-T04",
+    "gate": "W02",
+    "title": "Real peer transport and signed application packets / slice 4",
+    "requires": [
+      "W02-T03"
+    ],
+    "acceptance": [
+      "W02-10"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W01"
+    ]
+  },
+  {
+    "id": "W03-T01",
+    "gate": "W03",
+    "title": "Retained desktop and unified session lifetime / slice 1",
+    "requires": [],
+    "acceptance": [
+      "W03-01",
+      "W03-02",
+      "W03-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W01"
+    ]
+  },
+  {
+    "id": "W03-T02",
+    "gate": "W03",
+    "title": "Retained desktop and unified session lifetime / slice 2",
+    "requires": [
+      "W03-T01"
+    ],
+    "acceptance": [
+      "W03-04",
+      "W03-05",
+      "W03-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W01"
+    ]
+  },
+  {
+    "id": "W03-T03",
+    "gate": "W03",
+    "title": "Retained desktop and unified session lifetime / slice 3",
+    "requires": [
+      "W03-T02"
+    ],
+    "acceptance": [
+      "W03-07"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W01"
+    ]
+  },
+  {
+    "id": "W04-T01",
+    "gate": "W04",
+    "title": "Bind and prove the real v86 Linux guest / slice 1",
+    "requires": [],
+    "acceptance": [
+      "W04-01",
+      "W04-02",
+      "W04-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00",
+      "W03"
+    ]
+  },
+  {
+    "id": "W04-T02",
+    "gate": "W04",
+    "title": "Bind and prove the real v86 Linux guest / slice 2",
+    "requires": [
+      "W04-T01"
+    ],
+    "acceptance": [
+      "W04-04",
+      "W04-05",
+      "W04-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00",
+      "W03"
+    ]
+  },
+  {
+    "id": "W04-T03",
+    "gate": "W04",
+    "title": "Bind and prove the real v86 Linux guest / slice 3",
+    "requires": [
+      "W04-T02"
+    ],
+    "acceptance": [
+      "W04-07",
+      "W04-08",
+      "W04-09"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00",
+      "W03"
+    ]
+  },
+  {
+    "id": "W04-T04",
+    "gate": "W04",
+    "title": "Bind and prove the real v86 Linux guest / slice 4",
+    "requires": [
+      "W04-T03"
+    ],
+    "acceptance": [
+      "W04-10"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00",
+      "W03"
+    ]
+  },
+  {
+    "id": "W05-T01",
+    "gate": "W05",
+    "title": "Anonymous milestone acceptance / slice 1",
+    "requires": [],
+    "acceptance": [
+      "W05-01",
+      "W05-02",
+      "W05-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W02",
+      "W03",
+      "W04"
+    ]
+  },
+  {
+    "id": "W05-T02",
+    "gate": "W05",
+    "title": "Anonymous milestone acceptance / slice 2",
+    "requires": [
+      "W05-T01"
+    ],
+    "acceptance": [
+      "W05-04",
+      "W05-05",
+      "W05-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W02",
+      "W03",
+      "W04"
+    ]
+  },
+  {
+    "id": "S00-T01",
+    "gate": "S00",
+    "title": "Identity protocol and cryptographic reference / slice 1",
+    "requires": [],
+    "acceptance": [
+      "S00-01",
+      "S00-02",
+      "S00-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00"
+    ]
+  },
+  {
+    "id": "S00-T02",
+    "gate": "S00",
+    "title": "Identity protocol and cryptographic reference / slice 2",
+    "requires": [
+      "S00-T01"
+    ],
+    "acceptance": [
+      "S00-04",
+      "S00-05",
+      "S00-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00"
+    ]
+  },
+  {
+    "id": "S00-T03",
+    "gate": "S00",
+    "title": "Identity protocol and cryptographic reference / slice 3",
+    "requires": [
+      "S00-T02"
+    ],
+    "acceptance": [
+      "S00-07"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "G00"
+    ]
+  },
+  {
+    "id": "S01-T01",
+    "gate": "S01",
+    "title": "Minimal local registration service / slice 1",
+    "requires": [],
+    "acceptance": [
+      "S01-01",
+      "S01-02",
+      "S01-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S00"
+    ]
+  },
+  {
+    "id": "S01-T02",
+    "gate": "S01",
+    "title": "Minimal local registration service / slice 2",
+    "requires": [
+      "S01-T01"
+    ],
+    "acceptance": [
+      "S01-04",
+      "S01-05",
+      "S01-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S00"
+    ]
+  },
+  {
+    "id": "S01-T03",
+    "gate": "S01",
+    "title": "Minimal local registration service / slice 3",
+    "requires": [
+      "S01-T02"
+    ],
+    "acceptance": [
+      "S01-07",
+      "S01-08"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S00"
+    ]
+  },
+  {
+    "id": "S02-T01",
+    "gate": "S02",
+    "title": "Session lifecycle, bounds and failures / slice 1",
+    "requires": [],
+    "acceptance": [
+      "S02-01",
+      "S02-02",
+      "S02-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S01"
+    ]
+  },
+  {
+    "id": "S02-T02",
+    "gate": "S02",
+    "title": "Session lifecycle, bounds and failures / slice 2",
+    "requires": [
+      "S02-T01"
+    ],
+    "acceptance": [
+      "S02-04",
+      "S02-05",
+      "S02-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S01"
+    ]
+  },
+  {
+    "id": "S02-T03",
+    "gate": "S02",
+    "title": "Session lifecycle, bounds and failures / slice 3",
+    "requires": [
+      "S02-T02"
+    ],
+    "acceptance": [
+      "S02-07",
+      "S02-08",
+      "S02-09"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S01"
+    ]
+  },
+  {
+    "id": "I01-T01",
+    "gate": "I01",
+    "title": "Connected browsers, not just cross-runtime unit tests / slice 1",
+    "requires": [],
+    "acceptance": [
+      "I01-01",
+      "I01-02",
+      "I01-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S02",
+      "W02"
+    ]
+  },
+  {
+    "id": "I01-T02",
+    "gate": "I01",
+    "title": "Connected browsers, not just cross-runtime unit tests / slice 2",
+    "requires": [
+      "I01-T01"
+    ],
+    "acceptance": [
+      "I01-04",
+      "I01-05",
+      "I01-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S02",
+      "W02"
+    ]
+  },
+  {
+    "id": "I01-T03",
+    "gate": "I01",
+    "title": "Connected browsers, not just cross-runtime unit tests / slice 3",
+    "requires": [
+      "I01-T02"
+    ],
+    "acceptance": [
+      "I01-07",
+      "I01-08"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S02",
+      "W02"
+    ]
+  },
+  {
+    "id": "S03-T01",
+    "gate": "S03",
+    "title": "Deployment design and static-resource boundary / slice 1",
+    "requires": [],
+    "acceptance": [
+      "S03-01",
+      "S03-02",
+      "S03-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S02"
+    ]
+  },
+  {
+    "id": "S03-T02",
+    "gate": "S03",
+    "title": "Deployment design and static-resource boundary / slice 2",
+    "requires": [
+      "S03-T01"
+    ],
+    "acceptance": [
+      "S03-04",
+      "S03-05",
+      "S03-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S02"
+    ]
+  },
+  {
+    "id": "S04-T01",
+    "gate": "S04",
+    "title": "Explicitly authorized public deployment / slice 1",
+    "requires": [],
+    "acceptance": [
+      "S04-01",
+      "S04-02",
+      "S04-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "I01",
+      "S03"
+    ]
+  },
+  {
+    "id": "S04-T02",
+    "gate": "S04",
+    "title": "Explicitly authorized public deployment / slice 2",
+    "requires": [
+      "S04-T01"
+    ],
+    "acceptance": [
+      "S04-04",
+      "S04-05",
+      "S04-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "I01",
+      "S03"
+    ]
+  },
+  {
+    "id": "S04-T03",
+    "gate": "S04",
+    "title": "Explicitly authorized public deployment / slice 3",
+    "requires": [
+      "S04-T02"
+    ],
+    "acceptance": [
+      "S04-07"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "I01",
+      "S03"
+    ]
+  },
+  {
+    "id": "P01-T01",
+    "gate": "P01",
+    "title": "Real Internet peer availability / slice 1",
+    "requires": [],
+    "acceptance": [
+      "P01-01",
+      "P01-02",
+      "P01-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W02"
+    ]
+  },
+  {
+    "id": "P01-T02",
+    "gate": "P01",
+    "title": "Real Internet peer availability / slice 2",
+    "requires": [
+      "P01-T01"
+    ],
+    "acceptance": [
+      "P01-04",
+      "P01-05"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "W02"
+    ]
+  },
+  {
+    "id": "H01-T01",
+    "gate": "H01",
+    "title": "Owner-only real host files, read-only first / slice 1",
+    "requires": [],
+    "acceptance": [
+      "H01-01",
+      "H01-02",
+      "H01-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S04"
+    ]
+  },
+  {
+    "id": "H01-T02",
+    "gate": "H01",
+    "title": "Owner-only real host files, read-only first / slice 2",
+    "requires": [
+      "H01-T01"
+    ],
+    "acceptance": [
+      "H01-04",
+      "H01-05",
+      "H01-06"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S04"
+    ]
+  },
+  {
+    "id": "H01-T03",
+    "gate": "H01",
+    "title": "Owner-only real host files, read-only first / slice 3",
+    "requires": [
+      "H01-T02"
+    ],
+    "acceptance": [
+      "H01-07"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "S04"
+    ]
+  },
+  {
+    "id": "H02-T01",
+    "gate": "H02",
+    "title": "Explicit host writes after read-only correctness / slice 1",
+    "requires": [],
+    "acceptance": [
+      "H02-01",
+      "H02-02",
+      "H02-03"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "H01"
+    ]
+  },
+  {
+    "id": "H02-T02",
+    "gate": "H02",
+    "title": "Explicit host writes after read-only correctness / slice 2",
+    "requires": [
+      "H02-T01"
+    ],
+    "acceptance": [
+      "H02-04",
+      "H02-05"
+    ],
+    "scope": "Implement and prove only these obligations. Do not deploy unrelated components.",
+    "done": "Evidence for every linked obligation plus relevant earlier regression tests; no unmeasured success claim.",
+    "gate_requires": [
+      "H01"
+    ]
+  },
+  {
+    "id": "M00-T01",
+    "gate": "M00",
+    "title": "Bind the new domain and preserve existing evidence / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "G00"
+    ],
+    "acceptance": [
+      "M00-01",
+      "M00-02",
+      "M00-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M00-T02",
+    "gate": "M00",
+    "title": "Bind the new domain and preserve existing evidence / slice 2",
+    "requires": [
+      "M00-T01"
+    ],
+    "gate_requires": [
+      "G00"
+    ],
+    "acceptance": [
+      "M00-04",
+      "M00-05",
+      "M00-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M01-T01",
+    "gate": "M01",
+    "title": "Tree nodes with their own explicitly subscribed chats / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M00"
+    ],
+    "acceptance": [
+      "M01-01",
+      "M01-02",
+      "M01-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M01-T02",
+    "gate": "M01",
+    "title": "Tree nodes with their own explicitly subscribed chats / slice 2",
+    "requires": [
+      "M01-T01"
+    ],
+    "gate_requires": [
+      "M00"
+    ],
+    "acceptance": [
+      "M01-04",
+      "M01-05",
+      "M01-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M02-T01",
+    "gate": "M02",
+    "title": "One bounded pool of physical peer connections / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M01",
+      "W02"
+    ],
+    "acceptance": [
+      "M02-01",
+      "M02-02",
+      "M02-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M02-T02",
+    "gate": "M02",
+    "title": "One bounded pool of physical peer connections / slice 2",
+    "requires": [
+      "M02-T01"
+    ],
+    "gate_requires": [
+      "M01",
+      "W02"
+    ],
+    "acceptance": [
+      "M02-04",
+      "M02-05",
+      "M02-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M03-T01",
+    "gate": "M03",
+    "title": "Origin-authenticated routed events for public groups / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M02"
+    ],
+    "acceptance": [
+      "M03-01",
+      "M03-02",
+      "M03-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M03-T02",
+    "gate": "M03",
+    "title": "Origin-authenticated routed events for public groups / slice 2",
+    "requires": [
+      "M03-T01"
+    ],
+    "gate_requires": [
+      "M02"
+    ],
+    "acceptance": [
+      "M03-04",
+      "M03-05",
+      "M03-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M04-T01",
+    "gate": "M04",
+    "title": "Delegated rendezvous without expanding the login service / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M03",
+      "S00"
+    ],
+    "acceptance": [
+      "M04-01",
+      "M04-02",
+      "M04-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M04-T02",
+    "gate": "M04",
+    "title": "Delegated rendezvous without expanding the login service / slice 2",
+    "requires": [
+      "M04-T01"
+    ],
+    "gate_requires": [
+      "M03",
+      "S00"
+    ],
+    "acceptance": [
+      "M04-04",
+      "M04-05",
+      "M04-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M05-T01",
+    "gate": "M05",
+    "title": "Reviewed private-group admission and rekey lifecycle / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M03"
+    ],
+    "acceptance": [
+      "M05-01",
+      "M05-02",
+      "M05-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M05-T02",
+    "gate": "M05",
+    "title": "Reviewed private-group admission and rekey lifecycle / slice 2",
+    "requires": [
+      "M05-T01"
+    ],
+    "gate_requires": [
+      "M03"
+    ],
+    "acceptance": [
+      "M05-04",
+      "M05-05",
+      "M05-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M06-T01",
+    "gate": "M06",
+    "title": "Verified local caches and explicit retention / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M03"
+    ],
+    "acceptance": [
+      "M06-01",
+      "M06-02",
+      "M06-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M06-T02",
+    "gate": "M06",
+    "title": "Verified local caches and explicit retention / slice 2",
+    "requires": [
+      "M06-T01"
+    ],
+    "gate_requires": [
+      "M03"
+    ],
+    "acceptance": [
+      "M06-04",
+      "M06-05",
+      "M06-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M07-T01",
+    "gate": "M07",
+    "title": "Sharded routing, cell split/merge and migration / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M04"
+    ],
+    "acceptance": [
+      "M07-01",
+      "M07-02",
+      "M07-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M07-T02",
+    "gate": "M07",
+    "title": "Sharded routing, cell split/merge and migration / slice 2",
+    "requires": [
+      "M07-T01"
+    ],
+    "gate_requires": [
+      "M04"
+    ],
+    "acceptance": [
+      "M07-04",
+      "M07-05",
+      "M07-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M08-T01",
+    "gate": "M08",
+    "title": "Games and app-scoped group capabilities / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M03"
+    ],
+    "acceptance": [
+      "M08-01",
+      "M08-02",
+      "M08-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M08-T02",
+    "gate": "M08",
+    "title": "Games and app-scoped group capabilities / slice 2",
+    "requires": [
+      "M08-T01"
+    ],
+    "gate_requires": [
+      "M03"
+    ],
+    "acceptance": [
+      "M08-04",
+      "M08-05",
+      "M08-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M09-T01",
+    "gate": "M09",
+    "title": "NAT, suspension, partitions and malicious peers / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M04",
+      "M05",
+      "P01"
+    ],
+    "acceptance": [
+      "M09-01",
+      "M09-02",
+      "M09-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M09-T02",
+    "gate": "M09",
+    "title": "NAT, suspension, partitions and malicious peers / slice 2",
+    "requires": [
+      "M09-T01"
+    ],
+    "gate_requires": [
+      "M04",
+      "M05",
+      "P01"
+    ],
+    "acceptance": [
+      "M09-04",
+      "M09-05",
+      "M09-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M10-T01",
+    "gate": "M10",
+    "title": "Measured load ladder and ten-billion-device accounting / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M06",
+      "M07",
+      "M08",
+      "M09"
+    ],
+    "acceptance": [
+      "M10-01",
+      "M10-02",
+      "M10-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M10-T02",
+    "gate": "M10",
+    "title": "Measured load ladder and ten-billion-device accounting / slice 2",
+    "requires": [
+      "M10-T01"
+    ],
+    "gate_requires": [
+      "M06",
+      "M07",
+      "M08",
+      "M09"
+    ],
+    "acceptance": [
+      "M10-04",
+      "M10-05",
+      "M10-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M11-T01",
+    "gate": "M11",
+    "title": "Explicitly approved staged public operation / slice 1",
+    "requires": [],
+    "gate_requires": [
+      "M10",
+      "S04"
+    ],
+    "acceptance": [
+      "M11-01",
+      "M11-02",
+      "M11-03"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  },
+  {
+    "id": "M11-T02",
+    "gate": "M11",
+    "title": "Explicitly approved staged public operation / slice 2",
+    "requires": [
+      "M11-T01"
+    ],
+    "gate_requires": [
+      "M10",
+      "S04"
+    ],
+    "acceptance": [
+      "M11-04",
+      "M11-05",
+      "M11-06"
+    ],
+    "scope": "Implement only these obligations in the existing worktree. Keep authentication/v86 baseline intact; no deployment side effect.",
+    "done": "Record all positive/negative oracles with exact measured scope. Do not equate pure model, simulated transport, HTTP or real RTC witnesses."
+  }
+]

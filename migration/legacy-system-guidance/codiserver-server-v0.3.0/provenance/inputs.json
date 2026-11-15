@@ -1,0 +1,17 @@
+{
+  "inputs": [
+    {
+      "file": "write a handoff(1).zip",
+      "bytes": 1562226,
+      "sha256": "c5d7591308c7e5b4e639439bfc8eb5e18892f147829d81d61830ef64dbfa01b7"
+    },
+    {
+      "file": "codiserver-browser-v86-auth-handoff-v0.1.0.zip",
+      "bytes": 1592338,
+      "sha256": "f07cb55777b4cda096872bd935e683c729fe2780c9e19f5d4415c9f9e6c4de9a"
+    }
+  ],
+  "source_font_files_omitted": true,
+  "original_archives_redistributed": false,
+  "guest_assets_observed": false
+}

@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /srv/codi-browser/venvs/a5ee6aa9a1c18535aad36a52b7ec57ca9c1e1fca03cbb02d4c423fd7ec317326/bin/python -I -B /srv/codi-browser/operators/ed662839765996e6f5138ddb1eaedce6b2c4f40c2d4ae9ec6e2d4c7a0dc7d374/active-system/scripts/manage-browser-audit.py "$@"

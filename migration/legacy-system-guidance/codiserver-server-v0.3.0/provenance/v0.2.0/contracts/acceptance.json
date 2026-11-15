@@ -1,0 +1,1228 @@
+{
+  "version": "0.2.0",
+  "protocol": "codi-peer/1",
+  "note": "reference-tested is not a complete gate pass. Browser/VM/public/host scopes remain distinct.",
+  "gates": [
+    {
+      "id": "G00",
+      "title": "Source, authority boundaries and reproducible package",
+      "requires": [],
+      "cases": [
+        "G00-01",
+        "G00-02",
+        "G00-03",
+        "G00-04",
+        "G00-05",
+        "G00-06"
+      ]
+    },
+    {
+      "id": "W01",
+      "title": "Backend-free anonymous entry and destruction",
+      "requires": [
+        "G00"
+      ],
+      "cases": [
+        "W01-01",
+        "W01-02",
+        "W01-03",
+        "W01-04",
+        "W01-05",
+        "W01-06",
+        "W01-07",
+        "W01-08"
+      ]
+    },
+    {
+      "id": "W02",
+      "title": "Real peer transport and signed application packets",
+      "requires": [
+        "W01"
+      ],
+      "cases": [
+        "W02-01",
+        "W02-02",
+        "W02-03",
+        "W02-04",
+        "W02-05",
+        "W02-06",
+        "W02-07",
+        "W02-08",
+        "W02-09",
+        "W02-10"
+      ]
+    },
+    {
+      "id": "W03",
+      "title": "Retained desktop and unified session lifetime",
+      "requires": [
+        "W01"
+      ],
+      "cases": [
+        "W03-01",
+        "W03-02",
+        "W03-03",
+        "W03-04",
+        "W03-05",
+        "W03-06",
+        "W03-07"
+      ]
+    },
+    {
+      "id": "W04",
+      "title": "Bind and prove the real v86 Linux guest",
+      "requires": [
+        "G00",
+        "W03"
+      ],
+      "cases": [
+        "W04-01",
+        "W04-02",
+        "W04-03",
+        "W04-04",
+        "W04-05",
+        "W04-06",
+        "W04-07",
+        "W04-08",
+        "W04-09",
+        "W04-10"
+      ]
+    },
+    {
+      "id": "W05",
+      "title": "Anonymous milestone acceptance",
+      "requires": [
+        "W02",
+        "W03",
+        "W04"
+      ],
+      "cases": [
+        "W05-01",
+        "W05-02",
+        "W05-03",
+        "W05-04",
+        "W05-05",
+        "W05-06"
+      ]
+    },
+    {
+      "id": "S00",
+      "title": "Identity protocol and cryptographic reference",
+      "requires": [
+        "G00"
+      ],
+      "cases": [
+        "S00-01",
+        "S00-02",
+        "S00-03",
+        "S00-04",
+        "S00-05",
+        "S00-06",
+        "S00-07"
+      ]
+    },
+    {
+      "id": "S01",
+      "title": "Minimal local registration service",
+      "requires": [
+        "S00"
+      ],
+      "cases": [
+        "S01-01",
+        "S01-02",
+        "S01-03",
+        "S01-04",
+        "S01-05",
+        "S01-06",
+        "S01-07",
+        "S01-08"
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "Session lifecycle, bounds and failures",
+      "requires": [
+        "S01"
+      ],
+      "cases": [
+        "S02-01",
+        "S02-02",
+        "S02-03",
+        "S02-04",
+        "S02-05",
+        "S02-06",
+        "S02-07",
+        "S02-08",
+        "S02-09"
+      ]
+    },
+    {
+      "id": "I01",
+      "title": "Connected browsers, not just cross-runtime unit tests",
+      "requires": [
+        "W02",
+        "S02"
+      ],
+      "cases": [
+        "I01-01",
+        "I01-02",
+        "I01-03",
+        "I01-04",
+        "I01-05",
+        "I01-06",
+        "I01-07",
+        "I01-08"
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "Deployment design and static-resource boundary",
+      "requires": [
+        "S02"
+      ],
+      "cases": [
+        "S03-01",
+        "S03-02",
+        "S03-03",
+        "S03-04",
+        "S03-05",
+        "S03-06"
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "Explicitly authorized public deployment",
+      "requires": [
+        "I01",
+        "S03"
+      ],
+      "cases": [
+        "S04-01",
+        "S04-02",
+        "S04-03",
+        "S04-04",
+        "S04-05",
+        "S04-06",
+        "S04-07"
+      ]
+    },
+    {
+      "id": "P01",
+      "title": "Real Internet peer availability",
+      "requires": [
+        "W02"
+      ],
+      "cases": [
+        "P01-01",
+        "P01-02",
+        "P01-03",
+        "P01-04",
+        "P01-05"
+      ]
+    },
+    {
+      "id": "H01",
+      "title": "Owner-only real host files, read-only first",
+      "requires": [
+        "S04"
+      ],
+      "cases": [
+        "H01-01",
+        "H01-02",
+        "H01-03",
+        "H01-04",
+        "H01-05",
+        "H01-06",
+        "H01-07"
+      ]
+    },
+    {
+      "id": "H02",
+      "title": "Explicit host writes after read-only correctness",
+      "requires": [
+        "H01"
+      ],
+      "cases": [
+        "H02-01",
+        "H02-02",
+        "H02-03",
+        "H02-04",
+        "H02-05"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "G00-01",
+      "gate": "G00",
+      "requirement": "Identify the exact browser worktree without overwriting native ISO/Surface work.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "G00-02",
+      "gate": "G00",
+      "requirement": "Confirm default static config has no identity/API/STUN/TURN endpoint or hidden background requests.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "G00-03",
+      "gate": "G00",
+      "requirement": "Check identical protocol/schema/fixture hashes across both ZIPs.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "G00-04",
+      "gate": "G00",
+      "requirement": "Check no private signing keys, user secrets, fonts, caches or guest binaries are accidentally packaged.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "G00-05",
+      "gate": "G00",
+      "requirement": "Run syntax/contract checks and retain the initial measured evidence without claiming browser execution.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "G00-06",
+      "gate": "G00",
+      "requirement": "Inventory reported external v86 assets and distinguish observed files from reported paths.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W01-01",
+      "gate": "W01",
+      "requirement": "ANON works with only the static server; network trace contains no /api request.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W01-02",
+      "gate": "W01",
+      "requirement": "Each entry generates a distinct sid and nonextractable session key.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W01-03",
+      "gate": "W01",
+      "requirement": "Local identity is labeled unvalidated; SIGNIN is visibly unavailable, not simulated registration.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W01-04",
+      "gate": "W01",
+      "requirement": "No localStorage, sessionStorage, IndexedDB, OPFS or cookies hold anonymous state.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W01-05",
+      "gate": "W01",
+      "requirement": "Two tabs/profiles have independent session state and do not learn each other through a hidden local bus.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W01-06",
+      "gate": "W01",
+      "requirement": "Logout/reload destroys current identity, history, listeners, guest and channels.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W01-07",
+      "gate": "W01",
+      "requirement": "Double-click/failed entry does not create two simultaneous session owners.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W01-08",
+      "gate": "W01",
+      "requirement": "Back/forward-cache restoration cannot resurrect a logged-out live session.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-01",
+      "gate": "W02",
+      "requirement": "Two real Chromium contexts complete an actual RTCDataChannel offer/answer/hello exchange.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-02",
+      "gate": "W02",
+      "requirement": "Two different computers exchange unique bidirectional payloads; capture RTC candidate/byte evidence.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-03",
+      "gate": "W02",
+      "requirement": "Messages continue after static server stop once resources are loaded; no HTTP chat relay.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-04",
+      "gate": "W02",
+      "requirement": "Modified SDP/signature, mismatched offer reply or unknown authority is rejected before trusted connection.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-05",
+      "gate": "W02",
+      "requirement": "Signature, recipient, connection ID, expiry and monotonic sequence are verified before delivery.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-06",
+      "gate": "W02",
+      "requirement": "A copied certificate without its private key cannot complete the live handshake.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-07",
+      "gate": "W02",
+      "requirement": "Serialized async verification handles a burst without replay-counter races.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-08",
+      "gate": "W02",
+      "requirement": "Unexpected binary/oversized/malformed frames are rejected and buffers/history remain bounded.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-09",
+      "gate": "W02",
+      "requirement": "HTML/Unicode peer text is displayed literally and never interpreted as DOM, shell or serial input.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W02-10",
+      "gate": "W02",
+      "requirement": "Peer departure/reset/logout closes old transport and old packets cannot be reused on a new link.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W03-01",
+      "gate": "W03",
+      "requirement": "Original draggable/resizable geometry, presets, workspaces, menus and compare view remain usable.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W03-02",
+      "gate": "W03",
+      "requirement": "Rendering or resizing desktop views never replaces session, PeerLink or V86Controller.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W03-03",
+      "gate": "W03",
+      "requirement": "Extra terminal windows attach to one guest stream; closing a view does not implicitly reboot the guest.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W03-04",
+      "gate": "W03",
+      "requirement": "Terminal placeholders never display fabricated guest commands or host-state claims.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W03-05",
+      "gate": "W03",
+      "requirement": "Anonymous layout adjustments are session-only; explicit preset export is still intentional user I/O.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W03-06",
+      "gate": "W03",
+      "requirement": "Account/menu actions distinguish actual logout from remaining illustrative geometry controls.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W03-07",
+      "gate": "W03",
+      "requirement": "Mobile viewport, keyboard navigation, labels, focus and error messages remain usable.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-01",
+      "gate": "W04",
+      "requirement": "Locate and hash matching pinned v86 runtime/WASM/BIOS/kernel/initrd/root resources and licenses.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-02",
+      "gate": "W04",
+      "requirement": "Export guest-only public files without including private host paths, credentials or unintended mounts.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-03",
+      "gate": "W04",
+      "requirement": "Validate all runtime resource URLs and memory sizes against the explicit bootstrap inventory.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-04",
+      "gate": "W04",
+      "requirement": "Boot actual Linux and read an unpredictable witness nonce over real serial I/O.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-05",
+      "gate": "W04",
+      "requirement": "Run uname, id, Bash/Python/SQLite commands and guest GCC as available in the prepared image.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-06",
+      "gate": "W04",
+      "requirement": "Browser-injected public session metadata is read from the actual guest filesystem.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-07",
+      "gate": "W04",
+      "requirement": "Guest writes can be read through the same actual filesystem and disappear in a fresh session.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-08",
+      "gate": "W04",
+      "requirement": "One guest survives desktop redraws and is destroyed on logout; no orphan compute persists.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-09",
+      "gate": "W04",
+      "requirement": "Prove local browser CPU execution independently of static resource transfer and lazy file fetches.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W04-10",
+      "gate": "W04",
+      "requirement": "Bound serial/boot buffers, timeouts and failure states; missing binaries cannot pass as a shell.",
+      "status": "blocked-missing-assets",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W05-01",
+      "gate": "W05",
+      "requirement": "Fresh extraction starts the complete anonymous path without an identity service.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W05-02",
+      "gate": "W05",
+      "requirement": "GUI, guest work and peer messaging operate together without blocking one another.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W05-03",
+      "gate": "W05",
+      "requirement": "No browser user secrets/history/session overlays are persisted by application code.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W05-04",
+      "gate": "W05",
+      "requirement": "Repeat connect/send/guest/logout cycles without leaking active peers, timers or guests.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W05-05",
+      "gate": "W05",
+      "requirement": "Export an exact browser/OS/guest transcript and distinguish public asset caching from user-data persistence.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "W05-06",
+      "gate": "W05",
+      "requirement": "Failures are reproducible and remain failed/blocked instead of hidden behind mocks.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S00-01",
+      "gate": "S00",
+      "requirement": "Python-issued ES256 certificates verify with the actual JavaScript WebCrypto verifier.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/web-protocol.tap",
+          "scope": "Python-signed certificate verifies in WebCrypto"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S00-02",
+      "gate": "S00",
+      "requirement": "Fixed algorithms and distinct types reject algorithm/type/key-source substitutions.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/web-protocol.tap",
+          "scope": "algorithm/type/unknown-header negative tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S00-03",
+      "gate": "S00",
+      "requirement": "Issuer/audience/time/subject/key bindings reject altered or copied identities.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/web-protocol.tap",
+          "scope": "issuer/audience/key/name/authority binding tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S00-04",
+      "gate": "S00",
+      "requirement": "Proofs bind exact request bytes, path, audience and one-use nonce; replays/body changes fail.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "proof_replay/body_tampering/wrong_route tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S00-05",
+      "gate": "S00",
+      "requirement": "Authority private keys are generated locally, have restricted permissions and never enter public output.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S00-06",
+      "gate": "S00",
+      "requirement": "Certificate expiration has no positive grace and excessive lifetimes are rejected.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/web-protocol.tap",
+          "scope": "certificate expiry and lifetime tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S00-07",
+      "gate": "S00",
+      "requirement": "Adversarial parser/fuzz corpus and independent protocol review find no unresolved release blockers.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S01-01",
+      "gate": "S01",
+      "requirement": "ANON receives a random server-assigned name/sub/sid and real key-bound certificate.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "anon certificate and random identity tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S01-02",
+      "gate": "S01",
+      "requirement": "Anonymous issuance creates no durable account row or peer-message/SDP history.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "no durable anonymous account test"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S01-03",
+      "gate": "S01",
+      "requirement": "SIGNIN atomically creates an unused normalized name or authenticates the existing account.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "signup and normalized login test"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S01-04",
+      "gate": "S01",
+      "requirement": "Wrong passwords and concurrent signup cannot overwrite or reset an existing account.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "wrong_password/concurrent_signup tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S01-05",
+      "gate": "S01",
+      "requirement": "Registered passwords persist only as salted Argon2id hashes; passwords are not truncated or logged.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "argon2id database test; public log/body prohibition still reviewed at S04"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S01-06",
+      "gate": "S01",
+      "requirement": "One account has stable sub across fresh device keys/sids; session tokens are independent per tab.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/interop.json",
+          "scope": "stable account, distinct session, per-tab renewal"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S01-07",
+      "gate": "S01",
+      "requirement": "No username, certificate or first-signup order grants owner/host-file authority.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "reserved names/no resource endpoint tests; actual broker absent"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S01-08",
+      "gate": "S01",
+      "requirement": "Unknown shell/files/jobs/chat/signal API endpoints are absent.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "unknown API absence test"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S02-01",
+      "gate": "S02",
+      "requirement": "Renewal requires both the session token and fresh proof from its bound key/sid.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/interop.json",
+          "scope": "key-bound session renewal"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S02-02",
+      "gate": "S02",
+      "requirement": "Stolen token alone, expired nonce, expired absolute session and wrong key cannot renew.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "stolen token/nonce/absolute expiration tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S02-03",
+      "gate": "S02",
+      "requirement": "Logout invalidates only that HTTP session; other tabs remain independent.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "logout scope and concurrent-tab tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S02-04",
+      "gate": "S02",
+      "requirement": "Restart retains account/issuer data but not RAM challenges/sessions.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "restart persistence boundary test"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S02-05",
+      "gate": "S02",
+      "requirement": "Rate/capacity/request/concurrent-hash limits reject excess work before uncontrolled growth.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S02-06",
+      "gate": "S02",
+      "requirement": "Origin/Host/content-type/body bounds and no-CORS policy hold for the actual API.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "Origin/Host/body/type/CORS tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S02-07",
+      "gate": "S02",
+      "requirement": "Public directory cannot serve issuer/database/home paths or escape through symlinks.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/server-unit.txt",
+          "scope": "static-root/symlink/overlap tests"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S02-08",
+      "gate": "S02",
+      "requirement": "Account-disable/password-change/recovery/revocation semantics are implemented and tested before release.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S02-09",
+      "gate": "S02",
+      "requirement": "Clock rollback/jump, rotation overlap and compromised issuer recovery are explicitly tested.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "I01-01",
+      "gate": "I01",
+      "requirement": "In real browsers, both ANON and SIGNIN make real authority requests before admission.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "I01-02",
+      "gate": "I01",
+      "requirement": "Real WebCrypto request proofs are accepted over HTTP and Python certificates are verified back in JavaScript.",
+      "status": "reference-tested",
+      "evidence": [
+        {
+          "file": "evidence/interop.json",
+          "scope": "real HTTP Node WebCrypto to Python; browser gate remains unverified"
+        }
+      ],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "I01-03",
+      "gate": "I01",
+      "requirement": "Connected anonymous identity is marked server-validated anonymous, not a verified human/person.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "I01-04",
+      "gate": "I01",
+      "requirement": "Authority failure or expiry never silently falls back to unvalidated/locally forged official identity.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "I01-05",
+      "gate": "I01",
+      "requirement": "Two server-certified browsers verify signed signaling and exchange actual RTC chat.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "I01-06",
+      "gate": "I01",
+      "requirement": "Expired certificate visibly closes peer acceptance while local desktop/guest remains usable.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "I01-07",
+      "gate": "I01",
+      "requirement": "Revalidation updates last-validated/expiry and requires a fresh peer invitation without changing account sub.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "I01-08",
+      "gate": "I01",
+      "requirement": "Network capture shows no chat content, VM execution or host file operations on identity endpoints.",
+      "status": "blocked-browser-validation",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S03-01",
+      "gate": "S03",
+      "requirement": "Inspect box-webhost existing services/DNS/TLS/firewall without changing them until authorized.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S03-02",
+      "gate": "S03",
+      "requirement": "Choose one process with bounded threads for shared RAM state or deliberately redesign state before scaling.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S03-03",
+      "gate": "S03",
+      "requirement": "Pin package hashes/SBOM and use a private service UID with no access to owner home files.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S03-04",
+      "gate": "S03",
+      "requirement": "Separate immutable public assets from authority state; large files/ranges are served by a static HTTP server.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S03-05",
+      "gate": "S03",
+      "requirement": "Review proxy Host/Origin and forwarded-address trust using the actual intended topology.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S03-06",
+      "gate": "S03",
+      "requirement": "Keep manual signaling or explicitly approve a separate rendezvous/TURN scope; never hide chat in login.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S04-01",
+      "gate": "S04",
+      "requirement": "Obtain explicit authorization and bind the real domain/ports before installing/enabling services.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S04-02",
+      "gate": "S04",
+      "requirement": "Implement a reviewed production entry point; the reference launcher cannot silently become public.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S04-03",
+      "gate": "S04",
+      "requirement": "Prove HTTPS, certificate/key delivery, security headers, cookies/token handling and origin policy end to end.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S04-04",
+      "gate": "S04",
+      "requirement": "Exercise abuse, hashing, timeout, resource and parser limits under representative load.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S04-05",
+      "gate": "S04",
+      "requirement": "Prove backup/restore, issuer rotation, rollback, account-disable and service restart behavior.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S04-06",
+      "gate": "S04",
+      "requirement": "Validate content/license inventory and guest/model asset transfer without secrets or directory listings.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "S04-07",
+      "gate": "S04",
+      "requirement": "Release only after independent security review and no unresolved mandatory acceptance cases.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "P01-01",
+      "gate": "P01",
+      "requirement": "Two independent networks prove direct connectivity where available; failures are not called success.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "P01-02",
+      "gate": "P01",
+      "requirement": "When explicitly configured, STUN and TURN paths are separately witnessed with candidate statistics.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "P01-03",
+      "gate": "P01",
+      "requirement": "No public hard-coded ICE credentials; short-lived relay credentials and quotas are verified.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "P01-04",
+      "gate": "P01",
+      "requirement": "No-relay policy fails clearly when direct connectivity is unavailable.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "P01-05",
+      "gate": "P01",
+      "requirement": "Optional automated rendezvous is TTL-bound and stores only signaling, never chat or host credentials.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H01-01",
+      "gate": "H01",
+      "requirement": "Owner identity is explicitly provisioned by immutable subject, not name or first signup.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H01-02",
+      "gate": "H01",
+      "requirement": "File broker is a separate unprivileged process with its own audience and current authorization.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H01-03",
+      "gate": "H01",
+      "requirement": "Approved host roots are bound explicitly; browser guest/client/host filesystem scopes are distinct.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H01-04",
+      "gate": "H01",
+      "requirement": "Read-only access enforces traversal, symlink/magic-link/race and size/resource constraints.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H01-05",
+      "gate": "H01",
+      "requirement": "Anonymous and other registered accounts cannot read the approved owner paths.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H01-06",
+      "gate": "H01",
+      "requirement": "Revoking a grant stops subsequent host reads even if the peer identity certificate is unexpired.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H01-07",
+      "gate": "H01",
+      "requirement": "No keys/grants/private files enter guest metadata, public images or P2P messages implicitly.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H02-01",
+      "gate": "H02",
+      "requirement": "User separately approves write roots/operations; no broad filesystem write capability is inferred.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H02-02",
+      "gate": "H02",
+      "requirement": "Version preconditions prevent lost updates and atomic write/rename survives interruptions.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H02-03",
+      "gate": "H02",
+      "requirement": "Concurrent rename/symlink/revocation races cannot escape approved roots.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H02-04",
+      "gate": "H02",
+      "requirement": "Destructive operations require their separately specified confirmation/capability policy.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    },
+    {
+      "id": "H02-05",
+      "gate": "H02",
+      "requirement": "Conflicts/errors are surfaced without spawning a general shell or bypassing the broker.",
+      "status": "planned",
+      "evidence": [],
+      "pass_rule": "Record the exact positive AND applicable negative oracle in the ticket; a unit/fixture test is not a browser, guest or deployment witness."
+    }
+  ]
+}

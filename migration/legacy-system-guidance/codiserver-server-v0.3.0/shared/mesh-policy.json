@@ -1,0 +1,50 @@
+{
+  "version": "codi-mesh-plan/1",
+  "status": "proposed test budgets, NOT measured Chrome capacity",
+  "browser": {
+    "max_connections_including_pending": 24,
+    "max_hot_groups": 4,
+    "target_mesh_neighbors_per_hot_group": 4,
+    "support_connections": 2,
+    "replacement_reserve": 2,
+    "max_known_peer_hints": 256,
+    "max_pending_crypto_jobs": 32,
+    "max_live_replay_streams": 1024,
+    "replay_window_bits": 64,
+    "max_live_event_bytes": 16384,
+    "max_live_event_lifetime_s": 60,
+    "max_namespace_page_entries": 128,
+    "metadata_budget_bytes": 33554432,
+    "max_queued_wire_bytes": 2097152,
+    "control_queue_reserve_bytes": 131072
+  },
+  "cells": {
+    "target_members": 256,
+    "split_above": 320,
+    "merge_below": 128,
+    "hysteresis_s": 300,
+    "rendezvous_replicas": 3,
+    "lease_ttl_s": 180,
+    "lease_refresh_s": 120,
+    "min_independent_failure_domains_for_replicas": 3
+  },
+  "storage": {
+    "anonymous_user_state": "RAM only by default",
+    "persistent_public_cache": "explicit opt-in, quota checked",
+    "durable_private_archive": "separate explicit user grant, not anonymous default"
+  },
+  "routing": {
+    "lookup_parallelism": 3,
+    "max_lookup_requests": 48,
+    "max_lookup_wall_time_ms": 8000,
+    "max_candidate_hints_per_reply": 16,
+    "routed_envelope_hop_limit": 16,
+    "max_directory_page_bytes": 32768
+  },
+  "notes": [
+    "No per-room budget may bypass the global browser budget.",
+    "Presence and rendezvous leases are not durable storage promises.",
+    "The graph toy is NOT a production gossip, DHT or churn-repair implementation.",
+    "Private multi-hop messaging stays blocked until the reviewed group-key gate passes."
+  ]
+}

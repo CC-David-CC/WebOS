@@ -1,0 +1,3 @@
+# Reference/test dependencies. Lock hashes for the actual deployment at S04.
+cryptography>=43,<47
+argon2-cffi>=23.1,<26
