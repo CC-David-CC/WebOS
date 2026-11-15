@@ -1914,9 +1914,10 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run",
+      "build_status": "PASS release wasm source build with required shared fonts; nine-file standalone package, real Chromium rendering and command insert/undo (2\u21923\u21922 shapes),0 page errors/external requests; desktop/account/delegated-agent integration OPEN",
       "component_path": "apps/deckcraft",
-      "project_origin": "ArtCraft first-party project"
+      "project_origin": "ArtCraft first-party project",
+      "browser_baseline_documentation": "migration/DECKCRAFT-BROWSER-BASELINE.md"
     },
     {
       "id": "pdfcraft",
@@ -2903,6 +2904,7 @@
     "deckcraft_complete_wasm_target_check": "pass",
     "wordcraft_required_font_generated_input_equivalence": "byte-identical wasm/native",
     "runtime_support_claimed_from_compile_check": false,
-    "browser_artifact_launch_and_host_integration": "open"
+    "browser_artifact_launch_and_host_integration": "open",
+    "deckcraft_standalone_browser_baseline": "pass; real rendering, inspect, shape insert and undo; desktop/account/agent integration open"
   }
 }
