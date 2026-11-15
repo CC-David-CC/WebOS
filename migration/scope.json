@@ -21,50 +21,56 @@
       "id": "falling-blocks",
       "source": "apps/games/01-phaser-arcade/falling-blocks",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "falling-blocks",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/falling-blocks"
+      "component_path": "apps/falling-blocks",
+      "independent_checks": "no original package test script; tracked coach asset hash verified, Rive CLI render not run",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "owl-companion",
       "source": "apps/games/04-rive-interactives/owl-companion",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "owl-companion",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 2,
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/owl-companion"
+      "component_path": "apps/owl-companion",
+      "independent_checks": "owned import validation passes after separately committed Snake/Owl test ownership split; three original case bodies/assertions retained",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "physics-playground",
       "source": "apps/games/02-three-physics-xr/physics-playground",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "physics-playground",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/physics-playground"
+      "component_path": "apps/physics-playground",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "snake-garden",
       "source": "apps/games/01-phaser-arcade/snake-garden",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "snake-garden",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -74,35 +80,41 @@
         "apps/games/04-rive-interactives/owl-companion/src/model/save.js"
       ],
       "host_loaded_dependencies": [],
-      "component_path": "apps/snake-garden"
+      "component_path": "apps/snake-garden",
+      "independent_checks": "owned import validation passes after separately committed Snake/Owl test ownership split; three original case bodies/assertions retained",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "clockwork-room",
       "source": "apps/games/03-babylon-xr-games/clockwork-room",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "clockwork-room",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/clockwork-room"
+      "component_path": "apps/clockwork-room",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "chess-study",
       "source": "apps/games/01-phaser-arcade/chess-study",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "chess-study",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/chess-study"
+      "component_path": "apps/chess-study",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "solitaire",
@@ -125,295 +137,337 @@
       "id": "sky-courier",
       "source": "apps/games/01-phaser-arcade/sky-courier",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "sky-courier",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/sky-courier"
+      "component_path": "apps/sky-courier",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "marble-works",
       "source": "apps/games/02-three-physics-xr/marble-works",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "marble-works",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/marble-works"
+      "component_path": "apps/marble-works",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "stack-balance",
       "source": "apps/games/02-three-physics-xr/stack-balance",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "stack-balance",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/stack-balance"
+      "component_path": "apps/stack-balance",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "crystal-defense",
       "source": "apps/games/03-babylon-xr-games/crystal-defense",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "crystal-defense",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/crystal-defense"
+      "component_path": "apps/crystal-defense",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "drone-circuit",
       "source": "apps/games/03-babylon-xr-games/drone-circuit",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "drone-circuit",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/drone-circuit"
+      "component_path": "apps/drone-circuit",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "reactive-control-desk",
       "source": "apps/games/04-rive-interactives/reactive-control-desk",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "reactive-control-desk",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/reactive-control-desk"
+      "component_path": "apps/reactive-control-desk",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "story-cards",
       "source": "apps/games/04-rive-interactives/story-cards",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "story-cards",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/story-cards"
+      "component_path": "apps/story-cards",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "expression-puppet",
       "source": "apps/games/04-rive-interactives/expression-puppet",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "expression-puppet",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 2,
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/expression-puppet"
+      "component_path": "apps/expression-puppet",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "rhythm-garden",
       "source": "apps/games/04-rive-interactives/rhythm-garden",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "rhythm-garden",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 2,
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/rhythm-garden"
+      "component_path": "apps/rhythm-garden",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "lantern-leap",
       "source": "apps/games/01-phaser-arcade/lantern-leap",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "lantern-leap",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/lantern-leap"
+      "component_path": "apps/lantern-leap",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "garden-defense",
       "source": "apps/games/01-phaser-arcade/garden-defense",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "garden-defense",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/garden-defense"
+      "component_path": "apps/garden-defense",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "pocket-rally",
       "source": "apps/games/01-phaser-arcade/pocket-rally",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "pocket-rally",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/pocket-rally"
+      "component_path": "apps/pocket-rally",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "sling-targets",
       "source": "apps/games/02-three-physics-xr/sling-targets",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "sling-targets",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/sling-targets"
+      "component_path": "apps/sling-targets",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "gravity-pinball",
       "source": "apps/games/02-three-physics-xr/gravity-pinball",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "gravity-pinball",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/gravity-pinball"
+      "component_path": "apps/gravity-pinball",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "kinetic-relay",
       "source": "apps/games/02-three-physics-xr/kinetic-relay",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "kinetic-relay",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/kinetic-relay"
+      "component_path": "apps/kinetic-relay",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "tabletop-bot-arena",
       "source": "apps/games/02-three-physics-xr/tabletop-bot-arena",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "tabletop-bot-arena",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/tabletop-bot-arena"
+      "component_path": "apps/tabletop-bot-arena",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "pocket-golf",
       "source": "apps/games/03-babylon-xr-games/pocket-golf",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "pocket-golf",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 1,
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/pocket-golf"
+      "component_path": "apps/pocket-golf",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "target-garden",
       "source": "apps/games/03-babylon-xr-games/target-garden",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "target-garden",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/target-garden"
+      "component_path": "apps/target-garden",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "orbital-courier",
       "source": "apps/games/03-babylon-xr-games/orbital-courier",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "orbital-courier",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/orbital-courier"
+      "component_path": "apps/orbital-courier",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "clockwork-quest",
       "source": "apps/games/03-babylon-xr-games/clockwork-quest",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "clockwork-quest",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/clockwork-quest"
+      "component_path": "apps/clockwork-quest",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "memory-garden",
       "source": "apps/games/04-rive-interactives/memory-garden",
       "category": "game",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "memory-garden",
+      "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/memory-garden"
+      "component_path": "apps/memory-garden",
+      "independent_checks": "existing configured checks pass in isolated extracted copy",
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
     },
     {
       "id": "calculator",
@@ -1469,7 +1523,34 @@
       "tanstack-virtual": "libraries/tanstack-virtual",
       "webtorrent": "libraries/webtorrent",
       "yjs": "libraries/yjs",
-      "engine-onnx-runtime": "engines/onnx-runtime"
+      "engine-onnx-runtime": "engines/onnx-runtime",
+      "falling-blocks": "apps/falling-blocks",
+      "owl-companion": "apps/owl-companion",
+      "physics-playground": "apps/physics-playground",
+      "snake-garden": "apps/snake-garden",
+      "clockwork-room": "apps/clockwork-room",
+      "chess-study": "apps/chess-study",
+      "sky-courier": "apps/sky-courier",
+      "marble-works": "apps/marble-works",
+      "stack-balance": "apps/stack-balance",
+      "crystal-defense": "apps/crystal-defense",
+      "drone-circuit": "apps/drone-circuit",
+      "reactive-control-desk": "apps/reactive-control-desk",
+      "story-cards": "apps/story-cards",
+      "expression-puppet": "apps/expression-puppet",
+      "rhythm-garden": "apps/rhythm-garden",
+      "lantern-leap": "apps/lantern-leap",
+      "garden-defense": "apps/garden-defense",
+      "pocket-rally": "apps/pocket-rally",
+      "sling-targets": "apps/sling-targets",
+      "gravity-pinball": "apps/gravity-pinball",
+      "kinetic-relay": "apps/kinetic-relay",
+      "tabletop-bot-arena": "apps/tabletop-bot-arena",
+      "pocket-golf": "apps/pocket-golf",
+      "target-garden": "apps/target-garden",
+      "orbital-courier": "apps/orbital-courier",
+      "clockwork-quest": "apps/clockwork-quest",
+      "memory-garden": "apps/memory-garden"
     },
     "missing_core_sources": [],
     "platform": "platform/<component>/",
@@ -1568,5 +1649,17 @@
     ],
     "asset_status": "Tracked source, package locks and worker configuration retained. External models/WASM assets require independently verified builds; source presence is not functional readiness.",
     "history": "Owned paths with exact current blobs/modes; explicit package-copy provenance retained without importing unrelated components; original full history remains in verified private recovery."
+  },
+  "game_source_organization": {
+    "all_registered_game_sources_present": 28,
+    "newly_extracted": 27,
+    "current_files_byte_and_mode_verified": 597,
+    "original_configured_baseline_test_scripts_passed": 25,
+    "original_configured_baseline_typechecks_passed": 23,
+    "independent_check_exception": "Old mixed Snake/Owl test passed in sibling-layout baseline but failed after separation; three unchanged cases split into owner suites in separate commits. Snake 11 + Owl 2 = original mixed Snake suite 13. Both independent suites pass.",
+    "declared_asset_files_verified": 12,
+    "declared_asset_files_missing": 0,
+    "scope_limit": "Source organization and domain test evidence only; no broad browser, account-save, XR or agent readiness claim. Falling Blocks Rive rebuild/render tests not run; tracked artifact matches existing pinned hash.",
+    "remaining_suite": "27 registered source IDs plus nonregistered source, platform leftovers and broader assets/ownership remain pending."
   }
 }

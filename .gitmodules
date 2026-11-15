@@ -160,3 +160,84 @@
 [submodule "engine-onnx-runtime"]
 	path = engines/onnx-runtime
 	url = ../engine-onnx-runtime.git
+[submodule "falling-blocks"]
+	path = apps/falling-blocks
+	url = ../falling-blocks.git
+[submodule "owl-companion"]
+	path = apps/owl-companion
+	url = ../owl-companion.git
+[submodule "physics-playground"]
+	path = apps/physics-playground
+	url = ../physics-playground.git
+[submodule "snake-garden"]
+	path = apps/snake-garden
+	url = ../snake-garden.git
+[submodule "clockwork-room"]
+	path = apps/clockwork-room
+	url = ../clockwork-room.git
+[submodule "chess-study"]
+	path = apps/chess-study
+	url = ../chess-study.git
+[submodule "sky-courier"]
+	path = apps/sky-courier
+	url = ../sky-courier.git
+[submodule "marble-works"]
+	path = apps/marble-works
+	url = ../marble-works.git
+[submodule "stack-balance"]
+	path = apps/stack-balance
+	url = ../stack-balance.git
+[submodule "crystal-defense"]
+	path = apps/crystal-defense
+	url = ../crystal-defense.git
+[submodule "drone-circuit"]
+	path = apps/drone-circuit
+	url = ../drone-circuit.git
+[submodule "reactive-control-desk"]
+	path = apps/reactive-control-desk
+	url = ../reactive-control-desk.git
+[submodule "story-cards"]
+	path = apps/story-cards
+	url = ../story-cards.git
+[submodule "expression-puppet"]
+	path = apps/expression-puppet
+	url = ../expression-puppet.git
+[submodule "rhythm-garden"]
+	path = apps/rhythm-garden
+	url = ../rhythm-garden.git
+[submodule "lantern-leap"]
+	path = apps/lantern-leap
+	url = ../lantern-leap.git
+[submodule "garden-defense"]
+	path = apps/garden-defense
+	url = ../garden-defense.git
+[submodule "pocket-rally"]
+	path = apps/pocket-rally
+	url = ../pocket-rally.git
+[submodule "sling-targets"]
+	path = apps/sling-targets
+	url = ../sling-targets.git
+[submodule "gravity-pinball"]
+	path = apps/gravity-pinball
+	url = ../gravity-pinball.git
+[submodule "kinetic-relay"]
+	path = apps/kinetic-relay
+	url = ../kinetic-relay.git
+[submodule "tabletop-bot-arena"]
+	path = apps/tabletop-bot-arena
+	url = ../tabletop-bot-arena.git
+[submodule "pocket-golf"]
+	path = apps/pocket-golf
+	url = ../pocket-golf.git
+[submodule "target-garden"]
+	path = apps/target-garden
+	url = ../target-garden.git
+[submodule "orbital-courier"]
+	path = apps/orbital-courier
+	url = ../orbital-courier.git
+[submodule "clockwork-quest"]
+	path = apps/clockwork-quest
+	url = ../clockwork-quest.git
+[submodule "memory-garden"]
+	path = apps/memory-garden
+	url = ../memory-garden.git
