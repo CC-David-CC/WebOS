@@ -989,103 +989,247 @@
       "id": "wordcraft",
       "upstream_candidate": "https://github.com/storytold/wordcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "unmodified WASM compile check passed; browser build not yet verified"
     },
     {
       "id": "gridcraft",
       "upstream_candidate": "https://github.com/storytold/gridcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "deckcraft",
       "upstream_candidate": "https://github.com/storytold/deckcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE",
+        "licenses"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "pdfcraft",
       "upstream_candidate": "https://github.com/storytold/pdfcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "ATTRIBUTION.toml",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "LICENSES.toml",
+        "NOTICE",
+        "licenses"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "photocraft",
       "upstream_candidate": "https://github.com/storytold/photocraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "vectorcraft",
       "upstream_candidate": "https://github.com/storytold/vectorcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE",
+        "licenses"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "designcraft",
       "upstream_candidate": "https://github.com/storytold/designcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE",
+        "licenses"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "figcraft",
       "upstream_candidate": "https://github.com/storytold/figcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "anicraft",
       "upstream_candidate": "https://github.com/storytold/anicraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE",
+        "licenses"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "filmcraft",
       "upstream_candidate": "https://github.com/storytold/filmcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "effectcraft",
       "upstream_candidate": "https://github.com/storytold/effectcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "soundcraft",
       "upstream_candidate": "https://github.com/storytold/soundcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "lightcraft",
       "upstream_candidate": "https://github.com/storytold/lightcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "cadcraft",
       "upstream_candidate": "https://github.com/storytold/cadcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "solidcraft",
       "upstream_candidate": "https://github.com/tangency-labs/solidcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-BRAND",
+        "LICENSE-MIT",
+        "NOTICE",
+        "attribution"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run",
+      "distribution_gate": "Separate LICENSE-BRAND covers interface/brand material; permission/compliance review required before distribution; no deployment attempted"
     },
     {
       "id": "texturecraft",
       "upstream_candidate": "https://github.com/storytold/texturecraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     },
     {
       "id": "materialcraft",
       "upstream_candidate": "https://github.com/storytold/materialcraft.git",
       "repository_reachable": true,
-      "state": "candidate; source/license/build/host qualification pending"
+      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "license_files": [
+        "ATTRIBUTION.md",
+        "LICENSE-APACHE",
+        "LICENSE-MIT",
+        "NOTICE"
+      ],
+      "fork_branch": "webos/integration",
+      "build_status": "not run"
     }
   ],
   "system_components": [
@@ -1113,15 +1257,27 @@
   "independent_existing_projects": [
     {
       "id": "acad",
-      "state": "unchanged history attached; functional gates remain open"
+      "state": "unchanged independent history attached; existing CAD gates remain open"
     },
     {
       "id": "legacy-jsketcher",
-      "state": "remote history found; independent preservation/extraction pending"
+      "state": "independent history read from verified box-git repository, retained unchanged and pinned; distinct from ACAD"
     },
     {
-      "id": "engines",
-      "state": "four independent local histories captured; assembly pending"
+      "id": "engine-manifold",
+      "state": "independent local history captured, retained unchanged and pinned; functional qualification pending"
+    },
+    {
+      "id": "engine-opencascade",
+      "state": "independent local history captured, retained unchanged and pinned; functional qualification pending"
+    },
+    {
+      "id": "engine-smlib-wasm",
+      "state": "independent local history captured, retained unchanged and pinned; functional qualification pending"
+    },
+    {
+      "id": "engine-usd-brep",
+      "state": "independent local history captured, retained unchanged and pinned; functional qualification pending"
     }
   ],
   "unresolved_source_areas": [
@@ -1142,5 +1298,16 @@
     "whole_suite_functional_verification": false
   },
   "production_changes": "NONE; not authorized",
-  "private_publication": "NOT ATTEMPTED; requires separate authorization"
+  "private_publication": "NOT ATTEMPTED; requires separate authorization",
+  "asset_preservation": {
+    "historical_runtime_archive": "1,383 payload files restored and verified against internal manifest; current compatibility remains unverified",
+    "current_declared_ignored_inputs": "766 files captured and verified; missing declarations remain listed in private evidence",
+    "account_data": "not copied; approved backup/staging remains pending"
+  },
+  "verification": {
+    "source_transport": "26 source submodules passed fresh recursive local clone; clean source trees and matching local-origin commits",
+    "wordcraft_wasm": "unmodified upstream cargo check passed; isolated fresh-clone check in progress",
+    "app_unit_baselines": "Six existing scripts passed in recovery, extracted repos and fresh clone",
+    "minimum_and_whole_suite_functionality": "not implemented/verified"
+  }
 }
