@@ -22,7 +22,7 @@ Retained baseline tests are separate from new runtime acceptance.
 | Physical second-machine acceptance | OPEN; browser contexts are not a second machine |
 | Human/agent operations | Live routing and Accounts core checks PASS; authenticated transport, consent and scoped agent file authority OPEN |
 | Remaining16 Craft apps and old app/game integration | OPEN; source presence is not app support |
-| Native/font review | WordCraft review all9 CI stages PASS; shared default-workspace checks PASS; source-pinned browser artifact/qualification OPEN |
+| Native/font review | PASS selected WordCraft all9 CI stages, declared font input and clean browser workflows; broader-suite qualification OPEN |
 | Historical assets and old-user migration | Not prerequisites for the fresh rebuild; preserve existing recovery |
 | External Git publication | Not authorized or attempted; local origins are not off-machine backups |
 
@@ -100,7 +100,7 @@ Hosted Rooms is unused historical code, not a new service.
 | soundcraft | `apps/soundcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | texturecraft | `apps/texturecraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | vectorcraft | `apps/vectorcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
-| wordcraft | `apps/wordcraft/` | PASS | PASS real WASM authoring, formatting, account persistence, conflicts and lifecycle | PASS local/clean and earlier hosted pin; newer native/font review and delegated agents OPEN |
+| wordcraft | `apps/wordcraft/` | PASS | PASS selected source all9 CI stages, actual WASM math font, authoring, persistence, conflicts and lifecycle | PASS latest local/clean source; hosted release remains older, delegated agents OPEN |
 
 ## Games (35:28 registered,7 source-only planned cores)
 
@@ -160,7 +160,7 @@ Hosted Rooms is unused historical code, not a new service.
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
 | codemirror | `libraries/codemirror/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
-| craft-libs | `libraries/craft-libs/` | PASS | Pinned histories retained; review3b3271f4 passes default workspace fmt, Clippy and tests | Reviewed shared commit unselected; app dependency versions remain explicit |
+| craft-libs | `libraries/craft-libs/` | PASS | Selected3b3271f4 passes default workspace fmt, Clippy and tests | Selected shared history; WordCraft dependency pins are explicit, other consumers OPEN |
 | echarts | `libraries/echarts/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | egui | `libraries/egui/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 | gltf-transform | `libraries/gltf-transform/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
@@ -182,7 +182,7 @@ Hosted Rooms is unused historical code, not a new service.
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
-| craft-fonts | `assets/craft-fonts/` | PASS | PASS pinned build input; new STIX review passes clean font checks | Selected input used by WordCraft; e5f6cc5 math-font review unselected |
+| craft-fonts | `assets/craft-fonts/` | PASS | PASS selected e5f6cc5, clean glyph/MATH/license checks and actual WASM font | PASS selected WordCraft artifact; other consumers OPEN |
 | craft-i18n | `assets/craft-i18n/` | PASS | PASS pinned WordCraft translation/proofing build input | PASS selected WordCraft composition; other consumers OPEN |
 
 ## Shared build tooling (1)
