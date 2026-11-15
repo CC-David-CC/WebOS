@@ -7,8 +7,8 @@
       "id": "microduck",
       "source": "apps/system/microduck",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "microduck",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 3,
         "status": "incomplete asset graph"
@@ -516,8 +516,8 @@
       "id": "browser",
       "source": "apps/system/browser",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "browser",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 7,
         "status": "incomplete asset graph"
@@ -544,15 +544,15 @@
       "id": "opencascade",
       "source": "apps/system/opencascade",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "engine-opencascade-js",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/opencascade"
+      "component_path": "engines/opencascade-js"
     },
     {
       "id": "gltf-transform",
@@ -572,8 +572,8 @@
       "id": "terminal",
       "source": "apps/system/terminal",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "terminal",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -586,8 +586,8 @@
       "id": "text",
       "source": "apps/system/text",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "text",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -602,8 +602,8 @@
       "id": "image-editor",
       "source": "apps/system/image-editor",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "image-editor",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -616,8 +616,8 @@
       "id": "document-editor",
       "source": "apps/system/document-editor",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "document-editor",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -630,8 +630,8 @@
       "id": "pdf-viewer",
       "source": "apps/system/pdf-viewer",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "pdf-viewer",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -644,8 +644,8 @@
       "id": "spreadsheet",
       "source": "apps/system/spreadsheet",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "spreadsheet",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -658,8 +658,8 @@
       "id": "data-explorer",
       "source": "apps/system/data-explorer",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "data-explorer",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -714,8 +714,8 @@
       "id": "audio-editor",
       "source": "apps/system/audio-editor",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "audio-editor",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 44,
         "status": "incomplete asset graph"
@@ -742,8 +742,8 @@
       "id": "gcode-preview",
       "source": "apps/system/gcode-preview",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "gcode-preview",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -756,8 +756,8 @@
       "id": "grid-tools",
       "source": "apps/system/grid-tools",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "grid-tools",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 48,
         "status": "incomplete asset graph"
@@ -924,8 +924,8 @@
       "id": "replicad",
       "source": "apps/system/replicad",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "replicad",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -938,8 +938,8 @@
       "id": "diagrams-net",
       "source": "apps/system/diagrams-net",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "diagrams-net",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 2764,
         "status": "incomplete asset graph"
@@ -952,8 +952,8 @@
       "id": "notebook",
       "source": "apps/system/notebook",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "notebook",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -966,8 +966,8 @@
       "id": "excalidraw",
       "source": "apps/system/excalidraw",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "excalidraw",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 234,
         "status": "incomplete asset graph"
@@ -980,8 +980,8 @@
       "id": "svg-editor",
       "source": "apps/system/svg-editor",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "svg-editor",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 264,
         "status": "incomplete asset graph"
@@ -994,8 +994,8 @@
       "id": "arduino-simulator",
       "source": "apps/system/arduino-simulator",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "arduino-simulator",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -1008,8 +1008,8 @@
       "id": "pico-simulator",
       "source": "apps/system/pico-simulator",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "pico-simulator",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -1022,8 +1022,8 @@
       "id": "circuitjs",
       "source": "apps/system/circuitjs",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "circuitjs",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 411,
         "status": "incomplete asset graph"
@@ -1036,22 +1036,23 @@
       "id": "jsketcher",
       "source": "apps/system/jsketcher",
       "category": "app-or-reusable-tool",
-      "ownership": "ACAD integration ownership needs review",
-      "extraction": "preserved; extraction pending",
+      "ownership": "acad",
+      "extraction": "133-file host integration history merged into ACAD webos/ with exact original blobs/modes; original JSketcher remains separate apps/jsketcher",
       "asset_review": {
         "missing_declared_assets": 130,
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/acad (integration ownership review pending)"
+      "component_path": "apps/acad",
+      "integration_source_path": "webos/"
     },
     {
       "id": "electronics-design",
       "source": "apps/system/electronics-design",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "electronics-design",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 6,
         "status": "incomplete asset graph"
@@ -1064,8 +1065,8 @@
       "id": "digital-logic",
       "source": "apps/system/digital-logic",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "digital-logic",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -1078,8 +1079,8 @@
       "id": "embroidery-studio",
       "source": "apps/system/embroidery-studio",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "embroidery-studio",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 42,
         "status": "incomplete asset graph"
@@ -1092,8 +1093,8 @@
       "id": "stitch-converter",
       "source": "apps/system/stitch-converter",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "stitch-converter",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -1106,8 +1107,8 @@
       "id": "personal-template",
       "source": "apps/individual/templates",
       "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "ownership": "personal-template",
+      "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
@@ -1550,7 +1551,33 @@
       "target-garden": "apps/target-garden",
       "orbital-courier": "apps/orbital-courier",
       "clockwork-quest": "apps/clockwork-quest",
-      "memory-garden": "apps/memory-garden"
+      "memory-garden": "apps/memory-garden",
+      "microduck": "apps/microduck",
+      "browser": "apps/browser",
+      "engine-opencascade-js": "engines/opencascade-js",
+      "terminal": "apps/terminal",
+      "text": "apps/text",
+      "image-editor": "apps/image-editor",
+      "document-editor": "apps/document-editor",
+      "pdf-viewer": "apps/pdf-viewer",
+      "spreadsheet": "apps/spreadsheet",
+      "data-explorer": "apps/data-explorer",
+      "audio-editor": "apps/audio-editor",
+      "gcode-preview": "apps/gcode-preview",
+      "grid-tools": "apps/grid-tools",
+      "replicad": "apps/replicad",
+      "diagrams-net": "apps/diagrams-net",
+      "notebook": "apps/notebook",
+      "excalidraw": "apps/excalidraw",
+      "svg-editor": "apps/svg-editor",
+      "arduino-simulator": "apps/arduino-simulator",
+      "pico-simulator": "apps/pico-simulator",
+      "circuitjs": "apps/circuitjs",
+      "electronics-design": "apps/electronics-design",
+      "digital-logic": "apps/digital-logic",
+      "embroidery-studio": "apps/embroidery-studio",
+      "stitch-converter": "apps/stitch-converter",
+      "personal-template": "apps/personal-template"
     },
     "missing_core_sources": [],
     "platform": "platform/<component>/",
@@ -1669,5 +1696,20 @@
     "beta_tool_project": "npm opencascade.js1.1.1; different integration and kernel package",
     "beta_tool_target": "engines/opencascade-js",
     "reason": "Source README identifies distinct projects; do not combine their histories or binaries merely because both use OCCT."
+  },
+  "existing_registered_source_placement": {
+    "entries": 75,
+    "source_owners_assigned": 75,
+    "live_beta_entries": 74,
+    "source_only_id": "jsketcher (ACAD host integration)",
+    "source_files_new_phase_verified": 797,
+    "source_readiness": "All registered source entrypoints placed; complete disk restart point still needs nonregistered source/platform/asset ownership and final verification.",
+    "tests": "Pico configured suite passes baseline/extraction. Browser one pre-existing stale host-contract failure unchanged. Microduck source generation of project and visual assets passes;211 domain checks:200 pass/11 fail in both copies because four original pinned fixtures are absent.",
+    "no_application_behavior_port": true
+  },
+  "optional_linux_v86": {
+    "scope": "User explicitly requested organized optional app/engine/base assets",
+    "minimum_dependency": false,
+    "status": "Source and static base-asset discovery pending; preserve required source/images separately from live account data"
   }
 }
