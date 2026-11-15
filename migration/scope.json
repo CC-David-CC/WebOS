@@ -2787,5 +2787,17 @@
     "dynamic_import_expressions": 37,
     "runtime_dependency_closure": false,
     "evidence": "migration/LEGACY-JS-OPERATIONS.md and private phase49"
+  },
+  "legacy_python_context_reviewed_source": {
+    "parent_source_paths": 350,
+    "source_location": "deploy/legacy-operations/",
+    "source_bodies_and_modes": "Exact original baseline verified",
+    "execution": "disabled; no supported command entrypoint",
+    "selected_history_blobs": 377,
+    "history_blobs_with_existing_syntax_warnings": 21,
+    "current_python_holds_remaining_private": 57,
+    "sensitive_literal_classifier_controls": 6,
+    "runtime_dependency_closure": false,
+    "evidence": "migration/LEGACY-PYTHON-CONTEXT.md and private phase50"
   }
 }
