@@ -1,0 +1,31 @@
+/** Real Calculator + Desktop hosting acceptance; no account/files/WordCraft claim. */
+import assert from 'node:assert/strict';
+import {build} from 'esbuild';
+import {mkdir, readFile, writeFile} from 'node:fs/promises';
+import {createServer} from 'node:http';
+import path from 'node:path';
+import puppeteer from 'puppeteer-core';
+const output = process.env.WEBOS_TEST_OUTPUT && path.resolve(process.env.WEBOS_TEST_OUTPUT);
+assert(output && !output.startsWith(process.cwd() + path.sep), 'Use new private external output.');
+await mkdir(output, {mode: 0o700});
+// Build one actual Desktop view; keep test instrumentation out of product code.
+await build({stdin: {contents: `import {mount,createDesktopController} from './platform/desktop/src/index.mjs';import {mount as calculator} from './apps/calculator/webos/index.mjs';const authority={};const authorize=c=>c===authority;const views=new Map();const desktop=createDesktopController({sessionId:'calculator-test-session',accountId:'synthetic-test-account',authorize,applications:[{id:'calculator',title:'Calculator',width:420,height:640,mount:host=>{const v=calculator({...host,authority,authorize});views.set(host.instanceId,v);return v;}}]});const view=mount({desktop,authority});document.body.append(view.element);window.fixture={desktop,views};`, resolveDir: process.cwd()},bundle:true,format:'esm',outfile:path.join(output,'client.mjs'),logLevel:'silent'});
+await writeFile(path.join(output,'index.html'),'<!doctype html><html><head><link rel="icon" href="data:,"><link rel="stylesheet" href="/client.css"><style>html,body{margin:0;height:100%;overflow:hidden}.webos-desktop{height:100vh}</style></head><body><script type="module" src="/client.mjs"></script></body></html>');
+const server=createServer(async(req,res)=>{try {const name=new URL(req.url,'http://localhost').pathname;const file={'/':'index.html','/client.mjs':'client.mjs','/client.css':'client.css'}[name];if(!file){res.writeHead(404).end();return;}res.setHeader('Content-Type',file.endsWith('.mjs')?'text/javascript':file.endsWith('.css')?'text/css':'text/html');res.end(await readFile(path.join(output,file)));}catch{res.writeHead(500).end();}});
+await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));let browser;const errors=[];const report={status:'FAIL',scope:'Calculator hosting only; synthetic desktop session, no account/storage qualification'};
+try {
+ browser=await puppeteer.launch({executablePath:'/snap/chromium/current/usr/lib/chromium-browser/chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});const page=await browser.newPage();page.on('pageerror',e=>errors.push(e.message));await page.setViewport({width:1400,height:1000});await page.goto('http://127.0.0.1:'+server.address().port,{waitUntil:'networkidle0'});
+ async function open(){await page.click('[aria-label=Applications]');await page.click('[data-app-id=calculator]');await page.waitForFunction(()=>document.querySelectorAll('.webos-window[data-phase=ready]').length===window.fixture.desktop.inspect().windows.length);return page.evaluate(()=>window.fixture.desktop.inspect().focused);}
+ const first=await open();const one=`[data-window-id="${first}"].webos-window`;
+ await page.type(one+' input','12+3');await page.keyboard.press('Enter');await page.waitForFunction(sel=>document.querySelector(sel+' output').textContent==='15',{},one);
+ const second=await open();const two=`[data-window-id="${second}"].webos-window`;
+ for(const key of ['7','+','2','Calculate']){let clicked=false;for(const button of await page.$$(two+' button')){if(await button.evaluate(el=>el.textContent)===key){await button.click();clicked=true;break;}}assert(clicked,'Keypad button missing: '+key);}
+ await page.waitForFunction(sel=>document.querySelector(sel+' output').textContent==='9',{},two);assert.equal(await page.$eval(one+' output',e=>e.textContent),'15');
+ const title=await page.$(two+' .webos-titlebar');const before=await title.boundingBox();await page.mouse.move(before.x+50,before.y+12);await page.mouse.down();await page.mouse.move(before.x+140,before.y+65,{steps:5});await page.mouse.up();await page.waitForFunction(id=>window.fixture.desktop.inspect().windows.find(w=>w.id===id).rect.x>60,{},second);
+ const grip=await page.$(two+' .webos-resize');const box=await grip.boundingBox();const oldWidth=await page.$eval(two,e=>e.getBoundingClientRect().width);await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+70,box.y+35,{steps:5});await page.mouse.up();await page.waitForFunction(({sel,width})=>document.querySelector(sel).getBoundingClientRect().width>width,{},{sel:two,width:oldWidth});
+ await page.click(two+' [aria-label=Minimize]');await page.waitForFunction(sel=>document.querySelector(sel).hidden,{},two);await page.click(`.webos-task[data-window-id="${second}"]`);await page.waitForFunction(sel=>!document.querySelector(sel).hidden,{},two);
+ await page.click(`.webos-task[data-window-id="${first}"]`);await page.waitForFunction(id=>window.fixture.desktop.inspect().focused===id,{},first);await page.click(one+' [aria-label=Close]');await page.waitForFunction(sel=>!document.querySelector(sel),{},one);assert.equal(await page.$eval(two+' output',e=>e.textContent),'9');
+ const third=await open();const three=`[data-window-id="${third}"].webos-window`;await page.type(three+' input','2+2');await page.keyboard.press('Enter');await page.waitForFunction(id=>window.fixture.views.get(id).inspect().calculations===1,{},third);assert.equal(await page.$eval(three+' output',e=>e.textContent),'4');assert.equal(await page.evaluate(id=>window.fixture.views.get(id).inspect().disposed,first),true);
+ await page.screenshot({path:path.join(output,'calculator-desktop.png')});assert.deepEqual(errors,[]);Object.assign(report,{status:'PASS',keyboard:true,keypad:true,move:true,resize:true,minimizeRestoreFocus:true,independentInstances:true,closePreservesOther:true,reopenSingleInputHandler:true,pageErrors:0});
+} catch(error){report.error=error.message;throw error;}finally{await browser?.close();await new Promise(resolve=>server.close(resolve));await writeFile(path.join(output,'result.json'),JSON.stringify(report,null,2)+'\n');}
+console.log(JSON.stringify(report));
