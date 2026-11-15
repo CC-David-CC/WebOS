@@ -29,21 +29,39 @@ support. DesignCraft's unused `designcraft-testkit` declaration and FigCraft's
 unused `figcraft-tools` declaration reference missing directories. They did not
 block these metadata checks; complete build qualification remains open.
 
-The shared fonts checkout at `e5f6cc5577fab9534095a6dfe2d409b2d9f72b1d`
-contains 15 manifest entries whose payload SHA-256 values match and whose
-declared licence files exist. None is an unmaterialized LFS pointer. This checks
-the present manifests, not every possible font a consumer needs.
+The shared fonts checkout at `9ffb3a717e081a817470c5efe68fe314ca16c987`
+merges the upstream Latin catalogue from
+`37827adc41fd165f9a9234ac40f94dbad353aa69` while retaining the WebOS math font.
+Both branches' added tests remain. The selected revision passes formatting,
+Clippy with all targets/features and warnings denied, 42 workspace tests, and
+its `embed` and `embed-latin` feature tests. All 66 font manifest entries match
+their declared SHA-256 values and have licence files; none is an LFS pointer.
+The existing 15 font payloads and the main and Chinese manifests are unchanged.
+Upstream licence whitespace is retained byte-for-byte.
 
-There is a confirmed compatibility gap with the selected DeckCraft source:
-`fonts/latin-manifest.txt` is absent, so its required font generator reports
-missing Inter Regular/Bold (or Variable) for both wasm32 and native inputs.
-The unchanged generator was compiled directly with Rust 1.95 and run with
-network disabled and the original workspace hidden. Optional mode generated
-one wasm face and 14 native faces; required mode emitted `cargo::error` and no
-faces. The generator process itself returns zero, so its Cargo error directive
-must be treated as failure. This is a build-input check, not a full Cargo build
-or a browser test. Suppressing required fonts is not a fix.
+The prior font pin lacked the Latin manifest: DeckCraft's required generator
+reported missing Inter even though the generator process returned zero. Its
+`cargo::error` directive was a failure. With the selected fonts, the unchanged
+generator produces three wasm faces and 57 native faces with no Cargo error.
+WordCraft's unchanged generator produces byte-identical required-font input for
+both wasm32 and native with the old and new font revisions, preserving its
+existing math face. This input equivalence is not a new WordCraft browser test.
 
-Next: review a compatible shared-font revision and payload/licence provenance,
-then build affected consumers before promoting that asset pin. Other Craft
-apps still need their full assets, browser build and desktop/file integration.
+The following actual compiler checks pass for the selected DeckCraft source:
+
+```sh
+CRAFT_FONTS_REQUIRED=1 python3 scripts/craft_cargo.py deckcraft -- check --locked --offline -p deckcraft-fonts --target wasm32-unknown-unknown
+CRAFT_FONTS_REQUIRED=1 python3 scripts/craft_cargo.py deckcraft -- check --locked --offline -p deckcraft-web --target wasm32-unknown-unknown
+```
+
+They ran with Rust 1.95, networking disabled, original source hidden, and output
+outside source. The first attempt lacked cached `cpal` registry metadata; a
+separate `cargo fetch --locked --target wasm32-unknown-unknown` obtained pinned
+public inputs before the successful offline checks. Source and lockfiles stayed
+unchanged. On a fresh machine an offline check needs those inputs populated first.
+
+`cargo check` does not link/package the browser application or run it. DeckCraft
+still needs its full browser artifact, browser launch, complete asset graph,
+desktop lifecycle, durable save acknowledgement and shared-operation acceptance.
+The other Craft apps also require actual builds and integration; their metadata
+checks alone do not establish support.

@@ -25,8 +25,10 @@ component sources are Git links, never parent-owned copies.
 
 For Craft Cargo commands in this layout, see
 [shared build inputs](migration/CRAFT-BUILD-INPUTS.md). All 17 workspace metadata
-checks pass; DeckCraft's required font input check exposes missing Inter faces
-in the currently pinned shared font set. Metadata success is not a build pass.
+checks pass. The selected shared fonts now include the verified Latin catalogue;
+DeckCraft's font crate and complete browser target pass offline WebAssembly
+compile checks with required fonts. Browser launch and host integration remain
+OPEN; metadata and compilation are not runtime acceptance.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
 still has 1,969 unresolved dispositions and 25 unqualified blob candidates among
