@@ -2808,5 +2808,14 @@
     "game_model_implementation_changed": false,
     "browser_gameplay_qualified": false,
     "evidence": "migration/GAME-DESIGN-OWNERSHIP.md and private phase52"
+  },
+  "app_guidance_source_ownership": {
+    "original_source_files": 106,
+    "individual_app_note_owners": 7,
+    "shared_parent_files": 99,
+    "selected_history_blobs": 2927,
+    "implementation_tests_dependencies_changed": false,
+    "current_lifecycle_behavior_qualified": false,
+    "evidence": "migration/APP-GUIDANCE-OWNERSHIP.md and private phase53"
   }
 }
