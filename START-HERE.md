@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has5,314 unresolved dispositions and43 unqualified blob candidates among
+still has4,554 unresolved dispositions and43 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -192,7 +192,7 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-35-cad-literal-review/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-36-desktop-acceptance/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
 Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
@@ -219,3 +219,5 @@ not inherit the latest local qualification. No automatic service restart or
 production change is implied by a local commit.
 
 Phase35 completes retention of all276 identified legacy CAD corpus code files, including33 reviewed synthetic-fixture paths. Their interfaces and fixture closure still need porting before execution. The latest basic human build evidence is private phase34: real WordCraft account save/reopen/reload/second-browser-context PASS with original source hidden; no new deployment, physical second-machine or delegated-agent acceptance claimed.
+
+Phase36 retains760 unchanged historical desktop browser-test sources with selected histories, syntax checked and disabled pending deliberate ports. See [legacy desktop tests](migration/LEGACY-DESKTOP-TESTS.md). No current app or browser qualification follows from this extraction.
