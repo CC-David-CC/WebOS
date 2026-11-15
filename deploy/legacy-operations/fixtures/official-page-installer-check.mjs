@@ -1,0 +1,11 @@
+import {installOfficialHistoryPage as install} from '../../assets/desktop/official-history-page.mjs';
+import {hash} from '../../network/crypto.mjs';
+const id=await hash('head');let height=0,appends=0;
+const archive={async load(){return {position:{height,head:id}};},async append(block,{signal}={}){signal?.throwIfAborted();if(block.bad)throw Error('invalid signature');height++;appends++;return {position:{height,head:id}};}};
+const make=(blocks,extra={})=>({status:'experimental-replayed-segment',afterHeight:0,height:blocks.length,head:id,complete:true,blocks:blocks.map((x,i)=>({height:i+1,wire:JSON.stringify(x)})),...extra});
+const reject=async(p,opts)=>{try{await install(archive,p,opts);return false;}catch{return true;}};
+if(!await reject(make([{}],{afterHeight:1}))||appends)throw Error('wrong floor advanced');
+if(!await reject(make([{}],{complete:false}))||appends)throw Error('inconsistent page advanced');
+const abort=new AbortController();abort.abort();if(!await reject(make([{}]),{signal:abort.signal})||appends)throw Error('aborted page advanced');
+if(!await reject(make([{}, {bad:true}]))||height!==1||appends!==1)throw Error('verified prefix not retained on failure');
+console.log(JSON.stringify({status:'PASS',checks:['wrong floor and malformed page rejected','pre-abort rejects work','partial failure retains only verified prefix']}));

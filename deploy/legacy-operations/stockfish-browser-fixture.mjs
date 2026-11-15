@@ -1,0 +1,3 @@
+import {StockfishEngine} from '/served_apps_public/chess/engine/uci.mjs';
+import {Chess} from '/active-system/assets/vendor/chess/chess.mjs';
+window.stockfishFixture={async run(){const engine=new StockfishEngine(),chess=new Chess(),moves=[];try{await engine.start();for(let i=0;i<2;i++){const move=await engine.move(chess.fen(),{milliseconds:100});if(move==='(none)'||move==='0000')throw Error('Engine produced no opening move');const played=chess.move({from:move.slice(0,2),to:move.slice(2,4),promotion:move[4]});if(!played)throw Error('Engine produced illegal move');moves.push(played.san);}return {moves,fen:chess.fen()};}finally{engine.close();}}};window.fixtureReady=true;

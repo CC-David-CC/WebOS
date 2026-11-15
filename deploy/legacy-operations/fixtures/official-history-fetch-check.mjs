@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {fetchOfficialHistoryPage} from '../../assets/desktop/official-history-fetch.mjs';
+globalThis.location=new URL('https://example.test/');
+const args={channel:'A'.repeat(43),afterHead:'A'.repeat(43),afterHeight:0};
+let calls=0;
+globalThis.fetch=async()=>{calls++;return new Response('{"ok":true}',{status:200});};
+assert.equal((await fetchOfficialHistoryPage('/official-history',args)).ok,true);
+await assert.rejects(fetchOfficialHistoryPage('https://other.test/history',args));
+assert.equal(calls,1);
+globalThis.fetch=async()=>new Response('{"x":1,"x":2}');
+await assert.rejects(fetchOfficialHistoryPage('/official-history',args));
+globalThis.fetch=async()=>new Response('x',{headers:{'content-length':String(10*1048576)}});
+await assert.rejects(fetchOfficialHistoryPage('/official-history',args));
+globalThis.fetch=async()=>new Response('{"error":"busy"}',{status:503});
+await assert.rejects(fetchOfficialHistoryPage('/official-history',args),error=>error.status===503);
+const controller=new AbortController();controller.abort();
+await assert.rejects(fetchOfficialHistoryPage('/official-history',{...args,signal:controller.signal}));
+console.log('PASS: same-origin, duplicate keys, response bound and pre-abort');
