@@ -1594,7 +1594,9 @@
       "digital-logic": "apps/digital-logic",
       "embroidery-studio": "apps/embroidery-studio",
       "stitch-converter": "apps/stitch-converter",
-      "personal-template": "apps/personal-template"
+      "personal-template": "apps/personal-template",
+      "engine-v86": "engines/v86",
+      "linux": "apps/linux"
     },
     "missing_core_sources": [],
     "platform": "platform/<component>/",
@@ -1727,6 +1729,18 @@
   "optional_linux_v86": {
     "scope": "User explicitly requested organized optional app/engine/base assets",
     "minimum_dependency": false,
-    "status": "Source and static base-asset discovery pending; preserve required source/images separately from live account data"
+    "status": "Source/history extracted into apps/linux and full pinned upstream engine plus retained bootstrap runtime in engines/v86; optional UI integration and real-guest baseline verification pending",
+    "linux_path": "apps/linux",
+    "engine_path": "engines/v86"
+  },
+  "organized_artifact_cache": {
+    "reference": "artifacts/reference-beta/d75bd688ba02b5954c3ee8698d3379c847ef8999929218ef85bf8b74d5b1abe6",
+    "apps": 74,
+    "files": 6143,
+    "bytes": 1028162239,
+    "build_inputs": "artifacts/inputs/microduck",
+    "input_files": 44,
+    "verify": "python3 scripts/verify_artifacts.py",
+    "scope": "All catalog-listed public app payload bytes and selected recovered immutable build inputs; not a full rebuilt release or whole-source completion claim"
   }
 }

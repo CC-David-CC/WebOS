@@ -319,3 +319,9 @@
 [submodule "personal-template"]
 	path = apps/personal-template
 	url = ../personal-template.git
+[submodule "engine-v86"]
+	path = engines/v86
+	url = ../engine-v86.git
+[submodule "linux"]
+	path = apps/linux
+	url = ../linux.git
