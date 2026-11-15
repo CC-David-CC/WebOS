@@ -1,0 +1,22 @@
+[Unit]
+Description=Fresh WebOS ksu.codes test system
+After=network.target
+
+[Service]
+Type=simple
+User=@SERVICE_USER@
+WorkingDirectory=@TEST_ROOT@/release
+ExecStart=@TEST_ROOT@/environment/bin/python @TEST_ROOT@/release/server/run_development.py --public-root @TEST_ROOT@/release/public --private-root @TEST_ROOT@/private/account-state --port 38140 --origin https://ksu.codes
+Environment=PYTHONDONTWRITEBYTECODE=1
+UMask=0077
+Restart=no
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=@TEST_ROOT@/private
+RestrictAddressFamilies=AF_INET AF_UNIX
+
+[Install]
+WantedBy=multi-user.target
