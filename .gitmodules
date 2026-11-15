@@ -367,3 +367,6 @@
 [submodule "network-policy"]
 	path = libraries/network-policy
 	url = ../network-policy.git
+[submodule "engine-speech"]
+	path = engines/speech
+	url = ../engine-speech.git
