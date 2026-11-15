@@ -1,0 +1,36 @@
+{
+  "observedAtUTC": "2026-11-06T09:52:10.935029+00:00",
+  "scope": "Unauthenticated GET and incremental SHA256 of selected public entrypoints only; no account/file requests.",
+  "rows": [
+    {
+      "url": "https://ksu.codes/",
+      "status": 200,
+      "bytes": 487,
+      "sha256": "48e21d0b7a291063b90343bc357b203337aab39b9d2dda48f758971d6153488b"
+    },
+    {
+      "url": "https://ksu.codes/desktop/",
+      "status": 200,
+      "bytes": 3318,
+      "sha256": "fbf4b940d1ce481d856742561007a8b15be747c0e43307792db481b75be6cf1b"
+    },
+    {
+      "url": "https://beta.ksu.codes/",
+      "status": 200,
+      "bytes": 487,
+      "sha256": "48e21d0b7a291063b90343bc357b203337aab39b9d2dda48f758971d6153488b"
+    },
+    {
+      "url": "https://beta.ksu.codes/desktop-apps.js?simplified=1",
+      "status": 200,
+      "bytes": 24778,
+      "sha256": "192f4a989b50523f360e1e90705203e569ecf286632bc09a3e9165012e856135"
+    },
+    {
+      "url": "https://beta.ksu.codes/assets/desktop/apps-files-f8a27d0e69ecbd99cc7dee55b3664dd18f703cb3b90cfa7b904eda7aa514f17f.json",
+      "status": 200,
+      "bytes": 1200139,
+      "sha256": "553416ebb4d0043c96e31bb559acd915ca33b7102945c910b89f151ffcc2d8fd"
+    }
+  ]
+}

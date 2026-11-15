@@ -1,0 +1,6 @@
+# Build-time dependencies and downloaded third-party runtime assets.
+node_modules/
+system/chess/engine/stockfish-19-lite-single.js
+system/chess/engine/stockfish-19-lite-single.wasm
+*.wasm
+*.onnx

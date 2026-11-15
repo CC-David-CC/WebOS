@@ -1,0 +1,209 @@
+Finish dependable Files, consolidate our existing JSketcher fork, then deliver the next useful mechanical CAD features through the WebOS.
+
+Latest deployment-policy correction — 2026-11-04:
+Both beta.ksu.codes and ksu.codes are no-user test deployments. Prioritize rapid
+replacement and current-release validation. Old windows, cached app versions,
+session continuity and production-style backward-compatible upgrades are NOT
+release requirements now. Expect a reload after updates. Stop adding old-client
+or alternate-release recovery qualification solely for those guarantees. Reuse
+already reviewed deployment tools; do not expand a framework for this change.
+Keep file integrity, account isolation, worker/resource cleanup and basic app
+workflows as acceptance requirements. Preserve unrelated sites/prototype and
+private account/key boundaries. Keep existing test files when practical; there
+is no need to erase them merely to avoid supporting old app windows.
+
+Latest user amendment — 2026-11-04: all games and unfinished features belong on
+beta.ksu.codes; main must offer only qualified end-to-end features. Main-only
+removal is authorized through managed hosting. Preserve beta, /desktop, saved
+files and account/key boundaries. Shared load/save admission and busy state
+belong to the mount/host; apps supply serialization and dirty-revision handling.
+Disable Save/menu controls during local operations and guard shortcuts/agent
+commands; no queued manual Save. Background server sync is independent. See the
+successor goal and work queues for current implementation and remaining work.
+
+Act as the integration lead. Use three subagents in separate branches/worktrees, with explicit ownership:
+1. Files and storage: browser/server persistence, synchronization, conflicts, recovery and the Files app.
+2. JSketcher consolidation: existing upstream adaptations, geometry engines, builds, provenance and desktop integration.
+3. JSketcher mechanical features: solver correctness, constraints, dimensions and parameters.
+
+You own integration, shared contracts, independent review and deployment. Reassign agents as bounded tasks finish. Keep independent work moving in parallel; serialize edits to shared files and deployment.
+
+Read the saved documents first:
+- docs/WEBOS-WORK-QUEUES.md
+- docs/WEBOS-SILOED-WORK.md
+- docs/HANDOFF-STORAGE-BETA-2026-11-02.md
+- docs/JSKETCHER_UPSTREAM_WORK.md
+- docs/JSKETCHER_ENGINE_COMPARISON.md
+- JSketcher’s docs/MECHANICAL-CAD-AUDIT.md
+- JSketcher’s docs/MANUFACTURING-AND-PHYSICS-ROADMAP.md
+
+Treat the issue lists as starting points. Discover and fix additional problems needed for the acceptance workflows. Reuse existing implementations and evidence; repeat completed tests when integration changes or unresolved concerns justify it.
+
+Repositories:
+- Desktop: box-git:/srv/data/git/CodiServer-distro.git
+- JSketcher: box-git:/srv/data/git/JSKetcher.git
+
+Fetch and verify current branches before choosing bases. The desktop research integration branch is research/webos-cad-combined-20261102. The OPFS research checkpoint is on research/beta-worker-sync-20261102, last handed off at 796a10f6622c7fa9121f772ff4662101e9831761.
+
+Important correction: substantial JSketcher upstream integration is already done. Box-git webos-integration at 518a4666 contains the recorded main and surfacing tips plus many adaptations. Dev has divergent ancestry. Consolidate and qualify the existing work; do not restart the upstream merge or assume every dev feature is missing. Locate the later geometry, manufacturing and export research branches before duplicating their work.
+
+Stage 1 — Dependable Files
+
+Finish one coherent browser-first My files implementation backed by normal server disk files. Evaluate and integrate the existing worker/OPFS research rather than inventing another storage stack.
+
+Required behavior:
+- Saved files survive close/reopen and fresh-session recovery.
+- Account changes, cancellation, stale windows and concurrent devices cannot silently overwrite another version.
+- Conflicts preserve both versions until explicitly resolved.
+- Lost replies and possibly committed writes reconcile without blind mutation retries.
+- Interrupted downloads publish only complete verified data.
+- Temporary files and cleanup cannot remove committed or in-flight data.
+- Heavy hashing and processing run in workers with measured concurrency, responsiveness, memory and disk use.
+- Changed files transfer changed data where supported; initial or incompatible reads have a safe fallback.
+- The Files app provides clear create/open/rename/move/copy/delete/upload/download behavior and truthful sync/error status.
+- Temporary Linux files remain separate from My files.
+
+Test signed accounts, independent sessions, concurrent edits, corruption, quota/disk failures, real socket interruption, browser/server crashes and representative files up to 128 MiB. Distinguish process-crash evidence from power-loss guarantees.
+
+Preserve compatibility with existing apps. Keep a documented file/version/session contract for JSketcher and other consumers.
+
+Stage 2 — Consolidated JSketcher
+
+Work on this alongside Files behind the agreed host contract.
+
+Produce one coherent, reproducibly buildable integration branch containing the intended existing features and fixes. Identify source already integrated, actual missing features, regressions and experimental changes that are not ready.
+
+Keep both OCC and Native Mesh. Expose their actual capabilities and unsupported operations honestly. Preserve source/license provenance and the production browser security policy.
+
+Qualify carried-forward splines, history/undo/redo, selection, DXF, camera/touch, model reconstruction and persistence. Use My files, independent application instances and proper disposal. Keep UI and agent commands on the same validated model operations.
+
+Stage 3 — Mechanical CAD feature push
+
+Start independent solver work early, but release it through the consolidated application.
+
+Prioritize:
+1. Atomic constraint acceptance/rejection, midpoint semantics, redundancy/conflicts and stable save/reload behavior.
+2. Driving X/Y and projected distances, diameter, concentricity, collinearity, whole-entity fixing, rigid groups and independent-axis symmetry.
+3. Consistent equality/ratio/difference relationships and clear driving/reference roles.
+4. Typed parameters, formulas, dependency errors and configurations needed by the acceptance designs.
+5. Reliable feature regeneration and explicit repair of missing or ambiguous references.
+
+Rejected operations must preserve the previous valid geometry and authored intent.
+
+First feature acceptance:
+- Build and substantially edit a mounting bracket.
+- Build an enclosure with a separate lid.
+- Change dimensions, hole spacing and relevant parameters.
+- Introduce and remove contradictions.
+- Undo/redo, save/sync, close and reopen without losing relationships.
+
+Stage 4 — Material-aware manufacturing handoff
+
+After the required geometry and persistence are dependable:
+- Preserve named parts/regions, material identity, appearance, grouping and placement.
+- Add the contrasting inset label grouped with the lid.
+- Export core model 3MF from model-derived geometry.
+- Independently verify units, dimensions, transforms, materials, two printable objects and three assigned regions.
+- Reject invalid or unsupported geometry explicitly.
+
+Bambu Studio, physical printing, physics solvers, inverse design and a complete advanced-curve catalogue are not requirements for this milestone.
+
+Release and working rules
+
+Use beta.ksu.codes for iteration. Preserve the existing main site and /desktop prototype until the relevant promotion is qualified. Never copy beta account data or keys to main.
+
+Retain the guarded client rollback floor and required versioned assets. Use reviewed managed deployment/recovery procedures; do not hand-edit derived Caddy or assume old operators remain compatible.
+
+Necessary installs, downloads and scoped test accounts are authorized. Resolve routine implementation choices yourself. Ask only when my preference materially changes the result.
+
+Check available resources before large jobs, use R730 where appropriate, and clean only identified disposable artifacts.
+
+Keep the checklist, per-silo status and handoff current. Commit source, tests, runtime prerequisites and notes to box-git and back them up to R730. Another machine must have documented prerequisites and reproducible commands; no essential source should depend on this workstation.
+
+Keep me informed about meaningful findings and decisions. Return exact commits, deployed versions, test evidence and remaining limitations. Finish the bounded release milestone before pausing.
+
+Architecture amendment — 2026-11-04, explicit user direction
+
+Use JSketcher as inspiration and replace coupled implementation where needed.
+The target is a reusable engineering engine supporting the recorded CAD 1.0–6.0
+direction and future extensions. There is no promise that the entire long-term
+platform will be functional soon. Preserve useful proven components and tests;
+do not discard them merely to call the work a rewrite.
+
+Production computational workers consume explicit model data and operate
+without canvas, DOM, editor windows, ToolManager, fake window objects or fake
+browser UI. Separate the headless core from worker transport and lifecycle.
+Heavy processing stays off the UI thread, with bounded admission, cancellation,
+deadlines, stale-result checks and measured resources.
+
+Separate the authoritative revisioned design document, shared UI/agent typed
+commands and transactions, acyclic formulas and simultaneous constraints,
+geometry/region/kernel/dependency validation, persistent references, derived
+representations, jobs, evidence and saved storage/caches. Keep one account-bound
+My files service, not another app-specific mirror.
+
+The current slice is actual dependent-sketch recomputation: substantial parent
+dimension changes update authored centered/corner-hole relationships, with
+independent residual checks and stable IDs. Missing/ambiguous references,
+unsupported mathematics and stale results fail explicitly while preserving
+authored intent and the last valid result. Blocking every ordinary resize is
+interim protection, not completion.
+
+Maintain CAD-CORE-SEPARATION.md, ACTIVE-FILES-CAD-RELEASE.md and
+WEBOS-WORK-QUEUES.md with exact source/test/deployment status. The user authorizes
+adding missing core-worker requirements as discovered; give each a concrete
+test and bounded owner/package. This amendment changes architecture authority
+and adds boundaries; it does not waive Files, Gate 1, shared UI/agent part
+workflows or material-aware core 3MF acceptance. Later gates inform early
+contracts without replacing the active milestone.
+
+Engine and resource amendment — 2026-11-04, explicit user direction
+
+Keep both engines. OpenCascade is preferred; Native Mesh/Manifold is secondary.
+Properly support each library where its capabilities apply, not only what the
+current application happens to call. Maintain a broad installed-version and
+compiled-binding capability matrix. Missing bindings, unsupported operations,
+untested paths and verified functionality must remain distinguishable.
+
+Install engines through versioned, swappable computational mounts/adapters.
+Preserve engine-specific capabilities, explicit result/handle ownership and
+disposal, worker execution and shared document/command consistency. Engine
+combination uses explicit conversions and bounded job graphs with units,
+tolerances, lost-information/identity rules and source-revision provenance.
+Never silently substitute engines or treat a mesh approximation as exact CAD.
+CAD-CORE-SEPARATION.md ENG01-ENG08 gives the concrete work and tests.
+
+The user authorizes R730 for storage and compute, llm-60 for compute/testing,
+and creating/cloning useful repositories on box-git. Preserve trusted host
+verification and private data boundaries. No GitHub JSketcher publication now.
+
+The successor handoff is docs/HANDOFF-FILES-CAD-2026-11-04.md; the copyable next
+agent instruction is docs/goals/FILES-CAD-NEXT-AGENT.txt. ARC09 and ARC10 now
+explicitly require monotonic document lifetimes and atomic full-history replay
+preserving the last complete accepted model. Existing candidate passes do not
+close their combined integration or release gates. Update these documents as
+actual work progresses, without declaring the broad milestone complete.
+
+Source-trust amendment — 2026-11-04, latest explicit user direction
+
+All features from JSketcher are suspect and are used for inspiration. This
+supersedes any interpretation of consolidation as an obligation to preserve
+inherited behavior or architecture. Our adaptations are subject to the same
+rule. State the intended mathematical/domain contract first, then use
+independent positive, negative and edit/failure/persistence tests to determine
+whether to retain, repair or replace an implementation. A library's feature
+list, a menu command and a successful demonstration are not complete acceptance
+evidence. Preserve useful scoped evidence without extending it to untested cases.
+Later gates inform early contracts; planned interfaces and stubs remain open
+work and never count as validated feature, simulation or engineering capability.
+
+File-copy clarification — 2026-11-04, explicit user direction
+
+A full detached file copy is acceptable when it releases cleanly once done.
+Prove ownership and cleanup on completion, close, cancellation and disposal:
+clear retained Blob/array references, revoke owned object URLs, terminate jobs
+and release leases. Preserve a copy while its recipient intentionally owns it
+and retain authoritative saved data. Browser garbage collection determines when
+physical pages are reclaimed; immediate RSS reduction and zero-copy are not
+requirements. Remove proven redundant verification/retention, and measure real
+lifecycle behavior before expanding memory-related implementation work.

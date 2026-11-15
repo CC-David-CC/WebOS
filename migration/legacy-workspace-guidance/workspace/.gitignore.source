@@ -1,0 +1,55 @@
+__pycache__/
+*.pyc
+.build/
+.venv/
+node_modules/
+
+# Source-only backup: generated outputs, downloaded binaries and private state
+# stay on the workstation and can be rebuilt or provisioned separately.
+*.wasm
+*.onnx
+*.cpio.gz
+*.ttf
+*.png
+*.jpg
+*.jpeg
+*.zip
+*.tap
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.*
+assets/vendor/chess/chess.mjs
+
+# The current, reviewed browser Linux runtime is required in a fresh checkout.
+!/active-system/runtime/v86/v86.wasm
+!/active-system/assets/terminal/v2/e571ca17c12f1b392851b1cc1144aa14abc185c3bac7380d7c24821073e6e389.cpio.gz
+
+# Desktop artwork is application source, not a generated build artifact.
+!/active-system/assets/icons/*.png
+!/active-system/assets/application.png
+!/active-system/assets/wallpaper.jpg
+
+# Browser engine downloads and generated runtime artifacts.
+/apps/system/browser/.work/
+/apps/system/browser/engine/gecko.js
+/apps/system/browser/engine/gecko.data
+/apps/system/browser/engine/wisp-client.mjs
+/apps/system/browser/engine/manifest.json
+/apps/system/browser/engine/*.LICENSE.txt
+
+# Reproducible upstream web release; prepare.py verifies and extracts it.
+/apps/system/embroidery-studio/vendor/
+
+# Browser font assets are reproduced from pinned packages.
+/apps/system/browser/engine-fonts/*.ttf
+/apps/system/browser/engine-fonts/*.data

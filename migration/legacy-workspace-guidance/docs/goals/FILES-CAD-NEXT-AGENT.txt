@@ -1,0 +1,29 @@
+Continue the active Files and WebOS CAD release as integration lead.
+## User-confirmed scope revision —2026-11-06
+
+Gate1 now covers21 exercises: E01–E16 and E18–E22. E17 hinged assembly and
+assembly-specific competency C10 move to Gate2; preserve original identifiers.
+Multibody parts/material regions/core3MF and linked part drawings E22 stay in
+Gate1. All other qualification, beta, handoff, backup and pause conditions remain.
+This supersedes earlier22-exercise/12-competency scope statements below.
+
+
+Read docs/FILES-CAD-RELEASE-OBJECTIVE.txt first. It preserves the full user objective; this operational note does not narrow or replace it. Read docs/CAD-FUNCTIONAL-GATES.md, docs/HANDOFF-FILES-CAD-2026-11-04-CURRENT.md, docs/WEBOS-WORK-QUEUES.md and docs/ACTIVE-FILES-CAD-RELEASE.md.
+
+CURRENT PRIORITY
+The bounded Files foundation is accepted and deployed. CAD is active. Do not restart Files or repeat completed storage campaigns without a relevant change or actual defect. Preserve its account/version/conflict/cancellation contract. Incomplete CAD persistence is not evidence of a Files-service defect.
+
+Finish the functional gates in order. The scoped ordinary signed bracket now passes actual Save/fresh Files reopen with unchanged app bytes and deadlines. Five independent scoped controls pass; the old blanket-interception timeout cause is not proven. Do not call that original failure fixed. Spline reservation c9e05a18 has owner and independent root desktop/emulated-phone browser passes and corrupt-data rejection.
+
+The active gap is a complete supported agent workflow: some successful bracket-test edits use private helpers. Unify UI/agent document operations with revision/lifetime/transaction checks. Implement guarded feature edits, history undo/redo and original rectangle dimension discovery/editing; test through supported APIs without direct sketch/history writes. Also fix demonstrated action-history defects and qualify independent instances/disposal.
+
+The signed two-object/three-region enclosure edit/save/reopen/core-3MF workflow passes within the recorded rectangular-insert domain. This does not qualify arbitrary CAD, engraving, physical printing or the full mechanical/parameter catalogue. Shared UI/agent operations, carried-feature and final combined-runtime gates remain.
+
+Latest user direction: no source packaging until all functional gates qualify. Pending prepare.py packaging changes were discarded. Defer source archives, packaging/provenance expansion and new command-catalogue diversions. Necessary runtime compilation and functional tests continue. Final source/runtime delivery and managed beta activation remain required afterwards.
+
+Use three agents with independent ownership; root integrates contracts and fixes. Current lanes: mechanical action history, worker/instance lifecycle, shared UI/agent part operations. No fake browser UI or separate agent geometry model. Keep OCC preferred and Native Mesh honestly supported; previously unified source is not correctness evidence and must not be merged again from scratch.
+
+Repositories:
+- box-git:/srv/data/git/CodiServer-distro.git, integration/files-jsketcher-release-20261103
+- box-git:/srv/data/git/JSKetcher.git, integration/files-cad-release-20261104
+Verify current tips. Worktrees/resources are in the current handoff. Commit source/tests/notes to box-git and back up to R730. Never copy account data/keys between main/beta or into public assets. Preserve main and /desktop while beta functional work continues. No new CAD activation has happened in this slice.

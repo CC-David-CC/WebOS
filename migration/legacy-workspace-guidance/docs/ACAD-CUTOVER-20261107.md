@@ -1,0 +1,61 @@
+# ACAD clean repository cutover
+
+User decision: ACAD (Agent Computer-Aided Design) is a separate project. The
+public JSketcher `webos-integration` fork is the endpoint of the earlier
+JSketcher work. ACAD must start without inherited Git history. Test ACAD before
+rolling box-git's JSketcher back to its public integration revision.
+
+## Current state
+
+- Independent working source: `/tmp/codi-acad-main-20261107`, branch `main`.
+- Primary: `box-git:/srv/data/git/ACAD.git`.
+- Backup: `r730:/mnt/data10tb/git/ACAD.git`.
+- Parentless initial commit: `c700cac92b6a88aa10df416d7d7ae93e28bd015d`.
+- Both bare repositories initially read back exactly one commit and16MiB.
+- Initial snapshot comparison:6062 prior tracked files /6064 ACAD files; every
+  retained blob/mode/path matches except declared new README and repository/
+  provenance notes. No dependency directory or generated runtime is tracked.
+- Original source tree/commit are recorded in ACAD `SOURCE-SNAPSHOT.json`;
+  historical evidence keeps its actual producing refs in the separate original
+  repository. No old commits were fetched/merged into ACAD.
+
+## Fresh build issue
+
+A fresh ACAD checkout with shared pinned caches exposed a real build-path bug:
+Webpack resolves resource symlinks before testing the raw NVIDIA glue loader,
+while the loader predicate used the unresolved requested cache path. The browser
+transform was skipped, leaving a build-machine file URL. The existing exact
+worker-output pin refused the result. ACAD62019cc canonicalizes the requested
+input path before alias/loader matching; native input and output pins remain.
+The first failure log is retained on R730 under the fresh ACAD build `.build/`.
+
+## Pending cutover checks
+
+- [x] Fresh ACAD normal application build with exact qualified Native inputs: ACADb053638, R730 fresh checkout, successful main/Worker/resource build.
+- [x] Actual full shell model/edit/history/native Save/Open workflow: ACADebcdd0e freezes `test/owned-shell-shared/acad-evidence-r1`,61rows/41commands/two native files; actual runtimeACADb053638/Desktopec98dcce9.
+- [x] Actual full shell material/core3MF/save/reopen/export workflow and unchanged independent artifact oracle: Desktop01338594f `test/agent-cad-corpus/shell-manufacturing/evidence-r1`,36rows/four native files/three3MFexports; source and Native measurements, all11oriented planar patches, material identity and edited/reopened mesh agreement PASS.
+- [x] Actual atomic source-dimension/region workflow: Desktop7e81040ba freezes46rows/three native files/three full setups, including compatible child replay, incompatible consumer preservation and native Save/Open/reedit.
+- [x] ACAD source and actual shell proof, Desktop workflows/independent artifacts and notes pushed and read back on box-git and R730 before rollback.
+- [x] After all cutover workflows passed, box-git JSketcher refs were transactionally restored to exactly the public fork's three branch heads. Default HEAD now webos-integration at518a4666cfc5c94acb153f0cd315a2ca1625eb2f.444extra refs removed, public re-read and local readback equal. GitHub unchanged. [Rollback receipt](evidence/acad-cutover-20261107/jsketcher-rollback.json).
+
+Read-only public head observed2026-11-07:
+`518a4666cfc5c94acb153f0cd315a2ca1625eb2f` at
+`https://github.com/CC-David-CC/jsketcher`, branch `webos-integration`.
+Re-read the public head before rollback; this observation does not perform it.
+Full CAD Gate1 remains open and is separate from repository-cutover acceptance.
+
+Fresh build additionally exposed a missing retained selected-profile preparation
+step. ACADb053638 adds it to the normal Worker build chain with explicit exact
+Native input. Full new source-region and shell-export workflows are now being
+qualified on that fresh build. Later midpoint/angle source is separately
+integrated in ACAD and remains unqualified until its own complete workflow.
+
+## Cutover complete
+
+Independent ACAD root remains c700cac with no parents; subsequent commits are
+new ACAD work. The current ACAD branch is main. Box-git JSketcher contains only
+the exact public fork branch heads and defaults to webos-integration. Historical
+pre-ACAD source evidence remains in the separate R730 JSKetcher reference
+repository; it is not the current ACAD source. Later midpoint/angle and exact
+corner-contact additions are integrated source awaiting their own composed
+workflow qualification; cutover proof does not qualify them or full Gate1.
