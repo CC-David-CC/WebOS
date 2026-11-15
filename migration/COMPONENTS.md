@@ -1,14 +1,15 @@
 # Complete assembled component chart
 
-All paths are relative to /path/to/webos/. There are120 independent source repositories currently attached:85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),8 engines,5 platform components,18 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
+All paths are relative to /path/to/webos/. There are121 independent source repositories currently attached:85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),8 engines,6 platform components,18 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
 
-## Platform (5)
+## Platform (6)
 
 | Component | Actual directory |
 |---|---|
 | accounts | `platform/accounts/` |
 | desktop | `platform/desktop/` |
 | login | `platform/login/` |
+| rendezvous | `platform/rendezvous/` |
 | runtime | `platform/runtime/` |
 | storage | `platform/storage/` |
 
@@ -23,7 +24,6 @@ All paths are relative to /path/to/webos/. There are120 independent source repos
 | calculator | `apps/calculator/` |
 | circuit-lab — unfinished, release gate OPEN | `apps/circuit-lab/` |
 | pcb-design — Node research prototype | `apps/pcb-design/` |
-| circuit-lab | `apps/circuit-lab/` |
 | circuitjs | `apps/circuitjs/` |
 | data-explorer | `apps/data-explorer/` |
 | diagrams-net | `apps/diagrams-net/` |
@@ -42,7 +42,6 @@ All paths are relative to /path/to/webos/. There are120 independent source repos
 | microduck | `apps/microduck/` |
 | notebook | `apps/notebook/` |
 | pdf-viewer | `apps/pdf-viewer/` |
-| pcb-design | `apps/pcb-design/` |
 | personal-template | `apps/personal-template/` |
 | pico-simulator | `apps/pico-simulator/` |
 | replicad | `apps/replicad/` |
