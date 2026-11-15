@@ -1,0 +1,1146 @@
+{
+  "scope": "Entire existing WebOS suite plus 17 selected maintained upstream forks; seven-component minimum is first milestone only",
+  "complete": false,
+  "source_authority": "Captured Desktop-Preview source plus separately owned ACAD/Engines and historical recovery; inventory of nonregistered source remains in progress",
+  "registered_apps": [
+    {
+      "id": "microduck",
+      "source": "apps/system/microduck",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 3,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "falling-blocks",
+      "source": "apps/games/01-phaser-arcade/falling-blocks",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "owl-companion",
+      "source": "apps/games/04-rive-interactives/owl-companion",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 2,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "physics-playground",
+      "source": "apps/games/02-three-physics-xr/physics-playground",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "snake-garden",
+      "source": "apps/games/01-phaser-arcade/snake-garden",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [
+        "apps/games/04-rive-interactives/owl-companion/src/model/owlSession.js",
+        "apps/games/04-rive-interactives/owl-companion/src/model/save.js"
+      ],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "clockwork-room",
+      "source": "apps/games/03-babylon-xr-games/clockwork-room",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "chess-study",
+      "source": "apps/games/01-phaser-arcade/chess-study",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "solitaire",
+      "source": "apps/games/01-phaser-arcade/solitaire",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "sky-courier",
+      "source": "apps/games/01-phaser-arcade/sky-courier",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "marble-works",
+      "source": "apps/games/02-three-physics-xr/marble-works",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "stack-balance",
+      "source": "apps/games/02-three-physics-xr/stack-balance",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "crystal-defense",
+      "source": "apps/games/03-babylon-xr-games/crystal-defense",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "drone-circuit",
+      "source": "apps/games/03-babylon-xr-games/drone-circuit",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "reactive-control-desk",
+      "source": "apps/games/04-rive-interactives/reactive-control-desk",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "story-cards",
+      "source": "apps/games/04-rive-interactives/story-cards",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "expression-puppet",
+      "source": "apps/games/04-rive-interactives/expression-puppet",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 2,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "rhythm-garden",
+      "source": "apps/games/04-rive-interactives/rhythm-garden",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 2,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "lantern-leap",
+      "source": "apps/games/01-phaser-arcade/lantern-leap",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "garden-defense",
+      "source": "apps/games/01-phaser-arcade/garden-defense",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "pocket-rally",
+      "source": "apps/games/01-phaser-arcade/pocket-rally",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "sling-targets",
+      "source": "apps/games/02-three-physics-xr/sling-targets",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "gravity-pinball",
+      "source": "apps/games/02-three-physics-xr/gravity-pinball",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "kinetic-relay",
+      "source": "apps/games/02-three-physics-xr/kinetic-relay",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "tabletop-bot-arena",
+      "source": "apps/games/02-three-physics-xr/tabletop-bot-arena",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "pocket-golf",
+      "source": "apps/games/03-babylon-xr-games/pocket-golf",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 1,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "target-garden",
+      "source": "apps/games/03-babylon-xr-games/target-garden",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "orbital-courier",
+      "source": "apps/games/03-babylon-xr-games/orbital-courier",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "clockwork-quest",
+      "source": "apps/games/03-babylon-xr-games/clockwork-quest",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "memory-garden",
+      "source": "apps/games/04-rive-interactives/memory-garden",
+      "category": "game",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "calculator",
+      "source": "apps/system/calculator",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "mechanical tree verified; integration pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "files",
+      "source": "apps/system/files",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "mechanical tree verified; integration pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "help",
+      "source": "apps/system/help",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "mechanical tree verified; integration pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "browser",
+      "source": "apps/system/browser",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 7,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "codemirror",
+      "source": "apps/system/codemirror",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "opencascade",
+      "source": "apps/system/opencascade",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "gltf-transform",
+      "source": "apps/system/gltf-transform",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "terminal",
+      "source": "apps/system/terminal",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "text",
+      "source": "apps/system/text",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": [
+        "codemirror"
+      ]
+    },
+    {
+      "id": "image-editor",
+      "source": "apps/system/image-editor",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "document-editor",
+      "source": "apps/system/document-editor",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "pdf-viewer",
+      "source": "apps/system/pdf-viewer",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "spreadsheet",
+      "source": "apps/system/spreadsheet",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "data-explorer",
+      "source": "apps/system/data-explorer",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "ffmpeg",
+      "source": "apps/system/ffmpeg",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "wavesurfer",
+      "source": "apps/system/wavesurfer",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "tone",
+      "source": "apps/system/tone",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "audio-editor",
+      "source": "apps/system/audio-editor",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 44,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "zip",
+      "source": "apps/system/zip",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "gcode-preview",
+      "source": "apps/system/gcode-preview",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "grid-tools",
+      "source": "apps/system/grid-tools",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 48,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "mermaid",
+      "source": "apps/system/mermaid",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "echarts",
+      "source": "apps/system/echarts",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "plotly",
+      "source": "apps/system/plotly",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "pdfme",
+      "source": "apps/system/pdfme",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "maplibre",
+      "source": "apps/system/maplibre",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "transformers",
+      "source": "apps/system/transformers",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "trystero",
+      "source": "apps/system/trystero",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "tanstack-virtual",
+      "source": "apps/system/tanstack-virtual",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "onnx-runtime",
+      "source": "apps/system/onnx-runtime",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 1,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "webtorrent",
+      "source": "apps/system/webtorrent",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "yjs",
+      "source": "apps/system/yjs",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "replicad",
+      "source": "apps/system/replicad",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "diagrams-net",
+      "source": "apps/system/diagrams-net",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 2764,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "notebook",
+      "source": "apps/system/notebook",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "excalidraw",
+      "source": "apps/system/excalidraw",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 234,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "svg-editor",
+      "source": "apps/system/svg-editor",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 264,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "arduino-simulator",
+      "source": "apps/system/arduino-simulator",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "pico-simulator",
+      "source": "apps/system/pico-simulator",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "circuitjs",
+      "source": "apps/system/circuitjs",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 411,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "jsketcher",
+      "source": "apps/system/jsketcher",
+      "category": "app-or-reusable-tool",
+      "ownership": "ACAD integration ownership needs review",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 130,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "electronics-design",
+      "source": "apps/system/electronics-design",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 6,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "digital-logic",
+      "source": "apps/system/digital-logic",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "embroidery-studio",
+      "source": "apps/system/embroidery-studio",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 42,
+        "status": "incomplete asset graph"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "stitch-converter",
+      "source": "apps/system/stitch-converter",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    },
+    {
+      "id": "personal-template",
+      "source": "apps/individual/templates",
+      "category": "app-or-reusable-tool",
+      "ownership": "independent component",
+      "extraction": "preserved; extraction pending",
+      "asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      },
+      "cross_directory_imports": [],
+      "host_loaded_dependencies": []
+    }
+  ],
+  "selected_upstream_forks": [
+    {
+      "id": "wordcraft",
+      "upstream_candidate": "https://github.com/storytold/wordcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "gridcraft",
+      "upstream_candidate": "https://github.com/storytold/gridcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "deckcraft",
+      "upstream_candidate": "https://github.com/storytold/deckcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "pdfcraft",
+      "upstream_candidate": "https://github.com/storytold/pdfcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "photocraft",
+      "upstream_candidate": "https://github.com/storytold/photocraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "vectorcraft",
+      "upstream_candidate": "https://github.com/storytold/vectorcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "designcraft",
+      "upstream_candidate": "https://github.com/storytold/designcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "figcraft",
+      "upstream_candidate": "https://github.com/storytold/figcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "anicraft",
+      "upstream_candidate": "https://github.com/storytold/anicraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "filmcraft",
+      "upstream_candidate": "https://github.com/storytold/filmcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "effectcraft",
+      "upstream_candidate": "https://github.com/storytold/effectcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "soundcraft",
+      "upstream_candidate": "https://github.com/storytold/soundcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "lightcraft",
+      "upstream_candidate": "https://github.com/storytold/lightcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "cadcraft",
+      "upstream_candidate": "https://github.com/storytold/cadcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "solidcraft",
+      "upstream_candidate": "https://github.com/tangency-labs/solidcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "texturecraft",
+      "upstream_candidate": "https://github.com/storytold/texturecraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    },
+    {
+      "id": "materialcraft",
+      "upstream_candidate": "https://github.com/storytold/materialcraft.git",
+      "repository_reachable": true,
+      "state": "candidate; source/license/build/host qualification pending"
+    }
+  ],
+  "system_components": [
+    {
+      "id": "runtime",
+      "state": "ownership/dependency separation pending"
+    },
+    {
+      "id": "desktop",
+      "state": "ownership/dependency separation pending"
+    },
+    {
+      "id": "login",
+      "state": "ownership/dependency separation pending"
+    },
+    {
+      "id": "accounts",
+      "state": "ownership/dependency separation pending"
+    },
+    {
+      "id": "storage",
+      "state": "ownership/dependency separation pending"
+    }
+  ],
+  "independent_existing_projects": [
+    {
+      "id": "acad",
+      "state": "unchanged history attached; functional gates remain open"
+    },
+    {
+      "id": "legacy-jsketcher",
+      "state": "remote history found; independent preservation/extraction pending"
+    },
+    {
+      "id": "engines",
+      "state": "four independent local histories captured; assembly pending"
+    }
+  ],
+  "unresolved_source_areas": [
+    "nonregistered app/module sources",
+    "root/lab and historical baselines",
+    "remaining runtime/backend/service ownership",
+    "ignored dependency stores and prepared assets",
+    "historical SIMPLIFIED/hardware/game WIP archive custody",
+    "existing account-data backup and compatibility staging"
+  ],
+  "requirements": {
+    "all_meaningful_components_independently_owned": false,
+    "server_authoritative_account_files": false,
+    "existing_identity_and_file_ownership_compatible": false,
+    "shared_human_agent_domain_operations": false,
+    "full_asset_graph_builds": false,
+    "clean_clone_build_without_original_source": false,
+    "whole_suite_functional_verification": false
+  },
+  "production_changes": "NONE; not authorized",
+  "private_publication": "NOT ATTEMPTED; requires separate authorization"
+}
