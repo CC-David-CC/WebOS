@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has5,989 unresolved dispositions and88 unqualified blob candidates among
+still has5,973 unresolved dispositions and88 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -35,6 +35,13 @@ pass with old source hidden; the JS suite retains93 passes and one pre-existing
 host-contract failure. Browser remains disabled pending issuer, launcher, Gecko
 asset and desktop integration. Mechanical history extraction and functional
 changes are separate commits.
+
+Optional Linux guest backend source is organized under `apps/linux/server/`.
+Its installed wheel passes28 unchanged quota tests and6 signed protocol tests
+with app/old source hidden. Native operator manifests and kernel/systemd/QEMU
+acceptance remain unqualified; Linux stays disabled and outside the minimum.
+The old network client is preserved under `apps/linux/legacy/` pending a public
+account/session interface port.
 
 ## Current working slice
 
@@ -159,9 +166,10 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-26-browser-backend/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-27-linux-backend/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
-Phase26 records Browser backend extraction, isolated tests and the current ownership ledger.
+Phase27 records optional guest backend extraction, installed-wheel checks and the current ownership ledger.
+Phase26 records Browser backend extraction and isolated tests.
 Phase25 records static Python role review and16 verified Accounts/Storage retentions.
 Phase24 remains the last browser-qualified working-system checkpoint.
 Phase23 records the120-source clone and planned-core extraction.
