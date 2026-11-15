@@ -24,10 +24,17 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has6,003 unresolved dispositions and100 unqualified blob candidates among
+still has5,989 unresolved dispositions and88 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
+
+Browser backend source is now organized under `apps/browser/server/`, with an
+installable package using Accounts' public JOSE interface. Its56 Python tests
+pass with old source hidden; the JS suite retains93 passes and one pre-existing
+host-contract failure. Browser remains disabled pending issuer, launcher, Gecko
+asset and desktop integration. Mechanical history extraction and functional
+changes are separate commits.
 
 ## Current working slice
 
@@ -152,9 +159,12 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest checkpoint: `run-20261115-24-wordcraft-browser/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-26-browser-backend/checkpoint.json` and
 `RESUME.md` under the owner-only `/home/dflanag3/Projects/.webos-migration/`.
-Phase23 records the120-source clone, planned-core extraction and ownership ledger.
+Phase26 records Browser backend extraction, isolated tests and the current ownership ledger.
+Phase25 records static Python role review and16 verified Accounts/Storage retentions.
+Phase24 remains the last browser-qualified working-system checkpoint.
+Phase23 records the120-source clone and planned-core extraction.
 Phase22 records shared/native CI and artifact verification; phase18 holds the
 committed build source and artifact. Earlier failed checks remain retained.
 Phases21/20 cover Accounts/live routing; earlier phases retain preservation.
