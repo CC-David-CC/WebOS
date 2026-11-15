@@ -25,7 +25,7 @@ The supplemental three-simultaneous-editor hosted test remains **OPEN**: two
 editors loaded, a confirmed save and stale-revision rejection worked, but the
 third editor timed out during startup. The failure is retained for diagnosis;
 it does not invalidate the separately passing two-context authoring test, and
-it is not reported as a full concurrency pass. No assertions were removed.
+it is not reported as a full concurrency pass. No assertions were removed. The focused startup matrix reproduced the third-editor timeout in both rounds. A traced run showed WebAssembly finished in about two seconds, followed by a browser WebGPU adapter promise that never resolved. A shared egui-wgpu fallback fix is on a local review branch and has passed three cancellation/deadline tests plus a WebAssembly compile check; it has not yet been rebuilt into or deployed with WordCraft.
 
 These are actual browser requests over HTTPS to the remote server. They do not
 qualify every legacy app, delegated agents, or a physical second client machine.
