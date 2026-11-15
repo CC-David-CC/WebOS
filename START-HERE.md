@@ -1,256 +1,168 @@
 # WebOS fresh rebuild — in progress
 
-Build the entire independently owned WebOS suite under this parent assembly.
-The current user decision is a fresh system on **ksu.codes**, a test location
-with test users only. Historical assets and old-user data migration are not
-prerequisites. Preserve the original laptop workspace and private recovery.
+Rebuild the entire independently owned suite under this parent. The original
+`/home/dflanag3/Documents/KSU.CODES` remains read-only. ksu.codes is the fresh
+test target, with test users only. Historical assets and old-user migration are
+not prerequisites. Beta and the existing test deployment were not changed by
+the latest local qualification.
 
-Bring up **Calculator → Files → Text → WordCraft**, in that order. See
-`migration/REBUILD-SEQUENCE.md` for the required acceptance checks. The other
-organized apps, games, engines and selected Craft forks remain in scope;
-source presence does not establish functional support.
+## Source organization and remaining scope
 
-## Current verified behavior
+The parent selects119 component repositories plus1 preserved legacy repository:
+85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),
+8 engines,5 platform components,18 libraries,2 asset projects and1 tooling project,
+plus legacy Rooms. Applications, including Files and WordCraft, live in `apps/`.
+Reusable engines live in `engines/`; shared Craft code is `libraries/craft-libs/`.
+FFmpeg is an engine; TanStack Virtual is a library. Neither directory alone means
+an enabled app. ACAD, original JSketcher and the preserved office substitute remain
+separate. Rooms is unused old code, preserved at `legacy/rooms/` without a service.
 
-- Calculator: actual Desktop hosting with mouse/keyboard, independent windows,
-  move/resize, minimize/restore/focus and close/reopen. Also launched through
-  the authenticated assembly.
-- Help: restored as an independently owned public view with Desktop, Account
-  files and Documents topics. Mouse/keyboard selection, two independent windows,
-  close/reopen and explicit authorized operations pass local and clean-checkout
-  checks. The historical beta/Linux guide remains preserved separately.
-- Files: real signed server storage; create folder, upload, revision-checked
-  rename/move/delete, exact downloaded bytes, reload and retrieval from a
-  second clean browser context. Uncertain writes are not reported saved.
-- Text: actual shared CodeMirror editor, two independent documents opened from
-  Files, edit/save/close/reopen, Save As preserving the original, Cancel/Save
-  on unsaved-close, reload and retrieval from a second clean browser context.
-  Saves use the same Storage service and exact saved revision as Files.
-- WordCraft: real WASM authoring with a heading, paragraph and list; confirmed
-  account save; close/reopen from Files; reload and second-context retrieval
-  preserve exact paragraph styles and list structure. The clean pinned assembly
-  passed too. Stale saves are rejected; Save As/PDF identities stay separate;
-  closing Files does not stop editor saves. Delegated agents remain unqualified.
+See [every component path](migration/COMPONENTS.md), the
+[current pass/open matrix](migration/STATUS-MATRIX.md), and the
+[17 Craft provenance records](migration/CRAFT-APPS.md). There are16 first-party
+Craft projects plus community SolidCraft. The parent pins exact Git commits;
+component sources are Git links, never parent-owned copies.
 
-The Calculator/Files/Text/WordCraft workflows also passed on **https://ksu.codes**,
-the fresh test deployment,
-using disposable accounts and clean browser contexts. Help and the newer
-operation-authority changes are local only. A physical second-client
-machine test remains separate. Delegated agent authorization and broader suite
-integration remain incomplete. Text preserves UTF-8 BOM and uniform line
-endings; mixed-ending save normalization and other legacy Text features remain
-explicit follow-up work.
+Source layout is not complete runtime support. The tracked-source reconciliation
+still has6,003 unresolved dispositions and100 unqualified blob candidates among
+preserved backend, scripts, tests, research and WIP. This is not a missing-file
+count. The remaining16 Craft apps and broader apps/games require real browser
+builds, complete assets, lifecycle and shared-operation qualification.
 
-## Source organization
+## Current working slice
 
-The parent selects119 component repositories plus1 preserved legacy repository
-through Git submodules. `migration/COMPONENTS.md` lists every path. Apps live
-under `apps/`, including Files and WordCraft; shared engines, libraries,
-assets and tooling have their own role directories. Hosted Rooms is unused old
-code at `legacy/rooms/`, excluded from current platform and rebuild requirements.
+Bring up Calculator → Files → Text → WordCraft, as specified in
+[migration/REBUILD-SEQUENCE.md](migration/REBUILD-SEQUENCE.md).
 
-Selected commits in Git links are authoritative. Mechanical extraction and
-functional changes have separate commits. Existing independent ACAD and
-original JSketcher histories remain separate. All17 selected Craft histories
-are retained;16 are first-party and SolidCraft is community-owned. The frozen
-beta artifact cache is reference material, not the new release.
+- Calculator: real Desktop mouse/keyboard input, independent windows, move/resize,
+  focus, minimize/restore and close/reopen checks pass.
+- Files: real signed server storage; folder creation, upload, revision-checked
+  rename/move/delete, exact downloads, reload, retained-state restart and retrieval
+  from another clean browser context pass.
+- Text: real CodeMirror editing; two independent account documents, save/reopen,
+  Save As, close guards, reload and second-context retrieval pass. UTF-8 BOM and
+  uniform line endings are retained; mixed-ending normalization and remaining
+  legacy features remain explicit follow-up work.
+- WordCraft: real WASM authoring, heading/paragraph/list formatting, save/reopen
+  from Files, reload and second-context retrieval pass. Native commands and
+  keyboard edits share the same live document and undo. Stale saves are rejected;
+  Save As/PDF identities remain distinct; closing Files does not stop editor saves;
+  Cancel and failed Save preserve an unsaved editor.
+- Help: independent public view with Desktop, Account files and Documents topics;
+  mouse/keyboard selection, separate windows and lifecycle checks pass.
 
-## Local development and checks
+The latest selected WordCraft is `a41d6f9286458a5b460b02fd2f65f2110b969d1c`,
+with egui renderer `2d0ae4b4270e76c431fd62d3512237579ed6c26f`, shared font input
+`e5f6cc5577fab9534095a6dfe2d409b2d9f72b1d`, and shared repository selection
+`3b3271f4eac12daaa42a83411c9f6964aec8f3a3`. Applications retain their own exact
+shared-library dependency revisions; the provider must contain them all.
 
-Use Node24 and Python with `uv`. Install only in the new assembly:
+WordCraft passes all9 required CI stages. Its unchanged mathematical PDF test
+passes with the declared math-font input and system font directories hidden.
+The complete development artifact has27 payload files totaling92,417,572bytes;
+source/input identities, every digest and the math-font license were verified.
+Actual browser `font.list` confirms STIX Two Math in the running WASM. Clean
+account/conflict and formatted-authoring workflows pass with original, primary
+and recovery source hidden and external networking disabled. These are local
+qualification results, not a deployment or all-app support claim.
+
+The120-repository source assembly also passed a fresh recursive clone,7 complete
+source/layout tests,57 planned-game tests and signed Desktop/account-file checks.
+LFS smudge was disabled for source cloning; release payload checks remain separate.
+A physical second-machine acceptance test remains OPEN.
+
+## Human and agent operations
+
+Files, Text and WordCraft bind permission checks to captured commands/resources;
+WordCraft requires an explicit caller. Desktop routes operations to the actual
+live view using exact desktop/session/instance/resource identities. Synthetic
+capability routing tests are not server-authenticated agent acceptance.
+
+Accounts `76dad308d12d0750538602e77ba34212478d5256` includes a tested optional
+proof-bound delegation core. Owner/session liveness, independent agent keys,
+exact scope, short one-use intent grants and revocation are enforced there.
+All21 retained-identity/delegation tests pass. The launcher does not mount it.
+Owner consent UI, HTTP admission, authenticated transport, unforgeable browser
+invocation context and scoped agent file authority remain OPEN. Never substitute
+a human file capability for an agent's authority. Login UI cannot authenticate itself.
+
+## Planned game sources
+
+Math Path, Fraction Farm, Word Weaver, Market Math, Rule Detective, Pocket Conquest
+and Tile Islands have independent repositories. Shared validation/report/odds
+modules belong to `libraries/learning-game-core/`. Exact mechanical histories and
+separate public-package changes are retained. All57 original rule/report/snapshot
+tests pass; rules, assertions and fixture bytes are unchanged apart from imports.
+
+They have no Desktop view, renderer, audio or server storage adapter and are not
+enabled games. Save-version incompatibilities remain explicit. Read
+[migration/LEARNING-GAMES.md](migration/LEARNING-GAMES.md).
+
+## Build and run locally
+
+Use Node24, Python with uv, and for WordCraft Rust/Cargo1.95.0 with its wasm32
+target and Trunk0.21.14. Install only in the new assembly. Public output, private
+state, backend environments and build caches must be outside source and disjoint.
 
 ```sh
 npm ci --ignore-scripts
-python3 scripts/bootstrap_backend.py --venv /a/new/private/backend-env
-node scripts/build_development.mjs /a/new/private/public
-/a/new/private/backend-env/bin/python scripts/run_development.py --public-root /a/new/private/public --private-root /a/new/private/state --port 8130
+python3 scripts/bootstrap_backend.py --venv /absolute/new/private/backend-env
+python3 apps/wordcraft/webos/build.py \
+  --output /absolute/new/wordcraft-site \
+  --cache /absolute/private/wordcraft-cache \
+  --fonts assets/craft-fonts --translations assets/craft-i18n \
+  --egui-origin /absolute/local/bare/egui.git \
+  --craft-libs-origin /absolute/local/bare/craft-libs.git
+node scripts/build_development.mjs /absolute/new/public --wordcraft /absolute/new/wordcraft-site
+/absolute/new/private/backend-env/bin/python scripts/run_development.py \
+  --public-root /absolute/new/public --private-root /absolute/new/private/state --port 8130
 ```
 
-The backend environment's Python must run the server. Public output and private
-state must be separate external directories. Use disposable test accounts.
-Browser tests create and stop their own real development server:
+The WordCraft recipe rejects dirty source, wrong input pins and unknown outputs.
+Both Git providers are explicit local bare repositories; mappings are scoped to
+the build subprocess, with no global Git edits or assumed private server address.
+The artifact receipt records exact source, dependencies, tools and payload hashes.
+There is no assumed1GiB suite or artifact budget. Account-file limits, browser
+cache, resident memory and source/build storage are separate concerns.
+
+Useful checks, each with a new external output directory:
 
 ```sh
-WEBOS_TEST_OUTPUT=/a/new/private/calculator-check node tests/calculator_browser.mjs
-WEBOS_TEST_OUTPUT=/a/new/private/files-check WEBOS_TEST_PYTHON=/a/new/private/backend-env/bin/python node tests/desktop_files_browser.mjs
-WEBOS_TEST_OUTPUT=/a/new/private/text-check WEBOS_TEST_PYTHON=/a/new/private/backend-env/bin/python node tests/text_browser.mjs
-WEBOS_TEST_OUTPUT=/a/new/private/help-check WEBOS_TEST_PYTHON=/a/new/private/backend-env/bin/python node tests/help_browser.mjs
+npm run test:planned-games
 python3 -m unittest discover -s tests -p test_assembly.py -v
+WEBOS_TEST_OUTPUT=/absolute/new/files-check WEBOS_TEST_PYTHON=/absolute/private/backend-env/bin/python node tests/desktop_files_browser.mjs
+WEBOS_TEST_OUTPUT=/absolute/new/text-check WEBOS_TEST_PYTHON=/absolute/private/backend-env/bin/python node tests/text_browser.mjs
+WEBOS_TEST_OUTPUT=/absolute/new/help-check WEBOS_TEST_PYTHON=/absolute/private/backend-env/bin/python node tests/help_browser.mjs
+WEBOS_TEST_OUTPUT=/absolute/new/authoring-check WEBOS_TEST_PYTHON=/absolute/private/backend-env/bin/python WEBOS_WORDCRAFT_SITE=/absolute/verified/wordcraft-site node tests/wordcraft_authoring_browser.mjs
 ```
 
-Every output path must be new. Use current component packages and shared public
-interfaces. Do not import private source across repositories or build against
-the original workspace. Tests with two browser contexts are not two machines.
+## Git, deployment and continuity
 
-## Recovery, Git and continuity
-
-Local sibling bare origins are under `../.webos-local-git/`; these are not an
-off-device backup. No external Git publication is implied. Trusted local clone:
+Verified sibling local bare origins are under `../.webos-local-git/`. These are
+not an off-device backup. External Git publication still requires verified
+identity/destination and authorization. Trusted local source clone:
 
 ```sh
-git -c protocol.file.allow=always clone --recurse-submodules ../.webos-local-git/workspace.git /a/new/disposable/checkout
+git -c protocol.file.allow=always clone --recurse-submodules ../.webos-local-git/workspace.git /absolute/new/checkout
 python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 ```
 
-The LFS setup affects only the new egui checkout. Verified local origins retain
-all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
-outside Git and web roots, under `/home/dflanag3/Projects/.webos-migration/`.
-Latest organization checkpoint: `run-20261115-23-source-ownership/checkpoint.json`
-and `RESUME.md`. Phase22 records the qualified shared-library/native review;
-phase18 holds its clean WordCraft build source and new artifact output. Phase21
-records the selected optional Accounts core, and phase20 records live routing.
-Phase17 records clean qualification of the selected authority
-fixes; phase16 retains red/green evidence. Phase15 records the current test deployment and renderer
-qualification; phase13 records earlier local/clean-clone acceptance. Earlier phases retain
-preservation and extraction evidence.
+LFS setup changes only the new egui checkout. All2144 historical LFS payloads are
+retained locally. Preserve the unrelated historical input-lock update and baseline
+browser test still present in the primary worktree. Do not reset or clean them.
 
-The tested WordCraft source/build integration is committed. The primary
-checkout still retains a historical-input lock update and a historical baseline
-browser test outside this milestone. Preserve that unrelated work. Original source has not been modified. The fresh ksu.codes test route now
-points to the new loopback service; beta.ksu.codes remains unchanged. Read
-`deploy/TEST-STATUS.md` for the actual release, hosted evidence and rollback.
+Latest checkpoint: `run-20261115-24-wordcraft-browser/checkpoint.json` and
+`RESUME.md` under the owner-only `/home/dflanag3/Projects/.webos-migration/`.
+Phase23 records the120-source clone, planned-core extraction and ownership ledger.
+Phase22 records shared/native CI and artifact verification; phase18 holds the
+committed build source and artifact. Earlier failed checks remain retained.
+Phases21/20 cover Accounts/live routing; earlier phases retain preservation.
 
-## WordCraft artifact and acceptance
-
-Selected WordCraft source is `d7a2ab62d793225463750e440796ba8084e3cc46`, with
-shared egui renderer `2d0ae4b4270e76c431fd62d3512237579ed6c26f`.
-This renderer passed local regression and clean-checkout authoring checks.
-The renderer update is served on ksu.codes using the earlier WordCraft0d48
-source. Hosted startup, account and formatting checks passed there. The newer
-selected authority fixes are locally qualified but not deployed. The existing
-backend stayed running. See `deploy/TEST-STATUS.md`.
-`webos/build.py` builds the complete browser graph with Rust/Cargo1.95.0,
-Trunk0.21.14 and source-pinned fonts/translations. Supply the explicit
-`--egui-origin` local bare fork provider as documented in WordCraft
-`webos/README.md`; no global Git configuration or private server is assumed. The verified development
-artifact contains26 files totaling91,525,526bytes. Its component-build receipt
-checks source identity, tool versions and every artifact digest. Build output
-is external, never written into the original workspace.
-
-With a verified source-matching artifact directory, run
-`tests/wordcraft_authoring_browser.mjs` or `tests/wordcraft_browser.mjs` using
-`WEBOS_WORDCRAFT_SITE`, `WEBOS_TEST_PYTHON` and a new `WEBOS_TEST_OUTPUT`.
-The authoring test checks new-document formatting, save/reopen, reload and
-second-context persistence. The broader test checks actual typing/native
-commands, undo/redo, conflicts, Files-independent saving and close guards.
-
-For the hosted test site, create a fresh account through the Login UI. The browser
-acceptance scripts can target the user-designated test site by setting
-`WEBOS_TEST_ORIGIN=https://ksu.codes`; this mode creates disposable test accounts
-and does not start or stop the remote server. Other remote origins are refused.
-
-## Qualified operation-authority changes
-
-The parent now selects Files `2cf80ef94bd2d340807d6966d1267a7527785245`,
-Text `d7c53dd5754aca023f21a28e9b236377c44d090a` and WordCraft
-`d7a2ab62d793225463750e440796ba8084e3cc46`. Permission decisions bind to captured
-commands and resources; WordCraft requires an explicit caller. All24 focused
-tests pass. A new source-pinned WordCraft artifact and a clean pinned assembly
-passed actual Files, Text, WordCraft account/conflict and formatted authoring
-browser workflows. Original/primary/recovery source was hidden and external
-networking disabled. All112 component pins have retaining refs in their verified
-local bare origins; this browser qualification covers the ten-component first
-slice, not the entire suite.
-
-The baseline native WordCraft CI stopped on three Clippy diagnostics in two
-unchanged Rust files. A separate isolated phase18 review simplifies those
-conditions without lowering lint thresholds. Formatting and Clippy passed;
-its first run reported3,547 test passes,1 failure and5 ignored. The PDF
-`chart_and_equation_text_keep_their_pdf_bytes` failure was traced experimentally
-to a missing math font. The unchanged test passes with pinned STIX Two Math,
-including with system font directories hidden. A maintained shared font commit
-`e5f6cc5577fab9534095a6dfe2d409b2d9f72b1d` contains the unmodified font,
-license, provenance and tested manifest. Its checks also pass from a clean clone.
-It is ahead of the parent's selected font pin during review; do not reset it.
-
-The next full WordCraft review run passed formatting, Clippy and4,969 main tests
-(8 ignored), then failed the translation audit: shared craft-update draws an
-untranslated network-error detail when offline. Phase22 investigates the fix in
-that shared library, without changing the audit. Language, doctests, assets,
-layers and wasm were not run. Native/font review has not changed the selected
-WordCraft pin. The ksu.codes deployment remains the phase15
-release. Delegated-agent transport is not yet enabled or qualified.
-
-The selected Help commit is `e68a507ea52235d282e1e2496f24e9ff8f98c948`.
-Its five boundary checks and actual desktop browser workflow pass, including a
-clean eleven-component checkout with original/primary/recovery source hidden
-and external networking off. The complete graph accepts the verified WordCraft
-artifact; adding Help changed no registry package versions. Help is not yet
-included in the hosted phase15 release. Its command interface does not enable
-or qualify delegated-agent authentication.
-
-## Live application operation routing
-
-The selected Desktop is `365f11113645634dc18c002873ec6efeab0267df`.
-Its public view-inspection/command methods require exact desktop, session,
-instance and `view:<instance>` resource targets. The unchanged caller reaches
-the application's existing public command implementation, which still applies
-its resource policy. Request capture preserves explicit upload bytes; view
-replacement, close and disposal invalidate pending decisions. Uncertain outcomes
-are reported for commands completing after view removal.
-
-All13 Desktop checks pass, along with clean-checkout browser checks for live
-Help state shared by mouse and commands, reader/mutation denial, cross-window
-refusal, signed Login/Help and the real WordCraft account/conflict workflow.
-The capability-routing test uses synthetic in-page callers. The parent still
-accepts only its human capability: Accounts-issued delegation, an authenticated
-agent transport and agent file authority remain incomplete. These new Desktop
-bits are not deployed to ksu.codes. Native CI continues separately in phase18.
-
-
-## Accounts delegation core selected locally
-
-Accounts `76dad308d12d0750538602e77ba34212478d5256` adds an optional,
-proof-bound delegation core. Registered owners approve exact desktop/session/
-instance/resource/command scope for an independent agent key. Short operation
-grants bind exact intent bytes, require owner consumption, and are single use.
-Owner logout, persisted revocation, disabled accounts and password-generation
-changes invalidate authority. Ordinary inspection omits credentials.
-
-All21 Accounts tests pass from a clean eleven-component checkout with the
-original, primary and recovery source hidden and external networking disabled.
-Real signed account-file browser checks, retained-state restart, Login/Help and
-three issuer-origin checks pass too. All112 parent pins remain retrievable
-from local bare origins. The restart test now retains its original issuer port;
-the development listener permits address reuse after stopping. Prior failed
-runs remain in phase21 evidence.
-
-This core is not mounted by the launcher. Owner consent UI, authenticated agent
-transport, unforgeable browser invocation context and scoped agent file authority
-remain required. Existing human file authority must not stand in for an agent.
-The test deployment is unchanged; this selection is local only.
-
-
-## Additional planned-game source packages
-
-Seven unregistered planned game cores now have independent repositories:
-Math Path, Fraction Farm, Word Weaver, Market Math, Rule Detective, Pocket Conquest
-and Tile Islands. The shared validation/report/odds modules belong to
-`libraries/learning-game-core/`. Mechanical histories preserve exact source
-blobs/modes; public-package imports and metadata are separate commits. All57
-original rule, report and save-version tests pass after separation. Run
-`npm run test:planned-games` from the assembly after installing its workspaces.
-See `migration/LEARNING-GAMES.md` for revisions and save-version limits.
-
-They have no Desktop view or server storage adapter and are not enabled apps.
-This brings the source layout to120 repositories, including35 game repositories
-(28 previously registered plus7 planned cores). It resolves23 entries in the
-remaining tracked-source disposition ledger; the whole original-source ownership
-pass is still OPEN. Historical test/scripts/research material remains preserved.
-
-The newer WordCraft review `a41d6f9286458a5b460b02fd2f65f2110b969d1c`
-passed all9 required CI stages, including translation audit and wasm. Shared
-craft-libs review `3b3271f4` passes its workspace fmt/Clippy/tests after explicit
-baseline quality fixes; no assertions were removed. A new source-pinned browser
-artifact has been built privately:27 files totaling92,417,572bytes, with every
-payload digest and the math-font license verified. These reviews and the math-font update are
-not parent-selected or deployed; browser qualification remains required.
-
-
-The planned-game assembly also passed a fresh recursive clone of all120 source
-repositories. All7 source/layout checks and57 domain/snapshot tests pass. Real
-signed Login/Desktop/Help and account-file regressions pass with original,
-primary and recovery source hidden and external networking disabled. This
-qualifies repository assembly and the stated first-slice/domain checks, not the
-runtime or release assets of every app. See the phase23 checkpoint for commands,
-exact selected commits, verified source dispositions and remaining work.
+ksu.codes still serves the earlier phase15 release, including WordCraft0d48;
+newer local Help, authority/routing and native/font changes are not deployed.
+Read [deploy/TEST-STATUS.md](deploy/TEST-STATUS.md) for the actual hosted revisions,
+backend state, evidence and rollback. Hosted acceptance scripts allow only the
+user-designated ksu.codes test origin and use disposable accounts. The updated
+authoring test requires the newly built math font, so the old hosted release does
+not inherit the latest local qualification. No automatic service restart or
+production change is implied by a local commit.
