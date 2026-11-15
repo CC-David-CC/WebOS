@@ -23,6 +23,7 @@ All paths are relative to /home/dflanag3/Projects/WebOS/. There are112 independe
 | calculator | `apps/calculator/` |
 | circuit-lab — unfinished, release gate OPEN | `apps/circuit-lab/` |
 | pcb-design — Node research prototype | `apps/pcb-design/` |
+| circuit-lab | `apps/circuit-lab/` |
 | circuitjs | `apps/circuitjs/` |
 | data-explorer | `apps/data-explorer/` |
 | diagrams-net | `apps/diagrams-net/` |
@@ -41,6 +42,7 @@ All paths are relative to /home/dflanag3/Projects/WebOS/. There are112 independe
 | microduck | `apps/microduck/` |
 | notebook | `apps/notebook/` |
 | pdf-viewer | `apps/pdf-viewer/` |
+| pcb-design | `apps/pcb-design/` |
 | personal-template | `apps/personal-template/` |
 | pico-simulator | `apps/pico-simulator/` |
 | replicad | `apps/replicad/` |
