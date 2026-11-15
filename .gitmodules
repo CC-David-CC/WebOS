@@ -79,3 +79,6 @@
 [submodule "runtime"]
 	path = runtime
 	url = ../runtime.git
+[submodule "accounts"]
+	path = accounts
+	url = ../accounts.git
