@@ -2520,5 +2520,19 @@
     "verified_reference_available": 4438,
     "verified_prepared_inputs_available": 19,
     "missing_from_all_checked_locations": 147
+  },
+  "current_user_decisions": {
+    "test_deployment": "ksu.codes; test users only",
+    "start": "fresh rebuild",
+    "bring_up_order": [
+      "calculator",
+      "files",
+      "text",
+      "wordcraft"
+    ],
+    "historical_asset_recovery_required": false,
+    "old_user_data_migration_required": false,
+    "original_workspace": "preserve unchanged",
+    "acceptance": "migration/REBUILD-SEQUENCE.md"
   }
 }
