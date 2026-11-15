@@ -14,7 +14,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/microduck"
     },
     {
       "id": "falling-blocks",
@@ -27,7 +28,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/falling-blocks"
     },
     {
       "id": "owl-companion",
@@ -40,7 +42,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/owl-companion"
     },
     {
       "id": "physics-playground",
@@ -53,7 +56,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/physics-playground"
     },
     {
       "id": "snake-garden",
@@ -69,7 +73,8 @@
         "apps/games/04-rive-interactives/owl-companion/src/model/owlSession.js",
         "apps/games/04-rive-interactives/owl-companion/src/model/save.js"
       ],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/snake-garden"
     },
     {
       "id": "clockwork-room",
@@ -82,7 +87,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/clockwork-room"
     },
     {
       "id": "chess-study",
@@ -95,7 +101,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/chess-study"
     },
     {
       "id": "solitaire",
@@ -108,7 +115,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/solitaire"
     },
     {
       "id": "sky-courier",
@@ -121,7 +129,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/sky-courier"
     },
     {
       "id": "marble-works",
@@ -134,7 +143,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/marble-works"
     },
     {
       "id": "stack-balance",
@@ -147,7 +157,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/stack-balance"
     },
     {
       "id": "crystal-defense",
@@ -160,7 +171,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/crystal-defense"
     },
     {
       "id": "drone-circuit",
@@ -173,7 +185,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/drone-circuit"
     },
     {
       "id": "reactive-control-desk",
@@ -186,7 +199,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/reactive-control-desk"
     },
     {
       "id": "story-cards",
@@ -199,7 +213,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/story-cards"
     },
     {
       "id": "expression-puppet",
@@ -212,7 +227,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/expression-puppet"
     },
     {
       "id": "rhythm-garden",
@@ -225,7 +241,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/rhythm-garden"
     },
     {
       "id": "lantern-leap",
@@ -238,7 +255,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/lantern-leap"
     },
     {
       "id": "garden-defense",
@@ -251,7 +269,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/garden-defense"
     },
     {
       "id": "pocket-rally",
@@ -264,7 +283,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/pocket-rally"
     },
     {
       "id": "sling-targets",
@@ -277,7 +297,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/sling-targets"
     },
     {
       "id": "gravity-pinball",
@@ -290,7 +311,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/gravity-pinball"
     },
     {
       "id": "kinetic-relay",
@@ -303,7 +325,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/kinetic-relay"
     },
     {
       "id": "tabletop-bot-arena",
@@ -316,7 +339,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/tabletop-bot-arena"
     },
     {
       "id": "pocket-golf",
@@ -329,7 +353,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/pocket-golf"
     },
     {
       "id": "target-garden",
@@ -342,7 +367,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/target-garden"
     },
     {
       "id": "orbital-courier",
@@ -355,7 +381,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/orbital-courier"
     },
     {
       "id": "clockwork-quest",
@@ -368,7 +395,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/clockwork-quest"
     },
     {
       "id": "memory-garden",
@@ -381,7 +409,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/memory-garden"
     },
     {
       "id": "calculator",
@@ -394,7 +423,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/calculator"
     },
     {
       "id": "files",
@@ -407,7 +437,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "files"
     },
     {
       "id": "help",
@@ -420,7 +451,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/help"
     },
     {
       "id": "browser",
@@ -433,7 +465,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/browser"
     },
     {
       "id": "codemirror",
@@ -446,7 +479,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/codemirror"
     },
     {
       "id": "opencascade",
@@ -459,7 +493,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/opencascade"
     },
     {
       "id": "gltf-transform",
@@ -472,7 +507,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/gltf-transform"
     },
     {
       "id": "terminal",
@@ -485,7 +521,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/terminal"
     },
     {
       "id": "text",
@@ -500,7 +537,8 @@
       "cross_directory_imports": [],
       "host_loaded_dependencies": [
         "codemirror"
-      ]
+      ],
+      "component_path": "apps/text"
     },
     {
       "id": "image-editor",
@@ -513,7 +551,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/image-editor"
     },
     {
       "id": "document-editor",
@@ -526,7 +565,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/document-editor"
     },
     {
       "id": "pdf-viewer",
@@ -539,7 +579,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/pdf-viewer"
     },
     {
       "id": "spreadsheet",
@@ -552,7 +593,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/spreadsheet"
     },
     {
       "id": "data-explorer",
@@ -565,7 +607,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/data-explorer"
     },
     {
       "id": "ffmpeg",
@@ -578,7 +621,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/ffmpeg"
     },
     {
       "id": "wavesurfer",
@@ -591,7 +635,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/wavesurfer"
     },
     {
       "id": "tone",
@@ -604,7 +649,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/tone"
     },
     {
       "id": "audio-editor",
@@ -617,7 +663,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/audio-editor"
     },
     {
       "id": "zip",
@@ -630,7 +677,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/zip"
     },
     {
       "id": "gcode-preview",
@@ -643,7 +691,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/gcode-preview"
     },
     {
       "id": "grid-tools",
@@ -656,7 +705,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/grid-tools"
     },
     {
       "id": "mermaid",
@@ -669,7 +719,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/mermaid"
     },
     {
       "id": "echarts",
@@ -682,7 +733,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/echarts"
     },
     {
       "id": "plotly",
@@ -695,7 +747,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/plotly"
     },
     {
       "id": "pdfme",
@@ -708,7 +761,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/pdfme"
     },
     {
       "id": "maplibre",
@@ -721,7 +775,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/maplibre"
     },
     {
       "id": "transformers",
@@ -734,7 +789,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/transformers"
     },
     {
       "id": "trystero",
@@ -747,7 +803,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/trystero"
     },
     {
       "id": "tanstack-virtual",
@@ -760,7 +817,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/tanstack-virtual"
     },
     {
       "id": "onnx-runtime",
@@ -773,7 +831,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/onnx-runtime"
     },
     {
       "id": "webtorrent",
@@ -786,7 +845,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/webtorrent"
     },
     {
       "id": "yjs",
@@ -799,7 +859,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/yjs"
     },
     {
       "id": "replicad",
@@ -812,7 +873,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/replicad"
     },
     {
       "id": "diagrams-net",
@@ -825,7 +887,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/diagrams-net"
     },
     {
       "id": "notebook",
@@ -838,7 +901,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/notebook"
     },
     {
       "id": "excalidraw",
@@ -851,7 +915,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/excalidraw"
     },
     {
       "id": "svg-editor",
@@ -864,7 +929,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/svg-editor"
     },
     {
       "id": "arduino-simulator",
@@ -877,7 +943,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/arduino-simulator"
     },
     {
       "id": "pico-simulator",
@@ -890,7 +957,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/pico-simulator"
     },
     {
       "id": "circuitjs",
@@ -903,7 +971,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/circuitjs"
     },
     {
       "id": "jsketcher",
@@ -916,7 +985,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/acad (integration ownership review pending)"
     },
     {
       "id": "electronics-design",
@@ -929,7 +999,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/electronics-design"
     },
     {
       "id": "digital-logic",
@@ -942,7 +1013,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/digital-logic"
     },
     {
       "id": "embroidery-studio",
@@ -955,7 +1027,8 @@
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/embroidery-studio"
     },
     {
       "id": "stitch-converter",
@@ -968,7 +1041,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/stitch-converter"
     },
     {
       "id": "personal-template",
@@ -981,7 +1055,8 @@
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
-      "host_loaded_dependencies": []
+      "host_loaded_dependencies": [],
+      "component_path": "apps/personal-template"
     }
   ],
   "selected_upstream_forks": [
@@ -997,7 +1072,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "unmodified WASM compile check passed; browser build not yet verified"
+      "build_status": "unmodified WASM compile check passed; browser build not yet verified",
+      "component_path": "wordcraft"
     },
     {
       "id": "gridcraft",
@@ -1011,7 +1087,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/gridcraft"
     },
     {
       "id": "deckcraft",
@@ -1026,7 +1103,8 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/deckcraft"
     },
     {
       "id": "pdfcraft",
@@ -1043,7 +1121,8 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/pdfcraft"
     },
     {
       "id": "photocraft",
@@ -1057,7 +1136,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/photocraft"
     },
     {
       "id": "vectorcraft",
@@ -1072,7 +1152,8 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/vectorcraft"
     },
     {
       "id": "designcraft",
@@ -1086,7 +1167,8 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/designcraft"
     },
     {
       "id": "figcraft",
@@ -1100,7 +1182,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/figcraft"
     },
     {
       "id": "anicraft",
@@ -1115,7 +1198,8 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/anicraft"
     },
     {
       "id": "filmcraft",
@@ -1129,7 +1213,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/filmcraft"
     },
     {
       "id": "effectcraft",
@@ -1143,7 +1228,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/effectcraft"
     },
     {
       "id": "soundcraft",
@@ -1157,7 +1243,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/soundcraft"
     },
     {
       "id": "lightcraft",
@@ -1170,7 +1257,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/lightcraft"
     },
     {
       "id": "cadcraft",
@@ -1184,7 +1272,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/cadcraft"
     },
     {
       "id": "solidcraft",
@@ -1201,7 +1290,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "distribution_gate": "Separate LICENSE-BRAND covers interface/brand material; permission/compliance review required before distribution; no deployment attempted"
+      "distribution_gate": "Separate LICENSE-BRAND covers interface/brand material; permission/compliance review required before distribution; no deployment attempted",
+      "component_path": "apps/solidcraft"
     },
     {
       "id": "texturecraft",
@@ -1215,7 +1305,8 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/texturecraft"
     },
     {
       "id": "materialcraft",
@@ -1229,13 +1320,14 @@
         "NOTICE"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "not run"
+      "build_status": "not run",
+      "component_path": "apps/materialcraft"
     }
   ],
   "system_components": [
     {
       "id": "runtime",
-      "state": "ownership/dependency separation pending"
+      "state": "49 files/history extracted; dispatcher/coordinator/loader unit baselines preserved; public interface rebuild pending"
     },
     {
       "id": "desktop",
@@ -1305,9 +1397,83 @@
     "account_data": "not copied; approved backup/staging remains pending"
   },
   "verification": {
-    "source_transport": "26 source submodules passed fresh recursive local clone; clean source trees and matching local-origin commits",
-    "wordcraft_wasm": "unmodified upstream cargo check passed; isolated fresh-clone check in progress",
+    "source_transport": "27 organized source submodules; selected commits unchanged by moves; 26-component recursive clone plus Runtime clone advancement verified before reorganization; organized fresh clone pending",
+    "wordcraft_wasm": "Unmodified compile check passed twice, including fresh clone/fresh target with original workspace hidden and network disabled; browser build/host persistence pending",
     "app_unit_baselines": "Six existing scripts passed in recovery, extracted repos and fresh clone",
-    "minimum_and_whole_suite_functionality": "not implemented/verified"
-  }
+    "minimum_and_whole_suite_functionality": "not implemented/verified",
+    "runtime_regression": "Old over512 failure reproduced in baseline/extracted/fresh clone; separate new-source test correction adds exact/over-1GiB cases; all four Runtime scripts pass",
+    "core_source_acceptance": "Parent test currently fails because Desktop, Login, Accounts, Storage remain unextracted; not waived"
+  },
+  "component_layout": {
+    "core": "runtime/, desktop/, login/, accounts/, storage/, files/, wordcraft/",
+    "additional_apps": "apps/<component>/",
+    "supporting_engines": "engines/<component>/",
+    "historical_projects": "legacy/<component>/",
+    "parent_owned": "tests/, scripts/, deploy/",
+    "current_paths": {
+      "acad": "apps/acad",
+      "help": "apps/help",
+      "calculator": "apps/calculator",
+      "files": "files",
+      "engine-manifold": "engines/manifold",
+      "engine-opencascade": "engines/opencascade",
+      "engine-smlib-wasm": "engines/smlib-wasm",
+      "engine-usd-brep": "engines/usd-brep",
+      "legacy-jsketcher": "legacy/jsketcher",
+      "wordcraft": "wordcraft",
+      "gridcraft": "apps/gridcraft",
+      "deckcraft": "apps/deckcraft",
+      "pdfcraft": "apps/pdfcraft",
+      "photocraft": "apps/photocraft",
+      "vectorcraft": "apps/vectorcraft",
+      "designcraft": "apps/designcraft",
+      "figcraft": "apps/figcraft",
+      "anicraft": "apps/anicraft",
+      "filmcraft": "apps/filmcraft",
+      "effectcraft": "apps/effectcraft",
+      "soundcraft": "apps/soundcraft",
+      "lightcraft": "apps/lightcraft",
+      "cadcraft": "apps/cadcraft",
+      "solidcraft": "apps/solidcraft",
+      "texturecraft": "apps/texturecraft",
+      "materialcraft": "apps/materialcraft",
+      "runtime": "runtime"
+    },
+    "missing_core_sources": [
+      "accounts",
+      "desktop",
+      "login",
+      "storage"
+    ]
+  },
+  "resource_policy": {
+    "state": "legacy admission limits need configurable, artifact-derived installation policy before release",
+    "per_app_legacy_bundle_bytes": 1073741824,
+    "suite_total_limit": "not represented by that per-app check",
+    "separate_budgets": [
+      "single asset",
+      "per-app bundle",
+      "catalog metadata and entries",
+      "installed code on disk",
+      "download/transfer",
+      "browser cache",
+      "resident memory",
+      "account files"
+    ],
+    "user_direction": "Full planned suite must fit actual artifact needs; a fixed inherited 1GiB assumption is not completion evidence"
+  },
+  "nonregistered_system_sources": [
+    {
+      "source": "apps/system/circuit-lab",
+      "entry_exists": true,
+      "package_exists": true,
+      "state": "preserved; ownership and integration disposition pending; not in registered builder list"
+    },
+    {
+      "source": "apps/system/pcb-design",
+      "entry_exists": false,
+      "package_exists": true,
+      "state": "preserved; ownership and integration disposition pending; not in registered builder list"
+    }
+  ]
 }
