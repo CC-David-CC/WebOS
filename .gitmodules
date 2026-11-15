@@ -358,3 +358,6 @@
 [submodule "learning-game-core"]
 	path = libraries/learning-game-core
 	url = ../learning-game-core.git
+[submodule "rendezvous"]
+	path = platform/rendezvous
+	url = ../rendezvous.git

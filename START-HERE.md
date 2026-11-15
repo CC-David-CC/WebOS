@@ -8,9 +8,9 @@ the latest local qualification.
 
 ## Source organization and remaining scope
 
-The parent selects119 component repositories plus1 preserved legacy repository:
+The parent selects120 component repositories plus1 preserved legacy repository:
 85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),
-8 engines,5 platform components,18 libraries,2 asset projects and1 tooling project,
+8 engines,6 platform components,18 libraries,2 asset projects and1 tooling project,
 plus legacy Rooms. Applications, including Files and WordCraft, live in `apps/`.
 Reusable engines live in `engines/`; shared Craft code is `libraries/craft-libs/`.
 FFmpeg is an engine; TanStack Virtual is a library. Neither directory alone means
@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has5,970 unresolved dispositions and86 unqualified blob candidates among
+still has5,957 unresolved dispositions and86 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -42,6 +42,12 @@ with app/old source hidden. Native operator manifests and kernel/systemd/QEMU
 acceptance remain unqualified; Linux stays disabled and outside the minimum.
 The old network client is preserved under `apps/linux/legacy/` pending a public
 account/session interface port.
+
+Shared peer discovery/signaling source is owned at `platform/rendezvous/`. Its
+37 unchanged lease-state tests and nine installed-module imports pass with old
+and component sources hidden. It is disabled; signed transport, operational
+custody and browser/agent integration remain OPEN. Official Chat/Chess publication
+source is separately preserved pending ownership.
 
 ## Current working slice
 
@@ -92,7 +98,7 @@ WordCraft requires an explicit caller. Desktop routes operations to the actual
 live view using exact desktop/session/instance/resource identities. Synthetic
 capability routing tests are not server-authenticated agent acceptance.
 
-Accounts `037e047e0db88be67057ee262e3d6bd5ab3b59ff` includes a tested optional
+Accounts `224bf1a8b48415b3a8750473c26af07a79d5a298` includes a tested optional
 proof-bound delegation core. Owner/session liveness, independent agent keys,
 exact scope, short one-use intent grants and revocation are enforced there.
 All21 retained-identity/delegation tests pass. The launcher does not mount it.
@@ -172,9 +178,10 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-28-accounts-reference-tests/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-29-rendezvous/checkpoint.json` and
 `RESUME.md` under the owner-only `/home/dflanag3/Projects/.webos-migration/`.
-Phase28 records42 retained identity-core tests,4 current-policy checks,4 core retentions and the current ledger.
+Phase29 records rendezvous extraction,37 unchanged lease tests and registry/chart reconciliation.
+Phase28 records42 retained identity-core tests,4 current-policy checks and4 core retentions.
 Phase27 records optional guest backend extraction and installed-wheel checks.
 Phase26 records Browser backend extraction and isolated tests.
 Phase25 records static Python role review and16 verified Accounts/Storage retentions.
