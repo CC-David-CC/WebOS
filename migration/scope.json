@@ -2858,5 +2858,16 @@
     "component_implementation_or_dependencies_changed": false,
     "real_browser_guest_storage_agent_acceptance": false,
     "evidence": "migration/OWNED-NODE-REFERENCES.md and private phase56"
+  },
+  "private_historical_evidence_references": {
+    "verified_private_records": 127,
+    "execution_status_references": 90,
+    "structured_outcome_records": 37,
+    "reviewed_records": 236,
+    "deferred_source_plan_input_or_unclear_records": 109,
+    "raw_records_copied_to_git_or_webroot": 0,
+    "private_marker_records_not_publication_cleared": 1,
+    "qualification": "Private retention and historical role only, not current acceptance or every-future-consumer unused proof",
+    "evidence": "migration/PRIVATE-EVIDENCE-RETENTION.md and private phase57"
   }
 }

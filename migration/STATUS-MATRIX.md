@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has2,104 unresolved entries plus33 unqualified blob candidates, after
+ledger now has1,984 unresolved entries plus26 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -279,3 +279,5 @@ Phase54 retains76 original system fixture/operator/guidance sources and selected
 Phase55 retains283 original test/fixture sources with histories. Python/JS/HTML source checks and exact byte/mode/assembly checks pass; old routes/dependencies/fixture/generated compiler inputs remain explicit ports.13 more current Python literal cases remain private. No old test, fixture, app module, browser, Worker, compiler or guest ran. See [test orchestration source](TEST-ORCHESTRATION-SOURCE.md).
 
 Phase56 assigns12 original Node test sources and one frozen vector fixture to actual owners. Eight locator-only ports report15 passing Node subtests; the original baseline has25 passes and one pre-existing stale negative-control failure, retained unchanged and unqualified. Browser relay and cross-component references remain inert. See [owned Node references](OWNED-NODE-REFERENCES.md).
+
+Phase57 verifies127 historical records in existing private recovery without copying them into Git/web roots.109 possible source/design/input/unclear records remain unresolved. Current tracked-source counts come from [the generated summary](SOURCE-RECONCILIATION-SUMMARY.json). A fresh minimum frontend build reuses fully rehashed WordCraft from unchanged selected source; no new browser or full-suite acceptance follows. See [private evidence retention](PRIVATE-EVIDENCE-RETENTION.md).
