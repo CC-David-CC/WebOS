@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""Exercise packaged Chat and Chess views over the shared tab draft store."""
+import functools,importlib.util,json,threading
+from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];spec=importlib.util.spec_from_file_location('driver',ROOT/'scripts/touch-preview-check.py');driver=importlib.util.module_from_spec(spec);spec.loader.exec_module(driver)
+class Quiet(SimpleHTTPRequestHandler):
+ def log_message(self,*args):pass
+fixture=ROOT/'.build/tab-drafts-app-check.html';assert not fixture.exists();fixture.write_text('<!doctype html><title>Draft app fixture</title>')
+server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)));thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start();sid=None
+try:
+ sid=driver.call('/session',{'capabilities':{'alwaysMatch':{'browserName':'chrome','goog:chromeOptions':{'binary':'/snap/chromium/current/usr/lib/chromium-browser/chrome','args':['--headless=new','--no-sandbox','--disable-dev-shm-usage']}}}})['sessionId'];driver.call('/session/'+sid+'/timeouts',{'script':30000});driver.call('/session/'+sid+'/url',{'url':'http://127.0.0.1:'+str(server.server_port)+'/.build/tab-drafts-app-check.html'})
+ urls=[]
+ for folder in ('chat-tab-drafts-quota-r3','chess-tab-drafts-quota-r3'):
+  entry=json.loads((ROOT/'.build'/folder/'apps.json').read_text())['apps'][0];urls.append('/.build/'+folder+'/'+entry['path'].removeprefix('assets/desktop/'))
+ code='''const done=arguments[arguments.length-1];(async()=>{const [urls]=arguments,{createTabChatDrafts}=await import('/assets/desktop/tab-chat-drafts.mjs'),modules=await Promise.all(urls.map(x=>import(x))),make=(tag,cls='',text='')=>{const n=document.createElement(tag);n.className=cls;n.textContent=text;return n;},textButton=(label,fn)=>{const n=make('button','',label);n.type='button';n.addEventListener('click',fn);return n;},life=new AbortController(),session={public:{kind:'registered',sub:'user:test',name:'alice'}},id='A'.repeat(43);let resolveSend=null,hold=true;
+ const state={messages:[],moves:[]},channel={channel:id,snapshot:async()=>({channel:id,actor:'me',head:'h',height:0,state,pending:[],readable:true,writable:true,official:true,officialStatus:{caughtUp:true},quorum:1}),queue:async()=>{if(hold)await new Promise(r=>resolveSend=r);}},game={channel:'B'.repeat(43),snapshot:async()=>({head:'h',height:0,state,official:true,officialStatus:{caughtUp:true},chess:{terminal:true,result:'*',turn:'w'},pending:[]})},invitation={label:'Chess',game:{config:{channel:game.channel}},chat:{config:{channel:id}}};
+ const channels=()=>({officialDirectory:async()=>({items:[{category:'official',channel:id,label:'General chess chat',invitation:{config:{channel:id}}}]}),joinOfficialChannel:async()=>({channel}),joinChessMatch:async()=>({game,chat:channel,role:'spectator'}),close(){}}),host={ui:{make,textButton},session:()=>session,signal:life.signal,network:{config:{deviceChannels:{featuredChessMatch:{invitation}}}},storage:{deviceHistory:{channels,drafts:({onChange})=>createTabChatDrafts({scope:'account-a',signal:life.signal,current(){},onChange})},downloadGuestFile(){}}};
+ const apps=modules.map(m=>m.mount(host));for(const a of apps)document.body.append(a.element);const wait=async(fn)=>{for(let i=0;i<200;i++){if(fn())return;await new Promise(r=>setTimeout(r,20));}throw Error('timed out');},forms=apps.map(a=>a.element.querySelector('form')),fields=forms.map(f=>f.querySelector('textarea'));await wait(()=>forms.every(f=>!f.querySelector('button[type=submit]').disabled));
+ fields[0].value='first draft';fields[0].dispatchEvent(new Event('input',{bubbles:true}));if(fields[1].value!=='first draft')throw Error('Chat draft not shared with Chess');forms[0].requestSubmit();await wait(()=>resolveSend);fields[1].value='newer edit';fields[1].dispatchEvent(new Event('input',{bubbles:true}));resolveSend();await new Promise(r=>setTimeout(r,100));if(fields.some(f=>f.value!=='newer edit'))throw Error('old send erased newer edit');hold=false;forms[1].requestSubmit();await wait(()=>fields.every(f=>f.value===''));fields[0].value='survives refresh';fields[0].dispatchEvent(new Event('input',{bubbles:true}));if(fields[1].value!=='survives refresh')throw Error('second view not updated');for(const a of apps)a.dispose();life.abort();return 'PASS shared views preserve newer edits and clear a successfully queued draft';})().then(done,e=>done({error:e.stack||String(e)}));'''
+ result=driver.call('/session/'+sid+'/execute/async',{'script':code,'args':[urls]});assert isinstance(result,str),result;print(result)
+ driver.call('/session/'+sid+'/refresh',{},'POST')
+ code='''const done=arguments[arguments.length-1];(async()=>{const {createTabChatDrafts}=await import('/assets/desktop/tab-chat-drafts.mjs'),life=new AbortController(),store=createTabChatDrafts({scope:'account-a',signal:life.signal,current(){}}),id='A'.repeat(43);if(store.read(id)!=='survives refresh')throw Error('draft missing after reload');store.write(id,'');store.close();life.abort();return 'PASS app-created draft survives same-tab refresh';})().then(done,e=>done({error:e.stack||String(e)}));'''
+ result=driver.call('/session/'+sid+'/execute/async',{'script':code,'args':[]});assert isinstance(result,str),result;print(result)
+finally:
+ if sid:driver.call('/session/'+sid,method='DELETE')
+ server.shutdown();server.server_close();thread.join(3);fixture.unlink(missing_ok=True)

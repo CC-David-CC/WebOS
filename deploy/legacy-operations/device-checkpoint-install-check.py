@@ -1,0 +1,101 @@
+#!/usr/bin/env python3
+"""Real Chrome pending queue, full signed archive and compact sparse-tree checks.
+
+One owned profile, two sequential real browser launches and actual SIGKILL.
+Four logical keys/replicas share one browser; no actual RTC or v86. One archive
+block uses the real durable replica engine. Later retention blocks use manual
+fixture certificates; neither scale nor automatic network consensus is claimed.
+"""
+import argparse,functools,hashlib,http.server,importlib.util,json,os,shutil,signal,tempfile,threading,time,traceback
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+spec=importlib.util.spec_from_file_location('archive_driver',ROOT/'scripts/touch-preview-check.py');d=importlib.util.module_from_spec(spec);spec.loader.exec_module(d)
+class Quiet(http.server.SimpleHTTPRequestHandler):
+ def log_message(self,*args):pass
+ def end_headers(self):self.send_header('Cache-Control','no-store');super().end_headers()
+def run(compiled_core=None):
+ sid=None;browser=None;server=None;thread=None;checks=[];tmp=tempfile.TemporaryDirectory(prefix='codi-archive-');folder=Path(tmp.name);profile=Path(tempfile.mkdtemp(prefix='codi-archive-',dir=Path.home()/'snap/chromium/common'));started=time.monotonic()
+ files=['network/device-replica.mjs','network/device-content-node.mjs','network/device-operation-tree.mjs','network/device-channel-state.mjs','network/device-operation-set.mjs','network/crypto.mjs','network/strict-json.mjs','network/chess-record.mjs','assets/vendor/chess/chess.mjs','assets/desktop/storage-consent.mjs','assets/desktop/device-key-database.mjs','assets/desktop/channel-keys.mjs','assets/desktop/replica-journal.mjs','assets/desktop/replica-core.mjs','assets/desktop/channel-archive.mjs','scripts/fixtures/device-archive-page.mjs']
+ payloads={n:(ROOT/n).read_bytes() for n in files};pins={str(Path(__file__).relative_to(ROOT)):hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),**{n:hashlib.sha256(b).hexdigest() for n,b in payloads.items()}}
+ r={'status':'FAIL','scope':__doc__,'checks':checks,'actualBrowserLaunches':0,'maximumConcurrentBrowsers':1,'logicalReplicas':4,'actualPeerLinks':0,'actualV86Desktops':0,'productionChanged':False,'automaticTimeoutsTested':False,'permissionOverride':'CDP persistent-storage'}
+ def js(code,args=[]):return d.call('/session/'+sid+'/execute/sync',{'script':code,'args':args})
+ def task(code,args=[]):
+  v=d.call('/session/'+sid+'/execute/async',{'script':'const params=Array.from(arguments),done=params.pop();(async()=>{'+code+'})().then(value=>done({ok:true,value}),error=>done({ok:false,error:error.stack}));','args':args});assert v['ok'],v;return v.get('value')
+ def start():
+  nonlocal sid,browser
+  opened=d.call('/session',{'capabilities':{'alwaysMatch':{'browserName':'chrome','goog:chromeOptions':{'binary':'/snap/chromium/current/usr/lib/chromium-browser/chrome','args':['--headless=new','--no-sandbox','--disable-dev-shm-usage','--user-data-dir='+str(profile)]}}}});sid=opened['sessionId'];pid=opened['capabilities']['goog:processID'];browser=(pid,(Path('/proc')/str(pid)/'stat').read_text().rsplit(')',1)[1].split()[19]);r['actualBrowserLaunches']+=1
+  d.call('/session/'+sid+'/timeouts',{'script':180000});d.call('/session/'+sid+'/url',{'url':origin+'/'});d.wait(lambda:js('return window.fixtureReady===true;'),15)
+ def accept_storage():
+  d.call('/session/'+sid+'/goog/cdp/execute',{'cmd':'Browser.setPermission','params':{'permission':{'name':'persistent-storage'},'setting':'granted','origin':origin}})
+  if js('return window.storageReady===true;'):return
+  d.wait(lambda:js('return window.storageReady===true||!document.querySelector(".storage-consent button").disabled;'),10)
+  if not js('return window.storageReady===true;'):
+   e=d.call('/session/'+sid+'/element',{'using':'css selector','value':'.storage-consent button'});d.call('/session/'+sid+'/element/'+e['element-6066-11e4-a52e-4f735466cecf']+'/click',{})
+  d.wait(lambda:js('return window.storageReady===true;'),15)
+ try:
+  for n,data in payloads.items():q=folder/n;q.parent.mkdir(parents=True,exist_ok=True);q.write_bytes(data)
+  fixture=folder/'scripts/fixtures/device-archive-page.mjs';text=fixture.read_text();assert text.count('validators:people.map(v=>v.channel),publicWrite:true')==1;text=text.replace('validators:people.map(v=>v.channel),publicWrite:true','validators:people.map(v=>v.channel),publicWrite:true,publicRead:true');marker=" const latest=(await archive.load()).history,node=await archive.readNode(latest);"
+  candidate=""" const outsiderArchive=new DeviceChannelArchive({keys,scope,...config,actor:outsider.channel});owned.add(outsiderArchive);await outsiderArchive.open(await policy.acquire());const outsiderWire=await protocol.createDeviceChannelProposal(keys,outsider.channel,config.channel,'chat',{text:'Accepted nonvalidator original'}),outsiderBlock=await certify(at,[await outsiderArchive.record(outsiderWire)]);at=(await archive.append(outsiderBlock)).position;proofs.unshift({header:outsiderBlock.header,prepare:outsiderBlock.prepare,commit:outsiderBlock.commit});outsiderArchive.close();const behind=new DeviceChannelArchive({keys,scope:'checkpoint-copy',...config,actor:outsider.channel});owned.add(behind);await behind.open(await policy.acquire());await behind.append(block);const oldFloor=await behind.load(),remote=await archive.transferCheckpoint(),remoteBlock=(await archive.history({limit:1})).entries[0].block,remoteWire=JSON.stringify(remoteBlock),remoteHead=await archive.readNode(remote.history),descendingProofs=proofs.slice(0,proofs.length-oldFloor.position.height),proofPages=[];for(let i=0;i<descendingProofs.length;i+=32)proofPages.push(descendingProofs.slice(i,i+32));
+ const acceptedWire=remoteBlock.operations[0].proposal,acceptedPending=await behind.enqueue(acceptedWire);let freshWire,freshId;for(let i=0;i<128;i++){const wire=await protocol.createDeviceChannelProposal(keys,outsider.channel,config.channel,'chat',{text:'Retain missing original through checkpoint '+i}),op=await protocol.readDeviceChannelProposal(wire,p),numeric=op.id<acceptedPending.id?-1:op.id>acceptedPending.id?1:0;if(numeric&&Math.sign(op.id.localeCompare(acceptedPending.id))!==numeric){freshWire=wire;freshId=op.id;break;}}check('checkpoint CAS uses IndexedDB key ordering rather than locale collation',!!freshId);const freshPending=await behind.enqueue(freshWire),input={checkpoint:remote.checkpoint,tree:remote.tree,history:remote.history,historyWire:remoteHead,blockWire:remoteWire,ancestryPages:proofPages,readIndex:async link=>archive.readNode(link.cid)};
+ check('validator archives refuse checkpoint install without journal coordination',await refuses(()=>archive.installCheckpoint(input),'Validator checkpoint installation'));
+ const revokedWire=await protocol.createDeviceChannelProposal(keys,config.actor,config.channel,'permission',{subject:outsider.channel,read:false,write:false}),revokedBlock=await certify(at,[await archive.record(revokedWire)]),revokedPosition=await protocol.acceptDeviceChannelBlock(at,revokedBlock),revokedCheckpoint=protocol.encodeDeviceChannelCheckpoint(revokedPosition);check('checkpoint that revokes the reader cannot be installed',await refuses(()=>behind.installCheckpoint({...input,checkpoint:revokedCheckpoint}),'no longer grants')&&(await behind.load()).position.head===oldFloor.position.head&&(await behind.pending()).length===2);
+
+ let beforeInstall=await behind.stats();const badPages=structuredClone(proofPages);badPages[0][0].header.parent='A'.repeat(43);check('invalid checkpoint ancestry leaves the accepted floor and pending originals unchanged',await refuses(()=>behind.installCheckpoint({...input,ancestryPages:badPages}))&&(await behind.load()).position.head===oldFloor.position.head&&(await behind.pending()).length===2&&JSON.stringify(await behind.stats())===JSON.stringify(beforeInstall));
+ check('corrupt checkpoint index leaves no staged archive writes',await refuses(()=>behind.installCheckpoint({...input,readIndex:async link=>(await archive.readNode(link.cid))+' '}))&&(await behind.load()).position.head===oldFloor.position.head&&JSON.stringify(await behind.stats())===JSON.stringify(beforeInstall));
+ const racingWire=await protocol.createDeviceChannelProposal(keys,outsider.channel,config.channel,'chat',{text:'Added while checkpoint stages'});let pendingInjected=false;const savedMembership=DeviceOperationTree.prototype.membership;DeviceOperationTree.prototype.membership=async function(...args){if(!pendingInjected){pendingInjected=true;await behind.enqueue(racingWire);}return savedMembership.apply(this,args);};try{check('pending changes during staging reject checkpoint without losing any original',await refuses(()=>behind.installCheckpoint(input),'Pending originals changed')&&(await behind.load()).position.head===oldFloor.position.head&&(await behind.pending()).length===3);}finally{DeviceOperationTree.prototype.membership=savedMembership;}const racingRow=(await behind.pending()).find(v=>v.wire===racingWire);await behind.cancelPending(racingRow.id,{expectedWireHash:racingRow.wireHash});
+ const checkpointCompetitor=new DeviceChannelArchive({keys,scope:'checkpoint-competitor',...config,actor:outsider.channel});owned.add(checkpointCompetitor);await checkpointCompetitor.open(await policy.acquire());await checkpointCompetitor.append(block);let advanced=false;const floorRace={...input,readIndex:async link=>{if(!advanced){advanced=true;await checkpointCompetitor.append(nextBlock);}return archive.readNode(link.cid);}};check('a concurrently advanced floor rejects the staged checkpoint without rollback',await refuses(()=>checkpointCompetitor.installCheckpoint(floorRace))&&(await checkpointCompetitor.load()).position.height===2);checkpointCompetitor.close();beforeInstall=await behind.stats();
+ const quotaCheckpoint=new DeviceChannelArchive({keys,scope:'checkpoint-copy',...config,actor:outsider.channel,maxNodes:(await behind.stats()).nodes});owned.add(quotaCheckpoint);await quotaCheckpoint.open(await policy.acquire());check('checkpoint capacity refusal keeps the prior floor, pending originals and accounting',await refuses(()=>quotaCheckpoint.installCheckpoint(input),'allowance reached')&&(await behind.load()).position.head===oldFloor.position.head&&(await behind.pending()).length===2&&JSON.stringify(await behind.stats())===JSON.stringify(beforeInstall));quotaCheckpoint.close();
+ check('altered checkpoint head block cannot install',await refuses(()=>behind.installCheckpoint({...input,blockWire:remoteWire+' '}))&&(await behind.load()).position.head===oldFloor.position.head);
+ const savedPut=IDBObjectStore.prototype.put;let checkpointAborted=false;IDBObjectStore.prototype.put=function(value,...args){const q=savedPut.call(this,value,...args);if(this.name==='heads'&&!checkpointAborted){checkpointAborted=true;this.transaction.abort();}return q;};try{let failure=null;try{await behind.installCheckpoint(input);}catch(e){failure=e.message;}window.checkpointFailure=failure;check('native checkpoint transaction abort refuses installation',!!failure&&checkpointAborted);}finally{IDBObjectStore.prototype.put=savedPut;}check('aborted checkpoint transaction retains old floor and exact pending originals',checkpointAborted&&(await behind.load()).position.head===oldFloor.position.head&&(await behind.pending()).length===2&&JSON.stringify(await behind.stats())===JSON.stringify(beforeInstall));
+ const installed=await behind.installCheckpoint(input),installedState=await behind.load(),remaining=await behind.pending();check('verified checkpoint atomically removes only included originals',installed.position.head===at.head&&installed.removedIncluded===1&&remaining.length===1&&remaining[0].id===freshPending.id&&remaining[0].wire===freshWire&&acceptedPending.id!==freshPending.id);
+ check('checkpoint retains the exact earlier local history boundary',installedState.prior.head===oldFloor.position.head&&installedState.prior.history===oldFloor.history&&(await behind.history({before:installedState.prior.history})).entries[0].block.operations[0].proposal===retained.original);
+ const reopenedCheckpoint=new DeviceChannelArchive({keys,scope:'checkpoint-copy',...config,actor:outsider.channel});owned.add(reopenedCheckpoint);await reopenedCheckpoint.open(await policy.acquire());check('reopened archive rechecks the durable checkpoint ancestry',(await reopenedCheckpoint.load()).position.head===at.head);reopenedCheckpoint.close();
+ const savedCheckpointRow=await raw((tx,done)=>{const q=tx.objectStore('heads').get(['checkpoint-copy',config.channel]);q.onsuccess=()=>done(q.result);}),forgedCheckpointRow=structuredClone(savedCheckpointRow);forgedCheckpointRow.proof[0][0].header.parent='A'.repeat(43);forgedCheckpointRow.hash=await hash(JSON.stringify([forgedCheckpointRow.checkpoint,forgedCheckpointRow.tree,forgedCheckpointRow.history,forgedCheckpointRow.prior,forgedCheckpointRow.proof]));forgedCheckpointRow.bytes=encLength(JSON.stringify({...forgedCheckpointRow,bytes:0}));check('forged proof fixture keeps identical storage accounting',forgedCheckpointRow.bytes===savedCheckpointRow.bytes);await raw((tx,done)=>{tx.objectStore('heads').put(forgedCheckpointRow);done(true);});check('recomputed row checksum cannot authorize tampered checkpoint ancestry',await refuses(()=>behind.load()));await raw((tx,done)=>{tx.objectStore('heads').put(savedCheckpointRow);done(true);});check('restoring exact ancestry restores the same accepted checkpoint',(await behind.load()).position.head===at.head);
+
+ const incomplete=await behind.history({limit:9});check('checkpoint fast-forward reports the skipped history gap honestly',incomplete.incomplete===true&&incomplete.entries.length===1&&incomplete.entries[0].head===at.head&&incomplete.next===incomplete.missing.cid);
+ const post=await certify(installed.position,[await behind.record(freshWire)]);await behind.append(post);check('ordinary replay after checkpoint preserves the old boundary and confirms the retained original',(await behind.load()).prior.history===oldFloor.history&&(await behind.pending()).length===0&&(await behind.history({limit:9})).incomplete===true);behind.close();
+ const empty=new DeviceChannelArchive({keys,scope:'checkpoint-genesis',...config,actor:outsider.channel});owned.add(empty);await empty.open(await policy.acquire());await empty.enqueue(acceptedWire);await empty.enqueue(freshWire);const genesisPages=[];for(let i=0;i<proofs.length;i+=32)genesisPages.push(proofs.slice(i,i+32));const fromGenesis=await empty.installCheckpoint({...input,ancestryPages:genesisPages}),genesisLoad=await empty.load(),genesisPending=await empty.pending();check('checkpoint installation can verify from genesis and preserve an unincluded original',fromGenesis.position.head===at.head&&genesisLoad.prior.height===0&&genesisLoad.prior.history===null&&genesisLoad.prior.checkpoint===null&&genesisPending.length===1&&genesisPending[0].wire===freshWire&&(await empty.history()).incomplete===true);empty.close();
+""";assert text.count(marker)==1;fixture.write_text(text.replace(marker,candidate+marker));r['fixtureTransformation']='Owned checkpoint install fixture verifies ancestry, index, native transaction rollback, pending originals and gap';r['servedFixtureSHA256']=hashlib.sha256(fixture.read_bytes()).hexdigest()
+  if compiled_core:
+   catalog=json.loads((compiled_core/'apps.json').read_bytes());assert len(catalog['apps'])==1;app=catalog['apps'][0];assert app['id']=='replica-core' and not app['styles'];source=compiled_core/Path(app['path']).parent.relative_to('assets/desktop');target=folder/'compiled-core';target.mkdir()
+   for name,record in app['files'].items():
+    assert Path(name).name==name;data=(source/name).read_bytes();assert record=={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()};(target/name).write_bytes(data)
+   fixture=folder/'scripts/fixtures/device-archive-page.mjs';text=fixture.read_text()
+   for old in ['../../network/device-channel-state.mjs','../../network/device-replica.mjs','../../network/device-operation-tree.mjs','../../assets/desktop/channel-archive.mjs','../../assets/desktop/channel-keys.mjs','../../assets/desktop/storage-consent.mjs']:
+    assert text.count("'"+old+"'")==1;text=text.replace("'"+old+"'","'../../compiled-core/index.mjs'")
+   fixture.write_text(text);r.update(actualCompiledCoreSHA256=app['sha256'],compiledCatalogSHA256=hashlib.sha256((compiled_core/'apps.json').read_bytes()).hexdigest(),servedFixtureSHA256=hashlib.sha256(fixture.read_bytes()).hexdigest(),fixtureTransformation='Six protocol/archive/core/capability imports redirected together to the single verified compiled entry')
+  (folder/'index.html').write_text('<!doctype html><title>Durable channel archive test</title><main id="gate"></main><script type="module" src="scripts/fixtures/device-archive-page.mjs"></script>')
+  server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(folder)));thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start();origin='http://127.0.0.1:'+str(server.server_port);start()
+  assert task('return (await indexedDB.databases()).length===0;');checks.append('no key/history database opens before explicit device storage acceptance');accept_storage()
+  js('archiveFixture.begin().catch(e=>window.beginError=e.stack);')
+  def held():
+   error=js('return window.beginError||null;');assert not error,error;return js('return window.pendingPhase==="durable-original";')
+  d.wait(held,30);retained=js('return window.crashPublic;');checks.append('pending original is strictly committed before actual browser termination')
+  pid,ticks=browser;proc=Path('/proc')/str(pid);args=(proc/'cmdline').read_bytes().replace(b'\0',b' ').split();assert ('--user-data-dir='+str(profile)).encode() in args and not any(a.startswith(b'--type=') for a in args) and os.readlink(proc/'exe').endswith('/chrome') and (proc/'stat').read_text().rsplit(')',1)[1].split()[19]==ticks
+  os.kill(pid,signal.SIGKILL);d.call('/session/'+sid,method='DELETE');sid=None;r['ownedBrowserCrash']={'pid':pid,'startTicks':ticks,'signal':'SIGKILL','afterStrictPendingCommit':True};start()
+  r['postCrashStorageStatus']=task('return archiveFixture.policy.status();');accept_storage()
+  js('archiveFixture.finish(arguments[0]).then(()=>window.runResult={ok:true},e=>window.runResult={ok:false,error:e.stack});',[retained]);seen=0
+  def done():
+   nonlocal seen
+   names=js('return archiveFixture.checks;')
+   for name in names[seen:]:print(json.dumps({'check':name}),flush=True)
+   seen=len(names);return js('return window.runResult;')
+  value=d.wait(done,600);checks.extend(js('return archiveFixture.checks;'));assert value['ok'],value;r.update(status='PASS',archiveMetrics=js('return window.archiveMetrics;'))
+ except Exception as e:
+  r.update(error=str(e),traceback=traceback.format_exc())
+  if sid:
+   try:r['browserFailure']=js('return {result:window.runResult,beginError:window.beginError,checks:window.archiveFixture?.checks,checkpointFailure:window.checkpointFailure,gate:document.querySelector("#gate").innerText};')
+   except Exception as diagnostic:r['diagnosticError']=str(diagnostic)
+ finally:
+  if sid:
+   try:js('archiveFixture.close();')
+   except Exception as e:r['cleanupError']=str(e)
+   d.call('/session/'+sid,method='DELETE');r['ownedBrowserClosed']=True
+  if server:server.shutdown();server.server_close()
+  if thread:thread.join(timeout=3)
+  tmp.cleanup();shutil.rmtree(profile);r.update(fixtureRemoved=not folder.exists(),ownedProfileRemoved=not profile.exists())
+ r.update(elapsedSeconds=round(time.monotonic()-started,3),sourceSHA256=pins,sourceUnchangedThroughoutRun=all(hashlib.sha256((ROOT/n).read_bytes()).hexdigest()==pin for n,pin in pins.items()))
+ if not r['sourceUnchangedThroughoutRun']:r.update(status='FAIL',error='Source changed during the run; receipt binds its served snapshot.')
+ return r
+if __name__=='__main__':
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--compiled-core',type=Path);a=p.parse_args();assert not a.output.exists();r=run(a.compiled_core);a.output.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps({'status':r['status'],'checks':len(r['checks']),'error':r.get('error')}));raise SystemExit(0 if r['status']=='PASS' else 1)
