@@ -2591,13 +2591,14 @@
   },
   "legacy_cad_acceptance_source": {
     "source_records": 1299,
-    "parent_legacy_code_paths": 243,
+    "parent_legacy_code_paths": 276,
     "private_frozen_metadata_records": 34,
-    "withheld_source_paths": 33,
+    "withheld_source_paths": 0,
     "deferred_frozen_metadata_paths": 9,
     "source_location": "tests/legacy-cad-corpus/",
     "scope": "Frozen desktop/CAD/Files integration sources; ownership does not merge ACAD and original JSketcher",
     "qualification": "Exact code bytes/modes/history and syntax verified. No legacy driver run, no active suite/compatibility/current CAD result claimed. Required interface/helper/fixture/source/identity/runtime ports remain open.",
-    "evidence": "migration/CAD-CORPUS.md and private phase33 index/maps"
+    "evidence": "migration/CAD-CORPUS.md and private phases33/35 index/maps",
+    "fixture_literal_review": "33 additional paths and47 selected historical blobs reviewed as synthetic fixture source; no source execution or external-publication audit"
   }
 }
