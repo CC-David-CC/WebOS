@@ -1475,7 +1475,7 @@
       "calculator": "apps/calculator",
       "files": "apps/files",
       "engine-manifold": "engines/manifold",
-      "engine-opencascade": "engines/opencascade",
+      "engine-opencascade": "engines/occt-interpreter",
       "engine-smlib-wasm": "engines/smlib-wasm",
       "engine-usd-brep": "engines/usd-brep",
       "legacy-jsketcher": "apps/jsketcher",
@@ -1661,5 +1661,13 @@
     "declared_asset_files_missing": 0,
     "scope_limit": "Source organization and domain test evidence only; no broad browser, account-save, XR or agent readiness claim. Falling Blocks Rive rebuild/render tests not run; tracked artifact matches existing pinned hash.",
     "remaining_suite": "27 registered source IDs plus nonregistered source, platform leftovers and broader assets/ownership remain pending."
+  },
+  "opencascade_ownership": {
+    "existing_engine_id": "engine-opencascade",
+    "existing_engine_path": "engines/occt-interpreter",
+    "existing_project": "occt-interpreter / jsketcher-occ-engine; independent original history retained unchanged",
+    "beta_tool_project": "npm opencascade.js1.1.1; different integration and kernel package",
+    "beta_tool_target": "engines/opencascade-js",
+    "reason": "Source README identifies distinct projects; do not combine their histories or binaries merely because both use OCCT."
   }
 }

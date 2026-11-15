@@ -99,3 +99,7 @@ The old sibling-layout baseline passed all 25 configured game test commands and 
 All 12 declared asset files across these games resolved in both the baseline and independent test copies with equal hashes. Falling Blocks retains its authored coach RML, instructions and tracked `coach.riv`; that artifact matches the existing pinned SHA256. Its Rive CLI rebuild/render tests were not run. No package test script existed for Falling Blocks or Owl before the ownership split; source presence is not a complete asset-build or rendering proof.
 
 These games are organized source, not enabled applications in the new Desktop. Deliberate ports of their old host/account-save/lifecycle interfaces, complete browser builds and shared human/agent operations remain separate work. The remaining existing editors, tools, nonregistered source, platform leftovers and asset ownership still require organization. Private extraction and test evidence is in `run-20261115-08-games/`.
+
+## Distinct OpenCascade engine sources
+
+`engines/occt-interpreter/` retains the existing `engine-opencascade` repository identity, selected commit and original history. Its own README identifies it as JSketcher's `occt-interpreter` / `jsketcher-occ-engine` build environment. The beta shared tool uses a different project, npm `opencascade.js`1.1.1; that integration is assigned to `engines/opencascade-js/` for extraction. The paths distinguish actual source owners and do not make their ABIs or binaries interchangeable.
