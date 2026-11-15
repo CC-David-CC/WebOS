@@ -52,3 +52,6 @@
 [submodule "anicraft"]
 	path = anicraft
 	url = ../anicraft.git
+[submodule "filmcraft"]
+	path = filmcraft
+	url = ../filmcraft.git
