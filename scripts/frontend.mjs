@@ -6,8 +6,9 @@ import {mount as mountFiles} from '@webos/files';
 import {mount as mountCalculator} from '@webos/calculator';
 import {mount as mountText} from '@webos/text';
 import {UserFiles} from '@webos/storage';
+import {mount as mountWordcraft} from '@webos/wordcraft';
 
-export function mountAssembly(root) {
+export function mountAssembly(root, {wordcraftUrl = null} = {}) {
   const accounts = createAccountsClient(); let view, desktop, disposed = false, renewal;
   function showLogin() {
     clearTimeout(renewal); view?.dispose(); desktop?.dispose(); desktop = null;
@@ -21,7 +22,12 @@ export function mountAssembly(root) {
     const authorize = (candidate, request) => candidate === authority && accounts.inspect().sessionId === session.sessionId && !(endingSession && request?.desktopId && request.operation === 'open');
     const nextDesktop = createDesktopController({sessionId: session.sessionId, accountId: session.accountId, authorize,
       applications: [{id: 'calculator', title: 'Calculator', width: 420, height: 640, mount: host => mountCalculator({...host, authority, authorize})}, {id: 'text', title: 'Text', width: 800, height: 620, mount: host => mountText({...host, files, authority, authorize})}, {id: 'files', title: 'Files', mount: host => mountFiles({...host, files, authority, authorize,
-        openFile: async file => { if (!/\.(txt|md|json|csv|log|js|mjs|css|html|py)$/i.test(file.path)) throw Error('An editor is not connected for this file type. Use Download to retrieve it.'); return desktop.execute({desktopId: desktop.inspect().desktopId, sessionId: session.sessionId, operation: 'open', args: {appId: 'text', resource: {path: file.path, sha256: file.sha256}}}, authority); }})}]});
+        openFile: async file => {
+          if (/\.(txt|md|json|csv|log|js|mjs|css|html|py)$/i.test(file.path)) return desktop.execute({desktopId: desktop.inspect().desktopId, sessionId: session.sessionId, operation: 'open', args: {appId: 'text', resource: {path: file.path, sha256: file.sha256}}}, authority);
+          if (!wordcraftUrl || !/\.(docx|docm|dotx|dotm|doc|odt|ott|rtf|txt|md)$/i.test(file.path)) throw Error('An editor is not connected for this file type. Use Download to retrieve it.');
+          return desktop.execute({desktopId: desktop.inspect().desktopId, sessionId: session.sessionId, operation: 'open', args: {appId: 'wordcraft', resource: {path: file.path, sha256: file.sha256}}}, authority);
+        }})}, ...(wordcraftUrl ? [{id: 'wordcraft', title: 'WordCraft', width: 1080, height: 760,
+          mount: host => mountWordcraft({...host, files, authority, authorize, displayName: session.displayName, url: wordcraftUrl})}] : [])]});
     async function signOut() {
       if (endingSession) return; endingSession = true;
       try {
