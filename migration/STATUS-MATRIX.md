@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has3,197 unresolved entries plus33 unqualified blob candidates, after
+ledger now has3,052 unresolved entries plus33 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -261,3 +261,5 @@ Phase44 assigns79 original Node reference-test files to18 application owners, po
 Phase45 retains four legacy cross-component references and four shared browser-test helpers in the parent, restoring0 source import edges without copying component implementations. Three original Node reference tests pass in private snapshots; one old DOM/mirror reference remains unrun and all current interface ports remain explicit. See [component boundaries](COMPONENT-BOUNDARIES.md).
 
 Phase46 retains 35 additional original cross-component browser test sources with histories, resolving 41 relative helper imports. Node syntax and exact byte/mode checks pass; no legacy browser driver was executed and no application integration status changed. See [browser helper consumers](BROWSER-HELPER-CONSUMERS.md).
+
+Phase47 retains 145 original CAD case notes beside the archived cross-component test source, with original bytes/modes and selected histories. Historical PASS claims do not qualify the new build; old run outputs remain private and required test-input closure is still open. See [CAD case documentation](CAD-CASE-DOCUMENTATION.md).

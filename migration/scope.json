@@ -2759,5 +2759,13 @@
     "legacy_drivers_executed": 0,
     "current_whole_system_acceptance": false,
     "evidence": "migration/BROWSER-HELPER-CONSUMERS.md and private phase46"
+  },
+  "legacy_cad_case_documentation": {
+    "retained_documents": 145,
+    "selected_history_blobs": 208,
+    "old_drivers_or_commands_executed": 0,
+    "current_cad_acceptance": false,
+    "required_fixture_closure_complete": false,
+    "evidence": "migration/CAD-CASE-DOCUMENTATION.md and private phase47"
   }
 }
