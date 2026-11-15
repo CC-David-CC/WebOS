@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has5,973 unresolved dispositions and88 unqualified blob candidates among
+still has5,970 unresolved dispositions and86 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -92,7 +92,7 @@ WordCraft requires an explicit caller. Desktop routes operations to the actual
 live view using exact desktop/session/instance/resource identities. Synthetic
 capability routing tests are not server-authenticated agent acceptance.
 
-Accounts `76dad308d12d0750538602e77ba34212478d5256` includes a tested optional
+Accounts `037e047e0db88be67057ee262e3d6bd5ab3b59ff` includes a tested optional
 proof-bound delegation core. Owner/session liveness, independent agent keys,
 exact scope, short one-use intent grants and revocation are enforced there.
 All21 retained-identity/delegation tests pass. The launcher does not mount it.
@@ -150,6 +150,12 @@ WEBOS_TEST_OUTPUT=/absolute/new/help-check WEBOS_TEST_PYTHON=/absolute/private/b
 WEBOS_TEST_OUTPUT=/absolute/new/authoring-check WEBOS_TEST_PYTHON=/absolute/private/backend-env/bin/python WEBOS_WORDCRAFT_SITE=/absolute/verified/wordcraft-site node tests/wordcraft_authoring_browser.mjs
 ```
 
+Accounts now has67 layered tests:42 unchanged retained-core regressions,21
+existing policy/delegation checks and4 current-public-policy checks. Four old
+assertions differ when applied directly to the current policy; the comparison is
+recorded explicitly in the component README and phase28 evidence. No production
+implementation changed in this test-source phase.
+
 ## Git, deployment and continuity
 
 Verified sibling local bare origins are under `../.webos-local-git/`. These are
@@ -166,9 +172,10 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-27-linux-backend/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-28-accounts-reference-tests/checkpoint.json` and
 `RESUME.md` under the owner-only `/home/dflanag3/Projects/.webos-migration/`.
-Phase27 records optional guest backend extraction, installed-wheel checks and the current ownership ledger.
+Phase28 records42 retained identity-core tests,4 current-policy checks,4 core retentions and the current ledger.
+Phase27 records optional guest backend extraction and installed-wheel checks.
 Phase26 records Browser backend extraction and isolated tests.
 Phase25 records static Python role review and16 verified Accounts/Storage retentions.
 Phase24 remains the last browser-qualified working-system checkpoint.
