@@ -49,7 +49,7 @@ Hosted Rooms is unused historical code, not a new service.
 | acad | `apps/acad/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | arduino-simulator | `apps/arduino-simulator/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | audio-editor | `apps/audio-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| browser | `apps/browser/` | PASS | FAIL - one unchanged pre-existing stale host-contract assertion | OPEN: complete browser build and new host integration not qualified |
+| browser | `apps/browser/` | PASS including separate backend extraction | PASS56 Python tests and installed-wheel isolation; JS93 PASS/1 pre-existing host-contract failure | OPEN: complete browser build and new host integration not qualified |
 | calculator | `apps/calculator/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 | circuit-lab | `apps/circuit-lab/` | PASS | PASS retained extraction/domain probes; browser and distribution qualification OPEN | OPEN: complete browser build and new host integration not qualified |
 | circuitjs | `apps/circuitjs/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
@@ -200,8 +200,9 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The120-row chart does not close original-source reconciliation. The tracked-source
-ledger now has6,003 unresolved entries plus100 unqualified blob candidates, after
-23 planned-game/metadata dispositions were verified. These counts do not mean
+ledger now has5,989 unresolved entries plus88 unqualified blob candidates, after
+23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
+10 Browser backend/test extractions were verified. These counts do not mean
 those files are missing. Baseline histories,
 new path maps, generated evidence and deliberately preserved historical material
 must be compared explicitly. Backend/network/build/test/research areas and WIP
