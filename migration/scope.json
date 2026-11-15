@@ -2701,5 +2701,19 @@
       "release notice/model distribution review"
     ],
     "evidence": "migration/SPEECH-ENGINE.md and private phase42"
+  },
+  "legacy_terminal_session_source": {
+    "component_path": "apps/terminal",
+    "added_source_paths": 6,
+    "original_startup_assertions": 3,
+    "test_scope": "Exact original Node VM reference test; no guest/browser/host process",
+    "view_and_css_changed": false,
+    "activation": "Not enabled; Linux/v86 and Terminal remain outside minimum",
+    "open": [
+      "legacy host/public session/transport interface port",
+      "actual xterm/guest asset build",
+      "real cleanup, clipboard/touch/microphone and scoped human-agent operations"
+    ],
+    "evidence": "migration/TERMINAL-SOURCE.md and private phase43"
   }
 }
