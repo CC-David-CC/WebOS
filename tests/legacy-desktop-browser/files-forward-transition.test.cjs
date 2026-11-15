@@ -1,0 +1,19 @@
+const assert=require('node:assert/strict');
+const crypto=require('node:crypto');
+const puppeteer=require('puppeteer-core');
+(async()=>{
+ const origin='http://127.0.0.1:19961/', b=await puppeteer.connect({browserURL:'http://127.0.0.1:19297'}), c=await b.createBrowserContext(), p=await c.newPage();
+ const user='forward'+crypto.randomBytes(6).toString('hex'), pass=crypto.randomBytes(15).toString('hex');
+ async function login(page,register){await page.goto(origin,{waitUntil:'domcontentloaded'});await page.waitForSelector('.login-toggle',{timeout:30000});if(register)await page.click('.login-toggle');await page.type('[aria-label=Username]',user);await page.type('[aria-label=Password]',pass);if(register)await page.type('[aria-label="Confirm password"]',pass);await page.click('.login-form button[type=submit]');await page.waitForFunction(()=>window.desktopLab?.session?.kind==='registered',{timeout:45000})}
+ try{
+  p.on('pageerror',e=>console.log('PAGEERROR',e.message));
+  await login(p,true);
+  const before=await p.evaluate(async()=>{let f=(await mirrorFileContext()).files;let saved=await f.write('/saved.txt','saved before transition');await f.sync();let pending=await f.write('/pending.txt','local pending before transition');let ctx=await mirrorFileContext();let db=await new Promise((r,j)=>{let q=indexedDB.open('codi-mirrored-files-v1');q.onsuccess=()=>r(q.result);q.onerror=()=>j(q.error)});await new Promise((r,j)=>{let tx=db.transaction('files','readwrite'),store=tx.objectStore('files'),q=store.get([JSON.stringify(['codi-file-mirror/1',identityConfig.identity.issuer,ctx.owner]),'/pending.txt']);q.onsuccess=()=>store.put({...q.result,conflict:true,attempted:{base:'a'.repeat(64),sha256:'b'.repeat(64)}});tx.oncomplete=r;tx.onerror=()=>j(tx.error)});db.close();return {saved:saved.version,pending:pending.version}});
+  await p.close();assert.equal((await fetch('http://127.0.0.1:19962/on')).status,200);
+  const q=await c.newPage();q.on('pageerror',e=>console.log('PAGEERROR',e.message));await login(q,false);
+  const after=await q.evaluate(async()=>{let ctx=await mirrorFileContext(),f=ctx.files,a=await f.read('/saved.txt'),b=await f.read('/pending.txt');let db=await new Promise((r,j)=>{let q=indexedDB.open('codi-mirrored-files-v1');q.onsuccess=()=>r(q.result);q.onerror=()=>j(q.error)});let row=await new Promise((r,j)=>{let tx=db.transaction('files','readonly'),q=tx.objectStore('files').get([JSON.stringify(['codi-file-mirror/1',identityConfig.identity.issuer,ctx.owner]),'/pending.txt']);q.onsuccess=()=>r(q.result);q.onerror=()=>j(q.error)});db.close();return {a:new TextDecoder().decode(a.data),av:a.version,b:new TextDecoder().decode(b.data),bv:b.version,status:b.status,attempted:row.attempted,kind:row.data.kind,resources:performance.getEntriesByType('resource').map(x=>x.name)}});
+  assert.equal(after.a,'saved before transition');assert.equal(after.b,'local pending before transition');assert.equal(after.av,before.saved);assert.equal(after.bv,before.pending);assert.equal(after.status,'conflict');assert.deepEqual(after.attempted,{base:'a'.repeat(64),sha256:'b'.repeat(64)});assert.equal(after.kind,'codi-opfs-content/1');assert(after.resources.some(x=>x.includes('3daf09a753455be1dc07ce183097b6535a999d2cc2124f9d0e6df25c7180be3a/mirror.mjs')));
+  await q.evaluate(()=>surfaces.get('Desktop').launch('files'));await q.waitForSelector('.codi-chonky',{timeout:45000});assert(await q.evaluate(()=>performance.getEntriesByType('resource').some(x=>x.name.includes('/apps/files/b7e943c563ea83ad91988e595e1afcada8f31d71eda01e9915d104f32774d7b7/'))));
+  console.log('PASS e359 retained saved/pending/conflict/attempted OPFS v2 and real Files bundle',JSON.stringify({before,status:after.status,kind:after.kind}));
+ }finally{await c.close();b.disconnect()}
+})().catch(e=>{console.error(e);process.exitCode=1});

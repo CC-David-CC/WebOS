@@ -1,0 +1,46 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import puppeteer from 'puppeteer-core';
+
+const base=process.env.CODI_TARGET_URL||'http://127.0.0.1:18362/';
+const browser=await puppeteer.connect({browserURL:process.env.CODI_TEST_CDP||'http://127.0.0.1:19262',protocolTimeout:120000});
+const context=await browser.createBrowserContext(),page=await context.newPage(),errors=[],external=[];
+page.on('pageerror',error=>errors.push(error.message));page.on('dialog',dialog=>dialog.accept());
+page.on('request',request=>{const url=new URL(request.url());if(/^https?:/.test(url.protocol)&&url.origin!==new URL(base).origin)external.push(url.href)});
+const click=label=>page.evaluate(label=>{const button=[...document.querySelectorAll('.target-garden-view button')].find(node=>node.textContent===label);if(!button)throw Error('Missing button: '+label);button.click()},label);
+try{
+ const phone=process.env.CODI_PHONE==='1';
+ await page.setViewport(phone?{width:412,height:915,isMobile:true,hasTouch:true}:{width:1366,height:900});
+ const manifest=JSON.parse(await readFile(process.env.CODI_TARGET_MANIFEST||'.build/target-garden-test/apps.json','utf8'));
+ const entry='/'+manifest.apps[0].path.replace(/^assets\/desktop\//,'');
+ await page.goto(base+'?app='+encodeURIComponent(entry));
+ await page.waitForFunction(()=>window.instances?.length===2);
+ await page.waitForFunction(()=>document.querySelectorAll('.target-garden-canvas').length===2,{timeout:30000});
+ assert.match(await page.$$eval('.target-garden-fallback',nodes=>nodes[0].textContent),/Rive artwork.*pending/);
+ await click('Start round');
+ await page.waitForFunction(()=>document.querySelector('.target-garden-status')?.textContent.includes('Round running'));
+ await page.focus('.target-garden-aim');
+ await page.keyboard.press('ArrowRight');
+ await page.keyboard.press('Space');
+ await page.waitForFunction(()=>document.querySelector('.target-garden-status')?.textContent.includes('Projectile launched'));
+ await page.evaluate(()=>document.querySelector('.target-garden-save').open=true);
+ await page.$eval('[aria-label="Target Garden save path"]',input=>input.value='/Target Garden.game.json');
+ await click('Save to My files');
+ await page.waitForFunction(()=>document.querySelector('.target-garden-status')?.textContent.includes('syncing with the server'));
+ const saved=JSON.parse(await page.evaluate(()=>new TextDecoder().decode(window.fileStore.get('/Target Garden.game.json').data)));
+ assert.equal(saved.appId,'target-garden');assert.equal(saved.payload.phase,'paused');
+ await page.evaluate(()=>window.fileStore.set('/bad.game.json',{data:new TextEncoder().encode('{bad'),version:'bad',status:'synced'}));
+ await page.evaluate(()=>window.targetPath='/bad.game.json');
+ await click('Open from My files');
+ await page.waitForFunction(()=>document.querySelector('.target-garden-status')?.textContent.includes('Could not open'));
+ await click('Resume');
+ await page.waitForFunction(()=>document.querySelector('.target-garden-status')?.textContent.includes('Round running'));
+ await page.evaluate(()=>window.instances[0].win.classList.remove('focused'));
+ await page.waitForFunction(()=>document.querySelector('.target-garden-status')?.textContent.includes('lost attention'));
+ await page.evaluate(()=>window.instances[0].app.dispose());
+ await page.evaluate(()=>window.instances[0].app.dispose());
+ await page.evaluate(()=>window.instances[0].app.element.remove());
+ assert.equal(await page.$$('.target-garden-view').then(nodes=>nodes.length),1);
+ assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
+ console.log(`PASS ${phone?'phone':'desktop'} Target Garden dual instance, aim, launch, save, invalid recovery, focus pause and disposal`);
+}finally{await context.close();await browser.disconnect()}
