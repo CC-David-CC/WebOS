@@ -4,3 +4,6 @@
 [submodule "help"]
 	path = help
 	url = ../help.git
+[submodule "calculator"]
+	path = calculator
+	url = ../calculator.git
