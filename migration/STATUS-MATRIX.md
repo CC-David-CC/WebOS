@@ -235,7 +235,7 @@ They remain source-only prototypes, separate from the28 previously registered
 games. See [their exact qualification and save-version limits](LEARNING-GAMES.md).
 The inspected original prefix had no staged, unstaged or untracked work.
 
-The [CAD corpus catalogue](CAD-CORPUS.md) adds243 unchanged parent-owned legacy
+The [CAD corpus catalogue](CAD-CORPUS.md) records276 unchanged parent-owned legacy
 acceptance source files and34 privately retained frozen build/catalog records.
 Syntax and history are verified; no legacy CAD driver or qualification ran.
 Helpers/inputs/target/runtime/authorization ports remain OPEN; the33 source reviews are resolved in phase35.
