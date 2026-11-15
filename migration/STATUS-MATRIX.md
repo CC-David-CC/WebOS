@@ -202,7 +202,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The122-row chart does not close original-source reconciliation. The tracked-source
-ledger now has4,554 unresolved entries plus43 unqualified blob candidates, after
+ledger now has4,550 unresolved entries plus38 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -243,3 +243,5 @@ Helpers/inputs/target/runtime/authorization ports remain OPEN; the33 source revi
 Phase35 retains the remaining33 reviewed synthetic-fixture source paths with history:276 total legacy CAD corpus code files, syntax checked and unexecuted. Runtime/API/fixture/input ports remain incomplete.
 
 Phase36 retains760 unchanged historical desktop browser-test sources with selected histories, syntax checked and disabled pending deliberate ports. See [legacy desktop tests](LEGACY-DESKTOP-TESTS.md). No current app or browser qualification follows from this extraction.
+
+Phase37 verifies nine previously unresolved identity/file-client/verifier/loader-test records already retained in selected component histories, using exact blob/mode and rename-lineage witnesses. No duplicate extraction or behavior change. See [history reconciliation](HISTORY-RECONCILIATION.md).

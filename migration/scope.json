@@ -2607,5 +2607,15 @@
     "drivers_executed": 0,
     "qualification": "Historical whole-system browser tests only. No driver executed, no current app qualification. Before execution, review target endpoints, fresh disposable accounts/state, required helpers and fixtures, old selectors/globals, source paths and public operations. Never point legacy drivers at ksu.codes or beta, copy old credentials/account state, substitute fake storage, or weaken assertions to obtain a pass.",
     "evidence": "migration/LEGACY-DESKTOP-TESTS.md and private phase36 maps/checkpoint"
+  },
+  "selected_history_reconciliation": {
+    "component_histories_audited": 122,
+    "pending_records_compared": 4597,
+    "byte_match_candidates": 54,
+    "verified_original_path_lineages": 9,
+    "remaining_match_candidates": 45,
+    "source_files_copied": 0,
+    "qualification": "Exact historical tree witness and rename lineage, no new functional qualification",
+    "evidence": "migration/HISTORY-RECONCILIATION.md and private phase37"
   }
 }
