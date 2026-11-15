@@ -40,3 +40,6 @@
 [submodule "photocraft"]
 	path = photocraft
 	url = ../photocraft.git
+[submodule "vectorcraft"]
+	path = vectorcraft
+	url = ../vectorcraft.git
