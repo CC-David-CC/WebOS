@@ -95,7 +95,7 @@ python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 The LFS setup affects only the new egui checkout. Verified local origins retain
 all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
 outside Git and web roots, under `/home/dflanag3/Projects/.webos-migration/`.
-Latest active checkpoint: `run-20261115-19-help-integration/checkpoint.json` and
+Latest active checkpoint: `run-20261115-20-live-operations/checkpoint.json` and
 `RESUME.md`; phase18 records the separate, still-running native CI review.
 Phase17 records clean qualification of the selected authority
 fixes; phase16 retains red/green evidence. Phase15 records the current test deployment and renderer
@@ -164,3 +164,21 @@ and external networking off. The complete graph accepts the verified WordCraft
 artifact; adding Help changed no registry package versions. Help is not yet
 included in the hosted phase15 release. Its command interface does not enable
 or qualify delegated-agent authentication.
+
+## Live application operation routing
+
+The selected Desktop is `365f11113645634dc18c002873ec6efeab0267df`.
+Its public view-inspection/command methods require exact desktop, session,
+instance and `view:<instance>` resource targets. The unchanged caller reaches
+the application's existing public command implementation, which still applies
+its resource policy. Request capture preserves explicit upload bytes; view
+replacement, close and disposal invalidate pending decisions. Uncertain outcomes
+are reported for commands completing after view removal.
+
+All13 Desktop checks pass, along with clean-checkout browser checks for live
+Help state shared by mouse and commands, reader/mutation denial, cross-window
+refusal, signed Login/Help and the real WordCraft account/conflict workflow.
+The capability-routing test uses synthetic in-page callers. The parent still
+accepts only its human capability: Accounts-issued delegation, an authenticated
+agent transport and agent file authority remain incomplete. These new Desktop
+bits are not deployed to ksu.codes. Native CI continues separately in phase18.
