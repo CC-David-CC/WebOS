@@ -1,6 +1,6 @@
 # Complete assembled component chart
 
-All paths are relative to /path/to/webos/. There are109 independent source repositories currently attached:76 apps (31 system/CAD,17 Craft,28 games),8 engines,5 platform components,17 libraries,2 shared asset projects and1 shared build-tool project. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
+All paths are relative to /path/to/webos/. There are111 independent source repositories currently attached:78 apps (33 system/CAD,17 Craft,28 games),8 engines,5 platform components,17 libraries,2 shared asset projects and1 shared build-tool project. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
 
 ## Platform (5)
 
@@ -12,7 +12,7 @@ All paths are relative to /path/to/webos/. There are109 independent source repos
 | runtime | `platform/runtime/` |
 | storage | `platform/storage/` |
 
-## System and CAD apps (31)
+## System and CAD apps (33)
 
 | Component | Actual directory |
 |---|---|
@@ -21,6 +21,8 @@ All paths are relative to /path/to/webos/. There are109 independent source repos
 | audio-editor | `apps/audio-editor/` |
 | browser | `apps/browser/` |
 | calculator | `apps/calculator/` |
+| circuit-lab — unfinished, release gate OPEN | `apps/circuit-lab/` |
+| pcb-design — Node research prototype | `apps/pcb-design/` |
 | circuitjs | `apps/circuitjs/` |
 | data-explorer | `apps/data-explorer/` |
 | diagrams-net | `apps/diagrams-net/` |
@@ -164,7 +166,7 @@ Payloads are ignored by Git; locks/docs/verification commands are parent-owned. 
 
 ## Still pending source organization
 
-- Nonregistered Circuit Lab and PCB Design source, plus other historical WIP and source-area reconciliation.
+- Circuit Lab and PCB Design source is now placed. Other historical WIP and remaining source-area reconciliation stay OPEN.
 - Remaining platform/backend, guest network, build/operations and legacy test/source areas. These are preserved in private recovery; their component ownership is not yet fully resolved.
 - Linux/v86 source and runtime/base image are now placed. Its optional Desktop view and existing old global boot orchestration still need a deliberate port; it is not a minimum dependency.
 - Additional packages such as Phaser, Three.js, Babylon.js, Rapier, Havok, Rive and MuJoCo are currently dependencies pinned by app/game manifests, not additional independent repositories in this chart. Existing owned engine build patches and required assets still need final reconciliation.

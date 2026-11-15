@@ -325,3 +325,9 @@
 [submodule "linux"]
 	path = apps/linux
 	url = ../linux.git
+[submodule "circuit-lab"]
+	path = apps/circuit-lab
+	url = ../circuit-lab.git
+[submodule "pcb-design"]
+	path = apps/pcb-design
+	url = ../pcb-design.git

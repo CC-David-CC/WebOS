@@ -185,3 +185,7 @@ Live account databases, credentials and private documents are not source assets.
 Optional Linux guest source now lives at apps/linux/ and the pinned full-history v86 engine at engines/v86/. The existing Worker bridge, static base image/kernel and guest build/init sources are preserved with exact file maps and history; its optional Desktop view is not yet ported. Complete current109-component paths are in COMPONENTS.md.
 
 The beta catalog-listed artifact sweep is now recovered, verified and placed under artifacts/reference-beta/ (6143 files/1.03GB). Microduck inputs are under artifacts/inputs/microduck/ with44 locked files. This closes declared public app payload recovery, not full dynamic graph/release/whole-source readiness. Remaining source/platform/site-asset reconciliation stays OPEN.
+
+## Nonregistered prototype source addition
+
+Circuit Lab and PCB Design are now organized in independent repositories, taking the source assembly to111 components. Exact22-file source/history extraction verified. Circuit Lab real ngspice suite and PCB Node-only rendering probe PASS both before/after separation. Existing browser, usability, manufacturing and distribution gates remain OPEN; source copies are not enabled releases. Circuit Lab's5 runtime/source-relink cache files are explicitly local-research-only. Locked artifact verification PASS6192 files. The whole-source ownership pass remains incomplete.
