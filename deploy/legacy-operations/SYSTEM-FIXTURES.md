@@ -1,0 +1,3 @@
+# Historical fixture/operator source
+
+The retained27 HTML pages, shell policy wrapper and three G-code operator/check sources are historical inputs to old operator/browser fixtures. Bodies/modes/selected histories are unchanged. Do not launch them against either site. Pages use old host-bound script/resource paths and contracts; source retention is not a closed runtime asset graph or browser qualification. Wrapper syntax checks do not run policy actions. The G-code tools need actual source/fixture/host and side-effect review before any port; no tool was executed here. These files remain outside supported current entrypoints. See migration/SYSTEM-REFERENCE-OWNERSHIP.md in the parent.
