@@ -13,3 +13,6 @@
 [submodule "engine-manifold"]
 	path = engine-manifold
 	url = ../engine-manifold.git
+[submodule "engine-opencascade"]
+	path = engine-opencascade
+	url = ../engine-opencascade.git
