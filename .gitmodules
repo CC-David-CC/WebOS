@@ -361,3 +361,6 @@
 [submodule "rendezvous"]
 	path = platform/rendezvous
 	url = ../rendezvous.git
+[submodule "publication"]
+	path = platform/publication
+	url = ../publication.git

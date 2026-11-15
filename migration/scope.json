@@ -2175,6 +2175,11 @@
       "id": "rendezvous",
       "state": "Independent nine-module peer discovery/signaling source/history and37 unchanged lease tests; installed-wheel isolation passes; no listener enabled, official publication and signed operational integration remain pending",
       "component_path": "platform/rendezvous"
+    },
+    {
+      "id": "publication",
+      "component_path": "platform/publication",
+      "state": "32 publication implementation modules/history organized unchanged, plus original unsigned reconstruction fixture; source-only, legacy interface ports and full imports/build/runtime acceptance OPEN; disabled"
     }
   ],
   "independent_existing_projects": [
@@ -2328,6 +2333,7 @@
       "pocket-conquest": "apps/pocket-conquest",
       "pocket-golf": "apps/pocket-golf",
       "pocket-rally": "apps/pocket-rally",
+      "publication": "platform/publication",
       "reactive-control-desk": "apps/reactive-control-desk",
       "rendezvous": "platform/rendezvous",
       "replicad": "apps/replicad",
