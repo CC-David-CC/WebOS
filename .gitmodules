@@ -61,3 +61,6 @@
 [submodule "soundcraft"]
 	path = soundcraft
 	url = ../soundcraft.git
+[submodule "lightcraft"]
+	path = lightcraft
+	url = ../lightcraft.git
