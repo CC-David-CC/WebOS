@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has2,117 unresolved dispositions and33 unqualified blob candidates among
+still has2,104 unresolved dispositions and33 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -192,7 +192,7 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-55-test-orchestration-source/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-56-owned-node-references/checkpoint.json` and
 `RESUME.md` under the owner-only `/home/dflanag3/Projects/.webos-migration/`.
 Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
@@ -257,3 +257,5 @@ Phase53 organizes106 original guidance sources: seven lifecycle/file-operation n
 Phase54 retains76 original system fixture/operator/guidance sources and selected histories, including27 HTML pages and disabled host-operation definitions. Four inline scripts parse, wrappers/Python/JSON pass source checks; no old operator/page/service ran. Two JSON literal-context cases and earlier57 Python holds remain private. See [system reference ownership](migration/SYSTEM-REFERENCE-OWNERSHIP.md).
 
 Phase55 retains283 original test/fixture sources with histories. Python/JS/HTML source checks and exact byte/mode/assembly checks pass; old routes/dependencies/fixture/generated compiler inputs remain explicit ports.13 more current Python literal cases remain private. No old test, fixture, app module, browser, Worker, compiler or guest ran. See [test orchestration source](migration/TEST-ORCHESTRATION-SOURCE.md).
+
+Phase56 assigns12 original Node test sources and one frozen vector fixture to actual owners. Eight locator-only ports report15 passing Node subtests; the original baseline has25 passes and one pre-existing stale negative-control failure, retained unchanged and unqualified. Browser relay and cross-component references remain inert. See [owned Node references](migration/OWNED-NODE-REFERENCES.md).
