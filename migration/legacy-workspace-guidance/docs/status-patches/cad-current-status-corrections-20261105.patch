@@ -1,0 +1,54 @@
+--- a/docs/MECHANICAL-CAD-AUDIT.md
++++ b/docs/MECHANICAL-CAD-AUDIT.md
+@@ -5,13 +5,21 @@
+ Runtime b3ccb284b is promoted with independent strict-CSP signed bracket,
+ shared typed parameters, reference/driving and rigid commands, materials and
+ 3MF qualification. Original typed editor entry and invalid-Angle-save defects
+-are fixed; rejected edits preserve the valid sketch. Collinear/axis symmetry,
++are fixed for the tested invalid numerical inputs. Collinear/axis symmetry,
+ segment/circle/arc fixing and bounded planar rigid groups have actual UI/Worker/
+ native evidence. See test/physical-parameters/B3-COMBINED-QUALIFICATION-20261105.md,
+ test/review-common-typed/README.md and desktop tests/jsketcher-b3-combined-signed-
+ 20261105.md for exact domains and limits. This supersedes older pending states
+-only within tested scope. Configurations remain isolated research; complete
+-mutation coverage, worker-first capture/performance and final beta are open.
++only within tested scope. CAD353fdc843 (runtime aadc2426f) / desktop64311bb6a
++(runtime9a64462e1) also pass bounded signed UI/agent configurations, held-v2-Worker
++close, Files reopen/account isolation and independent configured 3MF; see desktop
++tests/jsketcher-configurations-signed-20261105.md. Existing-constraint editing
++remains blocked by bfc406bee: a length edit can drop a satisfied relation.
++Unaccepted CAD75ffe6c3f / desktop423e6e7c6 combine M05, configurations, large
++history/finally cleanup and repair adapters; three root history controls/core
++runner and 58 desktop command tests pass. Atomic-edit integration, combined
++signed repair, cleanup/performance and mutation qualification, and final beta
++remain open. General rejected-edit preservation is not established.
+ No full mechanical/CAD1 completion, physics or new deployment is claimed.
+
+ ## Current operational focus
+--- a/docs/MANUFACTURING-AND-PHYSICS-ROADMAP.md
++++ b/docs/MANUFACTURING-AND-PHYSICS-ROADMAP.md
+@@ -5,13 +5,21 @@
+ Runtime b3ccb284b is promoted with independent strict-CSP signed bracket,
+ shared typed parameters, reference/driving and rigid commands, materials and
+ 3MF qualification. Original typed editor entry and invalid-Angle-save defects
+-are fixed; rejected edits preserve the valid sketch. Collinear/axis symmetry,
++are fixed for the tested invalid numerical inputs. Collinear/axis symmetry,
+ segment/circle/arc fixing and bounded planar rigid groups have actual UI/Worker/
+ native evidence. See test/physical-parameters/B3-COMBINED-QUALIFICATION-20261105.md,
+ test/review-common-typed/README.md and desktop tests/jsketcher-b3-combined-signed-
+ 20261105.md for exact domains and limits. This supersedes older pending states
+-only within tested scope. Configurations remain isolated research; complete
+-mutation coverage, worker-first capture/performance and final beta are open.
++only within tested scope. CAD353fdc843 (runtime aadc2426f) / desktop64311bb6a
++(runtime9a64462e1) also pass bounded signed UI/agent configurations, held-v2-Worker
++close, Files reopen/account isolation and independent configured 3MF; see desktop
++tests/jsketcher-configurations-signed-20261105.md. Existing-constraint editing
++remains blocked by bfc406bee: a length edit can drop a satisfied relation.
++Unaccepted CAD75ffe6c3f / desktop423e6e7c6 combine M05, configurations, large
++history/finally cleanup and repair adapters; three root history controls/core
++runner and 58 desktop command tests pass. Atomic-edit integration, combined
++signed repair, cleanup/performance and mutation qualification, and final beta
++remain open. General rejected-edit preservation is not established.
+ No full mechanical/CAD1 completion, physics or new deployment is claimed.
+
+ ## Current bounded result and priority
