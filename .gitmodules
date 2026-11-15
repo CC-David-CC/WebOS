@@ -364,3 +364,6 @@
 [submodule "publication"]
 	path = platform/publication
 	url = ../publication.git
+[submodule "network-policy"]
+	path = libraries/network-policy
+	url = ../network-policy.git

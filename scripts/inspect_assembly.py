@@ -11,7 +11,7 @@ PLATFORM = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage', 'ren
 SHARED_ROLES = {name: 'libraries' for name in (
     'craft-libs', 'egui', 'codemirror', 'gltf-transform', 'wavesurfer', 'tone',
     'zip', 'mermaid', 'echarts', 'plotly', 'pdfme', 'maplibre', 'transformers',
-    'trystero', 'tanstack-virtual', 'webtorrent', 'yjs', 'learning-game-core')}
+    'trystero', 'tanstack-virtual', 'webtorrent', 'yjs', 'learning-game-core', 'network-policy')}
 SHARED_ROLES.update({'craft-fonts': 'assets', 'craft-i18n': 'assets',
                      'craft-common-actions': 'tooling', 'rooms': 'legacy'})
 CORE = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage', 'files', 'wordcraft'))

@@ -1,21 +1,17 @@
 # Current source and rebuild status matrix
 
-Git links select exact revisions. The assembly now has120 independent source
-repositories:112 retained selections plus eight planned-game extraction packages.
-The earlier browser qualification initialized eleven components; planned-game
-checks cover their domain packages. Neither proves all120 components build or work.
-
-There are119 component repositories plus1 preserved legacy repository:
+Git links select exact revisions. The assembly has123 independent source repositories:
 85 apps (33 system/CAD,17 Craft,35 games including7 planned cores),8 engines,
-5 platform components,18 libraries,2 shared asset projects and1 shared tooling
-project, plus legacy Rooms.
+7 platform components,19 libraries,2 shared asset projects,1 shared tooling project
+and1 preserved legacy repository. Source placement and scoped component checks
+do not prove all123 components build or work.
 
 **PASS** covers the stated check. **OPEN** means incomplete or unverified.
 Retained baseline tests are separate from new runtime acceptance.
 
 | Gate | Current result |
 |---|---|
-| Registered component source layout | PASS:120 independent repositories listed below |
+| Registered component source layout | PASS:123 independent repositories listed below |
 | Entire original source-area reconciliation | OPEN: preserved backend, scripts, research, tests and WIP still need final disposition |
 | Calculator → Files → Text → WordCraft | PASS local/clean workflows and disposable-account checks on ksu.codes |
 | Server account files | PASS signed persistence, conflicts, restart and second clean browser context |
@@ -157,7 +153,7 @@ Hosted Rooms is unused historical code, not a new service.
 | engine-usd-brep | `engines/usd-brep/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | engine-v86 | `engines/v86/` | PASS | PASS engine source/history and optional static inputs | OPEN optional guest integration; excluded from minimum dependencies |
 
-## Shared libraries and tools (18)
+## Shared libraries and tools (19)
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
@@ -168,6 +164,7 @@ Hosted Rooms is unused historical code, not a new service.
 | gltf-transform | `libraries/gltf-transform/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | maplibre | `libraries/maplibre/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | mermaid | `libraries/mermaid/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| network-policy | `libraries/network-policy/` | PASS11 paths/history, baseline retained | PASS core10 tests/1 existing optional GeoIP skip;8 installed-module imports and package isolation | OPEN actual GeoIP/proxy/guest wiring; not enabled |
 | pdfme | `libraries/pdfme/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | plotly | `libraries/plotly/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | tanstack-virtual | `libraries/tanstack-virtual/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
@@ -201,8 +198,8 @@ Hosted Rooms is unused historical code, not a new service.
 
 ## Remaining organization and build work
 
-The122-row chart does not close original-source reconciliation. The tracked-source
-ledger now has4,550 unresolved entries plus38 unqualified blob candidates, after
+The123-row chart does not close original-source reconciliation. The tracked-source
+ledger now has4,539 unresolved entries plus38 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -245,3 +242,5 @@ Phase35 retains the remaining33 reviewed synthetic-fixture source paths with his
 Phase36 retains760 unchanged historical desktop browser-test sources with selected histories, syntax checked and disabled pending deliberate ports. See [legacy desktop tests](LEGACY-DESKTOP-TESTS.md). No current app or browser qualification follows from this extraction.
 
 Phase37 verifies nine previously unresolved identity/file-client/verifier/loader-test records already retained in selected component histories, using exact blob/mode and rename-lineage witnesses. No duplicate extraction or behavior change. See [history reconciliation](HISTORY-RECONCILIATION.md).
+
+Phase38 adds independent shared network-policy source at `libraries/network-policy/`:11 retained source/config/test paths, original and installed-wheel10 passes/1 existing optional database skip. No firewall, listener or desktop policy enabled. See [network policy](NETWORK-POLICY.md).
