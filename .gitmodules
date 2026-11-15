@@ -332,5 +332,5 @@
 	path = apps/pcb-design
 	url = ../pcb-design.git
 [submodule "rooms"]
-	path = platform/rooms
+	path = legacy/rooms
 	url = ../rooms.git
