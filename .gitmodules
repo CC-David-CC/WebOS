@@ -1,80 +1,80 @@
 [submodule "acad"]
-	path = acad
+	path = apps/acad
 	url = ../acad.git
 [submodule "help"]
-	path = help
+	path = apps/help
 	url = ../help.git
 [submodule "calculator"]
-	path = calculator
+	path = apps/calculator
 	url = ../calculator.git
 [submodule "files"]
 	path = files
 	url = ../files.git
 [submodule "engine-manifold"]
-	path = engine-manifold
+	path = engines/manifold
 	url = ../engine-manifold.git
 [submodule "engine-opencascade"]
-	path = engine-opencascade
+	path = engines/opencascade
 	url = ../engine-opencascade.git
 [submodule "engine-smlib-wasm"]
-	path = engine-smlib-wasm
+	path = engines/smlib-wasm
 	url = ../engine-smlib-wasm.git
 [submodule "engine-usd-brep"]
-	path = engine-usd-brep
+	path = engines/usd-brep
 	url = ../engine-usd-brep.git
 [submodule "legacy-jsketcher"]
-	path = legacy-jsketcher
+	path = legacy/jsketcher
 	url = ../legacy-jsketcher.git
 [submodule "wordcraft"]
 	path = wordcraft
 	url = ../wordcraft.git
 [submodule "gridcraft"]
-	path = gridcraft
+	path = apps/gridcraft
 	url = ../gridcraft.git
 [submodule "deckcraft"]
-	path = deckcraft
+	path = apps/deckcraft
 	url = ../deckcraft.git
 [submodule "pdfcraft"]
-	path = pdfcraft
+	path = apps/pdfcraft
 	url = ../pdfcraft.git
 [submodule "photocraft"]
-	path = photocraft
+	path = apps/photocraft
 	url = ../photocraft.git
 [submodule "vectorcraft"]
-	path = vectorcraft
+	path = apps/vectorcraft
 	url = ../vectorcraft.git
 [submodule "designcraft"]
-	path = designcraft
+	path = apps/designcraft
 	url = ../designcraft.git
 [submodule "figcraft"]
-	path = figcraft
+	path = apps/figcraft
 	url = ../figcraft.git
 [submodule "anicraft"]
-	path = anicraft
+	path = apps/anicraft
 	url = ../anicraft.git
 [submodule "filmcraft"]
-	path = filmcraft
+	path = apps/filmcraft
 	url = ../filmcraft.git
 [submodule "effectcraft"]
-	path = effectcraft
+	path = apps/effectcraft
 	url = ../effectcraft.git
 [submodule "soundcraft"]
-	path = soundcraft
+	path = apps/soundcraft
 	url = ../soundcraft.git
 [submodule "lightcraft"]
-	path = lightcraft
+	path = apps/lightcraft
 	url = ../lightcraft.git
 [submodule "cadcraft"]
-	path = cadcraft
+	path = apps/cadcraft
 	url = ../cadcraft.git
 [submodule "solidcraft"]
-	path = solidcraft
+	path = apps/solidcraft
 	url = ../solidcraft.git
 [submodule "texturecraft"]
-	path = texturecraft
+	path = apps/texturecraft
 	url = ../texturecraft.git
 [submodule "materialcraft"]
-	path = materialcraft
+	path = apps/materialcraft
 	url = ../materialcraft.git
 [submodule "runtime"]
 	path = runtime

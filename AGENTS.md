@@ -9,3 +9,5 @@ Runtime, Desktop, Login, Accounts, Storage, Files, and WordCraft are required in
 Current state is partial; inspect START-HERE.md and the private checkpoint. Do not equate repository setup with a working system.
 
 The scope is the entire existing suite and all 17 selected upstream forks. The initial seven-component milestone is not completion. Read migration/scope.json; keep all registered and nonregistered source, assets, and historical WIP accounted for.
+
+Keep the seven core paths at the root; additional independent apps in apps/, engines in engines/, historical projects in legacy/. Grouping directories do not become grouped source repositories. The user explicitly authorizes needed rewrites/refactors in new working copies. The old workspace stays read-only; retain extraction baselines and separate functional commits.
