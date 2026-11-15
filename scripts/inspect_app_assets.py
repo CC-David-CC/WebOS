@@ -21,6 +21,9 @@ def inspect(root):
     lock = json.loads((root / 'artifacts/reference-beta.lock.json').read_text())
     reference = root / lock['payload_path']
     catalog = {app['id']: app for app in lock['catalog']['apps']}
+    inputs = json.loads((root / 'artifacts/input-files.json').read_text())
+    prepared = {(entry['app'], entry['declared_path']): entry for entry in inputs['files']
+                if 'app' in entry and 'declared_path' in entry}
     apps = []
     for app in scope['registered_apps']:
         component = root / app['component_path']
@@ -37,7 +40,7 @@ def inspect(root):
         for name in declarations:
             source = safe_path(component, name)
             record = {'path': name, 'source_present': source.is_file(),
-                      'reference_available': False}
+                      'reference_available': False, 'prepared_input_available': False}
             metadata = payload['files'].get(name) if payload else None
             if metadata:
                 relative = PurePosixPath(payload['path']).parent / name
@@ -52,6 +55,17 @@ def inspect(root):
                     if source.is_file():
                         with source.open('rb') as stream:
                             record['source_matches_reference'] = hashlib.file_digest(stream, 'sha256').hexdigest() == digest
+            prepared_entry = prepared.get((app['id'], name))
+            if prepared_entry:
+                target = safe_path(root / 'artifacts', prepared_entry['path'])
+                if not target.is_file() or target.stat().st_size != prepared_entry['bytes']:
+                    raise ValueError('Prepared input missing or wrong size')
+                with target.open('rb') as stream:
+                    digest = hashlib.file_digest(stream, 'sha256').hexdigest()
+                if digest != prepared_entry['sha256']:
+                    raise ValueError('Prepared input digest mismatch')
+                record.update(prepared_input_available=True,
+                              prepared_input_path=str(target.relative_to(root)))
             records.append(record)
         apps.append({'id': app['id'], 'manifest': str(manifest.relative_to(root)), 'assets': records})
     records = [record for app in apps for record in app['assets']]
@@ -59,7 +73,8 @@ def inspect(root):
             'registered_entries': len(apps), 'declared_assets': len(records),
             'source_present': sum(r['source_present'] for r in records),
             'verified_reference_available': sum(r['reference_available'] for r in records),
-            'missing_from_source_and_reference': sum(not r['source_present'] and not r['reference_available'] for r in records),
+            'verified_prepared_inputs_available': sum(r['prepared_input_available'] for r in records),
+            'missing_from_all_checked_locations': sum(not r['source_present'] and not r['reference_available'] and not r['prepared_input_available'] for r in records),
             'apps': apps}
 
 
