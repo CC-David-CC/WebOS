@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has2,400 unresolved entries plus33 unqualified blob candidates, after
+ledger now has2,117 unresolved entries plus33 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -275,3 +275,5 @@ Phase52 organizes33 original game design sources: seven rule documents in their 
 Phase53 organizes106 original guidance sources: seven lifecycle/file-operation notes in their app repositories and99 shared catalogs/workspace/cross-component references in the parent. All bodies/modes/histories retained; current behavior and historical instruction safety are separate gates. See [app guidance ownership](APP-GUIDANCE-OWNERSHIP.md).
 
 Phase54 retains76 original system fixture/operator/guidance sources and selected histories, including27 HTML pages and disabled host-operation definitions. Four inline scripts parse, wrappers/Python/JSON pass source checks; no old operator/page/service ran. Two JSON literal-context cases and earlier57 Python holds remain private. See [system reference ownership](SYSTEM-REFERENCE-OWNERSHIP.md).
+
+Phase55 retains283 original test/fixture sources with histories. Python/JS/HTML source checks and exact byte/mode/assembly checks pass; old routes/dependencies/fixture/generated compiler inputs remain explicit ports.13 more current Python literal cases remain private. No old test, fixture, app module, browser, Worker, compiler or guest ran. See [test orchestration source](TEST-ORCHESTRATION-SOURCE.md).

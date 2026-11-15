@@ -2828,5 +2828,20 @@
     "current_json_literal_holds_private": 2,
     "source_bodies_and_modes": "Exact original baseline verified",
     "evidence": "migration/SYSTEM-REFERENCE-OWNERSHIP.md and private phase54"
+  },
+  "legacy_test_orchestration_source": {
+    "additional_parent_source_paths": 283,
+    "python_host_package_fixture_sources": 156,
+    "browser_test_sources": 87,
+    "html_fixtures": 33,
+    "optional_probe_helpers": 7,
+    "selected_history_blobs": 437,
+    "html_historical_blobs": 38,
+    "inline_js_syntax_checks": 37,
+    "known_relative_script_src_locators_resolved": 1,
+    "runtime_dependency_and_asset_closure": false,
+    "current_python_literal_holds_private": 13,
+    "test_fixture_browser_worker_guest_compiler_executions": 0,
+    "evidence": "migration/TEST-ORCHESTRATION-SOURCE.md and private phase55"
   }
 }
