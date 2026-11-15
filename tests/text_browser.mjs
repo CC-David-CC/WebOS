@@ -6,12 +6,15 @@ import {randomBytes} from 'node:crypto';
 import {mkdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import puppeteer from 'puppeteer-core';
+const hostedOrigin = process.env.WEBOS_TEST_ORIGIN;
+assert(!hostedOrigin || hostedOrigin === 'https://ksu.codes', 'Only the user-designated ksu.codes test target is allowed.');
 const root=process.cwd(), output=process.env.WEBOS_TEST_OUTPUT && path.resolve(process.env.WEBOS_TEST_OUTPUT), python=process.env.WEBOS_TEST_PYTHON;
 assert(output && python && !output.startsWith(root+path.sep)); await mkdir(output,{mode:0o700});
-const publicRoot=path.join(output,'public');const built=spawnSync(process.execPath,['scripts/build_development.mjs',publicRoot],{cwd:root,encoding:'utf8'});assert.equal(built.status,0,built.stderr);
-const server=spawn(python,['-u','scripts/run_development.py','--public-root',publicRoot,'--private-root',path.join(output,'state'),'--port','0'],{stdio:['ignore','pipe','pipe']});const serverErrors=[];server.stderr.on('data',v=>serverErrors.push(v));let browser;const errors=[],report={status:'FAIL',scope:'Actual Text/CodeMirror, Files, signed Accounts/Storage; local test accounts only'};
+const publicRoot=path.join(output,'public');const built=hostedOrigin ? {status:0} :spawnSync(process.execPath,['scripts/build_development.mjs',publicRoot],{cwd:root,encoding:'utf8'});assert.equal(built.status,0,built.stderr);
+const server=hostedOrigin ? null : spawn(python,['-u','scripts/run_development.py','--public-root',publicRoot,'--private-root',path.join(output,'state'),'--port','0'],{stdio:['ignore','pipe','pipe']});const serverErrors=[];server?.stderr.on('data',v=>serverErrors.push(v));let browser;const errors=[],report={status:'FAIL',scope:'Actual Text/CodeMirror, Files, signed Accounts/Storage; local test accounts only'};
 try {
- const origin=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Server timeout')),15000);createInterface({input:server.stdout}).once('line',line=>{clearTimeout(timer);resolve(JSON.parse(line).origin);});server.once('exit',()=>reject(Error('Server stopped')));});
+ const origin=hostedOrigin || await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Server timeout')),15000);createInterface({input:server.stdout}).once('line',line=>{clearTimeout(timer);resolve(JSON.parse(line).origin);});server.once('exit',()=>reject(Error('Server stopped')));});
+ report.origin = origin;
  browser=await puppeteer.launch({executablePath:'/snap/chromium/current/usr/lib/chromium-browser/chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
  const username='text'+randomBytes(6).toString('hex'),password=randomBytes(18).toString('base64url');
  async function context(){const c=await browser.createBrowserContext(),p=await c.newPage();await p.setViewport({width:1500,height:1050});p.on('pageerror',e=>errors.push(e.message));await p.goto(origin,{waitUntil:'networkidle0'});return {c,p};}
@@ -37,5 +40,5 @@ try {
  const second=await context();await signin(second.p);await launchFiles(second.p);const copy=await openText(second.p,'alpha-copy.txt');assert.equal(await text(second.p,copy),'Alpha copy edited');
  await second.p.screenshot({path:path.join(output,'text-account-document.png')});assert.deepEqual(errors,[]);Object.assign(report,{status:'PASS',twoIndependentDocuments:true,filesOpenEditSaveCloseReopen:true,saveAsPreservesOriginal:true,cancelUnsavedClose:true,saveOnClose:true,reloadReopensAllThree:true,secondCleanContextRetrievesSavedDocument:true,pageErrors:0});
 }catch(error){report.error={name:error.name,message:error.message};if(browser){let i=0;for(const p of await browser.pages())await p.screenshot({path:path.join(output,'failure-'+i+++'.png')}).catch(()=>{});}throw error;}
-finally{await browser?.close();server.kill('SIGTERM');await new Promise(resolve=>{if(server.exitCode!==null||server.signalCode)resolve();else server.once('exit',resolve);});await writeFile(path.join(output,'result.json'),JSON.stringify(report,null,2)+'\n');await writeFile(path.join(output,'server-errors.log'),Buffer.concat(serverErrors));}
+finally{await browser?.close();if(server){server.kill('SIGTERM');await new Promise(resolve=>{if(server.exitCode!==null||server.signalCode)resolve();else server.once('exit',resolve);});}await writeFile(path.join(output,'result.json'),JSON.stringify(report,null,2)+'\n');await writeFile(path.join(output,'server-errors.log'),Buffer.concat(serverErrors));}
 console.log(JSON.stringify(report));

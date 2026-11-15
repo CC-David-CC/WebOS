@@ -7,16 +7,19 @@ import {mkdir, writeFile, readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import puppeteer from 'puppeteer-core';
+const hostedOrigin = process.env.WEBOS_TEST_ORIGIN;
+assert(!hostedOrigin || hostedOrigin === 'https://ksu.codes', 'Only the user-designated ksu.codes test target is allowed.');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), output = process.env.WEBOS_TEST_OUTPUT && path.resolve(process.env.WEBOS_TEST_OUTPUT), python = process.env.WEBOS_TEST_PYTHON;
 assert(output && python && output !== root && !output.startsWith(root + path.sep), 'Use explicit private external test output and Python.');
 await mkdir(output, {mode: 0o700});
-const publicRoot = path.join(output, 'public'), built = spawnSync(process.execPath, [path.join(root, 'scripts/build_development.mjs'), publicRoot], {cwd: root, encoding: 'utf8'});
+const publicRoot = path.join(output, 'public'), built = hostedOrigin ? {status: 0} : spawnSync(process.execPath, [path.join(root, 'scripts/build_development.mjs'), publicRoot], {cwd: root, encoding: 'utf8'});
 assert.equal(built.status, 0, built.stderr);
-const server = spawn(python, ['-u', path.join(root, 'scripts/run_development.py'), '--public-root', publicRoot, '--private-root', path.join(output, 'state'), '--port', '0'], {stdio: ['ignore', 'pipe', 'pipe']});
-const errors = [], requests = [], serverErrors = []; server.stderr.on('data', value => serverErrors.push(value));
+const server = hostedOrigin ? null : spawn(python, ['-u', path.join(root, 'scripts/run_development.py'), '--public-root', publicRoot, '--private-root', path.join(output, 'state'), '--port', '0'], {stdio: ['ignore', 'pipe', 'pipe']});
+const errors = [], requests = [], serverErrors = []; server?.stderr.on('data', value => serverErrors.push(value));
 let browser; const report = {scope: 'Assembled real Login/Desktop/Files UI with signed account storage; WordCraft/agents not qualified', status: 'FAIL'};
 try {
- const origin = await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('Server startup timed out.')), 15000); createInterface({input: server.stdout}).once('line', line => {clearTimeout(timer); resolve(JSON.parse(line).origin)}); server.once('exit', () => {clearTimeout(timer); reject(Error('Server startup failed.'))}); server.once('error', reject); });
+ const origin = hostedOrigin || await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('Server startup timed out.')), 15000); createInterface({input: server.stdout}).once('line', line => {clearTimeout(timer); resolve(JSON.parse(line).origin)}); server.once('exit', () => {clearTimeout(timer); reject(Error('Server startup failed.'))}); server.once('error', reject); });
+ report.origin = origin;
  browser = await puppeteer.launch({executablePath: process.env.WEBOS_TEST_CHROMIUM || '/snap/chromium/current/usr/lib/chromium-browser/chrome', headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'], userDataDir: path.join(output, 'browser-profile')});
  async function context() { const c = await browser.createBrowserContext(), p = await c.newPage(); await p.setViewport({width: 1280, height: 900}); p.on('pageerror', error => errors.push(error.message)); p.on('request', request => requests.push(new URL(request.url()).pathname)); await p.goto(origin, {waitUntil: 'networkidle0'}); await p.waitForSelector('.login-gate[data-phase=ready]'); return {c, p}; }
  const name = 'test' + randomBytes(6).toString('hex'), secret = randomBytes(16).toString('base64url');
@@ -100,5 +103,5 @@ try {
  assert(!requests.some(value => /v86|\/vm\/|terminal/.test(value))); assert.deepEqual(errors, []);
  Object.assign(report, {status: 'PASS', realBrowserContexts: 2, authenticatedCalculatorInstances: true, folderCreatedOnServer: true, revisionCheckedMove: true, downloadedBytesVerified: true, reloadAndSecondContextRetrieveMovedFile: true, humanUploadConfirmedByServer: true, cleanSecondContextListsUpload: true, windowWorkspaceMinimizeMaximize: true, revisionCheckedRenameAndDelete: true, cancelledDeleteRetainsFile: true, interruptedUploadNeverClaimsSaved: true, closeAndReopenRetainsAccountFiles: true, signoutDisposesViews: true, noGuestRequests: true, pageErrors: 0});
 } catch (error) {report.error = {name: error.name, message: error.message}; if (browser) { const pages = await browser.pages(); for (let i=0;i<pages.length;i++) { await pages[i].screenshot({path:path.join(output, 'failure-'+i+'.png')}).catch(()=>{}); } } throw error;}
-finally { if (browser) await browser.close(); server.kill('SIGTERM'); await new Promise(resolve => { if (server.exitCode !== null || server.signalCode) resolve(); else server.once('exit', resolve); }); await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n'); await writeFile(path.join(output, 'server-errors.log'), Buffer.concat(serverErrors)); }
+finally { if (browser) await browser.close(); if (server) { server.kill('SIGTERM'); await new Promise(resolve => { if (server.exitCode !== null || server.signalCode) resolve(); else server.once('exit', resolve); }); } await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n'); await writeFile(path.join(output, 'server-errors.log'), Buffer.concat(serverErrors)); }
 console.log(JSON.stringify(report));

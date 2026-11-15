@@ -7,25 +7,31 @@ import {mkdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import puppeteer from 'puppeteer-core';
+const hostedOrigin = process.env.WEBOS_TEST_ORIGIN;
+assert(!hostedOrigin || hostedOrigin === 'https://ksu.codes', 'Only the user-designated ksu.codes test target is allowed.');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), output = process.env.WEBOS_TEST_OUTPUT && path.resolve(process.env.WEBOS_TEST_OUTPUT), python = process.env.WEBOS_TEST_PYTHON, site = process.env.WEBOS_WORDCRAFT_SITE;
-assert(output && python && site && output !== root && !output.startsWith(root + path.sep), 'Set new external WEBOS_TEST_OUTPUT, WEBOS_TEST_PYTHON and verified WEBOS_WORDCRAFT_SITE.');
+assert(output && python && (hostedOrigin || site) && output !== root && !output.startsWith(root + path.sep), 'Set new external WEBOS_TEST_OUTPUT, WEBOS_TEST_PYTHON and verified WEBOS_WORDCRAFT_SITE.');
 await mkdir(output, {mode: 0o700}); const publicRoot = path.join(output, 'public');
-const built = spawnSync(process.execPath, [path.join(root, 'scripts/build_development.mjs'), publicRoot, '--wordcraft', site], {cwd: root, encoding: 'utf8'}); assert.equal(built.status, 0, built.stderr);
+const built = hostedOrigin ? {status: 0} : spawnSync(process.execPath, [path.join(root, 'scripts/build_development.mjs'), publicRoot, '--wordcraft', site], {cwd: root, encoding: 'utf8'}); assert.equal(built.status, 0, built.stderr);
 const fixture = spawnSync(python, ['-c', `import sys,zipfile
 with zipfile.ZipFile(sys.argv[1],'x',zipfile.ZIP_DEFLATED) as z:
  z.writestr('[Content_Types].xml','<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>')
  z.writestr('_rels/.rels','<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>')
  z.writestr('word/document.xml','<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:t>WebOS integration baseline.</w:t></w:r></w:p><w:sectPr><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/></w:sectPr></w:body></w:document>')
 `, path.join(output, 'Integration.docx')], {encoding: 'utf8'}); assert.equal(fixture.status, 0, fixture.stderr);
-const server = spawn(python, ['-u', path.join(root, 'scripts/run_development.py'), '--public-root', publicRoot, '--private-root', path.join(output, 'state'), '--port', '0'], {stdio: ['ignore', 'pipe', 'pipe']});
-let browser; const errors = [], requests = [], serverErrors = [], report = {scope: 'Real assembled Login/Desktop/Files/WordCraft with synthetic account persistence; not delegated agents or hosted deployment', status: 'FAIL'};
-server.stderr.on('data', data => serverErrors.push(data));
+const server = hostedOrigin ? null : spawn(python, ['-u', path.join(root, 'scripts/run_development.py'), '--public-root', publicRoot, '--private-root', path.join(output, 'state'), '--port', '0'], {stdio: ['ignore', 'pipe', 'pipe']});
+let browser; const errors = [], requests = [], diagnostics = [], serverErrors = [], report = {scope: 'Real assembled Login/Desktop/Files/WordCraft with synthetic account persistence; not delegated agents or hosted deployment', status: 'FAIL'};
+server?.stderr.on('data', data => serverErrors.push(data));
 try {
- const origin = await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('Development startup timed out.')), 15000); createInterface({input: server.stdout}).once('line', line => {clearTimeout(timer); resolve(JSON.parse(line).origin)}); server.once('exit', () => {clearTimeout(timer); reject(Error('Development startup failed.'))}); server.once('error', reject); });
+ const origin = hostedOrigin || await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('Development startup timed out.')), 15000); createInterface({input: server.stdout}).once('line', line => {clearTimeout(timer); resolve(JSON.parse(line).origin)}); server.once('exit', () => {clearTimeout(timer); reject(Error('Development startup failed.'))}); server.once('error', reject); });
+ report.origin = origin;
  browser = await puppeteer.launch({executablePath: process.env.WEBOS_TEST_CHROMIUM || '/snap/chromium/current/usr/lib/chromium-browser/chrome', headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage', '--enable-unsafe-swiftshader', '--use-angle=swiftshader'], userDataDir: path.join(output, 'browser-profile')});
  const username = 'test' + randomBytes(6).toString('hex'), password = randomBytes(16).toString('base64url');
  async function context(register = false) {
    const c = await browser.createBrowserContext(), p = await c.newPage(); p.setDefaultTimeout(120000); await p.setViewport({width: 1440, height: 1000});
+   p.on('console', message => { const text = message.text(); if (['error', 'warn'].includes(message.type()) && /WebGL|WebAssembly|CompileError|RuntimeError|GPU|context lost|memory/i.test(text)) diagnostics.push({kind:'console',type:message.type(),text:text.slice(0,1000)}); });
+   p.on('requestfailed', request => diagnostics.push({kind:'requestfailed',path:new URL(request.url()).pathname,error:request.failure()?.errorText}));
+   p.on('response', response => { const pathname = new URL(response.url()).pathname; if (pathname.endsWith('.wasm')) diagnostics.push({kind:'wasm-response',status:response.status(),path:pathname,time:Date.now()}); });
    p.on('pageerror', error => errors.push(error.message)); p.on('request', request => requests.push(new URL(request.url()).pathname)); await p.goto(origin, {waitUntil: 'networkidle0'}); await p.waitForSelector('.login-gate[data-phase=ready]');
    if (register) await p.click('.login-toggle'); await p.type('[name=username]', username); await p.type('[name=password]', password); if (register) await p.type('[name=confirmation]', password); await p.click('[type=submit]'); await p.waitForSelector('.webos-desktop'); return {c, p};
  }
@@ -81,6 +87,6 @@ try {
  Object.assign(report, {status: 'PASS', realBrowserContexts: 3, actualWasmEngine: true, importedAccountDOCX: true, browserKeyboardAndNativeCommandsShareDocument: true, nativeUndoRedo: true,
    humanSaveDurablyReopenedInCleanContext: true, staleSaveRejectedAndPreservesEdits: true, filesCloseDoesNotStopEditorSave: true, saveAsAndPdfKeepDistinctIdentities: true,
    cancelledCloseAndFailedSaveKeepEditor: true, noGuestRequests: true, pageErrors: 0});
-} catch (error) { report.error = {name: error.name, message: error.message}; if(browser){let i=0;for(const p of await browser.pages())await p.screenshot({path:path.join(output,'failure-'+i+++'.png')}).catch(()=>{});} throw error; }
-finally { if (browser) await browser.close(); server.kill('SIGTERM'); await new Promise(resolve => {if (server.exitCode !== null || server.signalCode) resolve(); else server.once('exit', resolve)}); await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n'); await writeFile(path.join(output, 'server-errors.log'), Buffer.concat(serverErrors)); }
+} catch (error) { report.error = {name: error.name, message: error.message}; report.pageErrors = errors; report.diagnostics = diagnostics; if(browser){let i=0;for(const p of await browser.pages())await p.screenshot({path:path.join(output,'failure-'+i+++'.png')}).catch(()=>{});} throw error; }
+finally { if (browser) await browser.close(); if (server) { server.kill('SIGTERM'); await new Promise(resolve => {if (server.exitCode !== null || server.signalCode) resolve(); else server.once('exit', resolve)}); } await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n'); await writeFile(path.join(output, 'server-errors.log'), Buffer.concat(serverErrors)); await writeFile(path.join(output, 'diagnostics.json'), JSON.stringify({pageErrors:errors, events:diagnostics},null,2)+'\n'); }
 console.log(JSON.stringify(report));

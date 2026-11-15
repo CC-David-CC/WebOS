@@ -28,8 +28,9 @@ source presence does not establish functional support.
   passed too. Stale saves are rejected; Save As/PDF identities stay separate;
   closing Files does not stop editor saves. Delegated agents remain unqualified.
 
-These are local development results, not a deployed-site or physical second-
-machine acceptance claim. Delegated agent authorization and broader suite
+These workflows also pass on **https://ksu.codes**, the fresh test deployment,
+using disposable accounts and clean browser contexts. A physical second-client
+machine test remains separate. Delegated agent authorization and broader suite
 integration remain incomplete. Text preserves UTF-8 BOM and uniform line
 endings; mixed-ending save normalization and other legacy Text features remain
 explicit follow-up work.
@@ -87,14 +88,15 @@ python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 The LFS setup affects only the new egui checkout. Verified local origins retain
 all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
 outside Git and web roots, under `/path/to/workspace/Projects/.webos-migration/`.
-Latest active checkpoint: `run-20261115-13-fresh-bringup/checkpoint.json` and
-`RESUME.md`; earlier phases retain preservation and extraction evidence.
+Latest active checkpoint: `run-20261115-14-test-deployment/checkpoint.json` and
+`RESUME.md`; phase13 records local/clean-clone acceptance. Earlier phases retain
+preservation and extraction evidence.
 
 The tested WordCraft source/build integration is committed. The primary
 checkout still retains a historical-input lock update and a historical baseline
-browser test outside this milestone. Preserve that unrelated work. Original source has not been modified; no ksu.codes deployment change has
-been made in this bring-up phase. Verify the test deployment target and prepared
-artifacts before changing server configuration or starting the new test system.
+browser test outside this milestone. Preserve that unrelated work. Original source has not been modified. The fresh ksu.codes test route now
+points to the new loopback service; beta.ksu.codes remains unchanged. Read
+`deploy/TEST-STATUS.md` for the actual release, hosted evidence and rollback.
 
 ## WordCraft artifact and acceptance
 
@@ -111,3 +113,8 @@ With a verified source-matching artifact directory, run
 The authoring test checks new-document formatting, save/reopen, reload and
 second-context persistence. The broader test checks actual typing/native
 commands, undo/redo, conflicts, Files-independent saving and close guards.
+
+For the hosted test site, create a fresh account through the Login UI. The browser
+acceptance scripts can target the user-designated test site by setting
+`WEBOS_TEST_ORIGIN=https://ksu.codes`; this mode creates disposable test accounts
+and does not start or stop the remote server. Other remote origins are refused.

@@ -2215,7 +2215,7 @@
     "clean_clone_build_without_original_source": false,
     "whole_suite_functional_verification": false
   },
-  "production_changes": "NONE; not authorized",
+  "production_changes": "No production-site change requested; user-designated ksu.codes test route replaced, new test service started; beta and other checked services unchanged",
   "private_publication": "NOT ATTEMPTED; requires separate authorization",
   "asset_preservation": {
     "historical_runtime_archive": "1,383 payload files restored and verified against internal manifest; current compatibility remains unverified",
@@ -2540,9 +2540,19 @@
     "files": "PASS local real signed server folder/upload/rename/move/download/delete/reload/two-context workflow",
     "text": "PASS local and clean pinned checkout: two-doc roundtrip, SaveAs, closeguards, reload/secondcontext",
     "wordcraft": "PASS local and clean pinned checkout: new heading/paragraph/list, durable accountsave, Filesreopen, reload/secondcontext exactformatting; broader conflict/SaveAs/PDF/closeguards suite PASS",
-    "hosted_test_deployment": "not changed yet; target routing being verified",
-    "physical_second_machine": "not tested",
+    "hosted_test_deployment": "ACTIVE https://ksu.codes; fresh test users; Calculator/Files/Text/WordCraft hosted acceptance PASS",
+    "physical_second_machine": "not tested; two clean client browser contexts verified",
     "delegated_agent_qualification": "OPEN",
     "entire_suite_complete": false
+  },
+  "test_deployment": {
+    "origin": "https://ksu.codes",
+    "served_source_parent": "217ececf045f5da98a4dcfe37b6d599c855d9d17",
+    "service": "webos-rebuild-test.service",
+    "listen": "127.0.0.1:38140",
+    "state": "fresh separate private state; old state untouched",
+    "beta": "source route block/page bytes verified unchanged",
+    "report": "deploy/TEST-STATUS.md",
+    "supplemental_concurrency": "OPEN: third simultaneous WordCraft startup timed out; first two editors save/conflict checks passed; preserved evidence"
   }
 }

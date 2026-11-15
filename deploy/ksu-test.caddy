@@ -1,0 +1,8 @@
+ksu.codes {
+	import site_defaults
+	header >Cache-Control "no-store"
+	header >Cross-Origin-Opener-Policy "same-origin"
+	header >Cross-Origin-Embedder-Policy "require-corp"
+	header >Content-Security-Policy "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
+	reverse_proxy 127.0.0.1:38140
+}
