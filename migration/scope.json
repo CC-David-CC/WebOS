@@ -2879,5 +2879,19 @@
     "compiler_control_publisher_deployment_executions": 0,
     "native_implementation_or_build_recipe_changes": false,
     "evidence": "migration/NATIVE-REFERENCE-OWNERSHIP.md and private phase58"
+  },
+  "storage_legacy_mirror_reference_tests": {
+    "original_test_sources": 7,
+    "assertions_preserved": true,
+    "new_test_only_dependency_pin": "fake-indexeddb@6.2.8",
+    "original_dependency_environment_known": false,
+    "reference_node_subtests": 7,
+    "reference_pass": 3,
+    "reference_fail": 4,
+    "command_exit_code": 1,
+    "same_captured_current_clean_outcomes": true,
+    "production_source_or_dependencies_changed": false,
+    "real_storage_or_browser_or_account_sync_qualified": false,
+    "evidence": "migration/STORAGE-MIRROR-REFERENCES.md and private phase59"
   }
 }
