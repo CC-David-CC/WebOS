@@ -34,7 +34,9 @@ SolidCraft includes a separate brand/interface license. Preserve its notices and
 
 ## Disk layout and source checks
 
-The seven core component paths stay at the root: `runtime/`, `desktop/`, `login/`, `accounts/`, `storage/`, `files/`, `wordcraft/`. Additional apps are individual submodules under `apps/`; engines under `engines/`; original JSketcher under `legacy/jsketcher/`. These grouping directories are not grouped source repositories. `tests/`, `scripts/`, and `deploy/` belong to the parent. A loopback development composition is available; production deployment definitions remain pending.
+Platform components live at `platform/{runtime,desktop,login,accounts,storage}/`. All applications live under `apps/`, including Files, WordCraft and original JSketcher. Reusable engines live under `engines/`. Shared library, asset and build-tool projects will be attached under `libraries/`, `assets/` and `tooling/` after ownership review. Each meaningful component remains an independent repository; these grouping directories are not grouped source repositories. `tests/`, `scripts/`, and `deploy/` belong to the parent.
+
+Disk organization is incomplete. Many existing beta apps and tools still await extraction. Existing editors remain in scope alongside their replacements. Shared Craft libraries and FFmpeg have been identified but are not yet assembled here. The current priority is complete source organization, followed by remaining integration work.
 
 Run `python3 scripts/inspect_assembly.py` to inspect actual source wiring without network calls. Add `--require-core` to require all seven core sources. Run `python3 -m unittest discover -s tests -v` for source composition acceptance. All seven required component sources are present. Source composition tests remain separate from browser/backend acceptance.
 

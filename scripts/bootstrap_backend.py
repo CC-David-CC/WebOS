@@ -22,7 +22,7 @@ def main():
     if not shutil.which('uv'):
         parser.error('uv is required; no global dependency installation is performed')
     for component, module in [('runtime', 'webos_runtime'), ('accounts', 'webos_accounts'), ('storage', 'webos_storage')]:
-        if not (root / component / 'src' / module / '__init__.py').is_file():
+        if not (root / 'platform' / component / 'src' / module / '__init__.py').is_file():
             parser.error('Required packaged backend source is unavailable: ' + component)
     os.umask(0o077)
     subprocess.run(['uv', 'venv', str(target)], check=True)
@@ -30,7 +30,7 @@ def main():
     # are the three trusted local checkouts, never a similarly named registry package.
     subprocess.run(['uv', 'pip', 'install', '--python', str(target / 'bin/python'),
                     '--no-deps', '-r', str(root / 'deploy/backend-requirements.lock'),
-                    '-e', str(root / 'runtime'), '-e', str(root / 'accounts'), '-e', str(root / 'storage')], check=True)
+                    '-e', str(root / 'platform' / 'runtime'), '-e', str(root / 'platform' / 'accounts'), '-e', str(root / 'platform' / 'storage')], check=True)
     print('Development backend environment ready: ' + str(target / 'bin/python'))
     print('No server was started; no account state or production deployment was changed.')
 

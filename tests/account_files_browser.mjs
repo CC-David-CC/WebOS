@@ -23,7 +23,7 @@ await build({stdin: {contents: `
  write:(path,text,revision=null)=>files.write(path,text,revision),read:async path=>{const value=await files.read(path);return {text:new TextDecoder().decode(value.data),revision:value.sha256}},renew:()=>accounts.renew(),logout:async()=>{await accounts.logout();view.dispose();open();},dispose:()=>view.dispose()});
 `, resolveDir: root, sourcefile: 'login-component-host.mjs'}, bundle: true, format: 'esm',
  outfile: path.join(publicRoot, 'client.mjs'), metafile: true, write: true, logLevel: 'silent'});
-await build({entryPoints:[path.join(root,'storage/src/webos_storage/vendor/js-sha256/verify-worker.mjs')],bundle:true,format:'esm',outfile:path.join(publicRoot,'workers/storage-verify.mjs'),logLevel:'silent'});
+await build({entryPoints:[path.join(root,'platform/storage/src/webos_storage/vendor/js-sha256/verify-worker.mjs')],bundle:true,format:'esm',outfile:path.join(publicRoot,'workers/storage-verify.mjs'),logLevel:'silent'});
 await writeFile(path.join(publicRoot, 'index.html'), '<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><link rel="stylesheet" href="/client.css"></head><body><script type="module" src="/client.mjs"></script></body></html>');
 let server = spawn(python, ['-u', path.join(root, 'scripts/run_development.py'), '--public-root', publicRoot, '--private-root', path.join(output, 'state'), '--port', '0'], {stdio: ['ignore', 'pipe', 'pipe']});
 let browser; const serverErrors=[];server.stderr.on('data', data=>serverErrors.push(data));

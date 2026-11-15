@@ -441,7 +441,7 @@
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "files",
+      "component_path": "apps/files",
       "integration": "Public server-backed Files view verified in actual development composition; remaining old features explicitly pending"
     },
     {
@@ -1077,7 +1077,7 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "unmodified WASM compile check passed; browser build not yet verified",
-      "component_path": "wordcraft"
+      "component_path": "apps/wordcraft"
     },
     {
       "id": "gridcraft",
@@ -1414,22 +1414,18 @@
     "solitaire_baseline": "24 original files and Git modes/tree verified across3 historical app locations; typecheck and16 existing tests pass in baseline/extracted clone and isolated run hiding original, primary assembly and recovery."
   },
   "component_layout": {
-    "core": "runtime/, desktop/, login/, accounts/, storage/, files/, wordcraft/",
-    "additional_apps": "apps/<component>/",
-    "supporting_engines": "engines/<component>/",
-    "historical_projects": "legacy/<component>/",
     "parent_owned": "tests/, scripts/, deploy/",
     "current_paths": {
       "acad": "apps/acad",
       "help": "apps/help",
       "calculator": "apps/calculator",
-      "files": "files",
+      "files": "apps/files",
       "engine-manifold": "engines/manifold",
       "engine-opencascade": "engines/opencascade",
       "engine-smlib-wasm": "engines/smlib-wasm",
       "engine-usd-brep": "engines/usd-brep",
-      "legacy-jsketcher": "legacy/jsketcher",
-      "wordcraft": "wordcraft",
+      "legacy-jsketcher": "apps/jsketcher",
+      "wordcraft": "apps/wordcraft",
       "gridcraft": "apps/gridcraft",
       "deckcraft": "apps/deckcraft",
       "pdfcraft": "apps/pdfcraft",
@@ -1446,14 +1442,21 @@
       "solidcraft": "apps/solidcraft",
       "texturecraft": "apps/texturecraft",
       "materialcraft": "apps/materialcraft",
-      "runtime": "runtime",
-      "accounts": "accounts",
-      "storage": "storage",
-      "desktop": "desktop"
+      "runtime": "platform/runtime",
+      "accounts": "platform/accounts",
+      "storage": "platform/storage",
+      "desktop": "platform/desktop",
+      "login": "platform/login",
+      "solitaire": "apps/solitaire"
     },
-    "missing_core_sources": [
-      "login"
-    ]
+    "missing_core_sources": [],
+    "platform": "platform/<component>/",
+    "applications": "apps/<component>/",
+    "supporting_engines": "engines/<component>/",
+    "shared_libraries": "libraries/<component>/ (pending)",
+    "shared_assets": "assets/<component>/ (pending)",
+    "shared_tooling": "tooling/<component>/ (pending)",
+    "organization_complete": false
   },
   "resource_policy": {
     "state": "legacy admission limits need configurable, artifact-derived installation policy before release",

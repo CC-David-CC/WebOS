@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import subprocess
 
+PLATFORM = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage'))
 CORE = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage', 'files', 'wordcraft'))
 
 
@@ -38,7 +39,9 @@ def inspect(root):
         if not re.fullmatch(r'[a-z][a-z0-9-]*', component):
             errors.append('Invalid component identity')
             continue
-        allowed = path in CORE or (len(Path(path).parts) == 2 and Path(path).parts[0] in ('apps', 'engines', 'legacy'))
+        parts = Path(path).parts
+        role = ('platform' if component in PLATFORM else 'engines' if component.startswith('engine-') else 'apps')
+        allowed = len(parts) == 2 and parts[0] == role and '..' not in parts and not Path(path).is_absolute()
         if not allowed:
             errors.append('Component outside organized source layout: ' + path)
         if url != '../' + component + '.git':
@@ -64,7 +67,7 @@ def inspect(root):
     if set(links) != {r['path'] for r in records}:
         errors.append('Git links and available component checkouts disagree')
     return {'parent_commit': git(root, 'rev-parse', 'HEAD'), 'components': records,
-            'component_count': len(records), 'missing_core_sources': sorted(CORE - set(links)),
+            'component_count': len(records), 'missing_core_sources': sorted(CORE - {r['id'] for r in records}),
             'errors': errors, 'scope': 'source composition only; no functional readiness claim'}
 
 

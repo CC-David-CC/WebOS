@@ -8,7 +8,7 @@
 	path = apps/calculator
 	url = ../calculator.git
 [submodule "files"]
-	path = files
+	path = apps/files
 	url = ../files.git
 [submodule "engine-manifold"]
 	path = engines/manifold
@@ -23,10 +23,10 @@
 	path = engines/usd-brep
 	url = ../engine-usd-brep.git
 [submodule "legacy-jsketcher"]
-	path = legacy/jsketcher
+	path = apps/jsketcher
 	url = ../legacy-jsketcher.git
 [submodule "wordcraft"]
-	path = wordcraft
+	path = apps/wordcraft
 	url = ../wordcraft.git
 [submodule "gridcraft"]
 	path = apps/gridcraft
@@ -77,19 +77,19 @@
 	path = apps/materialcraft
 	url = ../materialcraft.git
 [submodule "runtime"]
-	path = runtime
+	path = platform/runtime
 	url = ../runtime.git
 [submodule "accounts"]
-	path = accounts
+	path = platform/accounts
 	url = ../accounts.git
 [submodule "storage"]
-	path = storage
+	path = platform/storage
 	url = ../storage.git
 [submodule "desktop"]
-	path = desktop
+	path = platform/desktop
 	url = ../desktop.git
 [submodule "login"]
-	path = login
+	path = platform/login
 	url = ../login.git
 [submodule "solitaire"]
 	path = apps/solitaire
