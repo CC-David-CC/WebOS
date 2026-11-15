@@ -1132,7 +1132,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "unmodified WASM compile check passed; browser build not yet verified",
-      "component_path": "apps/wordcraft"
+      "component_path": "apps/wordcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "gridcraft",
@@ -1147,7 +1148,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/gridcraft"
+      "component_path": "apps/gridcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "deckcraft",
@@ -1163,7 +1165,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/deckcraft"
+      "component_path": "apps/deckcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "pdfcraft",
@@ -1181,7 +1184,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/pdfcraft"
+      "component_path": "apps/pdfcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "photocraft",
@@ -1196,7 +1200,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/photocraft"
+      "component_path": "apps/photocraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "vectorcraft",
@@ -1212,7 +1217,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/vectorcraft"
+      "component_path": "apps/vectorcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "designcraft",
@@ -1227,7 +1233,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/designcraft"
+      "component_path": "apps/designcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "figcraft",
@@ -1242,7 +1249,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/figcraft"
+      "component_path": "apps/figcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "anicraft",
@@ -1258,7 +1266,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/anicraft"
+      "component_path": "apps/anicraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "filmcraft",
@@ -1273,7 +1282,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/filmcraft"
+      "component_path": "apps/filmcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "effectcraft",
@@ -1288,7 +1298,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/effectcraft"
+      "component_path": "apps/effectcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "soundcraft",
@@ -1303,7 +1314,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/soundcraft"
+      "component_path": "apps/soundcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "lightcraft",
@@ -1317,7 +1329,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/lightcraft"
+      "component_path": "apps/lightcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "cadcraft",
@@ -1332,7 +1345,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/cadcraft"
+      "component_path": "apps/cadcraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "solidcraft",
@@ -1350,7 +1364,8 @@
       "fork_branch": "webos/integration",
       "build_status": "not run",
       "distribution_gate": "Separate LICENSE-BRAND covers interface/brand material; permission/compliance review required before distribution; no deployment attempted",
-      "component_path": "apps/solidcraft"
+      "component_path": "apps/solidcraft",
+      "project_origin": "Tangency Labs community project"
     },
     {
       "id": "texturecraft",
@@ -1365,7 +1380,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/texturecraft"
+      "component_path": "apps/texturecraft",
+      "project_origin": "ArtCraft first-party project"
     },
     {
       "id": "materialcraft",
@@ -1380,7 +1396,8 @@
       ],
       "fork_branch": "webos/integration",
       "build_status": "not run",
-      "component_path": "apps/materialcraft"
+      "component_path": "apps/materialcraft",
+      "project_origin": "ArtCraft first-party project"
     }
   ],
   "system_components": [

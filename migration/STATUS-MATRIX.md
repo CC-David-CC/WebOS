@@ -17,6 +17,8 @@ Observed source snapshot: `c4fad31a760d8f59f86accae497168ee5ffbd3c7`. All107 sel
 
 These categories overlap. The actual107 repositories are75 apps,7 engines,5 platform components,17 libraries,2 shared asset projects and1 shared tooling project. The75 app-repository count is not the75-entry old catalog.
 
+Craft provenance: the selected17 are16 ArtCraft first-party projects plus Tangency Labs community SolidCraft. See [the complete source/provenance list](CRAFT-APPS.md).
+
 ## Full per-component matrix
 
 The source column below is PASS for selected source presence, retained/extracted history, correct ownership and independent Git retrieval. It does not mean complete functionality. WordCraft also has separately retained newer review work in the primary checkout; the parent selects its preserved baseline.
