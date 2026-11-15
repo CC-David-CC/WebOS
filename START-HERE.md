@@ -58,7 +58,7 @@ accounts for315 preserved reports/logs. Their old PASS/FAIL text is not current
 acceptance evidence. Possible fixture/build-input reuse remains explicit review;
 no raw output was copied into active source or discarded.
 
-The [legacy CAD corpus catalogue](migration/CAD-CORPUS.md) records243
+The [legacy CAD corpus catalogue](migration/CAD-CORPUS.md) records276
 byte-identical parent-owned test sources and separately preserved old runtime
 metadata. These drivers are unexecuted and need a deliberate public-interface,
 fixture and source-path port; they are not current ACAD/JSketcher acceptance.
