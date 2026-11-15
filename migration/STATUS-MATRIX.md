@@ -1,197 +1,217 @@
-# Complete source status matrix
+# Current source and rebuild status matrix
 
-Observed source snapshot: `c4fad31a760d8f59f86accae497168ee5ffbd3c7`. All107 selected repositories passed fresh recursive local-clone/source checks; all six assembly tests passed. This is a point-in-time report, not a release manifest or a claim that107 apps work.
+This chart covers the parent selection at `58dd6244f449cd1f1a15647d7121c17bd9449bec`.
+Git links select exact revisions. All112 pins match the clean first-slice source
+proof and remain in local bare origins. That browser qualification initialized
+eleven components; it does not prove all112 components build or work.
 
-**PASS** means evidence exists for the stated scope. **OPEN** means incomplete or unverified. **FAIL** means an actual check failed; pre-existing failures are retained. The original workspace and deployment remain unchanged.
+There are111 component repositories plus1 preserved legacy repository:
+78 apps (33 system/CAD,17 Craft,28 games),8 engines,5 platform components,
+17 libraries,2 shared asset projects and1 shared tooling project, plus legacy Rooms.
 
-| Area | Organized source | Required assets/build | New assembled runtime |
-|---|---|---|---|
-| 17 Craft apps | PASS17/17 | WordCraft baseline PASS; others OPEN | OPEN |
-| Shared Craft projects | PASS craft-libs, egui, fonts, translations, common actions | Pinned data/history PASS; wiring OPEN | OPEN |
-| 28 old registered games | PASS28/28 | Declared new-game assets PASS; full browser builds OPEN | OPEN |
-| Remaining registered editors/tools | PASS source placement | Partial; external asset organization OPEN | OPEN |
-| 75 source registry entries / 74 live beta entries | PASS source owners assigned | Complete static/build asset sweep OPEN | OPEN |
-| Platform plus Files | PASS independent source | Earlier signed slice passed; post-layout runtime retest OPEN | Full minimum OPEN |
-| Linux/v86 optional app | OPEN - requested; source/asset boundaries being derived | OPEN - pull static base assets from example.invalid | OPEN; not a minimum dependency |
-| Nonregistered source and platform leftovers | OPEN | OPEN | OPEN |
+**PASS** covers the stated check. **OPEN** means incomplete or unverified.
+Retained baseline tests are separate from new runtime acceptance.
 
-These categories overlap. The actual107 repositories are75 apps,7 engines,5 platform components,17 libraries,2 shared asset projects and1 shared tooling project. The75 app-repository count is not the75-entry old catalog.
+| Gate | Current result |
+|---|---|
+| Registered component source layout | PASS:112 independent repositories listed below |
+| Entire original source-area reconciliation | OPEN: preserved backend, scripts, research, tests and WIP still need final disposition |
+| Calculator → Files → Text → WordCraft | PASS local/clean workflows and disposable-account checks on ksu.codes |
+| Server account files | PASS signed persistence, conflicts, restart and second clean browser context |
+| Physical second-machine acceptance | OPEN; browser contexts are not a second machine |
+| Human/agent operations | Live routing and Accounts core checks PASS; authenticated transport, consent and scoped agent file authority OPEN |
+| Remaining16 Craft apps and old app/game integration | OPEN; source presence is not app support |
+| Native/font review | Math-font cause fixed in review; WordCraft main4,969 tests PASS; full application CI OPEN; shared default-workspace checks PASS in review |
+| Historical assets and old-user migration | Not prerequisites for the fresh rebuild; preserve existing recovery |
+| External Git publication | Not authorized or attempted; local origins are not off-machine backups |
 
-Craft provenance: the selected17 are16 ArtCraft first-party projects plus Tangency Labs community SolidCraft. See [the complete source/provenance list](CRAFT-APPS.md).
+The original workspace and beta site remain unchanged. ksu.codes is the fresh
+test target; [deployment status](../deploy/TEST-STATUS.md) records what it serves.
+Help and newer authority/routing/delegation changes remain local. The preserved
+office substitute, ACAD and original JSketcher remain separate applications.
+Hosted Rooms is unused historical code, not a new service.
 
-## Full per-component matrix
+## Platform (5)
 
-The source column below is PASS for selected source presence, retained/extracted history, correct ownership and independent Git retrieval. It does not mean complete functionality. WordCraft also has separately retained newer review work in the primary checkout; the parent selects its preserved baseline.
+| Component | Directory | Source/history | Checks | New assembly |
+|---|---|---|---|---|
+| accounts | `platform/accounts/` | PASS | PASS:21 retained-identity/delegation tests and signed browser regression | PASS human account policy; optional delegation core inactive, transport/file authority OPEN |
+| desktop | `platform/desktop/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
+| login | `platform/login/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
+| runtime | `platform/runtime/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
+| storage | `platform/storage/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 
-### Craft apps
+## System and CAD apps (33)
 
-| Component | Actual directory | Source | Component checks | Assets/build | New host |
-|---|---|---|---|---|---|
-| anicraft | `apps/anicraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| cadcraft | `apps/cadcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| deckcraft | `apps/deckcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| designcraft | `apps/designcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| effectcraft | `apps/effectcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| figcraft | `apps/figcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| filmcraft | `apps/filmcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| gridcraft | `apps/gridcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| lightcraft | `apps/lightcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| materialcraft | `apps/materialcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| pdfcraft | `apps/pdfcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| photocraft | `apps/photocraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| solidcraft | `apps/solidcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified; distribution license/brand gate OPEN | OPEN - new host integration not qualified |
-| soundcraft | `apps/soundcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| texturecraft | `apps/texturecraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| vectorcraft | `apps/vectorcraft/` | PASS | OPEN - selected source baseline only | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| wordcraft | `apps/wordcraft/` | PASS | PASS - native checks and real baseline editor browser test | PASS baseline - complete editor artifact; hosted review build remains OPEN | OPEN - account-save integration pending |
+| Component | Directory | Source/history | Checks | New assembly |
+|---|---|---|---|---|
+| acad | `apps/acad/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| arduino-simulator | `apps/arduino-simulator/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| audio-editor | `apps/audio-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| browser | `apps/browser/` | PASS | FAIL - one unchanged pre-existing stale host-contract assertion | OPEN: complete browser build and new host integration not qualified |
+| calculator | `apps/calculator/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
+| circuit-lab | `apps/circuit-lab/` | PASS | PASS retained extraction/domain probes; browser and distribution qualification OPEN | OPEN: complete browser build and new host integration not qualified |
+| circuitjs | `apps/circuitjs/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| data-explorer | `apps/data-explorer/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| diagrams-net | `apps/diagrams-net/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| digital-logic | `apps/digital-logic/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| document-editor | `apps/document-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| electronics-design | `apps/electronics-design/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| embroidery-studio | `apps/embroidery-studio/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| excalidraw | `apps/excalidraw/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| files | `apps/files/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
+| gcode-preview | `apps/gcode-preview/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| grid-tools | `apps/grid-tools/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| help | `apps/help/` | PASS | PASS:5 boundary checks and signed Desktop lifecycle | PASS local/clean; not in hosted phase15 release |
+| image-editor | `apps/image-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| legacy-jsketcher | `apps/jsketcher/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| linux | `apps/linux/` | PASS | PASS independent source/history and static base inputs | OPEN optional host port; excluded from minimum dependencies |
+| microduck | `apps/microduck/` | PASS | FAIL - 200 pass / 11 missing-fixture failures; baseline and extraction match | OPEN: complete browser build and new host integration not qualified |
+| notebook | `apps/notebook/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| pdf-viewer | `apps/pdf-viewer/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| pcb-design | `apps/pcb-design/` | PASS | PASS retained extraction/domain probes; browser and distribution qualification OPEN | OPEN: complete browser build and new host integration not qualified |
+| personal-template | `apps/personal-template/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| pico-simulator | `apps/pico-simulator/` | PASS | PASS - four configured simulator test commands | OPEN: complete browser build and new host integration not qualified |
+| replicad | `apps/replicad/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| spreadsheet | `apps/spreadsheet/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| stitch-converter | `apps/stitch-converter/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| svg-editor | `apps/svg-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| terminal | `apps/terminal/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| text | `apps/text/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 
-### Existing games
+## Craft apps (17)
 
-| Component | Actual directory | Source | Component checks | Assets/build | New host |
-|---|---|---|---|---|---|
-| chess-study | `apps/chess-study/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| clockwork-quest | `apps/clockwork-quest/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| clockwork-room | `apps/clockwork-room/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| crystal-defense | `apps/crystal-defense/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| drone-circuit | `apps/drone-circuit/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| expression-puppet | `apps/expression-puppet/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| falling-blocks | `apps/falling-blocks/` | PASS | OPEN - no original package suite; coach render/rebuild not run | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| garden-defense | `apps/garden-defense/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| gravity-pinball | `apps/gravity-pinball/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| kinetic-relay | `apps/kinetic-relay/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| lantern-leap | `apps/lantern-leap/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| marble-works | `apps/marble-works/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| memory-garden | `apps/memory-garden/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| orbital-courier | `apps/orbital-courier/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| owl-companion | `apps/owl-companion/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| physics-playground | `apps/physics-playground/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| pocket-golf | `apps/pocket-golf/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| pocket-rally | `apps/pocket-rally/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| reactive-control-desk | `apps/reactive-control-desk/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| rhythm-garden | `apps/rhythm-garden/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| sky-courier | `apps/sky-courier/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| sling-targets | `apps/sling-targets/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| snake-garden | `apps/snake-garden/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| solitaire | `apps/solitaire/` | PASS | PASS - configured independent domain/type checks | OPEN - complete browser asset build not verified | OPEN - new host integration not qualified |
-| stack-balance | `apps/stack-balance/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| story-cards | `apps/story-cards/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| tabletop-bot-arena | `apps/tabletop-bot-arena/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
-| target-garden | `apps/target-garden/` | PASS | PASS - configured independent domain/type checks | PASS - tracked source and declared asset paths checked; full browser graph OPEN | OPEN - new host integration not qualified |
+| Component | Directory | Source/history | Checks | New assembly |
+|---|---|---|---|---|
+| anicraft | `apps/anicraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| cadcraft | `apps/cadcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| deckcraft | `apps/deckcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| designcraft | `apps/designcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| effectcraft | `apps/effectcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| figcraft | `apps/figcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| filmcraft | `apps/filmcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| gridcraft | `apps/gridcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| lightcraft | `apps/lightcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| materialcraft | `apps/materialcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| pdfcraft | `apps/pdfcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| photocraft | `apps/photocraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| solidcraft | `apps/solidcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| soundcraft | `apps/soundcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| texturecraft | `apps/texturecraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| vectorcraft | `apps/vectorcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
+| wordcraft | `apps/wordcraft/` | PASS | PASS real WASM authoring, formatting, account persistence, conflicts and lifecycle | PASS local/clean and earlier hosted pin; newer native/font review and delegated agents OPEN |
 
-### Existing system and CAD apps
+## Games (28)
 
-| Component | Actual directory | Source | Component checks | Assets/build | New host |
-|---|---|---|---|---|---|
-| acad | `apps/acad/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| arduino-simulator | `apps/arduino-simulator/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| audio-editor | `apps/audio-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| browser | `apps/browser/` | PASS | FAIL - one unchanged pre-existing stale host-contract assertion | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| calculator | `apps/calculator/` | PASS | PASS - earlier extraction unit checks; current host port OPEN | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| circuitjs | `apps/circuitjs/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| data-explorer | `apps/data-explorer/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| diagrams-net | `apps/diagrams-net/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| digital-logic | `apps/digital-logic/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| document-editor | `apps/document-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| electronics-design | `apps/electronics-design/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| embroidery-studio | `apps/embroidery-studio/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| excalidraw | `apps/excalidraw/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| files | `apps/files/` | PASS | PASS - earlier component/dev checks; post-layout runtime retest OPEN | OPEN - post-layout composition build/retest | Earlier Login/Desktop/Files signed-server slice passed; current full minimum OPEN |
-| gcode-preview | `apps/gcode-preview/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| grid-tools | `apps/grid-tools/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| help | `apps/help/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| image-editor | `apps/image-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| legacy-jsketcher | `apps/jsketcher/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| microduck | `apps/microduck/` | PASS | FAIL - 200 pass / 11 missing-fixture failures; baseline and extraction match | PASS - exact project/visual regeneration and qualified engine hashes; full app build OPEN | OPEN - new host integration not qualified |
-| notebook | `apps/notebook/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| pdf-viewer | `apps/pdf-viewer/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| personal-template | `apps/personal-template/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| pico-simulator | `apps/pico-simulator/` | PASS | PASS - four configured simulator test commands | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| replicad | `apps/replicad/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| spreadsheet | `apps/spreadsheet/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| stitch-converter | `apps/stitch-converter/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| svg-editor | `apps/svg-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| terminal | `apps/terminal/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| text | `apps/text/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
+| Component | Directory | Source/history | Checks | New assembly |
+|---|---|---|---|---|
+| chess-study | `apps/chess-study/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| clockwork-quest | `apps/clockwork-quest/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| clockwork-room | `apps/clockwork-room/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| crystal-defense | `apps/crystal-defense/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| drone-circuit | `apps/drone-circuit/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| expression-puppet | `apps/expression-puppet/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| falling-blocks | `apps/falling-blocks/` | PASS | OPEN - no original package suite; coach render/rebuild not run | OPEN: complete browser build and new host integration not qualified |
+| garden-defense | `apps/garden-defense/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| gravity-pinball | `apps/gravity-pinball/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| kinetic-relay | `apps/kinetic-relay/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| lantern-leap | `apps/lantern-leap/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| marble-works | `apps/marble-works/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| memory-garden | `apps/memory-garden/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| orbital-courier | `apps/orbital-courier/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| owl-companion | `apps/owl-companion/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| physics-playground | `apps/physics-playground/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| pocket-golf | `apps/pocket-golf/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| pocket-rally | `apps/pocket-rally/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| reactive-control-desk | `apps/reactive-control-desk/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| rhythm-garden | `apps/rhythm-garden/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| sky-courier | `apps/sky-courier/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| sling-targets | `apps/sling-targets/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| snake-garden | `apps/snake-garden/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| solitaire | `apps/solitaire/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| stack-balance | `apps/stack-balance/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| story-cards | `apps/story-cards/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| tabletop-bot-arena | `apps/tabletop-bot-arena/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
+| target-garden | `apps/target-garden/` | PASS | PASS - configured independent domain/type checks | OPEN: complete browser build and new host integration not qualified |
 
-### Platform
+## Engines (8)
 
-| Component | Actual directory | Source | Component checks | Assets/build | New host |
-|---|---|---|---|---|---|
-| accounts | `platform/accounts/` | PASS | PASS - earlier component/dev checks; post-layout runtime retest OPEN | OPEN - post-layout composition build/retest | Earlier Login/Desktop/Files signed-server slice passed; current full minimum OPEN |
-| desktop | `platform/desktop/` | PASS | PASS - earlier component/dev checks; post-layout runtime retest OPEN | OPEN - post-layout composition build/retest | Earlier Login/Desktop/Files signed-server slice passed; current full minimum OPEN |
-| login | `platform/login/` | PASS | PASS - earlier component/dev checks; post-layout runtime retest OPEN | OPEN - post-layout composition build/retest | Earlier Login/Desktop/Files signed-server slice passed; current full minimum OPEN |
-| runtime | `platform/runtime/` | PASS | PASS - earlier component/dev checks; post-layout runtime retest OPEN | OPEN - post-layout composition build/retest | Earlier Login/Desktop/Files signed-server slice passed; current full minimum OPEN |
-| storage | `platform/storage/` | PASS | PASS - earlier component/dev checks; post-layout runtime retest OPEN | OPEN - post-layout composition build/retest | Earlier Login/Desktop/Files signed-server slice passed; current full minimum OPEN |
+| Component | Directory | Source/history | Checks | New assembly |
+|---|---|---|---|---|
+| engine-ffmpeg | `engines/ffmpeg/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| engine-manifold | `engines/manifold/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| engine-onnx-runtime | `engines/onnx-runtime/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| engine-opencascade | `engines/occt-interpreter/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| engine-opencascade-js | `engines/opencascade-js/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| engine-smlib-wasm | `engines/smlib-wasm/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| engine-usd-brep | `engines/usd-brep/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| engine-v86 | `engines/v86/` | PASS | PASS engine source/history and optional static inputs | OPEN optional guest integration; excluded from minimum dependencies |
 
-### Engines
+## Shared libraries and tools (17)
 
-| Component | Actual directory | Source | Component checks | Assets/build | New host |
-|---|---|---|---|---|---|
-| engine-ffmpeg | `engines/ffmpeg/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| engine-manifold | `engines/manifold/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| engine-onnx-runtime | `engines/onnx-runtime/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| engine-opencascade | `engines/occt-interpreter/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| engine-opencascade-js | `engines/opencascade-js/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| engine-smlib-wasm | `engines/smlib-wasm/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| engine-usd-brep | `engines/usd-brep/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
+| Component | Directory | Source/history | Checks | New assembly |
+|---|---|---|---|---|
+| codemirror | `libraries/codemirror/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
+| craft-libs | `libraries/craft-libs/` | PASS | Pinned histories retained; review3b3271f4 passes default workspace fmt, Clippy and tests | Reviewed shared commit unselected; app dependency versions remain explicit |
+| echarts | `libraries/echarts/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| egui | `libraries/egui/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
+| gltf-transform | `libraries/gltf-transform/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| maplibre | `libraries/maplibre/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| mermaid | `libraries/mermaid/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| pdfme | `libraries/pdfme/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| plotly | `libraries/plotly/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| tanstack-virtual | `libraries/tanstack-virtual/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| tone | `libraries/tone/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| transformers | `libraries/transformers/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| trystero | `libraries/trystero/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| wavesurfer | `libraries/wavesurfer/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| webtorrent | `libraries/webtorrent/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| yjs | `libraries/yjs/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| zip | `libraries/zip/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 
-### Shared libraries
+## Shared asset projects (2)
 
-| Component | Actual directory | Source | Component checks | Assets/build | New host |
-|---|---|---|---|---|---|
-| codemirror | `libraries/codemirror/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| craft-libs | `libraries/craft-libs/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| echarts | `libraries/echarts/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| egui | `libraries/egui/` | PASS | OPEN - no component behavior qualification claimed | PASS - selected LFS images and all 2144 historical payloads recovered/verified; consumer build wiring OPEN | OPEN - new host integration not qualified |
-| gltf-transform | `libraries/gltf-transform/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| maplibre | `libraries/maplibre/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| mermaid | `libraries/mermaid/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| pdfme | `libraries/pdfme/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| plotly | `libraries/plotly/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| tanstack-virtual | `libraries/tanstack-virtual/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| tone | `libraries/tone/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| transformers | `libraries/transformers/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| trystero | `libraries/trystero/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| wavesurfer | `libraries/wavesurfer/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| webtorrent | `libraries/webtorrent/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| yjs | `libraries/yjs/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
-| zip | `libraries/zip/` | PASS | OPEN - no component behavior qualification claimed | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
+| Component | Directory | Source/history | Checks | New assembly |
+|---|---|---|---|---|
+| craft-fonts | `assets/craft-fonts/` | PASS | PASS pinned build input; new STIX review passes clean font checks | Selected input used by WordCraft; e5f6cc5 math-font review unselected |
+| craft-i18n | `assets/craft-i18n/` | PASS | PASS pinned WordCraft translation/proofing build input | PASS selected WordCraft composition; other consumers OPEN |
 
-### Shared assets
+## Shared build tooling (1)
 
-| Component | Actual directory | Source | Component checks | Assets/build | New host |
-|---|---|---|---|---|---|
-| craft-fonts | `assets/craft-fonts/` | PASS | OPEN - no component behavior qualification claimed | PASS - pinned source data present; consumer build wiring OPEN | OPEN - new host integration not qualified |
-| craft-i18n | `assets/craft-i18n/` | PASS | OPEN - no component behavior qualification claimed | PASS - pinned source data present; consumer build wiring OPEN | OPEN - new host integration not qualified |
+| Component | Directory | Source/history | Checks | New assembly |
+|---|---|---|---|---|
+| craft-common-actions | `tooling/craft-common-actions/` | PASS | OPEN - no release workflow executed; top-level license review pending | OPEN: complete browser build and new host integration not qualified |
 
-### Build tooling
+## Preserved legacy source (1)
 
-| Component | Actual directory | Source | Component checks | Assets/build | New host |
-|---|---|---|---|---|---|
-| craft-common-actions | `tooling/craft-common-actions/` | PASS | OPEN - no release workflow executed; top-level license review pending | OPEN - complete build/asset graph not verified | OPEN - new host integration not qualified |
+| Component | Directory | Source/history | Checks | New assembly |
+|---|---|---|---|---|
+| rooms | `legacy/rooms/` | PASS | PASS preserved source/history; user confirms unused | NOT IN SCOPE for active system; preservation only |
 
-## Remaining disk restart-point work
+## Remaining organization and build work
 
-- Preserve and place required source/runtime inputs from example.invalid in the new organized layout, with hashes, provenance and build recipes. Public immutable Microduck assets and exact qualified engine inputs are recovered privately; placement/reproduction recipes remain separate work.
-- Include Linux/v86 as an optional owned app/engine with static base images. Discover and separate VM code still embedded in the preserved old Desktop; do not make the minimum depend on it.
-- Organize nonregistered Circuit Lab/PCB and other WIP, remaining platform tools, shared assets and every unmapped source area.
-- Recover or explicitly gate one absent Microduck synthetic PNG fixture; preserve Browser’s existing stale assertion failure. No test assertion has been weakened.
-- Complete an original-source-to-new-owner/asset reconciliation and verify the resulting restart point independently. Repository count alone does not close this gate.
+The112-row chart does not close original-source reconciliation. An earlier
+tracked-source ledger still had6,026 entries without verified final disposition.
+That stale audit count is not proof that6,026 files are missing. Baseline histories,
+new path maps, generated evidence and deliberately preserved historical material
+must be compared explicitly. Backend/network/build/test/research areas and WIP
+remain preserved privately. Required current source must get an owner; obsolete
+evidence and sensitive data must not be copied into release roots.
 
-Live account databases, credentials and private documents are not source assets. External publication, deployment changes and service restarts remain unperformed.
+Linux/v86 source and static inputs are organized at `apps/linux/` and
+`engines/v86/`; their optional host port remains OPEN. FFmpeg is the shared engine
+at `engines/ffmpeg/`; TanStack Virtual is at `libraries/tanstack-virtual/`.
+Neither source repository is a claim of an enabled standalone app.
 
-## Latest organization additions
+Frozen beta payloads and historical input locks are reference/recovery material,
+not fresh build output or prerequisites for the first useful system. Existing
+Browser/Microduck baseline failures remain evidence; no assertions were weakened.
+Every additional app needs its actual asset graph, lifecycle, shared operations
+and browser acceptance checked at the selected source revision.
 
-Optional Linux guest source now lives at apps/linux/ and the pinned full-history v86 engine at engines/v86/. The existing Worker bridge, static base image/kernel and guest build/init sources are preserved with exact file maps and history; its optional Desktop view is not yet ported. Complete current109-component paths are in COMPONENTS.md.
-
-The beta catalog-listed artifact sweep is now recovered, verified and placed under artifacts/reference-beta/ (6143 files/1.03GB). Microduck inputs are under artifacts/inputs/microduck/ with44 locked files. This closes declared public app payload recovery, not full dynamic graph/release/whole-source readiness. Remaining source/platform/site-asset reconciliation stays OPEN.
-
-## Nonregistered prototype source addition
-
-Circuit Lab and PCB Design are now organized in independent repositories, taking the source assembly to111 components. Exact22-file source/history extraction verified. Circuit Lab real ngspice suite and PCB Node-only rendering probe PASS both before/after separation. Existing browser, usability, manufacturing and distribution gates remain OPEN; source copies are not enabled releases. Circuit Lab's5 runtime/source-relink cache files are explicitly local-research-only. Locked artifact verification PASS6192 files. The whole-source ownership pass remains incomplete.
-
-## Hosted Rooms correction —111 component repositories plus1 legacy repository
-
-User confirms Hosted Rooms is old code unused by the current site. Its seven recovered source files and available snapshot history are preserved at `legacy/rooms/`, excluded from the current platform, minimum backend and rebuild integration requirements. Prior platform classification was incorrect. No service was enabled or deployed.
-
-Exact recovered source blobs/modes and private recovery remain verified. License provenance remains relevant only before any future publication or reuse. Legacy steward state tests are historical evidence, not a requirement to rebuild unused hosted-room functionality. Remaining organization work should prioritize the actual current site and selected new applications.
+The unresolved ledger also contains seven source-only planned game cores:
+Math Path, Fraction Farm, Word Weaver, Market Math, Rule Detective, Pocket Conquest
+and Tile Islands. They have rules and tests but no Desktop view. Their separate
+repositories and shared-helper ownership still need extraction/review; they are
+not included in the28 registered-game count above. The inspected source prefix
+has no staged, unstaged or untracked work at the current audit boundary.
