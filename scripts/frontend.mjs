@@ -55,5 +55,7 @@ export function mountAssembly(root, {wordcraftUrl = null} = {}) {
   const unsubscribe = accounts.subscribe(state => { if (!disposed && desktop && state.phase !== 'authenticated') showLogin(); });
   showLogin();
   return Object.freeze({inspect: () => ({account: accounts.inspect(), desktop: desktop?.inspect() ?? null, disposed}),
+    async inspectApplication(request, caller) { if (!desktop) throw Error('No active desktop session.'); return desktop.inspectApplication(request, caller); },
+    async executeApplication(request, caller) { if (!desktop) throw Error('No active desktop session.'); return desktop.executeApplication(request, caller); },
     dispose() { if (disposed) return; disposed = true; clearTimeout(renewal); unsubscribe(); view?.dispose(); desktop?.dispose(); root.replaceChildren(); }});
 }
