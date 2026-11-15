@@ -21,16 +21,16 @@ def main():
         parser.error('Use a direct environment path without symlink ancestors')
     if not shutil.which('uv'):
         parser.error('uv is required; no global dependency installation is performed')
-    for component, module in [('accounts', 'webos_accounts'), ('storage', 'webos_storage')]:
+    for component, module in [('runtime', 'webos_runtime'), ('accounts', 'webos_accounts'), ('storage', 'webos_storage')]:
         if not (root / component / 'src' / module / '__init__.py').is_file():
             parser.error('Required packaged backend source is unavailable: ' + component)
     os.umask(0o077)
     subprocess.run(['uv', 'venv', str(target)], check=True)
     # Every third-party dependency is listed in this lock. Component sources
-    # are the two trusted local checkouts, never a similarly named registry package.
+    # are the three trusted local checkouts, never a similarly named registry package.
     subprocess.run(['uv', 'pip', 'install', '--python', str(target / 'bin/python'),
                     '--no-deps', '-r', str(root / 'deploy/backend-requirements.lock'),
-                    '-e', str(root / 'accounts'), '-e', str(root / 'storage')], check=True)
+                    '-e', str(root / 'runtime'), '-e', str(root / 'accounts'), '-e', str(root / 'storage')], check=True)
     print('Development backend environment ready: ' + str(target / 'bin/python'))
     print('No server was started; no account state or production deployment was changed.')
 
