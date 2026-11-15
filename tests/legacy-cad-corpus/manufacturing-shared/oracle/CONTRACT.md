@@ -1,0 +1,15 @@
+# Independent public manufacturing3MF artifact oracle
+
+Source-only preparation, before executing on real workflow outputs. Consume complete export-workflow receipt +raw saved native files +initial/edited/reopened3MF. No browser/kernel/production validator import, generated successful geometry or private model mutation.
+
+Current exact authored domain: one XY principal plane@0, one actual100×50 rectangle selected extrusion depth20, one centered-through hole D10(initial)→D14(edited/reopened), same source/feature/opaque public IDs and PLA/blue assignment. Derive rectangle/bore/depth from saved source/history; corroborate opaque region/curve/body IDs to actual public authoring/discovery receipts, never parse them. Require native-envelope2/millimeter, exact saved assignments and artifact source-revision/resource associations. Public browser/server export SHA and filecommit receipts stay distinct from geometric evidence.
+
+Independent ZIP/CRC/XML: closed standard archive, relationships/content types, mm unit, one build/part/region, PLA/#3366FF basematerial, writer-derived mesh/component/build IDs bound to codi provenance and saved assignments. Traverse actual references; don't guess resource ordinals. No extra property overrides or unreported placement. Editable history remains native.
+
+Mesh geometry: finite indexed vertices/triangles, closed oppositely used edges, single vertex fans, one connected genus1 boundary(Euler0). Bound/surface coordinate corroboration1e-7mm; bbox1e-6mm. Every face is a correct outward outer plane/cap or inward source-circle bore surface, with correct cap signs. Lateral angular spans≤0.1rad+1e-10; max source-circle chord sag≤0.01mm+1e-9. Derive ideal volume(w*h−Σπr²)*depth. This is not1e-6mesh/BRep equality: bound material excess by depth*Σ(2πr*observedMaxSag)+1e-6mm³, also retain requested-control bound using0.01. If matching top/bottom polygonal rings permit independent prism formula, require that formula arithmetic residual≤1e-6mm³; otherwise state unavailable and retain the source-analytic bound. No forced mesh/index equivalence across replay.
+
+Safe independent material/void winding probes tolerance1e-7: bore center void, outside plate void, source-corner material, and D10→D14 witness at radius6mm (initial material, edited/reopened void). Winding is a numerical checker for these away-from-boundary fixture probes, not a production general-containment classifier/certificate.
+
+Compare edited/reopened source/assignment semantics and expected measured geometry. Report canonical oriented-triangle equality separately; require both to satisfy same source-derived surface/radius/approximation/probe truth, not arbitrary identical indexing. Initial→edited must change meaningful bore geometry, not only metadata.
+
+32holes remain a separately labeled future real-output case: reuse geometry helper with actual saved circle centers/radii/discovery IDs and Euler2−2*32. No32hole success is claimed now. No source microtests/new runtime/service/deployment. Run only after complete real workflow outputs exist.

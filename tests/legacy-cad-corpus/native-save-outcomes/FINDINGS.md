@@ -1,0 +1,35 @@
+# Native Save settlement: confirmed synthetic contract counterexamples
+
+Tests-only; no implementation change. Desktop base5b5fb6432; actual index SHA256 d800c8551742a65ca3f2cfc2fd3ba98e3556f906c251ab405c822f5267c8c791. `observed.json` binds exact source/extracted function bytes before/after52 raw/public executions. `before/regressions.tap` is an **expected failing-before** packet:53 normative cases,10pass/43fail. This is not a repair PASS, Native geometry qualification, real durable file write, public corruption incident or browser Close/race test.
+
+The actual saveProject and begin/current/claim/supportedEnvelope/snapshot/inspectSaveTarget/prepareWatch/setWatch/status expression run unchanged. The coordinator, scoped-command and registered Save adapter are real modules. Manager envelope, Map-backed storage acknowledgement, association/status setters and finish hook are explicitly synthetic. Envelope contents carry NOT_NATIVE_GEOMETRY markers. Finish faults occur after the real coordinator finishes; they do not assert that normal coordinator.finish throws.
+
+## Confirmed source behaviors
+
+| Trigger | Observed settlement | Observed host/storage progression |
+|---|---|---|
+| prepare throws null/undefined | TypeError reading `.message`; exact cause lost |0writes; old association/baseline retained; operation released |
+| prepare/write throws object with message accessor | accessor runs; its thrown error replaces original | getter count recorded; write case has already submitted an operation |
+| write throws0/false/empty string | TypeError defining possiblyCommitted on a primitive; original cause and uncertainty lost |1attempt; fixture can have stored or not stored bytes; host cannot infer rollback |
+| valid receipt then finish throws0 | raw0 rejection with no committed marker | acknowledged/stored; path/version/title/baseline/watch already advanced and dirty:false |
+| valid receipt then notice throws0 | TypeError or later diagnostic failure masks original; no confirmed marker | stored and associated; baseline clean; operation lease released |
+| malformed `{}` or inherited receipt | fulfilled browser Save; no own bounded validation | new path and undefined/inherited version published; baseline clean; watcher installed |
+| receipt.version getter | getter invoked after path assignment | path advanced, version old/null, baseline old/dirty:true |
+| receipt.status getter | getter invoked after baseline/watch publication | path/version/title/baseline already advanced/clean; diagnostic only marks possiblyCommitted |
+| valid receipt then path/version/launch/title setter faults | known acknowledgement downgraded to possiblyCommitted | partial fields differ by exact failure stage; no rollback assertion |
+| valid receipt then setDocument notification invalidates lifetime | error says file/window changed, only possiblyCommitted | acknowledged stored bytes; host association still old; actual coordinator releases |
+| real new-watch activation throws for existing project | old removable subscription is lost from the watch handoff |2subscriptions before fixture cleanup;1old subscription remains after current watch disposal |
+
+The watch-dispose fault is separately recorded: a deliberately throwing old unsubscribe leaves two subscriptions until cleanup, with one remaining afterward. This is distinct from activation failure losing a normally removable old subscription. Both are synthetic fault/custody observations, not a real browser leak incident. Host fields are recorded by stage instead of asserting that an externally acknowledged write can be undone.
+
+Working controls: normal synthetic untitled/existing Save returns its browser version/status, updates association/baseline and swaps watch; changed-source-before-write refuses; changed-source-after-ack reports earlier save and keeps dirty:true; real coordinator reentrancy at enterLocalWrite prevents any write; owner/claim release is confirmed. An unusable/disposed coordinator may report busy:true while kind/phase are null and claim available—this is not a stranded active lease.
+
+Receipt-delivery lifetime loss is intentionally observed as an unknown outcome domain, not converted into a false uncommitted assertion. If the outer scope settles before the producer learns a valid receipt, ordinary unknown-outcome semantics remain legitimate. The post-setDocument case differs: the Save producer already received the receipt and must preserve what it knows. No test deliberately closes a real window or interrupts real storage.
+
+## Smallest recommended repair, ROOT-owned
+
+1. Keep the existing coordinator and canonical native Save pipeline/path/version/overwrite guards. Add narrow operation-local outcome tracking (`not submitted`, `pending`, `validated acknowledged`) using the existing file outcome primitives with appropriate Save wording; do not introduce a second journal, per-app saving flag or mirror truth. Mark pending immediately before files.write and validate its own enumerable bounded string version/status before any association use or lifetime-return branch. Invalid receipt remains uncertain, with no new path/version/baseline/watch publication.
+2. Use descriptor-only safe diagnostics and an explicit failure sentinel, never error truthiness, `.message` access or defineProperty on arbitrary thrown values. Preserve the exact primary cause and its committed/possiblyCommitted knowledge through notice and finish failures. Attempt cleanup independently; diagnostics cannot replace the original outcome. A completed browser write never implies server sync.
+3. After validated acknowledgement, subsequent ownership/association/watch/title/notice/finish failure remains confirmed committed even if the host cannot finish adopting it. Avoid exposing stale-scope path metadata; public Save adapter must preserve known producer markers when available. Do not promise to retract a completed write or retroactively replace an already-settled unknown outer outcome.
+4. Save **does** adopt native project path/version/title/launch context/baseline, unlike derived STEP/3MF exports. Reusing export settlement must not copy their no-association semantics. Precompute fallible values and stage watch ownership, then publish host association under the existing owner/currentness guard. On a fault, report actual partial adoption and clean up all still-owned watch resources; no automatic Native-file rollback or unreviewed retry. Keep an old watch's disposer reachable until the handoff completes, and preserve exact release-unconfirmed diagnostics if a provider's unsubscribe itself fails.
+5. Rerun these unchanged normative source/adapter/coordinator cases against the repaired functions and retain this before packet. Then a separate authorized ordinary signed native Save/sync/fresh Open smoke can qualify the composed app; no forced Close/write race is needed or requested. SaveAs/real conflicts/actual storage failures/browser crash behavior are outside this synthetic packet unless separately qualified.

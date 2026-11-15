@@ -1,0 +1,23 @@
+# E04/E05 region edit boundaries and point-batch bridge
+
+No new public-model or geometry qualification is claimed here yet. Product core candidate is CAD9efcd45a1 (`feature/headless-point-batch-20261106`), based on qualified69a; actual production-Worker13batch +3domain and retained61single-point component cases pass separately in CAD `test/headless-point-batch/`. Full TSC passes. This desktop candidate changes ONLY `apps/system/jsketcher/closed-sketch-commands.mjs` plus this new directory; index/registration root remains parent-owned.
+
+New public command `edit-closed-sketch-points {revision,faceId,points:[{id,x,y},...]}` delegates `craft.editClosedSketchPoints` with the same window/account/lifetime/scoped settlement. Bounds:1–32 distinct inspected IDs, each≤256chars, finite XY±1e8 canonical mm. Arguments/array/rows are detached and frozen before asynchronous execution. Exact unknown/getter/sparse/count/value validation; no source bytes/native handles/history writes.
+
+`host.test.mjs` is explicitly protocol-only: craft doubles provide no geometry evidence.7new controls plus8unchanged existing closed-sketch controls pass. Actual public replay/native volumes/UndoRedo/Save/Open must run on a fresh source-matched combined app supplied by parent. No closed20921 reuse, no fake Worker response/model seed or Files re-audit.
+
+## Exact remaining region workflow findings
+
+- `rectangleEditing.ts` admits only an entire exactly4-object `rect-0..3` sketch, not one loop inside a multi-loop source. E04 cannot be “fixed” by replacing one sketch with two planes. The approved common batch coordinate operation targets four inspected right-endpoint IDs of an unconstrained first loop atomically; all existing constraints remain intact. An actually dimensioned rectangle width100 must still refuse coordinate targets105; batch coordinates do not replace driving lengths.
+- Public region discovery currently exposes only opaque `regionId/support/reason` rows. **No grammar parsing or metadata widening was added.** A geometric-second-first or outer-annulus+inner-disk selection needs a bounded public semantic descriptor. Creating all returned regions and measuring afterward is not proof of that explicit upfront selection.
+- The public middle Circle can start unconstrained at r10, then legitimately receive its first D22 constraint via `apply-closed-sketch-diameter`. That should regenerate outer annulus1040π at depth10 while the disk250π is unchanged. Adding a second different diameter is not an existing-dimension editor.
+- Current Circle command has center/positive r only: no winding parameter. Creation-order reversal15/10/5 versus5/10/15 is a meaningful available test; it must not be called winding reversal.
+- Existing-feature region replacement and generic delete remain absent. A source edit changing nesting must refuse a retained obsolete region and preserve accepted state. New unrelated feature creation or parsed IDs are not recovery/reselection of that consumer.
+
+## Next actual acceptance, after integration
+
+1. Public8-Segment source, two disjoint loops [0,0]–[20,10] and[30,0]–[40,10] on ONE plane; second loop CW to cover representable segment winding. Create both discovered regions through returned IDs without claiming unavailable geographic-first semantics. Identify actual bodies by measured native bounds. Atomic4-endpoint edit makes first25×10×5/V1250; second10×10×5/V500/body+source identities unchanged. Native validity/bounds/source/history, no-op/refusal, one journal UndoRedo and bounded native Save/Open are required.
+2. Separate genuinely driven rectangle100×50: same coordinate-batch attempt to105 conflicts and cannot rewrite dimensions; accepted bytes/results/journal preserved.
+3. Once a legitimate semantic discovery contract exists, select only outer annulus+inner disk from radii15/10/5, expected1250π+250π at depth10; repeat reverse creation order. Add middle D22, re-inspect semantic cells/IDs and independent native metrics. A nesting-changing center edit must refuse rather than silently retarget; public consumer reselect remains a distinct missing feature until implemented.
+
+Shared core performs one real PM transaction with all target coordinates seeded BEFORE any parent sync, unique parents synced once, temporary LockPoint drivers, exact coordinate checks and original-intent verification. Genuine separate Worker recomputation binds candidate to captured source/intent before existing atomic full replay and a single sketch-bytes journal entry. Original single-point API/wire/output retained and its61-case corpus passed. These are foundational component results, not completion of E04/E05 or all Gate1.
