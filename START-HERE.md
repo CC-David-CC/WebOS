@@ -88,7 +88,7 @@ python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 The LFS setup affects only the new egui checkout. Verified local origins retain
 all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
 outside Git and web roots, under `/path/to/workspace/Projects/.webos-migration/`.
-Latest active checkpoint: `run-20261115-14-test-deployment/checkpoint.json` and
+Latest active checkpoint: `run-20261115-15-graphics-startup/checkpoint.json` and
 `RESUME.md`; phase13 records local/clean-clone acceptance. Earlier phases retain
 preservation and extraction evidence.
 
@@ -100,10 +100,15 @@ points to the new loopback service; beta.ksu.codes remains unchanged. Read
 
 ## WordCraft artifact and acceptance
 
-Selected WordCraft source is `5ee1726037e6ff97ae4f69d46213ef75a32e0c83`.
+Selected WordCraft source is `0d48f9a1bd5a2bb88d8431760a14b0ba55161563`, with
+shared egui renderer `2d0ae4b4270e76c431fd62d3512237579ed6c26f`.
+This newer renderer passed local regression and authoring checks; ksu.codes
+still serves the earlier release documented in `deploy/TEST-STATUS.md`.
 `webos/build.py` builds the complete browser graph with Rust/Cargo1.95.0,
-Trunk0.21.14 and source-pinned fonts/translations. The verified development
-artifact contains26 files totaling91,513,638bytes. Its component-build receipt
+Trunk0.21.14 and source-pinned fonts/translations. Supply the explicit
+`--egui-origin` local bare fork provider as documented in WordCraft
+`webos/README.md`; no global Git configuration or private server is assumed. The verified development
+artifact contains26 files totaling91,525,526bytes. Its component-build receipt
 checks source identity, tool versions and every artifact digest. Build output
 is external, never written into the original workspace.
 

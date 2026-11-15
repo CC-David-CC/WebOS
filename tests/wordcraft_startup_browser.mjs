@@ -4,13 +4,22 @@ import {mkdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {randomBytes} from 'node:crypto';
 import puppeteer from 'puppeteer-core';
-const origin=process.env.WEBOS_TEST_ORIGIN, output=process.env.WEBOS_TEST_OUTPUT && path.resolve(process.env.WEBOS_TEST_OUTPUT);
-assert.equal(origin,'https://ksu.codes','Only the user-designated test site is allowed.');
+import {spawn,spawnSync} from 'node:child_process';
+import {createInterface} from 'node:readline';
+const hostedOrigin=process.env.WEBOS_TEST_ORIGIN, python=process.env.WEBOS_TEST_PYTHON, site=process.env.WEBOS_WORDCRAFT_SITE, output=process.env.WEBOS_TEST_OUTPUT && path.resolve(process.env.WEBOS_TEST_OUTPUT);
+assert(!hostedOrigin||hostedOrigin==='https://ksu.codes','Only the user-designated remote test site is allowed.');
+assert(hostedOrigin||(python&&site),'Local regression requires explicit backend Python and verified WordCraft site.');
 assert(output && output!==process.cwd() && !output.startsWith(process.cwd()+path.sep));await mkdir(output,{mode:0o700});
 const tracing=process.env.WEBOS_TEST_STARTUP_TRACE==='1', rounds=tracing?1:2;
+let origin=hostedOrigin, server=null;const serverErrors=[];
 const report={tracing,status:'FAIL',origin,scope:'Repeated three-concurrent-editor startup; unchanged product120s timeout; disposable test account',rounds:[],diagnostics:[]};
 let browser;const username='startup'+randomBytes(6).toString('hex'),password=randomBytes(18).toString('base64url');
 try {
+ if(!origin){
+  const publicRoot=path.join(output,'public');const built=spawnSync(process.execPath,['scripts/build_development.mjs',publicRoot,'--wordcraft',site],{cwd:process.cwd(),encoding:'utf8'});assert.equal(built.status,0,built.stderr);
+  server=spawn(python,['-u','scripts/run_development.py','--public-root',publicRoot,'--private-root',path.join(output,'state'),'--port','0'],{stdio:['ignore','pipe','pipe']});server.stderr.on('data',v=>serverErrors.push(v));
+  origin=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Local server startup timed out')),15000);createInterface({input:server.stdout}).once('line',line=>{clearTimeout(timer);resolve(JSON.parse(line).origin);});server.once('error',reject);server.once('exit',()=>reject(Error('Local server stopped')));});report.origin=origin;
+ }
  browser=await puppeteer.launch({executablePath:'/snap/chromium/current/usr/lib/chromium-browser/chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage','--enable-unsafe-swiftshader','--use-angle=swiftshader'],userDataDir:path.join(output,'browser-profile')});
  for(let round=0;round<rounds;round++){
   const contexts=[],checks=[];
@@ -45,5 +54,5 @@ try {
  }
  report.status=report.rounds.length===rounds&&report.rounds.every(r=>r.status==='PASS')?'PASS':'FAIL';
  assert.equal(report.status,'PASS','At least one startup round failed; inspect retained report.');
-}finally{await browser?.close();await writeFile(path.join(output,'result.json'),JSON.stringify(report,null,2)+'\n');}
+}finally{await browser?.close();if(server){server.kill('SIGTERM');await new Promise(resolve=>{if(server.exitCode!==null||server.signalCode)resolve();else server.once('exit',resolve);});}await writeFile(path.join(output,'server-errors.log'),Buffer.concat(serverErrors));await writeFile(path.join(output,'result.json'),JSON.stringify(report,null,2)+'\n');}
 console.log(JSON.stringify({status:report.status,rounds:report.rounds.length,successfulStarts:report.rounds.flatMap(r=>r.editors).filter(e=>e.ready).length,origin}));
