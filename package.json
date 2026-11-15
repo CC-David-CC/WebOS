@@ -9,7 +9,9 @@
     "platform/storage",
     "platform/desktop",
     "apps/files",
-    "apps/calculator"
+    "apps/calculator",
+    "libraries/codemirror",
+    "apps/text"
   ],
   "devDependencies": {
     "esbuild": "0.28.2",
