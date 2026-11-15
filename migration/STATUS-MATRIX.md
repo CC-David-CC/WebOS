@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has 1,976 unresolved entries plus 25 unqualified blob candidates, after
+ledger now has 1,969 unresolved entries plus 25 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -283,3 +283,5 @@ Phase56 assigns12 original Node test sources and one frozen vector fixture to ac
 Phase57 verifies127 historical records in existing private recovery without copying them into Git/web roots.109 possible source/design/input/unclear records remain unresolved. Current tracked-source counts come from [the generated summary](SOURCE-RECONCILIATION-SUMMARY.json). A fresh minimum frontend build reuses fully rehashed WordCraft from unchanged selected source; no new browser or full-suite acceptance follows. See [private evidence retention](PRIVATE-EVIDENCE-RETENTION.md).
 
 Phase58 retains nine original native build/design/prototype-control references with histories and exact source bodies. One engine pin changes by reference files only;123 other pins and all active implementations are unchanged. Six copied upstream records remain unqualified despite byte matches, and no old build/control/publisher ran. See [native reference ownership](NATIVE-REFERENCE-OWNERSHIP.md).
+
+Phase59 owns seven legacy mirror cache-unit tests in Storage with locator-only assertion-preserving ports and a new explicitly pinned dev-only dependency environment. Captured, current and clean reference outcomes match:3 pass,4 fail, command exit1; no failing case is omitted or assertion weakened. This is not account synchronization or an all-green Storage claim. See [mirror reference outcomes](STORAGE-MIRROR-REFERENCES.md).
