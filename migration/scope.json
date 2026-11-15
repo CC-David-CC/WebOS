@@ -1748,16 +1748,17 @@
     "scope": "All catalog-listed public app payload bytes and selected recovered immutable build inputs; not a full rebuilt release or whole-source completion claim",
     "restricted_inputs": "CircuitLab five-file local-research-only runtime/relink inputs, explicitly not public-release assets; original model/license/relink review gates retained"
   },
-  "optional_hosted_rooms": {
+  "legacy_hosted_rooms": {
     "id": "rooms",
-    "component_path": "platform/rooms",
+    "component_path": "legacy/rooms",
     "source_files": 7,
     "source_status": "exact mechanical extraction from recovered code-only source snapshot; available path history retained",
     "minimum_dependency": false,
     "enabled": false,
-    "integration": "OPEN - legacy account imports require deliberate public interface port",
+    "integration": "not required for current rebuild; preserved historical source",
     "tests": "syntax/blob/mode checks only; runtime suite pending",
     "license_distribution": "OPEN",
-    "source_history": "one available path snapshot; earlier development provenance unresolved"
+    "source_history": "one available path snapshot; earlier development provenance unresolved",
+    "classification": "legacy - unused by current site per user"
   }
 }

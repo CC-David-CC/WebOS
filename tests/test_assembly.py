@@ -34,9 +34,10 @@ class OrganizedLayoutTests(unittest.TestCase):
             self.assertFalse(inspection.organized_path(component, component))
             self.assertFalse(inspection.organized_path(component, 'platform/' + component))
 
-    def test_optional_rooms_has_platform_ownership(self):
-        self.assertTrue(inspection.organized_path('rooms', 'platform/rooms'))
+    def test_unused_rooms_has_legacy_ownership(self):
+        self.assertTrue(inspection.organized_path('rooms', 'legacy/rooms'))
         self.assertFalse(inspection.organized_path('rooms', 'apps/rooms'))
+        self.assertFalse(inspection.organized_path('rooms', 'platform/rooms'))
         self.assertNotIn('rooms', inspection.CORE)
 
     def test_shared_projects_have_distinct_owners(self):
