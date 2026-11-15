@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has3,052 unresolved dispositions and33 unqualified blob candidates among
+still has3,044 unresolved dispositions and33 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -192,7 +192,7 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-47-cad-fixtures/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-48-cad-reference-inputs/checkpoint.json` and
 `RESUME.md` under the owner-only `/home/dflanag3/Projects/.webos-migration/`.
 Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
@@ -243,3 +243,5 @@ Phase45 retains four legacy cross-component references and four shared browser-t
 Phase46 retains 35 additional original cross-component browser test sources with histories, resolving 41 relative helper imports. Node syntax and exact byte/mode checks pass; no legacy browser driver was executed and no application integration status changed. See [browser helper consumers](migration/BROWSER-HELPER-CONSUMERS.md).
 
 Phase47 retains 145 original CAD case notes beside the archived cross-component test source, with original bytes/modes and selected histories. Historical PASS claims do not qualify the new build; old run outputs remain private and required test-input closure is still open. See [CAD case documentation](migration/CAD-CASE-DOCUMENTATION.md).
+
+Phase48 retains eight statically referenced original CAD review inputs, closing12 known read sites. Three original offline recorded-data reviewer tests pass in isolated snapshot and clean assembly; no native/browser/account-storage acceptance is claimed. Required fixture closure remains open for dynamic and Python paths. See [CAD reference inputs](migration/CAD-REFERENCE-INPUTS.md).
