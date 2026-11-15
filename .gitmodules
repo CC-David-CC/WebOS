@@ -31,3 +31,6 @@
 [submodule "gridcraft"]
 	path = gridcraft
 	url = ../gridcraft.git
+[submodule "deckcraft"]
+	path = deckcraft
+	url = ../deckcraft.git
