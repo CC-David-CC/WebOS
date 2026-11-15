@@ -15,6 +15,10 @@ source presence does not establish functional support.
 - Calculator: actual Desktop hosting with mouse/keyboard, independent windows,
   move/resize, minimize/restore/focus and close/reopen. Also launched through
   the authenticated assembly.
+- Help: restored as an independently owned public view with Desktop, Account
+  files and Documents topics. Mouse/keyboard selection, two independent windows,
+  close/reopen and explicit authorized operations pass local and clean-checkout
+  checks. The historical beta/Linux guide remains preserved separately.
 - Files: real signed server storage; create folder, upload, revision-checked
   rename/move/delete, exact downloaded bytes, reload and retrieval from a
   second clean browser context. Uncertain writes are not reported saved.
@@ -28,8 +32,10 @@ source presence does not establish functional support.
   passed too. Stale saves are rejected; Save As/PDF identities stay separate;
   closing Files does not stop editor saves. Delegated agents remain unqualified.
 
-These workflows also pass on **https://ksu.codes**, the fresh test deployment,
-using disposable accounts and clean browser contexts. A physical second-client
+The Calculator/Files/Text/WordCraft workflows also passed on **https://ksu.codes**,
+the fresh test deployment,
+using disposable accounts and clean browser contexts. Help and the newer
+operation-authority changes are local only. A physical second-client
 machine test remains separate. Delegated agent authorization and broader suite
 integration remain incomplete. Text preserves UTF-8 BOM and uniform line
 endings; mixed-ending save normalization and other legacy Text features remain
@@ -68,6 +74,7 @@ Browser tests create and stop their own real development server:
 WEBOS_TEST_OUTPUT=/a/new/private/calculator-check node tests/calculator_browser.mjs
 WEBOS_TEST_OUTPUT=/a/new/private/files-check WEBOS_TEST_PYTHON=/a/new/private/backend-env/bin/python node tests/desktop_files_browser.mjs
 WEBOS_TEST_OUTPUT=/a/new/private/text-check WEBOS_TEST_PYTHON=/a/new/private/backend-env/bin/python node tests/text_browser.mjs
+WEBOS_TEST_OUTPUT=/a/new/private/help-check WEBOS_TEST_PYTHON=/a/new/private/backend-env/bin/python node tests/help_browser.mjs
 python3 -m unittest discover -s tests -p test_assembly.py -v
 ```
 
@@ -88,8 +95,9 @@ python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 The LFS setup affects only the new egui checkout. Verified local origins retain
 all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
 outside Git and web roots, under `/home/dflanag3/Projects/.webos-migration/`.
-Latest active checkpoint: `run-20261115-18-native-ci/checkpoint.json` and
-`RESUME.md`; phase17 records clean qualification of the selected authority
+Latest active checkpoint: `run-20261115-19-help-integration/checkpoint.json` and
+`RESUME.md`; phase18 records the separate, still-running native CI review.
+Phase17 records clean qualification of the selected authority
 fixes; phase16 retains red/green evidence. Phase15 records the current test deployment and renderer
 qualification; phase13 records earlier local/clean-clone acceptance. Earlier phases retain
 preservation and extraction evidence.
@@ -148,3 +156,11 @@ quality gate. A separate isolated native review in phase18 simplifies those
 conditions and runs required CI without lowering lint thresholds. It has not
 changed these selected pins. The ksu.codes deployment remains the phase15
 release. Delegated-agent transport is not yet enabled or qualified.
+
+The selected Help commit is `e68a507ea52235d282e1e2496f24e9ff8f98c948`.
+Its five boundary checks and actual desktop browser workflow pass, including a
+clean eleven-component checkout with original/primary/recovery source hidden
+and external networking off. The complete graph accepts the verified WordCraft
+artifact; adding Help changed no registry package versions. Help is not yet
+included in the hosted phase15 release. Its command interface does not enable
+or qualify delegated-agent authentication.
