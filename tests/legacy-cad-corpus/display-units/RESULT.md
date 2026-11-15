@@ -1,0 +1,23 @@
+# Signed display-unit result
+
+**PASS: 15 recorded rows**, plus the independent offline saved-intent/recorded-metric checker. Actual signed Chromium ran against core `f770a52a545ac933de75dbe8b381004b46ac93b3`, desktop `f4c4d63e5f6b50c8fe84ca1274fa546f59923579`, app SHA256 `62dfa0d62b752b084cc2e1b0619309bd9fa741f7c867ece80e56c4885846324b`. All 73 served core assets and the outer index were fetched and matched the parent manifest before authoring. The outer bundle is `1e82167bd47de43100bfd33db26447dc2f0935fcdacc8e25a070554ff6879426`; index SHA256 is `31ea62c80c6cd6d13b3080be2dfc0159ca6107f5a09df8cd54455702ea0a08b3`.
+
+The genuine public rectangle is 25.4 × 50.8 mm, initially extruded 12.7 mm and edited to 25.4 mm. Measured native volume was 32774.12799999999 mm³, agreeing with the independent rectangular formula within 1e-6 mm³; bounds matched [0,0,0]–[25.4,50.8,25.4] within 1e-7 mm. The solid retains 6 faces, 12 edges, 8 vertices and its actual authored selection context. Its 12 display triangles retained byte hash `5e47097e0cde4037e44d4f2a50cde8eed4c6fa7ca6060745b9ce7b8b61d603d8` through presentation changes.
+
+Both normal public commands and trusted clicks in the actual mode menu changed presentation without changing raw sketch bytes, expressions, history, IDs, feature counters, authored journal, material token, native measurements/topology/selections or triangle bytes. Passive forwarding observations showed no new Worker and no postMessage during those changes. The recorded inch change retained 15 prior Worker creations and 21 prior messages exactly. Unsupported, stale and extra-field requests refused without changing accepted state. Returning to the saved mm presentation restored clean state; an inch no-op retained its revision.
+
+Actual focused CtrlZ/CtrlShiftZ still undid/redid the same accepted depth edit while retaining inch presentation. Two genuine CAD windows remained independent. Default native saves omitted presentation. Confirmed New reset only its own document. Normal native Save synchronized with the disposable server; a fresh signed login/Open restored inch and identical canonical source, history, counters and native geometry. Session Undo reset on Open. Canonical native project objects in the mm and inch files are identical; only optional envelope presentation differs. Changing the reopened document back to mm marked it dirty, and returning to its saved inch presentation made it clean.
+
+Native runtime remained the real owned Boolean-history mount: JS `dd666902fe926d69cc3c8843f5568c2a3e569f38ff49291baa2f248165b5ea99`, WASM `8d5e537e0d7f9e12b8ae0eaf239c0be1080934ed12a24bf6e7f849c9135ed5a2`. No alternate model or geometry seed was used. `evidence-r3/` retains the exact receipt and native files. Run `node test/agent-cad-corpus/display-units/check-saved.mjs test/agent-cad-corpus/display-units/evidence-r3` to check saved intent and recorded observations without a browser/native rerun.
+
+First failures are preserved: R1 inspected the lazily installed desktop command registry before launching its first app; the harness now treats an absent pre-launch registry as empty. R2 incorrectly required a per-feature `canEdit` field; the real selected-profile contract uses report-level `ready` and feature identity. The harness now uses that actual contract. No product change or expected app pin was needed for either correction. R3 used the same frozen app and passed.
+
+Actual annotation painting remains **untested**; source-method formatting tests are separately qualified in CAD `9934efc3f`. A genuine selectable Worker-solid MEdge measurement UI path was not exercised or claimed. Area/volume UI remains unqualified; only its dimension-correct formatter has source controls. This result establishes the bounded document presentation/shared menu/persistence workflow, not full Gate 1. All runner-owned contexts are closed; the parent retains fixture/process cleanup ownership.
+
+Root readback independently checks six recorded native metric snapshots and
+saved envelopes differing only by presentation. Worker counters remain15
+creations/21 messages across the unit switch. The initial root checker compared
+the complete journal object and stopped at a changed opaque inspection revision;
+before source/log are retained. All authored journal fields match when excluding
+only that token. No product/runtime assertion changed. Fixture20922 cleanup is
+verified: Python/Caddy/private state/port/targets gone, shared Chrome kept.
