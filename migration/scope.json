@@ -2767,5 +2767,14 @@
     "current_cad_acceptance": false,
     "required_fixture_closure_complete": false,
     "evidence": "migration/CAD-CASE-DOCUMENTATION.md and private phase47"
+  },
+  "legacy_cad_reference_inputs": {
+    "retained_inputs": 8,
+    "selected_history_blobs": 8,
+    "static_read_sites": 12,
+    "offline_recorded_reviewer_tests": 3,
+    "current_native_browser_storage_acceptance": false,
+    "required_fixture_closure_complete": false,
+    "evidence": "migration/CAD-REFERENCE-INPUTS.md and private phase48"
   }
 }
