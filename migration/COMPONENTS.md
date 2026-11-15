@@ -1,14 +1,15 @@
 # Complete assembled component chart
 
-All paths are relative to /home/dflanag3/Projects/WebOS/. There are121 independent source repositories currently attached:85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),8 engines,6 platform components,18 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
+All paths are relative to /home/dflanag3/Projects/WebOS/. There are122 independent source repositories currently attached:85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),8 engines,7 platform components,18 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
 
-## Platform (6)
+## Platform (7)
 
 | Component | Actual directory |
 |---|---|
 | accounts | `platform/accounts/` |
 | desktop | `platform/desktop/` |
 | login | `platform/login/` |
+| publication — source only | `platform/publication/` |
 | rendezvous | `platform/rendezvous/` |
 | runtime | `platform/runtime/` |
 | storage | `platform/storage/` |

@@ -8,9 +8,9 @@ the latest local qualification.
 
 ## Source organization and remaining scope
 
-The parent selects120 component repositories plus1 preserved legacy repository:
+The parent selects121 component repositories plus1 preserved legacy repository:
 85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),
-8 engines,6 platform components,18 libraries,2 asset projects and1 tooling project,
+8 engines,7 platform components,18 libraries,2 asset projects and1 tooling project,
 plus legacy Rooms. Applications, including Files and WordCraft, live in `apps/`.
 Reusable engines live in `engines/`; shared Craft code is `libraries/craft-libs/`.
 FFmpeg is an engine; TanStack Virtual is a library. Neither directory alone means
@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has5,957 unresolved dispositions and86 unqualified blob candidates among
+still has5,924 unresolved dispositions and86 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -47,7 +47,9 @@ Shared peer discovery/signaling source is owned at `platform/rendezvous/`. Its
 37 unchanged lease-state tests and nine installed-module imports pass with old
 and component sources hidden. It is disabled; signed transport, operational
 custody and browser/agent integration remain OPEN. Official Chat/Chess publication
-source is separately preserved pending ownership.
+source is organized at `platform/publication/`, with legacy interface imports and
+full build/operational qualification explicitly OPEN. Its unsigned reconstruction
+fixture passes with old source hidden. Neither service is enabled.
 
 ## Current working slice
 
@@ -178,8 +180,9 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-29-rendezvous/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-30-publication/checkpoint.json` and
 `RESUME.md` under the owner-only `/home/dflanag3/Projects/.webos-migration/`.
+Phase30 records32 unchanged publication modules, their structural fixture, and complete ownership of the former44-file steward area.
 Phase29 records rendezvous extraction,37 unchanged lease tests and registry/chart reconciliation.
 Phase28 records42 retained identity-core tests,4 current-policy checks and4 core retentions.
 Phase27 records optional guest backend extraction and installed-wheel checks.
