@@ -109,14 +109,17 @@
       "source": "apps/games/01-phaser-arcade/solitaire",
       "category": "game",
       "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "extraction": "history extracted; original 24-file tree verified; repository metadata added separately",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/solitaire"
+      "component_path": "apps/solitaire",
+      "integration": "historical host retained; new Desktop/Storage port pending; not enabled",
+      "verification": "typecheck and 16 existing tests pass in original-byte copy and independent filtered clone",
+      "legacy_whole_system_tests": "tests/solitaire-* preserved in full recovery; assigned parent test-port work"
     },
     {
       "id": "sky-courier",

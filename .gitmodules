@@ -91,3 +91,6 @@
 [submodule "login"]
 	path = login
 	url = ../login.git
+[submodule "apps/solitaire"]
+	path = apps/solitaire
+	url = ../solitaire.git
