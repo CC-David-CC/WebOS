@@ -143,12 +143,13 @@ not an off-device backup. External Git publication still requires verified
 identity/destination and authorization. Trusted local source clone:
 
 ```sh
-git -c protocol.file.allow=always clone --recurse-submodules ../.webos-local-git/workspace.git /absolute/new/checkout
+GIT_LFS_SKIP_SMUDGE=1 git -c protocol.file.allow=always clone --recurse-submodules ../.webos-local-git/workspace.git /absolute/new/checkout
 python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 ```
 
-LFS setup changes only the new egui checkout. All2144 historical LFS payloads are
-retained locally. Preserve the unrelated historical input-lock update and baseline
+The setup helper configures filters only in the new egui checkout; it does not
+materialize payloads. All2144 historical LFS payloads are retained locally;
+consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
 Latest checkpoint: `run-20261115-24-wordcraft-browser/checkpoint.json` and
