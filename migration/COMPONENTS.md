@@ -1,6 +1,6 @@
 # Complete assembled component chart
 
-All paths are relative to /path/to/webos/. There are123 independent source repositories currently attached:85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),8 engines,7 platform components,19 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
+All paths are relative to /path/to/webos/. There are124 independent source repositories currently attached:85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),9 engines,7 platform components,19 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
 
 ## Platform (7)
 
@@ -114,7 +114,7 @@ All paths are relative to /path/to/webos/. There are123 independent source repos
 | tile-islands | `apps/tile-islands/` |
 | word-weaver | `apps/word-weaver/` |
 
-## Engines (8)
+## Engines (9)
 
 | Component | Actual directory |
 |---|---|
@@ -125,6 +125,7 @@ All paths are relative to /path/to/webos/. There are123 independent source repos
 | engine-opencascade-js | `engines/opencascade-js/` |
 | engine-smlib-wasm | `engines/smlib-wasm/` |
 | engine-usd-brep | `engines/usd-brep/` |
+| engine-speech | `engines/speech/` |
 | engine-v86 | `engines/v86/` |
 
 ## Shared libraries and tools (19)

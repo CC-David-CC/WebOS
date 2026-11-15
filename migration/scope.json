@@ -2370,7 +2370,8 @@
       "wordcraft": "apps/wordcraft",
       "yjs": "libraries/yjs",
       "zip": "libraries/zip",
-      "network-policy": "libraries/network-policy"
+      "network-policy": "libraries/network-policy",
+      "engine-speech": "engines/speech"
     },
     "missing_core_sources": [],
     "platform": "platform/<component>/",
@@ -2679,5 +2680,26 @@
     "historical_source_blobs_reviewed": 63,
     "runtime_enablement": false,
     "evidence": "migration/BACKEND-OWNERSHIP.md and private phase41"
+  },
+  "optional_speech_engine": {
+    "component_path": "engines/speech",
+    "original_source_paths": 6,
+    "input_files": 34,
+    "input_bytes": 97100582,
+    "cache_path": "artifacts/inputs/speech/",
+    "checks": [
+      "offline complete-graph assembly",
+      "four transcript-handling tests",
+      "real WASM model/public spoken-fixture transcript",
+      "invalid and oversize payload rejection",
+      "no external requests/microphone during test"
+    ],
+    "activation": "Not enabled in Desktop or minimum dependencies",
+    "open": [
+      "actual microphone/Desktop cancellation and lifecycle",
+      "scoped human/agent integration",
+      "release notice/model distribution review"
+    ],
+    "evidence": "migration/SPEECH-ENGINE.md and private phase42"
   }
 }

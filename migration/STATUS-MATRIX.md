@@ -1,17 +1,17 @@
 # Current source and rebuild status matrix
 
-Git links select exact revisions. The assembly has123 independent source repositories:
-85 apps (33 system/CAD,17 Craft,35 games including7 planned cores),8 engines,
+Git links select exact revisions. The assembly has124 independent source repositories:
+85 apps (33 system/CAD,17 Craft,35 games including7 planned cores),9 engines,
 7 platform components,19 libraries,2 shared asset projects,1 shared tooling project
 and1 preserved legacy repository. Source placement and scoped component checks
-do not prove all123 components build or work.
+do not prove all124 components build or work.
 
 **PASS** covers the stated check. **OPEN** means incomplete or unverified.
 Retained baseline tests are separate from new runtime acceptance.
 
 | Gate | Current result |
 |---|---|
-| Registered component source layout | PASS:123 independent repositories listed below |
+| Registered component source layout | PASS:124 independent repositories listed below |
 | Entire original source-area reconciliation | OPEN: preserved backend, scripts, research, tests and WIP still need final disposition |
 | Calculator → Files → Text → WordCraft | PASS local/clean workflows and disposable-account checks on ksu.codes |
 | Server account files | PASS signed persistence, conflicts, restart and second clean browser context |
@@ -140,7 +140,7 @@ Hosted Rooms is unused historical code, not a new service.
 | pocket-conquest | `apps/pocket-conquest/` | PASS | PASS: original domain/snapshot tests after independent public-package port | OPEN: planned core only; no Desktop view, renderer or server storage adapter |
 | tile-islands | `apps/tile-islands/` | PASS | PASS: original domain/snapshot tests after independent public-package port | OPEN: planned core only; no Desktop view, renderer or server storage adapter |
 
-## Engines (8)
+## Engines (9)
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
@@ -151,6 +151,7 @@ Hosted Rooms is unused historical code, not a new service.
 | engine-opencascade-js | `engines/opencascade-js/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | engine-smlib-wasm | `engines/smlib-wasm/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | engine-usd-brep | `engines/usd-brep/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
+| engine-speech | `engines/speech/` | PASS6 original source/legal/provenance paths and history | PASS34 verified inputs, offline graph build,4 transcript tests and real WASM spoken fixture; no external requests | OPEN Desktop/microphone/scoped-agent wiring and release notices; optional for minimum |
 | engine-v86 | `engines/v86/` | PASS | PASS engine source/history and optional static inputs | OPEN optional guest integration; excluded from minimum dependencies |
 
 ## Shared libraries and tools (19)
@@ -198,8 +199,8 @@ Hosted Rooms is unused historical code, not a new service.
 
 ## Remaining organization and build work
 
-The123-row chart does not close original-source reconciliation. The tracked-source
-ledger now has3,329 unresolved entries plus35 unqualified blob candidates, after
+The124-row chart does not close original-source reconciliation. The tracked-source
+ledger now has3,325 unresolved entries plus33 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -250,3 +251,5 @@ Phase39 retains1075 unchanged historical operations/build/check Python sources a
 Phase40 retains85 original desktop visual/license inputs with history in Desktop, including74 launcher icons and wallpaper. Asset bytes/modes, PNG data and representative decoding are verified; active rendering is unchanged. See [desktop assets](DESKTOP-ASSETS.md).
 
 Phase41 assigns53 remaining legacy backend/configuration/documentation paths across seven existing components and parent deployment composition, preserving source/history and keeping all old entrypoints inactive. Current implementations and minimum dependencies are unchanged. See [backend ownership](BACKEND-OWNERSHIP.md).
+
+Phase42 adds the independent local speech engine with34 verified static inputs (97,100,582 bytes), an offline graph builder and successful real CPU/WASM spoken-sample recognition. Inputs live at `artifacts/inputs/speech/`; no user audio is copied and Desktop voice is not enabled. See [speech engine](SPEECH-ENGINE.md).

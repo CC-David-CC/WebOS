@@ -1,0 +1,13 @@
+# Local speech engine — source, inputs and real inference
+
+Independent source: `engines/speech/`, selected `5e65c9a22b8de9865dedd96a00505e07bc917601`. The original six client/worker/legal/provenance files and their history are preserved unchanged; mechanical baseline `82c85acbf829ca459a807513a95df2394cdb082d`. New reproducible fetch/build/test tooling is a separate commit. The source owner is a reusable speech engine, not another Desktop app or server process.
+
+`artifacts/inputs/speech/` contains all34 source-locked runtime/model/notice inputs,97,100,582 bytes, including13 pinned Whisper tiny English model files. Each model file matches captured bytes/SHA256; both original npm packages match captured SHA1/SHA512 and complete catalog size/counts. No install script executed. Opaque signature/integrity fields are public package metadata; independent npm-signature validation is not claimed.
+
+The offline builder verifies all inputs before output creation, copies the complete static graph and legal/provenance files, and records selected source and payload digests. Corrupted input is rejected before any output directory is created. No original-workspace path or moving upstream branch selects an artifact. The cache is public dependency data, ignored by Git; the component owns the lock and recovery recipe.
+
+Four transcript-handling tests pass. A real browser worker loads the exact ONNX/WASM model, rejects invalid/oversized audio and matches the normalized spoken result from the [official Transformers.js speech example](https://huggingface.co/docs/transformers.js/v3.8.1/en/api/pipelines). The public test fixture is separately revision/hash-pinned and never included in the runtime artifact. No microphone permission or user audio was used. The isolated run made14 local GET requests, zero external requests and no page errors. The test uses the actual worker and model, not a simulated recognizer.
+
+Captured speech pins are Transformers3.8.1 and ONNX1.22-dev; the generic provider wrappers select other versions. Compatibility is not assumed or hidden by replacing dependencies. Current Desktop/Accounts/Storage/Files/WordCraft code and minimum dependencies are unchanged. Microphone UI, cancellation/lifecycle with real views, scoped human/agent operations and release notice/model licensing closure remain explicit integration gates. No voice feature, service, host policy or deployment is enabled by this source addition.
+
+Private maps, input recovery, offline/source-hidden tests and real browser evidence: `/path/to/workspace/Projects/.webos-migration/run-20261115-42-speech/`. The full original suite remains the active rebuild goal, not completed by this engine milestone.

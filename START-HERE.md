@@ -8,9 +8,9 @@ the latest local qualification.
 
 ## Source organization and remaining scope
 
-The parent selects122 component repositories plus1 preserved legacy repository:
+The parent selects123 component repositories plus1 preserved legacy repository:
 85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),
-8 engines,7 platform components,19 libraries,2 asset projects and1 tooling project,
+9 engines,7 platform components,19 libraries,2 asset projects and1 tooling project,
 plus legacy Rooms. Applications, including Files and WordCraft, live in `apps/`.
 Reusable engines live in `engines/`; shared Craft code is `libraries/craft-libs/`.
 FFmpeg is an engine; TanStack Virtual is a library. Neither directory alone means
@@ -24,7 +24,7 @@ Craft projects plus community SolidCraft. The parent pins exact Git commits;
 component sources are Git links, never parent-owned copies.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has3,329 unresolved dispositions and35 unqualified blob candidates among
+still has3,325 unresolved dispositions and33 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The remaining16 Craft apps and broader apps/games require real browser
 builds, complete assets, lifecycle and shared-operation qualification.
@@ -192,7 +192,7 @@ materialize payloads. All2144 historical LFS payloads are retained locally;
 consumer release-asset materialization remains a separate verified step. Preserve the unrelated historical input-lock update and baseline
 browser test still present in the primary worktree. Do not reset or clean them.
 
-Latest ownership checkpoint: `run-20261115-41-backend-ownership/checkpoint.json` and
+Latest ownership checkpoint: `run-20261115-42-speech/checkpoint.json` and
 `RESUME.md` under the owner-only `/path/to/workspace/Projects/.webos-migration/`.
 Phase33 retains243 legacy CAD acceptance sources and34 frozen metadata records with explicit port/review gates.
 Phase32 verifies315 historical outputs in private recovery, separate from current acceptance.
@@ -231,3 +231,5 @@ Phase39 retains1075 unchanged historical operations/build/check Python sources a
 Phase40 retains85 original desktop visual/license inputs with history in Desktop, including74 launcher icons and wallpaper. Asset bytes/modes, PNG data and representative decoding are verified; active rendering is unchanged. See [desktop assets](migration/DESKTOP-ASSETS.md).
 
 Phase41 assigns53 remaining legacy backend/configuration/documentation paths across seven existing components and parent deployment composition, preserving source/history and keeping all old entrypoints inactive. Current implementations and minimum dependencies are unchanged. See [backend ownership](migration/BACKEND-OWNERSHIP.md).
+
+Phase42 adds the independent local speech engine with34 verified static inputs (97,100,582 bytes), an offline graph builder and successful real CPU/WASM spoken-sample recognition. Inputs live at `artifacts/inputs/speech/`; no user audio is copied and Desktop voice is not enabled. See [speech engine](migration/SPEECH-ENGINE.md).
