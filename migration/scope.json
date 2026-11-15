@@ -1331,7 +1331,7 @@
     },
     {
       "id": "desktop",
-      "state": "ownership/dependency separation pending"
+      "state": "seven current source files/history extracted; legacy Login/account/storage/guest coupling must be refactored before boot"
     },
     {
       "id": "login",
@@ -1339,11 +1339,11 @@
     },
     {
       "id": "accounts",
-      "state": "ownership/dependency separation pending"
+      "state": "history extracted; retained authority ported to installable public Python package; four isolated real-state tests pass; browser/HTTP/grant integration pending"
     },
     {
       "id": "storage",
-      "state": "ownership/dependency separation pending"
+      "state": "history and separate OPFS research preserved; installable Python package consumes Accounts public proof API; four isolated persistence/revision/permission tests pass; signed HTTP/browser integration pending"
     }
   ],
   "independent_existing_projects": [
@@ -1397,12 +1397,14 @@
     "account_data": "not copied; approved backup/staging remains pending"
   },
   "verification": {
-    "source_transport": "27 organized source submodules; selected commits unchanged by moves; 26-component recursive clone plus Runtime clone advancement verified before reorganization; organized fresh clone pending",
+    "source_transport": "Organized recursive clone advanced to 30 pinned source components; local wiring has no reported errors. Login source is still missing.",
     "wordcraft_wasm": "Unmodified compile check passed twice, including fresh clone/fresh target with original workspace hidden and network disabled; browser build/host persistence pending",
     "app_unit_baselines": "Six existing scripts passed in recovery, extracted repos and fresh clone",
     "minimum_and_whole_suite_functionality": "not implemented/verified",
     "runtime_regression": "Old over512 failure reproduced in baseline/extracted/fresh clone; separate new-source test correction adds exact/over-1GiB cases; all four Runtime scripts pass",
-    "core_source_acceptance": "Parent test currently fails because Desktop, Login, Accounts, Storage remain unextracted; not waived"
+    "core_source_acceptance": "Fails only for missing Login; Desktop/Accounts/Storage source baselines now present. No browser functionality claim.",
+    "isolated_backend_domains": "Accounts four tests and Storage four tests passed from the clean clone with both the old source workspace and primary new checkout hidden; networking disabled; real generated temporary SQLite/filesystem state",
+    "development_bootstrap": "Parent bootstrap_backend.py installs locked dependencies and trusted local Accounts/Storage packages into a new external environment; actual command tested; starts no server"
   },
   "component_layout": {
     "core": "runtime/, desktop/, login/, accounts/, storage/, files/, wordcraft/",
@@ -1437,13 +1439,13 @@
       "solidcraft": "apps/solidcraft",
       "texturecraft": "apps/texturecraft",
       "materialcraft": "apps/materialcraft",
-      "runtime": "runtime"
+      "runtime": "runtime",
+      "accounts": "accounts",
+      "storage": "storage",
+      "desktop": "desktop"
     },
     "missing_core_sources": [
-      "accounts",
-      "desktop",
-      "login",
-      "storage"
+      "login"
     ]
   },
   "resource_policy": {
@@ -1475,5 +1477,14 @@
       "package_exists": true,
       "state": "preserved; ownership and integration disposition pending; not in registered builder list"
     }
-  ]
+  ],
+  "minimum_progress": {
+    "runtime": "source/lifecycle unit baseline; full new host port pending",
+    "desktop": "source/history present; functional interface separation pending",
+    "login": "not extracted; deliberate structural separation from Desktop required",
+    "accounts": "packaged server and retained-state regressions pass; browser/signed HTTP/delegation incomplete",
+    "storage": "packaged durable domain and stale-save/permission tests pass; signed transport/browser save confirmation incomplete",
+    "files": "source/history and unit baseline; new public host integration pending",
+    "wordcraft": "maintained source plus isolated WASM compile check; complete browser build, save acknowledgements and live command integration pending"
+  }
 }
