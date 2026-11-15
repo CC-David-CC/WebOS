@@ -19,3 +19,6 @@
 [submodule "engine-smlib-wasm"]
 	path = engine-smlib-wasm
 	url = ../engine-smlib-wasm.git
+[submodule "engine-usd-brep"]
+	path = engine-usd-brep
+	url = ../engine-usd-brep.git
