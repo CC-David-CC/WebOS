@@ -66,7 +66,7 @@ Hosted Rooms is unused historical code, not a new service.
 | help | `apps/help/` | PASS | PASS:5 boundary checks and signed Desktop lifecycle | PASS local/clean; not in hosted phase15 release |
 | image-editor | `apps/image-editor/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | legacy-jsketcher | `apps/jsketcher/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
-| linux | `apps/linux/` | PASS | PASS independent source/history and static base inputs | OPEN optional host port; excluded from minimum dependencies |
+| linux | `apps/linux/` | PASS including optional guest backend history | PASS34 installed-wheel Python tests and12 module imports; static base inputs retained | OPEN optional host port; excluded from minimum dependencies |
 | microduck | `apps/microduck/` | PASS | FAIL - 200 pass / 11 missing-fixture failures; baseline and extraction match | OPEN: complete browser build and new host integration not qualified |
 | notebook | `apps/notebook/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | pdf-viewer | `apps/pdf-viewer/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
@@ -200,9 +200,9 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The120-row chart does not close original-source reconciliation. The tracked-source
-ledger now has5,989 unresolved entries plus88 unqualified blob candidates, after
+ledger now has5,973 unresolved entries plus88 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
-10 Browser backend/test extractions were verified. These counts do not mean
+10 Browser backend/test and16 optional guest backend/test extractions were verified. These counts do not mean
 those files are missing. Baseline histories,
 new path maps, generated evidence and deliberately preserved historical material
 must be compared explicitly. Backend/network/build/test/research areas and WIP
