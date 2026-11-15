@@ -13,10 +13,21 @@
     "apps/calculator",
     "apps/help",
     "libraries/codemirror",
-    "apps/text"
+    "apps/text",
+    "apps/math-path",
+    "apps/fraction-farm",
+    "apps/word-weaver",
+    "apps/market-math",
+    "apps/rule-detective",
+    "apps/pocket-conquest",
+    "apps/tile-islands",
+    "libraries/learning-game-core"
   ],
   "devDependencies": {
     "esbuild": "0.28.2",
     "puppeteer-core": "25.17.0"
+  },
+  "scripts": {
+    "test:planned-games": "node --test apps/math-path/tests/*.test.mjs apps/fraction-farm/tests/*.test.mjs apps/word-weaver/tests/*.test.mjs apps/market-math/tests/*.test.mjs apps/rule-detective/tests/*.test.mjs apps/pocket-conquest/tests/*.test.mjs apps/tile-islands/tests/*.test.mjs libraries/learning-game-core/tests/*.test.mjs tests/learning-games/*.test.mjs"
   }
 }

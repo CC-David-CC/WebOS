@@ -43,7 +43,8 @@ class OrganizedLayoutTests(unittest.TestCase):
     def test_shared_projects_have_distinct_owners(self):
         for component, role in [('craft-libs', 'libraries'), ('egui', 'libraries'),
                                 ('craft-fonts', 'assets'), ('craft-i18n', 'assets'),
-                                ('craft-common-actions', 'tooling'), ('engine-ffmpeg', 'engines')]:
+                                ('craft-common-actions', 'tooling'), ('engine-ffmpeg', 'engines'),
+                                ('learning-game-core', 'libraries')]:
             self.assertTrue(inspection.organized_path(component, role + '/' + component))
             self.assertFalse(inspection.organized_path(component, 'apps/' + component))
 

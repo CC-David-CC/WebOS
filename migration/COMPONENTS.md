@@ -1,6 +1,6 @@
 # Complete assembled component chart
 
-All paths are relative to /home/dflanag3/Projects/WebOS/. There are112 independent source repositories currently attached:78 apps (33 system/CAD,17 Craft,28 games),8 engines,5 platform components,17 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
+All paths are relative to /home/dflanag3/Projects/WebOS/. There are120 independent source repositories currently attached:85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),8 engines,5 platform components,18 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
 
 ## Platform (5)
 
@@ -74,7 +74,7 @@ All paths are relative to /home/dflanag3/Projects/WebOS/. There are112 independe
 | vectorcraft | `apps/vectorcraft/` |
 | wordcraft | `apps/wordcraft/` |
 
-## Games (28)
+## Games (35:28 registered,7 source-only planned cores)
 
 | Component | Actual directory |
 |---|---|
@@ -85,19 +85,24 @@ All paths are relative to /home/dflanag3/Projects/WebOS/. There are112 independe
 | drone-circuit | `apps/drone-circuit/` |
 | expression-puppet | `apps/expression-puppet/` |
 | falling-blocks | `apps/falling-blocks/` |
+| fraction-farm | `apps/fraction-farm/` |
 | garden-defense | `apps/garden-defense/` |
 | gravity-pinball | `apps/gravity-pinball/` |
 | kinetic-relay | `apps/kinetic-relay/` |
 | lantern-leap | `apps/lantern-leap/` |
 | marble-works | `apps/marble-works/` |
+| market-math | `apps/market-math/` |
+| math-path | `apps/math-path/` |
 | memory-garden | `apps/memory-garden/` |
 | orbital-courier | `apps/orbital-courier/` |
 | owl-companion | `apps/owl-companion/` |
 | physics-playground | `apps/physics-playground/` |
+| pocket-conquest | `apps/pocket-conquest/` |
 | pocket-golf | `apps/pocket-golf/` |
 | pocket-rally | `apps/pocket-rally/` |
 | reactive-control-desk | `apps/reactive-control-desk/` |
 | rhythm-garden | `apps/rhythm-garden/` |
+| rule-detective | `apps/rule-detective/` |
 | sky-courier | `apps/sky-courier/` |
 | sling-targets | `apps/sling-targets/` |
 | snake-garden | `apps/snake-garden/` |
@@ -106,6 +111,8 @@ All paths are relative to /home/dflanag3/Projects/WebOS/. There are112 independe
 | story-cards | `apps/story-cards/` |
 | tabletop-bot-arena | `apps/tabletop-bot-arena/` |
 | target-garden | `apps/target-garden/` |
+| tile-islands | `apps/tile-islands/` |
+| word-weaver | `apps/word-weaver/` |
 
 ## Engines (8)
 
@@ -120,7 +127,7 @@ All paths are relative to /home/dflanag3/Projects/WebOS/. There are112 independe
 | engine-usd-brep | `engines/usd-brep/` |
 | engine-v86 | `engines/v86/` |
 
-## Shared libraries and tools (17)
+## Shared libraries and tools (18)
 
 | Component | Actual directory |
 |---|---|
@@ -129,6 +136,7 @@ All paths are relative to /home/dflanag3/Projects/WebOS/. There are112 independe
 | echarts | `libraries/echarts/` |
 | egui | `libraries/egui/` |
 | gltf-transform | `libraries/gltf-transform/` |
+| learning-game-core | `libraries/learning-game-core/` |
 | maplibre | `libraries/maplibre/` |
 | mermaid | `libraries/mermaid/` |
 | pdfme | `libraries/pdfme/` |
@@ -181,3 +189,6 @@ Craft provenance:16 ArtCraft first-party projects plus community SolidCraft (Tan
 | Component | Actual directory | Disposition |
 |---|---|---|
 | Hosted Rooms | `legacy/rooms/` | Old code; user confirms current site does not use it. Preserved only, no rebuild integration required. |
+
+The seven additional game cores and their shared library are source/domain packages,
+not enabled Desktop applications. See [their extraction and test scope](LEARNING-GAMES.md).

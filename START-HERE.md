@@ -43,7 +43,7 @@ explicit follow-up work.
 
 ## Source organization
 
-The parent selects111 component repositories plus1 preserved legacy repository
+The parent selects119 component repositories plus1 preserved legacy repository
 through Git submodules. `migration/COMPONENTS.md` lists every path. Apps live
 under `apps/`, including Files and WordCraft; shared engines, libraries,
 assets and tooling have their own role directories. Hosted Rooms is unused old
@@ -95,10 +95,10 @@ python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 The LFS setup affects only the new egui checkout. Verified local origins retain
 all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
 outside Git and web roots, under `/home/dflanag3/Projects/.webos-migration/`.
-Latest active checkpoint: `run-20261115-21-scoped-delegation/checkpoint.json` and
-`RESUME.md`. Phase20 records live view routing. Phase18 records the separate
-native/font review; phase22 tracks the shared update-dialog translation failure
-that its next full CI exposed.
+Latest organization checkpoint: `run-20261115-23-source-ownership/checkpoint.json`
+and `RESUME.md`. Phase22 records the qualified shared-library/native review;
+phase18 holds its clean WordCraft build source and new artifact output. Phase21
+records the selected optional Accounts core, and phase20 records live routing.
 Phase17 records clean qualification of the selected authority
 fixes; phase16 retains red/green evidence. Phase15 records the current test deployment and renderer
 qualification; phase13 records earlier local/clean-clone acceptance. Earlier phases retain
@@ -219,3 +219,28 @@ This core is not mounted by the launcher. Owner consent UI, authenticated agent
 transport, unforgeable browser invocation context and scoped agent file authority
 remain required. Existing human file authority must not stand in for an agent.
 The test deployment is unchanged; this selection is local only.
+
+
+## Additional planned-game source packages
+
+Seven unregistered planned game cores now have independent repositories:
+Math Path, Fraction Farm, Word Weaver, Market Math, Rule Detective, Pocket Conquest
+and Tile Islands. The shared validation/report/odds modules belong to
+`libraries/learning-game-core/`. Mechanical histories preserve exact source
+blobs/modes; public-package imports and metadata are separate commits. All57
+original rule, report and save-version tests pass after separation. Run
+`npm run test:planned-games` from the assembly after installing its workspaces.
+See `migration/LEARNING-GAMES.md` for revisions and save-version limits.
+
+They have no Desktop view or server storage adapter and are not enabled apps.
+This brings the source layout to120 repositories, including35 game repositories
+(28 previously registered plus7 planned cores). It resolves23 entries in the
+remaining tracked-source disposition ledger; the whole original-source ownership
+pass is still OPEN. Historical test/scripts/research material remains preserved.
+
+The newer WordCraft review `a41d6f9286458a5b460b02fd2f65f2110b969d1c`
+passed all9 required CI stages, including translation audit and wasm. Shared
+craft-libs review `3b3271f4` passes its workspace fmt/Clippy/tests after explicit
+baseline quality fixes; no assertions were removed. A new source-pinned browser
+artifact is being built privately. These reviews and the math-font update are
+not parent-selected or deployed; browser qualification remains required.
