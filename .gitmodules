@@ -10,3 +10,6 @@
 [submodule "files"]
 	path = files
 	url = ../files.git
+[submodule "engine-manifold"]
+	path = engine-manifold
+	url = ../engine-manifold.git
