@@ -2600,5 +2600,12 @@
     "qualification": "Exact code bytes/modes/history and syntax verified. No legacy driver run, no active suite/compatibility/current CAD result claimed. Required interface/helper/fixture/source/identity/runtime ports remain open.",
     "evidence": "migration/CAD-CORPUS.md and private phases33/35 index/maps",
     "fixture_literal_review": "33 additional paths and47 selected historical blobs reviewed as synthetic fixture source; no source execution or external-publication audit"
+  },
+  "legacy_desktop_browser_acceptance_source": {
+    "parent_code_paths": 760,
+    "source_location": "tests/legacy-desktop-browser/",
+    "drivers_executed": 0,
+    "qualification": "Historical whole-system browser tests only. No driver executed, no current app qualification. Before execution, review target endpoints, fresh disposable accounts/state, required helpers and fixtures, old selectors/globals, source paths and public operations. Never point legacy drivers at ksu.codes or beta, copy old credentials/account state, substitute fake storage, or weaken assertions to obtain a pass.",
+    "evidence": "migration/LEGACY-DESKTOP-TESTS.md and private phase36 maps/checkpoint"
   }
 }

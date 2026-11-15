@@ -1,0 +1,3 @@
+# Extraction provenance
+
+Original prefix `tests/` maps explicitly into this area. Source `4f72ea86928666189b32f6f05c2c697a37341d06`; audit baseline `98e957b580881737398a560cf413191753020910`; final filtered baseline `98e957b580881737398a560cf413191753020910`; mechanical parent merge `ecc9e6ebc2f65a7dfb1361948e1f81ab870e33c1`. Private phase36 retains per-path rename/copy notes and audit/final/composed commit maps. Distinct pre-copy implementation history remains in private original recovery; no wholesale app history was imported. Metadata follows the unchanged-source merge in a separate commit.
