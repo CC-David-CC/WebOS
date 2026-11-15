@@ -8,9 +8,12 @@ import re
 import subprocess
 
 PLATFORM = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage'))
-SHARED_ROLES = {'craft-libs': 'libraries', 'egui': 'libraries',
-                'craft-fonts': 'assets', 'craft-i18n': 'assets',
-                'craft-common-actions': 'tooling'}
+SHARED_ROLES = {name: 'libraries' for name in (
+    'craft-libs', 'egui', 'codemirror', 'gltf-transform', 'wavesurfer', 'tone',
+    'zip', 'mermaid', 'echarts', 'plotly', 'pdfme', 'maplibre', 'transformers',
+    'trystero', 'tanstack-virtual', 'webtorrent', 'yjs')}
+SHARED_ROLES.update({'craft-fonts': 'assets', 'craft-i18n': 'assets',
+                     'craft-common-actions': 'tooling'})
 CORE = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage', 'files', 'wordcraft'))
 
 

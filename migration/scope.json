@@ -475,16 +475,16 @@
     {
       "id": "codemirror",
       "source": "apps/system/codemirror",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "codemirror",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/codemirror"
+      "component_path": "libraries/codemirror"
     },
     {
       "id": "opencascade",
@@ -503,16 +503,16 @@
     {
       "id": "gltf-transform",
       "source": "apps/system/gltf-transform",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "gltf-transform",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/gltf-transform"
+      "component_path": "libraries/gltf-transform"
     },
     {
       "id": "terminal",
@@ -631,30 +631,30 @@
     {
       "id": "wavesurfer",
       "source": "apps/system/wavesurfer",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "wavesurfer",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/wavesurfer"
+      "component_path": "libraries/wavesurfer"
     },
     {
       "id": "tone",
       "source": "apps/system/tone",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "tone",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/tone"
+      "component_path": "libraries/tone"
     },
     {
       "id": "audio-editor",
@@ -673,16 +673,16 @@
     {
       "id": "zip",
       "source": "apps/system/zip",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "zip",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/zip"
+      "component_path": "libraries/zip"
     },
     {
       "id": "gcode-preview",
@@ -715,156 +715,156 @@
     {
       "id": "mermaid",
       "source": "apps/system/mermaid",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "mermaid",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/mermaid"
+      "component_path": "libraries/mermaid"
     },
     {
       "id": "echarts",
       "source": "apps/system/echarts",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "echarts",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/echarts"
+      "component_path": "libraries/echarts"
     },
     {
       "id": "plotly",
       "source": "apps/system/plotly",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "plotly",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/plotly"
+      "component_path": "libraries/plotly"
     },
     {
       "id": "pdfme",
       "source": "apps/system/pdfme",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "pdfme",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/pdfme"
+      "component_path": "libraries/pdfme"
     },
     {
       "id": "maplibre",
       "source": "apps/system/maplibre",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "maplibre",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/maplibre"
+      "component_path": "libraries/maplibre"
     },
     {
       "id": "transformers",
       "source": "apps/system/transformers",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "transformers",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/transformers"
+      "component_path": "libraries/transformers"
     },
     {
       "id": "trystero",
       "source": "apps/system/trystero",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "trystero",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/trystero"
+      "component_path": "libraries/trystero"
     },
     {
       "id": "tanstack-virtual",
       "source": "apps/system/tanstack-virtual",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "tanstack-virtual",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/tanstack-virtual"
+      "component_path": "libraries/tanstack-virtual"
     },
     {
       "id": "onnx-runtime",
       "source": "apps/system/onnx-runtime",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared execution engine",
+      "ownership": "engine-onnx-runtime",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 1,
         "status": "incomplete asset graph"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/onnx-runtime"
+      "component_path": "engines/onnx-runtime"
     },
     {
       "id": "webtorrent",
       "source": "apps/system/webtorrent",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "webtorrent",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/webtorrent"
+      "component_path": "libraries/webtorrent"
     },
     {
       "id": "yjs",
       "source": "apps/system/yjs",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared library integration",
+      "ownership": "yjs",
+      "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/yjs"
+      "component_path": "libraries/yjs"
     },
     {
       "id": "replicad",
@@ -1453,15 +1453,31 @@
       "craft-fonts": "assets/craft-fonts",
       "craft-i18n": "assets/craft-i18n",
       "craft-common-actions": "tooling/craft-common-actions",
-      "engine-ffmpeg": "engines/ffmpeg"
+      "engine-ffmpeg": "engines/ffmpeg",
+      "codemirror": "libraries/codemirror",
+      "gltf-transform": "libraries/gltf-transform",
+      "wavesurfer": "libraries/wavesurfer",
+      "tone": "libraries/tone",
+      "zip": "libraries/zip",
+      "mermaid": "libraries/mermaid",
+      "echarts": "libraries/echarts",
+      "plotly": "libraries/plotly",
+      "pdfme": "libraries/pdfme",
+      "maplibre": "libraries/maplibre",
+      "transformers": "libraries/transformers",
+      "trystero": "libraries/trystero",
+      "tanstack-virtual": "libraries/tanstack-virtual",
+      "webtorrent": "libraries/webtorrent",
+      "yjs": "libraries/yjs",
+      "engine-onnx-runtime": "engines/onnx-runtime"
     },
     "missing_core_sources": [],
     "platform": "platform/<component>/",
     "applications": "apps/<component>/",
     "supporting_engines": "engines/<component>/",
-    "shared_libraries": "libraries/<component>/ (pending)",
-    "shared_assets": "assets/<component>/ (pending)",
-    "shared_tooling": "tooling/<component>/ (pending)",
+    "shared_libraries": "libraries/<component>/",
+    "shared_assets": "assets/<component>/",
+    "shared_tooling": "tooling/<component>/",
     "organization_complete": false
   },
   "resource_policy": {
@@ -1529,5 +1545,28 @@
       "status": "Source preserved; release/publishing workflows not executed. No top-level license found at selected revision; distribution review required."
     },
     "functional_wiring": "Not changed by source organization; app dependency resolution/build integration remains separate."
+  },
+  "beta_shared_tools": {
+    "status": "16 additional library/engine source histories mechanically extracted; no functional changes",
+    "paths": [
+      "libraries/codemirror",
+      "libraries/gltf-transform",
+      "libraries/wavesurfer",
+      "libraries/tone",
+      "libraries/zip",
+      "libraries/mermaid",
+      "libraries/echarts",
+      "libraries/plotly",
+      "libraries/pdfme",
+      "libraries/maplibre",
+      "libraries/transformers",
+      "libraries/trystero",
+      "libraries/tanstack-virtual",
+      "libraries/webtorrent",
+      "libraries/yjs",
+      "engines/onnx-runtime"
+    ],
+    "asset_status": "Tracked source, package locks and worker configuration retained. External models/WASM assets require independently verified builds; source presence is not functional readiness.",
+    "history": "Owned paths with exact current blobs/modes; explicit package-copy provenance retained without importing unrelated components; original full history remains in verified private recovery."
   }
 }

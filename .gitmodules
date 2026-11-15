@@ -112,3 +112,51 @@
 [submodule "engine-ffmpeg"]
 	path = engines/ffmpeg
 	url = ../engine-ffmpeg.git
+[submodule "codemirror"]
+	path = libraries/codemirror
+	url = ../codemirror.git
+[submodule "gltf-transform"]
+	path = libraries/gltf-transform
+	url = ../gltf-transform.git
+[submodule "wavesurfer"]
+	path = libraries/wavesurfer
+	url = ../wavesurfer.git
+[submodule "tone"]
+	path = libraries/tone
+	url = ../tone.git
+[submodule "zip"]
+	path = libraries/zip
+	url = ../zip.git
+[submodule "mermaid"]
+	path = libraries/mermaid
+	url = ../mermaid.git
+[submodule "echarts"]
+	path = libraries/echarts
+	url = ../echarts.git
+[submodule "plotly"]
+	path = libraries/plotly
+	url = ../plotly.git
+[submodule "pdfme"]
+	path = libraries/pdfme
+	url = ../pdfme.git
+[submodule "maplibre"]
+	path = libraries/maplibre
+	url = ../maplibre.git
+[submodule "transformers"]
+	path = libraries/transformers
+	url = ../transformers.git
+[submodule "trystero"]
+	path = libraries/trystero
+	url = ../trystero.git
+[submodule "tanstack-virtual"]
+	path = libraries/tanstack-virtual
+	url = ../tanstack-virtual.git
+[submodule "webtorrent"]
+	path = libraries/webtorrent
+	url = ../webtorrent.git
+[submodule "yjs"]
+	path = libraries/yjs
+	url = ../yjs.git
+[submodule "engine-onnx-runtime"]
+	path = engines/onnx-runtime
+	url = ../engine-onnx-runtime.git
