@@ -88,8 +88,9 @@ python3 scripts/setup_lfs.py --executable /absolute/path/to/git-lfs
 The LFS setup affects only the new egui checkout. Verified local origins retain
 all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
 outside Git and web roots, under `/home/dflanag3/Projects/.webos-migration/`.
-Latest active checkpoint: `run-20261115-15-graphics-startup/checkpoint.json` and
-`RESUME.md`; phase13 records local/clean-clone acceptance. Earlier phases retain
+Latest active checkpoint: `run-20261115-16-operation-authority/checkpoint.json` and
+`RESUME.md`; phase15 records the current test deployment and renderer
+qualification; phase13 records earlier local/clean-clone acceptance. Earlier phases retain
 preservation and extraction evidence.
 
 The tested WordCraft source/build integration is committed. The primary
@@ -125,3 +126,18 @@ For the hosted test site, create a fresh account through the Login UI. The brows
 acceptance scripts can target the user-designated test site by setting
 `WEBOS_TEST_ORIGIN=https://ksu.codes`; this mode creates disposable test accounts
 and does not start or stop the remote server. Other remote origins are refused.
+
+## Local operation-authority review
+
+Files, Text and WordCraft checkout HEADs now contain separately committed local
+review changes beyond the parent-selected pins. These bind permission decisions
+to captured commands and resources; WordCraft requires an explicit caller.
+Eight WordCraft boundary tests,11 Files tests and5 Text tests pass. Real local
+Files/Text browser acceptance and WordCraft host/account checks pass too. The
+WordCraft browser check reused its unchanged, previously verified native WASM;
+a new source-pinned artifact and clean composition remain required before pin
+promotion. Full native WordCraft CI stopped on three Clippy diagnostics in two
+unchanged baseline Rust files; later CI steps were not run. No lint threshold
+was lowered. See the phase16 checkpoint for exact commits and red/green evidence.
+The ksu.codes deployment remains the phase15 release. Delegated-agent transport
+is not yet enabled or qualified.
