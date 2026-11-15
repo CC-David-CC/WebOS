@@ -2799,5 +2799,14 @@
     "sensitive_literal_classifier_controls": 6,
     "runtime_dependency_closure": false,
     "evidence": "migration/LEGACY-PYTHON-CONTEXT.md and private phase50"
+  },
+  "game_design_source_ownership": {
+    "original_source_files": 33,
+    "individual_rule_owners": 7,
+    "shared_parent_design_files": 26,
+    "selected_history_blobs": 55,
+    "game_model_implementation_changed": false,
+    "browser_gameplay_qualified": false,
+    "evidence": "migration/GAME-DESIGN-OWNERSHIP.md and private phase52"
   }
 }
