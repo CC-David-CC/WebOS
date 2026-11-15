@@ -16,3 +16,6 @@
 [submodule "engine-opencascade"]
 	path = engine-opencascade
 	url = ../engine-opencascade.git
+[submodule "engine-smlib-wasm"]
+	path = engine-smlib-wasm
+	url = ../engine-smlib-wasm.git
