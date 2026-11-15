@@ -10,12 +10,20 @@
       "ownership": "microduck",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 3,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 4,
+        "source_present": 1,
+        "verified_beta_reference_available": 4,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/microduck"
+      "component_path": "apps/microduck",
+      "initial_asset_review": {
+        "missing_declared_assets": 3,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "falling-blocks",
@@ -24,14 +32,22 @@
       "ownership": "falling-blocks",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 3,
+        "source_present": 1,
+        "verified_beta_reference_available": 3,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/falling-blocks",
       "independent_checks": "no original package test script; tracked coach asset hash verified, Rive CLI render not run",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "owl-companion",
@@ -40,14 +56,22 @@
       "ownership": "owl-companion",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 2,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 3,
+        "source_present": 1,
+        "verified_beta_reference_available": 3,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/owl-companion",
       "independent_checks": "owned import validation passes after separately committed Snake/Owl test ownership split; three original case bodies/assertions retained",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 2,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "physics-playground",
@@ -56,14 +80,22 @@
       "ownership": "physics-playground",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/physics-playground",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "snake-garden",
@@ -72,8 +104,12 @@
       "ownership": "snake-garden",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [
         "apps/games/04-rive-interactives/owl-companion/src/model/owlSession.js",
@@ -82,7 +118,11 @@
       "host_loaded_dependencies": [],
       "component_path": "apps/snake-garden",
       "independent_checks": "owned import validation passes after separately committed Snake/Owl test ownership split; three original case bodies/assertions retained",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "clockwork-room",
@@ -91,14 +131,22 @@
       "ownership": "clockwork-room",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/clockwork-room",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "chess-study",
@@ -107,14 +155,22 @@
       "ownership": "chess-study",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/chess-study",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "solitaire",
@@ -123,15 +179,23 @@
       "ownership": "independent component",
       "extraction": "history extracted; original 24-file tree verified; repository metadata added separately",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/solitaire",
       "integration": "historical host retained; new Desktop/Storage port pending; not enabled",
       "verification": "typecheck and 16 existing tests pass in original-byte copy and independent filtered clone",
-      "legacy_whole_system_tests": "tests/solitaire-* preserved in full recovery; assigned parent test-port work"
+      "legacy_whole_system_tests": "tests/solitaire-* preserved in full recovery; assigned parent test-port work",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "sky-courier",
@@ -140,14 +204,22 @@
       "ownership": "sky-courier",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/sky-courier",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "marble-works",
@@ -156,14 +228,22 @@
       "ownership": "marble-works",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/marble-works",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "stack-balance",
@@ -172,14 +252,22 @@
       "ownership": "stack-balance",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/stack-balance",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "crystal-defense",
@@ -188,14 +276,22 @@
       "ownership": "crystal-defense",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/crystal-defense",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "drone-circuit",
@@ -204,14 +300,22 @@
       "ownership": "drone-circuit",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/drone-circuit",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "reactive-control-desk",
@@ -220,14 +324,22 @@
       "ownership": "reactive-control-desk",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/reactive-control-desk",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "story-cards",
@@ -236,14 +348,22 @@
       "ownership": "story-cards",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/story-cards",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "expression-puppet",
@@ -252,14 +372,22 @@
       "ownership": "expression-puppet",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 2,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 3,
+        "source_present": 1,
+        "verified_beta_reference_available": 3,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/expression-puppet",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 2,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "rhythm-garden",
@@ -268,14 +396,22 @@
       "ownership": "rhythm-garden",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 2,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 2,
+        "source_present": 0,
+        "verified_beta_reference_available": 2,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/rhythm-garden",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 2,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "lantern-leap",
@@ -284,14 +420,22 @@
       "ownership": "lantern-leap",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/lantern-leap",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "garden-defense",
@@ -300,14 +444,22 @@
       "ownership": "garden-defense",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/garden-defense",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "pocket-rally",
@@ -316,14 +468,22 @@
       "ownership": "pocket-rally",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/pocket-rally",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "sling-targets",
@@ -332,14 +492,22 @@
       "ownership": "sling-targets",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/sling-targets",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "gravity-pinball",
@@ -348,14 +516,22 @@
       "ownership": "gravity-pinball",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/gravity-pinball",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "kinetic-relay",
@@ -364,14 +540,22 @@
       "ownership": "kinetic-relay",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/kinetic-relay",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "tabletop-bot-arena",
@@ -380,14 +564,22 @@
       "ownership": "tabletop-bot-arena",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/tabletop-bot-arena",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "pocket-golf",
@@ -396,14 +588,22 @@
       "ownership": "pocket-golf",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 1,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 1,
+        "source_present": 0,
+        "verified_beta_reference_available": 1,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/pocket-golf",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 1,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "target-garden",
@@ -412,14 +612,22 @@
       "ownership": "target-garden",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/target-garden",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "orbital-courier",
@@ -428,14 +636,22 @@
       "ownership": "orbital-courier",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/orbital-courier",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "clockwork-quest",
@@ -444,14 +660,22 @@
       "ownership": "clockwork-quest",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/clockwork-quest",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "memory-garden",
@@ -460,14 +684,22 @@
       "ownership": "memory-garden",
       "extraction": "mechanical source/history extracted and baseline checked; original host port not enabled",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/memory-garden",
       "independent_checks": "existing configured checks pass in isolated extracted copy",
-      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified"
+      "declared_asset_check": "all manifest asset paths resolved and hashes equal between baseline and independent test checkout; full runtime graph unqualified",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "calculator",
@@ -476,12 +708,20 @@
       "ownership": "independent component",
       "extraction": "mechanical tree verified; integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/calculator"
+      "component_path": "apps/calculator",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "files",
@@ -490,13 +730,21 @@
       "ownership": "independent component",
       "extraction": "mechanical tree verified; integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/files",
-      "integration": "Public server-backed Files view verified in actual development composition; remaining old features explicitly pending"
+      "integration": "Public server-backed Files view verified in actual development composition; remaining old features explicitly pending",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "help",
@@ -505,12 +753,20 @@
       "ownership": "independent component",
       "extraction": "mechanical tree verified; integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/help"
+      "component_path": "apps/help",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "browser",
@@ -519,12 +775,20 @@
       "ownership": "browser",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 7,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 27,
+        "source_present": 20,
+        "verified_beta_reference_available": 27,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/browser"
+      "component_path": "apps/browser",
+      "initial_asset_review": {
+        "missing_declared_assets": 7,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "codemirror",
@@ -533,12 +797,20 @@
       "ownership": "codemirror",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/codemirror"
+      "component_path": "libraries/codemirror",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "opencascade",
@@ -547,12 +819,20 @@
       "ownership": "engine-opencascade-js",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "engines/opencascade-js"
+      "component_path": "engines/opencascade-js",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "gltf-transform",
@@ -561,12 +841,20 @@
       "ownership": "gltf-transform",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/gltf-transform"
+      "component_path": "libraries/gltf-transform",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "terminal",
@@ -575,12 +863,20 @@
       "ownership": "terminal",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/terminal"
+      "component_path": "apps/terminal",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "text",
@@ -589,14 +885,22 @@
       "ownership": "text",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [
         "codemirror"
       ],
-      "component_path": "apps/text"
+      "component_path": "apps/text",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "image-editor",
@@ -605,12 +909,20 @@
       "ownership": "image-editor",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/image-editor"
+      "component_path": "apps/image-editor",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "document-editor",
@@ -619,12 +931,20 @@
       "ownership": "document-editor",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 1,
+        "source_present": 1,
+        "verified_beta_reference_available": 1,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/document-editor"
+      "component_path": "apps/document-editor",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "pdf-viewer",
@@ -633,12 +953,20 @@
       "ownership": "pdf-viewer",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/pdf-viewer"
+      "component_path": "apps/pdf-viewer",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "spreadsheet",
@@ -647,12 +975,20 @@
       "ownership": "spreadsheet",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/spreadsheet"
+      "component_path": "apps/spreadsheet",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "data-explorer",
@@ -661,12 +997,20 @@
       "ownership": "data-explorer",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/data-explorer"
+      "component_path": "apps/data-explorer",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "ffmpeg",
@@ -675,12 +1019,20 @@
       "ownership": "engine-ffmpeg",
       "extraction": "mechanical source/history extracted; browser/host port and complete engine build pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "engines/ffmpeg"
+      "component_path": "engines/ffmpeg",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "wavesurfer",
@@ -689,12 +1041,20 @@
       "ownership": "wavesurfer",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/wavesurfer"
+      "component_path": "libraries/wavesurfer",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "tone",
@@ -703,12 +1063,20 @@
       "ownership": "tone",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/tone"
+      "component_path": "libraries/tone",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "audio-editor",
@@ -717,12 +1085,20 @@
       "ownership": "audio-editor",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 44,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 44,
+        "source_present": 0,
+        "verified_beta_reference_available": 44,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/audio-editor"
+      "component_path": "apps/audio-editor",
+      "initial_asset_review": {
+        "missing_declared_assets": 44,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "zip",
@@ -731,12 +1107,20 @@
       "ownership": "zip",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/zip"
+      "component_path": "libraries/zip",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "gcode-preview",
@@ -745,12 +1129,20 @@
       "ownership": "gcode-preview",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/gcode-preview"
+      "component_path": "apps/gcode-preview",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "grid-tools",
@@ -759,12 +1151,20 @@
       "ownership": "grid-tools",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 48,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 48,
+        "source_present": 0,
+        "verified_beta_reference_available": 48,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/grid-tools"
+      "component_path": "apps/grid-tools",
+      "initial_asset_review": {
+        "missing_declared_assets": 48,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "mermaid",
@@ -773,12 +1173,20 @@
       "ownership": "mermaid",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/mermaid"
+      "component_path": "libraries/mermaid",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "echarts",
@@ -787,12 +1195,20 @@
       "ownership": "echarts",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/echarts"
+      "component_path": "libraries/echarts",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "plotly",
@@ -801,12 +1217,20 @@
       "ownership": "plotly",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/plotly"
+      "component_path": "libraries/plotly",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "pdfme",
@@ -815,12 +1239,20 @@
       "ownership": "pdfme",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/pdfme"
+      "component_path": "libraries/pdfme",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "maplibre",
@@ -829,12 +1261,20 @@
       "ownership": "maplibre",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/maplibre"
+      "component_path": "libraries/maplibre",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "transformers",
@@ -843,12 +1283,20 @@
       "ownership": "transformers",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/transformers"
+      "component_path": "libraries/transformers",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "trystero",
@@ -857,12 +1305,20 @@
       "ownership": "trystero",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/trystero"
+      "component_path": "libraries/trystero",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "tanstack-virtual",
@@ -871,12 +1327,20 @@
       "ownership": "tanstack-virtual",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/tanstack-virtual"
+      "component_path": "libraries/tanstack-virtual",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "onnx-runtime",
@@ -885,12 +1349,20 @@
       "ownership": "engine-onnx-runtime",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 1,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 1,
+        "source_present": 0,
+        "verified_beta_reference_available": 1,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "engines/onnx-runtime"
+      "component_path": "engines/onnx-runtime",
+      "initial_asset_review": {
+        "missing_declared_assets": 1,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "webtorrent",
@@ -899,12 +1371,20 @@
       "ownership": "webtorrent",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/webtorrent"
+      "component_path": "libraries/webtorrent",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "yjs",
@@ -913,12 +1393,20 @@
       "ownership": "yjs",
       "extraction": "mechanical source/history extracted; asset/build/host integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "libraries/yjs"
+      "component_path": "libraries/yjs",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "replicad",
@@ -927,12 +1415,20 @@
       "ownership": "replicad",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/replicad"
+      "component_path": "apps/replicad",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "diagrams-net",
@@ -941,12 +1437,20 @@
       "ownership": "diagrams-net",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 2764,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 2765,
+        "source_present": 1,
+        "verified_beta_reference_available": 2765,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/diagrams-net"
+      "component_path": "apps/diagrams-net",
+      "initial_asset_review": {
+        "missing_declared_assets": 2764,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "notebook",
@@ -955,12 +1459,20 @@
       "ownership": "notebook",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 592,
+        "source_present": 8,
+        "verified_beta_reference_available": 551,
+        "absent_from_source_and_reference": 36,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/notebook"
+      "component_path": "apps/notebook",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "excalidraw",
@@ -969,12 +1481,20 @@
       "ownership": "excalidraw",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 234,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 234,
+        "source_present": 0,
+        "verified_beta_reference_available": 234,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/excalidraw"
+      "component_path": "apps/excalidraw",
+      "initial_asset_review": {
+        "missing_declared_assets": 234,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "svg-editor",
@@ -983,12 +1503,20 @@
       "ownership": "svg-editor",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 264,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 264,
+        "source_present": 0,
+        "verified_beta_reference_available": 264,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/svg-editor"
+      "component_path": "apps/svg-editor",
+      "initial_asset_review": {
+        "missing_declared_assets": 264,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "arduino-simulator",
@@ -997,12 +1525,20 @@
       "ownership": "arduino-simulator",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 9,
+        "source_present": 9,
+        "verified_beta_reference_available": 9,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/arduino-simulator"
+      "component_path": "apps/arduino-simulator",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "pico-simulator",
@@ -1011,12 +1547,20 @@
       "ownership": "pico-simulator",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/pico-simulator"
+      "component_path": "apps/pico-simulator",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "circuitjs",
@@ -1025,12 +1569,20 @@
       "ownership": "circuitjs",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 411,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 411,
+        "source_present": 0,
+        "verified_beta_reference_available": 411,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/circuitjs"
+      "component_path": "apps/circuitjs",
+      "initial_asset_review": {
+        "missing_declared_assets": 411,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "jsketcher",
@@ -1039,13 +1591,21 @@
       "ownership": "acad",
       "extraction": "133-file host integration history merged into ACAD webos/ with exact original blobs/modes; original JSketcher remains separate apps/jsketcher",
       "asset_review": {
-        "missing_declared_assets": 130,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 130,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 130,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
       "component_path": "apps/acad",
-      "integration_source_path": "webos/"
+      "integration_source_path": "webos/",
+      "initial_asset_review": {
+        "missing_declared_assets": 130,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "electronics-design",
@@ -1054,12 +1614,20 @@
       "ownership": "electronics-design",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 6,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 18,
+        "source_present": 12,
+        "verified_beta_reference_available": 18,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/electronics-design"
+      "component_path": "apps/electronics-design",
+      "initial_asset_review": {
+        "missing_declared_assets": 6,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "digital-logic",
@@ -1068,12 +1636,20 @@
       "ownership": "digital-logic",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/digital-logic"
+      "component_path": "apps/digital-logic",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "embroidery-studio",
@@ -1082,12 +1658,20 @@
       "ownership": "embroidery-studio",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 42,
-        "status": "incomplete asset graph"
+        "declared_file_paths": 49,
+        "source_present": 7,
+        "verified_beta_reference_available": 49,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": true
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/embroidery-studio"
+      "component_path": "apps/embroidery-studio",
+      "initial_asset_review": {
+        "missing_declared_assets": 42,
+        "status": "incomplete asset graph"
+      }
     },
     {
       "id": "stitch-converter",
@@ -1096,12 +1680,20 @@
       "ownership": "stitch-converter",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/stitch-converter"
+      "component_path": "apps/stitch-converter",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     },
     {
       "id": "personal-template",
@@ -1110,12 +1702,20 @@
       "ownership": "personal-template",
       "extraction": "source/history mechanically extracted; original limitations retained; host/build integration pending",
       "asset_review": {
-        "missing_declared_assets": 0,
-        "status": "declared paths exist; runtime/build still unverified"
+        "declared_file_paths": 0,
+        "source_present": 0,
+        "verified_beta_reference_available": 0,
+        "absent_from_source_and_reference": 0,
+        "status": "Declared paths only; private archive, rebuild recipe and dynamic graph review remain separate",
+        "manifest_present": false
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/personal-template"
+      "component_path": "apps/personal-template",
+      "initial_asset_review": {
+        "missing_declared_assets": 0,
+        "status": "declared paths exist; runtime/build still unverified"
+      }
     }
   ],
   "selected_upstream_forks": [
@@ -1760,5 +2360,13 @@
     "license_distribution": "OPEN",
     "source_history": "one available path snapshot; earlier development provenance unresolved",
     "classification": "legacy - unused by current site per user"
+  },
+  "declared_asset_reconciliation": {
+    "scope": "Declared file paths only; reference payload bytes are not proof of source rebuild or complete dynamic asset graph",
+    "registered_entries": 75,
+    "declared_assets": 4609,
+    "source_present": 62,
+    "verified_reference_available": 4438,
+    "missing_from_source_and_reference": 166
   }
 }
