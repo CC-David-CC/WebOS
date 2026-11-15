@@ -4,12 +4,18 @@ The new test desktop is available at **https://ksu.codes**. Create a fresh accou
 through Login. The user has identified this site as a test location with test
 users only. Old account state was not migrated, reset or copied.
 
-The served release selects parent source
-`217ececf045f5da98a4dcfe37b6d599c855d9d17`; its application/component pins include
-WordCraft `5ee1726037e6ff97ae4f69d46213ef75a32e0c83`. Later parent commits add
-service definitions and test/reporting changes, not different served app bits.
-The immutable package contains55 files totaling105,646,592bytes. All files were
-hash-verified locally and again on the target before installation.
+The frontend now selects parent source
+`131e36585fa307272cb288f5800486b021c8739b`, WordCraft
+`0d48f9a1bd5a2bb88d8431760a14b0ba55161563` and shared egui
+`2d0ae4b4270e76c431fd62d3512237579ed6c26f`. Its33 payload files total
+95,791,308bytes, plus the release manifest, hash-verified locally and on the host. The backend remains
+release `217ececf045f5da98a4dcfe37b6d599c855d9d17`: all three backend component
+pins, the server script and dependency lock match the new composition. Its
+process, instance identity, issuer and account state were preserved.
+
+The following original hosted workflow checks passed before this renderer-only
+update. The Calculator, Files, Text, host client bundle and storage worker have
+identical served bytes. The new renderer also passed the hosted checks below.
 
 | Hosted workflow | Result |
 |---|---|
@@ -20,12 +26,25 @@ hash-verified locally and again on the target before installation.
 | Text reload and second clean browser retrieval | PASS |
 | WordCraft new heading, paragraph and list | PASS |
 | WordCraft account save, Files reopen, reload, second-context formatting | PASS |
+| New renderer: two rounds of three concurrent editor starts | PASS (6/6) |
+| New renderer: account save/reopen, stale conflicts, close guards, Save As/PDF | PASS |
+| New renderer: heading/list authoring, Files reopen, reload, second context | PASS |
 
-The supplemental three-simultaneous-editor hosted test remains **OPEN**: two
-editors loaded, a confirmed save and stale-revision rejection worked, but the
-third editor timed out during startup. The failure is retained for diagnosis;
-it does not invalidate the separately passing two-context authoring test, and
-it is not reported as a full concurrency pass. No assertions were removed. The focused startup matrix reproduced the third-editor timeout in both rounds. A traced run showed WebAssembly finished in about two seconds, followed by a browser WebGPU adapter promise that never resolved. The shared egui-wgpu fallback fix has now been rebuilt into WordCraft and passed local qualification: three deadline/cancellation tests, a WebAssembly compile check, an isolated complete build, six concurrent-editor starts across two rounds, account save/conflict checks, and formatted authoring/reopen checks. The third editors started in19.4 and21.2 seconds without changing the120-second host timeout. Selected local WordCraft is `0d48f9a1bd5a2bb88d8431760a14b0ba55161563`, using egui `2d0ae4b4270e76c431fd62d3512237579ed6c26f`. This fix is **not deployed**; clean assembly proof and a verified test-site update remain next. Local evidence is in `run-20261115-15-graphics-startup/`.
+The earlier renderer failed both rounds of the three-editor startup matrix:
+the third browser WebGPU adapter request remained pending after WASM loaded.
+The new shared renderer bounds optional adapter discovery when WebGL fallback
+is allowed. It passed three deadline/cancellation unit checks, a WASM compile
+check, a complete isolated build, six local editor starts across two rounds,
+account/conflict tests and formatting tests. Clean-checkout authoring passed
+with the original workspace, primary assembly and recovery source hidden and
+external networking disabled. An initial isolation failure hid Chromium's X11
+socket and prevented WebGL creation; its failure reports and focused diagnostic
+probes are retained. The corrected isolation preserves that socket; assertions
+and product behavior are unchanged. Hosted regression qualification of this
+new renderer **passed**: six starts across two rounds, with third-editor startup
+of20.4 and20.3 seconds; account/conflict checks in three browser contexts; and
+formatted authoring with save/reopen, reload and second-context retrieval. No
+page errors were reported. The120-second host timeout was unchanged.
 
 These are actual browser requests over HTTPS to the remote server. They do not
 qualify every legacy app, delegated agents, or a physical second client machine.
@@ -39,21 +58,32 @@ restart policy. Its new private state is separate from release assets and from
 all old service state. The backend was installed offline from pinned wheels on
 Python3.12; dependency and packaged-source import checks passed.
 
-Only the ksu.codes Caddy site block was replaced. The prior configuration is
-preserved root-only at `/var/backups/webos-test-route-217ececf-20261115/` on
-box-webhost, with before/candidate SHA256 records in `route-plan.json` and an
-activation receipt. Both configurations validated before activation. Caddy was
-reloaded without a process restart. The beta site block and beta page bytes
-were verified unchanged; checked existing service PIDs remained unchanged.
+Only the ksu.codes Caddy block changed. Caddy now serves the new immutable
+public tree directly and proxies account, gateway, configuration, issuer and
+health routes to the existing backend. The template is
+`deploy/ksu-test-static.caddy.in`; replace its explicit public-root placeholder
+with a verified immutable release directory. No backend restart was needed.
 
-For rollback, first verify the current configuration still matches the recorded
-candidate hash. Restore the recorded before file with its original ownership
-and mode, validate it, and reload Caddy. Do not overwrite a concurrent config
-change or remove new account data. The new test service can be stopped
-separately if rollback is needed. Do not replay one-time staging scripts against
-existing destinations.
+The current public tree is
+`/srv/webos-rebuild-test-public/cde3f9a577c1f8fb6964c7eca20afc4572a195734662391dc4bf7f1f09f464d4/public`.
+Its manifest includes file hashes and exact backend compatibility checks.
+The current route rollback directory is root-only
+`/var/backups/webos-test-static-131e365-20261115/` on box-webhost. Both before
+and candidate configs validated. Activation preserved file owner/mode and
+reloaded Caddy; health instance and issuer bytes, beta page bytes and checked
+service PIDs stayed unchanged. Index, client and new WASM hashes were verified
+over HTTPS with the required cross-origin isolation headers.
+
+To roll back this frontend update, verify the current config matches the
+candidate hash recorded in that directory's `route-plan.json`, restore its
+before file with the recorded owner/mode, validate, then reload Caddy. Preserve
+the backend and account data. The previous initial-route backup remains at
+`/var/backups/webos-test-route-217ececf-20261115/`; that earlier rollback would
+return ksu.codes to its former application and is a different action. Do not
+replay staging scripts over existing destinations.
 
 Private evidence and exact commands are in
+`run-20261115-15-graphics-startup/` and the earlier
 `run-20261115-14-test-deployment/` under the private migration directory. Browser
 reports and screenshots use disposable test accounts; credentials and account
 files are not committed. The original laptop workspace and local recovery
