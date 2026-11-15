@@ -97,7 +97,8 @@ all2144 historical LFS payloads. Recovery and raw evidence stay owner-only,
 outside Git and web roots, under `/path/to/workspace/Projects/.webos-migration/`.
 Latest active checkpoint: `run-20261115-21-scoped-delegation/checkpoint.json` and
 `RESUME.md`. Phase20 records live view routing. Phase18 records the separate
-native CI review, which terminated with a PDF text test failure.
+native/font review; phase22 tracks the shared update-dialog translation failure
+that its next full CI exposed.
 Phase17 records clean qualification of the selected authority
 fixes; phase16 retains red/green evidence. Phase15 records the current test deployment and renderer
 qualification; phase13 records earlier local/clean-clone acceptance. Earlier phases retain
@@ -154,11 +155,20 @@ slice, not the entire suite.
 The baseline native WordCraft CI stopped on three Clippy diagnostics in two
 unchanged Rust files. A separate isolated phase18 review simplifies those
 conditions without lowering lint thresholds. Formatting and Clippy passed;
-tests reported3,547 passes,1 failure and5 ignored. The PDF test
-`chart_and_equation_text_keep_their_pdf_bytes` also fails in standalone
-reproduction: extracted text lacks mathematical italic x U+1D465. Font-input
-causality remains under investigation; later CI stages were not run. This
-review has not changed the selected WordCraft pin. The ksu.codes deployment remains the phase15
+its first run reported3,547 test passes,1 failure and5 ignored. The PDF
+`chart_and_equation_text_keep_their_pdf_bytes` failure was traced experimentally
+to a missing math font. The unchanged test passes with pinned STIX Two Math,
+including with system font directories hidden. A maintained shared font commit
+`e5f6cc5577fab9534095a6dfe2d409b2d9f72b1d` contains the unmodified font,
+license, provenance and tested manifest. Its checks also pass from a clean clone.
+It is ahead of the parent's selected font pin during review; do not reset it.
+
+The next full WordCraft review run passed formatting, Clippy and4,969 main tests
+(8 ignored), then failed the translation audit: shared craft-update draws an
+untranslated network-error detail when offline. Phase22 investigates the fix in
+that shared library, without changing the audit. Language, doctests, assets,
+layers and wasm were not run. Native/font review has not changed the selected
+WordCraft pin. The ksu.codes deployment remains the phase15
 release. Delegated-agent transport is not yet enabled or qualified.
 
 The selected Help commit is `e68a507ea52235d282e1e2496f24e9ff8f98c948`.
