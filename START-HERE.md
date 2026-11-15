@@ -6,13 +6,13 @@ Read `migration/scope.json` for the registered catalog, source ownership candida
 
 ## Verified source assembly
 
-ACAD retains its original independent history. Help, Calculator, and Files were mechanically extracted from verified recovery copies, preserving earlier source paths and commit maps. Their current app trees retain the exact original Git tree identities. Six existing unit scripts passed in the recovered monorepo, extracted repositories, and a fresh recursive clone. Help has no extracted unit script. These results do not prove browser integration, full asset builds, persistence, or human/agent parity.
+The assembly currently pins 26 source components. ACAD, original JSketcher, and four engines retain their independent histories. All 17 selected upstream fork histories are attached as source baselines; they are not qualified releases. Help, Calculator, and Files were mechanically extracted from verified recovery copies, preserving earlier source paths and commit maps. Their current app trees retain the exact original Git tree identities. Six existing unit scripts passed in the recovered monorepo, extracted repositories, and a fresh recursive clone. Help has no extracted unit script. A fresh recursive local clone passed for all 26 source components. WordCraft passed its unmodified WASM compile check; its isolated fresh-clone check is recorded in the current private checkpoint. These results do not prove browser integration, full asset builds, persistence, or human/agent parity.
 
 The `.gitmodules` entries and Git links select component commits. They are the source version authority. Component source is never copied into parent-owned files. Whole-system tests and composition belong to this parent. Mechanical extraction and functional changes are separate commits.
 
 ## Remaining scope
 
-Preserve and account for every existing app, game, tool, library, required asset, and WIP state. Keep ACAD, original JSketcher, old editors, and the selected replacement forks distinct. Establish all 17 selected maintained forks with original histories, licenses, and structures, then qualify their browser builds and host operations individually. Source presence does not establish support.
+Preserve and account for every existing app, game, tool, library, required asset, and WIP state. Keep ACAD, original JSketcher, old editors, and the selected replacement forks distinct. All 17 selected maintained forks now have source submodules with original histories, licenses, and structures retained on local `webos/integration` branches. Their browser builds and host operations still require individual qualification. Source presence does not establish support.
 
 Build real server-backed account files with existing identity and file ownership compatibility. Human, authorized agent, and test operations share the same domain implementations. One authoritative live document per session and server-authoritative saved revisions are mandatory. No browser cache may masquerade as a confirmed server save. Linux/v86, Terminal, MailCraft, and Craft Anything are not minimum dependencies; preserve existing excluded source separately.
 
@@ -29,3 +29,5 @@ git -c protocol.file.allow=always clone --recurse-submodules ../.webos-local-git
 Private recovery/evidence is under `/path/to/workspace/Projects/.webos-migration/`. Start with `run-20261114-02/phase-checkpoint.json` and its evidence reports, then the earlier `run-20261114-01/checkpoint.json`. Raw capture includes tracked source/Git metadata, not all ignored assets or live account data. Do not publish private logs, credentials, account databases, or user documents.
 
 The original workspace and deployment stay unchanged. No external publication, production change, service restart, or account-data migration is authorized. Continue local work while separately gated actions remain pending.
+
+SolidCraft includes a separate brand/interface license. Preserve its notices and resolve the distribution gate before publishing or deploying it. No legal conclusion or distribution permission is implied by the local source checkout.
