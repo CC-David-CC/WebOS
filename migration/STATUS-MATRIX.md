@@ -39,7 +39,7 @@ Hosted Rooms is unused historical code, not a new service.
 | accounts | `platform/accounts/` | PASS | PASS:67 layered tests (42 retained core,25 policy/delegation); historical policy differences documented | PASS human account policy; optional delegation core inactive, transport/file authority OPEN |
 | desktop | `platform/desktop/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 | login | `platform/login/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
-| publication | `platform/publication/` | PASS33 exact source/test histories | PASS scoped unsigned reconstruction fixture; full imports/build OPEN | SOURCE ONLY: interface port, signed/runtime/browser-agent acceptance OPEN; disabled |
+| publication | `platform/publication/` | PASS33 source/test histories plus28 unchanged legacy command/check files | PASS scoped unsigned reconstruction fixture; full imports/build OPEN | SOURCE ONLY: interface port, signed/runtime/browser-agent acceptance OPEN; disabled |
 | rendezvous | `platform/rendezvous/` | PASS13 original files/history | PASS37 unchanged lease tests and9 installed-module imports with source hidden | OPEN: signed transport, root/publisher custody, browser/agent integration; disabled |
 | runtime | `platform/runtime/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 | storage | `platform/storage/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
@@ -202,11 +202,12 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The122-row chart does not close original-source reconciliation. The tracked-source
-ledger now has5,924 unresolved entries plus86 unqualified blob candidates, after
+ledger now has5,896 unresolved entries plus86 unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
-dispositions were verified. All44 original steward-area paths now have source owners;
+dispositions, plus28 publication command/test sources, were verified.
+All44 original steward-area paths now have source owners;
 this does not qualify either service as active. These counts do not mean
 those files are missing. Baseline histories,
 new path maps, generated evidence and deliberately preserved historical material
