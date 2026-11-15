@@ -12,10 +12,26 @@ import signal
 import socket
 import stat
 import uuid
+from urllib.parse import urlsplit
 from aiohttp import web
 from webos_accounts import AccountsService, Config
 from webos_accounts.file_authority import FileAuthority
 from webos_storage import UserStore, DEFAULT_ACCOUNT_FOLDERS, FileGateway, initialize_ledger, initialize_transfers
+
+
+def validate_origin(value):
+    parsed = urlsplit(value)
+    if (not parsed.hostname or parsed.username is not None or parsed.password is not None
+            or parsed.path or parsed.query or parsed.fragment or parsed.geturl() != value
+            or any(char.isspace() for char in value)):
+        raise ValueError('Canonical origin without credentials, path or query required')
+    try:
+        parsed.port
+    except ValueError as error:
+        raise ValueError('Valid origin port required') from error
+    if parsed.scheme != 'https' and not (parsed.scheme == 'http' and parsed.hostname in ('127.0.0.1', 'localhost', '::1')):
+        raise ValueError('HTTPS origin required outside loopback')
+    return value
 
 
 def private_directory(path):
@@ -29,6 +45,7 @@ def private_directory(path):
 
 
 async def create_application(public_root, private_root, origin):
+    origin = validate_origin(origin)
     public_root = Path(public_root).absolute()
     private_root = Path(private_root).absolute()
     source_root = Path(__file__).resolve().parent.parent
@@ -50,10 +67,10 @@ async def create_application(public_root, private_root, origin):
             if marker.is_symlink() or not marker.is_file():
                 raise ValueError('Unknown or incomplete development state; preserve it for review')
             metadata = json.loads(marker.read_text())
-            if metadata.get('schema') != 'webos-development-state/1' or metadata.get('status') != 'ready':
+            if metadata.get('schema') != 'webos-development-state/2' or metadata.get('status') != 'ready' or metadata.get('origin') != origin:
                 raise ValueError('Unsupported or incomplete development state')
         else:
-            metadata = {'schema': 'webos-development-state/1', 'status': 'initializing', 'instanceId': str(uuid.uuid4())}
+            metadata = {'schema': 'webos-development-state/2', 'status': 'initializing', 'instanceId': str(uuid.uuid4()), 'origin': origin}
             marker.write_text(json.dumps(metadata) + '\n'); marker.chmod(0o600)
         for name in ('identity', 'storage-state', 'account-files'):
             folder = private_root / name
@@ -93,7 +110,7 @@ async def create_application(public_root, private_root, origin):
                    'CONTENT_LENGTH': str(len(body)), 'CONTENT_TYPE': request.headers.get('Content-Type', ''),
                    'HTTP_HOST': request.headers.get('Host', ''), 'HTTP_ORIGIN': request.headers.get('Origin', ''),
                    'HTTP_AUTHORIZATION': request.headers.get('Authorization', ''), 'REMOTE_ADDR': request.remote or 'unknown',
-                   'wsgi.input': io.BytesIO(body), 'wsgi.url_scheme': 'http', 'SERVER_PROTOCOL': 'HTTP/1.1'}
+                   'wsgi.input': io.BytesIO(body), 'wsgi.url_scheme': urlsplit(origin).scheme, 'SERVER_PROTOCOL': 'HTTP/1.1'}
             def invoke():
                 response = {}
                 def start(status, headers, exc_info=None):
@@ -136,7 +153,7 @@ async def run(args):
     os.umask(0o077)
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.bind(('127.0.0.1', args.port)); sock.listen(128); sock.setblocking(False)
-    origin = 'http://127.0.0.1:' + str(sock.getsockname()[1])
+    origin = validate_origin(args.origin) if args.origin else 'http://127.0.0.1:' + str(sock.getsockname()[1])
     try:
         app = await create_application(args.public_root, args.private_root, origin)
         runner = web.AppRunner(app, access_log=None); await runner.setup()
@@ -158,4 +175,5 @@ if __name__ == '__main__':
     parser.add_argument('--public-root', type=Path, required=True)
     parser.add_argument('--private-root', type=Path, required=True)
     parser.add_argument('--port', type=int, default=18140)
+    parser.add_argument('--origin', help='Explicit HTTPS test-site origin behind a trusted local proxy; listener remains loopback')
     asyncio.run(run(parser.parse_args()))
