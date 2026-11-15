@@ -241,3 +241,81 @@
 [submodule "memory-garden"]
 	path = apps/memory-garden
 	url = ../memory-garden.git
+[submodule "microduck"]
+	path = apps/microduck
+	url = ../microduck.git
+[submodule "browser"]
+	path = apps/browser
+	url = ../browser.git
+[submodule "engine-opencascade-js"]
+	path = engines/opencascade-js
+	url = ../engine-opencascade-js.git
+[submodule "terminal"]
+	path = apps/terminal
+	url = ../terminal.git
+[submodule "text"]
+	path = apps/text
+	url = ../text.git
+[submodule "image-editor"]
+	path = apps/image-editor
+	url = ../image-editor.git
+[submodule "document-editor"]
+	path = apps/document-editor
+	url = ../document-editor.git
+[submodule "pdf-viewer"]
+	path = apps/pdf-viewer
+	url = ../pdf-viewer.git
+[submodule "spreadsheet"]
+	path = apps/spreadsheet
+	url = ../spreadsheet.git
+[submodule "data-explorer"]
+	path = apps/data-explorer
+	url = ../data-explorer.git
+[submodule "audio-editor"]
+	path = apps/audio-editor
+	url = ../audio-editor.git
+[submodule "gcode-preview"]
+	path = apps/gcode-preview
+	url = ../gcode-preview.git
+[submodule "grid-tools"]
+	path = apps/grid-tools
+	url = ../grid-tools.git
+[submodule "replicad"]
+	path = apps/replicad
+	url = ../replicad.git
+[submodule "diagrams-net"]
+	path = apps/diagrams-net
+	url = ../diagrams-net.git
+[submodule "notebook"]
+	path = apps/notebook
+	url = ../notebook.git
+[submodule "excalidraw"]
+	path = apps/excalidraw
+	url = ../excalidraw.git
+[submodule "svg-editor"]
+	path = apps/svg-editor
+	url = ../svg-editor.git
+[submodule "arduino-simulator"]
+	path = apps/arduino-simulator
+	url = ../arduino-simulator.git
+[submodule "pico-simulator"]
+	path = apps/pico-simulator
+	url = ../pico-simulator.git
+[submodule "circuitjs"]
+	path = apps/circuitjs
+	url = ../circuitjs.git
+[submodule "electronics-design"]
+	path = apps/electronics-design
+	url = ../electronics-design.git
+[submodule "digital-logic"]
+	path = apps/digital-logic
+	url = ../digital-logic.git
+[submodule "embroidery-studio"]
+	path = apps/embroidery-studio
+	url = ../embroidery-studio.git
+[submodule "stitch-converter"]
+	path = apps/stitch-converter
+	url = ../stitch-converter.git
+[submodule "personal-template"]
+	path = apps/personal-template
+	url = ../personal-template.git
