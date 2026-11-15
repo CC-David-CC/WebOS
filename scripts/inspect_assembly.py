@@ -8,7 +8,18 @@ import re
 import subprocess
 
 PLATFORM = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage'))
+SHARED_ROLES = {'craft-libs': 'libraries', 'egui': 'libraries',
+                'craft-fonts': 'assets', 'craft-i18n': 'assets',
+                'craft-common-actions': 'tooling'}
 CORE = frozenset(('runtime', 'desktop', 'login', 'accounts', 'storage', 'files', 'wordcraft'))
+
+
+def organized_path(component, path):
+    parts = Path(path).parts
+    role = SHARED_ROLES.get(component, 'platform' if component in PLATFORM else
+                            'engines' if component.startswith('engine-') else 'apps')
+    return (len(parts) == 2 and parts[0] == role and
+            '..' not in parts and not Path(path).is_absolute())
 
 
 def git(root, *args):
@@ -39,10 +50,7 @@ def inspect(root):
         if not re.fullmatch(r'[a-z][a-z0-9-]*', component):
             errors.append('Invalid component identity')
             continue
-        parts = Path(path).parts
-        role = ('platform' if component in PLATFORM else 'engines' if component.startswith('engine-') else 'apps')
-        allowed = len(parts) == 2 and parts[0] == role and '..' not in parts and not Path(path).is_absolute()
-        if not allowed:
+        if not organized_path(component, path):
             errors.append('Component outside organized source layout: ' + path)
         if url != '../' + component + '.git':
             errors.append('Unexpected sibling origin URL: ' + component)

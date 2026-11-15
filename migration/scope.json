@@ -617,16 +617,16 @@
     {
       "id": "ffmpeg",
       "source": "apps/system/ffmpeg",
-      "category": "app-or-reusable-tool",
-      "ownership": "independent component",
-      "extraction": "preserved; extraction pending",
+      "category": "shared media engine",
+      "ownership": "engine-ffmpeg",
+      "extraction": "mechanical source/history extracted; browser/host port and complete engine build pending",
       "asset_review": {
         "missing_declared_assets": 0,
         "status": "declared paths exist; runtime/build still unverified"
       },
       "cross_directory_imports": [],
       "host_loaded_dependencies": [],
-      "component_path": "apps/ffmpeg"
+      "component_path": "engines/ffmpeg"
     },
     {
       "id": "wavesurfer",
@@ -1447,7 +1447,13 @@
       "storage": "platform/storage",
       "desktop": "platform/desktop",
       "login": "platform/login",
-      "solitaire": "apps/solitaire"
+      "solitaire": "apps/solitaire",
+      "craft-libs": "libraries/craft-libs",
+      "egui": "libraries/egui",
+      "craft-fonts": "assets/craft-fonts",
+      "craft-i18n": "assets/craft-i18n",
+      "craft-common-actions": "tooling/craft-common-actions",
+      "engine-ffmpeg": "engines/ffmpeg"
     },
     "missing_core_sources": [],
     "platform": "platform/<component>/",
@@ -1496,5 +1502,32 @@
     "storage": "Independent retained persistence and OPFS research history; real signed browser transport and verification worker, revision/permission checks and restart persistence pass; remaining mirror/draft/full-suite policies pending",
     "files": "Public server-authoritative Chonky/controller port passes human upload, cross-client listing, revision-checked rename/delete, interrupted upload uncertainty, close/reopen and logout; old copy/zip/drag/mirror features pending",
     "wordcraft": "Baseline full release WASM compilation passes; pinned font/translation Trunk packaging running. New engine/host completion changes compile in working branch; native tests and actual browser/editor acceptance remain pending; not yet selected by parent"
+  },
+  "shared_craft_source": {
+    "craft-libs": {
+      "path": "libraries/craft-libs",
+      "consumers": 16,
+      "selected_snapshot": "92d392cff132eaf53e13afff77f38b5c11b73aa0",
+      "pin_policy": "All existing app manifests/locks unchanged; 50 declared and locked historical revisions retained as local origin refs. Checkout snapshot is not a forced suite-wide dependency version."
+    },
+    "egui": {
+      "path": "libraries/egui",
+      "selected_snapshot": "6d518fc799681571963842f95b55a6b68431b15a",
+      "assets": "Git LFS required; all 2144 reachable historical payloads verified and retained in local origin"
+    },
+    "craft-fonts": {
+      "path": "assets/craft-fonts",
+      "selected_snapshot": "b076417b5880bd4154bd22f00695b1d28c6bea83"
+    },
+    "craft-i18n": {
+      "path": "assets/craft-i18n",
+      "selected_snapshot": "e56d26244bbac099bfd42e23fb12f78a4be418a7"
+    },
+    "craft-common-actions": {
+      "path": "tooling/craft-common-actions",
+      "selected_snapshot": "c8f4b6ec2a894285213c341611b6b023b0b3e469",
+      "status": "Source preserved; release/publishing workflows not executed. No top-level license found at selected revision; distribution review required."
+    },
+    "functional_wiring": "Not changed by source organization; app dependency resolution/build integration remains separate."
   }
 }
