@@ -152,6 +152,9 @@ async def create_application(public_root, private_root, origin):
 async def run(args):
     os.umask(0o077)
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # Retained state binds its issuer origin, including port. Allow a stopped
+    # listener to restart while prior connections remain in TIME_WAIT.
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.bind(('127.0.0.1', args.port)); sock.listen(128); sock.setblocking(False)
     origin = validate_origin(args.origin) if args.origin else 'http://127.0.0.1:' + str(sock.getsockname()[1])
     try:
