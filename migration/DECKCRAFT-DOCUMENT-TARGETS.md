@@ -1,6 +1,6 @@
 # DeckCraft document-target qualification
 
-The parent selects fork `1dc39d6e8c7a3b7ec87d92985c367e2597705fdd`.
+The parent selects fork `555fbb14ff2a239b51bb76969080fca0ab6a2a06`.
 Its native control owner checks an explicit `documentId` immediately before
 running a queued request. This is an active-document precondition: stale,
 malformed or conflicting targets fail. It neither changes focus nor provides
@@ -16,7 +16,7 @@ stale/malformed targets were accepted and inspection lacked document IDs.
 Those failures remain private evidence.
 
 The selected source passes all eight required `cargo xtask ci` stages:
-2,282 tests pass, zero fail and five existing cases remain ignored. Four target
+2,291 tests pass, zero fail and five existing cases remain ignored. Four target
 regressions cover queued focus changes, malformed/unknown/conflicting targets,
 matching and legacy calls, real inspection, and stale saves dispatching no host
 bytes. The nested-conflict fixture names another real document; no assertion
@@ -42,8 +42,8 @@ host adapter must always supply its captured target after authorization waits.
 Native identities and revisions are not account paths, server hashes or grants.
 
 Real Desktop/UserFiles binding, exports and scoped authenticated agent transport
-remain open. Creation/adoption results still need stable identity returned with
-the operation, rather than a late active-document lookup. `file.openBytes` is
+remain open. [Creation/adoption results](DECKCRAFT-CORRELATED-OPEN.md) now return stable
+identity with the operation, without a late active-document lookup. `file.openBytes` is
 source-less by design; correct account adoption must preserve source identity
 for valid presentations and protect repaired/converted copies. The app remains
 disabled in the minimum. No deployment changed in this qualification.

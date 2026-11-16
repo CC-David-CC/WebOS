@@ -1,6 +1,6 @@
 # DeckCraft confirmed-save source qualification
 
-Selected fork `1dc39d6e8c7a3b7ec87d92985c367e2597705fdd` fixes the reproduced
+Selected fork `555fbb14ff2a239b51bb76969080fca0ab6a2a06` fixes the reproduced
 premature-clean bug and binds asynchronous completion to its document and view.
 It stays disabled in the minimum desktop pending account/host integration.
 
@@ -26,7 +26,7 @@ pending/unknown state; these identities confer no server authority.
 
 The app's complete `cargo xtask ci` passed all8 required stages: formatting,
 PDF dependency validation, strict Clippy, workspace tests, doctests, assets,
-layering and wasm. Workspace results were 2,282 passes, zero failures and five
+layering and wasm. Workspace results were 2,291 passes, zero failures and five
 pre-existing ignored tests (three screenshot generators and two long soaks).
 No tests were newly ignored and no production lint allowance or CI relaxation
 was introduced. Native SDK preparation used a
@@ -60,7 +60,7 @@ These results qualify the real engine/transport boundary, not account persistenc
 
 ## Shared save wire
 
-The parent selects craft-libs `a9a7c46a7a1708f01a00a139265d24f71ea0a543`.
+The parent selects craft-libs `94981849457596b032355f74144cdd91c04d5df5`.
 The public `craft-web-host` crate now carries captured request/document/editor
 revision, operation and document-save intent. It parses bounded explicit
 failed/cancelled/conflict/unknown replies. Unknown retains the no-retry guard;
@@ -68,7 +68,7 @@ definitive failures retain edits and release the guard. Editor revisions are not
 account server hashes or authorization grants.
 
 The shared source passes formatting, strict full workspace Clippy and tests
-(3,007 passes, zero failures,81 existing ignores), plus9 Node/WASM bridge tests.
+(3,008 passes, zero failures,81 existing ignores), plus12 Node/WASM bridge tests.
 Optional FFmpeg/ffprobe oracles were unavailable; default workspace success is
 not codec-fidelity evidence. Tests use explicit UTF-8 locale and writable fixture
 storage with source mounted read-only. No assertions were relaxed.

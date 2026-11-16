@@ -84,7 +84,7 @@ Hosted Rooms is unused historical code, not a new service.
 |---|---|---|---|---|
 | anicraft | `apps/anicraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | cadcraft | `apps/cadcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
-| deckcraft | `apps/deckcraft/` | PASS | PASS selected1dc39d6e: all8 fork CI stages,2,282 tests; real WASM explicit target guard/inspection, identified saves, failure/unknown and retained acknowledgement/view regressions; [scope](DECKCRAFT-HOST-SAVE.md) | OPEN actual Storage/Desktop/export/agent integration; synthetic ack is not account persistence; disabled in minimum |
+| deckcraft | `apps/deckcraft/` | PASS | PASS selected555fbb14: all8 fork CI stages,2,291 tests; real WASM correlated file adoption, explicit target guard/inspection, identified saves, failure/unknown and retained acknowledgement/view regressions; [scope](DECKCRAFT-HOST-SAVE.md) | OPEN actual Storage/Desktop/export/agent integration; synthetic ack is not account persistence; disabled in minimum |
 | designcraft | `apps/designcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | effectcraft | `apps/effectcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | figcraft | `apps/figcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
@@ -159,7 +159,7 @@ Hosted Rooms is unused historical code, not a new service.
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
 | codemirror | `libraries/codemirror/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
-| craft-libs | `libraries/craft-libs/` | PASS | Selecteda9a7c46a passes workspace fmt/Clippy/tests (3,007 passes,81 ignored),9 Node/WASM host tests; explicit save identity/outcomes | Selected shared history; WordCraft dependency pins are explicit, other consumers OPEN |
+| craft-libs | `libraries/craft-libs/` | PASS | Selected94981849 passes workspace fmt/Clippy/tests (3,008 passes,81 ignored),12 Node/WASM host tests; correlated adoption and explicit save identity/outcomes | Selected shared history; WordCraft dependency pins are explicit, other consumers OPEN |
 | echarts | `libraries/echarts/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | egui | `libraries/egui/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 | gltf-transform | `libraries/gltf-transform/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
