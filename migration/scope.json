@@ -1905,7 +1905,7 @@
       "id": "deckcraft",
       "upstream_candidate": "https://github.com/storytold/deckcraft.git",
       "repository_reachable": true,
-      "state": "history retained and pinned as local maintained-fork source; browser/integration qualification pending",
+      "state": "maintained fork selected with qualified standalone save protocol; real Desktop/account integration pending",
       "license_files": [
         "ATTRIBUTION.md",
         "LICENSE-APACHE",
@@ -1914,7 +1914,7 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "PASS selected maintained fork full8-stage cargo xtask ci (2278 workspace passes,5 existing ignored), committed release WASM build and real-browser pending/matching/wrong/duplicate/newer-edit/document-switch/reopened-view regressions; real Storage/Desktop/export/agent integration OPEN",
+      "build_status": "PASS selected f0dd04e3 full8-stage cargo xtask ci (2278 passes,5 existing ignored), clean release WASM; captured save identity, explicit failed/cancelled/conflict/unknown and retained acknowledgement/view browser regressions; real Storage/Desktop/export/agent integration OPEN",
       "component_path": "apps/deckcraft",
       "project_origin": "ArtCraft first-party project",
       "browser_baseline_documentation": "migration/DECKCRAFT-BROWSER-BASELINE.md",
@@ -1924,11 +1924,13 @@
         "tests": [
           "tests/deckcraft_host_save_browser.mjs",
           "tests/deckcraft_host_ack_browser.mjs",
-          "tests/deckcraft_reopened_view_browser.mjs"
+          "tests/deckcraft_reopened_view_browser.mjs",
+          "tests/deckcraft_host_failure_browser.mjs"
         ],
         "baseline_failure_preserved": true,
         "host_acknowledgements": "synthetic protocol fixtures; not account persistence",
-        "current_minimum_enabled": false
+        "current_minimum_enabled": false,
+        "shared_core_commit": "a9a7c46a7a1708f01a00a139265d24f71ea0a543"
       }
     },
     {
@@ -2440,7 +2442,7 @@
     "craft-libs": {
       "path": "libraries/craft-libs",
       "consumers": 16,
-      "pin_policy": "All existing app manifests/locks unchanged; 50 declared and locked historical revisions retained as local origin refs. Checkout snapshot is not a forced suite-wide dependency version.",
+      "pin_policy": "Historical app revisions remain retained. DeckCraft explicitly consumes the parent-selected public craft-web-host crate by canonical sibling path; other app manifests/locks retain their existing pins. The checkout is not a forced suite-wide version.",
       "organization_snapshot": "92d392cff132eaf53e13afff77f38b5c11b73aa0"
     },
     "egui": {

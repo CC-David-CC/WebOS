@@ -32,7 +32,8 @@ remain OPEN; metadata and compilation alone are not runtime acceptance.
 DeckCraft also has a [standalone source-built browser pass](migration/DECKCRAFT-BROWSER-BASELINE.md):
 real slide rendering, command insertion and undo. Desktop/account integration
 is still OPEN. Its [confirmed-save fork](migration/DECKCRAFT-HOST-SAVE.md)
-now passes all8 native CI stages and real-browser acknowledgement/view tests;
+now passes all8 native CI stages and real-browser acknowledgement/view tests,
+including shared captured-save identity and explicit failure/unknown outcomes;
 those synthetic host results do not establish account persistence.
 
 Source layout is not complete runtime support. The tracked-source reconciliation

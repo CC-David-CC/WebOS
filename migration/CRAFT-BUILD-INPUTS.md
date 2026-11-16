@@ -22,8 +22,13 @@ without duplicating fonts under `apps/` or editing upstream layout defaults.
 
 ## Checked at the selected component revisions
 
-All 17 workspaces passed `cargo metadata --no-deps --locked --offline`, with
-unchanged lockfiles. This reads workspace declarations; it does not resolve the
+All 17 workspaces passed `cargo metadata --no-deps --locked --offline` at the
+initial reviewed pins. DeckCraft now consumes the public craft-web-host crate
+from `libraries/craft-libs` at the parent-selected commit; initialize that sibling
+component before building. Its only lockfile change is that crate source.
+Its full native CI and release/browser checks are recorded in
+[host-save qualification](DECKCRAFT-HOST-SAVE.md). The metadata command reads
+workspace declarations; it does not resolve the
 complete dependency graph, compile code, run build scripts or prove browser
 support. DesignCraft's unused `designcraft-testkit` declaration and FigCraft's
 unused `figcraft-tools` declaration reference missing directories. They did not

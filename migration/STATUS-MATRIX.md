@@ -84,7 +84,7 @@ Hosted Rooms is unused historical code, not a new service.
 |---|---|---|---|---|
 | anicraft | `apps/anicraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | cadcraft | `apps/cadcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
-| deckcraft | `apps/deckcraft/` | PASS | PASS selected19ed30b: all8 fork CI stages,2,278 tests; real WASM pending/correlated/stale-view browser regressions; [scope](DECKCRAFT-HOST-SAVE.md) | OPEN actual Storage/Desktop/export/agent integration; synthetic ack is not account persistence; disabled in minimum |
+| deckcraft | `apps/deckcraft/` | PASS | PASS selectedf0dd04e3: all8 fork CI stages,2,278 tests; real WASM identified save, explicit failure/unknown and retained acknowledgement/view browser regressions; [scope](DECKCRAFT-HOST-SAVE.md) | OPEN actual Storage/Desktop/export/agent integration; synthetic ack is not account persistence; disabled in minimum |
 | designcraft | `apps/designcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | effectcraft | `apps/effectcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | figcraft | `apps/figcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
@@ -159,7 +159,7 @@ Hosted Rooms is unused historical code, not a new service.
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
 | codemirror | `libraries/codemirror/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
-| craft-libs | `libraries/craft-libs/` | PASS | Selected3b3271f4 passes default workspace fmt, Clippy and tests | Selected shared history; WordCraft dependency pins are explicit, other consumers OPEN |
+| craft-libs | `libraries/craft-libs/` | PASS | Selecteda9a7c46a passes workspace fmt/Clippy/tests (3,007 passes,81 ignored),9 Node/WASM host tests; explicit save identity/outcomes | Selected shared history; WordCraft dependency pins are explicit, other consumers OPEN |
 | echarts | `libraries/echarts/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
 | egui | `libraries/egui/` | PASS | PASS selected first-slice component and actual browser workflows | PASS local/clean composition; see deployment status for the earlier hosted pins |
 | gltf-transform | `libraries/gltf-transform/` | PASS | OPEN - no component behavior qualification claimed | OPEN: complete browser build and new host integration not qualified |
@@ -182,7 +182,7 @@ Hosted Rooms is unused historical code, not a new service.
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
-| craft-fonts | `assets/craft-fonts/` | PASS | PASS selected9ffb3a7: 66 font entries hashed,42 tests, fmt/Clippy/embed checks; DeckCraft font crate and browser target compile for wasm with required fonts | WordCraft generated font inputs unchanged; DeckCraft linked artifact/browser/host acceptance OPEN |
+| craft-fonts | `assets/craft-fonts/` | PASS | PASS selected9ffb3a7: 66 font entries hashed,42 tests, fmt/Clippy/embed checks; DeckCraft font crate and browser target compile for wasm with required fonts | WordCraft generated font inputs unchanged; DeckCraft release/browser protocol PASS; Desktop/account host OPEN |
 | craft-i18n | `assets/craft-i18n/` | PASS | PASS pinned WordCraft translation/proofing build input | PASS selected WordCraft composition; other consumers OPEN |
 
 ## Shared build tooling (1)
