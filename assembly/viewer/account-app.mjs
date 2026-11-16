@@ -6,7 +6,7 @@ export function mountAccountApp(mount, host, kind) {
   const element = document.createElement('div');
   element.className = 'window-content';
   element.textContent = 'Opening ' + host.w.title + '…';
-  let view, disposed = false, offLifecycle;
+  let view, disposed = false, offLifecycle, offBinding;
   const listeners = new Set();
   const authority = Object.freeze({});
   const instanceId = String(host.w.id), session = host.session(), sessionId = session.public.sid;
@@ -21,8 +21,9 @@ export function mountAccountApp(mount, host, kind) {
     const launch = host.w.launchContext;
     if (launch) {
       if (launch.storage !== 'account' || launch.owner !== context.owner) throw Error('An account file launch is required.');
-      resource = {path: launch.path, ...(launch.sha256 ? {sha256: launch.sha256} : {})};
-      if (!resource.sha256) resource.sha256 = (await context.files.version(resource.path)).sha256;
+      const restore = kind === 'text' && launch.restore === true;
+      resource = {path: launch.path, ...(restore ? {restore: true} : launch.sha256 ? {sha256: launch.sha256} : {})};
+      if (!restore && !resource.sha256) resource.sha256 = (await context.files.version(resource.path)).sha256;
     }
     if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
     const openFile = async file => {
@@ -35,6 +36,13 @@ export function mountAccountApp(mount, host, kind) {
       signal: host.signal, openFile, displayName: session.public.name,
       ...(kind === 'wordcraft' ? {url: new URL('wordcraft/index.html', document.baseURI).href} : {})});
     if (!view || typeof view.dispose !== 'function' || !(view.element instanceof HTMLElement)) throw Error('Invalid account app view.');
+    if (kind === 'text') {
+      const synchronize = binding => {
+        if (!valid() || !binding.loaded) return;
+        host.desktop.updateAccountFileBinding(host.w, {owner: context.owner, path: binding.path, sha256: binding.revision});
+      };
+      offBinding = view.fileBinding.subscribe(synchronize); synchronize(view.fileBinding.snapshot());
+    }
     if (view.lifecycle) { offLifecycle = view.lifecycle.subscribe(() => { for (const listener of [...listeners]) listener(); }); for (const listener of [...listeners]) listener(); }
     view.element.style.flex = '1'; view.element.style.minHeight = '0';
     element.style.display = 'flex'; element.style.flexDirection = 'column';
@@ -42,18 +50,18 @@ export function mountAccountApp(mount, host, kind) {
     await view.ready;
     if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
   })();
-  ready.catch(error => { if (valid()) element.textContent = 'Could not open this app: ' + error.message; });
+  ready.catch(error => { if (valid() && !(kind === 'text' && view?.retry)) element.textContent = 'Could not open this app: ' + error.message; });
   return {
     element, ready,
     ...(kind === 'text' ? {lifecycle: Object.freeze({
       snapshot: () => view?.lifecycle.snapshot() ?? {revision: 0, dirty: false, pending: false},
       subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
-      async quiesce(options) { await ready; return view.lifecycle.quiesce(options); },
+      async quiesce(options) { if (!view) await ready; return view.lifecycle.quiesce(options); },
       async commitClose() { return view?.lifecycle.commitClose(); }
     })} : {}),
-    inspect: async () => { await ready; return view.inspect?.(); },
-    execute: async (request, candidate) => { await ready; return view.execute(request, candidate); },
+    inspect: async () => { if (kind !== 'text' || !view) await ready; return view.inspect?.(); },
+    execute: async (request, candidate) => { if (kind !== 'text' || !view) await ready; return view.execute(request, candidate); },
     async requestClose() { if (!view) return true; return typeof view.requestClose === 'function' ? await view.requestClose() : true; },
-    dispose() { if (disposed) return; disposed = true; offLifecycle?.(); listeners.clear(); view?.dispose(); element.remove(); }
+    dispose() { if (disposed) return; disposed = true; offLifecycle?.(); offBinding?.(); listeners.clear(); view?.dispose(); element.remove(); }
   };
 }
