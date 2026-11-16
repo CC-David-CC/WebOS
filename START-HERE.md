@@ -34,7 +34,9 @@ real slide rendering, command insertion and undo. Desktop/account integration
 is still OPEN. Its [confirmed-save fork](migration/DECKCRAFT-HOST-SAVE.md)
 now passes all8 native CI stages and real-browser acknowledgement/view tests,
 including shared captured-save identity and explicit failure/unknown outcomes;
-those synthetic host results do not establish account persistence.
+those synthetic host results do not establish account persistence. Its
+[native document-target check](migration/DECKCRAFT-DOCUMENT-TARGETS.md) now rejects
+stale explicit targets at dispatch and exposes real IDs/revisions for inspection.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
 still has 1,969 unresolved dispositions and 25 unqualified blob candidates among
