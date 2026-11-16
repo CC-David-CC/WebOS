@@ -54,9 +54,6 @@ try{
   otherContext=await browser.createBrowserContext();const other=await otherContext.newPage();await other.goto(origin,{waitUntil:'networkidle0'});await login(other,accountA);await files(other);const v=await file(other,'snapshot',{path:'Base.txt'});await file(other,'remove',{path:'Base.txt',expectedRevision:v.sha256});await file(other,'import',{name:'Base.txt',contents:'Changed in another browser'});await otherContext.close();otherContext=null;
   await reload();await login(page,accountA);await recoverAll(2);const s=await viewStates();named=s.find(x=>x.path==='Base.txt').id;untitled=s.find(x=>!x.path).id;assert.equal(s.find(x=>x.id===named).needsCopy,true);assert.equal(await page.$eval(scope(named)+'.webos-text nav button',n=>n.disabled),true);
   await saveAs(named,'Recovered-copy.txt');await files();const snap=await file(page,'snapshot',{path:'Base.txt'});const changed=await file(page,'download',{path:'Base.txt',expectedRevision:snap.sha256});assert.equal(new TextDecoder().decode(new Uint8Array(Object.values(changed.data))),'Changed in another browser');
-  // Clean Save As layout binding is the separately recorded fix #2. Close
-  // this saved copy explicitly; this suite qualifies unsaved-draft recovery.
-  await focus(named);await page.click(scope(named)+'[aria-label="Close"]');await page.waitForFunction(id=>!document.querySelector('.window[data-window="'+id+'"]'),{},named);
  });
  await check('Typing during a delayed signed save keeps newer edits dirty and checkpoints them against the acknowledged revision',async()=>{
   await edit(untitled,'Snapshot sent to server');await stored(untitled);
