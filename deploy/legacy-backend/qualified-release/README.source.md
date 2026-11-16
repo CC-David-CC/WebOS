@@ -1,0 +1,279 @@
+# Main-only conservative release
+
+## Current activation — 2026-11-04
+
+The lead installed the exact protected seven-file package and recovery-only
+beta successor, then passed the literal main launcher plan/apply on box-webhost.
+Main now selects **e7e8**; beta remains **3ad**, with its original floor intact.
+Actual signed beta recovery returned `v2-verified` before and after cutover.
+The prior active/enabled renewal timer was restored; hosting journals are clear.
+`/desktop/` bytes matched before/after, all pinned public-site health checks
+passed, and the served main app hash matched. Exact pins and scope are in
+[the activation receipt](../../evidence/main-core-activation-20261104.json).
+The [public core-app browser check](../../tests/main-core-live-smoke-prepared.md)
+passed desktop and phone-sized emulation: Files/Text save and fresh reopen with
+signed hashes, Calculator, Help and real guest boot/input. The terminal marker
+can match command echo, so it does not independently prove command execution.
+The first unscrolled default-viewport selector timeout remains inconclusive;
+matching viewport and ordinary Files scrolling passed without forced hydration.
+This is neither all-feature nor physical-phone validation.
+
+The lead independently repeated the five SIGKILL installer primitives, literal
+fixed-path namespace installer and deterministic seven-file package controls.
+Those fixtures substitute timer/service state; actual host plan/install and
+recovery above supply the later operational evidence. Package bytes were copied
+from the pinned public archive into a root-private stage, every inventory/hash
+and custody checked, fsynced and published without replacement under the real
+hosting lock before execution. The trusted maintenance freeze remained in force
+through installation and verification. No private account material was copied.
+
+The retained apps are priority integration targets with bounded tests, not a
+claim that System tools or all consumers are validated. The historical research
+sections below describe earlier, unactivated checkpoints; they are superseded
+only by this exact activation and its receipt. The new Files 830 package remains
+unexposed and needs its own managed beta transition.
+
+The user requires no games on main and only finished, end-to-end tested features; beta remains the development site. This candidate is a conservative **proposed** core, not proof that every retained feature is fully finished: Files, Text, Terminal, Calculator and Help, with CodeMirror as Text's dependency. `docs/APP_STATUS.md` calls the first four workflows checked and Help's static information checked, but describes real limits; the integrated signed test below is not a comprehensive end-to-end qualification of them on live main. Do not describe all previously present non-game apps as finished. Release needs core workflow checks and independent review; missing apps and their saved files remain on beta/unchanged.
+
+The candidate was built only from the exact public `0965a0cbdd022f588061cdc23e10eb6b18fa5977cc3f6a05569439eaf11d2020` main tree. It excludes 68 of 74 catalog entries, including 28 games and unfinished Microduck, removes the Games menu and seven disabled learning-game labels, uses a five-app central UI admission check for launch/open/layout restore, and leaves saved `.game.json`, `.brf` and other unadmitted-app projects unchanged while directing users to beta. It also hides account-created app launch entries without deleting them. The candidate stores its filtered window layout under a new localStorage key, initially reading the previous key as a fallback; the original legacy layout remains byte-identical rather than being overwritten after hidden windows are skipped. The six catalog entries are `calculator`, `files`, `help`, `terminal`, `text`, `codemirror`. The remaining main asset graph contains no excluded app bundle directories; old names/icons and unsupported helper branches remain in app.js/desktop-apps.js as inert code, and voice/keyboard controls remain in System Tools. `codi-featured-chess.service` and official endpoints were not changed; whether any separate route constitutes a game experience still requires assessment. Microduck is a physics/robotics simulator listed under Games, kept on beta because its workflow remains unfinished, not classified here as inherently a game. Beta's Microduck runner/CSP is a separate unqualified issue.
+
+## Pins and reproducible build
+
+Read-only host observation 2026-11-04: main selector `codi_simplified=0965a0cb…`, beta separately `codi_beta_simplified=0965a0cb…`, beta OPFS `3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc`. Main public `app.js?simplified=1` SHA-256 `6965a2a27da3fa1d3318c0ac845924136ad9a2e09cf9ca2d624d2f94f5441df6` (source matches Git `e9ed9c914`), `desktop-apps.js?simplified=1` `a23f99dc96dfe9cca9212eebfef666f38460b5fbc46671a447f89d4c09189ae2` (source matches `e967f0336`), catalog `c5b79a365135d73c939c0afdc7a97864ea00ba24379d179d8cca06843644cd22`, cache manifest `18140be41c4f6cd3a1fcdbee39998e00c363ed677223eeffc8cc97c450ba4720`, worker `e49a8667db0e20b8fca90ee3e19eec17b70b964846b916d734391dda93c3f69c`. Source paths and all inventory inputs are public-only, no user state.
+
+Copy the exact public 0965 tree from `/srv/codi-connected/simplified/0965a0cbdd022f588061cdc23e10eb6b18fa5977cc3f6a05569439eaf11d2020` to a disposable, non-symlink directory on the same filesystem as the intended *research output*. Then:
+
+```sh
+python3 -B research/main-qualified-release/build-candidate.py /path/to/0965 /path/to/new-output
+```
+
+The builder verifies full baseline SHA/size/inventory and exact source anchors before output, then creates hardlinks to the independent local baseline, removes excluded bundles and replaces modified files atomically. Never edit either tree in place while linked. It regenerates the closed 236-file cache manifest and worker. It is a scratch builder, not an installer. Two R730 runs were byte-identical; tampering baseline `app.js` was refused before output. Candidate cache ID `e7e8fb9fc1f964ec1b206462468f91b60e8bac1d8117ed29c5f1099abdac3480`, `app.js` `10774564316c596b2b65abc62eae6c3fda1bbd7aaa3eb615c18a8a2599acf49f`, loader `2d1958db1e4c302c5159bf80a6905f95b30e6e04c69d815d12e55221bfb54f74`, catalog `d7a84301dd0a551a25a60de83b517ac3e3c209112719ad354468c98fb6831a80`, cache manifest `0bc92c08d01c945a6f5d3da22279761aa2ba2a26157d45396d13c4a2d54ee122`, worker `3ff9fb3c79c4fc71cc8be3156330b4a5891c813ec08c59bb2ab118d0daca4240`. Tree has 49,112,554 apparent bytes. R730 archive `/mnt/data10tb/codi-main-core-candidate-e7e8fb9f-20261104.tar.gz` SHA-256 `af8483d70cf5d00d9c02f4eaebfccd4e7fcb68320d21651e8ef41d8d367965a8`; the revised archive was independently extracted and byte-compared to its source candidate. Reverify full inventory, modes/custody, and cache ID on a clean, unlinked staging copy; archive hash alone is insufficient.
+
+## Bounded tests
+
+- `signed-fixture.py` wraps the existing disposable signed issuer/gateway fixture, serving an isolated hardlinked candidate copy on the **same filesystem** as `TMPDIR`; it turns off that fixture's OPFS override to resemble main's v1 configuration, but uses c046/44da and a fixture issuer, not the actual main gateway/issuer. Chromium `signed-candidate.test.cjs` registered an account, opened the actual Applications menu, exercised all 68 excluded IDs via both direct `launch` and document `open`, checked game asset 404, filtered catalog, and restored a mixed saved layout with only Text retained while preserving the original legacy layout key byte-for-byte after rendering. A `.game.json` file was written and synced; opening it and a `.brf` path did not open games, and saved bytes remained. Files and Text mounted. Synthetic layout and direct method calls are not physical touch or a complete real-app walkthrough. The fixture does not use real Linux guest. A first run attempted cross-filesystem hardlinks and correctly failed `EXDEV`; setting a same-filesystem `TMPDIR` fixed the fixture without touching the candidate.
+- `cache-transition-fixture.py` and `cache-transition.test.cjs` use real Chromium service workers and a loopback static server; an existing 0965-controlled tab saw the old game catalog while the new worker waited, then after that tab closed a new tab saw no game and its asset returned 404. A synthetic IndexedDB sentinel survived. The first attempt failed because the loopback fixture omitted `Service-Worker-Allowed: /`; adding the same header as managed Caddy fixed the fixture. This is not an actual main account migration test. Existing open or offline-controlled tabs can keep old cached game code until updated/closed; a server release cannot retract already loaded code.
+
+Additional R730 signed-loopback tests on the revised e7e8 candidate passed the actual Files → create → Text edit/save/sync → fresh-session reopen workflow at desktop and emulated-phone sizes, and another account received signed 404. The candidate Calculator passed its keypad/angle/Ans workflow and saved-note/fresh-session/cancellation/malformed-note review. With the fixture's real guest enabled, the actual v86 guest booted and Terminal passed two independent shells, nano and a shared temporary-file workflow. These use a fixture issuer and c046/44da, not actual main; emulated phone is not physical touch. No broader app coverage, 4K, production account migration, beta regression, all-site hosting or host crash/recovery is established.
+
+## Managed selection and rollback boundary (lead-owned; not executed)
+
+Host read-only pins at inspection: `/home/dflanag3/webhost-sites/sites.toml` SHA-256 `2c3987d449d0d11f69973bf23652cf1fc125127fbb871147c0d71e563eb8434f`; `ops/common.py` `d11755a183bc5c12803b6fdc84fa54f4803c0f10c415c07bb9eecc82699132a1`; floor-aware `ops/webctl.py` `84c09e08e64dadc02fe396b529f1a380ee2ab724eca877f108be0490c92caa6e`; active generated `/etc/caddy/Caddyfile` `95cecea4a8217afaa6e60e7aee28a5ad01fa9158997f0051cb96626f9916fc48`. Re-read all pins and health under the established `/home/dflanag3/webhost-sites/.controller.lock` immediately before a real change. Main `codi_simplified` and top-level beta selector are separate fields; the only requested selector change is main 0965 → e7e8, keeping **all** beta fields, overlays, OPFS floor, all other site entries, account state and prototype unchanged. Render/validate managed Caddy, verify beta virtual host bytes unchanged and `/desktop/` unchanged, use pinned floor-aware hosting authority and durable journal/recovery, then check main and beta public identity/static/signed workflows and all sites. Never hand-edit generated Caddy. Caddy reload can interrupt connections.
+
+The historical Excalidraw controller at `/var/backups/webhost-sites/excal-chooser-stage-7fe131f35/controller.py` is pinned to old pre-beta-floor `e012` webctl and unrelated manifests/releases; it is **not** a valid controller for this transition. The current webctl CLI takes its own lock; an external lock holder must not call its locking CLI recursively. A reviewed same-lock transaction that writes the exact proposed main manifest and recovers on interruption while preserving the beta floor still needs to be bound/qualified by the lead. Do not pretend a bare `webctl activate` atomically guards a prior out-of-lock manifest edit.
+
+Keep 0965 intact for beta and recovery, but reverting main to 0965 would re-enable games and violate current user policy. Failure recovery should preserve the no-game candidate or place main in a reviewed maintenance state; any emergency old-main rollback needs an explicitly reported exception, not a claim that policy remains met. No cache/storage wipe, account deletion or featured-chess service change is authorized by this candidate.
+
+At inspection webhost `/` had 7,288,131,584 bytes free and `/srv/data` had 318,311,948,288 bytes free. The existing 5 GiB (`5,368,709,120` bytes) account-volume floor is unchanged. The 49 MB candidate, 41 MB compressed archive, copies/journal and simultaneous workloads need fresh per-filesystem space checks; separate `/srv/data` space does not increase account-volume capacity. No staging or activation was performed on the host.
+
+
+## Forward-only transaction research (not a protected launcher)
+
+`forward-transaction.py` is a narrow adapter around the existing `beta_transaction.Transaction` and `ManagedWebctlAdapter`. It requires an already-held same host lock and mandatory caller-supplied candidate/floor custody checks. It pins the observed old common/manifest/Caddy and exact new selector/manifest/Caddy, requires that the parsed manifests differ only at main's selector, regenerates both endpoints with the supplied pinned controller, and requires identical beta blocks. The existing version-2 forward/gate-only journal is reused under a **distinct main-only journal path**, and recovery must be invoked with those exact endpoints. It intercepts attempts by `webctl.caddy_apply` to restore the old Caddyfile after the forward journal exists. On a failed reload the old running Caddy configuration can still serve requests until a successful forward reload; a pending journal is a blocked state, not a verified no-game site. This adapter supplies no CLI, installation, self-custody or actual host mutation.
+
+Read-only use of current pinned generator yielded proposed `sites.toml` SHA-256 `1f53b9caf4fd63631e7d4df2bfdab518dca98744ecc4a7247bd4818b328b374f` and Caddy SHA-256 `f63f92d0994b9ad82899d1c808ee6fdf59e013769a9ee0364cbd21554ae7e53b`; beta block was byte-identical. `python3 -B research/main-qualified-release/forward-transaction.test.py` passes simulated-host tests for actual forked-process termination at eight journal/manifest/reload/commit boundaries, forward recovery, unrelated manifest drift and refusal of a simulated controller attempt to restore the prior Caddyfile. The test uses actual filesystem flock/journal primitives but a **simulated** controller, service health, timer, and Caddy; it is not evidence of an actual pinned webctl/Caddy integration, protected custody, main health or live activation. The initial fixture accidentally re-acquired the same lock and deadlocked; its test process was interrupted, and the wrapper now explicitly checks the already-held lock without reacquiring.
+
+Before host use, a protected binding must load and hash the installed 84c/d117 modules under the real locked/pinned path, enforce real `_check_floor_record`, `_floor_guard_active` and `_assert_v2_beta` on every applicable boundary, validate the complete root-owned candidate/ancestry/modes/ACL and disk reserve, check no incompatible journal, preserve timer/health and all generated auxiliary files, and prove the exact live-controller/Caddy transaction and crash boundaries using disposable fixtures. The wrapper now invokes the supplied controller’s `_check_floor_record` and `_assert_v2_beta` with `_floor_guard_active` set at each lock check; its mandatory caller-supplied floor/candidate custody callbacks still need real protected binding. The callback interfaces alone do not establish complete checks. Do not use the historical Excalidraw controller or treat this source as an installed launcher.
+
+`forward-real-webctl.test.py` additionally imports the byte-pinned 84c webctl and d117 generator, exercises their actual floor-record/beta-route checks and actual `caddy_apply`, and confirms a simulated reload failure cannot write back old Caddy bytes. All paths, service state, reload and validation are redirected/simulated; it is not a real Caddy/systemd or production test. The first run tried to create the fixture backup under `/var/backups/webhost-sites` and was denied before a write because the unprivileged fixture had not redirected BACKUPS; subsequent run redirects BACKUPS to the temporary tree and passes. This is separate from the eight simulated-adapter process-kill boundaries.
+
+`render-inventory.py` adds a narrowly scoped main-selector inventory policy as a separate research module: it requires the two complete manifests to differ only in the exact requested main selector, generated output outside the main site (including beta) to be byte-identical, all systemd unit output unchanged, and every existing auxiliary Caddy/unit file to match the expected owner/group/mode and old/new bytes. `render-inventory.test.py` exercises it using the pinned actual d117 generator and disposable files, and rejects beta/unrelated-site changes and drift. It is not installed and is not a protected launcher. A full launcher still needs to bind this inventory, the exact source pins and health/custody/lock checks to the transaction, then run actual-Caddy and crash tests.
+
+## Proposed legacy webctl journal fence
+
+`webctl-main-guard.py` is exactly the pinned 84c source with one additional check for `/var/lib/webhost-ops/main-restriction-journal.json` under the existing hosting lock before loading mutable manifest state. Candidate SHA-256 is `fb27bc0ccb9be273765e489890a5fea056f578d08d729b92d00815de873ae783`. It treats any existing entry, including malformed data or a dangling symlink, as pending and refuses every supported mutating legacy CLI dispatch. Read-only `status` remains available. This does not change beta's existing `opfs-transition.json`, floor validation, or its recovery namespace. `webctl-main-guard.test.py` verifies byte identity after reversing exactly the two additions and exercises all supported mutating CLI commands against real flock/temporary paths; each refused before loading state or writing files, including malformed and symlink markers. The read-only status control passed. `forward-transaction.test.py` uses the same distinct journal name and demonstrates same-held-lock forward recovery under the fixture while the journal exists; it invokes the transaction directly, not the blocked legacy CLI. These are disposable tests, not installation or live host proof.
+
+Installation ordering is essential: first independently review and root-protect the launcher and this exact guard, quiesce processes that already imported the old 84c/e012 CLI, and under the existing lock verify exact original bytes, target ownership/ACL, lock inode and absence of other journals. Use a separately reviewed crash-recoverable atomic guard replacement with fsync and old/new pins, then verify the installed fb27 guard before creating the main journal. Already-loaded Python code is not fenced by atomic replacement; stopping only newly started commands is insufficient. The previous Files guard installer is pinned to a different old/new pair and cannot simply be executed unchanged. No guard has been installed by this research.
+
+This patch fences the supported **legacy webctl CLI**, not every other protected operator. In particular, beta's protected recovery path is independent of the main journal; its concurrent post-crash execution must either be coordinated or cause exact endpoint checks to reject recovery as drift. The main journal must never be placed in `opfs-transition.json`: beta recovery gates beta before validating that journal. Complete the protected launcher, cross-operator coordination, real Caddy/systemd fault tests and installation review before use; a held flock in one surviving process alone is not a durable cross-entrypoint fence.
+
+## Installed beta recovery and timer boundary
+
+Read-only host inspection found the installed protected beta launcher at `/srv/codi-connected/operators/files-install-input-ce18b7794adc2472/ops/beta_files_launch.py`, SHA-256 `aa34f6c9e53f049d012a45da35989d1aab4797ef983d270ab498d01037fbfd82`; its `beta_files_snapshots.py` is `0bb2dc596120e973b0827749d600806313d2b5899cab19a7737174044d8008a8` and `opfs_managed.py` is `9db8a944745e99a11f9dff2ebdb2298d98fa8a0e2982171bbc3e17757ba7dd6f`, matching this checkout. The enabled/active `codi-ksu-live-root-renew.timer` triggers a currently failed renewal service and its worker acquires the controller lock; readers refresh and relay certificate refresh timers are inactive/static. Timer and service SHA-256 are respectively `fe8fdcab3889ec2fb51a063e90487ed9f2efc9fccd185a9825c715c1d40a4718` and `abb4716e957f856f171e35cb0e97a64386e6a76c7068b0779bf3c993878c8870`. These are point-in-time metadata observations, not a renewal repair.
+
+`beta-recovery-mixed.test.py` constructs the exact beta snapshots from pinned source/route table and tests the actual `ManagedBinding.gate` decision with a durable-floor condition for three states: main manifest new/Caddy old, manifest old/Caddy new, and both main inputs new. All are refused as `Unknown managed route state` before its transaction callback or any route write. This is a local callback fixture, not an execution of the installed launcher or proof that every beta entrypoint refuses. In particular, with beta floor present and no outer journal, `FilesAssembly.recover` can pass directly to its v2 health/finalization path when `is_gate()` is false; that branch does not itself assert equality of the complete current route snapshot to the old pinned candidate. Do not infer universal mixed-state refusal from the gate test. Beta recovery also gates before reading its own outer journal, so the main journal must remain separate. Review exact installed supported launchers and timer behavior again under the hosting lock before installation.
+
+A follow-up exercises the actual `FilesAssembly.recover`/`ManagedBinding` classes with the exact pinned snapshots and simulated healthy/failed v2 checks, floor present, and no outer/normal/issuer journal. In mixed main state, successful synthetic health returns `v2-verified` without a route-write callback; failed synthetic health attempts the gate, which rejects the mismatched route snapshot before a transaction and returns `gate closure unverified`. Source review shows that, when a retained issuer journal does exist, `IssuerSwitch.finalize` checks pinned unit/status and signed health and clears its own beta issuer journal; it does not restart a service or write main/Caddy in that method. This is scoped simulated health, not a real execution of the protected launcher or proof about every possible pending-journal state.
+
+## Post-floor beta successor research
+
+`beta-successor.py` derives two exact beta snapshot families from the pinned beta snapshot builder, for main selectors 0965 and e7e8 only. It preserves the original floor baseline SHA-256 `e7a5e64272c1d6b78de73c46f5105b9963e2272f40450e39e86a038293d9fb3b` and beta candidate 3ad04c48 (confirmed read-only against the installed floor). It rejects a pending main journal before route selection, and accepts post-floor candidate/gate exact endpoints or a pinned nested journal whose mixed common/manifest/Caddy components all belong to the same main family. Candidate→gate requires the existing version-2 gate-only policy; gate→candidate requires the existing version-1 policy. Unknown phases, malformed flags, cross-main mixtures and changed floor are rejected. Pre-floor plan/apply is outside this recovery-only selector.
+
+`beta-successor.test.py` uses the exact checked-in pinned beta snapshot builder and generator, exercises eight same-family partial-write combinations in both directions for both main selectors, cross-main refusal, main-journal refusal, and a simulated `ManagedBinding` gate/restore preserving e7e8. This is only snapshot selection and callback simulation: it is **not** the protected beta successor, real Caddy/systemd, the complete existing nested-journal implementation, or a release. The installed beta launcher's guarded-webctl pin and old snapshot assumptions still require a reviewed, coordinated post-floor-only successor and protected installation. Do not install fb27/main launcher without it.
+
+The research-only `build-beta-successor.py OUTPUT` builds the recovery-only
+successor from the exact pinned old beta launcher, all of its pinned modules,
+the protected snapshot inputs, and `beta-successor.py`. OUTPUT must not exist.
+The bundle includes a sorted SHA-256 inventory; it is not an installer and is
+not authorized for the host. Two independent builds produced inventory SHA-256
+`bc9f939a9db8849fb7d580e5a71d5c52728b127b74c3bca1ee811b41fdd1f754`.
+The generated executable rejects `plan` and `apply`; its changed controller
+pin is the proposed main-journal guard, not the currently installed controller.
+
+This bundle is an **unqualified candidate**: the exact protected executable,
+its installation/old-process fencing, a real controller/Caddy recovery with
+interruption at each transition, and preservation of the live main route are
+still release gates. The family selector's isolated tests do not establish
+those properties on the host. Unknown routes, concurrent main journal, or
+multiple nested beta journals are refused; a refusal does not prove that the
+beta site has been gated. Do not install, activate, or replace existing
+recovery with this source until those gates are reviewed and tested.
+
+The isolated exact-successor fixture `beta-files-successor-ns-runner.py` uses the
+existing signed namespace runner, the pinned controller and real translated
+loopback Caddy. Its seed checks and regenerates all four auxiliary Caddy
+outputs when selecting e7. One run passed missing candidate, partial candidate,
+missing gateway, and interrupted gate recovery with the e7 main snapshot;
+its service manager, timer and production main-readiness checks are simulated.
+The original attempt intentionally retained its negative result: seeding only
+primary files left old auxiliary outputs and was rejected by RenderInventory.
+The shared dd8 archive also contained extra Python cache files; a disposable
+copy excluding those files passed the signed fixture's complete inventory.
+The original runner's inherited PASS message mentioned an issuer-unit kill;
+that statement was inaccurate for this successor run and has been corrected.
+The extended rerun passed actual SIGKILL at both the gate and forward Caddy
+reload boundaries, with the exact protected successor executable and explicit
+post-recovery e7 selector assertions. The generated code, loopback Caddy, pinned
+controller, sealed signed issuer/gateway fixture, and disposable account were
+used; timer, service-manager, production main readiness, and loopback translation
+remain fixture substitutions. The runner removed its own namespace directory and
+listeners after completion. This is not an installation or production qualification.
+
+Before main cutover, a reviewed installation must quiesce already-loaded old
+controller processes, stage and verify the closed e7 main release and the
+recovery-only successor, and under the existing hosting lock install the exact
+floor-aware main-journal guard and successor as one coordinated protected
+operation. Verify entrypoint custody and refusal during a pending main journal;
+then the reviewed main forward-only transaction may select e7, with exact
+auxiliary inventories, beta floor and signed health checks. A failure remains
+journaled for same-lock forward recovery. Existing release, beta URLs, account
+files, and the OPFS floor remain intact. The candidate main launcher remains
+intentionally disabled until this sequence and its installation are tested.
+
+A subsequent beta Files/Text/mount/storage-only release needs an independently
+reviewed exact 3ad-to-new asset transition and forward journal, under that same
+lock. Preserve the original v2 floor record and retained 3ad assets; the
+current FloorJournal and recovery binding require the exact 3ad floor identity.
+The guard and recovery entrypoint must recognize only the approved old and new
+asset routes combined with the approved main selector family, with interrupted
+recovery and mixed-state refusal tested. Keep issuer 853 and gateway dd8 only
+after compatibility and signed-account/storage checks pass. Neither removing
+the floor nor broadly accepting arbitrary routes is a safe update strategy.
+
+The still-disabled main launcher now includes a fail-closed preflight for the
+exact recovery successor inventory `bc9f939a9db8849fb7d580e5a71d5c52728b127b74c3bca1ee811b41fdd1f754` at the fixed proposed protected bundle path.
+The lock must already be held; root ownership, file/link types, group/world
+write, xattrs, extra/missing files and every recorded hash are checked. The
+successor's protected ancestors and the existing exact fb27 guard are also
+required. `sudo -n python3 -B research/main-qualified-release/main-successor-preflight.test.py /path/to/clean-generated-bundle`
+passes its disposable root-owned custody and mutation controls. The first test
+input had a pycache added by an earlier compile and correctly failed; the clean
+bundle was regenerated from pins. This checks installed bytes only: actual
+entrypoint fencing, durable installation, invocation/health and real main
+transaction remain unqualified, and the launcher remains disabled.
+
+The disposable main-launcher namespace runner now passed an isolated e7
+forward transition against the pinned controller and real translated loopback
+Caddy. The launcher source SHA-256 was
+`1db014d4d207fb746f52849bd7378a02aaf1b574d9585cb1d262214c74085c26`.
+The fixture checks those original bytes and removes only the unconditional
+research disable line **in memory** before compilation; it does not execute an
+enabled production launcher. It starts from a real signed disposable beta
+fixture and verifies the new main app bytes and beta selector after SIGKILL at
+the main Caddy reload, with the durable main journal recovered forward and
+cleared. Timer, service-manager, production main health and ingress are
+substituted; Caddy uses translated loopback routes. The fixture-owned processes,
+ports, and namespace files were removed afterward. Two initial plan attempts
+caught and corrected an incorrect cardboard source pin and a generator-import
+default that pointed `ctl.load()` at the protected bundle instead of the actual
+locked sites manifest. `main-launcher-pins.test.py` covers all embedded source
+pins and rejects a return to an argument-less `ctl.load()`.
+
+The installation/fence ordering still requires a concrete protected operator
+and independent interruption tests. The intended narrow sequence is: enter a
+controlled hosting maintenance window; stop and remember the renewal timer's
+state; prevent new supported controller invocations and wait for already-loaded
+legacy controller processes to finish; take the existing hosting lock; verify
+floor, journals, custody and exact endpoint inputs; publish the immutable
+successor bundle with no replacement; journal and atomically replace only the
+known 84c controller with fb27; verify its pending-journal fence and the new
+successor invocation; restore the timer state; then use the reviewed main
+forward transaction under that same lock. A crash after staging but before the
+guard must retain old routing and keep the administrative invocation freeze;
+a crash after guard replacement must recover the pinned install journal
+forward while keeping the floor and recovery successor. Merely replacing the
+file under flock does not fence an old Python process that loaded it earlier.
+This procedure is not an installed tool or an instruction to mutate the host;
+the quiescence, installation journal, and complete cross-entrypoint fencing
+remain release gates.
+
+Lead staged the exact e7e8 public candidate on box-webhost at its fixed
+`/srv/codi-connected/simplified/e7e8fb9fc1f964ec1b206462468f91b60e8bac1d8117ed29c5f1099abdac3480`
+path under the real hosting lock. A root-private copy of the pinned 42,661,834-byte
+archive was verified before extraction; 238 files (236 listed plus cache manifest
+and offline worker) passed exact hashes, regular-file/link/xattr checks and
+root ownership with 0644 files/0755 directories. Files/directories were fsynced,
+then the staged directory was renamed into the absent final path and its parent
+fsynced. This stages public assets only: no selector, controller, timer, service,
+account or floor was changed. The literal managed plan must recheck it before
+activation. Main still serves 0965.
+
+The fixed-path install/recovery candidate `main-install-launch.py` is present
+in the review package, not installed. It preserves the observed controller
+owner 1000:1000/mode 0644, original 3ad floor, and uses the existing
+`main-restriction-journal.json` with a strictly validated installer-specific
+schema. fb27 already freezes supported legacy CLI writes whenever that name
+exists; the main forward transaction refuses this different schema. It verifies
+the exact successor input, publishes a root-owned bundle with no replacement,
+fsyncs file and directory boundaries, journals before replacing 84c with fb27,
+and resumes forward after interruption. An interrupted unselected stage is left
+for separately reviewed cleanup. Recovery can build a fresh generation after a
+death before publication. No original floor or user data is rewritten.
+
+The trusted maintenance freeze is an essential precondition: coordinate all
+operators and agents to start no other host mutation, record and stop the known
+renew timer, wait for or terminate identified old controller jobs, and keep
+that freeze through guard verification and recovery. The launcher checks exact
+unit hashes, inactive timer/service with no running PIDs, known controller argv,
+lock inode/ownership/mode, pending journals and custody under the hosting lock.
+It does not claim to detect renamed/embedded code or resist a trusted root
+administrator deliberately bypassing the freeze. Restore the recorded timer
+state only after the guard, successor, journal and beta recovery path are
+independently verified. This does not stop or modify the guest-network manager.
+
+Five SIGKILL primitive boundaries (staged, published, journaled, replaced,
+verified) passed in root-owned disposable `/run` fixtures. A literal fixed-path
+namespace run passed plan, active-timer/known-invoker/conflicting-journal
+refusals, kills after staging and guard replacement, recovery and idempotence;
+timer unit hashes/state and service-manager responses were fixture substitutions.
+Source path/custody bootstrap, concurrent invoker quiescence on the real host,
+actual successor operational health, and full protected installation remain
+independent-review and production-readiness gates.
+
+`build-main-release.py` creates the enabled candidate by verifying disabled
+source SHA `1db014d4d207fb746f52849bd7378a02aaf1b574d9585cb1d262214c74085c26`
+and removing its one research disable line. The resulting literal launcher SHA
+`6469eb631aec6e9d37496dd1547a04dbbda9ea112e280b695c8ea426368f8642`
+passed the isolated real-Caddy interruption/recovery test; production main
+readiness, systemd/timer and loopback translation were fixture substitutions.
+The seven-file public-code package manifest SHA is
+`171feaae4a7821e7d7b077cb2c2e688325b419894b736b38cd50821ab86e3e32`.
+A public-code-only archive containing package and exact successor is backed up
+as `/mnt/data10tb/codi-main-release-checkpoint-20261104.tar.gz` on R730,
+SHA-256 `82390f1a232d79511b286cd62d21b3b3f6ef09bef2cf7fffc7684597dd4571da`.
+The archive is a review input, not a root-custodied installation. Never execute
+checkout code as root on the host; trusted external bootstrap must establish
+and independently hash the exact package first. No live install or cutover
+was performed by this work.
+
+A further combined R730 namespace fixture ran the literal seven-file package:
+the fixed-path installer planned and installed the guard and successor, then
+the literal enabled main launcher planned, was killed during Caddy reload and
+recovered forward to e7 while preserving the 3ad beta selector. It used real
+translated loopback Caddy and a signed disposable beta fixture. Timer unit
+bytes/state, systemd and production main health were simulated; it did not
+exercise real hosting installation or the administrative freeze. The initial
+combined attempt failed because the fixture tried to modify its root-owned
+simulated timer file without sudo; the fixture was corrected and the clean rerun
+passed. Its own processes, loopback listeners and namespace directory were
+confirmed absent after cleanup. Test source: `main-full-ns-runner.py`.
