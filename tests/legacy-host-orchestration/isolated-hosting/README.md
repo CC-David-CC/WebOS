@@ -26,3 +26,5 @@ of all41 current files. Syntax and bounded credential screening passed; no old
 driver ran. This is source preservation, not runtime acceptance or complete
 external-publication clearance. Private phase82 retains source/commit maps and
 commands; see `migration/ISOLATED-HOST-TEST-SOURCE.md` in the parent.
+
+One additional unchanged browser driver, `real-backend-browser-test.mjs`, is preserved with its history after bounded review of its explicit disposable fixture credential and loopback origin mapping. It remains unexecuted and unregistered; do not reuse old browser flags or run it without a deliberate isolated fixture/public-interface port. See migration/HOST-REFERENCE-INPUTS.md.
