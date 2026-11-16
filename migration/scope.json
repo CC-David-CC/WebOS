@@ -2988,5 +2988,20 @@
     "component_pins_changed": 0,
     "documentation": "migration/ISOLATED-HOST-TEST-SOURCE.md",
     "unresolved_supporting_dispositions_after_review": 1859
+  },
+  "isolated_host_operator_source": {
+    "source_paths": 26,
+    "retained_commits": 47,
+    "historical_python_blobs": 28,
+    "independent_restored_current_files": 26,
+    "unchanged_bodies_and_git_modes": true,
+    "distinct_copy_ancestor_preserved": true,
+    "operators_imported_or_executed": 0,
+    "registered_as_entrypoints": false,
+    "functional_acceptance": false,
+    "component_pins_changed": 0,
+    "pending_related_credential_context_files": 2,
+    "documentation": "migration/ISOLATED-HOST-OPERATOR-SOURCE.md",
+    "unresolved_supporting_dispositions_after_review": 1833
   }
 }
