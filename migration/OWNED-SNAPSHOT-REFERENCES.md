@@ -37,7 +37,9 @@ claim follows from matching bytes. Current/future reference consumers still need
 explicit locator and behavior qualification. Raw review records remain private
 outside source control and web roots.
 
-The ledger still has **1,969 unresolved dispositions** among supporting research,
-scripts, tests and WIP. Its unqualified blob-candidate count is now **zero**.
+At this snapshot-reference review, the ledger had **1,969 unresolved dispositions**
+and its unqualified blob-candidate count became **zero**. See the
+[current summary](SOURCE-RECONCILIATION-SUMMARY.json) for subsequent supporting-source
+review totals.
 These are tracked-source record counts, not missing-file counts or whole-project
 completion percentages. No component pin or runtime behavior changed.

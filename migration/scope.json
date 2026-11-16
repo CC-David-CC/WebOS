@@ -2954,10 +2954,22 @@
     "qualified_existing_owned_references": 24,
     "private_empty_output_channels": 1,
     "unqualified_blob_candidates_remaining": 0,
-    "unresolved_supporting_dispositions": 1969,
     "raw_material_copied_to_assembly": 0,
     "component_pins_changed": 0,
     "current_behavior_or_license_acceptance": false,
-    "documentation": "migration/OWNED-SNAPSHOT-REFERENCES.md"
+    "documentation": "migration/OWNED-SNAPSHOT-REFERENCES.md",
+    "unresolved_supporting_dispositions_at_snapshot_review": 1969,
+    "current_counts": "migration/SOURCE-RECONCILIATION-SUMMARY.json"
+  },
+  "private_terminal_reference_review": {
+    "reviewed_records": 138,
+    "new_qualified_private_references": 62,
+    "deferred_in_batch": 76,
+    "raw_records_copied_to_git_or_release": 0,
+    "old_operators_executed": false,
+    "component_pins_changed": 0,
+    "new_runtime_acceptance_claimed": false,
+    "current_counts": "migration/SOURCE-RECONCILIATION-SUMMARY.json",
+    "documentation": "migration/PRIVATE-TERMINAL-REFERENCES.md"
   }
 }
