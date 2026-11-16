@@ -1,8 +1,9 @@
 # DeckCraft confirmed-save source qualification
 
-Selected fork `555fbb14ff2a239b51bb76969080fca0ab6a2a06` fixes the reproduced
+Selected fork `45463e6ba33aea1cdd664a27c4afd017ba35275a` fixes the reproduced
 premature-clean bug and binds asynchronous completion to its document and view.
-It stays disabled in the minimum desktop pending account/host integration.
+Its optional [account view](DECKCRAFT-ACCOUNT-INTEGRATION.md) is now qualified
+separately from these synthetic protocol fixtures.
 
 ## Original failure retained
 
@@ -104,7 +105,7 @@ background document.
 
 Accounts/Storage retain authority. The host must map exact instance/session/
 document/account-file identity and expected server revision, and acknowledge only
-confirmed writes. Desktop mount/dispose, exports, cancellation, resource binding,
-real multi-client persistence and delegated-agent authorization remain open.
-Native ids and same origin are not permission grants. DeckCraft stays disabled
-in the minimum. No deployment changed in this qualification.
+confirmed writes. The optional [Desktop/account view](DECKCRAFT-ACCOUNT-INTEGRATION.md) now passes
+real Storage save/reopen and second-context retrieval separately. Exports,
+broader cancellation/reconciliation and delegated-agent authority remain open.
+Native ids and same origin are not permission grants. No deployment changed.

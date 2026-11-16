@@ -84,7 +84,7 @@ Hosted Rooms is unused historical code, not a new service.
 |---|---|---|---|---|
 | anicraft | `apps/anicraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | cadcraft | `apps/cadcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
-| deckcraft | `apps/deckcraft/` | PASS | PASS selected555fbb14: all8 fork CI stages,2,291 tests; real WASM correlated file adoption, explicit target guard/inspection, identified saves, failure/unknown and retained acknowledgement/view regressions; [scope](DECKCRAFT-HOST-SAVE.md) | OPEN actual Storage/Desktop/export/agent integration; synthetic ack is not account persistence; disabled in minimum |
+| deckcraft | `apps/deckcraft/` | PASS | PASS selected45463e6b: all8 CI stages,2,291 native and15 host tests; clone-built release/receipt; actual Desktop/Files account save/reopen, independent views, second-context and stale-write checks; [scope](DECKCRAFT-ACCOUNT-INTEGRATION.md) | Optional verified --deckcraft artifact; OPEN exports, unknown reconciliation, delegated agents, physical second machine |
 | designcraft | `apps/designcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | effectcraft | `apps/effectcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | figcraft | `apps/figcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
@@ -182,7 +182,7 @@ Hosted Rooms is unused historical code, not a new service.
 
 | Component | Directory | Source/history | Checks | New assembly |
 |---|---|---|---|---|
-| craft-fonts | `assets/craft-fonts/` | PASS | PASS selected9ffb3a7: 66 font entries hashed,42 tests, fmt/Clippy/embed checks; DeckCraft font crate and browser target compile for wasm with required fonts | WordCraft generated font inputs unchanged; DeckCraft release/browser protocol PASS; Desktop/account host OPEN |
+| craft-fonts | `assets/craft-fonts/` | PASS | PASS selected9ffb3a7: 66 font entries hashed,42 tests, fmt/Clippy/embed checks; DeckCraft font crate and browser target compile for wasm with required fonts | WordCraft generated font inputs unchanged; DeckCraft release/browser protocol and optional Desktop/account IO PASS; broader gates OPEN |
 | craft-i18n | `assets/craft-i18n/` | PASS | PASS pinned WordCraft translation/proofing build input | PASS selected WordCraft composition; other consumers OPEN |
 
 ## Shared build tooling (1)
