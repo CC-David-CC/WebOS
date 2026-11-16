@@ -11,7 +11,7 @@ const accountA=makeUser(),accountB=makeUser();await writeFile(path.join(output,'
 const checks=[],errors=[],consoleErrors=[],faultConsoleErrors=[],dialogs=[];let browser,page,otherContext,decision='dismiss';
 const scope=id=>'.window[data-window="'+id+'"] ';
 async function button(p,label,parent='') {for(const n of await p.$$(parent+'button'))if(await n.evaluate((n,label)=>(n.querySelector('.row-text')||n).textContent.trim()===label,label)){await n.click();return;}throw Error('Button unavailable: '+label);}
-async function login(p,account,register=false){await p.waitForSelector('.login-gate');if(register)await p.click('.login-toggle');await p.type('[aria-label="Username"]',account.username);await p.type('[aria-label="Password"]',account.password);if(register)await p.type('[aria-label="Confirm password"]',account.password);await button(p,register?'Register':'Sign in','.login-gate ');await p.waitForFunction(()=>!!window.desktopLab?.session&&!document.querySelector('.login-gate'));}
+async function login(p,account,register=false){await p.waitForFunction(()=>!!window.desktopLab?.session||!!document.querySelector('.login-gate'));const resumed=await p.evaluate(()=>window.desktopLab?.session);if(resumed){assert.equal(register,false);assert.equal(resumed.displayName,account.username);return;}await p.waitForSelector('.login-gate');if(register)await p.click('.login-toggle');await p.type('[aria-label="Username"]',account.username);await p.type('[aria-label="Password"]',account.password);if(register)await p.type('[aria-label="Confirm password"]',account.password);await button(p,register?'Register':'Sign in','.login-gate ');await p.waitForFunction(()=>!!window.desktopLab?.session&&!document.querySelector('.login-gate'));}
 async function launch(p,group,label){await p.click('.app-menu-button');await button(p,group,'.menu-pane ');await button(p,label,'.menu-pane ');}
 async function viewStates(p=page){return p.evaluate(async()=>{const out=[];for(const win of document.querySelectorAll('.window:has(.webos-text)'))out.push({id:win.dataset.window,...await win.appView.inspect(),text:win.querySelector('.cm-content')?.textContent});return out;});}
 async function focus(id){await page.evaluate(id=>{for(const d of window.desktopLab.surfaces.values()){const w=d.windows.find(w=>String(w.id)===id);if(w){d.activateWindow(w);return;}}},id);}
@@ -33,6 +33,7 @@ async function recoverAll(expected){for(let i=0;i<expected;i++){
  for(const n of buttons)if(await n.evaluate(n=>n.textContent==='Recover draft')){await n.click();break;}
  await dialog.dispose();
  }await page.waitForFunction(async()=>{for(const w of document.querySelectorAll('.window:has(.webos-text)')){const s=await w.appView.inspect();if(!s.loaded||s.recovery==='writing')return false;}return true;});}
+async function forgetRetainedLogin(){await page.evaluate(()=>new Promise((resolve,reject)=>{const o=indexedDB.open('webos-account-session-v1',1);o.onsuccess=()=>{const db=o.result,tx=db.transaction('sessions','readwrite');tx.objectStore('sessions').clear();tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>reject(Error('Fixture could not forget retained login'));};o.onerror=()=>reject(Error('Fixture could not open login store'));}));}
 async function closeChoice(choice){await page.waitForFunction(()=>document.activeElement?.closest('dialog')?.dataset.kind==='close');const dialog=await page.evaluateHandle(()=>document.activeElement.closest('dialog'));for(const n of await dialog.$$('button'))if(await n.evaluate((n,c)=>n.textContent===c,choice)){await n.click();break;}await dialog.dispose();}
 async function check(name,action){try{await action();checks.push({name,status:'PASS'});}catch(e){checks.push({name,status:'FAIL',error:e.message,states:await viewStates().catch(()=>null)});throw e;}}
 let untitled,named;
@@ -76,8 +77,9 @@ try{
   await reload();await login(page,accountA);await recoverAll(1);assert((await viewStates()).some(s=>s.text==='Orphan local recovery'));
  });
  await check('Same browser signing into another account does not offer or display the first account drafts',async()=>{
-  await reload();await login(page,accountB,true);await newText();assert.equal(await page.$('.webos-text-dialog[data-kind=recovery]'),null);assert((await viewStates()).every(s=>!s.text));
-  const id=(await viewStates())[0].id;await edit(id,'Account B private draft');await stored(id);await reload();await login(page,accountA);await recoverAll(1);assert.deepEqual((await viewStates()).map(s=>s.text),['Orphan local recovery']);
+  // Simulate a lost remembered login without deleting either account's recovery records.
+  await forgetRetainedLogin();await reload();await login(page,accountB,true);await newText();assert.equal(await page.$('.webos-text-dialog[data-kind=recovery]'),null);assert((await viewStates()).every(s=>!s.text));
+  const id=(await viewStates())[0].id;await edit(id,'Account B private draft');await stored(id);await forgetRetainedLogin();await reload();await login(page,accountA);await recoverAll(1);assert.deepEqual((await viewStates()).map(s=>s.text),['Orphan local recovery']);
  });
  await check('Cancelling session end after a Discard decision preserves every still-open draft',async()=>{
   const second=await newText();await edit(second,'Second session draft');await stored(second);

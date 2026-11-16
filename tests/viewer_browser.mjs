@@ -106,9 +106,9 @@ try{
   await other.waitForFunction(()=>document.querySelector('.webos-wordcraft-status')?.textContent.startsWith('Opened account file:'),{timeout:120000});
   const otherFrame=await (await other.$('iframe[title="WordCraft document"]')).contentFrame();assert.deepEqual(await structure(otherFrame),documentStructure);await other.screenshot({path:path.join(output,'second-context-document.png')});
   checks.push('fresh browser context retrieves the same server-backed formatted document');await second.close();
-  await page.reload({waitUntil:'networkidle0'});await page.waitForSelector('.login-gate');await page.type('[aria-label="Username"]',credentials.username);await page.type('[aria-label="Password"]',credentials.password);await button(page,'Sign in','.login-gate ');
+  await page.reload({waitUntil:'networkidle0'});await page.waitForFunction(()=>!!window.desktopLab?.session&&!document.querySelector('.login-gate'));assert.equal(await page.evaluate(()=>window.desktopLab.session.displayName),credentials.username);
   await page.waitForFunction(()=>document.querySelector('.webos-wordcraft-status')?.textContent.startsWith('Opened account file:'),{timeout:120000});
-  frame=await (await page.$('iframe[title="WordCraft document"]')).contentFrame();assert.deepEqual(await structure(frame),documentStructure);checks.push('reload, sign-in and original layout restore retain the account document');
+  frame=await (await page.$('iframe[title="WordCraft document"]')).contentFrame();assert.deepEqual(await structure(frame),documentStructure);checks.push('reload resumes the validated account session and restores the original layout/document');
   assert(!requests.some(p=>p.includes('/.build/v86/')||p.includes('/guest-network')));assert.deepEqual(errors,[]);
   await page.screenshot({path:path.join(output,'viewer-apps.png')});
   await page.click('.app-menu-button');await button(page,'End session','.menu-pane ');await page.waitForSelector('.login-gate');assert.equal(await page.evaluate(()=>window.desktopLab.session),null);checks.push('End session returns to the original sign-in gate');
