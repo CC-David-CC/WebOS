@@ -1,6 +1,6 @@
 # DeckCraft confirmed-save source qualification
 
-Selected fork `19ed30b3109f5c07719304938a3aac4f44236895` fixes the reproduced
+Selected fork `f0dd04e3ab7bf9a37d31a454d7f8dba5231b509a` fixes the reproduced
 premature-clean bug and binds asynchronous completion to its document and view.
 It stays disabled in the minimum desktop pending account/host integration.
 
@@ -58,14 +58,48 @@ undo back to the acknowledged version, document switching and reopened view
 identity. Test hosts send synthetic acknowledgements and store no account file.
 These results qualify the real engine/transport boundary, not account persistence.
 
+## Shared save wire
+
+The parent selects craft-libs `a9a7c46a7a1708f01a00a139265d24f71ea0a543`.
+The public `craft-web-host` crate now carries captured request/document/editor
+revision, operation and document-save intent. It parses bounded explicit
+failed/cancelled/conflict/unknown replies. Unknown retains the no-retry guard;
+definitive failures retain edits and release the guard. Editor revisions are not
+account server hashes or authorization grants.
+
+The shared source passes formatting, strict full workspace Clippy and tests
+(3,007 passes, zero failures,81 existing ignores), plus9 Node/WASM bridge tests.
+Optional FFmpeg/ffprobe oracles were unavailable; default workspace success is
+not codec-fidelity evidence. Tests use explicit UTF-8 locale and writable fixture
+storage with source mounted read-only. No assertions were relaxed.
+
+DeckCraft consumes that public crate at the canonical assembly sibling path;
+the parent Gitlink supplies the exact commit. All other entries in the625-package lockfile
+retain their versions and sources. Existing post_save envelopes are unchanged;
+Rust consumers matching the new enum exhaustively need deliberate updates.
+Other apps retain their own historical dependency pins.
+
+The real browser failure test first failed against19ed30b: its save message
+lacked the captured document identity. It passes against the selected clean
+release build, checking malformed replies, all four outcomes, blocked unknown
+retry, late confirmation and preservation of newer edits. The three existing
+browser regressions also pass. The rendered recovery screenshot was inspected.
+All host replies are synthetic and store no account file.
+
+```sh
+node tests/deckcraft_host_failure_browser.mjs /path/to/browser /path/to/private/failures.json
+```
+
+The private browser package uses Cargo release plus matching wasm-bindgen,
+explicit bootstrap HTML and no wasm-opt; Trunk equivalence or deployment readiness
+is not claimed. A stale cached credit generator was rejected before packaging;
+its recompilation uses unchanged source and restores all committed credit rows.
+
 ## Remaining integration
 
-The shared wire API still needs native document/revision/operation/file-intent
-metadata and immediate negative/uncertain replies before the real Storage path
-can be wired safely. Shared transport changes belong in craft-libs, rather than
-another copy of WordCraft's bespoke message implementation. Accounts/Storage
-retain authority; the host must map exact instance/session/document/account-file
-identity and expected server revision, and acknowledge only confirmed writes.
-Desktop mount/dispose, exports, cancellation, resource binding, real multi-client
-persistence and delegated-agent authorization remain open. Native ids and same
-origin are not permission grants. No deployment changed in this qualification.
+Accounts/Storage retain authority. The host must map exact instance/session/
+document/account-file identity and expected server revision, and acknowledge only
+confirmed writes. Desktop mount/dispose, exports, cancellation, resource binding,
+real multi-client persistence and delegated-agent authorization remain open.
+Native ids and same origin are not permission grants. DeckCraft stays disabled
+in the minimum. No deployment changed in this qualification.
