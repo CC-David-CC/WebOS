@@ -35,7 +35,10 @@ class ProxyOriginTests(unittest.IsolatedAsyncioTestCase):
             try:
                 response = await client.get('/config.json', headers={'Host': 'ksu.codes'})
                 self.assertEqual(response.status, 200)
-                self.assertEqual((await response.json())['identity']['issuer'], 'https://ksu.codes')
+                configuration = await response.json()
+                self.assertEqual(configuration['identity']['issuer'], 'https://ksu.codes')
+                self.assertEqual(configuration['gateway']['concurrentTransfers'], 8)
+                self.assertEqual(configuration['gateway']['sharedConcurrentTransfers'], 16)
                 response = await client.get('/config.json', headers={'Host': 'other.example'})
                 self.assertEqual(response.status, 403)
                 payload = {'key': jose.public_jwk(ec.generate_private_key(ec.SECP256R1()).public_key()), 'path': '/api/v1/auth'}

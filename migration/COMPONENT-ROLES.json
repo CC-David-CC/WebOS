@@ -1313,8 +1313,8 @@
       "purpose": "The original Desktop/Workspace viewer",
       "interfaces": "Human workspace/window controls; Runtime app launcher; account and file hooks; original optional guest bootstrap",
       "recipe": "js",
-      "state": "B",
-      "gap": "Original viewer and assets retained unchanged. Composition paths across Runtime, Terminal/v86 and apps still need deliberate assembly; rejected replacement removed.",
+      "state": "S",
+      "gap": "Existing viewer has a separately qualified five-app test composition using unchanged CSS/reference/artwork. Broad app integration remains separate; see deploy/VIEWER-TEST.md.",
       "path": "platform/desktop"
     },
     {

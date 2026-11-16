@@ -17,6 +17,7 @@ from aiohttp import web
 from webos_accounts import AccountsService, Config
 from webos_accounts.file_authority import FileAuthority
 from webos_storage import UserStore, DEFAULT_ACCOUNT_FOLDERS, FileGateway, initialize_ledger, initialize_transfers
+from webos_storage.transfers import Quotas
 
 
 def validate_origin(value):
@@ -44,7 +45,9 @@ def private_directory(path):
     return path
 
 
-async def create_application(public_root, private_root, origin):
+async def create_application(public_root, private_root, origin, *, account_transfers=8, shared_transfers=16):
+    if type(account_transfers) is not int or not 1 <= account_transfers <= 8 or type(shared_transfers) is not int or not account_transfers <= shared_transfers <= 32:
+        raise ValueError('Bounded account/shared transfer limits required')
     origin = validate_origin(origin)
     public_root = Path(public_root).absolute()
     private_root = Path(private_root).absolute()
@@ -80,7 +83,8 @@ async def create_application(public_root, private_root, origin):
         class DevelopmentAccounts(AccountsService):
             def config(self):
                 value = super().config()
-                value['gateway'] = {'version': 'codi-user-files/1', 'basePath': '/gateway', 'fileBytes': 128 * 1024 * 1024}
+                value['gateway'] = {'version': 'codi-user-files/1', 'basePath': '/gateway', 'fileBytes': 128 * 1024 * 1024,
+                                    'concurrentTransfers': account_transfers, 'sharedConcurrentTransfers': shared_transfers}
                 return value
         accounts = DevelopmentAccounts(Config(private_root / 'identity', public_root, origin=origin, rate_per_minute=1000))
         authority = FileAuthority(accounts)
@@ -89,7 +93,8 @@ async def create_application(public_root, private_root, origin):
             # Only explicitly new development state is initialized. Retained
             # state is validated by FileGateway and never silently repaired.
             initialize_ledger(store); initialize_transfers(store)
-        gateway = FileGateway(store, accounts.config()['identity'], max_requests_per_minute=4096)
+        quotas = Quotas(store, concurrent_uses=account_transfers, shared_concurrent_uses=shared_transfers)
+        gateway = FileGateway(store, accounts.config()['identity'], quotas=quotas, max_requests_per_minute=4096)
         app = web.Application(client_max_size=192 * 1024 * 1024)
         app.add_subapp('/gateway', gateway.app())
         async def account_request(request):
@@ -158,7 +163,7 @@ async def run(args):
     sock.bind(('127.0.0.1', args.port)); sock.listen(128); sock.setblocking(False)
     origin = validate_origin(args.origin) if args.origin else 'http://127.0.0.1:' + str(sock.getsockname()[1])
     try:
-        app = await create_application(args.public_root, args.private_root, origin)
+        app = await create_application(args.public_root, args.private_root, origin, account_transfers=args.account_transfers, shared_transfers=args.shared_transfers)
         runner = web.AppRunner(app, access_log=None); await runner.setup()
         await web.SockSite(runner, sock).start()
         print(json.dumps({'origin': origin, 'scope': 'development-only'}), flush=True)
@@ -179,4 +184,6 @@ if __name__ == '__main__':
     parser.add_argument('--private-root', type=Path, required=True)
     parser.add_argument('--port', type=int, default=18140)
     parser.add_argument('--origin', help='Explicit HTTPS test-site origin behind a trusted local proxy; listener remains loopback')
+    parser.add_argument('--account-transfers', type=int, default=8, help='Concurrent file transfers per account (1–8)')
+    parser.add_argument('--shared-transfers', type=int, default=16, help='Concurrent file transfers across the test service (account limit–32)')
     asyncio.run(run(parser.parse_args()))
