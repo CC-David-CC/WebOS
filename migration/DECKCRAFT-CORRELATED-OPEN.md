@@ -42,7 +42,8 @@ and the old workspace is hidden during build and browser execution.
 ## Remaining work
 
 These are protocol tests with synthetic hosts, not account synchronization.
-Native IDs/revisions are not server hashes or authorization grants. Real
-Desktop/UserFiles binding, save/export authority, lifecycle integration,
-multi-client persistence and authenticated scoped agent operations remain open.
-DeckCraft is disabled in the minimum. No deployment changed.
+Native IDs/revisions are not server hashes or authorization grants. The separate
+[optional Desktop/UserFiles view](DECKCRAFT-ACCOUNT-INTEGRATION.md) now passes
+actual account save/reopen and second-context retrieval. Export authority, broader
+lifecycle/reconciliation and authenticated scoped agent operations remain open.
+No deployment changed.

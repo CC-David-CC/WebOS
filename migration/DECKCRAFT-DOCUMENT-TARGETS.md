@@ -1,6 +1,6 @@
 # DeckCraft document-target qualification
 
-The parent selects fork `555fbb14ff2a239b51bb76969080fca0ab6a2a06`.
+The parent selects fork `45463e6ba33aea1cdd664a27c4afd017ba35275a`.
 Its native control owner checks an explicit `documentId` immediately before
 running a queued request. This is an active-document precondition: stale,
 malformed or conflicting targets fail. It neither changes focus nor provides
@@ -41,9 +41,8 @@ Calls omitting it retain current-focus behavior; the future account/authorized
 host adapter must always supply its captured target after authorization waits.
 Native identities and revisions are not account paths, server hashes or grants.
 
-Real Desktop/UserFiles binding, exports and scoped authenticated agent transport
-remain open. [Creation/adoption results](DECKCRAFT-CORRELATED-OPEN.md) now return stable
+The optional [Desktop/UserFiles view](DECKCRAFT-ACCOUNT-INTEGRATION.md) is now
+qualified separately; exports and authenticated scoped agent transport remain open. [Creation/adoption results](DECKCRAFT-CORRELATED-OPEN.md) now return stable
 identity with the operation, without a late active-document lookup. `file.openBytes` is
 source-less by design; correct account adoption must preserve source identity
-for valid presentations and protect repaired/converted copies. The app remains
-disabled in the minimum. No deployment changed in this qualification.
+for valid presentations and protect repaired/converted copies. The app requires an explicitly supplied verified artifact; no deployment changed.

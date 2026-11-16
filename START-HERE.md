@@ -27,11 +27,10 @@ For Craft Cargo commands in this layout, see
 [shared build inputs](migration/CRAFT-BUILD-INPUTS.md). All 17 workspace metadata
 checks pass. The selected shared fonts now include the verified Latin catalogue;
 DeckCraft's font crate and complete browser target pass offline WebAssembly
-compile checks with required fonts. Desktop hosting and account integration
-remain OPEN; metadata and compilation alone are not runtime acceptance.
+compile checks with required fonts. Metadata and compilation alone are not
+runtime acceptance; its new optional account view is qualified separately below.
 DeckCraft also has a [standalone source-built browser pass](migration/DECKCRAFT-BROWSER-BASELINE.md):
-real slide rendering, command insertion and undo. Desktop/account integration
-is still OPEN. Its [confirmed-save fork](migration/DECKCRAFT-HOST-SAVE.md)
+real slide rendering, command insertion and undo. Its [confirmed-save fork](migration/DECKCRAFT-HOST-SAVE.md)
 now passes all8 native CI stages and real-browser acknowledgement/view tests,
 including shared captured-save identity and explicit failure/unknown outcomes;
 those synthetic host results do not establish account persistence. Its
@@ -39,14 +38,18 @@ those synthetic host results do not establish account persistence. Its
 stale explicit targets at dispatch and exposes real IDs/revisions for inspection.
 Its [correlated file-adoption results](migration/DECKCRAFT-CORRELATED-OPEN.md) now
 identify the actual opened document, including back-to-back requests and converted
-copies. All six standalone browser regressions pass; actual account integration
-remains OPEN.
+copies. All six standalone browser regressions pass. Its optional
+[Desktop/Files/account integration](migration/DECKCRAFT-ACCOUNT-INTEGRATION.md) now
+passes real signed account save/reopen, independent views, second-context retrieval
+and stale-write protection from a clone-built artifact. Enable it with a verified
+`--deckcraft` site; exports, delegated agents and broader acceptance remain OPEN.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
 still has 1,969 unresolved dispositions and 25 unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
-count. The remaining16 Craft apps and broader apps/games still need complete host,
-file, lifecycle and shared-operation qualification. Browser build status is
+count. The other15 Craft apps and broader apps/games still need browser/host
+qualification; WordCraft and DeckCraft also retain explicit lifecycle, export
+and delegated-operation gates. Browser build status is
 recorded individually in the matrix.
 
 Browser backend source is now organized under `apps/browser/server/`, with an

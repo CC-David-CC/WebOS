@@ -1905,7 +1905,7 @@
       "id": "deckcraft",
       "upstream_candidate": "https://github.com/storytold/deckcraft.git",
       "repository_reachable": true,
-      "state": "maintained fork selected with qualified standalone save protocol; real Desktop/account integration pending",
+      "state": "maintained fork with optional qualified Desktop/Files account view; broader export/agent gates open",
       "license_files": [
         "ATTRIBUTION.md",
         "LICENSE-APACHE",
@@ -1914,7 +1914,7 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "PASS selected555fbb14 full8-stage cargo xtask ci (2291 passes,5 existing ignored), clean release WASM and complete browser-target check; six real browser regressions including correlated adoption, document targets and save/failure/view behavior; actual Storage/Desktop/export/agent integration OPEN",
+      "build_status": "PASS selected45463e6b full8-stage cargo xtask ci (2291 passes,5 existing ignored),15 host tests; independent-clone owned release build and component receipt; actual Desktop/Files real account save/reopen, independent views, second context and stale-write protection; exports/reconciliation/delegated agents/physical second machine OPEN",
       "component_path": "apps/deckcraft",
       "project_origin": "ArtCraft first-party project",
       "browser_baseline_documentation": "migration/DECKCRAFT-BROWSER-BASELINE.md",
@@ -1945,6 +1945,21 @@
         "baseline_failure_preserved": true,
         "back_to_back_opens": true,
         "converted_source_retained": false
+      },
+      "account_view_qualification": {
+        "status": "pass scoped human Desktop/Files/UserFiles browser acceptance",
+        "documentation": "migration/DECKCRAFT-ACCOUNT-INTEGRATION.md",
+        "tests": [
+          "tests/deckcraft_adapter_browser.mjs",
+          "tests/deckcraft_desktop_browser.mjs",
+          "tests/test_deckcraft_build.py"
+        ],
+        "enablement": "optional verified --deckcraft artifact; not a minimum dependency",
+        "real_server_files": true,
+        "independent_browser_contexts": true,
+        "physical_second_machine": false,
+        "delegated_agents": false,
+        "external_deployment": false
       }
     },
     {
