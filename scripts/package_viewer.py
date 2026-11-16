@@ -100,7 +100,7 @@ def main():
     assert sum(row['bytes'] for row in records) < 200 * 1024 * 1024, 'Unexpected release growth'
     receipt = {'schema': 'webos-existing-viewer-release/1', 'parentCommit': git(ROOT, 'rev-parse', 'HEAD').decode().strip(),
                'components': components, 'engine': build['engine'], 'apps': build['apps'], 'files': records,
-               'backend': 'Existing ksu.codes service and account state retained; companion backend-release.json records backend source and concurrency configuration',
+               'backend': 'Existing ksu.codes service and account state retained; deployment report records running backend pins and concurrency configuration',
                'npmLockSHA256': digest((ROOT / 'package-lock.json').read_bytes())}
     data = (json.dumps(receipt, indent=2) + '\n').encode()
     (site / 'viewer-release.json').write_bytes(data)
