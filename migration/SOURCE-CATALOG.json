@@ -1,0 +1,3559 @@
+{
+  "schema": "webos-source-catalog/1",
+  "selectedVersions": "Parent Git links are authoritative; this catalog does not duplicate pins.",
+  "components": [
+    {
+      "id": "acad",
+      "path": "apps/acad",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Gruntfile.js",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@babel/cli",
+        "@babel/core",
+        "@babel/eslint-parser",
+        "@babel/eslint-plugin",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-decorators",
+        "@babel/plugin-proposal-nullish-coalescing-operator",
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-stage-2",
+        "@babel/preset-typescript",
+        "@cypress/webpack-preprocessor",
+        "@dxfjs/parser",
+        "@noble/hashes",
+        "@tarikjabiri/dxf",
+        "@types/react",
+        "@types/react-dom",
+        "@types/three",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
+        "@zip.js/zip.js",
+        "acorn",
+        "babel-loader",
+        "babel-plugin-transform-decorators-legacy",
+        "babel-polyfill",
+        "browser-xml2js",
+        "buffer",
+        "classnames",
+        "clipper-lib",
+        "component-emitter",
+        "concurrently",
+        "css-loader",
+        "cypress",
+        "cypress-wait-until",
+        "del",
+        "earcut",
+        "eslint",
+        "eslint-plugin-import",
+        "file-loader",
+        "font-awesome",
+        "glob",
+        "grunt",
+        "grunt-contrib-copy",
+        "grunt-contrib-watch",
+        "handlebars",
+        "immer",
+        "jsketcher-occ-engine",
+        "jszip",
+        "less",
+        "less-loader",
+        "less-vars-loader",
+        "libtess",
+        "lodash",
+        "manifold-3d",
+        "marked",
+        "mousetrap",
+        "numeric",
+        "prop-types",
+        "raw-loader",
+        "react",
+        "react-color",
+        "react-dom",
+        "react-icons",
+        "react-toastify",
+        "sprintf",
+        "style-loader",
+        "three",
+        "typescript",
+        "url-loader",
+        "webpack",
+        "webpack-cli",
+        "webpack-dev-server"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github",
+        "build",
+        "dev-guide",
+        "docs",
+        "misc",
+        "modules",
+        "research",
+        "test",
+        "tests",
+        "third_party",
+        "web",
+        "webos"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "anicraft",
+      "path": "apps/anicraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github",
+        "assets",
+        "crates",
+        "docs",
+        "examples",
+        "licenses",
+        "packaging",
+        "scripts",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "arduino-simulator",
+      "path": "apps/arduino-simulator",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@wokwi/elements",
+        "avr8js"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "examples",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "audio-editor",
+      "path": "apps/audio-editor",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "browser",
+      "path": "apps/browser",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package.json",
+        "pyproject.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "demo",
+        "docs",
+        "engine",
+        "engine-fonts",
+        "engine-support",
+        "experiments",
+        "fixtures",
+        "legacy",
+        "native",
+        "relay",
+        "server",
+        "src",
+        "tests",
+        "tools"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "cadcraft",
+      "path": "apps/cadcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "examples",
+        "lint",
+        "packaging",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "calculator",
+      "path": "apps/calculator",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "apps/system/calculator/index.mjs"
+      ],
+      "packageEntrypoints": [
+        "./apps/system/calculator/math.mjs",
+        "./webos/index.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [],
+      "sourceDirectories": [
+        "apps",
+        "docs",
+        "tests",
+        "webos"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "chess-study",
+      "path": "apps/chess-study",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "chess.js",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "circuit-lab",
+      "path": "apps/circuit-lab",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "circuitjs",
+      "path": "apps/circuitjs",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "notices"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "clockwork-quest",
+      "path": "apps/clockwork-quest",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@babylonjs/core",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "clockwork-room",
+      "path": "apps/clockwork-room",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@babylonjs/core",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "crystal-defense",
+      "path": "apps/crystal-defense",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@babylonjs/core",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "data-explorer",
+      "path": "apps/data-explorer",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@duckdb/duckdb-wasm",
+        "@perspective-dev/client",
+        "@perspective-dev/server",
+        "@perspective-dev/viewer",
+        "@perspective-dev/viewer-charts",
+        "@perspective-dev/viewer-datagrid"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests",
+        "workers"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "deckcraft",
+      "path": "apps/deckcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "licenses",
+        "packaging",
+        "webos",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "designcraft",
+      "path": "apps/designcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "licenses",
+        "nix",
+        "packaging",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "diagrams-net",
+      "path": "apps/diagrams-net",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "digital-logic",
+      "path": "apps/digital-logic",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "3vl",
+        "digitaljs",
+        "jquery"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "document-editor",
+      "path": "apps/document-editor",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@tiptap/core",
+        "@tiptap/extension-image",
+        "@tiptap/extension-table",
+        "@tiptap/starter-kit",
+        "pdfmake"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "fonts",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "drone-circuit",
+      "path": "apps/drone-circuit",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@babylonjs/core",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "effectcraft",
+      "path": "apps/effectcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "examples",
+        "extensions",
+        "nix",
+        "packaging",
+        "tests",
+        "tools",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "electronics-design",
+      "path": "apps/electronics-design",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "frame",
+        "licenses"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "embroidery-studio",
+      "path": "apps/embroidery-studio",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "examples",
+        "licenses",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "excalidraw",
+      "path": "apps/excalidraw",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@excalidraw/excalidraw",
+        "react",
+        "react-dom"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "expression-puppet",
+      "path": "apps/expression-puppet",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@rive-app/canvas",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "falling-blocks",
+      "path": "apps/falling-blocks",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs",
+        "model.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@rive-app/canvas",
+        "phaser"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "coach",
+        "design",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "figcraft",
+      "path": "apps/figcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "examples",
+        "packaging",
+        "plugins",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "files",
+      "path": "apps/files",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "apps/system/files/index.mjs"
+      ],
+      "packageEntrypoints": [
+        "./src/controller.mjs",
+        "./src/index.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@samuelncui/chonky",
+        "@samuelncui/chonky-icon-fontawesome",
+        "react",
+        "react-dom"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        "apps",
+        "docs",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "filmcraft",
+      "path": "apps/filmcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "packaging",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "fraction-farm",
+      "path": "apps/fraction-farm",
+      "group": "apps",
+      "kind": "planned-game-core",
+      "sourceEntries": [
+        "model.mjs"
+      ],
+      "packageEntrypoints": [
+        "./model.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@webos/learning-game-core"
+      ],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "garden-defense",
+      "path": "apps/garden-defense",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "phaser",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "gcode-preview",
+      "path": "apps/gcode-preview",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "gcode-preview"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "experimental",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "gravity-pinball",
+      "path": "apps/gravity-pinball",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@dimforge/rapier3d-compat",
+        "@types/three",
+        "three",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "grid-tools",
+      "path": "apps/grid-tools",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@fortawesome/fontawesome-free",
+        "@gridspace/raster-path",
+        "@tracespace/parser",
+        "@tweenjs/tween.js",
+        "base64-js",
+        "bootstrap-icons",
+        "earcut",
+        "esbuild",
+        "fast-glob",
+        "jszip",
+        "manifold-3d",
+        "quickjs-emscripten",
+        "three",
+        "three-mesh-bvh",
+        "webpack",
+        "webpack-cli"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "gridcraft",
+      "path": "apps/gridcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "packaging",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "help",
+      "path": "apps/help",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "apps/system/help/index.mjs"
+      ],
+      "packageEntrypoints": [
+        "./webos/index.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        "apps",
+        "tests",
+        "webos"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "image-editor",
+      "path": "apps/image-editor",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "konva",
+        "react",
+        "react-dom",
+        "react-filerobot-image-editor",
+        "react-konva",
+        "styled-components"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "jsketcher",
+      "path": "apps/jsketcher",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Gruntfile.js",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@babel/cli",
+        "@babel/core",
+        "@babel/eslint-parser",
+        "@babel/eslint-plugin",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-decorators",
+        "@babel/plugin-proposal-nullish-coalescing-operator",
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-stage-2",
+        "@babel/preset-typescript",
+        "@cypress/webpack-preprocessor",
+        "@dxfjs/parser",
+        "@tarikjabiri/dxf",
+        "@types/react",
+        "@types/react-dom",
+        "@types/three",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
+        "acorn",
+        "babel-loader",
+        "babel-plugin-transform-decorators-legacy",
+        "babel-polyfill",
+        "browser-xml2js",
+        "buffer",
+        "classnames",
+        "clipper-lib",
+        "component-emitter",
+        "concurrently",
+        "css-loader",
+        "cypress",
+        "cypress-wait-until",
+        "del",
+        "earcut",
+        "eslint",
+        "eslint-plugin-import",
+        "file-loader",
+        "font-awesome",
+        "glob",
+        "grunt",
+        "grunt-contrib-copy",
+        "grunt-contrib-watch",
+        "handlebars",
+        "immer",
+        "jsketcher-occ-engine",
+        "jszip",
+        "less",
+        "less-loader",
+        "less-vars-loader",
+        "libtess",
+        "lodash",
+        "manifold-3d",
+        "marked",
+        "mousetrap",
+        "numeric",
+        "prop-types",
+        "raw-loader",
+        "react",
+        "react-color",
+        "react-dom",
+        "react-icons",
+        "react-toastify",
+        "sprintf",
+        "style-loader",
+        "three",
+        "typescript",
+        "url-loader",
+        "webpack",
+        "webpack-cli",
+        "webpack-dev-server"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github",
+        "build",
+        "dev-guide",
+        "docs",
+        "misc",
+        "modules",
+        "test",
+        "web"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "kinetic-relay",
+      "path": "apps/kinetic-relay",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@dimforge/rapier3d-compat",
+        "@types/three",
+        "three",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "lantern-leap",
+      "path": "apps/lantern-leap",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "phaser",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "lightcraft",
+      "path": "apps/lightcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".github",
+        "apps",
+        "assets",
+        "clean-room",
+        "contributors",
+        "crates",
+        "docs",
+        "nix",
+        "packaging",
+        "tools",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "linux",
+      "path": "apps/linux",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [
+        "./assets/desktop/guest-worker-client.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json",
+        "pyproject.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "assets",
+        "legacy",
+        "runtime",
+        "scripts",
+        "server",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "marble-works",
+      "path": "apps/marble-works",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "market-math",
+      "path": "apps/market-math",
+      "group": "apps",
+      "kind": "planned-game-core",
+      "sourceEntries": [
+        "model.mjs"
+      ],
+      "packageEntrypoints": [
+        "./model.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@webos/learning-game-core"
+      ],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "materialcraft",
+      "path": "apps/materialcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".github",
+        "apps",
+        "assets",
+        "crates",
+        "docs",
+        "examples",
+        "packaging",
+        "vendor",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "math-path",
+      "path": "apps/math-path",
+      "group": "apps",
+      "kind": "planned-game-core",
+      "sourceEntries": [
+        "model.mjs"
+      ],
+      "packageEntrypoints": [
+        "./model.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@webos/learning-game-core"
+      ],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "memory-garden",
+      "path": "apps/memory-garden",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs",
+        "model.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "microduck",
+      "path": "apps/microduck",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@mujoco/mujoco",
+        "acorn",
+        "esbuild",
+        "onnxruntime-web",
+        "playwright",
+        "saxes",
+        "three"
+      ],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "assets",
+        "evidence",
+        "foundation",
+        "legacy",
+        "project-source",
+        "tests",
+        "tools"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "notebook",
+      "path": "apps/notebook",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "orbital-courier",
+      "path": "apps/orbital-courier",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@babylonjs/core",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "owl-companion",
+      "path": "apps/owl-companion",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@rive-app/canvas",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pcb-design",
+      "path": "apps/pcb-design",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@tscircuit/copper-pour-solver",
+        "@tscircuit/core",
+        "@tscircuit/infer-cable-insertion-point",
+        "@tscircuit/miniflex",
+        "@tscircuit/soup-util",
+        "circuit-to-svg",
+        "minicssgrid",
+        "spicey"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pdf-viewer",
+      "path": "apps/pdf-viewer",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "pdfjs-dist"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "workers"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pdfcraft",
+      "path": "apps/pdfcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "licenses",
+        "packaging",
+        "parity",
+        "tests",
+        "vendor",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "personal-template",
+      "path": "apps/personal-template",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [],
+      "npmDependencies": [],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "photocraft",
+      "path": "apps/photocraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "book",
+        "contributors",
+        "crates",
+        "docs",
+        "examples",
+        "packaging",
+        "perf",
+        "scorecard",
+        "scripts",
+        "tests",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "physics-playground",
+      "path": "apps/physics-playground",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@dimforge/rapier3d-compat",
+        "@types/three",
+        "three",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pico-simulator",
+      "path": "apps/pico-simulator",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@wokwi/elements",
+        "rp2040js"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "examples",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pocket-conquest",
+      "path": "apps/pocket-conquest",
+      "group": "apps",
+      "kind": "planned-game-core",
+      "sourceEntries": [
+        "model.mjs"
+      ],
+      "packageEntrypoints": [
+        "./model.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@webos/learning-game-core"
+      ],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pocket-golf",
+      "path": "apps/pocket-golf",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@babylonjs/core",
+        "@babylonjs/havok",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pocket-rally",
+      "path": "apps/pocket-rally",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "phaser",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "reactive-control-desk",
+      "path": "apps/reactive-control-desk",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@rive-app/canvas",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "replicad",
+      "path": "apps/replicad",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs",
+        "model.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "replicad",
+        "replicad-opencascadejs",
+        "three"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "tests",
+        "workers"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "rhythm-garden",
+      "path": "apps/rhythm-garden",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [
+        "./dist/index.mjs"
+      ],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@rive-app/canvas",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "rule-detective",
+      "path": "apps/rule-detective",
+      "group": "apps",
+      "kind": "planned-game-core",
+      "sourceEntries": [
+        "model.mjs"
+      ],
+      "packageEntrypoints": [
+        "./model.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@webos/learning-game-core"
+      ],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "sky-courier",
+      "path": "apps/sky-courier",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "phaser",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "sling-targets",
+      "path": "apps/sling-targets",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@dimforge/rapier3d-compat",
+        "@types/three",
+        "three",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "snake-garden",
+      "path": "apps/snake-garden",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "phaser",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "solidcraft",
+      "path": "apps/solidcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "attribution",
+        "crates",
+        "docs",
+        "examples",
+        "packaging",
+        "scripts",
+        "skills",
+        "solidcore",
+        "tests",
+        "tools",
+        "vendor",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "solitaire",
+      "path": "apps/solitaire",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "soundcraft",
+      "path": "apps/soundcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "lint",
+        "packaging",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "spreadsheet",
+      "path": "apps/spreadsheet",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "jspreadsheet-ce",
+        "xlsx"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests",
+        "workers"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "stack-balance",
+      "path": "apps/stack-balance",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@dimforge/rapier3d-compat",
+        "@types/three",
+        "three",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "stitch-converter",
+      "path": "apps/stitch-converter",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@guillaumemmm/tsembroidery"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "story-cards",
+      "path": "apps/story-cards",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs",
+        "model.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "svg-editor",
+      "path": "apps/svg-editor",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "jspdf",
+        "svgedit"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "tabletop-bot-arena",
+      "path": "apps/tabletop-bot-arena",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@dimforge/rapier3d-compat",
+        "@types/three",
+        "three",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "target-garden",
+      "path": "apps/target-garden",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@babylonjs/core",
+        "typescript",
+        "vitest"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "design",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "terminal",
+      "path": "apps/terminal",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "active-system",
+        "legacy",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "text",
+      "path": "apps/text",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [
+        "./webos/index.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@webos/codemirror"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "tests",
+        "webos"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "texturecraft",
+      "path": "apps/texturecraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".github",
+        "apps",
+        "assets",
+        "crates",
+        "docs",
+        "packaging",
+        "vendor",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "tile-islands",
+      "path": "apps/tile-islands",
+      "group": "apps",
+      "kind": "planned-game-core",
+      "sourceEntries": [
+        "model.mjs"
+      ],
+      "packageEntrypoints": [
+        "./model.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@webos/learning-game-core"
+      ],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "vectorcraft",
+      "path": "apps/vectorcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "examples",
+        "licenses",
+        "packaging",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "word-weaver",
+      "path": "apps/word-weaver",
+      "group": "apps",
+      "kind": "planned-game-core",
+      "sourceEntries": [
+        "model.mjs"
+      ],
+      "packageEntrypoints": [
+        "./model.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@webos/learning-game-core"
+      ],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "docs",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "wordcraft",
+      "path": "apps/wordcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".config",
+        ".github",
+        "apps",
+        "assets",
+        "contributors",
+        "crates",
+        "docs",
+        "packaging",
+        "webos",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "craft-fonts",
+      "path": "assets/craft-fonts",
+      "group": "assets",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github",
+        "crates",
+        "docs",
+        "fonts"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "craft-i18n",
+      "path": "assets/craft-i18n",
+      "group": "assets",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github",
+        "crates",
+        "docs",
+        "language-data",
+        "locales",
+        "tools"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "ffmpeg",
+      "path": "engines/ffmpeg",
+      "group": "engines",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@ffmpeg/core"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        "workers"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "manifold",
+      "path": "engines/manifold",
+      "group": "engines",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "CMakeLists.txt",
+        "pyproject.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github",
+        ".vscode",
+        "bindings",
+        "cmake",
+        "docs",
+        "extras",
+        "include",
+        "research",
+        "samples",
+        "scripts",
+        "src",
+        "test"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "occt-interpreter",
+      "path": "engines/occt-interpreter",
+      "group": "engines",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".vscode",
+        "build-native",
+        "build-wasm",
+        "npm-package",
+        "occt",
+        "research",
+        "scripts",
+        "shape-io"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "onnx-runtime",
+      "path": "engines/onnx-runtime",
+      "group": "engines",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "onnxruntime-web"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "opencascade-js",
+      "path": "engines/opencascade-js",
+      "group": "engines",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "opencascade.js"
+      ],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "smlib-wasm",
+      "path": "engines/smlib-wasm",
+      "group": "engines",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [
+        "./src/api.mjs"
+      ],
+      "buildDefinitions": [
+        "CMakeLists.txt",
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        "src",
+        "test"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "speech",
+      "path": "engines/speech",
+      "group": "engines",
+      "kind": "component-source",
+      "sourceEntries": [
+        "client.mjs"
+      ],
+      "packageEntrypoints": [
+        "./client.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "scripts",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "usd-brep",
+      "path": "engines/usd-brep",
+      "group": "engines",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "pyproject.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "BUILDING.md"
+      ],
+      "sourceDirectories": [
+        ".agents",
+        "Examples",
+        "TestFiles",
+        "TestFilesSmb",
+        "deps",
+        "docs",
+        "proposals",
+        "source",
+        "tests",
+        "tools"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "v86",
+      "path": "engines/v86",
+      "group": "engines",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.html"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.toml",
+        "Makefile",
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "Readme.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".devcontainer",
+        ".github",
+        ".vscode",
+        "bios",
+        "docs",
+        "examples",
+        "gen",
+        "lib",
+        "src",
+        "tests",
+        "tools",
+        "webos"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "rooms",
+      "path": "legacy/rooms",
+      "group": "legacy",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        "legacy",
+        "room_service"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "codemirror",
+      "path": "libraries/codemirror",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [
+        "./index.mjs"
+      ],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@codemirror/commands",
+        "@codemirror/lang-cpp",
+        "@codemirror/lang-css",
+        "@codemirror/lang-html",
+        "@codemirror/lang-javascript",
+        "@codemirror/lang-json",
+        "@codemirror/lang-markdown",
+        "@codemirror/lang-python",
+        "@codemirror/lang-sql",
+        "@codemirror/language",
+        "@codemirror/search",
+        "@codemirror/state",
+        "@codemirror/view"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "craft-libs",
+      "path": "libraries/craft-libs",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github",
+        "crates",
+        "docs",
+        "licenses",
+        "scripts",
+        "vendor"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "echarts",
+      "path": "libraries/echarts",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "echarts"
+      ],
+      "documentation": [],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "egui",
+      "path": "libraries/egui",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".github",
+        ".vscode",
+        "crates",
+        "docs",
+        "examples",
+        "media",
+        "scripts",
+        "tests",
+        "web_demo",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "gltf-transform",
+      "path": "libraries/gltf-transform",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@gltf-transform/core",
+        "@gltf-transform/functions"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "learning-game-core",
+      "path": "libraries/learning-game-core",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "core.mjs"
+      ],
+      "packageEntrypoints": [
+        "./core.mjs",
+        "./experience.mjs",
+        "./odds.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "maplibre",
+      "path": "libraries/maplibre",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "maplibre-gl"
+      ],
+      "documentation": [],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "mermaid",
+      "path": "libraries/mermaid",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "mermaid"
+      ],
+      "documentation": [],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "network-policy",
+      "path": "libraries/network-policy",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "pyproject.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "legacy",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pdfme",
+      "path": "libraries/pdfme",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@pdfme/generator"
+      ],
+      "documentation": [],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "plotly",
+      "path": "libraries/plotly",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "plotly.js-dist-min"
+      ],
+      "documentation": [],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "tanstack-virtual",
+      "path": "libraries/tanstack-virtual",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@tanstack/virtual-core"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "tone",
+      "path": "libraries/tone",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "tone"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "transformers",
+      "path": "libraries/transformers",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@huggingface/transformers"
+      ],
+      "documentation": [],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "trystero",
+      "path": "libraries/trystero",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "trystero"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "wavesurfer",
+      "path": "libraries/wavesurfer",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "wavesurfer.js"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "webtorrent",
+      "path": "libraries/webtorrent",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "buffer",
+        "events",
+        "path",
+        "process",
+        "webtorrent"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "yjs",
+      "path": "libraries/yjs",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "yjs"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "zip",
+      "path": "libraries/zip",
+      "group": "libraries",
+      "kind": "component-source",
+      "sourceEntries": [
+        "index.mjs"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "app.json",
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "@zip.js/zip.js"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "accounts",
+      "path": "platform/accounts",
+      "group": "platform",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [
+        "./browser/client.mjs",
+        "./browser/crypto.mjs",
+        "./browser/identity.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json",
+        "pyproject.toml"
+      ],
+      "npmDependencies": [
+        "@webos/runtime"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        "active-system",
+        "browser",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "desktop",
+      "path": "platform/desktop",
+      "group": "platform",
+      "kind": "component-source",
+      "sourceEntries": [
+        "active-system/index.html",
+        "active-system/app.js",
+        "active-system/style.css"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "package.json"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        "active-system",
+        "legacy"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "login",
+      "path": "platform/login",
+      "group": "platform",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [
+        "./src/index.mjs"
+      ],
+      "buildDefinitions": [
+        "package-lock.json",
+        "package.json"
+      ],
+      "npmDependencies": [
+        "esbuild"
+      ],
+      "documentation": [
+        "README.md",
+        "PROVENANCE.json"
+      ],
+      "sourceDirectories": [
+        "legacy",
+        "src"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "publication",
+      "path": "platform/publication",
+      "group": "platform",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "legacy",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "rendezvous",
+      "path": "platform/rendezvous",
+      "group": "platform",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "pyproject.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md",
+        "MIGRATION.md"
+      ],
+      "sourceDirectories": [
+        "legacy",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "runtime",
+      "path": "platform/runtime",
+      "group": "platform",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [
+        "./active-system/assets/desktop/app-instance.mjs",
+        "./active-system/assets/desktop/apps.mjs",
+        "./active-system/assets/desktop/command-registry.mjs",
+        "./active-system/assets/desktop/document-operations.mjs",
+        "./active-system/network/strict-json.mjs",
+        "./src/file-protocol.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json",
+        "pyproject.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        "active-system",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "storage",
+      "path": "platform/storage",
+      "group": "platform",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [
+        "./src/webos_storage/client.mjs"
+      ],
+      "buildDefinitions": [
+        "package.json",
+        "pyproject.toml"
+      ],
+      "npmDependencies": [
+        "@webos/accounts"
+      ],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        "active-system",
+        "legacy",
+        "research",
+        "src",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "craft-common-actions",
+      "path": "tooling/craft-common-actions",
+      "group": "tooling",
+      "kind": "component-source",
+      "sourceEntries": [],
+      "packageEntrypoints": [],
+      "buildDefinitions": [],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github",
+        "actions",
+        "docs",
+        "scripts",
+        "tests"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    }
+  ]
+}
