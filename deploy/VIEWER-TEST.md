@@ -43,3 +43,26 @@ the matching text-activation-20261116-01 plan and restores the previous frontend
 duplicate-open behavior. Login persistence, Files startup-error retry and
 WordCraft multi-document activation remain separate. Existing old duplicates are
 not merged or discarded automatically.
+
+The login-persistence release opts the viewer into Accounts-owned browser
+retention. It keeps a nonextractable proof key, token and public binding in
+IndexedDB, never passwords. Server renewal and exact account/key verification
+precede opening any account view; short certificate expiry does not prevent
+renewal of a still-valid eight-hour server session. Refresh/reopening does not
+extend the server deadline. Sign-out forgets the exact record before revocation;
+invalid/expired records return to the original login form and renewal outages
+use the existing reconnect flow without admitting cached identity. Concurrent
+old tabs cannot erase or install a newer account's remembered login. Browser
+storage failure reports current-tab-only sign-in. Existing draft recovery and
+unsaved-work warnings remain intact. After loading the update, sign in once.
+
+Seven persistence, eleven activation, nine binding/restoration, eleven recovery
+and fifteen viewer checks pass locally and hosted. Thirteen private Accounts
+fixture checks cover actual structured-cloned keys, expiry, malformed bindings,
+tabs and uncertain logout; independent Login/file-authority context regressions
+and45 unit tests also pass. Synthetic expiry touches only private test SQLite.
+The static-only rollout retains the existing Python backend, account state,
+beta, original CSS/reference/artwork and WordCraft engine. Matching rollback
+uses login-persistence-20261116-01 and restores the earlier frontend's login-on-
+refresh behavior; browser credential records remain ignored until a newer
+frontend revalidates them. No new server API or backend restart is required.
