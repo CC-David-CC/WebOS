@@ -3038,5 +3038,23 @@
     "component_pins_changed": 0,
     "documentation": "migration/HOST-REFERENCE-INPUTS.md",
     "unresolved_supporting_dispositions_after_review": 1806
+  },
+  "historical_opfs_release_source": {
+    "source_records": 15,
+    "builder_fetch_verifier_scripts": 4,
+    "historical_documents": 2,
+    "fixture_test_model_sources": 9,
+    "historical_blobs": 25,
+    "retained_commits": 9,
+    "independent_restored_current_files": 15,
+    "existing_distinct_input_owners_verified": 2,
+    "preexisting_whitespace_warning_count": 1,
+    "mechanical_whitespace_check_exit_code": 2,
+    "source_normalized": false,
+    "legacy_code_executed": false,
+    "functional_acceptance": false,
+    "component_pins_changed": 0,
+    "documentation": "migration/OPFS-RELEASE-SOURCE.md",
+    "unresolved_supporting_dispositions_after_review": 1791
   }
 }
