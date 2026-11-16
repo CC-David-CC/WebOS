@@ -6,11 +6,18 @@ artwork remain unchanged. Account/date are at the top of the narrow dark right
 rail and APPs at the bottom. Calculator, Files, Text, WordCraft and Help are
 enabled. Other menu entries remain disabled.
 
-The latest static update fixes external-file drops, native file-selection and
-cancellation handling, explicit upload feedback and the invalid My files
-breadcrumb. The root breadcrumb uses a nonempty UI sentinel, mapped explicitly
-to the account API's empty root path. It no longer generates Chonky's missing
-ID/name errors, and clicking it returns from Documents to My files.
+The latest static update enables selecting and deleting several account items
+together. Use **Select multiple** followed by ordinary clicks, Ctrl/Meta-click,
+or Shift-click for a range. Delete in the toolbar/context menu or the Delete key
+opens one confirmation listing the selected items. Cancel changes nothing.
+Every resource is authorized before deletion starts; files retain exact selected
+revision preconditions. A refusal stops the batch and reports the acknowledged
+count. Unknown outcomes are never retried or counted as confirmed. Folders must
+be empty; deletion is never recursive. Rename, Move and Download remain single-item.
+
+The earlier external-file drop, native input/cancellation, upload-feedback and
+My files breadcrumb fixes remain included. The UI root sentinel maps explicitly
+to the account API's empty root path, without Chonky's missing-ID/name errors.
 
 ## Remaining native picker issue
 
@@ -35,6 +42,13 @@ The user explicitly deferred this separate investigation; its resume record is
 
 | Check | Result |
 |---|---|
+| Ctrl-click multi-selection, one confirmation listing each item, Cancel preserves all | PASS, local and hosted |
+| Confirmed multi-delete preserves unselected files and reports acknowledged count | PASS |
+| Select multiple mode, ordinary click toggles, Delete key and empty folder | PASS |
+| Shift-click range selection | PASS |
+| Second-browser revision change stops batch after 1 of 3, preserving changed/remaining files | PASS |
+| Nonempty-folder refusal preserves children and remaining selection | PASS |
+| Reload/sign-in and fresh-context account listings agree after deletion | PASS |
 | Native Upload button opens a chooser; 4 MiB binary saved and read with exact hash | PASS, local and hosted |
 | Browser-protocol external file drop; 4 MiB binary saved/read with exact hash | PASS, local and hosted |
 | Late cancellation cannot overwrite a completed import result | PASS |
@@ -53,10 +67,14 @@ The user explicitly deferred this separate investigation; its resume record is
 | Existing-tab native double-click selection | KNOWN FAILURE, including plain HTML controls |
 | Beta page, checked backend/beta/Caddy processes and account-instance/issuer continuity | PASS |
 
-The latest hosted qualification has **8 focused Files checks and 15 viewer
-regression checks**. The focused test records all console errors; the deliberate
-HTTP409 name-collision refusal is classified as expected and retained in the
-report. Chonky validation errors and other unexpected console errors fail it.
+The latest hosted qualification has **7 deletion checks, 8 upload checks and 15
+viewer regression checks**. All 20 Files domain/helper tests also pass, including
+authority denial, input capture, directory drift, revision conflicts, partial
+progress, session revocation and unknown outcomes. Focused browser tests retain
+all console errors. The upload collision expects HTTP409; deletion tests allow
+exactly one deliberate revision-conflict HTTP409 and one nonempty-folder
+HTTP403 after verifying the corresponding behavior. Extra/unrelated refusals,
+Chonky validation errors and other unexpected console errors fail qualification.
 The original tiny upload test was expanded to use the actual toolbar chooser;
 the focused test uses 4 MiB opaque binary fixtures with MP4 filenames. No media
 decoding or physical OS drag is claimed. The plain-control experiments use
@@ -74,19 +92,19 @@ retained; it is not counted as a successful run.
 
 | Item | Selected identity |
 |---|---|
-| Packaged parent source | 14c27143 (full pin in viewer-release.json) |
-| Files | 70aba65 (full pin in viewer-release.json) |
+| Packaged parent source | 85c5aa3592b1ee089855e52eb4ba4a6386d85f1a |
+| Files | 42917365629b48f760141ebf731e97d63103df98 |
 | Desktop | 95c7ae3ee265105758caad0ac441268a4304c3a5 |
 | Runtime | c1ce8c592e0a2c33decbb4ec86af7d4ed9f28c66 |
 | Storage | fc937993f567cbaa9ac280ded1fa8f45ca922599 |
 | Retained Accounts Python | c53a2f64b287b1f59bd90cdcd355766c5d713e63 |
 | WordCraft bridge | a41d6f9286458a5b460b02fd2f65f2110b969d1c |
 | Retained WordCraft engine source | 0d48f9a1bd5a2bb88d8431760a14b0ba55161563 |
-| Public release ID | 4c4ac4f60262ee76042efb27b8fe942e03cb0e0134e6375ed2488e0b1fbf814c |
-| Archive SHA-256 | bb521bedbf9d18569676c13e925fb1c30a8953284de7dfa6be996224a6587395 |
+| Public release ID | 46eeaceb4f6766bddf2ad3a31ecd4f3b77ac4957c9a59db7b53a33a44ceb943a |
+| Archive SHA-256 | 13b0287cd455b72d70cea6fb94c8216e3bbada374ddbf134530fd816e1ac6a9c |
 
 The release contains 244 public files including its manifest, totaling
-96,848,520 bytes. Its archive is 27,432,099 bytes. All source inputs and packaged
+96,852,535 bytes. Its archive is 27,434,901 bytes. All source inputs and packaged
 payloads were hash-verified; 96 JS packages have notices. Only Files bundles and
 composition/build manifests changed from the original-viewer release; the
 viewer artwork/CSS and WordCraft graph remain identical. The engine is a
@@ -116,7 +134,7 @@ existing private account-state/account-files area, separate from source and
 public releases.
 
 The current public root on box-webhost is
-/srv/data/webos-viewer-releases/4c4ac4f60262ee76042efb27b8fe942e03cb0e0134e6375ed2488e0b1fbf814c/public.
+/srv/data/webos-viewer-releases/46eeaceb4f6766bddf2ad3a31ecd4f3b77ac4957c9a59db7b53a33a44ceb943a/public.
 The backend retains loopback port 38141, its existing Python environment and
 /home/dflanag3/webos-rebuild-test/private/account-state. Caddy reloads changed
 only the ksu.codes static root; beta routing, services and data were not changed.
@@ -125,9 +143,9 @@ or old host-release cleanup occurred.
 
 The current static-only operator is deploy/viewer_static_operator.py. Its
 matching root-only rollback plan is
-/var/backups/webos-files-breadcrumb-20261116-01/ on box-webhost. Explicit rollback
-with tag files-breadcrumb-20261116-01 and the current release ID restores the
-previous direct-picker frontend, without restarting the backend. It guards
+/var/backups/webos-files-multidelete-20261116-01/ on box-webhost. Explicit rollback
+with tag files-multidelete-20261116-01 and the current release ID restores the
+previous breadcrumb/upload frontend, without restarting the backend. It guards
 configuration hashes, validates Caddy, preserves file ownership/mode and checks
 process/account continuity. Do not replay init/stage/prepare over existing
 paths. The preceding Files update plans use different tags and releases.
@@ -140,10 +158,12 @@ rollback.
 
 Private evidence, credentials, scripts, screenshots, commands and the resumable
 checkpoint are under
-/home/dflanag3/Projects/.webos-migration/files-upload-20261116-01/.
-Current reports are hosted-breadcrumb/result.json and
-hosted-breadcrumb-viewer/result.json. Earlier baseline/failure/native-dialog
-experiments are retained with their actual outcomes. Temporary diagnostics and
-synthetic test files are kept separate from user files; cleanup evidence belongs
-in that checkpoint. The [complete source matrix](../migration/APP-MATRIX.md)
+/home/dflanag3/Projects/.webos-migration/files-multidelete-20261116-01/.
+Current reports are hosted-delete/result.json, hosted-upload/result.json and
+hosted-viewer/result.json. The pre-fix hosted test reproduced the exactly-one
+restriction. An initial local test omitted sign-in after reload; its failure is
+retained separately from the corrected passing run. Earlier native-dialog
+evidence remains in the files-upload-20261116-01 audit. Temporary build/profile
+cleanup and preserved unrelated WIP hashes are recorded in the new checkpoint.
+The final archive and manifests remain outside Git. The [complete source matrix](../migration/APP-MATRIX.md)
 remains the inventory of the broader, separately integrated app suite.
