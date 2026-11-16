@@ -26,14 +26,21 @@ export function mountAccountApp(mount, host, kind) {
       if (!restore && !resource.sha256) resource.sha256 = (await context.files.version(resource.path)).sha256;
     }
     if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
+    const activateFile = file => {
+      if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
+      return !!host.desktop.activateTextFile({path: file.path, owner: context.owner});
+    };
     const openFile = async file => {
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
+      // A second Files instance may have opened it while this read waited.
+      if (activateFile(file)) return {status: 'activated'};
       const app = /[.](docx|odt|rtf)$/i.test(file.path) ? 'wordcraft' : 'text';
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
+      return {status: 'opened'};
     };
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
       ...(kind === 'text' ? {recovery: textRecovery(host, context, valid)} : {}),
-      signal: host.signal, openFile, displayName: session.public.name,
+      signal: host.signal, openFile, activateFile, displayName: session.public.name,
       ...(kind === 'wordcraft' ? {url: new URL('wordcraft/index.html', document.baseURI).href} : {})});
     if (!view || typeof view.dispose !== 'function' || !(view.element instanceof HTMLElement)) throw Error('Invalid account app view.');
     if (kind === 'text') {
@@ -53,6 +60,13 @@ export function mountAccountApp(mount, host, kind) {
   ready.catch(error => { if (valid() && !(kind === 'text' && view?.retry)) element.textContent = 'Could not open this app: ' + error.message; });
   return {
     element, ready,
+    focus() {
+      if (!valid()) return false;
+      if (view?.focus?.()) return true;
+      // Never steal focus if the user selects a different window while loading.
+      void ready.then(() => { if (valid() && host.desktop.active === host.w.id && host.desktop.current === host.w.workspace) view?.focus?.(); }).catch(() => {});
+      return false;
+    },
     ...(kind === 'text' ? {lifecycle: Object.freeze({
       snapshot: () => view?.lifecycle.snapshot() ?? {revision: 0, dirty: false, pending: false},
       subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
