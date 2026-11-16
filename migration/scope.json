@@ -1914,7 +1914,7 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "PASS selected1dc39d6e full8-stage cargo xtask ci (2282 passes,5 existing ignored), clean release WASM; real browser stale/malformed document preconditions and authoritative inspection, identified saves and retained save/failure/view regressions; real Storage/Desktop/export/agent integration OPEN",
+      "build_status": "PASS selected555fbb14 full8-stage cargo xtask ci (2291 passes,5 existing ignored), clean release WASM and complete browser-target check; six real browser regressions including correlated adoption, document targets and save/failure/view behavior; actual Storage/Desktop/export/agent integration OPEN",
       "component_path": "apps/deckcraft",
       "project_origin": "ArtCraft first-party project",
       "browser_baseline_documentation": "migration/DECKCRAFT-BROWSER-BASELINE.md",
@@ -1930,13 +1930,21 @@
         "baseline_failure_preserved": true,
         "host_acknowledgements": "synthetic protocol fixtures; not account persistence",
         "current_minimum_enabled": false,
-        "shared_core_commit": "a9a7c46a7a1708f01a00a139265d24f71ea0a543"
+        "shared_core_commit": "94981849457596b032355f74144cdd91c04d5df5"
       },
       "document_target_qualification": {
         "status": "pass active-document precondition; not background routing or authorization",
         "documentation": "migration/DECKCRAFT-DOCUMENT-TARGETS.md",
         "test": "tests/deckcraft_document_target_browser.mjs",
         "baseline_failure_preserved": true
+      },
+      "correlated_open_qualification": {
+        "status": "pass actual adoption identity; account integration open",
+        "documentation": "migration/DECKCRAFT-CORRELATED-OPEN.md",
+        "test": "tests/deckcraft_correlated_open_browser.mjs",
+        "baseline_failure_preserved": true,
+        "back_to_back_opens": true,
+        "converted_source_retained": false
       }
     },
     {

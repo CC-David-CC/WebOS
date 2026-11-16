@@ -37,6 +37,10 @@ including shared captured-save identity and explicit failure/unknown outcomes;
 those synthetic host results do not establish account persistence. Its
 [native document-target check](migration/DECKCRAFT-DOCUMENT-TARGETS.md) now rejects
 stale explicit targets at dispatch and exposes real IDs/revisions for inspection.
+Its [correlated file-adoption results](migration/DECKCRAFT-CORRELATED-OPEN.md) now
+identify the actual opened document, including back-to-back requests and converted
+copies. All six standalone browser regressions pass; actual account integration
+remains OPEN.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
 still has 1,969 unresolved dispositions and 25 unqualified blob candidates among
