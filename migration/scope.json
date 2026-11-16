@@ -3141,5 +3141,31 @@
     "component_pins_changed": 0,
     "documentation": "migration/QUALIFIED-RELEASE-SOURCE.md",
     "unresolved_supporting_dispositions_after_review": 1042
+  },
+  "historical_cad_acceptance_source": {
+    "new_records": 54,
+    "mechanically_extracted_paths": 14,
+    "new_sanitized_source_snapshots": 2,
+    "private_control_audit_capture_records": 38,
+    "historical_safe_source_blobs_reviewed": 20,
+    "mechanical_source_commits": 7,
+    "all_record_restores_before_extraction": 54,
+    "recorded_derived_body_hashes_matched_in_memory": 6,
+    "original_credential_blob_reachable_in_parent": false,
+    "original_history_publication_blocked": true,
+    "archived_preparer_refuses_before_io": true,
+    "isolated_guard_probe_pass": true,
+    "functional_hygiene_commit": "c2b5d5bbb749e0181a041b91fb23c99dd83c6126",
+    "original_account_or_workspace_changes": false,
+    "browser_or_account_workflow_executed": false,
+    "current_agent_or_geometry_acceptance": false,
+    "component_pins_changed": 0,
+    "documentation": "migration/CAD-ACCEPTANCE-SOURCE.md",
+    "unresolved_supporting_dispositions_after_review": 988,
+    "credential_bearing_original_histories_private": 2,
+    "original_credential_blobs_reachable_in_selected_history": false,
+    "new_drivers_use_generated_credentials": true,
+    "quarantined_initial_review_never_pushed": true,
+    "safe_review_based_on_accepted_parent": "cce251648e66e8c950247cdff4c0cd58bd9c4e7e"
   }
 }
