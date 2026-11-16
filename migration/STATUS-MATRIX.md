@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has 1,165 unresolved entries plus zero unqualified blob candidates, after
+ledger now has 1,152 unresolved entries plus zero unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -286,9 +286,9 @@ Phase58 retains nine original native build/design/prototype-control references w
 
 Phase59 owns seven legacy mirror cache-unit tests in Storage with locator-only assertion-preserving ports and a new explicitly pinned dev-only dependency environment. Captured, current and clean reference outcomes match:3 pass,4 fail, command exit1; no failing case is omitted or assertion weakened. This is not account synchronization or an all-green Storage claim. See [mirror reference outcomes](STORAGE-MIRROR-REFERENCES.md).
 
-The [existing snapshot-reference review](OWNED-SNAPSHOT-REFERENCES.md) qualifies31 already-owned references and1 private empty output channel without copying raw material or changing component pins. Unresolved supporting-source dispositions remain1,165; byte-candidate guesses are now zero.
+The [existing snapshot-reference review](OWNED-SNAPSHOT-REFERENCES.md) qualifies31 already-owned references and1 private empty output channel without copying raw material or changing component pins. Unresolved supporting-source dispositions remain1,152; byte-candidate guesses are now zero.
 
-The [private terminal-reference review](PRIVATE-TERMINAL-REFERENCES.md) resolves62 captured output records without copying raw data or changing runtime/component pins. Seventy-six weaker terminal-like cases from that batch remain pending; current unresolved supporting records total1,165.
+The [private terminal-reference review](PRIVATE-TERMINAL-REFERENCES.md) resolves62 captured output records without copying raw data or changing runtime/component pins. Seventy-six weaker terminal-like cases from that batch remain pending; current unresolved supporting records total1,152.
 
 The [isolated-host test extraction](ISOLATED-HOST-TEST-SOURCE.md) preserves41 additional unchanged sources and52 relevant commits. All51 historical Python blobs were reviewed and all41 current files restored independently. Old namespace/service/operator drivers remain inert and unexecuted; no component pin or runtime change.
 
@@ -300,4 +300,6 @@ The [historical host reference inputs](HOST-REFERENCE-INPUTS.md) preserve24 more
 
 The [historical OPFS release source](OPFS-RELEASE-SOURCE.md) preserves15 additional candidate builder/test/model/document records and9 relevant commits. All25 historical blobs were reviewed; all15 files restored independently. Two existing journal/native-fixture owners remain distinct. One pre-existing whitespace warning is retained without changing source bytes; all124 pins/runtime unchanged.
 
-The [private CAD data catalogue](PRIVATE-CAD-DATA-REFERENCES.md) assigns626 frozen records across38 owned historical test cases to private reference preservation. Inputs, native snapshots, containers, records and text channels remain distinct, outside Git/web roots. Twelve representative restores pass; per-file producer/use/privacy/geometry and current acceptance remain OPEN. Thirteen records in two documentation-only cases remain unresolved. All124 pins unchanged.
+The [private CAD data catalogue](PRIVATE-CAD-DATA-REFERENCES.md) assigns626 frozen records across38 owned historical test cases to private reference preservation. Inputs, native snapshots, containers, records and text channels remain distinct, outside Git/web roots. Twelve representative restores pass; per-file producer/use/privacy/geometry and current acceptance remain OPEN. The additional13 documentation-context records are catalogued after source-pin/inventory review. All124 pins unchanged.
+
+The [remaining CAD case context](DEFERRED-CAD-CONTEXT.md) assigns13 further private references without inventing drivers. Nine historical source pins match; eight current files match and the different cad-agent example retains its exact old version in ACAD history. The303-file inventory is internally consistent, but runtime payload presence/acceptance remains unverified. All13 records restored privately; all124 pins/runtime unchanged.
