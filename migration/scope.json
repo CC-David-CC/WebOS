@@ -2974,5 +2974,19 @@
     "new_runtime_acceptance_claimed": false,
     "current_counts": "migration/SOURCE-RECONCILIATION-SUMMARY.json",
     "documentation": "migration/PRIVATE-TERMINAL-REFERENCES.md"
+  },
+  "isolated_host_test_source": {
+    "source_paths": 41,
+    "retained_commits": 52,
+    "historical_python_blobs": 51,
+    "independent_restored_current_files": 41,
+    "unchanged_bodies_and_git_modes": true,
+    "distinct_copy_ancestor_preserved": true,
+    "legacy_drivers_executed": 0,
+    "registered_as_current_tests": false,
+    "functional_acceptance": false,
+    "component_pins_changed": 0,
+    "documentation": "migration/ISOLATED-HOST-TEST-SOURCE.md",
+    "unresolved_supporting_dispositions_after_review": 1859
   }
 }
