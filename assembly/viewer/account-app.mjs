@@ -1,11 +1,13 @@
 /** Bind a public account application to the existing viewer's API2 host.
  * The app still owns its domain implementation, inspection and close decision.
  */
+import {textRecovery} from './text-recovery.mjs';
 export function mountAccountApp(mount, host, kind) {
   const element = document.createElement('div');
   element.className = 'window-content';
   element.textContent = 'Opening ' + host.w.title + '…';
-  let view, disposed = false;
+  let view, disposed = false, offLifecycle;
+  const listeners = new Set();
   const authority = Object.freeze({});
   const instanceId = String(host.w.id), session = host.session(), sessionId = session.public.sid;
   const valid = () => !disposed && !host.signal.aborted && host.session() === session
@@ -29,9 +31,11 @@ export function mountAccountApp(mount, host, kind) {
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
     };
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
+      ...(kind === 'text' ? {recovery: textRecovery(host, context, valid)} : {}),
       signal: host.signal, openFile, displayName: session.public.name,
       ...(kind === 'wordcraft' ? {url: new URL('wordcraft/index.html', document.baseURI).href} : {})});
     if (!view || typeof view.dispose !== 'function' || !(view.element instanceof HTMLElement)) throw Error('Invalid account app view.');
+    if (view.lifecycle) { offLifecycle = view.lifecycle.subscribe(() => { for (const listener of [...listeners]) listener(); }); for (const listener of [...listeners]) listener(); }
     view.element.style.flex = '1'; view.element.style.minHeight = '0';
     element.style.display = 'flex'; element.style.flexDirection = 'column';
     element.replaceChildren(view.element);
@@ -41,9 +45,15 @@ export function mountAccountApp(mount, host, kind) {
   ready.catch(error => { if (valid()) element.textContent = 'Could not open this app: ' + error.message; });
   return {
     element, ready,
+    ...(kind === 'text' ? {lifecycle: Object.freeze({
+      snapshot: () => view?.lifecycle.snapshot() ?? {revision: 0, dirty: false, pending: false},
+      subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
+      async quiesce(options) { await ready; return view.lifecycle.quiesce(options); },
+      async commitClose() { return view?.lifecycle.commitClose(); }
+    })} : {}),
     inspect: async () => { await ready; return view.inspect?.(); },
     execute: async (request, candidate) => { await ready; return view.execute(request, candidate); },
     async requestClose() { if (!view) return true; return typeof view.requestClose === 'function' ? await view.requestClose() : true; },
-    dispose() { if (disposed) return; disposed = true; view?.dispose(); element.remove(); }
+    dispose() { if (disposed) return; disposed = true; offLifecycle?.(); listeners.clear(); view?.dispose(); element.remove(); }
   };
 }

@@ -2,3 +2,4 @@
 export {createAccountsClient} from '@webos/accounts';
 export {thumbprint} from '@webos/accounts/crypto';
 export {UserFiles} from '@webos/storage';
+export {restoreTextRecovery} from './text-recovery.mjs';
