@@ -13,8 +13,8 @@
     "verified_speech_engine_source": 6,
     "verified_extracted_source_owner": 122,
     "verified_retained_component_history": 20,
-    "verified_private_historical_evidence_reference": 128,
-    "unresolved": 1969,
+    "verified_private_historical_evidence_reference": 190,
+    "unresolved": 1907,
     "verified_owned_legacy_build_design_control_reference": 9,
     "verified_retained_component_lineage": 9,
     "verified_network_policy_component_source": 11,
@@ -36,10 +36,10 @@
     "verified_owned_component_test_fixture": 1,
     "verified_owned_storage_mirror_reference_test": 7
   },
-  "unresolved": 1969,
+  "unresolved": 1907,
   "unqualifiedBlobCandidates": 0,
-  "newPrivateHistoricalReferences": 128,
-  "privateLedgerSHA256": "61b92e8d2946d3315408db868f6895457a68bee382f86d76dc1df699284f426f",
+  "newPrivateHistoricalReferences": 190,
+  "privateLedgerSHA256": "10c995e42135bc9e9e5a030f75756c8d2f45bbcea4576c0120ee2db64dd4f8c1",
   "scope": "Desktop-Preview tracked-source record accounting; not a missing-file count, whole-project completion percentage, asset build or app functionality claim.",
   "qualifiedExistingSnapshotReferences": 24
 }
