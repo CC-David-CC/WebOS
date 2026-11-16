@@ -1,63 +1,71 @@
-# DeckCraft host-save regression
+# DeckCraft confirmed-save source qualification
 
-The selected DeckCraft source `772219838e2807f0d5b0270f8993421499717f58`
-passes its standalone browser baseline but fails the new host-save durability
-regression. It stays disabled in the minimum desktop.
+Selected fork `19ed30b3109f5c07719304938a3aac4f44236895` fixes the reproduced
+premature-clean bug and binds asynchronous completion to its document and view.
+It stays disabled in the minimum desktop pending account/host integration.
 
-Run the owned browser test against a source-built browser package:
+## Original failure retained
+
+Baseline `772219838e2807f0d5b0270f8993421499717f58` sent 5,240 presentation bytes
+without an id and cleared dirty immediately. The controlled host stored nothing
+and sent no acknowledgement. The owned no-ack test genuinely failed, exit1.
+A subsequent review also exposed an old acknowledgement closing a newly reopened
+Save As view. Both failing results are retained privately; they were not hidden
+or obtained by changing the live site.
+
+## Selected source and checks
+
+The engine captures an immutable version at serialization. A matching reply sets
+the originating document's saved snapshot, preserving later edits and the active
+document. Save As identity changes only on confirmation. Unknown, duplicate and
+closed-document results do not retarget another document. Pending saves are
+bounded; timeout retains an unknown outcome and blocks blind repetition.
+Save-and-close targets its original document, and File-view completion checks the
+precise view lifetime. `ui.inspect.pendingSaves` reports real native targets and
+pending/unknown state; these identities confer no server authority.
+
+The app's complete `cargo xtask ci` passed all8 required stages: formatting,
+PDF dependency validation, strict Clippy, workspace tests, doctests, assets,
+layering and wasm. Workspace results were 2,278 passes, zero failures and five
+pre-existing ignored tests (three screenshot generators and two long soaks).
+No tests were newly ignored and no production lint allowance or CI relaxation
+was introduced. Native SDK preparation used a
+verified matching development package privately and the existing OS runtime;
+no system package was installed. Three existing boolean expressions were
+simplified with short-circuit order preserved for Rust1.95 Clippy.
+
+The palette-save test now checks an explicit pending result, keeps the original
+destination check and requires dirty before acknowledgement, then the same path
+and clean state after it. This is an intentional async contract change, not a
+successful save inferred from dispatch.
+
+A fresh release WASM build from the clean committed source was packaged with
+matching wasm-bindgen0.2.129 and run in real Chromium, with original source hidden
+and networking disabled. The unchanged no-ack regression, extended acknowledgement
+cases and reopened-view regression pass with zero page/external errors. Visible
+pending and confirmed states were inspected in screenshots.
+
+Owned browser commands (parent Puppeteer dependency; `CHROMIUM_PATH` optional):
 
 ```sh
-node tests/deckcraft_host_save_browser.mjs /path/to/deckcraft/browser /path/to/private/result.json
+node tests/deckcraft_host_save_browser.mjs /path/to/browser /path/to/private/no-ack.json
+node tests/deckcraft_host_ack_browser.mjs /path/to/browser /path/to/private/acks.json
+node tests/deckcraft_reopened_view_browser.mjs /path/to/browser /path/to/private/view.json
 ```
 
-It uses the parent's pinned Puppeteer dependency and Chromium (set
-`CHROMIUM_PATH` for another executable). The test creates a fresh browser and a
-local same-origin framing page. The fixture deliberately neither stores the
-presentation nor sends a saved acknowledgement. It is not an account backend.
-All server/browser processes close when the test completes.
+The extended cases cover wrong/correct/duplicate acknowledgements, later edits,
+undo back to the acknowledged version, document switching and reopened view
+identity. Test hosts send synthetic acknowledgements and store no account file.
+These results qualify the real engine/transport boundary, not account persistence.
 
-## Observed result: FAIL, exit 1
+## Remaining integration
 
-The exact nine-file source-built package from
-[the standalone baseline](DECKCRAFT-BROWSER-BASELINE.md) was tested with the old
-workspace hidden and networking disabled. The real app was hosted in an iframe,
-a text shape was inserted, and its ordinary `file.save` command was invoked.
-
-| Observation | Actual |
-|---|---|
-| Dirty before Save | `true` |
-| Host received generated presentation bytes | 5,240 |
-| Save correlation ID | absent |
-| Host stored a file | no |
-| Host sent a saved acknowledgement | no |
-| Dirty immediately after dispatch | **`false` — incorrect** |
-| Page errors / external requests | 0 / 0 |
-
-The assertion requires dirty to remain true until durable acknowledgement; it
-fails against the selected source. The test also requires a nonempty save ID.
-Its failure is retained as a real unqualified boundary. It does not invalidate
-the earlier render/insert/undo pass and does not concern the currently enabled
-WordCraft account-file path.
-
-## Owning code and next change
-
-`apps/deckcraft/crates/ui-egui/src/app/files.rs::save_to_host` calls its host
-callback and immediately invokes `deckcraft_engine::cmd::file::mark_saved`.
-`apps/deckcraft/apps/deckcraft-web/src/host.rs` sends `post_save` with no ID and
-its listener handles only Open messages. The shared `craft-web-host` crate
-already supplies `post_save(..., Some(id), ...)` and `Message::Saved { id }`.
-
-The application needs explicit pending saves with captured document identity,
-serialized snapshot and revision, bound to each save ID. Confirmation must
-update the originating document's saved snapshot, preserving newer edits and
-remaining independent of whichever document is active when the reply arrives.
-Unknown, duplicate, closed-document and stale acknowledgements must not mark
-another document saved. Failed, cancelled and uncertain outcomes must retain
-edits and have visible state. Save As identity changes and close behavior need
-separate tests. Use the existing shared positive-ack protocol; place genuinely
-new generic transport behavior in craft-libs when needed. Do not add a second
-file model to Desktop to conceal premature save completion.
-
-No app implementation, lockfile, component pin, account data, deployment or
-original workspace was changed by this regression phase. This test is a known
-failing command until the owning source change is implemented and qualified.
+The shared wire API still needs native document/revision/operation/file-intent
+metadata and immediate negative/uncertain replies before the real Storage path
+can be wired safely. Shared transport changes belong in craft-libs, rather than
+another copy of WordCraft's bespoke message implementation. Accounts/Storage
+retain authority; the host must map exact instance/session/document/account-file
+identity and expected server revision, and acknowledge only confirmed writes.
+Desktop mount/dispose, exports, cancellation, resource binding, real multi-client
+persistence and delegated-agent authorization remain open. Native ids and same
+origin are not permission grants. No deployment changed in this qualification.

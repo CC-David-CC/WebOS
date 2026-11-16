@@ -1914,16 +1914,20 @@
         "licenses"
       ],
       "fork_branch": "webos/integration",
-      "build_status": "PASS release wasm source build with required shared fonts; nine-file standalone package, real Chromium rendering and command insert/undo (2\u21923\u21922 shapes),0 page errors/external requests; desktop/account/delegated-agent integration OPEN",
+      "build_status": "PASS selected maintained fork full8-stage cargo xtask ci (2278 workspace passes,5 existing ignored), committed release WASM build and real-browser pending/matching/wrong/duplicate/newer-edit/document-switch/reopened-view regressions; real Storage/Desktop/export/agent integration OPEN",
       "component_path": "apps/deckcraft",
       "project_origin": "ArtCraft first-party project",
       "browser_baseline_documentation": "migration/DECKCRAFT-BROWSER-BASELINE.md",
       "host_save_qualification": {
-        "status": "fail",
+        "status": "pass engine/transport boundary; account integration open",
         "documentation": "migration/DECKCRAFT-HOST-SAVE.md",
-        "test": "tests/deckcraft_host_save_browser.mjs",
-        "expected": "Retain dirty until durable correlated acknowledgement",
-        "observed": "Clears dirty after dispatch; no save ID; fixture stored nothing and sent no acknowledgement",
+        "tests": [
+          "tests/deckcraft_host_save_browser.mjs",
+          "tests/deckcraft_host_ack_browser.mjs",
+          "tests/deckcraft_reopened_view_browser.mjs"
+        ],
+        "baseline_failure_preserved": true,
+        "host_acknowledgements": "synthetic protocol fixtures; not account persistence",
         "current_minimum_enabled": false
       }
     },

@@ -64,6 +64,7 @@ account save. No platform agent authority was exercised by this standalone page
 API test. Full feature coverage, production release notices and deployment are
 separate gates. Original source and deployments remain unchanged.
 
-The subsequent [host-save regression](DECKCRAFT-HOST-SAVE.md) reproduces premature
-save completion in the selected app. Its failing result is separate from this
-standalone render/edit/undo pass.
+The subsequent [host-save qualification](DECKCRAFT-HOST-SAVE.md) preserves the
+premature-clean failure at this baseline and records the selected fork fix with
+full native CI and real-browser acknowledgement/view regressions. Account and
+Desktop integration remain separate.
