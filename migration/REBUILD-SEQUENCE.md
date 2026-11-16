@@ -1,4 +1,6 @@
-# Current rebuild decisions
+# Historical functional rebuild sequence
+
+This predates the source-only correction. It records a possible future test order, not the current assignment or authorization to deploy. The replacement-dependent Calculator browser harness mentioned below was removed with the unsolicited viewer. Use START-HERE.md and APP-MATRIX.md for current source ownership and limits.
 
 The user has clarified that ksu.codes is the test location, with test users only.
 Build a fresh system there. Historical assets and old-user/data migration are

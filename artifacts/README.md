@@ -2,6 +2,8 @@
 
 These are public static reference artifacts and verified build inputs. They are separate from the independently owned source repositories. Payloads are ignored by Git; the source parent tracks only the locks, this guide and verification tools. Do not place account databases, credentials, private documents or audit logs here.
 
+Current source-organization scope: the reference snapshot is optional recovery material, not a beta-parity requirement. The existing working-tree `input-files.json` has 87 entries and is preserved uncommitted; the separate speech lock lists 34 files. Counts below describe earlier acquisition batches. See [the current matrix](../migration/APP-MATRIX.md) for source/build gaps rather than treating those historical batch counts as completion gates.
+
 - `reference-beta/<catalog-key>/`: complete frozen74-entry public app catalog payload,6143 files/1,028,162,239 bytes, every declared SHA256/size verified after placement. The public catalog lock identifies each immutable path and file. This is a reference/recovery snapshot, not an enabled new release or proof that every dynamic asset was declared correctly.
 - `inputs/microduck/space/`: pinned public upstream rig and38 original STL meshes in the source project's native input layout.
 - `inputs/microduck/policy/alpha_walking.onnx`: exact source-manifest policy bytes.
@@ -12,7 +14,7 @@ Run `python3 scripts/verify_artifacts.py` from the assembly to verify both sets 
 
 For a Microduck build, point `MICRODUCK_SPACE_DIR` to this directory's `inputs/microduck/space`, `MICRODUCK_POLICY` to `inputs/microduck/policy/alpha_walking.onnx` and `MICRODUCK_MUJOCO_NOEVAL` to `inputs/microduck/mujoco-noeval-3.17.0`. The source-owned tools verify input hashes before producing generated assets. Keep generated outputs separate from source and this immutable cache.
 
-Full disk organization is not complete until the remaining nonregistered/platform/source areas and additional site/guest assets are reconciled. This cache closes the catalog-listed public app payload recovery only.
+This cache closes the catalog-listed public app payload recovery only. It does not establish source rebuildability or require collecting more historical site assets for the current organized starting point.
 
 Circuit Lab local research inputs now live at `inputs/circuit-lab/local-research-runtime/`:5 exact runtime/relink/notice files recovered from the previously verified archive. They are NOT public-release assets. The retained source/relink archive has unresolved model distribution terms, and the source app is not enabled; keep that gate intact. `input-files.json` explicitly records the restriction. The49 total locked input/license files remain ignored payloads, with hashes tracked for local recovery and testing.
 

@@ -1,5 +1,7 @@
 # Fresh ksu.codes test composition
 
+Historical composition reference. The replacement frontend and its builder have been removed from the source project. Earlier browser PASS results below apply to that older experiment, not the corrected existing viewer. No command here is authorized to deploy, restart or alter either website as part of source organization. See ../START-HERE.md and ../migration/APP-MATRIX.md.
+
 The user identifies ksu.codes as a test site with test users only. The fresh
 rebuild uses one loopback process assembling Accounts, signed file authority,
 Storage and built static assets. Calculator → Files → Text → WordCraft has

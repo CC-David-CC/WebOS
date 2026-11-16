@@ -6,7 +6,7 @@ User decision: the existing viewer shown at beta.ksu.codes is the intended deskt
 
 Removed from the Desktop working tree: src/controller.mjs, src/index.mjs, src/style.css and the two replacement-only tests. Removed the replacement's ESM exports/test command; package metadata now identifies the existing classic-script source entry. No replacement backup or archive was made; ordinary Git history was not rewritten.
 
-The parent formerly imported the removed mount/controller interface. Its development builder now stops before creating output rather than constructing the wrong viewer. Existing parent browser tests for that interface are obsolete, not passing evidence for the intended source. No shim, restyling or new viewer implementation was added. Future assembly wiring is separate from this source organization task.
+The parent formerly imported the removed mount/controller interface. The parent replacement frontend/development builder and its replacement-dependent browser tests have now also been removed. Their old results are not passing evidence for the intended source. No shim, restyling or new viewer implementation was added. Future assembly wiring is separate from this source organization task.
 
 Known bootstrap dependencies have separate owners: Runtime desktop modules, Terminal, v86 and account/file/application components. Keeping the old source does not mean enabling a Linux dependency in a new minimum or copying other owners into Desktop. The source is not advertised as a standalone deployable tree. Full beta parity is not a completion gate.
 
