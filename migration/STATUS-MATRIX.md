@@ -84,7 +84,7 @@ Hosted Rooms is unused historical code, not a new service.
 |---|---|---|---|---|
 | anicraft | `apps/anicraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | cadcraft | `apps/cadcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
-| deckcraft | `apps/deckcraft/` | PASS | PASS source build/render/insert/undo; **FAIL** [host save clears dirty without acknowledgement](DECKCRAFT-HOST-SAVE.md) | OPEN desktop, durable account save and delegated-agent integration; disabled in minimum |
+| deckcraft | `apps/deckcraft/` | PASS | PASS selected19ed30b: all8 fork CI stages,2,278 tests; real WASM pending/correlated/stale-view browser regressions; [scope](DECKCRAFT-HOST-SAVE.md) | OPEN actual Storage/Desktop/export/agent integration; synthetic ack is not account persistence; disabled in minimum |
 | designcraft | `apps/designcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | effectcraft | `apps/effectcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
 | figcraft | `apps/figcraft/` | PASS | OPEN - selected source baseline only | OPEN: complete browser build and new host integration not qualified |
