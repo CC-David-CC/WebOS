@@ -7,3 +7,5 @@ Legacy source only, not a current supported import path or command. Original cro
 No existing deployment definitions or build entrypoints consume this directory. Do not import it or run broad legacy discovery. Some modules can perform host/network operations at top level. Current Accounts/Storage assembly remains unchanged. See migration/BACKEND-OWNERSHIP.md and private phase41 maps.
 
 An additional26 historical isolated-host deployment helpers, including a separately retained copied journal ancestor, are organized under `isolated-hosting/`. They are inactive source references, not a runnable release. Read that directory's README and migration/ISOLATED-HOST-OPERATOR-SOURCE.md before any deliberate port. No operator ran or gained host authority.
+
+Four historical candidate builder/fetch/verifier scripts and2 historical notes are preserved under `opfs-release/`; current README restrictions apply. They are inactive references, not supported WebOS builders or deployment authority. See migration/OPFS-RELEASE-SOURCE.md.
