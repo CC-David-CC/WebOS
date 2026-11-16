@@ -14,7 +14,7 @@
     "verified_extracted_source_owner": 122,
     "verified_retained_component_history": 20,
     "verified_private_historical_evidence_reference": 190,
-    "unresolved": 1791,
+    "unresolved": 1165,
     "verified_owned_legacy_build_design_control_reference": 9,
     "verified_retained_component_lineage": 9,
     "verified_network_policy_component_source": 11,
@@ -27,6 +27,7 @@
     "verified_parent_legacy_host_test_source": 206,
     "verified_parent_legacy_browser_acceptance_source": 923,
     "verified_parent_legacy_case_documentation": 145,
+    "verified_private_legacy_cad_data_reference": 626,
     "verified_preserved_frozen_fixture_metadata": 34,
     "verified_parent_legacy_acceptance_source": 276,
     "verified_parent_legacy_reference_input": 8,
@@ -36,10 +37,11 @@
     "verified_owned_component_test_fixture": 1,
     "verified_owned_storage_mirror_reference_test": 7
   },
-  "unresolved": 1791,
+  "unresolved": 1165,
   "unqualifiedBlobCandidates": 0,
   "newPrivateHistoricalReferences": 190,
-  "privateLedgerSHA256": "15058d57ddd80a978e3dcb92dd0e3cf5a53d378c29ecb4dcd875046fdeac9406",
+  "privateLedgerSHA256": "f88fca37a5ea7395a21413bd1d3940878934089293be0920c6c7c01621b3012a",
   "scope": "Desktop-Preview tracked-source record accounting; not a missing-file count, whole-project completion percentage, asset build or app functionality claim.",
-  "qualifiedExistingSnapshotReferences": 31
+  "qualifiedExistingSnapshotReferences": 31,
+  "privateCadCaseDataReferences": 626
 }
