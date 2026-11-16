@@ -2949,5 +2949,15 @@
     "runtime_support_claimed_from_compile_check": false,
     "browser_artifact_launch_and_host_integration": "open",
     "deckcraft_standalone_browser_baseline": "pass; real rendering, inspect, shape insert and undo; desktop/account/agent integration open"
+  },
+  "existing_snapshot_reference_review": {
+    "qualified_existing_owned_references": 24,
+    "private_empty_output_channels": 1,
+    "unqualified_blob_candidates_remaining": 0,
+    "unresolved_supporting_dispositions": 1969,
+    "raw_material_copied_to_assembly": 0,
+    "component_pins_changed": 0,
+    "current_behavior_or_license_acceptance": false,
+    "documentation": "migration/OWNED-SNAPSHOT-REFERENCES.md"
   }
 }
