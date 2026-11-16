@@ -3124,5 +3124,22 @@
     "component_pins_changed": 0,
     "documentation": "migration/REPLAY-COST-SOURCE.md",
     "unresolved_supporting_dispositions_after_review": 1107
+  },
+  "historical_qualified_release_source": {
+    "source_records": 65,
+    "deployment_modules": 22,
+    "launcher_templates": 1,
+    "historical_notes": 2,
+    "fixture_test_namespace_sources": 40,
+    "historical_source_blobs": 102,
+    "retained_commits": 24,
+    "independent_restored_files_before_extraction": 65,
+    "external_copy_similarity_origins_already_owned": 7,
+    "source_bodies_or_assertions_rewritten": false,
+    "old_code_or_tests_executed": false,
+    "current_operational_compatibility": false,
+    "component_pins_changed": 0,
+    "documentation": "migration/QUALIFIED-RELEASE-SOURCE.md",
+    "unresolved_supporting_dispositions_after_review": 1042
   }
 }
