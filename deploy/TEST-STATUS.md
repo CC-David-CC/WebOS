@@ -6,9 +6,15 @@ artwork remain unchanged. Account/date are at the top of the narrow dark right
 rail and APPs at the bottom. Calculator, Files, Text, WordCraft and Help are
 enabled. Other menu entries remain disabled.
 
-The latest static update enables selecting and deleting several account items
-together. Use **Select multiple** followed by ordinary clicks, Ctrl/Meta-click,
-or Shift-click for a range. Delete in the toolbar/context menu or the Delete key
+The latest static update removes the redundant Select multiple and Up header
+buttons. Ctrl/Meta-click, Shift-click for a range, and Space retain standard
+selection. The existing up arrow beside My files handles parent navigation.
+Its derived OpenFiles notification is handled once; known breadcrumb ancestors
+use the listing operation rather than a lookup in the current folder's entries.
+The arrow is disabled at the account root. Refresh remains in the header.
+
+Selecting and deleting several account items remains supported.
+Delete in the toolbar/context menu or the Delete key
 opens one confirmation listing the selected items. Cancel changes nothing.
 Every resource is authorized before deletion starts; files retain exact selected
 revision preconditions. A refusal stops the batch and reports the acknowledged
@@ -44,8 +50,9 @@ The user explicitly deferred this separate investigation; its resume record is
 |---|---|
 | Ctrl-click multi-selection, one confirmation listing each item, Cancel preserves all | PASS, local and hosted |
 | Confirmed multi-delete preserves unselected files and reports acknowledged count | PASS |
-| Select multiple mode, ordinary click toggles, Delete key and empty folder | PASS |
+| Ctrl-click toggles, Delete key and empty folder | PASS |
 | Shift-click range selection | PASS |
+| No redundant header buttons; existing up arrow navigates two levels and is disabled at root | PASS |
 | Second-browser revision change stops batch after 1 of 3, preserving changed/remaining files | PASS |
 | Nonempty-folder refusal preserves children and remaining selection | PASS |
 | Reload/sign-in and fresh-context account listings agree after deletion | PASS |
@@ -67,10 +74,12 @@ The user explicitly deferred this separate investigation; its resume record is
 | Existing-tab native double-click selection | KNOWN FAILURE, including plain HTML controls |
 | Beta page, checked backend/beta/Caddy processes and account-instance/issuer continuity | PASS |
 
-The latest hosted qualification has **7 deletion checks, 8 upload checks and 15
-viewer regression checks**. All 20 Files domain/helper tests also pass, including
-authority denial, input capture, directory drift, revision conflicts, partial
-progress, session revocation and unknown outcomes. Focused browser tests retain
+The latest hosted qualification has **8 selection/deletion/navigation checks and
+8 upload checks**. The preceding release passed all 20 Files domain/helper tests
+and15 viewer checks; those suites were not rerun for this view-only correction.
+The unchanged controller's tests cover authority denial, input capture,
+directory drift, revision conflicts, partial progress, session revocation and
+unknown outcomes. Focused browser tests retain
 all console errors. The upload collision expects HTTP409; deletion tests allow
 exactly one deliberate revision-conflict HTTP409 and one nonempty-folder
 HTTP403 after verifying the corresponding behavior. Extra/unrelated refusals,
@@ -92,19 +101,19 @@ retained; it is not counted as a successful run.
 
 | Item | Selected identity |
 |---|---|
-| Packaged parent source | 85c5aa3592b1ee089855e52eb4ba4a6386d85f1a |
-| Files | 42917365629b48f760141ebf731e97d63103df98 |
+| Packaged parent source | fef2c0ec8e15e5c69733b6212fb4badec7a764bb |
+| Files | 7a0dd487953b2ec639e691581684c3578787a395 |
 | Desktop | 95c7ae3ee265105758caad0ac441268a4304c3a5 |
 | Runtime | c1ce8c592e0a2c33decbb4ec86af7d4ed9f28c66 |
 | Storage | fc937993f567cbaa9ac280ded1fa8f45ca922599 |
 | Retained Accounts Python | c53a2f64b287b1f59bd90cdcd355766c5d713e63 |
 | WordCraft bridge | a41d6f9286458a5b460b02fd2f65f2110b969d1c |
 | Retained WordCraft engine source | 0d48f9a1bd5a2bb88d8431760a14b0ba55161563 |
-| Public release ID | 46eeaceb4f6766bddf2ad3a31ecd4f3b77ac4957c9a59db7b53a33a44ceb943a |
-| Archive SHA-256 | 13b0287cd455b72d70cea6fb94c8216e3bbada374ddbf134530fd816e1ac6a9c |
+| Public release ID | d22faf9208f12f8e0f437359876b5cb5c574b831616a39e9bd1f5e4e4d1c0de0 |
+| Archive SHA-256 | b98647e1dfbdb6a6c5f92cc3ec754a9eb1b540d88b7ce5a51c16c56f9a5d5f30 |
 
 The release contains 244 public files including its manifest, totaling
-96,852,535 bytes. Its archive is 27,434,901 bytes. All source inputs and packaged
+96,851,292 bytes. Its archive is 27,433,944 bytes. All source inputs and packaged
 payloads were hash-verified; 96 JS packages have notices. Only Files bundles and
 composition/build manifests changed from the original-viewer release; the
 viewer artwork/CSS and WordCraft graph remain identical. The engine is a
@@ -134,7 +143,7 @@ existing private account-state/account-files area, separate from source and
 public releases.
 
 The current public root on box-webhost is
-/srv/data/webos-viewer-releases/46eeaceb4f6766bddf2ad3a31ecd4f3b77ac4957c9a59db7b53a33a44ceb943a/public.
+/srv/data/webos-viewer-releases/d22faf9208f12f8e0f437359876b5cb5c574b831616a39e9bd1f5e4e4d1c0de0/public.
 The backend retains loopback port 38141, its existing Python environment and
 /home/dflanag3/webos-rebuild-test/private/account-state. Caddy reloads changed
 only the ksu.codes static root; beta routing, services and data were not changed.
@@ -143,9 +152,9 @@ or old host-release cleanup occurred.
 
 The current static-only operator is deploy/viewer_static_operator.py. Its
 matching root-only rollback plan is
-/var/backups/webos-files-multidelete-20261116-01/ on box-webhost. Explicit rollback
-with tag files-multidelete-20261116-01 and the current release ID restores the
-previous breadcrumb/upload frontend, without restarting the backend. It guards
+/var/backups/webos-files-navigation-20261116-01/ on box-webhost. Explicit rollback
+with tag files-navigation-20261116-01 and the current release ID restores the
+previous multi-delete frontend with its header buttons, without restarting the backend. It guards
 configuration hashes, validates Caddy, preserves file ownership/mode and checks
 process/account continuity. Do not replay init/stage/prepare over existing
 paths. The preceding Files update plans use different tags and releases.
@@ -158,12 +167,14 @@ rollback.
 
 Private evidence, credentials, scripts, screenshots, commands and the resumable
 checkpoint are under
-/home/dflanag3/Projects/.webos-migration/files-multidelete-20261116-01/.
-Current reports are hosted-delete/result.json, hosted-upload/result.json and
-hosted-viewer/result.json. The pre-fix hosted test reproduced the exactly-one
-restriction. An initial local test omitted sign-in after reload; its failure is
-retained separately from the corrected passing run. Earlier native-dialog
-evidence remains in the files-upload-20261116-01 audit. Temporary build/profile
+/home/dflanag3/Projects/.webos-migration/files-navigation-20261116-01/.
+Current reports are hosted-delete/result.json and hosted-upload/result.json.
+The initial local failure exposed parent-arrow handling and automated repeated
+Ctrl-clicks inside Chonky's double-click window. The handler was corrected and
+the single-click gestures separated; the original assertions remain, with a
+new explicit arrow/navigation check. Prior domain/viewer reports remain in the
+files-multidelete-20261116-01 audit. Earlier native-dialog evidence remains in
+the files-upload-20261116-01 audit. Temporary build/profile
 cleanup and preserved unrelated WIP hashes are recorded in the new checkpoint.
 The final archive and manifests remain outside Git. The [complete source matrix](../migration/APP-MATRIX.md)
 remains the inventory of the broader, separately integrated app suite.
