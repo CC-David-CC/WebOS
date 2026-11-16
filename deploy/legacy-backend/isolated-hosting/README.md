@@ -17,8 +17,9 @@ or perform privileged/network/process actions. Old fixed paths and pins describe
 historical hosts, not permission to operate them.
 
 Dependencies and configuration are deliberately not assumed complete. In
-particular, two related operator sources await credential-context review; other
-configuration/manifests and interface bindings remain pending. Microduck's app
+particular, the previously held template/probe sources are preserved following
+exact credential-context review. Configuration/manifests and interface bindings
+remain pending. Microduck's app
 policy has its own component owner. No unresolved input is silently fabricated
 or loaded from the original workspace. Review custody, authorization, fixture
 closure, side effects and public component contracts before a separate port.
@@ -31,3 +32,5 @@ All47 commit trees, authors, committers and messages were verified. Every file
 restored independently with the old workspace and assembly hidden and networking
 disabled. No old operator ran and no deployment changed. See the parent's
 `migration/ISOLATED-HOST-OPERATOR-SOURCE.md` and private phase83 evidence.
+
+Two additional reviewed files, `beta_service_operator.py` and `beta_signed_probe.py`, are preserved here after exact source-context review (phase84). Their flagged expressions construct credential-file references and signed headers, not fixed credentials. They remain inactive and must not be run. See migration/HOST-CONTEXT-AND-MICRODUCK-SOURCE.md.

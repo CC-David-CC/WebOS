@@ -3000,8 +3000,25 @@
     "registered_as_entrypoints": false,
     "functional_acceptance": false,
     "component_pins_changed": 0,
-    "pending_related_credential_context_files": 2,
+    "pending_related_credential_context_files": 0,
     "documentation": "migration/ISOLATED-HOST-OPERATOR-SOURCE.md",
-    "unresolved_supporting_dispositions_after_review": 1833
+    "unresolved_supporting_dispositions_after_review": 1833,
+    "additional_context_reviewed_sources": 2
+  },
+  "host_context_and_microduck_source": {
+    "source_paths": 3,
+    "parent_operator_sources": 2,
+    "microduck_policy_sources": 1,
+    "exact_context_marker_expressions_reviewed": 2,
+    "raw_credential_values_copied_or_logged": false,
+    "independent_restored_current_files": 3,
+    "unchanged_bodies_and_git_modes": true,
+    "operators_imported_or_executed": 0,
+    "registered_as_entrypoints": false,
+    "functional_acceptance": false,
+    "component_pins_changed": 1,
+    "microduck_selected": "bad23452a2bb5aa26f23b390883f72682a77a0f6",
+    "documentation": "migration/HOST-CONTEXT-AND-MICRODUCK-SOURCE.md",
+    "unresolved_supporting_dispositions_after_review": 1830
   }
 }
