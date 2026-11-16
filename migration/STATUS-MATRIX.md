@@ -1,3 +1,5 @@
+> Historical runtime/rebuild experiment results. The rejected Desktop replacement and dependent harnesses were removed; these results are not current source/build or parity claims. Use SOURCE-CATALOG.md and the forthcoming category/priority source matrix for the current organization goal.
+
 # Current source and rebuild status matrix
 
 Git links select exact revisions. The assembly has124 independent source repositories:

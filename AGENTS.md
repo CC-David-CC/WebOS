@@ -1,17 +1,14 @@
-# WebOS migration assembly
+# WebOS source organization rules
 
-The current migration handoff at `/path/to/workspace/Projects/webos-rebuild-handoff/AGENTS.md` and its architecture/runbook/verification documents govern this work. Read them before continuing. The original `/path/to/workspace/Documents/KSU.CODES` is read-only.
+Current user goal: get the on-disk components correct and organized, as a clean source project to build from going forward. Do not substitute feature development, a full beta copy, beta parity or a replacement interface for this goal. Latest user decisions supersede older migration plans/checkpoints.
 
-Each meaningful component has an independent repository; the parent owns composition and whole-system tests. Preserve Git histories and WIP before extraction. Keep mechanical changes separate from functionality. No external pushes, deployment, automatic restarts, or real-user data tests without specific authorization.
-
-Runtime, Desktop, Login, Accounts, Storage, Files, and WordCraft are required independently. Server-backed account files and shared human/agent domain operations are mandatory. No Linux/v86 dependency in the minimum. Existing-user identity and file ownership must remain compatible.
-
-Current state is partial; inspect START-HERE.md and the private checkpoint. Do not equate repository setup with a working system.
-
-The scope is the entire existing suite and all 17 selected upstream forks. The initial seven-component milestone is not completion. Read migration/scope.json; keep all registered and nonregistered source, assets, and historical WIP accounted for.
-
-Organize by role: platform/ holds Runtime, Desktop, Login, Accounts and Storage; apps/ holds every application including Files, WordCraft and original JSketcher; engines/ holds reusable execution engines. Shared library projects belong in libraries/, shared asset projects in assets/, and shared build tooling in tooling/ when ownership is established. These directories do not become grouped source repositories. Keep all existing apps and tools, including those being replaced. The user explicitly authorizes needed rewrites/refactors in new working copies. The old workspace stays read-only; retain extraction baselines and separate functional commits.
-
-## Current user scope correction
-
-The deliverable is an organized source project on disk for future development. Full beta parity and a fully running copy of every old app are not requirements. Do not rewrite source or redesign UI as part of organizing it. The existing Desktop/Workspace viewer under platform/desktop/active-system/ is intended; the unsolicited src/ replacement and its tests have been removed. Do not restore it from old branches/checkpoints. The old parent development composition is retired and must not be deployed. Neither website may be changed without separate explicit authorization. Temporary build outputs are disposable and must not be committed. Craft main/master should track verified upstream; WebOS changes belong on separate branches. Preserve local work before moving refs; this branch policy is not yet implemented merely because it is documented.
+- Original /path/to/workspace/Documents/KSU.CODES is read-only. No checkout, reset, stash, clean, install, build or Git metadata writes there. Prefer GIT_OPTIONAL_LOCKS=0 for inspection.
+- Each meaningful app/component owns an independent repository; this parent pins them as submodules. Apps belong in apps/, platform services in platform/, reusable engines in engines/, libraries in libraries/, shared assets in assets/, build tooling in tooling/. No repository per helper/button.
+- The intended existing Desktop/Workspace source is platform/desktop/active-system/. Do not restore the rejected replacement from old branches/checkpoints, rewrite the viewer or make discretionary UI changes. The removed replacement builder/harnesses are not the development baseline.
+- Preserve source, local commits, staged/unstaged/untracked work and required inputs before changing ownership/refs. Keep raw recovery/state/evidence private outside Git/web roots. Do not commit credentials, private documents or real databases.
+- Temporary compiler/build output is disposable and must not be committed. Do not duplicate large working trees or build merely to validate source organization. Get approval for additional broad cleanup; the approved11 Cargo caches have already been deleted. Required vendored/runtime inputs are distinct from temporary compiler output.
+- Craft main/master tracks its verified public upstream; WebOS changes stay on a separate webos/... branch. Preserve all local work before moving refs. No upstream pushes, force pushes or history rewriting. Source organization does not authorize merging upstream functionality or advancing parent pins.
+- Do not change either website, routing, account data, services or deployment without separate explicit authorization. No external Git publication or messaging is authorized. Verified local bare origins/local commits and public upstream reads are allowed. Never guess a private Git address or weaken host-key checks.
+- Keep app/source originality, source-only cores, build inputs, dependency boundaries and actual production gaps explicit. Do not claim an app can be produced just because a directory or manifest exists. Do not weaken tests or fabricate compatibility.
+- Final output: a category-sorted component/app matrix with source location, entry/build recipe, human/background/server/browser/file/launcher relationships, functional priority and honest production readiness/gaps. Files/accounts/storage/runtime outrank games for functional WebOS, regardless of popularity.
+- Keep short factual updates, evidence and resumable checkpoints. Do not resume the retired broad-rebuild objective from historical documents. Read START-HERE.md for current source navigation.
