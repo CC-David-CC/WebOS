@@ -18,7 +18,7 @@ Work from the files in this project. The deliverable is a coherent source tree w
 | deploy/ | Existing definitions and historical deployment records; no authority to execute them |
 | migration/ | Source ownership/catalogs and historical evidence; historical PASS text is not a current release claim |
 
-The [source catalog](migration/SOURCE-CATALOG.md) lists every component and actual source/build definitions. Its [JSON form](migration/SOURCE-CATALOG.json) also lists package integration entries, dependency names and source directories. Git links, not the catalog, select exact component versions. ACAD and original JSketcher are separate. Files and WordCraft are applications, not platform folders. FFmpeg is a shared engine, not a visible standalone app.
+The [full app/component matrix](migration/APP-MATRIX.md) lists every component by category and functional importance, with its location, interfaces, build entry and production gaps. The [CSV](migration/APP-MATRIX.csv) is suitable for sorting in a spreadsheet. The [source catalog](migration/SOURCE-CATALOG.md) and its [JSON form](migration/SOURCE-CATALOG.json) record actual source/build definitions and package dependencies. Git links select exact component versions. ACAD and original JSketcher are separate. Files and WordCraft are applications, not platform folders. FFmpeg is a shared engine, not a visible standalone app.
 
 ## Desktop source decision
 
@@ -30,7 +30,7 @@ The rejected replacement src/ viewer/controller/styles and associated tests were
 
 The17 Craft app repositories now use main as their verified public-upstream tracking branch and webos/integration for the parent-selected working source. All17 main branches were fetched from their verified upstream on2026-11-16. WebOS changes were not merged with newer upstream, and working files/pins were not changed by the alignment. WordCraft and DeckCraft modifications remain on our branch.
 
-To inspect/update upstream later, use the existing upstream remote and fast-forward main deliberately. Review and merge upstream into a separate WebOS review branch only when desired; do not silently change the parent pin. Never push to upstream. Local origin stores are separate from upstream and external publication is not authorized. Shared Craft-project branch alignment is still being checked separately. See [Craft build inputs](migration/CRAFT-BUILD-INPUTS.md) for the organized fonts/shared-library locations.
+The5 shared Craft projects also have upstream-tracking main branches; their selected working pins stay on WebOS branches. The [verified upstream map](migration/CRAFT-UPSTREAMS.json) makes this reproducible after a clone. Run `python3 scripts/configure_craft_upstreams.py --configure` to restore missing upstream remotes and tracking configuration locally; it does not fetch, merge, switch branches or move pins. To inspect/update upstream later, use the existing upstream remote and fast-forward main deliberately while working on a WebOS branch. Review and merge upstream into a separate WebOS review branch only when desired. Never push to upstream. Local origin stores are separate from upstream and external publication is not authorized. See [Craft build inputs](migration/CRAFT-BUILD-INPUTS.md) for the organized fonts/shared-library locations.
 
 ## Source and inputs
 
@@ -38,7 +38,7 @@ Sources/manifests/locks and required input assets are retained. Intermediate com
 
 [artifacts/README.md](artifacts/README.md) explains the ignored public reference and input payloads. A read-only check verified6230 locked files totaling1,115,334,296 bytes, including6143 reference files. This proves those bytes, not every app's complete build graph. Build recipes may still require public dependencies, separately locked inputs or further integration. Missing inputs and source-only planned cores must appear honestly in the final production-readiness matrix.
 
-A fresh source clone uses the trusted local bare origins and relative sibling URLs in .gitmodules. New local source-organization commits must reach their corresponding local origin before clean-clone reproducibility can be claimed. No private server address should be guessed. Original KSU.CODES remains read-only.
+A source clone uses the trusted local bare origins and relative sibling URLs in .gitmodules. All124 selected child commits are verified present in their local bare origins; the corrected Desktop branch and Craft branch updates have reached those stores through explicit fast-forward/new-branch local writes. A new full checkout/build was not created for this pass. No private server address should be guessed. Original KSU.CODES remains read-only.
 
 ## Read-only inspection
 
@@ -46,6 +46,6 @@ A fresh source clone uses the trusted local bare origins and relative sibling UR
 - python3 scripts/catalog_sources.py describes source silos; --write refreshes the two source catalogs.
 - python3 scripts/verify_artifacts.py verifies locked input bytes without network access.
 
-These checks do not build or deploy. Follow each component's actual build definitions when future development requires a build, with output outside source and no automatic publishing/service actions. The final sorted category/importance matrix is being prepared from the sources; do not substitute the old runtime status matrix for it.
+These checks do not build or deploy. Follow each component's actual build definitions when future development requires a build, with output outside source and no automatic publishing/service actions. The category/importance matrix is the current inventory; the old runtime status matrix is historical. Seven game cores, the PCB prototype and the template are not finished apps. Explicit input/rebuild gaps and composition work remain listed rather than being hidden behind source-present labels.
 
 The two pre-existing working-tree files artifacts/input-files.json and tests/wordcraft_baseline_browser.mjs remain in place and unchanged. Their authorship is not assumed. They are explicit unfinished working material, not an instruction to run or delete anything.

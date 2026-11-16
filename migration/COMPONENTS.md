@@ -1,5 +1,7 @@
 # Complete assembled component chart
 
+For the current category/importance/source-readiness view, use [APP-MATRIX.md](APP-MATRIX.md). This older chart groups repository locations; its historical runtime references do not qualify the corrected original desktop.
+
 All paths are relative to /path/to/webos/. There are124 independent source repositories currently attached:85 apps (33 system/CAD,17 Craft,35 games including7 source-only planned cores),9 engines,7 platform components,19 libraries,2 shared asset projects,1 shared build-tool project and1 legacy source repository. Source placement is not functional readiness. See STATUS-MATRIX.md for verification limits and failures.
 
 ## Platform (7)

@@ -1,0 +1,116 @@
+{
+  "schema": "webos-craft-upstreams/1",
+  "readOnly": true,
+  "components": [
+    {
+      "path": "apps/anicraft",
+      "upstream": "https://github.com/storytold/anicraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/cadcraft",
+      "upstream": "https://github.com/storytold/cadcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/deckcraft",
+      "upstream": "https://github.com/storytold/deckcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/designcraft",
+      "upstream": "https://github.com/storytold/designcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/effectcraft",
+      "upstream": "https://github.com/storytold/effectcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/figcraft",
+      "upstream": "https://github.com/storytold/figcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/filmcraft",
+      "upstream": "https://github.com/storytold/filmcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/gridcraft",
+      "upstream": "https://github.com/storytold/gridcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/lightcraft",
+      "upstream": "https://github.com/storytold/lightcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/materialcraft",
+      "upstream": "https://github.com/storytold/materialcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/pdfcraft",
+      "upstream": "https://github.com/storytold/pdfcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/photocraft",
+      "upstream": "https://github.com/storytold/photocraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/solidcraft",
+      "upstream": "https://github.com/tangency-labs/solidcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/soundcraft",
+      "upstream": "https://github.com/storytold/soundcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/texturecraft",
+      "upstream": "https://github.com/storytold/texturecraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/vectorcraft",
+      "upstream": "https://github.com/storytold/vectorcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/wordcraft",
+      "upstream": "https://github.com/storytold/wordcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "libraries/craft-libs",
+      "upstream": "https://github.com/storytold/craft-libs.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "libraries/egui",
+      "upstream": "https://github.com/storytold/egui.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "assets/craft-fonts",
+      "upstream": "https://github.com/storytold/craft-fonts.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "assets/craft-i18n",
+      "upstream": "https://github.com/storytold/craft-i18n.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "tooling/craft-common-actions",
+      "upstream": "https://github.com/storytold/craft-common-actions.git",
+      "trackingBranch": "main"
+    }
+  ]
+}
