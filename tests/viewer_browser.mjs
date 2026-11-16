@@ -61,7 +61,7 @@ try{
   await button(page,'New folder','.webos-files ');await page.waitForSelector('.webos-files-dialog input');await page.type('.webos-files-dialog input','ViewerCheck');await button(page,'Continue','.webos-files-dialog ');
   await page.waitForSelector('.webos-files-browser [title="ViewerCheck"]');
   await writeFile(path.join(output,'viewer-upload.txt'),'Disposable viewer upload\n');
-  const upload=await page.$('.webos-files input[type=file]');await upload.uploadFile(path.join(output,'viewer-upload.txt'));await page.waitForSelector('.webos-files-browser [title="viewer-upload.txt"]');
+  const [upload]=await Promise.all([page.waitForFileChooser(),button(page,'Upload','.webos-files ')]);await upload.accept([path.join(output,'viewer-upload.txt')]);await page.waitForSelector('.webos-files-browser [title="viewer-upload.txt"]');
   checks.push('Files folder creation and actual upload');
   await launch(page,'Office','Text Editor (CodeMirror 6)');await page.waitForSelector('.webos-text .cm-content');
   await page.waitForFunction(()=>document.querySelector('.webos-text-status')?.textContent.includes('ready'));checks.push('Text actual CodeMirror document startup');
