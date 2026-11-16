@@ -3102,5 +3102,27 @@
     "legacy_workflow_executed": false,
     "component_pins_changed": 0,
     "documentation": "migration/DEFERRED-CAD-CONTEXT.md"
+  },
+  "historical_replay_cost_source": {
+    "new_records": 45,
+    "source_modules": 9,
+    "historical_notes": 6,
+    "private_data_records": 30,
+    "private_native_snapshots": 15,
+    "private_pin_preparation_delta_records": 4,
+    "private_structured_observation_cleanup_records": 10,
+    "private_text_channels": 1,
+    "historical_source_blobs_reviewed": 20,
+    "retained_source_commits": 9,
+    "all_file_independent_restores_before_extraction": 45,
+    "recorded_capacity_snapshot_hashes_matched": 3,
+    "existing_failed_baseline_preserved": true,
+    "historical_existing_account_authorization_carried_forward": false,
+    "benchmark_or_model_execution": false,
+    "performance_acceptance": false,
+    "raw_copies_to_source_git_web_release": 0,
+    "component_pins_changed": 0,
+    "documentation": "migration/REPLAY-COST-SOURCE.md",
+    "unresolved_supporting_dispositions_after_review": 1107
   }
 }
