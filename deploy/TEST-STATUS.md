@@ -1,120 +1,149 @@
-# ksu.codes — existing viewer test release
+# ksu.codes — existing viewer and Files status
 
-Verified on 2026-11-16: **https://ksu.codes uses the original Desktop/Workspace
-viewer** from `platform/desktop/active-system/`. Its CSS, reference data and
-artwork are unchanged. The narrow dark right rail has account/date at the top
-and APPs at the bottom. The rejected blue replacement is no longer served.
+Verified 2026-11-16: **https://ksu.codes serves the original Desktop/Workspace
+viewer** from platform/desktop/active-system/. Its CSS, reference data and
+artwork remain unchanged. Account/date are at the top of the narrow dark right
+rail and APPs at the bottom. Calculator, Files, Text, WordCraft and Help are
+enabled. Other menu entries remain disabled.
 
-The separate, authorized integration enables Calculator, Files, Text,
-WordCraft and Help. Other menu entries are disabled; Linux/v86, Terminal and
-voice are not enabled. Use End session before switching accounts. Source
-organization does not imply the rest of the app suite is integrated; see the
-[complete source matrix](../migration/APP-MATRIX.md).
+The latest static update fixes external-file drops, native file-selection and
+cancellation handling, explicit upload feedback and the invalid My files
+breadcrumb. The root breadcrumb uses a nonempty UI sentinel, mapped explicitly
+to the account API's empty root path. It no longer generates Chonky's missing
+ID/name errors, and clicking it returns from Documents to My files.
 
-| Hosted check | Result |
+## Remaining native picker issue
+
+The user reports that double-clicking an MP4 in Chromium's OS chooser returns
+cancellation, while selecting it and clicking **Open** works. This also occurs
+in temporary plain HTML file inputs with no Files handlers, for both single-
+and multiple-file selection. Event inspection in the explicitly authorized
+existing ksu.codes tab recorded a trusted cancellation with an empty file list;
+no upload request was started by that cancellation. A controlled 4 MiB selection
+using Open delivered trusted input/change events and the actual Files UI
+acknowledged the account save. The user also confirms Open works for their file.
+
+This isolates the double-click problem to the browser/native chooser path in
+that session. The precise Chromium, Snap or GTK defect is **not identified**.
+No browser restart, permission change, global configuration change or browser
+upgrade was performed. Use **select the file, then Open**, or external drag/drop.
+Do not label the double-click issue fixed based on the automated chooser tests.
+The user explicitly deferred this separate investigation; its resume record is
+[BROWSER-FILE-PICKER.md](BROWSER-FILE-PICKER.md).
+
+## Verification
+
+| Check | Result |
 |---|---|
-| Original geometry, rail order, palette and account presentation | PASS |
-| Original window move, resize, minimize and restore | PASS |
-| Calculator mouse/keyboard use, independent instances and close isolation | PASS |
-| Files signed account listing, new folder and upload | PASS |
-| Text server save and unsaved-close Cancel/Discard | PASS |
-| Actual WordCraft WASM startup and formatted heading/paragraph/list | PASS |
-| WordCraft acknowledged save, close and Files reopen | PASS |
-| End session honors unsaved WordCraft cancellation | PASS |
-| Files reopens saved Text and WordCraft documents | PASS |
-| Fresh browser context retrieves the same formatted account document | PASS |
-| Reload, sign-in and original layout restoration preserve the document | PASS |
-| End session returns to the original login gate | PASS |
-| Pre-update disposable account retrieves its exact saved file after update | PASS |
-| Account-state path, issuer and instance retained | PASS |
-| Beta page bytes and checked service PIDs unchanged | PASS |
+| Native Upload button opens a chooser; 4 MiB binary saved and read with exact hash | PASS, local and hosted |
+| Browser-protocol external file drop; 4 MiB binary saved/read with exact hash | PASS, local and hosted |
+| Late cancellation cannot overwrite a completed import result | PASS |
+| Duplicate-name refusal preserves the existing file's bytes | PASS |
+| Picker cancellation permits another attempt | PASS |
+| Navigation cannot redirect a pending picker import | PASS |
+| Fresh browser context retrieves both account uploads | PASS |
+| My files breadcrumb returns from Documents to root | PASS |
+| Unexpected console errors in focused Files checks | None |
+| Original desktop geometry, rail order, palette and window operations | PASS |
+| Calculator independent instances and close isolation | PASS |
+| Files → Text/WordCraft save, close, reopen and formatting | PASS |
+| Fresh-context retrieval, reload/restoration and unsaved-work protections | PASS |
+| Pre-update disposable account file after the first Files update | PASS |
+| Existing-tab file selection with explicit Open | PASS, actual native chooser and UI acknowledgment |
+| Existing-tab native double-click selection | KNOWN FAILURE, including plain HTML controls |
+| Beta page, checked backend/beta/Caddy processes and account-instance/issuer continuity | PASS |
 
-The browser report contains 15 assertions covering the grouped workflows
-above, with no page errors. It records aborted requests during lifecycle
-transitions. Tests use real HTTPS and disposable accounts/files. They do not
-qualify every app, delegated agents, a physical second machine, or every file
-operation; older replacement-viewer results are historical, not acceptance of
-this viewer. The same 15 assertions also passed locally.
+The latest hosted qualification has **8 focused Files checks and 15 viewer
+regression checks**. The focused test records all console errors; the deliberate
+HTTP409 name-collision refusal is classified as expected and retained in the
+report. Chonky validation errors and other unexpected console errors fail it.
+The original tiny upload test was expanded to use the actual toolbar chooser;
+the focused test uses 4 MiB opaque binary fixtures with MP4 filenames. No media
+decoding or physical OS drag is claimed. The plain-control experiments use
+native OS dialogs; automated chooser acceptance alone does not qualify native
+double-click behavior. Delegated agents, every app, every file operation and a
+physical second machine remain outside these checks.
+
+One earlier hosted viewer run lost its browser connection with Target closed
+and no captured page errors. Low available laptop memory/full swap was observed,
+but its cause was not established. The unchanged assertions passed in a fresh
+browser, and both subsequent release regressions passed. Failure evidence is
+retained; it is not counted as a successful run.
 
 ## Release provenance
 
-| Item | Selected revision or identity |
+| Item | Selected identity |
 |---|---|
-| Packaged parent source | `26083315255497570a488048d0992494d7a9fd0f` |
-| Desktop | `95c7ae3ee265105758caad0ac441268a4304c3a5` |
-| Runtime | `c1ce8c592e0a2c33decbb4ec86af7d4ed9f28c66` |
-| Storage | `fc937993f567cbaa9ac280ded1fa8f45ca922599` |
-| WordCraft bridge | `a41d6f9286458a5b460b02fd2f65f2110b969d1c` |
-| Retained WordCraft engine source | `0d48f9a1bd5a2bb88d8431760a14b0ba55161563` |
-| Retained Accounts Python source | `c53a2f64b287b1f59bd90cdcd355766c5d713e63` |
-| Public release ID | `15e9cca46ce877315cc89e4fc53069ab942050d0b36f34de53405cd5667b868a` |
-| Frontend archive SHA-256 | `70be52db35f4384a4211a737f8bbdec2f8eb04a1ee8c10e165df5e57909434b2` |
-| Backend archive SHA-256 | `584140a723b2b39060604da9e6c467f0a968691b3e7d8ccdd8d3875300da2e67` |
+| Packaged parent source | 14c27143 (full pin in viewer-release.json) |
+| Files | 70aba65 (full pin in viewer-release.json) |
+| Desktop | 95c7ae3ee265105758caad0ac441268a4304c3a5 |
+| Runtime | c1ce8c592e0a2c33decbb4ec86af7d4ed9f28c66 |
+| Storage | fc937993f567cbaa9ac280ded1fa8f45ca922599 |
+| Retained Accounts Python | c53a2f64b287b1f59bd90cdcd355766c5d713e63 |
+| WordCraft bridge | a41d6f9286458a5b460b02fd2f65f2110b969d1c |
+| Retained WordCraft engine source | 0d48f9a1bd5a2bb88d8431760a14b0ba55161563 |
+| Public release ID | 4c4ac4f60262ee76042efb27b8fe942e03cb0e0134e6375ed2488e0b1fbf814c |
+| Archive SHA-256 | bb521bedbf9d18569676c13e925fb1c30a8953284de7dfa6be996224a6587395 |
 
-The frontend has 244 public payload files totaling 96,843,141 bytes, plus its
-manifest. The compressed archive is 27,429,647 bytes. All packaged inputs and
-served startup assets were hash-verified; 96 JS packages have bundled notices.
-The engine is a verified existing build, not a newly compiled Rust engine from
-the newer bridge revision. Detailed component pins are in the release
-manifests. The frontend manifest's older descriptive backend sentence means
-the existing service/account system is retained; the companion
-`backend-release.json` records the actual code update and exact backend pins.
+The release contains 244 public files including its manifest, totaling
+96,848,520 bytes. Its archive is 27,432,099 bytes. All source inputs and packaged
+payloads were hash-verified; 96 JS packages have notices. Only Files bundles and
+composition/build manifests changed from the original-viewer release; the
+viewer artwork/CSS and WordCraft graph remain identical. The engine is a
+verified existing input, not a newly compiled Rust engine from the newer bridge
+revision. No compiler output or private account state is committed.
 
-The retained Accounts Python matches the previously installed source exactly.
-The newer Accounts delegation-policy implementation was not deployed. Storage
-and the test launcher apply the approved concurrency increase. Existing Python
-dependencies and the private account-state directory remain in use.
+The backend remains the existing service/code from the first original-viewer
+release. Its retained Accounts Python was verified against installed source;
+the newer delegation-policy implementation was not deployed. No backend restart
+or account-state migration was performed by the Files updates.
 
-## File limits
+## Limits and operation
 
 | Limit | Live setting |
 |---|---|
-| Maximum individual file | 128 MiB |
-| Stored space / entries per account | 1 GiB / 1,024 entries |
+| Individual file | 128 MiB |
+| Stored space / entries per account | 1 GiB / 1,024 |
 | Shared stored space | 10 GiB |
-| Transfer allowance per account per UTC day | 50 GiB |
-| Transfer allowance service-wide per UTC day | 200 GiB |
-| Simultaneous transfers per account / service-wide | 8 / 16 |
-| Payload pacing per account / service-wide | 4 MiB/s / 8 MiB/s |
+| Transfers per account / service per UTC day | 50 GiB / 200 GiB |
+| Concurrent transfers per account / service | 8 / 16 |
+| Payload pacing per account / service | 4 MiB/s / 8 MiB/s |
 
-Uploads and downloads share the daily transfer allowance; reservations include
-failed/cancelled attempts and survive restarts. Static app/WASM downloads are
-separate. The shared browser file client admits four requests at once with
-bounded waiting. It does not replay dispatched writes. Only concurrency was
-increased; the other limits remain unchanged.
+Uploads and downloads share the daily allowance, including failed/cancelled
+reservations that survive restart. Static app/WASM downloads are separate.
+These Files changes do not alter the limits. Account files remain in the
+existing private account-state/account-files area, separate from source and
+public releases.
 
-## Operation and recovery
+The current public root on box-webhost is
+/srv/data/webos-viewer-releases/4c4ac4f60262ee76042efb27b8fe942e03cb0e0134e6375ed2488e0b1fbf814c/public.
+The backend retains loopback port 38141, its existing Python environment and
+/home/dflanag3/webos-rebuild-test/private/account-state. Caddy reloads changed
+only the ksu.codes static root; beta routing, services and data were not changed.
+The original laptop workspace remains read-only. No external Git publication
+or old host-release cleanup occurred.
 
-`webos-rebuild-test.service` now listens on `127.0.0.1:38141`. Its code and public
-assets reside under
-`/srv/data/webos-viewer-releases/15e9cca46ce877315cc89e4fc53069ab942050d0b36f34de53405cd5667b868a/`.
-Its existing private state remains at
-`/home/dflanag3/webos-rebuild-test/private/account-state`. Only the ksu.codes
-route and test service were changed. Beta services, routing and data were not
-changed. The original laptop workspace remains read-only.
+The current static-only operator is deploy/viewer_static_operator.py. Its
+matching root-only rollback plan is
+/var/backups/webos-files-breadcrumb-20261116-01/ on box-webhost. Explicit rollback
+with tag files-breadcrumb-20261116-01 and the current release ID restores the
+previous direct-picker frontend, without restarting the backend. It guards
+configuration hashes, validates Caddy, preserves file ownership/mode and checks
+process/account continuity. Do not replay init/stage/prepare over existing
+paths. The preceding Files update plans use different tags and releases.
 
-The first activation failed because the old listener left port 38140 briefly
-unavailable after shutdown. Configuration rolled back, but restarting the old
-backend also failed initially; it was restored and HTTPS health verified before
-proceeding. The successful transition uses fresh port 38141, with port 38142
-reserved for rollback. No account files or issuer keys were replaced.
+The first original-viewer backend transition had a port38140 reuse failure;
+that service was recovered before successful activation on fresh port38141.
+Its older backup /var/backups/webos-viewer-20261116-02/ covers a different
+backend/frontend transition. Do not apply that older plan as a routine Files
+rollback.
 
-The current guarded operator is `deploy/viewer_test_operator.py` (fresh-port
-change in `a139026d`). Root-only rollback evidence is in
-`/var/backups/webos-viewer-20261116-02/` on box-webhost. It retains the old
-frontend and backend configuration, plus validated candidate and rollback
-configurations. The operator refuses unknown concurrent configuration edits.
-To undo this specific test update, run its explicit `rollback` mode for the
-release above through the verified box-webhost alias. That restores the prior
-test code on fresh port 38142 and its matching route, retaining account state.
-It does not restore beta or the original source. Do not replay init, stage or
-prepare over existing destinations, or apply older rollback plans to the new
-port configuration.
-
-Private commands, exit codes, credentials, browser reports/screenshots and the
-resumable checkpoint are in
-`/home/dflanag3/Projects/.webos-migration/viewer-test-20261116-01/`.
-Hosted acceptance is `hosted-final/result.json`; visual evidence is
-`hosted-final/correct-viewer.png` and `hosted-final/viewer-apps.png`. No raw
-credentials/account data or compiler output are committed. No external Git
-publication occurred. Existing host release collections were not deleted.
+Private evidence, credentials, scripts, screenshots, commands and the resumable
+checkpoint are under
+/home/dflanag3/Projects/.webos-migration/files-upload-20261116-01/.
+Current reports are hosted-breadcrumb/result.json and
+hosted-breadcrumb-viewer/result.json. Earlier baseline/failure/native-dialog
+experiments are retained with their actual outcomes. Temporary diagnostics and
+synthetic test files are kept separate from user files; cleanup evidence belongs
+in that checkpoint. The [complete source matrix](../migration/APP-MATRIX.md)
+remains the inventory of the broader, separately integrated app suite.
