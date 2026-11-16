@@ -1,90 +1,120 @@
-# Fresh ksu.codes test deployment
+# ksu.codes — existing viewer test release
 
-The new test desktop is available at **https://ksu.codes**. Create a fresh account
-through Login. The user has identified this site as a test location with test
-users only. Old account state was not migrated, reset or copied.
+Verified on 2026-11-16: **https://ksu.codes uses the original Desktop/Workspace
+viewer** from `platform/desktop/active-system/`. Its CSS, reference data and
+artwork are unchanged. The narrow dark right rail has account/date at the top
+and APPs at the bottom. The rejected blue replacement is no longer served.
 
-The frontend now selects parent source
-`131e36585fa307272cb288f5800486b021c8739b`, WordCraft
-`0d48f9a1bd5a2bb88d8431760a14b0ba55161563` and shared egui
-`2d0ae4b4270e76c431fd62d3512237579ed6c26f`. Its33 payload files total
-95,791,308bytes, plus the release manifest, hash-verified locally and on the host. The backend remains
-release `217ececf045f5da98a4dcfe37b6d599c855d9d17`: all three backend component
-pins, the server script and dependency lock match the new composition. Its
-process, instance identity, issuer and account state were preserved.
+The separate, authorized integration enables Calculator, Files, Text,
+WordCraft and Help. Other menu entries are disabled; Linux/v86, Terminal and
+voice are not enabled. Use End session before switching accounts. Source
+organization does not imply the rest of the app suite is integrated; see the
+[complete source matrix](../migration/APP-MATRIX.md).
 
-The following original hosted workflow checks passed before this renderer-only
-update. The Calculator, Files, Text, host client bundle and storage worker have
-identical served bytes. The new renderer also passed the hosted checks below.
-
-| Hosted workflow | Result |
+| Hosted check | Result |
 |---|---|
-| Calculator through authenticated launcher, independent instances | PASS |
-| Files folder/upload/rename/move/download/delete/reload | PASS |
-| Exact downloaded bytes and second clean browser retrieval | PASS |
-| Text two-document save/reopen, Save As, unsaved Cancel/Save | PASS |
-| Text reload and second clean browser retrieval | PASS |
-| WordCraft new heading, paragraph and list | PASS |
-| WordCraft account save, Files reopen, reload, second-context formatting | PASS |
-| New renderer: two rounds of three concurrent editor starts | PASS (6/6) |
-| New renderer: account save/reopen, stale conflicts, close guards, Save As/PDF | PASS |
-| New renderer: heading/list authoring, Files reopen, reload, second context | PASS |
+| Original geometry, rail order, palette and account presentation | PASS |
+| Original window move, resize, minimize and restore | PASS |
+| Calculator mouse/keyboard use, independent instances and close isolation | PASS |
+| Files signed account listing, new folder and upload | PASS |
+| Text server save and unsaved-close Cancel/Discard | PASS |
+| Actual WordCraft WASM startup and formatted heading/paragraph/list | PASS |
+| WordCraft acknowledged save, close and Files reopen | PASS |
+| End session honors unsaved WordCraft cancellation | PASS |
+| Files reopens saved Text and WordCraft documents | PASS |
+| Fresh browser context retrieves the same formatted account document | PASS |
+| Reload, sign-in and original layout restoration preserve the document | PASS |
+| End session returns to the original login gate | PASS |
+| Pre-update disposable account retrieves its exact saved file after update | PASS |
+| Account-state path, issuer and instance retained | PASS |
+| Beta page bytes and checked service PIDs unchanged | PASS |
 
-The earlier renderer failed both rounds of the three-editor startup matrix:
-the third browser WebGPU adapter request remained pending after WASM loaded.
-The new shared renderer bounds optional adapter discovery when WebGL fallback
-is allowed. It passed three deadline/cancellation unit checks, a WASM compile
-check, a complete isolated build, six local editor starts across two rounds,
-account/conflict tests and formatting tests. Clean-checkout authoring passed
-with the original workspace, primary assembly and recovery source hidden and
-external networking disabled. An initial isolation failure hid Chromium's X11
-socket and prevented WebGL creation; its failure reports and focused diagnostic
-probes are retained. The corrected isolation preserves that socket; assertions
-and product behavior are unchanged. Hosted regression qualification of this
-new renderer **passed**: six starts across two rounds, with third-editor startup
-of20.4 and20.3 seconds; account/conflict checks in three browser contexts; and
-formatted authoring with save/reopen, reload and second-context retrieval. No
-page errors were reported. The120-second host timeout was unchanged.
+The browser report contains 15 assertions covering the grouped workflows
+above, with no page errors. It records aborted requests during lifecycle
+transitions. Tests use real HTTPS and disposable accounts/files. They do not
+qualify every app, delegated agents, a physical second machine, or every file
+operation; older replacement-viewer results are historical, not acceptance of
+this viewer. The same 15 assertions also passed locally.
 
-These are actual browser requests over HTTPS to the remote server. They do not
-qualify every legacy app, delegated agents, or a physical second client machine.
-The overall suite rebuild remains incomplete.
+## Release provenance
 
-## Operation and rollback
+| Item | Selected revision or identity |
+|---|---|
+| Packaged parent source | `26083315255497570a488048d0992494d7a9fd0f` |
+| Desktop | `95c7ae3ee265105758caad0ac441268a4304c3a5` |
+| Runtime | `c1ce8c592e0a2c33decbb4ec86af7d4ed9f28c66` |
+| Storage | `fc937993f567cbaa9ac280ded1fa8f45ca922599` |
+| WordCraft bridge | `a41d6f9286458a5b460b02fd2f65f2110b969d1c` |
+| Retained WordCraft engine source | `0d48f9a1bd5a2bb88d8431760a14b0ba55161563` |
+| Retained Accounts Python source | `c53a2f64b287b1f59bd90cdcd355766c5d713e63` |
+| Public release ID | `15e9cca46ce877315cc89e4fc53069ab942050d0b36f34de53405cd5667b868a` |
+| Frontend archive SHA-256 | `70be52db35f4384a4211a737f8bbdec2f8eb04a1ee8c10e165df5e57909434b2` |
+| Backend archive SHA-256 | `584140a723b2b39060604da9e6c467f0a968691b3e7d8ccdd8d3875300da2e67` |
 
-`webos-rebuild-test.service` runs the new process as the existing deployment
-user, listening only on127.0.0.1:38140. It is enabled for boot, with no automatic
-restart policy. Its new private state is separate from release assets and from
-all old service state. The backend was installed offline from pinned wheels on
-Python3.12; dependency and packaged-source import checks passed.
+The frontend has 244 public payload files totaling 96,843,141 bytes, plus its
+manifest. The compressed archive is 27,429,647 bytes. All packaged inputs and
+served startup assets were hash-verified; 96 JS packages have bundled notices.
+The engine is a verified existing build, not a newly compiled Rust engine from
+the newer bridge revision. Detailed component pins are in the release
+manifests. The frontend manifest's older descriptive backend sentence means
+the existing service/account system is retained; the companion
+`backend-release.json` records the actual code update and exact backend pins.
 
-Only the ksu.codes Caddy block changed. Caddy now serves the new immutable
-public tree directly and proxies account, gateway, configuration, issuer and
-health routes to the existing backend. The template is
-`deploy/ksu-test-static.caddy.in`; replace its explicit public-root placeholder
-with a verified immutable release directory. No backend restart was needed.
+The retained Accounts Python matches the previously installed source exactly.
+The newer Accounts delegation-policy implementation was not deployed. Storage
+and the test launcher apply the approved concurrency increase. Existing Python
+dependencies and the private account-state directory remain in use.
 
-The current public tree is
-`/srv/webos-rebuild-test-public/cde3f9a577c1f8fb6964c7eca20afc4572a195734662391dc4bf7f1f09f464d4/public`.
-Its manifest includes file hashes and exact backend compatibility checks.
-The current route rollback directory is root-only
-`/var/backups/webos-test-static-131e365-20261115/` on box-webhost. Both before
-and candidate configs validated. Activation preserved file owner/mode and
-reloaded Caddy; health instance and issuer bytes, beta page bytes and checked
-service PIDs stayed unchanged. Index, client and new WASM hashes were verified
-over HTTPS with the required cross-origin isolation headers.
+## File limits
 
-To roll back this frontend update, verify the current config matches the
-candidate hash recorded in that directory's `route-plan.json`, restore its
-before file with the recorded owner/mode, validate, then reload Caddy. Preserve
-the backend and account data. The previous initial-route backup remains at
-`/var/backups/webos-test-route-217ececf-20261115/`; that earlier rollback would
-return ksu.codes to its former application and is a different action. Do not
-replay staging scripts over existing destinations.
+| Limit | Live setting |
+|---|---|
+| Maximum individual file | 128 MiB |
+| Stored space / entries per account | 1 GiB / 1,024 entries |
+| Shared stored space | 10 GiB |
+| Transfer allowance per account per UTC day | 50 GiB |
+| Transfer allowance service-wide per UTC day | 200 GiB |
+| Simultaneous transfers per account / service-wide | 8 / 16 |
+| Payload pacing per account / service-wide | 4 MiB/s / 8 MiB/s |
 
-Private evidence and exact commands are in
-`run-20261115-15-graphics-startup/` and the earlier
-`run-20261115-14-test-deployment/` under the private migration directory. Browser
-reports and screenshots use disposable test accounts; credentials and account
-files are not committed. The original laptop workspace and local recovery
-remain preserved. No external Git publication was performed.
+Uploads and downloads share the daily transfer allowance; reservations include
+failed/cancelled attempts and survive restarts. Static app/WASM downloads are
+separate. The shared browser file client admits four requests at once with
+bounded waiting. It does not replay dispatched writes. Only concurrency was
+increased; the other limits remain unchanged.
+
+## Operation and recovery
+
+`webos-rebuild-test.service` now listens on `127.0.0.1:38141`. Its code and public
+assets reside under
+`/srv/data/webos-viewer-releases/15e9cca46ce877315cc89e4fc53069ab942050d0b36f34de53405cd5667b868a/`.
+Its existing private state remains at
+`/home/dflanag3/webos-rebuild-test/private/account-state`. Only the ksu.codes
+route and test service were changed. Beta services, routing and data were not
+changed. The original laptop workspace remains read-only.
+
+The first activation failed because the old listener left port 38140 briefly
+unavailable after shutdown. Configuration rolled back, but restarting the old
+backend also failed initially; it was restored and HTTPS health verified before
+proceeding. The successful transition uses fresh port 38141, with port 38142
+reserved for rollback. No account files or issuer keys were replaced.
+
+The current guarded operator is `deploy/viewer_test_operator.py` (fresh-port
+change in `a139026d`). Root-only rollback evidence is in
+`/var/backups/webos-viewer-20261116-02/` on box-webhost. It retains the old
+frontend and backend configuration, plus validated candidate and rollback
+configurations. The operator refuses unknown concurrent configuration edits.
+To undo this specific test update, run its explicit `rollback` mode for the
+release above through the verified box-webhost alias. That restores the prior
+test code on fresh port 38142 and its matching route, retaining account state.
+It does not restore beta or the original source. Do not replay init, stage or
+prepare over existing destinations, or apply older rollback plans to the new
+port configuration.
+
+Private commands, exit codes, credentials, browser reports/screenshots and the
+resumable checkpoint are in
+`/home/dflanag3/Projects/.webos-migration/viewer-test-20261116-01/`.
+Hosted acceptance is `hosted-final/result.json`; visual evidence is
+`hosted-final/correct-viewer.png` and `hosted-final/viewer-apps.png`. No raw
+credentials/account data or compiler output are committed. No external Git
+publication occurred. Existing host release collections were not deleted.

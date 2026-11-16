@@ -1,6 +1,6 @@
 # WebOS — organized source for future development
 
-Current authorized phase (2026-11-16): bring ksu.codes up with the existing viewer and 8/account, 16/service simultaneous file transfers. The original source-organization deliverable is complete. The [viewer test composition](deploy/VIEWER-TEST.md) records the separate functional integration, source pins, scoped apps and verified local checks. Beta remains separate. Check the private rollout checkpoint for final hosted activation status; earlier replacement-shell results are historical.
+Current status (2026-11-16): ksu.codes serves the existing viewer with 8/account, 16/service simultaneous file transfers. All 15 hosted browser checks and the pre-update account-file preservation check passed. The original source-organization deliverable is complete. The [deployment report](deploy/TEST-STATUS.md) records exact revisions, limits, scope and rollback; the [viewer composition](deploy/VIEWER-TEST.md) describes the separate functional integration. Beta remains separate and unchanged. Earlier replacement-shell results are historical.
 
 Work from the files in this project. The deliverable is a coherent source tree with independent owners, usable source/build entries, required inputs identified and clear remaining production gaps. It is not a full beta clone, a parity project, an interface redesign or an automatic deployment. Beta stays live separately.
 
