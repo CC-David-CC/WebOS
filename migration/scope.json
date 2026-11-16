@@ -2951,7 +2951,7 @@
     "deckcraft_standalone_browser_baseline": "pass; real rendering, inspect, shape insert and undo; desktop/account/agent integration open"
   },
   "existing_snapshot_reference_review": {
-    "qualified_existing_owned_references": 24,
+    "qualified_existing_owned_references": 31,
     "private_empty_output_channels": 1,
     "unqualified_blob_candidates_remaining": 0,
     "raw_material_copied_to_assembly": 0,
@@ -2959,7 +2959,10 @@
     "current_behavior_or_license_acceptance": false,
     "documentation": "migration/OWNED-SNAPSHOT-REFERENCES.md",
     "unresolved_supporting_dispositions_at_snapshot_review": 1969,
-    "current_counts": "migration/SOURCE-RECONCILIATION-SUMMARY.json"
+    "current_counts": "migration/SOURCE-RECONCILIATION-SUMMARY.json",
+    "latest_review_records": 7,
+    "latest_review_phase": 81,
+    "unresolved_supporting_dispositions_after_latest_review": 1900
   },
   "private_terminal_reference_review": {
     "reviewed_records": 138,

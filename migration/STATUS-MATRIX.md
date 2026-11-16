@@ -17,7 +17,7 @@ Retained baseline tests are separate from new runtime acceptance.
 | Server account files | PASS signed persistence, conflicts, restart and second clean browser context |
 | Physical second-machine acceptance | OPEN; browser contexts are not a second machine |
 | Human/agent operations | Live routing and Accounts core checks PASS; authenticated transport, consent and scoped agent file authority OPEN |
-| Remaining16 Craft apps and old app/game integration | OPEN; source presence is not app support |
+| Remaining15 Craft apps and old app/game integration | OPEN; source presence is not app support |
 | Native/font review | PASS selected WordCraft all9 CI stages, declared font input and clean browser workflows; broader-suite qualification OPEN |
 | Historical assets and old-user migration | Not prerequisites for the fresh rebuild; preserve existing recovery |
 | External Git publication | Not authorized or attempted; local origins are not off-machine backups |
@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has 1,907 unresolved entries plus zero unqualified blob candidates, after
+ledger now has 1,900 unresolved entries plus zero unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -286,6 +286,6 @@ Phase58 retains nine original native build/design/prototype-control references w
 
 Phase59 owns seven legacy mirror cache-unit tests in Storage with locator-only assertion-preserving ports and a new explicitly pinned dev-only dependency environment. Captured, current and clean reference outcomes match:3 pass,4 fail, command exit1; no failing case is omitted or assertion weakened. This is not account synchronization or an all-green Storage claim. See [mirror reference outcomes](STORAGE-MIRROR-REFERENCES.md).
 
-The [existing snapshot-reference review](OWNED-SNAPSHOT-REFERENCES.md) qualifies24 already-owned references and1 private empty output channel without copying raw material or changing component pins. Unresolved supporting-source dispositions remain1,907; byte-candidate guesses are now zero.
+The [existing snapshot-reference review](OWNED-SNAPSHOT-REFERENCES.md) qualifies31 already-owned references and1 private empty output channel without copying raw material or changing component pins. Unresolved supporting-source dispositions remain1,900; byte-candidate guesses are now zero.
 
-The [private terminal-reference review](PRIVATE-TERMINAL-REFERENCES.md) resolves62 captured output records without copying raw data or changing runtime/component pins. Seventy-six weaker terminal-like cases from that batch remain pending; current unresolved supporting records total1,907.
+The [private terminal-reference review](PRIVATE-TERMINAL-REFERENCES.md) resolves62 captured output records without copying raw data or changing runtime/component pins. Seventy-six weaker terminal-like cases from that batch remain pending; current unresolved supporting records total1,900.

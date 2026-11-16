@@ -43,3 +43,33 @@ and its unqualified blob-candidate count became **zero**. See the
 review totals.
 These are tracked-source record counts, not missing-file counts or whole-project
 completion percentages. No component pin or runtime behavior changed.
+
+
+## Additional supporting references (phase81)
+
+Seven further captured references match material already owned by the parent:
+
+| Preserved role | Captures | Current owner/path |
+|---|---:|---|
+| Frozen hosting operator sources | 4 | `deploy/legacy-backend/hosting_root/` |
+| Renewal service/timer fixtures | 2 | `deploy/legacy-backend/ops/` |
+| Frozen chooser-style browser assertion | 1 | `tests/legacy-cad-corpus/step-ui/chooser-style.test.mjs` |
+
+Two research snapshots each contain the same pair of hosting scripts. They are
+recorded as four captures of two existing sources, without inventing extra live
+implementations. The service and timer are legacy fixture references; neither is
+installed or enabled. The chooser snapshot is the unchanged legacy test driver,
+not a new acceptance result.
+
+Exact original index/working bytes, recovered bytes, owned bytes and Git executable
+modes match. Capture histories remain in self-contained private recovery. A script,
+a service fixture and the browser assertion restored independently with original
+and assembly paths hidden, recovery read-only and networking disabled. No old code
+was executed and no raw source copied into Git or release artifacts. These are
+reference dispositions, not new functional extraction or deployment qualification.
+
+There are now31 qualified existing owned snapshot references. Supporting-source
+unresolved dispositions are1,900; the authoritative current totals remain in the
+[current summary](SOURCE-RECONCILIATION-SUMMARY.json). The separate Python context
+screen is preliminary:40 isolated-host test candidates still require historical
+content and side-effect review before extraction. No component pin changed.
