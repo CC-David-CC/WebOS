@@ -3056,5 +3056,32 @@
     "component_pins_changed": 0,
     "documentation": "migration/OPFS-RELEASE-SOURCE.md",
     "unresolved_supporting_dispositions_after_review": 1791
+  },
+  "private_cad_case_data_references": {
+    "private_records": 626,
+    "cases_with_owned_test_driver_anchors": 38,
+    "distinct_blobs": 540,
+    "captured_bytes": 50719473,
+    "data_roles": {
+      "structured-test-record": 236,
+      "captured-text-channel": 65,
+      "serialized-native-project-snapshot": 248,
+      "structured-test-sequence": 5,
+      "3mf-container-capture": 32,
+      "step-container-capture": 24,
+      "dxf-capture-format-unqualified": 1,
+      "image-capture": 12,
+      "captured-hash-reference": 3
+    },
+    "independent_representative_restores": 12,
+    "persistent_raw_copies_created": 0,
+    "raw_copies_to_git_web_or_release": 0,
+    "identities_collapsed": false,
+    "per_file_producer_use_privacy_geometry_current_acceptance": false,
+    "deferred_documentation_only_case_records": 13,
+    "legacy_code_or_geometry_executed": false,
+    "component_pins_changed": 0,
+    "documentation": "migration/PRIVATE-CAD-DATA-REFERENCES.md",
+    "unresolved_supporting_dispositions_after_review": 1165
   }
 }
