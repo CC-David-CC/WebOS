@@ -7,6 +7,7 @@ SOURCES={
  'recipes-public.cjs':('6ff4261b199636d85965e37671f95e161fc85e15','research/beta-cad-agent-recipes-20261106/browser.cjs','50e23ce5f772951d46d241bc41f996a6d57ff703096823b896f6b2480a25a32a')}
 sha=lambda b:hashlib.sha256(b).hexdigest()
 def prepare(repo,package,out):
+ raise RuntimeError('Archived public preparation disabled: credential-bearing input history requires a reviewed port')
  repo=repo.resolve(strict=True);package=package.resolve(strict=True);out=out.absolute()
  if out.exists() or out.is_symlink():raise ValueError('Fresh output directory required')
  metadata=json.loads((package/'package.json').read_bytes());assert metadata['version']=='24.35.0'
