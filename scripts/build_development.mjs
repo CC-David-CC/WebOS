@@ -7,6 +7,8 @@ import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const desktopSource = JSON.parse(await readFile(path.join(root, 'platform/desktop/package.json'), 'utf8'));
+if (desktopSource.webos?.replacementRemoved === true) throw Error('The unsolicited replacement Desktop was removed. This old development composition is retired. Existing viewer source: platform/desktop/active-system/index.html. Organize and compose that source explicitly; do not recreate the replacement.');
 const output = process.argv[2] && path.resolve(process.argv[2]);
 const sites = {};
 for (let index = 3; index < process.argv.length; index += 2) {
