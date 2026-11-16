@@ -6,7 +6,23 @@ artwork remain unchanged. Account/date are at the top of the narrow dark right
 rail and APPs at the bottom. Calculator, Files, Text, WordCraft and Help are
 enabled. Other menu entries remain disabled.
 
-The latest static update fixes **Text Save/Save As identity and Desktop restoration**.
+The latest static update fixes **reopening an already-open Text account file**.
+Files activates the existing Text window by signed-in account and full confirmed
+path before transferring any bytes. Desktop restores minimized/rolled windows,
+selects their existing workspace and delegates focus to CodeMirror. The live
+buffer, selection, undo/redo and confirmed base revision stay intact. Save As
+moves this identity to the new path, including paths whose usual association is
+WordCraft; opening the old path can create its own editor. Different full paths
+and untitled documents remain independent. A late synchronous lookup also
+prevents two Files instances from racing to create duplicate Text windows.
+
+An existing editor is not refreshed or repinned when another browser changes or
+removes its server file; ordinary Save still checks its confirmed revision.
+Closing then reopening creates a fresh document. Existing duplicate windows
+from an older session are not merged or silently discarded. WordCraft's
+internal multi-document activation remains separate work.
+
+The preceding update fixes **Text Save/Save As identity and Desktop restoration**.
 Text publishes its confirmed path/revision through a read-only file-binding
 signal. Desktop updates the same window's caption, accessibility label and
 saved layout without remounting its editor. First Save binds an untitled window;
@@ -44,8 +60,8 @@ Storage failure is visible, while the native warning and actual account Save
 continue to work. This does not guarantee recovery of edits newer than the last
 committed checkpoint, after browser storage eviction, or after clearing site data.
 
-Known remaining fixes: browser refresh still requires sign-in, and same-file
-activation can create independent editors. A broad failure fixture also observed
+Known remaining fixes: browser refresh still requires sign-in. WordCraft
+multi-document activation remains separate. A broad failure fixture also observed
 that Files' initial load error requires closing/reopening that app; Text's new
 Retry is scoped to Text. These remain separate work. The recovery test's old
 clean-SaveAs close workaround is removed; the saved copy stays open across refresh.
@@ -93,6 +109,12 @@ The user explicitly deferred this separate investigation; its resume record is
 
 | Check | Result |
 |---|---|
+| Reopening dirty Text preserves instance, buffer, selection and actual undo/redo without a gateway request | PASS, local and hosted |
+| Actual Files double-click restores minimized/rolled Text and selects its existing workspace | PASS |
+| Save As/first Save activation identity; different folders/untitled editors stay distinct | PASS |
+| Concurrent initial opens from two Files instances create one editor with truthful results | PASS |
+| Changed/deleted server file does not reload or repin an existing editor; closed file opens fresh | PASS |
+| Foreign-account/noncanonical activation targets refused | PASS |
 | First Save, ordinary Save and Save As update caption, accessibility label and persisted path/revision | PASS, local and hosted |
 | Two saved documents restore independently after refresh/sign-in; fresh context verifies all server files | PASS |
 | A clean restored file accepts a newer externally saved revision; explicit selected-file SHA remains exact | PASS (browser restore and domain boundary) |
@@ -131,9 +153,14 @@ The user explicitly deferred this separate investigation; its resume record is
 | Existing-tab native double-click selection | KNOWN FAILURE, including plain HTML controls |
 | Beta page, checked backend/beta/Caddy processes and account-instance/issuer continuity | PASS |
 
-The latest qualification has **9 Text binding/restoration checks,11 recovery
-checks and15 viewer regression checks locally and over hosted HTTPS**, plus40
-unit/lifecycle checks. The binding suite verifies real CodeMirror, Desktop DOM/
+The latest qualification has **11 Text activation checks,9 binding/restoration
+checks,11 recovery checks and15 viewer regression checks locally and over
+hosted HTTPS**, plus45 unit/lifecycle checks. Activation uses actual Files
+double-click and public authorized operations, real CodeMirror focus/selection/
+undo and signed server files. It includes two Files controllers racing to open
+one resource, second-context server changes/removal and exact account/full-path
+identity. No unexpected console/page errors occurred in activation qualification.
+The binding suite verifies real CodeMirror, Desktop DOM/
 layout and signed files; it includes a fresh browser context and injected read-
 discovery HTTP503 failures. Its deliberate missing file HTTP404, name collision
 HTTP409 and counted injected HTTP503 responses are retained; extra errors fail.
@@ -144,7 +171,7 @@ injected discovery error; unrelated errors fail. Journal tests cover immutable
 captures, ordered writes/deletion, discard races, stale-source preservation and
 invalidated writers. The preceding Files release passed8 selection/deletion/
 navigation checks and8 upload checks; those focused suites were not repeated
-for Text recovery/restoration. Their unchanged controller tests remain in the40-test run,
+for Text activation. Their controller tests remain in the45-test run,
 and the viewer regression exercises actual Files uploads and document opening.
 Focused browser tests retain
 all console errors. The upload collision expects HTTP409; deletion tests allow
@@ -168,22 +195,24 @@ retained; it is not counted as a successful run.
 
 | Item | Selected identity |
 |---|---|
-| Packaged parent source | 21d9959f4c8817abaf275073ccb9344fe2a830e1 |
-| Files | 7a0dd487953b2ec639e691581684c3578787a395 |
-| Text | cf50c57ad1d40b94d11d482c611ad94ac02ad9af |
-| Desktop | b012dc461e7837e3abc331c099565ca94372a503 |
-| Runtime | c1ce8c592e0a2c33decbb4ec86af7d4ed9f28c66 |
+| Packaged parent source | efdae4c8ff2b3ddb9fb0ac8fde8663d561e93a31 |
+| Files | bfe45472cfa1613daab1504a00984bbc19241cf6 |
+| Text | 11b43118df3ee38a171e6cdb8e48be9b7e4a7d1b |
+| Desktop | 0ad80f5d5528f5487036e1b36daedf660b9a2512 |
+| Runtime | 2c028dde78ac901151df4adf4b2a92853329e21b |
 | Storage | fc937993f567cbaa9ac280ded1fa8f45ca922599 |
 | Retained Accounts Python | c53a2f64b287b1f59bd90cdcd355766c5d713e63 |
 | WordCraft bridge | a41d6f9286458a5b460b02fd2f65f2110b969d1c |
 | Retained WordCraft engine source | 0d48f9a1bd5a2bb88d8431760a14b0ba55161563 |
-| Public release ID | d2071ea47d3c855005a630a3db76f0b44d15390eed123eda67de56dd35ef3b78 |
-| Archive SHA-256 | 15a70c70ddff3cb96c3d9f9969ffb5fd266e335429120c643b36c21f254e0a35 |
+| Public release ID | 8fb54bad9028f94d998191e2c4a14658dc6a65bf0d0651a951824f1e716bfd40 |
+| Archive SHA-256 | ebde9ce16a5519730b2986b5bab0d0fe1fa06311553f27fc74f0dc1a0d80e279 |
 
 The release contains 244 public files including its manifest, totaling
-96,898,934 bytes. Its archive is 27,442,431 bytes. All source inputs and packaged
-payloads were hash-verified; 96 JS packages have notices. Text, Desktop lifecycle
-wiring and shared composition/bundles changed. Viewer artwork/CSS and the
+96,903,235 bytes. Its archive is 27,443,472 bytes. All source inputs and packaged
+payloads were hash-verified; 96 JS packages have notices. Files, Text, Desktop activation,
+Runtime JS focus forwarding and shared composition/bundles changed. The Runtime
+Python protocol source is unchanged from the installed backend. Viewer artwork/
+CSS and the
 WordCraft engine payload remain identical. The engine is a
 verified existing input, not a newly compiled Rust engine from the newer bridge
 revision. No compiler output or private account state is committed.
@@ -211,7 +240,7 @@ existing private account-state/account-files area, separate from source and
 public releases.
 
 The current public root on box-webhost is
-/srv/data/webos-viewer-releases/d2071ea47d3c855005a630a3db76f0b44d15390eed123eda67de56dd35ef3b78/public.
+/srv/data/webos-viewer-releases/8fb54bad9028f94d998191e2c4a14658dc6a65bf0d0651a951824f1e716bfd40/public.
 The backend retains loopback port 38141, its existing Python environment and
 /home/dflanag3/webos-rebuild-test/private/account-state. Caddy reloads changed
 only the ksu.codes static root; beta routing, services and data were not changed.
@@ -220,9 +249,9 @@ or old host-release cleanup occurred.
 
 The current static-only operator is deploy/viewer_static_operator.py. Its
 matching root-only rollback plan is
-/var/backups/webos-text-binding-20261116-01/ on box-webhost. Explicit rollback
-with tag text-binding-20261116-01 and the current release ID restores the
-preceding Text-recovery frontend, including its old Save As/layout binding bug,
+/var/backups/webos-text-activation-20261116-01/ on box-webhost. Explicit rollback
+with tag text-activation-20261116-01 and the current release ID restores the
+preceding binding/restoration frontend, including its duplicate-open behavior,
 without restarting the backend. The browser draft schema remains compatible;
 the rollback does not erase those records or account files. The operator guards
 configuration hashes, validates Caddy, preserves file ownership/mode and checks
@@ -237,18 +266,25 @@ rollback.
 
 Private evidence, credentials, scripts, screenshots, commands and the resumable
 checkpoint are under
-/home/dflanag3/Projects/.webos-migration/text-binding-20261116-01/.
-Current reports are hosted-binding-2/result.json, hosted-recovery/result.json and
-hosted-viewer/result.json; unit.log records40 passing tests. The live baseline
-reproduced a missing Desktop binding on first Save. The first local fault run
-also broke the unrelated Files fixture; the injection now targets Text's read-
-discovery route. A hosted run terminated in Puppeteer's interception shutdown;
-the harness now keeps interception enabled and swaps awaited policies. The same
-application payload then passed all unchanged assertions locally and hosted.
-The corrected test harness and final docs are later parent commits than the
-packaged runtime parent above; no application code changed after packaging.
-All failure evidence and exact outcomes are retained. Prior recovery evidence
-remains in text-recovery-20261116-01.
+/home/dflanag3/Projects/.webos-migration/text-activation-20261116-01/.
+Current reports are hosted-activation/result.json, hosted-binding/result.json,
+hosted-recovery-2/result.json and hosted-viewer/result.json; unit-final.log records
+45 passing tests. Corresponding local reports qualify the same application
+payload (local-recovery-2 uses the corrected readiness harness). The first hosted
+recovery attempt timed out with a clean server-baseline view beside the edited
+untitled view and no console/page errors. Its typing helper had waited only for
+a window to exist; it now waits for loaded state and an editable
+CodeMirror surface before typing, then asserts the actual text. No application
+bytes or original recovery assertions changed. That failed run is retained and
+is not counted as a PASS. The live baseline reproduced the duplicate-open
+problem: Files returned
+opened where activation was required. Its failure is retained and is not a PASS.
+Child source and the packaged runtime parent are committed to verified local bare
+origins only. Final docs follow the packaged parent; no application bytes changed
+after qualification. Temporary profiles/candidate cleanup, fixture shutdown and
+preserved unrelated WIP hashes are recorded in the checkpoint. The final public
+archive and manifests remain outside Git. Prior binding/restoration evidence
+remains in text-binding-20261116-01; recovery evidence in text-recovery-20261116-01.
 Prior Files/navigation reports remain in files-navigation-20261116-01, and the
 original Desktop/Text review evidence remains in desktop-files-text-review-20261116-01.
 Earlier native-dialog evidence remains in files-upload-20261116-01. Temporary build/profile

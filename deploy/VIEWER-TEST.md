@@ -25,3 +25,21 @@ Multi-delete supports Ctrl/Meta-click, Shift-click and Space selection with a si
 The subsequent Text recovery release forwards the active CodeMirror document's dirty/pending lifecycle into the existing viewer and warns on browser refresh/navigation. Text owns account-scoped IndexedDB recovery records and serialized immutable snapshots; normal account files still use Storage. The adapter forwards lifecycle and recovery capabilities, and sign-in discovers draft records whose window layout is missing. Each live writer uses a new ID; source cleanup checks its captured generation. Recovery offers Recover draft, Discard draft or Later, remains unsaved, and requires Save As if the server revision changed or is unavailable. Drafts are browser-local, explicitly separate from confirmed account saves; browser eviction, cleared site data and edits newer than the last committed checkpoint remain outside durability guarantees. Discard cleanup happens at an approved close commit, preserving drafts when session end is cancelled. No login persistence or clean Save As layout fix is included. Eleven recovery browser checks and the15-check viewer regression pass locally and hosted;35 unit/lifecycle tests pass. The static-only rollout keeps backend/beta processes, account-instance/issuer identity, original viewer CSS/artwork and the verified WordCraft engine unchanged.
 
 The next release fixes Text's Save/Save As binding and layout restoration. Text's public metadata signal drives Desktop-owned caption, accessibility and layout updates without remounting the editor. Historical Text layouts read current server bytes, while Files-selected launches retain exact SHA checks and unsaved drafts retain their conflict protection. Missing/unavailable Text remains identified and read-only with a same-window Retry operation; the adapter exposes current state even if initial readiness rejected. Nine new binding/restoration checks, eleven recovery checks (with the old clean-SaveAs workaround removed), and fifteen viewer checks pass locally and hosted, alongside40 unit/lifecycle tests. The binding test's request-interception race was corrected without changing the application payload or removing assertions; final test/docs parent commits follow the packaged runtime parent. Existing incorrect old layouts may require reopening the saved file from Files once. Login persistence, general same-file activation and Files startup-error retry remain separate work. Rollback restores the preceding recovery frontend and its former Save As binding bug; browser draft schema and server state remain intact.
+
+The Text activation release makes repeated Files opens select the existing Text
+window by current account and full confirmed path before reading file bytes.
+Desktop restores minimized/rolled state and selects that window's workspace;
+CodeMirror retains text, selection and undo/redo. The late launch lookup prevents
+concurrent Files instances from duplicating the editor. Save As rebinds activation,
+while different paths and untitled windows stay independent. External server
+changes/removal do not replace an already-open buffer or its base revision; normal
+Save preconditions remain enforced. Closing then reopening creates a fresh
+instance. Runtime forwards optional app-owned focus; its Python protocol and the
+installed backend remain unchanged. Eleven activation, nine binding/restoration,
+eleven recovery and fifteen viewer checks pass locally and over hosted HTTPS,
+plus45 unit/lifecycle checks. Beta, original viewer CSS/reference/artwork, account
+identity and backend/beta/Caddy process identities are unchanged. Rollback uses
+the matching text-activation-20261116-01 plan and restores the previous frontend's
+duplicate-open behavior. Login persistence, Files startup-error retry and
+WordCraft multi-document activation remain separate. Existing old duplicates are
+not merged or discarded automatically.
