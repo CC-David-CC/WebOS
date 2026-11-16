@@ -9,3 +9,5 @@ No existing deployment definitions or build entrypoints consume this directory. 
 An additional26 historical isolated-host deployment helpers, including a separately retained copied journal ancestor, are organized under `isolated-hosting/`. They are inactive source references, not a runnable release. Read that directory's README and migration/ISOLATED-HOST-OPERATOR-SOURCE.md before any deliberate port. No operator ran or gained host authority.
 
 Four historical candidate builder/fetch/verifier scripts and2 historical notes are preserved under `opfs-release/`; current README restrictions apply. They are inactive references, not supported WebOS builders or deployment authority. See migration/OPFS-RELEASE-SOURCE.md.
+
+Twenty-five historical release/asset composition, launcher-template and note files are preserved under `qualified-release/`, inactive. They are not the fresh assembly deployment path. Related40 tests/namespace fixtures are parent-owned under tests/legacy-host-orchestration/qualified-release. Read migration/QUALIFIED-RELEASE-SOURCE.md before any port.

@@ -6,3 +6,5 @@ An additional41 historical isolated-host/fixture sources are preserved in `isola
 Nine additional historical OPFS candidate fixture/test/model sources are preserved under `opfs-release/`, inactive and unexecuted. Existing journal/native fixture owners were not duplicated. Read the area README and migration/OPFS-RELEASE-SOURCE.md before a deliberate port.
 
 Nine replay-cost observer/checker/driver modules and6 historical notes are preserved under `replay-cost/`, inactive and unexecuted. Current README restrictions prohibit reusing historical existing-account authorization, running broad discovery or promoting old observer/functional/performance results. Thirty corresponding raw data records remain private; see migration/REPLAY-COST-SOURCE.md.
+
+Forty historical release/asset transition tests, namespace helpers and fixtures are preserved under `qualified-release/`, inactive and unexecuted. Simulated adapters and privileged literal-installer experiments remain separately scoped. Do not run broad discovery or reuse old authorization. See migration/QUALIFIED-RELEASE-SOURCE.md.
