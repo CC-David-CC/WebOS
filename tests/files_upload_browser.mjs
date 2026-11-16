@@ -68,6 +68,11 @@ try {
     await saved(page, path.basename(dropPath)); await session.detach();
   });
   if (checks.every(c => c.status === 'PASS')) {
+    await check('A late picker cancellation cannot overwrite a completed upload result', async () => {
+      const before = await page.$eval('.webos-files-status', n => n.textContent);
+      await page.$eval('.webos-files input[type=file]', input => input.dispatchEvent(new Event('cancel', {bubbles: true})));
+      assert.equal(await page.$eval('.webos-files-status', n => n.textContent), before);
+    });
     await check('Selecting an existing name reports the conflict and preserves its bytes', async () => {
       const [chooser] = await Promise.all([page.waitForFileChooser(), button(page, 'Upload', '.webos-files ')]);
       await chooser.accept([pickerPath]);
@@ -95,6 +100,7 @@ try {
   }
   await page.screenshot({path: path.join(output, 'files-upload.png')});
   const report = {status: checks.every(c => c.status === 'PASS') && !errors.length ? 'PASS' : 'FAIL', checks, pageErrors: errors, gatewayResponses: responses,
+    payload: {bytes: bytes.length, sha256: expected, mediaDecoding: false},
     scope: 'Actual toolbar file chooser and browser-protocol external file drop; server-backed byte/hash verification. No physical OS drag or media decoding claim.'};
   await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify({status: report.status, checks: checks.map(c => ({name: c.name, status: c.status, error: c.error, visibleStatus: c.visibleStatus})), output}));
