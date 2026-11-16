@@ -1,3 +1,5 @@
+> **Current source-organization correction:** the intended Desktop/Workspace viewer is `platform/desktop/active-system/`. Its92 source/asset files are unchanged from the original source. The unsolicited replacement `platform/desktop/src/` and its replacement-only tests are removed. The former development build stops before output creation; its claims below are historical, not the current source entrypoint. This is source organization, not a parity project or deployment. See `migration/DESKTOP-SOURCE-CORRECTION.md`.
+
 # WebOS fresh rebuild — in progress
 
 Rebuild the entire independently owned suite under this parent. The original
