@@ -1,6 +1,6 @@
 # DeckCraft confirmed-save source qualification
 
-Selected fork `f0dd04e3ab7bf9a37d31a454d7f8dba5231b509a` fixes the reproduced
+Selected fork `1dc39d6e8c7a3b7ec87d92985c367e2597705fdd` fixes the reproduced
 premature-clean bug and binds asynchronous completion to its document and view.
 It stays disabled in the minimum desktop pending account/host integration.
 
@@ -26,7 +26,7 @@ pending/unknown state; these identities confer no server authority.
 
 The app's complete `cargo xtask ci` passed all8 required stages: formatting,
 PDF dependency validation, strict Clippy, workspace tests, doctests, assets,
-layering and wasm. Workspace results were 2,278 passes, zero failures and five
+layering and wasm. Workspace results were 2,282 passes, zero failures and five
 pre-existing ignored tests (three screenshot generators and two long soaks).
 No tests were newly ignored and no production lint allowance or CI relaxation
 was introduced. Native SDK preparation used a
@@ -94,6 +94,11 @@ The private browser package uses Cargo release plus matching wasm-bindgen,
 explicit bootstrap HTML and no wasm-opt; Trunk equivalence or deployment readiness
 is not claimed. A stale cached credit generator was rejected before packaging;
 its recompilation uses unchanged source and restores all committed credit rows.
+
+The selected fork also passes the [document-target qualification](DECKCRAFT-DOCUMENT-TARGETS.md):
+stale captured native targets fail at dispatch, and inspection includes real IDs
+and revisions. This precondition does not authenticate an agent or route a
+background document.
 
 ## Remaining integration
 
