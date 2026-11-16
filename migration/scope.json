@@ -3020,5 +3020,23 @@
     "microduck_selected": "bad23452a2bb5aa26f23b390883f72682a77a0f6",
     "documentation": "migration/HOST-CONTEXT-AND-MICRODUCK-SOURCE.md",
     "unresolved_supporting_dispositions_after_review": 1830
+  },
+  "historical_host_reference_inputs": {
+    "source_records": 24,
+    "review_documents": 17,
+    "config_pin_manifests": 6,
+    "browser_drivers": 1,
+    "historical_blobs": 33,
+    "retained_commits": 14,
+    "independent_restored_current_files": 24,
+    "installer_source_hashes_verified": 27,
+    "bootstrap_source_hashes_verified": 31,
+    "all_pinned_sources_at_mapped_owners": true,
+    "current_runnable_installer_or_release_qualified": false,
+    "operators_drivers_executed": 0,
+    "configuration_applied": false,
+    "component_pins_changed": 0,
+    "documentation": "migration/HOST-REFERENCE-INPUTS.md",
+    "unresolved_supporting_dispositions_after_review": 1806
   }
 }

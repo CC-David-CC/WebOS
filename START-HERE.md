@@ -45,7 +45,7 @@ and stale-write protection from a clone-built artifact. Enable it with a verifie
 `--deckcraft` site; exports, delegated agents and broader acceptance remain OPEN.
 
 Source layout is not complete runtime support. The tracked-source reconciliation
-still has 1,830 unresolved dispositions and zero unqualified blob candidates among
+still has 1,806 unresolved dispositions and zero unqualified blob candidates among
 preserved backend, scripts, tests, research and WIP. This is not a missing-file
 count. The other15 Craft apps and broader apps/games still need browser/host
 qualification; WordCraft and DeckCraft also retain explicit lifecycle, export
@@ -289,12 +289,14 @@ Phase58 retains nine original native build/design/prototype-control references w
 
 Phase59 owns seven legacy mirror cache-unit tests in Storage with locator-only assertion-preserving ports and a new explicitly pinned dev-only dependency environment. Captured, current and clean reference outcomes match:3 pass,4 fail, command exit1; no failing case is omitted or assertion weakened. This is not account synchronization or an all-green Storage claim. See [mirror reference outcomes](migration/STORAGE-MIRROR-REFERENCES.md).
 
-The [existing snapshot-reference review](migration/OWNED-SNAPSHOT-REFERENCES.md) qualifies31 already-owned references and1 private empty output channel without copying raw material or changing component pins. Unresolved supporting-source dispositions remain1,830; byte-candidate guesses are now zero.
+The [existing snapshot-reference review](migration/OWNED-SNAPSHOT-REFERENCES.md) qualifies31 already-owned references and1 private empty output channel without copying raw material or changing component pins. Unresolved supporting-source dispositions remain1,806; byte-candidate guesses are now zero.
 
-The [private terminal-reference review](migration/PRIVATE-TERMINAL-REFERENCES.md) resolves62 captured output records without copying raw data or changing runtime/component pins. Seventy-six weaker terminal-like cases from that batch remain pending; current unresolved supporting records total1,830.
+The [private terminal-reference review](migration/PRIVATE-TERMINAL-REFERENCES.md) resolves62 captured output records without copying raw data or changing runtime/component pins. Seventy-six weaker terminal-like cases from that batch remain pending; current unresolved supporting records total1,806.
 
 The [isolated-host test extraction](migration/ISOLATED-HOST-TEST-SOURCE.md) preserves41 additional unchanged sources and52 relevant commits. All51 historical Python blobs were reviewed and all41 current files restored independently. Old namespace/service/operator drivers remain inert and unexecuted; no component pin or runtime change.
 
 The [isolated-host deployment source](migration/ISOLATED-HOST-OPERATOR-SOURCE.md) preserves26 additional unchanged helpers and47 relevant commits. All28 historical Python blobs were reviewed and all26 current files restored independently. Privileged host operators remain inactive/unexecuted; configuration/input closure and public-interface ports remain OPEN. No component pin or runtime change.
 
 The [host-context and Microduck ownership review](migration/HOST-CONTEXT-AND-MICRODUCK-SOURCE.md) preserves2 exactly reviewed template/probe sources under parent deployment and1 app-specific hosting policy in Microduck. All3 remain inactive; only Microduck's source/documentation pin changes. Existing missing-fixture failures and functional gates remain OPEN.
+
+The [historical host reference inputs](migration/HOST-REFERENCE-INPUTS.md) preserve24 more records:17 review documents,6 config/pin/manifests and1 inactive browser driver. All27 installer and31 bootstrap source hashes resolve to matching independently owned bytes. This is source-input preservation, not a runnable historical installer or current acceptance. All124 pins unchanged.
