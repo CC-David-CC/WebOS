@@ -14,7 +14,7 @@
     "verified_extracted_source_owner": 122,
     "verified_retained_component_history": 20,
     "verified_private_historical_evidence_reference": 190,
-    "unresolved": 1907,
+    "unresolved": 1900,
     "verified_owned_legacy_build_design_control_reference": 9,
     "verified_retained_component_lineage": 9,
     "verified_network_policy_component_source": 11,
@@ -22,7 +22,7 @@
     "verified_component_source_prefix": 1524,
     "superseded_group_metadata_preserved_privately": 2,
     "verified_preserved_historical_output": 315,
-    "verified_existing_owned_snapshot_reference": 24,
+    "verified_existing_owned_snapshot_reference": 31,
     "verified_owned_game_design_source": 33,
     "verified_parent_legacy_case_documentation": 145,
     "verified_preserved_frozen_fixture_metadata": 34,
@@ -36,10 +36,10 @@
     "verified_owned_component_test_fixture": 1,
     "verified_owned_storage_mirror_reference_test": 7
   },
-  "unresolved": 1907,
+  "unresolved": 1900,
   "unqualifiedBlobCandidates": 0,
   "newPrivateHistoricalReferences": 190,
-  "privateLedgerSHA256": "10c995e42135bc9e9e5a030f75756c8d2f45bbcea4576c0120ee2db64dd4f8c1",
+  "privateLedgerSHA256": "14aab9d92035837db6a04ac723bc80d77865ba5b9134ce5f4b7e8ca6be3b89a8",
   "scope": "Desktop-Preview tracked-source record accounting; not a missing-file count, whole-project completion percentage, asset build or app functionality claim.",
-  "qualifiedExistingSnapshotReferences": 24
+  "qualifiedExistingSnapshotReferences": 31
 }
