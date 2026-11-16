@@ -1,4 +1,4 @@
-# ksu.codes — existing viewer and Files status
+# ksu.codes — existing viewer, Files and Text status
 
 Verified 2026-11-16: **https://ksu.codes serves the original Desktop/Workspace
 viewer** from platform/desktop/active-system/. Its CSS, reference data and
@@ -6,7 +6,32 @@ artwork remain unchanged. Account/date are at the top of the narrow dark right
 rail and APPs at the bottom. Calculator, Files, Text, WordCraft and Help are
 enabled. Other menu entries remain disabled.
 
-The latest static update removes the redundant Select multiple and Up header
+The latest static update protects unsaved **Text/CodeMirror6** documents.
+Desktop reads Text's real dirty/pending lifecycle state and warns before browser
+refresh/navigation while work is at risk. Clean Text does not trigger this warning.
+Text checkpoints local recovery drafts after250ms of inactivity and reports a
+local update only after IndexedDB commits. These are browser-local drafts, not
+confirmed account saves or cross-machine backups. Recovery is scoped to the
+same issuer/account, including untitled documents and drafts whose layout entry
+is missing. No password, account token or signing key enters a recovery record.
+
+After sign-in, Text offers Recover draft, Discard draft or Later. Recovered text
+remains unsaved. A changed/unverifiable server revision requires Save As instead
+of overwriting that file. Confirmed saves clear only their acknowledged snapshot;
+newer edits remain dirty. Discard cleanup is ordered and committed only when a
+view really closes, so cancelling session end preserves still-open drafts.
+Storage failure is visible, while the native warning and actual account Save
+continue to work. This does not guarantee recovery of edits newer than the last
+committed checkpoint, after browser storage eviction, or after clearing site data.
+
+Known remaining fixes: browser refresh still requires sign-in; clean Text
+Save/Save As path/revision/title can remain stale in Desktop's saved layout;
+same-file activation can create independent editors. These are separate work.
+The recovery test explicitly closes a confirmed clean Save As copy before
+continuing, rather than qualifying that separately recorded restoration bug.
+No editor menus, Desktop colors/geometry, login policy or backend changed.
+
+The preceding Files update removed the redundant Select multiple and Up header
 buttons. Ctrl/Meta-click, Shift-click for a range, and Space retain standard
 selection. The existing up arrow beside My files handles parent navigation.
 Its derived OpenFiles notification is handled once; known breadcrumb ancestors
@@ -48,6 +73,13 @@ The user explicitly deferred this separate investigation; its resume record is
 
 | Check | Result |
 |---|---|
+| Clean Text reload without warning; dirty Text cancelled reload retains both buffers | PASS, local and hosted |
+| Accepted reload/sign-in restores named and untitled drafts without changing account bytes | PASS |
+| Changed server revision requires Save As and preserves the server file | PASS |
+| Typing during delayed Save retains newer dirty text and its updated recovery base | PASS |
+| Explicit Discard and completed session end remove drafts; cancelled session end retains them | PASS |
+| Orphan draft recovery with missing layout; same-browser account isolation | PASS |
+| Injected recovery-storage failure remains visible; warning and verified account Save still work | PASS |
 | Ctrl-click multi-selection, one confirmation listing each item, Cancel preserves all | PASS, local and hosted |
 | Confirmed multi-delete preserves unselected files and reports acknowledged count | PASS |
 | Ctrl-click toggles, Delete key and empty folder | PASS |
@@ -74,12 +106,18 @@ The user explicitly deferred this separate investigation; its resume record is
 | Existing-tab native double-click selection | KNOWN FAILURE, including plain HTML controls |
 | Beta page, checked backend/beta/Caddy processes and account-instance/issuer continuity | PASS |
 
-The latest hosted qualification has **8 selection/deletion/navigation checks and
-8 upload checks**. The preceding release passed all 20 Files domain/helper tests
-and15 viewer checks; those suites were not rerun for this view-only correction.
-The unchanged controller's tests cover authority denial, input capture,
-directory drift, revision conflicts, partial progress, session revocation and
-unknown outcomes. Focused browser tests retain
+The latest qualification has **11 Text recovery checks and15 viewer regression
+checks locally and over hosted HTTPS**, plus35 unit/lifecycle checks. The Text
+package's normal test command also passes its10 tests. The recovery suite uses
+actual CodeMirror, IndexedDB, browser beforeunload dialogs and signed account
+files. Its isolated storage-failure context retains and asserts exactly one
+injected discovery error; unrelated errors fail. Journal tests cover immutable
+captures, ordered writes/deletion, discard races, stale-source preservation and
+invalidated writers. The preceding Files release passed8 selection/deletion/
+navigation checks and8 upload checks; those focused suites were not repeated
+for Text recovery. Their unchanged controller tests remain in the35-test run,
+and the viewer regression exercises actual Files uploads and document opening.
+Focused browser tests retain
 all console errors. The upload collision expects HTTP409; deletion tests allow
 exactly one deliberate revision-conflict HTTP409 and one nonempty-folder
 HTTP403 after verifying the corresponding behavior. Extra/unrelated refusals,
@@ -101,29 +139,30 @@ retained; it is not counted as a successful run.
 
 | Item | Selected identity |
 |---|---|
-| Packaged parent source | fef2c0ec8e15e5c69733b6212fb4badec7a764bb |
+| Packaged parent source | e8ec1e444d3b659103a1e8d70da211b1070e98b0 |
 | Files | 7a0dd487953b2ec639e691581684c3578787a395 |
-| Desktop | 95c7ae3ee265105758caad0ac441268a4304c3a5 |
+| Text | 4548494f7a143e3905ddd4c5ff771fb225c155c7 |
+| Desktop | 86f1b97080f9b660d9623e2237065b1810b39877 |
 | Runtime | c1ce8c592e0a2c33decbb4ec86af7d4ed9f28c66 |
 | Storage | fc937993f567cbaa9ac280ded1fa8f45ca922599 |
 | Retained Accounts Python | c53a2f64b287b1f59bd90cdcd355766c5d713e63 |
 | WordCraft bridge | a41d6f9286458a5b460b02fd2f65f2110b969d1c |
 | Retained WordCraft engine source | 0d48f9a1bd5a2bb88d8431760a14b0ba55161563 |
-| Public release ID | d22faf9208f12f8e0f437359876b5cb5c574b831616a39e9bd1f5e4e4d1c0de0 |
-| Archive SHA-256 | b98647e1dfbdb6a6c5f92cc3ec754a9eb1b540d88b7ce5a51c16c56f9a5d5f30 |
+| Public release ID | fdefcf8fd407066577426d097509d1973d0e5a02a5949308b6eb4f3d79c9f34d |
+| Archive SHA-256 | ade1d6cf156d79bb7d667bd846a8a19f0d016463406392c61c110f1d63008f04 |
 
 The release contains 244 public files including its manifest, totaling
-96,851,292 bytes. Its archive is 27,433,944 bytes. All source inputs and packaged
-payloads were hash-verified; 96 JS packages have notices. Only Files bundles and
-composition/build manifests changed from the original-viewer release; the
-viewer artwork/CSS and WordCraft graph remain identical. The engine is a
+96,893,852 bytes. Its archive is 27,441,169 bytes. All source inputs and packaged
+payloads were hash-verified; 96 JS packages have notices. Text, Desktop lifecycle
+wiring and shared composition/bundles changed. Viewer artwork/CSS and the
+WordCraft engine payload remain identical. The engine is a
 verified existing input, not a newly compiled Rust engine from the newer bridge
 revision. No compiler output or private account state is committed.
 
 The backend remains the existing service/code from the first original-viewer
 release. Its retained Accounts Python was verified against installed source;
 the newer delegation-policy implementation was not deployed. No backend restart
-or account-state migration was performed by the Files updates.
+or account-state migration was performed by the Files/Text updates.
 
 ## Limits and operation
 
@@ -138,12 +177,12 @@ or account-state migration was performed by the Files updates.
 
 Uploads and downloads share the daily allowance, including failed/cancelled
 reservations that survive restart. Static app/WASM downloads are separate.
-These Files changes do not alter the limits. Account files remain in the
+These Files/Text changes do not alter the limits. Account files remain in the
 existing private account-state/account-files area, separate from source and
 public releases.
 
 The current public root on box-webhost is
-/srv/data/webos-viewer-releases/d22faf9208f12f8e0f437359876b5cb5c574b831616a39e9bd1f5e4e4d1c0de0/public.
+/srv/data/webos-viewer-releases/fdefcf8fd407066577426d097509d1973d0e5a02a5949308b6eb4f3d79c9f34d/public.
 The backend retains loopback port 38141, its existing Python environment and
 /home/dflanag3/webos-rebuild-test/private/account-state. Caddy reloads changed
 only the ksu.codes static root; beta routing, services and data were not changed.
@@ -152,9 +191,12 @@ or old host-release cleanup occurred.
 
 The current static-only operator is deploy/viewer_static_operator.py. Its
 matching root-only rollback plan is
-/var/backups/webos-files-navigation-20261116-01/ on box-webhost. Explicit rollback
-with tag files-navigation-20261116-01 and the current release ID restores the
-previous multi-delete frontend with its header buttons, without restarting the backend. It guards
+/var/backups/webos-text-recovery-20261116-01/ on box-webhost. Explicit rollback
+with tag text-recovery-20261116-01 and the current release ID restores the
+preceding Files/navigation frontend, without restarting the backend. Browser
+draft records are retained, but that older frontend cannot offer recovery; save
+or recover open drafts before an intentional rollback. Restoring the new code
+can discover retained orphan drafts again. The operator guards
 configuration hashes, validates Caddy, preserves file ownership/mode and checks
 process/account continuity. Do not replay init/stage/prepare over existing
 paths. The preceding Files update plans use different tags and releases.
@@ -167,14 +209,15 @@ rollback.
 
 Private evidence, credentials, scripts, screenshots, commands and the resumable
 checkpoint are under
-/home/dflanag3/Projects/.webos-migration/files-navigation-20261116-01/.
-Current reports are hosted-delete/result.json and hosted-upload/result.json.
-The initial local failure exposed parent-arrow handling and automated repeated
-Ctrl-clicks inside Chonky's double-click window. The handler was corrected and
-the single-click gestures separated; the original assertions remain, with a
-new explicit arrow/navigation check. Prior domain/viewer reports remain in the
-files-multidelete-20261116-01 audit. Earlier native-dialog evidence remains in
-the files-upload-20261116-01 audit. Temporary build/profile
+/home/dflanag3/Projects/.webos-migration/text-recovery-20261116-01/.
+Current reports are hosted-recovery/result.json and hosted-viewer/result.json;
+unit-final.log records35 passing tests. The initial local recovery fixture
+typed onto its default Save As filename, then a later fixture hit the known
+clean Save As layout bug. Both failures remain with their actual outcomes;
+the fixture was corrected without removing assertions or claiming fix#2.
+Prior Files/navigation reports remain in files-navigation-20261116-01, and the
+original Desktop/Text review evidence remains in desktop-files-text-review-20261116-01.
+Earlier native-dialog evidence remains in files-upload-20261116-01. Temporary build/profile
 cleanup and preserved unrelated WIP hashes are recorded in the new checkpoint.
 The final archive and manifests remain outside Git. The [complete source matrix](../migration/APP-MATRIX.md)
 remains the inventory of the broader, separately integrated app suite.
