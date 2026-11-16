@@ -1,0 +1,22 @@
+if ((await cad.newProject()).status !== 'opened') throw Error('New cancelled.');
+const features = await cad.execute('inspect-worker-features');
+const enclosure = await cad.execute('create-worker-enclosure', {
+  revision: features.revision, version: 2, unit: 'millimeter',
+  width: 100, length: 70, height: 30, wall: 2, clearance: 0.3,
+  lidThickness: 2, lipDepth: 3, labelWidth: 40, labelLength: 20, labelDepth: 1
+});
+const materials = await cad.execute('inspect-enclosure-materials');
+if (!materials.featureIds.includes(enclosure.featureId)) throw Error('Missing enclosure target.');
+await cad.execute('assign-enclosure-materials', {
+  revision: materials.revision, featureId: enclosure.featureId,
+  roles: {
+    BODY: {material: {id: 'pla', name: 'PLA'},
+      appearance: {id: 'body-blue', name: 'Blue', color: '#3366cc'}},
+    LID: {material: {id: 'pla', name: 'PLA'},
+      appearance: {id: 'lid-blue', name: 'Blue', color: '#3366cc'}},
+    LABEL: {material: {id: 'tpu', name: 'TPU'},
+      appearance: {id: 'label-white', name: 'White', color: '#ffffff'}}
+  }
+});
+await cad.save('/Agent-enclosure.jsketcher.json');
+await cad.exportCore3mf('/Agent-enclosure.3mf');
