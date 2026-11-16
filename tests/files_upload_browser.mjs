@@ -17,7 +17,7 @@ for (let i = 0; i < bytes.length; i++) bytes[i] = (i * 31 + Math.floor(i / 65536
 const expected = createHash('sha256').update(bytes).digest('hex');
 const pickerPath = path.join(output, 'picker 4 MiB.mp4'), dropPath = path.join(output, 'drop 4 MiB.mp4');
 await writeFile(pickerPath, bytes); await writeFile(dropPath, bytes);
-const checks = [], errors = [], responses = [];
+const checks = [], errors = [], consoleErrors = [], responses = [];
 let browser, page;
 async function button(p, name, scope = '') {
   for (const handle of await p.$$(scope + 'button')) {
@@ -55,6 +55,7 @@ try {
     args: ['--disable-dev-shm-usage'], userDataDir: path.join(output, 'browser-profile')});
   page = await browser.newPage(); await page.setViewport({width: 1440, height: 1000}); page.setDefaultTimeout(10000);
   page.on('pageerror', error => errors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
   page.on('response', response => { const pathname = new URL(response.url()).pathname; if (pathname.startsWith('/gateway/')) responses.push({path: pathname, status: response.status()}); });
   await login(page, true);
   await check('Upload button opens native picker and saves a 4 MiB binary file with exact bytes', async () => {
@@ -97,9 +98,27 @@ try {
       const context = await browser.createBrowserContext(), other = await context.newPage(); other.setDefaultTimeout(15000);
       await login(other, false); await saved(other, path.basename(pickerPath)); await saved(other, path.basename(dropPath)); await context.close();
     });
+    await check('The My files breadcrumb returns from Documents to the account root', async () => {
+      const navigate = directory => page.evaluate(async directory => {
+        const view = [...document.querySelectorAll('.window')].find(n => n.querySelector('.webos-files')).appView;
+        await view.execute('list', {path: directory});
+      }, directory);
+      try {
+        await navigate('Documents');
+        await page.waitForFunction(() => [...document.querySelectorAll('.webos-files-browser button')].some(n => n.textContent.trim() === 'My files' && !n.disabled));
+        await button(page, 'My files', '.webos-files-browser ');
+        await page.waitForFunction(async () => {
+          const view = [...document.querySelectorAll('.window')].find(n => n.querySelector('.webos-files')).appView;
+          const state = await view.inspect(); return state.directory === '' && !state.busy;
+        });
+      } finally { await navigate(''); }
+    });
   }
   await page.screenshot({path: path.join(output, 'files-upload.png')});
-  const report = {status: checks.every(c => c.status === 'PASS') && !errors.length ? 'PASS' : 'FAIL', checks, pageErrors: errors, gatewayResponses: responses,
+  // The deliberate duplicate-name test returns HTTP409; retain its console
+  // message without classifying an expected domain refusal as a UI failure.
+  const unexpectedConsoleErrors = consoleErrors.filter(text => !text.includes('the server responded with a status of 409'));
+  const report = {status: checks.every(c => c.status === 'PASS') && !errors.length && !unexpectedConsoleErrors.length ? 'PASS' : 'FAIL', checks, pageErrors: errors, consoleErrors, unexpectedConsoleErrors, gatewayResponses: responses,
     payload: {bytes: bytes.length, sha256: expected, mediaDecoding: false},
     scope: 'Actual toolbar file chooser and browser-protocol external file drop; server-backed byte/hash verification. No physical OS drag or media decoding claim.'};
   await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n');
