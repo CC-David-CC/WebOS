@@ -14,11 +14,11 @@
     "verified_extracted_source_owner": 122,
     "verified_retained_component_history": 20,
     "verified_private_historical_evidence_reference": 190,
-    "unresolved": 1859,
+    "unresolved": 1833,
     "verified_owned_legacy_build_design_control_reference": 9,
     "verified_retained_component_lineage": 9,
     "verified_network_policy_component_source": 11,
-    "verified_parent_legacy_operator_source": 1504,
+    "verified_parent_legacy_operator_source": 1530,
     "verified_component_source_prefix": 1524,
     "superseded_group_metadata_preserved_privately": 2,
     "verified_preserved_historical_output": 315,
@@ -36,10 +36,10 @@
     "verified_owned_component_test_fixture": 1,
     "verified_owned_storage_mirror_reference_test": 7
   },
-  "unresolved": 1859,
+  "unresolved": 1833,
   "unqualifiedBlobCandidates": 0,
   "newPrivateHistoricalReferences": 190,
-  "privateLedgerSHA256": "d307e6d3cd100a4a70ef15b7355dddb721f3635973b2c02c2160d12d95458b07",
+  "privateLedgerSHA256": "9dd8dd955efcf47466a434184794682d99a28807ecc6e880028bcc871603987b",
   "scope": "Desktop-Preview tracked-source record accounting; not a missing-file count, whole-project completion percentage, asset build or app functionality claim.",
   "qualifiedExistingSnapshotReferences": 31
 }

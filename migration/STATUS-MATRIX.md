@@ -200,7 +200,7 @@ Hosted Rooms is unused historical code, not a new service.
 ## Remaining organization and build work
 
 The124-row chart does not close original-source reconciliation. The tracked-source
-ledger now has 1,859 unresolved entries plus zero unqualified blob candidates, after
+ledger now has 1,833 unresolved entries plus zero unqualified blob candidates, after
 23 planned-game/metadata dispositions,16 Accounts/Storage history retentions and
 10 Browser backend/test,16 optional guest backend/test and1 identity-test extractions,
 plus4 identity-core history retentions,13 rendezvous and33 publication source/test/metadata
@@ -286,8 +286,10 @@ Phase58 retains nine original native build/design/prototype-control references w
 
 Phase59 owns seven legacy mirror cache-unit tests in Storage with locator-only assertion-preserving ports and a new explicitly pinned dev-only dependency environment. Captured, current and clean reference outcomes match:3 pass,4 fail, command exit1; no failing case is omitted or assertion weakened. This is not account synchronization or an all-green Storage claim. See [mirror reference outcomes](STORAGE-MIRROR-REFERENCES.md).
 
-The [existing snapshot-reference review](OWNED-SNAPSHOT-REFERENCES.md) qualifies31 already-owned references and1 private empty output channel without copying raw material or changing component pins. Unresolved supporting-source dispositions remain1,859; byte-candidate guesses are now zero.
+The [existing snapshot-reference review](OWNED-SNAPSHOT-REFERENCES.md) qualifies31 already-owned references and1 private empty output channel without copying raw material or changing component pins. Unresolved supporting-source dispositions remain1,833; byte-candidate guesses are now zero.
 
-The [private terminal-reference review](PRIVATE-TERMINAL-REFERENCES.md) resolves62 captured output records without copying raw data or changing runtime/component pins. Seventy-six weaker terminal-like cases from that batch remain pending; current unresolved supporting records total1,859.
+The [private terminal-reference review](PRIVATE-TERMINAL-REFERENCES.md) resolves62 captured output records without copying raw data or changing runtime/component pins. Seventy-six weaker terminal-like cases from that batch remain pending; current unresolved supporting records total1,833.
 
 The [isolated-host test extraction](ISOLATED-HOST-TEST-SOURCE.md) preserves41 additional unchanged sources and52 relevant commits. All51 historical Python blobs were reviewed and all41 current files restored independently. Old namespace/service/operator drivers remain inert and unexecuted; no component pin or runtime change.
+
+The [isolated-host deployment source](ISOLATED-HOST-OPERATOR-SOURCE.md) preserves26 additional unchanged helpers and47 relevant commits. All28 historical Python blobs were reviewed and all26 current files restored independently. Privileged host operators remain inactive/unexecuted; configuration/input closure and public-interface ports remain OPEN. No component pin or runtime change.
