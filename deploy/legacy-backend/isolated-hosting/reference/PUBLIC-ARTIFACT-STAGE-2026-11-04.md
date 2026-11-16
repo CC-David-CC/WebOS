@@ -1,0 +1,14 @@
+# Public Files beta artifact staging — 2026-11-04
+
+The two public candidate trees below were staged on box-webhost by explicit user instruction. No accounts, keys, private runtime/configuration, services, units, routes, floor or activation were changed. This is staging only, not permission to infer that the v2 desktop is active. The lead must independently verify the published trees and run the existing guarded plan before considering the managed transaction.
+
+| Source | Published path | Manifest SHA-256 | Complete payload inventory | Apparent / allocated bytes on destination |
+| --- | --- | --- | --- | --- |
+| R730 `/mnt/data10tb/codi-beta-opfs-release-6db06c6c3/candidate-3ad04c48.tar.gz`, archive SHA-256 `93a5c701eec04c473779f6b981d87920c17958ed1d00c93c87a1924d88af7974` | `/srv/data/codi-beta-opfs/3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc` | `3ad04c48e60caa559e7b4c56ff624b50a23c093f0dacbc339ca8df147fd009bc` | 87 files plus manifest | 7,874,932 / 8,445,952 |
+| R730 `/mnt/data10tb/codi-beta-issuer-opfs-853c-sealed` | `/srv/data/codi-beta-native/853c12e581c9f89fc3d78507f43941dd16cd0b4b894b28cdb8317e8a58340f21` | `853c12e581c9f89fc3d78507f43941dd16cd0b4b894b28cdb8317e8a58340f21` | 519 files plus manifest | 120,095,131 / 121,819,136 |
+
+Before transfer, source archive, source manifest and every source payload were verified, rejecting unexpected members, links and mismatches. The exact archive hash was rechecked on webhost before extraction. Both unpublished trees were made root-owned and non-group/other-writable; each entry was checked for symlinks, special files, hard links and extended ACLs. The existing protected `beta_files_preflight.py` SHA-256 `4f9bdcd5d47f6d2e0bf02c80bdb181dd36c62ce7b2046cb0bc0d960fa7cd05ff` verified both complete staged trees and trusted ancestor custody.
+
+Under the existing exclusive nonblocking hosting flock, each file and directory was fsynced and each tree was published with `renameat2(RENAME_NOREPLACE)`, followed by a parent-directory fsync and a second protected full-inventory check. Existing destinations were absent at preflight; none were overwritten. The two root-created public staging parent directories remain because they are the intended artifact roots. Only the temporary archive and its empty staging directory created for this transfer were removed.
+
+Post-publication: root/account volume available `7,301,480,448` bytes; separate `/srv/data` available `318,311,948,288` bytes. The mandatory 5 GiB account floor is unchanged. Beta issuer/frontend/gateway and Caddy remained active; main `/`, `/desktop/` and beta `/` returned HTTP 200; the v2 floor was absent. These simple checks do not establish signed login, capacity for concurrent large files, or readiness of the planned transition. No guarded plan/apply or service activation was run.
