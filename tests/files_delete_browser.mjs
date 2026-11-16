@@ -87,13 +87,14 @@ try {
       assert.deepEqual(await names(), ['keep.txt']);
       assert.match(await page.$eval('.webos-files-status', n => n.textContent), /Deleted 2 items/);
     });
-    await check('Select multiple toggles ordinary clicks; Delete key confirms files and an empty folder', async () => {
+    await check('Ctrl-click toggles selection; Delete key confirms files and an empty folder', async () => {
       await seed('toggle-test', ['a.txt', 'b.txt', 'keep.txt']); await run(page, 'mkdir', {name: 'empty'});
-      await button(page, 'Select multiple', '.webos-files ');
-      await clickItem('toggle-test/a.txt'); await clickItem('toggle-test/b.txt'); await clickItem('toggle-test/empty');
+      await clickItem('toggle-test/a.txt'); await clickItem('toggle-test/b.txt', 'Control'); await clickItem('toggle-test/empty', 'Control');
       // Toggling a selected row twice preserves the other selected rows.
-      await clickItem('toggle-test/b.txt'); await clickItem('toggle-test/b.txt'); await deletion(3, 'keyboard'); await confirm();
-      assert.deepEqual(await names(), ['keep.txt']); await button(page, 'Done selecting', '.webos-files ');
+      // Separate successive clicks on the same row from a double-click/open.
+      await new Promise(resolve => setTimeout(resolve, 600)); await clickItem('toggle-test/b.txt', 'Control');
+      await new Promise(resolve => setTimeout(resolve, 600)); await clickItem('toggle-test/b.txt', 'Control'); await deletion(3, 'keyboard'); await confirm();
+      assert.deepEqual(await names(), ['keep.txt']);
     });
     await check('Shift-click selects a contiguous range without deleting the following file', async () => {
       await seed('shift-test', ['a.txt', 'b.txt', 'c.txt', 'keep.txt']);
@@ -121,6 +122,22 @@ try {
       assert.match(await page.$eval('.webos-files-status', n => n.textContent), /Confirmed deletion of 0 of 2/);
       await run(page, 'list', {path: 'folder-test/not-empty'}); assert.deepEqual(await names(), ['child.txt']);
     });
+    await check('Header omits redundant controls; existing breadcrumb arrow navigates up and is disabled at root', async () => {
+      assert.deepEqual(await page.$$eval('.webos-files-bar button', nodes => nodes.map(n => n.textContent.trim())), ['Refresh']);
+      await run(page, 'list', {path: 'folder-test/not-empty'});
+      const arrow = await page.$('.webos-files-browser button'); assert(arrow);
+      assert.equal(await arrow.evaluate(n => n.disabled), false); await arrow.click();
+      await page.waitForFunction(async () => {
+        const view = [...document.querySelectorAll('.window')].find(n => n.querySelector('.webos-files')).appView;
+        return (await view.inspect()).directory === 'folder-test';
+      });
+      await (await page.$('.webos-files-browser button')).click();
+      await page.waitForFunction(async () => {
+        const view = [...document.querySelectorAll('.window')].find(n => n.querySelector('.webos-files')).appView;
+        return (await view.inspect()).directory === '';
+      });
+      assert.equal(await page.$eval('.webos-files-browser button', n => n.disabled), true);
+    });
     await check('Reload and a fresh signed-in browser agree on surviving account files', async () => {
       await page.reload({waitUntil: 'networkidle0'});
       await page.waitForSelector('.login-gate');
@@ -137,14 +154,14 @@ try {
   // Exactly one conflict and one nonempty-folder refusal are deliberate.
   // Keep their console messages; extra or unrelated refusals still fail.
   const expected = new Map();
-  if (checks[4]?.status === 'PASS') expected.set(409, 1);
-  if (checks[5]?.status === 'PASS') expected.set(403, 1);
+  if (checks.find(c => c.name.startsWith('Revision change'))?.status === 'PASS') expected.set(409, 1);
+  if (checks.find(c => c.name.startsWith('Nonempty folder'))?.status === 'PASS') expected.set(403, 1);
   const unexpectedConsoleErrors = consoleErrors.filter(text => {
     const code = Number(text.match(/the server responded with a status of (\d+)/)?.[1]);
     if (!(expected.get(code) > 0)) return true;
     expected.set(code, expected.get(code) - 1); return false;
   });
-  const report = {status: checks.length === 7 && checks.every(c => c.status === 'PASS') && !errors.length && !unexpectedConsoleErrors.length ? 'PASS' : 'FAIL', checks, pageErrors: errors, consoleErrors, unexpectedConsoleErrors,
+  const report = {status: checks.length === 8 && checks.every(c => c.status === 'PASS') && !errors.length && !unexpectedConsoleErrors.length ? 'PASS' : 'FAIL', checks, pageErrors: errors, consoleErrors, unexpectedConsoleErrors,
     scope: 'Actual pointer/keyboard selection and confirmation UI over real signed account storage, including a second browser revision conflict. Disposable test account only.'};
   await writeFile(path.join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n'); console.log(JSON.stringify({...report, output}));
   assert.equal(report.status, 'PASS');
