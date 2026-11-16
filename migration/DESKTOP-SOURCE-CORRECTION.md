@@ -1,5 +1,7 @@
 # Existing Desktop/Workspace viewer source
 
+Historical source-correction record. Subsequent user authorization to run ksu.codes with this viewer permits the separate wiring changes documented in [VIEWER-TEST.md](../deploy/VIEWER-TEST.md). Its stylesheet/reference/artwork remain unchanged; the original baseline's 92-file equality is not a claim that later bootstrap/account integration made no source changes.
+
 User decision: the existing viewer shown at beta.ksu.codes is the intended desktop component. It needed organization into its independent source silo, not a rewrite. The replacement was unsolicited and is not retained as an alternate source implementation.
 
 `platform/desktop/active-system/` owns the existing app.js, desktop-apps.js, reference.js, bootstrap.js, index.html, style.css and visual assets. All92 files were compared byte-for-byte with the original Desktop-Preview source before and after correction. No original viewer code or assets were modified or recopied.

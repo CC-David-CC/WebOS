@@ -95,7 +95,7 @@ def markdown(reviewed, rows):
     counts = Counter(row['category'] for row in rows)
     lines = ['# WebOS source and application matrix', '',
              'All locations are relative to `/path/to/webos/`. Each row is one independent Git repository selected by the parent. **124 source owners: 85 app repositories and 39 supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template; it is not 85 finished apps.', '',
-             'The original Desktop/Workspace viewer is `platform/desktop/active-system/`. Its 92 files match the captured original. The unsolicited replacement is removed. These are source locations and production starting points; no website was changed by this correction/report.', '',
+             'The original Desktop/Workspace viewer is `platform/desktop/active-system/`. All 92 files matched the captured original at source correction. Later authorized test-site integration changes bootstrap/account/app wiring; CSS, reference data and artwork remain unchanged. The unsolicited replacement is removed. See deploy/VIEWER-TEST.md for the scoped running composition; this inventory is not an all-app deployment claim.', '',
              'Priority measures contribution to a functional personal WebOS, not popularity. These are reviewed planning priorities, not a dependency resolver. A specialized app still needs its own lower-priority engine. Categories describe ownership and purpose; the interfaces column separately describes human use, browser work, server authority and cross-app/file interaction.', '',
              '| Priority | Meaning |', '|---|---|']
     lines += ['| P' + key + ' | ' + value + ' |' for key, value in reviewed['priorities'].items()]

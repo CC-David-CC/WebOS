@@ -1,5 +1,7 @@
 # Source organization checkpoint — 2026-11-16
 
+This checkpoint precedes the separately authorized [existing-viewer test integration](../deploy/VIEWER-TEST.md). Its source-organization results remain historical; current integration changes and hosted verification are recorded separately.
+
 The source layout and category/importance matrix are ready for further development in this directory. This checkpoint does not certify that every application can already be produced or that the corrected viewer is assembled into a running website.
 
 | Check | Result | Evidence / limit |

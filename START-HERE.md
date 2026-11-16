@@ -1,5 +1,7 @@
 # WebOS — organized source for future development
 
+Current authorized phase (2026-11-16): bring ksu.codes up with the existing viewer and 8/account, 16/service simultaneous file transfers. The original source-organization deliverable is complete. The [viewer test composition](deploy/VIEWER-TEST.md) records the separate functional integration, source pins, scoped apps and verified local checks. Beta remains separate. Check the private rollout checkpoint for final hosted activation status; earlier replacement-shell results are historical.
+
 Work from the files in this project. The deliverable is a coherent source tree with independent owners, usable source/build entries, required inputs identified and clear remaining production gaps. It is not a full beta clone, a parity project, an interface redesign or an automatic deployment. Beta stays live separately.
 
 ## Where things belong
@@ -24,7 +26,7 @@ The [full app/component matrix](migration/APP-MATRIX.md) lists every component b
 
 The intended existing viewer is [platform/desktop/active-system/](platform/desktop/active-system/), with classic-script entry index.html, bootstrap.js, app.js, desktop-apps.js, reference.js and style.css. All92 source/assets matched the original during correction. Its code has not been rewritten.
 
-The rejected replacement src/ viewer/controller/styles and associated tests were removed. The old parent frontend.mjs/build_development.mjs and browser harnesses that depended on that replacement have also been removed. Do not restore them as the source baseline. Future composition of the existing viewer's separately owned Runtime, Terminal, engine, account and application dependencies is development work, not a reason to invent another desktop.
+The rejected replacement src/ viewer/controller/styles and associated tests were removed. The old parent frontend.mjs/build_development.mjs and its browser harnesses remain removed. The separately authorized test composition now uses scripts/build_viewer.mjs and public account/app services with the existing viewer. Only bootstrap.js, app.js and desktop-apps.js receive integration changes; CSS, reference data and artwork remain unchanged. Five app entries are enabled; broad suite integration remains separate.
 
 ## Craft branches
 
