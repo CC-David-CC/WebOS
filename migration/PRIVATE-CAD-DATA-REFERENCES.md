@@ -28,7 +28,8 @@ workspace. The recovery remains on this laptop, not a proven off-machine backup.
 | STEP containers | 24 |
 | DXF capture (format use unqualified) | 1 |
 | PNG captures | 12 |
-| Historical hash references | 3 |
+| Historical hash references | 2 |
+| Checksum verification transcript | 1 |
 
 All626 current records match the scoped original index/working bytes and private
 recovery, including Git executable mode and original/recovery filesystem
@@ -42,7 +43,10 @@ bodies privately. 3MF ZIP containers and required model/content-type entries,
 STEP and PNG signatures were checked without rendering or decoding geometry.
 The DXF's geometry/format acceptance remains explicitly unqualified. Text channels
 were hashed without a publication/privacy clearance claim. Historical hash values
-are references, never silently promoted to current runtime pins. All prior
+are references, never silently promoted to current runtime pins. One `.sha256`
+capture is a mixed verification transcript plus digest entries, not a pure hash
+list or a current successful verification. Text channels pass bounded UTF-8/NUL
+checks; that is not privacy clearance. All prior
 versions and aliases remain in unmodified private recovery; historical body
 formats were not universally requalified by this current-capture review.
 

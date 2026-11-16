@@ -3071,7 +3071,8 @@
       "step-container-capture": 24,
       "dxf-capture-format-unqualified": 1,
       "image-capture": 12,
-      "captured-hash-reference": 3
+      "captured-hash-reference": 2,
+      "captured-checksum-verification-transcript": 1
     },
     "independent_representative_restores": 12,
     "persistent_raw_copies_created": 0,
@@ -3082,6 +3083,7 @@
     "legacy_code_or_geometry_executed": false,
     "component_pins_changed": 0,
     "documentation": "migration/PRIVATE-CAD-DATA-REFERENCES.md",
-    "unresolved_supporting_dispositions_after_review": 1165
+    "unresolved_supporting_dispositions_after_review": 1165,
+    "checksum_transcript_distinguished": true
   }
 }
