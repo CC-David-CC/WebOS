@@ -153,6 +153,15 @@ Record each gate separately:
 6. Visual inspection of actual screenshots; a build is not a fidelity test.
 7. Separately authorized scoped hosted checks, exact release and rollback record.
 
+Choose regression scope from the changed code and contracts. Shared Desktop,
+Runtime, Accounts or Storage changes require checks of the apps that use those
+boundaries, including Text recovery when lifecycle/journal behavior changes.
+App-local changes need that app's meaningful tests and affected integrations;
+do not repeat unrelated viewer/Files/Calculator checks without an impact or an
+unresolved concern. Documentation-only changes require no browser retest or
+native rebuild. Reuse current evidence for unchanged source; after an execution
+failure rerun only the affected suite when the other receipts remain valid.
+
 Fresh browser contexts demonstrate server-backed retrieval, not a physical
 second-machine test or all-format parity. Do not reuse an old WASM payload or old
 PASS count to qualify a changed native protocol. Local bare Git copies preserve
