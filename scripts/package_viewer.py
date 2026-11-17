@@ -88,6 +88,8 @@ def main():
     (site / 'notices/js-packages.json').write_text(json.dumps(notices, indent=2) + '\n')
     components = {owner.as_posix(): git(ROOT / owner, 'rev-parse', 'HEAD').decode().strip() for owner in sorted(owners)}
     components['apps/wordcraft'] = git(ROOT / 'apps/wordcraft', 'rev-parse', 'HEAD').decode().strip()
+    if 'pdfcraftEngine' in build:
+        components['apps/pdfcraft'] = git(ROOT / 'apps/pdfcraft', 'rev-parse', 'HEAD').decode().strip()
     records = []
     for file in sorted(site.rglob('*')):
         assert not file.is_symlink()
@@ -97,9 +99,12 @@ def main():
         assert not any(part.startswith('.') or part in ('node_modules', 'target', '__pycache__') for part in relative.parts)
         data = file.read_bytes()
         records.append({'path': relative.as_posix(), 'bytes': len(data), 'sha256': digest(data)})
-    assert sum(row['bytes'] for row in records) < 200 * 1024 * 1024, 'Unexpected release growth'
+    # WordCraft + PdfCraft's development app/worker/model graph measures about211MiB.
+    assert sum(row['bytes'] for row in records) < 256 * 1024 * 1024, 'Unexpected release growth'
     receipt = {'schema': 'webos-existing-viewer-release/1', 'parentCommit': git(ROOT, 'rev-parse', 'HEAD').decode().strip(),
-               'components': components, 'engine': build['engine'], 'apps': build['apps'], 'files': records,
+               'components': components, 'engine': build['engine'],
+               **({'pdfcraftEngine': build['pdfcraftEngine']} if 'pdfcraftEngine' in build else {}),
+               'apps': build['apps'], 'files': records,
                'backend': 'Existing ksu.codes service and account state retained; deployment report records running backend pins and concurrency configuration',
                'npmLockSHA256': digest((ROOT / 'package-lock.json').read_bytes())}
     data = (json.dumps(receipt, indent=2) + '\n').encode()

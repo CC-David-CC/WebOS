@@ -10,6 +10,7 @@
     "platform/desktop",
     "apps/files",
     "apps/wordcraft/webos",
+    "apps/pdfcraft/webos",
     "apps/deckcraft/webos",
     "apps/calculator",
     "apps/help",

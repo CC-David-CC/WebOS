@@ -1,14 +1,74 @@
 # Integrating a Craft application into WebOS
 
-Status: WordCraft Design/fonts/account defaults are deployed to ksu.codes.
-All nine native stages, 36 WordCraft JavaScript regressions and 20 focused actual
-browser checks each locally and hosted pass. Actual native and viewer images were
-inspected. See [the current focused report](../deploy/WORDCRAFT-DESIGN-DEFAULTS.md)
-for exact source, artifact, rollback and limits.
+Current qualification (2026-11-17): WordCraft's document integration, Design/fonts/
+account defaults, print/output and Save As Browse follow-ups are deployed to
+ksu.codes. The latest selected WordCraft source is
+`edeb4a090cd301cd7d4405e20af795007b37b69b`; the Save As release passed all nine
+native stages (5,005 test executions; eight pre-existing ignored), 38 JavaScript
+regressions and 56 actual-browser checks each locally and hosted, plus checks of
+all 13 export files. See [the current focused report](../deploy/WORDCRAFT-SAVEAS.md)
+for exact artifact, rollback and remaining export naming/identity limitations.
 The [running integration log](CRAFT-INTEGRATION-LOG.md) records changes and
 historical failures. The [document integration report](../deploy/WORDCRAFT-DOCUMENTS.md)
 records the historical document-integration milestone. This guide does
 not grant another application WordCraft's results or authorize deployment.
+
+PdfCraft local integration qualification passes:22 actual-browser checks plus54
+affected-app regressions. Native core suites, scoped checks and the complete
+browser app/worker/model graph pass. The accepted maintained source is
+`34c5920fe22937784bc16282852fc99a6926ca6c`; its compiled browser source is
+`670f257268545f585f8104928357cea33961e3bb` (README-only difference). Deployment and
+hosted acceptance remain pending; see [the PdfCraft report](../deploy/PDFCRAFT.md).
+
+## PdfCraft: applying the document contract
+
+The existing synchronous mount, explicit ready/failure/disposal, account Storage,
+Desktop resource activation, conditional writes, pause leases and account-scoped
+Runtime journal are the same public boundaries used for WordCraft. PdfCraft owns
+its integration entrypoint in `apps/pdfcraft/webos/`; its PDF model stays in Rust.
+It uses the existing shared `craft-web-host` save context rather than introducing
+another account service, file API or JavaScript document model.
+
+The app-specific work differs from WordCraft:
+
+| Boundary | PdfCraft requirement and current implementation | Qualification |
+|---|---|---|
+| Save confirmation | Capture an opaque native prepared save. Sending a message is not persistence. A confirmed write adopts its account path; newer model edits and typed drafts remain unsaved. Foreign, reloaded and obsolete saved-base tokens are rejected. | Native and local browser delayed/failed/conflicting/cancelled/unknown-save checks pass. |
+| PDF fidelity | Keep incremental revisions for ordinary edits. Preserve the existing deliberate full rewrite for page deletion, redaction and security changes. Rebase matching undo states without replacing newer work. | Native incremental/rewrite regressions, actual browser reopening and native CLI text/render checks pass. |
+| Recovery | Snapshot the native PDF and pending text/form edits in a disposable native session, without closing the live text box or running opening scripts again. Retain encryption and the existing password-field filtering. The recovery record contains no password or save token. | Native encryption/filtering regressions and local unfinished/minimized/A → B → A recovery pass; browser password prompts remain unqualified. |
+| Window ownership | Route New/Open/import/Close through Desktop; identify actual native adoption, including password entry or cancellation. Repeated account Open activates the current editor. | Local Files/own Open activation, independent views, close decisions and finalization leases pass; not every generated/import workflow is browser qualified. |
+| Account state | Hosted preferences use an account namespace with no unscoped legacy fallback. Reuse account-owned Storage and issuer/account-scoped local recovery. | Native scoped-profile tests and local A → B → A/fresh-browser retrieval pass. |
+
+Native document IDs/revisions remain distinct from account paths/server hashes.
+Unknown storage outcomes retain the pending write and unsaved work; they do not
+authorize an automatic overwrite retry. PdfCraft's original browser Save marked
+the model clean immediately after transport delivery; the hosted path now waits
+for a native acknowledgement of the server-confirmed result. Its original
+origin-global `pdfcraft`/`printcraft` preferences are not imported into an account.
+
+The shared host protocol already provides identified saves and explicit failures.
+Its generic `saved` message does not carry a canonical account path. The PdfCraft
+adapter therefore returns that authorized result through the existing opt-in
+native control channel, with the exact pending save ticket; a bare `saved` event
+cannot finalize a hosted document save.
+
+Hosted iframe applications must leave the navigation warning to Desktop. Keep a
+standalone warning only outside document-host mode; two handlers produce
+Chromium's blocked-duplicate-panel error. Verify the browser's actual console as
+well as successful draft restoration. Minimized views must still service native
+snapshot requests, and their draft must survive refresh/activation.
+
+During session end, Desktop first collects close decisions while tracking native
+revisions; a later edit invalidates earlier Discard approval. Native pause leases
+apply during finalization after those decisions. Test both mechanisms at their
+actual stage rather than expecting all commands to be frozen during every dialog.
+
+For PdfCraft's Add text UI, finish with its actual Done adding text control before
+testing document Undo. Undo while a text box remains open intentionally handles
+that box's typing first. Use page-fit/actual native geometry for pointer tests.
+
+
+## WordCraft reference and source ownership
 
 Historical baseline: WordCraft `fbc4bb73fbc177c9adcfbb705c9a9a05212a7ae9` passes all nine native CI
 stages, including 4,989 native tests (eight pre-existing ignored). Its fresh,
@@ -143,6 +203,13 @@ in the same browser profile, including actual font loading and deletion.
 Account-namespaced browser settings/fonts are not server synchronization across
 machines and are not a barrier against trusted same-origin code.
 
+Inspect framework persistence as well as app preferences. PdfCraft's eframe
+version loads and saves an origin-global `egui_memory_ron` record separately from
+the app's settings key. Hosted mode clears that inherited widget memory before
+use and disables writing it; only its scoped application preference record is
+restored. Preserve legacy unscoped data without guessing its owner or deleting
+another application's state. Verify account switching with actual browser data.
+
 Document defaults that must follow an account belong in authenticated server
 storage. The current WordCraft follow-up uses a bounded, versioned native
 formatting record at `Digital Projects/WordCraft/defaults-v1.json`, accessed
@@ -216,8 +283,8 @@ commits locally; they are not an off-machine backup.
 
 ## Choosing the next task
 
-All 17 selected Craft sources are organized. WordCraft is the current integration
-target; the other 16 do not inherit its qualification. Historical DeckCraft work
+All 17 selected Craft sources are organized. WordCraft is qualified and PdfCraft is the current integration
+target; the other apps do not inherit their qualification. Historical DeckCraft work
 is evidence, not a qualified current-viewer release.
 
 | Candidate family | Assess before selecting |
