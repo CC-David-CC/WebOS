@@ -286,7 +286,7 @@ adversarial isolation tests or a complete security review.
 
 - **2026-11-17 — PdfCraft local qualification:** selected runtime browser source
   `670f257268545f585f8104928357cea33961e3bb`; maintained source
-  `34c5920fe22937784bc16282852fc99a6926ca6c` adds README clarification only.
+  `16e5c9b697a50e1e1ba39b1824344b65eb5ed3a1` adds README clarification only.
   Native engine/UI suites pass;22 actual PdfCraft and54 affected-app checks pass.
   Hosted beforeunload now belongs to Desktop, fixing a reproduced duplicate-panel
   error while preserving standalone behavior. Python3.14 packaging offsets and
@@ -296,3 +296,10 @@ adversarial isolation tests or a complete security review.
   close confirmation and session decision/finalization ordering. A focused
   lost-response probe corrected interception teardown before the accepted suite.
   No engine/UI rebuild was needed for the later browser-entrypoint warning fix.
+
+- **2026-11-17 — final package review:** three epaint fallback-font notice files
+  used nonstandard filenames and were omitted by the name filter. The packager
+  now ships all seven documents from the declared licence directory, with a
+  filesystem regression. Compiled runtime bytes and all76 local browser checks
+  remain unchanged. The first staged package was never activated and its public
+  and transfer trees were removed; only small private preparation evidence remains.

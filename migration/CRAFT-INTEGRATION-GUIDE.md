@@ -16,8 +16,8 @@ not grant another application WordCraft's results or authorize deployment.
 PdfCraft local integration qualification passes:22 actual-browser checks plus54
 affected-app regressions. Native core suites, scoped checks and the complete
 browser app/worker/model graph pass. The accepted maintained source is
-`34c5920fe22937784bc16282852fc99a6926ca6c`; its compiled browser source is
-`670f257268545f585f8104928357cea33961e3bb` (README-only difference). Deployment and
+`16e5c9b697a50e1e1ba39b1824344b65eb5ed3a1`; its compiled browser source is
+`670f257268545f585f8104928357cea33961e3bb` (README and packaging-only differences). Deployment and
 hosted acceptance remain pending; see [the PdfCraft report](../deploy/PDFCRAFT.md).
 
 ## PdfCraft: applying the document contract
