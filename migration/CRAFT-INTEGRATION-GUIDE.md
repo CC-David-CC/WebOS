@@ -13,12 +13,72 @@ historical failures. The [document integration report](../deploy/WORDCRAFT-DOCUM
 records the historical document-integration milestone. This guide does
 not grant another application WordCraft's results or authorize deployment.
 
-PdfCraft local integration qualification passes:22 actual-browser checks plus54
-affected-app regressions. Native core suites, scoped checks and the complete
-browser app/worker/model graph pass. The accepted maintained source is
+PdfCraft's initial integration is deployed to ksu.codes. Local and hosted
+qualification each recorded22 PdfCraft checks plus54 affected-app regressions.
+The final hosted main-suite result recorded all17 assertions PASS, but its outer
+recorder was interrupted before capturing an exit code; do not invent that exit.
+Native core suites, scoped checks and the complete browser app/worker/model graph
+pass. The accepted maintained source is
 `16e5c9b697a50e1e1ba39b1824344b65eb5ed3a1`; its compiled browser source is
-`670f257268545f585f8104928357cea33961e3bb` (README and packaging-only differences). Deployment and
-hosted acceptance remain pending; see [the PdfCraft report](../deploy/PDFCRAFT.md).
+`670f257268545f585f8104928357cea33961e3bb` (README and packaging-only differences).
+The clean-blank/top-right Discord follow-up is being qualified separately; see
+[the PdfCraft report](../deploy/PDFCRAFT.md).
+
+## Common integration contract and planning coverage
+
+Disk organization is complete. This guide governs site integration from those
+existing independent repositories, including native source changes needed for
+the host contract. It does not restart source extraction or reorganize the tree.
+
+The common plan should settle at least80% of the recurring integration decisions
+before app-specific implementation starts. That is a planning target, not a
+claim that80% of each application's code is already written or tested. Native
+models, transient edits, serializers and import/export semantics still require
+source inspection and their own proof. WordCraft/PdfCraft are reference
+implementations, not templates to copy wholesale.
+
+For every app, fill this register with owner, existing public implementation,
+specific native gap and required evidence. Use `reuse`, `extend`, `app-specific`
+or `not applicable — reason`; no silent unassessed row. Most responsibilities
+below are already defined, so the next app should not rediscover platform policy.
+
+| ID | Required contract / decision | Reuse and owner | Required app evidence |
+|---|---|---|---|
+| C01 | Independent fork, upstream main, reviewed base, stable accepted history | Existing repo/submodule and upstream workflow | Exact source/base/lock refs; no unreviewed merges or lost WIP. |
+| C02 | Explicit reproducible inputs and development toolchain | App-owned build recipe; shared asset/library owners | Source-pinned fonts/translations/models, notices, offline actual browser graph. |
+| C03 | Synchronous mount, readiness/failure/cancel/retry/dispose | Public host interface; app adapter | Startup failure never becomes a successful blank; late callbacks fenced. |
+| C04 | Account, instance, session, native document/revision and saved resource identity | Accounts/Storage/Desktop; native app IDs | Exact correlated adoption; no active-index/basename identity guesses. |
+| C05 | One live editor per account resource; native New/Open/Close requests | Desktop activation and app hooks | Files plus native Open reuse buffer/undo; independent different documents. |
+| C06 | Native semantic commands and inspection; explicit caller/target authority | App command domain and public host authorization | Stale/rebound targets denied; internal acknowledgements cannot be forged publicly. |
+| C07 | Read account bytes and canonical identity from one shared file service | Storage; app-native parser | Correct full path/revision, unavailable-file Retry and fresh-context retrieval. |
+| C08 | Prepare bytes/revision and identify Save/Save As/export before dispatch | Native serializer and shared identified-save transport | Save ticket captures originating document and actual bytes; dispatch is not persistence. |
+| C09 | Durable conditional writes, canonical saved identity, title/layout updates | Storage plus native acknowledgement and Desktop | Failure retains old binding; later edits/undo remain correct after acknowledgement. |
+| C10 | Explicit cancel/conflict/collision/failure/unknown outcomes | Storage outcomes plus native pending-save state | Lost response after server commit cannot trigger blind overwrite or false success. |
+| C11 | Clean untouched starter document and explicit blank Save | Native creation/dirty baseline | Quiet close until edited; Save/Save As still writes a valid blank file. Imported/generated work assessed separately. |
+| C12 | Native recovery payload with supported pending edits and assets | Native app codec; Runtime journal mechanics | Actual fidelity, unchanged live buffer, encryption/password handling, schema/version bounds. |
+| C13 | Account-scoped ordered draft journal and restoration | Runtime + Desktop recovery UI | Minimized/orphan/refresh/A→B→A; changed base uses Save As; failed journal preserves earlier checkpoint. |
+| C14 | Close/session-end Save/Discard/Cancel, revision recheck and finalization lease | Desktop/Runtime, native lease hook | Later edit invalidates approval; Cancel resumes; one hosted navigation warning. |
+| C15 | Account-scoped preferences, recent paths, uploaded fonts and defaults | Accounts namespace; native preference schema | No global fallback or cross-account inheritance; defaults preserve existing files. |
+| C16 | Human file dialogs, completion/focus and single-row truthful status | Native UI + app host dialogs | Actual menu/keyboard paths, failed/cancelled actions, focus and source identity; no transport-success UI. |
+| C17 | Export and printing distinguished from document Save | Native codecs/output; browser-controlled printing | Per-format generation/delivery/fidelity/naming; actual graphical preview if print is claimed. |
+| C18 | Parent associations/menu/composition without interface rewrite | Parent; classic Desktop public contracts | Explicit app format list; existing Text routes retained; changed shared consumers tested. |
+| C19 | Community provenance, licences and requested chrome simplification | App About/credits/notices | Permitted About/community/source links retained; restricted fork artwork removed. |
+| C20 | Native, adapter, actual-browser and hosted evidence; bounded build retention | App + integration owner | Separate receipts, affected regression scope, exact release/rollback, no outputs/private state in Git. |
+
+Before implementation, every row must be assessed and each unresolved item must
+name a source owner and acceptance test. Review the register against both
+WordCraft and PdfCraft lessons, especially false save completion, transient
+typing, account-global state and clean blank behavior. Count assessed decisions
+if reporting coverage; do not convert checklist counts into a percentage of
+engineering effort. Detailed prose below specifies these same contracts.
+
+The [GridCraft/DeckCraft branch plans](CRAFT-BRANCH-PLANS.md) identify concrete
+source gaps, proposed branches and phase gates. The
+[build execution plan](CRAFT-BUILD-EXECUTION.md) records measured laptop/R730
+capacity, cache ownership and the proposed benchmark/setup sequence. Finish
+current work and these plans before starting either implementation. Parallel
+agents and remote builds are future execution choices, not implied permission
+to change both apps or publish a new assembly now.
 
 ## PdfCraft: applying the document contract
 
@@ -283,8 +343,9 @@ commits locally; they are not an off-machine backup.
 
 ## Choosing the next task
 
-All 17 selected Craft sources are organized. WordCraft is qualified and PdfCraft is the current integration
-target; the other apps do not inherit their qualification. Historical DeckCraft work
+All 17 selected Craft sources are organized. WordCraft and PdfCraft have deployed
+integrations; PdfCraft has a focused blank/chrome follow-up in progress. The other
+apps do not inherit their qualification. Historical DeckCraft work
 is evidence, not a qualified current-viewer release.
 
 | Candidate family | Assess before selecting |
@@ -368,3 +429,18 @@ ellipsis must retain complete accessible/hover text. These output changes are
 qualified on the selected WordCraft source and deployed in the [output release](../deploy/WORDCRAFT-OUTPUT.md),
 with 51 actual-browser checks each locally and hosted. Earlier release counts are
 historical; another Craft app still needs its own model/interface qualification.
+
+## Community attribution in the unified desktop
+
+The user's policy is to build a useful personal WebOS on top of community work,
+while making it available to others who want it. Preserve upstream authorship,
+licences, contributor/model credits, source links, community history and About.
+Streamlining application chrome must not hide that provenance or imply WebOS
+created the underlying application.
+
+For WordCraft, the separately requested ribbon/backstage Discord shortcuts were
+removed while About was retained. For PdfCraft, the follow-up removes its
+prominent top-right shortcut; About's community links, contributor information,
+Help and Home links stay intact. Apply the actual requested scope to each app.
+Brand artwork permissions are separate from plain-text attribution: observe the
+fork's mark restrictions while retaining permitted credits and community links.

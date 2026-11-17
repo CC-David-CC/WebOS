@@ -70,3 +70,40 @@ still needs its full browser artifact, browser launch, complete asset graph,
 desktop lifecycle, durable save acknowledgement and shared-operation acceptance.
 The other Craft apps also require actual builds and integration; their metadata
 checks alone do not establish support.
+
+## PdfCraft's selected browser build
+
+Use `apps/pdfcraft/webos/build.py` and its pinned nightly for the hosted browser
+build. This recipe checks exact source pins; the generic `craft_cargo.py` helper
+above does not select each app's accepted browser font/translation version.
+PdfCraft's build must use the following clean inputs:
+
+| Input | Required source |
+|---|---|
+| Fonts | `e5f6cc5577fab9534095a6dfe2d409b2d9f72b1d`, declared in `apps/pdfcraft/webos/craft-fonts.rev` |
+| Translations | `866aff71dd63d8369eb100b9c432b5af1400c22a`, declared in `apps/pdfcraft/craft-i18n.rev` |
+| OCR models | The two exact files/hashes, licence texts and generated attribution declared in PdfCraft's `ATTRIBUTION.toml`; prepare with its `cargo xtask models DIRECTORY` and verify before packaging |
+
+Both exact source commits are preserved in the existing verified local bare
+origins under these tags, without changing the parent-selected shared checkouts:
+
+- `webos-input-pdfcraft-fonts-e5f6cc55` in `craft-fonts.git`.
+- `webos-input-pdfcraft-i18n-866aff71` in `craft-i18n.git`.
+
+For another clean assembly, explicitly fetch these input tags from its verified
+origin when needed, then create clean detached input worktrees outside source.
+Do not switch the shared working checkouts to PdfCraft's pins and thereby change
+WordCraft's inputs. For example, after choosing a new external input directory:
+
+```sh
+git -C assets/craft-fonts fetch origin tag webos-input-pdfcraft-fonts-e5f6cc55
+git -C assets/craft-i18n fetch origin tag webos-input-pdfcraft-i18n-866aff71
+git -C assets/craft-fonts worktree add --detach "$CRAFT_INPUTS/craft-fonts" e5f6cc5577fab9534095a6dfe2d409b2d9f72b1d
+git -C assets/craft-i18n worktree add --detach "$CRAFT_INPUTS/craft-i18n" 866aff71dd63d8369eb100b9c432b5af1400c22a
+```
+
+These are required versioned source/runtime inputs, not intermediate compiler
+builds. The accepted release was built offline with the original KSU.CODES path
+hidden. Its actual selected source, complete asset hashes and qualification are
+in [the PdfCraft report](../deploy/PDFCRAFT.md); do not infer that another Craft
+app is qualified by this recipe.

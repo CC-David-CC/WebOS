@@ -1,6 +1,8 @@
 # PdfCraft document integration
 
-Status: local qualification passed; guarded ksu.codes deployment prepared. Hosted acceptance is pending.
+Status: initial integration deployed to ksu.codes as release
+`60e809a6e453af680b8fa1e2b6df557eb50b1369380ab711aec355fdd33d9a54`.
+The clean-blank/top-right Discord follow-up is currently under qualification.
 
 The requested first milestone is native PDF reading/editing, account Open,
 Save/Save As, document activation, unsaved-work protection and account recovery
@@ -59,7 +61,7 @@ none was disabled to obtain these results. The later browser-warning change
 reran the affected browser-shell/native and WASM checks; engine/UI source was
 byte-identical and their passing receipts were reused.
 
-Actual signed-account local qualification passes22 PdfCraft checks (17 document/account and5 lifecycle), plus54 affected-app regressions:19 WordCraft documents,11 Text recovery,9 Text binding and15 classic Desktop/Files/Calculator checks. Hosted results remain pending. The unchanged WordCraft/Text/Files/Calculator/viewer
+Actual signed-account local qualification passes22 PdfCraft checks (17 document/account and5 lifecycle), plus54 affected-app regressions:19 WordCraft documents,11 Text recovery,9 Text binding and15 classic Desktop/Files/Calculator checks. Hosted runs recorded the same76 passing assertions. The final hosted main suite wrote17 PASS assertions and a PASS result, but its outer recorder was interrupted before recording the process exit; no exit0 is claimed for that run. The other five hosted suites completed with exit0. The unchanged WordCraft/Text/Files/Calculator/viewer
 payloads already passed54 local checks; a byte comparison proves those payloads
 are unchanged by the final PdfCraft-only warning fix.
 
@@ -80,3 +82,11 @@ Private checkpoint, exact commands/exits, failed and selected receipts:
 `/home/dflanag3/Projects/.webos-migration/pdfcraft-nightly-20261117-7barkpzk/`.
 The [general Craft guide](../migration/CRAFT-INTEGRATION-GUIDE.md) and running log
 record responsibilities for the next application.
+
+The deployed graph and its immediate rollback were verified file by file; the
+backend instance/issuer, beta index, six service PIDs and scoped WordCraft print
+CSP remained unchanged. Static content is on the data SSD. The current release's
+rollback configuration is `/var/backups/webos-pdfcraft-20261117-02/`; its previous
+release is `46a37155201fef7b5acbc86df1c3e80d6d48bd8c47d74b825991227e6cc69622`.
+The user's separately approved retired-build cleanup recovered68.9GiB on the boot
+SSD while preserving beta's active build. See [disk evidence](BOX-WEBHOST-DISK.md).

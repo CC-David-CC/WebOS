@@ -1,16 +1,16 @@
 # Craft integration log
 
-Updated: 2026-11-17. This is the running record of the WordCraft integration
-and the checklist to assess when integrating another Craft app. It records
-existing behavior separately from source changes still being implemented.
-Source changes alone do not qualify a built application or a deployed release.
+Updated: 2026-11-17. The [general Craft guide](CRAFT-INTEGRATION-GUIDE.md)
+records the common host contract. WordCraft and PdfCraft now have deployed
+integrations; each focused report retains its exact source, artifact, tests and
+limits. This log distinguishes source changes from qualification and deployment.
 
-The [general Craft integration guide](CRAFT-INTEGRATION-GUIDE.md) collects the
-contracts to assess for the next application. It currently labels WordCraft's
-local and hosted qualification as passed; [the current focused release report](../deploy/WORDCRAFT-OUTPUT.md) records the scope.
-
-The output/footer follow-up is complete and deployed. The exact selected source,
-artifact, current gates and rollback are recorded in its focused report.
+Current PdfCraft follow-up: clean untouched hosted blank, explicit blank Save,
+and top-right Discord removal with About/community/credits preserved. Native and
+browser qualification is in progress, separately from the initial PdfCraft
+release. The shared guide and [two app branch plans](CRAFT-BRANCH-PLANS.md) must
+be finished before starting GridCraft or DeckCraft implementation. Existing local
+app sources remain the starting points; no fresh app copies are needed.
 
 ## Ownership
 
@@ -45,7 +45,7 @@ maintain another editable document model. Same-origin apps are trusted code.
 | WC-19 | Real browser PDF print completion/errors/timeouts, narrowly scoped print CSP, and a single-row account/recovery footer with full hover text. | WordCraft web print hook/native print state/adapter; parent deployment policy | PASS: live CSP failure reproduced; final graphical Chromium preview opens/cancels twice locally and hosted with object-src disabled; six footer checks each locally/hosted; short print errors and actual images verified. Scoped policy and service continuity pass. |
 | WC-20 | Route actual File › Save As › Browse through the account-owned destination command; qualify all13 visible export writers separately from copy semantics and naming. | Native save-dialog entrypoint and button regressions; parent actual-WASM account tests | PASS locally and hosted:all9 native stages (5,005 test executions; eight pre-existing ignored),38 JS and56 actual-browser checks each, plus13 export structure checks each. Actual images and249-file/service continuity verified. Export naming and seven Save As-identity entries remain explicit gaps; see deploy/WORDCRAFT-SAVEAS.md. |
 | PDF-01 | Replace transport-success-as-save with native prepare/ack, exact document identity and saved-base checks; preserve later edits, undo and PDF rewrite/incremental rules. | PdfCraft engine and hosted UI save boundary | Native and local actual-browser PASS. Confirmed paths, delayed later edits, stale writes, collisions, cancellation and unknown outcomes are covered. Current source/build identities and hosted gate are in the PdfCraft report. |
-| PDF-02 | Reuse mount/lifecycle, account Storage, Desktop activation and account-scoped preferences/recovery; capture native PDF plus live typed drafts. | PdfCraft `webos/` adapter, native UI, parent composition | Local PASS:17 document/account and5 lifecycle checks; shared-payload regression54 checks pass. Actual native PDF text/render checks retain unfinished and minimized typing. Hosted acceptance pending. |
+| PDF-02 | Reuse mount/lifecycle, account Storage, Desktop activation and account-scoped preferences/recovery; capture native PDF plus live typed drafts. | PdfCraft `webos/` adapter, native UI, parent composition | Local PASS:17 document/account and5 lifecycle checks; shared-payload regression54 checks pass. Actual native PDF text/render checks retain unfinished and minimized typing. Hosted assertions PASS; final main-suite outer exit recorder interrupted. See deploy/PDFCRAFT.md for the exact distinction. |
 
 ## Build and upstream requirements
 
