@@ -4,6 +4,11 @@ Current status (2026-11-16): ksu.codes serves the existing viewer with server-va
 
 Work from the files in this project. The deliverable is a coherent source tree with independent owners, usable source/build entries, required inputs identified and clear remaining production gaps. It is not a full beta clone, a parity project, an interface redesign or an automatic deployment. Beta stays live separately.
 
+WordCraft's new document integration is now locally qualified (4,989 native
+tests, 68 JavaScript tests and 92 actual-browser checks). The scoped ksu.codes
+release and hosted verification remain pending; the current served release
+above has not changed. See [WordCraft document status](deploy/WORDCRAFT-DOCUMENTS.md).
+
 ## Where things belong
 
 | Directory | Source ownership |
@@ -29,6 +34,11 @@ The intended existing viewer is [platform/desktop/active-system/](platform/deskt
 The rejected replacement src/ viewer/controller/styles and associated tests were removed. The old parent frontend.mjs/build_development.mjs and its browser harnesses remain removed. The separately authorized test composition now uses scripts/build_viewer.mjs and public account/app services with the existing viewer. Only bootstrap.js, app.js and desktop-apps.js receive integration changes; CSS, reference data and artwork remain unchanged. Five app entries are enabled; broad suite integration remains separate.
 
 ## Craft branches
+
+The [Craft integration log](migration/CRAFT-INTEGRATION-LOG.md) tracks WordCraft's
+actual integration changes, their validation status and the responsibilities to
+assess when integrating each other Craft app. It separates implemented source
+from qualified behavior.
 
 The17 Craft app repositories now use main as their verified public-upstream tracking branch and webos/integration for the parent-selected working source. All17 main branches were fetched from their verified upstream on2026-11-16. WebOS changes were not merged with newer upstream, and working files/pins were not changed by the alignment. WordCraft and DeckCraft modifications remain on our branch.
 
