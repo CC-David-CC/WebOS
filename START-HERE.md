@@ -1,3 +1,5 @@
+> **Active follow-up — WordCraft Save As Browse / export assessment (2026-11-17 UTC):** Native source `edeb4a090cd301cd7d4405e20af795007b37b69b` passes all9 native stages,38 JS and56 actual-browser checks locally. The prior `a812d655…` release is still live; guarded deployment and hosted qualification are next. Resume from `/home/dflanag3/Projects/.webos-migration/wordcraft-saveas-20261117-a6gvgome/checkpoint.json`; report: `deploy/WORDCRAFT-SAVEAS.md`. After deployment, the user authorized benchmarking a pinned newer compiler for development and starting PdfCraft from its existing local source. Preserve unrelated WIP, original source and the one approved compiler cache.
+
 # WebOS — organized source for future development
 
 Current status (2026-11-17 UTC): ksu.codes serves the intended existing Desktop

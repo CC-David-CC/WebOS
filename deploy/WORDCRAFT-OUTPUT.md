@@ -1,5 +1,11 @@
 # WordCraft file actions, print and status footer
 
+> Scope clarification, 2026-11-17: the Save As checks below exercised F12 and
+> explicit-path commands; they did not click File → Save As → Browse. Export-copy
+> checks covered PDF, PNG and selected-page PDF, not every listed format. See
+> [the Browse/export follow-up](WORDCRAFT-SAVEAS.md) for that separate correction
+> and the per-format identity limitations.
+
 Status: 2026-11-17 UTC — deployed and qualified on https://ksu.codes.
 All 51 local and all 51 hosted browser checks pass. Actual hosted print-preview,
 print-error, document and footer images were inspected.

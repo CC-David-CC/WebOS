@@ -88,6 +88,19 @@ server committed bytes; do not silently retry an unconditional overwrite or
 announce success. Test conflict, collision, cancellation, delayed acknowledgement,
 newer edits and ordinary keyboard Save as well as programmatic commands.
 
+For each human destination command, test the actual button as well as the
+keyboard shortcut and explicit-path API. File › Save As › Browse can retain a
+legacy picker even when `file.saveAs` and F12 correctly ask the host. Hosted
+WordCraft now routes its Browse entrypoint through the same domain command;
+standalone file dialogs keep their existing implementation.
+
+Assess each Export menu entry separately. File generation, account delivery,
+formatting fidelity, destination choice and source-identity preservation are
+independent gates. WordCraft's DOCX, two XML, ODT/OTT/FODT and RTF Export entries
+currently use Save As identity semantics, and its menu supplies an automatic
+filename. PDF/PNG copy checks never qualified those other entries. See
+[the Browse/export follow-up](../deploy/WORDCRAFT-SAVEAS.md) for the current matrix.
+
 ## Unsaved work and recovery
 
 Expose native dirty/revision/pending-save state to the host. Before closing or
