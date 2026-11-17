@@ -1,5 +1,13 @@
 # WebOS — organized source for future development
 
+Candidate follow-up (2026-11-17 UTC): WordCraft Design/fonts/account defaults
+`e5446e6058e2ad8fefd1b5d0fc455602fdf7f4a5` passes all nine native stages
+(4,996 tests; eight pre-existing ignored), 36 WordCraft JS tests, a fresh complete
+WASM build and 20 focused local browser checks. Parent composition adds DOTX
+routing; TXT/Python remain CodeMirror 6 Text. Hosted acceptance is pending;
+[the focused report](deploy/WORDCRAFT-DESIGN-DEFAULTS.md) records the exact scope.
+The deployed status below refers to the prior release until the static rollout.
+
 Current status (2026-11-17 UTC): ksu.codes serves the existing Desktop/Workspace
 viewer with qualified WordCraft document integration: account-scoped rich-draft
 recovery, confirmed Save/Save As identity/titles/restoration and existing-document

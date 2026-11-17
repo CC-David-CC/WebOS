@@ -1,12 +1,15 @@
 # Integrating a Craft application into WebOS
 
-Status: WordCraft passes local and hosted qualification and is deployed to ksu.codes.
+Status: the Design/fonts/account-defaults follow-up passes native, fresh WASM
+and 20 focused local browser checks. Hosted acceptance is pending. The prior
+WordCraft document-integration release remains deployed until the static rollout.
+See [the focused report](../deploy/WORDCRAFT-DESIGN-DEFAULTS.md).
 The [running integration log](CRAFT-INTEGRATION-LOG.md) records changes and
 historical failures. The [document integration report](../deploy/WORDCRAFT-DOCUMENTS.md)
 records selected commits, the exact release, rollback and limits. This guide does
 not grant another application WordCraft's results or authorize deployment.
 
-WordCraft `fbc4bb73fbc177c9adcfbb705c9a9a05212a7ae9` passes all nine native CI
+Historical baseline: WordCraft `fbc4bb73fbc177c9adcfbb705c9a9a05212a7ae9` passes all nine native CI
 stages, including 4,989 native tests (eight pre-existing ignored). Its fresh,
 complete pinned browser artifact passes 92 actual-engine/local regression checks:
 19 documents, 15 recovery/session, five profile/fonts, seven login persistence,
@@ -106,6 +109,17 @@ all unfinished UI/IME/dialog states are not exhaustively qualified. Protected
 documents refuse plaintext checkpoints. Version and test model compatibility
 when merging upstream; WordCraft's native JSON is not a universal Craft schema.
 
+## File associations
+
+Default account-file routing belongs to parent composition. `.txt` and `.py`
+open CodeMirror 6 Text; `.py` uses the actual Python language extension. `.dotx`
+opens WordCraft alongside the existing DOCX/ODT/RTF routes. Qualify a genuine
+native-generated template, rather than renaming an arbitrary ZIP or text fixture.
+An explicit Open inside WordCraft can still import its supported text formats.
+Changes to the shared account-app wrapper require checks of affected Files/Text
+routes and a Calculator mount/calculation smoke check; they do not imply changes
+to those independent application repositories or to Desktop styling.
+
 ## Account state and authorized operations
 
 Scope recent paths, preferences and uploaded fonts to the validated account
@@ -114,6 +128,25 @@ missing. Retain old unscoped stores without guessing their owner. Test A to B to
 in the same browser profile, including actual font loading and deletion.
 Account-namespaced browser settings/fonts are not server synchronization across
 machines and are not a barrier against trusted same-origin code.
+
+Document defaults that must follow an account belong in authenticated server
+storage. The current WordCraft follow-up uses a bounded, versioned native
+formatting record at `Digital Projects/WordCraft/defaults-v1.json`, accessed
+through the existing Storage capability. Capture formatting without document
+contents, credentials, save identity or tracked style-edit history. Apply it only
+on blank creation; saved files, imports, explicit templates and draft recovery
+remain authoritative for their own formatting. Use revision preconditions and
+durable acknowledgements for writes, with visible failures and no browser-global
+fallback. Test A → B → A and the same account in a fresh browser environment.
+This mechanism passes local qualification; hosted acceptance is pending and is
+not inherited from the earlier release's results. Other Craft apps need their own native schema and creation boundary.
+
+Font menus should offer families actually loaded by the editor, including the
+current account's uploaded fonts. Keep an imported document's requested family
+and substitution warning truthful; hiding unavailable menu entries must not
+rewrite the document. Package the actual licenses for every embedded font family.
+Uploaded browser font bytes are a distinct persistence boundary from server-backed
+document defaults; saving a family name does not synchronize those font bytes.
 
 Human, test and authorized agent actions must reach the same native/domain
 operations. Public execution requires an explicit caller and exact target tuple.
