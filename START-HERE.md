@@ -1,29 +1,29 @@
 # WebOS — organized source for future development
 
-Candidate follow-up (2026-11-17 UTC): WordCraft Design/fonts/account defaults
-`e5446e6058e2ad8fefd1b5d0fc455602fdf7f4a5` passes all nine native stages
-(4,996 tests; eight pre-existing ignored), 36 WordCraft JS tests, a fresh complete
-WASM build and 20 focused local browser checks. Parent composition adds DOTX
-routing; TXT/Python remain CodeMirror 6 Text. Hosted acceptance is pending;
-[the focused report](deploy/WORDCRAFT-DESIGN-DEFAULTS.md) records the exact scope.
-The deployed status below refers to the prior release until the static rollout.
+Current status (2026-11-17 UTC): ksu.codes serves the intended existing Desktop
+with qualified WordCraft Design/font/account-default integration. Shaded heading
+contrast is fixed; Home and Design Fonts offer actual available families. Set as
+Default stores account-backed formatting for new blank documents; existing files,
+imports, explicit templates and recovered drafts keep their formatting. TXT and
+Python files default to CodeMirror 6 Text; DOTX defaults to WordCraft.
 
-Current status (2026-11-17 UTC): ksu.codes serves the existing Desktop/Workspace
-viewer with qualified WordCraft document integration: account-scoped rich-draft
-recovery, confirmed Save/Save As identity/titles/restoration and existing-document
-activation through Files and WordCraft Open. Different documents remain
-independent. Requested Discord controls are removed; About retains its link.
-All 92 actual-browser checks pass locally and hosted, alongside all nine native
-CI stages (4,989 tests; eight pre-existing ignored) and 68 JavaScript tests.
-Calculator, Files, Text, WordCraft and Help remain the five enabled apps. Server-
-validated login persistence, the fixed eight-hour deadline and transfer limits
-remain. Desktop CSS/reference/artwork, beta, backend/account state and original
-workspace remain unchanged. Files initial-load Retry, native-picker double-click,
-delegated-agent transport and multi-user/per-window capacity remain separate.
-See the [current release report](deploy/WORDCRAFT-DOCUMENTS.md) for exact source,
-release, rollback and limits, and the [prior Files/Text/Login record](deploy/TEST-STATUS.md)
-for historical evidence. Source organization is complete; the general
-[Craft guide](migration/CRAFT-INTEGRATION-GUIDE.md) and running log are current.
+The selected WordCraft commit is `e5446e6058e2ad8fefd1b5d0fc455602fdf7f4a5`.
+All nine native CI stages pass (4,996 tests; eight pre-existing ignored), 36
+WordCraft JavaScript regressions pass, and 20 focused actual-browser checks pass
+both locally and hosted. Actual images were inspected. The [current report](deploy/WORDCRAFT-DESIGN-DEFAULTS.md)
+records source/release identities, scope, limits and exact rollback. The [prior
+WordCraft document-integration report](deploy/WORDCRAFT-DOCUMENTS.md) retains its
+historical 92-check milestone; those counts are not relabeled as current tests.
+
+Calculator, Files, Text, WordCraft and Help remain the five enabled apps.
+Existing rich-work recovery, Save/Save As identity, document activation, login
+persistence, fixed eight-hour deadline and transfer limits remain. Desktop styling,
+beta, backend instance/issuer and all checked service PIDs are unchanged. Original
+workspace and unrelated local working files were not modified. Source organization
+is complete; the [Craft guide](migration/CRAFT-INTEGRATION-GUIDE.md) and running log
+are current. One compiler cache is retained for the current QA round, per the user;
+disposable build/browser trees were removed. Files startup Retry, native-picker
+double-click, delegated-agent transport and capacity work remain separate.
 
 Work from the files in this project. The deliverable is a coherent source tree with independent owners, usable source/build entries, required inputs identified and clear remaining production gaps. It is not a full beta clone, a parity project, an interface redesign or an automatic deployment. Beta stays live separately.
 

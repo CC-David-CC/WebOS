@@ -7,7 +7,7 @@ Source changes alone do not qualify a built application or a deployed release.
 
 The [general Craft integration guide](CRAFT-INTEGRATION-GUIDE.md) collects the
 contracts to assess for the next application. It currently labels WordCraft's
-local and hosted qualification as passed; the linked release report records the scope.
+local and hosted qualification as passed; [the current focused release report](../deploy/WORDCRAFT-DESIGN-DEFAULTS.md) records the scope.
 
 ## Ownership
 
@@ -35,10 +35,9 @@ maintain another editable document model. Same-origin apps are trusted code.
 | WC-12 | Remove Discord controls from File, title bar and Help ribbon while retaining About's link. | Native Backstage, chrome, ribbon, keytips and tests | Native tests and actual File/View/Help/About image review PASS: requested controls absent; About link retained. Hosted image review PASS. |
 | WC-13 | Scope native recent filenames and author/UI preferences to the account instead of the browser origin alone. Hosted mode must not fall back to unscoped preferences when its account profile is missing. | Native browser `prefs.rs` / `web.rs`, adapter host profile parameter | Four native preference tests and local actual A→B→A account/profile checks PASS; no hosted fallback to legacy global preferences. Hosted PASS. |
 | WC-14 | Scope uploaded-font loading, persistence and deletion to the same validated account profile. Preserve legacy unscoped bytes without assigning them to an account. | Native browser `prefs.rs`, `web.rs`, `web/font_store.rs` | Local actual native font load/store/delete and account-switch checks PASS; old unscoped bytes retained unassigned. Browser namespaces are not server sync or a security sandbox. Hosted PASS. |
-| WC-15 | Offer actual available fonts in Home, recent-font suggestions and Design Fonts; preserve requested fonts in existing documents and ship every embedded family's license notice. Repair native Shaded heading contrast when the theme accent changes. | Native preview/ribbon menus, native Design command, browser build notices | Local PASS: actual red contrast failure retained; all nine native CI stages pass (4,996 tests, eight pre-existing ignored), fresh pinned engine and six actual Design checks pass; rendered contrast/typography inspected. Hosted acceptance pending; see deploy/WORDCRAFT-DESIGN-DEFAULTS.md. |
-| WC-16 | Make Set as Default persist a bounded native formatting record through the authenticated account file service, apply it only to blank New, preserve saved/imported/recovered documents and explicitly report save failure/conflict/uncertainty. | Native default-formatting schema and commands, native host dispatch, WordCraft `webos/defaults.mjs` and adapter | User approved 2026-11-17. Native schema/blank/Open/recovery regressions, full native CI and 36 WordCraft JavaScript tests pass. Actual local defaults, A→B→A, fresh-browser and existing-file preservation checks pass; hosted acceptance pending. The server file is `Digital Projects/WordCraft/defaults-v1.json`; no browser-global or guessed-account fallback. |
-
-| WC-17 | Default `.txt`/`.py` account files to CodeMirror 6 Text and `.dotx` to WordCraft. Keep app selection in parent composition and reuse native format codecs. | Parent `assembly/viewer/account-app.mjs`; existing CM6 Python grammar and WordCraft DOTX codec | Existing text/Python mapping verified; missing DOTX mapping added. Actual local Files launches for all three pass, including a valid native-saved DOTX. Calculator shared-wrapper mounting/calculation passes; hosted pending. |
+| WC-15 | Offer actual available fonts in Home, recent-font suggestions and Design Fonts; preserve requested fonts in existing documents and ship every embedded family's license notice. Repair native Shaded heading contrast when the theme accent changes. | Native preview/ribbon menus, native Design command, browser build notices | Local PASS: actual red contrast failure retained; all nine native CI stages pass (4,996 tests, eight pre-existing ignored), fresh pinned engine and six actual Design checks pass; rendered contrast/typography inspected. Hosted PASS6 and image review PASS; see deploy/WORDCRAFT-DESIGN-DEFAULTS.md. |
+| WC-16 | Make Set as Default persist a bounded native formatting record through the authenticated account file service, apply it only to blank New, preserve saved/imported/recovered documents and explicitly report save failure/conflict/uncertainty. | Native default-formatting schema and commands, native host dispatch, WordCraft `webos/defaults.mjs` and adapter | User approved 2026-11-17. Native schema/blank/Open/recovery regressions, full native CI and 36 WordCraft JavaScript tests pass. Actual local defaults, A→B→A, fresh-browser and existing-file preservation checks pass locally and hosted. The server file is `Digital Projects/WordCraft/defaults-v1.json`; no browser-global or guessed-account fallback. |
+| WC-17 | Default `.txt`/`.py` account files to CodeMirror 6 Text and `.dotx` to WordCraft. Keep app selection in parent composition and reuse native format codecs. | Parent `assembly/viewer/account-app.mjs`; existing CM6 Python grammar and WordCraft DOTX codec | Existing text/Python mapping verified; missing DOTX mapping added. Actual local Files launches for all three pass, including a valid native-saved DOTX. Calculator shared-wrapper mounting/calculation passes locally and hosted. |
 
 ## Build and upstream requirements
 
@@ -240,3 +239,23 @@ adversarial isolation tests or a complete security review.
   now recorded. Current qualification selects those eight successful receipts,
   totaling92 distinct checks. No completed WordCraft/Login/Text suite was repeated
   and no source/test assertion changed for this infrastructure interruption.
+
+- **2026-11-17 — Design/fonts/account defaults and DOTX released:** WordCraft
+  `e5446e6058e2ad8fefd1b5d0fc455602fdf7f4a5` is accepted on the local
+  `webos/integration` branch; upstream-tracking main is unchanged. Packaged parent
+  `239d958648c626b3e861ef946b62a88fa088f3f1` selects that source. The current
+  public release is `d7a8f6ae73223079e78013d5f7b3aae01ff8716758b1c14d969f5c22e0ff698b`.
+  All nine native stages pass (4,996 tests, eight pre-existing ignored), 36
+  WordCraft JavaScript regressions pass, and six Design + nine defaults/file
+  association/shared-wrapper + five profile/font browser checks pass both locally
+  and hosted. Actual Shaded, font rendering, fresh-browser account defaults and
+  CM6 Python images were inspected. Earlier red/CI/harness/browser failures and
+  exact retry selections remain in private evidence; no assertions, TLS checks or
+  lint guards were weakened. The rollout changed the static root and reloaded
+  Caddy; backend instance/issuer, beta hash and all six checked service PIDs are
+  unchanged. Scoped payload comparison passes. Disposable build/browser/staging
+  output and the superseded archive were removed; one current compiler cache is
+  retained through this QA round per the user's explicit decision. The general
+  guide, source matrix and current handoff now point to the [focused release
+  report](../deploy/WORDCRAFT-DESIGN-DEFAULTS.md), including the exact rollback
+  tag. Earlier milestones and pending entries remain historical evidence.
