@@ -9,6 +9,9 @@ The [general Craft integration guide](CRAFT-INTEGRATION-GUIDE.md) collects the
 contracts to assess for the next application. It currently labels WordCraft's
 local and hosted qualification as passed; [the current focused release report](../deploy/WORDCRAFT-DESIGN-DEFAULTS.md) records the scope.
 
+Current output/footer follow-up is under qualification; the prior deployed release
+remains selected until its own build/browser/rollout gates pass.
+
 ## Ownership
 
 The Craft app owns its native editable document, undo/redo, selection, codecs,
@@ -38,6 +41,8 @@ maintain another editable document model. Same-origin apps are trusted code.
 | WC-15 | Offer actual available fonts in Home, recent-font suggestions and Design Fonts; preserve requested fonts in existing documents and ship every embedded family's license notice. Repair native Shaded heading contrast when the theme accent changes. | Native preview/ribbon menus, native Design command, browser build notices | Local PASS: actual red contrast failure retained; all nine native CI stages pass (4,996 tests, eight pre-existing ignored), fresh pinned engine and six actual Design checks pass; rendered contrast/typography inspected. Hosted PASS6 and image review PASS; see deploy/WORDCRAFT-DESIGN-DEFAULTS.md. |
 | WC-16 | Make Set as Default persist a bounded native formatting record through the authenticated account file service, apply it only to blank New, preserve saved/imported/recovered documents and explicitly report save failure/conflict/uncertainty. | Native default-formatting schema and commands, native host dispatch, WordCraft `webos/defaults.mjs` and adapter | User approved 2026-11-17. Native schema/blank/Open/recovery regressions, full native CI and 36 WordCraft JavaScript tests pass. Actual local defaults, A→B→A, fresh-browser and existing-file preservation checks pass locally and hosted. The server file is `Digital Projects/WordCraft/defaults-v1.json`; no browser-global or guessed-account fallback. |
 | WC-17 | Default `.txt`/`.py` account files to CodeMirror 6 Text and `.dotx` to WordCraft. Keep app selection in parent composition and reuse native format codecs. | Parent `assembly/viewer/account-app.mjs`; existing CM6 Python grammar and WordCraft DOTX codec | Existing text/Python mapping verified; missing DOTX mapping added. Actual local Files launches for all three pass, including a valid native-saved DOTX. Calculator shared-wrapper mounting/calculation passes locally and hosted. |
+| WC-18 | Return from File after confirmed Save/Save As/export; preserve cancellation/failure and unrelated-page/document state. Repair selected-page PDF delivery on wasm. | Native command/save settlement, browser host protocol | Under qualification: targeted save regressions and 38 JS checks pass; full CI/build/browser/hosted checks pending. |
+| WC-19 | Real browser PDF print completion/errors/timeouts, narrowly scoped print CSP, and a single-row account/recovery footer with full hover text. | WordCraft web print hook/native print state/adapter; parent deployment policy | Under qualification: live CSP failure reproduced; isolated graphical Chromium opens print preview with object-src disabled; new footer six-case browser test passes. Fresh-source and hosted checks pending. |
 
 ## Build and upstream requirements
 

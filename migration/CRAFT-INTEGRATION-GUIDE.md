@@ -250,3 +250,39 @@ Save/Discard/Cancel decisions, and rechecks it before revoking authentication.
 A later edit invalidates the earlier approval. Publicly approved views do not
 receive a second legacy warning; views without this lifecycle contract retain
 the legacy check. This contract is shared with Text and is not app-specific UI.
+
+## File-action completion and browser printing
+
+For the next Craft app, check the actual browser output path as well as the native
+file command. A wasm command that calculates a PDF and skips filesystem writes
+can return plausible metadata without saving anything. WordCraft's `file.printPdf`
+now delivers the selected-page/copy/imposition bytes through its identified host
+save protocol, as an export that preserves source identity and dirty edits.
+
+Return from File/Backstage after confirmed delivery, not after posting bytes or
+starting a picker. Keep cancellation/failure actionable. Retain the originating
+document and page so a late completion cannot dismiss an unrelated view, and test
+keyboard focus after the human Save As dialog. The native application owns this
+completion behavior; the parent must not fake a successful engine save.
+
+A host-owned Save As dialog can restore DOM focus without restoring the native
+editor's caret focus. WordCraft's public view focus operation also requests its
+native `ui.focus`; a path dialog returns focus to its owner when dismissed.
+This operation does not close File, mark anything saved or alter file identity.
+Do not restore focus later from a background save in a way that steals another
+view's focus, or run focus restoration during disposal/session quiescence.
+
+Printing needs a real graphical-browser check. Headless PDF generation and a
+`printing:true` response do not prove that a print dialog opened. WordCraft uses
+an asynchronous PDF-frame completion receiver, reports load/print errors and a
+bounded timeout, and prevents an expired request from opening a late dialog.
+Browser acceptance never proves physical printing; printer choice and cancel
+remain browser/user operations. Tests open Chromium's real preview and cancel it
+without sending a job.
+
+The hosted CSP must match that actual path. WordCraft needs `blob:` in frame-src
+on `/wordcraft/index.html`; the desktop/other apps retain their original policy,
+and object-src remains disabled. Never disable CSP wholesale. Account-save and
+local-recovery messages also remain distinct, readable states; narrow-window
+ellipsis must retain complete accessible/hover text. These output changes are
+under qualification in the current follow-up, not inherited from earlier releases.
