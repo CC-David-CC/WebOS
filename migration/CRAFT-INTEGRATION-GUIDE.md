@@ -61,7 +61,7 @@ below are already defined, so the next app should not rediscover platform policy
 | C15 | Account-scoped preferences, recent paths, uploaded fonts and defaults | Accounts namespace; native preference schema | No global fallback or cross-account inheritance; defaults preserve existing files. |
 | C16 | Human file dialogs, completion/focus and single-row truthful status | Native UI + app host dialogs | Actual menu/keyboard paths, failed/cancelled actions, focus and source identity; no transport-success UI. |
 | C17 | Export and printing distinguished from document Save | Native codecs/output; browser-controlled printing | Per-format generation/delivery/fidelity/naming; actual graphical preview if print is claimed. |
-| C18 | Parent associations/menu/composition without interface rewrite | Parent; classic Desktop public contracts | Explicit app format list; existing Text routes retained; changed shared consumers tested. |
+| C18 | Parent associations/menu/composition without interface rewrite | Parent; classic Desktop public contracts | Register launch and saved-layout restoration; explicit format list; existing Text routes retained; changed shared consumers tested. |
 | C19 | Community provenance, licences and requested chrome simplification | App About/credits/notices | Permitted About/community/source links retained; restricted fork artwork removed. |
 | C20 | Native, adapter, actual-browser and hosted evidence; bounded build retention | App + integration owner | Separate receipts, affected regression scope, exact release/rollback, no outputs/private state in Git. |
 
@@ -242,6 +242,22 @@ guarantees. WordCraft snapshots cross its existing native comment-flush boundary
 all unfinished UI/IME/dialog states are not exhaustively qualified. Protected
 documents refuse plaintext checkpoints. Version and test model compatibility
 when merging upstream; WordCraft's native JSON is not a universal Craft schema.
+
+Qualify the exact checkpoint being claimed. An already-visible "draft updated"
+message can describe an earlier edit; it is not a write barrier for newly typed
+content. Verify the intended native text, capture the actual native snapshot,
+and verify that automatic journal storage committed that exact snapshot before
+reloading. Then inspect recovered native content or saved output, not only dirty
+state and a recovery dialog. These are stronger test preconditions, not a claim
+of zero-loss durability at arbitrary navigation times.
+
+Keep scenario evidence immutable. PdfCraft's stale-write test intentionally
+replaces the recovered account file with older fixture bytes, then downloads it
+to verify rejection of an obsolete save. A shared basename overwrote the earlier
+local recovery evidence and made a later content audit incorrectly look like
+recovery data loss. Preserve a distinct before-conflict file and check the
+replacement and conflict-rescue files separately. Record failed investigation
+receipts truthfully; do not relabel the intentional replacement as a lost draft.
 
 ## File associations
 

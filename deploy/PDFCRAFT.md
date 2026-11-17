@@ -90,3 +90,50 @@ rollback configuration is `/var/backups/webos-pdfcraft-20261117-02/`; its previo
 release is `46a37155201fef7b5acbc86df1c3e80d6d48bd8c47d74b825991227e6cc69622`.
 The user's separately approved retired-build cleanup recovered68.9GiB on the boot
 SSD while preserving beta's active build. See [disk evidence](example.invalid-DISK.md).
+
+## Untouched blank and community chrome follow-up
+
+Local qualification passed; deployment/hosted acceptance is the next gate.
+Accepted PdfCraft source: `a5b512846f59c6e5306821cdffdb448e54695ccd`.
+An untouched hosted starter page now uses a clean native baseline and closes
+without a save prompt. Explicit Save and Save As still create valid account PDF
+files; real edits prompt, and Undo of the first edit restores the clean baseline.
+Generated/imported PDFs keep their existing unsaved semantics.
+
+Only the prominent top-right Discord shortcut and its reserved width were
+removed. About, its community/source links, contributor/model tabs, Help and Home
+links remain. Actual About imagery was inspected. An existing tab geometry test
+still named the removed shortcut; its bounds assertions now use the remaining
+utility controls, including the macOS-only expectation. Linux native tests ran;
+this is not a new macOS graphical qualification.
+
+The affected native UI suites pass2,989 test executions, with five existing
+ignored probes. Formatting, strict scoped clippy, assets/layers and all32 WASM
+crate checks pass. One actual complete browser graph was built using the same
+current compiler cache. No engine or shared Desktop/Runtime/Storage change was
+needed for this follow-up.
+
+Local actual-browser qualification passes27 assertions:5 blank/chrome,17
+document/account and5 lifecycle. Independent native parsing verifies10 saved PDF
+artifacts and their expected text; genuine blank files have one page and no text.
+Browser profiles, synthetic accounts and output stay private outside Git.
+
+The content investigation initially audited the wrong artifact: the later
+stale-save test intentionally replaces `Recovered.pdf` with older fixture bytes
+and downloads it again. That overwrote the local recovery sample. The original
+recovered content survives in `Conflict-rescue.pdf`; focused full-path probes
+also confirm the pre-conflict result. There was no demonstrated recovery loss.
+The test now preserves `Recovered-before-conflict.pdf` separately, verifies
+actual pending native text and stored snapshot bytes, and the checked-in native
+content oracle distinguishes recovery, deliberate replacement and rescue. Failed
+investigation receipts and the incorrect intermediate diagnoses remain private
+evidence; they are not application regressions or passing artifact receipts.
+
+One separate Desktop gap was identified by source review: PdfCraft is missing
+from the classic saved-layout allow-list. Draft discovery restores dirty PDFs
+as recovery views, but exact saved-window geometry and clean-PDF window
+restoration are not qualified. This follow-up leaves Desktop unchanged and
+records that gap for a scoped integration change with affected regressions.
+
+Current private checkpoint and commands/exits:
+`/path/to/workspace/Projects/.webos-migration/pdfcraft-blank-chrome-20261117-iutgpol3/`.
