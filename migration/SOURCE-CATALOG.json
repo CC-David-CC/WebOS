@@ -1712,6 +1712,7 @@
         "parity",
         "tests",
         "vendor",
+        "webos",
         "xtask"
       ],
       "scope": "Existing source locations and declared recipes, not functional or build qualification."
@@ -2449,13 +2450,15 @@
         "index.mjs"
       ],
       "packageEntrypoints": [
+        "./webos/drafts.mjs",
         "./webos/index.mjs"
       ],
       "buildDefinitions": [
         "package.json"
       ],
       "npmDependencies": [
-        "@webos/codemirror"
+        "@webos/codemirror",
+        "@webos/runtime"
       ],
       "documentation": [
         "README.md",
@@ -3489,7 +3492,8 @@
         "./active-system/assets/desktop/command-registry.mjs",
         "./active-system/assets/desktop/document-operations.mjs",
         "./active-system/network/strict-json.mjs",
-        "./src/file-protocol.mjs"
+        "./src/file-protocol.mjs",
+        "./src/local-recovery.mjs"
       ],
       "buildDefinitions": [
         "package.json",

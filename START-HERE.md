@@ -1,34 +1,36 @@
-> **WordCraft Save As Browse — deployed and verified (2026-11-17 UTC):** ksu.codes serves release `46a37155201fef7b5acbc86df1c3e80d6d48bd8c47d74b825991227e6cc69622`, WordCraft `edeb4a090cd301cd7d4405e20af795007b37b69b`, packaged parent `9eb2d11822c213d86123bc7d150870a4430c40af`. All9 native stages,38 JS and56 actual-browser checks each locally/hosted pass; all13 exports pass generation/structure smoke checks, with naming/rebinding gaps explicit. See `/path/to/webos/deploy/WORDCRAFT-SAVEAS.md` and private checkpoint `/path/to/workspace/Projects/.webos-migration/wordcraft-saveas-20261117-a6gvgome/checkpoint.json`. Generated output/profile/transfer trees and the superseded archive were removed; one compiler cache, required source and unrelated WIP remain. Backend, beta, CSP and service continuity pass. The user explicitly authorized the next work: benchmark a pinned newer compiler for development and start PdfCraft from its existing local source. Continue that work; do not restart organization, build the catalog or alter the original workspace.
-
 # WebOS — organized source for future development
 
-Current status (2026-11-17 UTC): ksu.codes serves the intended existing Desktop
-with qualified WordCraft output/print and status-footer fixes. Print opens the
-browser's real PDF preview. Confirmed Save, Save As and exports return from File
-to the document; errors/cancellation remain actionable, and Save As restores
-keyboard focus. Selected-page PDF now persists through account Storage. The
-account/local-recovery footer stays one line with complete hover text.
+Current status (2026-11-17 UTC): ksu.codes serves the intended classic Desktop
+with Calculator, Files, CodeMirror6 Text, WordCraft, PdfCraft and Help. Source
+organization is complete. All17 selected Craft app repositories already exist
+under `apps/`; work from those local sources. Their presence does not qualify
+all17 for the current Desktop.
 
-WordCraft `626c74f99879fccef4c33f4385c3008505d9b695` is accepted on the local
-`webos/integration` branch; upstream main is unchanged. All nine native stages,
-38 JavaScript checks and 51 actual-browser checks each locally and hosted pass.
-Actual print/error/footer and document images were inspected. The [current report](deploy/WORDCRAFT-OUTPUT.md)
-records source/release identities, continuity, limits and exact rollback. The
-[Design/defaults report](deploy/WORDCRAFT-DESIGN-DEFAULTS.md) and [document report](deploy/WORDCRAFT-DOCUMENTS.md)
-retain their earlier qualification; their counts are not relabeled as new tests.
+Current deployed release:
+`60e809a6e453af680b8fa1e2b6df557eb50b1369380ab711aec355fdd33d9a54`.
+Selected WordCraft: `edeb4a090cd301cd7d4405e20af795007b37b69b`.
+Selected PdfCraft: `16e5c9b697a50e1e1ba39b1824344b65eb5ed3a1` (compiled runtime
+source `670f257268545f585f8104928357cea33961e3bb`; later README/packaging changes).
+See [PdfCraft evidence and limitations](deploy/PDFCRAFT.md) and
+[WordCraft Save As/output evidence](deploy/WORDCRAFT-SAVEAS.md).
 
-Calculator, Files, CodeMirror 6 Text, WordCraft and Help remain the five enabled
-apps. Existing rich recovery, document identity/activation, login persistence,
-Design/fonts/account defaults and file associations remain. Other viewer/app
-payload bytes are unchanged; beta, backend instance/issuer and checked service
-PIDs are unchanged. Original source and unrelated working files were preserved.
+Current authorized work: finish PdfCraft's untouched-blank close behavior and
+remove only its top-right Discord shortcut, preserving About/community/credits.
+Then finish the [shared Craft guide](migration/CRAFT-INTEGRATION-GUIDE.md),
+[GridCraft/DeckCraft branch plans](migration/CRAFT-BRANCH-PLANS.md) and
+[build execution plan](migration/CRAFT-BUILD-EXECUTION.md) before starting either
+app. No GridCraft/DeckCraft implementation or parallel agent round has started.
+The R730 was inspected read-only; no remote build/toolchain installation occurred.
 
-Source organization is complete. The [Craft guide](migration/CRAFT-INTEGRATION-GUIDE.md)
-and running log are updated. Generated candidate/engine trees, synthetic browser
-profiles and remote staging output were removed; one compiler cache remains for
-this QA round by explicit user decision. The exact current release archive and
-private evidence remain resumable. Files startup Retry, native-picker double-click,
-authorized-agent transport and capacity work remain separate.
+Private current checkpoint:
+`/path/to/workspace/Projects/.webos-migration/pdfcraft-blank-chrome-20261117-iutgpol3/checkpoint.json`.
+Prior complete integration evidence:
+`/path/to/workspace/Projects/.webos-migration/pdfcraft-nightly-20261117-7barkpzk/`.
+One current compiler cache remains by user decision; generated output is outside
+Git. Preserve unrelated WIP in `artifacts/input-files.json` and
+`tests/wordcraft_baseline_browser.mjs`. Beta, the original workspace and account
+backend remain unchanged. Do not restart extraction, build the catalog or restore
+the rejected replacement viewer.
 
 Work from the files in this project. The deliverable is a coherent source tree with independent owners, usable source/build entries, required inputs identified and clear remaining production gaps. It is not a full beta clone, a parity project, an interface redesign or an automatic deployment. Beta stays live separately.
 
