@@ -140,9 +140,12 @@ async def create_application(public_root, private_root, origin, *, account_trans
                 current = current / part
                 if current.is_symlink(): raise web.HTTPNotFound()
             if not current.is_file(): raise web.HTTPNotFound()
+            # WordCraft prints its generated PDF in a same-origin blob frame. Keep
+            # that permission off the desktop/other apps and keep object-src disabled.
+            csp = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'none'"
             return web.FileResponse(current, headers={'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',
                 'Cross-Origin-Opener-Policy': 'same-origin', 'Cross-Origin-Embedder-Policy': 'require-corp',
-                'Content-Security-Policy': "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'none'"})
+                'Content-Security-Policy': csp.replace("frame-src 'self'", "frame-src 'self' blob:") if name == 'wordcraft/index.html' else csp})
         app.router.add_get('/{tail:.*}', asset)
         metadata['status'] = 'ready'; marker.write_text(json.dumps(metadata) + '\n')
         async def release(_app):

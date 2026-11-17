@@ -55,6 +55,29 @@ def continuity(plan):
     assert peers() == plan['peerPIDs']
 
 
+def with_wordcraft_print_policy(block):
+    """Split the existing CSP into mutually exclusive matchers; widen frame-src only.
+
+    Refuse unfamiliar/already customized policies instead of silently overwriting
+    another operator's change. Rollback restores the complete original file.
+    """
+    policy = re.compile(r'(?m)^(\s*)header >Content-Security-Policy "([^"\n]+)"$')
+    matches = list(policy.finditer(block))
+    assert len(matches) == 1 and '@wordcraft_print' not in block and '@other_viewer' not in block
+    match = matches[0]
+    base = match.group(2)
+    assert base.count("frame-src 'self';") == 1 and "object-src 'none';" in base
+    printing = base.replace("frame-src 'self';", "frame-src 'self' blob:;")
+    indent = match.group(1)
+    lines = [
+        '@wordcraft_print path /wordcraft/index.html',
+        '@other_viewer not path /wordcraft/index.html',
+        'header @other_viewer >Content-Security-Policy "' + base + '"',
+        'header @wordcraft_print >Content-Security-Policy "' + printing + '"',
+    ]
+    return block[:match.start()] + ('\n'.join(indent + line for line in lines)) + block[match.end():]
+
+
 def main():
     os.umask(0o077)
     parser = argparse.ArgumentParser(description=__doc__)
@@ -63,6 +86,7 @@ def main():
     parser.add_argument('--release')
     parser.add_argument('--archive-sha')
     parser.add_argument('--expected-current')
+    parser.add_argument('--wordcraft-print-policy', action='store_true', help='Allow generated PDF blob frames only on the WordCraft HTML response')
     args = parser.parse_args()
     assert os.geteuid() == 0 and socket.gethostname().split('.')[0] == 'box-webhost'
     assert re.fullmatch('[a-z0-9][a-z0-9-]{0,59}', args.tag)
@@ -113,6 +137,8 @@ def main():
         old = block.group(0); roots = list(re.finditer(r'(?m)^(\s*root \* )(\S+)$', old)); assert len(roots) == 1
         root = roots[0]; assert root.group(2) == str(BASE / args.expected_current / 'public')
         new = old[:root.start(2)] + str(public) + old[root.end(2):]
+        if args.wordcraft_print_policy:
+            new = with_wordcraft_print_policy(new)
         candidate = (text[:block.start()] + new + text[block.end():]).encode()
         assert candidate.decode().replace(new, old, 1) == text
         backup.mkdir(mode=0o700)
@@ -122,6 +148,7 @@ def main():
             (backup / ('validate-' + name + '.log')).write_bytes(run.stdout + run.stderr); assert run.returncode == 0
         info = CADDY.stat()
         plan = {'release': args.release, 'previousRelease': args.expected_current, 'beforeSHA256': sha(before), 'candidateSHA256': sha(candidate),
+                'wordcraftPrintPolicy': args.wordcraft_print_policy, 'desktopCSP': fetch('/')[1].get('Content-Security-Policy'),
                 'uid': info.st_uid, 'gid': info.st_gid, 'mode': stat.S_IMODE(info.st_mode), 'instanceId': json.loads(fetch('/healthz')[0])['instanceId'],
                 'issuerSHA256': sha(fetch('/.well-known/codi-issuer.json')[0]), 'betaIndexSHA256': sha(fetch('/', True)[0]), 'peerPIDs': peers()}
         (backup / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n')
@@ -142,6 +169,9 @@ def main():
             data, headers = fetch('/' if name == 'index.html' else '/' + name)
             assert sha(data) == files[name]['sha256']
             assert headers.get('Cross-Origin-Opener-Policy') == 'same-origin' and headers.get('Cross-Origin-Embedder-Policy') == 'require-corp'
+        if plan.get('wordcraftPrintPolicy'):
+            assert fetch('/')[1].get('Content-Security-Policy') == plan['desktopCSP']
+            assert fetch('/wordcraft/index.html')[1].get('Content-Security-Policy') == plan['desktopCSP'].replace("frame-src 'self';", "frame-src 'self' blob:;")
     except BaseException:
         assert sha(CADDY.read_bytes()) in (plan['beforeSHA256'], plan['candidateSHA256'])
         replace((backup / 'Caddyfile.before').read_bytes(), plan, args.tag); command('systemctl', 'reload', 'caddy.service'); raise

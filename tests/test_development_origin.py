@@ -29,10 +29,17 @@ class ProxyOriginTests(unittest.IsolatedAsyncioTestCase):
         with tempfile.TemporaryDirectory() as temporary:
             base = Path(temporary)
             public = base / 'public'; public.mkdir(); (public / 'index.html').write_text('<!doctype html><title>Test</title>')
+            (public / 'wordcraft').mkdir(); (public / 'wordcraft/index.html').write_text('<!doctype html><title>Print fixture</title>')
             state = base / 'private'
             app = await server.create_application(public, state, 'https://ksu.codes')
             client = TestClient(TestServer(app)); await client.start_server()
             try:
+                response = await client.get('/', headers={'Host': 'ksu.codes'})
+                ordinary = response.headers['Content-Security-Policy']
+                self.assertIn("frame-src 'self';", ordinary)
+                self.assertIn("object-src 'none'", ordinary)
+                response = await client.get('/wordcraft/index.html', headers={'Host': 'ksu.codes'})
+                self.assertEqual(response.headers['Content-Security-Policy'], ordinary.replace("frame-src 'self';", "frame-src 'self' blob:;"))
                 response = await client.get('/config.json', headers={'Host': 'ksu.codes'})
                 self.assertEqual(response.status, 200)
                 configuration = await response.json()
