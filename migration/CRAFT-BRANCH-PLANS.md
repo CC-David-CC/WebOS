@@ -7,6 +7,11 @@ first. Prepare both plans before considering parallel implementation. No
 GridCraft/DeckCraft implementation, merge, build or deployment is authorized by
 this planning record. Read-only source inspection supplied the findings below.
 
+The PdfCraft follow-up is now deployed and verified, and the common guide and
+these plans are ready. See [the completed PdfCraft report](../deploy/PDFCRAFT.md).
+Neither proposed next-app branch has started implementation. PhotoCraft was
+suggested as a possible third app; that choice and its specific plan remain open.
+
 Use [the shared contract](CRAFT-INTEGRATION-GUIDE.md) and
 [build execution plan](CRAFT-BUILD-EXECUTION.md). GridCraft is the proposed next
 implementation: spreadsheets add a distinct everyday workflow alongside Text,

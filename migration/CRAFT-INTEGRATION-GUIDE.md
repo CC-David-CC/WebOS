@@ -13,16 +13,15 @@ historical failures. The [document integration report](../deploy/WORDCRAFT-DOCUM
 records the historical document-integration milestone. This guide does
 not grant another application WordCraft's results or authorize deployment.
 
-PdfCraft's initial integration is deployed to ksu.codes. Local and hosted
-qualification each recorded22 PdfCraft checks plus54 affected-app regressions.
-The final hosted main-suite result recorded all17 assertions PASS, but its outer
-recorder was interrupted before capturing an exit code; do not invent that exit.
-Native core suites, scoped checks and the complete browser app/worker/model graph
-pass. The accepted maintained source is
-`16e5c9b697a50e1e1ba39b1824344b65eb5ed3a1`; its compiled browser source is
-`670f257268545f585f8104928357cea33961e3bb` (README and packaging-only differences).
-The clean-blank/top-right Discord follow-up is being qualified separately; see
-[the PdfCraft report](../deploy/PDFCRAFT.md).
+PdfCraft's clean-blank/community-chrome follow-up is deployed and verified on
+ksu.codes. Current maintained and compiled source is
+`a5b512846f59c6e5306821cdffdb448e54695ccd`;27 actual-browser assertions pass each
+locally and hosted, and independent native checks pass10 local/11 hosted PDF
+artifacts. About/community/contributor/model links remain. The other apps and
+Desktop payloads are unchanged. See [the PdfCraft report](../deploy/PDFCRAFT.md)
+for exact release/rollback and the separate clean-window/layout restoration gap.
+The initial22+54 integration checks are historical evidence, not newly rerun
+checks for this app-only follow-up.
 
 ## Common integration contract and planning coverage
 
