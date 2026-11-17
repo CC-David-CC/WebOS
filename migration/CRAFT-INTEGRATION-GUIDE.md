@@ -285,4 +285,6 @@ on `/wordcraft/index.html`; the desktop/other apps retain their original policy,
 and object-src remains disabled. Never disable CSP wholesale. Account-save and
 local-recovery messages also remain distinct, readable states; narrow-window
 ellipsis must retain complete accessible/hover text. These output changes are
-under qualification in the current follow-up, not inherited from earlier releases.
+qualified on the selected WordCraft source and deployed in the [output release](../deploy/WORDCRAFT-OUTPUT.md),
+with 51 actual-browser checks each locally and hosted. Earlier release counts are
+historical; another Craft app still needs its own model/interface qualification.

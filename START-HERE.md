@@ -1,29 +1,32 @@
 # WebOS — organized source for future development
 
 Current status (2026-11-17 UTC): ksu.codes serves the intended existing Desktop
-with qualified WordCraft Design/font/account-default integration. Shaded heading
-contrast is fixed; Home and Design Fonts offer actual available families. Set as
-Default stores account-backed formatting for new blank documents; existing files,
-imports, explicit templates and recovered drafts keep their formatting. TXT and
-Python files default to CodeMirror 6 Text; DOTX defaults to WordCraft.
+with qualified WordCraft output/print and status-footer fixes. Print opens the
+browser's real PDF preview. Confirmed Save, Save As and exports return from File
+to the document; errors/cancellation remain actionable, and Save As restores
+keyboard focus. Selected-page PDF now persists through account Storage. The
+account/local-recovery footer stays one line with complete hover text.
 
-The selected WordCraft commit is `e5446e6058e2ad8fefd1b5d0fc455602fdf7f4a5`.
-All nine native CI stages pass (4,996 tests; eight pre-existing ignored), 36
-WordCraft JavaScript regressions pass, and 20 focused actual-browser checks pass
-both locally and hosted. Actual images were inspected. The [current report](deploy/WORDCRAFT-DESIGN-DEFAULTS.md)
-records source/release identities, scope, limits and exact rollback. The [prior
-WordCraft document-integration report](deploy/WORDCRAFT-DOCUMENTS.md) retains its
-historical 92-check milestone; those counts are not relabeled as current tests.
+WordCraft `626c74f99879fccef4c33f4385c3008505d9b695` is accepted on the local
+`webos/integration` branch; upstream main is unchanged. All nine native stages,
+38 JavaScript checks and 51 actual-browser checks each locally and hosted pass.
+Actual print/error/footer and document images were inspected. The [current report](deploy/WORDCRAFT-OUTPUT.md)
+records source/release identities, continuity, limits and exact rollback. The
+[Design/defaults report](deploy/WORDCRAFT-DESIGN-DEFAULTS.md) and [document report](deploy/WORDCRAFT-DOCUMENTS.md)
+retain their earlier qualification; their counts are not relabeled as new tests.
 
-Calculator, Files, Text, WordCraft and Help remain the five enabled apps.
-Existing rich-work recovery, Save/Save As identity, document activation, login
-persistence, fixed eight-hour deadline and transfer limits remain. Desktop styling,
-beta, backend instance/issuer and all checked service PIDs are unchanged. Original
-workspace and unrelated local working files were not modified. Source organization
-is complete; the [Craft guide](migration/CRAFT-INTEGRATION-GUIDE.md) and running log
-are current. One compiler cache is retained for the current QA round, per the user;
-disposable build/browser trees were removed. Files startup Retry, native-picker
-double-click, delegated-agent transport and capacity work remain separate.
+Calculator, Files, CodeMirror 6 Text, WordCraft and Help remain the five enabled
+apps. Existing rich recovery, document identity/activation, login persistence,
+Design/fonts/account defaults and file associations remain. Other viewer/app
+payload bytes are unchanged; beta, backend instance/issuer and checked service
+PIDs are unchanged. Original source and unrelated working files were preserved.
+
+Source organization is complete. The [Craft guide](migration/CRAFT-INTEGRATION-GUIDE.md)
+and running log are updated. Generated candidate/engine trees, synthetic browser
+profiles and remote staging output were removed; one compiler cache remains for
+this QA round by explicit user decision. The exact current release archive and
+private evidence remain resumable. Files startup Retry, native-picker double-click,
+authorized-agent transport and capacity work remain separate.
 
 Work from the files in this project. The deliverable is a coherent source tree with independent owners, usable source/build entries, required inputs identified and clear remaining production gaps. It is not a full beta clone, a parity project, an interface redesign or an automatic deployment. Beta stays live separately.
 
