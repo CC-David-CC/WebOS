@@ -5,12 +5,12 @@ records the common host contract. WordCraft and PdfCraft now have deployed
 integrations; each focused report retains its exact source, artifact, tests and
 limits. This log distinguishes source changes from qualification and deployment.
 
-Current PdfCraft follow-up: clean untouched hosted blank, explicit blank Save,
-and top-right Discord removal with About/community/credits preserved. Native and
-browser qualification is in progress, separately from the initial PdfCraft
-release. The shared guide and [two app branch plans](CRAFT-BRANCH-PLANS.md) must
-be finished before starting GridCraft or DeckCraft implementation. Existing local
-app sources remain the starting points; no fresh app copies are needed.
+PdfCraft follow-up is complete and deployed: clean untouched hosted blank,
+explicit blank Save and top-right Discord removal with About/community/credits
+preserved. Native gates,27 browser assertions each locally/hosted and10 local/11
+hosted saved-PDF checks pass. The shared guide and
+[two app branch plans](CRAFT-BRANCH-PLANS.md) are complete; neither next app has
+started implementation. Existing local app sources remain the starting points; no fresh app copies are needed.
 
 ## Ownership
 
@@ -46,7 +46,7 @@ maintain another editable document model. Same-origin apps are trusted code.
 | WC-20 | Route actual File › Save As › Browse through the account-owned destination command; qualify all13 visible export writers separately from copy semantics and naming. | Native save-dialog entrypoint and button regressions; parent actual-WASM account tests | PASS locally and hosted:all9 native stages (5,005 test executions; eight pre-existing ignored),38 JS and56 actual-browser checks each, plus13 export structure checks each. Actual images and249-file/service continuity verified. Export naming and seven Save As-identity entries remain explicit gaps; see deploy/WORDCRAFT-SAVEAS.md. |
 | PDF-01 | Replace transport-success-as-save with native prepare/ack, exact document identity and saved-base checks; preserve later edits, undo and PDF rewrite/incremental rules. | PdfCraft engine and hosted UI save boundary | Native and local actual-browser PASS. Confirmed paths, delayed later edits, stale writes, collisions, cancellation and unknown outcomes are covered. Current source/build identities and hosted gate are in the PdfCraft report. |
 | PDF-02 | Reuse mount/lifecycle, account Storage, Desktop activation and account-scoped preferences/recovery; capture native PDF plus live typed drafts. | PdfCraft `webos/` adapter, native UI, parent composition | Local PASS:17 document/account and5 lifecycle checks; shared-payload regression54 checks pass. Actual native PDF text/render checks retain unfinished and minimized typing. Hosted assertions PASS; final main-suite outer exit recorder interrupted. See deploy/PDFCRAFT.md for the exact distinction. |
-| PDF-03 | Treat the untouched hosted starter page as a clean baseline; keep explicit blank Save/Save As; remove only the top-right Discord shortcut and its width. Preserve About/community/source/contributor/model information. | Native hosted document creation, chrome and geometry/link regressions | Local PASS:2,989 native UI test executions, five existing ignored probes; six quality gates, one complete WASM graph,27 actual-browser assertions and10 PDF content checks. Hosted follow-up pending. |
+| PDF-03 | Treat the untouched hosted starter page as a clean baseline; keep explicit blank Save/Save As; remove only the top-right Discord shortcut and its width. Preserve About/community/source/contributor/model information. | Native hosted document creation, chrome and geometry/link regressions | Local PASS:2,989 native UI test executions, five existing ignored probes; six quality gates, one complete WASM graph,27 actual-browser assertions and10 PDF content checks. Hosted PASS:27 browser assertions/11 PDF artifacts; actual About/render images inspected. Other app/Desktop payloads unchanged. |
 | PDF-04 | Preserve distinct recovery/replacement/rescue artifacts and verify actual native pending text plus committed snapshot content. The conflict test intentionally overwrites the account PDF and previously reused its local evidence basename. | Parent browser acceptance and native PDF content oracle; no app recovery change | The initial content audit mistook that deliberate replacement for lost recovery text. Native rescue and focused pre-conflict proofs retain both texts. Final test names distinguish scenarios; failed investigation receipts remain evidence. |
 
 ## Build and upstream requirements

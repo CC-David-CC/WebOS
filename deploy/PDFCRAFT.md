@@ -1,8 +1,9 @@
 # PdfCraft document integration
 
-Status: initial integration deployed to ksu.codes as release
-`60e809a6e453af680b8fa1e2b6df557eb50b1369380ab711aec355fdd33d9a54`.
-The clean-blank/top-right Discord follow-up is currently under qualification.
+Status: the clean-blank/community-chrome follow-up is deployed and verified on
+ksu.codes, release `1c4623b8403bd44b534722bf3db92f6c3bbd96d8e40add396623cb71c44c97db`.
+Current PdfCraft source: `a5b512846f59c6e5306821cdffdb448e54695ccd`.
+The initial integration and its historical receipts are recorded below.
 
 The requested first milestone is native PDF reading/editing, account Open,
 Save/Save As, document activation, unsaved-work protection and account recovery
@@ -27,7 +28,7 @@ approvals. New/Open/Close/import/generated copies use Desktop-owned views.
 
 ## Source and build
 
-Compiled PdfCraft browser source:
+Initial integration compiled PdfCraft browser source:
 `670f257268545f585f8104928357cea33961e3bb` on `webos/pdf-document-host`, based on
 verified public upstream `271e479c53723b1b294c866d5cb2f27604601b29`.
 Accepted maintained source is `16e5c9b697a50e1e1ba39b1824344b65eb5ed3a1` (the additional commits change README and licence packaging only); Desktop is `173e6aca5d48834a3fcc7a98eb0949492f593723`. Upstream main and the maintained fork remain separate. The existing WordCraft
@@ -83,9 +84,9 @@ Private checkpoint, exact commands/exits, failed and selected receipts:
 The [general Craft guide](../migration/CRAFT-INTEGRATION-GUIDE.md) and running log
 record responsibilities for the next application.
 
-The deployed graph and its immediate rollback were verified file by file; the
+The initial integration graph and its then-immediate rollback were verified file by file; the
 backend instance/issuer, beta index, six service PIDs and scoped WordCraft print
-CSP remained unchanged. Static content is on the data SSD. The current release's
+CSP remained unchanged. Static content is on the data SSD. That historical release's
 rollback configuration is `/var/backups/webos-pdfcraft-20261117-02/`; its previous
 release is `46a37155201fef7b5acbc86df1c3e80d6d48bd8c47d74b825991227e6cc69622`.
 The user's separately approved retired-build cleanup recovered68.9GiB on the boot
@@ -93,7 +94,7 @@ SSD while preserving beta's active build. See [disk evidence](example.invalid-DI
 
 ## Untouched blank and community chrome follow-up
 
-Local qualification passed; deployment/hosted acceptance is the next gate.
+Local and hosted qualification passed; this follow-up is deployed.
 Accepted PdfCraft source: `a5b512846f59c6e5306821cdffdb448e54695ccd`.
 An untouched hosted starter page now uses a clean native baseline and closes
 without a save prompt. Explicit Save and Save As still create valid account PDF
@@ -113,9 +114,11 @@ crate checks pass. One actual complete browser graph was built using the same
 current compiler cache. No engine or shared Desktop/Runtime/Storage change was
 needed for this follow-up.
 
-Local actual-browser qualification passes27 assertions:5 blank/chrome,17
-document/account and5 lifecycle. Independent native parsing verifies10 saved PDF
-artifacts and their expected text; genuine blank files have one page and no text.
+Actual-browser qualification passes27 assertions each locally and hosted:5
+blank/chrome,17 document/account and5 lifecycle, all with recorded exit0.
+Independent native parsing verifies10 local and11 hosted saved PDF artifacts
+and their expected text; genuine blank files have one page and no text. Hosted
+evidence preserves the extra before-conflict artifact explicitly.
 Browser profiles, synthetic accounts and output stay private outside Git.
 
 The content investigation initially audited the wrong artifact: the later
@@ -137,3 +140,35 @@ records that gap for a scoped integration change with affected regressions.
 
 Current private checkpoint and commands/exits:
 `/path/to/workspace/Projects/.webos-migration/pdfcraft-blank-chrome-20261117-iutgpol3/`.
+
+
+## Current release, continuity and rollback
+
+- Release: `1c4623b8403bd44b534722bf3db92f6c3bbd96d8e40add396623cb71c44c97db`.
+- Packaged parent: `c0f00cba25f85e055cb8c45a333a57dd2340609b`; later handoff-only commits do not change the public graph.
+- Archive SHA-256: `2cb91a6cfea757f2abb36342a22fc90972635c7c681b889453f3e141c22bbf74` (72,146,297bytes;308 public files).
+- Static root: `/srv/data/webos-viewer-releases/1c4623b8403bd44b534722bf3db92f6c3bbd96d8e40add396623cb71c44c97db/public`.
+- Current rollback configuration: `/var/backups/webos-pdfcraft-blank-20261117-01/`.
+- Immediate rollback release: `60e809a6e453af680b8fa1e2b6df557eb50b1369380ab711aec355fdd33d9a54`.
+
+All308 files and the immediate rollback were verified. The other247 public
+payloads, including Desktop and the other apps, are byte-identical. Only PdfCraft
+and its build metadata changed. Backend instance/issuer, beta, six service PIDs
+and WordCraft's scoped print CSP remained unchanged. No backend restart or
+external Git publication occurred. Local bare origins retain accepted commits.
+
+The owned temporary engine/candidate/profile/transfer outputs and the superseded
+local archive were removed after qualification. One current compiler cache,
+one current release archive, required pinned source/assets and small private
+receipts/screenshots/synthetic PDFs remain. The reused WordCraft engine was
+verified against all32 current archived WordCraft files before deleting its
+redundant extracted tree. No original or unrelated WIP was deleted.
+
+Guarded rollback uses the retained operator and private plan, with no rebuild:
+
+```sh
+cd /path/to/workspace/Projects/.webos-migration/pdfcraft-blank-chrome-20261117-iutgpol3
+python3 run_operator.py rollback
+```
+
+Do not use the historical initial-release rollback directory for this release.

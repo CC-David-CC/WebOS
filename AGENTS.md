@@ -1,6 +1,6 @@
 # WebOS source organization rules
 
-Current user goal: get the on-disk components correct and organized, as a clean source project to build from going forward. Do not substitute feature development, a full beta copy, beta parity or a replacement interface for this goal. Latest user decisions supersede older migration plans/checkpoints.
+Source organization is complete. The current phase is site integration from the organized independent repositories, within the user's selected app/fix scope. Do not restart extraction, copy beta, pursue full beta parity or replace the existing interface. Latest user decisions supersede older migration plans/checkpoints. Read START-HERE.md for the current accepted release and next-work decisions.
 
 - Original /path/to/workspace/Documents/KSU.CODES is read-only. No checkout, reset, stash, clean, install, build or Git metadata writes there. Prefer GIT_OPTIONAL_LOCKS=0 for inspection.
 - Each meaningful app/component owns an independent repository; this parent pins them as submodules. Apps belong in apps/, platform services in platform/, reusable engines in engines/, libraries in libraries/, shared assets in assets/, build tooling in tooling/. No repository per helper/button.
