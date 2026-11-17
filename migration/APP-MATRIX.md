@@ -20,6 +20,7 @@ Every row has source on disk. The state distinguishes what remains before produc
 | State | Meaning |
 |---|---|
 | S | Source and declared build/entry located; not build-qualified this pass |
+| Q | Later scoped current-viewer release qualified; see its report for scope and limits |
 | B | Source organized; composition/interface port remains |
 | I | Source organized with an explicit external-input/rebuild gap |
 | P | Planned model core; no completed app |
@@ -77,7 +78,7 @@ Every row has source on disk. The state distinguishes what remains before produc
 | P2 / S | pdf-viewer — Read and search PDFs | [apps/pdf-viewer/](../apps/pdf-viewer/) | Account files; browser rendering; PDF.js dependency; existing browser host | [index.mjs](../apps/pdf-viewer/index.mjs)<br>Recipe: js | Not build-qualified in this source-only pass. |
 | P2 / S | pdfcraft — PDF authoring and manipulation | [apps/pdfcraft/](../apps/pdfcraft/) | Browser WASM app; shared Craft code/fonts; host/account-file integration still to qualify | [apps/pdfcraft-web/Cargo.toml](../apps/pdfcraft/apps/pdfcraft-web/Cargo.toml)<br>[Cargo.toml](../apps/pdfcraft/Cargo.toml)<br>Recipe: craft-web | Not build-qualified in this source-only pass. |
 | P2 / S | spreadsheet — Existing Jspreadsheet/SheetJS spreadsheet app | [apps/spreadsheet/](../apps/spreadsheet/) | Account files; XLSX worker; CSV import/export; existing browser host | [index.mjs](../apps/spreadsheet/index.mjs)<br>Recipe: js | Not build-qualified in this source-only pass. |
-| P2 / S | wordcraft — Rich document authoring | [apps/wordcraft/](../apps/wordcraft/) | Browser WASM app; shared Craft crates/fonts; WebOS file/operation integration on our branch | [apps/wordcraft-web/Cargo.toml](../apps/wordcraft/apps/wordcraft-web/Cargo.toml)<br>[Cargo.toml](../apps/wordcraft/Cargo.toml)<br>Recipe: craft-web | Not build-qualified in this source-only pass. |
+| P2 / Q | wordcraft — Rich document authoring | [apps/wordcraft/](../apps/wordcraft/) | Browser WASM app; shared Craft crates/fonts; WebOS file/operation integration on our branch | [webos/build.py](../apps/wordcraft/webos/build.py)<br>[apps/wordcraft-web/Cargo.toml](../apps/wordcraft/apps/wordcraft-web/Cargo.toml)<br>[Cargo.toml](../apps/wordcraft/Cargo.toml)<br>Recipe: craft-web | Qualified and deployed document integration; 92 local/hosted browser checks. See [release report](../deploy/WORDCRAFT-DOCUMENTS.md) for scope, limits and rollback. |
 
 ## Creative and media apps
 
@@ -280,7 +281,7 @@ Recipes below identify source-owned instructions, not commands run during this p
 
 The retained JS builder accepts an explicit JSON configuration with `source` set to the assembly root, selected `apps`, explicit `entries` relative to that root, and an external `output`. Its inherited defaults and `deploy/legacy-operations/build-public-apps.py` assume the former grouped layout and must not be used unchanged. Per-component pinned packages, prepare scripts, declared assets, workers, notices and hash-checked patches remain required. This is a located recipe, not a tested all-app production command.
 
-The 17 Craft Cargo workspaces previously passed metadata inspection only; that is not browser build proof. The selected WordCraft and DeckCraft branches have historical build/operation evidence, but the rejected desktop’s acceptance does not qualify the original viewer. Read [Craft build inputs](CRAFT-BUILD-INPUTS.md).
+The initial source pass checked metadata for 17 Craft workspaces, which was not browser build proof. WordCraft now has a separately qualified current-viewer release; see its Q row and report. The selected WordCraft and DeckCraft branches have historical build/operation evidence, but the rejected desktop’s acceptance does not qualify the original viewer. Read [Craft build inputs](CRAFT-BUILD-INPUTS.md).
 
 The locked local input check passed for 6,230 files / 1,115,334,296 bytes. A reference bundle is not source reproducibility. [Declared asset coverage](ASSET-COVERAGE.md) identifies 17 missing Notebook wheel paths and 130 historical ACAD-host generated paths. Neither requires copying obsolete running-site data to claim source organization. Their future production recipes still need explicit inputs/reconstruction.
 

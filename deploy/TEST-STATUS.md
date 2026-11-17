@@ -1,4 +1,16 @@
-# ksu.codes — existing viewer, Files and Text status
+# ksu.codes — current release pointer
+
+The current 2026-11-17 UTC WordCraft release is documented in
+[WORDCRAFT-DOCUMENTS.md](WORDCRAFT-DOCUMENTS.md): all 92 local and hosted browser
+checks pass, with rich recovery, confirmed file identity and both Open routes.
+Its provenance and matching rollback supersede the values below. Existing
+Files/Text/Login behavior and limits remain.
+
+The remainder is the historical 2026-11-16 release record. Its then-remaining
+WordCraft activation gap has been addressed. Do not use its old current-root
+or rollback values for the new release.
+
+## Historical Files/Text/Login release
 
 Verified 2026-11-16: **https://ksu.codes serves the original Desktop/Workspace
 viewer** from platform/desktop/active-system/. Its CSS, reference data and
