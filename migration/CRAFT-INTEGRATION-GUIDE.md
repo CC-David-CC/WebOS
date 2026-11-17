@@ -1,9 +1,9 @@
 # Integrating a Craft application into WebOS
 
-Status: WordCraft passes local qualification; the scoped hosted release is pending.
+Status: WordCraft passes local and hosted qualification and is deployed to ksu.codes.
 The [running integration log](CRAFT-INTEGRATION-LOG.md) records changes and
 historical failures. The [document integration report](../deploy/WORDCRAFT-DOCUMENTS.md)
-records the selected commits, qualification and release status. This guide does
+records selected commits, the exact release, rollback and limits. This guide does
 not grant another application WordCraft's results or authorize deployment.
 
 WordCraft `fbc4bb73fbc177c9adcfbb705c9a9a05212a7ae9` passes all nine native CI
@@ -13,8 +13,8 @@ complete pinned browser artifact passes 92 actual-engine/local regression checks
 11 Text activation, nine Text binding, 11 Text recovery and 15 viewer/Files/
 Calculator checks. Another 68 JavaScript tests pass; their synthetic-engine
 fixtures are not substitutes for the actual-engine checks. Actual screenshots
-were inspected for the classic viewer and requested Discord controls. Hosted
-qualification is a separate pending gate.
+were inspected for the classic viewer and requested Discord controls. The same 92 checks pass over hosted HTTPS against the exact selected release;
+hosted native and Desktop screenshots were inspected.
 
 Work from the organized sources in `apps/`, `platform/`, `engines/`, `libraries/`,
 `assets/` and `tooling/`. Preserve the existing Desktop implementation in
@@ -180,7 +180,7 @@ per-document browser memory remain unqualified. The organized Accounts source
 also includes separate delegation/policy work beyond the retained deployed
 backend; do not accidentally deploy it during a static frontend release.
 
-After hosted WordCraft qualification, choose explicitly between another Craft app and
+With WordCraft qualified, choose explicitly between another Craft app and
 these platform gaps. Do not turn that choice into an automatic whole-catalog
 build, backend rewrite, upstream PR cleanup or beta-parity project.
 

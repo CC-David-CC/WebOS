@@ -1,13 +1,23 @@
 # WebOS — organized source for future development
 
-Current status (2026-11-16): ksu.codes serves the existing viewer with server-validated login persistence. Sign in once after loading this update; refresh and reopening the same browser profile resume that session while its fixed eight-hour server deadline remains valid. Sign-out forgets it; expired/invalid records require login, and a renewal outage cannot admit cached identity. Passwords are not stored. The original desktop appearance, account-file backend and8/account,16/service transfer limits remain unchanged. Text activation, Save/Save As binding, Retry and browser-local draft recovery remain included.53 assembled browser checks pass locally and hosted, alongside13 Accounts fixture cases, independent Login/file-authority context regressions and45 unit/lifecycle checks. WordCraft multi-document activation and Files startup-error retry remain separate gaps. Old incorrect layouts may need a file reopened once; old duplicate windows are not merged automatically. Native-picker double-click investigation remains deferred. The [deployment report](deploy/TEST-STATUS.md) records provenance, limitations, tests and matching rollback. Source organization is complete; beta and the original workspace remain unchanged. Earlier replacement-shell results are historical.
+Current status (2026-11-17 UTC): ksu.codes serves the existing Desktop/Workspace
+viewer with qualified WordCraft document integration: account-scoped rich-draft
+recovery, confirmed Save/Save As identity/titles/restoration and existing-document
+activation through Files and WordCraft Open. Different documents remain
+independent. Requested Discord controls are removed; About retains its link.
+All 92 actual-browser checks pass locally and hosted, alongside all nine native
+CI stages (4,989 tests; eight pre-existing ignored) and 68 JavaScript tests.
+Calculator, Files, Text, WordCraft and Help remain the five enabled apps. Server-
+validated login persistence, the fixed eight-hour deadline and transfer limits
+remain. Desktop CSS/reference/artwork, beta, backend/account state and original
+workspace remain unchanged. Files initial-load Retry, native-picker double-click,
+delegated-agent transport and multi-user/per-window capacity remain separate.
+See the [current release report](deploy/WORDCRAFT-DOCUMENTS.md) for exact source,
+release, rollback and limits, and the [prior Files/Text/Login record](deploy/TEST-STATUS.md)
+for historical evidence. Source organization is complete; the general
+[Craft guide](migration/CRAFT-INTEGRATION-GUIDE.md) and running log are current.
 
 Work from the files in this project. The deliverable is a coherent source tree with independent owners, usable source/build entries, required inputs identified and clear remaining production gaps. It is not a full beta clone, a parity project, an interface redesign or an automatic deployment. Beta stays live separately.
-
-WordCraft's new document integration is now locally qualified (4,989 native
-tests, 68 JavaScript tests and 92 actual-browser checks). The scoped ksu.codes
-release and hosted verification remain pending; the current served release
-above has not changed. See [WordCraft document status](deploy/WORDCRAFT-DOCUMENTS.md).
 
 ## Where things belong
 
