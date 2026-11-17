@@ -85,7 +85,7 @@ try{
   await page.waitForFunction(()=>!document.querySelector('.desktop').inert);assert(await page.evaluate(()=>!!window.desktopLab.session));
   checks.push('End session honors WordCraft unsaved-work cancellation');
   const documentStructure=await structure(frame);assert.equal(documentStructure[0].style,'Heading1');assert(documentStructure.some(b=>b.list));
-  await command(frame,'file.saveAs',{path:'ViewerAuthoring.docx'});await page.waitForFunction(()=>document.querySelector('.webos-wordcraft-status')?.textContent.startsWith('Saved to your account:'));
+  await command(frame,'file.saveAs',{path:'Documents/ViewerAuthoring.docx'});await page.waitForFunction(()=>document.querySelector('.webos-wordcraft-status')?.textContent.startsWith('Saved to your account:'));
   await frame.waitForFunction(async()=>{const s=await window.wordcraft.uiInspect();return !s.dirty&&s.pendingSaves===0;});
   await page.click('.window:has(.webos-wordcraft) [aria-label="Close"]');await page.waitForFunction(()=>!document.querySelector('.webos-wordcraft'));
   checks.push('WordCraft heading/paragraph/list, acknowledged account save and clean close');
