@@ -28,7 +28,7 @@ approvals. New/Open/Close/import/generated copies use Desktop-owned views.
 Compiled PdfCraft browser source:
 `670f257268545f585f8104928357cea33961e3bb` on `webos/pdf-document-host`, based on
 verified public upstream `271e479c53723b1b294c866d5cb2f27604601b29`.
-Accepted maintained source is `34c5920fe22937784bc16282852fc99a6926ca6c` (the additional commit changes README only); Desktop is `173e6aca5d48834a3fcc7a98eb0949492f593723`. Upstream main and the maintained fork remain separate. The existing WordCraft
+Accepted maintained source is `16e5c9b697a50e1e1ba39b1824344b65eb5ed3a1` (the additional commits change README and licence packaging only); Desktop is `173e6aca5d48834a3fcc7a98eb0949492f593723`. Upstream main and the maintained fork remain separate. The existing WordCraft
 engine is reused unchanged at `edeb4a090cd301cd7d4405e20af795007b37b69b`.
 
 Pinned development compiler: nightly-2026-11-16,
