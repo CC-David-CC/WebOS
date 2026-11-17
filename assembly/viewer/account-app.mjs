@@ -35,7 +35,7 @@ export function mountAccountApp(mount, host, kind) {
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
       // A second Files instance may have opened it while this read waited.
       if (activateFile(file)) return {status: 'activated'};
-      const app = kind === 'wordcraft' || /[.](docx|odt|rtf)$/i.test(file.path) ? 'wordcraft' : 'text';
+      const app = kind === 'wordcraft' || /[.](docx|dotx|odt|rtf)$/i.test(file.path) ? 'wordcraft' : 'text';
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
       return {status: 'opened'};
     };
