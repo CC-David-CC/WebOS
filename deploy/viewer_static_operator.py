@@ -109,7 +109,8 @@ def main():
             members = tar.getmembers()
             assert len(members) < 10000 and len({m.name for m in members}) == len(members)
             assert all(m.isfile() and not Path(m.name).is_absolute() and not any(p.startswith('.') or p in ('node_modules', 'target', '__pycache__') for p in Path(m.name).parts) for m in members)
-            assert sum(m.size for m in members) < 200 * 1024 * 1024
+            # Bounded for the measured WordCraft + PdfCraft development graph.
+            assert sum(m.size for m in members) < 256 * 1024 * 1024
             receipt_bytes = tar.extractfile('viewer-release.json').read()
             assert sha(receipt_bytes) == args.release
             receipt = json.loads(receipt_bytes); assert receipt['schema'] == 'webos-existing-viewer-release/1'

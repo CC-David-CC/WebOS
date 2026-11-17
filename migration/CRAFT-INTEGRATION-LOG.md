@@ -44,6 +44,8 @@ maintain another editable document model. Same-origin apps are trusted code.
 | WC-18 | Return from File after confirmed Save/Save As/export; preserve cancellation/failure and unrelated-page/document state. Repair selected-page PDF delivery on wasm. | Native command/save settlement, browser host protocol | PASS: all nine native stages and 38 JS checks; fresh pinned full engine; eight output,19 document and15 recovery checks each locally/hosted, including confirmed navigation and restored typing focus. See deploy/WORDCRAFT-OUTPUT.md. |
 | WC-19 | Real browser PDF print completion/errors/timeouts, narrowly scoped print CSP, and a single-row account/recovery footer with full hover text. | WordCraft web print hook/native print state/adapter; parent deployment policy | PASS: live CSP failure reproduced; final graphical Chromium preview opens/cancels twice locally and hosted with object-src disabled; six footer checks each locally/hosted; short print errors and actual images verified. Scoped policy and service continuity pass. |
 | WC-20 | Route actual File › Save As › Browse through the account-owned destination command; qualify all13 visible export writers separately from copy semantics and naming. | Native save-dialog entrypoint and button regressions; parent actual-WASM account tests | PASS locally and hosted:all9 native stages (5,005 test executions; eight pre-existing ignored),38 JS and56 actual-browser checks each, plus13 export structure checks each. Actual images and249-file/service continuity verified. Export naming and seven Save As-identity entries remain explicit gaps; see deploy/WORDCRAFT-SAVEAS.md. |
+| PDF-01 | Replace transport-success-as-save with native prepare/ack, exact document identity and saved-base checks; preserve later edits, undo and PDF rewrite/incremental rules. | PdfCraft engine and hosted UI save boundary | Native and local actual-browser PASS. Confirmed paths, delayed later edits, stale writes, collisions, cancellation and unknown outcomes are covered. Current source/build identities and hosted gate are in the PdfCraft report. |
+| PDF-02 | Reuse mount/lifecycle, account Storage, Desktop activation and account-scoped preferences/recovery; capture native PDF plus live typed drafts. | PdfCraft `webos/` adapter, native UI, parent composition | Local PASS:17 document/account and5 lifecycle checks; shared-payload regression54 checks pass. Actual native PDF text/render checks retain unfinished and minimized typing. Hosted acceptance pending. |
 
 ## Build and upstream requirements
 
@@ -281,3 +283,16 @@ adversarial isolation tests or a complete security review.
   Original source and unrelated WIP were preserved; no external Git publication.
   Temporary outputs and profiles were removed, with one compiler cache retained
   for QA. Exact source, artifact and rollback: [output report](../deploy/WORDCRAFT-OUTPUT.md).
+
+- **2026-11-17 — PdfCraft local qualification:** selected runtime browser source
+  `670f257268545f585f8104928357cea33961e3bb`; maintained source
+  `34c5920fe22937784bc16282852fc99a6926ca6c` adds README clarification only.
+  Native engine/UI suites pass;22 actual PdfCraft and54 affected-app checks pass.
+  Hosted beforeunload now belongs to Desktop, fixing a reproduced duplicate-panel
+  error while preserving standalone behavior. Python3.14 packaging offsets and
+  dependency-notice handling were corrected, and the portable build passes.
+  Source, browser and packaging failures remain in private evidence. Harness
+  corrections respect actual text-box Undo, conflict wording, blank-document
+  close confirmation and session decision/finalization ordering. A focused
+  lost-response probe corrected interception teardown before the accepted suite.
+  No engine/UI rebuild was needed for the later browser-entrypoint warning fix.

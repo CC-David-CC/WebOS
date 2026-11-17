@@ -4,3 +4,4 @@ export {thumbprint} from '@webos/accounts/crypto';
 export {UserFiles} from '@webos/storage';
 export {restoreTextRecovery} from './text-recovery.mjs';
 export {restoreWordcraftRecovery} from './wordcraft-recovery.mjs';
+export {restorePdfcraftRecovery} from './pdfcraft-recovery.mjs';

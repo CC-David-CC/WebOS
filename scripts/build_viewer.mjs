@@ -8,7 +8,7 @@ import {execFileSync} from 'node:child_process';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const flags=Object.fromEntries(process.argv.slice(2).reduce((pairs,item,index,all)=>index%2?pairs:[...pairs,[item,all[index+1]]],[]));
-if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!['--output','--wordcraft-site'].includes(k)))throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE');
+if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!['--output','--wordcraft-site','--pdfcraft-site'].includes(k)))throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE [--pdfcraft-site VERIFIED_ENGINE_SITE]');
 const output=path.resolve(flags['--output']),wordcraft=path.resolve(flags['--wordcraft-site']);
 if(output===root||output.startsWith(root+path.sep)||root.startsWith(output+path.sep))throw Error('Output must be outside source');
 for(let p=output;path.dirname(p)!==p;p=path.dirname(p)){try{if((await lstat(p)).isSymbolicLink())throw Error('Direct output paths required');}catch(e){if(e.code!=='ENOENT')throw e;}}
@@ -22,6 +22,12 @@ async function tree(relative,prefix){for(const item of await readdir(path.join(r
 const engine=JSON.parse(await readFile(path.join(wordcraft,'component-build.json'),'utf8'));
 if(engine.schema!=='webos-component-build/1'||engine.component!=='wordcraft'||!Array.isArray(engine.files)||!engine.files.length)throw Error('WordCraft build receipt required');
 execFileSync('git',['-C',path.join(root,'apps/wordcraft'),'merge-base','--is-ancestor',engine.sourceCommit,'HEAD']);
+let pdfcraft=null,pdfEngine=null;
+if(flags['--pdfcraft-site']){
+  pdfcraft=path.resolve(flags['--pdfcraft-site']);pdfEngine=JSON.parse(await readFile(path.join(pdfcraft,'component-build.json'),'utf8'));
+  if(pdfEngine.schema!=='webos-component-build/1'||pdfEngine.component!=='pdfcraft'||!Array.isArray(pdfEngine.files)||!pdfEngine.files.length)throw Error('PdfCraft build receipt required');
+  execFileSync('git',['-C',path.join(root,'apps/pdfcraft'),'merge-base','--is-ancestor',pdfEngine.sourceCommit,'HEAD']);
+}
 // The engine is a separately identified, previously built input. Its receipt is
 // never relabeled as a fresh compilation of today's bridge/native source.
 await mkdir(output);
@@ -36,7 +42,7 @@ function recordInputs(meta){for(const name of Object.keys(meta.inputs)){if(name.
 async function emitBuild(options,destination){const result=await build({...common,...options});recordInputs(result.metafile);for(const input of Object.keys(result.metafile.inputs)){if(input.startsWith('<'))continue;sourceInputs.set(input,hash(await readFile(path.resolve(root,input))));}const files=[];for(const file of result.outputFiles){const name=path.relative(options.outdir,file.path).split(path.sep).join('/');files.push({name,bytes:file.contents});}await destination(files);}
 await emitBuild({entryPoints:{'account-services':'assembly/viewer/account-services.mjs'},outdir:path.join(output,'.virtual-services'),outExtension:{'.js':'.mjs'}},async files=>{for(const file of files)await put('assets/desktop/'+file.name,file.bytes);});
 const apps=[];
-for(const id of ['calculator','files','text','wordcraft','help']){
+for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraft']:[]),'help']){
   const contents=id==='help'?"export {mount} from './apps/help/apps/system/help/index.mjs';":
     `import {mount as appMount} from '@webos/${id}';import {mountAccountApp} from './assembly/viewer/account-app.mjs';export function mount(host){return mountAccountApp(appMount,host,${JSON.stringify(id)});}`;
   await emitBuild({stdin:{contents,resolveDir:root,sourcefile:'<viewer-'+id+'>',loader:'js'},outdir:path.join(output,'.virtual-'+id),outExtension:{'.js':'.mjs'}},async files=>{
@@ -55,8 +61,14 @@ await put('assets/desktop/cache-manifest.json',JSON.stringify({version:'webos-vi
 let engineBytes=0;
 for(const file of engine.files){if(!safe(file.path)||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid engine path/size');const bytes=await readFile(path.join(wordcraft,file.path));if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error('Engine input hash mismatch');await put('wordcraft/'+file.path,bytes);engineBytes+=bytes.length;}
 await put('wordcraft/component-build.json',JSON.stringify(engine,null,2)+'\n');
+let pdfEngineBytes=0;
+if(pdfEngine){
+  for(const file of pdfEngine.files){if(!safe(file.path)||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid PdfCraft engine path/size');const bytes=await readFile(path.join(pdfcraft,file.path));if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error('PdfCraft engine input hash mismatch');await put('pdfcraft/'+file.path,bytes);pdfEngineBytes+=bytes.length;}
+  await put('pdfcraft/component-build.json',JSON.stringify(pdfEngine,null,2)+'\n');
+}
 // No backend/package/credential state is included in public output.
 const receipt={schema:'webos-existing-viewer-build/1',engine:{sourceCommit:engine.sourceCommit,bytes:engineBytes,receiptSHA256:hash(await readFile(path.join(wordcraft,'component-build.json')))},
+  ...(pdfEngine?{pdfcraftEngine:{sourceCommit:pdfEngine.sourceCommit,bytes:pdfEngineBytes,receiptSHA256:hash(await readFile(path.join(pdfcraft,'component-build.json')))}}:{}),
   sourceInputs:[...sourceInputs].map(([path,sha256])=>({path,sha256})),apps:apps.map(a=>a.id),qualification:'Source-assembled candidate. Real viewer/browser/account acceptance remains separate; WordCraft engine is a verified prebuilt input.'};
 await put('viewer-build.json',JSON.stringify(receipt,null,2)+'\n');
 console.log(JSON.stringify({output,apps:receipt.apps,sourceInputs:sourceInputs.size,engineBytes,engineSourceCommit:engine.sourceCommit,guest:false,sourceAssembled:true}));
