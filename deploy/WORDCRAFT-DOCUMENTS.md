@@ -1,5 +1,9 @@
 # WordCraft document integration
 
+Historical milestone: superseded by the [current Design/fonts/account-defaults
+release](WORDCRAFT-DESIGN-DEFAULTS.md). The identities, checks and rollback tag
+below describe the earlier release and remain as historical evidence.
+
 Status: 2026-11-17 UTC — deployed to https://ksu.codes. All 92 actual-browser
 checks pass locally and over hosted HTTPS; actual screenshots were inspected.
 

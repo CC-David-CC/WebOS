@@ -1,12 +1,13 @@
 # Integrating a Craft application into WebOS
 
-Status: the Design/fonts/account-defaults follow-up passes native, fresh WASM
-and 20 focused local browser checks. Hosted acceptance is pending. The prior
-WordCraft document-integration release remains deployed until the static rollout.
-See [the focused report](../deploy/WORDCRAFT-DESIGN-DEFAULTS.md).
+Status: WordCraft Design/fonts/account defaults are deployed to ksu.codes.
+All nine native stages, 36 WordCraft JavaScript regressions and 20 focused actual
+browser checks each locally and hosted pass. Actual native and viewer images were
+inspected. See [the current focused report](../deploy/WORDCRAFT-DESIGN-DEFAULTS.md)
+for exact source, artifact, rollback and limits.
 The [running integration log](CRAFT-INTEGRATION-LOG.md) records changes and
 historical failures. The [document integration report](../deploy/WORDCRAFT-DOCUMENTS.md)
-records selected commits, the exact release, rollback and limits. This guide does
+records the historical document-integration milestone. This guide does
 not grant another application WordCraft's results or authorize deployment.
 
 Historical baseline: WordCraft `fbc4bb73fbc177c9adcfbb705c9a9a05212a7ae9` passes all nine native CI
@@ -138,8 +139,8 @@ on blank creation; saved files, imports, explicit templates and draft recovery
 remain authoritative for their own formatting. Use revision preconditions and
 durable acknowledgements for writes, with visible failures and no browser-global
 fallback. Test A → B → A and the same account in a fresh browser environment.
-This mechanism passes local qualification; hosted acceptance is pending and is
-not inherited from the earlier release's results. Other Craft apps need their own native schema and creation boundary.
+This mechanism passes local and hosted qualification, including a fresh browser;
+its results were independently collected for the current release. Other Craft apps need their own native schema and creation boundary.
 
 Font menus should offer families actually loaded by the editor, including the
 current account's uploaded fonts. Keep an imported document's requested family
