@@ -169,8 +169,8 @@ async function placeImage(page, id, name) {
   return bytes;
 }
 
-async function draftPersisted(page, path, revision, typeDraft = false) {
-  await page.waitForFunction(async ({path,revision,typeDraft}) => {
+async function draftPersisted(page, path, revision, format = null) {
+  await page.waitForFunction(async ({path,revision,format}) => {
     const name = 'webos-photocraft-recovery-v1';
     if (!(await indexedDB.databases()).some(db => db.name === name)) return false;
     const db = await new Promise((resolve,reject) => {
@@ -186,11 +186,11 @@ async function draftPersisted(page, path, revision, typeDraft = false) {
       });
       for (const row of records) {
         if (row.path !== path || row.revision !== revision || !(row.bytes instanceof Blob) || row.bytes.size < 8) continue;
-        if (!typeDraft || await row.bytes.slice(0,8).text() === 'PCDRAFT1') return true;
+        if (!format || await row.bytes.slice(0,8).text() === format) return true;
       }
       return false;
     } finally { db.close(); }
-  },{...options,polling:250},{path,revision,typeDraft});
+  },{...options,polling:250},{path,revision,format});
 }
 
 async function reloadRecovered(page, id, text) {
@@ -254,6 +254,16 @@ async function destination(page, name) {
 async function bound(page,id,name) {
   const selector = '.window[data-window="'+id+'"] .caption-text';
   await page.waitForFunction((selector,name)=>document.querySelector(selector)?.textContent===name+' — PhotoCraft',options,selector,name);
+}
+
+async function changedBinding(page,id,base,waitOptions = options) {
+  const handle = await page.waitForFunction(({id,base})=>{
+    const current = [...window.desktopLab.surfaces.values()].flatMap(surface=>surface.windows)
+      .find(win=>String(win.id)===id)?.launchContext?.sha256;
+    return current && current !== base ? current : false;
+  },waitOptions,{id,base});
+  try { return await handle.jsonValue(); }
+  finally { await handle.dispose(); }
 }
 
 async function download(page, id, resource, artifact) {
@@ -558,7 +568,7 @@ try {
   assert(box);
   await page.mouse.click(box.x+Math.max(65,(box.width-230)/2),box.y+box.height*0.56);
   await page.keyboard.type('Recovered typed title',{delay:20});
-  await draftPersisted(page,untitledPath,typeBase,true);
+  await draftPersisted(page,untitledPath,typeBase,'PCDRAFT1');
   assert.equal(await download(page,filesId,untitledPath,'uncommitted-type.pcraft'),typeBase);
   await reloadRecovered(page,blankId,'Recovered unsaved changes');
   await bound(page,blankId,'Untitled recovery.pcraft');
@@ -587,12 +597,7 @@ try {
   });
   const boundRevision=()=>automatic.evaluate(id=>[...window.desktopLab.surfaces.values()].flatMap(surface=>surface.windows)
     .find(win=>String(win.id)===id)?.launchContext?.sha256,autoId);
-  async function nextAutomaticRevision(base, timeout) {
-    await automatic.waitForFunction(({id,base})=>[...window.desktopLab.surfaces.values()].some(desktop=>
-      desktop.windows.some(win=>String(win.id)===id && win.launchContext?.sha256 && win.launchContext.sha256!==base)),
-    {timeout},{id:autoId,base});
-    return boundRevision();
-  }
+  const nextAutomaticRevision = (base,timeout) => changedBinding(automatic,autoId,base,{timeout});
   const originalAuto=await boundRevision();
   await automatic.click(toggle);
   assert.equal(await automatic.$eval(toggle,node=>node.getAttribute('aria-pressed')),'true');
@@ -687,6 +692,46 @@ try {
   assert.equal(againA.enabled,'true');
   assert(againA.recents.includes(untitledPath));
   pass('Switching accounts in one browser separates native preset databases, recent paths and AutoSave settings');
+  if (process.env.WEBOS_PHOTO_NESTED_RECOVERY === '1') {
+    await launch(automatic,'Graphics','PhotoCraft');
+    const nestedId = await readyPhoto(automatic);
+    const nestedFiles = await files(automatic);
+    await shortcut(automatic,nestedId,'s');
+    await destination(automatic,'Nested Recovery');
+    await bound(automatic,nestedId,'Nested Recovery.pcraft');
+    const nestedPath = 'Pictures/Nested Recovery.pcraft';
+    const blankRevision = await download(automatic,nestedFiles,nestedPath,'nested-blank.pcraft');
+    await placeImage(automatic,nestedId,'nested-asset.png');
+    await shortcut(automatic,nestedId,'s');
+    const nestedBase = await changedBinding(automatic,nestedId,blankRevision);
+    await shortcut(automatic,nestedId,'f');
+    await automatic.keyboard.type('Edit Contents',{delay:20});
+    await automatic.keyboard.press('Enter');
+    await automatic.waitForFunction(selector=>document.querySelector(selector)?.appView.lifecycle.snapshot().pending,
+      options,photoWindow(nestedId));
+    await shortcut(automatic,nestedId,'n',['Control','Shift']);
+    await shortcut(automatic,nestedId,'Enter',[]);
+    await draftPersisted(automatic,nestedPath,nestedBase,'PCNEST01');
+    await reloadRecovered(automatic,nestedId,'Recovered unsaved changes');
+    await automatic.waitForFunction(selector=>{
+      const state=document.querySelector(selector)?.appView.lifecycle.snapshot();
+      return state?.dirty && state.pending;
+    },options,photoWindow(nestedId));
+    const restoredFiles = await files(automatic);
+    assert.equal(await download(automatic,restoredFiles,nestedPath,'nested-before-save.pcraft'),nestedBase);
+    await shortcut(automatic,nestedId,'s');
+    await shortcut(automatic,nestedId,'w');
+    await automatic.waitForFunction(selector=>{
+      const state=document.querySelector(selector)?.appView.lifecycle.snapshot();
+      return state?.dirty && !state.pending;
+    },options,photoWindow(nestedId));
+    await shortcut(automatic,nestedId,'s');
+    await changedBinding(automatic,nestedId,nestedBase);
+    await download(automatic,restoredFiles,nestedPath,'nested-after-save.pcraft');
+    await writeFile(path.join(output,'nested-embedded.pcraft'),embeddedImage('nested-after-save.pcraft','nested-asset.pcraft'));
+    assert.equal(layers('nested-embedded.pcraft'),2);
+    pass('Refresh restores the dirty smart-object tab and saving it updates the account project only after the parent Save');
+  }
   assert.deepEqual(external,[]);
   assert.deepEqual(errors,[]);
   assert([...assets].some(url=>url.endsWith('.mjs')));
