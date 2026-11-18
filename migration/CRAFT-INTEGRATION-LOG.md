@@ -568,3 +568,41 @@ locked `alloca` archive. The builder now has all 55 remaining locked
 workspace archives, verified against Cargo.lock, along with the 105 archives
 and sparse indexes needed by the WASM preflight. Linked package and browser
 qualification remain open.
+
+### PhotoCraft account file dialogs
+
+Native fork `e83591e0612a` routes File Open, Open Recent and editable-project
+Save As through a dedicated account dialog service. Native exports retain
+their local dialog path. The parent uses the classic account picker and
+activates an existing PhotoCraft window for the selected project. A different
+saved project receives its own window, using the server's current file
+revision. Choosing a save destination performs no write until the native
+editor sends its separately correlated save request.
+
+The fork passes all 63 native file-dialog tests, including a regression that
+checks the account and local-export routes. Both WASM crates compile with
+the locked HEIF/translation inputs. The parent passes 44 JavaScript tests
+across PhotoCraft, file associations and shared Runtime operations. The
+classic Desktop routing commit is `77547ea8ba46`. The local test builds reuse
+the verified WordCraft, PdfCraft, GridCraft and DeckCraft engines.
+
+The R730 already has the dialog revision as a verified Git delta. Its checked
+out source remains pinned to the earlier startup commit for the current
+package run. PhotoCraft remains disabled while the linked package, live
+browser account workflow and close/recovery behavior are under development.
+
+### PhotoCraft browser packaging
+
+The first R730 release-profile build of `f26762c36b01` produced a verified
+17.2 MB archive and 42.0 MB of uncompressed app WASM. Chromium exposed a
+missing generated eframe module. App glue is placed in `app/`, so the boot
+crate's root `snippets/` directory leaves its relative import unresolved.
+Native packaging commit `7876cdf484ae` now copies app snippets beside that
+glue. The repaired loopback fixture used the exact generated module and
+unchanged WASM. All four smoke scenarios passed, including real keyboard Save
+and reopening the exact project bytes in a fresh native frame. The optional
+served-font catalogue returned an expected 404 in that fixture.
+
+The dialog snapshot `e83591e0612a` runs against the same R730 target cache.
+The packaging-only delta is staged there for repackaging its compiled output.
+The signed account-storage workflow still needs its assembled-browser run.
