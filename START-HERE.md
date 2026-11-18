@@ -1,3 +1,27 @@
+> **User scope decision — all17 Craft integrations (2026-11-18 UTC)**
+>
+> All17 selected Craft apps are integration targets, including the less mature
+> ones. Readiness differences affect sequencing and acceptance work; none is
+> excluded by an earlier “defer” recommendation. Finish GridCraft/DeckCraft first.
+> Every selected app gets a visible entry in the existing Desktop menu; enable
+> only qualified integrations through the release profile. Unsupported Craft and
+> legacy apps stay grayed out. Keep their source. No legacy-editor retirement,
+> replacement decision or new quick-preview project is authorized by this scope.
+
+> **Active local integration round — GridCraft/DeckCraft and AutoSave**
+>
+> The user authorized parallel app branches and approved browser-first recovery
+> plus debounced account AutoSave. Work remains split between the app branches
+> and the shared Runtime/Desktop composition. DeckCraft's native CI, clean
+> WASM build and initial account browser checks passed. Its local archive is
+> staged for review. GridCraft is still in native CI.
+> Normal automatic writes wait 10 seconds after committed typing, at least 60
+> seconds between confirmed writes; known no-write transient retries back off
+> to 15 minutes. Conflict/uncertain outcomes pause. Manual Save remains immediate.
+> Do not restart organization, overwrite unrelated WIP or deploy from this note.
+> Resume from the private checkpoint at
+> `/path/to/workspace/Projects/.webos-migration/craft-office-20261117T234813Z-8a43bc/checkpoint.json`.
+
 # WebOS — site integration from organized source
 
 Source organization is complete. We are integrating apps into ksu.codes from the
@@ -26,15 +50,14 @@ Known next Desktop issue: clean PDF windows and exact placement are absent from
 saved-layout restoration; dirty drafts are found as recovery views. This release
 leaves Desktop unchanged and records that scoped follow-up explicitly.
 
-The [general Craft integration guide](migration/CRAFT-INTEGRATION-GUIDE.md),
-[GridCraft/DeckCraft branch plans](migration/CRAFT-BRANCH-PLANS.md) and
-[build execution plan](migration/CRAFT-BUILD-EXECUTION.md) are ready. GridCraft is
-the proposed next app, then DeckCraft. PhotoCraft was suggested as a possible
-third; it is not selected/assessed for implementation. Neither next app branch
-has started. The R730 was inspected read-only (28 physical cores,252GiB RAM);
-no remote toolchain setup or builds occurred. Select the next scope explicitly.
+The [Craft integration matrix](migration/CRAFT-INTEGRATION-MATRIX.md) lists
+the 17 source locations, native workflows and current qualification.
+The [integration guide](migration/CRAFT-INTEGRATION-GUIDE.md) and
+[GridCraft/DeckCraft branch plans](migration/CRAFT-BRANCH-PLANS.md) describe
+the active work. The [build inputs](migration/CRAFT-BUILD-INPUTS.md) identify
+the verified dependency cache, shared input revisions and remaining checks.
 
-Current checkpoint:
+Last deployed release checkpoint:
 `/path/to/workspace/Projects/.webos-migration/pdfcraft-blank-chrome-20261117-iutgpol3/checkpoint.json`.
 Temporary engine/candidate/browser/transfer output and the superseded archive
 were removed. One current compiler cache, the current release archive, required

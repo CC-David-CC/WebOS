@@ -1,8 +1,8 @@
 # Declared app asset coverage
 
-All75 registered source entries:4609 declared paths;62 present in component source;4438 available in the frozen beta reference;19 available as recovered prepared inputs. Counts overlap.147 paths remain absent from all checked locations:17 Notebook Python/Pyodide wheels and130 historical CAD-host build assets.
+Across 75 registered entries, 4,609 paths are declared. Component source contains 62, the frozen beta reference covers 4,438 and verified prepared inputs cover 36. These counts overlap. The 130 absent paths all belong to the historical CAD-host build.
 
-The prior36 Notebook gaps included widget frontend assets and Python wheels.19 are now recovered from wheels whose hashes match the component build recipe. Every reported reference/prepared file is checked against its locked SHA256 and size. Private older runtime archives did not match the remaining paths. This is declared-file coverage, not a full dynamic graph, source rebuild or functional qualification.
+All 36 previously missing Notebook paths are available under `artifacts/inputs/notebook/prepared/`. These include widget frontend assets and Python wheels. Each reference and prepared input is checked against its locked SHA-256 and size. The audit covers paths declared in the app manifests. Each app still needs its own build and functional checks for dependencies loaded at runtime.
 
 | Registered ID | Declared | Source | Beta reference | Prepared inputs | Still absent |
 |---|---:|---:|---:|---:|---:|---:|
@@ -69,7 +69,7 @@ The prior36 Notebook gaps included widget frontend assets and Python wheels.19 a
 | yjs | 0 | 0 | 0 | 0 | 0 |
 | replicad | 0 | 0 | 0 | 0 | 0 |
 | diagrams-net | 2765 | 1 | 2765 | 0 | 0 |
-| notebook | 592 | 8 | 551 | 19 | 17 |
+| notebook | 592 | 8 | 551 | 36 | 0 |
 | excalidraw | 234 | 0 | 234 | 0 | 0 |
 | svg-editor | 264 | 0 | 264 | 0 | 0 |
 | arduino-simulator | 9 | 9 | 9 | 0 | 0 |
@@ -84,6 +84,6 @@ The prior36 Notebook gaps included widget frontend assets and Python wheels.19 a
 
 Regenerate with `python3 scripts/inspect_app_assets.py`. Zero declarations do not establish a complete asset graph. JSketcher in this chart is the historical source-only ACAD host registration, distinct from the original JSketcher project. Hosted Rooms is unused legacy source and is outside this app inventory.
 
-Next: recover the17 remaining Notebook wheel files using the build recipe and matching Pyodide package lock, then reconcile the130 historical CAD-host declarations with preservation/build records.
+The 130 CAD paths are under generated JSketcher, adaptive-solver and related runtime trees in the historical ACAD host manifest. The organized sources and rebuild records are in `apps/acad/` and `apps/jsketcher/`. Validate the selected CAD build when that integration resumes.
 
 Phase42 closes the optional speech runtime/model graph:34 locked public files (97,100,582 bytes), including13 original-source-pinned model files and verified npm package runtime assets/notices. Every model matches captured size/SHA256; both package tarballs match captured SHA1/SHA512, member counts and unpacked sizes. No package script ran. Offline assembly and actual isolated-browser WASM speech inference pass. Exact release notice/model redistribution review and Desktop/microphone/agent integration remain OPEN; no voice or new minimum dependency is enabled. See SPEECH-ENGINE.md.

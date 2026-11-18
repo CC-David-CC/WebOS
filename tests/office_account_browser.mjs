@@ -218,8 +218,20 @@ async function verifyPresenter(page, id) {
   const popup = await (await popupTarget).page();
   assert(popup);
   try {
-    await popup.waitForSelector('canvas', options);
     assert.equal(await popup.evaluate(() => !!window.opener), true);
+    await popup.evaluate(() => {
+      window.addEventListener('message', event => {
+        if (event.source !== window.opener || event.origin !== location.origin || typeof event.data !== 'string') return;
+        const message = JSON.parse(event.data);
+        if (message.kind === 'snapshot') window.presenterFixtureSnapshot = message.snapshot;
+      });
+    });
+    await popup.waitForSelector('#deckcraft_loading', {...options, hidden: true});
+    await popup.waitForFunction(() => {
+      const state = window.presenterFixtureSnapshot;
+      return document.title === 'Presenter View — DeckCraft' && state?.slide === 0
+        && state.total === 2 && state.notes === 'A persisted speaker note';
+    }, options);
     await frame.waitForFunction(async () => !!(await window.deckcraft.request('ui.inspect', {})).showing, options);
     await popup.screenshot({path: path.join(output, 'deckcraft-presenter.png')});
     await frame.evaluate(() => window.deckcraft.request('show.end', {}));

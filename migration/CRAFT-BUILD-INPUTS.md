@@ -107,3 +107,51 @@ builds. The accepted release was built offline with the original KSU.CODES path
 hidden. Its actual selected source, complete asset hashes and qualification are
 in [the PdfCraft report](../deploy/PDFCRAFT.md); do not infer that another Craft
 app is qualified by this recipe.
+
+## Local input audit, November 2026
+
+The [Craft matrix](CRAFT-INTEGRATION-MATRIX.md) links each source workspace.
+All 17 locked Rust dependency graphs passed
+`cargo fetch --locked --offline --target wasm32-unknown-unknown` on the laptop
+after recovering missing public dependencies for 13 workspaces. The check uses
+the active GridCraft and DeckCraft integration trees and each other app's
+selected checkout. The lockfile hashes stayed the same.
+
+| Input | Local location and verification |
+|---|---|
+| Cargo dependency sources | `../.webos-migration/run-20261114-02/toolchain/cargo/` relative to the parent checkout. Select it with `CARGO_HOME`. |
+| Office build toolchain | `../.webos-migration/run-20261114-02/toolchain/rustup/`, with the `nightly-2026-11-16` Rust toolchain and `wasm32-unknown-unknown` target. Select it with `RUSTUP_HOME`. |
+| SolidCraft toolchain | The same SDK has SolidCraft's exact Rust 1.99.1 pin with Clippy, rustfmt and the `wasm32-unknown-unknown` target. SolidCraft's locked WASM dependencies also resolve offline with this compiler. |
+| WASM packaging CLI | Sixteen locks select `wasm-bindgen` 0.2.129. The existing CLI is under `../.webos-migration/run-20261114-04/wordcraft-development-cache-r1/tools/trunk/wasm-bindgen-0.2.129/`. MaterialCraft selects 0.2.130. Its verified CLI and SHA-256 receipt are under `wasm-bindgen-0.2.130/` in the private round directory below. |
+| Shared fonts | `assets/craft-fonts/` and its local bare origin contain both `e5f6cc5577fab9534095a6dfe2d409b2d9f72b1d` (WordCraft, PdfCraft, GridCraft) and `9ffb3a717e081a817470c5efe68fe314ca16c987` (DeckCraft). Each browser recipe selects its own revision. |
+| Shared translations | `assets/craft-i18n/` and its local bare origin contain `e56d26244bbac099bfd42e23fb12f78a4be418a7` (WordCraft, PhotoCraft), `866aff71dd63d8369eb100b9c432b5af1400c22a` (PdfCraft) and `3cb11a36a58c5eabfd3a768448b55fdf086885bf` (TextureCraft). |
+| PdfCraft OCR models and notices | `../.webos-migration/pdfcraft-nightly-20261117-7barkpzk/build-inputs/models/`. Both OCR models match the hashes in PdfCraft's `ATTRIBUTION.toml`. |
+| DeckCraft native test SDK | `alsa-sdk/sysroot/` inside the private round directory. The extracted `libasound2-dev` package matches the installed ALSA runtime and its package-index checksum. It supplies the header and pkg-config files needed for the full Linux test suite. |
+| Locked WebOS assembly inputs | `python3 scripts/verify_artifacts.py --inputs-only` verified 87 files totaling 87,172,057 bytes. |
+
+The private round directory is
+`../.webos-migration/craft-office-20261117T234813Z-8a43bc/` relative to
+the parent checkout. `craft-input-audit.json` records all app revisions and
+lock hashes. `craft-input-population.jsonl` records the fetch and offline
+recheck results for the 13 populated workspaces.
+
+The parent-selected and current checkout commits for all 124 components
+are present in their independent local bare origins.
+`local-source-recoverability.json` records that check. The Runtime and
+Desktop integration branch tips also have local refs there.
+
+The static source check found no unresolved Git LFS pointers or dangling
+tracked symlinks in the 17 Craft trees. GridCraft and DeckCraft each have
+eight deliberate branding-file removals on their integration branches.
+PdfCraft's vendored libraries omit fixtures for their standalone tests
+and examples. TextureCraft and MaterialCraft's vendored Phosphor crates
+contain their selected fonts and omit the unused Thin, Light and Bold
+variants. The static check lists these in
+`craft-static-source-inputs.json`; the browser builds still need to
+exercise their selected asset graphs.
+
+The offline check covers locked Cargo sources. Compiler and packaging
+checks still need to exercise app-specific inputs such as generated assets,
+media and worker packaging.
+Build outputs belong outside the source repositories. See the
+[WebOS-wide source matrix](APP-MATRIX.md) for older non-Craft rebuild gaps.

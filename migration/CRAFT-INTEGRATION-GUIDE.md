@@ -1,3 +1,10 @@
+> **Current product scope — 2026-11-18 UTC:** integrate all17 selected Craft
+> apps. WordCraft/PdfCraft are live; GridCraft/DeckCraft are in qualification.
+> Other apps are queued integrations, including apps with upstream workflow gaps.
+> Represent all17 in the menu; disabled entries accurately indicate unqualified
+> support. Preserve legacy apps as disabled entries until the user decides.
+> Readiness comparisons do not authorize removing apps or replacing their source.
+
 # Integrating a Craft application into WebOS
 
 Current qualification (2026-11-17): WordCraft's document integration, Design/fonts/
@@ -78,6 +85,54 @@ capacity, cache ownership and the proposed benchmark/setup sequence. Finish
 current work and these plans before starting either implementation. Parallel
 agents and remote builds are future execution choices, not implied permission
 to change both apps or publish a new assembly now.
+
+## Account AutoSave policy — approved implementation round
+
+The user authorized parallel GridCraft/DeckCraft integration after reviewing the
+branch plans, and then approved browser-first recovery plus debounced account
+AutoSave. This supersedes the earlier planning-only statements above. The current
+round remains local implementation/qualification; it grants no external Git
+publication or website/service changes. WordCraft/PdfCraft reference releases do
+not acquire AutoSave merely because Runtime exports a scheduler.
+
+Runtime owns `@webos/runtime/account-autosave`, not document serialization.
+Each app must assess this policy under C08–C10, C12–C16 and C20:
+
+- Browser recovery keeps native pending edits under the current account scope.
+  It remains independent of account AutoSave and never implies server durability.
+- A named, verified account resource becomes eligible after its first explicit
+  Save/Save As. Untitled/imported work is never named or created by a timer.
+- Wait10 seconds after committed edits; permit automatic server writes no more
+  often than once per 60 seconds per view. Continuous eligible edits have a
+  120-second maximum wait. Native transient editing/IME/dialogs/session leases
+  remain ineligible: a timer must not settle drafts or steal focus.
+- Existing native AutoSave controls must reflect the account scheduler, with
+  truthful hosted help and account-scoped choices. Disable the old filesystem
+  AutoSave writer in hosted mode. Keep local recovery active independently.
+- Use the same identified native capture, conditional Storage revision and
+  canonical native acknowledgement as manual Save. Keep manual Save immediate.
+  Later edits remain dirty; no JavaScript shadow document is introduced.
+- Retry only explicitly verified no-write transient rejections, doubling from
+  30 seconds to 15 minutes with positive jitter capped at15 minutes. Respect a
+  longer explicit server Retry-After. Continued typing cannot reset backoff.
+  Current Storage's two exact admission/allowance 429 errors are classified from
+  its implementation; generic 429/408/5xx responses do not establish no-write.
+- Conflicts, lost responses, invalid acknowledgements and uncertain writes pause
+  automatic syncing. Preserve local drafts and ask for explicit resolution;
+  never replay a possibly committed mutation. Successful explicit Save or Save
+  As clears the pause only after both Storage and native adoption confirm.
+- At most two automatic save callbacks run at once per browser page. This load
+  smoothing is neither a server permission boundary nor a site capacity claim.
+  Account/server limits remain authoritative; manual operations are unaffected.
+- Fence asynchronous work to account/session/resource and the original native
+  iframe Document. A reload can retain WindowProxy while resetting native IDs;
+  fail unavailable with retained recovery instead of admitting a stale result.
+
+Qualification requires deterministic scheduling/backoff/late-edit tests, actual
+app-native eligibility and identified-save regressions, browser-local recovery,
+real conditional server writes, conflict/uncertain injection, manual Save during
+cooldown, account isolation and actual UI status/toggle checks. Shared scheduler
+unit tests alone do not qualify either app or a hosted release.
 
 ## PdfCraft: applying the document contract
 

@@ -305,3 +305,85 @@ adversarial isolation tests or a complete security review.
   filesystem regression. Compiled runtime bytes and all76 local browser checks
   remain unchanged. The first staged package was never activated and its public
   and transfer trees were removed; only small private preparation evidence remains.
+
+
+## GridCraft/DeckCraft implementation round — local WIP, 2026-11-18 UTC
+
+The user authorized both planned branches with root-owned shared integration,
+then approved browser-first recovery and debounced account AutoSave. This is
+implementation/qualification, not a new hosted release. ksu.codes remains on
+`1c4623b8403bd44b534722bf3db92f6c3bbd96d8e40add396623cb71c44c97db`.
+
+- DeckCraft passed all eight native gates on the approved nightly using the
+  task-local ALSA SDK. The test and doctest logs record 2,301 passes and five
+  existing ignored cases. The reviewed tree is committed as `bdccaca64be8`
+  and present in its local bare origin. The R730 built the exact commit in
+  184 seconds with the pinned fonts and verified WASM toolchain. The 107-file
+  package was rehashed locally.
+  Ten browser checks passed against disposable Accounts and Storage, covering
+  PPTX text, notes, theme and embedded picture, both Open routes, manual Save,
+  automatic write spacing, fresh-context retrieval, stale-write conflict and
+  Save As, concurrent accounts, recovery on refresh with close Cancel/Discard,
+  and a lost confirmation after a committed write. Independent PPTX inspection
+  confirmed the embedded image bytes and native document parts. The presenter
+  popup rendered current and next slides with notes in the local browser.
+- The parent candidate `008634e63ea1` pins the reviewed DeckCraft, Runtime and
+  Desktop commits. Its seven-app static archive contains 416 verified files
+  and 277,978,276 uncompressed bytes. Release ID
+  `5e09bf248c15b025f33465ca319c0eec914e6b57d4f4e32998896b9d18d71f42`.
+  The archive and the prior six-app release both passed read-only inventory,
+  payload budget and per-file SHA-256 checks. The candidate was prepared locally.
+- Viewer composition loads recovery code for the selected office components.
+  With GridCraft and DeckCraft disabled, the assembled candidate passed 60
+  browser checks against a disposable Accounts and Storage service. These cover
+  classic Desktop, Calculator, Files, CodeMirror, PdfCraft and WordCraft. Both
+  native engines were reused from the current release after verifying each file
+  against the release and component receipts.
+
+- Runtime `63d425b` adds a document-agnostic scheduler: ten-second committed-edit
+  debounce, sixty-second confirmed-write interval, two-minute continuous eligible
+  edit bound, and verified no-write retry backoff from thirty seconds to fifteen
+  minutes with capped positive jitter. Manual Save stays direct. Unknown and
+  conflict outcomes pause. Browser recovery and native editing remain independent.
+  Eleven scheduler tests and all52 Runtime tests pass.
+- Desktop `ad0f7dd` registers both app hosts in existing menus, account binding,
+  activation, layout and session lifecycle. Clean PDF restoration is included.
+  Three actual-class tests pass; actual assembled browser qualification remains.
+- GridCraft branch `webos/gridcraft-document-host` and DeckCraft branch
+  `webos/deckcraft-document-host` own native document/Save/recovery/pause/profile
+  hooks and public adapters. Their selected parent checkouts are still the old
+  accepted pins: neither branch is promoted or committed as qualified here.
+- Native eligibility must be rechecked at capture: background Save cannot commit
+  unfinished cell/formula/notes/IME editing. Visible AutoSave choices are scoped
+  per account and reflect actual scheduling; the old filesystem writers remain
+  disabled. Browser checkpoints keep working while account syncing is disabled.
+- Eligibility changes during a native close lease are scheduling state, not
+  document edits. Including them in the Discard fingerprint wrongly invalidates
+  a valid close; both adapters now distinguish those states and test the boundary.
+- The original iframe Document fences native requests and acknowledgements.
+  WindowProxy survives a reload while numeric native IDs can restart. On an
+  unexpected reload, reject old pending requests, preserve the journal, mark
+  unavailable and allow closing the unavailable view without clearing recovery.
+- Durable Storage success and native adoption are separate phases. DeckCraft's
+  file session now optionally awaits exact native adoption before publishing a
+  new binding or releasing its pending guard. Native failure after a returned
+  server revision becomes unknown, retaining the previous binding. Four added
+  regressions cover this and manual-conflict pauses, including toggle bypasses.
+- Both native compile checks pass. DeckCraft's ten focused native tests pass
+  after a real lower-bound preference validation fix in the native engine;
+  the initial failing assertion is retained. Its39 JavaScript tests pass.
+  GridCraft's27 host/recovery and five packaging tests pass; native test execution
+  is still pending at this checkpoint. The first root JS invocation omitted
+  Node's required VM module flag; the corrected invocation passes unchanged tests.
+- Two bounded, offline WASM builds passed concurrently on the R730 in176s and
+  216s. A later native DeckCraft fix rebuilt in14s in the same current target.
+  These were explicitly unqualified WIP snapshots, not clean-source release
+  receipts. No artifact has been promoted or deployed.
+- Both app agents were stopped by automated safety review with only the generic
+  reason “Potentially unintended activity.” Root reviewed and continued scoped
+  source/tests; no agent was restarted. The specific trigger was not supplied.
+
+The private round checkpoint records exact worktrees, commands, exits, builder
+ownership and remaining gates. Native CI, clean source artifacts, actual browser
+and whole-assembly account qualification must complete before release approval.
+Generated outputs, test state and compiler caches remain outside source control.
