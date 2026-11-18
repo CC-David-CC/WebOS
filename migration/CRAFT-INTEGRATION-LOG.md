@@ -405,3 +405,19 @@ The private round checkpoint records exact worktrees, commands, exits, builder
 ownership and remaining gates. Native CI, clean source artifacts, actual browser
 and whole-assembly account qualification must complete before release approval.
 Generated outputs, test state and compiler caches remain outside source control.
+
+## Office browser follow-up
+
+DeckCraft `85c82199` finalizes only its leased native frame after Accounts
+revokes the session. Regular commands still require that session. All eight
+native gates, 40 adapter tests and 14 actual browser checks pass for the exact
+107-file package. The saved PPTX files independently verify the slide text,
+speaker notes, Ember theme and the exact embedded image. This is evidence from
+the local profile with DeckCraft enabled. The two-app profile still needs a run.
+
+GridCraft `c9c4f33` fixes the recovery response so the browser recognizes the
+restored workbook as unsaved. A further run verified the exact formula in the
+browser journal before reload and exposed its loss during the native window
+transition. A separate test reproduced a negative formula-bar width while
+minimized. The next native CI run covers assignment to the recovered window and
+the narrow viewport case. Both require a fresh exact build and browser test.
