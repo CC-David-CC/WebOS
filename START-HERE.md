@@ -40,16 +40,17 @@ the site to 14 of the 18 selected Craft apps. The exact package passed
 DXF geometry and saved a later revision. Hosted verification matched all
 664 files and started the published editor. EffectCraft is the immediate
 rollback. See the [CADCraft release record](migration/CRAFT-INTEGRATION-LOG.md#cadcraft-release-on-ksucodes).
-SolidCraft is paused by user request. Its local candidate passed the account
-round trip for editable parametric parts. Four native geometry failures also
-occur on the original source. CADCraft remains the hosted release.
-TextureCraft is next. Its account engine and menu checks passed, and its
-browser package is building from a branch based on the deployed CADCraft
-parent.
+TextureCraft is live in release
+`60cf68e83c32dc68684aff1dfde05da5dc493deb391784dd22faf4c13c11e581`.
+It is the 15th enabled Craft app. A fresh account browser reopened editable
+paint tiles and saved a later revision. CADCraft is the immediate rollback.
+See the [TextureCraft release record](migration/CRAFT-INTEGRATION-LOG.md#texturecraft-release-on-ksucodes).
+MaterialCraft is next. SolidCraft remains paused and disabled by user request.
 
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft,
-LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft and Help.
+LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft,
+TextureCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.

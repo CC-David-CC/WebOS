@@ -17,26 +17,29 @@ under the user's approval.
 
 | Stage | Count | Applications |
 |---|---:|---|
-| Enabled on ksu.codes | 14 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft |
+| Enabled on ksu.codes | 15 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, TextureCraft |
 | Paused with a tested local candidate | 1 | SolidCraft |
-| Focused native checks passed, browser package in progress | 1 | TextureCraft |
 | Account adapter compiles to WASM | 1 | MaterialCraft |
 | Organized source, queued for integration | 1 | SketchCraft |
 
 The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables
 Files, Text (CodeMirror 6), Calculator and Help on the classic Desktop. The
 [live release manifest](https://ksu.codes/viewer-release.json) identifies the
-CADCraft release at parent commit `0a7dedf66f59`.
-Four Craft entries are disabled in the hosted Desktop, including SketchCraft in
+TextureCraft release at parent commit `f256e740a415`.
+Three Craft entries are disabled in the hosted Desktop, including SketchCraft in
 the CAD menu. For the rest of the organized
 project, see the [full source and application matrix](APP-MATRIX.md), which
 covers the 86 app repositories, platform components, shared engines, tools,
 libraries and games.
 
-After these four Craft integrations, the next approved priority is Files
+After the remaining Craft integrations, the next approved priority is Files
 previews. Load the original account file through Storage and render it in
 the current browser. Keep preview data in memory and release it on close
 or sign-out. Previewing creates no account file or shared saved state.
+
+The [TextureCraft release](CRAFT-INTEGRATION-LOG.md#texturecraft-release-on-ksucodes)
+passed 104 exact-package Chromium checks and matched 675 hosted files. The
+account round trip preserved the original mesh and editable paint tiles.
 
 The [CADCraft release](CRAFT-INTEGRATION-LOG.md#cadcraft-release-on-ksucodes)
 passed 112 exact-package Chromium checks and matched 664 hosted files.
@@ -103,5 +106,5 @@ for the acceptance contract.
 | CAD | [cadcraft](../apps/cadcraft/) `webos/cadcraft-account-drawing` at `816d428e8a33` | Drafting and drawing documents | `cadcraft-web` | Live editable 2D DXF. Scoped native geometry and Undo, Save and Save As, local recovery, Files activation and a fresh-browser account round trip passed. |
 | CAD | [solidcraft](../apps/solidcraft/) `webos/solidcraft-account-part` at `7b7716fba56c` | Parametric solid modeling | `solidcraft-web` | Paused by user request. The local candidate passed six browser account checks for editable `.sc` parts. Four native geometry failures produced identical results on the original source. The hosted menu entry remains disabled. |
 | CAD | [sketchcraft](../apps/sketchcraft/) at `3a895db54c8a` | Push/pull 3D modeling, `.sketchcraft` projects | React/Tauri `app/`, Rust `core/` and [local browser development](../apps/sketchcraft/docs/dev/building.md) | Queued in position 18. The Rust core passed its baseline WASM compile check. The upstream Vite interface uses a local development bridge. Qualify the hosted browser engine, native commands and account document model before enabling the app. |
-| Materials and textures | [texturecraft](../apps/texturecraft/) `webos/texturecraft-account-project` at `3ada1e30108a` | Mesh painting and embedded texture data | `texturecraft-web` | Locked WASM compilation and the focused native save and File menu tests passed. Browser package and round-trip qualification are in progress on a branch from the live CADCraft release. |
+| Materials and textures | [texturecraft](../apps/texturecraft/) `webos/texturecraft-account-project` at `3ada1e30108a` | Mesh painting and embedded texture data | `texturecraft-web` | Live. The tested account project kept the original mesh bytes, paint layers and editable tiles. Save, Save As, recovery and fresh-browser editing passed. Broader mesh, bake and export workflows still need qualification. |
 | Materials and textures | [materialcraft](../apps/materialcraft/) from `6f19501a4bcc` | Procedural material graphs with embedded bitmaps | `materialcraft-web` | The `webos/materialcraft-account-graph` worktree passed locked WASM compilation with native graph editing and the `.mcraft` account adapter. Native checks and an exact browser round trip are pending. |
