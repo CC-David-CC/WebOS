@@ -21,7 +21,7 @@ const selector = `.window:has(.webos-${app})`;
 const files = '.window:has(.webos-files)';
 const project = 'Documents/Browser.'+app;
 const copy = 'Documents/Browser Copy.'+app;
-const checks = [], errors = [];
+const checks = [], errors = [], rejectedRequests = [];
 
 async function button(page, scope, label) {
   const handle = await page.waitForFunction((container,label) =>
@@ -41,6 +41,12 @@ async function launch(page, menu, app) {
 async function login(page, register) {
   await page.setViewport({width:1440,height:1000});
   page.on('pageerror',error=>errors.push(error.message));
+  page.on('response',response=>{
+    const url = new URL(response.url());
+    if (url.origin === origin && /^\/(api|gateway)\//.test(url.pathname) && response.status() >= 400 && rejectedRequests.length < 24) {
+      rejectedRequests.push({path:url.pathname,status:response.status(),method:response.request().method()});
+    }
+  });
   await page.goto(origin,{waitUntil:'networkidle0'});
   await page.waitForSelector('.login-gate');
   if (register) await page.click('.login-toggle');
@@ -468,7 +474,7 @@ try {
 } catch (error) {
   const status = await page?.$eval(selector+' [role=status]',node=>node.textContent).catch(()=>null);
   await page?.screenshot({path:path.join(output,'failure.png')}).catch(()=>{});
-  await writeFile(path.join(output,'result.json'),JSON.stringify({status:'FAIL',checks,errors,error:error.message,editorStatus:status})+'\n');
+  await writeFile(path.join(output,'result.json'),JSON.stringify({status:'FAIL',checks,errors,rejectedRequests,error:error.message,editorStatus:status})+'\n');
   throw error;
 } finally {
   await browser?.close();

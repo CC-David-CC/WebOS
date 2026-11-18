@@ -238,3 +238,33 @@ the R730 for SoundCraft, FilmCraft and EffectCraft. Each app has its own
 `Cargo.lock` and pins several revisions of the on-disk shared
 [Craft libraries](../libraries/craft-libs/). Keep those revisions during
 baseline testing, including where two apps use different media crate pins.
+
+## FilmCraft preparation
+
+The account branch `webos/filmcraft-account-project` starts at
+`e6df31865bc5`. Its native capture and confirmation test preserves a newer
+timeline edit while a save is pending. The same test verifies editable
+sequences and view state after normal account Open and draft recovery.
+
+The native `.fcproj` file stores media references. In the browser, an import
+uses a virtual Blob path and standalone recovery can repopulate those paths
+from browser storage. WebOS needs stable media identities that a fresh
+account session can resolve. Keep account originals behind the same storage
+authorization used by LightCraft. Register only verified media with the
+browser file service, use Link Media for unresolved files, and preserve
+project references when creating a copy in another folder.
+
+Route project file commands through the WebOS window. Keep native sequence
+tab Close independent of project window Close. Use the account draft journal
+in this mode. Qualify import of a synthetic video, native timeline edits,
+confirmed Save and Save As, fresh-browser rendering of the linked video,
+and at least one browser-supported export with verified frames.
+
+## EffectCraft preparation
+
+The on-disk starting point is `dc2380b070fa`. Its browser stores virtual
+files, project snapshots and render caches using OPFS with an IndexedDB
+fallback. Account mode needs an owner-scoped storage policy before restoring
+that state. Qualify the native `.ecproj` save receipt and reuse the account
+media path for linked footage. Test a composition with imported media after
+fresh-browser reopen and verify that closing a view retires its frame workers.
