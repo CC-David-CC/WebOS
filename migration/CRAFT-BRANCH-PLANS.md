@@ -243,6 +243,10 @@ baseline testing, including where two apps use different media crate pins.
 
 ## FilmCraft preparation
 
+FilmCraft is live. See the
+[release record](CRAFT-INTEGRATION-LOG.md#filmcraft-release-on-ksucodes)
+for the exact package, browser results and rollback.
+
 The account branch `webos/filmcraft-account-project` starts at
 `e6df31865bc5`; the first verified browser component is `b7ba79c366e6`.
 Its native capture and confirmation test preserves a newer
@@ -265,9 +269,14 @@ and at least one browser-supported export with verified frames.
 
 ## EffectCraft preparation
 
-The on-disk starting point is `dc2380b070fa`. Its browser stores virtual
-files, project snapshots and render caches using OPFS with an IndexedDB
-fallback. Account mode needs an owner-scoped storage policy before restoring
-that state. Qualify the native `.ecproj` save receipt and reuse the account
-media path for linked footage. Test a composition with imported media after
-fresh-browser reopen and verify that closing a view retires its frame workers.
+The `webos/effectcraft-account-composition` branch starts at `dc2380b070fa`.
+At `ac9f6618208a` the R730 compiled the account transport with locked
+dependencies. Native `.ecproj` receipt, reopen and draft recovery tests
+passed at `88fefba8c373`. Embedded windows start with an isolated in-memory
+media table. The account host owns draft recovery and retrieves verified
+footage through the original store used by FilmCraft and LightCraft.
+
+Package that commit and test a composition with imported footage after
+fresh-browser reopen. Check the rendered pixels and confirm closing a view
+retires its frame workers. The hosted profile keeps signed agent operations
+disabled by default.
