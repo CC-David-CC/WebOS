@@ -504,6 +504,23 @@ Accounts' isolated `webos/office-operation-delegation` branch contains a
 bounded same-origin HTTP adapter and a browser capability tied to the owner
 session. The Accounts test suite passed 69 tests. A separate real loopback
 signed HTTP run covered approval, scoped intent, single-use consumption,
-revocation and logout fencing. The packaged candidate uses Accounts
-`c8229d6`. Consent presentation, live app dispatch and delegated file grants
-remain separate integration work.
+revocation and logout fencing. The separately archived Office candidate uses
+Accounts `c8229d6` and awaits deployment approval. The signed-notes development
+assembly also passed 88 default-profile checks, including all 27 Office
+workflows and the check that the default launcher exposes no agent bridge.
+Delegated file grants remain open.
+
+### PhotoCraft native browser baseline
+
+The selected source `2fec95b0d91b` passed an offline WASM `cargo check` of
+both the browser app and the boot crate with HEIF enabled. The command used
+the pinned translation catalog, preserved the Cargo.lock checksum and reused
+the existing compiler cache. The compiler check took 4 minutes 53 seconds.
+See `photocraft-exact-browser-check-exit.json` in the private checkpoint.
+
+The account worktree starts from this exact pin. PhotoCraft's native editable
+format is a `.pcraft` ZIP containing the layered document. The existing web
+save service initiates a browser download with no durable confirmation. The
+account integration must correlate each encoded revision with Storage's
+conditional write and receive native adoption before updating Desktop. The
+browser preset database and preferences also require account-scoped keys.
