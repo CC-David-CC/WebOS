@@ -2,7 +2,15 @@ import {connectPhotoNative} from './photocraft-native.mjs';
 import {trackPhotoAutosave} from './photocraft-autosave.mjs';
 import {photoRecovery, trackPhotoDraft} from './photocraft-recovery.mjs';
 import {createPhotoSession} from './photocraft-session.mjs';
-import {createPhotoStorage, projectPath} from './photocraft-storage.mjs';
+import {createPhotoStorage, MAX_BYTES, projectPath} from './photocraft-storage.mjs';
+
+const localImports = new WeakMap();
+
+function fileFromDevice(file) {
+  return file instanceof File && file.size > 0 && file.size <= MAX_BYTES && file.name.trim() &&
+    file.name !== '.' && file.name !== '..' && !/[/\\\u0000-\u001f\u007f-\u009f]/u.test(file.name) &&
+    new TextEncoder().encode(file.name).length <= 255;
+}
 
 /** The classic Desktop's API2 view for the PhotoCraft editor. */
 export function mount(host) {
@@ -20,7 +28,14 @@ export function mount(host) {
   autoToggle.type = 'button';
   autoToggle.textContent = 'AutoSave';
   autoToggle.hidden = true;
-  appBar.append(status, autoToggle);
+  const openLocal = document.createElement('button');
+  openLocal.type = 'button';
+  openLocal.textContent = 'Open from device';
+  openLocal.hidden = true;
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.hidden = true;
+  appBar.append(status, openLocal, autoToggle, fileInput);
   const frame = document.createElement('iframe');
   frame.title = 'PhotoCraft editor';
   frame.style.flex = '1';
@@ -48,6 +63,25 @@ export function mount(host) {
     status.textContent = text;
     status.hidden = !text;
   }
+
+  function launchLocal(file) {
+    if (!loaded || !valid()) return;
+    if (!fileFromDevice(file)) {
+      host.ui.feedback('PhotoCraft needs a named file no larger than 128 MiB.');
+      return;
+    }
+    const window = host.desktop.launch('photocraft', file.name + ' — PhotoCraft');
+    if (!window) return;
+    window.ownerSub = context.owner;
+    localImports.set(window, {file, session});
+  }
+
+  openLocal.addEventListener('click', () => { if (loaded && valid()) fileInput.click(); });
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files?.[0];
+    fileInput.value = '';
+    if (file) launchLocal(file);
+  });
 
   function setAutosave(value) {
     autoEnabled = value;
@@ -180,7 +214,7 @@ export function mount(host) {
     url.searchParams.set('profile', context.owner);
     storage = createPhotoStorage({files:context.files, operations:host.documentOperations, valid});
     native = connectPhotoNative(frame, {
-      url, signal:abort.signal, onSave:packet => void save(packet), onDialog:handleDialog,
+      url, signal:abort.signal, onSave:packet => void save(packet), onDialog:handleDialog, onLocalFile:launchLocal,
       onProjectState(packet) {
         drafts?.receive(packet);
         autosave?.receive(packet);
@@ -240,9 +274,20 @@ export function mount(host) {
     } else if (resource) {
       bind(await storage.open(resource, native.start));
     } else {
-      const settings = host.w.photocraftNewSettings;
-      delete host.w.photocraftNewSettings;
-      storage.attachBlank(await native.start(null, null, settings));
+      const source = localImports.get(host.w);
+      localImports.delete(host.w);
+      if (source) {
+        if (source.session !== session) throw Error('The account changed before PhotoCraft could import the file.');
+        const bytes = await source.file.arrayBuffer();
+        check();
+        // Native import questions are part of the opening flow.
+        frame.inert = false;
+        storage.attachBlank(await native.importFile(source.file.name, bytes));
+      } else {
+        const settings = host.w.photocraftNewSettings;
+        delete host.w.photocraftNewSettings;
+        storage.attachBlank(await native.start(null, null, settings));
+      }
     }
     check();
     loaded = true;
@@ -253,6 +298,7 @@ export function mount(host) {
     try { value = document.defaultView.localStorage?.getItem(autosaveKey) === 'on'; } catch { /* Use this window's default. */ }
     setAutosave(value);
     autoToggle.hidden = false;
+    openLocal.hidden = false;
     message(recoveryMessage);
     drafts.schedule();
   })();

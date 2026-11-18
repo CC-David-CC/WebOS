@@ -131,12 +131,12 @@ async function closePhoto(page, id) {
   await button(page,photoWindow(id),'Close');
 }
 
-async function placeImage(page, id, name) {
+async function dropImage(page, id, name, onCanvas) {
   const element = await page.waitForSelector(photoWindow(id) + ' iframe:not([inert])',options);
   const frame = await element.contentFrame();
   await element.dispose();
   assert(frame);
-  const bytes = await frame.evaluate(async fileName => {
+  const bytes = await frame.evaluate(async ({fileName,onCanvas}) => {
     const image = document.createElement('canvas');
     image.width = 24;
     image.height = 16;
@@ -151,17 +151,22 @@ async function placeImage(page, id, name) {
     const canvas = document.querySelector('#photocraft_canvas');
     const box = canvas.getBoundingClientRect();
     const event = {dataTransfer:transfer,bubbles:true,cancelable:true,
-      clientX:box.left+box.width/2,clientY:box.top+box.height/2};
+      clientX:box.left+box.width/2,clientY:box.top+(onCanvas ? box.height/2 : 12)};
     canvas.dispatchEvent(new DragEvent('dragover',event));
     canvas.dispatchEvent(new DragEvent('drop',event));
     return Array.from(new Uint8Array(await png.arrayBuffer()));
-  },name);
+  },{fileName:name,onCanvas});
+  return Buffer.from(bytes);
+}
+
+async function placeImage(page, id, name) {
+  const bytes = await dropImage(page,id,name,true);
   await page.waitForFunction(selector => {
     const snapshot = document.querySelector(selector)?.appView.lifecycle.snapshot();
     return snapshot?.dirty && !snapshot.pending;
   },options,photoWindow(id));
   await shortcut(page,id,'Enter',[]);
-  return Buffer.from(bytes);
+  return bytes;
 }
 
 async function draftPersisted(page, path, revision, typeDraft = false) {
@@ -267,6 +272,11 @@ async function download(page, id, resource, artifact) {
 function layers(artifact) {
   const program = 'import json,sys,zipfile; z=zipfile.ZipFile(sys.argv[1]); d=json.loads(z.read("manifest.json")); print(len(d["document"]["layers"]))';
   return Number(execFileSync('python3',['-c',program,path.join(output,artifact)],{encoding:'utf8'}));
+}
+
+function dimensions(artifact) {
+  const program = 'import json,sys,zipfile; z=zipfile.ZipFile(sys.argv[1]); print(json.dumps(json.loads(z.read("manifest.json"))["document"]["size"]))';
+  return JSON.parse(execFileSync('python3',['-c',program,path.join(output,artifact)],{encoding:'utf8'}));
 }
 
 function embeddedImage(artifact, fileName) {
@@ -434,6 +444,47 @@ try {
   await bound(page,embeddedId,'Portable artwork.pcraft');
   const embeddedRevision = await download(page,filesId,embeddedPath,'portable.pcraft');
   assert.deepEqual(embeddedImage('portable.pcraft','tiles.png'),originalImage);
+
+  await file(page,filesId,'open',{path:embeddedPath});
+  assert.equal(await readyPhoto(page),embeddedId);
+  const beforeImport = (await page.$$(photoView)).length;
+  await dropImage(page,embeddedId,'Dropped illustration.png',false);
+  await page.waitForFunction((selector,count)=>document.querySelectorAll(selector).length===count+1,options,photoView,beforeImport);
+  const droppedId=await readyPhoto(page);
+  assert.notEqual(droppedId,embeddedId);
+  await page.$eval(photoWindow(droppedId),win=>win.appView.ready);
+  await bound(page,droppedId,'Dropped illustration.png');
+  await bound(page,embeddedId,'Portable artwork.pcraft');
+  await draftPersisted(page,null,null);
+  await shortcut(page,droppedId,'s');
+  await destination(page,'From device drop');
+  const droppedPath='Pictures/From device drop.pcraft';
+  await bound(page,droppedId,'From device drop.pcraft');
+  const droppedRevision=await download(page,filesId,droppedPath,'device-drop.pcraft');
+  assert.deepEqual(dimensions('device-drop.pcraft'),{width:24,height:16});
+  assert.equal(await download(page,filesId,embeddedPath,'portable-after-drop.pcraft'),embeddedRevision);
+  await closePhoto(page,droppedId);
+  await page.waitForSelector(photoWindow(droppedId),{...options,hidden:true});
+  pass('Dropping outside the canvas starts a separate recoverable project and preserves the source window and account file');
+
+  await file(page,filesId,'open',{path:embeddedPath});
+  const devicePath=path.join(output,'Device illustration.png');
+  await writeFile(devicePath,originalImage);
+  const [fileChooser]=await Promise.all([
+    page.waitForFileChooser(),button(page,photoWindow(embeddedId),'Open from device'),
+  ]);
+  await fileChooser.accept([devicePath]);
+  await page.waitForFunction((selector,count)=>document.querySelectorAll(selector).length===count+1,options,photoView,beforeImport);
+  const deviceId=await readyPhoto(page);
+  assert.notEqual(deviceId,embeddedId);
+  await page.$eval(photoWindow(deviceId),win=>win.appView.ready);
+  await bound(page,deviceId,'Device illustration.png');
+  await closePhoto(page,deviceId);
+  await shortcut(page,deviceId,'n',[],{closing:true});
+  await page.waitForSelector(photoWindow(deviceId),{...options,hidden:true});
+  assert.equal(await download(page,filesId,droppedPath,'device-after-discard.pcraft'),droppedRevision);
+  pass('The device picker opens an independent native project that can be discarded without modifying account files');
+
   await closePhoto(page,embeddedId);
   await page.waitForSelector(photoWindow(embeddedId),{...options,hidden:true});
 

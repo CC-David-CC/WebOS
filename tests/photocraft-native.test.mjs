@@ -9,7 +9,7 @@ const name = 'Pictures/Project.pcraft';
 
 function fixture(testContext) {
   const desktop = Object.assign(new EventTarget(), {location:url, crypto:{randomUUID}});
-  const sent = [], saves = [];
+  const sent = [], saves = [], localFiles = [];
   const frame = Object.assign(new EventTarget(), {
     ownerDocument:{defaultView:desktop},
     contentDocument:{URL:url.href},
@@ -19,7 +19,7 @@ function fixture(testContext) {
     }}
   });
   const controller = new AbortController();
-  const native = connectPhotoNative(frame,{url,signal:controller.signal,onSave:packet => saves.push(packet)});
+  const native = connectPhotoNative(frame,{url,signal:controller.signal,onSave:packet => saves.push(packet),onLocalFile:file=>localFiles.push(file)});
   testContext.after(() => {
     void native.ready.catch(() => {});
     controller.abort();
@@ -30,8 +30,29 @@ function fixture(testContext) {
       data:{type:'photocraft:account-' + kind, generation, ...fields}
     }));
   }
-  return {frame, controller, receive, native, sent, saves};
+  return {frame, controller, receive, native, sent, saves, localFiles};
 }
+
+test('A dropped local file and its unbound import start require the exact native frame', async t => {
+  const {native,receive,sent,localFiles} = fixture(t);
+  receive('ready');
+  await native.ready;
+  const file = new File([Uint8Array.of(9,8)],'Local.png');
+  receive('local-file',{file},{source:{}});
+  assert.deepEqual(localFiles,[]);
+  receive('local-file',{file});
+  assert.deepEqual(localFiles,[file]);
+
+  const opening = native.importFile(file.name,await file.arrayBuffer());
+  const request = sent[0];
+  assert.equal(request.importName,'Local.png');
+  assert.equal(request.path,null);
+  assert.equal(request.recover,false);
+  assert.deepEqual(new Uint8Array(request.bytes),Uint8Array.of(9,8));
+  receive('started',{requestId:'wrong',ok:false});
+  receive('started',{requestId:request.requestId,ok:true,path:null,documentId:'19',revision:'1'});
+  assert.equal((await opening).documentId,'19');
+});
 
 test('PhotoCraft accepts readiness from the exact frame, document URL and origin', async t => {
   const {frame, native, receive, sent, saves} = fixture(t);
