@@ -810,7 +810,7 @@ try {
     present('Save As fences in-flight and unused grants and revocation fences issued grants');
   }
   await context?.close();
-  if (!lightOnly && !disabled && !graphicsOnly && officeProfile) await deckDispatch(browser);
+  if (!singleEditor && !disabled && !graphicsOnly && officeProfile) await deckDispatch(browser);
   await writeFile(path.join(output,'result.json'),JSON.stringify({status:'PASS',checks},null,2)+'\n',{mode:0o600});
 } finally {
   await browser?.close();
