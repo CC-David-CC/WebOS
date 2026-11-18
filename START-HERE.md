@@ -31,16 +31,24 @@ Source organization is complete. We are integrating apps into ksu.codes from the
 existing independent repositories in this project. All17 selected Craft sources
 already exist under `apps/`; do not copy or re-extract them.
 
-Current release (2026-11-18 UTC):
+The PhotoCraft release went live on 2026-11-18 UTC as
+`e0bedfb2a2e0fe14a8903d151d505874ca9e9fa5ed9f4c263cf462f509eb537b`.
+The packaged parent was `9a41ca7f84d9043affac220ad0ee382ace508acb`.
+PhotoCraft passed 28 browser account workflow checks. Hosted verification
+matched all 463 published files and compiled the PhotoCraft WASM in Chromium.
+VectorCraft and FigCraft are the next two parallel integration tracks.
+See the [PhotoCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#photocraft-release-on-ksucodes).
+
+The previous Office release is the immediate rollback at
 `5e0d0b3bbb69b09814deb79daac988261578003174f89b4c58a916cd420c0566`.
 The intended classic Desktop hosts Calculator, Files, CodeMirror6 Text,
-WordCraft, PdfCraft, GridCraft, DeckCraft and Help. PdfCraft's untouched blank closes quietly and can
+WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft and Help. PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.
 
 PdfCraft: `a5b512846f59c6e5306821cdffdb448e54695ccd`.
 WordCraft remains `edeb4a090cd301cd7d4405e20af795007b37b69b`.
-Packaged parent: `2d08b293754f36e38b4366865b4ff5d6d64a8f4e`.
+Parent at the PdfCraft rollout: `2d08b293754f36e38b4366865b4ff5d6d64a8f4e`.
 [PdfCraft qualification/rollback/limits](deploy/PDFCRAFT.md): all six native gates,
 2,989 affected UI test executions (five existing ignored),27 actual-browser
 assertions each locally and hosted,10 local/11 hosted PDF content checks and
@@ -63,9 +71,9 @@ the verified dependency cache, shared input revisions and remaining checks.
 
 Last deployed release checkpoint:
 `/path/to/workspace/Projects/.webos-migration/craft-office-20261117T234813Z-8a43bc/checkpoint.json`.
-Temporary engine/candidate/browser/transfer output and the superseded archive
-were removed. One current compiler cache, the current release archive, required
-pinned inputs/source and small private evidence remain. Preserve unrelated WIP
+Superseded PhotoCraft development sites were removed after verification.
+Keep current build inputs, the current release archive and private evidence.
+Preserve unrelated WIP
 in `artifacts/input-files.json` and `tests/wordcraft_baseline_browser.mjs`.
 The original workspace remains read-only; beta stays live independently.
 
