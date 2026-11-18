@@ -458,7 +458,29 @@ and style and the presentation's text, notes, theme and exact embedded image.
 Private round evidence includes the archive
 `office-viewer-final-fd80-f835.tar.gz`, its inventory
 `office-release-final-inventory.json`, the browser results and the saved-file
-audit. The local release awaits separate approval for deployment.
+audit.
+
+### Office release on ksu.codes
+
+The user approved rolling deployment to ksu.codes as each app qualifies.
+The verified Office archive above is live on the data SSD. The static
+activation changed the ksu.codes root to release `5e0d0b3bbb69`.
+All 444 files matched their published digests on example.invalid. Hosted
+Chromium displayed the login and imported both app modules, then compiled
+the served GridCraft and DeckCraft WASM under the site's policy.
+The 87 signed browser checks ran locally against the exact static archive.
+
+The Accounts and Storage backend, issuer, beta index and service PIDs
+passed continuity checks. WordCraft and PdfCraft engine files, Desktop
+stylesheet, and WordCraft print policy matched the prior release. Shared
+app wrappers include the tested Office integration changes. The public
+release uses the ordinary human account workflow. Delegated app
+operations retain their separate development profile.
+
+The verified immediate rollback is release `1c4623b8403b`. The rollback
+configuration is at `/var/backups/webos-craft-office-20261118-01/`.
+Private activation and verification evidence is in
+`office-ksu-20261118-01/` inside the current migration checkpoint directory.
 
 ### GridCraft authorized operations on loopback
 

@@ -11,13 +11,12 @@ retrieval before it is enabled. A passing dependency fetch does not exercise
 build scripts, assets, linking or browser behavior.
 
 The classic Desktop source contains all 17 entries. The current hosted release
-enables WordCraft and PdfCraft. Unqualified entries use the disabled state when
-listed in a candidate menu. Legacy entries remain separate.
+enables WordCraft, PdfCraft, GridCraft and DeckCraft. The other 13 Craft entries
+use the disabled state. Legacy entries remain separate.
 
-The [local Office candidate](CRAFT-INTEGRATION-LOG.md#local-office-release-candidate)
-passed 87 exact-package browser checks and a 444-file archive verification.
-It enables GridCraft and DeckCraft alongside the two hosted Craft editors.
-The other 13 Craft entries remain disabled in that profile.
+The [Office release](CRAFT-INTEGRATION-LOG.md#office-release-on-ksucodes) passed
+87 exact-package browser checks locally, 444-file verification on the host,
+and a hosted Chromium check of the login, both editor modules and their WASM.
 
 See [build inputs](CRAFT-BUILD-INPUTS.md) for cache locations, verified pins and
 installation details, and the [integration guide](CRAFT-INTEGRATION-GUIDE.md)
@@ -27,8 +26,8 @@ for the acceptance contract.
 |---|---|---|---|---|
 | Office | [wordcraft](../apps/wordcraft/) `webos/integration` at `edeb4a090cd3` | Rich text and document layout | `webos/build.py` | Live. Signed browser authoring, file round trip and recovery evidence in [WordCraft report](../deploy/WORDCRAFT-DOCUMENTS.md). Apply and qualify the shared AutoSave policy. |
 | Office | [pdfcraft](../apps/pdfcraft/) `webos/pdfcraft-blank-chrome` at `a5b512846f59` | PDF editing | `webos/build.py` | Live. Signed browser editing, recovery and verified PDF content in [PdfCraft report](../deploy/PDFCRAFT.md). Apply and qualify the shared AutoSave policy. |
-| Office | [gridcraft](../apps/gridcraft/) `webos/gridcraft-document-host` at `fd80ce897bce` | Spreadsheets with formulas and formatting | `webos/build.py` | Locally qualified XLSX workflow. Ten native gates, 27 adapter tests and the combined browser suite pass. A recovered cell remains in formula edit mode until explicit entry. The browser test confirmed retry timing, uncertain-write handling, and exact workspace restoration. Signed inspect and cell operations pass in the separate loopback developer profile. |
-| Office | [deckcraft](../apps/deckcraft/) `webos/office-agent-dispatch` at `5b065c4ef93c` | Slides and embedded assets | `webos/build.py` | Locally qualified PPTX workflow at `f8353c0dae8e`. Pending notes recover as unfinished edits. Saved files retain slides, notes, theme and images. The separate agent profile passes eight native gates, 41 adapter tests and actual signed inspection and stable-ID notes editing. Browser-uploaded fonts are session-only. |
+| Office | [gridcraft](../apps/gridcraft/) `webos/gridcraft-document-host` at `fd80ce897bce` | Spreadsheets with formulas and formatting | `webos/build.py` | Live XLSX workflow. Ten native gates, 27 adapter tests and the combined browser suite pass. A recovered cell remains in formula edit mode until explicit entry. The browser test confirmed retry timing, uncertain-write handling and exact workspace restoration. Signed inspect and cell operations pass in the separate loopback developer profile. |
+| Office | [deckcraft](../apps/deckcraft/) `webos/office-agent-dispatch` at `5b065c4ef93c` | Slides and embedded assets | `webos/build.py` | Live PPTX workflow at `f8353c0dae8e`. Pending notes recover as unfinished edits. Saved files retain slides, notes, theme and images. The separate agent profile passes eight native gates, 41 adapter tests and actual signed inspection and stable-ID notes editing. Browser-uploaded fonts are session-only. |
 | Office | [designcraft](../apps/designcraft/) `webos/integration` at `59c6fa1b4947` | Page layout and publication | `designcraft-web` | Disabled. Build and browser integration pending. Verify workspace references and linked assets. Qualify the page layout workflow. |
 | Graphics | [photocraft](../apps/photocraft/) `webos/integration` at `2fec95b0d91b` | Layered raster images and embedded smart objects | `packaging/web/package.sh` | Disabled in release profiles. Development fork `webos/photocraft-document-host` at `d7fba4774bb1` passed 24 signed browser checks, including one warning per dirty refresh, pending Type recovery, Save/Discard/Cancel, timed AutoSave, fresh-browser embedded asset retrieval and same-browser account profile isolation. All 15 classic Desktop checks passed. Active IME and other unfinished tools, external smart-object links and authorized agent operations remain open. |
 | Graphics | [vectorcraft](../apps/vectorcraft/) `webos/integration` at `4830ea0e833f` | Vector paths and text | `vectorcraft-web` | Disabled. Build and browser integration pending. Verify font bundle, native project serialization and SVG round-trip limits. |
