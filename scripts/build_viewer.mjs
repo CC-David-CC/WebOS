@@ -15,6 +15,7 @@ const graphicsEngines = [
   {id:'lightcraft', name:'LightCraft', extension:'.lightcraft'},
   {id:'designcraft', name:'DesignCraft', extension:'.designcraft'},
   {id:'soundcraft', name:'SoundCraft', extension:'.scraftz'},
+  {id:'filmcraft', name:'FilmCraft', extension:'.fcproj'},
 ].flatMap(engine => {
   const release = flags['--'+engine.id+'-site'];
   const review = flags['--test-'+engine.id+'-site'];
@@ -23,7 +24,7 @@ const graphicsEngines = [
 });
 const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site',
   '--photocraft-site','--test-photocraft-site',
-  ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
+  ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
   throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
 }
@@ -148,6 +149,7 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
     id==='lightcraft'?"export {mount} from './assembly/viewer/lightcraft-app.mjs';":
     id==='designcraft'?"export {mount} from './assembly/viewer/designcraft-app.mjs';":
     id==='soundcraft'?"export {mount} from './assembly/viewer/soundcraft-app.mjs';":
+    id==='filmcraft'?"export {mount} from './assembly/viewer/filmcraft-app.mjs';":
     graphics?`import {mountCraftAccount} from './assembly/viewer/craft-account-app.mjs';import {createCraftRecovery} from './assembly/viewer/craft-account-recovery.mjs';const project=${graphicsProject};const recovery=createCraftRecovery(project);export function mount(host){return mountCraftAccount(host,{...project,recovery,reviewWindowClose:true});}`:
     `import {mount as appMount${delegation}} from '@webos/${id}';import {mountAccountApp} from './assembly/viewer/account-app.mjs';${recovery}export function mount(host){return mountAccountApp(appMount,host,${JSON.stringify(id)},officeRecovery${delegation});}`;
   await emitBuild({stdin:{contents,resolveDir:root,sourcefile:'<viewer-'+id+'>',loader:'js'},outdir:path.join(output,'.virtual-'+id),outExtension:{'.js':'.mjs'}},async files=>{

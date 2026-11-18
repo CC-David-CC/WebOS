@@ -14,7 +14,7 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE_BYTES = 256 * 1024 * 1024
-OPTIONAL_ENGINES = {app: 64 * 1024 * 1024 for app in ('gridcraft', 'deckcraft', 'photocraft', 'figcraft', 'anicraft', 'lightcraft', 'soundcraft')}
+OPTIONAL_ENGINES = {app: 64 * 1024 * 1024 for app in ('gridcraft', 'deckcraft', 'photocraft', 'figcraft', 'anicraft', 'lightcraft', 'soundcraft', 'filmcraft')}
 OPTIONAL_ENGINES['designcraft'] = 96 * 1024 * 1024
 OPTIONAL_ENGINES['vectorcraft'] = 128 * 1024 * 1024
 
