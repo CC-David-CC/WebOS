@@ -27,9 +27,12 @@
 
 # WebOS — site integration from organized source
 
-Source organization is complete. We are integrating apps into ksu.codes from the
-existing independent repositories in this project. All17 selected Craft sources
-already exist under `apps/`; do not copy or re-extract them.
+Source organization is complete. Continue site integration from the 17
+independent Craft repositories under `apps/`. The user approved rolling
+deployments to ksu.codes as each app passes its release checks. Use the
+classic Desktop and the existing account service. The
+[rollout guide](migration/CRAFT-INTEGRATION-GUIDE.md#rolling-integration-queue)
+defines the remaining order and gates.
 
 FigCraft went live on 2026-11-18 UTC in release
 `6935ffc4fcb8b7d130e05033c59fa4bfd3fd742be9caf4e21fcfa59b0a521c4a`.
@@ -81,7 +84,8 @@ Preserve unrelated WIP
 in `artifacts/input-files.json` and `tests/wordcraft_baseline_browser.mjs`.
 The original workspace remains read-only; beta stays live independently.
 
-Use these organized project files for ongoing site integration. Independent owners, source/build entries and required inputs are mapped below. Beta stays live separately; choose each next app or fix scope explicitly.
+Independent owners, source/build entries and required inputs are mapped below.
+Beta stays live separately.
 
 ## Where things belong
 

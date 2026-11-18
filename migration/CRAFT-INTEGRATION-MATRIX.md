@@ -10,9 +10,12 @@ must prove native content fidelity, account saves, recovery and fresh browser
 retrieval before it is enabled. A passing dependency fetch does not exercise
 build scripts, assets, linking or browser behavior.
 
-The classic Desktop source contains all 17 entries. The current hosted release
-enables WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft and FigCraft. The other 11 Craft entries
-use the disabled state. Legacy entries remain separate.
+Source organization is complete. The active phase integrates the 17 apps from
+their independent repositories and rolls out each qualified app to ksu.codes
+under the user's approval. The current hosted release enables WordCraft,
+PdfCraft, GridCraft, DeckCraft, PhotoCraft and FigCraft. The other 11 Craft
+entries remain disabled in the classic Desktop pending their release checks.
+Legacy entries remain separate.
 
 The [FigCraft release](CRAFT-INTEGRATION-LOG.md#figcraft-release-on-ksucodes)
 passed 140 exact-package browser checks and 505-file hosted verification.
@@ -41,7 +44,7 @@ for the acceptance contract.
 | Graphics | [vectorcraft](../apps/vectorcraft/) `webos/integration` at `4830ea0e833f` | Vector paths and text | `vectorcraft-web` | Disabled. The review package passed 12 Desktop account checks, including conflict recovery and loss of a write response, and passed signed layer rename and native Undo. The host uses the native WebGL option. Full native CI and the selected-commit package remain pending. |
 | Graphics | [figcraft](../apps/figcraft/) `webos/integration` at `cf78eb22978c` | Interface layouts and components | `packaging/web/build-account.sh` | Live `.figcraft` workflow. The exact release passed 12 Desktop account checks and signed layer rename with native Undo in the opt-in loopback profile. The selected tree passed 5,877 stable native tests across R730 and the laptop, plus Clippy and the standard WASM gate. |
 | Graphics | [lightcraft](../apps/lightcraft/) `webos/integration` at `09a3d20bd722` | Non-destructive photo adjustments | `cargo xtask web` from repo root | Disabled. The browser editor owns a persistent library, originals, thumbnails and render workers. Qualify account-scoped library identity and worker access before connecting this workflow to account Storage. |
-| Animation and video | [anicraft](../apps/anicraft/) `webos/integration` at `4e2a2af303d8` | Timeline and vector animation | `scripts/build-web.sh` and root WASM target | Disabled. The browser uses a native project codec with in-memory file I/O and downloads. Use `.anicraft` for account Save and recovery. Qualify timeline edits, embedded assets and reopen before enabling it. |
+| Animation and video | [anicraft](../apps/anicraft/) `webos/integration` at `4e2a2af303d8` | Timeline and vector animation | `scripts/build-web.sh` and root WASM target | Disabled. The isolated integration branch passed its baseline WASM check and three focused native save and standalone I/O tests. Account wiring and browser qualification are in progress. Qualify timeline edits, embedded assets, recovery and reopen before enabling it. |
 | Animation and video | [filmcraft](../apps/filmcraft/) `webos/integration` at `e6df31865bc5` | Video timeline and linked media | `filmcraft-web` | Disabled. Build and browser integration pending. Check browser codecs, media references and portable projects. |
 | Animation and video | [effectcraft](../apps/effectcraft/) `webos/integration` at `dc2380b070fa` | Compositing and motion graphics | `effectcraft-web` | Disabled. Build and browser integration pending. Verify media, render providers and serialization of referenced compositions. |
 | Audio | [soundcraft](../apps/soundcraft/) `webos/integration` at `2688ccac8859` | Multitrack audio projects | `soundcraft-web` | Disabled. Build and browser integration pending. Check audio engine, browser I/O and portable project/session formats. |
