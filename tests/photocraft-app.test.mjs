@@ -157,6 +157,7 @@ test('The classic API2 view publishes account bindings only after the native fra
     assert.equal(view.lifecycle.snapshot().pending,false);
     assert.equal(frame.inert,false,'session inspection leaves the mounted editor available');
     const closing = view.requestClose({scope:'window'});
+    await turn();
     assert.equal(traffic.at(-1).interactive,true);
     receive('close-result',{requestId:traffic.at(-1).requestId,approved:false});
     assert.equal(await closing,false);
