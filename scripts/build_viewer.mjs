@@ -8,7 +8,15 @@ import {execFileSync} from 'node:child_process';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const flags=Object.fromEntries(process.argv.slice(2).reduce((pairs,item,index,all)=>index%2?pairs:[...pairs,[item,all[index+1]]],[]));
-if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--photocraft-site','--test-photocraft-site'].includes(k)))throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE [--pdfcraft-site VERIFIED_ENGINE_SITE] [--gridcraft-site VERIFIED_ENGINE_SITE] [--deckcraft-site VERIFIED_ENGINE_SITE] [--photocraft-site VERIFIED_ENGINE_SITE | --test-photocraft-site VERIFIED_ENGINE_SITE]');
+const graphicsReviews = [
+  {id:'vectorcraft', name:'VectorCraft', extension:'.vectorcraft'},
+  {id:'figcraft', name:'FigCraft', extension:'.figcraft'},
+].filter(({id}) => flags['--test-'+id+'-site']);
+const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site',
+  '--photocraft-site','--test-photocraft-site','--test-vectorcraft-site','--test-figcraft-site'];
+if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
+  throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
+}
 if(flags['--photocraft-site']&&flags['--test-photocraft-site'])throw Error('Choose a single PhotoCraft build input');
 const output=path.resolve(flags['--output']),wordcraft=path.resolve(flags['--wordcraft-site']);
 if(output===root||output.startsWith(root+path.sep)||root.startsWith(output+path.sep))throw Error('Output must be outside source');
@@ -62,6 +70,27 @@ if(photoSite){
   }
   additionalEngines.push({id,site,receipt,receiptBytes});
 }
+for(const graphics of graphicsReviews) {
+  const {id} = graphics;
+  const site = path.resolve(flags['--test-'+id+'-site']);
+  const receiptBytes = await readFile(path.join(site,'component-build.json'));
+  const receipt = JSON.parse(receiptBytes);
+  const component = path.join(root,'apps',id);
+  const git = (...args) => execFileSync('git',['--no-optional-locks','-C',component,...args],{encoding:'utf8'}).trim();
+  const oid = value => typeof value === 'string' && /^[0-9a-f]{40}$/.test(value);
+  if(receipt.schema!=='webos-component-build/1'||receipt.component!==id||!oid(receipt.sourceTree)||
+      !Array.isArray(receipt.files)||!receipt.files.some(file=>file.path==='index.html')) {
+    throw Error(`Verified ${id} package required`);
+  }
+  if(receipt.localReview === true && receipt.sourceCommit === null) {
+    if(!oid(receipt.baseCommit)||git('rev-parse','HEAD')!==receipt.baseCommit||git('cat-file','-t',receipt.sourceTree)!=='tree') {
+      throw Error(`${id} local review tree and selected base are required`);
+    }
+  } else if(!oid(receipt.sourceCommit)||git('rev-parse',receipt.sourceCommit+'^{tree}')!==receipt.sourceTree) {
+    throw Error(`${id} native build source tree mismatch`);
+  }
+  additionalEngines.push({...graphics,site,receipt,receiptBytes});
+}
 // The engine is a separately identified, previously built input. Its receipt is
 // never relabeled as a fresh compilation of today's bridge/native source.
 await mkdir(output);
@@ -74,13 +103,15 @@ const common={absWorkingDir:root,bundle:true,platform:'browser',format:'esm',tar
   nodePaths:[path.join(root,'node_modules')],loader:{'.woff':'file','.woff2':'file','.ttf':'file','.svg':'file','.png':'file'}};
 function recordInputs(meta){for(const name of Object.keys(meta.inputs)){if(name.startsWith('<'))continue;const absolute=path.resolve(root,name);if(!absolute.startsWith(root+path.sep))throw Error('Build dependency outside assembly');}}
 async function emitBuild(options,destination){const result=await build({...common,...options});recordInputs(result.metafile);for(const input of Object.keys(result.metafile.inputs)){if(input.startsWith('<'))continue;sourceInputs.set(input,hash(await readFile(path.resolve(root,input))));}const files=[];for(const file of result.outputFiles){const name=path.relative(options.outdir,file.path).split(path.sep).join('/');files.push({name,bytes:file.contents});}await destination(files);}
-const servicesSource = officeEngines.length || photoSite ? {
+const servicesSource = officeEngines.length || photoSite || graphicsReviews.length ? {
   stdin: {
     contents: [
       "export * from './assembly/viewer/account-services.mjs';",
       "import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';",
       ...officeEngines.map(({id,name})=>`import * as ${id} from '@webos/${id}/recovery';export const restore${id[0].toUpperCase()+id.slice(1)}Recovery=createOfficeRecovery('${id}','${name}',${id}).restore;`),
-      ...(photoSite ? ["import {photoRecovery} from './assembly/viewer/photocraft-app.mjs';export const restorePhotocraftRecovery=photoRecovery.restore;"] : [])
+      ...(photoSite ? ["import {photoRecovery} from './assembly/viewer/photocraft-app.mjs';export const restorePhotocraftRecovery=photoRecovery.restore;"] : []),
+      ...(graphicsReviews.length ? ["import {createCraftRecovery} from './assembly/viewer/craft-account-recovery.mjs';"] : []),
+      ...graphicsReviews.map(({id,name,extension})=>`export const restore${name[0]+id.slice(1)}Recovery=createCraftRecovery(${JSON.stringify({app:id,name,extension})}).restore;`),
     ].join('\n'),
     resolveDir: root, sourcefile: '<account-services>', loader: 'js',
   },
@@ -95,8 +126,11 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
     ? `import * as drafts from '@webos/${id}/recovery';import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';const officeRecovery=createOfficeRecovery('${id}','${office.name}',drafts);`
     : 'const officeRecovery=null;';
   const delegation=id==='deckcraft'?',delegatedCommands':'';
+  const graphics = graphicsReviews.find(app => app.id===id);
+  const graphicsProject = graphics && JSON.stringify({app:id,name:graphics.name,extension:graphics.extension});
   const contents=id==='help'?"export {mount} from './apps/help/apps/system/help/index.mjs';":
     id==='photocraft'?"export {mount} from './assembly/viewer/photocraft-app.mjs';":
+    graphics?`import {mountCraftAccount} from './assembly/viewer/craft-account-app.mjs';import {createCraftRecovery} from './assembly/viewer/craft-account-recovery.mjs';const project=${graphicsProject};const recovery=createCraftRecovery(project);export function mount(host){return mountCraftAccount(host,{...project,recovery,reviewWindowClose:true});}`:
     `import {mount as appMount${delegation}} from '@webos/${id}';import {mountAccountApp} from './assembly/viewer/account-app.mjs';${recovery}export function mount(host){return mountAccountApp(appMount,host,${JSON.stringify(id)},officeRecovery${delegation});}`;
   await emitBuild({stdin:{contents,resolveDir:root,sourcefile:'<viewer-'+id+'>',loader:'js'},outdir:path.join(output,'.virtual-'+id),outExtension:{'.js':'.mjs'}},async files=>{
     // esbuild calls a stdin entry "stdin"; the loader's stable entry is index.
@@ -127,13 +161,13 @@ for(const {id,site,receipt,receiptBytes} of additionalEngines){
     seen.add(file.path);const bytes=await readFile(path.join(site,file.path));
     if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error(id+' engine input hash mismatch');
     if(id==='photocraft'&&file.path==='.htaccess')continue;
-    if(id==='photocraft'&&file.path==='index.html'){
+    if((id==='photocraft'||graphicsReviews.some(app=>app.id===id))&&file.path==='index.html'){
       const html=bytes.toString('utf8');
       const scripts=[...html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)];
-      if(scripts.length!==1)throw Error('Expected one generated PhotoCraft module bootstrap');
+      if(scripts.length!==1)throw Error(`Expected one generated ${id} module bootstrap`);
       const [inline,bootstrap]=scripts[0];
       const name='webos-boot-'+hash(bootstrap).slice(0,16)+'.mjs';
-      if(receipt.files.some(file=>file.path===name))throw Error('PhotoCraft bootstrap path collision');
+      if(receipt.files.some(file=>file.path===name))throw Error(`${id} bootstrap path collision`);
       const transformed=html.replace(inline,'<script type="module" src="./'+name+'"></script>');
       await put(id+'/'+name,bootstrap);
       await put(id+'/index.html',transformed);
@@ -143,11 +177,12 @@ for(const {id,site,receipt,receiptBytes} of additionalEngines){
     await put(id+'/'+file.path,bytes);total+=bytes.length;
   }
   await put(id+'/component-build.json',receiptBytes);
-  additionalReceipts[id+'Engine']={sourceCommit:receipt.sourceCommit,bytes:total,receiptSHA256:hash(receiptBytes)};
+  additionalReceipts[id+'Engine']={sourceCommit:receipt.sourceCommit,bytes:total,receiptSHA256:hash(receiptBytes),
+    ...(graphicsReviews.some(app=>app.id===id)?{sourceTree:receipt.sourceTree}:{})};
 }
 // No backend/package/credential state is included in public output.
 const receipt={schema:'webos-existing-viewer-build/1',engine:{sourceCommit:engine.sourceCommit,bytes:engineBytes,receiptSHA256:hash(await readFile(path.join(wordcraft,'component-build.json')))},
-  ...(photoTest?{developmentOnly:true}:{}),
+  ...(photoTest||graphicsReviews.length?{developmentOnly:true}:{}),
   ...(pdfEngine?{pdfcraftEngine:{sourceCommit:pdfEngine.sourceCommit,bytes:pdfEngineBytes,receiptSHA256:hash(await readFile(path.join(pdfcraft,'component-build.json')))}}:{}),
   ...additionalReceipts,sourceInputs:[...sourceInputs].map(([path,sha256])=>({path,sha256})),apps:apps.map(a=>a.id),qualification:'Source-assembled candidate. Real viewer/browser/account acceptance remains separate; WordCraft engine is a verified prebuilt input.'};
 await put('viewer-build.json',JSON.stringify(receipt,null,2)+'\n');
