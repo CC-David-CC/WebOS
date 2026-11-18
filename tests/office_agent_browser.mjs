@@ -503,14 +503,17 @@ async function lightcraftDispatch(browser, page, credentials) {
         }
       });
     });
-    const newId = await fresh.page.evaluate(async ()=>{
-      const desktop=window.desktopLab.surfaces.get('Desktop');
-      const files=desktop.launch('files');
-      const node=document.querySelector('.window[data-window="'+files.id+'"]');
+    const filesId=await fresh.page.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+    await fresh.page.waitForFunction(id=>typeof document.querySelector('.window[data-window="'+id+'"]')?.appView?.execute==='function',timeout,filesId);
+    await fresh.page.$eval(selector(filesId),async node=>{
       await node.appView.ready;
       await node.appView.execute('open',{path:'Documents/Light Copy.lightcraft'});
-      return desktop.windows.find(window=>window.app==='lightcraft').id;
     });
+    const windowId=await fresh.page.waitForFunction(path=>window.desktopLab.surfaces.get('Desktop').windows.find(window=>
+      window.app==='lightcraft' && document.querySelector('.window[data-window="'+window.id+'"]')?.appView?.inspect?.()?.resourceId===path)?.id,
+    timeout,'Documents/Light Copy.lightcraft');
+    const newId=await windowId.jsonValue();
+    await windowId.dispose();
     await fresh.page.waitForFunction(id=>document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect?.()?.instanceId,timeout,newId);
     const opened=await grant(fresh.page,newId);
     const contents=await run(fresh.page,opened,'document.inspect',{});
