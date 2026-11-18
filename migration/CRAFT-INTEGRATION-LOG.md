@@ -980,3 +980,38 @@ browser errors. The immediate rollback is FigCraft release
 The host backup is `/var/backups/webos-vectorcraft-ksu-20261118-01`.
 The archive, test and activation receipts are in the private
 `vectorcraft-ksu-20261118-01/` record and associated browser run directories.
+
+## AniCraft release on ksu.codes
+
+Release `358215126cd5e6bc250c4ec8f5cde03baca308ee71c3f2e361f911b6dcc401a2`
+went live on 2026-11-18 UTC. Parent
+`c180c37cd7d07163fae17eab913506cae67f6388` selects AniCraft
+`04610927977e8cf9130add8ebc95d337cf77e5ab` at tree
+`655464d2860451dc4d0dab61f546d985fd7db1ee`.
+
+The final candidate passed 33 Chromium checks, including account project
+Open, Save, Save As, recovery, cross-browser conflict protection, fresh-browser
+reopen, timeline keyframes, embedded PNG and WAV, rendered PNG pixel fidelity,
+and opted-in scoped layer edits with native Undo. The hosted profile keeps the
+agent bridge disabled by default. The final candidate also matched 583 files
+from the prior regression-tested candidate, including its retained editor
+bundles and Desktop assets. PhotoCraft's nested recovery and text composition
+scenarios passed. The first final-candidate conflict test timed out when it
+switched browser contexts. An explicit canvas focus assertion made the same
+keyboard scenario repeatable.
+
+The native workspace ran to completion with 1,624 passing checks, 12 upstream
+ignores and two failures. The exact upstream parent `4e2a2af303d8` reproduced
+both failures on the R730: the default timeline header overflows by 5 pt, and
+the pseudo-locale test flags system font family names. The integration fixed
+the additional issue in its own account messages by using AniCraft's
+translation layer.
+
+Hosted verification matched 588 files and confirmed the published native
+WASM started in Chromium. The activation receipt verified beta, the backend
+instance and issuer, and service continuity. The immediate rollback is the
+VectorCraft release
+`c4acd1ab2d28957c05d2b8e34eb1beca9f60df36bda9a61ede9e48f46b323938`.
+The host backup is `/var/backups/webos-anicraft-ksu-20261118-02`. The private
+`anicraft-ksu-20261118-02/` record includes the source, packaging, native
+comparison, browser, activation and hosted verification receipts.
