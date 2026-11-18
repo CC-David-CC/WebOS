@@ -1,7 +1,7 @@
 /** Qualify a linked graphics editor inside an actual account desktop. */
 import assert from 'node:assert/strict';
 import {randomBytes} from 'node:crypto';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import puppeteer from 'puppeteer-core';
 
@@ -100,11 +100,13 @@ async function draw(page, horizontal = .45) {
   await clean(page,false);
 }
 
-async function saveShortcut(page, modifiers = ['Control']) {
+async function pressShortcut(page, key, modifiers = ['Control']) {
   for (const modifier of modifiers) await page.keyboard.down(modifier);
-  try { await page.keyboard.press('s'); }
+  try { await page.keyboard.press(key); }
   finally { for (const modifier of [...modifiers].reverse()) await page.keyboard.up(modifier); }
 }
+
+const saveShortcut = (page, modifiers) => pressShortcut(page,'s',modifiers);
 
 async function saveAs(page, name, modifiers) {
   await saveShortcut(page,modifiers);
@@ -127,6 +129,133 @@ async function accountRevision(page, path, open = false) {
     if (open) await window.appView.execute('open',{path});
     return receipt.sha256;
   },{path,open});
+}
+
+async function accountAnimation(page, pathname) {
+  return page.$eval(files,async (node,pathname)=>{
+    const desktop = [...window.desktopLab.surfaces.values()].find(surface=>surface.root.contains(node));
+    const model = desktop.windows.find(w=>String(w.id)===node.dataset.window);
+    const host = await publicAppHost(desktop,model);
+    const context = await host.storage.accountFileContext();
+    const snapshot = await context.files.read(pathname);
+    return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(snapshot.data));
+  },pathname);
+}
+
+async function renderFrame(frame) {
+  await frame.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+}
+
+function aniWavFixture() {
+  const rate = 48_000;
+  const samples = 4_800;
+  const audio = Buffer.alloc(44 + samples*2);
+  audio.write('RIFF',0);
+  audio.writeUInt32LE(audio.length-8,4);
+  audio.write('WAVEfmt ',8);
+  audio.writeUInt32LE(16,16);
+  audio.writeUInt16LE(1,20);
+  audio.writeUInt16LE(1,22);
+  audio.writeUInt32LE(rate,24);
+  audio.writeUInt32LE(rate*2,28);
+  audio.writeUInt16LE(2,32);
+  audio.writeUInt16LE(16,34);
+  audio.write('data',36);
+  audio.writeUInt32LE(samples*2,40);
+  for (let i=0;i<samples;i++) audio.writeInt16LE(Math.round(2000*Math.sin(i*2*Math.PI*440/rate)),44+i*2);
+  return audio;
+}
+
+async function aniTimelineAndMedia(page) {
+  const iframe = await ready(page);
+  const frame = await iframe.contentFrame();
+  const imageName = 'timeline-swatch.png';
+  const imagePath = path.join(output,imageName);
+  const data = await page.evaluate(()=>{
+    const canvas = document.createElement('canvas');
+    canvas.width = 12;
+    canvas.height = 10;
+    const context = canvas.getContext('2d');
+    context.fillStyle = '#d5289c';
+    context.fillRect(0,0,12,10);
+    return canvas.toDataURL('image/png').split(',')[1];
+  });
+  await writeFile(imagePath,Buffer.from(data,'base64'),{flag:'wx',mode:0o600});
+  const soundPath = path.join(output,'timeline-tone.wav');
+  await writeFile(soundPath,aniWavFixture(),{flag:'wx',mode:0o600});
+  await frame.$eval('#anicraft_canvas',element=>element.focus());
+  await page.keyboard.press('F6');
+  await renderFrame(frame);
+  for (const source of [imagePath,soundPath]) {
+    const previous = await page.$eval(selector,node=>node.appView.lifecycle.snapshot().revision);
+    const [picker] = await Promise.all([page.waitForFileChooser(),pressShortcut(page,'r')]);
+    await picker.accept([source]);
+    await page.waitForFunction((selector,previous)=>{
+      const state = document.querySelector(selector)?.appView.lifecycle.snapshot();
+      return state && !state.pending && state.dirty && state.revision>previous;
+    },{},selector,previous);
+    await renderFrame(frame);
+  }
+  await iframe.dispose();
+}
+
+async function aniExportFrame(page, stage) {
+  const iframe = await ready(page);
+  const frame = await iframe.contentFrame();
+  const downloads = path.join(output,'downloads');
+  await mkdir(downloads,{mode:0o700});
+  const cdp = await browser.target().createCDPSession();
+  let timer;
+  try {
+    await cdp.send('Browser.setDownloadBehavior',{
+      behavior:'allow',downloadPath:downloads,browserContextId:page.browserContext().id,eventsEnabled:true
+    });
+    let observed;
+    const completed = new Promise((resolve,reject)=>{
+      timer = setTimeout(()=>reject(Error('The native PNG export did not complete.')),20_000);
+      cdp.on('Browser.downloadWillBegin',event=>{ observed = event; });
+      cdp.on('Browser.downloadProgress',event=>{
+        if (event.guid !== observed?.guid) return;
+        if (event.state === 'completed') resolve(observed.suggestedFilename);
+        if (event.state === 'canceled') reject(Error('The native PNG export was canceled.'));
+      });
+    });
+    await frame.$eval('#anicraft_canvas',canvas=>{canvas.tabIndex=0;canvas.focus();});
+    // Reopening starts at frame one. Move to the next keyframe before exporting.
+    await page.keyboard.press('Period');
+    await renderFrame(frame);
+    await pressShortcut(page,'k');
+    await renderFrame(frame);
+    await page.keyboard.type('Export Frame as PNG');
+    await renderFrame(frame);
+    await page.keyboard.press('Enter');
+    await renderFrame(frame);
+    await page.keyboard.press('Enter');
+    const name = await completed;
+    assert.match(name,/^frame_\d{4}\.png$/);
+    const png = await readFile(path.join(downloads,name));
+    assert.deepEqual([...png.subarray(0,8)],[137,80,78,71,13,10,26,10]);
+    assert.deepEqual([png.readUInt32BE(16),png.readUInt32BE(20)],[stage.width,stage.height]);
+    const painted = await page.evaluate(async encoded=>{
+      const bytes = Uint8Array.from(atob(encoded),character=>character.charCodeAt(0));
+      const image = await createImageBitmap(new Blob([bytes],{type:'image/png'}));
+      const canvas = new OffscreenCanvas(image.width,image.height);
+      const context = canvas.getContext('2d');
+      context.drawImage(image,0,0);
+      const {data} = context.getImageData(0,0,image.width,image.height);
+      image.close();
+      let swatchPixels = 0;
+      for (let pixel=0; pixel<data.length; pixel+=4) {
+        if (data[pixel]===213 && data[pixel+1]===40 && data[pixel+2]===156 && data[pixel+3]===255) swatchPixels++;
+      }
+      return swatchPixels;
+    },png.toString('base64'));
+    assert.ok(painted>=100,'The exported second frame contains the embedded magenta swatch');
+  } finally {
+    clearTimeout(timer);
+    await cdp.detach();
+    await iframe.dispose();
+  }
 }
 
 async function waitForDraft(page, path, revision, present) {
@@ -211,6 +340,7 @@ try {
   await draw(page);
   checks.push('Drawing on the native canvas changes the document');
 
+  if (app === 'anicraft') await aniTimelineAndMedia(page);
   await saveAs(page,'Browser',['Control']);
   checks.push(`Native Save creates an account-backed ${label} project`);
 
@@ -224,6 +354,19 @@ try {
   await ready(page);
   assert.equal((await binding(page)).sha256,saved);
   checks.push('A fresh browser signs in and opens the server revision from Files');
+  if (app === 'anicraft') {
+    const {document:animation} = await accountAnimation(page,project);
+    const layers = animation.scenes[0].timeline.layers;
+    assert.ok(layers.some(layer=>layer.keyframes.length>=2),'A second native keyframe survived Save and reopen');
+    assert.ok(animation.bitmaps.some(image=>image.name==='timeline-swatch.png' && image.width===12 && image.height===10));
+    const audio = animation.sounds.find(sound=>sound.rate===48_000 && sound.channels===1);
+    assert.deepEqual(Buffer.from(audio.data,'base64'),aniWavFixture());
+    const soundLayer = layers.find(layer=>layer.name==='timeline-tone');
+    assert.ok(soundLayer?.keyframes.some(keyframe=>keyframe.sound?.sound===audio.id));
+    checks.push('Native keyframes, an embedded bitmap and a linked WAV cue survive Save and fresh-browser reopen');
+    await aniExportFrame(page,animation.stage);
+    checks.push('Native PNG export from the reopened timeline contains the embedded bitmap at the project size');
+  }
 
   await draw(page,.60);
   await saveAs(page,'Browser Copy',['Control','Shift']);

@@ -21,7 +21,7 @@ CADDY = Path('/etc/caddy/Caddyfile')
 PEERS = ['caddy.service', 'webos-rebuild-test.service', 'codi-beta-frontend.service',
          'codi-beta-gateway.service', 'codi-beta-issuer.service', 'codi-shared-ingress.service']
 BASE_BYTES = 256 * 1024 * 1024
-OPTIONAL_ENGINES = {app: 64 * 1024 * 1024 for app in ('gridcraft', 'deckcraft', 'photocraft', 'figcraft')}
+OPTIONAL_ENGINES = {app: 64 * 1024 * 1024 for app in ('gridcraft', 'deckcraft', 'photocraft', 'figcraft', 'anicraft')}
 OPTIONAL_ENGINES['vectorcraft'] = 128 * 1024 * 1024
 
 
