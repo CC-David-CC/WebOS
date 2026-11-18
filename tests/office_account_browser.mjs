@@ -264,11 +264,15 @@ async function waitForConflict(page, id) {
 }
 
 async function preserveLaterEdit(page, filesId, id, app, resource, previous) {
+  await page.bringToFront();
   await changeMarker(page, id, app, 'Captured before confirmation');
+  assert.equal(await marker(page,id,app),'Captured before confirmation');
   const session = await page.createCDPSession();
+  const uploadStatuses = [];
   let capture, failure, timer, held;
   const response = new Promise((resolve, reject) => { capture = resolve; failure = reject; });
   session.on('Fetch.requestPaused', event => {
+    if (event.request.method === 'POST') uploadStatuses.push(event.responseStatusCode ?? 'unknown');
     if (!held && event.request.method === 'POST'
         && event.responseStatusCode >= 200 && event.responseStatusCode < 300) {
       held = event.requestId;
@@ -281,7 +285,7 @@ async function preserveLaterEdit(page, filesId, id, app, resource, previous) {
     await session.send('Fetch.enable', {patterns: [{urlPattern: origin + '/gateway/upload', requestStage: 'Response'}]});
     await native(page, id, app, 'file.save');
     await Promise.race([response, new Promise((_, reject) => {
-      timer = setTimeout(() => reject(Error('No durable save response was captured.')), 30_000);
+      timer = setTimeout(() => reject(Error(`No durable save response was captured (upload statuses: ${uploadStatuses.join(', ') || 'none'}).`)), 30_000);
     })]);
     const stored = await file(page, filesId, 'snapshot', {path: resource});
     assert.notEqual(stored.sha256, previous);
