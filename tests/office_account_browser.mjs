@@ -487,12 +487,17 @@ async function recoverBlankDraft(page, filesId, app, name, ext) {
 }
 
 async function loseSaveConfirmation(page, filesId, id, app, resource) {
+  await page.bringToFront();
   const initial = await state(page, id);
+  assert.equal(initial.path,resource);
   await changeMarker(page, id, app, 'Confirmed by server only');
+  assert.equal(await marker(page,id,app),'Confirmed by server only');
   const session = await page.createCDPSession();
+  const uploadStatuses = [];
   let complete, fail, timer, responses = 0;
   const lost = new Promise((resolve, reject) => { complete = resolve; fail = reject; });
   session.on('Fetch.requestPaused', event => {
+    if (event.request.method === 'POST') uploadStatuses.push(event.responseStatusCode ?? 'unknown');
     if (event.request.method === 'POST' && event.responseStatusCode >= 200 && event.responseStatusCode < 300) {
       responses++;
       void session.send('Fetch.failRequest', {requestId: event.requestId, errorReason: 'Failed'}).then(complete, fail);
@@ -504,7 +509,7 @@ async function loseSaveConfirmation(page, filesId, id, app, resource) {
     await session.send('Fetch.enable', {patterns: [{urlPattern: origin + '/gateway/upload', requestStage: 'Response'}]});
     await native(page, id, app, 'file.save');
     await Promise.race([lost, new Promise((_, reject) => {
-      timer = setTimeout(() => reject(Error('No committed save response was intercepted.')), 30_000);
+      timer = setTimeout(() => reject(Error(`No committed save response was intercepted (upload statuses: ${uploadStatuses.join(', ') || 'none'}).`)), 30_000);
     })]);
     await waitForConflict(page, id);
     assert.equal(responses, 1);

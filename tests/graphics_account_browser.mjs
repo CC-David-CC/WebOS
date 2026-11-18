@@ -297,14 +297,26 @@ async function reload(page) {
 }
 
 async function loseWriteReceipt(page) {
+  await page.bringToFront();
+  const editor=await ready(page);
+  try {
+    const frame=await editor.contentFrame();
+    await frame.$eval(`#${app}_canvas`,canvas=>{
+      canvas.tabIndex=0;
+      canvas.focus({preventScroll:true});
+      if (document.activeElement!==canvas) throw Error('The editor did not receive keyboard focus before Save.');
+    });
+  } finally { await editor.dispose(); }
   const session = await page.createCDPSession();
+  const uploadStatuses=[];
   let timer, finish, reject;
   const responseLost = new Promise((resolve, rejectPromise)=>{
     finish = resolve;
     reject = rejectPromise;
-    timer = setTimeout(()=>reject(Error('No accepted account write was intercepted.')),30_000);
+    timer = setTimeout(()=>reject(Error(`No accepted account write was intercepted (upload statuses: ${uploadStatuses.join(', ') || 'none'}).`)),30_000);
   });
   session.on('Fetch.requestPaused', event=>{
+    if (event.request.method==='POST') uploadStatuses.push(event.responseStatusCode ?? 'unknown');
     if (event.request.method==='POST' && event.responseStatusCode>=200 && event.responseStatusCode<300) {
       void session.send('Fetch.failRequest',{requestId:event.requestId,errorReason:'Failed'}).then(finish,reject);
     } else {
