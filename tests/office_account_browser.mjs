@@ -177,8 +177,11 @@ async function saveAs(page, id, app, resource) {
     const model = await view?.inspect();
     return model?.path === resource && /^[a-f0-9]{64}$/.test(model.revision) && !model.dirty;
   }, options, {id, resource});
-  const caption = await page.$eval(windowSelector(id) + ' .caption-text', node => node.textContent);
-  assert(caption.startsWith(resource.split('/').at(-1) + ' — '));
+  // The DeckCraft model can report its confirmed path before the Desktop binding
+  // subscription delivers the updated caption. Check both observable states.
+  await page.waitForFunction((selector, prefix) =>
+    document.querySelector(selector)?.textContent.startsWith(prefix),
+  options, windowSelector(id) + ' .caption-text', resource.split('/').at(-1) + ' — ');
   return (await state(page, id)).revision;
 }
 
