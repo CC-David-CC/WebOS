@@ -163,6 +163,24 @@ toolchain for that app. See `current-disk-assembly-audit.json` in the private
 round directory for the selected commits and lock hashes. Per-app build
 scripts, generated assets and browser workflows still need qualification.
 
+The November 18 recheck at parent `2653ac7d7eb7` verified 36,575 tracked
+paths in the 17 Craft checkouts and repeated the locked offline Linux and
+WASM dependency fetches. All 124 component trees match their local bare
+origins. The 6,230 hash-verified artifact files include 6,143 historical
+reference files, 70 inputs declared in the committed lock and 17 additional
+inputs recorded in the preserved working copy of that lock. The audit left
+the working copy as found. All explicit font and translation revisions
+resolve in their local origins. The 14 tracked Trunk recipes have their
+HTML entrypoints, and all 17 statically declared copy inputs are present.
+
+VectorCraft's upstream release recipe pins fonts at `b076417b5880`. All
+three startup faces and their license files were verified at that revision.
+The same pin omits 30 optional background faces listed by VectorCraft.
+Its build script reports those omissions as warnings and excludes the
+faces from the generated web font table. The browser package and actual
+font requests still need qualification. TextureCraft and MaterialCraft
+intentionally vendor only the Phosphor icon variants used by their apps.
+
 PhotoCraft's browser entrypoints and sharded packaging script are in its own
 repository under `apps/photocraft/`. The exact translation pin matches
 `assets/craft-i18n`. Trunk 0.21.14 is in the shared SDK and its Binaryen optimizer is at
