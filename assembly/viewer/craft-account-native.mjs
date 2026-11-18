@@ -1,19 +1,22 @@
 const generationPattern = /^[0-9a-f]{32}$/;
+const originalRequestPattern = /^[1-9][0-9]{0,19}$/;
 const saveFields = ['ticket', 'documentId', 'revision', 'path'];
 
 /** Connect a Craft editor to its own account window in the classic Desktop. */
-export function connectCraftAccount(frame, {app, name, url, signal, onSave, onDialog, onLocalFile, onCloseIntent, onProjectState, onUnavailable}) {
+export function connectCraftAccount(frame, {app, name, url, signal, originalStore, onSave, onDialog, onLocalFile, onCloseIntent, onProjectState, onUnavailable}) {
   const prefix = app + ':account-';
   const desktop = frame.ownerDocument.defaultView;
   if (url.origin !== desktop.location.origin) throw Error(`${name} requires the desktop origin.`);
 
   let nativeDocument, generation, closed;
+  let originalAccess, lastOriginalRequest = 0n;
   const waiting = new Map();
   const abort = () => dispose(new DOMException(`${name} view closed.`, 'AbortError'));
 
   function dispose(error = new Error(`${name} native view closed.`)) {
     if (closed) return;
     closed = error;
+    originalAccess = undefined;
     desktop.removeEventListener('message', receive);
     frame.removeEventListener('load', verifyDocument);
     signal?.removeEventListener('abort', abort);
@@ -90,6 +93,37 @@ export function connectCraftAccount(frame, {app, name, url, signal, onSave, onDi
     if (kind === 'local-file') onLocalFile?.(data.file);
     if (kind === 'close-intent') onCloseIntent?.();
     if (kind === 'project-state') onProjectState?.(data);
+    if (kind === 'original-read' || kind === 'original-store') void originalRequest(kind, data);
+  }
+
+  async function originalRequest(kind, {requestId, digest, bytes}) {
+    const access = originalAccess;
+    if (!access || typeof requestId !== 'string' || !originalRequestPattern.test(requestId)) return;
+    const id = BigInt(requestId);
+    if (id <= lastOriginalRequest) return;
+    lastOriginalRequest = id;
+    const reply = {requestId, operation:kind};
+    let transfer = [];
+    try {
+      if (kind === 'original-store') {
+        if (!access.editable || !(bytes instanceof ArrayBuffer)) throw Error('The editor did not send an original for an open library.');
+        reply.digest = await originalStore.store(bytes);
+      } else {
+        const data = await originalStore.read(digest);
+        reply.bytes = data.slice().buffer;
+        transfer = [reply.bytes];
+      }
+      reply.ok = true;
+    } catch (error) {
+      reply.ok = false;
+      reply.message = String(error?.message || 'The account original could not be transferred.').slice(0, 250);
+    }
+    if (access !== originalAccess) return;
+    try {
+      post('original-result', reply, transfer);
+    } catch (error) {
+      if (!closed) unavailable(error.message);
+    }
   }
 
   function post(kind, body, transfer = []) {
@@ -122,10 +156,18 @@ export function connectCraftAccount(frame, {app, name, url, signal, onSave, onDi
 
   async function startProject(path, bytes, newSettings, recover, importName = null) {
     const requestId = desktop.crypto.randomUUID();
-    const packet = await exchange('start', {requestId, path, bytes, newSettings, recover, importName}, bytes ? [bytes] : [],
-      'started', data => data.requestId === requestId, importName === null ? 30_000 : null);
-    if (packet.ok !== true) throw Error(packet.message || `${name} could not open the project.`);
-    return packet;
+    if (originalStore && originalAccess) throw Error(`This ${name} editor already owns a project.`);
+    if (originalStore) originalAccess = {editable:false};
+    try {
+      const packet = await exchange('start', {requestId, path, bytes, newSettings, recover, importName}, bytes ? [bytes] : [],
+        'started', data => data.requestId === requestId, importName === null ? 30_000 : null);
+      if (packet.ok !== true) throw Error(packet.message || `${name} could not open the project.`);
+      if (originalAccess) originalAccess.editable = true;
+      return packet;
+    } catch (error) {
+      originalAccess = undefined;
+      throw error;
+    }
   }
 
   desktop.addEventListener('message', receive);

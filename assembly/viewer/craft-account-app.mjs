@@ -21,7 +21,8 @@ function fileFromDevice(file) {
 }
 
 /** Mount a native layer editor in its own classic Desktop account window. */
-export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false}) {
+export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false,
+  setupOriginals, commands = scopedCommands}) {
   const projectPath = path => craftProjectPath(path, extension);
   const element = document.createElement('div');
   element.className = `window-content webos-${app}`;
@@ -242,11 +243,19 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
 
     const url = new URL(`${app}/index.html`, document.baseURI);
     url.searchParams.set('host', 'webos-account');
-    url.searchParams.set('profile', context.owner);
+    let originalStore;
+    if (setupOriginals) {
+      const {scope, store} = await setupOriginals({context, origin:url.origin, valid, signal:abort.signal});
+      check();
+      url.searchParams.set('scope', scope);
+      originalStore = store;
+    } else {
+      url.searchParams.set('profile', context.owner);
+    }
     if (forceWebGL) url.searchParams.set('webgl', '1');
     storage = createCraftStorage({name, extension, files:context.files, operations:host.documentOperations, valid});
     native = connectCraftAccount(frame, {
-      app, name, url, signal:abort.signal, onSave:packet => void save(packet), onDialog:handleDialog,
+      app, name, url, signal:abort.signal, originalStore, onSave:packet => void save(packet), onDialog:handleDialog,
       onLocalFile:deviceImport ? launchLocal : undefined,
       onProjectState(packet) {
         drafts?.receive(packet);
@@ -337,7 +346,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     if (instanceId) host.registerAgentView({
       windowId:host.w.id, name, signal:abort.signal,
       instanceId, sessionId:session.public.sid, accountId:context.owner,
-      commands:scopedCommands, bindingId:() => agentDocument()?.bindingId,
+      commands, bindingId:() => agentDocument()?.bindingId,
       snapshot:agentDocument,
       execute(request, authorize) {
         check();
