@@ -21,8 +21,8 @@ CADDY = Path('/etc/caddy/Caddyfile')
 PEERS = ['caddy.service', 'webos-rebuild-test.service', 'codi-beta-frontend.service',
          'codi-beta-gateway.service', 'codi-beta-issuer.service', 'codi-shared-ingress.service']
 BASE_BYTES = 256 * 1024 * 1024
-OPTIONAL_ENGINES = ('gridcraft', 'deckcraft', 'photocraft')
-OPTIONAL_ENGINE_BYTES = 64 * 1024 * 1024
+OPTIONAL_ENGINES = {app: 64 * 1024 * 1024 for app in ('gridcraft', 'deckcraft', 'photocraft', 'figcraft')}
+OPTIONAL_ENGINES['vectorcraft'] = 128 * 1024 * 1024
 
 
 def sha(data):
@@ -86,7 +86,7 @@ def verify_archive_inventory(tar, release_id):
     assert len(members) < 10000 and len({m.name for m in members}) == len(members)
     assert all(m.isfile() and not Path(m.name).is_absolute() and not any(p.startswith('.') or p in ('node_modules', 'target', '__pycache__') for p in Path(m.name).parts) for m in members)
     total_bytes = sum(m.size for m in members)
-    assert total_bytes < BASE_BYTES + len(OPTIONAL_ENGINES) * OPTIONAL_ENGINE_BYTES
+    assert total_bytes < BASE_BYTES + sum(OPTIONAL_ENGINES.values())
     receipt_bytes = tar.extractfile('viewer-release.json').read()
     assert sha(receipt_bytes) == release_id
     receipt = json.loads(receipt_bytes)
@@ -99,7 +99,7 @@ def verify_archive_inventory(tar, release_id):
         if engine is None:
             assert app not in receipt['apps'] and not engine_bytes
             continue
-        assert app in receipt['apps'] and 0 < engine_bytes < OPTIONAL_ENGINE_BYTES
+        assert app in receipt['apps'] and 0 < engine_bytes < OPTIONAL_ENGINES[app]
         engine_receipt = records[app + '/component-build.json']
         assert engine_receipt['sha256'] == engine['receiptSHA256']
         assert engine_bytes == engine['bytes'] + engine_receipt['bytes']

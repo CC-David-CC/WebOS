@@ -21,7 +21,7 @@ function fileFromDevice(file) {
 }
 
 /** Mount a native layer editor in its own classic Desktop account window. */
-export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false}) {
+export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false}) {
   const projectPath = path => craftProjectPath(path, extension);
   const element = document.createElement('div');
   element.className = `window-content webos-${app}`;
@@ -243,6 +243,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     const url = new URL(`${app}/index.html`, document.baseURI);
     url.searchParams.set('host', 'webos-account');
     url.searchParams.set('profile', context.owner);
+    if (forceWebGL) url.searchParams.set('webgl', '1');
     storage = createCraftStorage({name, extension, files:context.files, operations:host.documentOperations, valid});
     native = connectCraftAccount(frame, {
       app, name, url, signal:abort.signal, onSave:packet => void save(packet), onDialog:handleDialog,
