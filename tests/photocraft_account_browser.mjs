@@ -22,6 +22,7 @@ const firstPath = 'Pictures/First.pcraft';
 const copyPath = 'Pictures/Copy.pcraft';
 const checks = [], errors = [], assets = new Set(), external = [];
 const uploadConflicts = [];
+const injectedUploadLoss = new WeakSet();
 const job = name => ({username:'photo'+name+randomBytes(5).toString('hex'),password:randomBytes(12).toString('hex')});
 const A = job('a'), B = job('b');
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -105,6 +106,37 @@ async function closePhoto(page, id) {
   await button(page,photoWindow(id),'Close');
 }
 
+async function loseCloseSaveReceipt(page, id) {
+  const connection = await page.createCDPSession();
+  let responses = 0, finish, fail, timer;
+  const lost = new Promise((resolve, reject) => { finish = resolve; fail = reject; });
+  const expiry = new Promise((_, reject) => {
+    timer = setTimeout(() => reject(Error('No committed PhotoCraft response was intercepted.')),30_000);
+  });
+  connection.on('Fetch.requestPaused', event => {
+    if (event.request.method === 'POST' && event.responseStatusCode >= 200 && event.responseStatusCode < 300) {
+      responses++;
+      injectedUploadLoss.add(page);
+      void connection.send('Fetch.failRequest',{requestId:event.requestId,errorReason:'Failed'}).then(finish,fail);
+    } else {
+      void connection.send('Fetch.continueResponse',{requestId:event.requestId}).catch(fail);
+    }
+  });
+  try {
+    await connection.send('Fetch.enable',{patterns:[{urlPattern:origin+'/gateway/upload',requestStage:'Response'}]});
+    await Promise.all([Promise.race([lost,expiry]),shortcut(page,id,'Enter',[],{closing:true})]);
+    await page.waitForFunction(selector=>document.querySelector(selector+' [role="status"]')?.textContent.includes('unconfirmed'),
+      options,photoWindow(id));
+    await closePhoto(page,id);
+    await page.waitForFunction(()=>document.querySelector('#feedback')?.textContent.includes('Finish the active PhotoCraft operation'),options);
+    assert.equal(responses,1);
+  } finally {
+    clearTimeout(timer);
+    await connection.send('Fetch.disable');
+    await connection.detach();
+  }
+}
+
 async function location(page) {
   await page.waitForSelector(picker,options);
   await button(page,picker,'Open folder Pictures');
@@ -147,6 +179,7 @@ async function observe(page) {
   page.on('console',event=>{
     const url = event.location().url;
     if (url === origin+'/gateway/upload' && event.text().includes('409 (Conflict)')) return;
+    if (injectedUploadLoss.has(page) && url === origin+'/gateway/upload' && event.text().includes('net::ERR_FAILED')) return;
     if (event.type()==='error' && url!==origin+'/photocraft/fonts/manifest.txt') errors.push(event.text());
   });
   page.on('response',response=>{
@@ -285,7 +318,8 @@ try {
   const freshFiles=await files(reopened);
   await file(reopened,freshFiles,'list',{path:'Pictures'});
   await file(reopened,freshFiles,'open',{path:copyPath});
-  await bound(reopened,await readyPhoto(reopened),'Copy.pcraft');
+  const reopenedId=await readyPhoto(reopened);
+  await bound(reopened,reopenedId,'Copy.pcraft');
   assert.equal(await download(reopened,freshFiles,copyPath,'reopened.pcraft'),savedOnClose);
   pass('The same account retrieves identical layered project bytes in a fresh browser context');
 
@@ -297,6 +331,15 @@ try {
   await file(outsider,outsiderFiles,'list',{path:'Pictures'});
   await assert.rejects(file(outsider,outsiderFiles,'snapshot',{path:copyPath}));
   pass('A separate account cannot resolve the first account project');
+
+  await shortcut(reopened,reopenedId,'n',['Control','Shift']);
+  await reopened.keyboard.press('Enter');
+  await closePhoto(reopened,reopenedId);
+  await loseCloseSaveReceipt(reopened,reopenedId);
+  await bound(reopened,reopenedId,'Copy.pcraft');
+  assert.notEqual(await download(reopened,freshFiles,copyPath,'close-uncertain.pcraft'),savedOnClose);
+  assert.equal(layers('close-uncertain.pcraft'),blankLayers+3);
+  pass('A lost response after a committed Save leaves Close cancelled and the write unreplayed');
   assert.deepEqual(external,[]);
   assert.deepEqual(errors,[]);
   assert([...assets].some(url=>url.endsWith('.mjs')));
