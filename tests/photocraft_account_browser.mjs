@@ -4,6 +4,7 @@ import {createHash, randomBytes} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {mkdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
+import {zstdDecompressSync} from 'node:zlib';
 import puppeteer from 'puppeteer-core';
 
 const origin = process.env.WEBOS_VIEWER_ORIGIN;
@@ -109,8 +110,58 @@ function photoWindow(id) {
   return photoView + '[data-window="'+id+'"]';
 }
 
+function autoSaveControl(id) {
+  return photoWindow(id) + ' .webos-photocraft button[aria-pressed]';
+}
+
+async function profileState(page, id) {
+  return page.$eval(photoWindow(id),async node => {
+    const frame = node.querySelector('iframe');
+    const profile = new URL(frame.src).searchParams.get('profile');
+    const desktop = [...window.desktopLab.surfaces.values()].find(surface=>surface.root.contains(node));
+    const owner = desktop.layoutOwner;
+    const databases = (await indexedDB.databases()).map(db=>db.name);
+    const prefs = JSON.parse(localStorage.getItem('photocraft.preferences.account.'+owner));
+    const recents = prefs?.fileHandling?.recentFiles ?? [];
+    return {profile,owner,databases,recents,enabled:node.querySelector('.webos-photocraft button[aria-pressed]').getAttribute('aria-pressed')};
+  });
+}
+
 async function closePhoto(page, id) {
   await button(page,photoWindow(id),'Close');
+}
+
+async function placeImage(page, id, name) {
+  const element = await page.waitForSelector(photoWindow(id) + ' iframe:not([inert])',options);
+  const frame = await element.contentFrame();
+  await element.dispose();
+  assert(frame);
+  const bytes = await frame.evaluate(async fileName => {
+    const image = document.createElement('canvas');
+    image.width = 24;
+    image.height = 16;
+    const context = image.getContext('2d');
+    context.fillStyle = '#e14422';
+    context.fillRect(0,0,12,16);
+    context.fillStyle = '#2483bc';
+    context.fillRect(12,0,12,16);
+    const png = await new Promise(resolve => image.toBlob(resolve,'image/png'));
+    const transfer = new DataTransfer();
+    transfer.items.add(new File([png],fileName,{type:'image/png'}));
+    const canvas = document.querySelector('#photocraft_canvas');
+    const box = canvas.getBoundingClientRect();
+    const event = {dataTransfer:transfer,bubbles:true,cancelable:true,
+      clientX:box.left+box.width/2,clientY:box.top+box.height/2};
+    canvas.dispatchEvent(new DragEvent('dragover',event));
+    canvas.dispatchEvent(new DragEvent('drop',event));
+    return Array.from(new Uint8Array(await png.arrayBuffer()));
+  },name);
+  await page.waitForFunction(selector => {
+    const snapshot = document.querySelector(selector)?.appView.lifecycle.snapshot();
+    return snapshot?.dirty && !snapshot.pending;
+  },options,photoWindow(id));
+  await shortcut(page,id,'Enter',[]);
+  return Buffer.from(bytes);
 }
 
 async function draftPersisted(page, path, revision, typeDraft = false) {
@@ -216,6 +267,19 @@ async function download(page, id, resource, artifact) {
 function layers(artifact) {
   const program = 'import json,sys,zipfile; z=zipfile.ZipFile(sys.argv[1]); d=json.loads(z.read("manifest.json")); print(len(d["document"]["layers"]))';
   return Number(execFileSync('python3',['-c',program,path.join(output,artifact)],{encoding:'utf8'}));
+}
+
+function embeddedImage(artifact, fileName) {
+  const program = `import json,re,sys,zipfile
+with zipfile.ZipFile(sys.argv[1]) as project:
+    manifest=json.loads(project.read('manifest.json'))
+    matches=[layer['content']['source'] for layer in manifest['document']['layers']
+             if layer['content']['kind']=='smart' and layer['content']['source'].get('file_name')==sys.argv[2]]
+    assert len(matches)==1 and matches[0]['kind']=='embedded'
+    blob=matches[0]['blob']
+    assert re.fullmatch('[0-9a-f]{64}',blob)
+    sys.stdout.buffer.write(project.read('blobs/'+blob+'.zst'))`;
+  return zstdDecompressSync(execFileSync('python3',['-c',program,path.join(output,artifact),fileName]));
 }
 
 function editedText(artifact) {
@@ -361,6 +425,18 @@ try {
   assert(await page.$(photoWindow(blankId)));
   pass('Native New creates an independent window and an untouched blank closes quietly');
 
+  await launch(page,'Graphics','PhotoCraft');
+  const embeddedId = await readyPhoto(page);
+  const embeddedPath = 'Pictures/Portable artwork.pcraft';
+  const originalImage = await placeImage(page,embeddedId,'tiles.png');
+  await shortcut(page,embeddedId,'s');
+  await destination(page,'Portable artwork');
+  await bound(page,embeddedId,'Portable artwork.pcraft');
+  const embeddedRevision = await download(page,filesId,embeddedPath,'portable.pcraft');
+  assert.deepEqual(embeddedImage('portable.pcraft','tiles.png'),originalImage);
+  await closePhoto(page,embeddedId);
+  await page.waitForSelector(photoWindow(embeddedId),{...options,hidden:true});
+
   const fresh=await browser.createBrowserContext();
   const reopened=await fresh.newPage();
   await observe(reopened);
@@ -372,6 +448,14 @@ try {
   await bound(reopened,reopenedId,'Copy.pcraft');
   assert.equal(await download(reopened,freshFiles,copyPath,'reopened.pcraft'),savedOnClose);
   pass('The same account retrieves identical layered project bytes in a fresh browser context');
+  await file(reopened,freshFiles,'open',{path:embeddedPath});
+  const reopenedEmbedded=await readyPhoto(reopened);
+  await bound(reopened,reopenedEmbedded,'Portable artwork.pcraft');
+  await closePhoto(reopened,reopenedEmbedded);
+  await reopened.waitForSelector(photoWindow(reopenedEmbedded),{...options,hidden:true});
+  assert.equal(await download(reopened,freshFiles,embeddedPath,'portable-reopened.pcraft'),embeddedRevision);
+  assert.deepEqual(embeddedImage('portable-reopened.pcraft','tiles.png'),originalImage);
+  pass('A dropped image reopens in a fresh browser as an embedded smart object with its original bytes');
 
   const other=await browser.createBrowserContext();
   const outsider=await other.newPage();
@@ -444,7 +528,7 @@ try {
   await file(automatic,autoFiles,'list',{path:'Pictures'});
   await file(automatic,autoFiles,'open',{path:untitledPath});
   const autoId=await readyPhoto(automatic);
-  const toggle=photoWindow(autoId)+' .webos-photocraft button[aria-pressed]';
+  const toggle=autoSaveControl(autoId);
   assert.equal(await automatic.$eval(toggle,node=>node.getAttribute('aria-pressed')),'false');
   const writes=[];
   automatic.on('request',request=>{
@@ -521,6 +605,37 @@ try {
   const returned=await readyPhoto(automatic);
   assert.doesNotMatch(await automatic.$eval(photoWindow(returned)+' [role="status"]',node=>node.textContent),/Recovered/);
   pass('Discard before sign-out clears the draft while account switching preserves the saved file');
+
+  await automatic.click(autoSaveControl(returned));
+  const accountA=await profileState(automatic,returned);
+  assert.equal(accountA.profile,accountA.owner);
+  assert.equal(accountA.enabled,'true');
+  assert(accountA.recents.includes(untitledPath));
+  assert(accountA.databases.includes('photocraft.presets.account.'+accountA.owner));
+  await automatic.click('.app-menu-button');
+  await button(automatic,'.menu-pane','End session');
+  await automatic.waitForSelector('.login-gate',{timeout:120_000});
+  await login(automatic,B,false);
+  await launch(automatic,'Graphics','PhotoCraft');
+  const profileB=await readyPhoto(automatic);
+  const accountB=await profileState(automatic,profileB);
+  assert.notEqual(accountB.owner,accountA.owner);
+  assert.equal(accountB.profile,accountB.owner);
+  assert.equal(accountB.enabled,'false');
+  assert.deepEqual(accountB.recents,[]);
+  assert(accountB.databases.includes('photocraft.presets.account.'+accountB.owner));
+  assert(!accountB.databases.includes('photocraft.presets'));
+  await automatic.click('.app-menu-button');
+  await button(automatic,'.menu-pane','End session');
+  await automatic.waitForSelector('.login-gate',{timeout:120_000});
+  await login(automatic,A,false);
+  await launch(automatic,'Graphics','PhotoCraft');
+  const profileA=await readyPhoto(automatic);
+  const againA=await profileState(automatic,profileA);
+  assert.equal(againA.profile,accountA.owner);
+  assert.equal(againA.enabled,'true');
+  assert(againA.recents.includes(untitledPath));
+  pass('Switching accounts in one browser separates native preset databases, recent paths and AutoSave settings');
   assert.deepEqual(external,[]);
   assert.deepEqual(errors,[]);
   assert([...assets].some(url=>url.endsWith('.mjs')));
