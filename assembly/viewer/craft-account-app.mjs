@@ -22,7 +22,7 @@ function fileFromDevice(file) {
 
 /** Mount a native layer editor in its own classic Desktop account window. */
 export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false,
-  setupOriginals, commands = scopedCommands, accountControls = false, artworkExtensions}) {
+  setupOriginals, commands = scopedCommands, accountControls = false, artworkExtensions, accountAutosave = true}) {
   const projectPath = path => craftProjectPath(path, extension);
   const element = document.createElement('div');
   element.className = `window-content webos-${app}`;
@@ -149,7 +149,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     autosave.enabled(value);
   }
   autoToggle.addEventListener('click', () => {
-    if (!loaded || !valid()) return;
+    if (!accountAutosave || !loaded || !valid()) return;
     setAutosave(!autoEnabled);
     try {
       document.defaultView.localStorage?.setItem(autosaveKey, autoEnabled ? 'on' : 'off');
@@ -383,11 +383,13 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     loaded = true;
     frame.inert = false;
     accountSession.observe();
-    autosaveKey = `webos:${app}:account-autosave:` + encodeURIComponent(context.owner);
     let value = false;
-    try { value = document.defaultView.localStorage?.getItem(autosaveKey) === 'on'; } catch { /* Use this window's default. */ }
+    if (accountAutosave) {
+      autosaveKey = `webos:${app}:account-autosave:` + encodeURIComponent(context.owner);
+      try { value = document.defaultView.localStorage?.getItem(autosaveKey) === 'on'; } catch { /* Use this window's default. */ }
+    }
     setAutosave(value);
-    autoToggle.hidden = false;
+    autoToggle.hidden = !accountAutosave;
     for (const control of controls) control.hidden = false;
     if (openLocal) openLocal.hidden = false;
     message(recoveryMessage);

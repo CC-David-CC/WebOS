@@ -19,7 +19,7 @@ const commands = Object.freeze({
 
 export function mount(host) {
   return mountCraftAccount(host, {
-    ...project, recovery, commands, reviewWindowClose:true,
+    ...project, recovery, commands, reviewWindowClose:true, accountAutosave:false,
     async setupOriginals({context,origin,valid,signal}) {
       const scope = await craftOriginalScope('effectcraft-account-media/1',origin,context.owner);
       const store = createCraftOriginalStore({

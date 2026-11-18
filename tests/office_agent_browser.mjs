@@ -27,6 +27,7 @@ const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
 const selected = Object.entries({
   lightcraft:lightcraftDispatch, designcraft:designcraftDispatch,
   soundcraft:soundcraftDispatch, filmcraft:filmcraftDispatch,
+  effectcraft:effectcraftDispatch,
 }).filter(([app])=>process.env['WEBOS_'+app.toUpperCase()+'_TEST']==='1');
 assert(selected.length<=1);
 const singleEditor = selected[0];
@@ -64,7 +65,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -1265,6 +1266,269 @@ async function filmcraftDispatch(browser, page, credentials) {
       }
     } finally { await iframe.dispose(); }
   } finally { await fresh.context.close(); }
+}
+
+async function effectcraftDispatch(browser,page,credentials) {
+  const commands = ['document.inspect','comp.new','edit.undo'];
+  const picker = 'dialog.codi-file-picker[open]', prompt = 'dialog.codi-confirm-dialog[open]';
+  const fixtureName = 'EffectCraft color plate.png';
+  const bytes = await page.evaluate(async () => {
+    const plate = document.createElement('canvas');
+    plate.width=160;
+    plate.height=96;
+    const ctx=plate.getContext('2d');
+    ctx.fillStyle='#dd2040'; ctx.fillRect(0,0,160,96);
+    ctx.fillStyle='#ffd830'; ctx.fillRect(60,24,40,48);
+    const blob=await new Promise(resolve=>plate.toBlob(resolve,'image/png'));
+    return [...new Uint8Array(await blob.arrayBuffer())];
+  });
+  const digest=createHash('sha256').update(Buffer.from(bytes)).digest('hex');
+  const sentinel = 'files%2Fstandalone-account-boundary.png';
+  await page.evaluate(async ({sentinel,bytes}) => {
+    const root=await navigator.storage.getDirectory();
+    const folder=await root.getDirectoryHandle('effectcraft',{create:true});
+    const file=await folder.getFileHandle(sentinel,{create:true});
+    const write=await file.createWritable();
+    await write.write(Uint8Array.from(bytes));
+    await write.close();
+  },{sentinel,bytes});
+
+  async function grant(tab,id) {
+    const pending=approve(tab,id,commands);
+    await tab.waitForSelector(modal,timeout);
+    await tab.click(modal+' button[aria-label="Approve access"]');
+    const approval=await pending;
+    assert.equal(approval.error,undefined,approval.error);
+    return approval.result;
+  }
+  async function edit(tab,approval,command,args={}) {
+    const intent=JSON.stringify(intentFor(approval,command,args));
+    const signed=await authorize(approval,intent);
+    assert.equal(signed.status,200,signed.error);
+    const result=await dispatch(tab,signed.confirmation,intent);
+    assert.equal(result.error,undefined,result.error);
+    return result.result.result;
+  }
+  async function files(tab) {
+    const id=await tab.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+    await tab.waitForFunction(view=>typeof document.querySelector(view)?.appView?.execute==='function',timeout,selector(id));
+    return id;
+  }
+  async function file(tab,id,command,args) {
+    return tab.$eval(selector(id),async (node,{command,args})=>{
+      await node.appView.ready;
+      return node.appView.execute(command,args);
+    },{command,args});
+  }
+  async function read(tab,id,resource) {
+    await file(tab,id,'list',{path:resource.slice(0,resource.lastIndexOf('/'))});
+    const snapshot=await file(tab,id,'snapshot',{path:resource});
+    const data=await file(tab,id,'download',{path:resource,expectedRevision:snapshot.sha256});
+    const result=Buffer.from(Object.values(data.data));
+    assert.equal(createHash('sha256').update(result).digest('hex'),snapshot.sha256);
+    return result;
+  }
+  const first=await editor(page,'effectcraft');
+  const approval=await grant(page,first);
+  const frame=await editorFrame(page,first);
+  assert.equal(await frame.evaluate(()=>typeof window.effectcraft),'undefined');
+  assert.equal(await page.$eval(selector(first)+' .webos-effectcraft', root =>
+    Array.from(root.querySelectorAll('button')).some(button=>!button.hidden && button.textContent==='AutoSave')),false);
+  const original=await edit(page,approval,'document.inspect');
+  assert.deepEqual([original.compositionCount,original.mediaCount,original.dirty],[0,0,false]);
+  const composition={name:'Linked account composition',width:160,height:96};
+  await edit(page,approval,'comp.new',composition);
+  assert.equal((await edit(page,approval,'document.inspect')).compositionCount,1);
+  await edit(page,approval,'edit.undo');
+  assert.equal((await edit(page,approval,'document.inspect')).compositionCount,0);
+  await edit(page,approval,'comp.new',composition);
+  present('EffectCraft starts blank and runs an authorized native composition edit and Undo');
+
+  const before=await page.$eval(selector(first),node=>node.appView.lifecycle.snapshot().revision);
+  await frame.$eval('#effectcraft_canvas',(canvas,{bytes,fixtureName})=>{
+    const transfer=new DataTransfer();
+    transfer.items.add(new File([Uint8Array.from(bytes)],fixtureName,{type:'image/png'}));
+    canvas.dispatchEvent(new DragEvent('drop',{dataTransfer:transfer,bubbles:true,cancelable:true}));
+  },{bytes,fixtureName});
+  await page.waitForFunction((view,before)=>{
+    const state=document.querySelector(view)?.appView?.lifecycle.snapshot();
+    return state?.dirty && !state.pending && state.revision!==before;
+  },timeout,selector(first),before);
+  assert.equal((await edit(page,approval,'document.inspect')).mediaCount,1);
+  const filesId=await files(page);
+  assert.deepEqual(await read(page,filesId,'Video/EffectCraft Originals/'+digest+'.original'),Buffer.from(bytes));
+  const standalone=await page.evaluate(async sentinel=>{
+    const root=await navigator.storage.getDirectory();
+    const folder=await root.getDirectoryHandle('effectcraft');
+    const folders=[];
+    for await (const name of root.keys()) folders.push(name);
+    const entries=[];
+    for await (const name of folder.keys()) entries.push(name);
+    const file=await (await folder.getFileHandle(sentinel)).getFile();
+    return {entries,folders,bytes:[...new Uint8Array(await file.arrayBuffer())],
+      databases:(await indexedDB.databases()).map(row=>row.name)};
+  },sentinel);
+  assert.deepEqual(standalone.entries,[sentinel]);
+  assert.deepEqual(standalone.bytes,bytes);
+  assert(!standalone.folders.some(name=>name.startsWith('effectcraft-')));
+  assert(!standalone.databases.some(name=>name.startsWith('effectcraft')));
+  assert.doesNotMatch(await page.$eval(selector(first)+' .webos-effectcraft [role="status"]',status=>status.textContent),
+    /could not update the browser draft/);
+  await page.screenshot({path:path.join(output,'effectcraft-native-import.png')});
+  present('A native media drop stores the verified account original without touching standalone browser storage');
+
+  const importedView=await page.$(selector(first)+' iframe');
+  try {
+    const rect=await importedView.boundingBox();
+    assert(rect);
+    const revision=await page.$eval(selector(first),node=>node.appView.lifecycle.snapshot().revision);
+    // Drag the footage row in the Project panel into the visible composition.
+    await page.mouse.move(rect.x+rect.width*.16,rect.y+rect.height*.253);
+    await page.mouse.down();
+    try {
+      await page.mouse.move(rect.x+rect.width*.50,rect.y+rect.height*.34,{steps:12});
+    } finally { await page.mouse.up(); }
+    await page.waitForFunction((view,revision)=>
+      document.querySelector(view)?.appView?.lifecycle.snapshot()?.revision!==revision,
+    timeout,selector(first),revision);
+    await importedView.screenshot({path:path.join(output,'effectcraft-added-composition-layer.png')});
+  } finally { await importedView.dispose(); }
+
+  async function controlKey(key,shift=false) {
+    await page.bringToFront();
+    await page.evaluate(id=>{
+      const desktop=window.desktopLab.surfaces.get('Desktop');
+      const target=desktop.windows.find(candidate=>String(candidate.id)===String(id));
+      if (desktop.active!==target.id) desktop.activateWindow(target);
+    },first);
+    await frame.$eval('#effectcraft_canvas',canvas=>{canvas.tabIndex=0;canvas.focus({preventScroll:true});});
+    await page.keyboard.down('Control');
+    if (shift) await page.keyboard.down('Shift');
+    try { await page.keyboard.press(key); }
+    finally {
+      if (shift) await page.keyboard.up('Shift');
+      await page.keyboard.up('Control');
+    }
+  }
+  async function save(name,copy) {
+    await controlKey(copy?'S':'s',copy);
+    await labelledButton(page,picker,'Open folder Video');
+    await labelledButton(page,picker,'Use this folder');
+    await page.waitForSelector(prompt+' input',timeout);
+    await page.$eval(prompt+' input',(field,value)=>{field.value=value;},name);
+    await labelledButton(page,prompt,'Save');
+    await page.waitForFunction((view,title)=>{
+      const node=document.querySelector(view);
+      const state=node?.appView?.lifecycle.snapshot();
+      return state && !state.dirty && !state.pending && node.querySelector('.caption-text')?.textContent===title;
+    },timeout,selector(first),name+'.ecproj — EffectCraft');
+  }
+  await save('Composition',false);
+  await save('Composition copy',true);
+  const resource='Video/Composition copy.ecproj';
+  const saved=(await read(page,filesId,resource)).toString('utf8');
+  assert(saved.includes('/files/webos-originals/'+digest+'/'+fixtureName));
+  assert(saved.includes(composition.name));
+  present('Native Save and Save As preserve the editable composition and its linked footage');
+
+  await controlKey('o');
+  await labelledButton(page,picker,'Open folder Video');
+  await labelledButton(page,picker,'Choose file Composition copy.ecproj');
+  await page.waitForSelector(picker,{hidden:true,...timeout});
+  assert.equal(await page.$$eval('.window:has(.webos-effectcraft)',nodes=>nodes.length),1);
+  present('Native Open activates the existing EffectCraft window for the same account project');
+
+  await edit(page,await grant(page,first),'comp.new',{...composition,name:'Recovered alternate'});
+  await page.waitForFunction(async resource=>{
+    const name='webos-effectcraft-recovery-v1';
+    if (!(await indexedDB.databases()).some(db=>db.name===name)) return false;
+    const db=await new Promise((resolve,reject)=>{
+      const open=indexedDB.open(name);
+      open.onsuccess=()=>resolve(open.result);
+      open.onerror=()=>reject(open.error);
+    });
+    try {
+      const drafts=await new Promise((resolve,reject)=>{
+        const request=db.transaction('drafts').objectStore('drafts').getAll();
+        request.onsuccess=()=>resolve(request.result);
+        request.onerror=()=>reject(request.error);
+      });
+      return drafts.some(draft=>draft.path===resource && draft.bytes instanceof Blob && draft.bytes.size>0);
+    } finally { db.close(); }
+  },timeout,resource);
+  const accept=dialog=>{void dialog.accept();};
+  page.on('dialog',accept);
+  try { await page.reload({waitUntil:'domcontentloaded'}); }
+  finally { page.off('dialog',accept); }
+  await page.waitForFunction(view=>document.querySelector(view)?.appView?.inspect?.()?.instanceId,timeout,selector(first));
+  const recovered=await edit(page,await grant(page,first),'document.inspect');
+  assert.deepEqual([recovered.compositionCount,recovered.mediaCount,recovered.dirty],[2,1,true]);
+  await labelledButton(page,selector(first),'Close');
+  await labelledButton(page,'dialog.webos-effectcraft-session[open]','Discard');
+  await page.waitForSelector(selector(first),{hidden:true,...timeout});
+  present('Refresh restores the unsaved composition and linked media, and Discard closes the draft');
+
+  const fresh=await login(browser,credentials);
+  try {
+    await fresh.page.evaluate(()=>{
+      window.effectcraftOriginalReads=[];
+      addEventListener('message',event=>{
+        if (event.origin===location.origin && event.data?.type==='effectcraft:account-original-read') {
+          window.effectcraftOriginalReads.push(event.data.digest);
+        }
+      });
+    });
+    const id=await files(fresh.page);
+    await file(fresh.page,id,'list',{path:'Video'});
+    await file(fresh.page,id,'open',{path:resource});
+    const reopened=await fresh.page.waitForFunction(resource=>[...document.querySelectorAll('.window[data-window]')].find(node=>
+      node.appView?.inspect?.()?.resourceId===resource)?.dataset.window,timeout,resource);
+    const openId=await reopened.jsonValue();
+    await reopened.dispose();
+    const loaded=await edit(fresh.page,await grant(fresh.page,openId),'document.inspect');
+    assert.deepEqual([loaded.compositionCount,loaded.mediaCount,loaded.dirty],[1,1,false]);
+    assert.deepEqual(await fresh.page.evaluate(()=>window.effectcraftOriginalReads),[digest]);
+    present('A fresh browser reopens the native composition from Files and fetches its original digest');
+    const native=await fresh.page.$(selector(openId)+' iframe');
+    try {
+      let colors;
+      for (let i=0;i<20;i++) {
+        const png=await native.screenshot({encoding:'base64'});
+        colors=await fresh.page.evaluate(async png=>{
+          const bytes=Uint8Array.from(atob(png),char=>char.charCodeAt(0));
+          const image=await createImageBitmap(new Blob([bytes],{type:'image/png'}));
+          const canvas=document.createElement('canvas');
+          canvas.width=image.width; canvas.height=image.height;
+          const ctx=canvas.getContext('2d');
+          ctx.drawImage(image,0,0);
+          image.close();
+          const {data}=ctx.getImageData(Math.floor(canvas.width*.43),Math.floor(canvas.height*.23),
+            Math.floor(canvas.width*.14),Math.floor(canvas.height*.25));
+          let red=0,yellow=0;
+          for (let n=0;n<data.length;n+=4) {
+            if (data[n]>180 && data[n+1]<74 && data[n+2]>38 && data[n+2]<96) red++;
+            if (data[n]>220 && data[n+1]>185 && data[n+2]<76) yellow++;
+          }
+          return {red,yellow};
+        },png);
+        if (colors.red>900 && colors.yellow>150) break;
+        await new Promise(resolve=>setTimeout(resolve,300));
+      }
+      await native.screenshot({path:path.join(output,'effectcraft-fresh-composition.png')});
+      assert(colors.red>900 && colors.yellow>150,'The reopened composition should render the original with its expected colors.');
+      present('The reopened EffectCraft composition renders the original’s expected pixels');
+    } finally { await native.dispose(); }
+
+    const frameWorkers=()=>fresh.page.workers().filter(worker=>new URL(worker.url()).pathname==='/effectcraft/worker.js');
+    assert(frameWorkers().length>0,'The native composition should have a frame worker.');
+    await labelledButton(fresh.page,selector(openId),'Close');
+    await fresh.page.waitForSelector(selector(openId),{hidden:true,...timeout});
+    for (let i=0;i<40 && frameWorkers().length;i++) await new Promise(resolve=>setTimeout(resolve,100));
+    assert.equal(frameWorkers().length,0,'Closing the window should terminate its frame workers.');
+    present('Closing the native editor retires its browser frame workers');
+  } finally {
+    await fresh.context.close();
+  }
 }
 
 let browser;
