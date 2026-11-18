@@ -17,20 +17,24 @@ under the user's approval.
 
 | Stage | Count | Applications |
 |---|---:|---|
-| Enabled on ksu.codes | 7 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft |
-| Assembled release candidate | 1 | AniCraft |
+| Enabled on ksu.codes | 8 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft |
 | Partial integration | 1 | LightCraft |
 | Organized source, queued for integration | 9 | DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, SolidCraft, TextureCraft, MaterialCraft, SketchCraft |
 
 The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables
 Files, Text (CodeMirror 6), Calculator and Help on the classic Desktop. The
 [live release manifest](https://ksu.codes/viewer-release.json) identifies the
-VectorCraft release at parent commit `20cced255e20f`.
-Ten Craft entries remain disabled in the hosted Desktop. SketchCraft's disabled
-CAD entry is in the AniCraft candidate Desktop. For the rest of the organized
+AniCraft release at parent commit `c180c37cd7d0`.
+Ten Craft entries are disabled in the hosted Desktop, including SketchCraft in
+the CAD menu. For the rest of the organized
 project, see the [full source and application matrix](APP-MATRIX.md), which
 covers the 86 app repositories, platform components, shared engines, tools,
 libraries and games.
+
+The [AniCraft release](CRAFT-INTEGRATION-LOG.md#anicraft-release-on-ksucodes)
+passed 33 final-candidate browser checks. Byte comparison verified continuity
+of the prior candidate's retained editor regression results. Hosted
+verification matched 588 files and confirmed native editor startup.
 
 The [VectorCraft release](CRAFT-INTEGRATION-LOG.md#vectorcraft-release-on-ksucodes)
 passed 42 exact-package browser checks and 543-file hosted verification.
@@ -62,8 +66,8 @@ for the acceptance contract.
 | Graphics | [photocraft](../apps/photocraft/) at `403994fc5f41` | Layered raster images and embedded smart objects | `packaging/web/package.sh` | Live `.pcraft` workflow. Passed 19 native account tests and 28 actual browser workflow checks, including nested recovery, embedded layers and IME protection. Scoped inspection and layer rename were verified in the separate signed loopback profile. |
 | Graphics | [vectorcraft](../apps/vectorcraft/) `webos/integration` at `09ee69a08736` | Vector paths and text | `vectorcraft-web` | Live `.vectorcraft` workflow. The exact package passed native editing, Save/Save As, recovery, fresh-browser reopen and scoped layer rename with native Undo in the opt-in loopback profile. The selected tree passed 22,139 stable native tests and 16 remaining CI stages. |
 | Graphics | [figcraft](../apps/figcraft/) `webos/integration` at `cf78eb22978c` | Interface layouts and components | `packaging/web/build-account.sh` | Live `.figcraft` workflow. The exact release passed 12 Desktop account checks and signed layer rename with native Undo in the opt-in loopback profile. The selected tree passed 5,877 stable native tests across R730 and the laptop, plus Clippy and the standard WASM gate. |
-| Graphics | [lightcraft](../apps/lightcraft/) `webos/integration` at `09a3d20bd722` | Non-destructive photo adjustments | `cargo xtask web` from repo root | Partial, disabled. The native account Open path and scoped worker loading for detached originals pass a WASM compile check on `webos/lightcraft-account-library`. The Desktop original-transfer tests passed, including account separation and fresh-browser retrieval in a standalone signed Storage test. Native Save, recovery and the full editor browser workflow remain. |
-| Animation and video | [anicraft](../apps/anicraft/) `webos/integration` at `04610927977e` | Timeline and vector animation | `scripts/build-web.sh` and root WASM target | Local candidate, disabled on ksu.codes. The updated package uses AniCraft's translation layer for account messages. All existing editor bundles and Desktop assets match the browser-tested candidate, including the package that passed PhotoCraft's nested recovery and text composition regressions. The native run reproduced two upstream defects involving the timeline header and system font names. The full native and exact candidate browser runs are being recorded. |
+| Graphics | [lightcraft](../apps/lightcraft/) `webos/integration` at `09a3d20bd722` | Non-destructive photo adjustments | `cargo xtask web` from repo root | Partial, disabled. Native account Open, scoped original loading, versioned capture and Storage acknowledgement pass a WASM compile check on `webos/lightcraft-account-library`. The separate signed Storage test verified account separation and fresh-browser retrieval of originals. Human Save controls, session finalization, scoped commands and the full editor browser workflow remain. |
+| Animation and video | [anicraft](../apps/anicraft/) `webos/integration` at `04610927977e` | Timeline and vector animation | `scripts/build-web.sh` and root WASM target | Live `.anicraft` workflow. Browser qualification covered timeline edits, PNG/WAV media, Save and Save As, recovery, fresh-browser reopen, PNG export fidelity and scoped editing with native Undo. The native workspace passed 1,624 tests with two failures reproduced on upstream involving the timeline header width and system font names. |
 | Animation and video | [filmcraft](../apps/filmcraft/) `webos/integration` at `e6df31865bc5` | Video timeline and linked media | `filmcraft-web` | Disabled. Build and browser integration pending. Check browser codecs, media references and portable projects. |
 | Animation and video | [effectcraft](../apps/effectcraft/) `webos/integration` at `dc2380b070fa` | Compositing and motion graphics | `effectcraft-web` | Disabled. Build and browser integration pending. Verify media, render providers and serialization of referenced compositions. |
 | Audio | [soundcraft](../apps/soundcraft/) `webos/integration` at `2688ccac8859` | Multitrack audio projects | `soundcraft-web` | Disabled. Build and browser integration pending. Check audio engine, browser I/O and portable project/session formats. |

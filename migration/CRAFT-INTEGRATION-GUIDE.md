@@ -470,7 +470,6 @@ remaining work by the behavior that needs qualification.
 
 | Next work | Acceptance milestone |
 |---|---|
-| AniCraft | Use the existing `.anicraft` codec. Edit a native timeline, retain embedded art and sound, Save and recover the project, and verify a browser export independently. |
 | LightCraft | Qualify an account-scoped catalog with originals, adjustment recipes and render workers. Verify that a fresh browser can retrieve an edited photo and its original. |
 | DesignCraft | Preserve editable pages, typography and linked resources across Save, recovery and fresh-browser reopen. Verify publication export using an account project. |
 | SoundCraft, FilmCraft and EffectCraft | Qualify native projects containing referenced media. Test browser codecs, large assets, rendering or playback and job ownership when a window closes. Use the existing shared media engines where applicable. |

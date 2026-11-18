@@ -33,18 +33,20 @@ classic Desktop and the existing account service. The
 [rollout guide](migration/CRAFT-INTEGRATION-GUIDE.md#rolling-integration-queue)
 defines the remaining order and gates.
 
-VectorCraft went live on 2026-11-18 UTC in release
+AniCraft went live on 2026-11-18 UTC in release
+`358215126cd5e6bc250c4ec8f5cde03baca308ee71c3f2e361f911b6dcc401a2`.
+The packaged parent is `c180c37cd7d07163fae17eab913506cae67f6388`. All 33
+final-candidate browser checks passed, all 588 hosted files matched, and
+hosted Chromium started the AniCraft editor. The immediate rollback is the
+[VectorCraft release](migration/CRAFT-INTEGRATION-LOG.md#vectorcraft-release-on-ksucodes)
 `c4acd1ab2d28957c05d2b8e34eb1beca9f60df36bda9a61ede9e48f46b323938`.
-The packaged parent is `20cced255e20f5e7df1ea194bd5477b712ad7b18`. All 42
-exact-package browser checks passed, all 543 hosted files matched, and hosted
-Chromium started the VectorCraft editor. The immediate rollback is the
-[FigCraft release](migration/CRAFT-INTEGRATION-LOG.md#figcraft-release-on-ksucodes)
-`6935ffc4fcb8b7d130e05033c59fa4bfd3fd742be9caf4e21fcfa59b0a521c4a`.
-See the [VectorCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#vectorcraft-release-on-ksucodes).
-AniCraft is next for full Desktop and account workflow qualification.
+See the [AniCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#anicraft-release-on-ksucodes)
+for native baselines, account workflow evidence and rollback. LightCraft is
+next for account editor integration. DesignCraft's baseline WASM check
+passed on the R730.
 
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
-PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft and Help.
+PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.
