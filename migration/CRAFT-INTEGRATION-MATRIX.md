@@ -1,6 +1,7 @@
 # Craft integration matrix
 
-All 18 selected source repositories are present at their selected pins. The
+All 18 selected source repositories are present at their selected pins under
+`/home/dflanag3/Projects/WebOS/apps/`. The
 original 17 passed locked offline Cargo fetch for browser WASM and native Linux
 using the existing laptop SDK. SketchCraft has since passed locked WASM
 dependency fetch and a locked offline compile check for its Rust core.
@@ -12,11 +13,24 @@ build scripts, assets, linking or browser behavior.
 
 Source organization is complete. The active phase integrates the 18 apps from
 their independent repositories and rolls out each qualified app to ksu.codes
-under the user's approval. The current hosted release enables WordCraft,
-PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft and VectorCraft. Ten Craft
-entries remain disabled in the classic Desktop pending their release checks.
-SketchCraft's disabled CAD menu entry passes tests on the queued Desktop
-branch. Legacy entries remain separate.
+under the user's approval.
+
+| Stage | Count | Applications |
+|---|---:|---|
+| Enabled on ksu.codes | 7 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft |
+| Assembled release candidate | 1 | AniCraft |
+| Partial integration | 1 | LightCraft |
+| Organized source, queued for integration | 9 | DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, SolidCraft, TextureCraft, MaterialCraft, SketchCraft |
+
+The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables
+Files, Text (CodeMirror 6), Calculator and Help on the classic Desktop. The
+[live release manifest](https://ksu.codes/viewer-release.json) identifies the
+VectorCraft release at parent commit `20cced255e20f`.
+Ten Craft entries remain disabled in the hosted Desktop. SketchCraft's disabled
+CAD entry is in the AniCraft candidate Desktop. For the rest of the organized
+project, see the [full source and application matrix](APP-MATRIX.md), which
+covers the 86 app repositories, platform components, shared engines, tools,
+libraries and games.
 
 The [VectorCraft release](CRAFT-INTEGRATION-LOG.md#vectorcraft-release-on-ksucodes)
 passed 42 exact-package browser checks and 543-file hosted verification.
@@ -48,8 +62,8 @@ for the acceptance contract.
 | Graphics | [photocraft](../apps/photocraft/) at `403994fc5f41` | Layered raster images and embedded smart objects | `packaging/web/package.sh` | Live `.pcraft` workflow. Passed 19 native account tests and 28 actual browser workflow checks, including nested recovery, embedded layers and IME protection. Scoped inspection and layer rename were verified in the separate signed loopback profile. |
 | Graphics | [vectorcraft](../apps/vectorcraft/) `webos/integration` at `09ee69a08736` | Vector paths and text | `vectorcraft-web` | Live `.vectorcraft` workflow. The exact package passed native editing, Save/Save As, recovery, fresh-browser reopen and scoped layer rename with native Undo in the opt-in loopback profile. The selected tree passed 22,139 stable native tests and 16 remaining CI stages. |
 | Graphics | [figcraft](../apps/figcraft/) `webos/integration` at `cf78eb22978c` | Interface layouts and components | `packaging/web/build-account.sh` | Live `.figcraft` workflow. The exact release passed 12 Desktop account checks and signed layer rename with native Undo in the opt-in loopback profile. The selected tree passed 5,877 stable native tests across R730 and the laptop, plus Clippy and the standard WASM gate. |
-| Graphics | [lightcraft](../apps/lightcraft/) `webos/integration` at `09a3d20bd722` | Non-destructive photo adjustments | `cargo xtask web` from repo root | Disabled. The native branch separates browser libraries and worker caches by scope. A separate Chromium test confirmed that a fresh session reopens an original from account Storage and a different account receives a missing-file response. Native catalog capture is in development. The editor connection, WASM check and full workflow remain pending. |
-| Animation and video | [anicraft](../apps/anicraft/) `webos/integration` at `ccd8ee07ee2b` | Timeline and vector animation | `scripts/build-web.sh` and root WASM target | Disabled. The exact assembled candidate passed 14 Desktop account workflow checks covering timeline keyframes, embedded PNG and WAV, and pixel verification of a PNG exported after reopen. Signed layer editing and native Undo also passed. The retained-app regression and native workspace runs remain in progress. |
+| Graphics | [lightcraft](../apps/lightcraft/) `webos/integration` at `09a3d20bd722` | Non-destructive photo adjustments | `cargo xtask web` from repo root | Partial, disabled. The integration branch scopes the editor's browser libraries and worker caches by account. A separate Chromium test confirmed that a fresh session can reopen an original from account Storage and another account receives a missing-file response. The catalog codec and scoped workers are undergoing a WASM compile check. Connecting the editor to account Storage and qualifying Save, recovery and reopen remain. |
+| Animation and video | [anicraft](../apps/anicraft/) `webos/integration` at `ccd8ee07ee2b` | Timeline and vector animation | `scripts/build-web.sh` and root WASM target | Local candidate, disabled on ksu.codes. The exact assembled candidate passed its 14 account workflow checks covering timeline keyframes, embedded PNG and WAV, and pixel verification of a PNG exported after reopen. Scoped editing with native Undo passed in the isolated account profile. Retained Desktop, FigCraft, VectorCraft, GridCraft and DeckCraft checks passed. Remaining compatibility checks, the native workspace suite and the commit-bound packaging receipt are pending. |
 | Animation and video | [filmcraft](../apps/filmcraft/) `webos/integration` at `e6df31865bc5` | Video timeline and linked media | `filmcraft-web` | Disabled. Build and browser integration pending. Check browser codecs, media references and portable projects. |
 | Animation and video | [effectcraft](../apps/effectcraft/) `webos/integration` at `dc2380b070fa` | Compositing and motion graphics | `effectcraft-web` | Disabled. Build and browser integration pending. Verify media, render providers and serialization of referenced compositions. |
 | Audio | [soundcraft](../apps/soundcraft/) `webos/integration` at `2688ccac8859` | Multitrack audio projects | `soundcraft-web` | Disabled. Build and browser integration pending. Check audio engine, browser I/O and portable project/session formats. |
