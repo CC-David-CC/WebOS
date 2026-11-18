@@ -163,6 +163,21 @@ toolchain for that app. See `current-disk-assembly-audit.json` in the private
 round directory for the selected commits and lock hashes. Per-app build
 scripts, generated assets and browser workflows still need qualification.
 
+### AniCraft and LightCraft build preflight
+
+Full locked and offline metadata for `wasm32-unknown-unknown` resolved at the
+selected pins. AniCraft `4e2a2af303d8` resolved 334 packages and selected the
+root `anicraft` target. LightCraft `09a3d20bd722` resolved 372 packages and
+included `lightcraft-web`. The original lock hashes matched after both checks.
+The private receipt is `next-graphics-inputs-20261118.json`.
+
+Both upstream release workflows pin Craft Fonts at `b076417b5880`, which is
+present in the organized local fonts repository. AniCraft's web build writes
+under its checkout and generates the guide with the native CLI. Run it from
+an isolated integration checkout. LightCraft's `cargo xtask web` publishes
+the module worker and a separately licensed Chinese font from the pinned
+manifest. Include those while qualifying the browser build.
+
 The November 18 recheck at parent `2653ac7d7eb7` verified 36,575 tracked
 paths in the 17 Craft checkouts and repeated the locked offline Linux and
 WASM dependency fetches. All 124 component trees match their local bare
