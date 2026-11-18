@@ -11,6 +11,7 @@ const flags=Object.fromEntries(process.argv.slice(2).reduce((pairs,item,index,al
 const graphicsEngines = [
   {id:'vectorcraft', name:'VectorCraft', extension:'.vectorcraft', forceWebGL:true},
   {id:'figcraft', name:'FigCraft', extension:'.figcraft'},
+  {id:'anicraft', name:'AniCraft', extension:'.anicraft', deviceImport:true},
 ].flatMap(engine => {
   const release = flags['--'+engine.id+'-site'];
   const review = flags['--test-'+engine.id+'-site'];
@@ -18,7 +19,8 @@ const graphicsEngines = [
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
 const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site',
-  '--photocraft-site','--test-photocraft-site','--vectorcraft-site','--test-vectorcraft-site','--figcraft-site','--test-figcraft-site'];
+  '--photocraft-site','--test-photocraft-site',
+  ...['vectorcraft','figcraft','anicraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
   throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
 }
@@ -135,7 +137,9 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
     : 'const officeRecovery=null;';
   const delegation=id==='deckcraft'?',delegatedCommands':'';
   const graphics = graphicsEngines.find(app => app.id===id);
-  const graphicsProject = graphics && JSON.stringify({app:id,name:graphics.name,extension:graphics.extension,forceWebGL:graphics.forceWebGL});
+  const graphicsProject = graphics && JSON.stringify({
+    app:id,name:graphics.name,extension:graphics.extension,forceWebGL:graphics.forceWebGL,deviceImport:graphics.deviceImport
+  });
   const contents=id==='help'?"export {mount} from './apps/help/apps/system/help/index.mjs';":
     id==='photocraft'?"export {mount} from './assembly/viewer/photocraft-app.mjs';":
     graphics?`import {mountCraftAccount} from './assembly/viewer/craft-account-app.mjs';import {createCraftRecovery} from './assembly/viewer/craft-account-recovery.mjs';const project=${graphicsProject};const recovery=createCraftRecovery(project);export function mount(host){return mountCraftAccount(host,{...project,recovery,reviewWindowClose:true});}`:
