@@ -297,13 +297,17 @@ export function mount(host) {
         return photoSession.approve();
       }
       const interactive = scope === 'window';
-      if (interactive) {
-        frame.contentWindow?.focus();
-        frame.contentDocument?.querySelector('canvas')?.focus();
-      }
       autosave.closing(true);
       let closeWindow = false;
+      let resumeDrafts;
       try {
+        if (interactive) {
+          // Drain draft work while the native editor can still answer recovery requests.
+          resumeDrafts = await drafts.pause();
+          check();
+          frame.contentWindow?.focus();
+          frame.contentDocument?.querySelector('canvas')?.focus();
+        }
         const approved = await native.requestClose(interactive);
         check();
         closeWindow = approved && interactive;
@@ -318,7 +322,10 @@ export function mount(host) {
         }
         return approved;
       } finally {
-        if (!closeWindow) autosave.closing(false);
+        if (!closeWindow) {
+          resumeDrafts?.();
+          autosave.closing(false);
+        }
       }
     },
     focus() {
