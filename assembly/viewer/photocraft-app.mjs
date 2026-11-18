@@ -1,4 +1,4 @@
-import {connectPhotoNative} from './photocraft-native.mjs';
+import {connectCraftAccount} from './craft-account-native.mjs';
 import {trackPhotoAutosave} from './photocraft-autosave.mjs';
 import {photoRecovery, trackPhotoDraft} from './photocraft-recovery.mjs';
 import {createPhotoSession} from './photocraft-session.mjs';
@@ -239,7 +239,8 @@ export function mount(host) {
     url.searchParams.set('host', 'webos-account');
     url.searchParams.set('profile', context.owner);
     storage = createPhotoStorage({files:context.files, operations:host.documentOperations, valid});
-    native = connectPhotoNative(frame, {
+    native = connectCraftAccount(frame, {
+      app:'photocraft', name:'PhotoCraft',
       url, signal:abort.signal, onSave:packet => void save(packet), onDialog:handleDialog, onLocalFile:launchLocal,
       onProjectState(packet) {
         drafts?.receive(packet);

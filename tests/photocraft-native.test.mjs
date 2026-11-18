@@ -1,25 +1,26 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {randomUUID} from 'node:crypto';
-import {connectPhotoNative} from '../assembly/viewer/photocraft-native.mjs';
+import {connectCraftAccount} from '../assembly/viewer/craft-account-native.mjs';
 
 const url = new URL('http://localhost:8080/photocraft/index.html?host=webos-account');
 const generation = 'a'.repeat(32);
 const name = 'Pictures/Project.pcraft';
 
-function fixture(testContext) {
+function fixture(testContext, app = 'photocraft', name = 'PhotoCraft') {
+  const editorURL = new URL('/'+app+'/index.html?host=webos-account',url);
   const desktop = Object.assign(new EventTarget(), {location:url, crypto:{randomUUID}});
   const sent = [], saves = [], localFiles = [];
   const frame = Object.assign(new EventTarget(), {
     ownerDocument:{defaultView:desktop},
-    contentDocument:{URL:url.href},
+    contentDocument:{URL:editorURL.href},
     contentWindow:{postMessage(packet, origin, transfer) {
       assert.equal(origin,url.origin);
       sent.push(structuredClone(packet,{transfer}));
     }}
   });
   const controller = new AbortController();
-  const native = connectPhotoNative(frame,{url,signal:controller.signal,onSave:packet => saves.push(packet),onLocalFile:file=>localFiles.push(file)});
+  const native = connectCraftAccount(frame,{app,name,url:editorURL,signal:controller.signal,onSave:packet => saves.push(packet),onLocalFile:file=>localFiles.push(file)});
   testContext.after(() => {
     void native.ready.catch(() => {});
     controller.abort();
@@ -27,11 +28,22 @@ function fixture(testContext) {
   function receive(kind, fields = {}, override = {}) {
     desktop.dispatchEvent(Object.assign(new Event('message'), {
       source:frame.contentWindow, origin:url.origin, ...override,
-      data:{type:'photocraft:account-' + kind, generation, ...fields}
+      data:{type:app+':account-' + kind, generation, ...fields}
     }));
   }
   return {frame, controller, receive, native, sent, saves, localFiles};
 }
+
+test('The shared native connection accepts only its selected Craft app namespace', async t => {
+  const {native,receive,sent}=fixture(t,'vectorcraft','VectorCraft');
+  receive('ready',{type:'photocraft:account-ready'});
+  assert.throws(()=>native.assertLive(),/VectorCraft has not started/);
+  receive('ready');
+  await native.ready;
+  native.answerDialog('12',{outcome:'cancelled'});
+  assert.equal(sent[0].type,'vectorcraft:account-dialog-result');
+  assert.equal(sent[0].generation,generation);
+});
 
 test('A dropped local file and its unbound import start require the exact native frame', async t => {
   const {native,receive,sent,localFiles} = fixture(t);

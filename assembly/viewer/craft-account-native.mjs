@@ -1,17 +1,17 @@
-const prefix = 'photocraft:account-';
 const generationPattern = /^[0-9a-f]{32}$/;
 const saveFields = ['ticket', 'documentId', 'revision', 'path'];
 
-/** One native PhotoCraft instance inside a same-origin classic Desktop window. */
-export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLocalFile, onCloseIntent, onProjectState, onUnavailable}) {
+/** Connect a Craft editor to its own account window in the classic Desktop. */
+export function connectCraftAccount(frame, {app, name, url, signal, onSave, onDialog, onLocalFile, onCloseIntent, onProjectState, onUnavailable}) {
+  const prefix = app + ':account-';
   const desktop = frame.ownerDocument.defaultView;
-  if (url.origin !== desktop.location.origin) throw Error('PhotoCraft requires the desktop origin.');
+  if (url.origin !== desktop.location.origin) throw Error(`${name} requires the desktop origin.`);
 
   let nativeDocument, generation, closed;
   const waiting = new Map();
-  const abort = () => dispose(new DOMException('PhotoCraft view closed.', 'AbortError'));
+  const abort = () => dispose(new DOMException(`${name} view closed.`, 'AbortError'));
 
-  function dispose(error = new Error('PhotoCraft native view closed.')) {
+  function dispose(error = new Error(`${name} native view closed.`)) {
     if (closed) return;
     closed = error;
     desktop.removeEventListener('message', receive);
@@ -22,7 +22,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
 
   function verifyDocument() {
     if (nativeDocument && frame.contentDocument !== nativeDocument) {
-      unavailable('PhotoCraft reloaded. Reopen the account project to continue.');
+      unavailable(`${name} reloaded. Reopen the account project to continue.`);
     }
   }
 
@@ -35,11 +35,11 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
   function check() {
     verifyDocument();
     if (closed) throw closed;
-    if (!generation) throw Error('PhotoCraft has not started.');
+    if (!generation) throw Error(`${name} has not started.`);
   }
 
   function expect(kind, matches, milliseconds, fatal) {
-    if (waiting.has(kind)) throw Error('PhotoCraft is already processing this request.');
+    if (waiting.has(kind)) throw Error(`${name} is already processing this request.`);
     return new Promise((resolve, reject) => {
       function finish(callback, value) {
         clearTimeout(timer);
@@ -47,7 +47,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
         callback(value);
       }
       const timer = milliseconds === null ? null : setTimeout(() => {
-        const reason = 'PhotoCraft did not confirm the native request.';
+        const reason = `${name} did not confirm the native request.`;
         if (fatal) unavailable(reason);
         else finish(reject, Error(reason));
       }, milliseconds);
@@ -110,7 +110,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
         (kind === 'session-save' ? data.reviewedRevision === revision : data.revision === revision));
     if (result.outcome === 'busy') return null;
     if (result.outcome !== 'captured' || !(result.bytes instanceof ArrayBuffer)) {
-      throw Error(result.message || 'PhotoCraft could not capture the requested save.');
+      throw Error(result.message || `${name} could not capture the requested save.`);
     }
     return result;
   }
@@ -119,7 +119,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
     const requestId = desktop.crypto.randomUUID();
     const packet = await exchange('start', {requestId, path, bytes, newSettings, recover, importName}, bytes ? [bytes] : [],
       'started', data => data.requestId === requestId, importName === null ? 30_000 : null);
-    if (packet.ok !== true) throw Error(packet.message || 'PhotoCraft could not open the project.');
+    if (packet.ok !== true) throw Error(packet.message || `${name} could not open the project.`);
     return packet;
   }
 
@@ -143,7 +143,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
       const requestId = desktop.crypto.randomUUID();
       const packet = await exchange('operation',{requestId,documentId,path,command,args:JSON.stringify(args)},[],
         'operation-result', data => data.requestId === requestId && data.documentId === documentId,30_000,false);
-      if (typeof packet.result !== 'string') throw Error(packet.message || 'PhotoCraft could not execute the document operation.');
+      if (typeof packet.result !== 'string') throw Error(packet.message || `${name} could not execute the document operation.`);
       return JSON.parse(packet.result);
     },
     async captureRecovery({documentId, revision}) {
@@ -151,7 +151,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
       const packet = await exchange('recovery-capture', {requestId, documentId, revision}, [], 'recovery-captured',
         data => data.requestId === requestId && data.documentId === documentId && data.revision === revision,
         30_000, false);
-      if (!(packet.bytes instanceof ArrayBuffer) || !packet.bytes.byteLength) throw Error(packet.message || 'PhotoCraft could not capture the draft.');
+      if (!(packet.bytes instanceof ArrayBuffer) || !packet.bytes.byteLength) throw Error(packet.message || `${name} could not capture the draft.`);
       return new Blob([packet.bytes]);
     },
     captureAutosave(target) { return captureSave('autosave', target); },
@@ -162,7 +162,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
       const result = await exchange('session',{requestId, operation, lease, documentId, revision, dirty, unfinishedEdit},
         [],'session-result', packet => packet.requestId === requestId && packet.operation === operation && packet.lease === lease,
         30_000, false);
-      if (result.ok !== true) throw Error(result.message || 'PhotoCraft could not confirm the session operation.');
+      if (result.ok !== true) throw Error(result.message || `${name} could not confirm the session operation.`);
     },
     acknowledge(request, result) {
       const identity = Object.fromEntries(saveFields.map(field => [field, request[field]]));
@@ -177,7 +177,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
       const requestId = desktop.crypto.randomUUID();
       const result = await exchange('close', {requestId, interactive}, [], 'close-result',
         packet => packet.requestId === requestId, interactive ? null : 30_000);
-      if (typeof result.approved !== 'boolean') throw Error(result.message || 'PhotoCraft could not confirm close.');
+      if (typeof result.approved !== 'boolean') throw Error(result.message || `${name} could not confirm close.`);
       return result.approved;
     },
     answerDialog(requestId, result) {
