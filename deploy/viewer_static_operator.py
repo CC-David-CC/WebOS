@@ -80,6 +80,34 @@ def with_wordcraft_print_policy(block):
     return block[:match.start()] + ('\n'.join(indent + line for line in lines)) + block[match.end():]
 
 
+def verify_archive_inventory(tar, release_id):
+    members = tar.getmembers()
+    assert len(members) < 10000 and len({m.name for m in members}) == len(members)
+    assert all(m.isfile() and not Path(m.name).is_absolute() and not any(p.startswith('.') or p in ('node_modules', 'target', '__pycache__') for p in Path(m.name).parts) for m in members)
+    total_bytes = sum(m.size for m in members)
+    assert total_bytes < BASE_BYTES + 2 * OFFICE_ENGINE_BYTES
+    receipt_bytes = tar.extractfile('viewer-release.json').read()
+    assert sha(receipt_bytes) == release_id
+    receipt = json.loads(receipt_bytes)
+    assert receipt['schema'] == 'webos-existing-viewer-release/1'
+    records = {row['path']: row for row in receipt['files']}
+    assert set(records) | {'viewer-release.json'} == {m.name for m in members}
+    for app in ('gridcraft', 'deckcraft'):
+        engine = receipt.get(app + 'Engine')
+        engine_bytes = sum(m.size for m in members if m.name.startswith(app + '/'))
+        if engine is None:
+            assert app not in receipt['apps'] and not engine_bytes
+            continue
+        assert app in receipt['apps'] and 0 < engine_bytes < OFFICE_ENGINE_BYTES
+        engine_receipt = records[app + '/component-build.json']
+        assert engine_receipt['sha256'] == engine['receiptSHA256']
+        assert engine_bytes == engine['bytes'] + engine_receipt['bytes']
+        assert receipt['components']['apps/' + app] == engine['sourceCommit']
+        total_bytes -= engine_bytes
+    assert total_bytes < BASE_BYTES
+    return members, records
+
+
 def main():
     os.umask(0o077)
     parser = argparse.ArgumentParser(description=__doc__)
@@ -108,29 +136,7 @@ def main():
         assert sha(archive.read_bytes()) == args.archive_sha and not public.parent.exists()
         assert os.statvfs(BASE).f_bavail * os.statvfs(BASE).f_frsize > 1024**3
         with tarfile.open(archive, 'r:gz') as tar:
-            members = tar.getmembers()
-            assert len(members) < 10000 and len({m.name for m in members}) == len(members)
-            assert all(m.isfile() and not Path(m.name).is_absolute() and not any(p.startswith('.') or p in ('node_modules', 'target', '__pycache__') for p in Path(m.name).parts) for m in members)
-            total_bytes = sum(m.size for m in members)
-            assert total_bytes < BASE_BYTES + 2 * OFFICE_ENGINE_BYTES
-            receipt_bytes = tar.extractfile('viewer-release.json').read()
-            assert sha(receipt_bytes) == args.release
-            receipt = json.loads(receipt_bytes); assert receipt['schema'] == 'webos-existing-viewer-release/1'
-            records = {row['path']: row for row in receipt['files']}
-            assert set(records) | {'viewer-release.json'} == {m.name for m in members}
-            for app in ('gridcraft', 'deckcraft'):
-                engine = receipt.get(app + 'Engine')
-                engine_bytes = sum(m.size for m in members if m.name.startswith(app + '/'))
-                if engine is None:
-                    assert app not in receipt['apps'] and not engine_bytes
-                    continue
-                assert app in receipt['apps'] and 0 < engine_bytes < OFFICE_ENGINE_BYTES
-                engine_receipt = records[app + '/component-build.json']
-                assert engine_receipt['sha256'] == engine['receiptSHA256']
-                assert engine_bytes == engine['bytes'] + engine_receipt['bytes']
-                assert receipt['components']['apps/' + app] == engine['sourceCommit']
-                total_bytes -= engine_bytes
-            assert total_bytes < BASE_BYTES
+            members, records = verify_archive_inventory(tar, args.release)
             public.mkdir(parents=True, mode=0o755); public.parent.chmod(0o755); public.chmod(0o755)
             for member in members:
                 data = tar.extractfile(member).read()

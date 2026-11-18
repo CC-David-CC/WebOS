@@ -1,3 +1,15 @@
+> **Active decisions — 2026-11-18 UTC**
+>
+> The user approved parallel GridCraft/DeckCraft implementation after the guide
+> and plans were reviewed; both branches now contain implementation WIP. The
+> current private checkpoint linked from START-HERE owns their actual status.
+> The user subsequently selected all17 Craft apps for eventual integration.
+> Every app must be represented in the menu, disabled until qualified. Earlier
+> planning-only and proposed-candidate text below is historical, not exclusion.
+> Complete the two current apps, then assess each remaining app against C01–C20
+> and implement its first usable account-backed workflow. Do not retire legacy
+> apps or add a separate preview initiative before the user decides.
+
 # Next Craft integration branches
 
 Current phase: site integration from the completed organized source tree.
