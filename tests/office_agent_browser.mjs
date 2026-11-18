@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {createHash, randomBytes} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {mkdir, writeFile} from 'node:fs/promises';
+import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {registerHooks} from 'node:module';
 import path from 'node:path';
 import puppeteer from 'puppeteer-core';
@@ -554,7 +554,8 @@ async function lightcraftDispatch(browser, page, credentials) {
 }
 
 async function designcraftDispatch(browser, page, credentials) {
-  const commands=['document.inspect','frame.create','edit.undo'];
+  const artworkFixture=process.env.WEBOS_DESIGNCRAFT_ARTWORK_FIXTURE;
+  const commands=['document.inspect','frame.create','edit.undo',...(artworkFixture ? ['links.relink','pdf.export'] : [])];
   const authorizeEditor=async (tab,id)=>{
     const pending=approve(tab,id,commands);
     await tab.waitForSelector(modal,timeout);
@@ -658,7 +659,98 @@ async function designcraftDispatch(browser, page, credentials) {
     assert.equal(saved.stories,count+1);
     assert.equal(saved.dirty,false);
     present('A fresh DesignCraft browser opens the saved publication from Files');
+    if (artworkFixture) await designcraftArtwork(browser,fresh,credentials,files,artworkFixture,authorizeEditor,edit);
   } finally { await fresh.context.close(); }
+}
+
+async function designcraftArtwork(browser, session, credentials, files, fixture, authorizeEditor, edit) {
+  assert(path.isAbsolute(fixture));
+  const publication='Linked Publication.designcraft', original='Press Original.png';
+  const resource='Documents/'+publication;
+  const fixtures=await Promise.all([publication,original].map(async name=>({name,bytes:[...await readFile(path.join(fixture,name))]})));
+  await session.page.$eval(selector(files), (window,fixtures)=>{
+    const transfer=new DataTransfer();
+    for (const {name,bytes} of fixtures) transfer.items.add(new File([Uint8Array.from(bytes)],name));
+    const files=window.querySelector('.webos-files');
+    files.dispatchEvent(new DragEvent('drop',{dataTransfer:transfer,bubbles:true,cancelable:true}));
+  },fixtures);
+  await session.page.waitForFunction(view=>document.querySelector(view+' .webos-files-status')?.textContent.includes('Saved 2 files'),timeout,selector(files));
+
+  async function open(tab,filesId) {
+    await tab.waitForFunction(view=>typeof document.querySelector(view)?.appView?.execute==='function',timeout,selector(filesId));
+    await tab.$eval(selector(filesId),async (window,resource)=>{
+      await window.appView.ready;
+      await window.appView.execute('list',{path:'Documents'});
+      await window.appView.execute('open',{path:resource});
+    },resource);
+    const target=await tab.waitForFunction(resource=>[...document.querySelectorAll('.window[data-window]')].find(window=>
+      window.appView?.inspect?.()?.resourceId===resource)?.dataset.window,timeout,resource);
+    try { return await target.jsonValue(); }
+    finally { await target.dispose(); }
+  }
+  const id=await open(session.page,files);
+  const grant=await authorizeEditor(session.page,id);
+  const [missing]= (await edit(session.page,grant,'document.inspect')).graphics;
+  assert.equal(missing.name,'Missing image.png');
+  assert.deepEqual(missing.pixels,[48,32]);
+  assert.match(missing.storage,/^linked$/i);
+  await edit(session.page,grant,'links.relink',{asset:missing.id});
+  const picker='dialog.codi-file-picker[open]';
+  await labelledButton(session.page,picker,'Open folder Documents');
+  await labelledButton(session.page,picker,'Choose file '+original);
+  await session.page.waitForFunction(view=>{
+    const state=document.querySelector(view)?.appView.lifecycle.snapshot();
+    return state?.dirty && !state.pending;
+  },timeout,selector(id));
+  const [embedded]= (await edit(session.page,grant,'document.inspect')).graphics;
+  assert.equal(embedded.id,missing.id);
+  assert.equal(embedded.name,original);
+  assert.deepEqual(embedded.pixels,[192,128]);
+  assert.match(embedded.storage,/^embedded$/i);
+
+  await session.page.bringToFront();
+  const canvas=await editorFrame(session.page,id);
+  await canvas.$eval('#designcraft_canvas',node=>{node.tabIndex=0;node.focus({preventScroll:true});});
+  await session.page.keyboard.down('Control');
+  try { await session.page.keyboard.press('s'); }
+  finally { await session.page.keyboard.up('Control'); }
+  await session.page.waitForFunction(view=>{
+    const state=document.querySelector(view)?.appView.lifecycle.snapshot();
+    return state && !state.dirty && !state.pending;
+  },timeout,selector(id));
+  present('DesignCraft selects a missing graphic’s full original through the account picker and saves it embedded');
+
+  const cold=await login(browser,credentials);
+  try {
+    const filesId=await cold.page.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+    const id=await open(cold.page,filesId);
+    const grant=await authorizeEditor(cold.page,id);
+    assert.deepEqual((await edit(cold.page,grant,'document.inspect')).graphics,[embedded]);
+    const downloads=path.join(output,'pdf-export');
+    await mkdir(downloads,{mode:0o700});
+    const cdp=await browser.target().createCDPSession();
+    let timer;
+    try {
+      await cdp.send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:downloads,browserContextId:cold.context.id,eventsEnabled:true});
+      const completed=new Promise((resolve,reject)=>{
+        timer=setTimeout(()=>reject(Error('The native DesignCraft PDF did not download.')),45_000);
+        let handle;
+        cdp.on('Browser.downloadWillBegin',event=>{handle=event;});
+        cdp.on('Browser.downloadProgress',event=>{
+          if (event.guid===handle?.guid && event.state==='completed') resolve(handle.suggestedFilename);
+        });
+      });
+      const [name,exported]=await Promise.all([completed,edit(cold.page,grant,'pdf.export')]);
+      assert.equal(name,'Linked Publication.pdf');
+      const pdf=await readFile(path.join(downloads,name));
+      assert.equal(pdf.length,exported.bytes);
+      assert.equal(pdf.subarray(0,4).toString(),'%PDF');
+      const headers=pdf.toString('latin1').split(/\d+\s+\d+\s+obj\b/).map(object=>object.split(/\bstream[\r\n]/,1)[0]);
+      assert(headers.some(header=>/\/Subtype\s*\/Image\b/.test(header) && /\/Width\s+192\b/.test(header) && /\/Height\s+128\b/.test(header)),
+        'The PDF must include the full-size artwork image.');
+      present('Cold DesignCraft reopen exports a downloaded PDF with the full-resolution account artwork');
+    } finally { clearTimeout(timer); await cdp.detach(); }
+  } finally { await cold.context.close(); }
 }
 
 let browser;
