@@ -474,7 +474,16 @@ async function verifyProfileIsolation(browser, observe, app, name) {
   const signOut = async page => {
     await page.click('.app-menu-button');
     await button(page, 'End session', '.menu-pane ');
-    await page.waitForSelector('.login-gate', options);
+    const result = await page.waitForFunction(() => {
+      if (document.querySelector('.login-gate')) return 'signed out';
+      const feedback = document.querySelector('#feedback')?.textContent.trim();
+      if (feedback && feedback !== 'Signing out…') return feedback;
+      const modal = document.querySelector('[role="alertdialog"], [role="dialog"][aria-modal="true"]');
+      if (modal?.getClientRects().length) return modal.innerText;
+      return false;
+    }, options);
+    try { assert.equal(await result.jsonValue(), 'signed out', app + ' account switch'); }
+    finally { await result.dispose(); }
   };
   const setting = async (page, id) => {
     if (app === 'deckcraft') return (await state(page, id)).autosaveEnabled;
