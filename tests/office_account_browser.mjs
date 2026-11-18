@@ -24,6 +24,11 @@ const applications = [['gridcraft', 'GridCraft', 'xlsx'], ['deckcraft', 'DeckCra
 const only = process.env.WEBOS_TEST_OFFICE_APP;
 assert(!only || applications.some(([id]) => id === only), 'Unknown Office app fixture.');
 
+function passed(check) {
+  checks.push(check);
+  console.log(JSON.stringify({status: 'PASS', check}));
+}
+
 async function button(page, label, scope = '') {
   const handle = await page.waitForFunction((selector, wanted) =>
     [...document.querySelectorAll(selector)].find(node =>
@@ -87,10 +92,14 @@ async function ready(page, app) {
   const selector = '.window.focused:has(.webos-' + app + ')';
   await page.waitForSelector(selector, options);
   const id = await page.$eval(selector, node => node.dataset.window);
-  await page.waitForFunction(async id => {
+  const settled = await page.waitForFunction(async id => {
     const view = document.querySelector('.window[data-window="' + id + '"]')?.appView;
-    return (await view?.inspect())?.phase === 'ready';
+    const model = await view?.inspect();
+    return model && ['ready', 'failed', 'unavailable'].includes(model.phase);
   }, {...options, timeout: 120_000}, id);
+  await settled.dispose();
+  const model = await state(page, id);
+  assert.equal(model.phase, 'ready', model.loadError || app + ' is unavailable.');
   return id;
 }
 
@@ -150,6 +159,8 @@ async function saveAs(page, id, app, resource) {
     const model = await view?.inspect();
     return model?.path === resource && /^[a-f0-9]{64}$/.test(model.revision) && !model.dirty;
   }, options, {id, resource});
+  const caption = await page.$eval(windowSelector(id) + ' .caption-text', node => node.textContent);
+  assert(caption.startsWith(resource.split('/').at(-1) + ' — '));
   return (await state(page, id)).revision;
 }
 
@@ -475,6 +486,10 @@ async function verifyProfileIsolation(browser, observe, app, name) {
     await observe(page);
     await login(page, true, a);
     let id = await open(page);
+    assert.equal((await state(page, id)).dirty, false);
+    await page.click(windowSelector(id) + ' [aria-label="Close"]');
+    await page.waitForSelector(windowSelector(id), {hidden: true});
+    id = await open(page);
     const defaultSetting = await setting(page, id);
     assert.equal(typeof defaultSetting, 'boolean');
     if (app === 'deckcraft') await button(page, 'AutoSave: On', windowSelector(id) + ' ');
@@ -516,7 +531,7 @@ try {
   await observe(page);
   await login(page, true);
   await verifyMenu(page);
-  checks.push('all 17 Craft menu entries and the disabled legacy Office apps match the selected profile');
+  passed('all 17 Craft menu entries and the disabled legacy Office apps match the selected profile');
   const filesId = await files(page);
 
   for (const [app, name, ext] of applications.filter(([id]) => !only || only === id)) {
@@ -530,17 +545,17 @@ try {
     await file(page, filesId, 'list', {path: 'Documents'});
     const snapshot = await file(page, filesId, 'snapshot', {path: resource});
     assert.equal(snapshot.sha256, revision);
-    checks.push(app + ' native authoring and Save As confirmed by Storage');
+    passed(app + ' native authoring and Save As confirmed by Storage');
 
     const opened = await openFile(page, filesId, resource);
     assert.equal(opened.status, 'activated');
     assert.deepEqual(await windows(page, app), [id]);
     assert.equal(await ready(page, app), id);
     await verifyContent(page, id, app);
-    checks.push(app + ' Files Open activates the existing native editor');
+    passed(app + ' Files Open activates the existing native editor');
     if (app === 'deckcraft') {
       await verifyPresenter(page, id);
-      checks.push(app + ' presenter popup and audience show enter and close together');
+      passed(app + ' presenter popup and audience show enter and close together');
     }
 
     // GridCraft separates the native Open dialog from the host operation
@@ -552,10 +567,10 @@ try {
     await page.waitForSelector(picker, {hidden: true});
     assert.deepEqual(await windows(page, app), [id]);
     assert.equal(await ready(page, app), id);
-    checks.push(app + ' native Open reuses the existing account editor');
+    passed(app + ' native Open reuses the existing account editor');
 
     revision = await preserveLaterEdit(page, filesId, id, app, resource, revision);
-    checks.push(app + ' durable acknowledgement advances the binding and preserves later edits');
+    passed(app + ' durable acknowledgement advances the binding and preserves later edits');
 
     assert.equal((await state(page, id)).dirty, true);
     const started = Date.now();
@@ -564,10 +579,10 @@ try {
     const manualConfirmed = Date.now();
     assert(manualConfirmed - started < 30_000, 'Manual Save bypassed the automatic cooldown.');
     assert.equal((await file(page, filesId, 'snapshot', {path: resource})).sha256, revision);
-    checks.push(app + ' immediate manual Save updates the bound resource');
+    passed(app + ' immediate manual Save updates the bound resource');
 
     revision = await saveAfterAdmissionLimit(page, filesId, id, app, resource, revision, manualConfirmed);
-    checks.push(app + ' AutoSave respects write spacing, a no-write 429 and its longer Retry-After');
+    passed(app + ' AutoSave respects write spacing, a no-write 429 and its longer Retry-After');
 
     const fresh = await browser.createBrowserContext();
     try {
@@ -581,7 +596,7 @@ try {
       await verifyContent(second, secondId, app);
       assert.equal(await marker(second, secondId, app), 'AutoSave sentinel');
       await second.screenshot({path: path.join(output, app + '-reopened.png')});
-      checks.push(app + ' native parse preserves the saved content in a fresh browser context');
+      passed(app + ' native parse preserves the saved content in a fresh browser context');
 
       await changeMarker(second, secondId, app, 'Other browser save');
       await native(second, secondId, app, 'file.save');
@@ -598,7 +613,7 @@ try {
       await file(page, filesId, 'list', {path: 'Documents'});
       assert.equal((await file(page, filesId, 'snapshot', {path: rescue})).sha256, rescued);
       assert.equal((await file(page, filesId, 'snapshot', {path: resource})).sha256, winner);
-      checks.push(app + ' conditional Save refuses a stale write and Save As rescues later edits');
+      passed(app + ' conditional Save refuses a stale write and Save As rescues later edits');
     } finally {
       await fresh.close();
     }
@@ -622,19 +637,19 @@ try {
       await saveAs(separate, separateId, app, resource);
       assert.notEqual((await file(page, filesId, 'snapshot', {path: resource})).sha256,
         (await state(separate, separateId)).revision);
-      checks.push(app + ' concurrent accounts can independently save the same relative path');
+      passed(app + ' concurrent accounts can independently save the same relative path');
     } finally {
       await other.close();
     }
     await recoverBlankDraft(page, filesId, app, name, ext);
-    checks.push(app + ' refresh recovers an untitled draft and close Cancel/Discard preserves server contents');
+    passed(app + ' refresh recovers an untitled draft and close Cancel/Discard preserves server contents');
     await verifyProfileIsolation(browser, observe, app, name);
-    checks.push(app + ' preferences isolate accounts across A → B → A in one browser');
+    passed(app + ' preferences isolate accounts across A → B → A in one browser');
     const rescuedPath = 'Documents/Conflict-rescue.' + ext;
     await openFile(page, filesId, rescuedPath);
     const resumed = await ready(page, app);
     await loseSaveConfirmation(page, filesId, resumed, app, rescuedPath);
-    checks.push(app + ' a lost save response retains local edits and pauses automatic writes');
+    passed(app + ' a lost save response retains local edits and pauses automatic writes');
   }
   assert.deepEqual(faults, []);
   status = 'PASS';

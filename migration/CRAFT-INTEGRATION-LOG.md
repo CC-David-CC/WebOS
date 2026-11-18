@@ -344,6 +344,13 @@ implementation/qualification, not a new hosted release. ksu.codes remains on
   and shared consumer tests pass. The older DeckCraft candidate reproduced
   the browser regression by sending the retry early. The combined candidate
   must pass that same browser assertion with the updated code.
+- The first GridCraft browser package passed live menu gating, formula and
+  formatting round trips, both Open routes, delayed and stale saves, account
+  isolation and the 45-second server retry instruction. An independent XML
+  check verified the stored XLSX contents. The unfinished-formula refresh
+  test then exposed a missing field in the native recovery response. The Rust
+  callback now returns `saved: false` and its native regression checks that
+  exact response. Clean rebuild and browser rerun are required for acceptance.
 - Viewer composition loads recovery code for the selected office components.
   With GridCraft and DeckCraft disabled, the assembled candidate passed 60
   browser checks against a disposable Accounts and Storage service. These cover
