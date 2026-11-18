@@ -1,6 +1,7 @@
 import {connectPhotoNative} from './photocraft-native.mjs';
 import {trackPhotoAutosave} from './photocraft-autosave.mjs';
 import {photoRecovery, trackPhotoDraft} from './photocraft-recovery.mjs';
+import {createPhotoSession} from './photocraft-session.mjs';
 import {createPhotoStorage, projectPath} from './photocraft-storage.mjs';
 
 /** The classic Desktop's API2 view for the PhotoCraft editor. */
@@ -29,7 +30,7 @@ export function mount(host) {
 
   const abort = new AbortController();
   const session = host.session();
-  let native, storage, context, dialog, journal, drafts, autosave, loaded = false;
+  let native, storage, context, dialog, journal, drafts, autosave, photoSession, loaded = false, windowCloseApproved = false;
   let autosaveKey, autoEnabled = false;
   let lastDialog = 0n;
   const valid = () => !abort.signal.aborted && !host.signal.aborted && host.session() === session &&
@@ -69,7 +70,9 @@ export function mount(host) {
     message('Saving to your account…');
     try {
       check();
-      const binding = await storage.save(packet, native.acknowledge);
+      const writing = storage.save(packet, native.acknowledge);
+      photoSession.observe();
+      const binding = await writing;
       bind(binding);
       message('');
       drafts.schedule();
@@ -83,6 +86,8 @@ export function mount(host) {
       message(error.message);
       if (!automatic) autosave.failed(error);
       return {error};
+    } finally {
+      photoSession.observe();
     }
   }
 
@@ -179,6 +184,7 @@ export function mount(host) {
       onProjectState(packet) {
         drafts?.receive(packet);
         autosave?.receive(packet);
+        photoSession?.receive(packet);
       },
       onCloseIntent() {
         if (loaded && valid()) void host.desktop.requestWindowClose(host.w);
@@ -189,6 +195,7 @@ export function mount(host) {
         dialog?.abort();
         drafts?.stop();
         autosave?.dispose();
+        photoSession?.observe();
         message(reason);
       }
     });
@@ -207,6 +214,16 @@ export function mount(host) {
           autoToggle.title = details[state.state] ?? 'Account AutoSave is on';
         }
       },
+    });
+    photoSession = createPhotoSession({
+      native, storage, drafts, autosave, frame, signal:abort.signal, valid, loaded:() => loaded,
+      documentName:() => host.w.title || 'The PhotoCraft project',
+      async choosePath() {
+        const result = await chooseDestination('Untitled.pcraft',abort.signal);
+        return result.outcome === 'destination' ? result.path : null;
+      },
+      write:save,
+      onError(error) { host.ui.feedback(error.message); },
     });
     element.append(frame);
     await native.ready;
@@ -230,6 +247,7 @@ export function mount(host) {
     check();
     loaded = true;
     frame.inert = false;
+    photoSession.observe();
     autosaveKey = 'webos:photocraft:account-autosave:' + encodeURIComponent(context.owner);
     let value = false;
     try { value = document.defaultView.localStorage?.getItem(autosaveKey) === 'on'; } catch { /* Use this window's default. */ }
@@ -250,6 +268,7 @@ export function mount(host) {
     dialog?.abort();
     drafts?.stop();
     autosave?.dispose();
+    photoSession?.dispose();
     journal?.close();
     host.signal.removeEventListener('abort', dispose);
     element.remove();
@@ -261,9 +280,22 @@ export function mount(host) {
   return {
     element,
     ready,
+    lifecycle:Object.freeze({
+      snapshot:() => photoSession?.snapshot() ?? {revision:0,dirty:false,pending:true},
+      subscribe:listener => photoSession?.subscribe(listener) ?? (() => {}),
+      async quiesce() { await ready; return photoSession.quiesce(); },
+      async commitClose() { if (!windowCloseApproved) await photoSession.commitClose(); },
+    }),
     async requestClose({scope = 'window'} = {}) {
-      if (!loaded) return true;
+      if (!loaded && scope === 'window') {
+        windowCloseApproved = true;
+        return true;
+      }
       check();
+      if (scope === 'session') {
+        await ready;
+        return photoSession.approve();
+      }
       const interactive = scope === 'window';
       if (interactive) {
         frame.contentWindow?.focus();
@@ -276,6 +308,7 @@ export function mount(host) {
         check();
         closeWindow = approved && interactive;
         if (closeWindow) {
+          windowCloseApproved = true;
           frame.inert = true;
           try {
             await drafts.clear();

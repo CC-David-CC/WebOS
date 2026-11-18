@@ -151,10 +151,10 @@ test('The classic API2 view publishes account bindings only after the native fra
 
     receive('close-intent');
     assert.deepEqual(closeIntents,[w]);
-    const sessionCheck = view.requestClose({scope:'session'});
-    assert.equal(traffic.at(-1).interactive,false);
-    receive('close-result',{requestId:traffic.at(-1).requestId,approved:true});
-    assert.equal(await sessionCheck,true);
+    receive('project-state',{available:true,documentId:'7',revision:'2',dirty:false,capturable:true,
+      unfinishedEdit:false,operationPending:false});
+    assert.equal(await view.requestClose({scope:'session'}),true);
+    assert.equal(view.lifecycle.snapshot().pending,false);
     assert.equal(frame.inert,false,'session inspection leaves the mounted editor available');
     const closing = view.requestClose({scope:'window'});
     assert.equal(traffic.at(-1).interactive,true);

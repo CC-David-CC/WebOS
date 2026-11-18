@@ -20,11 +20,11 @@ export const photoRecovery = createOfficeRecovery('photocraft', 'PhotoCraft', {
 
 /** Capture at most one revision at a time. Retain prior bytes until a new draft commits. */
 export function trackPhotoDraft({journal, native, storage, valid, onError}) {
-  let state, recordedState, recordedBinding, timer, task, stopped = false;
+  let state, recordedState, recordedBinding, timer, task, stopped = false, paused = false;
 
   function schedule() {
     clearTimeout(timer);
-    if (stopped || task || !valid() || !state?.capturable) return;
+    if (stopped || paused || task || !valid() || !state?.capturable) return;
     const inspected = storage.inspect();
     if (!inspected.identity || state.documentId !== inspected.identity.documentId ||
         state.generation !== inspected.identity.generation || (!state.dirty && inspected.pending) ||
@@ -74,6 +74,12 @@ export function trackPhotoDraft({journal, native, storage, valid, onError}) {
   return {
     receive,
     schedule,
+    async pause() {
+      paused = true;
+      clearTimeout(timer);
+      await task;
+      return () => { paused = false; schedule(); };
+    },
     async clear() {
       stopped = true;
       clearTimeout(timer);

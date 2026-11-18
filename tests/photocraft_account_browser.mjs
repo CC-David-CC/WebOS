@@ -59,6 +59,13 @@ async function launch(page, group, name) {
   await button(page,'.menu-pane',name);
 }
 
+async function endSession(page, decision) {
+  await page.bringToFront();
+  await page.click('.app-menu-button');
+  await button(page,'.menu-pane','End session');
+  await button(page,'dialog.webos-photocraft-session[open]',decision);
+}
+
 async function readyPhoto(page) {
   const selector = photoView + '.focused';
   await page.waitForSelector(selector + ' iframe:not([inert])',{timeout:120_000});
@@ -470,6 +477,48 @@ try {
   assert.equal(await download(automatic,autoFiles,untitledPath,'second-automatic.pcraft'),secondAuto);
   assert.equal(layers('second-automatic.pcraft'),blankLayers+4);
   pass('PhotoCraft spaces successive automatic account writes and preserves each later native layer');
+
+  await automatic.click(toggle);
+  await shortcut(automatic,autoId,'n',['Control','Shift']);
+  await automatic.keyboard.press('Enter');
+  await draftPersisted(automatic,untitledPath,secondAuto);
+  await endSession(automatic,'Cancel');
+  await automatic.waitForFunction(()=>!!window.desktopLab.session && !document.querySelector('.desktop').inert,options);
+  assert.equal(await boundRevision(),secondAuto);
+  pass('PhotoCraft Cancel keeps the signed session and the native dirty layer available');
+
+  await endSession(automatic,'Save');
+  await automatic.waitForSelector('.login-gate',{timeout:120_000});
+  await login(automatic,A,false);
+  const savedFiles=await files(automatic);
+  await file(automatic,savedFiles,'list',{path:'Pictures'});
+  const sessionSaved=await download(automatic,savedFiles,untitledPath,'session-saved.pcraft');
+  assert.notEqual(sessionSaved,secondAuto);
+  assert.equal(layers('session-saved.pcraft'),blankLayers+5);
+  pass('PhotoCraft Save on sign-out persists and acknowledges the native layer before Accounts ends');
+
+  await file(automatic,savedFiles,'open',{path:untitledPath});
+  const discardedId=await readyPhoto(automatic);
+  await shortcut(automatic,discardedId,'n',['Control','Shift']);
+  await automatic.keyboard.press('Enter');
+  await draftPersisted(automatic,untitledPath,sessionSaved);
+  await endSession(automatic,'Discard');
+  await automatic.waitForSelector('.login-gate',{timeout:120_000});
+  await login(automatic,B,false);
+  const switchedFiles=await files(automatic);
+  await file(automatic,switchedFiles,'list',{path:'Pictures'});
+  await assert.rejects(file(automatic,switchedFiles,'snapshot',{path:untitledPath}));
+  assert.equal((await automatic.$$(photoView)).length,0);
+  await automatic.click('.app-menu-button');
+  await button(automatic,'.menu-pane','End session');
+  await automatic.waitForSelector('.login-gate',{timeout:120_000});
+  await login(automatic,A,false);
+  const returnedFiles=await files(automatic);
+  assert.equal(await download(automatic,returnedFiles,untitledPath,'session-discarded.pcraft'),sessionSaved);
+  await file(automatic,returnedFiles,'open',{path:untitledPath});
+  const returned=await readyPhoto(automatic);
+  assert.doesNotMatch(await automatic.$eval(photoWindow(returned)+' [role="status"]',node=>node.textContent),/Recovered/);
+  pass('Discard before sign-out clears the draft while account switching preserves the saved file');
   assert.deepEqual(external,[]);
   assert.deepEqual(errors,[]);
   assert([...assets].some(url=>url.endsWith('.mjs')));
