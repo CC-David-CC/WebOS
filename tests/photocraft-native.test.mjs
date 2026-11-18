@@ -94,6 +94,21 @@ test('A save result waits for the exact native settlement and ignores other tick
   assert.equal((await settlement).adopted,true);
 });
 
+test('PhotoCraft document operations settle only for the exact generation, request and document', async t => {
+  const {native,receive,sent} = fixture(t);
+  receive('ready');
+  await native.ready;
+  const result=native.operation({documentId:'7',path:name,command:'document.inspect',args:{}});
+  const {requestId}=sent[0];
+  assert.equal(sent[0].path,name);
+  assert.equal(sent[0].args,'{}');
+  receive('operation-result',{generation:'b'.repeat(32),requestId,documentId:'7',message:'wrong frame'});
+  receive('operation-result',{requestId,documentId:'17',message:'wrong document'});
+  receive('operation-result',{requestId:'wrong',documentId:'7',message:'wrong request'});
+  receive('operation-result',{requestId,documentId:'7',result:'{"revision":"4"}'});
+  assert.deepEqual(await result,{revision:'4'});
+});
+
 test('Frame replacement and account abort reject pending native requests', async t => {
   for (const scenario of ['reload','abort']) {
     const {frame, controller, native, receive, sent, saves} = fixture(t);

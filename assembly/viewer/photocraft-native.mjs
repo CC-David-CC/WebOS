@@ -139,6 +139,13 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLoca
     importFile(name, bytes) {
       return startProject(null, bytes, null, false, name);
     },
+    async operation({documentId, path, command, args}) {
+      const requestId = desktop.crypto.randomUUID();
+      const packet = await exchange('operation',{requestId,documentId,path,command,args:JSON.stringify(args)},[],
+        'operation-result', data => data.requestId === requestId && data.documentId === documentId,30_000,false);
+      if (typeof packet.result !== 'string') throw Error(packet.message || 'PhotoCraft could not execute the document operation.');
+      return JSON.parse(packet.result);
+    },
     async captureRecovery({documentId, revision}) {
       const requestId = desktop.crypto.randomUUID();
       const packet = await exchange('recovery-capture', {requestId, documentId, revision}, [], 'recovery-captured',
