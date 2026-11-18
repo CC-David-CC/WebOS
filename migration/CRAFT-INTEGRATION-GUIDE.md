@@ -251,6 +251,15 @@ browser journaling, AutoSave and scoped `document.inspect`/`layer.rename`
 dispatch. Register the app ID, display name and native extension. Confirm the
 native account hooks before reusing the mount.
 
+LightCraft uses the same account connector for a photo library. The library
+snapshot keeps edit metadata and identifies each original by its SHA-256.
+Storage verifies and retains the original bytes under the owning account. A
+local recovery draft therefore stays small, and Save As can reuse the same
+originals without uploading them again. For an app with detached media, test
+reopening through Files in a new browser context. Check that the renderer
+receives and displays the original. Checking the catalog alone exercises only
+the metadata.
+
 Verify which layer owns dirty-close review. PhotoCraft presents its native
 review while VectorCraft and FigCraft delegate the whole-project decision to
 Desktop. The shared session coordinator binds Discard to the reviewed revision
