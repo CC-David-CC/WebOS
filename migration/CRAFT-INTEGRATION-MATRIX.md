@@ -11,12 +11,16 @@ retrieval before it is enabled. A passing dependency fetch does not exercise
 build scripts, assets, linking or browser behavior.
 
 The classic Desktop source contains all 17 entries. The current hosted release
-enables WordCraft, PdfCraft, GridCraft, DeckCraft and PhotoCraft. The other 12 Craft entries
+enables WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft and FigCraft. The other 11 Craft entries
 use the disabled state. Legacy entries remain separate.
+
+The [FigCraft release](CRAFT-INTEGRATION-LOG.md#figcraft-release-on-ksucodes)
+passed 140 exact-package browser checks and 505-file hosted verification.
+Hosted Chromium compiled its WASM and received the native ready packet.
 
 The [PhotoCraft release](CRAFT-INTEGRATION-LOG.md#photocraft-release-on-ksucodes)
 passed 28 browser account workflow checks and 463-file hosted verification.
-Hosted Chromium compiled its WASM. VectorCraft and FigCraft are being prepared in parallel.
+Hosted Chromium compiled its WASM. VectorCraft qualification continues.
 
 The [Office release](CRAFT-INTEGRATION-LOG.md#office-release-on-ksucodes) passed
 87 exact-package browser checks locally, 444-file verification on the host,
@@ -35,7 +39,7 @@ for the acceptance contract.
 | Office | [designcraft](../apps/designcraft/) `webos/integration` at `59c6fa1b4947` | Page layout and publication | `designcraft-web` | Disabled. Build and browser integration pending. Verify workspace references and linked assets. Qualify the page layout workflow. |
 | Graphics | [photocraft](../apps/photocraft/) at `403994fc5f41` | Layered raster images and embedded smart objects | `packaging/web/package.sh` | Live `.pcraft` workflow. Passed 19 native account tests and 28 actual browser workflow checks, including nested recovery, embedded layers and IME protection. Scoped inspection and layer rename were verified in the separate signed loopback profile. |
 | Graphics | [vectorcraft](../apps/vectorcraft/) `webos/integration` at `4830ea0e833f` | Vector paths and text | `vectorcraft-web` | Disabled. The review package passed 12 Desktop account checks, including conflict recovery and loss of a write response, and passed signed layer rename and native Undo. The host uses the native WebGL option. Full native CI and the selected-commit package remain pending. |
-| Graphics | [figcraft](../apps/figcraft/) `webos/integration` at `cf78eb22978c` | Interface layouts and components | `packaging/web/build-account.sh` | Selected locally. The review package passed 12 Desktop account checks and signed layer rename with native Undo. The selected tree passed all 5,877 stable native tests across R730 and the laptop, plus Clippy and the standard WASM gate. The direct package and its release checks are pending. The hosted menu entry is disabled. |
+| Graphics | [figcraft](../apps/figcraft/) `webos/integration` at `cf78eb22978c` | Interface layouts and components | `packaging/web/build-account.sh` | Live `.figcraft` workflow. The exact release passed 12 Desktop account checks and signed layer rename with native Undo in the opt-in loopback profile. The selected tree passed 5,877 stable native tests across R730 and the laptop, plus Clippy and the standard WASM gate. |
 | Graphics | [lightcraft](../apps/lightcraft/) `webos/integration` at `09a3d20bd722` | Non-destructive photo adjustments | `cargo xtask web` from repo root | Disabled. The browser editor owns a persistent library, originals, thumbnails and render workers. Qualify account-scoped library identity and worker access before connecting this workflow to account Storage. |
 | Animation and video | [anicraft](../apps/anicraft/) `webos/integration` at `4e2a2af303d8` | Timeline and vector animation | `scripts/build-web.sh` and root WASM target | Disabled. The browser uses a native project codec with in-memory file I/O and downloads. Use `.anicraft` for account Save and recovery. Qualify timeline edits, embedded assets and reopen before enabling it. |
 | Animation and video | [filmcraft](../apps/filmcraft/) `webos/integration` at `e6df31865bc5` | Video timeline and linked media | `filmcraft-web` | Disabled. Build and browser integration pending. Check browser codecs, media references and portable projects. |
