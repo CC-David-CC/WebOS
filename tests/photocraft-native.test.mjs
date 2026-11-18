@@ -91,3 +91,27 @@ test('Frame replacement and account abort reject pending native requests', async
     assert.deepEqual(saves,[]);
   }
 });
+
+test('PhotoCraft close requires approval for the matching native window and request', async t => {
+  const {native, receive, sent, controller} = fixture(t);
+  receive('ready');
+  await native.ready;
+  const cancelled = native.requestClose(true);
+  const {requestId, interactive} = sent[0];
+  assert.equal(interactive,true);
+  receive('close-result',{requestId:'other',approved:true});
+  receive('close-result',{requestId,generation:'b'.repeat(32),approved:true});
+  receive('close-result',{requestId,approved:false});
+  assert.equal(await cancelled,false);
+
+  const session = native.requestClose(false);
+  assert.equal(sent[1].interactive,false);
+  const fault = assert.rejects(session, /Finish the active operation/);
+  receive('close-result',{requestId:sent[1].requestId,message:'Finish the active operation'});
+  await fault;
+
+  const closing = native.requestClose(true);
+  const rejected = assert.rejects(closing,{name:'AbortError'});
+  controller.abort();
+  await rejected;
+});

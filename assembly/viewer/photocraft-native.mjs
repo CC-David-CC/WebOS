@@ -3,7 +3,7 @@ const generationPattern = /^[0-9a-f]{32}$/;
 const saveFields = ['ticket', 'documentId', 'revision', 'path'];
 
 /** One native PhotoCraft instance inside a same-origin classic Desktop window. */
-export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onUnavailable}) {
+export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onCloseIntent, onUnavailable}) {
   const desktop = frame.ownerDocument.defaultView;
   if (url.origin !== desktop.location.origin) throw Error('PhotoCraft requires the desktop origin.');
 
@@ -46,7 +46,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onUnav
         waiting.delete(kind);
         callback(value);
       }
-      const timer = setTimeout(
+      const timer = milliseconds === null ? null : setTimeout(
         () => unavailable('PhotoCraft did not confirm the native request.'),
         milliseconds
       );
@@ -76,6 +76,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onUnav
     if (entry?.matches(data)) entry.resolve(data);
     if (kind === 'save') onSave(data);
     if (kind === 'dialog') onDialog?.(data);
+    if (kind === 'close-intent') onCloseIntent?.();
   }
 
   function post(kind, body, transfer = []) {
@@ -83,9 +84,9 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onUnav
     frame.contentWindow.postMessage({type:prefix + kind, generation, ...body}, url.origin, transfer);
   }
 
-  function exchange(kind, body, transfer, reply, matches) {
+  function exchange(kind, body, transfer, reply, matches, milliseconds = 30_000) {
     check();
-    const result = expect(reply, matches, 30_000);
+    const result = expect(reply, matches, milliseconds);
     try {
       post(kind, body, transfer);
     } catch (error) {
@@ -116,6 +117,17 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onUnav
       const identity = Object.fromEntries(saveFields.map(field => [field, request[field]]));
       return exchange('save-result', {...identity, ...result}, [], 'save-settled',
         data => saveFields.every(field => data[field] === identity[field]));
+    },
+    reportUncertainSave(request) {
+      const identity = Object.fromEntries(saveFields.map(field => [field, request[field]]));
+      post('save-result', {...identity, outcome:'unknown'});
+    },
+    async requestClose(interactive) {
+      const requestId = desktop.crypto.randomUUID();
+      const result = await exchange('close', {requestId, interactive}, [], 'close-result',
+        packet => packet.requestId === requestId, interactive ? null : 30_000);
+      if (typeof result.approved !== 'boolean') throw Error(result.message || 'PhotoCraft could not confirm close.');
+      return result.approved;
     },
     answerDialog(requestId, result) {
       post('dialog-result', {requestId, ...result});

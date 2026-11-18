@@ -627,4 +627,25 @@ Fork commit `09933e867a98` routes the native New dialog through the Desktop
 host into an independent clean project using the requested dimensions. The
 exact revision passed 63 native dialog tests, 19 native save-identity tests
 and an offline WASM check. Its assembled-browser test remains pending.
-Close, recovery, AutoSave and authorized agent operations remain open.
+Recovery, AutoSave and authorized agent operations remain open.
+
+### PhotoCraft close approval
+
+Fork commit `c03a296f37e4` routes desktop and native close through the
+editor's Save, Discard and Cancel prompt. An untouched project needs no
+prompt. The editor keeps its documents until the Desktop closes the view.
+It checks the revision of every discarded document and only concludes a
+Save decision after the exact native acknowledgement. An uncertain write
+cancels the close attempt while retaining the pending save ticket.
+
+All 84 native close tests and the locked WASM compiler check pass on the
+exact fork source. Ten parent JavaScript tests exercise the account adapter,
+including close correlation and cancellation. Desktop commit `c48638381043`
+identifies a window close and a session-end check explicitly. PhotoCraft
+currently requires resolving dirty documents through its window before
+signing out. Account-wide recovery, quiescence and finalization still need
+qualification.
+
+The clean R730 package uses the existing compiler cache and one checked
+source snapshot. Browser scenarios cover New and the three close decisions
+once the package is linked. PhotoCraft remains disabled in release profiles.
