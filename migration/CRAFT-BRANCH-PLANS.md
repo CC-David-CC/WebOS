@@ -280,3 +280,32 @@ Package that commit and test a composition with imported footage after
 fresh-browser reopen. Check the rendered pixels and confirm closing a view
 retires its frame workers. The hosted profile keeps signed agent operations
 disabled by default.
+
+## CADCraft preparation
+
+Use the organized `67514021aedf` checkout and its existing
+`cadcraft-web` browser renderer. Start with editable 2D DXF. The browser
+already has a file delivery callback, while the native save path commits the
+drawing to the session when that callback returns. Split capture from adoption
+using the existing native encoder and `DocState` drawing snapshot. Correlate
+the receipt with the drawing's stable `uid` and revision. Check that a late
+receipt leaves intervening edits dirty and cannot rebind a different drawing.
+
+Qualify a line, circle and dimension with exact model coordinates and units,
+then native Save, Save As, draft recovery and fresh-account reopen. Verify
+geometry after reopen and a native Undo through scoped operations. Preserve
+the app's existing DWG format checks and document DWG and external-reference
+coverage separately.
+
+## SolidCraft preparation
+
+Use the organized `a5b35abd133e` checkout. Its existing
+`?embed=editor` path skips standalone browser persistence and provides a
+starting point for scoped account Open and confirmed Save. Use `.sc` for
+new native designs and respect `.solidcraft` and `.solvecraft` on open.
+
+Qualify a dimensioned sketch and exact extrusion. Compare the feature
+parameters and solid volume after account reopen, then edit the earlier
+dimension and recompute the body in the native kernel. Test the viewport,
+Save As, local draft recovery and scoped feature commands on that same
+editable design.
