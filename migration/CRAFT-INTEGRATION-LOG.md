@@ -524,3 +524,10 @@ save service initiates a browser download with no durable confirmation. The
 account integration must correlate each encoded revision with Storage's
 conditional write and receive native adoption before updating Desktop. The
 browser preset database and preferences also require account-scoped keys.
+
+The account worktree now sends `.pcraft` bytes with a native save ticket and
+adopts the result only after matching the editor generation, document,
+revision and destination. The development host also scopes preferences and
+brush presets by account. The changed source passed the locked offline WASM
+check in 52 seconds. Native save tests and the classic Desktop Storage
+adapter remain under development.
