@@ -89,6 +89,17 @@ function file(page, id, operation, args) {
 async function shortcut(page, id, key, modifiers = ['Control'], {closing = false} = {}) {
   const selector = '.window[data-window="'+id+'"]';
   await page.bringToFront();
+  if (!closing) {
+    await page.evaluate(id=>{
+      for (const desktop of window.desktopLab.surfaces.values()) {
+        const editor = desktop.windows.find(window=>String(window.id)===String(id));
+        if (!editor) continue;
+        desktop.activateWindow(editor);
+        return;
+      }
+      throw Error('The PhotoCraft window is unavailable.');
+    },id);
+  }
   const frameElem = await page.waitForSelector(selector + ' iframe:not([inert])',options);
   const frame = await frameElem.contentFrame();
   await frameElem.dispose();
@@ -98,7 +109,8 @@ async function shortcut(page, id, key, modifiers = ['Control'], {closing = false
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     const canvas = document.querySelector('canvas#photocraft_canvas');
     canvas.tabIndex=0;
-    canvas.focus();
+    canvas.focus({preventScroll:true});
+    if (document.activeElement !== canvas) throw Error('The native PhotoCraft canvas did not receive focus.');
   });
   for (const modifier of modifiers) await page.keyboard.down(modifier);
   try { await page.keyboard.press(key); }
