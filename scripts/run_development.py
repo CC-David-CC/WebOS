@@ -15,6 +15,7 @@ import uuid
 from urllib.parse import urlsplit
 from aiohttp import web
 from webos_accounts import AccountsService, Config
+from webos_accounts.delegation import CHALLENGE as AGENT_CHALLENGE, PATHS as AGENT_PATHS, MAX_TRANSPORT_BYTES, DelegationAuthority
 from webos_accounts.file_authority import FileAuthority
 from webos_storage import UserStore, DEFAULT_ACCOUNT_FOLDERS, FileGateway, initialize_ledger, initialize_transfers
 from webos_storage.transfers import Quotas
@@ -45,10 +46,13 @@ def private_directory(path):
     return path
 
 
-async def create_application(public_root, private_root, origin, *, account_transfers=8, shared_transfers=16):
+async def create_application(public_root, private_root, origin, *, account_transfers=8, shared_transfers=16, agent_operations=False):
     if type(account_transfers) is not int or not 1 <= account_transfers <= 8 or type(shared_transfers) is not int or not account_transfers <= shared_transfers <= 32:
         raise ValueError('Bounded account/shared transfer limits required')
     origin = validate_origin(origin)
+    address = urlsplit(origin)
+    if agent_operations and (address.scheme != 'http' or address.hostname not in ('127.0.0.1', 'localhost', '::1')):
+        raise ValueError('Development agent operations require a direct loopback origin')
     public_root = Path(public_root).absolute()
     private_root = Path(private_root).absolute()
     source_root = Path(__file__).resolve().parent.parent
@@ -85,9 +89,13 @@ async def create_application(public_root, private_root, origin, *, account_trans
                 value = super().config()
                 value['gateway'] = {'version': 'codi-user-files/1', 'basePath': '/gateway', 'fileBytes': 128 * 1024 * 1024,
                                     'concurrentTransfers': account_transfers, 'sharedConcurrentTransfers': shared_transfers}
+                if agent_operations:
+                    value['agentOperations'] = {'version': 'webos-agent-operations/1'}
                 return value
         accounts = DevelopmentAccounts(Config(private_root / 'identity', public_root, origin=origin, rate_per_minute=1000))
         authority = FileAuthority(accounts)
+        if agent_operations:
+            authority = DelegationAuthority(accounts, authority)
         store = UserStore(private_root / 'storage-state', private_root / 'account-files', initial_folders=DEFAULT_ACCOUNT_FOLDERS)
         if new:
             # Only explicitly new development state is initialized. Retained
@@ -106,8 +114,12 @@ async def create_application(public_root, private_root, origin, *, account_trans
                 for name in ('Origin', 'Content-Type', 'Content-Length'):
                     if len(request.headers.getall(name, [])) != 1:
                         raise web.HTTPBadRequest(text='Unique request headers required')
-                if request.headers.get('Transfer-Encoding') or request.content_length is None or not 0 < request.content_length <= 65536:
-                    raise web.HTTPRequestEntityTooLarge(max_size=65536, actual_size=request.content_length or 0)
+                is_agent_request = agent_operations and (request.path == AGENT_CHALLENGE or request.path in AGENT_PATHS)
+                limit = MAX_TRANSPORT_BYTES if is_agent_request else 65536
+                if is_agent_request and request.headers.get('Content-Encoding'):
+                    raise web.HTTPBadRequest(text='Plain JSON request required')
+                if request.headers.get('Transfer-Encoding') or request.content_length is None or not 0 < request.content_length <= limit:
+                    raise web.HTTPRequestEntityTooLarge(max_size=limit, actual_size=request.content_length or 0)
                 body = await request.read()
             if len(request.headers.getall('Authorization', [])) > 1:
                 raise web.HTTPBadRequest(text='Unique authorization required')
@@ -166,7 +178,8 @@ async def run(args):
     sock.bind(('127.0.0.1', args.port)); sock.listen(128); sock.setblocking(False)
     origin = validate_origin(args.origin) if args.origin else 'http://127.0.0.1:' + str(sock.getsockname()[1])
     try:
-        app = await create_application(args.public_root, args.private_root, origin, account_transfers=args.account_transfers, shared_transfers=args.shared_transfers)
+        app = await create_application(args.public_root, args.private_root, origin, account_transfers=args.account_transfers,
+                                       shared_transfers=args.shared_transfers, agent_operations=args.agent_operations)
         runner = web.AppRunner(app, access_log=None); await runner.setup()
         await web.SockSite(runner, sock).start()
         print(json.dumps({'origin': origin, 'scope': 'development-only'}), flush=True)
@@ -189,4 +202,5 @@ if __name__ == '__main__':
     parser.add_argument('--origin', help='Explicit HTTPS test-site origin behind a trusted local proxy; listener remains loopback')
     parser.add_argument('--account-transfers', type=int, default=8, help='Concurrent file transfers per account (1–8)')
     parser.add_argument('--shared-transfers', type=int, default=16, help='Concurrent file transfers across the test service (account limit–32)')
+    parser.add_argument('--agent-operations', action='store_true', help='Enable scoped operation grants for direct loopback testing')
     asyncio.run(run(parser.parse_args()))
