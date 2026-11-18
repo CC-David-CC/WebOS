@@ -14,8 +14,8 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE_BYTES = 256 * 1024 * 1024
-OPTIONAL_ENGINES = ('gridcraft', 'deckcraft', 'photocraft')
-OPTIONAL_ENGINE_BYTES = 64 * 1024 * 1024
+OPTIONAL_ENGINES = {app: 64 * 1024 * 1024 for app in ('gridcraft', 'deckcraft', 'photocraft', 'figcraft')}
+OPTIONAL_ENGINES['vectorcraft'] = 128 * 1024 * 1024
 
 
 def digest(data):
@@ -119,7 +119,7 @@ def main():
         if engine is None:
             assert app not in build['apps'] and not engine_bytes, 'Unexpected unselected component: ' + app
             continue
-        assert app in build['apps'] and 0 < engine_bytes < OPTIONAL_ENGINE_BYTES
+        assert app in build['apps'] and 0 < engine_bytes < OPTIONAL_ENGINES[app]
         receipt_bytes = (site / app / 'component-build.json').read_bytes()
         assert digest(receipt_bytes) == engine['receiptSHA256']
         assert engine_bytes == engine['bytes'] + len(receipt_bytes)
