@@ -436,3 +436,34 @@ slide model still holds its previous notes. Native CI and the focused browser
 test pass. The first build reused identical WASM bytes after the native change.
 Refreshing tracked-file timestamps in the isolated snapshot forced the
 intended rebuild. Its new digest and actual recovery behavior were verified.
+
+## Local Office release candidate
+
+- Packaged parent `2d08b293754f36e38b4366865b4ff5d6d64a8f4e`.
+- Release ID `5e0d0b3bbb69b09814deb79daac988261578003174f89b4c58a916cd420c0566`.
+- Archive SHA-256 `33d5fde9c599d467f7f0fb9ce9fc0552068713801004b874fe50c3b58b22b6f5`.
+- The archive inventory and payload digests passed verification for all 444 files.
+  It occupies 108,496,106 bytes compressed and includes 96 JavaScript package
+  notices and the four native engine notice sets.
+
+The 87 browser checks comprise 27 Office checks and regression suites for
+Desktop, Files and Calculator (15), Text (9), PdfCraft (17), and WordCraft (19).
+The Office suite exercised real signed account saves and both Open routes,
+stale and uncertain writes, account separation, recovery of unfinished native
+input, the presenter window, the longer server retry delay and restoration of
+both workspaces across sign-out. An independent ZIP/XML inspection verified
+four saved account files, including the worksheets' generated formula value
+and style and the presentation's text, notes, theme and exact embedded image.
+
+Private round evidence includes the archive
+`office-viewer-final-fd80-f835.tar.gz`, its inventory
+`office-release-final-inventory.json`, the browser results and the saved-file
+audit. The local release awaits separate approval for deployment.
+
+Accounts' isolated `webos/office-operation-delegation` branch contains a
+bounded same-origin HTTP adapter and a browser capability tied to the owner
+session. The Accounts test suite passed 69 tests. A separate real loopback
+signed HTTP run covered approval, scoped intent, single-use consumption,
+revocation and logout fencing. The packaged candidate uses Accounts
+`c8229d6`. Consent presentation, live app dispatch and delegated file grants
+remain separate integration work.
