@@ -484,6 +484,22 @@ See `office-agent-browser-r4/results.json` and
 `office-agent-default-regression/results.json` in the private checkpoint.
 The static Office release candidate remains independently identified.
 
+### DeckCraft authorized notes on loopback
+
+DeckCraft `5b065c4ef93c` adds stable slide-ID input to the native notes command.
+The hosted editor refuses an agent note edit while the user has an unfinished
+native edit. The app adapter permits only signed presentation inspection and
+stable-ID notes edits. The ordinary save, activation and account recovery
+routes retain their existing authority and document state.
+
+All eight native gates and 41 adapter tests passed. The isolated R730 build
+finished in 68 seconds. The laptop verified the 107-file component package
+against its receipt. Seven signed browser scenarios passed in the merged agent
+profile. DeckCraft accepted a grant for a moved slide and refused a fresh
+grant for the same slide after deletion. The other slide's notes stayed empty.
+Evidence is in `office-signed-notes-browser/results.json` and
+`deckcraft-package-5b065c4ef93c-verified.json` in the private checkpoint.
+
 Accounts' isolated `webos/office-operation-delegation` branch contains a
 bounded same-origin HTTP adapter and a browser capability tied to the owner
 session. The Accounts test suite passed 69 tests. A separate real loopback

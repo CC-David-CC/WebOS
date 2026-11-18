@@ -17,8 +17,8 @@
 > five browser suites. The verified local archive and its build provenance
 > are recorded in the [integration log](migration/CRAFT-INTEGRATION-LOG.md#local-office-release-candidate).
 > Keep the candidate local pending separate deployment approval. GridCraft
-> signed agent commands pass in the opt-in loopback development profile.
-> DeckCraft and delegated file operations remain open on separate branches.
+> and DeckCraft signed document commands pass in the separate opt-in loopback
+> profile. Delegated file operations remain open.
 > Normal automatic writes wait 10 seconds after committed typing, at least 60
 > seconds between confirmed writes; known no-write transient retries back off
 > to 15 minutes. Conflict/uncertain outcomes pause. Manual Save remains immediate.
