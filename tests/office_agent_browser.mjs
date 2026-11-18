@@ -84,10 +84,15 @@ async function authorize(approval, intent, signingAgent = agent) {
   return {status:result.status, ...(await result.json())};
 }
 
-async function native(page, windowId, command, args) {
+async function editorFrame(page, windowId) {
   const element = await page.$(selector(windowId)+' iframe');
   const frame = await element.contentFrame();
   await element.dispose();
+  return frame;
+}
+
+async function native(page, windowId, command, args) {
+  const frame = await editorFrame(page, windowId);
   return frame.evaluate(async ({command,args}) => {
     const state = await window.gridcraft.request('ui.state', {});
     return window.gridcraft.request('ui.documentHost',{command,params:args,doc:Number(state.hostDocumentState.active)});
@@ -172,6 +177,17 @@ try {
       node.appView.execute(request,{}).then(()=>null,error=>error.message), setting.request);
     assert.match(blanket,/denied/i);
     present('arguments require an explicit sheet and direct calls cannot borrow human file authority');
+
+    const frame = await editorFrame(page,first);
+    await frame.evaluate(() => window.gridcraft.request('ui.edit.begin',{text:'=12*12'}));
+    const whileEditing = await authorize(a,intent);
+    assert.equal(whileEditing.status,200,whileEditing.error);
+    assert.match((await dispatch(page,whileEditing.confirmation,intent)).error,/Finish the active GridCraft edit/);
+    const edit = await frame.evaluate(() => window.gridcraft.request('ui.inspect',{}));
+    assert.equal(edit.editor.text,'=12*12');
+    assert.equal((await native(page,first,'cell.get',{sheet,cell:'A1'})).value,42);
+    await frame.evaluate(() => window.gridcraft.request('ui.edit.cancel',{}));
+    present('a signed edit preserves the owner’s unfinished native formula');
 
     const oldBinding = await authorize(a,reading);
     assert.equal(oldBinding.status,200,oldBinding.error);

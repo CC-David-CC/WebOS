@@ -475,11 +475,12 @@ two live WASM workbooks and two isolated accounts. It verified that the
 approved formula evaluated to 42 in the intended workbook only. It also
 verified cancellation, synthetic-click rejection, rejection of a different
 signing key, argument tampering, replay, other-account consumption, native
-document and cell reads, direct-call rejection, Save As during server consume
-and revocation before consume. The old grant did not mutate the newly saved
-workbook. The launcher without the explicit flag exposes no bridge.
+document and cell reads, protection of an unfinished user formula, direct-call
+rejection, Save As during server consume and revocation before consume. The
+newly saved workbook retained its correct formula. The launcher without the
+explicit flag exposes no bridge.
 
-See `office-agent-browser-r3/results.json` and
+See `office-agent-browser-r4/results.json` and
 `office-agent-default-regression/results.json` in the private checkpoint.
 The static Office release candidate remains independently identified.
 
