@@ -23,7 +23,9 @@ const {apps} = await (await fetch(origin+'/viewer-build.json')).json();
 const photoProfile = apps.includes('photocraft');
 const officeProfile = apps.includes('gridcraft') && apps.includes('deckcraft');
 const disabled = process.env.WEBOS_AGENT_DISABLED_TEST === '1';
-assert(disabled || photoProfile || officeProfile);
+const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
+const graphics = ['figcraft','vectorcraft'].filter(app=>apps.includes(app));
+assert(graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
 await mkdir(output, {mode:0o700});
 const checks = [];
 const agent = await makeKey();
@@ -53,7 +55,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (app === 'photocraft') return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -131,6 +133,77 @@ async function photoKeys(page, id, key, modifiers = []) {
   try { await page.keyboard.press(key); }
   finally { for (const modifier of [...modifiers].reverse()) await page.keyboard.up(modifier); }
   await frame.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+}
+
+async function graphicsDispatch(page, app) {
+  const first = await editor(page,app);
+  const native = await editorFrame(page,first);
+  const canvas = await native.waitForSelector(`#${app}_canvas`,timeout);
+  const bounds = await canvas.boundingBox();
+  await canvas.dispose();
+  assert(bounds);
+  const start = {x:bounds.x+bounds.width*(app==='vectorcraft'?.34:.45),y:bounds.y+bounds.height*.44};
+  await page.waitForFunction(({x,y},scope)=>document.elementFromPoint(x,y)===document.querySelector(scope+' iframe'),
+    timeout,start,selector(first));
+  const painted = () => native.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  await page.mouse.click(start.x,start.y);
+  await page.keyboard.press(app==='vectorcraft'?'m':'r');
+  await painted();
+  await page.mouse.move(start.x,start.y);
+  await page.mouse.down();
+  await painted();
+  await page.mouse.move(start.x+bounds.width*.15,start.y+bounds.height*.18,{steps:10});
+  await page.mouse.up();
+  await page.waitForFunction(scope=>document.querySelector(scope)?.appView?.lifecycle.snapshot().dirty,timeout,selector(first));
+
+  const second = await editor(page,app);
+  const commands = ['document.inspect','layer.rename'];
+  async function grant(id) {
+    const pending = approve(page,id,commands);
+    await page.waitForSelector(modal,timeout);
+    await page.click(modal+' button[aria-label="Approve access"]');
+    const reply = await pending;
+    assert.equal(reply.error,undefined,reply.error);
+    return reply.result;
+  }
+  async function confirm(scope,command,args) {
+    const intent = JSON.stringify(intentFor(scope,command,args));
+    const reply = await authorize(scope,intent);
+    assert.equal(reply.status,200,reply.error);
+    return {intent,confirmation:reply.confirmation};
+  }
+  async function run(scope,command,args) {
+    const {intent,confirmation} = await confirm(scope,command,args);
+    const reply = await dispatch(page,confirmation,intent);
+    assert.equal(reply.error,undefined,reply.error);
+    return reply.result.result;
+  }
+  const drawn = await grant(first), blank = await grant(second);
+  const {layers} = await run(drawn,'document.inspect',{});
+  const untouched = (await run(blank,'document.inspect',{})).layers;
+  const layer = app==='vectorcraft' ? layers[0] : layers.find(row=>!untouched.some(other=>other.name===row.name));
+  assert(layer,JSON.stringify(layers));
+  const rename = {layerId:layer.id,name:'Approved graphics layer'};
+  const request = await confirm(drawn,'layer.rename',rename);
+  assert.match((await dispatch(page,request.confirmation,request.intent.replace(rename.name,'Changed intent'))).error,/intent changed/i);
+  const renamed = await dispatch(page,request.confirmation,request.intent);
+  assert.equal(renamed.error,undefined,renamed.error);
+  assert.deepEqual(renamed.result.target,drawn.document);
+  assert.match((await dispatch(page,request.confirmation,request.intent)).error,/already consumed/i);
+  assert.equal((await run(drawn,'document.inspect',{})).layers.find(row=>row.id===layer.id).name,rename.name);
+  assert.deepEqual((await run(blank,'document.inspect',{})).layers,untouched);
+
+  await page.evaluate(id=>{
+    const desktop = window.desktopLab.surfaces.get('Desktop');
+    desktop.activateWindow(desktop.windows.find(candidate=>candidate.id===id));
+  },first);
+  await native.$eval(`#${app}_canvas`,canvas=>{canvas.tabIndex=0;canvas.focus();});
+  await page.keyboard.down('Control');
+  try { await page.keyboard.press('z'); }
+  finally { await page.keyboard.up('Control'); }
+  await painted();
+  assert.equal((await run(drawn,'document.inspect',{})).layers.find(row=>row.id===layer.id).name,layer.name);
+  present(`${app} applies signed layer rename only in the scoped window and records native Undo`);
 }
 
 async function photoDispatch(page) {
@@ -297,16 +370,23 @@ try {
     headless:true,args:['--disable-dev-shm-usage','--enable-unsafe-swiftshader','--use-angle=swiftshader'],
     defaultViewport:{width:1540,height:960}
   });
-  if (!disabled && photoProfile) {
+  if (!disabled && graphicsOnly) {
+    for (const app of graphics) {
+      const {page,context} = await login(browser);
+      try { await graphicsDispatch(page,app); }
+      finally { await context.close(); }
+    }
+  }
+  if (!disabled && !graphicsOnly && photoProfile) {
     const {page,context} = await login(browser);
     try { await photoDispatch(page); }
     finally { await context.close(); }
   }
-  const {page,context} = disabled || officeProfile ? await login(browser) : {};
+  const {page,context} = disabled || officeProfile && !graphicsOnly ? await login(browser) : {};
   if (disabled) {
     assert.equal(await page.evaluate(() => window.desktopLab.agentOperations === undefined), true);
     present('default server profile has no agent bridge');
-  } else if (officeProfile) {
+  } else if (officeProfile && !graphicsOnly) {
     const first = await editor(page,'gridcraft');
     const second = await editor(page,'gridcraft');
     const commands = ['document.inspect','cell.get','cell.set'];
@@ -422,7 +502,7 @@ try {
     present('Save As fences in-flight and unused grants and revocation fences issued grants');
   }
   await context?.close();
-  if (!disabled && officeProfile) await deckDispatch(browser);
+  if (!disabled && !graphicsOnly && officeProfile) await deckDispatch(browser);
   await writeFile(path.join(output,'result.json'),JSON.stringify({status:'PASS',checks},null,2)+'\n',{mode:0o600});
 } finally {
   await browser?.close();
