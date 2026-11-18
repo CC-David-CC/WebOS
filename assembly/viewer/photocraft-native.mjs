@@ -3,7 +3,7 @@ const generationPattern = /^[0-9a-f]{32}$/;
 const saveFields = ['ticket', 'documentId', 'revision', 'path'];
 
 /** One native PhotoCraft instance inside a same-origin classic Desktop window. */
-export function connectPhotoNative(frame, {url, signal, onSave, onUnavailable}) {
+export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onUnavailable}) {
   const desktop = frame.ownerDocument.defaultView;
   if (url.origin !== desktop.location.origin) throw Error('PhotoCraft requires the desktop origin.');
 
@@ -75,13 +75,19 @@ export function connectPhotoNative(frame, {url, signal, onSave, onUnavailable}) 
     const entry = waiting.get(kind);
     if (entry?.matches(data)) entry.resolve(data);
     if (kind === 'save') onSave(data);
+    if (kind === 'dialog') onDialog?.(data);
+  }
+
+  function post(kind, body, transfer = []) {
+    check();
+    frame.contentWindow.postMessage({type:prefix + kind, generation, ...body}, url.origin, transfer);
   }
 
   function exchange(kind, body, transfer, reply, matches) {
     check();
     const result = expect(reply, matches, 30_000);
     try {
-      frame.contentWindow.postMessage({type:prefix + kind, generation, ...body}, url.origin, transfer);
+      post(kind, body, transfer);
     } catch (error) {
       waiting.get(reply)?.reject(error);
     }
@@ -97,6 +103,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onUnavailable}) 
 
   return Object.freeze({
     ready,
+    assertLive: check,
     async start(path = null, bytes = null) {
       const requestId = desktop.crypto.randomUUID();
       const buffer = bytes === null ? null : bytes.slice().buffer;
@@ -109,6 +116,9 @@ export function connectPhotoNative(frame, {url, signal, onSave, onUnavailable}) 
       const identity = Object.fromEntries(saveFields.map(field => [field, request[field]]));
       return exchange('save-result', {...identity, ...result}, [], 'save-settled',
         data => saveFields.every(field => data[field] === identity[field]));
+    },
+    answerDialog(requestId, result) {
+      post('dialog-result', {requestId, ...result});
     },
     dispose
   });
