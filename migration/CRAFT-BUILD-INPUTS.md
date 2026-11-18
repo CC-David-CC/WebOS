@@ -140,6 +140,23 @@ are present in their independent local bare origins.
 `local-source-recoverability.json` records that check. The Runtime and
 Desktop integration branch tips also have local refs there.
 
+Rechecking the current 17 Craft checkouts found every tracked path present
+and every `Cargo.lock` unchanged from the earlier audit. All 17 now resolve
+and fetch locked sources offline for both `wasm32-unknown-unknown` and
+`x86_64-unknown-linux-gnu`. The Linux additions use the same shared Cargo cache.
+Full offline metadata included the browser crates for DesignCraft, FigCraft
+and PhotoCraft. Neither missing path declaration (`designcraft-testkit` or
+`figcraft-tools`) participates in the resolved graph. See
+`craft-current-linux-wasm-resolution.json` and
+`craft-three-workspace-resolution.json` in the private round directory.
+
+PhotoCraft's browser entrypoints and sharded packaging script are in its own
+repository. Its translation pin matches `assets/craft-i18n`. Trunk 0.21.14 is
+in the shared SDK and its Binaryen optimizer is at
+`../.webos-migration/run-20261114-04/build-tool-cache/trunk/wasm-opt-version_123/bin/wasm-opt`.
+The browser and boot crates resolve offline. Compiling them with HEIF and
+verifying the packaged asset graph remain part of PhotoCraft qualification.
+
 The static source check found no unresolved Git LFS pointers or dangling
 tracked symlinks in the 17 Craft trees. GridCraft and DeckCraft each have
 eight deliberate branding-file removals on their integration branches.
