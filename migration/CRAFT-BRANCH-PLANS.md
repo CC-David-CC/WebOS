@@ -333,6 +333,27 @@ were fetched and verified offline on the R730 using only tracked Cargo
 manifests, target entry files and the lockfile. The full source and assets
 remain in the organized SolidCraft repository.
 
+SolidCraft remains paused. Local `main` matches Tangency Labs at
+`6afe1611c626`, and `webos/solidcraft-account-part` remains at `7b7716fba56c`.
+All four native geometry cases appear in the current upstream known-failure
+list. Two variable-fillet cases share the same cornered radius-law limitation.
+The tapered fillet remains a separate case. [Upstream test list](https://github.com/tangency-labs/solidcraft/blob/6afe1611c62691337933c5b0e57b528d8f1618b2/tests/KNOWN_FAILING_TESTS)
+
+The 40 mm tangent-hole case produces two positive-volume solids. A focused
+native probe confirmed their combined volume of 4,031.9614 mm³, the warning
+when widening the hole removes all material, and one solid after shrinking
+the hole. The test correction checks those results in `fix/tangent-hole-regression`
+at `7e6605729d14` and `webos/solidcraft-tangent-hole-review` at `189330449f8a`.
+The probe reused the tested WebOS engine. The exact newer upstream binary
+still needs a focused run before promoting either review commit.
+
+The same plate and cutter were checked against ACAD's through-hole profile
+rule. ACAD refuses a hole that reaches the profile boundary with
+`HOLE_OUTSIDE_PROFILE`, before a native worker cuts the plate. A smaller
+hole at the same position passes the clearance rule. ACAD supports OCCT,
+Manifold and SMLib worker adapters. The exact raw ACAD Boolean result is
+still unverified. [Through-hole planner](../apps/acad/modules/engine/mount/ownedThroughHolePlan.mjs)
+
 
 ## TextureCraft preparation
 

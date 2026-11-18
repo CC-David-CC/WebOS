@@ -1157,3 +1157,32 @@ process IDs were verified. The immediate rollback is FilmCraft
 `5c7dc01e3f248d8dce0b57b47ebc75850f4e68b2c59f934b60451e35bd4d58c4`. The host backup is
 `/var/backups/webos-effectcraft-78f11b7fc1ce-account-package`. The private record
 `effectcraft-78f11b7fc1ce-account-package/` contains the archive, component evidence, activation and hosted verification.
+
+## TextureCraft release on ksu.codes
+
+Release `60cf68e83c32dc68684aff1dfde05da5dc493deb391784dd22faf4c13c11e581`
+went live on 2026-11-18 UTC. Packaged parent
+`f256e740a4156f3836a87c222f0a13a949ded3e7` selects TextureCraft
+`3ada1e30108a624c977456385a83dd4befd8fef4` at tree
+`aff2f8197e2165557721055c636e7014b1f574fa`.
+
+The exact package passed five TextureCraft Chromium checks and 99 affected
+regression checks. A signed native operation painted and undid UV tiles.
+Account Save and Save As preserved the original OBJ bytes. Native Open and
+Files reused the same window. Refresh recovered an unsaved project, and a fresh
+account browser reopened editable paint tiles and saved a later revision.
+The native engine and UI repeat passed 205 tests with three existing ignores.
+The earlier parallel run lacked a UI summary. Wider mesh, bake and export
+workflows need their own qualification.
+
+Hosted verification matched all 675 files and started the served WASM in
+Chromium. The backend instance, issuer, beta and service process IDs matched
+the previous release. All 14 earlier native engines and the classic Desktop
+HTML and CSS matched. Seven rebuilt bundles went through the affected-app
+checks.
+
+The immediate rollback is CADCraft
+`b30b3f0b70ef361eb66c84b544a45961e20331be512d9313713bc846d82fafa8`.
+The host backup is `/var/backups/webos-texturecraft-3ada1e30108a-account-package`.
+The private `texturecraft-3ada1e30108a-account-package/` record contains
+the archive, build evidence, activation and hosted verification.
