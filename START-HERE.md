@@ -33,21 +33,18 @@ classic Desktop and the existing account service. The
 [rollout guide](migration/CRAFT-INTEGRATION-GUIDE.md#rolling-integration-queue)
 defines the remaining order and gates.
 
-FigCraft went live on 2026-11-18 UTC in release
+VectorCraft went live on 2026-11-18 UTC in release
+`c4acd1ab2d28957c05d2b8e34eb1beca9f60df36bda9a61ede9e48f46b323938`.
+The packaged parent is `20cced255e20f5e7df1ea194bd5477b712ad7b18`. All 42
+exact-package browser checks passed, all 543 hosted files matched, and hosted
+Chromium started the VectorCraft editor. The immediate rollback is the
+[FigCraft release](migration/CRAFT-INTEGRATION-LOG.md#figcraft-release-on-ksucodes)
 `6935ffc4fcb8b7d130e05033c59fa4bfd3fd742be9caf4e21fcfa59b0a521c4a`.
-The packaged parent is `3a04d233da35f1c72f1332a5faaf338cc3206956`.
-The package passed 140 browser checks. All 505 hosted files matched and
-hosted Chromium compiled and started FigCraft. VectorCraft is the next active
-integration. See the [FigCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#figcraft-release-on-ksucodes).
+See the [VectorCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#vectorcraft-release-on-ksucodes).
+AniCraft is next for full Desktop and account workflow qualification.
 
-The immediate rollback is the PhotoCraft release at
-`e0bedfb2a2e0fe14a8903d151d505874ca9e9fa5ed9f4c263cf462f509eb537b`.
-PhotoCraft passed 28 browser account workflow checks. Hosted verification
-matched all 463 published files and compiled the PhotoCraft WASM in Chromium.
-See the [PhotoCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#photocraft-release-on-ksucodes).
-
-The intended classic Desktop hosts Calculator, Files, CodeMirror6 Text,
-WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft and Help.
+The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
+PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.
