@@ -1,9 +1,9 @@
 # Craft integration matrix
 
-All 17 selected source repositories are present. The pinned Cargo graphs for
-all 17 passed `cargo fetch --locked --offline --target wasm32-unknown-unknown`
-after populating the existing laptop SDK. GridCraft and DeckCraft show the
-reviewed local component commits selected in the parent.
+All 17 selected source repositories are present, with every tracked path at
+its selected pin. All 17 passed locked offline Cargo fetch for browser WASM
+and native Linux using the existing laptop SDK. GridCraft and DeckCraft show
+the reviewed local component commits selected in the parent.
 
 The listed workflow for a pending app is its first acceptance target. Each app
 must prove native content fidelity, account saves, recovery and fresh browser
@@ -32,7 +32,7 @@ for the acceptance contract.
 | Office | [designcraft](../apps/designcraft/) `webos/integration` at `59c6fa1b4947` | Page layout and publication | `designcraft-web` | Disabled. Build and browser integration pending. Verify workspace references and linked assets. Qualify the page layout workflow. |
 | Graphics | [photocraft](../apps/photocraft/) `webos/integration` at `2fec95b0d91b` | Layered raster images | `photocraft-web, photocraft-web-boot` | Disabled. Build and browser integration pending. Verify exact fonts, translations, worker packaging and layered-image project serialization. |
 | Graphics | [vectorcraft](../apps/vectorcraft/) `webos/integration` at `4830ea0e833f` | Vector paths and text | `vectorcraft-web` | Disabled. Build and browser integration pending. Verify font bundle, native project serialization and SVG round-trip limits. |
-| Graphics | [figcraft](../apps/figcraft/) `webos/integration` at `bad07e443324` | Interface layouts and components | `figcraft-web` | Disabled. Build and browser integration pending. Verify missing workspace declaration, fonts and embedded versus linked assets. |
+| Graphics | [figcraft](../apps/figcraft/) `webos/integration` at `bad07e443324` | Interface layouts and components | `figcraft-web` | Disabled. Browser crate resolves offline. Build and browser integration pending. Verify fonts and embedded versus linked assets. |
 | Graphics | [lightcraft](../apps/lightcraft/) `webos/integration` at `09a3d20bd722` | Non-destructive photo adjustments | `lightcraft-web` | Disabled. Build and browser integration pending. Verify browser support for source images, adjustment recipes and linked assets. |
 | Animation and video | [anicraft](../apps/anicraft/) `webos/integration` at `4e2a2af303d8` | Timeline and vector animation | `anicraft workspace wasm32` | Disabled. Build and browser integration pending. Use the root WASM target. Verify plug-in assets and native project boundaries. |
 | Animation and video | [filmcraft](../apps/filmcraft/) `webos/integration` at `e6df31865bc5` | Video timeline and linked media | `filmcraft-web` | Disabled. Build and browser integration pending. Check browser codecs, media references and portable projects. |
