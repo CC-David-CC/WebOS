@@ -915,3 +915,18 @@ The release build flags require the component commit and tree to match the
 selected checkout. Both rejected the staged review receipts. VectorCraft's
 independent bundle limit is 128 MiB because the reviewed WASM is 113,764,708
 bytes. The expanded release verifier accepted the existing 463-file archive.
+
+### FigCraft source selection
+
+The final stable qualification passed 5,877 native tests across all 36 original
+test executables. R730 ran 5,744 and the laptop ran the 133 socket cases using
+the exact binaries in loopback-only namespaces. The suite retained 12 upstream
+ignores. Format, all-target Clippy, the doctest command, layers, assets, docs,
+i18n and the standard WASM gate with four example plugins passed. The initial
+one-shot CI invocation still records the runner's socket restriction.
+
+The parent selected `cf78eb22978c3d4664e457ca06b3b5ba46576817` after verifying
+its tree is the tested `67be1b2060c1fadd58a3cd3bffc9b4d00f324d68` and its branch
+exists in the local bare repository. The direct release build uses the pinned
+nightly web build toolchain. The stable qualification receipt is
+`figcraft-evidence/figcraft-split-qualification.json` in the private audit root.
