@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {createPhotoStorage} from '../assembly/viewer/photocraft-storage.mjs';
+import {createCraftStorage} from '../assembly/viewer/craft-account-storage.mjs';
 import {createDocumentOperations, createDocumentOperationCoordinator} from '../platform/runtime/active-system/assets/desktop/document-operations.mjs';
 
 const ID = 'a'.repeat(32), BASE = 'b'.repeat(64), WRITTEN = 'c'.repeat(64);
@@ -10,7 +10,7 @@ const project = path => ({...blank,path});
 const save = (path=FILENAME, ticket='1') => ({...project(path),ticket,bytes:Uint8Array.of(1,2,3).buffer});
 const acknowledged = (request, response) => ({...request,adopted:response.outcome==='written'});
 
-function fixture(overrides = {}) {
+function fixture(overrides = {}, editor = {name:'PhotoCraft', extension:'.pcraft'}) {
   const controller = new AbortController(), writes = [];
   const valid = () => !controller.signal.aborted;
   const coordinator = createDocumentOperationCoordinator();
@@ -24,8 +24,19 @@ function fixture(overrides = {}) {
     },
     ...overrides
   };
-  return {store:createPhotoStorage({files,operations,valid}),writes,controller,coordinator};
+  return {store:createCraftStorage({...editor,files,operations,valid}),writes,controller,coordinator};
 }
+
+test('The shared account storage enforces the native format of the selected editor', async () => {
+  let reads=0;
+  const {store}=fixture({async read(){reads++;return {sha256:BASE,data:Uint8Array.of(4,5,6)};}},
+    {name:'FigCraft',extension:'.figcraft'});
+  await assert.rejects(store.open({path:FILENAME,sha256:BASE},()=>assert.fail()), /\.figcraft project path/);
+  assert.equal(reads,0);
+  const figResource={path:'Pictures/Design.figcraft',sha256:BASE};
+  assert.deepEqual(await store.open(figResource,project),figResource);
+  assert.equal(reads,1);
+});
 
 test('Open requires the observed Storage revision and an exact native adoption', async () => {
   const {store} = fixture();

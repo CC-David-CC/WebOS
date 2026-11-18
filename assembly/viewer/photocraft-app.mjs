@@ -2,9 +2,10 @@ import {connectCraftAccount} from './craft-account-native.mjs';
 import {trackPhotoAutosave} from './photocraft-autosave.mjs';
 import {photoRecovery, trackPhotoDraft} from './photocraft-recovery.mjs';
 import {createPhotoSession} from './photocraft-session.mjs';
-import {createPhotoStorage, MAX_BYTES, projectPath} from './photocraft-storage.mjs';
+import {createCraftStorage, MAX_BYTES, craftProjectPath} from './craft-account-storage.mjs';
 
 const localImports = new WeakMap();
+const projectPath = path => craftProjectPath(path, '.pcraft');
 
 const scopedCommands = Object.freeze({
   'document.inspect': args => args && !Array.isArray(args) && typeof args === 'object' && !Object.keys(args).length,
@@ -238,7 +239,7 @@ export function mount(host) {
     const url = new URL('photocraft/index.html', document.baseURI);
     url.searchParams.set('host', 'webos-account');
     url.searchParams.set('profile', context.owner);
-    storage = createPhotoStorage({files:context.files, operations:host.documentOperations, valid});
+    storage = createCraftStorage({name:'PhotoCraft', extension:'.pcraft', files:context.files, operations:host.documentOperations, valid});
     native = connectCraftAccount(frame, {
       app:'photocraft', name:'PhotoCraft',
       url, signal:abort.signal, onSave:packet => void save(packet), onDialog:handleDialog, onLocalFile:launchLocal,

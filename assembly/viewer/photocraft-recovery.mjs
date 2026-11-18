@@ -1,10 +1,10 @@
 import {createRecoveryStore, createRecoveryJournal} from '@webos/runtime/local-recovery';
 import {createOfficeRecovery} from './office-recovery.mjs';
-import {projectPath} from './photocraft-storage.mjs';
+import {craftProjectPath} from './craft-account-storage.mjs';
 
 function capture(value) {
   const {path, revision, bytes, nativeRevision} = value;
-  if (path !== null) projectPath(path);
+  if (path !== null) craftProjectPath(path, '.pcraft');
   if (!(path === null ? revision === null : typeof revision === 'string' && /^[0-9a-f]{64}$/.test(revision)) ||
       typeof nativeRevision !== 'string' || !/^[0-9]{1,20}$/.test(nativeRevision) ||
       !(bytes instanceof Blob) || bytes.size < 8 || bytes.size > 128 * 1024 * 1024) {

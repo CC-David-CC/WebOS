@@ -1,4 +1,4 @@
-/** Account side of PhotoCraft's native project exchange. */
+/** Conditional account storage and native acknowledgement for Craft projects. */
 export const MAX_BYTES = 128 * 1024 * 1024;
 const sha = value => typeof value === 'string' && /^[0-9a-f]{64}$/.test(value);
 const generation = value => typeof value === 'string' && /^[0-9a-f]{32}$/.test(value);
@@ -6,10 +6,10 @@ const decimal = value => typeof value === 'string' && /^(0|[1-9][0-9]{0,19})$/.t
 const ticketFields = ['generation','documentId','revision','ticket','path'];
 const key = path => 'mirror:/' + path;
 
-export function projectPath(path) {
-  if (typeof path !== 'string' || !/[.]pcraft$/i.test(path) || new TextEncoder().encode(path).length > 2048 ||
+export function craftProjectPath(path, extension) {
+  if (typeof path !== 'string' || !path.toLowerCase().endsWith(extension) || new TextEncoder().encode(path).length > 2048 ||
       /[\\\u0000-\u001f\u007f-\u009f]/u.test(path) || path.split('/').some(part => !part || part === '.' || part === '..')) {
-    throw Error('Choose an account-relative .pcraft project path.');
+    throw Error(`Choose an account-relative ${extension} project path.`);
   }
   return path;
 }
@@ -18,18 +18,19 @@ function exact(receipt, request) {
   return receipt && ticketFields.every(field => receipt[field] === request[field]);
 }
 
-function nativeIdentity(value, path) {
+function nativeIdentity(value, path, name) {
   if (!generation(value?.generation) || !decimal(value.documentId) || !decimal(value.revision) || value.path !== path) {
-    throw Error('PhotoCraft did not adopt the requested project.');
+    throw Error(`${name} did not adopt the requested project.`);
   }
   return Object.freeze({generation:value.generation,documentId:value.documentId});
 }
 
-export function createPhotoStorage({files, operations, valid}) {
+export function createCraftStorage({name, extension, files, operations, valid}) {
+  const projectPath = path => craftProjectPath(path, extension);
   let identity = null, binding = null, pending = null, lastTicket = 0n;
 
   function check() {
-    if (!valid()) throw new DOMException('PhotoCraft account view closed.', 'AbortError');
+    if (!valid()) throw new DOMException(`${name} account view closed.`, 'AbortError');
     files.check();
   }
 
@@ -39,8 +40,8 @@ export function createPhotoStorage({files, operations, valid}) {
 
   function attachBlank(native) {
     check();
-    if (identity) throw Error('This PhotoCraft editor already owns a project.');
-    identity = nativeIdentity(native, null);
+    if (identity) throw Error(`This ${name} editor already owns a project.`);
+    identity = nativeIdentity(native, null, name);
   }
 
   async function open(resource, adopt) {
@@ -55,7 +56,7 @@ export function createPhotoStorage({files, operations, valid}) {
       check();
       if (!operation.current() || file?.sha256 !== expected || !(file.data instanceof Uint8Array) ||
           !file.data.byteLength || file.data.byteLength > MAX_BYTES) throw Error('The account project changed or could not be read.');
-      const native = nativeIdentity(await adopt(path, file.data), path);
+      const native = nativeIdentity(await adopt(path, file.data), path, name);
       check();
       if (!operation.setDocument(key(path))) throw Error('This account editor changed during Open.');
       identity = native;
@@ -68,12 +69,12 @@ export function createPhotoStorage({files, operations, valid}) {
 
   async function restore(draft, adopt, {asCopy = false, signal} = {}) {
     check();
-    if (identity) throw Error('This PhotoCraft editor already owns a project.');
+    if (identity) throw Error(`This ${name} editor already owns a project.`);
     const bytes = new Uint8Array(await draft.bytes.arrayBuffer());
     check();
     async function copy() {
       attachBlank(await adopt(null, bytes));
-      if (!operations.setDocument(null)) throw Error('This PhotoCraft editor changed during recovery.');
+      if (!operations.setDocument(null)) throw Error(`This ${name} editor changed during recovery.`);
       return null;
     }
     if (asCopy || draft.path === null) return copy();
@@ -92,7 +93,7 @@ export function createPhotoStorage({files, operations, valid}) {
         }
         check();
         if (current === draft.revision && operation.current()) {
-          const admitted = nativeIdentity(await adopt(path, bytes), path);
+          const admitted = nativeIdentity(await adopt(path, bytes), path, name);
           check();
           if (!operation.setDocument(key(path))) throw Error('This account editor changed during recovery.');
           identity = admitted;
@@ -111,7 +112,7 @@ export function createPhotoStorage({files, operations, valid}) {
     if (pending) throw Error('Resolve the pending account save before starting another.');
     if (!identity || message?.generation !== identity.generation || message.documentId !== identity.documentId ||
         !decimal(message.revision) || !decimal(message.ticket) || BigInt(message.ticket) <= lastTicket) {
-      throw Error('PhotoCraft save did not identify this live project.');
+      throw Error(`${name} save did not identify this live project.`);
     }
     const request = Object.freeze(Object.fromEntries(ticketFields.map(field => [field,message[field]])));
     lastTicket = BigInt(request.ticket);
@@ -122,7 +123,7 @@ export function createPhotoStorage({files, operations, valid}) {
     try {
       const path = projectPath(request.path);
       if (!(message.bytes instanceof ArrayBuffer) || !message.bytes.byteLength || message.bytes.byteLength > MAX_BYTES) {
-        throw Error('Invalid PhotoCraft project bytes.');
+        throw Error(`Invalid ${name} project bytes.`);
       }
       const bytes = new Blob([message.bytes]);
       const expected = binding?.path === path ? binding.sha256 : null;
@@ -138,7 +139,7 @@ export function createPhotoStorage({files, operations, valid}) {
       const receipt = await acknowledge(request, {outcome:'written'});
       check();
       if (!exact(receipt, request) || receipt.adopted !== true || !operation.setDocument(key(path))) {
-        throw Error('PhotoCraft did not accept the saved account revision.');
+        throw Error(`${name} did not accept the saved account revision.`);
       }
       binding = Object.freeze({path, sha256:result.sha256});
       pending = null;
@@ -153,7 +154,7 @@ export function createPhotoStorage({files, operations, valid}) {
         const detail = String(error?.message || 'Account write failed.').slice(0, 250);
         const receipt = await acknowledge(request, {outcome:'failed',message:detail});
         check();
-        if (!exact(receipt, request) || receipt.adopted !== false) throw Error('PhotoCraft did not acknowledge the failed write.');
+        if (!exact(receipt, request) || receipt.adopted !== false) throw Error(`${name} did not acknowledge the failed write.`);
         pending = null;
       } catch (settlementError) {
         transaction.state = 'settlement-failed';
