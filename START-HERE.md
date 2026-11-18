@@ -33,19 +33,19 @@ classic Desktop and the existing account service. The
 [rollout guide](migration/CRAFT-INTEGRATION-GUIDE.md#rolling-integration-queue)
 defines the remaining order and gates.
 
-DesignCraft went live on 2026-11-18 UTC in release
-`bf2ef1c60c21e0cf7cf8d50e6cc5a371f9db8537982518631695d3c955d7e3f2`.
-The exact package passed 178 browser checks, including account artwork
-selection, editable publication recovery and a PDF export containing the
-full-resolution asset. All 611 hosted files matched and Chromium started the
-editor. The immediate rollback is the LightCraft release. See the
-[DesignCraft release record](migration/CRAFT-INTEGRATION-LOG.md#designcraft-release-on-ksucodes).
-SoundCraft is next. It passed native account Save and recovery tests and a
-locked compile check of its account WASM bridge.
+SoundCraft went live on 2026-11-18 UTC in release
+`09b9da34f69469d67dc096963c0bb69ec6f74b8e37db490013e9c98634215697`.
+The exact package passed 185 browser checks. The SoundCraft workflow proved
+native account saves, draft recovery, fresh-browser reopen and a WebAudio
+playback signal. All 623 hosted files matched and Chromium started the
+editor. The immediate rollback is the DesignCraft release. See the
+[SoundCraft release record](migration/CRAFT-INTEGRATION-LOG.md#soundcraft-release-on-ksucodes).
+FilmCraft is next. Its account bridge and optimized web component passed the
+R730 build. The next qualification covers linked video in the browser.
 
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft,
-LightCraft, DesignCraft and Help.
+LightCraft, DesignCraft, SoundCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.

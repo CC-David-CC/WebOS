@@ -479,7 +479,7 @@ remaining work by the behavior that needs qualification.
 
 | Next work | Acceptance milestone |
 |---|---|
-| SoundCraft, FilmCraft and EffectCraft | Qualify native projects containing referenced media. Test browser codecs, large assets, rendering or playback and job ownership when a window closes. Use the existing shared media engines where applicable. |
+| FilmCraft and EffectCraft | Qualify native projects containing referenced media. Test browser codecs, large assets, rendering or playback and job ownership when a window closes. Use the existing shared media engines where applicable. |
 | CADCraft and SolidCraft | Qualify native drawings and parametric parts in their own browsers and kernels. Verify precision and editable geometry after account reopen. |
 | TextureCraft and MaterialCraft | Preserve geometry, maps and procedural graph inputs in account projects. Verify renderer availability and re-render after reopening. |
 | SketchCraft | Connect the React modeling interface to the native Rust command model in a browser release. Prove push/pull, undo, scoped commands and a round trip of the editable `.sketchcraft` model through account Storage. The upstream Vite launch uses a local development bridge. |

@@ -1064,3 +1064,34 @@ profile. The immediate rollback is LightCraft release
 The host backup is `/var/backups/webos-designcraft-afca6f8d0f9a-package-account`.
 The private `designcraft-afca6f8d0f9a-package-account/` record includes the
 archive, native checks, activation and hosted verification.
+
+## SoundCraft release on ksu.codes
+
+Release `09b9da34f69469d67dc096963c0bb69ec6f74b8e37db490013e9c98634215697`
+went live on 2026-11-18 UTC. The assembly checkout was
+`2e91b77d9ef13f86365f3c099a78e0ee560ae8fc`. It selects SoundCraft
+`e196254ee15f25e073df9604f82fd084ff70657c` at tree
+`bc74431ebf0a665934e06152fa6be917065a1019`.
+
+The 185 exact-package browser checks included seven SoundCraft checks. The
+test imported a synthetic WAV into the native editor, verified all 4,800
+samples in the confirmed account bundle, and proved native track edits,
+Save, Save As and unsaved draft recovery. A fresh browser opened the
+project through Files, produced a WebAudio signal and saved another copy
+with the same samples. The first account workflow uses portable
+`.scraftz` bundles up to 128 MiB with browser drafts and explicit account
+saves. Linked video and other native project formats need separate work.
+
+Retained app regressions passed on the same package after reruns. The
+Office watchdog was extended to accommodate the existing admission delays.
+PhotoCraft's keyboard fixture now activates the intended window. Failure
+and retry receipts are retained alongside the passing results.
+
+Hosted verification matched all 623 files and started a blank native
+SoundCraft window. The backend instance, issuer and beta were verified
+during activation. Scoped editor operations were verified in the opt-in
+loopback profile. The immediate rollback is DesignCraft release
+`bf2ef1c60c21e0cf7cf8d50e6cc5a371f9db8537982518631695d3c955d7e3f2`.
+The host backup is `/var/backups/webos-soundcraft-e196254ee15f-account-package`.
+The private `soundcraft-e196254ee15f-account-package/` record includes the
+archive, exact component proof, native logs, activation and hosted results.

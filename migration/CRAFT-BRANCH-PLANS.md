@@ -217,12 +217,14 @@ revisions, ZIP serialization, byte Open and PDF export.
 
 ## SoundCraft preparation
 
+The portable audio workflow passed and went live. See the
+[SoundCraft release record](CRAFT-INTEGRATION-LOG.md#soundcraft-release-on-ksucodes).
+
 The first account bridge is at `e196254ee15f` on
 `webos/soundcraft-account-session`. It uses the native portable bundle
 serializer for account Save, Save As and recovery. It adopts the account
 binding after Storage confirms the captured session and preserves edits made
-while the write is pending. Native Open, Save and recovery tests passed,
-along with the account WASM compile check. Browser qualification is next.
+while the write is pending. Native Open, Save and recovery tests passed.
 
 `.scraft` projects can reference audio beside
 the session file. Test them with explicit media selection and missing-file
@@ -242,7 +244,8 @@ baseline testing, including where two apps use different media crate pins.
 ## FilmCraft preparation
 
 The account branch `webos/filmcraft-account-project` starts at
-`e6df31865bc5`. Its native capture and confirmation test preserves a newer
+`e6df31865bc5`; the first verified browser component is `b7ba79c366e6`.
+Its native capture and confirmation test preserves a newer
 timeline edit while a save is pending. The same test verifies editable
 sequences and view state after normal account Open and draft recovery.
 
