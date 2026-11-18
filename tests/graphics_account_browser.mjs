@@ -10,7 +10,8 @@ assert(path.isAbsolute(output) && new URL(origin).hostname === '127.0.0.1');
 assert.equal((await (await fetch(origin+'/healthz')).json()).scope,'development');
 await mkdir(output,{mode:0o700});
 const app = process.env.WEBOS_TEST_GRAPHICS_APP || 'figcraft';
-const label = {figcraft:'FigCraft',vectorcraft:'VectorCraft'}[app];
+const label = {figcraft:'FigCraft',vectorcraft:'VectorCraft',anicraft:'AniCraft'}[app];
+const menu = app === 'anicraft' ? 'Animation & Video' : 'Graphics';
 assert(label);
 const {apps} = await (await fetch(origin+'/viewer-build.json')).json();
 assert(apps.includes(app));
@@ -75,7 +76,7 @@ async function draw(page, horizontal = .45) {
     if (desktop.active!==target.id) desktop.activateWindow(target);
   });
   let iframe = await ready(page);
-  if (app === 'vectorcraft' && (await iframe.boundingBox())?.width < 1000) {
+  if (['vectorcraft','anicraft'].includes(app) && (await iframe.boundingBox())?.width < 1000) {
     await iframe.dispose();
     await button(page,selector,'Maximize');
     iframe = await ready(page);
@@ -201,7 +202,7 @@ try {
   });
   page = await browser.newPage();
   await login(page,true);
-  await launch(page,'Graphics',label);
+  await launch(page,menu,label);
   const iframe = await ready(page);
   const frame = await iframe.contentFrame();
   await frame.waitForSelector(`canvas#${app}_canvas`);
