@@ -507,6 +507,7 @@ async function lightcraftDispatch(browser, page, credentials) {
     await fresh.page.waitForFunction(id=>typeof document.querySelector('.window[data-window="'+id+'"]')?.appView?.execute==='function',timeout,filesId);
     await fresh.page.$eval(selector(filesId),async node=>{
       await node.appView.ready;
+      await node.appView.execute('list',{path:'Documents'});
       await node.appView.execute('open',{path:'Documents/Light Copy.lightcraft'});
     });
     const windowId=await fresh.page.waitForFunction(path=>window.desktopLab.surfaces.get('Desktop').windows.find(window=>
