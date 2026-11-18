@@ -77,7 +77,7 @@ function file(page, id, operation, args) {
     element.appView.execute(operation,args),{operation,args});
 }
 
-async function shortcut(page, id, key, modifiers = ['Control']) {
+async function shortcut(page, id, key, modifiers = ['Control'], {closing = false} = {}) {
   const selector = '.window[data-window="'+id+'"]';
   await page.bringToFront();
   const frameElem = await page.waitForSelector(selector + ' iframe:not([inert])',options);
@@ -94,7 +94,15 @@ async function shortcut(page, id, key, modifiers = ['Control']) {
   for (const modifier of modifiers) await page.keyboard.down(modifier);
   try { await page.keyboard.press(key); }
   finally { for (const modifier of [...modifiers].reverse()) await page.keyboard.up(modifier); }
-  await frame.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  if (!closing) await frame.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+}
+
+function photoWindow(id) {
+  return photoView + '[data-window="'+id+'"]';
+}
+
+async function closePhoto(page, id) {
+  await button(page,photoWindow(id),'Close');
 }
 
 async function location(page) {
@@ -223,6 +231,53 @@ try {
   await bound(page,id,'Copy.pcraft');
   pass('Native Open gives a different project an independent Desktop window');
 
+  await closePhoto(page,firstId);
+  await page.waitForSelector(photoWindow(firstId),{...options,hidden:true});
+  await bound(page,id,'Copy.pcraft');
+  pass('The Desktop closes a clean PhotoCraft project without a prompt');
+
+  await file(page,filesId,'open',{path:copyPath});
+  assert.equal(await readyPhoto(page),id);
+  await shortcut(page,id,'n', ['Control','Shift']);
+  await page.keyboard.press('Enter');
+  await closePhoto(page,id);
+  await shortcut(page,id,'c',[]);
+  assert.equal(await download(page,filesId,copyPath,'close-cancel.pcraft'),saved);
+  await bound(page,id,'Copy.pcraft');
+  pass('Cancelling native Close keeps the edited account project open');
+
+  await closePhoto(page,id);
+  await shortcut(page,id,'Enter',[],{closing:true});
+  await page.waitForSelector(photoWindow(id),{...options,hidden:true});
+  const savedOnClose=await download(page,filesId,copyPath,'close-saved.pcraft');
+  assert.notEqual(savedOnClose,saved);
+  assert.equal(layers('close-saved.pcraft'),blankLayers+2);
+  pass('Save from the Close prompt persists the native edit before the Desktop removes the window');
+
+  await file(page,filesId,'open',{path:copyPath});
+  const updatedId=await readyPhoto(page);
+  assert.notEqual(updatedId,id);
+  await shortcut(page,updatedId,'n',['Control','Shift']);
+  await page.keyboard.press('Enter');
+  await closePhoto(page,updatedId);
+  await shortcut(page,updatedId,'n',[],{closing:true});
+  await page.waitForSelector(photoWindow(updatedId),{...options,hidden:true});
+  assert.equal(await download(page,filesId,copyPath,'close-discard.pcraft'),savedOnClose);
+  pass('Discard closes a dirty project without replacing the saved account file');
+
+  await launch(page,'Graphics','PhotoCraft');
+  const blankId=await readyPhoto(page);
+  await shortcut(page,blankId,'n');
+  await shortcut(page,blankId,'Enter',[]);
+  await page.waitForFunction(selector=>document.querySelectorAll(selector).length===2,options,photoView);
+  const newId=await readyPhoto(page);
+  assert.notEqual(newId,blankId);
+  assert.equal((await page.$$(photoView)).length,2);
+  await closePhoto(page,newId);
+  await page.waitForSelector(photoWindow(newId),{...options,hidden:true});
+  assert(await page.$(photoWindow(blankId)));
+  pass('Native New creates an independent window and an untouched blank closes quietly');
+
   const fresh=await browser.createBrowserContext();
   const reopened=await fresh.newPage();
   await observe(reopened);
@@ -231,7 +286,7 @@ try {
   await file(reopened,freshFiles,'list',{path:'Pictures'});
   await file(reopened,freshFiles,'open',{path:copyPath});
   await bound(reopened,await readyPhoto(reopened),'Copy.pcraft');
-  assert.equal(await download(reopened,freshFiles,copyPath,'reopened.pcraft'),saved);
+  assert.equal(await download(reopened,freshFiles,copyPath,'reopened.pcraft'),savedOnClose);
   pass('The same account retrieves identical layered project bytes in a fresh browser context');
 
   const other=await browser.createBrowserContext();

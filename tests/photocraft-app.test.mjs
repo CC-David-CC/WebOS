@@ -32,7 +32,7 @@ test('The classic API2 view publishes account bindings only after the native fra
         if (tag === 'iframe') {
           frame = node;
           frame.ownerDocument = fakeDocument;
-          frame.contentWindow = {postMessage(packet) { traffic.push(packet); }};
+          frame.contentWindow = {focus() {}, postMessage(packet) { traffic.push(packet); }};
         }
         return node;
       }
@@ -41,7 +41,7 @@ test('The classic API2 view publishes account bindings only after the native fra
     const w = {launchContext:{owner, path, sha256:first, storage:'account'}};
     let session = {public:{sub:owner}};
     const other = 'Pictures/Other.pcraft';
-    const activated = [], opened = [];
+    const activated = [], opened = [], closeIntents = [];
     const newWindow = {};
     let folder = '/Pictures';
     const view = mount({
@@ -56,6 +56,7 @@ test('The classic API2 view publishes account bindings only after the native fra
         updateAccountFileBinding(...args) { bindings.push(args); },
         activateAccountFile(resource, app) { activated.push([resource,app]); return resource.path === path; },
         openAccountFile(app, resource) { opened.push([app,resource]); },
+        async requestWindowClose(window) { closeIntents.push(window); },
         launch(app) { assert.equal(app,'photocraft'); return newWindow; }
       },
       storage:{
@@ -91,7 +92,7 @@ test('The classic API2 view publishes account bindings only after the native fra
     const turn = () => new Promise(resolve => setImmediate(resolve));
     await turn();
     assert.match(frame.src,/profile=test-account/);
-    frame.contentDocument = {URL:frame.src};
+    frame.contentDocument = {URL:frame.src, querySelector:() => null};
     receive('ready');
     await turn();
     assert.equal(frame.inert,true);
@@ -146,6 +147,19 @@ test('The classic API2 view publishes account bindings only after the native fra
     assert.deepEqual(newWindow,{photocraftNewSettings:settings});
     assert.equal(traffic.at(-1).outcome,'opened');
     assert.deepEqual(bindings.at(-1),[w,{owner,path,sha256:next}]);
+
+    receive('close-intent');
+    assert.deepEqual(closeIntents,[w]);
+    const sessionCheck = view.requestClose({scope:'session'});
+    assert.equal(traffic.at(-1).interactive,false);
+    receive('close-result',{requestId:traffic.at(-1).requestId,approved:true});
+    assert.equal(await sessionCheck,true);
+    assert.equal(frame.inert,false,'session inspection leaves the mounted editor available');
+    const closing = view.requestClose({scope:'window'});
+    assert.equal(traffic.at(-1).interactive,true);
+    receive('close-result',{requestId:traffic.at(-1).requestId,approved:false});
+    assert.equal(await closing,false);
+    assert.equal(frame.inert,false);
 
     session = {public:{sub:'different-account'}};
     receive('save',{...identity,ticket:'2',bytes:Uint8Array.of(9).buffer});

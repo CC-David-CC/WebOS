@@ -46,7 +46,11 @@ export function mount(host) {
       bind(binding);
       message('');
     } catch (error) {
-      if (valid()) message(error.message);
+      if (!valid()) return;
+      if (loaded && error.outcome === 'unknown') {
+        try { native.reportUncertainSave(packet); } catch { /* The document frame is unavailable. */ }
+      }
+      message(error.message);
     }
   }
 
@@ -137,6 +141,9 @@ export function mount(host) {
     storage = createPhotoStorage({files:context.files, operations:host.documentOperations, valid});
     native = connectPhotoNative(frame, {
       url, signal:abort.signal, onSave:save, onDialog:handleDialog,
+      onCloseIntent() {
+        if (loaded && valid()) void host.desktop.requestWindowClose(host.w);
+      },
       onUnavailable(reason) {
         loaded = false;
         frame.inert = true;
@@ -179,6 +186,19 @@ export function mount(host) {
   return {
     element,
     ready,
+    async requestClose({scope = 'window'} = {}) {
+      if (!loaded) return true;
+      check();
+      const interactive = scope === 'window';
+      if (interactive) {
+        frame.contentWindow?.focus();
+        frame.contentDocument?.querySelector('canvas')?.focus();
+      }
+      const approved = await native.requestClose(interactive);
+      check();
+      if (approved && interactive) frame.inert = true;
+      return approved;
+    },
     focus() {
       if (!loaded || !valid() || dialog) return false;
       frame.contentWindow?.focus();
