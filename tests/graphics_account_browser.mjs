@@ -415,6 +415,17 @@ try {
   const latest = (await binding(concurrent)).sha256;
   assert.notEqual(latest,afterClose);
   await page.bringToFront();
+  const staleEditor = await ready(page);
+  const staleFrame = await staleEditor.contentFrame();
+  try {
+    await staleFrame.$eval(`#${app}_canvas`, canvas => {
+      canvas.tabIndex = 0;
+      canvas.focus({preventScroll:true});
+      if (document.activeElement !== canvas) throw Error('The stale editor did not receive keyboard focus.');
+    });
+  } finally {
+    await staleEditor.dispose();
+  }
   await saveShortcut(page);
   await page.waitForFunction(view=>/changed.*(reload|replacing|version)|conflict/i.test(document.querySelector(view+' [role=status]')?.textContent),{},selector);
   await clean(page,false);
