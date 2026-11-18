@@ -6,6 +6,7 @@ const recovery = createCraftRecovery(project);
 const object = args => args !== null && typeof args === 'object' && !Array.isArray(args);
 const empty = args => object(args) && Object.keys(args).length === 0;
 const textBytes = new TextEncoder();
+const artworkExtensions = ['.png','.jpg','.jpeg','.webp','.svg','.tif','.tiff','.pdf','.eps','.psd'];
 
 const commands = Object.freeze({
   'document.inspect': empty,
@@ -16,5 +17,5 @@ const commands = Object.freeze({
 });
 
 export function mount(host) {
-  return mountCraftAccount(host, {...project, recovery, reviewWindowClose:true, commands});
+  return mountCraftAccount(host, {...project, recovery, reviewWindowClose:true, commands, artworkExtensions});
 }

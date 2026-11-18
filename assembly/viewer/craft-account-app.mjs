@@ -22,7 +22,7 @@ function fileFromDevice(file) {
 
 /** Mount a native layer editor in its own classic Desktop account window. */
 export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false,
-  setupOriginals, commands = scopedCommands, accountControls = false}) {
+  setupOriginals, commands = scopedCommands, accountControls = false, artworkExtensions}) {
   const projectPath = path => craftProjectPath(path, extension);
   const element = document.createElement('div');
   element.className = `window-content webos-${app}`;
@@ -216,6 +216,25 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     return {outcome:'destination', path:projectPath((folder === '/' ? '' : folder.slice(1) + '/') + filename + suffix)};
   }
 
+  async function chooseArtwork(signal) {
+    const picked = await host.storage.pickAccountFile({extensions:artworkExtensions, signal});
+    check();
+    if (!loaded || signal.aborted || picked === null) return {outcome:'cancelled'};
+    if (typeof picked !== 'string' || !picked.startsWith('/')) throw Error('Invalid account artwork selection.');
+    const filePath = picked.slice(1);
+    const expected = await context.files.version(filePath,{signal});
+    check();
+    if (!loaded || signal.aborted) return {outcome:'cancelled'};
+    const graphic = await context.files.read(filePath,{signal});
+    check();
+    if (!loaded || signal.aborted) return {outcome:'cancelled'};
+    if (!/^[a-f0-9]{64}$/.test(expected?.sha256) || graphic?.sha256 !== expected.sha256 ||
+        !(graphic.data instanceof Uint8Array) || !graphic.data.byteLength || graphic.data.byteLength > MAX_BYTES) {
+      throw Error('The account artwork changed or could not be read.');
+    }
+    return {outcome:'asset',name:filePath.split('/').at(-1),bytes:graphic.data.slice().buffer};
+  }
+
   async function handleDialog(packet) {
     const requestId = packet.requestId;
     if (!loaded || !valid() || dialog || typeof requestId !== 'string' || !/^[1-9][0-9]{0,19}$/.test(requestId) ||
@@ -236,6 +255,8 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
       } else if (packet.operation === 'open') answer = await chooseProject(packet, controller.signal);
       else if (packet.operation === 'save' && typeof packet.suggested === 'string' && packet.suggested.length <= 2048) {
         answer = await chooseDestination(packet.suggested, controller.signal);
+      } else if (packet.operation === 'relink' && artworkExtensions) {
+        answer = await chooseArtwork(controller.signal);
       } else throw Error(`Invalid ${name} dialog request.`);
     } catch (error) {
       answer = {outcome:'failed', message:String(error.message || `${name} dialog failed.`).slice(0, 250)};
