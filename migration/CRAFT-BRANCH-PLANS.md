@@ -153,3 +153,34 @@ and export assets rather than saving broken local filesystem references.
 Do not make one unreviewable "all Craft apps" branch. Native domain behavior stays
 with its app; common public host mechanics stay with their owner. Plans establish
 the work to perform and the evidence needed, not completed features.
+
+## VectorCraft and FigCraft preparation
+
+Use the [shared acceptance contract](CRAFT-INTEGRATION-GUIDE.md) for both apps.
+The existing Desktop owns windows, activation, launcher registration and close
+approval. The existing Accounts and Storage components own authentication and
+server revisions. Give each app a component worktree and a `webos/...` branch.
+The main integration owner reviews launcher and file associations and qualifies
+the assembled site. Reuse the existing pinned SDK and verify separate target
+paths and free space before starting concurrent compiler jobs.
+
+| App | Source and suggested branch | First work |
+|---|---|---|
+| VectorCraft | `apps/vectorcraft/` at `4830ea0e833f`, `webos/vectorcraft-document-host` | Verify the Trunk package and checked-in font manifest. Exercise ordinary `.vectorcraft` Save and the native recovery store. The web shell currently uses local download delivery to save files and an origin-wide recovery prefix. Trace the native save completion and recovery store before adding confirmed Storage writes and account-scoped journals. |
+| FigCraft | `apps/figcraft/` at `bad07e443324`, `webos/figcraft-document-host` | Verify the Trunk package and its fonts. The same-origin bridge remembers a filename on `postMessage`; `save_download` treats delivery as success. Replace that acknowledgement in the hosted editor with an identified server-confirmed save. Reuse the native `.figcraft` recovery codec for documents, versions and branches. Scope the browser recovery and author preference to the active account. |
+
+VectorCraft acceptance uses a layered drawing with an edited path, fill, text,
+and embedded image. Check geometry and font fidelity after Save, Save As,
+restoration, and a Files reopen in a fresh browser. Exercise SVG as a copy and
+check that it preserves the active native account-file binding.
+
+FigCraft acceptance uses frames, a reusable component and an instance, and an
+embedded image. Check component relationships and native version history after
+Save, Save As, restoration and fresh-browser retrieval. Exercise SVG/PDF copies
+independently of the native file path. Determine which linked resources require
+embedding before delivery across browsers.
+
+For each app, select one stable native object ID and exercise an approved
+inspection and a reversible edit through the editor's existing command path.
+Verify that a grant for one view or resource cannot edit a second one, and that
+the editor protects pending human input.

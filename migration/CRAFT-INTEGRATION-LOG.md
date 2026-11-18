@@ -796,3 +796,25 @@ opened in a separate window, journaled the import and saved a 24×16
 `.pcraft` under a new account path. The prior file retained its revision.
 The device picker also opened a separate project, and Discard preserved
 the existing account files.
+
+### PhotoCraft signed layer operations
+
+The R730 package at `c0731bc1e62a` passed 16 focused native account tests.
+The signed Chromium suite verified exact-window inspection and layer rename,
+one-use approval, protection of unfinished Type input, native Undo, account
+Save and invalidation of the previous approval after the file acquired a new
+binding. The first run clicked a disabled folder picker control. The updated
+test waits for folder loading and passed all three operation checks against
+the same package. The account suite passed 26 checks and the classic Desktop
+suite passed 15. The default profile excluded the agent bridge, and the
+existing GridCraft and DeckCraft signed-operation suite passed seven checks
+against the previously verified Office assembly.
+
+Follow-up `57e2e3efb54f` uses the Layers panel's `layer.setProps` command for
+approved renames and treats the panel's in-place rename as unfinished editing.
+It also identifies legacy smart objects whose source is outside the browser
+and directs the editor to Replace Contents. The native regression fixture
+exercises embedding the replacement while preserving the smart object's
+placement. This follow-up is building on R730 and requires separate native
+and browser evidence. Hosted nested smart-object editing still needs an
+explicit lifecycle before PhotoCraft's release.
