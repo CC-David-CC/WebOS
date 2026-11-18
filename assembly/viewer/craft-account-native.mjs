@@ -66,9 +66,14 @@ export function connectCraftAccount(frame, {app, name, url, signal, onSave, onDi
     verifyDocument();
     if (closed) return;
     const kind = data.type.slice(prefix.length);
-    if (kind === 'ready' && !nativeDocument) {
+    if ((kind === 'ready' || kind === 'failed') && !nativeDocument) {
       const doc = frame.contentDocument;
       if (!doc || doc.URL !== url.href || typeof data.generation !== 'string' || !generationPattern.test(data.generation)) return;
+      if (kind === 'failed') {
+        const message = typeof data.message === 'string' && data.message ? data.message : `${name} could not start.`;
+        unavailable(message);
+        return;
+      }
       nativeDocument = doc;
       generation = data.generation;
     }

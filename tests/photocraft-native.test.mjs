@@ -45,6 +45,26 @@ test('The shared native connection accepts only its selected Craft app namespace
   assert.equal(sent[0].generation,generation);
 });
 
+test('An exact FigCraft startup failure rejects readiness immediately', async t => {
+  const {frame,native,receive} = fixture(t,'figcraft','FigCraft');
+  const message = 'FigCraft renderer unavailable.';
+  const expectedURL = frame.contentDocument.URL;
+  receive('failed',{message},{source:{}});
+  receive('failed',{message},{origin:'http://localhost:8081'});
+  receive('failed',{message,type:'vectorcraft:account-failed'});
+  receive('failed',{message,generation:'bad'});
+  frame.contentDocument = {URL:expectedURL + '#other'};
+  receive('failed',{message});
+  assert.throws(() => native.assertLive(), /has not started/);
+
+  frame.contentDocument = {URL:expectedURL};
+  const unavailable = assert.rejects(native.ready, {message});
+  receive('failed',{message});
+  await unavailable;
+  receive('ready');
+  assert.throws(() => native.assertLive(), {message});
+});
+
 test('A dropped local file and its unbound import start require the exact native frame', async t => {
   const {native,receive,sent,localFiles} = fixture(t);
   receive('ready');
