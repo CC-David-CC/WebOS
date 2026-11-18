@@ -19,7 +19,7 @@ test('The classic API2 view publishes account bindings only after the native fra
     const element = () => Object.assign(new EventTarget(), {
       style:{}, children:[], removed:false,
       setAttribute() {},
-      append(node) { this.children.push(node); },
+      append(...nodes) { this.children.push(...nodes); },
       remove() { this.removed = true; }
     });
     const traffic = [], writes = [], bindings = [];
@@ -170,7 +170,7 @@ test('The classic API2 view publishes account bindings only after the native fra
     frame.contentDocument = {URL:frame.src};
     frame.dispatchEvent(new Event('load'));
     assert.equal(frame.inert,true);
-    assert.match(view.element.children[0].textContent,/reloaded/);
+    assert.match(view.element.children[0].children[0].textContent,/reloaded/);
   } finally {
     controller.abort();
     globalThis.document = original;

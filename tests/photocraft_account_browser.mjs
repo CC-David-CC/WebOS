@@ -426,6 +426,50 @@ try {
   assert.notEqual(await download(page,filesId,untitledPath,'recovered-type.pcraft'),typeBase);
   assert.deepEqual(editedText('recovered-type.pcraft'),['Recovered typed title']);
   pass('Pending native Type content survives refresh and stays editable until explicit commit');
+
+  const autosaveContext=await browser.createBrowserContext();
+  const automatic=await autosaveContext.newPage();
+  await observe(automatic);
+  await login(automatic,A,false);
+  const autoFiles=await files(automatic);
+  await file(automatic,autoFiles,'list',{path:'Pictures'});
+  await file(automatic,autoFiles,'open',{path:untitledPath});
+  const autoId=await readyPhoto(automatic);
+  const toggle=photoWindow(autoId)+' .webos-photocraft button[aria-pressed]';
+  assert.equal(await automatic.$eval(toggle,node=>node.getAttribute('aria-pressed')),'false');
+  const writes=[];
+  automatic.on('request',request=>{
+    if (request.url()===origin+'/gateway/upload' && request.method()==='POST') writes.push(performance.now());
+  });
+  const boundRevision=()=>automatic.evaluate(id=>[...window.desktopLab.surfaces.values()].flatMap(surface=>surface.windows)
+    .find(win=>String(win.id)===id)?.launchContext?.sha256,autoId);
+  async function nextAutomaticRevision(base, timeout) {
+    await automatic.waitForFunction(({id,base})=>[...window.desktopLab.surfaces.values()].some(desktop=>
+      desktop.windows.some(win=>String(win.id)===id && win.launchContext?.sha256 && win.launchContext.sha256!==base)),
+    {timeout},{id:autoId,base});
+    return boundRevision();
+  }
+  const originalAuto=await boundRevision();
+  await automatic.click(toggle);
+  assert.equal(await automatic.$eval(toggle,node=>node.getAttribute('aria-pressed')),'true');
+  const firstEdit=performance.now();
+  await shortcut(automatic,autoId,'n',['Control','Shift']);
+  await automatic.keyboard.press('Enter');
+  const firstAuto=await nextAutomaticRevision(originalAuto,45_000);
+  assert.equal(writes.length,1);
+  assert(writes[0]-firstEdit>=9_800);
+  assert.equal(await download(automatic,autoFiles,untitledPath,'first-automatic.pcraft'),firstAuto);
+  assert.equal(layers('first-automatic.pcraft'),blankLayers+3);
+  pass('Named PhotoCraft AutoSave is opt-in, waits after editing and publishes the confirmed native project');
+
+  await shortcut(automatic,autoId,'n',['Control','Shift']);
+  await automatic.keyboard.press('Enter');
+  const secondAuto=await nextAutomaticRevision(firstAuto,85_000);
+  assert.equal(writes.length,2);
+  assert(writes[1]-writes[0]>=59_800);
+  assert.equal(await download(automatic,autoFiles,untitledPath,'second-automatic.pcraft'),secondAuto);
+  assert.equal(layers('second-automatic.pcraft'),blankLayers+4);
+  pass('PhotoCraft spaces successive automatic account writes and preserves each later native layer');
   assert.deepEqual(external,[]);
   assert.deepEqual(errors,[]);
   assert([...assets].some(url=>url.endsWith('.mjs')));

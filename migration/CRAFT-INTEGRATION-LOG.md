@@ -685,7 +685,26 @@ the draft opens as an unsaved copy. Draft captures remain local even
 while an account write result is uncertain.
 
 Thirteen JavaScript checks and the locked WASM compiler check passed.
-The native test runner reached the laptop memory reserve while a browser
-regression suite was active. The native recovery suite and the signed
-browser scenarios remain pending. The development build remains disabled
-in release profiles.
+The clean R730 package passed all 17 signed Chromium checks. The scenarios
+verify untitled layer recovery after refresh, saving a recovered copy when
+the server's revision changed, and restoring pending editable Type content
+until explicit commit. All 87 affected Desktop and Office checks passed.
+The focused native run hit the laptop memory reserve twice and is running
+on R730. The development build remains disabled in release profiles.
+
+### PhotoCraft account AutoSave
+
+Development fork `7683a61e57dc` captures only the named native revision
+requested by the account host. A pending Type edit, tool gesture, save
+or close makes the document ineligible. The native request uses the same
+encoder, conditional Storage write and save acknowledgement as manual
+Save. It does not name an untitled document or add an action-recording step.
+
+The PhotoCraft control starts off and remembers opt-in for the account
+on this browser. The host uses the existing Runtime scheduler for the
+10-second debounce, 60-second spacing and verified no-write retry
+backoff. Conflicts and uncertainty pause automatic writes. Browser
+drafts use their independent journal. All 28 PhotoCraft adapter and
+shared Runtime JavaScript checks and the locked WASM compiler check
+passed. The linked build, native AutoSave test and signed browser timing
+checks remain pending.

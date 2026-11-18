@@ -128,3 +128,19 @@ test('A PhotoCraft recovery snapshot must match the exact doc and native revisio
   receive('recovery-captured',{...target,requestId,bytes:Uint8Array.of(5,6).buffer});
   assert.deepEqual(new Uint8Array(await (await result).arrayBuffer()),Uint8Array.of(5,6));
 });
+
+test('A native AutoSave can return bytes only for the requested document, revision and path', async t => {
+  const {native, receive, sent} = fixture(t);
+  receive('ready');
+  await native.ready;
+  const target = {documentId:'9',revision:'4',path:'Pictures/Edit.pcraft'};
+  const attempt = native.captureAutosave(target);
+  const {requestId} = sent[0];
+  receive('autosave-result',{...target,requestId,path:'Pictures/Other.pcraft',outcome:'captured',bytes:Uint8Array.of(1).buffer});
+  receive('autosave-result',{...target,requestId,outcome:'busy'});
+  assert.equal(await attempt,null);
+
+  const capture = native.captureAutosave(target);
+  receive('autosave-result',{...target,requestId:sent[1].requestId,outcome:'captured',ticket:'15',bytes:Uint8Array.of(7).buffer});
+  assert.deepEqual(new Uint8Array((await capture).bytes),Uint8Array.of(7));
+});
