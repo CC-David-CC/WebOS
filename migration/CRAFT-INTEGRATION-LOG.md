@@ -873,3 +873,19 @@ The previous Office release at
 was reverified as the rollback. The host backup is
 `/var/backups/webos-photocraft-ksu-20261118-01`. Private activation and browser
 receipts are in `photocraft-ksu-20261118-01/` under the existing evidence root.
+
+### First FigCraft trial in the classic Desktop
+
+The local qualification profile assembled staged tree `67be1b2060c1` and the
+five live Craft engines. Chromium opened FigCraft from Graphics, drew a shape,
+saved it to account Storage and reopened the same server revision through
+Files after signing into a fresh browser. The first test attempt needed to
+list Documents before issuing the Files Open command. The complete four-check
+test then passed. The profile also passed 15 classic Desktop checks and all
+28 existing PhotoCraft browser checks.
+
+The full suite under nightly stopped on unchanged Clippy diagnostics. The
+stable 1.99.1 rerun passed workspace Clippy and reached the native test stage.
+The staged project still needs full source promotion and browser qualification
+for Save As, recovery, close and scoped operations. This trial profile carries
+`developmentOnly` and the release packager rejected it without an archive.
