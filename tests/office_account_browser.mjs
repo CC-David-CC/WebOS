@@ -53,6 +53,32 @@ async function launch(page, group, name) {
   await button(page, name, '.menu-pane ');
 }
 
+async function verifyMenu(page) {
+  const profile = await (await fetch(origin + '/viewer-profile.json')).json();
+  for (const [id] of applications.filter(([id]) => !only || only === id)) assert(profile.apps.includes(id));
+  const groups = {
+    Office: ['WordCraft', 'PdfCraft', 'GridCraft', 'DeckCraft', 'DesignCraft',
+      'Document Editor (Tiptap)', 'Spreadsheet (Jspreadsheet CE + SheetJS CE)', 'PDF Viewer (PDF.js)'],
+    Graphics: ['PhotoCraft', 'VectorCraft', 'FigCraft', 'LightCraft'],
+    'Animation & Video': ['AniCraft', 'FilmCraft', 'EffectCraft'],
+    'Audio Tools': ['SoundCraft', 'Audio Editor (AudioMass)'],
+    CAD: ['CADCraft', 'SolidCraft'],
+    'Materials & Textures': ['TextureCraft', 'MaterialCraft'],
+  };
+  for (const [group, names] of Object.entries(groups)) {
+    await page.click('.app-menu-button');
+    await button(page, group, '.menu-pane ');
+    const rows = await page.$$eval('.menu-pane[data-depth="1"] button', nodes =>
+      nodes.map(node => ({name: node.getAttribute('aria-label'), disabled: node.disabled})));
+    for (const name of names) {
+      const matches = rows.filter(row => row.name === name);
+      assert.equal(matches.length, 1, name);
+      assert.equal(matches[0].disabled, !profile.apps.includes(name.toLowerCase()), name);
+    }
+    await page.click('.app-menu-button');
+  }
+}
+
 async function windows(page, app) {
   return page.$$eval('.window:has(.webos-' + app + ')', nodes => nodes.map(node => node.dataset.window));
 }
@@ -158,7 +184,7 @@ async function author(page, id, app) {
     await run('cell.set', {cell: 'A1', input: '7'});
     await run('home.bold', {range: 'A1', on: true});
     await run('home.insertSheet', {name: 'Totals'});
-    await run('cell.set', {cell: 'B2', input: '=Inputs!A1*3'});
+    await run('cell.set', {sheet: 'Totals', cell: 'B2', input: '=Inputs!A1*3'});
     return;
   }
   await run('design.theme', {name: 'Ember'});
@@ -489,6 +515,8 @@ try {
   page = await browser.newPage();
   await observe(page);
   await login(page, true);
+  await verifyMenu(page);
+  checks.push('all 17 Craft menu entries and the disabled legacy Office apps match the selected profile');
   const filesId = await files(page);
 
   for (const [app, name, ext] of applications.filter(([id]) => !only || only === id)) {
@@ -515,7 +543,9 @@ try {
       checks.push(app + ' presenter popup and audience show enter and close together');
     }
 
-    await native(page, id, app, 'file.open');
+    // GridCraft separates the native Open dialog from the host operation
+    // that adopts canonical account bytes into a fresh workbook view.
+    await native(page, id, app, app === 'gridcraft' ? 'ui.openFileDialog' : 'file.open');
     const picker = '.webos-' + app + '-dialog[data-kind="open"]';
     await page.waitForSelector(picker + ' button[data-path="' + resource + '"]', options);
     await page.click(picker + ' button[data-path="' + resource + '"]');
