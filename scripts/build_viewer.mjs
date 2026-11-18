@@ -12,6 +12,7 @@ const graphicsEngines = [
   {id:'vectorcraft', name:'VectorCraft', extension:'.vectorcraft', forceWebGL:true},
   {id:'figcraft', name:'FigCraft', extension:'.figcraft'},
   {id:'anicraft', name:'AniCraft', extension:'.anicraft', deviceImport:true},
+  {id:'lightcraft', name:'LightCraft', extension:'.lightcraft'},
 ].flatMap(engine => {
   const release = flags['--'+engine.id+'-site'];
   const review = flags['--test-'+engine.id+'-site'];
@@ -20,7 +21,7 @@ const graphicsEngines = [
 });
 const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site',
   '--photocraft-site','--test-photocraft-site',
-  ...['vectorcraft','figcraft','anicraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
+  ...['vectorcraft','figcraft','anicraft','lightcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
   throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
 }
@@ -142,6 +143,7 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
   });
   const contents=id==='help'?"export {mount} from './apps/help/apps/system/help/index.mjs';":
     id==='photocraft'?"export {mount} from './assembly/viewer/photocraft-app.mjs';":
+    id==='lightcraft'?"export {mount} from './assembly/viewer/lightcraft-app.mjs';":
     graphics?`import {mountCraftAccount} from './assembly/viewer/craft-account-app.mjs';import {createCraftRecovery} from './assembly/viewer/craft-account-recovery.mjs';const project=${graphicsProject};const recovery=createCraftRecovery(project);export function mount(host){return mountCraftAccount(host,{...project,recovery,reviewWindowClose:true});}`:
     `import {mount as appMount${delegation}} from '@webos/${id}';import {mountAccountApp} from './assembly/viewer/account-app.mjs';${recovery}export function mount(host){return mountAccountApp(appMount,host,${JSON.stringify(id)},officeRecovery${delegation});}`;
   await emitBuild({stdin:{contents,resolveDir:root,sourcefile:'<viewer-'+id+'>',loader:'js'},outdir:path.join(output,'.virtual-'+id),outExtension:{'.js':'.mjs'}},async files=>{
