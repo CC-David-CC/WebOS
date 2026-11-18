@@ -22,7 +22,7 @@ function fileFromDevice(file) {
 
 /** Mount a native layer editor in its own classic Desktop account window. */
 export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false,
-  setupOriginals, commands = scopedCommands}) {
+  setupOriginals, commands = scopedCommands, accountControls = false}) {
   const projectPath = path => craftProjectPath(path, extension);
   const element = document.createElement('div');
   element.className = `window-content webos-${app}`;
@@ -39,6 +39,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
   autoToggle.textContent = 'AutoSave';
   autoToggle.hidden = true;
   let openLocal;
+  const controls = [];
   const frame = document.createElement('iframe');
   frame.title = `${name} editor`;
   frame.style.flex = '1';
@@ -114,6 +115,32 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
       if (file) launchLocal(file);
     });
   } else appBar.append(status, autoToggle);
+
+  if (accountControls) {
+    for (const label of ['Open','Save','Save As']) {
+      const control = document.createElement('button');
+      control.type = 'button';
+      control.textContent = label;
+      control.hidden = true;
+      control.addEventListener('click', async () => {
+        if (!loaded || !valid() || dialog) return;
+        const controller = new AbortController();
+        dialog = controller;
+        for (const button of controls) button.disabled = true;
+        try {
+          if (label === 'Open') await chooseProject({path:null},controller.signal);
+          else await accountSession.saveManually({saveAs:label === 'Save As',signal:controller.signal});
+        } catch (error) {
+          if (valid()) message(error.message);
+        } finally {
+          dialog = null;
+          for (const button of controls) button.disabled = false;
+        }
+      });
+      controls.push(control);
+      appBar.insertBefore(control,autoToggle);
+    }
+  }
 
   function setAutosave(value) {
     autoEnabled = value;
@@ -294,8 +321,8 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     accountSession = createCraftSession({
       app, appName:name, native, storage, drafts, autosave, frame, signal:abort.signal, valid, loaded:() => loaded,
       documentName:() => host.w.title || `The ${name} project`,
-      async choosePath() {
-        const result = await chooseDestination('Untitled' + extension,abort.signal);
+      async choosePath(suggested = 'Untitled' + extension, signal = abort.signal) {
+        const result = await chooseDestination(suggested,signal);
         return result.outcome === 'destination' ? result.path : null;
       },
       write:save,
@@ -340,6 +367,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     try { value = document.defaultView.localStorage?.getItem(autosaveKey) === 'on'; } catch { /* Use this window's default. */ }
     setAutosave(value);
     autoToggle.hidden = false;
+    for (const control of controls) control.hidden = false;
     if (openLocal) openLocal.hidden = false;
     message(recoveryMessage);
     drafts.schedule();
@@ -406,6 +434,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
       },
     }),
     async requestClose({scope = 'window'} = {}) {
+      if (accountControls && dialog) return false;
       if (!loaded && scope === 'window') {
         windowCloseApproved = true;
         return true;

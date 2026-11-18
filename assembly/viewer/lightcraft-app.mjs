@@ -14,7 +14,7 @@ const commands = Object.freeze({
 
 export function mount(host) {
   return mountCraftAccount(host, {
-    ...project, recovery:lightRecovery, reviewWindowClose:true, commands,
+    ...project, recovery:lightRecovery, reviewWindowClose:true, accountControls:true, commands,
     async setupOriginals({context, origin, valid, signal}) {
       const scope = await lightCraftAccountScope(origin, context.owner);
       return {scope, store:createLightCraftOriginalStore({files:context.files,valid,signal})};
