@@ -421,3 +421,18 @@ browser journal before reload and exposed its loss during the native window
 transition. A separate test reproduced a negative formula-bar width while
 minimized. The next native CI run covers assignment to the recovered window and
 the narrow viewport case. Both require a fresh exact build and browser test.
+
+GridCraft `ad0ebfe2` now passes the pending-formula and minimize checks on
+the exact WASM package. The browser verified the stored A1 formula, found it
+still unfinished after reload, and computed 42 only after explicit entry.
+The signed session also restored both Office files to their original workspaces.
+The broader suite caught a missing explanation when the server accepted a
+write and the browser lost its response. GridCraft's adapter fix retains the
+pending write, pauses automatic saves and tells the user to verify the file.
+
+DeckCraft `f8353c0d` keeps unfinished formatted notes in their own recovery
+record. The actual notes editor can resume the draft after refresh while the
+slide model still holds its previous notes. Native CI and the focused browser
+test pass. The first build reused identical WASM bytes after the native change.
+Refreshing tracked-file timestamps in the isolated snapshot forced the
+intended rebuild. Its new digest and actual recovery behavior were verified.
