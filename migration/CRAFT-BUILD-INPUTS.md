@@ -186,6 +186,14 @@ browser qualification with the pinned shared assets. The private receipt and
 compiler log are under `anicraft-baseline-wasm-check/`. Its temporary target
 was removed after the check.
 
+The AniCraft integration branch also passes the locked WASM check with the
+account host. Its first linked browser build uses Inter Regular and JetBrains
+Mono Regular from the selected PhotoCraft commit `403994fc5f41`, with their
+recorded OFL files. The upstream Craft Fonts pin lacks both requested filenames.
+The selected Craft i18n checkout has no AniCraft catalog, so this review build
+uses English. Five direct Chromium protocol checks pass. Full Desktop and
+account Storage qualification is still pending.
+
 The November 18 recheck at parent `2653ac7d7eb7` verified 36,575 tracked
 paths in the 17 Craft checkouts and repeated the locked offline Linux and
 WASM dependency fetches. All 124 component trees match their local bare

@@ -954,3 +954,29 @@ The immediate rollback is PhotoCraft release
 `e0bedfb2a2e0fe14a8903d151d505874ca9e9fa5ed9f4c263cf462f509eb537b`.
 The host backup is `/var/backups/webos-figcraft-ksu-20261118-01`. Activation
 and browser receipts are in the private `figcraft-ksu-20261118-01/` directory.
+
+### VectorCraft release on ksu.codes
+
+Release `c4acd1ab2d28957c05d2b8e34eb1beca9f60df36bda9a61ede9e48f46b323938`
+went live on 2026-11-18 UTC. Packaged parent
+`20cced255e20f5e7df1ea194bd5477b712ad7b18` selects VectorCraft
+`09ee69a08736dfacc30c45c9b5be05ebddd199a4`, whose tree is
+`9c60f8632eb928bdd22f01df2001391db6ed7116`. All 22,139 enabled tests across 86
+native executable suites passed, including 41 exact-binary cases run with
+laptop loopback. The suite retained 20 upstream ignores. All 16 continuation
+stages passed. R730 built the direct package from the selected source.
+
+All 42 exact-package browser checks passed, including the VectorCraft account
+round trip, recovery, Save As, conflict and lost response, signed scoped
+layer rename with native Undo, and the retained FigCraft and default Desktop
+checks. All ten previously enabled app bundles matched the prior release.
+The default hosted profile keeps the signed agent bridge disabled.
+
+Hosted verification matched 543 files and confirmed backend and beta
+continuity. Chromium compiled the exact WASM served as `application/wasm`
+with zstd encoding, then received VectorCraft's native ready packet without
+browser errors. The immediate rollback is FigCraft release
+`6935ffc4fcb8b7d130e05033c59fa4bfd3fd742be9caf4e21fcfa59b0a521c4a`.
+The host backup is `/var/backups/webos-vectorcraft-ksu-20261118-01`.
+The archive, test and activation receipts are in the private
+`vectorcraft-ksu-20261118-01/` record and associated browser run directories.
