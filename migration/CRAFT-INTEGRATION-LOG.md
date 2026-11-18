@@ -557,7 +557,14 @@ message correlation and the composed mount, with 33 shared Runtime regressions
 also passing. The composed JavaScript test uses a fixture frame. Actual browser
 execution and the File menu's account Open and Save As routes remain open.
 
-On R730, the isolated input bundle gained 105 registry archives verified
-against Cargo.lock and 104 sparse index entries. The 22 MB transfer covers
-missing entries in the laptop's filtered WASM dependency graph. The builder
-still needs an exact offline Cargo preflight and linked package.
+All 19 native save-identity tests pass, including the two new startup routes
+and two account-save cases. The tested native fork is `f26762c36b01` on
+`webos/photocraft-document-host`. Its clean R730 snapshot matches the local
+Git tree and passes locked offline WASM dependency resolution.
+
+Trunk also runs workspace metadata commands that request archives outside the
+filtered WASM graph. The first packaging attempts stopped at the missing
+locked `alloca` archive. The builder now has all 55 remaining locked
+workspace archives, verified against Cargo.lock, along with the 105 archives
+and sparse indexes needed by the WASM preflight. Linked package and browser
+qualification remain open.
