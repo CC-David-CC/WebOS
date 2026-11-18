@@ -211,3 +211,28 @@ revisions, ZIP serialization, byte Open and PDF export.
    `b076417b5880`. Keep the signed Chromium workflow on the laptop. If the R730
    runner blocks loopback, run the affected exact binaries in the laptop's
    loopback runner and record both results.
+
+## SoundCraft preparation
+
+Start from `apps/soundcraft/` at `2688ccac8859` on
+`webos/soundcraft-account-session`. The current browser shell delivers
+`.scraftz` bundles through a download callback and marks the session clean
+immediately. The branch uses the existing portable bundle serializer,
+including its embedded audio, and adopts a binding after Storage confirms the
+captured session. Preserve edits made while the write is pending.
+
+Connect the account channel to native New, Open, Save and Save As, and use
+the native bundle for recovery. `.scraft` projects can reference audio beside
+the session file. Test them with explicit media selection and missing-file
+feedback before adding their default association.
+
+Qualify a two-track session with a short synthetic WAV and a native edit.
+After fresh-browser reopen, verify audio samples, timing and an exported WAV.
+Start and stop playback with a browser user gesture. Verify that closing or
+signing out retires that view's player and preserves independent views.
+
+The pinned dependencies and locked offline WASM compile checks passed on
+the R730 for SoundCraft, FilmCraft and EffectCraft. Each app has its own
+`Cargo.lock` and pins several revisions of the on-disk shared
+[Craft libraries](../libraries/craft-libs/). Keep those revisions during
+baseline testing, including where two apps use different media crate pins.
