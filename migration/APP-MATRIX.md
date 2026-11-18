@@ -1,6 +1,6 @@
 # WebOS source and application matrix
 
-All locations are relative to `/path/to/webos/`. Each row is one independent Git repository selected by the parent. **124 source owners: 85 app repositories and 39 supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template; it is not 85 finished apps.
+All locations are relative to `/path/to/webos/`. Each row is one independent Git repository selected by the parent. **125 source owners across 86 app repositories and 39 supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template.
 
 The original Desktop/Workspace viewer is `platform/desktop/active-system/`. All 92 files matched the captured original at source correction. Later authorized test-site integration changes bootstrap/account/app wiring; CSS, reference data and artwork remain unchanged. The unsolicited replacement is removed. See deploy/VIEWER-TEST.md for the scoped running composition; this inventory is not an all-app deployment claim.
 
@@ -36,7 +36,7 @@ Every row has source on disk. The state distinguishes what remains before produc
 | WebOS desktop and essential apps | 6 |
 | Office and document apps | 7 |
 | Creative and media apps | 18 |
-| Engineering and developer apps | 17 |
+| Engineering and developer apps | 18 |
 | Optional execution environments | 3 |
 | Shared browser tools and engines | 19 |
 | Shared native and guest engines | 5 |
@@ -123,6 +123,7 @@ Every row has source on disk. The state distinguishes what remains before produc
 | P3 / X | pcb-design — Node PCB construction/rendering experiment | [apps/pcb-design/](../apps/pcb-design/) | Node prototype only; browser app and complete dependency notices absent | [package.json](../apps/pcb-design/package.json)<br>[README.md](../apps/pcb-design/README.md)<br>Recipe: prototype | Node research prototype only. Browser packaging and an exact transitive dependency license remain unresolved. |
 | P3 / S | pico-simulator — RP2040 firmware simulation | [apps/pico-simulator/](../apps/pico-simulator/) | Account firmware files; browser worker; simulated hardware/serial | [index.mjs](../apps/pico-simulator/index.mjs)<br>Recipe: js | Not build-qualified in this source-only pass. |
 | P3 / S | replicad — Programmatic CAD editor | [apps/replicad/](../apps/replicad/) | Account source/model files; app-owned worker and independent kernel | [index.mjs](../apps/replicad/index.mjs)<br>[model.mjs](../apps/replicad/model.mjs)<br>Recipe: js | Not build-qualified in this source-only pass. |
+| P3 / B | sketchcraft — SketchCraft push/pull 3D modeling | [apps/sketchcraft/](../apps/sketchcraft/) | React and three.js interface; Rust modeling commands; native Tauri shell and local browser bridge | [app/index.html](../apps/sketchcraft/app/index.html)<br>[Cargo.toml](../apps/sketchcraft/Cargo.toml)<br>Recipe: native | Queued after the initial Craft apps. WebOS hosting, account storage, recovery and browser qualification remain. |
 | P3 / S | solidcraft — Tangency Labs community solid modeling app | [apps/solidcraft/](../apps/solidcraft/) | Browser WASM; independent upstream fork; host/file integration to qualify | [apps/solidcraft-web/Cargo.toml](../apps/solidcraft/apps/solidcraft-web/Cargo.toml)<br>[Cargo.toml](../apps/solidcraft/Cargo.toml)<br>Recipe: craft-web | Not build-qualified in this source-only pass. |
 
 ## Optional execution environments
@@ -285,6 +286,6 @@ The initial source pass checked metadata for 17 Craft workspaces, which was not 
 
 [Declared asset coverage](ASSET-COVERAGE.md) accounts for all Notebook paths and identifies 130 missing generated paths in the historical ACAD-host build. Notebook and CAD still need runtime and rebuild qualification. See the [Craft build input audit](CRAFT-BUILD-INPUTS.md) for pinned dependencies and assets for the 17 Craft apps.
 
-The parent also retains historical cross-system tests, deployment definitions and operator sources under `tests/legacy-*`, `deploy/legacy-*` and `migration/legacy-*`; they are not additional application repositories or an instruction to execute them. Private original recovery and unresolved historical records remain outside the source tree. This chart covers the 124 attached source owners, not every old recovery file.
+The parent also retains historical cross-system tests, deployment definitions and operator sources under `tests/legacy-*`, `deploy/legacy-*` and `migration/legacy-*`; they are not additional application repositories or an instruction to execute them. Private original recovery and unresolved historical records remain outside the source tree. This chart covers the 125 attached source owners, not every old recovery file.
 
 Refresh from reviewed roles and current source paths with `PYTHONDONTWRITEBYTECODE=1 python3 scripts/report_components.py --write`. Exact selected revisions remain in the parent Git links. [Machine-readable roles](COMPONENT-ROLES.json), [full source catalog](SOURCE-CATALOG.json) and [CSV matrix](APP-MATRIX.csv) accompany this chart.

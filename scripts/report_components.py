@@ -48,7 +48,7 @@ def existing_entries(component):
     # source entries and must not be linked as if source were missing/retained.
     entries = component['sourceEntries'] + [entry for entry in component['packageEntrypoints'] if (folder / entry).is_file()]
     entries = OWNED_ENTRIES.get(component['id'], entries)
-    if component['kind'] == 'upstream-craft-app':
+    if component['kind'] == 'upstream-craft-app' and not entries:
         browser = folder / 'apps' / (component['id'] + '-web') / 'Cargo.toml'
         if browser.is_file():
             entries = [str(browser.relative_to(folder)), 'Cargo.toml']
@@ -93,8 +93,9 @@ def report():
 
 def markdown(reviewed, rows):
     counts = Counter(row['category'] for row in rows)
+    apps = sum(row['path'].startswith('apps/') for row in rows)
     lines = ['# WebOS source and application matrix', '',
-             'All locations are relative to `/path/to/webos/`. Each row is one independent Git repository selected by the parent. **124 source owners: 85 app repositories and 39 supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template; it is not 85 finished apps.', '',
+             f'All locations are relative to `/path/to/webos/`. Each row is one independent Git repository selected by the parent. **{len(rows)} source owners across {apps} app repositories and {len(rows) - apps} supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template.', '',
              'The original Desktop/Workspace viewer is `platform/desktop/active-system/`. All 92 files matched the captured original at source correction. Later authorized test-site integration changes bootstrap/account/app wiring; CSS, reference data and artwork remain unchanged. The unsolicited replacement is removed. See deploy/VIEWER-TEST.md for the scoped running composition; this inventory is not an all-app deployment claim.', '',
              'Priority measures contribution to a functional personal WebOS, not popularity. These are reviewed planning priorities, not a dependency resolver. A specialized app still needs its own lower-priority engine. Categories describe ownership and purpose; the interfaces column separately describes human use, browser work, server authority and cross-app/file interaction.', '',
              '| Priority | Meaning |', '|---|---|']
@@ -131,7 +132,7 @@ def markdown(reviewed, rows):
               'The retained JS builder accepts an explicit JSON configuration with `source` set to the assembly root, selected `apps`, explicit `entries` relative to that root, and an external `output`. Its inherited defaults and `deploy/legacy-operations/build-public-apps.py` assume the former grouped layout and must not be used unchanged. Per-component pinned packages, prepare scripts, declared assets, workers, notices and hash-checked patches remain required. This is a located recipe, not a tested all-app production command.', '',
               'The 17 Craft Cargo workspaces previously passed metadata inspection only; that is not browser build proof. The selected WordCraft and DeckCraft branches have historical build/operation evidence, but the rejected desktop’s acceptance does not qualify the original viewer. Read [Craft build inputs](CRAFT-BUILD-INPUTS.md).', '',
               'The locked local input check passed for 6,230 files / 1,115,334,296 bytes. A reference bundle is not source reproducibility. [Declared asset coverage](ASSET-COVERAGE.md) identifies 17 missing Notebook wheel paths and 130 historical ACAD-host generated paths. Neither requires copying obsolete running-site data to claim source organization. Their future production recipes still need explicit inputs/reconstruction.', '',
-              'The parent also retains historical cross-system tests, deployment definitions and operator sources under `tests/legacy-*`, `deploy/legacy-*` and `migration/legacy-*`; they are not additional application repositories or an instruction to execute them. Private original recovery and unresolved historical records remain outside the source tree. This chart covers the 124 attached source owners, not every old recovery file.', '',
+              'The parent also retains historical cross-system tests, deployment definitions and operator sources under `tests/legacy-*`, `deploy/legacy-*` and `migration/legacy-*`. Private original recovery and unresolved historical records remain outside the source tree.', '',
               'Refresh from reviewed roles and current source paths with `PYTHONDONTWRITEBYTECODE=1 python3 scripts/report_components.py --write`. Exact selected revisions remain in the parent Git links. [Machine-readable roles](COMPONENT-ROLES.json), [full source catalog](SOURCE-CATALOG.json) and [CSV matrix](APP-MATRIX.csv) accompany this chart.', '']
     return '\n'.join(lines)
 

@@ -370,3 +370,6 @@
 [submodule "engine-speech"]
 	path = engines/speech
 	url = ../engine-speech.git
+[submodule "sketchcraft"]
+	path = apps/sketchcraft
+	url = ../sketchcraft.git

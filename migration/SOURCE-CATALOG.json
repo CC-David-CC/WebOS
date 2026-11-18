@@ -2035,6 +2035,36 @@
       "scope": "Existing source locations and declared recipes, not functional or build qualification."
     },
     {
+      "id": "sketchcraft",
+      "path": "apps/sketchcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [
+        "app/index.html",
+        "Cargo.toml"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".claude",
+        ".github",
+        "app",
+        "brand",
+        "core",
+        "docs",
+        "examples",
+        "tools"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
       "id": "sky-courier",
       "path": "apps/sky-courier",
       "group": "apps",

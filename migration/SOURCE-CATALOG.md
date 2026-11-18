@@ -69,6 +69,7 @@ Source locations only. Component versions are selected by the parent Git links. 
 | replicad | `apps/replicad/` | `index.mjs`, `model.mjs` |
 | rhythm-garden | `apps/rhythm-garden/` | `index.mjs` |
 | rule-detective (planned core) | `apps/rule-detective/` | `model.mjs` |
+| sketchcraft | `apps/sketchcraft/` | `app/index.html`, `Cargo.toml` |
 | sky-courier | `apps/sky-courier/` | `index.mjs` |
 | sling-targets | `apps/sling-targets/` | `index.mjs` |
 | snake-garden | `apps/snake-garden/` | `index.mjs` |
