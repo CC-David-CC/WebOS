@@ -1,7 +1,7 @@
-> **Current product scope — 2026-11-18 UTC:** integrate all17 selected Craft
-> apps. WordCraft/PdfCraft are live; GridCraft/DeckCraft are in qualification.
-> Other apps are queued integrations, including apps with upstream workflow gaps.
-> Represent all17 in the menu; disabled entries accurately indicate unqualified
+> **Current product scope, 2026-11-18 UTC.** Integrate all 17 selected Craft apps.
+> The [integration matrix](CRAFT-INTEGRATION-MATRIX.md) tracks live and queued
+> apps, including apps with upstream workflow gaps.
+> Represent all 17 in the menu. Disabled entries indicate unqualified
 > support. Preserve legacy apps as disabled entries until the user decides.
 > Readiness comparisons do not authorize removing apps or replacing their source.
 
