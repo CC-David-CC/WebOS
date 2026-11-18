@@ -8,21 +8,20 @@
 > legacy apps stay grayed out. Keep their source. No legacy-editor retirement,
 > replacement decision or new quick-preview project is authorized by this scope.
 
-> **Local Office release candidate**
+> **GridCraft and DeckCraft rollout**
 >
-> The user authorized parallel app branches and approved browser-first recovery
-> plus debounced account AutoSave. Work remains split between the app branches
-> and the shared Runtime/Desktop composition. The combined candidate for
-> GridCraft `fd80ce89` and DeckCraft `f8353c0d` passed all 87 checks across
-> five browser suites. The verified local archive and its build provenance
-> are recorded in the [integration log](migration/CRAFT-INTEGRATION-LOG.md#local-office-release-candidate).
-> Keep the candidate local pending separate deployment approval. GridCraft
-> and DeckCraft signed document commands pass in the separate opt-in loopback
-> profile. Delegated file operations remain open.
+> The user approved deployment to ksu.codes for each app as it qualifies.
+> GridCraft `fd80ce89` and DeckCraft `f8353c0d` are live after passing all 87
+> checks in the signed local release suite, verification of all 444 hosted
+> files and hosted Chromium checks of both modules and their WASM. The
+> release and immediate rollback are recorded in the
+> [integration log](migration/CRAFT-INTEGRATION-LOG.md#office-release-on-ksucodes).
+> Signed delegated document commands use a separate opt-in loopback profile.
+> Delegated file operations remain open.
 > Normal automatic writes wait 10 seconds after committed typing, at least 60
 > seconds between confirmed writes; known no-write transient retries back off
 > to 15 minutes. Conflict/uncertain outcomes pause. Manual Save remains immediate.
-> Do not restart organization, overwrite unrelated WIP or deploy from this note.
+> Continue with the selected source and exact release qualification.
 > Resume from the private checkpoint at
 > `/home/dflanag3/Projects/.webos-migration/craft-office-20261117T234813Z-8a43bc/checkpoint.json`.
 
@@ -32,16 +31,16 @@ Source organization is complete. We are integrating apps into ksu.codes from the
 existing independent repositories in this project. All17 selected Craft sources
 already exist under `apps/`; do not copy or re-extract them.
 
-Current release (2026-11-17 UTC):
-`1c4623b8403bd44b534722bf3db92f6c3bbd96d8e40add396623cb71c44c97db`.
+Current release (2026-11-18 UTC):
+`5e0d0b3bbb69b09814deb79daac988261578003174f89b4c58a916cd420c0566`.
 The intended classic Desktop hosts Calculator, Files, CodeMirror6 Text,
-WordCraft, PdfCraft and Help. PdfCraft's untouched blank closes quietly and can
+WordCraft, PdfCraft, GridCraft, DeckCraft and Help. PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.
 
 PdfCraft: `a5b512846f59c6e5306821cdffdb448e54695ccd`.
 WordCraft remains `edeb4a090cd301cd7d4405e20af795007b37b69b`.
-Packaged parent: `c0f00cba25f85e055cb8c45a333a57dd2340609b`.
+Packaged parent: `2d08b293754f36e38b4366865b4ff5d6d64a8f4e`.
 [PdfCraft qualification/rollback/limits](deploy/PDFCRAFT.md): all six native gates,
 2,989 affected UI test executions (five existing ignored),27 actual-browser
 assertions each locally and hosted,10 local/11 hosted PDF content checks and
@@ -50,9 +49,10 @@ issuer and service PIDs are unchanged. No recovery loss was demonstrated: a
 later conflict test had overwritten its own evidence filename; artifacts are now
 separated. Native content checks verify both recovered and rescued typing.
 
-Known next Desktop issue: clean PDF windows and exact placement are absent from
-saved-layout restoration; dirty drafts are found as recovery views. This release
-leaves Desktop unchanged and records that scoped follow-up explicitly.
+The earlier PdfCraft release found that clean PDF windows and their exact
+placement were absent from saved-layout restoration. The Office release
+qualifies restoration for GridCraft and DeckCraft. PDF-specific layout
+restoration still needs its own check.
 
 The [Craft integration matrix](migration/CRAFT-INTEGRATION-MATRIX.md) lists
 the 17 source locations, native workflows and current qualification.
@@ -62,7 +62,7 @@ the active work. The [build inputs](migration/CRAFT-BUILD-INPUTS.md) identify
 the verified dependency cache, shared input revisions and remaining checks.
 
 Last deployed release checkpoint:
-`/home/dflanag3/Projects/.webos-migration/pdfcraft-blank-chrome-20261117-iutgpol3/checkpoint.json`.
+`/home/dflanag3/Projects/.webos-migration/craft-office-20261117T234813Z-8a43bc/checkpoint.json`.
 Temporary engine/candidate/browser/transfer output and the superseded archive
 were removed. One current compiler cache, the current release archive, required
 pinned inputs/source and small private evidence remain. Preserve unrelated WIP
