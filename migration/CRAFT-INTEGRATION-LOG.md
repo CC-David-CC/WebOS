@@ -333,6 +333,17 @@ implementation/qualification, not a new hosted release. ksu.codes remains on
   `5e09bf248c15b025f33465ca319c0eec914e6b57d4f4e32998896b9d18d71f42`.
   The archive and the prior six-app release both passed read-only inventory,
   payload budget and per-file SHA-256 checks. The candidate was prepared locally.
+- GridCraft passed all ten native gates with 3,909 tests and doctests passing
+  and four existing ignored. The laptop supplied the loopback sockets required
+  by the native test suite. The reviewed tree is committed as `7f6e3ff709f0`
+  and available from its local bare origin. The parent workspace lock passed
+  an offline install including both Office app links.
+- The Storage client now retains the HTTP `Retry-After` delay. Both Office
+  host adapters use Runtime's shared rule for retrying verified no-write
+  failures. Toggle changes retain the delay. The WebOS scheduler, Storage
+  and shared consumer tests pass. The older DeckCraft candidate reproduced
+  the browser regression by sending the retry early. The combined candidate
+  must pass that same browser assertion with the updated code.
 - Viewer composition loads recovery code for the selected office components.
   With GridCraft and DeckCraft disabled, the assembled candidate passed 60
   browser checks against a disposable Accounts and Storage service. These cover

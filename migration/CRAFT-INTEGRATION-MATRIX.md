@@ -2,9 +2,8 @@
 
 All 17 selected source repositories are present. The pinned Cargo graphs for
 all 17 passed `cargo fetch --locked --offline --target wasm32-unknown-unknown`
-after populating the existing laptop SDK. GridCraft's displayed commit is its
-integration worktree base. DeckCraft's commit identifies its reviewed local
-integration source.
+after populating the existing laptop SDK. GridCraft and DeckCraft show the
+reviewed local component commits selected in the parent.
 
 The listed workflow for a pending app is its first acceptance target. Each app
 must prove native content fidelity, account saves, recovery and fresh browser
@@ -23,7 +22,7 @@ for the acceptance contract.
 |---|---|---|---|---|
 | Office | [wordcraft](../apps/wordcraft/) `webos/integration` at `edeb4a090cd3` | Rich text and document layout | `webos/build.py` | Live. Signed browser authoring, file round trip and recovery evidence in [WordCraft report](../deploy/WORDCRAFT-DOCUMENTS.md). Apply and qualify the shared AutoSave policy. |
 | Office | [pdfcraft](../apps/pdfcraft/) `webos/pdfcraft-blank-chrome` at `a5b512846f59` | PDF editing | `webos/build.py` | Live. Signed browser editing, recovery and verified PDF content in [PdfCraft report](../deploy/PDFCRAFT.md). Apply and qualify the shared AutoSave policy. |
-| Office | [gridcraft](../apps/gridcraft/) `webos/gridcraft-document-host` at `2f52ae5c7eeb` | Spreadsheets with formulas and formatting | `webos/build.py` | Pending. 15 focused native and 27 host/recovery tests passed before the latest lint fixes. Complete full CI, clean engine packaging and account browser qualification. |
+| Office | [gridcraft](../apps/gridcraft/) `webos/gridcraft-document-host` at `7f6e3ff709f0` | Spreadsheets with formulas and formatting | `webos/build.py` | Pending. All 10 native CI gates and 27 host/recovery tests passed. Complete exact-source engine packaging and account browser qualification. |
 | Office | [deckcraft](../apps/deckcraft/) `webos/deckcraft-document-host` at `bdccaca64be8` | Slides and embedded assets | `webos/build.py` | Local candidate. All 8 native CI gates and 39 adapter tests passed. Verified WASM archive, actual account browser round trips with embedded media, stale and uncertain saves, refresh recovery and the presenter popup. Complete combined-profile checks and remaining integration gates before release. |
 | Office | [designcraft](../apps/designcraft/) `webos/integration` at `59c6fa1b4947` | Page layout and publication | `designcraft-web` | Disabled. Build and browser integration pending. Verify workspace references and linked assets. Qualify the page layout workflow. |
 | Graphics | [photocraft](../apps/photocraft/) `webos/integration` at `2fec95b0d91b` | Layered raster images | `photocraft-web, photocraft-web-boot` | Disabled. Build and browser integration pending. Verify exact fonts, translations, worker packaging and layered-image project serialization. |

@@ -208,6 +208,84 @@ async function waitForConflict(page, id) {
   }, options, windowSelector(id));
 }
 
+async function preserveLaterEdit(page, filesId, id, app, resource, previous) {
+  await changeMarker(page, id, app, 'Captured before confirmation');
+  const session = await page.createCDPSession();
+  let capture, failure, timer, held;
+  const response = new Promise((resolve, reject) => { capture = resolve; failure = reject; });
+  session.on('Fetch.requestPaused', event => {
+    if (!held && event.request.method === 'POST'
+        && event.responseStatusCode >= 200 && event.responseStatusCode < 300) {
+      held = event.requestId;
+      capture();
+    } else {
+      void session.send('Fetch.continueResponse', {requestId: event.requestId}).catch(failure);
+    }
+  });
+  try {
+    await session.send('Fetch.enable', {patterns: [{urlPattern: origin + '/gateway/upload', requestStage: 'Response'}]});
+    await native(page, id, app, 'file.save');
+    await Promise.race([response, new Promise((_, reject) => {
+      timer = setTimeout(() => reject(Error('No durable save response was captured.')), 30_000);
+    })]);
+    const stored = await file(page, filesId, 'snapshot', {path: resource});
+    assert.notEqual(stored.sha256, previous);
+    assert.equal((await state(page, id)).revision, previous);
+    await changeMarker(page, id, app, 'Edited during save confirmation');
+    await session.send('Fetch.continueResponse', {requestId: held});
+    held = null;
+    await page.waitForFunction(async ({selector, revision}) => {
+      const model = await document.querySelector(selector)?.appView?.inspect();
+      return model?.revision === revision;
+    }, options, {selector: windowSelector(id), revision: stored.sha256});
+    assert((await state(page, id)).dirty);
+    assert.equal(await marker(page, id, app), 'Edited during save confirmation');
+    return stored.sha256;
+  } finally {
+    clearTimeout(timer);
+    if (held) await session.send('Fetch.continueResponse', {requestId: held});
+    await session.send('Fetch.disable');
+    await session.detach();
+  }
+}
+
+async function saveAfterAdmissionLimit(page, filesId, id, app, resource, revision, manualConfirmed) {
+  const session = await page.createCDPSession();
+  const retrySeconds = 45;
+  let refusedAt, requests = 0;
+  session.on('Fetch.requestPaused', event => {
+    if (event.request.method === 'POST' && ++requests === 1) {
+      refusedAt = Date.now();
+      const body = Buffer.from(JSON.stringify({error: 'Transfer allowance reached; try later'})).toString('base64');
+      void session.send('Fetch.fulfillRequest', {
+        requestId: event.requestId, responseCode: 429, body,
+        responseHeaders: [{name: 'Content-Type', value: 'application/json'}, {name: 'Retry-After', value: String(retrySeconds)}],
+      });
+    } else {
+      void session.send('Fetch.continueRequest', {requestId: event.requestId});
+    }
+  });
+  try {
+    await session.send('Fetch.enable', {patterns: [{urlPattern: origin + '/gateway/upload', requestStage: 'Request'}]});
+    await changeMarker(page, id, app, 'AutoSave sentinel');
+    assert.equal((await state(page, id)).dirty, true);
+    await page.waitForFunction(async selector => {
+      const model = await document.querySelector(selector)?.appView?.inspect();
+      return model?.autosave?.state === 'retrying' && model.dirty;
+    }, {timeout: 95_000, polling: 100}, windowSelector(id));
+    assert(refusedAt - manualConfirmed >= 58_000, 'Automatic Save respected the confirmed write interval.');
+    assert.equal((await file(page, filesId, 'snapshot', {path: resource})).sha256, revision);
+    const next = await waitForSave(page, id, revision, 70_000);
+    assert(Date.now() - refusedAt >= retrySeconds * 1000);
+    assert.equal(requests, 2);
+    assert.equal((await file(page, filesId, 'snapshot', {path: resource})).sha256, next);
+    return next;
+  } finally {
+    await session.send('Fetch.disable');
+    await session.detach();
+  }
+}
+
 async function verifyPresenter(page, id) {
   const frame = await documentFrame(page, id);
   const popupTarget = page.browser().waitForTarget(target => {
@@ -249,8 +327,14 @@ async function recoverBlankDraft(page, filesId, app, name, ext) {
   const id = await ready(page, app);
   assert(!original.includes(id));
   const label = 'Private unfinished draft';
-  if (app === 'gridcraft') await native(page, id, app, 'cell.set', {cell: 'A1', input: label});
-  else await native(page, id, app, 'slide.notes', {index: 0, text: label});
+  const formula = '=6*7';
+  if (app === 'gridcraft') {
+    const frame = await documentFrame(page, id);
+    await frame.evaluate(text => window.gridcraft.request('ui.edit.begin', {text}), formula);
+    assert.equal((await native(page, id, app, 'cell.get', {cell: 'A1'})).formula, null);
+  } else {
+    await native(page, id, app, 'slide.notes', {index: 0, text: label});
+  }
   await page.waitForFunction(async ({id, app}) => {
     const model = await document.querySelector('.window[data-window="' + id + '"]')?.appView?.inspect();
     return model?.dirty && model.path === null && model.recovery === (app === 'gridcraft' ? 'stored' : 'saved');
@@ -273,10 +357,16 @@ async function recoverBlankDraft(page, filesId, app, name, ext) {
     const model = await state(page, id);
     assert(model.dirty);
     assert.equal(model.path, null);
-    const actual = app === 'gridcraft'
-      ? (await native(page, id, app, 'cell.get', {cell: 'A1'})).value
-      : (await native(page, id, app, 'slide.inspect', {index: 0})).notes;
-    assert.equal(actual, label);
+    if (app === 'gridcraft') {
+      const frame = await documentFrame(page, id);
+      const model = await frame.evaluate(() => window.gridcraft.request('ui.inspect', {}));
+      assert.equal(model.editor.text, formula);
+      assert.equal((await native(page, id, app, 'cell.get', {cell: 'A1'})).formula, null);
+      await frame.evaluate(() => window.gridcraft.request('ui.edit.commit', {move: 'none'}));
+      assert.equal((await native(page, id, app, 'cell.get', {cell: 'A1'})).value, 42);
+    } else {
+      assert.equal((await native(page, id, app, 'slide.inspect', {index: 0})).notes, label);
+    }
     assert.deepEqual(navigationDialogs, ['beforeunload']);
     const close = windowSelector(id) + ' [aria-label="Close"]';
     await page.click(close);
@@ -330,6 +420,52 @@ async function loseSaveConfirmation(page, filesId, id, app, resource) {
   }
   const stored = await file(page, filesId, 'snapshot', {path: resource});
   assert.notEqual(stored.sha256, initial.revision);
+}
+
+async function verifyProfileIsolation(browser, observe, app, name) {
+  const context = await browser.createBrowserContext();
+  const createIdentity = () => ({
+    username: 'profile' + randomBytes(6).toString('hex'),
+    password: randomBytes(12).toString('hex'),
+  });
+  const a = createIdentity();
+  const b = createIdentity();
+  const open = async page => {
+    await launch(page, 'Office', name);
+    return ready(page, app);
+  };
+  const signOut = async page => {
+    await page.click('.app-menu-button');
+    await button(page, 'End session', '.menu-pane ');
+    await page.waitForSelector('.login-gate', options);
+  };
+  const setting = async (page, id) => {
+    if (app === 'deckcraft') return (await state(page, id)).autosaveEnabled;
+    const frame = await documentFrame(page, id);
+    return frame.evaluate(async () => (await window.gridcraft.request('ui.inspect', {})).ui.dark);
+  };
+  try {
+    const page = await context.newPage();
+    await observe(page);
+    await login(page, true, a);
+    let id = await open(page);
+    const defaultSetting = await setting(page, id);
+    assert.equal(typeof defaultSetting, 'boolean');
+    if (app === 'deckcraft') await button(page, 'AutoSave: On', windowSelector(id) + ' ');
+    else await native(page, id, app, 'view.theme', {mode: defaultSetting ? 'light' : 'dark'});
+    assert.equal(await setting(page, id), !defaultSetting);
+    await signOut(page);
+    await login(page, true, b);
+    id = await open(page);
+    assert.equal(await setting(page, id), defaultSetting);
+    await signOut(page);
+    await login(page, false, a);
+    const existing = '.window.focused:has(.webos-' + app + ')';
+    id = await page.$(existing) ? await ready(page, app) : await open(page);
+    assert.equal(await setting(page, id), !defaultSetting);
+  } finally {
+    await context.close();
+  }
 }
 
 let browser, page, status = 'FAIL';
@@ -388,7 +524,9 @@ try {
     assert.equal(await ready(page, app), id);
     checks.push(app + ' native Open reuses the existing account editor');
 
-    await changeMarker(page, id, app, 'Manual save sentinel');
+    revision = await preserveLaterEdit(page, filesId, id, app, resource, revision);
+    checks.push(app + ' durable acknowledgement advances the binding and preserves later edits');
+
     assert.equal((await state(page, id)).dirty, true);
     const started = Date.now();
     await native(page, id, app, 'file.save');
@@ -398,13 +536,8 @@ try {
     assert.equal((await file(page, filesId, 'snapshot', {path: resource})).sha256, revision);
     checks.push(app + ' immediate manual Save updates the bound resource');
 
-    await changeMarker(page, id, app, 'AutoSave sentinel');
-    assert.equal((await state(page, id)).dirty, true);
-    assert.equal((await file(page, filesId, 'snapshot', {path: resource})).sha256, revision);
-    revision = await waitForSave(page, id, revision, 95_000);
-    assert(Date.now() - manualConfirmed >= 58_000, 'Automatic Save respected the confirmed write interval.');
-    assert.equal((await file(page, filesId, 'snapshot', {path: resource})).sha256, revision);
-    checks.push(app + ' AutoSave debounces, observes the write interval and adopts the server revision');
+    revision = await saveAfterAdmissionLimit(page, filesId, id, app, resource, revision, manualConfirmed);
+    checks.push(app + ' AutoSave respects write spacing, a no-write 429 and its longer Retry-After');
 
     const fresh = await browser.createBrowserContext();
     try {
@@ -465,6 +598,8 @@ try {
     }
     await recoverBlankDraft(page, filesId, app, name, ext);
     checks.push(app + ' refresh recovers an untitled draft and close Cancel/Discard preserves server contents');
+    await verifyProfileIsolation(browser, observe, app, name);
+    checks.push(app + ' preferences isolate accounts across A → B → A in one browser');
     const rescuedPath = 'Documents/Conflict-rescue.' + ext;
     await openFile(page, filesId, rescuedPath);
     const resumed = await ready(page, app);
