@@ -26,6 +26,7 @@ OPTIONAL_ENGINES['designcraft'] = 96 * 1024 * 1024
 OPTIONAL_ENGINES['vectorcraft'] = 128 * 1024 * 1024
 OPTIONAL_ENGINES['effectcraft'] = 128 * 1024 * 1024
 OPTIONAL_ENGINES['cadcraft'] = 128 * 1024 * 1024
+OPTIONAL_ENGINES['texturecraft'] = 128 * 1024 * 1024
 
 
 def sha(data):

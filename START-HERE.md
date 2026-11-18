@@ -33,19 +33,23 @@ classic Desktop and the existing account service. The
 [rollout guide](migration/CRAFT-INTEGRATION-GUIDE.md#rolling-integration-queue)
 defines the remaining order and gates.
 
-EffectCraft went live on 2026-11-18 UTC in release
-`4d7265ced0e8131e82a43582facc6cd164d660dd904adf832216d611ebcf713c`, bringing
-the site to 13 of the 18 selected Craft apps. The exact package passed
-200 Chromium checks. A fresh account browser reopened the editable
-composition and rendered its linked original. Closing the editor retired its
-frame workers. Hosted verification matched all 653 files and started the
-published editor. FilmCraft is the immediate rollback. See the
-[EffectCraft release record](migration/CRAFT-INTEGRATION-LOG.md#effectcraft-release-on-ksucodes).
-CADCraft is next. Its first account milestone is an editable 2D DXF round trip.
+CADCraft went live on 2026-11-18 UTC in release
+`b30b3f0b70ef361eb66c84b544a45961e20331be512d9313713bc846d82fafa8`, bringing
+the site to 14 of the 18 selected Craft apps. The exact package passed
+112 Chromium checks. A fresh account browser reopened editable
+DXF geometry and saved a later revision. Hosted verification matched all
+664 files and started the published editor. EffectCraft is the immediate
+rollback. See the [CADCraft release record](migration/CRAFT-INTEGRATION-LOG.md#cadcraft-release-on-ksucodes).
+SolidCraft is paused by user request. Its local candidate passed the account
+round trip for editable parametric parts. Four native geometry failures also
+occur on the original source. CADCraft remains the hosted release.
+TextureCraft is next. Its account engine and menu checks passed, and its
+browser package is building from a branch based on the deployed CADCraft
+parent.
 
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft,
-LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft and Help.
+LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.
