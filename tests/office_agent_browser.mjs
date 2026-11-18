@@ -25,8 +25,11 @@ const officeProfile = apps.includes('gridcraft') && apps.includes('deckcraft');
 const disabled = process.env.WEBOS_AGENT_DISABLED_TEST === '1';
 const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
 const lightOnly = process.env.WEBOS_LIGHTCRAFT_TEST === '1';
+const designOnly = process.env.WEBOS_DESIGNCRAFT_TEST === '1';
+const singleEditor = lightOnly || designOnly;
 const graphics = ['figcraft','vectorcraft','anicraft'].filter(app=>apps.includes(app));
-assert(lightOnly ? apps.includes('lightcraft') : graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
+assert(!lightOnly || !designOnly);
+assert(singleEditor ? apps.includes(lightOnly ? 'lightcraft' : 'designcraft') : graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
 await mkdir(output, {mode:0o700});
 const checks = [];
 const agent = await makeKey();
@@ -57,7 +60,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -550,6 +553,114 @@ async function lightcraftDispatch(browser, page, credentials) {
   } finally { await fresh.context.close(); }
 }
 
+async function designcraftDispatch(browser, page, credentials) {
+  const commands=['document.inspect','frame.create','edit.undo'];
+  const authorizeEditor=async (tab,id)=>{
+    const pending=approve(tab,id,commands);
+    await tab.waitForSelector(modal,timeout);
+    await tab.click(modal+' button[aria-label="Approve access"]');
+    const approved=await pending;
+    assert.equal(approved.error,undefined,approved.error);
+    return approved.result;
+  };
+  async function edit(tab,grant,command,args={}) {
+    const intent=JSON.stringify(intentFor(grant,command,args));
+    const signed=await authorize(grant,intent);
+    assert.equal(signed.status,200,signed.error);
+    const reply=await dispatch(tab,signed.confirmation,intent);
+    assert.equal(reply.error,undefined,reply.error);
+    return reply.result.result;
+  }
+  const id=await editor(page,'designcraft');
+  const initial=await authorizeEditor(page,id);
+  const count=(await edit(page,initial,'document.inspect')).stories;
+  await edit(page,initial,'frame.create',{rect:[48,52,355,215],text:'Account publication'});
+  assert.equal((await edit(page,initial,'document.inspect')).stories,count+1);
+  await edit(page,initial,'edit.undo');
+  assert.equal((await edit(page,initial,'document.inspect')).stories,count);
+  await edit(page,initial,'frame.create',{rect:[48,52,355,215],text:'Account publication'});
+  present('DesignCraft starts in Desktop and authorized frame creation and Undo use the native editor');
+
+  const frame=await editorFrame(page,id);
+  async function saveAs(name,copy) {
+    await page.bringToFront();
+    await frame.$eval('#designcraft_canvas',canvas=>{canvas.tabIndex=0;canvas.focus({preventScroll:true});});
+    await page.keyboard.down('Control');
+    if (copy) await page.keyboard.down('Shift');
+    try { await page.keyboard.press(copy ? 'S' : 's'); }
+    finally {
+      if (copy) await page.keyboard.up('Shift');
+      await page.keyboard.up('Control');
+    }
+    const picker='dialog.codi-file-picker[open]', prompt='dialog.codi-confirm-dialog[open]';
+    await labelledButton(page,picker,'Open folder Documents');
+    await labelledButton(page,picker,'Use this folder');
+    await page.waitForSelector(prompt+' input',timeout);
+    await page.$eval(prompt+' input',(field,value)=>{field.value=value;},name);
+    await labelledButton(page,prompt,'Save');
+    await page.waitForFunction((view,title)=>{
+      const window=document.querySelector(view);
+      const state=window?.appView?.lifecycle.snapshot();
+      return state && !state.dirty && !state.pending && window.querySelector('.caption-text')?.textContent===title;
+    },timeout,selector(id),name+'.designcraft — DesignCraft');
+  }
+  await saveAs('Catalog',false);
+  await saveAs('Catalog Copy',true);
+  present('The native DesignCraft Save and Save As commands adopt the confirmed account path');
+
+  const named=await authorizeEditor(page,id);
+  await edit(page,named,'frame.create',{rect:[52,246,340,415],text:'Recovered publication edit'});
+  await page.waitForFunction(async ()=>{
+    const store='webos-designcraft-recovery-v1';
+    if (!(await indexedDB.databases()).some(db=>db.name===store)) return false;
+    const db=await new Promise((resolve,reject)=>{
+      const request=indexedDB.open(store);
+      request.onsuccess=()=>resolve(request.result);
+      request.onerror=()=>reject(request.error);
+    });
+    try {
+      const rows=await new Promise((resolve,reject)=>{
+        const request=db.transaction('drafts').objectStore('drafts').getAll();
+        request.onsuccess=()=>resolve(request.result);
+        request.onerror=()=>reject(request.error);
+      });
+      return rows.some(row=>row.path==='Documents/Catalog Copy.designcraft' && row.bytes instanceof Blob && row.bytes.size>0);
+    } finally { db.close(); }
+  },timeout);
+  const accept=dialog=>{void dialog.accept();};
+  page.on('dialog',accept);
+  try { await page.reload({waitUntil:'domcontentloaded'}); }
+  finally { page.off('dialog',accept); }
+  await page.waitForFunction(view=>document.querySelector(view)?.appView?.inspect?.()?.instanceId,timeout,selector(id));
+  const recovered=await authorizeEditor(page,id);
+  const recoveredState=await edit(page,recovered,'document.inspect');
+  assert.equal(recoveredState.stories,count+2);
+  assert.equal(recoveredState.dirty,true);
+  await labelledButton(page,selector(id),'Close');
+  await labelledButton(page,'dialog.webos-designcraft-session[open]','Discard');
+  await page.waitForSelector(selector(id),{hidden:true,timeout:120_000});
+  present('DesignCraft restores the local unpublished edit after refresh and discards only the recovered view');
+
+  const fresh=await login(browser,credentials);
+  try {
+    const files=await fresh.page.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+    await fresh.page.waitForFunction(view=>typeof document.querySelector(view)?.appView?.execute==='function',timeout,selector(files));
+    await fresh.page.$eval(selector(files),async window=>{
+      await window.appView.ready;
+      await window.appView.execute('list',{path:'Documents'});
+      await window.appView.execute('open',{path:'Documents/Catalog Copy.designcraft'});
+    });
+    const target=await fresh.page.waitForFunction(()=>[...document.querySelectorAll('.window[data-window]')].find(window=>
+      window.appView?.inspect?.()?.resourceId==='Documents/Catalog Copy.designcraft')?.dataset.window,timeout);
+    const opened=await authorizeEditor(fresh.page,await target.jsonValue());
+    await target.dispose();
+    const saved=await edit(fresh.page,opened,'document.inspect');
+    assert.equal(saved.stories,count+1);
+    assert.equal(saved.dirty,false);
+    present('A fresh DesignCraft browser opens the saved publication from Files');
+  } finally { await fresh.context.close(); }
+}
+
 let browser;
 try {
   browser = await puppeteer.launch({
@@ -557,9 +668,9 @@ try {
     headless:true,args:['--disable-dev-shm-usage','--enable-unsafe-swiftshader','--use-angle=swiftshader'],
     defaultViewport:{width:1540,height:960}
   });
-  if (lightOnly) {
+  if (singleEditor) {
     const {page,context,credentials} = await login(browser);
-    try { await lightcraftDispatch(browser,page,credentials); }
+    try { await (lightOnly ? lightcraftDispatch : designcraftDispatch)(browser,page,credentials); }
     catch (error) {
       await page.screenshot({path:path.join(output,'failure.png')}).catch(()=>{});
       await writeFile(path.join(output,'result.json'),JSON.stringify({status:'FAIL',checks,error:error.message},null,2)+'\n',{mode:0o600});
@@ -567,23 +678,23 @@ try {
     }
     finally { await context.close(); }
   }
-  if (!lightOnly && !disabled && graphicsOnly) {
+  if (!singleEditor && !disabled && graphicsOnly) {
     for (const app of graphics) {
       const {page,context} = await login(browser);
       try { await graphicsDispatch(page,app); }
       finally { await context.close(); }
     }
   }
-  if (!lightOnly && !disabled && !graphicsOnly && photoProfile) {
+  if (!singleEditor && !disabled && !graphicsOnly && photoProfile) {
     const {page,context} = await login(browser);
     try { await photoDispatch(page); }
     finally { await context.close(); }
   }
-  const {page,context} = !lightOnly && (disabled || officeProfile && !graphicsOnly) ? await login(browser) : {};
-  if (!lightOnly && disabled) {
+  const {page,context} = !singleEditor && (disabled || officeProfile && !graphicsOnly) ? await login(browser) : {};
+  if (!singleEditor && disabled) {
     assert.equal(await page.evaluate(() => window.desktopLab.agentOperations === undefined), true);
     present('default server profile has no agent bridge');
-  } else if (!lightOnly && officeProfile && !graphicsOnly) {
+  } else if (!singleEditor && officeProfile && !graphicsOnly) {
     const first = await editor(page,'gridcraft');
     const second = await editor(page,'gridcraft');
     const commands = ['document.inspect','cell.get','cell.set'];
