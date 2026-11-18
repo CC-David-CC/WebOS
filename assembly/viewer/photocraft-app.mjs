@@ -6,6 +6,14 @@ import {createPhotoStorage, MAX_BYTES, projectPath} from './photocraft-storage.m
 
 const localImports = new WeakMap();
 
+const scopedCommands = Object.freeze({
+  'document.inspect': args => args && !Array.isArray(args) && typeof args === 'object' && !Object.keys(args).length,
+  'layer.rename': args => args && !Array.isArray(args) && typeof args === 'object' && Object.keys(args).length === 2 &&
+    typeof args.layerId === 'string' && /^[1-9][0-9]{0,19}$/.test(args.layerId) &&
+    typeof args.name === 'string' && args.name.trim() && new TextEncoder().encode(args.name).length <= 256 &&
+    !/[\u0000-\u001f\u007f-\u009f]/u.test(args.name),
+});
+
 function fileFromDevice(file) {
   return file instanceof File && file.size > 0 && file.size <= MAX_BYTES && file.name.trim() &&
     file.name !== '.' && file.name !== '..' && !/[/\\\u0000-\u001f\u007f-\u009f]/u.test(file.name) &&
@@ -45,9 +53,11 @@ export function mount(host) {
 
   const abort = new AbortController();
   const session = host.session();
+  const instanceId = typeof host.registerAgentView === 'function' ? crypto.randomUUID() : null;
   let native, storage, context, dialog, journal, drafts, autosave, photoSession, loaded = false, windowCloseApproved = false;
   let autosaveKey, autoEnabled = false;
   let lastDialog = 0n;
+  let agentPath, bindingId;
   const valid = () => !abort.signal.aborted && !host.signal.aborted && host.session() === session &&
     host.desktop.windows.includes(host.w) && host.storage.signedInSubject() === session?.public.sub && context?.valid();
   const check = () => {
@@ -57,7 +67,23 @@ export function mount(host) {
   const bind = resource => {
     check();
     host.desktop.updateAccountFileBinding(host.w, {owner:context.owner, ...resource});
+    if (instanceId && resource.path !== agentPath) {
+      agentPath = resource.path;
+      bindingId = crypto.randomUUID();
+    }
   };
+
+  function agentDocument() {
+    if (!instanceId || !loaded || !valid()) return null;
+    const {identity, binding} = storage.inspect();
+    const path = binding?.path ?? null;
+    if (path !== agentPath) {
+      agentPath = path;
+      bindingId = crypto.randomUUID();
+    }
+    return {instanceId, sessionId:session.public.sid, documentId:identity.documentId,
+      resourceId:path ?? 'draft:'+identity.documentId, bindingId};
+  }
 
   function message(text) {
     status.textContent = text;
@@ -301,6 +327,21 @@ export function mount(host) {
     openLocal.hidden = false;
     message(recoveryMessage);
     drafts.schedule();
+    if (instanceId) host.registerAgentView({
+      windowId:host.w.id, name:'PhotoCraft', signal:abort.signal,
+      instanceId, sessionId:session.public.sid, accountId:context.owner,
+      commands:scopedCommands, bindingId:() => agentDocument()?.bindingId,
+      snapshot:agentDocument,
+      execute(request, authorize) {
+        check();
+        const target = agentDocument();
+        if (!target || ['instanceId','sessionId','documentId','resourceId'].some(key => request[key] !== target[key])) {
+          throw Error('The PhotoCraft document binding changed.');
+        }
+        authorize();
+        return native.operation({documentId:target.documentId,path:agentPath,command:request.command,args:request.args});
+      },
+    });
   })();
   ready.catch(error => {
     frame.remove();
@@ -326,6 +367,12 @@ export function mount(host) {
   return {
     element,
     ready,
+    ...(instanceId ? {inspect() {
+      const target = agentDocument();
+      if (!target) return null;
+      const {bindingId, ...document} = target;
+      return document;
+    }} : {}),
     lifecycle:Object.freeze({
       snapshot:() => photoSession?.snapshot() ?? {revision:0,dirty:false,pending:true},
       subscribe:listener => photoSession?.subscribe(listener) ?? (() => {}),

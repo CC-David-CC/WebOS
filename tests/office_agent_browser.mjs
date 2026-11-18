@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import {randomBytes} from 'node:crypto';
+import {createHash, randomBytes} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 import {mkdir, writeFile} from 'node:fs/promises';
 import {registerHooks} from 'node:module';
 import path from 'node:path';
@@ -18,6 +19,7 @@ assert.equal(new URL(origin).hostname, '127.0.0.1');
 assert.equal(new URL(origin).origin, origin);
 assert(output && path.isAbsolute(output));
 assert.equal((await (await fetch(origin+'/healthz')).json()).scope, 'development');
+const photoProfile = (await (await fetch(origin+'/viewer-build.json')).json()).apps.includes('photocraft');
 await mkdir(output, {mode:0o700});
 const checks = [];
 const agent = await makeKey();
@@ -45,10 +47,11 @@ async function login(browser) {
 
 async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
-  const status = await page.waitForFunction(async id => {
+  const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
+    if (app === 'photocraft') return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
-  }, timeout, id);
+  }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
   return id;
 }
@@ -107,6 +110,118 @@ async function deckCommand(page, windowId, command, args = {}) {
   },{command,args});
 }
 
+async function photoKeys(page, id, key, modifiers = []) {
+  await page.bringToFront();
+  const frame = await editorFrame(page,id);
+  await frame.evaluate(() => {
+    const canvas = document.querySelector('#photocraft_canvas');
+    canvas.tabIndex = 0;
+    canvas.focus();
+  });
+  for (const modifier of modifiers) await page.keyboard.down(modifier);
+  try { await page.keyboard.press(key); }
+  finally { for (const modifier of [...modifiers].reverse()) await page.keyboard.up(modifier); }
+  await frame.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+}
+
+async function photoDispatch(page) {
+  const original = await editor(page,'photocraft');
+  await photoKeys(page,original,'n',['Control','Shift']);
+  await photoKeys(page,original,'Enter');
+  const second = await editor(page,'photocraft');
+  const commands = ['document.inspect','layer.rename'];
+  assert.match((await approve(page,original,['file.saveAs'])).error,/Unsupported/);
+  async function grant(windowId) {
+    const pending = approve(page,windowId,commands);
+    await page.waitForSelector(modal,timeout);
+    await page.click(modal+' button[aria-label="Approve access"]');
+    const result = await pending;
+    assert.equal(result.error,undefined,result.error);
+    return result.result;
+  }
+  async function confirmed(scope, command, args) {
+    const intent=JSON.stringify(intentFor(scope,command,args));
+    const signed=await authorize(scope,intent);
+    assert.equal(signed.status,200,signed.error);
+    return {intent,confirmation:signed.confirmation};
+  }
+  async function run(scope,command,args) {
+    const {confirmation,intent}=await confirmed(scope,command,args);
+    const reply=await dispatch(page,confirmation,intent);
+    assert.equal(reply.error,undefined,reply.error);
+    return reply.result.result;
+  }
+  const scoped=await grant(original), other=await grant(second);
+  const firstState=await run(scoped,'document.inspect',{});
+  const layer=firstState.layers.find(node=>node.name!=='Background');
+  assert(layer);
+  const untouched=await run(other,'document.inspect',{});
+  const rename={layerId:layer.id,name:'Delegated visible layer'};
+  const request=await confirmed(scoped,'layer.rename',rename);
+  assert.match((await dispatch(page,request.confirmation,request.intent.replace(rename.name,'Changed args'))).error,/intent changed/i);
+  const changed=await dispatch(page,request.confirmation,request.intent);
+  assert.equal(changed.error,undefined,changed.error);
+  assert.equal(changed.result.actor.id,scoped.grant.id);
+  assert.deepEqual(changed.result.target,scoped.document);
+  assert.match((await dispatch(page,request.confirmation,request.intent)).error,/already consumed/i);
+  assert.deepEqual(await run(other,'document.inspect',{}),untouched);
+  assert.equal(await page.$eval(selector(original),node=>typeof node.appView.execute),'undefined');
+  await photoKeys(page,original,'z',['Control']);
+  assert.equal((await run(scoped,'document.inspect',{})).layers.find(node=>node.id===layer.id).name,layer.name);
+  await run(scoped,'layer.rename',rename);
+  present('One signed native layer rename targets an exact PhotoCraft window and remains undoable through the editor');
+
+  await photoKeys(page,original,'t');
+  const frame=await editorFrame(page,original);
+  const canvas=await frame.$('#photocraft_canvas');
+  const box=await canvas.boundingBox();
+  await canvas.dispose();
+  assert(box);
+  await page.mouse.click(box.x+Math.max(65,(box.width-230)/2),box.y+box.height*0.56);
+  await page.keyboard.type('Human input in progress',{delay:20});
+  const blocked=await confirmed(scoped,'layer.rename',{...rename,name:'Do not apply'});
+  assert.match((await dispatch(page,blocked.confirmation,blocked.intent)).error,/Finish the active PhotoCraft edit/);
+  await photoKeys(page,original,'Escape');
+  present('A signed layer rename leaves unfinished native Type input under human control');
+
+  const previousBinding=await confirmed(scoped,'document.inspect',{});
+  await photoKeys(page,original,'s',['Control']);
+  async function clickPicker(label) {
+    const handle=await page.waitForFunction(label=>[...document.querySelectorAll('dialog.codi-file-picker[open] button')]
+      .find(button=>[button.getAttribute('aria-label'),button.textContent.trim()].includes(label)),timeout,label);
+    try { await handle.asElement().click(); } finally { await handle.dispose(); }
+  }
+  await clickPicker('Open folder Pictures');
+  await clickPicker('Use this folder');
+  const form=modal+' input';
+  await page.waitForSelector(form,timeout);
+  await page.$eval(form,input=>{ input.value='Signed layer'; });
+  await page.click(modal+' button[aria-label="Save"]');
+  const resource='Pictures/Signed layer.pcraft';
+  await page.waitForFunction(async (id,resource)=>(await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect())?.resourceId===resource,
+    timeout,original,resource);
+  assert.match((await dispatch(page,previousBinding.confirmation,previousBinding.intent)).error,/outside the live document contract/);
+
+  const filesId=await page.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+  await page.waitForFunction(id=>typeof document.querySelector('.window[data-window="'+id+'"]')?.appView?.execute==='function',timeout,filesId);
+  const stored=await page.$eval(selector(filesId),async (node,path)=>{
+    const view=node.appView;
+    await view.ready;
+    await view.execute('list',{path:'Pictures'});
+    const {sha256}=await view.execute('snapshot',{path});
+    const result=await view.execute('download',{path,expectedRevision:sha256});
+    return {sha256,bytes:Array.from(result.data)};
+  },resource);
+  const bytes=Buffer.from(stored.bytes);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'),stored.sha256);
+  const file=path.join(output,'signed-layer.pcraft');
+  await writeFile(file,bytes,{mode:0o600});
+  const program='import json,sys,zipfile; z=zipfile.ZipFile(sys.argv[1]); print(json.dumps([i["name"] for i in json.loads(z.read("manifest.json"))["document"]["layers"]]))';
+  const names=JSON.parse(execFileSync('python3',['-c',program,file],{encoding:'utf8'}));
+  assert(names.includes(rename.name) && !names.includes('Do not apply'));
+  present('Ordinary PhotoCraft Save persists the authorized native change and fences the previous resource grant');
+}
+
 async function deckDispatch(browser) {
   const {page,context} = await login(browser);
   try {
@@ -160,6 +275,8 @@ try {
   if (process.env.WEBOS_AGENT_DISABLED_TEST === '1') {
     assert.equal(await page.evaluate(() => window.desktopLab.agentOperations === undefined), true);
     present('default server profile has no agent bridge');
+  } else if (photoProfile) {
+    await photoDispatch(page);
   } else {
     const first = await editor(page,'gridcraft');
     const second = await editor(page,'gridcraft');
@@ -276,7 +393,7 @@ try {
     present('Save As fences in-flight and unused grants and revocation fences issued grants');
   }
   await context.close();
-  if (process.env.WEBOS_AGENT_DISABLED_TEST !== '1') await deckDispatch(browser);
+  if (process.env.WEBOS_AGENT_DISABLED_TEST !== '1' && !photoProfile) await deckDispatch(browser);
   await writeFile(path.join(output,'result.json'),JSON.stringify({status:'PASS',checks},null,2)+'\n',{mode:0o600});
 } finally {
   await browser?.close();
