@@ -123,6 +123,17 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
       if (!(packet.bytes instanceof ArrayBuffer) || !packet.bytes.byteLength) throw Error(packet.message || 'PhotoCraft could not capture the draft.');
       return new Blob([packet.bytes]);
     },
+    async captureAutosave({documentId, revision, path}) {
+      const requestId = desktop.crypto.randomUUID();
+      const result = await exchange('autosave', {requestId, documentId, revision, path}, [], 'autosave-result',
+        data => data.requestId === requestId && data.documentId === documentId &&
+          data.revision === revision && data.path === path);
+      if (result.outcome === 'busy') return null;
+      if (result.outcome !== 'captured' || !(result.bytes instanceof ArrayBuffer)) {
+        throw Error(result.message || 'PhotoCraft could not capture the automatic save.');
+      }
+      return result;
+    },
     acknowledge(request, result) {
       const identity = Object.fromEntries(saveFields.map(field => [field, request[field]]));
       return exchange('save-result', {...identity, ...result}, [], 'save-settled',

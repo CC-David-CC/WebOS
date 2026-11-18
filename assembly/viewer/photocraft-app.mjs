@@ -1,4 +1,5 @@
 import {connectPhotoNative} from './photocraft-native.mjs';
+import {trackPhotoAutosave} from './photocraft-autosave.mjs';
 import {photoRecovery, trackPhotoDraft} from './photocraft-recovery.mjs';
 import {createPhotoStorage, projectPath} from './photocraft-storage.mjs';
 
@@ -11,6 +12,14 @@ export function mount(host) {
   const status = document.createElement('div');
   status.setAttribute('role', 'status');
   status.textContent = 'Opening PhotoCraft…';
+  status.style.flex = '1';
+  const appBar = document.createElement('div');
+  appBar.style.display = 'flex';
+  const autoToggle = document.createElement('button');
+  autoToggle.type = 'button';
+  autoToggle.textContent = 'AutoSave';
+  autoToggle.hidden = true;
+  appBar.append(status, autoToggle);
   const frame = document.createElement('iframe');
   frame.title = 'PhotoCraft editor';
   frame.style.flex = '1';
@@ -20,7 +29,8 @@ export function mount(host) {
 
   const abort = new AbortController();
   const session = host.session();
-  let native, storage, context, dialog, journal, drafts, loaded = false;
+  let native, storage, context, dialog, journal, drafts, autosave, loaded = false;
+  let autosaveKey, autoEnabled = false;
   let lastDialog = 0n;
   const valid = () => !abort.signal.aborted && !host.signal.aborted && host.session() === session &&
     host.desktop.windows.includes(host.w) && host.storage.signedInSubject() === session?.public.sub && context?.valid();
@@ -38,8 +48,24 @@ export function mount(host) {
     status.hidden = !text;
   }
 
-  async function save(packet) {
+  function setAutosave(value) {
+    autoEnabled = value;
+    autoToggle.setAttribute('aria-pressed', String(value));
+    autoToggle.title = value ? 'Account AutoSave is on' : 'Account AutoSave is off';
+    autosave.enabled(value);
+  }
+  autoToggle.addEventListener('click', () => {
     if (!loaded || !valid()) return;
+    setAutosave(!autoEnabled);
+    try {
+      document.defaultView.localStorage?.setItem(autosaveKey, autoEnabled ? 'on' : 'off');
+    } catch {
+      host.ui.feedback('This browser could not remember the PhotoCraft AutoSave setting.');
+    }
+  });
+
+  async function save(packet, automatic = false) {
+    if (!loaded || !valid()) return {error:Error('The PhotoCraft account editor is closed.')};
     message('Saving to your account…');
     try {
       check();
@@ -47,12 +73,16 @@ export function mount(host) {
       bind(binding);
       message('');
       drafts.schedule();
+      if (!automatic) autosave.confirmed();
+      return {binding};
     } catch (error) {
-      if (!valid()) return;
+      if (!valid()) return {error};
       if (loaded && error.outcome === 'unknown') {
         try { native.reportUncertainSave(packet); } catch { /* The document frame is unavailable. */ }
       }
       message(error.message);
+      if (!automatic) autosave.failed(error);
+      return {error};
     }
   }
 
@@ -145,8 +175,11 @@ export function mount(host) {
     url.searchParams.set('profile', context.owner);
     storage = createPhotoStorage({files:context.files, operations:host.documentOperations, valid});
     native = connectPhotoNative(frame, {
-      url, signal:abort.signal, onSave:save, onDialog:handleDialog,
-      onProjectState(packet) { drafts?.receive(packet); },
+      url, signal:abort.signal, onSave:packet => void save(packet), onDialog:handleDialog,
+      onProjectState(packet) {
+        drafts?.receive(packet);
+        autosave?.receive(packet);
+      },
       onCloseIntent() {
         if (loaded && valid()) void host.desktop.requestWindowClose(host.w);
       },
@@ -155,12 +188,25 @@ export function mount(host) {
         frame.inert = true;
         dialog?.abort();
         drafts?.stop();
+        autosave?.dispose();
         message(reason);
       }
     });
     drafts = trackPhotoDraft({
       journal, native, storage, valid:() => loaded && valid(),
       onError(error) { message('PhotoCraft could not update the browser draft. ' + error.message); }
+    });
+    autosave = trackPhotoAutosave({
+      native, storage, valid:() => loaded && valid(), write:packet => save(packet, true),
+      onState(state) {
+        if (autoEnabled) {
+          const details = {idle:'Account AutoSave is on', scheduled:'Account AutoSave is waiting for edits to settle',
+            waiting:'Account AutoSave is waiting for an eligible named project',
+            saving:'Saving changes to your account', retrying:'Account AutoSave will retry',
+            paused:state.reason};
+          autoToggle.title = details[state.state] ?? 'Account AutoSave is on';
+        }
+      },
     });
     element.append(frame);
     await native.ready;
@@ -184,6 +230,11 @@ export function mount(host) {
     check();
     loaded = true;
     frame.inert = false;
+    autosaveKey = 'webos:photocraft:account-autosave:' + encodeURIComponent(context.owner);
+    let value = false;
+    try { value = document.defaultView.localStorage?.getItem(autosaveKey) === 'on'; } catch { /* Use this window's default. */ }
+    setAutosave(value);
+    autoToggle.hidden = false;
     message(recoveryMessage);
     drafts.schedule();
   })();
@@ -198,12 +249,13 @@ export function mount(host) {
     abort.abort();
     dialog?.abort();
     drafts?.stop();
+    autosave?.dispose();
     journal?.close();
     host.signal.removeEventListener('abort', dispose);
     element.remove();
   }
 
-  element.append(status);
+  element.append(appBar);
   host.signal.addEventListener('abort', dispose, {once:true});
   if (host.signal.aborted) dispose();
   return {
@@ -217,17 +269,24 @@ export function mount(host) {
         frame.contentWindow?.focus();
         frame.contentDocument?.querySelector('canvas')?.focus();
       }
-      const approved = await native.requestClose(interactive);
-      check();
-      if (approved && interactive) {
-        frame.inert = true;
-        try {
-          await drafts.clear();
-        } catch (error) {
-          host.ui.feedback('The browser could not remove this PhotoCraft draft. ' + error.message);
+      autosave.closing(true);
+      let closeWindow = false;
+      try {
+        const approved = await native.requestClose(interactive);
+        check();
+        closeWindow = approved && interactive;
+        if (closeWindow) {
+          frame.inert = true;
+          try {
+            await drafts.clear();
+          } catch (error) {
+            host.ui.feedback('The browser could not remove this PhotoCraft draft. ' + error.message);
+          }
         }
+        return approved;
+      } finally {
+        if (!closeWindow) autosave.closing(false);
       }
-      return approved;
     },
     focus() {
       if (!loaded || !valid() || dialog) return false;
