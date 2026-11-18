@@ -297,6 +297,12 @@ geometry after reopen and a native Undo through scoped operations. Preserve
 the app's existing DWG format checks and document DWG and external-reference
 coverage separately.
 
+The selected CADCraft account commit is `816d428e8a33`. Native tests
+exercised actual DXF encoding and decoding, pending-save receipt adoption,
+recovery, and the hosted file-command boundary. The browser test checks
+the saved line endpoints, radius and dimension coordinates directly in the
+DXF before reopening it in a fresh account context.
+
 ## SolidCraft preparation
 
 Use the organized `a5b35abd133e` checkout. Its existing
@@ -309,3 +315,20 @@ parameters and solid volume after account reopen, then edit the earlier
 dimension and recompute the body in the native kernel. Test the viewport,
 Save As, local draft recovery and scoped feature commands on that same
 editable design.
+
+SolidCraft already has a native scratch-session save path and
+`Session::adopt_save` for saves that complete later. Reuse the native encoder
+and its treatment of units, design links, visibility and provenance. Bind
+receipt acceptance to the account window's design identity and captured
+revision. The existing editor embed suppresses standalone preferences and
+file persistence, but still attaches the public page API. Use the account
+port for that launch mode and route native file commands through the host.
+
+The exact native test sequence is `sketch.create`,
+`sketch.rectangle.two_point`, `sketch.finish` and `solid.extrude`.
+The existing kernel fixture expects a 10 × 10 × 5 mm body. Verify that
+geometry after a browser account round trip, then change the extrusion
+and check the recomputed part. The locked native and WASM dependencies
+were fetched and verified offline on the R730 using only tracked Cargo
+manifests, target entry files and the lockfile. The full source and assets
+remain in the organized SolidCraft repository.
