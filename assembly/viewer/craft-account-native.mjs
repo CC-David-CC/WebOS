@@ -228,7 +228,7 @@ export function connectCraftAccount(frame, {app, name, url, signal, originalStor
       return result.approved;
     },
     answerDialog(requestId, result) {
-      post('dialog-result', {requestId, ...result});
+      post('dialog-result', {requestId, ...result}, result.bytes instanceof ArrayBuffer ? [result.bytes] : []);
     },
     dispose
   });
