@@ -10,8 +10,8 @@ import puppeteer from 'puppeteer-core';
 const origin = process.env.WEBOS_VIEWER_ORIGIN;
 const output = process.env.WEBOS_TEST_OUTPUT;
 assert(path.isAbsolute(output) && new URL(origin).hostname === '127.0.0.1' && new URL(origin).origin === origin);
+assert.equal((await (await fetch(origin+'/healthz')).json()).scope,'development');
 const profile = await (await fetch(origin + '/viewer-build.json')).json();
-assert.equal(profile.developmentOnly,true);
 assert(profile.apps.includes('photocraft'));
 await mkdir(output,{mode:0o700});
 
