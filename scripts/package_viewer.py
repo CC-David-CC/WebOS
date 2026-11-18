@@ -13,6 +13,8 @@ import subprocess
 import tarfile
 
 ROOT = Path(__file__).resolve().parent.parent
+BASE_BYTES = 256 * 1024 * 1024
+OFFICE_ENGINE_BYTES = 64 * 1024 * 1024
 
 
 def digest(data):
@@ -90,6 +92,14 @@ def main():
     components['apps/wordcraft'] = git(ROOT / 'apps/wordcraft', 'rev-parse', 'HEAD').decode().strip()
     if 'pdfcraftEngine' in build:
         components['apps/pdfcraft'] = git(ROOT / 'apps/pdfcraft', 'rev-parse', 'HEAD').decode().strip()
+    for app in ('gridcraft', 'deckcraft'):
+        if app + 'Engine' in build:
+            components['apps/' + app] = git(ROOT / 'apps' / app, 'rev-parse', 'HEAD').decode().strip()
+    for owner, commit in components.items():
+        if owner == '.':
+            continue
+        pin = git(ROOT, 'ls-tree', 'HEAD', '--', owner).decode().strip()
+        assert pin == f'160000 commit {commit}\t{owner}', 'Parent pin differs from build source: ' + owner
     records = []
     for file in sorted(site.rglob('*')):
         assert not file.is_symlink()
@@ -99,11 +109,24 @@ def main():
         assert not any(part.startswith('.') or part in ('node_modules', 'target', '__pycache__') for part in relative.parts)
         data = file.read_bytes()
         records.append({'path': relative.as_posix(), 'bytes': len(data), 'sha256': digest(data)})
-    # WordCraft + PdfCraft's development app/worker/model graph measures about211MiB.
-    assert sum(row['bytes'] for row in records) < 256 * 1024 * 1024, 'Unexpected release growth'
+    base_bytes = sum(row['bytes'] for row in records)
+    for app in ('gridcraft', 'deckcraft'):
+        engine = build.get(app + 'Engine')
+        engine_bytes = sum(row['bytes'] for row in records if row['path'].startswith(app + '/'))
+        if engine is None:
+            assert app not in build['apps'] and not engine_bytes, 'Unexpected unselected component: ' + app
+            continue
+        assert app in build['apps'] and 0 < engine_bytes < OFFICE_ENGINE_BYTES
+        receipt_bytes = (site / app / 'component-build.json').read_bytes()
+        assert digest(receipt_bytes) == engine['receiptSHA256']
+        assert engine_bytes == engine['bytes'] + len(receipt_bytes)
+        assert components['apps/' + app] == engine['sourceCommit']
+        base_bytes -= engine_bytes
+    assert base_bytes < BASE_BYTES, 'Unexpected viewer and baseline engine growth'
     receipt = {'schema': 'webos-existing-viewer-release/1', 'parentCommit': git(ROOT, 'rev-parse', 'HEAD').decode().strip(),
                'components': components, 'engine': build['engine'],
                **({'pdfcraftEngine': build['pdfcraftEngine']} if 'pdfcraftEngine' in build else {}),
+               **{app + 'Engine': build[app + 'Engine'] for app in ('gridcraft', 'deckcraft') if app + 'Engine' in build},
                'apps': build['apps'], 'files': records,
                'backend': 'Existing ksu.codes service and account state retained; deployment report records running backend pins and concurrency configuration',
                'npmLockSHA256': digest((ROOT / 'package-lock.json').read_bytes())}

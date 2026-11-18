@@ -4,7 +4,8 @@
 import {textRecovery} from './text-recovery.mjs';
 import {wordcraftRecovery} from './wordcraft-recovery.mjs';
 import {pdfcraftRecovery} from './pdfcraft-recovery.mjs';
-export function mountAccountApp(mount, host, kind) {
+import {accountFileApp} from './file-associations.mjs';
+export function mountAccountApp(mount, host, kind, officeRecovery = null) {
   const element = document.createElement('div');
   element.className = 'window-content';
   element.textContent = 'Opening ' + host.w.title + '…';
@@ -23,7 +24,7 @@ export function mountAccountApp(mount, host, kind) {
     const launch = host.w.launchContext;
     if (launch) {
       if (launch.storage !== 'account' || launch.owner !== context.owner) throw Error('An account file launch is required.');
-      const restore = ['text','wordcraft','pdfcraft'].includes(kind) && launch.restore === true;
+      const restore = ['text','wordcraft','pdfcraft','gridcraft','deckcraft'].includes(kind) && launch.restore === true;
       resource = {path: launch.path, ...(restore ? {restore: true} : launch.sha256 ? {sha256: launch.sha256} : {})};
       if (!restore && !resource.sha256) resource.sha256 = (await context.files.version(resource.path)).sha256;
     }
@@ -36,7 +37,7 @@ export function mountAccountApp(mount, host, kind) {
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
       // A second Files instance may have opened it while this read waited.
       if (activateFile(file)) return {status: 'activated'};
-      const app = kind === 'pdfcraft' ? 'pdfcraft' : kind === 'wordcraft' || /[.](docx|dotx|odt|rtf)$/i.test(file.path) ? 'wordcraft' : /[.]pdf$/i.test(file.path) ? 'pdfcraft' : 'text';
+      const app = accountFileApp(file.path,kind);
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
       return {status: 'opened'};
     };
@@ -56,18 +57,39 @@ export function mountAccountApp(mount, host, kind) {
         importDocument(input) {if(!valid())throw new DOMException('Account view closed.','AbortError');const w=host.desktop.launch('pdfcraft',input.name+' — PdfCraft');w.pdfcraftImport=Object.freeze({...input});return {status:'opened',instanceId:String(w.id)};},
         closeView: () => host.desktop.requestWindowClose(host.w)
       } : {}),
+      ...(officeRecovery ? {
+        recovery: officeRecovery.journal(host,context,valid), profileId:context.owner,
+        imported:host.w[kind+'Import']||null, recoveryAsCopy:!!host.w[kind+'RecoveryAsCopy'],
+        template:host.w[kind+'Template']||(kind==='deckcraft'?{}:'blank'),
+        newDocument(params={}) {
+          if(!valid())throw new DOMException('Account view closed.','AbortError');
+          const w=host.desktop.launch(kind);if(!w)throw Error('This application is unavailable.');
+          // DeckCraft's native New parameters include theme/template settings;
+          // pass the whole bounded native request, not a string-only template.
+          w[kind+'Template']=structuredClone(kind==='deckcraft'?params:params.template||'blank');
+          return {status:'opened',instanceId:String(w.id)};
+        },
+        importDocument(input) {
+          if(!valid())throw new DOMException('Account view closed.','AbortError');
+          const w=host.desktop.launch(kind,input.name+' — '+officeRecovery.name);if(!w)throw Error('This application is unavailable.');
+          w[kind+'Import']=Object.freeze({...input});return {status:'opened',instanceId:String(w.id)};
+        },
+        closeView:()=>host.desktop.requestWindowClose(host.w)
+      }:{}),
       signal: host.signal, openFile, activateFile, displayName: session.public.name,
-      ...(['wordcraft','pdfcraft'].includes(kind) ? {url: new URL(kind+'/index.html', document.baseURI).href} : {})});
+      ...(['wordcraft','pdfcraft','gridcraft','deckcraft'].includes(kind) ? {url: new URL(kind+'/index.html', document.baseURI).href} : {})});
     if (!view || typeof view.dispose !== 'function' || !(view.element instanceof HTMLElement)) throw Error('Invalid account app view.');
     // The app owns the transient import until parsing succeeds or Retry needs
     // it. Layout/window metadata must not retain another full base64 payload.
     if(kind==='wordcraft')delete host.w.wordcraftImport;
     if(kind==='pdfcraft')delete host.w.pdfcraftImport;
-    if (['text','wordcraft','pdfcraft'].includes(kind)) {
+    if(officeRecovery)delete host.w[kind+'Import'];
+    if (['text','wordcraft','pdfcraft','gridcraft','deckcraft'].includes(kind)) {
       const synchronize = binding => {
         if (!valid() || !binding.loaded) return;
         if(kind==='wordcraft'&&binding.path!==null)delete host.w.wordcraftRecoveryAsCopy;
         if(kind==='pdfcraft'&&binding.path!==null)delete host.w.pdfcraftRecoveryAsCopy;
+        if(officeRecovery&&binding.path!==null)delete host.w[kind+'RecoveryAsCopy'];
         host.desktop.updateAccountFileBinding(host.w, {owner: context.owner, path: binding.path, sha256: binding.revision});
       };
       offBinding = view.fileBinding.subscribe(synchronize); synchronize(view.fileBinding.snapshot());
@@ -89,7 +111,7 @@ export function mountAccountApp(mount, host, kind) {
       void ready.then(() => { if (valid() && host.desktop.active === host.w.id && host.desktop.current === host.w.workspace) view?.focus?.(); }).catch(() => {});
       return false;
     },
-    ...(['text','wordcraft','pdfcraft'].includes(kind) ? {lifecycle: Object.freeze({
+    ...(['text','wordcraft','pdfcraft','gridcraft','deckcraft'].includes(kind) ? {lifecycle: Object.freeze({
       snapshot: () => view?.lifecycle.snapshot() ?? {revision: 0, dirty: false, pending: true},
       subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
       async quiesce(options) { if (!view) await ready; return view.lifecycle.quiesce(options); },
