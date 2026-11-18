@@ -671,7 +671,7 @@ async function designcraftArtwork(browser, session, credentials, files, fixture,
   await session.page.$eval(selector(files), (window,fixtures)=>{
     const transfer=new DataTransfer();
     for (const {name,bytes} of fixtures) transfer.items.add(new File([Uint8Array.from(bytes)],name));
-    const files=window.querySelector('.webos-files');
+    const files=window.querySelector('.webos-files-browser');
     files.dispatchEvent(new DragEvent('drop',{dataTransfer:transfer,bubbles:true,cancelable:true}));
   },fixtures);
   await session.page.waitForFunction(view=>document.querySelector(view+' .webos-files-status')?.textContent.includes('Saved 2 files'),timeout,selector(files));
