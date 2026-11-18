@@ -779,3 +779,20 @@ names, native recent paths and the visible AutoSave setting. Existing
 projects with external smart-object links, active IME/other unfinished
 tools and authorized agent operations still require qualification.
 PhotoCraft remains disabled in release profiles.
+
+### PhotoCraft device import
+
+Hosted PhotoCraft uses the native decoder in a new Desktop view when the
+user drops a file outside the canvas or selects it through Open from device.
+Canvas drops still place embedded layers. Imported projects start with no
+account binding and can be recovered until the user saves or discards them.
+The browser keeps the file local during import. Opening a second native
+document through the file-byte path is rejected inside an existing view.
+
+The R730 component at `d36d95d631e6` passed 15 focused native account tests.
+The exact loopback package passed 26 signed PhotoCraft workflow checks and
+15 classic Desktop checks. A PNG dropped outside a saved project's canvas
+opened in a separate window, journaled the import and saved a 24×16
+`.pcraft` under a new account path. The prior file retained its revision.
+The device picker also opened a separate project, and Discard preserved
+the existing account files.
