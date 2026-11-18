@@ -25,6 +25,7 @@ OPTIONAL_ENGINES = {app: 64 * 1024 * 1024 for app in ('gridcraft', 'deckcraft', 
 OPTIONAL_ENGINES['designcraft'] = 96 * 1024 * 1024
 OPTIONAL_ENGINES['vectorcraft'] = 128 * 1024 * 1024
 OPTIONAL_ENGINES['effectcraft'] = 128 * 1024 * 1024
+OPTIONAL_ENGINES['cadcraft'] = 128 * 1024 * 1024
 
 
 def sha(data):
