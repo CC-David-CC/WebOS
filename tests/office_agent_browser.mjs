@@ -24,8 +24,9 @@ const photoProfile = apps.includes('photocraft');
 const officeProfile = apps.includes('gridcraft') && apps.includes('deckcraft');
 const disabled = process.env.WEBOS_AGENT_DISABLED_TEST === '1';
 const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
+const lightOnly = process.env.WEBOS_LIGHTCRAFT_TEST === '1';
 const graphics = ['figcraft','vectorcraft','anicraft'].filter(app=>apps.includes(app));
-assert(graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
+assert(lightOnly ? apps.includes('lightcraft') : graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
 await mkdir(output, {mode:0o700});
 const checks = [];
 const agent = await makeKey();
@@ -35,27 +36,28 @@ const timeout = {timeout:120_000};
 const modal = 'dialog[open]';
 const selector = windowId => '.window[data-window="'+windowId+'"]';
 
-async function login(browser) {
+async function login(browser, existing) {
   const context = await browser.createBrowserContext();
   const page = await context.newPage();
   const marker = randomBytes(6).toString('hex');
+  const credentials = existing ?? {username:'office'+marker,password:marker+marker};
   await page.goto(origin, {waitUntil:'networkidle0'});
-  await page.click('.login-toggle');
-  await page.type('[aria-label="Username"]', 'office'+marker);
-  await page.type('[aria-label="Password"]', marker+marker);
-  await page.type('[aria-label="Confirm password"]', marker+marker);
+  if (!existing) await page.click('.login-toggle');
+  await page.type('[aria-label="Username"]', credentials.username);
+  await page.type('[aria-label="Password"]', credentials.password);
+  if (!existing) await page.type('[aria-label="Confirm password"]', credentials.password);
   await page.click('.login-gate button[type="submit"]');
   const status = await page.waitForFunction(() => window.desktopLab.session && !document.querySelector('.login-gate')
     ? 'signed in' : document.querySelector('.login-error')?.textContent || false, timeout);
   assert.equal(await status.jsonValue(), 'signed in');
-  return {page, context};
+  return {page, context, credentials};
 }
 
 async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -363,6 +365,147 @@ async function deckDispatch(browser) {
   }
 }
 
+async function labelledButton(page, root, label) {
+  const handle = await page.waitForFunction((root,label)=>[...document.querySelectorAll(root+' button')].find(button=>
+    !button.disabled && !button.hidden && (button.getAttribute('aria-label') === label || button.textContent.trim() === label)),timeout,root,label);
+  try { await handle.asElement().click(); }
+  finally { await handle.dispose(); }
+}
+
+async function lightcraftDispatch(browser, page, credentials) {
+  const first = await editor(page,'lightcraft');
+  const native = await editorFrame(page,first);
+  const checksInFrame = await native.evaluate(async () => {
+    const canvas = document.querySelector('#lightcraft_canvas');
+    const source = document.createElement('canvas');
+    source.width = source.height = 40;
+    const ctx = source.getContext('2d');
+    ctx.fillStyle = '#dc387e';
+    ctx.fillRect(0,0,40,40);
+    const photo = await new Promise(resolve=>source.toBlob(resolve,'image/png'));
+    const transfer = new DataTransfer();
+    transfer.items.add(new File([photo],'Account swatch.png',{type:'image/png'}));
+    canvas.dispatchEvent(new DragEvent('drop',{dataTransfer:transfer,bubbles:true,cancelable:true}));
+    return {scope:new URL(location.href).searchParams.get('scope'),photoBytes:photo.size};
+  });
+  assert.match(checksInFrame.scope,/^[0-9a-f]{64}$/);
+  assert(checksInFrame.photoBytes>0);
+  await page.waitForFunction(id=>{
+    const state=document.querySelector('.window[data-window="'+id+'"]')?.appView.lifecycle.snapshot();
+    return state?.dirty && !state.pending;
+  },timeout,first);
+
+  async function grant(tab,id) {
+    const pending = approve(tab,id,['document.inspect','photo.rate']);
+    await tab.waitForSelector(modal,timeout);
+    await tab.click(modal+' button[aria-label="Approve access"]');
+    const reply = await pending;
+    assert.equal(reply.error,undefined,reply.error);
+    return reply.result;
+  }
+  async function run(tab,scope,command,args) {
+    const intent = JSON.stringify(intentFor(scope,command,args));
+    const auth = await authorize(scope,intent);
+    assert.equal(auth.status,200,auth.error);
+    const reply = await dispatch(tab,auth.confirmation,intent);
+    assert.equal(reply.error,undefined,reply.error);
+    return reply.result.result;
+  }
+  const draft = await grant(page,first);
+  const blank = await editor(page,'lightcraft');
+  const blankGrant = await grant(page,blank);
+  assert.equal((await run(page,blankGrant,'document.inspect',{})).photoCount,0);
+  const photos = await run(page,draft,'document.inspect',{});
+  assert.equal(photos.photoCount,1);
+  const [photo] = photos.photos;
+  assert.equal(photo.name,'Account swatch.png');
+  await run(page,draft,'photo.rate',{ids:[photo.id],rating:4});
+  assert.equal((await run(page,draft,'document.inspect',{})).photos[0].rating,4);
+  present('LightCraft imports a PNG through the native editor and applies an explicitly scoped native rating');
+  await labelledButton(page,selector(blank),'Close');
+  await page.waitForSelector(selector(blank),{hidden:true});
+  await page.evaluate(id=>{
+    const desktop=window.desktopLab.surfaces.get('Desktop');
+    desktop.activateWindow(desktop.windows.find(candidate=>candidate.id===id));
+  },first);
+
+  async function saveAs(label, name) {
+    await labelledButton(page,selector(first),label);
+    const picker='dialog.codi-file-picker[open]', prompt='dialog.codi-confirm-dialog[open]';
+    await labelledButton(page,picker,'Open folder Documents');
+    await labelledButton(page,picker,'Use this folder');
+    await page.waitForSelector(prompt+' input',timeout);
+    await page.$eval(prompt+' input',(field,value)=>{field.value=value;},name);
+    await labelledButton(page,prompt,'Save');
+    await page.waitForFunction((id,title)=>{
+      const view=document.querySelector('.window[data-window="'+id+'"]');
+      const state=view?.appView.lifecycle.snapshot();
+      return view?.querySelector('.caption-text')?.textContent===title && !state?.dirty && !state?.pending;
+    },timeout,first,name+'.lightcraft — LightCraft');
+  }
+  await saveAs('Save','Light Lab');
+  const named = await grant(page,first);
+  await run(page,named,'photo.rate',{ids:[photo.id],rating:5});
+  await labelledButton(page,selector(first),'Save');
+  await page.waitForFunction(id=>{
+    const state=document.querySelector('.window[data-window="'+id+'"]')?.appView.lifecycle.snapshot();
+    return state && !state.dirty && !state.pending;
+  },timeout,first);
+  await saveAs('Save As','Light Copy');
+  present('LightCraft confirms account Save and Save As and updates the active canonical name');
+
+  const copy = await grant(page,first);
+  await run(page,copy,'photo.rate',{ids:[photo.id],rating:2});
+  await page.waitForFunction(async ()=>{
+    const name='webos-lightcraft-recovery-v1';
+    if (!(await indexedDB.databases()).some(db=>db.name===name)) return false;
+    const db=await new Promise((resolve,reject)=>{
+      const request=indexedDB.open(name);
+      request.onsuccess=()=>resolve(request.result);
+      request.onerror=()=>reject(request.error);
+    });
+    try {
+      const rows=await new Promise((resolve,reject)=>{
+        const request=db.transaction('drafts').objectStore('drafts').getAll();
+        request.onsuccess=()=>resolve(request.result);
+        request.onerror=()=>reject(request.error);
+      });
+      return rows.some(row=>row.path==='Documents/Light Copy.lightcraft' && row.bytes instanceof Blob && row.bytes.size>0);
+    } finally { db.close(); }
+  },timeout);
+  const accept = dialog=>{ void dialog.accept(); };
+  page.on('dialog',accept);
+  try { await page.reload({waitUntil:'domcontentloaded'}); }
+  finally { page.off('dialog',accept); }
+  await page.waitForFunction(id=>document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect?.()?.instanceId,timeout,first);
+  const recovered=await grant(page,first);
+  assert.equal((await run(page,recovered,'document.inspect',{})).photos[0].rating,2);
+  await labelledButton(page,selector(first),'Close');
+  await labelledButton(page,'dialog.webos-lightcraft-session[open]','Discard');
+  await page.waitForSelector(selector(first),{hidden:true,timeout:120_000});
+  present('LightCraft refresh recovers the edited native catalog and Discard finalizes only the recovered view');
+
+  const fresh = await login(browser,credentials);
+  try {
+    const newId = await fresh.page.evaluate(async ()=>{
+      const desktop=window.desktopLab.surfaces.get('Desktop');
+      const files=desktop.launch('files');
+      const node=document.querySelector('.window[data-window="'+files.id+'"]');
+      await node.appView.ready;
+      await node.appView.execute('open',{path:'Documents/Light Copy.lightcraft'});
+      return desktop.windows.find(window=>window.app==='lightcraft').id;
+    });
+    await fresh.page.waitForFunction(id=>document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect?.()?.instanceId,timeout,newId);
+    const opened=await grant(fresh.page,newId);
+    const contents=await run(fresh.page,opened,'document.inspect',{});
+    assert.equal(contents.photos[0].rating,5);
+    assert.equal(contents.photos[0].name,'Account swatch.png');
+    const view=await editorFrame(fresh.page,newId);
+    await view.waitForFunction(()=>document.querySelector('#lightcraft_canvas')?.width>0,timeout);
+    present('A fresh browser opens the confirmed LightCraft copy through Files and sees the saved native rating');
+  } finally { await fresh.context.close(); }
+}
+
 let browser;
 try {
   browser = await puppeteer.launch({
@@ -370,23 +513,28 @@ try {
     headless:true,args:['--disable-dev-shm-usage','--enable-unsafe-swiftshader','--use-angle=swiftshader'],
     defaultViewport:{width:1540,height:960}
   });
-  if (!disabled && graphicsOnly) {
+  if (lightOnly) {
+    const {page,context,credentials} = await login(browser);
+    try { await lightcraftDispatch(browser,page,credentials); }
+    finally { await context.close(); }
+  }
+  if (!lightOnly && !disabled && graphicsOnly) {
     for (const app of graphics) {
       const {page,context} = await login(browser);
       try { await graphicsDispatch(page,app); }
       finally { await context.close(); }
     }
   }
-  if (!disabled && !graphicsOnly && photoProfile) {
+  if (!lightOnly && !disabled && !graphicsOnly && photoProfile) {
     const {page,context} = await login(browser);
     try { await photoDispatch(page); }
     finally { await context.close(); }
   }
-  const {page,context} = disabled || officeProfile && !graphicsOnly ? await login(browser) : {};
-  if (disabled) {
+  const {page,context} = !lightOnly && (disabled || officeProfile && !graphicsOnly) ? await login(browser) : {};
+  if (!lightOnly && disabled) {
     assert.equal(await page.evaluate(() => window.desktopLab.agentOperations === undefined), true);
     present('default server profile has no agent bridge');
-  } else if (officeProfile && !graphicsOnly) {
+  } else if (!lightOnly && officeProfile && !graphicsOnly) {
     const first = await editor(page,'gridcraft');
     const second = await editor(page,'gridcraft');
     const commands = ['document.inspect','cell.get','cell.set'];
@@ -502,7 +650,7 @@ try {
     present('Save As fences in-flight and unused grants and revocation fences issued grants');
   }
   await context?.close();
-  if (!disabled && !graphicsOnly && officeProfile) await deckDispatch(browser);
+  if (!lightOnly && !disabled && !graphicsOnly && officeProfile) await deckDispatch(browser);
   await writeFile(path.join(output,'result.json'),JSON.stringify({status:'PASS',checks},null,2)+'\n',{mode:0o600});
 } finally {
   await browser?.close();

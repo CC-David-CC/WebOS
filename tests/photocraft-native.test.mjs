@@ -7,7 +7,7 @@ const url = new URL('http://localhost:8080/photocraft/index.html?host=webos-acco
 const generation = 'a'.repeat(32);
 const name = 'Pictures/Project.pcraft';
 
-function fixture(testContext, app = 'photocraft', name = 'PhotoCraft') {
+function fixture(testContext, app = 'photocraft', name = 'PhotoCraft', originalStore) {
   const editorURL = new URL('/'+app+'/index.html?host=webos-account',url);
   const desktop = Object.assign(new EventTarget(), {location:url, crypto:{randomUUID}});
   const sent = [], saves = [], localFiles = [];
@@ -20,7 +20,7 @@ function fixture(testContext, app = 'photocraft', name = 'PhotoCraft') {
     }}
   });
   const controller = new AbortController();
-  const native = connectCraftAccount(frame,{app,name,url:editorURL,signal:controller.signal,onSave:packet => saves.push(packet),onLocalFile:file=>localFiles.push(file)});
+  const native = connectCraftAccount(frame,{app,name,url:editorURL,signal:controller.signal,originalStore,onSave:packet => saves.push(packet),onLocalFile:file=>localFiles.push(file)});
   testContext.after(() => {
     void native.ready.catch(() => {});
     controller.abort();
@@ -33,6 +33,50 @@ function fixture(testContext, app = 'photocraft', name = 'PhotoCraft') {
   }
   return {frame, controller, receive, native, sent, saves, localFiles};
 }
+
+test('Detached originals use only the active LightCraft frame and can be read during project open', async t => {
+  const calls = [];
+  const stored = Uint8Array.of(1,2,3);
+  const digest = 'f'.repeat(64);
+  const originalStore = {
+    async read(value) {
+      calls.push(['read', value]);
+      return stored;
+    },
+    async store(bytes) {
+      calls.push(['store', new Uint8Array(bytes)]);
+      return digest;
+    },
+  };
+  const {native,receive,sent,controller} = fixture(t,'lightcraft','LightCraft',originalStore);
+  receive('ready');
+  await native.ready;
+  receive('original-read',{requestId:'1',digest});
+  assert.deepEqual(calls,[]);
+  const opening = native.start('Pictures/Work.lightcraft',stored);
+  receive('original-read',{requestId:'1',digest,generation:'b'.repeat(32)});
+  receive('original-read',{requestId:'1',digest},{source:{}});
+  assert.deepEqual(calls,[]);
+  receive('original-read',{requestId:'1',digest});
+  receive('original-read',{requestId:'1',digest});
+  receive('original-store',{requestId:'2',bytes:stored.slice().buffer});
+  await Promise.resolve();
+  assert.deepEqual(calls,[['read',digest]]);
+  const read = sent.find(packet => packet.requestId === '1');
+  assert.deepEqual(read,{type:'lightcraft:account-original-result',generation,operation:'original-read',requestId:'1',ok:true,bytes:stored.buffer});
+  assert.equal(sent.find(packet => packet.requestId === '2').ok,false);
+
+  receive('started',{requestId:sent[0].requestId,ok:true,path:'Pictures/Work.lightcraft',documentId:'10',revision:'0'});
+  await opening;
+  receive('original-store',{requestId:'3',bytes:stored.slice().buffer});
+  await Promise.resolve();
+  assert.deepEqual(sent.at(-1),{type:'lightcraft:account-original-result',generation,operation:'original-store',requestId:'3',ok:true,digest});
+  assert.deepEqual(calls.at(-1),['store',stored]);
+  receive('original-read',{requestId:'4',digest});
+  controller.abort();
+  await Promise.resolve();
+  assert.equal(sent.some(packet => packet.requestId === '4'),false);
+});
 
 test('The shared native connection accepts only its selected Craft app namespace', async t => {
   const {native,receive,sent}=fixture(t,'vectorcraft','VectorCraft');

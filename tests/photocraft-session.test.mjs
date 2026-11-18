@@ -6,7 +6,7 @@ const generation = 'c'.repeat(32), documentId = '17', resource = 'Pictures/Layer
 const initial = {available:true,generation,documentId,revision:'1',
   dirty:true,unfinishedEdit:false,operationPending:false,capturable:true};
 
-function fixture(choose) {
+function fixture(choose, choosePath = async () => resource) {
   const nativeCalls = [], closing = [], frame = {inert:false};
   const inspected = {identity:{generation,documentId},binding:{path:resource,sha256:'1'.repeat(64)},pending:null};
   let authorised = true, cleared = 0, writes = 0, resumed = 0, session;
@@ -18,7 +18,7 @@ function fixture(choose) {
     drafts:{async pause() { return () => { resumed++; }; },async clear() { cleared++; }},
     autosave:{closing(value) { closing.push(value); }},
     signal:new AbortController().signal, valid:() => authorised, loaded:() => true, frame,
-    documentName:() => 'PhotoCraft project', choose, choosePath:async () => resource,
+    documentName:() => 'PhotoCraft project', choose, choosePath,
     async write() { writes++; session.receive({...initial,revision:'2',dirty:false}); return {}; }, onError:assert.fail,
   });
   session.receive(initial);
@@ -94,4 +94,26 @@ test('A window discard decision cannot authorize discarding during sign-out', as
   await f.session.quiesce('window');
   await f.session.commitClose();
   assert.equal(f.cleared,1);
+});
+
+test('Save As captures the reviewed revision and writes to the chosen path', async () => {
+  const destination = 'Pictures/Copy.pcraft';
+  const f = fixture(assert.fail, async suggested => {
+    assert.equal(suggested,resource);
+    return destination;
+  });
+  await f.session.saveManually({saveAs:true});
+  assert.deepEqual(f.nativeCalls,[['save',{documentId,revision:'1',path:destination}]]);
+  assert.equal(f.writes,1);
+});
+
+test('Save As aborts instead of capturing a newer edit made while choosing the path', async () => {
+  const f = fixture(assert.fail, async () => {
+    f.session.receive({...initial,revision:'2'});
+    return 'Pictures/Copy.pcraft';
+  });
+  await assert.rejects(f.session.saveManually({saveAs:true}),/changed after you reviewed/);
+  assert.deepEqual(f.nativeCalls,[]);
+  assert.equal(f.writes,0);
+  assert.equal(f.session.snapshot().dirty,true);
 });
