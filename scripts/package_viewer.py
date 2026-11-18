@@ -17,6 +17,7 @@ BASE_BYTES = 256 * 1024 * 1024
 OPTIONAL_ENGINES = {app: 64 * 1024 * 1024 for app in ('gridcraft', 'deckcraft', 'photocraft', 'figcraft', 'anicraft', 'lightcraft', 'soundcraft', 'filmcraft')}
 OPTIONAL_ENGINES['designcraft'] = 96 * 1024 * 1024
 OPTIONAL_ENGINES['vectorcraft'] = 128 * 1024 * 1024
+OPTIONAL_ENGINES['effectcraft'] = 128 * 1024 * 1024
 
 
 def digest(data):
