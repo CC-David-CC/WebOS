@@ -5,18 +5,47 @@ import {textRecovery} from './text-recovery.mjs';
 import {wordcraftRecovery} from './wordcraft-recovery.mjs';
 import {pdfcraftRecovery} from './pdfcraft-recovery.mjs';
 import {accountFileApp} from './file-associations.mjs';
+
+function gridCell(args, write) {
+  return args && typeof args === 'object' && !Array.isArray(args) &&
+    Object.keys(args).length === (write ? 3 : 2) &&
+    typeof args.sheet === 'string' && args.sheet.length > 0 && args.sheet.length <= 31 &&
+    typeof args.cell === 'string' && /^[A-Z]{1,3}[1-9]\d{0,6}$/.test(args.cell) &&
+    (!write || typeof args.input === 'string' && args.input.length <= 32_767);
+}
+
+const gridCommands = Object.freeze({
+  'document.inspect': args => args && typeof args === 'object' && !Array.isArray(args) && !Object.keys(args).length,
+  'cell.get': args => gridCell(args, false),
+  'cell.set': args => gridCell(args, true)
+});
+
 export function mountAccountApp(mount, host, kind, officeRecovery = null) {
   const element = document.createElement('div');
   element.className = 'window-content';
   element.textContent = 'Opening ' + host.w.title + '…';
-  let view, disposed = false, offLifecycle, offBinding;
+  let view, disposed = false, offLifecycle, offBinding, offAgentView;
   const listeners = new Set();
   const authority = Object.freeze({});
-  const instanceId = String(host.w.id), session = host.session(), sessionId = session.public.sid;
+  const delegated = kind === 'gridcraft' && typeof host.registerAgentView === 'function';
+  const invocations = delegated ? new WeakMap() : null;
+  const instanceId = delegated ? crypto.randomUUID() : String(host.w.id);
+  const session = host.session(), sessionId = session.public.sid;
   const valid = () => !disposed && !host.signal.aborted && host.session() === session
     && host.storage.signedInSubject() === session.public.sub && host.desktop.windows.includes(host.w);
-  const authorize = async (candidate, target) => candidate === authority && valid()
-    && target.instanceId === instanceId && target.sessionId === sessionId;
+  const authorize = async (candidate, target) => {
+    if (!valid() || target.instanceId !== instanceId || target.sessionId !== sessionId) return false;
+    if (candidate === authority) return true;
+    const grant = invocations?.get(candidate);
+    if (!grant) return false;
+    invocations.delete(candidate);
+    const request = grant.request;
+    if (request.documentId !== target.documentId || request.resourceId !== target.resourceId ||
+        request.command !== target.operation) return false;
+    grant.check();
+    return true;
+  };
+  let bindingKey, bindingId;
   const ready = (async () => {
     const context = await host.storage.accountFileContext();
     if (!valid() || !context.valid()) throw new DOMException('Account view closed.', 'AbortError');
@@ -86,6 +115,10 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null) {
     if(officeRecovery)delete host.w[kind+'Import'];
     if (['text','wordcraft','pdfcraft','gridcraft','deckcraft'].includes(kind)) {
       const synchronize = binding => {
+        if (delegated) {
+          const key = JSON.stringify([binding.loaded, binding.documentId, binding.path]);
+          if (key !== bindingKey) { bindingKey = key; bindingId = crypto.randomUUID(); }
+        }
         if (!valid() || !binding.loaded) return;
         if(kind==='wordcraft'&&binding.path!==null)delete host.w.wordcraftRecoveryAsCopy;
         if(kind==='pdfcraft'&&binding.path!==null)delete host.w.pdfcraftRecoveryAsCopy;
@@ -98,6 +131,28 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null) {
     view.element.style.flex = '1'; view.element.style.minHeight = '0';
     element.style.display = 'flex'; element.style.flexDirection = 'column';
     element.replaceChildren(view.element);
+    if (delegated) offAgentView = host.registerAgentView({
+      windowId:host.w.id, name:'GridCraft', signal:host.signal, instanceId, sessionId, accountId:context.owner,
+      commands:gridCommands, bindingId:() => bindingId,
+      async snapshot() {
+        if (!valid()) return null;
+        const state = await view.inspect();
+        return valid() && state.phase === 'ready' ? {...state, bindingId} : null;
+      },
+      async execute(request, check) {
+        if (request.command === 'cell.set') {
+          const state = await view.inspect();
+          if (!state.documents.find(doc => doc.id === request.documentId)?.autosaveEligible) {
+            throw Error('Finish the active GridCraft edit or operation first.');
+          }
+        }
+        check();
+        const candidate = Object.freeze({});
+        invocations.set(candidate, {request, check});
+        try { return await view.execute(request, candidate); }
+        finally { invocations.delete(candidate); }
+      }
+    });
     await view.ready;
     if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
   })();
@@ -120,6 +175,6 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null) {
     inspect: async () => { if (!view) await ready; return view.inspect?.(); },
     execute: async (request, candidate) => { if (!view) await ready; return view.execute(request, candidate); },
     async requestClose() { if (!view) return true; return typeof view.requestClose === 'function' ? await view.requestClose() : true; },
-    dispose() { if (disposed) return; disposed = true; offLifecycle?.(); offBinding?.(); listeners.clear(); view?.dispose(); element.remove(); }
+    dispose() { if (disposed) return; disposed = true; offAgentView?.(); offLifecycle?.(); offBinding?.(); listeners.clear(); view?.dispose(); element.remove(); }
   };
 }

@@ -16,8 +16,9 @@
 > GridCraft `fd80ce89` and DeckCraft `f8353c0d` passed all 87 checks across
 > five browser suites. The verified local archive and its build provenance
 > are recorded in the [integration log](migration/CRAFT-INTEGRATION-LOG.md#local-office-release-candidate).
-> Keep the candidate local pending separate deployment approval. Live agent
-> command dispatch remains in development on separate branches.
+> Keep the candidate local pending separate deployment approval. GridCraft
+> signed agent commands pass in the opt-in loopback development profile.
+> DeckCraft and delegated file operations remain open on separate branches.
 > Normal automatic writes wait 10 seconds after committed typing, at least 60
 > seconds between confirmed writes; known no-write transient retries back off
 > to 15 minutes. Conflict/uncertain outcomes pause. Manual Save remains immediate.
