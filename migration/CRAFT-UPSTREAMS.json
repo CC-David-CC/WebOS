@@ -63,6 +63,11 @@
       "trackingBranch": "main"
     },
     {
+      "path": "apps/sketchcraft",
+      "upstream": "https://github.com/jasonsutter87/sketchcraft.git",
+      "trackingBranch": "main"
+    },
+    {
       "path": "apps/solidcraft",
       "upstream": "https://github.com/tangency-labs/solidcraft.git",
       "trackingBranch": "main"

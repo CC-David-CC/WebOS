@@ -12,6 +12,7 @@ ORIGINAL_ENTRIES = {
     'apps/calculator': ['apps/system/calculator/index.mjs'],
     'apps/help': ['apps/system/help/index.mjs'],
     'apps/files': ['apps/system/files/index.mjs'],
+    'apps/sketchcraft': ['app/index.html', 'Cargo.toml'],
 }
 PLANNED = {'math-path', 'fraction-farm', 'word-weaver', 'market-math', 'rule-detective', 'pocket-conquest', 'tile-islands'}
 

@@ -735,6 +735,17 @@
       "path": "apps/rule-detective"
     },
     {
+      "id": "sketchcraft",
+      "category": "Engineering and developer apps",
+      "priority": 3,
+      "purpose": "SketchCraft push/pull 3D modeling",
+      "interfaces": "React and three.js interface; Rust modeling commands; native Tauri shell and local browser bridge",
+      "recipe": "native",
+      "state": "B",
+      "gap": "Queued after the initial Craft apps. WebOS hosting, account storage, recovery and browser qualification remain.",
+      "path": "apps/sketchcraft"
+    },
+    {
       "id": "sky-courier",
       "category": "Games and interactive activities",
       "priority": 4,
