@@ -461,19 +461,24 @@ second-machine test or all-format parity. Do not reuse an old WASM payload or ol
 PASS count to qualify a changed native protocol. Local bare Git copies preserve
 commits locally; they are not an off-machine backup.
 
-## Choosing the next task
+## Rolling integration queue
 
-All 17 selected Craft sources are organized. WordCraft and PdfCraft have deployed
-integrations; PdfCraft has a focused blank/chrome follow-up in progress. The other
-apps do not inherit their qualification. Historical DeckCraft work
-is evidence, not a qualified current-viewer release.
+The [integration matrix](CRAFT-INTEGRATION-MATRIX.md) records live status and
+source pins for all 17 selected apps. Each app can roll out independently once
+its own native, account and browser gates pass. The sequence below groups the
+remaining work by the behavior that needs qualification.
 
-| Candidate family | Assess before selecting |
+| Next work | Acceptance milestone |
 |---|---|
-| GridCraft, DeckCraft, PdfCraft | Native document identity, formats, recovery and actual browser/host protocol. Likely to exercise the document contract, but inspect each implementation. |
-| PhotoCraft, VectorCraft, DesignCraft, FigCraft | Media/resource graphs, fonts, linked assets, project recovery and memory footprint. |
-| AniCraft, FilmCraft, EffectCraft, SoundCraft, LightCraft | Media size, streaming/cache needs, long-running work and view/job lifetime. |
-| CADCraft, SolidCraft, TextureCraft, MaterialCraft | Native project/engine dependencies, renderer, linked assets and serialization/recovery. SolidCraft has a distinct community upstream. |
+| FigCraft and VectorCraft | Finish exact selected-commit browser qualification and rolling activation. Verify scoped editing and Undo, Save As, conflict recovery and an account reopen in a fresh browser. |
+| AniCraft | Use the existing `.anicraft` codec. Edit a native timeline, retain embedded art and sound, Save and recover the project, and verify a browser export independently. |
+| LightCraft | Qualify an account-scoped catalog with originals, adjustment recipes and render workers. Verify that a fresh browser can retrieve an edited photo and its original. |
+| DesignCraft | Preserve editable pages, typography and linked resources across Save, recovery and fresh-browser reopen. Verify publication export using an account project. |
+| SoundCraft, FilmCraft and EffectCraft | Qualify native projects containing referenced media. Test browser codecs, large assets, rendering or playback and job ownership when a window closes. Use the existing shared media engines where applicable. |
+| CADCraft and SolidCraft | Qualify native drawings and parametric parts in their own browsers and kernels. Verify precision and editable geometry after account reopen. |
+| TextureCraft and MaterialCraft | Preserve geometry, maps and procedural graph inputs in account projects. Verify renderer availability and re-render after reopening. |
+
+SketchCraft remains position 18. Its source lives in `apps/sketchcraft`.
 
 Files, Accounts, Storage and Runtime reliability outrank adding games or another
 editor for functional WebOS. Each account already has a separate server home;
@@ -484,9 +489,9 @@ per-document browser memory remain unqualified. The organized Accounts source
 also includes separate delegation/policy work beyond the retained deployed
 backend; do not accidentally deploy it during a static frontend release.
 
-With WordCraft qualified, choose explicitly between another Craft app and
-these platform gaps. Do not turn that choice into an automatic whole-catalog
-build, backend rewrite, upstream PR cleanup or beta-parity project.
+Use affected-app regression tests when changing the shared Desktop, Files or
+account boundaries. The current deployment path publishes a qualified static
+assembly and checks continuity against the running backend and beta.
 
 ## Browser qualification lessons from WordCraft
 
