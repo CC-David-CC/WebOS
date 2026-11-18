@@ -195,9 +195,14 @@ async function photoDispatch(page) {
   const box=await canvas.boundingBox();
   await canvas.dispose();
   assert(box);
-  await page.mouse.click(box.x+Math.max(65,(box.width-230)/2),box.y+box.height*0.56);
+  const point={x:box.x+Math.max(65,(box.width-230)/2),y:box.y+box.height*0.56};
+  await page.waitForFunction(({x,y},scope)=>document.elementFromPoint(x,y)===document.querySelector(scope+' iframe'),
+    {timeout:8_000},point,selector(original));
+  await page.screenshot({path:path.join(output,'photocraft-type-target.png')});
+  await page.mouse.click(point.x,point.y);
   await page.keyboard.type('Human input in progress',{delay:20});
-  await page.waitForFunction(()=>globalThis.photoTypeState?.unfinishedEdit && globalThis.photoTypeState?.capturable,timeout);
+  await page.screenshot({path:path.join(output,'photocraft-type-edit.png')});
+  await page.waitForFunction(()=>globalThis.photoTypeState?.unfinishedEdit && globalThis.photoTypeState?.capturable,{timeout:8_000});
   const blocked=await confirmed(scoped,'layer.rename',{...rename,name:'Do not apply'});
   assert.match((await dispatch(page,blocked.confirmation,blocked.intent)).error,/Finish the active PhotoCraft edit/);
   await photoKeys(page,original,'Escape');
