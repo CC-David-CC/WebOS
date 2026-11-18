@@ -889,3 +889,29 @@ stable 1.99.1 rerun passed workspace Clippy and reached the native test stage.
 The staged project still needs full source promotion and browser qualification
 for Save As, recovery, close and scoped operations. This trial profile carries
 `developmentOnly` and the release packager rejected it without an archive.
+
+### FigCraft and VectorCraft account qualification
+
+The combined review profile mounted FigCraft tree `67be1b2060c1` and VectorCraft
+tree `7675d1297666`. Both passed 12 actual Chromium account checks. These
+covered Save As, fresh-browser reads, draft restoration, Cancel/Discard/Save
+on dirty close and competing writes from two browser contexts. A stale write
+preserved the editing buffer and its original base. Reloading that draft after
+another browser committed a new version produced an unsaved copy and left the
+newer account bytes intact. Dropping the response to an accepted server write
+preserved the old editor binding and draft and blocked close. The signed test
+also verified one-shot layer rename and native Undo in the approved editor for
+both apps.
+
+FigCraft's stable run passed workspace Clippy and native test compilation.
+The isolated R730 runner denied socket operations in 15 pre-existing cases.
+The exact compiled binary passed those 15 cases in a loopback-only namespace on
+the laptop. The ordinary R730 shell exchanged data over `127.0.0.1`. Stable
+VectorCraft workspace Clippy passed on `9c60f8632eb9`, which adds a lint-only
+control-flow change to the packaged review tree. The remaining component gates
+and directly built selected-commit packages are required for rollout.
+
+The release build flags require the component commit and tree to match the
+selected checkout. Both rejected the staged review receipts. VectorCraft's
+independent bundle limit is 128 MiB because the reviewed WASM is 113,764,708
+bytes. The expanded release verifier accepted the existing 463-file archive.
