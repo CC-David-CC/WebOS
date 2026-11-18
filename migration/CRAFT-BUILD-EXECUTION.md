@@ -87,6 +87,14 @@ shared Desktop/Files/Text/WordCraft tests only when changed source/contracts or
 new failures justify them. Compiler feature/profile switches and whole-workspace
 sweeps can cause avoidable rebuilds; record why they are necessary.
 
+Refresh tracked-file modification times in the verified private snapshot
+before compiling against a reused Cargo target. The clean transfer archives
+normalize mtimes. An older cached binary can otherwise pass a clean Git tree
+check and appear in a new package. The Office builder records the number of
+refreshed files and the timestamp, then rechecks the tree before starting the
+isolated build. Check both the WASM digest and the browser regression when a
+change is supposed to alter behavior in the native engine.
+
 Sub-agents can inspect, implement and review independent app owners after the user
 approves that round. They do not make a single compilation faster. The primary
 integration owner coordinates shared APIs, cache budgets, test scope and parent
