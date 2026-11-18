@@ -41,9 +41,11 @@ hosted Chromium started the AniCraft editor. The immediate rollback is the
 [VectorCraft release](migration/CRAFT-INTEGRATION-LOG.md#vectorcraft-release-on-ksucodes)
 `c4acd1ab2d28957c05d2b8e34eb1beca9f60df36bda9a61ede9e48f46b323938`.
 See the [AniCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#anicraft-release-on-ksucodes)
-for native baselines, account workflow evidence and rollback. LightCraft is
-next for account editor integration. DesignCraft's baseline WASM check
-passed on the R730.
+for native baselines, account workflow evidence and rollback. LightCraft's
+local release candidate passed account Save, Save As, recovery, and cold
+reopen through Files with the original photo rendered. Retained-app checks
+continue before activation. DesignCraft's baseline WASM check and native
+save confirmation test passed on the R730.
 
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft and Help.
