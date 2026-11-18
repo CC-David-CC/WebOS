@@ -19,7 +19,11 @@ assert.equal(new URL(origin).hostname, '127.0.0.1');
 assert.equal(new URL(origin).origin, origin);
 assert(output && path.isAbsolute(output));
 assert.equal((await (await fetch(origin+'/healthz')).json()).scope, 'development');
-const photoProfile = (await (await fetch(origin+'/viewer-build.json')).json()).apps.includes('photocraft');
+const {apps} = await (await fetch(origin+'/viewer-build.json')).json();
+const photoProfile = apps.includes('photocraft');
+const officeProfile = apps.includes('gridcraft') && apps.includes('deckcraft');
+const disabled = process.env.WEBOS_AGENT_DISABLED_TEST === '1';
+assert(disabled || photoProfile || officeProfile);
 await mkdir(output, {mode:0o700});
 const checks = [];
 const agent = await makeKey();
@@ -273,13 +277,16 @@ try {
     headless:true,args:['--disable-dev-shm-usage','--enable-unsafe-swiftshader','--use-angle=swiftshader'],
     defaultViewport:{width:1540,height:960}
   });
-  const {page,context} = await login(browser);
-  if (process.env.WEBOS_AGENT_DISABLED_TEST === '1') {
+  if (!disabled && photoProfile) {
+    const {page,context} = await login(browser);
+    try { await photoDispatch(page); }
+    finally { await context.close(); }
+  }
+  const {page,context} = disabled || officeProfile ? await login(browser) : {};
+  if (disabled) {
     assert.equal(await page.evaluate(() => window.desktopLab.agentOperations === undefined), true);
     present('default server profile has no agent bridge');
-  } else if (photoProfile) {
-    await photoDispatch(page);
-  } else {
+  } else if (officeProfile) {
     const first = await editor(page,'gridcraft');
     const second = await editor(page,'gridcraft');
     const commands = ['document.inspect','cell.get','cell.set'];
@@ -394,8 +401,8 @@ try {
     assert.match((await dispatch(page,toRevoke.confirmation,updated)).error,/unavailable|revoked/i);
     present('Save As fences in-flight and unused grants and revocation fences issued grants');
   }
-  await context.close();
-  if (process.env.WEBOS_AGENT_DISABLED_TEST !== '1' && !photoProfile) await deckDispatch(browser);
+  await context?.close();
+  if (!disabled && officeProfile) await deckDispatch(browser);
   await writeFile(path.join(output,'result.json'),JSON.stringify({status:'PASS',checks},null,2)+'\n',{mode:0o600});
 } finally {
   await browser?.close();
