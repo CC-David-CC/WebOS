@@ -1431,6 +1431,7 @@ async function cadcraftDispatch(browser,page,credentials) {
   const fresh=await login(browser,credentials);
   try {
     const freshFiles=await files(fresh.page);
+    await file(fresh.page,freshFiles,'list',{path:'Documents'});
     await file(fresh.page,freshFiles,'open',{path:copy});
     const view=appWindow+' iframe:not([inert])';
     const frameElement=await fresh.page.waitForSelector(view,timeout);
@@ -1441,9 +1442,18 @@ async function cadcraftDispatch(browser,page,credentials) {
     const drawing=await edit(fresh.page,freshApproval,'document.inspect');
     assert.deepEqual([drawing.entityCount,drawing.dirty],[3,false]);
     assert.deepEqual(dxfEntities(await read(fresh.page,freshFiles,copy)),entities);
-    await frameElement.screenshot({path:path.join(output,'cadcraft-reopened-drawing.png')});
+    await labelledButton(fresh.page,selector(reopened),'Maximize');
+    await fresh.page.waitForFunction(view=>document.querySelector(view)?.getBoundingClientRect().width>1000,timeout,view);
+    const expanded=await fresh.page.waitForSelector(view,timeout);
+    await expanded.screenshot({path:path.join(output,'cadcraft-reopened-drawing.png')});
+    await expanded.dispose();
+    const previousRevision=(await file(fresh.page,freshFiles,'snapshot',{path:copy})).sha256;
     await edit(fresh.page,freshApproval,'line',{points:[[19,9],[24,10]]});
     await shortcut(fresh.page,reopened,'s');
+    await fresh.page.waitForFunction((id,revision)=>{
+      const target=window.desktopLab.surfaces.get('Desktop').windows.find(window=>String(window.id)===String(id));
+      return target?.launchContext?.sha256 && target.launchContext.sha256!==revision;
+    },timeout,reopened,previousRevision);
     await bound(fresh.page,reopened,'Dimensioned copy.dxf');
     assert.equal(dxfEntities(await read(fresh.page,freshFiles,copy)).length,4);
     present('CADCraft reopens editable account geometry from Files in a fresh browser and saves a later revision');
