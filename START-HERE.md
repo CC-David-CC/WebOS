@@ -1,8 +1,7 @@
-> **User scope decision — all17 Craft integrations (2026-11-18 UTC)**
+> **User scope decision — all 18 Craft integrations (2026-11-18 UTC)**
 >
-> All17 selected Craft apps are integration targets, including the less mature
-> ones. Readiness differences affect sequencing and acceptance work; none is
-> excluded by an earlier “defer” recommendation. Finish GridCraft/DeckCraft first.
+> All 18 selected Craft apps are integration targets, including SketchCraft.
+> Readiness differences determine sequencing and acceptance work.
 > Every selected app gets a visible entry in the existing Desktop menu; enable
 > only qualified integrations through the release profile. Unsupported Craft and
 > legacy apps stay grayed out. Keep their source. No legacy-editor retirement,
@@ -27,7 +26,7 @@
 
 # WebOS — site integration from organized source
 
-Source organization is complete. Continue site integration from the 17
+Source organization is complete. Continue site integration from the 18
 independent Craft repositories under `apps/`. The user approved rolling
 deployments to ksu.codes as each app passes its release checks. Use the
 classic Desktop and the existing account service. The
@@ -70,7 +69,7 @@ qualifies restoration for GridCraft and DeckCraft. PDF-specific layout
 restoration still needs its own check.
 
 The [Craft integration matrix](migration/CRAFT-INTEGRATION-MATRIX.md) lists
-the 17 source locations, native workflows and current qualification.
+all 18 source locations, native workflows and current qualification.
 The [integration guide](migration/CRAFT-INTEGRATION-GUIDE.md) and
 [GridCraft/DeckCraft branch plans](migration/CRAFT-BRANCH-PLANS.md) describe
 the active work. The [build inputs](migration/CRAFT-BUILD-INPUTS.md) identify

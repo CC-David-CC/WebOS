@@ -1,7 +1,7 @@
-> **Current product scope, 2026-11-18 UTC.** Integrate all 17 selected Craft apps.
+> **Current product scope, 2026-11-18 UTC.** Integrate all 18 selected Craft apps, including SketchCraft.
 > The [integration matrix](CRAFT-INTEGRATION-MATRIX.md) tracks live and queued
 > apps, including apps with upstream workflow gaps.
-> Represent all 17 in the menu. Disabled entries indicate unqualified
+> Represent all 18 in the menu. Disabled entries indicate unqualified
 > support. Preserve legacy apps as disabled entries until the user decides.
 > Readiness comparisons do not authorize removing apps or replacing their source.
 
@@ -464,7 +464,7 @@ commits locally; they are not an off-machine backup.
 ## Rolling integration queue
 
 The [integration matrix](CRAFT-INTEGRATION-MATRIX.md) records live status and
-source pins for all 17 selected apps. Each app can roll out independently once
+source pins for all 18 selected apps. Each app can roll out independently once
 its own native, account and browser gates pass. The sequence below groups the
 remaining work by the behavior that needs qualification.
 
@@ -477,8 +477,7 @@ remaining work by the behavior that needs qualification.
 | SoundCraft, FilmCraft and EffectCraft | Qualify native projects containing referenced media. Test browser codecs, large assets, rendering or playback and job ownership when a window closes. Use the existing shared media engines where applicable. |
 | CADCraft and SolidCraft | Qualify native drawings and parametric parts in their own browsers and kernels. Verify precision and editable geometry after account reopen. |
 | TextureCraft and MaterialCraft | Preserve geometry, maps and procedural graph inputs in account projects. Verify renderer availability and re-render after reopening. |
-
-SketchCraft remains position 18. Its source lives in `apps/sketchcraft`.
+| SketchCraft | Connect the React modeling interface to the native Rust command model in a browser release. Prove push/pull, undo, scoped commands and a round trip of the editable `.sketchcraft` model through account Storage. The upstream Vite launch uses a local development bridge. |
 
 Files, Accounts, Storage and Runtime reliability outrank adding games or another
 editor for functional WebOS. Each account already has a separate server home;
