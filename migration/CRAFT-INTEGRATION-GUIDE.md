@@ -472,6 +472,11 @@ commits locally; they are not an off-machine backup.
 
 ## Rolling integration queue
 
+EffectCraft is live. Its composition reuses the FilmCraft and LightCraft
+immutable-original store. The qualifying browser run checked fresh-browser
+pixels and retirement of frame workers on close. The active queue starts with
+CADCraft.
+
 The [integration matrix](CRAFT-INTEGRATION-MATRIX.md) records live status and
 source pins for all 18 selected apps. Each app can roll out independently once
 its own native, account and browser gates pass. The sequence below groups the
@@ -479,7 +484,6 @@ remaining work by the behavior that needs qualification.
 
 | Next work | Acceptance milestone |
 |---|---|
-| EffectCraft | Qualify a native composition with linked account footage. Verify a rendered frame in a fresh browser and worker teardown on window close. Reuse the immutable original store from FilmCraft and LightCraft. |
 | CADCraft and SolidCraft | Qualify native drawings and parametric parts in their own browsers and kernels. Verify precision and editable geometry after account reopen. |
 | TextureCraft and MaterialCraft | Preserve geometry, maps and procedural graph inputs in account projects. Verify renderer availability and re-render after reopening. |
 | SketchCraft | Connect the React modeling interface to the native Rust command model in a browser release. Prove push/pull, undo, scoped commands and a round trip of the editable `.sketchcraft` model through account Storage. The upstream Vite launch uses a local development bridge. |

@@ -17,19 +17,24 @@ under the user's approval.
 
 | Stage | Count | Applications |
 |---|---:|---|
-| Enabled on ksu.codes | 12 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft |
-| Native account integration underway | 1 | EffectCraft |
-| Organized source, queued for integration | 5 | CADCraft, SolidCraft, TextureCraft, MaterialCraft, SketchCraft |
+| Enabled on ksu.codes | 13 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft |
+| Native account integration underway | 1 | CADCraft |
+| Organized source, queued for integration | 4 | SolidCraft, TextureCraft, MaterialCraft, SketchCraft |
 
 The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables
 Files, Text (CodeMirror 6), Calculator and Help on the classic Desktop. The
 [live release manifest](https://ksu.codes/viewer-release.json) identifies the
-FilmCraft release at parent commit `5c7ea3d97b67`.
-Six Craft entries are disabled in the hosted Desktop, including SketchCraft in
+EffectCraft release at parent commit `83df0f4130d7`.
+Five Craft entries are disabled in the hosted Desktop, including SketchCraft in
 the CAD menu. For the rest of the organized
 project, see the [full source and application matrix](APP-MATRIX.md), which
 covers the 86 app repositories, platform components, shared engines, tools,
 libraries and games.
+
+The [EffectCraft release](CRAFT-INTEGRATION-LOG.md#effectcraft-release-on-ksucodes)
+passed 200 exact-package browser checks. Hosted verification matched 653 files
+and started the native editor. A fresh account browser retrieved hashed
+footage and rendered the expected pixels. Closing the editor stopped its workers.
 
 The [FilmCraft release](CRAFT-INTEGRATION-LOG.md#filmcraft-release-on-ksucodes)
 passed 117 exact-package browser checks. Hosted verification matched 637 files
@@ -82,9 +87,9 @@ for the acceptance contract.
 | Graphics | [lightcraft](../apps/lightcraft/) `webos/integration` at `ef00c97ec7f4` | Non-destructive photo adjustments | `cargo xtask web` from repo root | Live `.lightcraft` workflow. The native build passed 56 tests. Signed Chromium proved import, independent windows, scoped photo rating, account Save and Save As, and draft recovery. A fresh context reopened the copy from Files and rendered the original fetched from account storage. All 601 hosted files matched and hosted Chromium started the editor. |
 | Animation and video | [anicraft](../apps/anicraft/) `webos/integration` at `04610927977e` | Timeline and vector animation | `scripts/build-web.sh` and root WASM target | Live `.anicraft` workflow. Browser qualification covered timeline edits, PNG/WAV media, Save and Save As, recovery, fresh-browser reopen, PNG export fidelity and scoped editing with native Undo. The native workspace passed 1,624 tests with two failures reproduced on upstream involving the timeline header width and system font names. |
 | Animation and video | [filmcraft](../apps/filmcraft/) `webos/filmcraft-account-project` at `b7ba79c366e6` | Video timeline and linked media | `filmcraft-web` | Live `.fcproj` workflow. The native editor saved and reopened linked video, recovered local edits, decoded the original in a fresh Chromium context and exported a verified PNG. |
-| Animation and video | [effectcraft](../apps/effectcraft/) baseline `dc2380b070fa`; account branch `ac9f6618208a` | Compositing and motion graphics | `effectcraft-web` | Disabled. Native project save, open and recovery tests passed. The R730 compiled the account transport and isolated storage mode for WASM. Browser qualification will cover imported footage, composition rendering and worker lifetime. |
+| Animation and video | [effectcraft](../apps/effectcraft/) `webos/effectcraft-account-composition` at `78f11b7fc1ce` | Compositing and motion graphics | `effectcraft-web` | Live editable `.ecproj` composition with linked still images. Scoped native composition edit and Undo, manual Save and Save As, browser draft recovery, fresh-browser rendering and worker disposal passed. |
 | Audio | [soundcraft](../apps/soundcraft/) at `e196254ee15f` | Multitrack audio projects | `soundcraft-web` | Live portable `.scraftz` workflow. Signed Chromium confirmed native track edits, Save and Save As, local recovery, reopening from Files, exact sample fidelity and playback through WebAudio. |
-| CAD | [cadcraft](../apps/cadcraft/) `webos/integration` at `67514021aedf` | Drafting and drawing documents | `cadcraft-web` | Disabled. Build and browser integration pending. Verify drawing formats, renderer and supported editing/export workflows. |
+| CAD | [cadcraft](../apps/cadcraft/) `webos/integration` at `67514021aedf` | Drafting and drawing documents | `cadcraft-web` | Disabled. Focused DXF save, reopen and recovery tests and a locked WASM check passed. Native account command coverage and browser qualification are underway. |
 | CAD | [solidcraft](../apps/solidcraft/) `webos/integration` at `a5b35abd133e` | Parametric solid modeling | `solidcraft-web` | Disabled. Build and browser integration pending. Verify kernel, browser renderer and parametric project fidelity. |
 | CAD | [sketchcraft](../apps/sketchcraft/) at `3a895db54c8a` | Push/pull 3D modeling, `.sketchcraft` projects | React/Tauri `app/`, Rust `core/` and [local browser development](../apps/sketchcraft/docs/dev/building.md) | Queued in position 18. The Rust core passed its baseline WASM compile check. The upstream Vite interface uses a local development bridge. Qualify the hosted browser engine, native commands and account document model before enabling the app. |
 | Materials and textures | [texturecraft](../apps/texturecraft/) `webos/integration` at `8c82502c3261` | Texture editing with geometry and maps | `texturecraft-web` | Disabled. Build and browser integration pending. Verify translation pin and project geometry, textures and linked resources. |

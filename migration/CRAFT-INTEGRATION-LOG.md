@@ -1127,3 +1127,33 @@ service process IDs were verified. The immediate rollback is SoundCraft
 The host backup is `/var/backups/webos-filmcraft-b7ba79c366e6-account-package`.
 The private `filmcraft-b7ba79c366e6-account-package/` record contains the
 archive, component evidence, activation and hosted verification.
+
+## EffectCraft release on ksu.codes
+
+Release `4d7265ced0e8131e82a43582facc6cd164d660dd904adf832216d611ebcf713c`
+went live on 2026-11-18 UTC. Packaged parent
+`83df0f4130d7944c5262482436327b8b1ed1ac53` selects EffectCraft
+`78f11b7fc1cec0a003620decdeebb44941c05046` at tree
+`b35cc75fa0113004d110bbed1583b6cea2d05c91`.
+
+Eight exact Chromium checks exercised native composition creation and Undo
+with a scoped signed operation, import of a known PNG, placement in the
+native composition, account Save and Save As, reuse of the same window,
+local draft recovery and fresh-browser Open from Files. The fresh account
+browser pulled the original by SHA-256 and rendered the expected pixels in
+the composition. Closing the editor retired its frame workers. The hosted
+release uses explicit account saves and browser drafts. Video footage,
+general effects and export formats need separate qualification.
+
+The combined exact-package run passed 200 Chromium checks. The first
+PhotoCraft run passed 27 checks, then timed out before its IME test reached
+active native text editing. The full PhotoCraft rerun passed all 28 on the
+same release candidate. The preserved native editor payloads and classic
+Desktop HTML and CSS matched the previous release.
+
+All 653 hosted files matched. Hosted Chromium compiled the served WASM and
+started the native editor. The backend instance, issuer, beta and service
+process IDs were verified. The immediate rollback is FilmCraft
+`5c7dc01e3f248d8dce0b57b47ebc75850f4e68b2c59f934b60451e35bd4d58c4`. The host backup is
+`/var/backups/webos-effectcraft-78f11b7fc1ce-account-package`. The private record
+`effectcraft-78f11b7fc1ce-account-package/` contains the archive, component evidence, activation and hosted verification.
