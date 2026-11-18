@@ -80,7 +80,7 @@ const servicesSource = officeEngines.length || photoSite ? {
       "export * from './assembly/viewer/account-services.mjs';",
       "import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';",
       ...officeEngines.map(({id,name})=>`import * as ${id} from '@webos/${id}/recovery';export const restore${id[0].toUpperCase()+id.slice(1)}Recovery=createOfficeRecovery('${id}','${name}',${id}).restore;`),
-      ...(photoSite ? ["import {photoRecovery} from './assembly/viewer/photocraft-recovery.mjs';export const restorePhotocraftRecovery=photoRecovery.restore;"] : [])
+      ...(photoSite ? ["import {photoRecovery} from './assembly/viewer/photocraft-app.mjs';export const restorePhotocraftRecovery=photoRecovery.restore;"] : [])
     ].join('\n'),
     resolveDir: root, sourcefile: '<account-services>', loader: 'js',
   },

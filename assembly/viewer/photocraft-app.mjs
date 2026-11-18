@@ -1,11 +1,12 @@
 import {connectCraftAccount} from './craft-account-native.mjs';
-import {trackPhotoAutosave} from './photocraft-autosave.mjs';
-import {photoRecovery, trackPhotoDraft} from './photocraft-recovery.mjs';
+import {trackCraftAutosave} from './craft-account-autosave.mjs';
+import {createCraftRecovery, trackCraftDraft} from './craft-account-recovery.mjs';
 import {createPhotoSession} from './photocraft-session.mjs';
 import {createCraftStorage, MAX_BYTES, craftProjectPath} from './craft-account-storage.mjs';
 
 const localImports = new WeakMap();
 const projectPath = path => craftProjectPath(path, '.pcraft');
+export const photoRecovery = createCraftRecovery({app:'photocraft', name:'PhotoCraft', extension:'.pcraft'});
 
 const scopedCommands = Object.freeze({
   'document.inspect': args => args && !Array.isArray(args) && typeof args === 'object' && !Object.keys(args).length,
@@ -261,11 +262,11 @@ export function mount(host) {
         message(reason);
       }
     });
-    drafts = trackPhotoDraft({
+    drafts = trackCraftDraft({
       journal, native, storage, valid:() => loaded && valid(),
       onError(error) { message('PhotoCraft could not update the browser draft. ' + error.message); }
     });
-    autosave = trackPhotoAutosave({
+    autosave = trackCraftAutosave({
       native, storage, valid:() => loaded && valid(), write:packet => save(packet, true),
       onState(state) {
         if (autoEnabled) {
