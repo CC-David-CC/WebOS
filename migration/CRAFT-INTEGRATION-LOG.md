@@ -1039,3 +1039,28 @@ The immediate rollback is the AniCraft release
 `358215126cd5e6bc250c4ec8f5cde03baca308ee71c3f2e361f911b6dcc401a2`.
 The host backup is `/var/backups/webos-lightcraft-ksu-20261118-02`. The private
 `lightcraft-ksu-20261118-02/` record includes the exact archive and receipts.
+
+## DesignCraft release on ksu.codes
+
+Release `bf2ef1c60c21e0cf7cf8d50e6cc5a371f9db8537982518631695d3c955d7e3f2`
+went live on 2026-11-18 UTC. The assembly checkout was
+`610e088ba4fb4281b29072fcc3c76260a27fa7f5`. It selects DesignCraft
+`afca6f8d0f9a95847e6a449141765ffa675f5f67` at tree
+`c0ffa4768b82c969f923ac3240acec1f60c04aa9`.
+
+The R730 ran 38 native linked-media tests and one native file command test.
+The 178 exact-package browser checks covered the new editor and affected
+Desktop and account workflows. In the signed DesignCraft test, Files opened a
+publication with a missing graphic, the account chooser embedded a 192 × 128
+original in place of a 48 × 32 proxy, and a fresh browser exported a PDF
+containing the full-resolution image. The test also covered native frame
+creation and Undo, Save and Save As, draft recovery and account reopen.
+
+The hosted release matched 611 files and Chromium started a blank native
+publication. The backend instance, issuer and beta were verified during
+activation. Scoped editor operations were tested in the opt-in loopback
+profile. The immediate rollback is LightCraft release
+`344e72a215f9179096acaa0ad2bd736f5e7a1e5bf3ab38ce7ea3bea5b96c169a`.
+The host backup is `/var/backups/webos-designcraft-afca6f8d0f9a-package-account`.
+The private `designcraft-afca6f8d0f9a-package-account/` record includes the
+archive, native checks, activation and hosted verification.

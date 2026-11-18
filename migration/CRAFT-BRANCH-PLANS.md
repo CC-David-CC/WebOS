@@ -187,6 +187,9 @@ the editor protects pending human input.
 
 ## DesignCraft preparation
 
+The selected workflow passed and went live. See the
+[DesignCraft release record](CRAFT-INTEGRATION-LOG.md#designcraft-release-on-ksucodes).
+
 Start from `apps/designcraft/` at `59c6fa1b4947` on
 `webos/designcraft-document-host`. Reuse Desktop window ownership and the shared
 Craft account adapter. The native editor already has document identity,
@@ -214,15 +217,14 @@ revisions, ZIP serialization, byte Open and PDF export.
 
 ## SoundCraft preparation
 
-Start from `apps/soundcraft/` at `2688ccac8859` on
-`webos/soundcraft-account-session`. The current browser shell delivers
-`.scraftz` bundles through a download callback and marks the session clean
-immediately. The branch uses the existing portable bundle serializer,
-including its embedded audio, and adopts a binding after Storage confirms the
-captured session. Preserve edits made while the write is pending.
+The first account bridge is at `e196254ee15f` on
+`webos/soundcraft-account-session`. It uses the native portable bundle
+serializer for account Save, Save As and recovery. It adopts the account
+binding after Storage confirms the captured session and preserves edits made
+while the write is pending. Native Open, Save and recovery tests passed,
+along with the account WASM compile check. Browser qualification is next.
 
-Connect the account channel to native New, Open, Save and Save As, and use
-the native bundle for recovery. `.scraft` projects can reference audio beside
+`.scraft` projects can reference audio beside
 the session file. Test them with explicit media selection and missing-file
 feedback before adding their default association.
 
