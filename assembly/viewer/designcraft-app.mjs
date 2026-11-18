@@ -11,6 +11,7 @@ const artworkExtensions = ['.png','.jpg','.jpeg','.webp','.svg','.tif','.tiff','
 const commands = Object.freeze({
   'document.inspect': empty,
   'edit.undo': empty,
+  'pdf.export': empty,
   'links.relink': args => object(args) && Object.keys(args).length === 1 && Number.isSafeInteger(args.asset) && args.asset > 0,
   'frame.create': args => object(args) && Object.keys(args).length === 2 &&
     Array.isArray(args.rect) && args.rect.length === 4 && args.rect.every(Number.isFinite) &&
