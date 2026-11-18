@@ -724,6 +724,19 @@ the draft. Save uses the ordinary conditional Storage adapter and
 waits for native acknowledgement. Explicit Save can commit supported
 pending Type text. Active IME composition keeps the previous checkpoint.
 
-The locked WASM compiler check and 33 JavaScript checks passed.
-The linked build is running on R730. Signed browser Save, Discard and
-Cancel tests across sign-out and account switching remain pending.
+The linked R730 package and 14 focused native tests passed. The first
+browser run timed out closing a saved project while a recovery capture
+waited on the already closed native UI. The host now drains that work
+before asking the editor to close and resumes it when close is cancelled.
+The second run passed all 22 functional PhotoCraft assertions, including
+the formerly stalled close and signed Save, Discard and Cancel across
+sign-out and account switching. The classic Desktop suite passed all 15
+checks in both runs.
+
+The second PhotoCraft run still failed its console-error assertion. On
+refresh Chromium saw leave-page warnings registered by both Desktop and
+the hosted PhotoCraft frame. The follow-up makes Desktop the warning owner
+for hosted PhotoCraft and reports pending browser work to that owner.
+Standalone PhotoCraft still registers its own warning. The recovery tests
+now also count the prompts on refresh. A linked package and signed rerun
+are required for this follow-up.

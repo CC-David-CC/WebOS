@@ -139,13 +139,15 @@ async function draftPersisted(page, path, revision, typeDraft = false) {
 
 async function reloadRecovered(page, id, text) {
   await page.bringToFront();
-  const handleDialog = dialog => void dialog.accept();
+  const dialogs = [];
+  const handleDialog = dialog => { dialogs.push(dialog.type()); void dialog.accept(); };
   page.on('dialog', handleDialog);
   try {
     await page.reload({waitUntil:'networkidle0'});
     await page.waitForSelector(photoWindow(id)+' iframe:not([inert])',{timeout:120_000});
     await page.waitForFunction((selector,text)=>document.querySelector(selector+' [role="status"]')?.textContent.includes(text),
       options,photoWindow(id),text);
+    assert.deepEqual(dialogs,['beforeunload']);
   } finally { page.off('dialog', handleDialog); }
 }
 
