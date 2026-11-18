@@ -26,10 +26,12 @@ const disabled = process.env.WEBOS_AGENT_DISABLED_TEST === '1';
 const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
 const lightOnly = process.env.WEBOS_LIGHTCRAFT_TEST === '1';
 const designOnly = process.env.WEBOS_DESIGNCRAFT_TEST === '1';
-const singleEditor = lightOnly || designOnly;
+const soundOnly = process.env.WEBOS_SOUNDCRAFT_TEST === '1';
+const singleEditor = lightOnly || designOnly || soundOnly;
 const graphics = ['figcraft','vectorcraft','anicraft'].filter(app=>apps.includes(app));
-assert(!lightOnly || !designOnly);
-assert(singleEditor ? apps.includes(lightOnly ? 'lightcraft' : 'designcraft') : graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
+assert([lightOnly,designOnly,soundOnly].filter(Boolean).length <= 1);
+assert(singleEditor ? apps.includes(lightOnly ? 'lightcraft' : designOnly ? 'designcraft' : 'soundcraft') :
+  graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
 await mkdir(output, {mode:0o700});
 const checks = [];
 const agent = await makeKey();
@@ -42,6 +44,7 @@ const selector = windowId => '.window[data-window="'+windowId+'"]';
 async function login(browser, existing) {
   const context = await browser.createBrowserContext();
   const page = await context.newPage();
+  if (soundOnly) await observeSoundOutput(page);
   const marker = randomBytes(6).toString('hex');
   const credentials = existing ?? {username:'office'+marker,password:marker+marker};
   await page.goto(origin, {waitUntil:'networkidle0'});
@@ -60,7 +63,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -753,6 +756,243 @@ async function designcraftArtwork(browser, session, credentials, files, fixture,
   } finally { await cold.context.close(); }
 }
 
+function soundFixture() {
+  const rate = 48_000;
+  const frames = rate / 10;
+  const bytes = Buffer.alloc(44 + frames * 2);
+  bytes.write('RIFF',0);
+  bytes.writeUInt32LE(bytes.length - 8,4);
+  bytes.write('WAVEfmt ',8);
+  bytes.writeUInt32LE(16,16);
+  bytes.writeUInt16LE(1,20);
+  bytes.writeUInt16LE(1,22);
+  bytes.writeUInt32LE(rate,24);
+  bytes.writeUInt32LE(rate * 2,28);
+  bytes.writeUInt16LE(2,32);
+  bytes.writeUInt16LE(16,34);
+  bytes.write('data',36);
+  bytes.writeUInt32LE(frames * 2,40);
+  for (let i=0; i<frames; i++) bytes.writeInt16LE(i % 48 < 24 ? 8192 : -8192,44 + i * 2);
+  return {bytes, rate, frames};
+}
+
+async function observeSoundOutput(page) {
+  await page.evaluateOnNewDocument(()=>{
+    if (location.pathname !== '/soundcraft/index.html' || typeof AudioNode === 'undefined') return;
+    const connect = AudioNode.prototype.connect;
+    const outputs = new WeakSet();
+    window.soundcraftTestAudio = {peak:0};
+    AudioNode.prototype.connect = function(destination,...params) {
+      const result = connect.call(this,destination,...params);
+      if (destination !== this.context.destination || outputs.has(this)) return result;
+      outputs.add(this);
+      const analyser = this.context.createAnalyser();
+      analyser.fftSize = 512;
+      connect.call(this,analyser);
+      const signal = new Float32Array(analyser.fftSize);
+      setInterval(()=>{
+        analyser.getFloatTimeDomainData(signal);
+        for (const sample of signal) window.soundcraftTestAudio.peak = Math.max(window.soundcraftTestAudio.peak,Math.abs(sample));
+      },15);
+      return result;
+    };
+  });
+}
+
+async function soundcraftDispatch(browser, page, credentials) {
+  const app = 'soundcraft';
+  const track = 'Authorized voice track';
+  const copy = 'Documents/Account mix copy.scraftz';
+  const first = await editor(page,app);
+  const commands = ['document.inspect','track.new','edit.undo'];
+  async function grant(tab,id) {
+    const pending = approve(tab,id,commands);
+    await tab.waitForSelector(modal,timeout);
+    await tab.click(modal+' button[aria-label="Approve access"]');
+    const approved = await pending;
+    assert.equal(approved.error,undefined,approved.error);
+    return approved.result;
+  }
+  async function edit(tab,approval,command,args={}) {
+    const intent = JSON.stringify(intentFor(approval,command,args));
+    const signed = await authorize(approval,intent);
+    assert.equal(signed.status,200,signed.error);
+    const result = await dispatch(tab,signed.confirmation,intent);
+    assert.equal(result.error,undefined,result.error);
+    return result.result.result;
+  }
+  const approval = await grant(page,first);
+  const initial = await edit(page,approval,'document.inspect');
+  assert.equal(initial.dirty,false);
+  await edit(page,approval,'track.new',{name:track});
+  assert((await edit(page,approval,'document.inspect')).tracks.some(row=>row.name===track));
+  await edit(page,approval,'edit.undo');
+  assert.deepEqual((await edit(page,approval,'document.inspect')).tracks,initial.tracks);
+  await edit(page,approval,'track.new',{name:track});
+  present('SoundCraft scoped track creation and Undo use the native engine');
+
+  const fixture = soundFixture();
+  const native = await editorFrame(page,first);
+  const previous = await page.$eval(selector(first),node=>node.appView.lifecycle.snapshot().revision);
+  await native.$eval('#soundcraft_canvas',(canvas,bytes)=>{
+    const transfer = new DataTransfer();
+    transfer.items.add(new File([Uint8Array.from(bytes)],'Account tone.wav',{type:'audio/wav'}));
+    canvas.dispatchEvent(new DragEvent('drop',{dataTransfer:transfer,bubbles:true,cancelable:true}));
+  },[...fixture.bytes]);
+  await page.waitForFunction((view,revision)=>{
+    const state = document.querySelector(view)?.appView?.lifecycle.snapshot();
+    return state?.dirty && state.revision !== revision;
+  },timeout,selector(first),previous);
+
+  const press = async (tab,id,key,shift=false)=>{
+    const frame = await editorFrame(tab,id);
+    await tab.bringToFront();
+    await frame.$eval('#soundcraft_canvas',canvas=>{canvas.tabIndex=0;canvas.focus({preventScroll:true});});
+    await tab.keyboard.down('Control');
+    if (shift) await tab.keyboard.down('Shift');
+    try { await tab.keyboard.press(key); }
+    finally {
+      if (shift) await tab.keyboard.up('Shift');
+      await tab.keyboard.up('Control');
+    }
+  };
+  const picker = 'dialog.codi-file-picker[open]', prompt = 'dialog.codi-confirm-dialog[open]';
+  async function saveAs(tab,id,name,copy) {
+    await press(tab,id,copy ? 'S' : 's',copy);
+    await labelledButton(tab,picker,'Open folder Documents');
+    await labelledButton(tab,picker,'Use this folder');
+    await tab.waitForSelector(prompt+' input',timeout);
+    await tab.$eval(prompt+' input',(field,value)=>{field.value=value;},name);
+    await labelledButton(tab,prompt,'Save');
+    await tab.waitForFunction((view,title)=>{
+      const node = document.querySelector(view);
+      const state = node?.appView?.lifecycle.snapshot();
+      return state && !state.dirty && !state.pending && node.querySelector('.caption-text')?.textContent===title;
+    },timeout,selector(id),name+'.scraftz — SoundCraft');
+  }
+
+  async function accountFiles(tab) {
+    const id = await tab.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+    await tab.waitForFunction(view=>typeof document.querySelector(view)?.appView?.execute==='function',timeout,selector(id));
+    await invoke(tab,id,'list',{path:'Documents'});
+    return id;
+  }
+  async function invoke(tab,id,command,args) {
+    return tab.$eval(selector(id),async (node,{command,args})=>{
+      await node.appView.ready;
+      return node.appView.execute(command,args);
+    },{command,args});
+  }
+  async function validateAudio(tab,id,resource,label) {
+    await invoke(tab,id,'list',{path:resource.slice(0,resource.lastIndexOf('/'))});
+    const revision = (await invoke(tab,id,'snapshot',{path:resource})).sha256;
+    const downloaded = await invoke(tab,id,'download',{path:resource,expectedRevision:revision});
+    const bytes = Buffer.from(Object.values(downloaded.data));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'),revision);
+    const artifact = path.join(output,label+'.scraftz');
+    await writeFile(artifact,bytes,{mode:0o600,flag:'wx'});
+    const files = execFileSync('unzip',['-Z1',artifact],{encoding:'utf8'}).trim().split('\n');
+    const audio = files.filter(file=>file.startsWith('Audio Files/') && file.endsWith('.wav'));
+    assert.equal(audio.length,1);
+    const wave = execFileSync('unzip',['-p',artifact,audio[0]]);
+    assert.equal(wave.toString('ascii',0,4),'RIFF');
+    assert.equal(wave.toString('ascii',8,12),'WAVE');
+    const chunks = new Map();
+    for (let cursor=12; cursor+8<=wave.length;) {
+      const size = wave.readUInt32LE(cursor+4);
+      assert(cursor+8+size<=wave.length);
+      chunks.set(wave.toString('ascii',cursor,cursor+4),wave.subarray(cursor+8,cursor+8+size));
+      cursor += 8 + size + (size & 1);
+    }
+    const format = chunks.get('fmt '), samples = chunks.get('data');
+    assert.equal(format.readUInt16LE(2),1);
+    assert.equal(format.readUInt32LE(4),fixture.rate);
+    assert.equal(format.readUInt16LE(14),32);
+    assert.equal(samples.length,fixture.frames * 4);
+    for (let i=0; i<fixture.frames; i++) assert(Math.abs(samples.readFloatLE(i * 4) - (i % 48 < 24 ? .25 : -.25)) < .00001);
+    return revision;
+  }
+  await saveAs(page,first,'Account mix',false);
+  await saveAs(page,first,'Account mix copy',true);
+  const files = await accountFiles(page);
+  const firstRevision = await validateAudio(page,files,copy,'confirmed');
+  present('Native audio import and confirmed Save and Save As preserve all 4,800 WAV samples');
+
+  await press(page,first,'o');
+  await labelledButton(page,picker,'Open folder Documents');
+  await labelledButton(page,picker,'Choose file Account mix copy.scraftz');
+  await page.waitForSelector(picker,{hidden:true,...timeout});
+  assert.equal(await page.$$eval('.window:has(.webos-soundcraft)',nodes=>nodes.length),1);
+  present('Native Open activates the existing portable account project');
+
+  const named = await grant(page,first);
+  await edit(page,named,'track.new',{name:'Saved percussion'});
+  await page.waitForFunction(view=>document.querySelector(view)?.appView?.lifecycle.snapshot().dirty,timeout,selector(first));
+  await press(page,first,'s');
+  await page.waitForFunction(view=>{
+    const state = document.querySelector(view)?.appView?.lifecycle.snapshot();
+    return state && !state.dirty && !state.pending;
+  },timeout,selector(first));
+  const revision = await validateAudio(page,files,copy,'ordinary-save');
+  assert.notEqual(revision,firstRevision);
+  present('Ordinary native Save advances the bound account revision and preserves the audio');
+
+  await edit(page,named,'track.new',{name:'Unsaved percussion'});
+  await page.waitForFunction(async resource=>{
+    const store = 'webos-soundcraft-recovery-v1';
+    if (!(await indexedDB.databases()).some(db=>db.name===store)) return false;
+    const db = await new Promise((resolve,reject)=>{
+      const request = indexedDB.open(store);
+      request.onsuccess = ()=>resolve(request.result);
+      request.onerror = ()=>reject(request.error);
+    });
+    try {
+      const rows = await new Promise((resolve,reject)=>{
+        const read = db.transaction('drafts').objectStore('drafts').getAll();
+        read.onsuccess = ()=>resolve(read.result);
+        read.onerror = ()=>reject(read.error);
+      });
+      return rows.some(row=>row.path===resource && row.bytes instanceof Blob && row.bytes.size>0);
+    } finally { db.close(); }
+  },timeout,copy);
+  const accept = dialog=>{void dialog.accept();};
+  page.on('dialog',accept);
+  try { await page.reload({waitUntil:'domcontentloaded'}); }
+  finally { page.off('dialog',accept); }
+  await page.waitForFunction(view=>document.querySelector(view)?.appView?.inspect?.()?.instanceId,timeout,selector(first));
+  const recovered = await edit(page,await grant(page,first),'document.inspect');
+  assert(recovered.dirty && recovered.tracks.some(row=>row.name==='Unsaved percussion'));
+  await labelledButton(page,selector(first),'Close');
+  await labelledButton(page,'dialog.webos-soundcraft-session[open]','Discard');
+  await page.waitForSelector(selector(first),{hidden:true,...timeout});
+  present('Refreshing recovers the edited SoundCraft bundle and discard preserves the saved version');
+
+  const fresh = await login(browser,credentials);
+  try {
+    const id = await accountFiles(fresh.page);
+    await invoke(fresh.page,id,'open',{path:copy});
+    const target = await fresh.page.waitForFunction(resource=>[...document.querySelectorAll('.window[data-window]')].find(node=>
+      node.appView?.inspect?.()?.resourceId===resource)?.dataset.window,timeout,copy);
+    const reopened = await target.jsonValue();
+    await target.dispose();
+    const state = await edit(fresh.page,await grant(fresh.page,reopened),'document.inspect');
+    assert(!state.dirty && state.tracks.some(row=>row.name===track) && state.tracks.some(row=>row.name==='Saved percussion') &&
+      !state.tracks.some(row=>row.name==='Unsaved percussion'));
+    assert.equal(await validateAudio(fresh.page,id,copy,'fresh-context'),revision);
+    const view = await editorFrame(fresh.page,reopened);
+    await fresh.page.bringToFront();
+    await view.$eval('#soundcraft_canvas',canvas=>{canvas.tabIndex=0;canvas.focus({preventScroll:true});});
+    await fresh.page.keyboard.press('Space');
+    await view.waitForFunction(()=>window.soundcraftTestAudio?.peak > .05,{timeout:30_000});
+    present('Playback of the reopened project produces the expected signal through Chromium WebAudio');
+    await saveAs(fresh.page,reopened,'Reopened mix',true);
+    await validateAudio(fresh.page,id,'Documents/Reopened mix.scraftz','reopened-and-saved');
+    await labelledButton(fresh.page,selector(reopened),'Close');
+    await fresh.page.waitForSelector(selector(reopened),{hidden:true,...timeout});
+    present('A fresh browser opens from Files and the reopened engine can resave the same audio samples');
+  } finally { await fresh.context.close(); }
+}
+
 let browser;
 try {
   browser = await puppeteer.launch({
@@ -762,7 +1002,7 @@ try {
   });
   if (singleEditor) {
     const {page,context,credentials} = await login(browser);
-    try { await (lightOnly ? lightcraftDispatch : designcraftDispatch)(browser,page,credentials); }
+    try { await (lightOnly ? lightcraftDispatch : designOnly ? designcraftDispatch : soundcraftDispatch)(browser,page,credentials); }
     catch (error) {
       await page.screenshot({path:path.join(output,'failure.png')}).catch(()=>{});
       await writeFile(path.join(output,'result.json'),JSON.stringify({status:'FAIL',checks,error:error.message},null,2)+'\n',{mode:0o600});
