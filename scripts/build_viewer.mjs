@@ -8,7 +8,8 @@ import {execFileSync} from 'node:child_process';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const flags=Object.fromEntries(process.argv.slice(2).reduce((pairs,item,index,all)=>index%2?pairs:[...pairs,[item,all[index+1]]],[]));
-if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--test-photocraft-site'].includes(k)))throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE [--pdfcraft-site VERIFIED_ENGINE_SITE] [--gridcraft-site VERIFIED_ENGINE_SITE] [--deckcraft-site VERIFIED_ENGINE_SITE] [--test-photocraft-site VERIFIED_ENGINE_SITE]');
+if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--photocraft-site','--test-photocraft-site'].includes(k)))throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE [--pdfcraft-site VERIFIED_ENGINE_SITE] [--gridcraft-site VERIFIED_ENGINE_SITE] [--deckcraft-site VERIFIED_ENGINE_SITE] [--photocraft-site VERIFIED_ENGINE_SITE | --test-photocraft-site VERIFIED_ENGINE_SITE]');
+if(flags['--photocraft-site']&&flags['--test-photocraft-site'])throw Error('Choose a single PhotoCraft build input');
 const output=path.resolve(flags['--output']),wordcraft=path.resolve(flags['--wordcraft-site']);
 if(output===root||output.startsWith(root+path.sep)||root.startsWith(output+path.sep))throw Error('Output must be outside source');
 for(let p=output;path.dirname(p)!==p;p=path.dirname(p)){try{if((await lstat(p)).isSymbolicLink())throw Error('Direct output paths required');}catch(e){if(e.code!=='ENOENT')throw e;}}
@@ -39,8 +40,9 @@ for(const [id,name] of [['gridcraft','GridCraft'],['deckcraft','DeckCraft']])if(
 }
 const officeEngines = [...additionalEngines];
 const photoTest = flags['--test-photocraft-site'];
-if(photoTest){
-  const site=path.resolve(photoTest);
+const photoSite = flags['--photocraft-site'] ?? photoTest;
+if(photoSite){
+  const site=path.resolve(photoSite);
   const receiptBytes=await readFile(path.join(site,'component-build.json'));
   const receipt=JSON.parse(receiptBytes);
   const id='photocraft', component=path.join(root,'apps',id);
@@ -49,6 +51,9 @@ if(photoTest){
       !Array.isArray(receipt.files)||!receipt.files.some(file=>file.path==='index.html'))throw Error('Verified PhotoCraft package required');
   const git=(...args)=>execFileSync('git',['--no-optional-locks','-C',component,...args],{encoding:'utf8'}).trim();
   if(git('rev-parse',receipt.sourceCommit+'^{tree}')!==receipt.sourceTree)throw Error('PhotoCraft native source tree mismatch');
+  if(!photoTest && (receipt.sourceCommit!==git('rev-parse','HEAD') || receipt.packagingSourceCommit)){
+    throw Error('The PhotoCraft release requires a directly built package from its selected source');
+  }
   if(receipt.packagingSourceCommit){
     if(!commit(receipt.packagingSourceCommit)||receipt.compiledInputsUnchanged!==true||
         git('diff','--name-only',receipt.sourceCommit,receipt.packagingSourceCommit)!=='packaging/web/package.sh'){
@@ -69,13 +74,13 @@ const common={absWorkingDir:root,bundle:true,platform:'browser',format:'esm',tar
   nodePaths:[path.join(root,'node_modules')],loader:{'.woff':'file','.woff2':'file','.ttf':'file','.svg':'file','.png':'file'}};
 function recordInputs(meta){for(const name of Object.keys(meta.inputs)){if(name.startsWith('<'))continue;const absolute=path.resolve(root,name);if(!absolute.startsWith(root+path.sep))throw Error('Build dependency outside assembly');}}
 async function emitBuild(options,destination){const result=await build({...common,...options});recordInputs(result.metafile);for(const input of Object.keys(result.metafile.inputs)){if(input.startsWith('<'))continue;sourceInputs.set(input,hash(await readFile(path.resolve(root,input))));}const files=[];for(const file of result.outputFiles){const name=path.relative(options.outdir,file.path).split(path.sep).join('/');files.push({name,bytes:file.contents});}await destination(files);}
-const servicesSource = officeEngines.length || photoTest ? {
+const servicesSource = officeEngines.length || photoSite ? {
   stdin: {
     contents: [
       "export * from './assembly/viewer/account-services.mjs';",
       "import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';",
       ...officeEngines.map(({id,name})=>`import * as ${id} from '@webos/${id}/recovery';export const restore${id[0].toUpperCase()+id.slice(1)}Recovery=createOfficeRecovery('${id}','${name}',${id}).restore;`),
-      ...(photoTest ? ["import {photoRecovery} from './assembly/viewer/photocraft-recovery.mjs';export const restorePhotocraftRecovery=photoRecovery.restore;"] : [])
+      ...(photoSite ? ["import {photoRecovery} from './assembly/viewer/photocraft-recovery.mjs';export const restorePhotocraftRecovery=photoRecovery.restore;"] : [])
     ].join('\n'),
     resolveDir: root, sourcefile: '<account-services>', loader: 'js',
   },

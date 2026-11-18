@@ -21,7 +21,8 @@ CADDY = Path('/etc/caddy/Caddyfile')
 PEERS = ['caddy.service', 'webos-rebuild-test.service', 'codi-beta-frontend.service',
          'codi-beta-gateway.service', 'codi-beta-issuer.service', 'codi-shared-ingress.service']
 BASE_BYTES = 256 * 1024 * 1024
-OFFICE_ENGINE_BYTES = 64 * 1024 * 1024
+OPTIONAL_ENGINES = ('gridcraft', 'deckcraft', 'photocraft')
+OPTIONAL_ENGINE_BYTES = 64 * 1024 * 1024
 
 
 def sha(data):
@@ -85,20 +86,20 @@ def verify_archive_inventory(tar, release_id):
     assert len(members) < 10000 and len({m.name for m in members}) == len(members)
     assert all(m.isfile() and not Path(m.name).is_absolute() and not any(p.startswith('.') or p in ('node_modules', 'target', '__pycache__') for p in Path(m.name).parts) for m in members)
     total_bytes = sum(m.size for m in members)
-    assert total_bytes < BASE_BYTES + 2 * OFFICE_ENGINE_BYTES
+    assert total_bytes < BASE_BYTES + len(OPTIONAL_ENGINES) * OPTIONAL_ENGINE_BYTES
     receipt_bytes = tar.extractfile('viewer-release.json').read()
     assert sha(receipt_bytes) == release_id
     receipt = json.loads(receipt_bytes)
     assert receipt['schema'] == 'webos-existing-viewer-release/1'
     records = {row['path']: row for row in receipt['files']}
     assert set(records) | {'viewer-release.json'} == {m.name for m in members}
-    for app in ('gridcraft', 'deckcraft'):
+    for app in OPTIONAL_ENGINES:
         engine = receipt.get(app + 'Engine')
         engine_bytes = sum(m.size for m in members if m.name.startswith(app + '/'))
         if engine is None:
             assert app not in receipt['apps'] and not engine_bytes
             continue
-        assert app in receipt['apps'] and 0 < engine_bytes < OFFICE_ENGINE_BYTES
+        assert app in receipt['apps'] and 0 < engine_bytes < OPTIONAL_ENGINE_BYTES
         engine_receipt = records[app + '/component-build.json']
         assert engine_receipt['sha256'] == engine['receiptSHA256']
         assert engine_bytes == engine['bytes'] + engine_receipt['bytes']
