@@ -1015,3 +1015,27 @@ VectorCraft release
 The host backup is `/var/backups/webos-anicraft-ksu-20261118-02`. The private
 `anicraft-ksu-20261118-02/` record includes the source, packaging, native
 comparison, browser, activation and hosted verification receipts.
+
+## LightCraft release on ksu.codes
+
+Release `344e72a215f9179096acaa0ad2bd736f5e7a1e5bf3ab38ce7ea3bea5b96c169a`
+went live on 2026-11-18 UTC. The assembly checkout was
+`03546a5e8a38ea423616815fbd1f779ba500edec`. It selects LightCraft
+`ef00c97ec7f4118737f0e590e7cde7b86f4ca309` at tree
+`b69be9af4a38f5a36ef28c8cafca2d7431b1a335`.
+
+The exact R730 native test run passed 56 checks. The final signed Chromium
+test covered independent libraries, native image import and scoped rating,
+account Save and Save As, discard after refresh recovery, and a fresh account
+session opening the saved copy from Files. Chromium retrieved the detached
+original from account storage and rendered the expected image pixels. The
+retained-app and default-profile suites passed after the keyboard focus and
+save response fixtures were corrected. The two candidate assemblies matched
+in 597 files, including all retained editor bundles.
+
+All 601 hosted files matched and hosted Chromium started LightCraft. The
+activation verified continuity of the backend, issuer, beta and service PIDs.
+The immediate rollback is the AniCraft release
+`358215126cd5e6bc250c4ec8f5cde03baca308ee71c3f2e361f911b6dcc401a2`.
+The host backup is `/var/backups/webos-lightcraft-ksu-20261118-02`. The private
+`lightcraft-ksu-20261118-02/` record includes the exact archive and receipts.
