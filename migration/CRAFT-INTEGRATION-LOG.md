@@ -815,6 +815,30 @@ approved renames and treats the panel's in-place rename as unfinished editing.
 It also identifies legacy smart objects whose source is outside the browser
 and directs the editor to Replace Contents. The native regression fixture
 exercises embedding the replacement while preserving the smart object's
-placement. This follow-up is building on R730 and requires separate native
-and browser evidence. Hosted nested smart-object editing still needs an
-explicit lifecycle before PhotoCraft's release.
+placement.
+
+The exact `57e2e3efb54f` package passed 17 native tests, three signed agent
+checks, 26 PhotoCraft account workflow checks and 15 classic Desktop checks.
+
+### PhotoCraft composition and smart-object tabs
+
+Fork `17db36446ebe` rejects account Save and Save As during active Type
+composition. The editor keeps the composition active and its prior recovery
+checkpoint intact. The hosted smart-object tab keeps the parent account
+identity, can Save to the parent in memory and can close independently. Cancel
+leaves the child open and Discard preserves the previous embedded contents.
+While the child is open, the editor suspends AutoSave and sign-out and keeps
+the browser navigation warning active. Scoped operations remain tied to the
+parent document.
+
+All 19 focused native tests passed on R730. Browser qualification for this
+pin is pending. Recovery of edits inside an open child still needs a native
+snapshot that preserves the edited child and its binding to the parent.
+
+The nested recovery implementation encodes each open native tab and the
+smart-object links in one account-scoped browser draft. It restores the
+active tab and the existing Type cancel baseline when available. Child
+edits have an independent recovery version so a later edit supersedes an
+in-flight draft even while the parent save revision stays fixed. The
+JavaScript adapter passed 23 tests. The linked native and browser cases
+remain to be run against the same package.

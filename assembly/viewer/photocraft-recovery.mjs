@@ -35,11 +35,14 @@ export function trackPhotoDraft({journal, native, storage, valid, onError}) {
   function receive(packet) {
     if (packet.available !== true) state = null;
     else {
+      const recoveryRevision = packet.recoveryRevision === undefined ? packet.revision : packet.recoveryRevision;
       if (typeof packet.documentId !== 'string' || !/^[0-9]{1,20}$/.test(packet.documentId) ||
           typeof packet.revision !== 'string' || !/^[0-9]{1,20}$/.test(packet.revision) ||
+          typeof recoveryRevision !== 'string' || !/^[0-9]{1,20}$/.test(recoveryRevision) ||
           typeof packet.dirty !== 'boolean' || typeof packet.capturable !== 'boolean') return;
-      if (state?.generation === packet.generation && state.documentId === packet.documentId && BigInt(packet.revision) < BigInt(state.revision)) return;
-      state = packet;
+      if (state?.generation === packet.generation && state.documentId === packet.documentId &&
+          (BigInt(packet.revision) < BigInt(state.revision) || BigInt(recoveryRevision) < BigInt(state.recoveryRevision))) return;
+      state = {...packet,recoveryRevision};
     }
     schedule();
   }
@@ -51,9 +54,9 @@ export function trackPhotoDraft({journal, native, storage, valid, onError}) {
     let retry = true;
     task = (async () => {
       if (current.dirty) {
-        const bytes = await native.captureRecovery(current);
+        const bytes = await native.captureRecovery({...current,revision:current.recoveryRevision});
         if (!canPublish()) return;
-        await journal.write({path:binding?.path ?? null, revision:binding?.sha256 ?? null, bytes, nativeRevision:current.revision});
+        await journal.write({path:binding?.path ?? null, revision:binding?.sha256 ?? null, bytes, nativeRevision:current.recoveryRevision});
       } else {
         if (!canPublish() || storage.inspect().pending) return;
         await journal.clear();
