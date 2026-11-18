@@ -68,8 +68,9 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
   const recovery=office
     ? `import * as drafts from '@webos/${id}/recovery';import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';const officeRecovery=createOfficeRecovery('${id}','${office.name}',drafts);`
     : 'const officeRecovery=null;';
+  const delegation=id==='deckcraft'?',delegatedCommands':'';
   const contents=id==='help'?"export {mount} from './apps/help/apps/system/help/index.mjs';":
-    `import {mount as appMount} from '@webos/${id}';import {mountAccountApp} from './assembly/viewer/account-app.mjs';${recovery}export function mount(host){return mountAccountApp(appMount,host,${JSON.stringify(id)},officeRecovery);}`;
+    `import {mount as appMount${delegation}} from '@webos/${id}';import {mountAccountApp} from './assembly/viewer/account-app.mjs';${recovery}export function mount(host){return mountAccountApp(appMount,host,${JSON.stringify(id)},officeRecovery${delegation});}`;
   await emitBuild({stdin:{contents,resolveDir:root,sourcefile:'<viewer-'+id+'>',loader:'js'},outdir:path.join(output,'.virtual-'+id),outExtension:{'.js':'.mjs'}},async files=>{
     // esbuild calls a stdin entry "stdin"; the loader's stable entry is index.
     for(const f of files)f.name=f.name.replace(/^stdin[.]/,'index.');

@@ -20,16 +20,28 @@ const gridCommands = Object.freeze({
   'cell.set': args => gridCell(args, true)
 });
 
-export function mountAccountApp(mount, host, kind, officeRecovery = null) {
+// Each bundle owns its app's launch and mount. The ID returned by New or an
+// import must be the native view ID even while that view is still loading.
+const pendingInstances = new WeakMap();
+
+export function mountAccountApp(mount, host, kind, officeRecovery = null, appAgentCommands = null) {
   const element = document.createElement('div');
   element.className = 'window-content';
   element.textContent = 'Opening ' + host.w.title + '…';
   let view, disposed = false, offLifecycle, offBinding, offAgentView;
   const listeners = new Set();
   const authority = Object.freeze({});
-  const delegated = kind === 'gridcraft' && typeof host.registerAgentView === 'function';
+  const commands = kind === 'gridcraft' ? gridCommands : appAgentCommands;
+  const delegated = commands && typeof host.registerAgentView === 'function';
   const invocations = delegated ? new WeakMap() : null;
-  const instanceId = delegated ? crypto.randomUUID() : String(host.w.id);
+  const instanceId = delegated ? pendingInstances.get(host.w) ?? crypto.randomUUID() : String(host.w.id);
+  if (delegated) pendingInstances.delete(host.w);
+  const launched = w => {
+    if (!delegated) return {status:'opened',instanceId:String(w.id)};
+    const id = crypto.randomUUID();
+    pendingInstances.set(w,id);
+    return {status:'opened',instanceId:id};
+  };
   const session = host.session(), sessionId = session.public.sid;
   const valid = () => !disposed && !host.signal.aborted && host.session() === session
     && host.storage.signedInSubject() === session.public.sub && host.desktop.windows.includes(host.w);
@@ -96,12 +108,12 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null) {
           // DeckCraft's native New parameters include theme/template settings;
           // pass the whole bounded native request, not a string-only template.
           w[kind+'Template']=structuredClone(kind==='deckcraft'?params:params.template||'blank');
-          return {status:'opened',instanceId:String(w.id)};
+          return launched(w);
         },
         importDocument(input) {
           if(!valid())throw new DOMException('Account view closed.','AbortError');
           const w=host.desktop.launch(kind,input.name+' — '+officeRecovery.name);if(!w)throw Error('This application is unavailable.');
-          w[kind+'Import']=Object.freeze({...input});return {status:'opened',instanceId:String(w.id)};
+          w[kind+'Import']=Object.freeze({...input});return launched(w);
         },
         closeView:()=>host.desktop.requestWindowClose(host.w)
       }:{}),
@@ -132,15 +144,15 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null) {
     element.style.display = 'flex'; element.style.flexDirection = 'column';
     element.replaceChildren(view.element);
     if (delegated) offAgentView = host.registerAgentView({
-      windowId:host.w.id, name:'GridCraft', signal:host.signal, instanceId, sessionId, accountId:context.owner,
-      commands:gridCommands, bindingId:() => bindingId,
+      windowId:host.w.id, name:officeRecovery.name, signal:host.signal, instanceId, sessionId, accountId:context.owner,
+      commands, bindingId:() => bindingId,
       async snapshot() {
         if (!valid()) return null;
         const state = await view.inspect();
         return valid() && state.phase === 'ready' ? {...state, bindingId} : null;
       },
       async execute(request, check) {
-        if (request.command === 'cell.set') {
+        if (kind === 'gridcraft' && request.command === 'cell.set') {
           const state = await view.inspect();
           if (!state.documents.find(doc => doc.id === request.documentId)?.autosaveEligible) {
             throw Error('Finish the active GridCraft edit or operation first.');

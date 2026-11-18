@@ -43,8 +43,8 @@ async function login(browser) {
   return {page, context};
 }
 
-async function grid(page) {
-  const id = await page.evaluate(() => window.desktopLab.surfaces.get('Desktop').launch('gridcraft').id);
+async function editor(page, app) {
+  const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async id => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
@@ -99,6 +99,56 @@ async function native(page, windowId, command, args) {
   },{command,args});
 }
 
+async function deckCommand(page, windowId, command, args = {}) {
+  const frame = await editorFrame(page,windowId);
+  return frame.evaluate(async ({command,args}) => {
+    const state = await window.deckcraft.request('ui.inspect',{});
+    return window.deckcraft.request('engine.execute',{command,params:args,documentId:state.documentId});
+  },{command,args});
+}
+
+async function deckDispatch(browser) {
+  const {page,context} = await login(browser);
+  try {
+    const id = await editor(page,'deckcraft');
+    const baseline = await deckCommand(page,id,'document.inspect');
+    const original = baseline.slides[0].id;
+    await deckCommand(page,id,'slide.new');
+    const pending = approve(page,id,['document.inspect','slide.notes']);
+    await page.waitForSelector(modal,timeout);
+    await page.click(modal+' button[aria-label="Approve access"]');
+    const consent = await pending;
+    assert.equal(consent.error,undefined,consent.error);
+    const a = consent.result;
+    const text = 'Agent notes for the original slide';
+    const edit = JSON.stringify(intentFor(a,'slide.notes',{slideId:original,text}));
+    const signed = await authorize(a,edit);
+    assert.equal(signed.status,200,signed.error);
+    await deckCommand(page,id,'slide.move',{from:0,to:1});
+    const applied = await dispatch(page,signed.confirmation,edit);
+    assert.equal(applied.error,undefined,applied.error);
+    assert.deepEqual(applied.result.target,a.document);
+    const inspect = JSON.stringify(intentFor(a,'document.inspect',{}));
+    const inspection = await authorize(a,inspect);
+    assert.equal(inspection.status,200,inspection.error);
+    const result = await dispatch(page,inspection.confirmation,inspect);
+    assert.equal(result.error,undefined,result.error);
+    assert.equal(result.result.result.slides[0].notes,'');
+    assert.equal(result.result.result.slides[1].id,original);
+    assert.equal(result.result.result.slides[1].notes,text);
+    const deleted = await authorize(a,edit);
+    assert.equal(deleted.status,200,deleted.error);
+    await deckCommand(page,id,'slide.delete',{index:1});
+    assert.match((await dispatch(page,deleted.confirmation,edit)).error,/unknown slideId/);
+    const remaining = await deckCommand(page,id,'document.inspect');
+    assert.equal(remaining.slides.length,1);
+    assert.equal(remaining.slides[0].notes,'');
+    present('signed DeckCraft notes follow the native slide ID through reordering and reject deletion');
+  } finally {
+    await context.close();
+  }
+}
+
 let browser;
 try {
   browser = await puppeteer.launch({
@@ -111,8 +161,8 @@ try {
     assert.equal(await page.evaluate(() => window.desktopLab.agentOperations === undefined), true);
     present('default server profile has no agent bridge');
   } else {
-    const first = await grid(page);
-    const second = await grid(page);
+    const first = await editor(page,'gridcraft');
+    const second = await editor(page,'gridcraft');
     const commands = ['document.inspect','cell.get','cell.set'];
     assert.match((await approve(page,first,['file.saveAs'])).error,/Unsupported/);
     const denied = approve(page,first,commands);
@@ -226,6 +276,7 @@ try {
     present('Save As fences in-flight and unused grants and revocation fences issued grants');
   }
   await context.close();
+  if (process.env.WEBOS_AGENT_DISABLED_TEST !== '1') await deckDispatch(browser);
   await writeFile(path.join(output,'result.json'),JSON.stringify({status:'PASS',checks},null,2)+'\n',{mode:0o600});
 } finally {
   await browser?.close();

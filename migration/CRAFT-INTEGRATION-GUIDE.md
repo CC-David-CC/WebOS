@@ -374,8 +374,8 @@ Capture bounded arguments before asynchronous authorization; refuse execution if
 the instance, session, document or resource changes during the wait. Never expose
 authentication secrets in ordinary inspection. Current human mount authority is
 separate from delegated-agent authentication. The opt-in loopback development
-profile connects the Accounts authority to the mounted GridCraft editor.
-Other app integrations require their own bounded command policy and proof.
+profile connects the Accounts authority to mounted GridCraft and DeckCraft
+editors. Other apps require their own bounded command policy and proof.
 
 The development bridge lives under `desktopLab.agentOperations`. Start the
 normal development launcher with `--agent-operations` to enable it on a direct
@@ -394,6 +394,10 @@ the signed server consume. Changing the binding through Save As invalidates
 the prior approval. The editor receives a one-use invocation capability. Its
 native command, recovery and approved AutoSave behavior remain the same.
 Delegations grant neither direct file transfer nor control of Save or Open.
+DeckCraft exposes native presentation inspection and speaker-note edits. A
+note edit takes a native slide ID and resolves it in Rust at execution. Moving
+a slide preserves its identity. Deleting it makes the command fail. The native
+host protects pending notes and composition before accepting the edit.
 Origin-trusted app code can already reach browser APIs, so the bridge is a
 boundary for external agents rather than a sandbox between integrated apps.
 
