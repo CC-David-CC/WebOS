@@ -1,21 +1,21 @@
 # Craft integration matrix
 
-All 17 selected source repositories are present, with every tracked path at
-its selected pin. All 17 passed locked offline Cargo fetch for browser WASM
-and native Linux using the existing laptop SDK. GridCraft and DeckCraft show
-the reviewed local component commits selected in the parent.
+All 18 selected source repositories are present at their selected pins. The
+original 17 passed locked offline Cargo fetch for browser WASM and native Linux
+using the existing laptop SDK. SketchCraft's browser release inputs and
+engine integration are pending qualification.
 
 The listed workflow for a pending app is its first acceptance target. Each app
 must prove native content fidelity, account saves, recovery and fresh browser
 retrieval before it is enabled. A passing dependency fetch does not exercise
 build scripts, assets, linking or browser behavior.
 
-Source organization is complete. The active phase integrates the 17 apps from
+Source organization is complete. The active phase integrates the 18 apps from
 their independent repositories and rolls out each qualified app to ksu.codes
 under the user's approval. The current hosted release enables WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft and FigCraft. The other 11 Craft
 entries remain disabled in the classic Desktop pending their release checks.
-Legacy entries remain separate.
+SketchCraft is queued for a disabled entry. Legacy entries remain separate.
 
 The [FigCraft release](CRAFT-INTEGRATION-LOG.md#figcraft-release-on-ksucodes)
 passed 140 exact-package browser checks and 505-file hosted verification.
@@ -50,11 +50,6 @@ for the acceptance contract.
 | Audio | [soundcraft](../apps/soundcraft/) `webos/integration` at `2688ccac8859` | Multitrack audio projects | `soundcraft-web` | Disabled. Build and browser integration pending. Check audio engine, browser I/O and portable project/session formats. |
 | CAD | [cadcraft](../apps/cadcraft/) `webos/integration` at `67514021aedf` | Drafting and drawing documents | `cadcraft-web` | Disabled. Build and browser integration pending. Verify drawing formats, renderer and supported editing/export workflows. |
 | CAD | [solidcraft](../apps/solidcraft/) `webos/integration` at `a5b35abd133e` | Parametric solid modeling | `solidcraft-web` | Disabled. Build and browser integration pending. Verify kernel, browser renderer and parametric project fidelity. |
+| CAD | [sketchcraft](../apps/sketchcraft/) at `3a895db54c8a` | Push/pull 3D modeling, `.sketchcraft` projects | React/Tauri `app/`, Rust `core/` and [local browser development](../apps/sketchcraft/docs/dev/building.md) | Queued in position 18. Upstream Vite uses a local Rust bridge during development. Qualify a browser engine and account document model before enabling the app. |
 | Materials and textures | [texturecraft](../apps/texturecraft/) `webos/integration` at `8c82502c3261` | Texture editing with geometry and maps | `texturecraft-web` | Disabled. Build and browser integration pending. Verify translation pin and project geometry, textures and linked resources. |
 | Materials and textures | [materialcraft](../apps/materialcraft/) `webos/integration` at `6f19501a4bcc` | Procedural material graphs | `materialcraft-web` | Disabled. Build and browser integration pending. Verify graph inputs, project format and renderer. CLI 0.2.130 verified locally. |
-
-## Added after the initial queue
-
-| Category | Application and source | Native workflow | Upstream entry | Qualification |
-|---|---|---|---|---|
-| CAD | [SketchCraft](../apps/sketchcraft/) at `3a895db54c8a` | Push/pull 3D modeling, `.sketchcraft` projects | React/Tauri `app/`, Rust `core/` and [local browser development](../apps/sketchcraft/docs/dev/building.md) | Source checkout verified. Position 18, after the initial 17. WebOS integration and browser tests are pending. |
