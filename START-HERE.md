@@ -12,10 +12,12 @@
 >
 > The user authorized parallel app branches and approved browser-first recovery
 > plus debounced account AutoSave. Work remains split between the app branches
-> and the shared Runtime/Desktop composition. DeckCraft's native CI, clean
-> WASM build and initial account browser checks passed. GridCraft passed
-> all ten native CI gates. An HTTP retry-delay fix is in qualification for
-> both apps.
+> and the shared Runtime/Desktop composition. Both apps passed the browser
+> retry-delay check. GridCraft's exact recovery and minimize fixes passed native
+> CI and focused browser checks. DeckCraft's previous exact package passed its
+> standalone browser suite, including sign-out. The next candidate preserves
+> unfinished speaker notes as an editor draft through refresh. Follow the
+> integration matrix for the latest combined qualification.
 > Normal automatic writes wait 10 seconds after committed typing, at least 60
 > seconds between confirmed writes; known no-write transient retries back off
 > to 15 minutes. Conflict/uncertain outcomes pause. Manual Save remains immediate.
