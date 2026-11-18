@@ -529,5 +529,13 @@ The account worktree now sends `.pcraft` bytes with a native save ticket and
 adopts the result only after matching the editor generation, document,
 revision and destination. The development host also scopes preferences and
 brush presets by account. The changed source passed the locked offline WASM
-check in 52 seconds. Native save tests and the classic Desktop Storage
-adapter remain under development.
+check in 52 seconds. Five Storage adapter tests now cover conditional Save,
+create-only Save As, matching native adoption, conflicts and a lost write
+receipt. Wiring that adapter into the classic Desktop and the full browser
+workflow is still in progress.
+
+The R730 input bundle contains four verified Git dependency trees and the
+pinned translation catalogue. Its Binaryen optimizer and the portable Trunk
+0.21.14 release pass version checks on that builder. The first Trunk copy
+required a newer glibc. See [build inputs](CRAFT-BUILD-INPUTS.md) for the
+verification scope and private receipts.
