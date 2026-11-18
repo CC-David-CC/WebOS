@@ -74,7 +74,12 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
     }
     if (!generation || generation !== data.generation) return;
     const entry = waiting.get(kind);
-    if (entry?.matches(data)) entry.resolve(data);
+    if (entry?.matches(data)) {
+      if (kind === 'save-settled' && data.projectState) {
+        onProjectState?.({...data.projectState, generation});
+      }
+      entry.resolve(data);
+    }
     if (kind === 'save') onSave(data);
     if (kind === 'dialog') onDialog?.(data);
     if (kind === 'close-intent') onCloseIntent?.();
@@ -93,6 +98,18 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
       post(kind, body, transfer);
     } catch (error) {
       waiting.get(reply)?.reject(error);
+    }
+    return result;
+  }
+
+  async function captureSave(kind, {documentId, revision, path}) {
+    const requestId = desktop.crypto.randomUUID();
+    const result = await exchange(kind, {requestId, documentId, revision, path}, [], kind+'-result',
+      data => data.requestId === requestId && data.documentId === documentId && data.path === path &&
+        (kind === 'session-save' ? data.reviewedRevision === revision : data.revision === revision));
+    if (result.outcome === 'busy') return null;
+    if (result.outcome !== 'captured' || !(result.bytes instanceof ArrayBuffer)) {
+      throw Error(result.message || 'PhotoCraft could not capture the requested save.');
     }
     return result;
   }
@@ -123,16 +140,15 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
       if (!(packet.bytes instanceof ArrayBuffer) || !packet.bytes.byteLength) throw Error(packet.message || 'PhotoCraft could not capture the draft.');
       return new Blob([packet.bytes]);
     },
-    async captureAutosave({documentId, revision, path}) {
+    captureAutosave(target) { return captureSave('autosave', target); },
+    captureSessionSave(target) { return captureSave('session-save', target); },
+    async session(operation, lease, reviewed = {}) {
       const requestId = desktop.crypto.randomUUID();
-      const result = await exchange('autosave', {requestId, documentId, revision, path}, [], 'autosave-result',
-        data => data.requestId === requestId && data.documentId === documentId &&
-          data.revision === revision && data.path === path);
-      if (result.outcome === 'busy') return null;
-      if (result.outcome !== 'captured' || !(result.bytes instanceof ArrayBuffer)) {
-        throw Error(result.message || 'PhotoCraft could not capture the automatic save.');
-      }
-      return result;
+      const {documentId, revision, dirty, unfinishedEdit} = reviewed;
+      const result = await exchange('session',{requestId, operation, lease, documentId, revision, dirty, unfinishedEdit},
+        [],'session-result', packet => packet.requestId === requestId && packet.operation === operation && packet.lease === lease,
+        30_000, false);
+      if (result.ok !== true) throw Error(result.message || 'PhotoCraft could not confirm the session operation.');
     },
     acknowledge(request, result) {
       const identity = Object.fromEntries(saveFields.map(field => [field, request[field]]));

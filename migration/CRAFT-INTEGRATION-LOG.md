@@ -708,5 +708,22 @@ on this browser. The host uses the existing Runtime scheduler for the
 backoff. Conflicts and uncertainty pause automatic writes. Browser
 drafts use their independent journal. All 28 PhotoCraft adapter and
 shared Runtime JavaScript checks and the locked WASM compiler check
-passed. The exact linked build is running in the existing R730 cache.
-Native AutoSave and signed browser timing checks remain pending.
+passed. The linked snapshot passed all 12 focused native account tests
+and 19 signed Chromium checks. The browser observed opt-in account
+AutoSave, at least 9.8 seconds before the first upload and at least
+59.8 seconds between successive uploads. Both account files contained
+the expected later native layers.
+
+### PhotoCraft session finalization
+
+Fork `2329b978f5e5` adds a native pause for the exact reviewed document
+revision and a matching release or finalization operation. The Desktop
+uses that pause across Accounts sign-out and clears the browser draft
+after successful finalization. Cancel and a failed sign-out preserve
+the draft. Save uses the ordinary conditional Storage adapter and
+waits for native acknowledgement. Explicit Save can commit supported
+pending Type text. Active IME composition keeps the previous checkpoint.
+
+The locked WASM compiler check and 33 JavaScript checks passed.
+The linked build is running on R730. Signed browser Save, Discard and
+Cancel tests across sign-out and account switching remain pending.

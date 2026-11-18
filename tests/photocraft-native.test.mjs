@@ -144,3 +144,19 @@ test('A native AutoSave can return bytes only for the requested document, revisi
   receive('autosave-result',{...target,requestId:sent[1].requestId,outcome:'captured',ticket:'15',bytes:Uint8Array.of(7).buffer});
   assert.deepEqual(new Uint8Array((await capture).bytes),Uint8Array.of(7));
 });
+
+test('PhotoCraft session pause requires the same request, operation and lease', async t => {
+  const {native, receive, sent} = fixture(t);
+  receive('ready');
+  await native.ready;
+  const lease = randomUUID();
+  const reviewed = {documentId:'9',revision:'4',dirty:true,unfinishedEdit:true};
+  const holding = native.session('pause',lease,reviewed);
+  assert.deepEqual({...reviewed},Object.fromEntries(Object.keys(reviewed).map(key=>[key,sent[0][key]])));
+  const {requestId} = sent[0];
+  receive('session-result',{requestId,lease:randomUUID(),operation:'pause',ok:true});
+  receive('session-result',{requestId,lease,operation:'finalize',ok:true});
+  const rejected = assert.rejects(holding,/PhotoCraft changed/);
+  receive('session-result',{requestId,lease,operation:'pause',ok:false,message:'PhotoCraft changed'});
+  await rejected;
+});
