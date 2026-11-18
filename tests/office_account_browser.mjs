@@ -376,6 +376,25 @@ async function verifyPresenter(page, id) {
   }
 }
 
+async function typeDeckCraftNotes(page, id, text) {
+  const frame = await documentFrame(page, id);
+  await frame.evaluate(() => window.deckcraft.request('ui.set', {notes: true}));
+  await frame.waitForFunction(async () => {
+    const view = await window.deckcraft.request('ui.inspect', {});
+    return view.canvasRect?.length === 4 && view.ui.notes && view.ui.notesHeight > 0;
+  }, options);
+  await frame.evaluate(async text => {
+    const view = await window.deckcraft.request('ui.inspect', {});
+    await window.deckcraft.request('ui.click', {
+      x: view.canvasRect[0] + 25, y: view.window[1] - 26 - view.ui.notesHeight + 14,
+    });
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    await window.deckcraft.request('ui.ime', {commit: text});
+  }, text);
+  await frame.waitForFunction(async text =>
+    (await window.deckcraft.request('ui.inspect', {})).pendingNotes.includes(text), options, text);
+}
+
 async function recoverBlankDraft(page, filesId, app, name, ext) {
   const original = await windows(page, app);
   await launch(page, 'Office', name);
@@ -388,7 +407,8 @@ async function recoverBlankDraft(page, filesId, app, name, ext) {
     await frame.evaluate(text => window.gridcraft.request('ui.edit.begin', {text}), formula);
     assert.equal((await native(page, id, app, 'cell.get', {cell: 'A1'})).formula, null);
   } else {
-    await native(page, id, app, 'slide.notes', {index: 0, text: label});
+    await typeDeckCraftNotes(page, id, label);
+    assert.equal((await native(page, id, app, 'slide.inspect', {index: 0})).notes, '');
   }
   await page.waitForFunction(async ({id, app}) => {
     const model = await document.querySelector('.window[data-window="' + id + '"]')?.appView?.inspect();
@@ -444,7 +464,10 @@ async function recoverBlankDraft(page, filesId, app, name, ext) {
       await frame.evaluate(() => window.gridcraft.request('ui.edit.commit', {move: 'none'}));
       assert.equal((await native(page, id, app, 'cell.get', {cell: 'A1'})).value, 42);
     } else {
-      assert.equal((await native(page, id, app, 'slide.inspect', {index: 0})).notes, label);
+      const frame = await documentFrame(page, id);
+      const pending = await frame.evaluate(async () => (await window.deckcraft.request('ui.inspect', {})).pendingNotes);
+      assert.ok(pending.includes(label), 'The restored speaker notes must still be pending.');
+      assert.equal((await native(page, id, app, 'slide.inspect', {index: 0})).notes, '');
     }
     assert.deepEqual(navigationDialogs, ['beforeunload']);
     const close = windowSelector(id) + ' [aria-label="Close"]';
