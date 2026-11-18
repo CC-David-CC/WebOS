@@ -689,8 +689,10 @@ The clean R730 package passed all 17 signed Chromium checks. The scenarios
 verify untitled layer recovery after refresh, saving a recovered copy when
 the server's revision changed, and restoring pending editable Type content
 until explicit commit. All 87 affected Desktop and Office checks passed.
-The focused native run hit the laptop memory reserve twice and is running
-on R730. The development build remains disabled in release profiles.
+The focused native run hit the laptop memory reserve twice. The exact
+snapshot passed all three recovery tests on R730, including restoration
+and Cancel against the original native Type history state. The development
+build remains disabled in release profiles.
 
 ### PhotoCraft account AutoSave
 
@@ -706,5 +708,5 @@ on this browser. The host uses the existing Runtime scheduler for the
 backoff. Conflicts and uncertainty pause automatic writes. Browser
 drafts use their independent journal. All 28 PhotoCraft adapter and
 shared Runtime JavaScript checks and the locked WASM compiler check
-passed. The linked build, native AutoSave test and signed browser timing
-checks remain pending.
+passed. The exact linked build is running in the existing R730 cache.
+Native AutoSave and signed browser timing checks remain pending.
