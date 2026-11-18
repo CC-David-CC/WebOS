@@ -539,3 +539,25 @@ pinned translation catalogue. Its Binaryen optimizer and the portable Trunk
 0.21.14 release pass version checks on that builder. The first Trunk copy
 required a newer glibc. See [build inputs](CRAFT-BUILD-INPUTS.md) for the
 verification scope and private receipts.
+
+### PhotoCraft account project startup
+
+The two focused native save tests passed on the recorded source. They verify
+layered project bytes, exact save-ticket adoption, preservation of later edits
+and retention of the previous binding on a known write failure. The wrapper
+exit receipt was unavailable. The completed Cargo log and a separate comparison
+of all recorded input hashes are in `photocraft-account-save-native-r1-recovered.json`.
+
+The native account view now starts with the ordinary New command or opens a
+`.pcraft` file through its native decoder, returning the admitted document and
+revision. Both browser crates passed the locked offline WASM check with HEIF.
+The classic API2 mount accepts replies from its own frame and publishes a file
+binding after native adoption. Nine JavaScript tests cover the adapter, native
+message correlation and the composed mount, with 33 shared Runtime regressions
+also passing. The composed JavaScript test uses a fixture frame. Actual browser
+execution and the File menu's account Open and Save As routes remain open.
+
+On R730, the isolated input bundle gained 105 registry archives verified
+against Cargo.lock and 104 sparse index entries. The 22 MB transfer covers
+missing entries in the laptop's filtered WASM dependency graph. The builder
+still needs an exact offline Cargo preflight and linked package.
