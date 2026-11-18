@@ -1095,3 +1095,35 @@ loopback profile. The immediate rollback is DesignCraft release
 The host backup is `/var/backups/webos-soundcraft-e196254ee15f-account-package`.
 The private `soundcraft-e196254ee15f-account-package/` record includes the
 archive, exact component proof, native logs, activation and hosted results.
+
+## FilmCraft release on ksu.codes
+
+Release `5c7dc01e3f248d8dce0b57b47ebc75850f4e68b2c59f934b60451e35bd4d58c4`
+went live on 2026-11-18 UTC. Packaged parent
+`5c7ea3d97b67ce302566c750028b84532d0e7a1e` selects FilmCraft
+`b7ba79c366e603f2ff05ea0ae1a07d5f428c305e` at tree
+`6593aaf1347ce2c1ef8d310a30c256a62f66cd6e`.
+
+Seven Chromium checks proved a native timeline edit and Undo through a scoped
+operation, Save and Save As of editable `.fcproj` files, activation of an
+already-open project, draft recovery and fresh-browser reopen. Chromium
+retrieved the hashed original from account storage, decoded the synthetic
+WebM in the native Source Monitor, and exported a 160 × 96 PNG with the
+expected pixels. This release uses explicit account saves and browser drafts.
+Large media projects, other codecs and timeline movie export still need
+separate qualification.
+
+The final package passed 117 browser checks, including Desktop, Office, Text,
+PdfCraft, WordCraft, LightCraft and SoundCraft. Native payloads and the classic
+Desktop HTML and CSS matched the prior release. One Office run sampled the
+caption before the Desktop applied its confirmed binding. The failure
+screenshot showed the eventual correct value. The rerun waited for the
+visible caption and passed all 27 Office checks on the same package.
+
+All 637 hosted files matched. Hosted Chromium compiled the served WASM and
+started a blank native project. The backend instance, issuer, beta and
+service process IDs were verified. The immediate rollback is SoundCraft
+`09b9da34f69469d67dc096963c0bb69ec6f74b8e37db490013e9c98634215697`.
+The host backup is `/var/backups/webos-filmcraft-b7ba79c366e6-account-package`.
+The private `filmcraft-b7ba79c366e6-account-package/` record contains the
+archive, component evidence, activation and hosted verification.
