@@ -184,3 +184,30 @@ For each app, select one stable native object ID and exercise an approved
 inspection and a reversible edit through the editor's existing command path.
 Verify that a grant for one view or resource cannot edit a second one, and that
 the editor protects pending human input.
+
+## DesignCraft preparation
+
+Start from `apps/designcraft/` at `59c6fa1b4947` on
+`webos/designcraft-document-host`. Reuse Desktop window ownership and the shared
+Craft account adapter. The native editor already has document identity,
+revisions, ZIP serialization, byte Open and PDF export.
+
+1. Capture the native document snapshot for Save and Save As. Bind the account
+   path and mark that captured revision clean after the matching Storage
+   acknowledgement. Apply the same rule to close-and-save. Keep export and
+   Save a Copy independent of the current binding.
+2. Give each account window one native project. Route New and Open through
+   Desktop, and guard other paths that can create a native tab, including Data
+   Merge, page-to-document, imports and drops. Persist recovery from the same
+   native snapshot path. Test scoped inspection and a native frame edit with Undo.
+3. Test a layout with editable text, style changes and embedded artwork. For an
+   imported native project that references external artwork, show which links
+   need attention and use account file selection to relink or embed full
+   originals. Verify the artwork in a PDF produced after a fresh browser
+   reopens the account project.
+4. Run locked native CI and the browser build from the exact selected tree.
+   The R730 can run offline compile and packaging using stable Rust, the
+   portable Trunk executable, wasm-bindgen 0.2.129 and font pin
+   `b076417b5880`. Keep the signed Chromium workflow on the laptop. If the R730
+   runner blocks loopback, run the affected exact binaries in the laptop's
+   loopback runner and record both results.
