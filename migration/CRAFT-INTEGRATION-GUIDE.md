@@ -243,6 +243,21 @@ independent windows. There is no duplicate-view New Window option in this mode.
 Assess project/job applications separately: closing a view must not destroy an
 independently running job or shared service.
 
+PhotoCraft, VectorCraft and FigCraft use the native account packet contract in
+`assembly/viewer/craft-account-native.mjs`. The shared connector admits each
+app's own namespace, exact iframe document, origin and generation. The shared
+layer-editor mount supplies account Open and Save As, conditional storage,
+browser journaling, AutoSave and scoped `document.inspect`/`layer.rename`
+dispatch. Register the app ID, display name and native extension. Confirm the
+native account hooks before reusing the mount.
+
+Verify which layer owns dirty-close review. PhotoCraft presents its native
+review while VectorCraft and FigCraft delegate the whole-project decision to
+Desktop. The shared session coordinator binds Discard to the reviewed revision
+and to either window close or sign-out. The app provides its own serializer,
+editable revision and native commands. Capture a separate recovery revision
+when child edits can change without advancing the saved parent revision.
+
 ## Save, Save As and export
 
 Capture native document ID, revision, operation and completion ticket at
