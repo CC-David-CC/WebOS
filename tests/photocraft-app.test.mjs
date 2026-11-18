@@ -40,23 +40,44 @@ test('The classic API2 view publishes account bindings only after the native fra
     globalThis.document = fakeDocument;
     const w = {launchContext:{owner, path, sha256:first, storage:'account'}};
     let session = {public:{sub:owner}};
+    const other = 'Pictures/Other.pcraft';
+    const activated = [], opened = [];
+    let folder = '/Pictures';
     const view = mount({
       w, session:() => session, signal:controller.signal,
       documentOperations:createDocumentOperations({coordinator:createDocumentOperationCoordinator(),signal:controller.signal}),
-      desktop:{windows:[w], updateAccountFileBinding(...args) { bindings.push(args); }},
-      storage:{signedInSubject:() => owner, async accountFileContext() {
-        return {owner, valid:() => true, files:{
-          check() {},
-          async read(requestedPath) {
-            assert.equal(requestedPath,path);
-            return {sha256:first, data:Uint8Array.of(3,4)};
-          },
-          async write(requestedPath, blob, previous) {
-            writes.push([requestedPath,previous,new Uint8Array(await blob.arrayBuffer())]);
-            return {sha256:next};
-          }
-        }};
-      }}
+      ui:{async prompt(label, options) {
+        assert.equal(options.value,'Project.pcraft');
+        return 'Copy';
+      }},
+      desktop:{
+        windows:[w],
+        updateAccountFileBinding(...args) { bindings.push(args); },
+        activateAccountFile(resource, app) { activated.push([resource,app]); return resource.path === path; },
+        openAccountFile(app, resource) { opened.push([app,resource]); }
+      },
+      storage:{
+        signedInSubject:() => owner,
+        async pickFile(options) { assert.deepEqual(options.extensions,['.pcraft']); return '/'+path; },
+        async pickFolder() { return folder; },
+        async accountFileContext() {
+          return {owner, valid:() => true, files:{
+            check() {},
+            async version(requestedPath) {
+              assert.equal(requestedPath,other);
+              return {sha256:first};
+            },
+            async read(requestedPath) {
+              assert.equal(requestedPath,path);
+              return {sha256:first, data:Uint8Array.of(3,4)};
+            },
+            async write(requestedPath, blob, previous) {
+              writes.push([requestedPath,previous,new Uint8Array(await blob.arrayBuffer())]);
+              return {sha256:next};
+            }
+          }};
+        }
+      }
     });
     const receive = (kind, fields = {}) => desktopWindow.dispatchEvent(Object.assign(new Event('message'),{
       source:frame.contentWindow, origin:desktopWindow.location.origin,
@@ -87,6 +108,32 @@ test('The classic API2 view publishes account bindings only after the native fra
     receive('save-settled',{...identity,adopted:true});
     await turn();
     assert.deepEqual(bindings[1],[w,{owner,path,sha256:next}]);
+
+    receive('dialog',{requestId:'1',operation:'open',path:null});
+    await turn();
+    assert.deepEqual(activated,[[{owner,path},'photocraft']]);
+    assert.deepEqual(opened,[]);
+    assert.equal(traffic.at(-1).requestId,'1');
+    assert.equal(traffic.at(-1).outcome,'opened');
+
+    receive('dialog',{requestId:'2',operation:'open',path:other});
+    await turn();
+    assert.deepEqual(opened,[['photocraft',{owner,path:other,sha256:first}]]);
+    assert.equal(traffic.at(-1).requestId,'2');
+
+    receive('dialog',{requestId:'3',operation:'save',suggested:path});
+    await turn();
+    assert.equal(traffic.at(-1).outcome,'destination');
+    assert.equal(traffic.at(-1).path,'Pictures/Copy.pcraft');
+    assert.equal(writes.length,1);
+
+    folder = null;
+    receive('dialog',{requestId:'4',operation:'save',suggested:path});
+    await turn();
+    assert.equal(traffic.at(-1).outcome,'cancelled');
+    receive('dialog',{requestId:'3',operation:'open',path:other});
+    await turn();
+    assert.equal(opened.length,1);
 
     session = {public:{sub:'different-account'}};
     receive('save',{...identity,ticket:'2',bytes:Uint8Array.of(9).buffer});
