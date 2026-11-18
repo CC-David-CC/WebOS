@@ -1,7 +1,7 @@
 import {connectCraftAccount} from './craft-account-native.mjs';
 import {trackCraftAutosave} from './craft-account-autosave.mjs';
 import {createCraftRecovery, trackCraftDraft} from './craft-account-recovery.mjs';
-import {createPhotoSession} from './photocraft-session.mjs';
+import {createCraftSession} from './craft-account-session.mjs';
 import {createCraftStorage, MAX_BYTES, craftProjectPath} from './craft-account-storage.mjs';
 
 const localImports = new WeakMap();
@@ -278,8 +278,8 @@ export function mount(host) {
         }
       },
     });
-    photoSession = createPhotoSession({
-      native, storage, drafts, autosave, frame, signal:abort.signal, valid, loaded:() => loaded,
+    photoSession = createCraftSession({
+      app:'photocraft', appName:'PhotoCraft', native, storage, drafts, autosave, frame, signal:abort.signal, valid, loaded:() => loaded,
       documentName:() => host.w.title || 'The PhotoCraft project',
       async choosePath() {
         const result = await chooseDestination('Untitled.pcraft',abort.signal);
