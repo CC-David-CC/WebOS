@@ -33,21 +33,19 @@ classic Desktop and the existing account service. The
 [rollout guide](migration/CRAFT-INTEGRATION-GUIDE.md#rolling-integration-queue)
 defines the remaining order and gates.
 
-LightCraft went live on 2026-11-18 UTC in release
-`344e72a215f9179096acaa0ad2bd736f5e7a1e5bf3ab38ce7ea3bea5b96c169a`.
-The assembly checkout was `03546a5e8a38ea423616815fbd1f779ba500edec`.
-All 601 hosted files matched and Chromium started the hosted editor. A local
-signed account test also opened the saved catalog from Files in a fresh
-browser and rendered its original photo. The immediate rollback is the
-[AniCraft release](migration/CRAFT-INTEGRATION-LOG.md#anicraft-release-on-ksucodes)
-`358215126cd5e6bc250c4ec8f5cde03baca308ee71c3f2e361f911b6dcc401a2`.
-See the [LightCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#lightcraft-release-on-ksucodes)
-for source, browser checks and rollback. DesignCraft is next. Its native
-account Open, Save confirmation and draft recovery tests passed on the R730.
+DesignCraft went live on 2026-11-18 UTC in release
+`bf2ef1c60c21e0cf7cf8d50e6cc5a371f9db8537982518631695d3c955d7e3f2`.
+The exact package passed 178 browser checks, including account artwork
+selection, editable publication recovery and a PDF export containing the
+full-resolution asset. All 611 hosted files matched and Chromium started the
+editor. The immediate rollback is the LightCraft release. See the
+[DesignCraft release record](migration/CRAFT-INTEGRATION-LOG.md#designcraft-release-on-ksucodes).
+SoundCraft is next. It passed native account Save and recovery tests and a
+locked compile check of its account WASM bridge.
 
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft,
-LightCraft and Help.
+LightCraft, DesignCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.
@@ -90,7 +88,7 @@ Beta stays live separately.
 
 | Directory | Source ownership |
 |---|---|
-| apps/ | 85 application repositories:17 Craft,33 system/tool/CAD and35 game repositories including7 planned cores |
+| apps/ | 86 application repositories, including 18 Craft, 33 system/tool/CAD and 35 game repositories with 7 planned cores |
 | platform/ | 7 platform components: Runtime, Desktop, Login, Accounts, Storage, Rendezvous, Publication |
 | engines/ | 9 reusable engines, including FFmpeg and optional v86 |
 | libraries/ | 19 reusable libraries, including Craft libraries, egui and TanStack Virtual |

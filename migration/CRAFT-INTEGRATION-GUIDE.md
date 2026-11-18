@@ -479,7 +479,6 @@ remaining work by the behavior that needs qualification.
 
 | Next work | Acceptance milestone |
 |---|---|
-| DesignCraft | Preserve editable pages, typography and linked resources across Save, recovery and fresh-browser reopen. Verify publication export using an account project. |
 | SoundCraft, FilmCraft and EffectCraft | Qualify native projects containing referenced media. Test browser codecs, large assets, rendering or playback and job ownership when a window closes. Use the existing shared media engines where applicable. |
 | CADCraft and SolidCraft | Qualify native drawings and parametric parts in their own browsers and kernels. Verify precision and editable geometry after account reopen. |
 | TextureCraft and MaterialCraft | Preserve geometry, maps and procedural graph inputs in account projects. Verify renderer availability and re-render after reopening. |
