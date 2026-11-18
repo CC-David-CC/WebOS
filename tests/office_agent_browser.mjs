@@ -375,6 +375,14 @@ async function labelledButton(page, root, label) {
 async function lightcraftDispatch(browser, page, credentials) {
   const first = await editor(page,'lightcraft');
   const native = await editorFrame(page,first);
+  await native.evaluate(async ()=>{
+    const canvas=document.querySelector('#lightcraft_canvas');
+    canvas.tabIndex=0;
+    canvas.focus({preventScroll:true});
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  });
+  await page.keyboard.press('Escape');
+  await native.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
   const checksInFrame = await native.evaluate(async () => {
     const canvas = document.querySelector('#lightcraft_canvas');
     const source = document.createElement('canvas');
@@ -548,6 +556,11 @@ try {
   if (lightOnly) {
     const {page,context,credentials} = await login(browser);
     try { await lightcraftDispatch(browser,page,credentials); }
+    catch (error) {
+      await page.screenshot({path:path.join(output,'failure.png')}).catch(()=>{});
+      await writeFile(path.join(output,'result.json'),JSON.stringify({status:'FAIL',checks,error:error.message},null,2)+'\n',{mode:0o600});
+      throw error;
+    }
     finally { await context.close(); }
   }
   if (!lightOnly && !disabled && graphicsOnly) {
