@@ -8,7 +8,7 @@ import {execFileSync} from 'node:child_process';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const flags=Object.fromEntries(process.argv.slice(2).reduce((pairs,item,index,all)=>index%2?pairs:[...pairs,[item,all[index+1]]],[]));
-if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site'].includes(k)))throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE [--pdfcraft-site VERIFIED_ENGINE_SITE] [--gridcraft-site VERIFIED_ENGINE_SITE] [--deckcraft-site VERIFIED_ENGINE_SITE]');
+if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--test-photocraft-site'].includes(k)))throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE [--pdfcraft-site VERIFIED_ENGINE_SITE] [--gridcraft-site VERIFIED_ENGINE_SITE] [--deckcraft-site VERIFIED_ENGINE_SITE] [--test-photocraft-site VERIFIED_ENGINE_SITE]');
 const output=path.resolve(flags['--output']),wordcraft=path.resolve(flags['--wordcraft-site']);
 if(output===root||output.startsWith(root+path.sep)||root.startsWith(output+path.sep))throw Error('Output must be outside source');
 for(let p=output;path.dirname(p)!==p;p=path.dirname(p)){try{if((await lstat(p)).isSymbolicLink())throw Error('Direct output paths required');}catch(e){if(e.code!=='ENOENT')throw e;}}
@@ -37,6 +37,26 @@ for(const [id,name] of [['gridcraft','GridCraft'],['deckcraft','DeckCraft']])if(
   if(receipt.sourceCommit!==selected)throw Error(id+' native build must match the selected source exactly');
   additionalEngines.push({id,name,site,receipt,receiptBytes});
 }
+const officeEngines = [...additionalEngines];
+const photoTest = flags['--test-photocraft-site'];
+if(photoTest){
+  const site=path.resolve(photoTest);
+  const receiptBytes=await readFile(path.join(site,'component-build.json'));
+  const receipt=JSON.parse(receiptBytes);
+  const id='photocraft', component=path.join(root,'apps',id);
+  const commit=value=>typeof value==='string'&&/^[0-9a-f]{40}$/.test(value);
+  if(receipt.schema!=='webos-component-build/1'||receipt.component!==id||!commit(receipt.sourceCommit)||
+      !Array.isArray(receipt.files)||!receipt.files.some(file=>file.path==='index.html'))throw Error('Verified PhotoCraft package required');
+  const git=(...args)=>execFileSync('git',['--no-optional-locks','-C',component,...args],{encoding:'utf8'}).trim();
+  if(git('rev-parse',receipt.sourceCommit+'^{tree}')!==receipt.sourceTree)throw Error('PhotoCraft native source tree mismatch');
+  if(receipt.packagingSourceCommit){
+    if(!commit(receipt.packagingSourceCommit)||receipt.compiledInputsUnchanged!==true||
+        git('diff','--name-only',receipt.sourceCommit,receipt.packagingSourceCommit)!=='packaging/web/package.sh'){
+      throw Error('PhotoCraft repack must preserve compiled source inputs');
+    }
+  }
+  additionalEngines.push({id,site,receipt,receiptBytes});
+}
 // The engine is a separately identified, previously built input. Its receipt is
 // never relabeled as a fresh compilation of today's bridge/native source.
 await mkdir(output);
@@ -49,12 +69,12 @@ const common={absWorkingDir:root,bundle:true,platform:'browser',format:'esm',tar
   nodePaths:[path.join(root,'node_modules')],loader:{'.woff':'file','.woff2':'file','.ttf':'file','.svg':'file','.png':'file'}};
 function recordInputs(meta){for(const name of Object.keys(meta.inputs)){if(name.startsWith('<'))continue;const absolute=path.resolve(root,name);if(!absolute.startsWith(root+path.sep))throw Error('Build dependency outside assembly');}}
 async function emitBuild(options,destination){const result=await build({...common,...options});recordInputs(result.metafile);for(const input of Object.keys(result.metafile.inputs)){if(input.startsWith('<'))continue;sourceInputs.set(input,hash(await readFile(path.resolve(root,input))));}const files=[];for(const file of result.outputFiles){const name=path.relative(options.outdir,file.path).split(path.sep).join('/');files.push({name,bytes:file.contents});}await destination(files);}
-const servicesSource = additionalEngines.length ? {
+const servicesSource = officeEngines.length ? {
   stdin: {
     contents: [
       "export * from './assembly/viewer/account-services.mjs';",
       "import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';",
-      ...additionalEngines.map(({id,name})=>`import * as ${id} from '@webos/${id}/recovery';export const restore${id[0].toUpperCase()+id.slice(1)}Recovery=createOfficeRecovery('${id}','${name}',${id}).restore;`)
+      ...officeEngines.map(({id,name})=>`import * as ${id} from '@webos/${id}/recovery';export const restore${id[0].toUpperCase()+id.slice(1)}Recovery=createOfficeRecovery('${id}','${name}',${id}).restore;`)
     ].join('\n'),
     resolveDir: root, sourcefile: '<account-services>', loader: 'js',
   },
@@ -64,12 +84,13 @@ await emitBuild({...servicesSource,outdir:path.join(output,'.virtual-services'),
 });
 const apps=[];
 for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraft']:[]),...additionalEngines.map(engine=>engine.id),'help']){
-  const office=additionalEngines.find(engine=>engine.id===id);
+  const office=officeEngines.find(engine=>engine.id===id);
   const recovery=office
     ? `import * as drafts from '@webos/${id}/recovery';import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';const officeRecovery=createOfficeRecovery('${id}','${office.name}',drafts);`
     : 'const officeRecovery=null;';
   const delegation=id==='deckcraft'?',delegatedCommands':'';
   const contents=id==='help'?"export {mount} from './apps/help/apps/system/help/index.mjs';":
+    id==='photocraft'?"export {mount} from './assembly/viewer/photocraft-app.mjs';":
     `import {mount as appMount${delegation}} from '@webos/${id}';import {mountAccountApp} from './assembly/viewer/account-app.mjs';${recovery}export function mount(host){return mountAccountApp(appMount,host,${JSON.stringify(id)},officeRecovery${delegation});}`;
   await emitBuild({stdin:{contents,resolveDir:root,sourcefile:'<viewer-'+id+'>',loader:'js'},outdir:path.join(output,'.virtual-'+id),outExtension:{'.js':'.mjs'}},async files=>{
     // esbuild calls a stdin entry "stdin"; the loader's stable entry is index.
@@ -99,6 +120,20 @@ for(const {id,site,receipt,receiptBytes} of additionalEngines){
     if(!safe(file.path)||seen.has(file.path)||file.path==='component-build.json'||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid '+id+' engine path/size');
     seen.add(file.path);const bytes=await readFile(path.join(site,file.path));
     if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error(id+' engine input hash mismatch');
+    if(id==='photocraft'&&file.path==='.htaccess')continue;
+    if(id==='photocraft'&&file.path==='index.html'){
+      const html=bytes.toString('utf8');
+      const scripts=[...html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)];
+      if(scripts.length!==1)throw Error('Expected one generated PhotoCraft module bootstrap');
+      const [inline,bootstrap]=scripts[0];
+      const name='webos-boot-'+hash(bootstrap).slice(0,16)+'.mjs';
+      if(receipt.files.some(file=>file.path===name))throw Error('PhotoCraft bootstrap path collision');
+      const transformed=html.replace(inline,'<script type="module" src="./'+name+'"></script>');
+      await put(id+'/'+name,bootstrap);
+      await put(id+'/index.html',transformed);
+      total+=Buffer.byteLength(transformed)+Buffer.byteLength(bootstrap);
+      continue;
+    }
     await put(id+'/'+file.path,bytes);total+=bytes.length;
   }
   await put(id+'/component-build.json',receiptBytes);
@@ -106,6 +141,7 @@ for(const {id,site,receipt,receiptBytes} of additionalEngines){
 }
 // No backend/package/credential state is included in public output.
 const receipt={schema:'webos-existing-viewer-build/1',engine:{sourceCommit:engine.sourceCommit,bytes:engineBytes,receiptSHA256:hash(await readFile(path.join(wordcraft,'component-build.json')))},
+  ...(photoTest?{developmentOnly:true}:{}),
   ...(pdfEngine?{pdfcraftEngine:{sourceCommit:pdfEngine.sourceCommit,bytes:pdfEngineBytes,receiptSHA256:hash(await readFile(path.join(pdfcraft,'component-build.json')))}}:{}),
   ...additionalReceipts,sourceInputs:[...sourceInputs].map(([path,sha256])=>({path,sha256})),apps:apps.map(a=>a.id),qualification:'Source-assembled candidate. Real viewer/browser/account acceptance remains separate; WordCraft engine is a verified prebuilt input.'};
 await put('viewer-build.json',JSON.stringify(receipt,null,2)+'\n');

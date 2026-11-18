@@ -155,6 +155,14 @@ and PhotoCraft. Neither missing path declaration (`designcraft-testkit` or
 `source-build-input-recheck.json` records the current parent, child commits,
 lock hashes and asset verification.
 
+The current disk audit rechecked the 124 component trees against their local
+bare origins and hashed all 6,230 locked artifact files. Every tracked path
+in the 17 Craft checkouts was present. Each organized checkout passed locked,
+offline Cargo fetch for Linux and browser WASM, using SolidCraft's exact
+toolchain for that app. See `current-disk-assembly-audit.json` in the private
+round directory for the selected commits and lock hashes. Per-app build
+scripts, generated assets and browser workflows still need qualification.
+
 PhotoCraft's browser entrypoints and sharded packaging script are in its own
 repository under `apps/photocraft/`. The exact translation pin matches
 `assets/craft-i18n`. Trunk 0.21.14 is in the shared SDK and its Binaryen optimizer is at
@@ -164,7 +172,9 @@ The R730 build workspace also has the four additional pinned Git dependency
 trees, the translation catalogue, Binaryen version 123 and a checksum-verified
 portable Trunk 0.21.14. The laptop's Trunk binary requires a newer glibc than
 the builder has. The official portable release passes its version check on
-R730. Link and verify the packaged asset graph before browser qualification.
+R730. The linked browser package at `e83591e0612a`, with the generated
+eframe snippet copied by packaging commit `7876cdf484ae`, passed the signed
+loopback account checks described in the [integration log](CRAFT-INTEGRATION-LOG.md#photocraft-signed-account-workflow).
 See `photocraft-r730-inputs.json` in the private round directory and the
 [Trunk release](https://github.com/trunk-rs/trunk/releases/tag/v0.21.14).
 

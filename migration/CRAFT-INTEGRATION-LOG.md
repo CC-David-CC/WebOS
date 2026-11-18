@@ -603,6 +603,28 @@ unchanged WASM. All four smoke scenarios passed, including real keyboard Save
 and reopening the exact project bytes in a fresh native frame. The optional
 served-font catalogue returned an expected 404 in that fixture.
 
-The dialog snapshot `e83591e0612a` runs against the same R730 target cache.
-The packaging-only delta is staged there for repackaging its compiled output.
-The signed account-storage workflow still needs its assembled-browser run.
+The dialog snapshot `e83591e0612a` linked on R730. Packaging commit
+`7876cdf484ae` produced a verified 17.2 MB archive from the unchanged
+compiled files. The loopback assembly serves Trunk's generated startup
+module from a same-origin file under the classic Desktop's existing CSP.
+The release packager rejects this development profile.
+
+### PhotoCraft signed account workflow
+
+All eight Chromium checks passed with the real PhotoCraft WASM, the classic
+Desktop and a signed loopback Accounts and Storage backend. The suite covered
+keyboard Save, same-file activation from Files and native Open, Save As
+cancellation and name collision, recovery of the saved layer from project
+bytes, an independent window for a different project, fresh-browser retrieval
+and cross-account denial. The collision produced its expected server 409.
+
+The 87 Office regression checks passed with Desktop routing commit
+`77547ea8ba46`. The PhotoCraft signed suite exercised the later account
+picker at Desktop commit `32ad5d640d5a2`, which lists through the same
+server authority that resolves and saves account files.
+
+Fork commit `09933e867a98` routes the native New dialog through the Desktop
+host into an independent clean project using the requested dimensions. The
+exact revision passed 63 native dialog tests, 19 native save-identity tests
+and an offline WASM check. Its assembled-browser test remains pending.
+Close, recovery, AutoSave and authorized agent operations remain open.

@@ -104,10 +104,10 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onUnav
   return Object.freeze({
     ready,
     assertLive: check,
-    async start(path = null, bytes = null) {
+    async start(path = null, bytes = null, newSettings = null) {
       const requestId = desktop.crypto.randomUUID();
       const buffer = bytes === null ? null : bytes.slice().buffer;
-      const packet = await exchange('start', {requestId, path, bytes:buffer}, buffer ? [buffer] : [],
+      const packet = await exchange('start', {requestId, path, bytes:buffer, newSettings}, buffer ? [buffer] : [],
         'started', data => data.requestId === requestId);
       if (packet.ok !== true) throw Error(packet.message || 'PhotoCraft could not open the project.');
       return packet;

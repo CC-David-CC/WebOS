@@ -41,6 +41,8 @@ def main():
             parser.error('Direct paths required')
     build = json.loads((site / 'viewer-build.json').read_text())
     assert build['schema'] == 'webos-existing-viewer-build/1'
+    if build.get('developmentOnly'):
+        parser.error('This development profile is for loopback tests')
     assert not (site / 'viewer-release.json').exists(), 'Candidate already packaged'
     owners = set()
     packages = {}

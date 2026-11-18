@@ -42,6 +42,7 @@ test('The classic API2 view publishes account bindings only after the native fra
     let session = {public:{sub:owner}};
     const other = 'Pictures/Other.pcraft';
     const activated = [], opened = [];
+    const newWindow = {};
     let folder = '/Pictures';
     const view = mount({
       w, session:() => session, signal:controller.signal,
@@ -54,12 +55,16 @@ test('The classic API2 view publishes account bindings only after the native fra
         windows:[w],
         updateAccountFileBinding(...args) { bindings.push(args); },
         activateAccountFile(resource, app) { activated.push([resource,app]); return resource.path === path; },
-        openAccountFile(app, resource) { opened.push([app,resource]); }
+        openAccountFile(app, resource) { opened.push([app,resource]); },
+        launch(app) { assert.equal(app,'photocraft'); return newWindow; }
       },
       storage:{
         signedInSubject:() => owner,
-        async pickFile(options) { assert.deepEqual(options.extensions,['.pcraft']); return '/'+path; },
-        async pickFolder() { return folder; },
+        async pickAccountFile(options) {
+          if (options.foldersOnly) return folder;
+          assert.deepEqual(options.extensions,['.pcraft']);
+          return '/'+path;
+        },
         async accountFileContext() {
           return {owner, valid:() => true, files:{
             check() {},
@@ -134,6 +139,13 @@ test('The classic API2 view publishes account bindings only after the native fra
     receive('dialog',{requestId:'3',operation:'open',path:other});
     await turn();
     assert.equal(opened.length,1);
+
+    const settings = '{"width":35,"height":24}';
+    receive('dialog',{requestId:'5',operation:'new',settings});
+    await turn();
+    assert.deepEqual(newWindow,{photocraftNewSettings:settings});
+    assert.equal(traffic.at(-1).outcome,'opened');
+    assert.deepEqual(bindings.at(-1),[w,{owner,path,sha256:next}]);
 
     session = {public:{sub:'different-account'}};
     receive('save',{...identity,ticket:'2',bytes:Uint8Array.of(9).buffer});
