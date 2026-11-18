@@ -24,7 +24,7 @@ const photoProfile = apps.includes('photocraft');
 const officeProfile = apps.includes('gridcraft') && apps.includes('deckcraft');
 const disabled = process.env.WEBOS_AGENT_DISABLED_TEST === '1';
 const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
-const graphics = ['figcraft','vectorcraft'].filter(app=>apps.includes(app));
+const graphics = ['figcraft','vectorcraft','anicraft'].filter(app=>apps.includes(app));
 assert(graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
 await mkdir(output, {mode:0o700});
 const checks = [];
@@ -55,7 +55,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -181,7 +181,7 @@ async function graphicsDispatch(page, app) {
   const drawn = await grant(first), blank = await grant(second);
   const {layers} = await run(drawn,'document.inspect',{});
   const untouched = (await run(blank,'document.inspect',{})).layers;
-  const layer = app==='vectorcraft' ? layers[0] : layers.find(row=>!untouched.some(other=>other.name===row.name));
+  const layer = app==='figcraft' ? layers.find(row=>!untouched.some(other=>other.name===row.name)) : layers[0];
   assert(layer,JSON.stringify(layers));
   const rename = {layerId:layer.id,name:'Approved graphics layer'};
   const request = await confirm(drawn,'layer.rename',rename);
