@@ -33,20 +33,19 @@ classic Desktop and the existing account service. The
 [rollout guide](migration/CRAFT-INTEGRATION-GUIDE.md#rolling-integration-queue)
 defines the remaining order and gates.
 
-FilmCraft went live on 2026-11-18 UTC in release
-`5c7dc01e3f248d8dce0b57b47ebc75850f4e68b2c59f934b60451e35bd4d58c4`,
-bringing the site to 12 of the 18 selected Craft apps. The exact package
-passed 117 Chromium checks, including account saves, recovery, linked-video
-playback after fresh-browser reopen and native PNG export. All 637 hosted
-files matched and Chromium started the published editor. The immediate
-rollback is SoundCraft. See the
-[FilmCraft release record](migration/CRAFT-INTEGRATION-LOG.md#filmcraft-release-on-ksucodes).
-EffectCraft is next. The native account-file tests and locked WASM compile
-passed. The browser package and linked-footage workflow still need qualification.
+EffectCraft went live on 2026-11-18 UTC in release
+`4d7265ced0e8131e82a43582facc6cd164d660dd904adf832216d611ebcf713c`, bringing
+the site to 13 of the 18 selected Craft apps. The exact package passed
+200 Chromium checks. A fresh account browser reopened the editable
+composition and rendered its linked original. Closing the editor retired its
+frame workers. Hosted verification matched all 653 files and started the
+published editor. FilmCraft is the immediate rollback. See the
+[EffectCraft release record](migration/CRAFT-INTEGRATION-LOG.md#effectcraft-release-on-ksucodes).
+CADCraft is next. Its first account milestone is an editable 2D DXF round trip.
 
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft,
-LightCraft, DesignCraft, SoundCraft, FilmCraft and Help.
+LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.

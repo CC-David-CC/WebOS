@@ -276,10 +276,10 @@ passed at `88fefba8c373`. Embedded windows start with an isolated in-memory
 media table. The account host owns draft recovery and retrieves verified
 footage through the original store used by FilmCraft and LightCraft.
 
-Package that commit and test a composition with imported footage after
-fresh-browser reopen. Check the rendered pixels and confirm closing a view
-retires its frame workers. The hosted profile keeps signed agent operations
-disabled by default.
+The release at `78f11b7fc1ce` passed native composition
+edits, account Save and Save As, browser draft recovery, a rendered still in a
+fresh account browser and worker disposal on close. See the
+[release record](CRAFT-INTEGRATION-LOG.md#effectcraft-release-on-ksucodes).
 
 ## CADCraft preparation
 
