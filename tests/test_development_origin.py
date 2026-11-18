@@ -44,6 +44,7 @@ class ProxyOriginTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(response.status, 200)
                 configuration = await response.json()
                 self.assertEqual(configuration['identity']['issuer'], 'https://ksu.codes')
+                self.assertNotIn('agentOperations', configuration)
                 self.assertEqual(configuration['gateway']['concurrentTransfers'], 8)
                 self.assertEqual(configuration['gateway']['sharedConcurrentTransfers'], 16)
                 response = await client.get('/config.json', headers={'Host': 'other.example'})
@@ -57,6 +58,14 @@ class ProxyOriginTests(unittest.IsolatedAsyncioTestCase):
                 await client.close()
             with self.assertRaises(ValueError):
                 await server.create_application(public, state, 'https://other.example')
+
+    async def test_agent_operations_refuse_proxy_origin_before_state_initialization(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            state = base / 'private'
+            with self.assertRaisesRegex(ValueError, 'direct loopback'):
+                await server.create_application(base / 'public', state, 'https://ksu.codes', agent_operations=True)
+            self.assertFalse(state.exists())
 
 
 if __name__ == '__main__':
