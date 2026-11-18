@@ -163,13 +163,14 @@ if(pdfEngine){
 }
 const additionalReceipts={};
 for(const {id,site,receipt,receiptBytes} of additionalEngines){
+  const trunkSite = id==='photocraft'||graphicsEngines.some(app=>app.id===id);
   let total=0;const seen=new Set();
   for(const file of receipt.files){
     if(!safe(file.path)||seen.has(file.path)||file.path==='component-build.json'||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid '+id+' engine path/size');
     seen.add(file.path);const bytes=await readFile(path.join(site,file.path));
     if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error(id+' engine input hash mismatch');
-    if(id==='photocraft'&&file.path==='.htaccess')continue;
-    if((id==='photocraft'||graphicsEngines.some(app=>app.id===id))&&file.path==='index.html'){
+    if(trunkSite&&file.path==='.htaccess')continue;
+    if(trunkSite&&file.path==='index.html'){
       const html=bytes.toString('utf8');
       const scripts=[...html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)];
       if(scripts.length!==1)throw Error(`Expected one generated ${id} module bootstrap`);
