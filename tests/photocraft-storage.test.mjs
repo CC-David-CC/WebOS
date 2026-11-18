@@ -41,6 +41,28 @@ test('Open requires the observed Storage revision and an exact native adoption',
   await assert.rejects(store.open(resource,()=>assert.fail()), /unopened/);
 });
 
+test('A recovered project can overwrite only its unchanged account base', async () => {
+  for (const mode of ['unchanged','advanced','unavailable','already-open']) {
+    let reads = 0;
+    const {store,writes} = fixture({async version() {
+      reads++;
+      if (mode === 'unavailable') throw Error('Storage unreachable');
+      return {sha256:mode === 'unchanged' ? BASE : WRITTEN};
+    }});
+    const draft = {path:FILENAME,revision:BASE,bytes:new Blob(['native snapshot'])};
+    const same = mode === 'unchanged';
+    const adopted = await store.restore(draft,(path,bytes) => {
+      assert.equal(path,same ? FILENAME : null);
+      assert.equal(new TextDecoder().decode(bytes),'native snapshot');
+      return project(path);
+    },{asCopy:mode === 'already-open'});
+    assert.equal(reads,mode !== 'already-open' ? 1 : 0);
+    assert.deepEqual(adopted,same ? {path:FILENAME,sha256:BASE} : null);
+    await store.save(save(same ? FILENAME : NEW_NAME),acknowledged);
+    assert.equal(writes[0][2],same ? BASE : null);
+  }
+});
+
 test('Save replaces the bound revision, while Save As creates and awaits native settlement', async () => {
   const {store,writes} = fixture();
   await store.open({path:FILENAME,sha256:BASE},project);

@@ -9,7 +9,7 @@ const path = 'Pictures/Project.pcraft';
 const first = 'a'.repeat(64), next = 'b'.repeat(64), generation = 'c'.repeat(32);
 
 test('The classic API2 view publishes account bindings only after the native frame adopts them', async () => {
-  const original = globalThis.document;
+  const original = globalThis.document, originalLocation = globalThis.location;
   const controller = new AbortController();
   try {
     const desktopWindow = Object.assign(new EventTarget(), {
@@ -38,6 +38,7 @@ test('The classic API2 view publishes account bindings only after the native fra
       }
     };
     globalThis.document = fakeDocument;
+    globalThis.location = desktopWindow.location;
     const w = {launchContext:{owner, path, sha256:first, storage:'account'}};
     let session = {public:{sub:owner}};
     const other = 'Pictures/Other.pcraft';
@@ -173,5 +174,6 @@ test('The classic API2 view publishes account bindings only after the native fra
   } finally {
     controller.abort();
     globalThis.document = original;
+    globalThis.location = originalLocation;
   }
 });

@@ -106,6 +106,42 @@ async function closePhoto(page, id) {
   await button(page,photoWindow(id),'Close');
 }
 
+async function draftPersisted(page, path, revision, typeDraft = false) {
+  await page.waitForFunction(async ({path,revision,typeDraft}) => {
+    const name = 'webos-photocraft-recovery-v1';
+    if (!(await indexedDB.databases()).some(db => db.name === name)) return false;
+    const db = await new Promise((resolve,reject) => {
+      const request = indexedDB.open(name);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    try {
+      const records = await new Promise((resolve,reject) => {
+        const request = db.transaction('drafts').objectStore('drafts').getAll();
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+      });
+      for (const row of records) {
+        if (row.path !== path || row.revision !== revision || !(row.bytes instanceof Blob) || row.bytes.size < 8) continue;
+        if (!typeDraft || await row.bytes.slice(0,8).text() === 'PCDRAFT1') return true;
+      }
+      return false;
+    } finally { db.close(); }
+  },{...options,polling:250},{path,revision,typeDraft});
+}
+
+async function reloadRecovered(page, id, text) {
+  await page.bringToFront();
+  const handleDialog = dialog => void dialog.accept();
+  page.on('dialog', handleDialog);
+  try {
+    await page.reload({waitUntil:'networkidle0'});
+    await page.waitForSelector(photoWindow(id)+' iframe:not([inert])',{timeout:120_000});
+    await page.waitForFunction((selector,text)=>document.querySelector(selector+' [role="status"]')?.textContent.includes(text),
+      options,photoWindow(id),text);
+  } finally { page.off('dialog', handleDialog); }
+}
+
 async function loseCloseSaveReceipt(page, id) {
   const connection = await page.createCDPSession();
   let responses = 0, finish, fail, timer;
@@ -171,6 +207,11 @@ async function download(page, id, resource, artifact) {
 function layers(artifact) {
   const program = 'import json,sys,zipfile; z=zipfile.ZipFile(sys.argv[1]); d=json.loads(z.read("manifest.json")); print(len(d["document"]["layers"]))';
   return Number(execFileSync('python3',['-c',program,path.join(output,artifact)],{encoding:'utf8'}));
+}
+
+function editedText(artifact) {
+  const program = 'import json,sys,zipfile; z=zipfile.ZipFile(sys.argv[1]); d=json.loads(z.read("manifest.json")); print(json.dumps([l["content"]["text"] for l in d["document"]["layers"] if "text" in l["content"]]))';
+  return JSON.parse(execFileSync('python3',['-c',program,path.join(output,artifact)],{encoding:'utf8'}));
 }
 
 async function observe(page) {
@@ -340,6 +381,51 @@ try {
   assert.notEqual(await download(reopened,freshFiles,copyPath,'close-uncertain.pcraft'),savedOnClose);
   assert.equal(layers('close-uncertain.pcraft'),blankLayers+3);
   pass('A lost response after a committed Save leaves Close cancelled and the write unreplayed');
+
+  await draftPersisted(reopened,copyPath,savedOnClose);
+  const changedBase=await download(reopened,freshFiles,copyPath,'changed-recovery-base.pcraft');
+  assert.notEqual(changedBase,savedOnClose);
+  await reloadRecovered(reopened,reopenedId,'Recovered an unsaved copy');
+  await bound(reopened,reopenedId,'Untitled');
+  await shortcut(reopened,reopenedId,'s');
+  await destination(reopened,'Conflict recovery');
+  await bound(reopened,reopenedId,'Conflict recovery.pcraft');
+  assert.equal(await download(reopened,freshFiles,copyPath,'changed-base-preserved.pcraft'),changedBase);
+  await download(reopened,freshFiles,'Pictures/Conflict recovery.pcraft','recovered-copy.pcraft');
+  assert.equal(layers('recovered-copy.pcraft'),blankLayers+3);
+  pass('A changed server revision restores the local PhotoCraft draft as a separately saved copy');
+
+  await shortcut(page,blankId,'n',['Control','Shift']);
+  await page.keyboard.press('Enter');
+  await draftPersisted(page,null,null);
+  await reloadRecovered(page,blankId,'Recovered unsaved changes');
+  await shortcut(page,blankId,'s');
+  await destination(page,'Untitled recovery');
+  await bound(page,blankId,'Untitled recovery.pcraft');
+  const untitledPath='Pictures/Untitled recovery.pcraft';
+  const typeBase=await download(page,filesId,untitledPath,'recovered-untitled.pcraft');
+  assert.equal(layers('recovered-untitled.pcraft'),blankLayers+1);
+  pass('An untitled locally journaled layer survives refresh and an explicit account save');
+
+  await shortcut(page,blankId,'t',[]);
+  const editor=await page.$(photoWindow(blankId)+' iframe');
+  const canvas=await (await editor.contentFrame()).$('canvas#photocraft_canvas');
+  const box=await canvas.boundingBox();
+  assert(box);
+  await page.mouse.click(box.x+Math.max(65,(box.width-230)/2),box.y+box.height*0.56);
+  await page.keyboard.type('Recovered typed title',{delay:20});
+  await draftPersisted(page,untitledPath,typeBase,true);
+  assert.equal(await download(page,filesId,untitledPath,'uncommitted-type.pcraft'),typeBase);
+  await reloadRecovered(page,blankId,'Recovered unsaved changes');
+  await bound(page,blankId,'Untitled recovery.pcraft');
+  await shortcut(page,blankId,'Enter',['Control']);
+  await shortcut(page,blankId,'s');
+  await page.waitForFunction(({id,base}) => [...window.desktopLab.surfaces.values()].some(desktop =>
+    desktop.windows.some(win => String(win.id) === id && win.launchContext?.sha256 && win.launchContext.sha256 !== base)),
+  options,{id:blankId,base:typeBase});
+  assert.notEqual(await download(page,filesId,untitledPath,'recovered-type.pcraft'),typeBase);
+  assert.deepEqual(editedText('recovered-type.pcraft'),['Recovered typed title']);
+  pass('Pending native Type content survives refresh and stays editable until explicit commit');
   assert.deepEqual(external,[]);
   assert.deepEqual(errors,[]);
   assert([...assets].some(url=>url.endsWith('.mjs')));
