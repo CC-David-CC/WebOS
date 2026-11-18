@@ -738,5 +738,22 @@ refresh Chromium saw leave-page warnings registered by both Desktop and
 the hosted PhotoCraft frame. The follow-up makes Desktop the warning owner
 for hosted PhotoCraft and reports pending browser work to that owner.
 Standalone PhotoCraft still registers its own warning. The recovery tests
-now also count the prompts on refresh. A linked package and signed rerun
-are required for this follow-up.
+now count the prompts on refresh.
+
+R730 built the exact warning fix at `d7fba4774bb1`. The verified archive
+contains 16 files. The signed loopback suite at parent `a0f4969581e0`
+passed all 24 PhotoCraft checks and the 15 classic Desktop checks. Each
+of the three dirty reloads showed exactly one warning and restored its
+draft. The suite recorded zero unexpected browser errors and zero
+external requests. It also repeated the Save/Discard/Cancel, conflict
+recovery and two-write AutoSave checks.
+
+The browser placed a two-color PNG on the native canvas and saved it as
+an embedded smart object. A fresh browser opened the same project from
+Files. Both server downloads had identical `.pcraft` bytes, and the
+decompressed smart-object source matched the original PNG byte for byte.
+The same-browser A→B→A check verified account-scoped preset database
+names, native recent paths and the visible AutoSave setting. Existing
+projects with external smart-object links, active IME/other unfinished
+tools and authorized agent operations still require qualification.
+PhotoCraft remains disabled in release profiles.
