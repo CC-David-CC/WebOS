@@ -24,14 +24,15 @@ const photoProfile = apps.includes('photocraft');
 const officeProfile = apps.includes('gridcraft') && apps.includes('deckcraft');
 const disabled = process.env.WEBOS_AGENT_DISABLED_TEST === '1';
 const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
-const lightOnly = process.env.WEBOS_LIGHTCRAFT_TEST === '1';
-const designOnly = process.env.WEBOS_DESIGNCRAFT_TEST === '1';
-const soundOnly = process.env.WEBOS_SOUNDCRAFT_TEST === '1';
-const singleEditor = lightOnly || designOnly || soundOnly;
+const selected = Object.entries({
+  lightcraft:lightcraftDispatch, designcraft:designcraftDispatch,
+  soundcraft:soundcraftDispatch, filmcraft:filmcraftDispatch,
+}).filter(([app])=>process.env['WEBOS_'+app.toUpperCase()+'_TEST']==='1');
+assert(selected.length<=1);
+const singleEditor = selected[0];
+const soundOnly = singleEditor?.[0]==='soundcraft';
 const graphics = ['figcraft','vectorcraft','anicraft'].filter(app=>apps.includes(app));
-assert([lightOnly,designOnly,soundOnly].filter(Boolean).length <= 1);
-assert(singleEditor ? apps.includes(lightOnly ? 'lightcraft' : designOnly ? 'designcraft' : 'soundcraft') :
-  graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
+assert(singleEditor ? apps.includes(singleEditor[0]) : graphicsOnly ? graphics.length : disabled || photoProfile || officeProfile);
 await mkdir(output, {mode:0o700});
 const checks = [];
 const agent = await makeKey();
@@ -63,7 +64,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -993,6 +994,279 @@ async function soundcraftDispatch(browser, page, credentials) {
   } finally { await fresh.context.close(); }
 }
 
+async function filmcraftDispatch(browser, page, credentials) {
+  const folder = process.env.WEBOS_FILMCRAFT_MEDIA_FIXTURE;
+  assert(path.isAbsolute(folder));
+  const fixture = JSON.parse(await readFile(path.join(folder,'receipt.json'),'utf8'));
+  const video = await readFile(path.join(folder,fixture.filename));
+  assert.equal(createHash('sha256').update(video).digest('hex'),fixture.sha256);
+  const first = await editor(page,'filmcraft');
+  const commands = ['document.inspect','file.newSequence','edit.undo'];
+  async function grant(tab,id) {
+    const pending = approve(tab,id,commands);
+    await tab.waitForSelector(modal,timeout);
+    await tab.click(modal+' button[aria-label="Approve access"]');
+    const approved = await pending;
+    assert.equal(approved.error,undefined,approved.error);
+    return approved.result;
+  }
+  async function execute(tab,approval,command,args={}) {
+    const intent = JSON.stringify(intentFor(approval,command,args));
+    const signed = await authorize(approval,intent);
+    assert.equal(signed.status,200,signed.error);
+    const reply = await dispatch(tab,signed.confirmation,intent);
+    assert.equal(reply.error,undefined,reply.error);
+    return reply.result.result;
+  }
+  const approval = await grant(page,first);
+  const blank = await execute(page,approval,'document.inspect');
+  assert.equal(blank.sequenceCount,0);
+  await execute(page,approval,'file.newSequence',{name:'Browser cut'});
+  assert.equal((await execute(page,approval,'document.inspect')).sequenceCount,1);
+  await execute(page,approval,'edit.undo');
+  assert.equal((await execute(page,approval,'document.inspect')).sequenceCount,0);
+  await execute(page,approval,'file.newSequence',{name:'Browser cut'});
+  present('FilmCraft runs the native editor and authorized sequence creation and Undo');
+
+  const frame = await editorFrame(page,first);
+  const beforeImport = await page.$eval(selector(first),node=>node.appView.lifecycle.snapshot().revision);
+  await frame.$eval('#filmcraft_canvas',(canvas,{bytes,name})=>{
+    const transfer = new DataTransfer();
+    transfer.items.add(new File([Uint8Array.from(bytes)],name,{type:'video/webm'}));
+    canvas.dispatchEvent(new DragEvent('drop',{dataTransfer:transfer,bubbles:true,cancelable:true}));
+  },{bytes:[...video],name:fixture.filename});
+  await page.waitForFunction((view,revision)=>{
+    const state = document.querySelector(view)?.appView?.lifecycle.snapshot();
+    return state?.dirty && !state.pending && state.revision !== revision;
+  },timeout,selector(first),beforeImport);
+  assert.equal((await execute(page,approval,'document.inspect')).mediaCount,1);
+
+  const picker = 'dialog.codi-file-picker[open]', prompt = 'dialog.codi-confirm-dialog[open]';
+  async function controlKey(key,shift=false) {
+    await page.bringToFront();
+    await frame.$eval('#filmcraft_canvas',canvas=>{canvas.tabIndex=0;canvas.focus({preventScroll:true});});
+    await page.keyboard.down('Control');
+    if (shift) await page.keyboard.down('Shift');
+    try { await page.keyboard.press(key); }
+    finally {
+      if (shift) await page.keyboard.up('Shift');
+      await page.keyboard.up('Control');
+    }
+  }
+  async function save(name,copy) {
+    await controlKey(copy ? 'S' : 's',copy);
+    await labelledButton(page,picker,'Open folder Video');
+    await labelledButton(page,picker,'Use this folder');
+    await page.waitForSelector(prompt+' input',timeout);
+    await page.$eval(prompt+' input',(field,value)=>{field.value=value;},name);
+    await labelledButton(page,prompt,'Save');
+    await page.waitForFunction((view,title)=>{
+      const node = document.querySelector(view);
+      const state = node?.appView?.lifecycle.snapshot();
+      return state && !state.dirty && !state.pending && node.querySelector('.caption-text')?.textContent===title;
+    },timeout,selector(first),name+'.fcproj — FilmCraft');
+  }
+  await save('Browser cut',false);
+  await save('Browser cut copy',true);
+  const resource = 'Video/Browser cut copy.fcproj';
+  const original = 'Video/FilmCraft Originals/'+fixture.sha256+'.original';
+  async function applyFile(tab,id,command,args) {
+    return tab.$eval(selector(id),async (node,{command,args})=>{
+      await node.appView.ready;
+      return node.appView.execute(command,args);
+    },{command,args});
+  }
+  async function files(tab) {
+    const id = await tab.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+    await tab.waitForFunction(view=>typeof document.querySelector(view)?.appView?.execute==='function',timeout,selector(id));
+    return id;
+  }
+  async function download(tab,id,object) {
+    await applyFile(tab,id,'list',{path:object.slice(0,object.lastIndexOf('/'))});
+    const bound = await applyFile(tab,id,'snapshot',{path:object});
+    const data = await applyFile(tab,id,'download',{path:object,expectedRevision:bound.sha256});
+    const contents = Buffer.from(Object.values(data.data));
+    assert.equal(createHash('sha256').update(contents).digest('hex'),bound.sha256);
+    return contents;
+  }
+  const ownFiles = await files(page);
+  assert.deepEqual(await download(page,ownFiles,original),video);
+  const saved = (await download(page,ownFiles,resource)).toString('utf8');
+  assert(saved.includes('/files/webos-originals/'+fixture.sha256+'/'+fixture.filename));
+  assert(JSON.parse(saved).view);
+  const prior = JSON.parse((await download(page,ownFiles,'Video/Browser cut.fcproj')).toString('utf8'));
+  assert.equal(prior.project.name,'Browser cut');
+  assert.equal(JSON.parse(saved).project.name,'Browser cut copy');
+  present('FilmCraft native Save and Save As confirm editable projects with the video stored under its input hash');
+
+  await controlKey('o');
+  await labelledButton(page,picker,'Open folder Video');
+  await labelledButton(page,picker,'Choose file Browser cut copy.fcproj');
+  await page.waitForSelector(picker,{hidden:true,...timeout});
+  assert.equal(await page.$$eval('.window:has(.webos-filmcraft)',nodes=>nodes.length),1);
+  present('Native Open activates the existing FilmCraft window for the same account project');
+
+  const named = await grant(page,first);
+  await execute(page,named,'file.newSequence',{name:'Recovered alternate cut'});
+  await page.waitForFunction(async resource=>{
+    const database = 'webos-filmcraft-recovery-v1';
+    if (!(await indexedDB.databases()).some(db=>db.name===database)) return false;
+    const db = await new Promise((resolve,reject)=>{
+      const open = indexedDB.open(database);
+      open.onsuccess = ()=>resolve(open.result);
+      open.onerror = ()=>reject(open.error);
+    });
+    try {
+      const records = await new Promise((resolve,reject)=>{
+        const read = db.transaction('drafts').objectStore('drafts').getAll();
+        read.onsuccess = ()=>resolve(read.result);
+        read.onerror = ()=>reject(read.error);
+      });
+      return records.some(record=>record.path===resource && record.bytes instanceof Blob && record.bytes.size>0);
+    } finally { db.close(); }
+  },timeout,resource);
+  const handleUnload = dialog=>{void dialog.accept();};
+  page.on('dialog',handleUnload);
+  try { await page.reload({waitUntil:'domcontentloaded'}); }
+  finally { page.off('dialog',handleUnload); }
+  await page.waitForFunction(view=>document.querySelector(view)?.appView?.inspect?.()?.instanceId,timeout,selector(first));
+  const restored = await execute(page,await grant(page,first),'document.inspect');
+  assert(restored.dirty && restored.sequenceCount===2 && restored.mediaCount===1);
+  await labelledButton(page,selector(first),'Close');
+  await labelledButton(page,'dialog.webos-filmcraft-session[open]','Discard');
+  await page.waitForSelector(selector(first),{hidden:true,...timeout});
+  present('Refreshing restores the edited project and linked media while discard preserves the server revision');
+
+  const fresh = await login(browser,credentials);
+  try {
+    await fresh.page.evaluate(()=>{
+      window.filmcraftTestOriginalReads = [];
+      addEventListener('message',event=>{
+        if (event.origin===location.origin && event.data?.type==='filmcraft:account-original-read') {
+          window.filmcraftTestOriginalReads.push(event.data.digest);
+        }
+      });
+    });
+    const id = await files(fresh.page);
+    await applyFile(fresh.page,id,'list',{path:'Video'});
+    await applyFile(fresh.page,id,'open',{path:resource});
+    const target = await fresh.page.waitForFunction(resource=>[...document.querySelectorAll('.window[data-window]')].find(node=>
+      node.appView?.inspect?.()?.resourceId===resource)?.dataset.window,timeout,resource);
+    const reopened = await target.jsonValue();
+    await target.dispose();
+    assert.deepEqual(await fresh.page.evaluate(()=>window.filmcraftTestOriginalReads),[fixture.sha256]);
+    const loaded = await execute(fresh.page,await grant(fresh.page,reopened),'document.inspect');
+    assert.equal(loaded.sequenceCount,1);
+    assert.equal(loaded.mediaCount,1);
+    assert.equal(loaded.dirty,false);
+    await fresh.page.screenshot({path:path.join(output,'filmcraft-fresh-browser.png')});
+    present('A fresh browser opens the saved native FilmCraft project and requests the matching original from account storage');
+    const iframe = await fresh.page.$(selector(reopened)+' iframe');
+    assert(iframe);
+    try {
+      async function swatches(upper) {
+        const png = await iframe.screenshot({encoding:'base64'});
+        return fresh.page.evaluate(async ({png,upper})=>{
+          const bytes = Uint8Array.from(atob(png),value=>value.charCodeAt(0));
+          const decoded = await createImageBitmap(new Blob([bytes],{type:'image/png'}));
+          const canvas = document.createElement('canvas');
+          canvas.width = decoded.width;
+          canvas.height = decoded.height;
+          const context = canvas.getContext('2d');
+          context.drawImage(decoded,0,0);
+          decoded.close();
+          const half = Math.floor(canvas.height/2);
+          const columns = upper ? canvas.width : Math.floor(canvas.width/3);
+          const skip = upper ? 0 : half;
+          const {data} = context.getImageData(0,skip,columns,half);
+          let red=0, yellow=0, x=0, y=0;
+          for (let i=0;i<data.length;i+=4) {
+            const [r,g,b] = [data[i],data[i+1],data[i+2]];
+            if (r > 150 && g < 110 && b < 125 && r > g * 1.7) red++;
+            if (r < 180 || g < 155 || b > 155 || r < b * 1.6 || g < b * 1.4) continue;
+            yellow++;
+            x += (i/4) % columns;
+            y += Math.floor(i/4/columns) + skip;
+          }
+          return {red,yellow,x:x/Math.max(1,yellow),y:y/Math.max(1,yellow),
+            width:canvas.width,height:canvas.height};
+        },{png,upper});
+      }
+      let thumbnail;
+      for (let retry=0; retry<12; retry++) {
+        thumbnail = await swatches(false);
+        if (thumbnail.red>800 && thumbnail.yellow>80) break;
+        await fresh.page.evaluate(()=>new Promise(resolve=>setTimeout(resolve,250)));
+      }
+      assert(thumbnail.red>800 && thumbnail.yellow>80,'Expected the decoded account video thumbnail.');
+      const rect = await iframe.boundingBox();
+      assert(rect);
+      const x = rect.x+thumbnail.x*rect.width/thumbnail.width;
+      const y = rect.y+thumbnail.y*rect.height/thumbnail.height;
+      await fresh.page.bringToFront();
+      await fresh.page.mouse.click(x,y);
+      await new Promise(resolve=>setTimeout(resolve,65));
+      await fresh.page.mouse.click(x,y);
+      let source;
+      for (let retry=0; retry<12; retry++) {
+        source = await swatches(true);
+        if (source.red>800 && source.yellow>80) break;
+        await fresh.page.evaluate(()=>new Promise(resolve=>setTimeout(resolve,250)));
+      }
+      await fresh.page.screenshot({path:path.join(output,'filmcraft-decoded-source.png')});
+      assert(source.red>800 && source.yellow>80,'Expected the decoded source in the native monitor.');
+      present('The fresh browser decodes the stored video and shows its test colors in the native Source Monitor');
+      // In the fixed test viewport, use Source Monitor's More menu and its native export dialog.
+      const rendered = ()=>fresh.page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+      await fresh.page.mouse.click(rect.x+rect.width*.28,rect.y+rect.height*.556);
+      await rendered();
+      await fresh.page.mouse.click(rect.x+rect.width*.33,rect.y+rect.height*.715);
+      await rendered();
+      await iframe.screenshot({path:path.join(output,'filmcraft-native-export-dialog.png')});
+      const downloads = path.join(output,'filmcraft-exports');
+      await mkdir(downloads,{mode:0o700});
+      const cdp = await browser.target().createCDPSession();
+      let timer;
+      try {
+        await cdp.send('Browser.setDownloadBehavior',{
+          behavior:'allow',downloadPath:downloads,browserContextId:fresh.context.id,eventsEnabled:true,
+        });
+        const completed = new Promise((resolve,reject)=>{
+          timer = setTimeout(()=>reject(Error('The FilmCraft Source Monitor frame did not download.')),30_000);
+          let handle;
+          cdp.on('Browser.downloadWillBegin',event=>{handle=event;});
+          cdp.on('Browser.downloadProgress',event=>{
+            if (event.guid===handle?.guid && event.state==='completed') resolve(handle.suggestedFilename);
+          });
+        });
+        await fresh.page.mouse.click(rect.x+rect.width*.675,rect.y+rect.height*.579);
+        const filename = await completed;
+        assert.equal(filename,'FilmCraft color clip.png');
+        const png = await readFile(path.join(downloads,filename));
+        assert.equal(png.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
+        assert.equal(png.readUInt32BE(16),fixture.width);
+        assert.equal(png.readUInt32BE(20),fixture.height);
+        const colors = await fresh.page.evaluate(async encoded=>{
+          const bytes = Uint8Array.from(atob(encoded),value=>value.charCodeAt(0));
+          const image = await createImageBitmap(new Blob([bytes],{type:'image/png'}));
+          const canvas = document.createElement('canvas');
+          canvas.width=image.width; canvas.height=image.height;
+          const context = canvas.getContext('2d');
+          context.drawImage(image,0,0);
+          image.close();
+          return [[20,20],[80,48]].map(([x,y])=>Array.from(context.getImageData(x,y,1,1).data));
+        },png.toString('base64'));
+        assert(colors[0][0]>150 && colors[0][1]<115 && colors[0][2]<125);
+        assert(colors[1][0]>200 && colors[1][1]>175 && colors[1][2]<155);
+        present('FilmCraft exports a full-resolution PNG of the reopened source with the expected pixels');
+      } finally {
+        clearTimeout(timer);
+        await cdp.detach();
+      }
+    } finally { await iframe.dispose(); }
+  } finally { await fresh.context.close(); }
+}
+
 let browser;
 try {
   browser = await puppeteer.launch({
@@ -1002,7 +1276,7 @@ try {
   });
   if (singleEditor) {
     const {page,context,credentials} = await login(browser);
-    try { await (lightOnly ? lightcraftDispatch : designOnly ? designcraftDispatch : soundcraftDispatch)(browser,page,credentials); }
+    try { await singleEditor[1](browser,page,credentials); }
     catch (error) {
       await page.screenshot({path:path.join(output,'failure.png')}).catch(()=>{});
       await writeFile(path.join(output,'result.json'),JSON.stringify({status:'FAIL',checks,error:error.message},null,2)+'\n',{mode:0o600});
