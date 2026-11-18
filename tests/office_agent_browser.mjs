@@ -116,6 +116,11 @@ async function deckCommand(page, windowId, command, args = {}) {
 
 async function photoKeys(page, id, key, modifiers = []) {
   await page.bringToFront();
+  await page.evaluate(id=>{
+    const desktop=window.desktopLab.surfaces.get('Desktop');
+    const target=desktop.windows.find(candidate=>String(candidate.id)===String(id));
+    if (desktop.active!==target.id) desktop.activateWindow(target);
+  },id);
   const frame = await editorFrame(page,id);
   await frame.evaluate(() => {
     const canvas = document.querySelector('#photocraft_canvas');
@@ -175,6 +180,15 @@ async function photoDispatch(page) {
   await run(scoped,'layer.rename',rename);
   present('One signed native layer rename targets an exact PhotoCraft window and remains undoable through the editor');
 
+  await page.evaluate(scope=>{
+    const frame=document.querySelector(scope+' iframe');
+    globalThis.photoTypeState=null;
+    globalThis.addEventListener('message',event=>{
+      if (event.source===frame.contentWindow && event.origin===location.origin && event.data?.type==='photocraft:account-project-state') {
+        globalThis.photoTypeState=event.data;
+      }
+    });
+  },selector(original));
   await photoKeys(page,original,'t');
   const frame=await editorFrame(page,original);
   const canvas=await frame.$('#photocraft_canvas');
@@ -183,6 +197,7 @@ async function photoDispatch(page) {
   assert(box);
   await page.mouse.click(box.x+Math.max(65,(box.width-230)/2),box.y+box.height*0.56);
   await page.keyboard.type('Human input in progress',{delay:20});
+  await page.waitForFunction(()=>globalThis.photoTypeState?.unfinishedEdit && globalThis.photoTypeState?.capturable,timeout);
   const blocked=await confirmed(scoped,'layer.rename',{...rename,name:'Do not apply'});
   assert.match((await dispatch(page,blocked.confirmation,blocked.intent)).error,/Finish the active PhotoCraft edit/);
   await photoKeys(page,original,'Escape');
