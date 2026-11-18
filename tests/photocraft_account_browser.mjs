@@ -307,6 +307,63 @@ function editedText(artifact) {
   return JSON.parse(execFileSync('python3',['-c',program,path.join(output,artifact)],{encoding:'utf8'}));
 }
 
+async function verifyComposition(page) {
+  await launch(page,'Graphics','PhotoCraft');
+  const id=await readyPhoto(page);
+  const filesId=await files(page);
+  await shortcut(page,id,'s');
+  await destination(page,'Text Composition');
+  await bound(page,id,'Text Composition.pcraft');
+  const resource='Pictures/Text Composition.pcraft';
+  const before=await download(page,filesId,resource,'ime-before.pcraft');
+  await page.evaluate(selector=>{
+    const source=document.querySelector(selector+' iframe').contentWindow;
+    window.photoCompositionState=null;
+    window.addEventListener('message',event=>{
+      const {type,capturable,unfinishedEdit}=event.data??{};
+      if (event.origin===location.origin && event.source===source && type==='photocraft:account-project-state') {
+        window.photoCompositionState={capturable,unfinishedEdit};
+      }
+    });
+  },photoWindow(id));
+  await shortcut(page,id,'t',[]);
+  const frame=await page.waitForSelector(photoWindow(id)+' iframe:not([inert])',options);
+  const canvas=await (await frame.contentFrame()).$('canvas#photocraft_canvas');
+  const box=await canvas.boundingBox();
+  await canvas.dispose();
+  await frame.dispose();
+  await page.mouse.click(box.x+Math.max(65,(box.width-230)/2),box.y+box.height*0.56);
+  await page.keyboard.type('Before ');
+  await page.waitForFunction(()=>window.photoCompositionState?.capturable && window.photoCompositionState?.unfinishedEdit,options);
+  const connection=await page.createCDPSession();
+  try {
+    await connection.send('Input.imeSetComposition',{text:'にほ',selectionStart:2,selectionEnd:2});
+    await page.waitForFunction(()=>window.photoCompositionState?.unfinishedEdit && !window.photoCompositionState?.capturable,options);
+    let uploads=0;
+    const observeUpload=request=>{
+      if(request.url()===origin+'/gateway/upload' && request.method()==='POST') uploads++;
+    };
+    page.on('request',observeUpload);
+    try {
+      await page.keyboard.down('Control');
+      try { await page.keyboard.press('s'); }
+      finally { await page.keyboard.up('Control'); }
+      await new Promise(resolve=>setTimeout(resolve,300));
+      assert.equal(await download(page,filesId,resource,'ime-unsaved.pcraft'),before);
+      assert.equal(uploads,0);
+      assert.deepEqual(await page.evaluate(()=>window.photoCompositionState),{capturable:false,unfinishedEdit:true});
+    } finally { page.off('request',observeUpload); }
+    await connection.send('Input.insertText',{text:'日本'});
+    await page.waitForFunction(()=>window.photoCompositionState?.capturable,options);
+  } finally { await connection.detach(); }
+  await shortcut(page,id,'Enter',['Control']);
+  await shortcut(page,id,'s');
+  const confirmed=await changedBinding(page,id,before);
+  assert.equal(await download(page,filesId,resource,'ime-confirmed.pcraft'),confirmed);
+  assert(editedText('ime-confirmed.pcraft').some(text=>JSON.stringify(text).includes('Before 日本')));
+  pass('Active Chromium text composition survives Save and persists confirmed Japanese text after composition ends');
+}
+
 async function observe(page) {
   await page.setViewport({width:1550,height:990});
   page.on('pageerror',error=>errors.push(error.message));
@@ -731,6 +788,7 @@ try {
     await writeFile(path.join(output,'nested-embedded.pcraft'),embeddedImage('nested-after-save.pcraft','nested-asset.pcraft'));
     assert.equal(layers('nested-embedded.pcraft'),2);
     pass('Refresh restores the dirty smart-object tab and saving it updates the account project only after the parent Save');
+    await verifyComposition(automatic);
   }
   assert.deepEqual(external,[]);
   assert.deepEqual(errors,[]);
