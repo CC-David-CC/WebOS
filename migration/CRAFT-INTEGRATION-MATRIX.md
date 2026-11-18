@@ -17,19 +17,30 @@ under the user's approval.
 
 | Stage | Count | Applications |
 |---|---:|---|
-| Enabled on ksu.codes | 13 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft |
-| Native account integration underway | 1 | CADCraft |
-| Organized source, queued for integration | 4 | SolidCraft, TextureCraft, MaterialCraft, SketchCraft |
+| Enabled on ksu.codes | 14 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft |
+| Paused with a tested local candidate | 1 | SolidCraft |
+| Focused native checks passed, browser package in progress | 1 | TextureCraft |
+| Account adapter compiles to WASM | 1 | MaterialCraft |
+| Organized source, queued for integration | 1 | SketchCraft |
 
 The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables
 Files, Text (CodeMirror 6), Calculator and Help on the classic Desktop. The
 [live release manifest](https://ksu.codes/viewer-release.json) identifies the
-EffectCraft release at parent commit `83df0f4130d7`.
-Five Craft entries are disabled in the hosted Desktop, including SketchCraft in
+CADCraft release at parent commit `0a7dedf66f59`.
+Four Craft entries are disabled in the hosted Desktop, including SketchCraft in
 the CAD menu. For the rest of the organized
 project, see the [full source and application matrix](APP-MATRIX.md), which
 covers the 86 app repositories, platform components, shared engines, tools,
 libraries and games.
+
+After these four Craft integrations, the next approved priority is Files
+previews. Load the original account file through Storage and render it in
+the current browser. Keep preview data in memory and release it on close
+or sign-out. Previewing creates no account file or shared saved state.
+
+The [CADCraft release](CRAFT-INTEGRATION-LOG.md#cadcraft-release-on-ksucodes)
+passed 112 exact-package Chromium checks and matched 664 hosted files.
+The native DXF round trip kept editable line, circle and dimension geometry.
 
 The [EffectCraft release](CRAFT-INTEGRATION-LOG.md#effectcraft-release-on-ksucodes)
 passed 200 exact-package browser checks. Hosted verification matched 653 files
@@ -89,8 +100,8 @@ for the acceptance contract.
 | Animation and video | [filmcraft](../apps/filmcraft/) `webos/filmcraft-account-project` at `b7ba79c366e6` | Video timeline and linked media | `filmcraft-web` | Live `.fcproj` workflow. The native editor saved and reopened linked video, recovered local edits, decoded the original in a fresh Chromium context and exported a verified PNG. |
 | Animation and video | [effectcraft](../apps/effectcraft/) `webos/effectcraft-account-composition` at `78f11b7fc1ce` | Compositing and motion graphics | `effectcraft-web` | Live editable `.ecproj` composition with linked still images. Scoped native composition edit and Undo, manual Save and Save As, browser draft recovery, fresh-browser rendering and worker disposal passed. |
 | Audio | [soundcraft](../apps/soundcraft/) at `e196254ee15f` | Multitrack audio projects | `soundcraft-web` | Live portable `.scraftz` workflow. Signed Chromium confirmed native track edits, Save and Save As, local recovery, reopening from Files, exact sample fidelity and playback through WebAudio. |
-| CAD | [cadcraft](../apps/cadcraft/) `webos/cadcraft-account-drawing` at `816d428e8a33` | Drafting and drawing documents | `cadcraft-web` | Disabled. Focused DXF save, reopen and recovery tests and a locked WASM check passed. Native account command coverage passed. Chromium package qualification is underway. |
-| CAD | [solidcraft](../apps/solidcraft/) `webos/integration` at `a5b35abd133e` | Parametric solid modeling | `solidcraft-web` | Disabled. Build and browser integration pending. Verify kernel, browser renderer and parametric project fidelity. |
+| CAD | [cadcraft](../apps/cadcraft/) `webos/cadcraft-account-drawing` at `816d428e8a33` | Drafting and drawing documents | `cadcraft-web` | Live editable 2D DXF. Scoped native geometry and Undo, Save and Save As, local recovery, Files activation and a fresh-browser account round trip passed. |
+| CAD | [solidcraft](../apps/solidcraft/) `webos/solidcraft-account-part` at `7b7716fba56c` | Parametric solid modeling | `solidcraft-web` | Paused by user request. The local candidate passed six browser account checks for editable `.sc` parts. Four native geometry failures produced identical results on the original source. The hosted menu entry remains disabled. |
 | CAD | [sketchcraft](../apps/sketchcraft/) at `3a895db54c8a` | Push/pull 3D modeling, `.sketchcraft` projects | React/Tauri `app/`, Rust `core/` and [local browser development](../apps/sketchcraft/docs/dev/building.md) | Queued in position 18. The Rust core passed its baseline WASM compile check. The upstream Vite interface uses a local development bridge. Qualify the hosted browser engine, native commands and account document model before enabling the app. |
-| Materials and textures | [texturecraft](../apps/texturecraft/) `webos/integration` at `8c82502c3261` | Texture editing with geometry and maps | `texturecraft-web` | Disabled. Build and browser integration pending. Verify translation pin and project geometry, textures and linked resources. |
-| Materials and textures | [materialcraft](../apps/materialcraft/) `webos/integration` at `6f19501a4bcc` | Procedural material graphs | `materialcraft-web` | Disabled. Build and browser integration pending. Verify graph inputs, project format and renderer. CLI 0.2.130 verified locally. |
+| Materials and textures | [texturecraft](../apps/texturecraft/) `webos/texturecraft-account-project` at `3ada1e30108a` | Mesh painting and embedded texture data | `texturecraft-web` | Locked WASM compilation and the focused native save and File menu tests passed. Browser package and round-trip qualification are in progress on a branch from the live CADCraft release. |
+| Materials and textures | [materialcraft](../apps/materialcraft/) from `6f19501a4bcc` | Procedural material graphs with embedded bitmaps | `materialcraft-web` | The `webos/materialcraft-account-graph` worktree passed locked WASM compilation with native graph editing and the `.mcraft` account adapter. Native checks and an exact browser round trip are pending. |

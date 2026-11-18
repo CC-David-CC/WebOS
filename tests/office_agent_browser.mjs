@@ -27,7 +27,7 @@ const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
 const selected = Object.entries({
   lightcraft:lightcraftDispatch, designcraft:designcraftDispatch,
   soundcraft:soundcraftDispatch, filmcraft:filmcraftDispatch,
-  effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch,
+  effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch, texturecraft:texturecraftDispatch,
 }).filter(([app])=>process.env['WEBOS_'+app.toUpperCase()+'_TEST']==='1');
 assert(selected.length<=1);
 const singleEditor = selected[0];
@@ -65,7 +65,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -1265,6 +1265,183 @@ async function filmcraftDispatch(browser, page, credentials) {
         await cdp.detach();
       }
     } finally { await iframe.dispose(); }
+  } finally { await fresh.context.close(); }
+}
+
+async function texturecraftDispatch(browser,page,credentials) {
+  const commands=['document.inspect','edit.undo','layer.add.paint','layer.rename','tool.strokeUv'];
+  const appWindow='.window:has(.webos-texturecraft)';
+  const picker='dialog.codi-file-picker[open]';
+  const prompt='dialog.codi-confirm-dialog[open]';
+  const original='Documents/Texture study.tcraft';
+  const copy='Documents/Texture copy.tcraft';
+  const mesh=Buffer.from('v -1 -1 0\nv 1 -1 0\nv 1 1 0\nvt 0 0\nvt 1 0\nvt 1 1\nf 1/1 2/2 3/3\n');
+  const meshFile=path.join(output,'account-mesh.obj');
+  await writeFile(meshFile,mesh,{mode:0o600});
+
+  async function approveEditor(tab,id) {
+    const pending=approve(tab,id,commands);
+    await tab.waitForSelector(modal,timeout);
+    await tab.click(modal+' button[aria-label="Approve access"]');
+    const approval=await pending;
+    assert.equal(approval.error,undefined,approval.error);
+    return approval.result;
+  }
+  async function edit(tab,approval,command,args={}) {
+    const intent=JSON.stringify(intentFor(approval,command,args));
+    const signed=await authorize(approval,intent);
+    assert.equal(signed.status,200,signed.error);
+    const result=await dispatch(tab,signed.confirmation,intent);
+    assert.equal(result.error,undefined,result.error);
+    return result.result.result;
+  }
+  async function files(tab) {
+    const id=await tab.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+    await tab.waitForFunction(view=>typeof document.querySelector(view)?.appView?.execute==='function',timeout,selector(id));
+    return id;
+  }
+  function file(tab,id,command,args) {
+    return tab.$eval(selector(id),async (node,{command,args})=>{
+      await node.appView.ready;
+      return node.appView.execute(command,args);
+    },{command,args});
+  }
+  async function read(tab,id,name) {
+    await file(tab,id,'list',{path:'Documents'});
+    const {sha256}=await file(tab,id,'snapshot',{path:name});
+    const data=await file(tab,id,'download',{path:name,expectedRevision:sha256});
+    const bytes=Buffer.from(Object.values(data.data));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'),sha256);
+    return bytes;
+  }
+  async function key(tab,id,letter,shift=false) {
+    await tab.bringToFront();
+    await tab.evaluate(id=>{
+      const desktop=window.desktopLab.surfaces.get('Desktop');
+      desktop.activateWindow(desktop.windows.find(window=>String(window.id)===String(id)));
+    },id);
+    const frame=await editorFrame(tab,id);
+    await frame.$eval('#texturecraft_canvas',canvas=>{canvas.tabIndex=0;canvas.focus();});
+    await tab.keyboard.down('Control');
+    if (shift) await tab.keyboard.down('Shift');
+    try { await tab.keyboard.press(letter); }
+    finally {
+      if (shift) await tab.keyboard.up('Shift');
+      await tab.keyboard.up('Control');
+    }
+  }
+  async function ready(tab,title,clean=false) {
+    const active=await tab.waitForFunction((view,title,clean)=>{
+      const node=[...document.querySelectorAll(view)].find(window=>window.querySelector('.caption-text')?.textContent===title);
+      const state=node?.appView?.lifecycle.snapshot();
+      return state && !state.pending && (!clean || !state.dirty) && node.querySelector('iframe:not([inert])')
+        ? node.dataset.window : false;
+    },timeout,appWindow,title+' — TextureCraft',clean);
+    return await active.jsonValue();
+  }
+  async function chooseSave(tab,id,name,saveAs) {
+    await key(tab,id,saveAs?'S':'s',saveAs);
+    await labelledButton(tab,picker,'Open folder Documents');
+    await labelledButton(tab,picker,'Use this folder');
+    await tab.waitForSelector(prompt+' input',timeout);
+    await tab.$eval(prompt+' input',(field,value)=>{field.value=value;},name);
+    await labelledButton(tab,prompt,'Save');
+    return ready(tab,name+'.tcraft',true);
+  }
+  async function painted(tab,approval,name) {
+    const project=await edit(tab,approval,'document.inspect');
+    assert.equal(project.mesh.triangles,1);
+    const layer=project.layers.find(layer=>layer.name===name);
+    assert(layer?.painted?.some(channel=>channel.tiles>0),'The native layer must contain painted tiles');
+    return project;
+  }
+
+  const blank=await editor(page,'texturecraft');
+  const input=await page.waitForSelector(selector(blank)+' .webos-texturecraft input[type=file]',timeout);
+  await input.uploadFile(meshFile);
+  const id=await ready(page,'account-mesh.obj');
+  assert.notEqual(id,String(blank));
+  const grant=await approveEditor(page,id);
+  await edit(page,grant,'layer.add.paint',{name:'Texture study'});
+  const pointData={points:[[0.65,0.3],[0.75,0.3]]};
+  assert((await edit(page,grant,'tool.strokeUv',pointData)).tiles>0);
+  await painted(page,grant,'Texture study');
+  await edit(page,grant,'edit.undo');
+  const undone=await edit(page,grant,'document.inspect');
+  assert(!undone.layers.find(layer=>layer.name==='Texture study').painted.some(channel=>channel.tiles>0));
+  assert((await edit(page,grant,'tool.strokeUv',pointData)).tiles>0);
+  present('TextureCraft imports a mesh into a new editable account window and paints and undoes actual UV tiles');
+
+  const filesId=await files(page);
+  assert.equal(await chooseSave(page,id,'Texture study',false),String(id));
+  const saved=await read(page,filesId,original);
+  const archivedMesh=execFileSync('python3',['-c',
+    'import sys,io,zipfile; archive=zipfile.ZipFile(io.BytesIO(sys.stdin.buffer.read())); sys.stdout.buffer.write(archive.read("mesh.obj"))'],
+    {input:saved,maxBuffer:1024});
+  assert.deepEqual(archivedMesh,mesh);
+  assert.equal(await chooseSave(page,id,'Texture copy',true),String(id));
+  assert.deepEqual(await read(page,filesId,original),saved);
+  present('Native Save and Save As keep original mesh bytes inside the account project and preserve the prior file');
+
+  await key(page,id,'o');
+  await labelledButton(page,picker,'Open folder Documents');
+  await labelledButton(page,picker,'Choose file Texture copy.tcraft');
+  await page.waitForSelector(picker,{hidden:true,...timeout});
+  await file(page,filesId,'open',{path:copy});
+  assert.equal(await page.$$eval(appWindow,views=>views.filter(view=>
+    view.querySelector('.caption-text')?.textContent==='Texture copy.tcraft — TextureCraft').length),1);
+  present('Native Open and Files reuse the open TextureCraft account project');
+
+  const dirty=await approveEditor(page,id);
+  await edit(page,dirty,'layer.rename',{name:'Unsaved texture'});
+  await page.waitForFunction(async path=>{
+    const dbName='webos-texturecraft-recovery-v1';
+    if (!(await indexedDB.databases()).some(database=>database.name===dbName)) return false;
+    const db=await new Promise((resolve,reject)=>{
+      const request=indexedDB.open(dbName);
+      request.onsuccess=()=>resolve(request.result);
+      request.onerror=()=>reject(request.error);
+    });
+    try {
+      const drafts=await new Promise((resolve,reject)=>{
+        const request=db.transaction('drafts').objectStore('drafts').getAll();
+        request.onsuccess=()=>resolve(request.result);
+        request.onerror=()=>reject(request.error);
+      });
+      return drafts.some(draft=>draft.path===path && draft.bytes instanceof Blob && draft.bytes.size>0);
+    } finally {db.close();}
+  },timeout,copy);
+  const accept=dialog=>{void dialog.accept();};
+  page.on('dialog',accept);
+  try { await page.reload({waitUntil:'domcontentloaded'}); }
+  finally { page.off('dialog',accept); }
+  const restored=await ready(page,'Texture copy.tcraft');
+  assert((await painted(page,await approveEditor(page,restored),'Unsaved texture')).modified);
+  await labelledButton(page,selector(restored),'Close');
+  await labelledButton(page,'dialog.webos-texturecraft-session[open]','Discard');
+  await page.waitForSelector(selector(restored),{hidden:true,...timeout});
+  present('A browser refresh recovers painted tiles and unsaved layer changes before explicit Discard');
+
+  const fresh=await login(browser,credentials);
+  try {
+    const freshFiles=await files(fresh.page);
+    await file(fresh.page,freshFiles,'list',{path:'Documents'});
+    await file(fresh.page,freshFiles,'open',{path:copy});
+    const reopened=await ready(fresh.page,'Texture copy.tcraft',true);
+    const grant=await approveEditor(fresh.page,reopened);
+    assert.equal((await painted(fresh.page,grant,'Texture study')).modified,false);
+    const before=(await file(fresh.page,freshFiles,'snapshot',{path:copy})).sha256;
+    await edit(fresh.page,grant,'layer.rename',{name:'Fresh-browser paint'});
+    await key(fresh.page,reopened,'s');
+    await fresh.page.waitForFunction((id,revision)=>{
+      const target=window.desktopLab.surfaces.get('Desktop').windows.find(window=>String(window.id)===String(id));
+      return target?.launchContext?.sha256 && target.launchContext.sha256!==revision;
+    },timeout,reopened,before);
+    await ready(fresh.page,'Texture copy.tcraft',true);
+    const frame=await fresh.page.waitForSelector(selector(reopened)+' iframe',timeout);
+    await frame.screenshot({path:path.join(output,'texturecraft-account-project.png')});
+    await frame.dispose();
+    present('A fresh account browser opens editable paint tiles and saves a new server revision after an edit');
   } finally { await fresh.context.close(); }
 }
 

@@ -332,3 +332,47 @@ and check the recomputed part. The locked native and WASM dependencies
 were fetched and verified offline on the R730 using only tracked Cargo
 manifests, target entry files and the lockfile. The full source and assets
 remain in the organized SolidCraft repository.
+
+
+## TextureCraft preparation
+
+Start from `8c82502c3261`. The native `.tcraft` archive carries project JSON,
+the embedded mesh and sparse lossless paint tiles. Use the native project
+writer and reader for the account round trip. Start with a small UV-mapped
+mesh and an editable painted layer. Verify the source mesh and painted
+pixels after a fresh account browser opens the file. Qualify map export
+separately from saving a project. The R730 verified the locked native and
+WASM inputs from the selected source manifests.
+
+## MaterialCraft preparation
+
+Start from `6f19501a4bcc`. Its native `.mcraft` ZIP packages the graph and
+referenced resources. Ordinary SBS files use adjacent files as well, so
+use the native `.mcraft` builder for the first account save gate. Test a
+small editable graph with an embedded bitmap, then recook it after opening
+from Files in a fresh browser and check the expected output pixels.
+The R730 verified the locked native and WASM inputs from the selected
+source manifests.
+
+## SketchCraft preparation
+
+Start from the organized community fork at `3a895db54c8a`. The React UI
+concentrates its desktop and local Vite transports in `app/src/engine.ts`.
+Add the hosted transport there and use `app/src/usefiles.ts` to route the
+native File actions through WebOS. The hosted transport should own a Rust
+`Engine` per open project and use the existing JSON command, scene and
+model serialization code. The upstream `Live` wrapper persists a local
+file and synchronizes with the desktop bridge. WebOS account Storage and
+draft recovery supply those services for the hosted editor.
+
+Exercise the core in Chromium before treating its locked WASM check as
+browser readiness. Verify the timing APIs used for model editing and Undo
+and bound the browser's model and Undo memory. Keep the upstream caller
+policy for plugin commands. WebOS signed commands must also satisfy the
+account, window and document scope. Browser account Open must apply the
+upstream newer-format guard before accepting an editable model.
+
+The first round trip draws a closed outline, push/pulls it into a body,
+confirms Save and Save As of the native `.sketchcraft` model, and reopens
+it from Files in a fresh browser. Recovery should keep an unsaved geometry
+change, and a signed edit should appear in native Undo.
