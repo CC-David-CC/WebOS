@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {trackPhotoAutosave} from '../assembly/viewer/photocraft-autosave.mjs';
+import {trackCraftAutosave} from '../assembly/viewer/craft-account-autosave.mjs';
 
 test('PhotoCraft automatic writes require opt-in, a named binding and the latest eligible native revision', async t => {
   const path = 'Pictures/Layered.pcraft', generation = 'a'.repeat(32), documentId = '9';
   const captures = [], states = [];
   const inspected = {identity:{generation,documentId},binding:null,pending:null};
   let time = 0, timer, outcome = {};
-  const adapter = trackPhotoAutosave({
+  const adapter = trackCraftAutosave({
     valid:() => true,
     storage:{inspect:() => inspected},
     native:{async captureAutosave(target) { captures.push(target); return target; }},

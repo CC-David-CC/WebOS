@@ -1,7 +1,7 @@
 import {accountAutosaveRetry, createAccountAutosave} from '@webos/runtime/account-autosave';
 
-/** Bind the shared timing policy to one exact PhotoCraft document and its save adapter. */
-export function trackPhotoAutosave({native, storage, valid, write, onState}, timing) {
+/** Bind the shared timing policy to one native Craft document and its save adapter. */
+export function trackCraftAutosave({native, storage, valid, write, onState}, timing) {
   let state, enabled = false, closing = false;
   function target() {
     const {identity, binding, pending} = storage.inspect();

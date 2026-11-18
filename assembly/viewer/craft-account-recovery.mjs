@@ -1,25 +1,27 @@
 import {createRecoveryStore, createRecoveryJournal} from '@webos/runtime/local-recovery';
 import {createOfficeRecovery} from './office-recovery.mjs';
-import {craftProjectPath} from './craft-account-storage.mjs';
+import {MAX_BYTES, craftProjectPath} from './craft-account-storage.mjs';
 
-function capture(value) {
-  const {path, revision, bytes, nativeRevision} = value;
-  if (path !== null) craftProjectPath(path, '.pcraft');
-  if (!(path === null ? revision === null : typeof revision === 'string' && /^[0-9a-f]{64}$/.test(revision)) ||
-      typeof nativeRevision !== 'string' || !/^[0-9]{1,20}$/.test(nativeRevision) ||
-      !(bytes instanceof Blob) || bytes.size < 8 || bytes.size > 128 * 1024 * 1024) {
-    throw Error('Invalid PhotoCraft recovery snapshot.');
+export function createCraftRecovery({app, name, extension}) {
+  function capture(value) {
+    const {path, revision, bytes, nativeRevision} = value;
+    if (path !== null) craftProjectPath(path, extension);
+    if (!(path === null ? revision === null : typeof revision === 'string' && /^[0-9a-f]{64}$/.test(revision)) ||
+        typeof nativeRevision !== 'string' || !/^[0-9]{1,20}$/.test(nativeRevision) ||
+        !(bytes instanceof Blob) || bytes.size < 8 || bytes.size > MAX_BYTES) {
+      throw Error(`Invalid ${name} recovery snapshot.`);
+    }
+    return {path, revision, bytes, nativeRevision};
   }
-  return {path, revision, bytes, nativeRevision};
+
+  return createOfficeRecovery(app, name, {
+    createDraftStore: options => createRecoveryStore({...options, database:`webos-${app}-recovery-v1`, capture}),
+    createDraftJournal: options => createRecoveryJournal({...options, capture}),
+  });
 }
 
-export const photoRecovery = createOfficeRecovery('photocraft', 'PhotoCraft', {
-  createDraftStore: options => createRecoveryStore({...options, database:'webos-photocraft-recovery-v1', capture}),
-  createDraftJournal: options => createRecoveryJournal({...options, capture}),
-});
-
 /** Capture at most one revision at a time. Retain prior bytes until a new draft commits. */
-export function trackPhotoDraft({journal, native, storage, valid, onError}) {
+export function trackCraftDraft({journal, native, storage, valid, onError}) {
   let state, recordedState, recordedBinding, timer, task, stopped = false, paused = false;
 
   function schedule() {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {trackPhotoDraft} from '../assembly/viewer/photocraft-recovery.mjs';
+import {trackCraftDraft} from '../assembly/viewer/craft-account-recovery.mjs';
 
 for (const independentRevision of [false,true]) test(
   independentRevision ? 'A newer child-tab checkpoint wins even when the parent revision stays fixed'
@@ -13,7 +13,7 @@ for (const independentRevision of [false,true]) test(
   const start = new Promise(resolve => { started = resolve; });
   const checkpoint = new Promise(resolve => { saved = resolve; });
   const stalled = new Promise(resolve => { release = resolve; });
-  const tracker = trackPhotoDraft({
+  const tracker = trackCraftDraft({
     valid:() => true,
     onError:assert.fail,
     storage:{inspect:() => inspected},
