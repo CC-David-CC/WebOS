@@ -1,10 +1,11 @@
-function sessionChoice({name, signal, canSave}) {
+function sessionChoice({app, appName, name, scope, signal, canSave}) {
   if (signal.aborted) return Promise.resolve('cancel');
   const dialog = document.createElement('dialog');
-  dialog.className = 'codi-confirm-dialog webos-photocraft-session';
-  dialog.setAttribute('aria-label', 'Save PhotoCraft changes before signing out?');
+  const action = scope === 'window' ? 'closing' : 'signing out';
+  dialog.className = `codi-confirm-dialog webos-${app}-session`;
+  dialog.setAttribute('aria-label', `Save ${appName} changes before ${action}?`);
   const heading = document.createElement('h2');
-  heading.textContent = 'Save changes before signing out?';
+  heading.textContent = `Save changes before ${action}?`;
   const text = document.createElement('p');
   text.textContent = canSave
     ? name + ' has unsaved changes.'
@@ -37,7 +38,7 @@ function sessionChoice({name, signal, canSave}) {
 }
 
 /** Coordinate the native frame with the Desktop's Accounts finalization lease. */
-export function createPhotoSession({native, storage, drafts, autosave, signal, valid, loaded, frame,
+export function createCraftSession({app, appName, native, storage, drafts, autosave, signal, valid, loaded, frame,
   documentName, choosePath, write, onError, choose = sessionChoice}) {
   const listeners = new Set();
   let state, fingerprint, revision = 0, approved, held, disposed = false;
@@ -58,11 +59,11 @@ export function createPhotoSession({native, storage, drafts, autosave, signal, v
     return snapshot;
   }
 
-  function check(reviewed) {
-    if (disposed || signal.aborted || !valid()) throw Error('The PhotoCraft account window closed.');
+  function check(scope, reviewed) {
+    if (disposed || signal.aborted || !valid()) throw Error(`The ${appName} account window closed.`);
     const current = observe();
-    if (current.pending) throw Error('Finish the pending PhotoCraft operation before signing out.');
-    if (reviewed && current.revision !== reviewed.revision) throw Error('PhotoCraft changed after you reviewed it.');
+    if (current.pending) throw Error(`Finish the pending ${appName} operation before ${scope === 'window' ? 'closing' : 'signing out'}.`);
+    if (reviewed && current.revision !== reviewed.revision) throw Error(`${appName} changed after you reviewed it.`);
     return current;
   }
 
@@ -80,29 +81,29 @@ export function createPhotoSession({native, storage, drafts, autosave, signal, v
       observe();
     },
     observe,
-    async approve() {
+    async approve(scope = 'session') {
       approved = null;
       autosave.closing(true);
       try {
-        const reviewed = check();
+        const reviewed = check(scope);
         if (!reviewed.dirty) return true;
         const canSave = state.dirty && (!state.unfinishedEdit || state.capturable);
-        const choice = await choose({name:documentName(),signal,canSave});
+        const choice = await choose({app,appName,name:documentName(),scope,signal,canSave});
         if (choice === 'cancel') return false;
-        check(reviewed);
+        check(scope,reviewed);
         if (choice === 'discard') {
-          approved = reviewed.revision;
+          approved = {revision:reviewed.revision,scope};
           return true;
         }
         if (choice !== 'save' || !canSave) return false;
         const path = storage.inspect().binding?.path ?? await choosePath();
         if (path === null) return false;
-        check(reviewed);
+        check(scope,reviewed);
         const payload = await native.captureSessionSave({documentId:state.documentId,revision:state.revision,path});
-        if (!payload) throw Error('PhotoCraft changed after you reviewed it.');
+        if (!payload) throw Error(`${appName} changed after you reviewed it.`);
         const result = await write(payload);
         if (result.error) throw result.error;
-        if (check().dirty) throw Error('PhotoCraft has changes made after the save capture.');
+        if (check(scope).dirty) throw Error(`${appName} has changes made after the save capture.`);
         return true;
       } finally {
         autosave.closing(false);
@@ -110,17 +111,19 @@ export function createPhotoSession({native, storage, drafts, autosave, signal, v
     },
     snapshot:observe,
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
-    async quiesce() {
-      const reviewed = check();
-      if (held || reviewed.dirty && approved !== reviewed.revision) throw Error('Review the current PhotoCraft changes before signing out.');
+    async quiesce(scope = 'session') {
+      const reviewed = check(scope);
+      if (held || reviewed.dirty && (approved?.revision !== reviewed.revision || approved.scope !== scope)) {
+        throw Error(`Review the current ${appName} changes before ${scope === 'window' ? 'closing' : 'signing out'}.`);
+      }
       const lease = crypto.randomUUID();
       autosave.closing(true);
       frame.inert = true;
       const resumeDrafts = await drafts.pause();
       try {
-        check(reviewed);
+        check(scope,reviewed);
         await native.session('pause',lease,state);
-        check(reviewed);
+        check(scope,reviewed);
       } catch (error) {
         void native.session('release',lease).catch(()=>{});
         resumeDrafts();
@@ -142,7 +145,7 @@ export function createPhotoSession({native, storage, drafts, autosave, signal, v
       }});
     },
     async commitClose() {
-      if (!held || observe().revision !== held.reviewed.revision) throw Error('The reviewed PhotoCraft pause is no longer available.');
+      if (!held || observe().revision !== held.reviewed.revision) throw Error(`The reviewed ${appName} pause is no longer available.`);
       await native.session('finalize',held.lease);
       held = null;
       try { await drafts.clear(); } catch (error) { onError(error); }

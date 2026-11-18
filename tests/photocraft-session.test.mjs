@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {createPhotoSession} from '../assembly/viewer/photocraft-session.mjs';
+import {createCraftSession} from '../assembly/viewer/craft-account-session.mjs';
 
 const generation = 'c'.repeat(32), documentId = '17', resource = 'Pictures/Layered.pcraft';
 const initial = {available:true,generation,documentId,revision:'1',
@@ -10,7 +10,8 @@ function fixture(choose) {
   const nativeCalls = [], closing = [], frame = {inert:false};
   const inspected = {identity:{generation,documentId},binding:{path:resource,sha256:'1'.repeat(64)},pending:null};
   let authorised = true, cleared = 0, writes = 0, resumed = 0, session;
-  session = createPhotoSession({
+  session = createCraftSession({
+    app:'photocraft', appName:'PhotoCraft',
     native:{async session(...args) { nativeCalls.push(args); },
       async captureSessionSave(target) { nativeCalls.push(['save',target]); return target; }},
     storage:{inspect:() => inspected},
@@ -81,4 +82,16 @@ test('Save at sign-out uses the reviewed native revision and waits for acknowled
   assert.equal(f.writes,1);
   assert.equal(f.session.snapshot().dirty,false);
   assert.equal(f.cleared,0);
+});
+
+test('A window discard decision cannot authorize discarding during sign-out', async () => {
+  const f = fixture(async ({scope}) => {
+    assert.equal(scope,'window');
+    return 'discard';
+  });
+  assert.equal(await f.session.approve('window'),true);
+  await assert.rejects(f.session.quiesce(),/before signing out/);
+  await f.session.quiesce('window');
+  await f.session.commitClose();
+  assert.equal(f.cleared,1);
 });
