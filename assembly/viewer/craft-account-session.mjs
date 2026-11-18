@@ -62,9 +62,20 @@ export function createCraftSession({app, appName, native, storage, drafts, autos
   function check(scope, reviewed) {
     if (disposed || signal.aborted || !valid()) throw Error(`The ${appName} account window closed.`);
     const current = observe();
-    if (current.pending) throw Error(`Finish the pending ${appName} operation before ${scope === 'window' ? 'closing' : 'signing out'}.`);
+    if (current.pending) {
+      const action = {window:'closing', session:'signing out', save:'saving'}[scope];
+      throw Error(`Finish the pending ${appName} operation before ${action}.`);
+    }
     if (reviewed && current.revision !== reviewed.revision) throw Error(`${appName} changed after you reviewed it.`);
     return current;
+  }
+
+  async function captureAndWrite(path, scope, reviewed) {
+    check(scope, reviewed);
+    const payload = await native.captureSessionSave({documentId:state.documentId,revision:state.revision,path});
+    if (!payload) throw Error(`${appName} changed before the save could be captured.`);
+    const result = await write(payload);
+    if (result.error) throw result.error;
   }
 
   return {
@@ -81,6 +92,19 @@ export function createCraftSession({app, appName, native, storage, drafts, autos
       observe();
     },
     observe,
+    async saveManually({saveAs, signal:dialogSignal}) {
+      if (held) throw Error(`Finish the current ${appName} session operation before saving.`);
+      autosave.closing(true);
+      try {
+        const reviewed = check('save');
+        if (state.unfinishedEdit) throw Error(`Finish the active ${appName} edit before saving.`);
+        const binding = storage.inspect().binding;
+        const path = saveAs || !binding ? await choosePath(binding?.path, dialogSignal) : binding.path;
+        if (path !== null) await captureAndWrite(path, 'save', reviewed);
+      } finally {
+        autosave.closing(false);
+      }
+    },
     async approve(scope = 'session') {
       approved = null;
       autosave.closing(true);
@@ -98,11 +122,7 @@ export function createCraftSession({app, appName, native, storage, drafts, autos
         if (choice !== 'save' || !canSave) return false;
         const path = storage.inspect().binding?.path ?? await choosePath();
         if (path === null) return false;
-        check(scope,reviewed);
-        const payload = await native.captureSessionSave({documentId:state.documentId,revision:state.revision,path});
-        if (!payload) throw Error(`${appName} changed after you reviewed it.`);
-        const result = await write(payload);
-        if (result.error) throw result.error;
+        await captureAndWrite(path,scope,reviewed);
         if (check(scope).dirty) throw Error(`${appName} has changes made after the save capture.`);
         return true;
       } finally {
