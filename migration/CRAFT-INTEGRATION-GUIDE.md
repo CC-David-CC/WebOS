@@ -470,7 +470,7 @@ remaining work by the behavior that needs qualification.
 
 | Next work | Acceptance milestone |
 |---|---|
-| FigCraft and VectorCraft | Finish exact selected-commit browser qualification and rolling activation. Verify scoped editing and Undo, Save As, conflict recovery and an account reopen in a fresh browser. |
+| VectorCraft | Finish exact selected-commit browser qualification and rolling activation. Verify scoped editing and Undo, Save As, conflict recovery and an account reopen in a fresh browser. |
 | AniCraft | Use the existing `.anicraft` codec. Edit a native timeline, retain embedded art and sound, Save and recover the project, and verify a browser export independently. |
 | LightCraft | Qualify an account-scoped catalog with originals, adjustment recipes and render workers. Verify that a fresh browser can retrieve an edited photo and its original. |
 | DesignCraft | Preserve editable pages, typography and linked resources across Save, recovery and fresh-browser reopen. Verify publication export using an account project. |

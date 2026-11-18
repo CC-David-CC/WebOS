@@ -178,6 +178,14 @@ an isolated integration checkout. LightCraft's `cargo xtask web` publishes
 the module worker and a separately licensed Chinese font from the pinned
 manifest. Include those while qualifying the browser build.
 
+The isolated AniCraft checkout at `4e2a2af303d8` passed
+`cargo check --locked --offline -p anicraft --target wasm32-unknown-unknown`
+under nightly 2026-11-16 with the upstream font-free browser configuration.
+The lock and source stayed unchanged. This check precedes the release link and
+browser qualification with the pinned shared assets. The private receipt and
+compiler log are under `anicraft-baseline-wasm-check/`. Its temporary target
+was removed after the check.
+
 The November 18 recheck at parent `2653ac7d7eb7` verified 36,575 tracked
 paths in the 17 Craft checkouts and repeated the locked offline Linux and
 WASM dependency fetches. All 124 component trees match their local bare
