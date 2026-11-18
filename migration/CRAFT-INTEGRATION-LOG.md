@@ -460,6 +460,29 @@ Private round evidence includes the archive
 `office-release-final-inventory.json`, the browser results and the saved-file
 audit. The local release awaits separate approval for deployment.
 
+### GridCraft authorized operations on loopback
+
+The separate development profile connects an independent P-256 agent key to a
+single mounted GridCraft document. Desktop's trusted owner confirmation
+displays the key fingerprint, the mounted window and resource, the exact
+commands and the duration. The Accounts server signs and consumes one-use
+intent confirmations. Desktop checks the session, instance and current binding
+at dispatch. GridCraft processes the bounded request through its existing
+`execute` contract. File commands require the separate human authority.
+
+The actual assembled Chromium test used independently signed HTTP requests,
+two live WASM workbooks and two isolated accounts. It verified that the
+approved formula evaluated to 42 in the intended workbook only. It also
+verified cancellation, synthetic-click rejection, rejection of a different
+signing key, argument tampering, replay, other-account consumption, native
+document and cell reads, direct-call rejection, Save As during server consume
+and revocation before consume. The old grant did not mutate the newly saved
+workbook. The launcher without the explicit flag exposes no bridge.
+
+See `office-agent-browser-r3/results.json` and
+`office-agent-default-regression/results.json` in the private checkpoint.
+The static Office release candidate remains independently identified.
+
 Accounts' isolated `webos/office-operation-delegation` branch contains a
 bounded same-origin HTTP adapter and a browser capability tied to the owner
 session. The Accounts test suite passed 69 tests. A separate real loopback

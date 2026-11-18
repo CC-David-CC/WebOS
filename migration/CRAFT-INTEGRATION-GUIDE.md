@@ -373,7 +373,29 @@ operations. Public execution requires an explicit caller and exact target tuple.
 Capture bounded arguments before asynchronous authorization; refuse execution if
 the instance, session, document or resource changes during the wait. Never expose
 authentication secrets in ordinary inspection. Current human mount authority is
-not delegated-agent authentication; that separate transport remains deferred.
+separate from delegated-agent authentication. The opt-in loopback development
+profile connects the Accounts authority to the mounted GridCraft editor.
+Other app integrations require their own bounded command policy and proof.
+
+The development bridge lives under `desktopLab.agentOperations`. Start the
+normal development launcher with `--agent-operations` to enable it on a direct
+loopback origin. A trusted caller supplies the live application instance ID,
+the independent agent's public key, the command list and the lifetime. Desktop
+asks the signed-in owner to approve that exact scope through its modal. The
+result carries the delegation credential once and includes the document
+identity needed to construct the signed request.
+
+GridCraft exposes `document.inspect`, `cell.get` and `cell.set` through this
+bridge. Reads and edits to cells require an explicit sheet and address. The
+editor refuses agent edits while native user input or another operation is
+in progress. The browser
+checks the account, view, native document and file binding before and after
+the signed server consume. Changing the binding through Save As invalidates
+the prior approval. The editor receives a one-use invocation capability. Its
+native command, recovery and approved AutoSave behavior remain the same.
+Delegations grant neither direct file transfer nor control of Save or Open.
+Origin-trusted app code can already reach browser APIs, so the bridge is a
+boundary for external agents rather than a sandbox between integrated apps.
 
 ## Builds, upstream maintenance and evidence
 
