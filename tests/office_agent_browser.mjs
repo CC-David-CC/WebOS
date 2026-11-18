@@ -27,7 +27,7 @@ const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
 const selected = Object.entries({
   lightcraft:lightcraftDispatch, designcraft:designcraftDispatch,
   soundcraft:soundcraftDispatch, filmcraft:filmcraftDispatch,
-  effectcraft:effectcraftDispatch,
+  effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch,
 }).filter(([app])=>process.env['WEBOS_'+app.toUpperCase()+'_TEST']==='1');
 assert(selected.length<=1);
 const singleEditor = selected[0];
@@ -65,7 +65,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -1266,6 +1266,190 @@ async function filmcraftDispatch(browser, page, credentials) {
       }
     } finally { await iframe.dispose(); }
   } finally { await fresh.context.close(); }
+}
+
+async function cadcraftDispatch(browser,page,credentials) {
+  const commands=['document.inspect','line','circle','dimlinear','edit.undo'];
+  const picker='dialog.codi-file-picker[open]', prompt='dialog.codi-confirm-dialog[open]';
+  const appWindow='.window:has(.webos-cadcraft)';
+  const nativeCanvas='#cadcraft_canvas';
+  const original='Documents/Dimensioned drawing.dxf';
+  const copy='Documents/Dimensioned copy.dxf';
+
+  async function grant(tab,id) {
+    const pending=approve(tab,id,commands);
+    await tab.waitForSelector(modal,timeout);
+    await tab.click(modal+' button[aria-label="Approve access"]');
+    const approval=await pending;
+    assert.equal(approval.error,undefined,approval.error);
+    return approval.result;
+  }
+  async function edit(tab,approval,command,args={}) {
+    const intent=JSON.stringify(intentFor(approval,command,args));
+    const signed=await authorize(approval,intent);
+    assert.equal(signed.status,200,signed.error);
+    const result=await dispatch(tab,signed.confirmation,intent);
+    assert.equal(result.error,undefined,result.error);
+    return result.result.result;
+  }
+  async function files(tab) {
+    const id=await tab.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+    await tab.waitForFunction(view=>typeof document.querySelector(view)?.appView?.execute==='function',timeout,selector(id));
+    return id;
+  }
+  async function file(tab,id,command,args) {
+    return tab.$eval(selector(id),async (node,{command,args})=>{
+      await node.appView.ready;
+      return node.appView.execute(command,args);
+    },{command,args});
+  }
+  async function read(tab,id,path) {
+    await file(tab,id,'list',{path:path.slice(0,path.lastIndexOf('/'))});
+    const snapshot=await file(tab,id,'snapshot',{path});
+    const data=await file(tab,id,'download',{path,expectedRevision:snapshot.sha256});
+    const bytes=Buffer.from(Object.values(data.data));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'),snapshot.sha256);
+    return bytes;
+  }
+  async function shortcut(tab,id,key,shift=false) {
+    await tab.bringToFront();
+    await tab.evaluate(id=>{
+      const surface=window.desktopLab.surfaces.get('Desktop');
+      surface.activateWindow(surface.windows.find(window=>String(window.id)===String(id)));
+    },id);
+    const frame=await editorFrame(tab,id);
+    await frame.$eval(nativeCanvas,canvas=>{canvas.tabIndex=0;canvas.focus({preventScroll:true});});
+    await tab.keyboard.down('Control');
+    if (shift) await tab.keyboard.down('Shift');
+    try { await tab.keyboard.press(key); }
+    finally {
+      if (shift) await tab.keyboard.up('Shift');
+      await tab.keyboard.up('Control');
+    }
+  }
+  async function bound(tab,id,title) {
+    await tab.waitForFunction((view,title)=>{
+      const node=document.querySelector(view);
+      const state=node?.appView?.lifecycle.snapshot();
+      return state && !state.dirty && !state.pending && node.querySelector('.caption-text')?.textContent===title+' — CADCraft';
+    },timeout,selector(id),title);
+  }
+  async function saveAs(tab,id,name,copy) {
+    await shortcut(tab,id,copy?'S':'s',copy);
+    await labelledButton(tab,picker,'Open folder Documents');
+    await labelledButton(tab,picker,'Use this folder');
+    await tab.waitForSelector(prompt+' input',timeout);
+    await tab.$eval(prompt+' input',(field,value)=>{field.value=value;},name);
+    await labelledButton(tab,prompt,'Save');
+    await bound(tab,id,name+'.dxf');
+  }
+  function dxfEntities(bytes) {
+    const lines=bytes.toString('utf8').trimEnd().split(/\r?\n/);
+    assert.equal(lines.length%2,0);
+    let inEntities=false;
+    const entities=[];
+    for (let i=0;i<lines.length;i+=2) {
+      const code=Number(lines[i].trim()), value=lines[i+1].trim();
+      if (code===2 && value==='ENTITIES') {inEntities=true; continue;}
+      if (!inEntities) continue;
+      if (code===0 && value==='ENDSEC') break;
+      if (code===0) entities.push({type:value,fields:new Map()});
+      else if (entities.length) entities.at(-1).fields.set(code,value);
+    }
+    return entities;
+  }
+
+  const first=await editor(page,'cadcraft');
+  const frame=await editorFrame(page,first);
+  await frame.waitForSelector(nativeCanvas,timeout);
+  assert.equal(await frame.evaluate(()=>typeof window.cadcraft),'undefined');
+  const approval=await grant(page,first);
+  assert.equal((await edit(page,approval,'document.inspect')).entityCount,0);
+  await edit(page,approval,'line',{points:[[1,2],[7,2]]});
+  await edit(page,approval,'circle',{center:[9,4],radius:2});
+  const dimension={p1:[1,2],p2:[7,2],at:[4,5]};
+  await edit(page,approval,'dimlinear',dimension);
+  assert.equal((await edit(page,approval,'document.inspect')).entityCount,3);
+  await edit(page,approval,'edit.undo');
+  assert.equal((await edit(page,approval,'document.inspect')).entityCount,2);
+  await edit(page,approval,'dimlinear',dimension);
+  present('CADCraft runs scoped native line, circle, dimension and Undo commands');
+
+  const filesId=await files(page);
+  await saveAs(page,first,'Dimensioned drawing',false);
+  const saved=await read(page,filesId,original);
+  const entities=dxfEntities(saved);
+  assert.deepEqual(entities.map(entity=>entity.type),['LINE','CIRCLE','DIMENSION']);
+  const numeric=(index,codes)=>codes.map(code=>Number(entities[index].fields.get(code)));
+  assert.deepEqual(numeric(0,[10,20,11,21]),[1,2,7,2]);
+  assert.deepEqual(numeric(1,[10,20,40]),[9,4,2]);
+  assert.deepEqual(numeric(2,[13,23,14,24]),[1,2,7,2]);
+  await saveAs(page,first,'Dimensioned copy',true);
+  assert.deepEqual(dxfEntities(await read(page,filesId,copy)),entities);
+  assert.deepEqual(await read(page,filesId,original),saved);
+  present('CADCraft Save and Save As write editable DXF with the expected coordinates, radius and dimension');
+
+  await shortcut(page,first,'o');
+  await labelledButton(page,picker,'Open folder Documents');
+  await labelledButton(page,picker,'Choose file Dimensioned copy.dxf');
+  await page.waitForSelector(picker,{hidden:true,...timeout});
+  assert.equal(await page.$$eval(appWindow,nodes=>nodes.length),1);
+  await file(page,filesId,'open',{path:copy});
+  assert.equal(await page.$$eval(appWindow,nodes=>nodes.length),1);
+  present('CADCraft native Open and Files reuse the same account drawing window');
+
+  await edit(page,await grant(page,first),'circle',{center:[23,5],radius:3});
+  await page.waitForFunction(async path=>{
+    const name='webos-cadcraft-recovery-v1';
+    if (!(await indexedDB.databases()).some(db=>db.name===name)) return false;
+    const db=await new Promise((resolve,reject)=>{
+      const open=indexedDB.open(name);
+      open.onsuccess=()=>resolve(open.result);
+      open.onerror=()=>reject(open.error);
+    });
+    try {
+      const drafts=await new Promise((resolve,reject)=>{
+        const request=db.transaction('drafts').objectStore('drafts').getAll();
+        request.onsuccess=()=>resolve(request.result);
+        request.onerror=()=>reject(request.error);
+      });
+      return drafts.some(draft=>draft.path===path && draft.bytes instanceof Blob && draft.bytes.size>0);
+    } finally {db.close();}
+  },timeout,copy);
+  const accept=dialog=>{void dialog.accept();};
+  page.on('dialog',accept);
+  try {await page.reload({waitUntil:'domcontentloaded'});}
+  finally {page.off('dialog',accept);}
+  await page.waitForFunction(view=>document.querySelector(view)?.appView?.inspect?.()?.instanceId,timeout,selector(first));
+  const recovered=await edit(page,await grant(page,first),'document.inspect');
+  assert.deepEqual([recovered.entityCount,recovered.dirty],[4,true]);
+  await labelledButton(page,selector(first),'Close');
+  await labelledButton(page,'dialog.webos-cadcraft-session[open]','Discard');
+  await page.waitForSelector(selector(first),{hidden:true,...timeout});
+  present('CADCraft restores an unsaved native geometry edit on refresh and supports explicit discard');
+
+  const fresh=await login(browser,credentials);
+  try {
+    const freshFiles=await files(fresh.page);
+    await file(fresh.page,freshFiles,'open',{path:copy});
+    const view=appWindow+' iframe:not([inert])';
+    const frameElement=await fresh.page.waitForSelector(view,timeout);
+    const reopened=await fresh.page.$eval(appWindow,node=>node.dataset.window);
+    const native=await frameElement.contentFrame();
+    await native.waitForSelector(nativeCanvas,timeout);
+    const freshApproval=await grant(fresh.page,reopened);
+    const drawing=await edit(fresh.page,freshApproval,'document.inspect');
+    assert.deepEqual([drawing.entityCount,drawing.dirty],[3,false]);
+    assert.deepEqual(dxfEntities(await read(fresh.page,freshFiles,copy)),entities);
+    await frameElement.screenshot({path:path.join(output,'cadcraft-reopened-drawing.png')});
+    await edit(fresh.page,freshApproval,'line',{points:[[19,9],[24,10]]});
+    await shortcut(fresh.page,reopened,'s');
+    await bound(fresh.page,reopened,'Dimensioned copy.dxf');
+    assert.equal(dxfEntities(await read(fresh.page,freshFiles,copy)).length,4);
+    present('CADCraft reopens editable account geometry from Files in a fresh browser and saves a later revision');
+  } finally {
+    await fresh.context.close();
+  }
 }
 
 async function effectcraftDispatch(browser,page,credentials) {
