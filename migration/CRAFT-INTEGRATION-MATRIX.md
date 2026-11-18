@@ -14,6 +14,11 @@ The classic Desktop source contains all 17 entries. The current hosted release
 enables WordCraft and PdfCraft. Unqualified entries use the disabled state when
 listed in a candidate menu. Legacy entries remain separate.
 
+The [local Office candidate](CRAFT-INTEGRATION-LOG.md#local-office-release-candidate)
+passed 87 exact-package browser checks and a 444-file archive verification.
+It enables GridCraft and DeckCraft alongside the two hosted Craft editors.
+The other 13 Craft entries remain disabled in that profile.
+
 See [build inputs](CRAFT-BUILD-INPUTS.md) for cache locations, verified pins and
 installation details, and the [integration guide](CRAFT-INTEGRATION-GUIDE.md)
 for the acceptance contract.
@@ -22,8 +27,8 @@ for the acceptance contract.
 |---|---|---|---|---|
 | Office | [wordcraft](../apps/wordcraft/) `webos/integration` at `edeb4a090cd3` | Rich text and document layout | `webos/build.py` | Live. Signed browser authoring, file round trip and recovery evidence in [WordCraft report](../deploy/WORDCRAFT-DOCUMENTS.md). Apply and qualify the shared AutoSave policy. |
 | Office | [pdfcraft](../apps/pdfcraft/) `webos/pdfcraft-blank-chrome` at `a5b512846f59` | PDF editing | `webos/build.py` | Live. Signed browser editing, recovery and verified PDF content in [PdfCraft report](../deploy/PDFCRAFT.md). Apply and qualify the shared AutoSave policy. |
-| Office | [gridcraft](../apps/gridcraft/) `webos/gridcraft-document-host` at `fd80ce897bce` | Spreadsheets with formulas and formatting | `webos/build.py` | Local candidate. Ten native gates, 27 adapter tests and exact packaging pass after clarifying uncertain saves. Earlier browser tests verified recovery of an unfinished formula, two-workspace restore, account isolation, retry timing and XLSX fidelity. The lost-response diagnostic passed the adapter fix. Combined-profile qualification and authorized agent operations remain. |
-| Office | [deckcraft](../apps/deckcraft/) `webos/deckcraft-document-host` at `f8353c0dae8e` | Slides and embedded assets | `webos/build.py` | Local candidate. Eight native gates, 40 adapter tests and an exact-package browser check pass for restoring pending speaker notes. The preceding package passed 14 browser checks, including account switching, presenter mode and uncertain writes, and independent PPTX content checks. Combined-profile qualification and authorized agent operations remain. |
+| Office | [gridcraft](../apps/gridcraft/) `webos/gridcraft-document-host` at `fd80ce897bce` | Spreadsheets with formulas and formatting | `webos/build.py` | Locally qualified XLSX workflow. Ten native gates, 27 adapter tests and the combined browser suite pass. A recovered cell remains in formula edit mode until explicit entry. The browser test confirmed retry timing, uncertain-write handling, and exact workspace restoration. Authorized agent commands remain open. |
+| Office | [deckcraft](../apps/deckcraft/) `webos/deckcraft-document-host` at `f8353c0dae8e` | Slides and embedded assets | `webos/build.py` | Locally qualified PPTX workflow. Eight native gates, 40 adapter tests and the combined browser suite pass. Pending notes resume as an unfinished edit, and saved files retain slides, speaker notes, theme and image bytes. Browser-uploaded fonts are session-only. Authorized agent commands remain open. |
 | Office | [designcraft](../apps/designcraft/) `webos/integration` at `59c6fa1b4947` | Page layout and publication | `designcraft-web` | Disabled. Build and browser integration pending. Verify workspace references and linked assets. Qualify the page layout workflow. |
 | Graphics | [photocraft](../apps/photocraft/) `webos/integration` at `2fec95b0d91b` | Layered raster images | `photocraft-web, photocraft-web-boot` | Disabled. Build and browser integration pending. Verify exact fonts, translations, worker packaging and layered-image project serialization. |
 | Graphics | [vectorcraft](../apps/vectorcraft/) `webos/integration` at `4830ea0e833f` | Vector paths and text | `vectorcraft-web` | Disabled. Build and browser integration pending. Verify font bundle, native project serialization and SVG round-trip limits. |

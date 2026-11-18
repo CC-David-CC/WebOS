@@ -8,16 +8,16 @@
 > legacy apps stay grayed out. Keep their source. No legacy-editor retirement,
 > replacement decision or new quick-preview project is authorized by this scope.
 
-> **Active local integration round — GridCraft/DeckCraft and AutoSave**
+> **Local Office release candidate**
 >
 > The user authorized parallel app branches and approved browser-first recovery
 > plus debounced account AutoSave. Work remains split between the app branches
-> and the shared Runtime/Desktop composition. Both apps passed the browser
-> retry-delay check. GridCraft's exact recovery and minimize fixes passed native
-> CI and focused browser checks. DeckCraft's previous exact package passed its
-> standalone browser suite, including sign-out. The next candidate preserves
-> unfinished speaker notes as an editor draft through refresh. Follow the
-> integration matrix for the latest combined qualification.
+> and the shared Runtime/Desktop composition. The combined candidate for
+> GridCraft `fd80ce89` and DeckCraft `f8353c0d` passed all 87 checks across
+> five browser suites. The verified local archive and its build provenance
+> are recorded in the [integration log](migration/CRAFT-INTEGRATION-LOG.md#local-office-release-candidate).
+> Keep the candidate local pending separate deployment approval. Live agent
+> command dispatch remains in development on separate branches.
 > Normal automatic writes wait 10 seconds after committed typing, at least 60
 > seconds between confirmed writes; known no-write transient retries back off
 > to 15 minutes. Conflict/uncertain outcomes pause. Manual Save remains immediate.
