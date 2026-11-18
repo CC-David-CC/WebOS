@@ -4,7 +4,7 @@ import {createPhotoStorage, projectPath} from './photocraft-storage.mjs';
 /** The classic Desktop's API2 view for the PhotoCraft editor. */
 export function mount(host) {
   const element = document.createElement('div');
-  element.className = 'window-content';
+  element.className = 'window-content webos-photocraft';
   element.style.display = 'flex';
   element.style.flexDirection = 'column';
   const status = document.createElement('div');
@@ -51,7 +51,7 @@ export function mount(host) {
   }
 
   async function chooseProject(packet, signal) {
-    const picked = packet.path === null ? await host.storage.pickFile({extensions:['.pcraft'], signal}) : null;
+    const picked = packet.path === null ? await host.storage.pickAccountFile({extensions:['.pcraft'], signal}) : null;
     check();
     if (!loaded || signal.aborted) return {outcome:'cancelled'};
     if (packet.path === null && picked === null) return {outcome:'cancelled'};
@@ -67,7 +67,7 @@ export function mount(host) {
   }
 
   async function chooseDestination(suggested, signal) {
-    const folder = await host.storage.pickFolder({signal});
+    const folder = await host.storage.pickAccountFile({foldersOnly:true, signal});
     check();
     if (!loaded || signal.aborted || folder === null) return {outcome:'cancelled'};
     if (typeof folder !== 'string' || !folder.startsWith('/')) throw Error('Invalid account folder selection.');
@@ -91,7 +91,15 @@ export function mount(host) {
     dialog = controller;
     let answer;
     try {
-      if (packet.operation === 'open') answer = await chooseProject(packet, controller.signal);
+      if (packet.operation === 'new' && typeof packet.settings === 'string' && packet.settings.length <= 4096) {
+        const settings = JSON.parse(packet.settings);
+        if (!settings || typeof settings !== 'object' || Array.isArray(settings)) throw Error('Invalid new project settings.');
+        check();
+        const window = host.desktop.launch('photocraft');
+        if (!window) throw Error('PhotoCraft is unavailable.');
+        window.photocraftNewSettings = packet.settings;
+        answer = {outcome:'opened'};
+      } else if (packet.operation === 'open') answer = await chooseProject(packet, controller.signal);
       else if (packet.operation === 'save' && typeof packet.suggested === 'string' && packet.suggested.length <= 2048) {
         answer = await chooseDestination(packet.suggested, controller.signal);
       } else throw Error('Invalid PhotoCraft dialog request.');
@@ -142,7 +150,9 @@ export function mount(host) {
     if (resource) {
       bind(await storage.open(resource, native.start));
     } else {
-      storage.attachBlank(await native.start());
+      const settings = host.w.photocraftNewSettings;
+      delete host.w.photocraftNewSettings;
+      storage.attachBlank(await native.start(null, null, settings));
     }
     check();
     loaded = true;
