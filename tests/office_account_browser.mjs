@@ -12,10 +12,6 @@ const endpoint = new URL(origin);
 assert.equal(endpoint.hostname, '127.0.0.1', 'This suite creates accounts and files on an isolated loopback server.');
 assert.equal(endpoint.origin, origin);
 await mkdir(output, {mode: 0o700});
-const credentials = {
-  username: 'office' + randomBytes(6).toString('hex'),
-  password: randomBytes(12).toString('hex'),
-};
 const checks = [];
 const faults = [];
 const options = {timeout: 30_000};
@@ -40,7 +36,14 @@ async function button(page, label, scope = '') {
   await handle.dispose();
 }
 
-async function login(page, register, identity = credentials) {
+function createIdentity() {
+  return {
+    username: 'office' + randomBytes(6).toString('hex'),
+    password: randomBytes(12).toString('hex'),
+  };
+}
+
+async function login(page, register, identity) {
   await page.goto(origin, {waitUntil: 'networkidle0'});
   await page.waitForSelector('.login-gate');
   if (register) await page.click('.login-toggle');
@@ -49,6 +52,21 @@ async function login(page, register, identity = credentials) {
   if (register) await page.type('[aria-label="Confirm password"]', identity.password);
   await button(page, register ? 'Register' : 'Sign in', '.login-gate ');
   await page.waitForFunction(() => !!window.desktopLab?.session && !document.querySelector('.login-gate'), options);
+}
+
+async function signOut(page) {
+  await page.click('.app-menu-button');
+  await button(page, 'End session', '.menu-pane ');
+  const result = await page.waitForFunction(() => {
+    if (document.querySelector('.login-gate')) return 'signed out';
+    const feedback = document.querySelector('#feedback')?.textContent.trim();
+    if (feedback && feedback !== 'Signing out…') return feedback;
+    const modal = document.querySelector('[role="alertdialog"], [role="dialog"][aria-modal="true"]');
+    if (modal?.getClientRects().length) return modal.innerText;
+    return false;
+  }, options);
+  try { assert.equal(await result.jsonValue(), 'signed out'); }
+  finally { await result.dispose(); }
 }
 
 async function launch(page, group, name) {
@@ -376,6 +394,30 @@ async function recoverBlankDraft(page, filesId, app, name, ext) {
     const model = await document.querySelector('.window[data-window="' + id + '"]')?.appView?.inspect();
     return model?.dirty && model.path === null && model.recovery === (app === 'gridcraft' ? 'stored' : 'saved');
   }, options, {id, app});
+  if (app === 'gridcraft') {
+    const draft = await page.evaluate(async id => {
+      const desktop = window.desktopLab.surfaces.get('Desktop');
+      const {gridcraftDraftId, ownerSub} = desktop.windows.find(w => w.id === Number(id));
+      const db = await new Promise((resolve, reject) => {
+        const request = indexedDB.open('webos-gridcraft-recovery-v1', 1);
+        request.onupgradeneeded = () => request.transaction.abort();
+        request.onerror = () => reject(request.error);
+        request.onsuccess = () => resolve(request.result);
+      });
+      try {
+        const journal = await new Promise((resolve, reject) => {
+          const request = db.transaction('drafts').objectStore('drafts').get([location.origin, ownerSub, gridcraftDraftId]);
+          request.onerror = () => reject(request.error);
+          request.onsuccess = () => resolve(request.result);
+        });
+        return JSON.parse(atob(journal.snapshot.data)).editor;
+      } finally {
+        db.close();
+      }
+    }, id);
+    assert.equal(draft?.text, formula);
+    assert.equal(draft?.cell, 'A1');
+  }
   await file(page, filesId, 'list', {path: 'Documents'});
   const before = (await state(page, filesId)).entries.map(item => item.path);
   assert(!before.includes('Documents/Untitled.' + ext));
@@ -461,29 +503,11 @@ async function loseSaveConfirmation(page, filesId, id, app, resource) {
 
 async function verifyProfileIsolation(browser, observe, app, name) {
   const context = await browser.createBrowserContext();
-  const createIdentity = () => ({
-    username: 'profile' + randomBytes(6).toString('hex'),
-    password: randomBytes(12).toString('hex'),
-  });
   const a = createIdentity();
   const b = createIdentity();
   const open = async page => {
     await launch(page, 'Office', name);
     return ready(page, app);
-  };
-  const signOut = async page => {
-    await page.click('.app-menu-button');
-    await button(page, 'End session', '.menu-pane ');
-    const result = await page.waitForFunction(() => {
-      if (document.querySelector('.login-gate')) return 'signed out';
-      const feedback = document.querySelector('#feedback')?.textContent.trim();
-      if (feedback && feedback !== 'Signing out…') return feedback;
-      const modal = document.querySelector('[role="alertdialog"], [role="dialog"][aria-modal="true"]');
-      if (modal?.getClientRects().length) return modal.innerText;
-      return false;
-    }, options);
-    try { assert.equal(await result.jsonValue(), 'signed out', app + ' account switch'); }
-    finally { await result.dispose(); }
   };
   const setting = async (page, id) => {
     if (app === 'deckcraft') return (await state(page, id)).autosaveEnabled;
@@ -518,6 +542,54 @@ async function verifyProfileIsolation(browser, observe, app, name) {
   }
 }
 
+async function verifyOfficeLayout(page, identity) {
+  const saved = [];
+  const layout = ids => page.evaluate(ids => {
+    const desktop = window.desktopLab.surfaces.get('Desktop');
+    return {current: desktop.current, active: desktop.active, windows: ids.map(id => {
+      const w = desktop.windows.find(window => window.id === Number(id));
+      return w && {id: w.id, workspace: w.workspace, x: w.x, y: w.y, w: w.w, h: w.h,
+        minimized: !!w.minimized, path: w.launchContext?.path};
+    })};
+  }, ids);
+  for (const [app, name, ext] of applications) {
+    await launch(page, 'Office', name);
+    const id = await ready(page, app);
+    const resource = 'Documents/Office-layout.' + ext;
+    const revision = await saveAs(page, id, app, resource);
+    saved.push({id, resource, revision});
+    if (app === 'gridcraft') {
+      await page.click(windowSelector(id) + ' [aria-label="Minimize"]');
+      await page.click('.workspace-toggle');
+      await page.click('.workspace-switcher [aria-label="Workspace 2"]');
+    }
+  }
+  const ids = saved.map(entry => entry.id);
+  await page.waitForFunction(async ids => {
+    for (const id of ids) {
+      const view = document.querySelector('.window[data-window="' + id + '"]')?.appView;
+      const model = view?.lifecycle.snapshot();
+      if (!model || model.dirty || model.pending) return false;
+    }
+    return true;
+  }, options, ids);
+  const expected = await layout(ids);
+  assert.equal(expected.current, 1);
+  assert.equal(expected.active, Number(ids[1]));
+  assert.deepEqual(expected.windows.map(window => [window.workspace, window.minimized]), [[0, true], [1, false]]);
+  await signOut(page);
+  await login(page, false, identity);
+  for (const [app, , ext] of applications) {
+    const entry = saved.find(item => item.resource.endsWith('.' + ext));
+    await page.waitForFunction(async ({id, resource, revision}) => {
+      const model = await document.querySelector('.window[data-window="' + id + '"]')?.appView?.inspect();
+      return model?.phase === 'ready' && !model.dirty && model.path === resource && model.revision === revision;
+    }, {...options, timeout: 120_000}, entry);
+    assert.deepEqual(await windows(page, app), [entry.id]);
+  }
+  assert.deepEqual(await layout(ids), expected);
+}
+
 let browser, page, status = 'FAIL';
 try {
   browser = await puppeteer.launch({
@@ -536,14 +608,19 @@ try {
     });
     return page.setViewport({width: 1600, height: 1050});
   };
-  page = await browser.newPage();
-  await observe(page);
-  await login(page, true);
-  await verifyMenu(page);
-  passed('all 17 Craft menu entries and the disabled legacy Office apps match the selected profile');
-  const filesId = await files(page);
-
   for (const [app, name, ext] of applications.filter(([id]) => !only || only === id)) {
+    // An unknown-save scenario deliberately leaves an open dirty resource.
+    // Use a fresh account and context for each app's independent suite.
+    const context = await browser.createBrowserContext();
+    const credentials = createIdentity();
+    page = await context.newPage();
+    await observe(page);
+    await login(page, true, credentials);
+    if (!checks.length) {
+      await verifyMenu(page);
+      passed('all 17 Craft menu entries and the disabled legacy Office apps match the selected profile');
+    }
+    const filesId = await files(page);
     const resource = 'Documents/Office-browser-roundtrip.' + ext;
     await launch(page, 'Office', name);
     const id = await ready(page, app);
@@ -597,7 +674,7 @@ try {
     try {
       const second = await fresh.newPage();
       await observe(second);
-      await login(second, false);
+      await login(second, false, credentials);
       const secondFiles = await files(second);
       await openFile(second, secondFiles, resource);
       const secondId = await ready(second, app);
@@ -631,10 +708,7 @@ try {
     try {
       const separate = await other.newPage();
       await observe(separate);
-      await login(separate, true, {
-        username: 'officeother' + randomBytes(6).toString('hex'),
-        password: randomBytes(12).toString('hex'),
-      });
+      await login(separate, true, createIdentity());
       const separateFiles = await files(separate);
       await file(separate, separateFiles, 'list', {path: 'Documents'});
       const listing = await state(separate, separateFiles);
@@ -659,6 +733,17 @@ try {
     const resumed = await ready(page, app);
     await loseSaveConfirmation(page, filesId, resumed, app, rescuedPath);
     passed(app + ' a lost save response retains local edits and pauses automatic writes');
+    await context.close();
+  }
+  if (!only) {
+    const context = await browser.createBrowserContext();
+    const identity = createIdentity();
+    page = await context.newPage();
+    await observe(page);
+    await login(page, true, identity);
+    await verifyOfficeLayout(page, identity);
+    passed('the same sign-out and sign-in restore both Office windows, exact bindings and workspace placement');
+    await context.close();
   }
   assert.deepEqual(faults, []);
   status = 'PASS';

@@ -280,6 +280,10 @@ filename. PDF/PNG copy checks never qualified those other entries. See
 Expose native dirty/revision/pending-save state to the host. Before closing or
 ending a session, coordinate Save/Discard/Cancel and recheck the exact state under
 a matching native pause lease. Host UI visibility alone does not freeze edits.
+Acquire the lease while the account is valid. Final sign-out can revoke the
+account before disposing views. If native cleanup is needed after revocation,
+limit it to the leased frame and its own resources. Keep account operations
+subject to the normal session check.
 
 Recovery payloads belong to the app. WordCraft snapshots its native rich model,
 including styles, lists and embedded media; plaintext is not an adequate recovery
@@ -304,6 +308,11 @@ and verify that automatic journal storage committed that exact snapshot before
 reloading. Then inspect recovered native content or saved output, not only dirty
 state and a recovery dialog. These are stronger test preconditions, not a claim
 of zero-loss durability at arbitrary navigation times.
+
+In a native editor with per-window UI state, adopt the recovered document's
+window before installing its pending editor state. Exercise recovery after the
+startup window has rendered. Also exercise hidden and minimized iframe states.
+They can report a zero-sized viewport while the editor still handles commands.
 
 Keep scenario evidence immutable. PdfCraft's stale-write test intentionally
 replaces the recovered account file with older fixture bytes, then downloads it
