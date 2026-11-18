@@ -188,15 +188,17 @@ async function photoDispatch(page) {
   await photoKeys(page,original,'s',['Control']);
   async function clickPicker(label) {
     const handle=await page.waitForFunction(label=>[...document.querySelectorAll('dialog.codi-file-picker[open] button')]
-      .find(button=>[button.getAttribute('aria-label'),button.textContent.trim()].includes(label)),timeout,label);
+      .find(button=>!button.disabled && [button.getAttribute('aria-label'),button.textContent.trim()].includes(label)),timeout,label);
     try { await handle.asElement().click(); } finally { await handle.dispose(); }
   }
   await clickPicker('Open folder Pictures');
   await clickPicker('Use this folder');
-  const form=modal+' input';
+  const savePrompt='dialog.codi-confirm-dialog[open]:has(input)';
+  const form=savePrompt+' input';
   await page.waitForSelector(form,timeout);
+  assert.equal(await page.$eval(savePrompt+' h2',heading=>heading.textContent),'Save PhotoCraft project');
   await page.$eval(form,input=>{ input.value='Signed layer'; });
-  await page.click(modal+' button[aria-label="Save"]');
+  await page.click(savePrompt+' button[aria-label="Save"]');
   const resource='Pictures/Signed layer.pcraft';
   await page.waitForFunction(async (id,resource)=>(await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect())?.resourceId===resource,
     timeout,original,resource);
