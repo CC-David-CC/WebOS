@@ -842,3 +842,34 @@ edits have an independent recovery version so a later edit supersedes an
 in-flight draft even while the parent save revision stays fixed. The
 JavaScript adapter passed 23 tests. The linked native and browser cases
 remain to be run against the same package.
+
+### PhotoCraft release on ksu.codes
+
+The release activated on 2026-11-18 UTC as
+`e0bedfb2a2e0fe14a8903d151d505874ca9e9fa5ed9f4c263cf462f509eb537b`.
+Archive SHA-256 was `d175bdfd858d1af0d9333e6b8ca494475e9e9c451aa63fdd3c7907b24f594b2b`.
+Parent `9a41ca7f84d9043affac220ad0ee382ace508acb` selected PhotoCraft
+`403994fc5f41e1b214b5f491d5d4a546ec153700` and DeckCraft
+`5b065c4ef93cfcec6beb2490cfa828d6b5a89d32`.
+
+The exact PhotoCraft engine passed 19 focused native tests and 28 browser
+account workflow checks. A recovered smart-object child kept its embedded
+layers and the account file retained its prior bytes until explicit Save.
+Chromium IME preedit stayed local and committed input reached the saved
+project. A browser runner wrapper exited with 143. Its browser child
+completed and wrote the passing 28-check report. Two independent focused
+browser probes passed for nested recovery and IME.
+
+The packaged viewer passed 10 signed PhotoCraft, GridCraft and DeckCraft
+operation checks, 15 classic Desktop checks and a default-profile check
+confirming the bridge stays disabled. Text passed 9 checks, PdfCraft 17 and
+WordCraft 19. Exact hosted verification matched all 463 published files and
+Chromium compiled the new PhotoCraft WASM. WordCraft, PdfCraft and GridCraft
+retained their prior engine bytes. The account backend, beta, existing service
+processes and WordCraft CSP passed continuity checks.
+
+The previous Office release at
+`5e0d0b3bbb69b09814deb79daac988261578003174f89b4c58a916cd420c0566`
+was reverified as the rollback. The host backup is
+`/var/backups/webos-photocraft-ksu-20261118-01`. Private activation and browser
+receipts are in `photocraft-ksu-20261118-01/` under the existing evidence root.
