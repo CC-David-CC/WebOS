@@ -33,22 +33,21 @@ classic Desktop and the existing account service. The
 [rollout guide](migration/CRAFT-INTEGRATION-GUIDE.md#rolling-integration-queue)
 defines the remaining order and gates.
 
-AniCraft went live on 2026-11-18 UTC in release
+LightCraft went live on 2026-11-18 UTC in release
+`344e72a215f9179096acaa0ad2bd736f5e7a1e5bf3ab38ce7ea3bea5b96c169a`.
+The assembly checkout was `03546a5e8a38ea423616815fbd1f779ba500edec`.
+All 601 hosted files matched and Chromium started the hosted editor. A local
+signed account test also opened the saved catalog from Files in a fresh
+browser and rendered its original photo. The immediate rollback is the
+[AniCraft release](migration/CRAFT-INTEGRATION-LOG.md#anicraft-release-on-ksucodes)
 `358215126cd5e6bc250c4ec8f5cde03baca308ee71c3f2e361f911b6dcc401a2`.
-The packaged parent is `c180c37cd7d07163fae17eab913506cae67f6388`. All 33
-final-candidate browser checks passed, all 588 hosted files matched, and
-hosted Chromium started the AniCraft editor. The immediate rollback is the
-[VectorCraft release](migration/CRAFT-INTEGRATION-LOG.md#vectorcraft-release-on-ksucodes)
-`c4acd1ab2d28957c05d2b8e34eb1beca9f60df36bda9a61ede9e48f46b323938`.
-See the [AniCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#anicraft-release-on-ksucodes)
-for native baselines, account workflow evidence and rollback. LightCraft's
-local release candidate passed account Save, Save As, recovery, and cold
-reopen through Files with the original photo rendered. Retained-app checks
-continue before activation. DesignCraft's baseline WASM check and native
-save confirmation test passed on the R730.
+See the [LightCraft rollout](migration/CRAFT-INTEGRATION-LOG.md#lightcraft-release-on-ksucodes)
+for source, browser checks and rollback. DesignCraft is next. Its native
+account Open, Save confirmation and draft recovery tests passed on the R730.
 
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
-PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft and Help.
+PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft,
+LightCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.
