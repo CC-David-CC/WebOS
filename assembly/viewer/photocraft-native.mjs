@@ -3,7 +3,7 @@ const generationPattern = /^[0-9a-f]{32}$/;
 const saveFields = ['ticket', 'documentId', 'revision', 'path'];
 
 /** One native PhotoCraft instance inside a same-origin classic Desktop window. */
-export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onCloseIntent, onProjectState, onUnavailable}) {
+export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onLocalFile, onCloseIntent, onProjectState, onUnavailable}) {
   const desktop = frame.ownerDocument.defaultView;
   if (url.origin !== desktop.location.origin) throw Error('PhotoCraft requires the desktop origin.');
 
@@ -82,6 +82,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
     }
     if (kind === 'save') onSave(data);
     if (kind === 'dialog') onDialog?.(data);
+    if (kind === 'local-file') onLocalFile?.(data.file);
     if (kind === 'close-intent') onCloseIntent?.();
     if (kind === 'project-state') onProjectState?.(data);
   }
@@ -114,6 +115,14 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
     return result;
   }
 
+  async function startProject(path, bytes, newSettings, recover, importName = null) {
+    const requestId = desktop.crypto.randomUUID();
+    const packet = await exchange('start', {requestId, path, bytes, newSettings, recover, importName}, bytes ? [bytes] : [],
+      'started', data => data.requestId === requestId, importName === null ? 30_000 : null);
+    if (packet.ok !== true) throw Error(packet.message || 'PhotoCraft could not open the project.');
+    return packet;
+  }
+
   desktop.addEventListener('message', receive);
   frame.addEventListener('load', verifyDocument);
   const ready = expect('ready', () => true, 120_000, true);
@@ -124,13 +133,11 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
   return Object.freeze({
     ready,
     assertLive: check,
-    async start(path = null, bytes = null, newSettings = null, recover = false) {
-      const requestId = desktop.crypto.randomUUID();
-      const buffer = bytes === null ? null : bytes.slice().buffer;
-      const packet = await exchange('start', {requestId, path, bytes:buffer, newSettings, recover}, buffer ? [buffer] : [],
-        'started', data => data.requestId === requestId);
-      if (packet.ok !== true) throw Error(packet.message || 'PhotoCraft could not open the project.');
-      return packet;
+    start(path = null, bytes = null, newSettings = null, recover = false) {
+      return startProject(path, bytes === null ? null : bytes.slice().buffer, newSettings, recover);
+    },
+    importFile(name, bytes) {
+      return startProject(null, bytes, null, false, name);
     },
     async captureRecovery({documentId, revision}) {
       const requestId = desktop.crypto.randomUUID();

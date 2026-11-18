@@ -1,5 +1,5 @@
 /** Account side of PhotoCraft's native project exchange. */
-const MAX_BYTES = 128 * 1024 * 1024;
+export const MAX_BYTES = 128 * 1024 * 1024;
 const sha = value => typeof value === 'string' && /^[0-9a-f]{64}$/.test(value);
 const generation = value => typeof value === 'string' && /^[0-9a-f]{32}$/.test(value);
 const decimal = value => typeof value === 'string' && /^(0|[1-9][0-9]{0,19})$/.test(value);
