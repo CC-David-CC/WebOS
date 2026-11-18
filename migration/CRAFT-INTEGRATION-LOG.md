@@ -930,3 +930,27 @@ its tree is the tested `67be1b2060c1fadd58a3cd3bffc9b4d00f324d68` and its branch
 exists in the local bare repository. The direct release build uses the pinned
 nightly web build toolchain. The stable qualification receipt is
 `figcraft-evidence/figcraft-split-qualification.json` in the private audit root.
+
+### FigCraft release on ksu.codes
+
+Release `6935ffc4fcb8b7d130e05033c59fa4bfd3fd742be9caf4e21fcfa59b0a521c4a`
+went live on 2026-11-18 UTC. Archive SHA-256 was
+`7990311353f615d9723a7a61ec221e884a1621766552d5c3e4c90ddaaa84a0f4`.
+Parent `3a04d233da35f1c72f1332a5faaf338cc3206956` selected FigCraft
+`cf78eb22978c3d4664e457ca06b3b5ba46576817`. The commit-bound R730 package reused
+the pinned nightly web toolchain and produced the same 39 payload files as the
+review package.
+
+All 140 exact-package browser checks passed. They included 12 FigCraft account
+workflow checks and signed layer editing, plus classic Desktop, Office,
+PhotoCraft, Text recovery, Text file binding, PdfCraft and WordCraft regressions.
+The default hosted profile keeps the signed agent bridge disabled.
+
+Hosted verification matched all 505 files and confirmed the existing native
+engine bytes, Desktop stylesheet, backend identity, issuer, beta, service PIDs
+and WordCraft CSP. Chromium compiled the exact FigCraft WASM served as
+`application/wasm` with zstd encoding and received the native ready packet.
+The immediate rollback is PhotoCraft release
+`e0bedfb2a2e0fe14a8903d151d505874ca9e9fa5ed9f4c263cf462f509eb537b`.
+The host backup is `/var/backups/webos-figcraft-ksu-20261118-01`. Activation
+and browser receipts are in the private `figcraft-ksu-20261118-01/` directory.
