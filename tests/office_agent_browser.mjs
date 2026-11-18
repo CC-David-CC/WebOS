@@ -487,6 +487,14 @@ async function lightcraftDispatch(browser, page, credentials) {
 
   const fresh = await login(browser,credentials);
   try {
+    await fresh.page.evaluate(()=>{
+      window.lightcraftOriginalReads = [];
+      window.addEventListener('message',event=>{
+        if (event.origin===location.origin && event.data?.type==='lightcraft:account-original-read') {
+          window.lightcraftOriginalReads.push(event.data.digest);
+        }
+      });
+    });
     const newId = await fresh.page.evaluate(async ()=>{
       const desktop=window.desktopLab.surfaces.get('Desktop');
       const files=desktop.launch('files');
@@ -502,7 +510,31 @@ async function lightcraftDispatch(browser, page, credentials) {
     assert.equal(contents.photos[0].name,'Account swatch.png');
     const view=await editorFrame(fresh.page,newId);
     await view.waitForFunction(()=>document.querySelector('#lightcraft_canvas')?.width>0,timeout);
-    present('A fresh browser opens the confirmed LightCraft copy through Files and sees the saved native rating');
+    await fresh.page.waitForFunction(()=>window.lightcraftOriginalReads.length>0,timeout);
+    const canvas=await view.$('#lightcraft_canvas');
+    try {
+      let pixels=0;
+      for (let attempt=0;attempt<24 && pixels<100;attempt++) {
+        const screenshot=await canvas.screenshot({encoding:'base64'});
+        pixels=await view.evaluate(async png=>{
+          const bytes=Uint8Array.from(atob(png),character=>character.charCodeAt(0));
+          const image=await createImageBitmap(new Blob([bytes],{type:'image/png'}));
+          const buffer=new OffscreenCanvas(image.width,image.height);
+          const context=buffer.getContext('2d');
+          context.drawImage(image,0,0);
+          const {data}=context.getImageData(0,0,image.width,image.height);
+          image.close();
+          let matching=0;
+          for(let offset=0;offset<data.length;offset+=4) {
+            if(Math.abs(data[offset]-220)<8 && Math.abs(data[offset+1]-56)<8 && Math.abs(data[offset+2]-126)<8) matching++;
+          }
+          return matching;
+        },screenshot);
+        if (pixels<100) await view.evaluate(()=>new Promise(resolve=>setTimeout(resolve,250)));
+      }
+      assert(pixels>=100,`The reopened original was not painted (${pixels} swatch pixels).`);
+    } finally { await canvas.dispose(); }
+    present('A fresh browser opens the LightCraft copy through Files, retrieves and renders the detached original, and sees the saved rating');
   } finally { await fresh.context.close(); }
 }
 
