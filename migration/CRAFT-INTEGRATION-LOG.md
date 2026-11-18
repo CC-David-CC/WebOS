@@ -626,8 +626,8 @@ server authority that resolves and saves account files.
 Fork commit `09933e867a98` routes the native New dialog through the Desktop
 host into an independent clean project using the requested dimensions. The
 exact revision passed 63 native dialog tests, 19 native save-identity tests
-and an offline WASM check. Its assembled-browser test remains pending.
-Recovery, AutoSave and authorized agent operations remain open.
+and an offline WASM check. The package in the next section verifies New in
+the assembled browser.
 
 ### PhotoCraft close approval
 
@@ -646,6 +646,25 @@ currently requires resolving dirty documents through its window before
 signing out. Account-wide recovery, quiescence and finalization still need
 qualification.
 
-The clean R730 package uses the existing compiler cache and one checked
-source snapshot. Browser scenarios cover New and the three close decisions
-once the package is linked. PhotoCraft remains disabled in release profiles.
+The clean R730 package verified 16 files from the exact fork. The assembled
+loopback profile passed 14 signed Chromium checks. New opens a separate
+window, its untouched blank closes quietly, Cancel preserves edits, Save
+persists the exact layered project before removing the window, and Discard
+leaves the server revision intact. In the lost-response scenario the server
+persisted the new layer and the window stayed open with an unconfirmed
+result. The test intercepted one committed upload and found no replay.
+All 87 browser checks across Desktop, Text, PdfCraft, WordCraft and Office
+passed on the revised Desktop. PhotoCraft remains disabled in release
+profiles.
+
+### PhotoCraft recovery codec
+
+Fork commit `da16da41b85c` captures the requested revision of a dirty native
+project and restores layered bytes into a fresh editor as unsaved work.
+The WASM request and reply identify the native generation, document and
+revision. Capture leaves the live editor and its server binding intact.
+The first codec refuses capture during active edits such as inline Type so a
+journal can retain its previous checkpoint. Two native codec tests and the
+locked WASM compiler check passed. Browser journaling, restoration with a
+changed server revision, supported unfinished edits, session finalization,
+AutoSave and agent operations remain open.
