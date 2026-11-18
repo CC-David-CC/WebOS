@@ -66,6 +66,46 @@ export function createPhotoStorage({files, operations, valid}) {
     }
   }
 
+  async function restore(draft, adopt, {asCopy = false, signal} = {}) {
+    check();
+    if (identity) throw Error('This PhotoCraft editor already owns a project.');
+    const bytes = new Uint8Array(await draft.bytes.arrayBuffer());
+    check();
+    async function copy() {
+      attachBlank(await adopt(null, bytes));
+      if (!operations.setDocument(null)) throw Error('This PhotoCraft editor changed during recovery.');
+      return null;
+    }
+    if (asCopy || draft.path === null) return copy();
+    const path = projectPath(draft.path);
+    const operation = operations.begin('open');
+    if (!operation) return copy();
+    try {
+      if (operation.claimDocument(key(path))) {
+        let current;
+        try {
+          current = (await files.version(path, {signal})).sha256;
+        } catch (error) {
+          check();
+          // A missing or unavailable server file leaves a usable local copy.
+          if (signal?.aborted) throw error;
+        }
+        check();
+        if (current === draft.revision && operation.current()) {
+          const admitted = nativeIdentity(await adopt(path, bytes), path);
+          check();
+          if (!operation.setDocument(key(path))) throw Error('This account editor changed during recovery.');
+          identity = admitted;
+          binding = Object.freeze({path, sha256:current});
+          return binding;
+        }
+      }
+    } finally {
+      operation.finish();
+    }
+    return copy();
+  }
+
   async function save(message, acknowledge) {
     check();
     if (pending) throw Error('Resolve the pending account save before starting another.');
@@ -125,5 +165,5 @@ export function createPhotoStorage({files, operations, valid}) {
     }
   }
 
-  return Object.freeze({attachBlank,open,save,inspect});
+  return Object.freeze({attachBlank,open,restore,save,inspect});
 }

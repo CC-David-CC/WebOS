@@ -668,3 +668,24 @@ journal can retain its previous checkpoint. Two native codec tests and the
 locked WASM compiler check passed. Browser journaling, restoration with a
 changed server revision, supported unfinished edits, session finalization,
 AutoSave and agent operations remain open.
+
+### PhotoCraft browser recovery
+
+Native fork `e2ededbc34e8` publishes the current generation, document and
+revision to the WebOS journal. It can snapshot a pending inline Type edit
+with its prior native history state, preserving the ability to cancel that
+edit after restore. Active platform IME composition still holds the prior
+checkpoint until PhotoCraft can capture a stable editor state.
+
+The parent uses Runtime's account-scoped IndexedDB journal and Desktop
+commit `79476e90c142` remembers each window's recovery identity. A draft
+retains a named account binding only when Storage still has the exact
+base digest and a different window does not own that binding. Otherwise
+the draft opens as an unsaved copy. Draft captures remain local even
+while an account write result is uncertain.
+
+Thirteen JavaScript checks and the locked WASM compiler check passed.
+The native test runner reached the laptop memory reserve while a browser
+regression suite was active. The native recovery suite and the signed
+browser scenarios remain pending. The development build remains disabled
+in release profiles.

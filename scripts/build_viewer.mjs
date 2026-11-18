@@ -69,12 +69,13 @@ const common={absWorkingDir:root,bundle:true,platform:'browser',format:'esm',tar
   nodePaths:[path.join(root,'node_modules')],loader:{'.woff':'file','.woff2':'file','.ttf':'file','.svg':'file','.png':'file'}};
 function recordInputs(meta){for(const name of Object.keys(meta.inputs)){if(name.startsWith('<'))continue;const absolute=path.resolve(root,name);if(!absolute.startsWith(root+path.sep))throw Error('Build dependency outside assembly');}}
 async function emitBuild(options,destination){const result=await build({...common,...options});recordInputs(result.metafile);for(const input of Object.keys(result.metafile.inputs)){if(input.startsWith('<'))continue;sourceInputs.set(input,hash(await readFile(path.resolve(root,input))));}const files=[];for(const file of result.outputFiles){const name=path.relative(options.outdir,file.path).split(path.sep).join('/');files.push({name,bytes:file.contents});}await destination(files);}
-const servicesSource = officeEngines.length ? {
+const servicesSource = officeEngines.length || photoTest ? {
   stdin: {
     contents: [
       "export * from './assembly/viewer/account-services.mjs';",
       "import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';",
-      ...officeEngines.map(({id,name})=>`import * as ${id} from '@webos/${id}/recovery';export const restore${id[0].toUpperCase()+id.slice(1)}Recovery=createOfficeRecovery('${id}','${name}',${id}).restore;`)
+      ...officeEngines.map(({id,name})=>`import * as ${id} from '@webos/${id}/recovery';export const restore${id[0].toUpperCase()+id.slice(1)}Recovery=createOfficeRecovery('${id}','${name}',${id}).restore;`),
+      ...(photoTest ? ["import {photoRecovery} from './assembly/viewer/photocraft-recovery.mjs';export const restorePhotocraftRecovery=photoRecovery.restore;"] : [])
     ].join('\n'),
     resolveDir: root, sourcefile: '<account-services>', loader: 'js',
   },

@@ -115,3 +115,16 @@ test('PhotoCraft close requires approval for the matching native window and requ
   controller.abort();
   await rejected;
 });
+
+test('A PhotoCraft recovery snapshot must match the exact doc and native revision', async t => {
+  const {native, receive, sent} = fixture(t);
+  receive('ready');
+  await native.ready;
+  const target = {documentId:'9', revision:'3'};
+  const result = native.captureRecovery(target);
+  const {requestId} = sent[0];
+  receive('recovery-captured',{...target,requestId,revision:'4',bytes:Uint8Array.of(9).buffer});
+  receive('recovery-captured',{...target,requestId,documentId:'8',bytes:Uint8Array.of(9).buffer});
+  receive('recovery-captured',{...target,requestId,bytes:Uint8Array.of(5,6).buffer});
+  assert.deepEqual(new Uint8Array(await (await result).arrayBuffer()),Uint8Array.of(5,6));
+});

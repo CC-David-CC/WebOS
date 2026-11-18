@@ -1,4 +1,5 @@
 import {connectPhotoNative} from './photocraft-native.mjs';
+import {photoRecovery, trackPhotoDraft} from './photocraft-recovery.mjs';
 import {createPhotoStorage, projectPath} from './photocraft-storage.mjs';
 
 /** The classic Desktop's API2 view for the PhotoCraft editor. */
@@ -19,7 +20,7 @@ export function mount(host) {
 
   const abort = new AbortController();
   const session = host.session();
-  let native, storage, context, dialog, loaded = false;
+  let native, storage, context, dialog, journal, drafts, loaded = false;
   let lastDialog = 0n;
   const valid = () => !abort.signal.aborted && !host.signal.aborted && host.session() === session &&
     host.desktop.windows.includes(host.w) && host.storage.signedInSubject() === session?.public.sub && context?.valid();
@@ -45,6 +46,7 @@ export function mount(host) {
       const binding = await storage.save(packet, native.acknowledge);
       bind(binding);
       message('');
+      drafts.schedule();
     } catch (error) {
       if (!valid()) return;
       if (loaded && error.outcome === 'unknown') {
@@ -123,9 +125,12 @@ export function mount(host) {
   const ready = (async () => {
     context = await host.storage.accountFileContext();
     check();
+    journal = photoRecovery.journal(host, context, valid);
+    const draft = await journal.load();
+    check();
     const launch = host.w.launchContext;
     let resource;
-    if (launch) {
+    if (launch && !draft) {
       if (launch.storage !== 'account' || launch.owner !== context.owner) throw Error('An account project launch is required.');
       const path = projectPath(launch.path);
       const sha256 = launch.restore !== true && launch.sha256
@@ -141,6 +146,7 @@ export function mount(host) {
     storage = createPhotoStorage({files:context.files, operations:host.documentOperations, valid});
     native = connectPhotoNative(frame, {
       url, signal:abort.signal, onSave:save, onDialog:handleDialog,
+      onProjectState(packet) { drafts?.receive(packet); },
       onCloseIntent() {
         if (loaded && valid()) void host.desktop.requestWindowClose(host.w);
       },
@@ -148,13 +154,27 @@ export function mount(host) {
         loaded = false;
         frame.inert = true;
         dialog?.abort();
+        drafts?.stop();
         message(reason);
       }
+    });
+    drafts = trackPhotoDraft({
+      journal, native, storage, valid:() => loaded && valid(),
+      onError(error) { message('PhotoCraft could not update the browser draft. ' + error.message); }
     });
     element.append(frame);
     await native.ready;
     check();
-    if (resource) {
+    let recoveryMessage = '';
+    if (draft) {
+      const duplicate = draft.path !== null && !!host.desktop.accountFileLocation({owner:context.owner, path:draft.path}, 'photocraft', host.w);
+      const recoveryBinding = await storage.restore(draft, (path, bytes) => native.start(path, bytes, null, true),
+        {asCopy:duplicate || host.w.photocraftRecoveryAsCopy === true, signal:abort.signal});
+      bind(recoveryBinding ?? {path:null, sha256:null});
+      recoveryMessage = !recoveryBinding && draft.path !== null
+        ? 'Recovered an unsaved copy. Save As to keep it in your account.'
+        : 'Recovered unsaved changes from this browser.';
+    } else if (resource) {
       bind(await storage.open(resource, native.start));
     } else {
       const settings = host.w.photocraftNewSettings;
@@ -164,7 +184,8 @@ export function mount(host) {
     check();
     loaded = true;
     frame.inert = false;
-    message('');
+    message(recoveryMessage);
+    drafts.schedule();
   })();
   ready.catch(error => {
     frame.remove();
@@ -176,6 +197,8 @@ export function mount(host) {
     if (abort.signal.aborted) return;
     abort.abort();
     dialog?.abort();
+    drafts?.stop();
+    journal?.close();
     host.signal.removeEventListener('abort', dispose);
     element.remove();
   }
@@ -196,7 +219,14 @@ export function mount(host) {
       }
       const approved = await native.requestClose(interactive);
       check();
-      if (approved && interactive) frame.inert = true;
+      if (approved && interactive) {
+        frame.inert = true;
+        try {
+          await drafts.clear();
+        } catch (error) {
+          host.ui.feedback('The browser could not remove this PhotoCraft draft. ' + error.message);
+        }
+      }
       return approved;
     },
     focus() {

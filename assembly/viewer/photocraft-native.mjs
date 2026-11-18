@@ -3,7 +3,7 @@ const generationPattern = /^[0-9a-f]{32}$/;
 const saveFields = ['ticket', 'documentId', 'revision', 'path'];
 
 /** One native PhotoCraft instance inside a same-origin classic Desktop window. */
-export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onCloseIntent, onUnavailable}) {
+export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onCloseIntent, onProjectState, onUnavailable}) {
   const desktop = frame.ownerDocument.defaultView;
   if (url.origin !== desktop.location.origin) throw Error('PhotoCraft requires the desktop origin.');
 
@@ -38,7 +38,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
     if (!generation) throw Error('PhotoCraft has not started.');
   }
 
-  function expect(kind, matches, milliseconds) {
+  function expect(kind, matches, milliseconds, fatal) {
     if (waiting.has(kind)) throw Error('PhotoCraft is already processing this request.');
     return new Promise((resolve, reject) => {
       function finish(callback, value) {
@@ -46,10 +46,11 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
         waiting.delete(kind);
         callback(value);
       }
-      const timer = milliseconds === null ? null : setTimeout(
-        () => unavailable('PhotoCraft did not confirm the native request.'),
-        milliseconds
-      );
+      const timer = milliseconds === null ? null : setTimeout(() => {
+        const reason = 'PhotoCraft did not confirm the native request.';
+        if (fatal) unavailable(reason);
+        else finish(reject, Error(reason));
+      }, milliseconds);
       waiting.set(kind, {
         matches,
         resolve: value => finish(resolve, value),
@@ -77,6 +78,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
     if (kind === 'save') onSave(data);
     if (kind === 'dialog') onDialog?.(data);
     if (kind === 'close-intent') onCloseIntent?.();
+    if (kind === 'project-state') onProjectState?.(data);
   }
 
   function post(kind, body, transfer = []) {
@@ -84,9 +86,9 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
     frame.contentWindow.postMessage({type:prefix + kind, generation, ...body}, url.origin, transfer);
   }
 
-  function exchange(kind, body, transfer, reply, matches, milliseconds = 30_000) {
+  function exchange(kind, body, transfer, reply, matches, milliseconds = 30_000, fatal = true) {
     check();
-    const result = expect(reply, matches, milliseconds);
+    const result = expect(reply, matches, milliseconds, fatal);
     try {
       post(kind, body, transfer);
     } catch (error) {
@@ -97,7 +99,7 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
 
   desktop.addEventListener('message', receive);
   frame.addEventListener('load', verifyDocument);
-  const ready = expect('ready', () => true, 120_000);
+  const ready = expect('ready', () => true, 120_000, true);
   signal?.addEventListener('abort', abort, {once:true});
   if (signal?.aborted) abort();
   else frame.src = url.href;
@@ -105,13 +107,21 @@ export function connectPhotoNative(frame, {url, signal, onSave, onDialog, onClos
   return Object.freeze({
     ready,
     assertLive: check,
-    async start(path = null, bytes = null, newSettings = null) {
+    async start(path = null, bytes = null, newSettings = null, recover = false) {
       const requestId = desktop.crypto.randomUUID();
       const buffer = bytes === null ? null : bytes.slice().buffer;
-      const packet = await exchange('start', {requestId, path, bytes:buffer, newSettings}, buffer ? [buffer] : [],
+      const packet = await exchange('start', {requestId, path, bytes:buffer, newSettings, recover}, buffer ? [buffer] : [],
         'started', data => data.requestId === requestId);
       if (packet.ok !== true) throw Error(packet.message || 'PhotoCraft could not open the project.');
       return packet;
+    },
+    async captureRecovery({documentId, revision}) {
+      const requestId = desktop.crypto.randomUUID();
+      const packet = await exchange('recovery-capture', {requestId, documentId, revision}, [], 'recovery-captured',
+        data => data.requestId === requestId && data.documentId === documentId && data.revision === revision,
+        30_000, false);
+      if (!(packet.bytes instanceof ArrayBuffer) || !packet.bytes.byteLength) throw Error(packet.message || 'PhotoCraft could not capture the draft.');
+      return new Blob([packet.bytes]);
     },
     acknowledge(request, result) {
       const identity = Object.fromEntries(saveFields.map(field => [field, request[field]]));
