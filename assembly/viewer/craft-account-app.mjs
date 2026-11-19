@@ -22,7 +22,7 @@ function fileFromDevice(file) {
 
 /** Mount a native layer editor in its own classic Desktop account window. */
 export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false,
-  setupOriginals, commands = scopedCommands, accountControls = false, artworkExtensions, accountAutosave = true, legacyExtensions = []}) {
+  setupOriginals, commands = scopedCommands, accountControls = false, artworkExtensions, accountAutosave = true, accountOpenTimeoutMs, legacyExtensions = []}) {
   const extensions = [extension,...legacyExtensions];
   const projectPath = path => craftProjectPath(path, extension, legacyExtensions);
   const element = document.createElement('div');
@@ -304,7 +304,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     if (forceWebGL) url.searchParams.set('webgl', '1');
     storage = createCraftStorage({name, extension, legacyExtensions, files:context.files, operations:host.documentOperations, valid});
     native = connectCraftAccount(frame, {
-      app, name, url, signal:abort.signal, originalStore, onSave:packet => void save(packet), onDialog:handleDialog,
+      app, name, url, signal:abort.signal, originalStore, accountOpenTimeoutMs, onSave:packet => void save(packet), onDialog:handleDialog,
       onLocalFile:deviceImport ? launchLocal : undefined,
       onProjectState(packet) {
         drafts?.receive(packet);

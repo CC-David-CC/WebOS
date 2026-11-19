@@ -7,7 +7,7 @@ const url = new URL('http://localhost:8080/photocraft/index.html?host=webos-acco
 const generation = 'a'.repeat(32);
 const name = 'Pictures/Project.pcraft';
 
-function fixture(testContext, app = 'photocraft', name = 'PhotoCraft', originalStore) {
+function fixture(testContext, app = 'photocraft', name = 'PhotoCraft', originalStore, options = {}) {
   const editorURL = new URL('/'+app+'/index.html?host=webos-account',url);
   const desktop = Object.assign(new EventTarget(), {location:url, crypto:{randomUUID}});
   const sent = [], saves = [], localFiles = [];
@@ -20,7 +20,7 @@ function fixture(testContext, app = 'photocraft', name = 'PhotoCraft', originalS
     }}
   });
   const controller = new AbortController();
-  const native = connectCraftAccount(frame,{app,name,url:editorURL,signal:controller.signal,originalStore,onSave:packet => saves.push(packet),onLocalFile:file=>localFiles.push(file)});
+  const native = connectCraftAccount(frame,{app,name,url:editorURL,signal:controller.signal,originalStore,...options,onSave:packet => saves.push(packet),onLocalFile:file=>localFiles.push(file)});
   testContext.after(() => {
     void native.ready.catch(() => {});
     controller.abort();
@@ -271,4 +271,68 @@ test('PhotoCraft session pause requires the same request, operation and lease', 
   const rejected = assert.rejects(holding,/PhotoCraft changed/);
   receive('session-result',{requestId,lease,operation:'pause',ok:false,message:'PhotoCraft changed'});
   await rejected;
+});
+
+test('A saved model may use a longer open budget while blank opens and write acknowledgments retain their deadlines', async t => {
+  t.mock.timers.enable({apis:['setTimeout']});
+  const policy = {accountOpenTimeoutMs:180_000};
+  const source = Uint8Array.of(1,2,3);
+  const {native,receive,sent}=fixture(t,'solidcraft','SolidCraft',null,policy);
+  receive('ready');
+  await native.ready;
+  const opening=native.start('Documents/Fillet.sc',source);
+  t.mock.timers.tick(60_000);
+  native.assertLive();
+  const requestId=sent.at(-1).requestId;
+  receive('started',{requestId,ok:true,documentId:'1',revision:'0',path:'Documents/Fillet.sc'});
+  assert.equal((await opening).path,'Documents/Fillet.sc');
+
+  const save={ticket:'1',documentId:'1',revision:'1',path:'Documents/Fillet.sc'};
+  const writeTimeout=assert.rejects(native.acknowledge(save,{outcome:'written'}),/did not confirm/);
+  t.mock.timers.tick(30_001);
+  await writeTimeout;
+
+  const blank=fixture(t,'solidcraft','SolidCraft',null,policy);
+  blank.receive('ready');
+  await blank.native.ready;
+  const blankTimeout=assert.rejects(blank.native.start(),/did not confirm/);
+  t.mock.timers.tick(30_001);
+  await blankTimeout;
+});
+
+test('An outstanding model reconstruction can be cancelled and reports an authenticated renderer failure immediately',async t=>{
+  for (const abort of [true,false]) {
+    const {native,receive,controller}=fixture(t,'solidcraft','SolidCraft',null,{accountOpenTimeoutMs:180_000});
+    receive('ready');
+    await native.ready;
+    const rejected=assert.rejects(native.start('Documents/Fillet.sc',Uint8Array.of(1)),abort?/closed/:/renderer failed/);
+    receive('failed',{message:'foreign error',generation:'b'.repeat(32)});
+    receive('failed',{message:'foreign error'},{source:{}});
+    native.assertLive();
+    if (abort) controller.abort();
+    else receive('failed',{message:'renderer failed'});
+    await rejected;
+    assert.throws(()=>native.assertLive(),abort?/closed/:/renderer failed/);
+  }
+});
+
+test('Saved opens expire at their configured deadline and a late startup cannot revive the document', async t => {
+  t.mock.timers.enable({apis:['setTimeout']});
+  for (const [app, name, options, limit] of [
+    ['solidcraft', 'SolidCraft', {accountOpenTimeoutMs:180_000}, 180_000],
+    ['photocraft', 'PhotoCraft', {}, 30_000],
+  ]) {
+    const {native,receive,sent}=fixture(t,app,name,null,options);
+    receive('ready');
+    await native.ready;
+    const path = 'Documents/Project';
+    const expired = assert.rejects(native.start(path,Uint8Array.of(1)), /did not confirm/);
+    const requestId = sent.at(-1).requestId;
+    t.mock.timers.tick(limit-1);
+    native.assertLive();
+    t.mock.timers.tick(1);
+    await expired;
+    receive('started',{requestId,ok:true,documentId:'1',revision:'0',path});
+    assert.throws(()=>native.assertLive(),/did not confirm/);
+  }
 });
