@@ -33,6 +33,37 @@ ahead, respectively, and zero behind. The older `smlib-wasm` wrapper fork
 was two commits ahead of its own wrapper upstream `1ffd5708dd19`.
 [Public fork comparison](https://api.github.com/repos/NVIDIA-Omniverse/usd-brep/compare/3fd5b9548d19aa8c12c29bc9637a96d42a06f8a5...tangency-labs:main)
 
+## ACAD C++ patch replay on Tangency SMLib
+
+All eight commits from NVIDIA `3fd5b9548d19..6c99bfcfe6c7` cherry-picked
+cleanly in order on Tangency `8eac63c439b2` in an isolated repository.
+The result tree was `b87c15d724b0d9b32b67de03f4e4a07c23b24ba1`. Only
+the last commit changes kernel source. The first seven supply ACAD bindings,
+probes, tests and historical results.
+
+The Linux x86-64 static archive from the matching upstream release passed its
+published SHA-256 check. The ACAD union regression ran directly against SM_API
+using that archive. For the candidate, the two changed translation units
+were compiled with g++ and replaced in the archive. As a compiler control,
+the same procedure using pristine source reproduced the original JSON byte
+for byte. All three native probes exited zero.
+
+| Union in the previously failing operand order | Tangency volume, mm³ | Tangency + ACAD patch, mm³ | Expected, mm³ |
+|---|---:|---:|---:|
+| Hollow cube and exact cavity fill | 0 | 1000 | 1000 |
+| Same fill with a second disjoint cube present | 2000 | 2000 | 2000 |
+| Hollow cube and enclosing fill | 0 | 1000 | 1000 |
+
+For the two failing cases, the patch changes zero material regions and
+one void to one material region and zero voids. The other 24 recorded
+observations match across builds, including all three reverse operand orders.
+The direct SM_API result establishes a reason to retain the patch on a
+review branch. A complete WASM build and ACAD browser regressions are still
+open before adopting this base. The Craft rollout remains paused.
+Private receipts and native probe source are under
+`smlib-tangency-replay-8eac63c4.RoVVkT/` beside the migration checkpoint.
+[Pinned Tangency release](https://github.com/tangency-labs/smlib/releases/tag/prebuilt-8eac63c439b2670ecffcc2d7beaf2242849463bf)
+
 ## What we proved
 
 The original selected SolidCraft source at `a5b35abd133e` and the WebOS
