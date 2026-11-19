@@ -1,3 +1,5 @@
+> **Active rollout — engineering editors.** The original 18 apps are live. PCBCraft and FieldCraft bring the target to 20 distinct applications. Build PCBCraft from `apps/pcbcraft/apps/pcbcraft-web`. The separate `pcbcraft-app` repository packages the upstream standalone site. [Engineering rollout checkpoint](CRAFT-ENGINEERING-ROLLOUT.md)
+
 > **Current product scope, 2026-11-18 UTC.** Integrate all 18 selected Craft apps, including SketchCraft.
 > The [integration matrix](CRAFT-INTEGRATION-MATRIX.md) tracks live and queued
 > apps, including apps with upstream workflow gaps.
