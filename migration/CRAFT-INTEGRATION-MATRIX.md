@@ -11,16 +11,15 @@ must prove native content fidelity, account saves, recovery and fresh browser
 retrieval before it is enabled. A passing dependency fetch does not exercise
 build scripts, assets, linking or browser behavior.
 
-**17 of 20 distinct Craft applications are live on ksu.codes. All 21 Craft repositories are on disk.** The original rollout covers 18 applications. Two additional engineering editors and the PCBCraft packaging companion are queued after that milestone.
+**18 of 20 distinct Craft applications are live on ksu.codes. All 21 Craft repositories are on disk.** The original rollout covers 18 applications. Two additional engineering editors and the PCBCraft packaging companion are queued after that milestone.
 
 | Stage | Count | Projects |
 |---|---:|---|
-| Enabled on ksu.codes | 17 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, TextureCraft, MaterialCraft, SketchCraft |
-| Both fillets pass natively, assembled browser qualification underway | 1 | SolidCraft |
+| Enabled on ksu.codes | 18 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, TextureCraft, MaterialCraft, SketchCraft, SolidCraft |
 | Source organized for future integration | 2 | PCBCraft, FieldCraft |
 | Companion packaging source | 1 | pcbcraft-app |
 
-The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables Files, Text, Calculator and Help. MaterialCraft is the sixteenth Craft editor, packaged from parent `892f78b9f60f`. Hosted verification matched 686 files and loaded the WASM editor. SketchCraft is now live at packaged parent `05064e22` and MaterialCraft is the immediate rollback. The [component matrix](APP-MATRIX.md) covers the full assembly.
+The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables Files, Text, Calculator and Help. MaterialCraft is the sixteenth Craft editor, packaged from parent `892f78b9f60f`. Hosted verification matched 686 files and loaded the WASM editor. SketchCraft shipped at packaged parent `05064e22`. SolidCraft completed the original 18-app rollout with 225 exact-package Chromium checks and 773 hosted files verified. SketchCraft is the immediate rollback. The [component matrix](APP-MATRIX.md) covers the full assembly.
 
 After the remaining Craft integrations, the next approved priority is Files
 previews. Load the original account file through Storage and render it in
@@ -94,7 +93,7 @@ for the acceptance contract.
 | Animation and video | [effectcraft](../apps/effectcraft/) `webos/effectcraft-account-composition` at `78f11b7fc1ce` | Compositing and motion graphics | `effectcraft-web` | Live editable `.ecproj` composition with linked still images. Scoped native composition edit and Undo, manual Save and Save As, browser draft recovery, fresh-browser rendering and worker disposal passed. |
 | Audio | [soundcraft](../apps/soundcraft/) at `e196254ee15f` | Multitrack audio projects | `soundcraft-web` | Live portable `.scraftz` workflow. Signed Chromium confirmed native track edits, Save and Save As, local recovery, reopening from Files, exact sample fidelity and playback through WebAudio. |
 | CAD | [cadcraft](../apps/cadcraft/) `webos/cadcraft-account-drawing` at `816d428e8a33` | Drafting and drawing documents | `cadcraft-web` | Live editable 2D DXF. Scoped native geometry and Undo, Save and Save As, local recovery, Files activation and a fresh-browser account round trip passed. |
-| CAD | [solidcraft](../apps/solidcraft/) `webos/solidcraft-account-part` at `7b7716fba56c` | Parametric solid modeling | `solidcraft-web` | Local account candidate. Hold release until both variable-radius fillet workflows and the exact release checks pass. |
+| CAD | [solidcraft](../apps/solidcraft/) deployed at `71a573e23441` | Parametric solid modeling | `solidcraft-web` | Live on ksu.codes. Signed tests verified both cornered fillets, account Save and Save As, recovery, native Undo and editable fresh-browser reopening. |
 | CAD | [sketchcraft](../apps/sketchcraft/) at `f40e10b06079` | Push/pull 3D modeling | React/Vite and Rust/WASM | Live. The exact signed workflow created and extruded geometry, verified account saves, Undo and recovery, and reopened the solid in a fresh browser. |
 | Materials and textures | [texturecraft](../apps/texturecraft/) `webos/texturecraft-account-project` at `3ada1e30108a` | Mesh painting and embedded texture data | `texturecraft-web` | Live. The tested account project kept the original mesh bytes, paint layers and editable tiles. Save, Save As, recovery and fresh-browser editing passed. Broader mesh, bake and export workflows still need qualification. |
 | Materials and textures | [materialcraft](../apps/materialcraft/) at `b41e57dc787b` | Procedural material graphs | `materialcraft-web` | Live. Native graph edits, account saves, recovery and a fresh browser reopen passed on the release candidate. |

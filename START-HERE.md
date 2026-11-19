@@ -1,6 +1,6 @@
 > **Current Craft inventory** — 21 independent Craft repositories under `apps/` represent 20 applications. PCBCraft and FieldCraft join the queue after the original 18. The third addition, pcbcraft-app, owns the upstream browser packaging for PCBCraft. See the [integration matrix](migration/CRAFT-INTEGRATION-MATRIX.md) for paths and status.
 >
-> **17 of 20 distinct Craft apps are live.** SolidCraft is in final release qualification. PCBCraft and FieldCraft have organized source. The original rollout accounts for 17 of its 18 apps.
+> **18 of 20 distinct Craft apps are live.** All original 18 Craft applications are live on ksu.codes. SolidCraft passed both fillet regressions in the browser. Hosted release `22b0211e018ae27561ce943a666fb730f795a07e3c016bd084c77d415fb51f0f` matched all 773 files and started the native editor. [Release and rollback](migration/CRAFT-INTEGRATION-LOG.md#solidcraft-release-on-ksucodes)
 
 > **User scope decision — all 18 Craft integrations (2026-11-18 UTC)**
 >
@@ -54,7 +54,7 @@ See the [TextureCraft release record](migration/CRAFT-INTEGRATION-LOG.md#texture
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft,
 LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft,
-TextureCraft, MaterialCraft and Help.
+TextureCraft, MaterialCraft, SketchCraft, SolidCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.
