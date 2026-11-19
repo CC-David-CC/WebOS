@@ -13,7 +13,7 @@ The local ledger is in `../.webos-migration/github-publication.MJn2SZsB/` relati
 
 The current assembly pins 128 components plus the parent. The original 126-destination ledger predates the three Tangency additions. The parent already references the public upstream commit for each of those three. PCBCraft and FieldCraft own editor code. The third repository, pcbcraft-app, owns PCBCraft browser packaging. Keep future WebOS edits on component branches and switch a parent URL to the owner's fork once that exact pin is published there.
 
-SolidCraft is an independent app in the same publication plan. The owner authorized a separate upstream SolidCraft PR for the two cornered-radius workflows after native tests on upstream main. Keep upstream contributions on a focused branch and preserve WebOS account changes on the integration branch. Record a verified GitHub fork as the component destination so the two workflows use the same repository.
+SolidCraft and WordCraft now each have a public component repository with separate upstream and WebOS refs. [SolidCraft](https://github.com/CC-David-CC/solidcraft) has upstream main `b695a9b35294` and `webos/solidcraft-account-fillet-repairs` at `71a573e23441`. [Upstream PR #19314](https://github.com/tangency-labs/solidcraft/pull/19314) comes from its focused geometry branch. [WordCraft](https://github.com/CC-David-CC/wordcraft) has upstream main `6ef13b2cc8a6` and `webos/integration` at `edeb4a090cd3`. Both pairs of public refs were verified through example.invalid. Actions were disabled on the newly provisioned WordCraft destination for the source import because its upstream build and release workflows trigger on push.
 
 ## Publishing each component
 
