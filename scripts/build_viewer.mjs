@@ -1,9 +1,10 @@
 /** Assemble the existing viewer and public account apps; never builds a replacement shell. */
 import {build} from 'esbuild';
 import {createHash} from 'node:crypto';
-import {readFile,writeFile,mkdir,readdir,lstat} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,readdir,lstat,mkdtemp,rm} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
+import {tmpdir} from 'node:os';
 import {execFileSync} from 'node:child_process';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -170,12 +171,48 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
   await emitBuild({stdin:{contents,resolveDir:root,sourcefile:'<viewer-'+id+'>',loader:'js'},outdir:path.join(output,'.virtual-'+id),outExtension:{'.js':'.mjs'}},async files=>{
     // esbuild calls a stdin entry "stdin"; the loader's stable entry is index.
     for(const f of files)f.name=f.name.replace(/^stdin[.]/,'index.');
+    await registerFiles(id,files,files.filter(f=>f.name.endsWith('.css')).map(f=>f.name));
+  });
+}
+async function registerFiles(id,files,styles=[]){
     const inventory=Object.fromEntries(files.map(f=>[f.name,{bytes:f.bytes.length,sha256:hash(f.bytes)}]).sort(([a],[b])=>a.localeCompare(b)));
     const bundleSHA256=hash(JSON.stringify(inventory)),prefix='assets/desktop/apps/'+id+'/'+bundleSHA256;
     for(const f of files)await put(prefix+'/'+f.name,f.bytes);
     const entry=inventory['index.mjs'];if(!entry)throw Error('Missing app entry');
-    apps.push({id,kind:'browser',path:prefix+'/index.mjs',sha256:entry.sha256,bytes:entry.bytes,bundleSHA256,files:inventory,styles:Object.keys(inventory).filter(n=>n.endsWith('.css'))});
-  });
+    apps.push({id,kind:'browser',path:prefix+'/index.mjs',sha256:entry.sha256,bytes:entry.bytes,bundleSHA256,files:inventory,styles});
+}
+
+// These native mounts own their Shadow DOM styles. Keep the Isobar worker, ES
+// modules and tile assets at their original relative URLs in the hashed bundle.
+const mapsRoot='apps/isobar';
+const mapFiles=execFileSync('git',['-C',path.join(root,mapsRoot),'ls-files','-z','--','app.mjs','js','css','vendor','favicon.svg','LICENSE'],{encoding:'utf8'}).split('\0').filter(Boolean);
+const mapBundle=[];
+for(const name of mapFiles){
+  const relative=mapsRoot+'/'+name, bytes=await readFile(path.join(root,relative));
+  sourceInputs.set(relative,hash(bytes));
+  mapBundle.push({name:name==='app.mjs'?'index.mjs':name,bytes});
+}
+await registerFiles('weather-maps',mapBundle);
+await copySource('apps/isobar/favicon.svg','assets/desktop/weather-maps.svg');
+await copySource('apps/pohoda/app/icon.svg','assets/desktop/weather.svg');
+const weatherDist=await mkdtemp(path.join(tmpdir(),'webos-weather-dist-'));
+try {
+  execFileSync(process.execPath,['scripts/build-webos.mjs','--outdir',weatherDist],{cwd:path.join(root,'apps/pohoda'),stdio:['ignore','inherit','inherit']});
+  const inputs=JSON.parse(await readFile(path.join(weatherDist,'build-inputs.json'),'utf8'));
+  for(const item of inputs){
+    if(!safe(item.path))throw Error('Unsafe Weather build input');
+    const relative='apps/pohoda/'+item.path;
+    if(hash(await readFile(path.join(root,relative)))!==item.sha256)throw Error('Weather source changed during build');
+    sourceInputs.set(relative,item.sha256);
+  }
+  const files=[{name:'index.mjs',bytes:await readFile(path.join(root,'apps/pohoda/app.mjs'))},
+    {name:'LICENSE',bytes:await readFile(path.join(root,'apps/pohoda/LICENSE'))}];
+  for(const name of ['pohoda.mjs','pohoda.mjs.LEGAL.txt','THIRD_PARTY_LICENSES.txt']){
+    files.push({name:'dist/'+name,bytes:await readFile(path.join(weatherDist,name))});
+  }
+  await registerFiles('weather',files);
+} finally {
+  await rm(weatherDist,{recursive:true,force:true});
 }
 await put('assets/desktop/apps.json',JSON.stringify({version:'codi-public-apps/2',hostAPI:2,apps}));
 await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:false,speech:false,offlineCache:false}));

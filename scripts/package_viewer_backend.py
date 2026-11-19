@@ -43,6 +43,12 @@ def main():
     server = git('.', 'show', 'HEAD:scripts/run_development.py')
     assert server == (ROOT / 'scripts/run_development.py').read_bytes()
     (out / 'run_development.py').write_bytes(server)
+    for name in git('.', 'ls-tree', '-r', '--name-only', 'HEAD', '--', 'scripts/webos_weather').decode().splitlines():
+        target = out / Path(name).relative_to('scripts')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        data = git('.', 'show', 'HEAD:' + name)
+        assert data == (ROOT / name).read_bytes()
+        target.write_bytes(data)
     records = [{'path': p.relative_to(out).as_posix(), 'bytes': p.stat().st_size,
                 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(out.rglob('*')) if p.is_file()]
     value = {'schema': 'webos-viewer-backend/1', 'parentCommit': git('.', 'rev-parse', 'HEAD').decode().strip(),
