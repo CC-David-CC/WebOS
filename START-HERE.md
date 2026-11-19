@@ -2,6 +2,8 @@
 >
 > **18 of 20 distinct Craft apps are live.** All original 18 Craft applications are live on ksu.codes. SolidCraft passed both fillet regressions in the browser. Hosted release `22b0211e018ae27561ce943a666fb730f795a07e3c016bd084c77d415fb51f0f` matched all 773 files and started the native editor. [Release and rollback](migration/CRAFT-INTEGRATION-LOG.md#solidcraft-release-on-ksucodes)
 
+> **Current SolidCraft source** — The assembly pins `webos/integration` at `030b30262ede` on upstream main `c22baab6e505`. The hosted release runs `71a573e23441`. [Source qualification](migration/SOLIDCORE-HANDOFF.md#qualified-source-rebase-on-november-19-2026-utc)
+
 > **User scope decision — all 18 Craft integrations (2026-11-18 UTC)**
 >
 > All 18 selected Craft apps are integration targets, including SketchCraft.

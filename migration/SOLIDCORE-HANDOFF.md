@@ -11,7 +11,7 @@ The signed account suite reopened all four fillet fixtures with the expected geo
 
 ## Public SolidCraft fillet contribution
 
-[SolidCraft PR #19314](https://github.com/tangency-labs/solidcraft/pull/19314) proposes the cornered-radius repair against Tangency Labs main `b695a9b35294`. The source branch is `CC-David-CC/solidcraft:fix/route-cornered-variable-fillets`, commit `db35c5adead7`. The five focused engine, kernel and adapter tests and workspace Clippy passed on that base. The WebOS account integration remains on `webos/solidcraft-account-fillet-repairs`. The PR description links a browser screenshot of the synthetic peak model from an evidence branch on the fork.
+[SolidCraft PR #19314](https://github.com/tangency-labs/solidcraft/pull/19314) proposes the cornered-radius repair against Tangency Labs main `b695a9b35294`. The source branch is `CC-David-CC/solidcraft:fix/route-cornered-variable-fillets`, commit `db35c5adead7`. The five focused engine, kernel and adapter tests and workspace Clippy passed on that base. The hosted release uses `webos/solidcraft-account-fillet-repairs` at `71a573e23441`. The current source branch is `webos/integration`. The PR description links a browser screenshot of the synthetic peak model from an evidence branch on the fork.
 
 ## Editor and kernel source
 
@@ -197,4 +197,14 @@ The fillet rig ran on upstream main `b695a9b35294` and on PR head `db35c5adead7`
 
 The independent WebOS component `71a573e23441` returned both required limits. It refused a 7 mm round on the 2 mm wall and reported 6.828 mm. It refused the 30 mm round on the 3 mm U-shell and reported 25.24 mm. The engine checks compared the authored features, solids and volume before rejection, after rejection and after saving and reopening each model. The separate upstream contribution continues to target variable-radius fillets.
 
-Upstream subsequently merged [the thin-wall diagnostic fix in PR #19297](https://github.com/tangency-labs/solidcraft/pull/19297). Commit `f4ca633ad` passes the smallest candidate opening radius to the fitting search and its [upstream fillet CI run passed](https://github.com/tangency-labs/solidcraft/actions/runs/44443502265). The WebOS repository’s local `main` fast-forwarded to `c22baab6e`, which includes that fix. The deployed component remains `71a573e23441`; the user requested a source rebase on the newer main. The rebase under review is `webos/solidcraft-rebased-c22baab6e`.
+Upstream subsequently merged [the thin-wall diagnostic fix in PR #19297](https://github.com/tangency-labs/solidcraft/pull/19297). Commit `f4ca633ad` passes the smallest candidate opening radius to the fitting search and its [upstream fillet CI run passed](https://github.com/tangency-labs/solidcraft/actions/runs/44443502265). The WebOS repository’s local `main` fast-forwarded to `c22baab6e`, which includes that fix. The deployed component remains `71a573e23441`; the user requested a source rebase on the newer main. The qualified rebase is recorded below.
+
+## Qualified source rebase on November 19, 2026 UTC
+
+The WebOS assembly pins SolidCraft `030b30262ede` on `webos/integration`. Its four WebOS commits sit on upstream main `c22baab6e505`. Parent commit `0bcac6e8` records the gitlink. Both component branches are available in the local bare origin. The site serves SolidCraft `71a573e23441`.
+
+The R730 built the locked release WASM and passed all 12 focused native tests. The actual #1668 and #2852 model recipes both refused the requested radius and reported the expected largest fit. Saving and reopening each model preserved the features, solid count and volume. Four variable-radius fixtures also passed native save/reopen. The control-insertion case retained its IDs through Undo/Redo.
+
+A disposable WebOS account exercised this exact release-mode source in Chromium. All ten checks passed, including editing, Save, Save As, existing-window activation, draft recovery, a fresh browser session, a legacy file extension and recomputation of four saved fillet designs. The source check used wasm-bindgen output before optional size optimization. Evidence is under `craft-office-20261117T234813Z-8a43bc/solidcraft-geometry-resume.qS91vLP4/rebase-c22baab6e/` in the private migration ledger. See `checkpoint.json`, `final-evidence/` and `browser-030b30262ede.json`.
+
+[PR #19332](https://github.com/tangency-labs/solidcraft/pull/19332) proposed a parallel diagnostic fix for #1668 and #2852. It returns the first failing edge and adds a focused rounded-hollow assertion at 25.242641 mm. The qualified base includes [merged PR #19297](https://github.com/tangency-labs/solidcraft/pull/19297), which examines all selected edges and uses the smallest opening radius. The WebOS rebase takes that implementation. The separate variable-radius contribution is [PR #19314](https://github.com/tangency-labs/solidcraft/pull/19314).

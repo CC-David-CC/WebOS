@@ -21,6 +21,8 @@ build scripts, assets, linking or browser behavior.
 
 The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables Files, Text, Calculator and Help. MaterialCraft is the sixteenth Craft editor, packaged from parent `892f78b9f60f`. Hosted verification matched 686 files and loaded the WASM editor. SketchCraft shipped at packaged parent `05064e22`. SolidCraft completed the original 18-app rollout with 225 exact-package Chromium checks and 773 hosted files verified. SketchCraft is the immediate rollback. The [component matrix](APP-MATRIX.md) covers the full assembly.
 
+SolidCraft is live at `71a573e23441`. Its qualified on-disk source advanced to `030b30262ede` on `webos/integration`. [Rebase and test evidence](SOLIDCORE-HANDOFF.md#qualified-source-rebase-on-november-19-2026-utc)
+
 After the remaining Craft integrations, the next approved priority is Files
 previews. Load the original account file through Storage and render it in
 the current browser. Keep preview data in memory and release it on close
