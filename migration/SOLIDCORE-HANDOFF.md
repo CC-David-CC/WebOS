@@ -5,6 +5,27 @@ its local qualification evidence available while researching the geometry.
 TextureCraft is live as app 15 of 18. The general rollout is paused at the
 MaterialCraft native checkpoint. SketchCraft remains queued.
 
+## Editor and kernel source
+
+SolidCraft is the parametric editor. Its `solidcore/` subtree contains the
+Rust B-rep kernel derived from NVIDIA SMLib. Tangency Labs' `smlib` repo is
+a C++ USD BRep fork. The standalone `solidcore` repository mirrors the Rust
+subtree. The pinned contribution instructions route kernel-only changes
+through SolidCraft's `kernel` branch.
+[SolidCraft kernel source](../apps/solidcraft/solidcore/README.md)
+[Tangency Labs SMLib](https://github.com/tangency-labs/smlib)
+
+ACAD has its own C++ SMLib builds. The organized `engines/usd-brep/` repo
+contains NVIDIA base `3fd5b9548d19`, our native binding `e854d6ced388`, and
+experimental kernel `6c99bfcfe6c7`. The separate `engines/smlib-wasm/` repo
+contains the older wrapper fork `c97a8e76e260`. All three owned commits were
+verified in the local Git object stores. The direct provider has scoped
+Chromium evidence for native Boolean results, voids and multiple material
+regions. Its through-hole and variable-fillet equivalence for these fixtures
+remains unverified.
+[ACAD direct SMLib provider](../apps/acad/modules/engine/raw-smlib/README.md)
+[Direct provider build pins and browser evidence](../apps/acad/test/raw-smlib-whole-void/README.md)
+
 ## What we proved
 
 The original selected SolidCraft source at `a5b35abd133e` and the WebOS
@@ -47,6 +68,15 @@ after saving and reopening it. Then decide which engine and editor choices
 are justified for the workflows WebOS needs.
 [ACAD scope](../apps/acad/README.md)
 [SolidCore taper fixture](../apps/solidcraft/solidcore/crates/solidcore/tests/fillet_variable_radius_closes_onto_vertex.rs)
+
+For a staged WebOS integration, mount each editor independently and reuse
+Files, account Storage, recovery and scoped commands. Each editor owns its
+native projects and editing history. Compare engines using pinned builds
+and identical geometry inputs before considering a provider change. Start
+with a direct SolidCore taper test and a direct C++ SMLib Boolean on the
+known plate and cutter. The latter bypasses ACAD's authored through-hole
+clearance rule and can measure the native result. Exercise supported ACAD
+workflows through its command stack separately.
 
 ## Local source and evidence
 
