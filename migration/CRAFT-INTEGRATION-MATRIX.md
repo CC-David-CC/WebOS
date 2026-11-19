@@ -11,15 +11,14 @@ must prove native content fidelity, account saves, recovery and fresh browser
 retrieval before it is enabled. A passing dependency fetch does not exercise
 build scripts, assets, linking or browser behavior.
 
-**18 of 20 distinct Craft applications are live on ksu.codes. All 21 Craft repositories are on disk.** The original rollout covers 18 applications. Two additional engineering editors and the PCBCraft packaging companion are queued after that milestone.
+**20 of 20 distinct Craft apps are live on ksu.codes.** PCBCraft is available under Electronics. FieldCraft is available under CAD. The 21st source repository, `apps/pcbcraft-app`, packages the upstream standalone PCBCraft site. WebOS builds the editor directly from `apps/pcbcraft/apps/pcbcraft-web`.
 
 | Stage | Count | Projects |
 |---|---:|---|
-| Enabled on ksu.codes | 18 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, TextureCraft, MaterialCraft, SketchCraft, SolidCraft |
-| Source organized for future integration | 2 | PCBCraft, FieldCraft |
+| Enabled on ksu.codes | 20 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, TextureCraft, MaterialCraft, SketchCraft, SolidCraft, PCBCraft, FieldCraft |
 | Companion packaging source | 1 | pcbcraft-app |
 
-The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables Files, Text, Calculator and Help. MaterialCraft is the sixteenth Craft editor, packaged from parent `892f78b9f60f`. Hosted verification matched 686 files and loaded the WASM editor. SketchCraft shipped at packaged parent `05064e22`. SolidCraft completed the original 18-app rollout with 225 exact-package Chromium checks and 773 hosted files verified. SketchCraft is the immediate rollback. The [component matrix](APP-MATRIX.md) covers the full assembly.
+The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables Files, Text, Calculator and Help. MaterialCraft is the sixteenth Craft editor, packaged from parent `892f78b9f60f`. Hosted verification matched 686 files and loaded the WASM editor. SketchCraft shipped at packaged parent `05064e22`. SolidCraft completed the original 18-app rollout with 225 exact-package Chromium checks and 773 hosted files verified. SketchCraft was the rollback for the SolidCraft release. The [component matrix](APP-MATRIX.md) covers the full assembly.
 
 SolidCraft is live at `71a573e23441`. Its qualified on-disk source advanced to `030b30262ede` on `webos/integration`. [Rebase and test evidence](SOLIDCORE-HANDOFF.md#qualified-source-rebase-on-november-19-2026-utc)
 
@@ -99,6 +98,6 @@ for the acceptance contract.
 | CAD | [sketchcraft](../apps/sketchcraft/) at `f40e10b06079` | Push/pull 3D modeling | React/Vite and Rust/WASM | Live. The exact signed workflow created and extruded geometry, verified account saves, Undo and recovery, and reopened the solid in a fresh browser. |
 | Materials and textures | [texturecraft](../apps/texturecraft/) `webos/texturecraft-account-project` at `3ada1e30108a` | Mesh painting and embedded texture data | `texturecraft-web` | Live. The tested account project kept the original mesh bytes, paint layers and editable tiles. Save, Save As, recovery and fresh-browser editing passed. Broader mesh, bake and export workflows still need qualification. |
 | Materials and textures | [materialcraft](../apps/materialcraft/) at `b41e57dc787b` | Procedural material graphs | `materialcraft-web` | Live. Native graph edits, account saves, recovery and a fresh browser reopen passed on the release candidate. |
-| Electronics | [pcbcraft](../apps/pcbcraft/) at `96f31b02442a` | Printed circuit board design | `apps/pcbcraft-web` | Source organized. Browser and account qualification pending. |
-| Engineering | [fieldcraft](../apps/fieldcraft/) at `0a5bfdd98592` | Structural, thermal and fluid simulation | `apps/fieldcraft-web` | Source organized from upstream develop. Browser and account qualification pending. |
-| Packaging | [pcbcraft-app](../apps/pcbcraft-app/) at `35e03184c9e7` | PCBCraft upstream web distribution | `assemble.sh` | Packaging reference for the same PCBCraft editor. Pin its source when adapting the recipe to WebOS. |
+| Electronics | [pcbcraft](../apps/pcbcraft/) at `2348195417bf` | Schematic and board editing | `apps/pcbcraft-web` | Live. Scoped native edits, Undo, one account .pc project for both views, independent Save As, browser recovery and a fresh-browser reopen with pinned parts passed. |
+| Engineering | [fieldcraft](../apps/fieldcraft/) at `8f14daaa674c` | Structural, thermal and fluid simulation | `apps/fieldcraft-web` | Live. Exact-package browser tests reopened the saved analysis with its loads and clamp and reproduced the reference cantilever result. |
+| Packaging | [pcbcraft-app](../apps/pcbcraft-app/) at `35e03184c9e7` | PCBCraft upstream web distribution | `assemble.sh` | Optional upstream Pages packaging reference. WebOS uses the editor’s own browser target. |
