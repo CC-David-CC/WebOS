@@ -4,7 +4,7 @@ from pathlib import Path
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('viewer_operator', ROOT / 'deploy/viewer_static_operator.py')
+spec = importlib.util.spec_from_file_location('viewer_operator', ROOT / 'deploy/viewer_print_policy.py')
 operator = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(operator)
 
