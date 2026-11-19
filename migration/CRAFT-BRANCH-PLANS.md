@@ -335,6 +335,9 @@ The owner requires both failing fillet workflows to work before SolidCraft goes 
 3. Check the section radius on each side of the knot, topology, solid count and volume using the applicable fillet definition. Verify parameter edits and control insertion preserve the original parameter bindings and edge direction. Retest constant, smooth and zero-tip neighbors.
 4. Exercise native Undo, save, fresh reopen, edit and recompute on the corrected part. Then qualify the exact WebOS package. Record any remaining limitation before enabling the app.
 
+ACAD comparison: the authored worker operation `solid.edge.treat` accepts one scalar size for selected edges. The legacy adapter sends one thickness per selected edge. Neither reviewed entrypoint expresses intermediate radii along one edge. The tangent through-hole comparison used a different operation. No direct ACAD-provider result for either variable-radius law has been established.
+[ACAD operation contract](../apps/acad/modules/engine/solid/SolidKernel.ts#L123)
+
 See [SolidCore issue 430](https://github.com/tangency-labs/solidcore/issues/430) for the difference between earlier section fitting and the generic rolling-ball construction.
 
 ## SolidCraft preparation
