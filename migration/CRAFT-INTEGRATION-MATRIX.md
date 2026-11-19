@@ -11,15 +11,15 @@ must prove native content fidelity, account saves, recovery and fresh browser
 retrieval before it is enabled. A passing dependency fetch does not exercise
 build scripts, assets, linking or browser behavior.
 
-Source organization is complete. The active phase integrates the 18 apps from
-their independent repositories and rolls out each qualified app to ksu.codes
-under the user's approval.
+Source organization is complete. The integration phase covers all 18 apps.
+The rollout is paused at the MaterialCraft native checkpoint while we discuss
+the SolidCore cases.
 
 | Stage | Count | Applications |
 |---|---:|---|
 | Enabled on ksu.codes | 15 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, TextureCraft |
 | Paused with a tested local candidate | 1 | SolidCraft |
-| Account adapter compiles to WASM | 1 | MaterialCraft |
+| WASM check and focused native account tests passed, browser package pending | 1 | MaterialCraft |
 | Organized source, queued for integration | 1 | SketchCraft |
 
 The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables
