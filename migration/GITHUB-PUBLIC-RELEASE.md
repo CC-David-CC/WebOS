@@ -15,6 +15,10 @@ The parent pins 89 repositories under `apps/`, seven platform components, nine e
 
 SolidCraft and WordCraft now each have a public component repository with separate upstream and WebOS refs. [SolidCraft](https://github.com/CC-David-CC/solidcraft) has upstream main `b695a9b35294` and `webos/solidcraft-account-fillet-repairs` at `71a573e23441`. [Upstream PR #19314](https://github.com/tangency-labs/solidcraft/pull/19314) comes from its focused geometry branch. [WordCraft](https://github.com/CC-David-CC/wordcraft) has upstream main `6ef13b2cc8a6` and `webos/integration` at `edeb4a090cd3`. Both pairs of public refs were verified through example.invalid. Actions were disabled on the newly provisioned WordCraft destination for the source import because its upstream build and release workflows trigger on push.
 
+## Timing of GitHub operations
+
+All WebOS publication workers share the private ledger’s `github-pacing.lock` and `github-pacing.json`. Wait at least 15 seconds from completion of one GitHub operation to the start of the next. This applies across repository creation, uploads, ref verification and API reads. A rate-limit response pauses every worker for at least 15 minutes. Honor a longer Retry-After or exhausted-quota reset. The creation worker also retains its 75-second creation spacing. The `github-actions.jsonl` receipt log records timing and exit status. Manual operations for this rollout use the same `paced-bin` transport on the laptop via example.invalid. Credentials stay on example.invalid.
+
 ## Publishing each component
 
 1. Record the exact source commits and intended refs. For Craft forks, retain the upstream-tracking main or master and publish the maintained WebOS branch separately. Preserve original histories locally. Inspect nested submodules, Git LFS objects and required build assets for availability on another machine.
