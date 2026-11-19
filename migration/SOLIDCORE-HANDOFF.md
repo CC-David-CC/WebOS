@@ -191,3 +191,9 @@ The four generated browser regression models live in
 `solidcraft-geometry-resume.qS91vLP4/law-fixtures/` under the private checkpoint.
 Their manifest records each model’s SHA-256, native volume in mm³, feature
 count and solid count after saving and reopening it.
+
+## Two thin-wall refusal diagnostics in upstream CI
+
+The fillet rig ran on upstream main `b695a9b35294` and on PR head `db35c5adead7`. All 271 case names, statuses, error messages and refusal messages matched between the two result artifacts. Cases 1668 and 2852 refused rounds that would open a hollow wall. Their diagnostics omitted the largest radius that fits. This made the upstream gate fail on both commits. The three reported 1080 continuity cases are recorded in upstream’s known-failing list. [Upstream main run](https://github.com/tangency-labs/solidcraft/actions/runs/44435832894) · [PR run](https://github.com/tangency-labs/solidcraft/actions/runs/44439157727)
+
+The independent WebOS component `71a573e23441` returned both required limits. It refused a 7 mm round on the 2 mm wall and reported 6.828 mm. It refused the 30 mm round on the 3 mm U-shell and reported 25.24 mm. The engine checks compared the authored features, solids and volume before rejection, after rejection and after saving and reopening each model. The separate upstream contribution continues to target variable-radius fillets.
