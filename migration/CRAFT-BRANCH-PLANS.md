@@ -303,6 +303,29 @@ recovery, and the hosted file-command boundary. The browser test checks
 the saved line endpoints, radius and dimension coordinates directly in the
 DXF before reopening it in a fresh account context.
 
+## Remaining three apps when the rollout resumes
+
+The recommended first release is MaterialCraft. SketchCraft implementation
+and SolidCraft geometry diagnosis can proceed concurrently on independent
+branches. Release the next qualified app as soon as its own checks pass.
+
+| Proposed owner | First assignment | Handoff |
+|---|---|---|
+| Main integrator, MaterialCraft | Package the tested account graph commit on the R730. Mount it on Desktop and open native material projects through Files. | In Chromium, save a graph with an embedded bitmap, recover an unsaved edit, reopen in a fresh account browser, rerender, and check pixels and editability. Exercise a scoped edit and native Undo. |
+| SketchCraft subagent | Connect the React UI to one browser Rust engine per project. Route native file commands through the host and release the engine on close. | Return a tested component commit and browser package. Demonstrate push/pull, scoped edit and Undo, conditional Save and Save As, recovery, and a fresh reopen with editable geometry. |
+| SolidCraft subagent | Run the corrected tangent-hole test on the pinned newer upstream source and the WebOS candidate. Run the direct SolidCore tapered-wedge fixture and compare it with the failing editor feature. Characterize the two cornered variable-fillet failures. | Return test results, the smallest justified correction, and any beta limitations requiring a decision. Check that a refused edit preserves the last valid part and survives save/reopen. |
+
+The main integrator owns parent submodule pins, Files associations, the
+launcher, assembled Chromium checks, affected regressions, deployment,
+hosted verification and rollback records for each app. Use the R730 for
+native and WASM builds, with capacity checked before concurrent builds.
+
+Keep ACAD and SolidCraft as independent editors during this evaluation.
+Compare the same dimensioned parts, feature edits, Undo and fresh reopen.
+SolidCraft's beta release can be decided from its own demonstrated workflows
+while ACAD's WebOS host and C++ provider work proceeds separately.
+[SolidCore and ACAD evidence](SOLIDCORE-HANDOFF.md)
+
 ## SolidCraft preparation
 
 Use the organized `a5b35abd133e` checkout. Its existing
