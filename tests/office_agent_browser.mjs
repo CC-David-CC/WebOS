@@ -27,7 +27,7 @@ const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
 const selected = Object.entries({
   lightcraft:lightcraftDispatch, designcraft:designcraftDispatch,
   soundcraft:soundcraftDispatch, filmcraft:filmcraftDispatch,
-  effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch, texturecraft:texturecraftDispatch,
+  effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch, texturecraft:texturecraftDispatch, materialcraft:materialcraftDispatch,
 }).filter(([app])=>process.env['WEBOS_'+app.toUpperCase()+'_TEST']==='1');
 assert(selected.length<=1);
 const singleEditor = selected[0];
@@ -65,7 +65,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -1268,17 +1268,10 @@ async function filmcraftDispatch(browser, page, credentials) {
   } finally { await fresh.context.close(); }
 }
 
-async function texturecraftDispatch(browser,page,credentials) {
-  const commands=['document.inspect','edit.undo','layer.add.paint','layer.rename','tool.strokeUv'];
-  const appWindow='.window:has(.webos-texturecraft)';
+function craftProjectControls(app,displayName,extension,commands) {
+  const appWindow='.window:has(.webos-'+app+')';
   const picker='dialog.codi-file-picker[open]';
   const prompt='dialog.codi-confirm-dialog[open]';
-  const original='Documents/Texture study.tcraft';
-  const copy='Documents/Texture copy.tcraft';
-  const mesh=Buffer.from('v -1 -1 0\nv 1 -1 0\nv 1 1 0\nvt 0 0\nvt 1 0\nvt 1 1\nf 1/1 2/2 3/3\n');
-  const meshFile=path.join(output,'account-mesh.obj');
-  await writeFile(meshFile,mesh,{mode:0o600});
-
   async function approveEditor(tab,id) {
     const pending=approve(tab,id,commands);
     await tab.waitForSelector(modal,timeout);
@@ -1321,7 +1314,7 @@ async function texturecraftDispatch(browser,page,credentials) {
       desktop.activateWindow(desktop.windows.find(window=>String(window.id)===String(id)));
     },id);
     const frame=await editorFrame(tab,id);
-    await frame.$eval('#texturecraft_canvas',canvas=>{canvas.tabIndex=0;canvas.focus();});
+    await frame.$eval('#'+app+'_canvas',canvas=>{canvas.tabIndex=0;canvas.focus();});
     await tab.keyboard.down('Control');
     if (shift) await tab.keyboard.down('Shift');
     try { await tab.keyboard.press(letter); }
@@ -1336,7 +1329,7 @@ async function texturecraftDispatch(browser,page,credentials) {
       const state=node?.appView?.lifecycle.snapshot();
       return state && !state.pending && (!clean || !state.dirty) && node.querySelector('iframe:not([inert])')
         ? node.dataset.window : false;
-    },timeout,appWindow,title+' — TextureCraft',clean);
+    },timeout,appWindow,title+' — '+displayName,clean);
     return await active.jsonValue();
   }
   async function chooseSave(tab,id,name,saveAs) {
@@ -1346,8 +1339,138 @@ async function texturecraftDispatch(browser,page,credentials) {
     await tab.waitForSelector(prompt+' input',timeout);
     await tab.$eval(prompt+' input',(field,value)=>{field.value=value;},name);
     await labelledButton(tab,prompt,'Save');
-    return ready(tab,name+'.tcraft',true);
+    return ready(tab,name+extension,true);
   }
+  async function waitForDraft(page,copy) {
+    await page.waitForFunction(async (path,dbName)=>{
+      if (!(await indexedDB.databases()).some(database=>database.name===dbName)) return false;
+      const db=await new Promise((resolve,reject)=>{
+        const request=indexedDB.open(dbName);
+        request.onsuccess=()=>resolve(request.result);
+        request.onerror=()=>reject(request.error);
+      });
+      try {
+        const drafts=await new Promise((resolve,reject)=>{
+          const request=db.transaction('drafts').objectStore('drafts').getAll();
+          request.onsuccess=()=>resolve(request.result);
+          request.onerror=()=>reject(request.error);
+        });
+        return drafts.some(draft=>draft.path===path && draft.bytes instanceof Blob && draft.bytes.size>0);
+      } finally {db.close();}
+    },timeout,copy,'webos-'+app+'-recovery-v1');
+  }
+  return {appWindow,picker,approveEditor,edit,files,file,read,key,ready,chooseSave,waitForDraft};
+}
+
+async function materialcraftDispatch(browser,page,credentials) {
+  const commands=['document.inspect','edit.undo','graph.cook','graph.node.add','graph.node.move'];
+  const {appWindow,picker,approveEditor,edit,files,file,read,key,ready,chooseSave,waitForDraft} =
+    craftProjectControls('materialcraft','MaterialCraft','.mcraft',commands);
+  const original='Documents/Material study.mcraft';
+  const copy='Documents/Material copy.mcraft';
+  const png=Buffer.from(await page.evaluate(()=>{
+    const canvas=document.createElement('canvas');
+    canvas.width=canvas.height=2;
+    const context=canvas.getContext('2d');
+    context.fillStyle='red';
+    context.fillRect(0,0,2,2);
+    return canvas.toDataURL('image/png').split(',')[1];
+  }),'base64');
+  const device=path.join(output,'material-source.png');
+  await writeFile(device,png,{mode:0o600});
+
+  async function inspectBitmap(tab,grant) {
+    await edit(tab,grant,'graph.cook');
+    const project=await edit(tab,grant,'document.inspect');
+    const bitmap=project.graph.nodes.find(node=>node.def==='bitmap');
+    assert(bitmap?.cooked && !bitmap.cooked.error,'The bitmap node must cook successfully');
+    assert.deepEqual(bitmap.cooked.mean,[1,0,0,1]);
+    assert(project.package.resources.some(resource=>!resource.missing && resource.bytes===png.length));
+    return {project,bitmap};
+  }
+
+  const blank=await editor(page,'materialcraft');
+  const input=await page.waitForSelector(selector(blank)+' .webos-materialcraft input[type=file]',timeout);
+  await input.uploadFile(device);
+  const id=await ready(page,'material-source.png');
+  const grant=await approveEditor(page,id);
+  const initial=await inspectBitmap(page,grant);
+  const count=initial.project.graph.nodes.length;
+  await edit(page,grant,'graph.node.add',{def:'levels'});
+  assert.equal((await edit(page,grant,'document.inspect')).graph.nodes.length,count+1);
+  await edit(page,grant,'edit.undo');
+  assert.equal((await edit(page,grant,'document.inspect')).graph.nodes.length,count);
+  await edit(page,grant,'graph.node.move',{ids:[initial.bitmap.id],to:[100,150]});
+  present('A scoped MaterialCraft edit enters native Undo and the imported bitmap cooks red');
+
+  const filesId=await files(page);
+  await chooseSave(page,id,'Material study',false);
+  const saved=await read(page,filesId,original);
+  const embedded=execFileSync('python3',['-c',
+    'import io,sys,zipfile; z=zipfile.ZipFile(io.BytesIO(sys.stdin.buffer.read())); names=[n for n in z.namelist() if n.lower().endswith(".png")]; assert len(names)==1; sys.stdout.buffer.write(z.read(names[0]))'],
+    {input:saved,maxBuffer:1<<20});
+  assert.deepEqual(embedded,png);
+  assert.equal(await chooseSave(page,id,'Material copy',true),String(id));
+  assert.deepEqual(await read(page,filesId,original),saved);
+  await key(page,id,'o');
+  await labelledButton(page,picker,'Open folder Documents');
+  await labelledButton(page,picker,'Choose file Material copy.mcraft');
+  await page.waitForSelector(picker,{hidden:true,...timeout});
+  await file(page,filesId,'open',{path:copy});
+  assert.equal(await page.$$eval(appWindow,views=>views.filter(view=>
+    view.querySelector('.caption-text')?.textContent==='Material copy.mcraft — MaterialCraft').length),1);
+  present('Native Save and Save As preserve the original bitmap and both Open paths reuse the account document');
+
+  const dirty=await approveEditor(page,id);
+  const {bitmap}=await inspectBitmap(page,dirty);
+  await edit(page,dirty,'graph.node.move',{ids:[bitmap.id],to:[200,250]});
+  await waitForDraft(page,copy);
+  const accept=dialog=>{void dialog.accept();};
+  page.on('dialog',accept);
+  try { await page.reload({waitUntil:'domcontentloaded'}); }
+  finally { page.off('dialog',accept); }
+  const restored=await ready(page,'Material copy.mcraft');
+  const recovered=await inspectBitmap(page,await approveEditor(page,restored));
+  assert.equal(recovered.project.package.modified,true);
+  assert.deepEqual(recovered.bitmap.pos,[200,250]);
+  await labelledButton(page,selector(restored),'Close');
+  await labelledButton(page,'dialog.webos-materialcraft-session[open]','Discard');
+  await page.waitForSelector(selector(restored),{hidden:true,...timeout});
+  present('Refresh recovers unsaved graph geometry and its bitmap, and Discard closes the recovered edit');
+
+  const fresh=await login(browser,credentials);
+  try {
+    const filesId=await files(fresh.page);
+    await file(fresh.page,filesId,'list',{path:'Documents'});
+    await file(fresh.page,filesId,'open',{path:copy});
+    const reopened=await ready(fresh.page,'Material copy.mcraft',true);
+    const grant=await approveEditor(fresh.page,reopened);
+    const {bitmap,project}=await inspectBitmap(fresh.page,grant);
+    assert.deepEqual(bitmap.pos,[100,150]);
+    assert.equal(project.package.modified,false);
+    const before=(await file(fresh.page,filesId,'snapshot',{path:copy})).sha256;
+    await edit(fresh.page,grant,'graph.node.move',{ids:[bitmap.id],to:[300,350]});
+    await key(fresh.page,reopened,'s');
+    await fresh.page.waitForFunction((id,sha)=>{
+      const ctx=window.desktopLab.surfaces.get('Desktop').windows.find(w=>String(w.id)===String(id))?.launchContext;
+      return ctx?.sha256 && ctx.sha256!==sha;
+    },timeout,reopened,before);
+    await ready(fresh.page,'Material copy.mcraft',true);
+    assert.notEqual((await file(fresh.page,filesId,'snapshot',{path:copy})).sha256,before);
+    present('A fresh browser opens the editable account graph, recooks its expected pixels and confirms a subsequent server revision');
+  } finally { await fresh.context.close(); }
+}
+
+async function texturecraftDispatch(browser,page,credentials) {
+  const commands=['document.inspect','edit.undo','layer.add.paint','layer.rename','tool.strokeUv'];
+  const {appWindow,picker,approveEditor,edit,files,file,read,key,ready,chooseSave,waitForDraft} =
+    craftProjectControls('texturecraft','TextureCraft','.tcraft',commands);
+  const original='Documents/Texture study.tcraft';
+  const copy='Documents/Texture copy.tcraft';
+  const mesh=Buffer.from('v -1 -1 0\nv 1 -1 0\nv 1 1 0\nvt 0 0\nvt 1 0\nvt 1 1\nf 1/1 2/2 3/3\n');
+  const meshFile=path.join(output,'account-mesh.obj');
+  await writeFile(meshFile,mesh,{mode:0o600});
+
   async function painted(tab,approval,name) {
     const project=await edit(tab,approval,'document.inspect');
     assert.equal(project.mesh.triangles,1);
@@ -1394,23 +1517,7 @@ async function texturecraftDispatch(browser,page,credentials) {
 
   const dirty=await approveEditor(page,id);
   await edit(page,dirty,'layer.rename',{name:'Unsaved texture'});
-  await page.waitForFunction(async path=>{
-    const dbName='webos-texturecraft-recovery-v1';
-    if (!(await indexedDB.databases()).some(database=>database.name===dbName)) return false;
-    const db=await new Promise((resolve,reject)=>{
-      const request=indexedDB.open(dbName);
-      request.onsuccess=()=>resolve(request.result);
-      request.onerror=()=>reject(request.error);
-    });
-    try {
-      const drafts=await new Promise((resolve,reject)=>{
-        const request=db.transaction('drafts').objectStore('drafts').getAll();
-        request.onsuccess=()=>resolve(request.result);
-        request.onerror=()=>reject(request.error);
-      });
-      return drafts.some(draft=>draft.path===path && draft.bytes instanceof Blob && draft.bytes.size>0);
-    } finally {db.close();}
-  },timeout,copy);
+  await waitForDraft(page,copy);
   const accept=dialog=>{void dialog.accept();};
   page.on('dialog',accept);
   try { await page.reload({waitUntil:'domcontentloaded'}); }
