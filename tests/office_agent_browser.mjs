@@ -27,7 +27,7 @@ const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
 const selected = Object.entries({
   lightcraft:lightcraftDispatch, designcraft:designcraftDispatch,
   soundcraft:soundcraftDispatch, filmcraft:filmcraftDispatch,
-  effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch, texturecraft:texturecraftDispatch, materialcraft:materialcraftDispatch,
+  effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch, texturecraft:texturecraftDispatch, materialcraft:materialcraftDispatch, sketchcraft:sketchcraftDispatch,
 }).filter(([app])=>process.env['WEBOS_'+app.toUpperCase()+'_TEST']==='1');
 assert(selected.length<=1);
 const singleEditor = selected[0];
@@ -65,7 +65,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -1268,7 +1268,7 @@ async function filmcraftDispatch(browser, page, credentials) {
   } finally { await fresh.context.close(); }
 }
 
-function craftProjectControls(app,displayName,extension,commands) {
+function craftProjectControls(app,displayName,extension,commands,focusSelector='#'+app+'_canvas') {
   const appWindow='.window:has(.webos-'+app+')';
   const picker='dialog.codi-file-picker[open]';
   const prompt='dialog.codi-confirm-dialog[open]';
@@ -1314,7 +1314,7 @@ function craftProjectControls(app,displayName,extension,commands) {
       desktop.activateWindow(desktop.windows.find(window=>String(window.id)===String(id)));
     },id);
     const frame=await editorFrame(tab,id);
-    await frame.$eval('#'+app+'_canvas',canvas=>{canvas.tabIndex=0;canvas.focus();});
+    await frame.$eval(focusSelector,canvas=>{canvas.tabIndex=0;canvas.focus();});
     await tab.keyboard.down('Control');
     if (shift) await tab.keyboard.down('Shift');
     try { await tab.keyboard.press(letter); }
@@ -1360,6 +1360,149 @@ function craftProjectControls(app,displayName,extension,commands) {
     },timeout,copy,'webos-'+app+'-recovery-v1');
   }
   return {appWindow,picker,approveEditor,edit,files,file,read,key,ready,chooseSave,waitForDraft};
+}
+
+async function sketchcraftDispatch(browser,page,credentials) {
+  const commands=['document.inspect','edit.undo','model.pushpull','model.rectangle'];
+  const nativeCanvas='#root .viewport canvas';
+  const {appWindow,picker,approveEditor,edit,files,file,read,key,ready,chooseSave,waitForDraft} =
+    craftProjectControls('sketchcraft','SketchCraft','.sketchcraft',commands,nativeCanvas);
+  const original='Documents/Sketch solid.sketchcraft';
+  const copy='Documents/Sketch copy.sketchcraft';
+  const inspect=(tab,grant)=>edit(tab,grant,'document.inspect');
+  const rectangle=(tab,grant,offset)=>edit(tab,grant,'model.rectangle',{
+    from:[offset,offset,0],to:[offset+4,offset+4,0]
+  });
+
+  function solid(bytes,faces) {
+    const model=JSON.parse(bytes.toString('utf8'));
+    assert.equal(model.format,1);
+    assert.equal(Object.keys(model.faces).length,faces);
+    const heights=Object.values(model.vertices).map(vertex=>vertex.p[2]);
+    assert(Math.max(...heights)-Math.min(...heights)>=2.99,'Native account geometry must retain its extrusion');
+  }
+
+  const id=await editor(page,'sketchcraft');
+  const maximize=await page.$(selector(id)+' [aria-label="Maximize"]');
+  if (maximize) {
+    await maximize.click();
+    await maximize.dispose();
+  }
+  const first=await approveEditor(page,id);
+  assert.equal((await inspect(page,first)).faces,0);
+  const frame=await editorFrame(page,id);
+  const canvas=await frame.waitForSelector(nativeCanvas,timeout);
+  try {
+    await frame.click('button[title^="Rectangle"]');
+    const bounds=await canvas.boundingBox();
+    assert(bounds && bounds.width>200 && bounds.height>200);
+    const at=(x,y)=>page.mouse.click(bounds.x+bounds.width*x,bounds.y+bounds.height*y);
+    await at(.45,.59);
+    await at(.62,.70);
+    assert.equal((await inspect(page,first)).faces,1,'A human Rectangle-tool operation must create the outline');
+    await frame.click('button[title^="Push / Pull"]');
+    // The midpoint of the drawn diagonal is inside the projected rectangular face.
+    await at(.535,.645);
+    await frame.click('form.measure input');
+    await page.keyboard.type('3m');
+    await page.keyboard.press('Enter');
+    assert.equal((await inspect(page,first)).faces,6,'Push/Pull must make the six faces of the body');
+    await assert.rejects(edit(page,first,'edit.undo'));
+    assert.equal((await inspect(page,first)).faces,6);
+  } finally { await canvas.dispose(); }
+  present('SketchCraft draws an outline and push/pulls it three metres using actual viewport controls');
+
+  const filesId=await files(page);
+  assert.equal(String(await chooseSave(page,id,'Sketch solid',false)),String(id));
+  const sourceBytes=await read(page,filesId,original);
+  solid(sourceBytes,6);
+  assert.equal(String(await chooseSave(page,id,'Sketch copy',true)),String(id));
+  assert.deepEqual(await read(page,filesId,original),sourceBytes);
+  const copyBytes=await read(page,filesId,copy);
+  assert.deepEqual(copyBytes,sourceBytes);
+  present('Save and Save As confirm independent account identities and preserve native solid geometry');
+
+  await key(page,id,'o');
+  await labelledButton(page,picker,'Open folder Documents');
+  await labelledButton(page,picker,'Choose file Sketch copy.sketchcraft');
+  await page.waitForSelector(picker,{hidden:true,...timeout});
+  await file(page,filesId,'open',{path:copy});
+  assert.equal(await page.$$eval(appWindow,views=>views.filter(view=>
+    view.querySelector('.caption-text')?.textContent==='Sketch copy.sketchcraft — SketchCraft').length),1);
+
+  const copyGrant=await approveEditor(page,id);
+  await assert.rejects(rectangle(page,first,55));
+  assert.equal((await inspect(page,copyGrant)).faces,6);
+  await rectangle(page,copyGrant,75);
+  assert.equal((await inspect(page,copyGrant)).faces,7);
+  // A user can undo an authorized agent's geometry in the native model.
+  await key(page,id,'z');
+  assert.equal((await inspect(page,copyGrant)).faces,6);
+  await rectangle(page,copyGrant,85);
+  assert.equal((await inspect(page,copyGrant)).faces,7);
+  await waitForDraft(page,copy);
+  // A prior edit may already have produced a draft for this path. Wait for the
+  // exact unsaved rectangle before refreshing the account Desktop.
+  await page.waitForFunction(async path=>{
+    const db=await new Promise((resolve,reject)=>{
+      const open=indexedDB.open('webos-sketchcraft-recovery-v1');
+      open.onsuccess=()=>resolve(open.result);
+      open.onerror=()=>reject(open.error);
+    });
+    try {
+      const drafts=await new Promise((resolve,reject)=>{
+        const request=db.transaction('drafts').objectStore('drafts').getAll();
+        request.onsuccess=()=>resolve(request.result);
+        request.onerror=()=>reject(request.error);
+      });
+      for(const draft of drafts.filter(item=>item.path===path && item.bytes instanceof Blob)) {
+        const project=JSON.parse(await draft.bytes.text());
+        if(Object.values(project.vertices).some(vertex=>vertex.p[0]===89 && vertex.p[1]===89)) return true;
+      }
+      return false;
+    } finally { db.close(); }
+  },timeout,copy);
+  assert.deepEqual(await read(page,filesId,copy),copyBytes);
+  const accept=dialog=>{void dialog.accept();};
+  page.on('dialog',accept);
+  try { await page.reload({waitUntil:'domcontentloaded'}); }
+  finally { page.off('dialog',accept); }
+  const restored=await ready(page,'Sketch copy.sketchcraft');
+  assert.equal((await inspect(page,await approveEditor(page,restored))).faces,7);
+  await labelledButton(page,selector(restored),'Close');
+  await labelledButton(page,'dialog.webos-sketchcraft-session[open]','Discard');
+  await page.waitForSelector(selector(restored),{hidden:true,...timeout});
+  present('Native Undo reverses a signed edit, stale grants cannot edit the rebound copy, and refresh recovers the unsaved outline');
+
+  const fresh=await login(browser,credentials);
+  try {
+    const freshFiles=await files(fresh.page);
+    await file(fresh.page,freshFiles,'list',{path:'Documents'});
+    await file(fresh.page,freshFiles,'open',{path:copy});
+    const reopened=await ready(fresh.page,'Sketch copy.sketchcraft',true);
+    const grant=await approveEditor(fresh.page,reopened);
+    assert.equal((await inspect(fresh.page,grant)).faces,6,'Discard must preserve the saved server copy');
+    const before=(await file(fresh.page,freshFiles,'snapshot',{path:copy})).sha256;
+    const added=await rectangle(fresh.page,grant,125);
+    assert(Number.isSafeInteger(added.face));
+    await edit(fresh.page,grant,'model.pushpull',{face:added.face,distance:4});
+    assert.equal((await inspect(fresh.page,grant)).faces,12);
+    await edit(fresh.page,grant,'edit.undo');
+    assert.equal((await inspect(fresh.page,grant)).faces,7);
+    await edit(fresh.page,grant,'model.pushpull',{face:added.face,distance:4});
+    await key(fresh.page,reopened,'s');
+    await fresh.page.waitForFunction((id,revision)=>{
+      const target=window.desktopLab.surfaces.get('Desktop').windows.find(window=>String(window.id)===String(id));
+      return target?.launchContext?.sha256 && target.launchContext.sha256!==revision;
+    },timeout,reopened,before);
+    await ready(fresh.page,'Sketch copy.sketchcraft',true);
+    solid(await read(fresh.page,freshFiles,copy),12);
+    assert.deepEqual(await read(fresh.page,freshFiles,original),sourceBytes);
+    const view=await fresh.page.waitForSelector(selector(reopened)+' iframe',timeout);
+    try { await view.screenshot({path:path.join(output,'sketchcraft-account-model.png')}); }
+    finally { await view.dispose(); }
+    present('Fresh account Files reopens the solid, scoped operations extrude a second solid, and Save confirms a new server revision');
+  } finally { await fresh.context.close(); }
 }
 
 async function materialcraftDispatch(browser,page,credentials) {

@@ -19,6 +19,7 @@ const graphicsEngines = [
   {id:'effectcraft', name:'EffectCraft', extension:'.ecproj'},
   {id:'cadcraft', name:'CADCraft', extension:'.dxf'},
   {id:'texturecraft', name:'TextureCraft', extension:'.tcraft'},
+  {id:'sketchcraft', name:'SketchCraft', extension:'.sketchcraft', externalModule:true},
   {id:'materialcraft', name:'MaterialCraft', extension:'.mcraft'},
 ].flatMap(engine => {
   const release = flags['--'+engine.id+'-site'];
@@ -28,7 +29,7 @@ const graphicsEngines = [
 });
 const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site',
   '--photocraft-site','--test-photocraft-site',
-  ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
+  ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
   throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
 }
@@ -156,6 +157,7 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
     id==='filmcraft'?"export {mount} from './assembly/viewer/filmcraft-app.mjs';":
     id==='effectcraft'?"export {mount} from './assembly/viewer/effectcraft-app.mjs';":
     id==='cadcraft'?"export {mount} from './assembly/viewer/cadcraft-app.mjs';":
+    id==='sketchcraft'?"export {mount} from './assembly/viewer/sketchcraft-app.mjs';":
     id==='materialcraft'?"export {mount} from './assembly/viewer/materialcraft-app.mjs';":
     id==='texturecraft'?"export {mount} from './assembly/viewer/texturecraft-app.mjs';":
     graphics?`import {mountCraftAccount} from './assembly/viewer/craft-account-app.mjs';import {createCraftRecovery} from './assembly/viewer/craft-account-recovery.mjs';const project=${graphicsProject};const recovery=createCraftRecovery(project);export function mount(host){return mountCraftAccount(host,{...project,recovery,reviewWindowClose:true});}`:
@@ -183,7 +185,7 @@ if(pdfEngine){
 }
 const additionalReceipts={};
 for(const {id,site,receipt,receiptBytes} of additionalEngines){
-  const trunkSite = id==='photocraft'||graphicsEngines.some(app=>app.id===id);
+  const trunkSite = id==='photocraft'||graphicsEngines.some(app=>app.id===id && !app.externalModule);
   let total=0;const seen=new Set();
   for(const file of receipt.files){
     if(!safe(file.path)||seen.has(file.path)||file.path==='component-build.json'||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid '+id+' engine path/size');
