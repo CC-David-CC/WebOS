@@ -64,6 +64,31 @@ Private receipts and native probe source are under
 `smlib-tangency-replay-8eac63c4.RoVVkT/` beside the migration checkpoint.
 [Pinned Tangency release](https://github.com/tangency-labs/smlib/releases/tag/prebuilt-8eac63c439b2670ecffcc2d7beaf2242849463bf)
 
+### Upstream union fix prepared for review
+
+The public fork already had a narrower version of the kernel fix on its
+NVIDIA-based branch. The Tangency-based submission uses that fix, 23 lines
+in the existing Boolean test executable and a changelog entry. Its two
+commits end at `b00a52ae295c76d7cc0887ad10c480195bd9af31` on
+`CC-David-CC/usd-brep:fix/retain-material-on-cavity-fill`. The new test
+failed twice on upstream for volume and solid count. Both operand orders
+passed on the candidate for exact and enclosing fills. The entire native
+Boolean executable passed all 18 cases. Testing linked the upstream Linux
+archive with the two modified kernel translation units rebuilt locally.
+Evidence is in `smlib-union-pr-b00a52a.XNtjj0/` beside the private checkpoint.
+[Open upstream PR 136](https://github.com/tangency-labs/smlib/pull/136)
+
+Track Tangency PR 131 separately for ACAD's future C++ extrusion tests.
+It handles a nearly straight spline whose extruded wall fails a geometry
+check after export/import. It can be evaluated independently of the
+box-only union correction. When adopting a Tangency kernel, check the
+published merge status and exercise the round trip in the selected WASM build.
+Independently tested PR 131's two source/test changes against the pinned
+Tangency main. The native sweep executable failed on the baseline with
+an invalid cylindrical wall and passed with the sweep change. The returned
+body passed the validity check after export/import.
+[Tangency PR 131](https://github.com/tangency-labs/smlib/pull/131)
+
 ## What we proved
 
 The original selected SolidCraft source at `a5b35abd133e` and the WebOS
