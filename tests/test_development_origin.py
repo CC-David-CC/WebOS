@@ -1,12 +1,11 @@
 """Explicit proxy origin validation before account state initialization."""
-import importlib.util
+import sys
 from pathlib import Path
 import tempfile
 import unittest
 
-spec = importlib.util.spec_from_file_location('development_server', Path(__file__).resolve().parents[1] / 'scripts/run_development.py')
-server = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(server)
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
+import run_development as server
 
 
 class OriginTests(unittest.TestCase):
@@ -30,12 +29,20 @@ class ProxyOriginTests(unittest.IsolatedAsyncioTestCase):
             base = Path(temporary)
             public = base / 'public'; public.mkdir(); (public / 'index.html').write_text('<!doctype html><title>Test</title>')
             (public / 'wordcraft').mkdir(); (public / 'wordcraft/index.html').write_text('<!doctype html><title>Print fixture</title>')
+            (public / 'asset.js').write_text('// fixture')
             state = base / 'private'
             app = await server.create_application(public, state, 'https://ksu.codes')
             client = TestClient(TestServer(app)); await client.start_server()
             try:
                 response = await client.get('/', headers={'Host': 'ksu.codes'})
+                desktop = response.headers['Content-Security-Policy']
+                self.assertIn('https://noaa-gfs-bdp-pds.s3.amazonaws.com', desktop)
+                self.assertIn("frame-src 'self';", desktop)
+                self.assertIn("object-src 'none'", desktop)
+                response = await client.get('/asset.js', headers={'Host': 'ksu.codes'})
                 ordinary = response.headers['Content-Security-Policy']
+                self.assertIn("connect-src 'self';", ordinary)
+                self.assertNotIn('noaa.gov', ordinary)
                 self.assertIn("frame-src 'self';", ordinary)
                 self.assertIn("object-src 'none'", ordinary)
                 response = await client.get('/wordcraft/index.html', headers={'Host': 'ksu.codes'})

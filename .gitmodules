@@ -382,3 +382,9 @@
 [submodule "pcbcraft-app"]
 	path = apps/pcbcraft-app
 	url = https://github.com/tangency-labs/pcbcraft-app.git
+[submodule "isobar"]
+	path = apps/isobar
+	url = ../isobar.git
+[submodule "pohoda"]
+	path = apps/pohoda
+	url = ../pohoda.git

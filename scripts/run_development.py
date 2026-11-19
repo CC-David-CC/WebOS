@@ -14,8 +14,8 @@ import stat
 import uuid
 from urllib.parse import urlsplit
 from aiohttp import web
+from webos_weather import install as install_weather
 from webos_accounts import AccountsService, Config
-from webos_accounts.delegation import CHALLENGE as AGENT_CHALLENGE, PATHS as AGENT_PATHS, MAX_TRANSPORT_BYTES, DelegationAuthority
 from webos_accounts.file_authority import FileAuthority
 from webos_storage import UserStore, DEFAULT_ACCOUNT_FOLDERS, FileGateway, initialize_ledger, initialize_transfers
 from webos_storage.transfers import Quotas
@@ -53,6 +53,8 @@ async def create_application(public_root, private_root, origin, *, account_trans
     address = urlsplit(origin)
     if agent_operations and (address.scheme != 'http' or address.hostname not in ('127.0.0.1', 'localhost', '::1')):
         raise ValueError('Development agent operations require a direct loopback origin')
+    if agent_operations:
+        from webos_accounts.delegation import CHALLENGE as AGENT_CHALLENGE, PATHS as AGENT_PATHS, MAX_TRANSPORT_BYTES, DelegationAuthority
     public_root = Path(public_root).absolute()
     private_root = Path(private_root).absolute()
     source_root = Path(__file__).resolve().parent.parent
@@ -104,6 +106,7 @@ async def create_application(public_root, private_root, origin, *, account_trans
         quotas = Quotas(store, concurrent_uses=account_transfers, shared_concurrent_uses=shared_transfers)
         gateway = FileGateway(store, accounts.config()['identity'], quotas=quotas, max_requests_per_minute=4096)
         app = web.Application(client_max_size=192 * 1024 * 1024)
+        install_weather(app)
         app.add_subapp('/gateway', gateway.app())
         async def account_request(request):
             for name in ('Host',):
@@ -155,6 +158,8 @@ async def create_application(public_root, private_root, origin, *, account_trans
             # WordCraft prints its generated PDF in a same-origin blob frame. Keep
             # that permission off the desktop/other apps and keep object-src disabled.
             csp = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'none'"
+            if name == 'index.html':
+                csp = csp.replace("connect-src 'self'", "connect-src 'self' https://noaa-gfs-bdp-pds.s3.amazonaws.com https://noaa-gefs-pds.s3.amazonaws.com https://noaa-cfs-pds.s3.amazonaws.com https://data.ecmwf.int https://opengeo.ncep.noaa.gov https://nowcoast.noaa.gov https://mapservices.weather.noaa.gov https://gibs.earthdata.nasa.gov https://api.weather.gov https://tiles.openfreemap.org https://www.gdacs.org https://mesonet.agron.iastate.edu https://eonet.gsfc.nasa.gov").replace("img-src 'self' data: blob:", "img-src 'self' data: blob: https://radar.weather.gov https://opengeo.ncep.noaa.gov https://nowcoast.noaa.gov https://tiles.openfreemap.org https://gibs.earthdata.nasa.gov https://mapservices.weather.noaa.gov")
             return web.FileResponse(current, headers={'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',
                 'Cross-Origin-Opener-Policy': 'same-origin', 'Cross-Origin-Embedder-Policy': 'require-corp',
                 'Content-Security-Policy': csp.replace("frame-src 'self'", "frame-src 'self' blob:") if name == 'wordcraft/index.html' else csp})
