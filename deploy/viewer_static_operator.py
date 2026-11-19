@@ -28,6 +28,7 @@ OPTIONAL_ENGINES['effectcraft'] = 128 * 1024 * 1024
 OPTIONAL_ENGINES['cadcraft'] = 128 * 1024 * 1024
 OPTIONAL_ENGINES['texturecraft'] = 128 * 1024 * 1024
 OPTIONAL_ENGINES['sketchcraft'] = 64 * 1024 * 1024
+OPTIONAL_ENGINES['solidcraft'] = 224 * 1024 * 1024
 OPTIONAL_ENGINES['materialcraft'] = 128 * 1024 * 1024
 
 

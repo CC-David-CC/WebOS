@@ -27,7 +27,7 @@ const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
 const selected = Object.entries({
   lightcraft:lightcraftDispatch, designcraft:designcraftDispatch,
   soundcraft:soundcraftDispatch, filmcraft:filmcraftDispatch,
-  effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch, texturecraft:texturecraftDispatch, materialcraft:materialcraftDispatch, sketchcraft:sketchcraftDispatch,
+  effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch, texturecraft:texturecraftDispatch, materialcraft:materialcraftDispatch, sketchcraft:sketchcraftDispatch, solidcraft:solidcraftDispatch,
 }).filter(([app])=>process.env['WEBOS_'+app.toUpperCase()+'_TEST']==='1');
 assert(selected.length<=1);
 const singleEditor = selected[0];
@@ -65,7 +65,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -1360,6 +1360,254 @@ function craftProjectControls(app,displayName,extension,commands,focusSelector='
     },timeout,copy,'webos-'+app+'-recovery-v1');
   }
   return {appWindow,picker,approveEditor,edit,files,file,read,key,ready,chooseSave,waitForDraft};
+}
+
+async function solidcraftDispatch(browser,page,credentials) {
+  const commands=['document.inspect','inspect.measure','sketch.create','sketch.rectangle.two_point','sketch.finish',
+    'solid.extrude','timeline.redefine','edit.undo'];
+  const picker='dialog.codi-file-picker[open]', prompt='dialog.codi-confirm-dialog[open]';
+  const appWindow='.window:has(.webos-solidcraft)';
+  const nativeCanvas='#solidcraft_canvas';
+  const original='Documents/Parametric part.sc';
+  const copy='Documents/Parametric copy.sc';
+
+  async function grant(tab,id) {
+    const pending=approve(tab,id,commands);
+    await tab.waitForSelector(modal,timeout);
+    await tab.click(modal+' button[aria-label="Approve access"]');
+    const approval=await pending;
+    assert.equal(approval.error,undefined,approval.error);
+    return approval.result;
+  }
+  async function edit(tab,approval,command,args={}) {
+    const intent=JSON.stringify(intentFor(approval,command,args));
+    const signed=await authorize(approval,intent);
+    assert.equal(signed.status,200,signed.error);
+    const result=await dispatch(tab,signed.confirmation,intent);
+    assert.equal(result.error,undefined,result.error);
+    return result.result.result;
+  }
+  async function files(tab) {
+    const id=await tab.evaluate(()=>window.desktopLab.surfaces.get('Desktop').launch('files').id);
+    await tab.waitForFunction(view=>typeof document.querySelector(view)?.appView?.execute==='function',timeout,selector(id));
+    return id;
+  }
+  async function file(tab,id,command,args) {
+    return tab.$eval(selector(id),async (node,{command,args})=>{
+      await node.appView.ready;
+      if (command==='import') args.blob=new Blob([Uint8Array.from(args.bytes)]);
+      return node.appView.execute(command,args);
+    },{command,args});
+  }
+  async function read(tab,id,path) {
+    await file(tab,id,'list',{path:path.slice(0,path.lastIndexOf('/'))});
+    const snapshot=await file(tab,id,'snapshot',{path});
+    const data=await file(tab,id,'download',{path,expectedRevision:snapshot.sha256});
+    const bytes=Buffer.from(Object.values(data.data));
+    assert.equal(createHash('sha256').update(bytes).digest('hex'),snapshot.sha256);
+    return bytes;
+  }
+  async function shortcut(tab,id,key,shift=false) {
+    await tab.bringToFront();
+    await tab.evaluate(id=>{
+      const surface=window.desktopLab.surfaces.get('Desktop');
+      surface.activateWindow(surface.windows.find(window=>String(window.id)===String(id)));
+    },id);
+    const frame=await editorFrame(tab,id);
+    await frame.$eval(nativeCanvas,canvas=>{canvas.tabIndex=0;canvas.focus({preventScroll:true});});
+    await tab.keyboard.down('Control');
+    if (shift) await tab.keyboard.down('Shift');
+    try { await tab.keyboard.press(key); }
+    finally {
+      if (shift) await tab.keyboard.up('Shift');
+      await tab.keyboard.up('Control');
+    }
+  }
+  async function bound(tab,id,title) {
+    await tab.waitForFunction((view,title)=>{
+      const node=document.querySelector(view);
+      const state=node?.appView?.lifecycle.snapshot();
+      return state && !state.dirty && !state.pending && node.querySelector('.caption-text')?.textContent===title+' — SolidCraft';
+    },timeout,selector(id),title);
+  }
+  async function saveAs(tab,id,name,copy) {
+    await shortcut(tab,id,copy?'S':'s',copy);
+    await labelledButton(tab,picker,'Open folder Documents');
+    await labelledButton(tab,picker,'Use this folder');
+    await tab.waitForSelector(prompt+' input',timeout);
+    await tab.$eval(prompt+' input',(field,value)=>{field.value=value;},name);
+    await labelledButton(tab,prompt,'Save');
+    await bound(tab,id,name+'.sc');
+  }
+  async function volume(tab,authorization,expected) {
+    const actual=(await edit(tab,authorization,'inspect.measure')).total.volume_mm3;
+    assert(Math.abs(actual-expected)<1e-6, 'Expected '+expected+' mm³, got '+actual);
+  }
+  async function redefine(tab,authorization,sketch,feature,distance) {
+    await edit(tab,authorization,'timeline.redefine',{
+      feature,command:'solid.extrude',params:{sketch,profiles:'all',distance,operation:'new'},
+    });
+  }
+
+  const first=await editor(page,'solidcraft');
+  const firstFrame=await editorFrame(page,first);
+  await firstFrame.waitForSelector(nativeCanvas,timeout);
+  assert.equal(await firstFrame.evaluate(()=>typeof window.solidcraft),'undefined');
+  const approval=await grant(page,first);
+  assert.deepEqual([(await edit(page,approval,'document.inspect')).featureCount,
+    (await edit(page,approval,'document.inspect')).dirty],[0,false]);
+  const {sketch}=await edit(page,approval,'sketch.create',{plane:'XY'});
+  await edit(page,approval,'sketch.rectangle.two_point',{p0:[0,0],p1:[10,10]});
+  await edit(page,approval,'sketch.finish');
+  const before=(await edit(page,approval,'document.inspect')).featureCount;
+  await edit(page,approval,'solid.extrude',{distance:5});
+  await volume(page,approval,500);
+  await edit(page,approval,'edit.undo');
+  assert.equal((await edit(page,approval,'document.inspect')).featureCount,before);
+  const {feature}=await edit(page,approval,'solid.extrude',{distance:5});
+  await volume(page,approval,500);
+  present('SolidCraft runs scoped sketch, native extrusion and Undo with the expected 500 mm³ volume');
+
+  const filesId=await files(page);
+  await saveAs(page,first,'Parametric part',false);
+  const saved=await read(page,filesId,original);
+  assert.equal(saved.subarray(0,2).toString(),'PK');
+  await saveAs(page,first,'Parametric copy',true);
+  assert.deepEqual(await read(page,filesId,original),saved);
+  present('SolidCraft native Save and Save As produce distinct account containers and preserve the original');
+
+  await shortcut(page,first,'o');
+  await labelledButton(page,picker,'Open folder Documents');
+  await labelledButton(page,picker,'Choose file Parametric copy.sc');
+  await page.waitForSelector(picker,{hidden:true,...timeout});
+  await file(page,filesId,'open',{path:copy});
+  assert.equal(await page.$$eval(appWindow,nodes=>nodes.length),1);
+  present('SolidCraft native Open and Files activate the existing account design');
+
+  await redefine(page,await grant(page,first),sketch,feature,10);
+  await page.waitForFunction(async path=>{
+    const name='webos-solidcraft-recovery-v1';
+    if (!(await indexedDB.databases()).some(db=>db.name===name)) return false;
+    const db=await new Promise((resolve,reject)=>{
+      const open=indexedDB.open(name);
+      open.onsuccess=()=>resolve(open.result);
+      open.onerror=()=>reject(open.error);
+    });
+    try {
+      const drafts=await new Promise((resolve,reject)=>{
+        const request=db.transaction('drafts').objectStore('drafts').getAll();
+        request.onsuccess=()=>resolve(request.result);
+        request.onerror=()=>reject(request.error);
+      });
+      return drafts.some(draft=>draft.path===path && draft.bytes instanceof Blob && draft.bytes.size>0);
+    } finally {db.close();}
+  },timeout,copy);
+  const accept=dialog=>{void dialog.accept();};
+  page.on('dialog',accept);
+  try {await page.reload({waitUntil:'domcontentloaded'});}
+  finally {page.off('dialog',accept);}
+  await page.waitForFunction(view=>document.querySelector(view)?.appView?.inspect?.()?.instanceId,timeout,selector(first));
+  const recovered=await grant(page,first);
+  await volume(page,recovered,1000);
+  assert.equal((await edit(page,recovered,'document.inspect')).dirty,true);
+  await labelledButton(page,selector(first),'Close');
+  await labelledButton(page,'dialog.webos-solidcraft-session[open]','Discard');
+  await page.waitForSelector(selector(first),{hidden:true,...timeout});
+  present('Refresh recovers an unsaved parametric edit, and explicit Discard preserves the confirmed saved part');
+
+  const fresh=await login(browser,credentials);
+  try {
+    const freshFiles=await files(fresh.page);
+    await file(fresh.page,freshFiles,'list',{path:'Documents'});
+    await file(fresh.page,freshFiles,'open',{path:copy});
+    const view=appWindow+' iframe:not([inert])';
+    await fresh.page.waitForSelector(view,timeout);
+    const reopened=await fresh.page.$eval(appWindow,node=>node.dataset.window);
+    const freshApproval=await grant(fresh.page,reopened);
+    await volume(fresh.page,freshApproval,500);
+    assert.equal((await edit(fresh.page,freshApproval,'document.inspect')).dirty,false);
+    await labelledButton(fresh.page,selector(reopened),'Maximize');
+    await fresh.page.waitForFunction(view=>document.querySelector(view)?.getBoundingClientRect().width>1000,timeout,view);
+    const expanded=await fresh.page.waitForSelector(view,timeout);
+    await expanded.screenshot({path:path.join(output,'solidcraft-reopened-part.png')});
+    await expanded.dispose();
+    const previous=(await file(fresh.page,freshFiles,'snapshot',{path:copy})).sha256;
+    await redefine(fresh.page,freshApproval,sketch,feature,10);
+    await volume(fresh.page,freshApproval,1000);
+    await shortcut(fresh.page,reopened,'s');
+    await fresh.page.waitForFunction((id,revision)=>{
+      const target=window.desktopLab.surfaces.get('Desktop').windows.find(window=>String(window.id)===String(id));
+      return target?.launchContext?.sha256 && target.launchContext.sha256!==revision;
+    },timeout,reopened,previous);
+    await bound(fresh.page,reopened,'Parametric copy.sc');
+    present('SolidCraft recomputes editable geometry in a fresh account browser and confirms a later saved revision');
+
+    const legacy='Documents/Legacy part.solidcraft';
+    await file(fresh.page,freshFiles,'list',{path:'Documents'});
+    await file(fresh.page,freshFiles,'import',{name:'Legacy part.solidcraft',bytes:Array.from(saved)});
+    await file(fresh.page,freshFiles,'open',{path:legacy});
+    const legacyId=await fresh.page.waitForFunction(view=>[...document.querySelectorAll(view)].find(window=>
+      window.querySelector('.caption-text')?.textContent==='Legacy part.solidcraft — SolidCraft' &&
+      window.querySelector('iframe:not([inert])'))?.dataset.window,timeout,appWindow);
+    await volume(fresh.page,await grant(fresh.page,await legacyId.jsonValue()),500);
+    present('Files opens a native SolidCraft container under a supported legacy extension');
+    const geometryDir=process.env.WEBOS_SOLIDCRAFT_GEOMETRY_DIR;
+    assert(geometryDir && path.isAbsolute(geometryDir),'Set WEBOS_SOLIDCRAFT_GEOMETRY_DIR to the four qualified native parts');
+    const manifest=JSON.parse(await readFile(path.join(geometryDir,'parts.json'),'utf8'));
+    assert.equal(manifest.schema,'webos-solidcraft-geometry-fixtures/1');
+    const names=['Fillet peak','Fillet controls','Fillet inserted control','Fillet zero tip'];
+    assert.deepEqual(manifest.parts.map(part=>part.name),names);
+    await labelledButton(fresh.page,selector(await legacyId.jsonValue()),'Close');
+    await labelledButton(fresh.page,selector(reopened),'Close');
+    for (const part of manifest.parts) {
+      const filename=part.name+'.sc', filePath='Documents/'+filename;
+      const bytes=await readFile(path.join(geometryDir,filename));
+      assert.equal(bytes.length,part.bytes);
+      assert.equal(createHash('sha256').update(bytes).digest('hex'),part.sha256);
+      assert(Number.isSafeInteger(part.featureCount) && part.featureCount>0);
+      assert(Number.isSafeInteger(part.solids) && part.solids>0);
+      assert(Number.isFinite(part.volumeMm3) && part.volumeMm3>0);
+      await file(fresh.page,freshFiles,'list',{path:'Documents'});
+      await file(fresh.page,freshFiles,'import',{name:filename,bytes:Array.from(bytes)});
+      await file(fresh.page,freshFiles,'open',{path:filePath});
+      const handle=await fresh.page.waitForFunction((view,title)=>[...document.querySelectorAll(view)].find(window=>
+        window.querySelector('.caption-text')?.textContent===title+' — SolidCraft' &&
+        window.querySelector('iframe:not([inert])'))?.dataset.window,timeout,appWindow,filename);
+      const id=await handle.jsonValue();
+      const approval=await grant(fresh.page,id);
+      const doc=await edit(fresh.page,approval,'document.inspect');
+      assert.equal(doc.featureCount,part.featureCount);
+      assert.equal(doc.dirty,false);
+      const measured=await edit(fresh.page,approval,'inspect.measure');
+      assert.equal(measured.bodies.length,part.solids);
+      assert(Math.abs(measured.total.volume_mm3-part.volumeMm3)<0.01,
+        filename+' expected '+part.volumeMm3+' mm³, got '+measured.total.volume_mm3);
+      if (part.name==='Fillet peak') {
+        await fresh.page.bringToFront();
+        await fresh.page.evaluate(id=>{
+          const desktop=window.desktopLab.surfaces.get('Desktop');
+          desktop.activateWindow(desktop.windows.find(candidate=>String(candidate.id)===String(id)));
+        },id);
+        await fresh.page.waitForFunction(view=>{
+          const frame=document.querySelector(view+' iframe');
+          if (!frame || frame.inert) return false;
+          const box=frame.getBoundingClientRect();
+          return box.width>0 && box.height>0 &&
+            document.elementFromPoint(box.x+box.width/2,box.y+box.height/2)===frame;
+        },timeout,selector(id));
+        const frame=await editorFrame(fresh.page,id);
+        const canvas=await frame.waitForSelector(nativeCanvas,{...timeout,visible:true});
+        try {
+          await frame.evaluate(()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done))));
+          await canvas.screenshot({path:path.join(output,'solidcraft-fillet-peak.png')});
+        } finally { await canvas.dispose(); }
+      }
+      await labelledButton(fresh.page,selector(id),'Close');
+      present('Files opens '+filename+' with its native feature count and expected solid volume in WASM');
+    }
+  } finally {
+    await fresh.context.close();
+  }
 }
 
 async function sketchcraftDispatch(browser,page,credentials) {

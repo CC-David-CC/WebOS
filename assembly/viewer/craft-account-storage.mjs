@@ -6,8 +6,8 @@ const decimal = value => typeof value === 'string' && /^(0|[1-9][0-9]{0,19})$/.t
 const ticketFields = ['generation','documentId','revision','ticket','path'];
 const key = path => 'mirror:/' + path;
 
-export function craftProjectPath(path, extension) {
-  if (typeof path !== 'string' || !path.toLowerCase().endsWith(extension) || new TextEncoder().encode(path).length > 2048 ||
+export function craftProjectPath(path, extension, legacyExtensions = []) {
+  if (typeof path !== 'string' || ![extension,...legacyExtensions].some(suffix=>path.toLowerCase().endsWith(suffix)) || new TextEncoder().encode(path).length > 2048 ||
       /[\\\u0000-\u001f\u007f-\u009f]/u.test(path) || path.split('/').some(part => !part || part === '.' || part === '..')) {
     throw Error(`Choose an account-relative ${extension} project path.`);
   }
@@ -25,8 +25,8 @@ function nativeIdentity(value, path, name) {
   return Object.freeze({generation:value.generation,documentId:value.documentId});
 }
 
-export function createCraftStorage({name, extension, files, operations, valid}) {
-  const projectPath = path => craftProjectPath(path, extension);
+export function createCraftStorage({name, extension, legacyExtensions, files, operations, valid}) {
+  const projectPath = path => craftProjectPath(path, extension, legacyExtensions);
   let identity = null, binding = null, pending = null, lastTicket = 0n;
 
   function check() {

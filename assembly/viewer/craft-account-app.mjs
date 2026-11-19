@@ -22,8 +22,9 @@ function fileFromDevice(file) {
 
 /** Mount a native layer editor in its own classic Desktop account window. */
 export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false,
-  setupOriginals, commands = scopedCommands, accountControls = false, artworkExtensions, accountAutosave = true}) {
-  const projectPath = path => craftProjectPath(path, extension);
+  setupOriginals, commands = scopedCommands, accountControls = false, artworkExtensions, accountAutosave = true, legacyExtensions = []}) {
+  const extensions = [extension,...legacyExtensions];
+  const projectPath = path => craftProjectPath(path, extension, legacyExtensions);
   const element = document.createElement('div');
   element.className = `window-content webos-${app}`;
   element.style.display = 'flex';
@@ -185,7 +186,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
   }
 
   async function chooseProject(packet, signal) {
-    const picked = packet.path === null ? await host.storage.pickAccountFile({extensions:[extension], signal}) : null;
+    const picked = packet.path === null ? await host.storage.pickAccountFile({extensions, signal}) : null;
     check();
     if (!loaded || signal.aborted) return {outcome:'cancelled'};
     if (packet.path === null && picked === null) return {outcome:'cancelled'};
@@ -212,7 +213,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     if (!loaded || signal.aborted || input === null) return {outcome:'cancelled'};
     const filename = input.trim();
     if (!filename || filename.includes('/') || filename === '.' || filename === '..') throw Error('Enter a project file name.');
-    const suffix = filename.toLowerCase().endsWith(extension) ? '' : extension;
+    const suffix = extensions.some(suffix=>filename.toLowerCase().endsWith(suffix)) ? '' : extension;
     return {outcome:'destination', path:projectPath((folder === '/' ? '' : folder.slice(1) + '/') + filename + suffix)};
   }
 
@@ -301,7 +302,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
       url.searchParams.set('profile', context.owner);
     }
     if (forceWebGL) url.searchParams.set('webgl', '1');
-    storage = createCraftStorage({name, extension, files:context.files, operations:host.documentOperations, valid});
+    storage = createCraftStorage({name, extension, legacyExtensions, files:context.files, operations:host.documentOperations, valid});
     native = connectCraftAccount(frame, {
       app, name, url, signal:abort.signal, originalStore, onSave:packet => void save(packet), onDialog:handleDialog,
       onLocalFile:deviceImport ? launchLocal : undefined,

@@ -1,6 +1,6 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 export function accountFileApp(path, sourceApp) {
-  if (['wordcraft','pdfcraft','gridcraft','deckcraft','photocraft','vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft'].includes(sourceApp)) return sourceApp;
+  if (['wordcraft','pdfcraft','gridcraft','deckcraft','photocraft','vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft'].includes(sourceApp)) return sourceApp;
   if (/[.](docx|dotx|odt|rtf)$/i.test(path)) return 'wordcraft';
   if (/[.]pdf$/i.test(path)) return 'pdfcraft';
   if (/[.]xlsx$/i.test(path)) return 'gridcraft';
@@ -17,6 +17,7 @@ export function accountFileApp(path, sourceApp) {
   if (/[.]dxf$/i.test(path)) return 'cadcraft';
   if (/[.]tcraft$/i.test(path)) return 'texturecraft';
   if (/[.]mcraft$/i.test(path)) return 'materialcraft';
+  if (/[.](sc|solidcraft|solvecraft)$/i.test(path)) return 'solidcraft';
   if (/[.]sketchcraft$/i.test(path)) return 'sketchcraft';
   return 'text';
 }
