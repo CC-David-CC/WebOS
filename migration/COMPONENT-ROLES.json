@@ -16,7 +16,8 @@
     "P": "Planned model core; no completed app",
     "X": "Research prototype; no completed browser app",
     "T": "App template",
-    "H": "Unused historical source"
+    "H": "Unused historical source",
+    "Q": "Scoped release qualified on the current hosted Desktop."
   },
   "components": [
     {
@@ -508,10 +509,10 @@
       "category": "Creative and media apps",
       "priority": 3,
       "purpose": "Material authoring",
-      "interfaces": "Browser WASM; node/evaluation/rendering source; file/host integration to qualify",
+      "interfaces": "Browser WASM, native material graph editing, account storage and recovery",
       "recipe": "craft-web",
-      "state": "S",
-      "gap": "Not build-qualified in this source-only pass.",
+      "state": "Q",
+      "gap": "Live on ksu.codes. Signed tests verified graph edits, embedded bitmap fidelity, account Save and Save As, recovery, native Undo and fresh-browser reopening.",
       "path": "apps/materialcraft"
     },
     {
@@ -739,10 +740,10 @@
       "category": "Engineering and developer apps",
       "priority": 3,
       "purpose": "SketchCraft push/pull 3D modeling",
-      "interfaces": "React and three.js interface; Rust modeling commands; native Tauri shell and local browser bridge",
+      "interfaces": "React/Vite and Rust/WASM modeling, account storage and scoped operations",
       "recipe": "native",
-      "state": "B",
-      "gap": "Queued after the initial Craft apps. WebOS hosting, account storage, recovery and browser qualification remain.",
+      "state": "Q",
+      "gap": "Live on ksu.codes. Signed tests verified native push/pull, account Save and Save As, recovery, native Undo and editable fresh-browser reopening.",
       "path": "apps/sketchcraft"
     },
     {
@@ -783,10 +784,10 @@
       "category": "Engineering and developer apps",
       "priority": 3,
       "purpose": "Tangency Labs community solid modeling app",
-      "interfaces": "Browser WASM; independent upstream fork; host/file integration to qualify",
+      "interfaces": "Browser WASM, native parametric modeling, account storage and scoped operations",
       "recipe": "craft-web",
-      "state": "S",
-      "gap": "Not build-qualified in this source-only pass.",
+      "state": "Q",
+      "gap": "Live on ksu.codes. Signed tests verified both cornered fillets, account Save and Save As, recovery, native Undo and editable fresh-browser reopening.",
       "path": "apps/solidcraft"
     },
     {

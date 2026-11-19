@@ -7,8 +7,7 @@ Undo/Redo. The production component was built on R730 and verified after transfe
 laptop. Its 64,861,240-byte archive has SHA-256
 `071cb3d5f8f583d63f64b29c382befe9573f984aec04045f7022b4345214c815`.
 All 23 content files match the commit-bound build manifest.
-The release owner still needs to qualify the assembled browser application
-and verify it on ksu.codes. MaterialCraft and SketchCraft qualify independently.
+The signed account suite reopened all four fillet fixtures with the expected geometry. SolidCraft is live in release `22b0211e018ae27561ce943a666fb730f795a07e3c016bd084c77d415fb51f0f`. [Release checks and rollback](CRAFT-INTEGRATION-LOG.md#solidcraft-release-on-ksucodes)
 
 ## Public SolidCraft fillet contribution
 

@@ -305,6 +305,8 @@ DXF before reopening it in a fresh account context.
 
 ## Remaining three apps when the rollout resumes
 
+**Completed.** All three shipped individually. The [release log](CRAFT-INTEGRATION-LOG.md#materialcraft-release-on-ksucodes) records their source commits, browser checks and rollbacks. The plan below is the historical assignment.
+
 The recommended first release is MaterialCraft. SketchCraft implementation
 and SolidCraft geometry diagnosis can proceed concurrently on independent
 branches. Release the next qualified app as soon as its own checks pass.

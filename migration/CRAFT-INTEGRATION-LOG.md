@@ -1198,3 +1198,11 @@ The exact package passed 108 Chromium checks, including MaterialCraft graph edit
 Component `f40e10b06079`, classic Desktop `8f6167ea46bc`, packaged parent `05064e22`. Release `322d3e715975f22dd16b5eb5a20d1c71b7b8f214f8ee29616ab18115d3cd9a5e` rolls back to the MaterialCraft release recorded above. Hosted verification matched 747 files and confirmed the browser engine started. All 59 SketchCraft package files matched their component receipt.
 
 The exact assembled release passed 107 Chromium checks. The native scenario drew a rectangle, push/pulled it three metres, saved two independent server files, recovered later edits and verified agent Undo. A fresh signed browser reopened a saved solid from Files and confirmed another revision. Additional tests covered MaterialCraft, Desktop, Office, Text, PdfCraft and WordCraft.
+
+## SolidCraft release on ksu.codes
+
+SolidCraft is the eighteenth enabled Craft editor. Component `71a573e234418b8f30106124505aabaaa1aac287`, Desktop `052d22065fb0` and packaged parent `a8a17cbc1c953997392db830598b745107b988f2` produced release `22b0211e018ae27561ce943a666fb730f795a07e3c016bd084c77d415fb51f0f`. The immediate rollback is the SketchCraft release `322d3e715975f22dd16b5eb5a20d1c71b7b8f214f8ee29616ab18115d3cd9a5e`.
+
+The exact package passed 225 Chromium checks. Two fillet regressions and two controls reopened through Files with the expected feature counts, solid counts and volumes. The signed account suite covered native parametric editing and Undo, confirmed Save and Save As, existing-window activation, draft recovery and a later revision from a fresh browser. Saved SolidCraft models can take up to 180 seconds to reconstruct. The previous 30-second deadline rejected valid models.
+
+Hosted verification matched 773 files, loaded the browser module and started the native editor on ksu.codes. The release check also verified beta, backend identity and service continuity. Private receipts are in `solidcraft-71a573e23441-account-package-r2/` beside the rollout checkpoint. The original 18-app milestone is complete. PCBCraft and FieldCraft remain organized source, with pcbcraft-app providing PCBCraft packaging.
