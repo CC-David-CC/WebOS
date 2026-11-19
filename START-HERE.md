@@ -26,6 +26,8 @@
 
 # WebOS — site integration from organized source
 
+The [public GitHub release plan](migration/GITHUB-PUBLIC-RELEASE.md) identifies the owner, publication sequence, private status ledger and clean-machine verification.
+
 Source organization is complete. Continue site integration from the 18
 independent Craft repositories under `apps/`. The user approved rolling
 deployments to ksu.codes as each app passes its release checks. Use the
