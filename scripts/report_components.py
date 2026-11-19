@@ -15,6 +15,7 @@ RECIPES = {
     'python-js': ('Owned Python package and browser modules', 'scripts/bootstrap_backend.py'),
     'python': ('Owned Python package', None),
     'craft-web': ('Upstream Cargo/browser packaging; parent supplies shared fonts', 'scripts/craft_cargo.py'),
+    'pcb-web-package': ('Upstream PCBCraft browser assembly script', 'apps/pcbcraft-app/assemble.sh'),
     'cargo': ('Shared Cargo workspace or workflow source', None),
     'native': ('Owned native/engine build definitions', None),
     'model': ('JavaScript model/library source; component package test command', None),

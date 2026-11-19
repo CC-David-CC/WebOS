@@ -1,3 +1,7 @@
+> **Current Craft inventory** — 21 independent Craft repositories under `apps/` represent 20 applications. PCBCraft and FieldCraft join the queue after the original 18. The third addition, pcbcraft-app, owns the upstream browser packaging for PCBCraft. See the [integration matrix](migration/CRAFT-INTEGRATION-MATRIX.md) for paths and status.
+>
+> MaterialCraft is live, bringing the original rollout to 16 of 18. SketchCraft is next in assembled browser qualification. SolidCraft is held for both variable-radius fillets and its release checks.
+
 > **User scope decision — all 18 Craft integrations (2026-11-18 UTC)**
 >
 > All 18 selected Craft apps are integration targets, including SketchCraft.
@@ -47,17 +51,10 @@ TextureCraft is live in release
 It is the 15th enabled Craft app. A fresh account browser reopened editable
 paint tiles and saved a later revision. CADCraft is the immediate rollback.
 See the [TextureCraft release record](migration/CRAFT-INTEGRATION-LOG.md#texturecraft-release-on-ksucodes).
-The remaining three integrations are active. MaterialCraft’s production browser
-component passed package verification at commit `0d15d6c6ecca`. The next
-gate is its signed account workflow in the assembled classic Desktop.
-SketchCraft’s browser integration and SolidCraft’s geometry tests run in
-parallel. See the [branch plan](migration/CRAFT-BRANCH-PLANS.md#remaining-three-apps-when-the-rollout-resumes)
-and the [SolidCore cases](migration/SOLIDCORE-HANDOFF.md).
-
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft,
 LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft,
-TextureCraft and Help.
+TextureCraft, MaterialCraft and Help.
 PdfCraft's untouched blank closes quietly and can
 still be explicitly saved. Its top-right Discord shortcut is removed; About,
 community/source links and contributor/model credits remain.

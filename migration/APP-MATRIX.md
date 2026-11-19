@@ -1,6 +1,6 @@
 # WebOS source and application matrix
 
-All locations are relative to `/home/dflanag3/Projects/WebOS/`. Each row is one independent Git repository selected by the parent. **125 source owners across 86 app repositories and 39 supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template.
+All locations are relative to `/home/dflanag3/Projects/WebOS/`. Each row is one independent Git repository selected by the parent. **128 source owners across 89 repositories under apps/ and 39 supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template.
 
 The original Desktop/Workspace viewer is `platform/desktop/active-system/`. All 92 files matched the captured original at source correction. Later authorized test-site integration changes bootstrap/account/app wiring; CSS, reference data and artwork remain unchanged. The unsolicited replacement is removed. See deploy/VIEWER-TEST.md for the scoped running composition; this inventory is not an all-app deployment claim.
 
@@ -36,11 +36,11 @@ Every row has source on disk. The state distinguishes what remains before produc
 | WebOS desktop and essential apps | 6 |
 | Office and document apps | 7 |
 | Creative and media apps | 18 |
-| Engineering and developer apps | 18 |
+| Engineering and developer apps | 20 |
 | Optional execution environments | 3 |
 | Shared browser tools and engines | 19 |
 | Shared native and guest engines | 5 |
-| Craft shared source, assets and build tools | 5 |
+| Craft shared source, assets and build tools | 6 |
 | Optional platform services and policy | 2 |
 | App templates | 1 |
 | Games and interactive activities | 28 |
@@ -115,12 +115,14 @@ Every row has source on disk. The state distinguishes what remains before produc
 | P3 / S | data-explorer — CSV/TSV exploration, SQL and visualization | [apps/data-explorer/](../apps/data-explorer/) | Account data/results files; browser DuckDB-WASM and Perspective workers; no separate DB server | [index.mjs](../apps/data-explorer/index.mjs)<br>Recipe: js | Not build-qualified in this source-only pass. |
 | P3 / S | digital-logic — Digital circuit simulation | [apps/digital-logic/](../apps/digital-logic/) | Account logic JSON files; browser DigitalJS graph/editor | [index.mjs](../apps/digital-logic/index.mjs)<br>Recipe: js | Not build-qualified in this source-only pass. |
 | P3 / S | electronics-design — Breadboard/schematic/PCB editor adapter | [apps/electronics-design/](../apps/electronics-design/) | Account design files; per-window upstream editor frame | [index.mjs](../apps/electronics-design/index.mjs)<br>[prepare.py](../apps/electronics-design/prepare.py)<br>Recipe: js | Not build-qualified in this source-only pass. |
+| P3 / B | fieldcraft — Structural, thermal and fluid simulation | [apps/fieldcraft/](../apps/fieldcraft/) | Modeler and solver with a Rust/WASM browser target | [apps/fieldcraft-web/Cargo.toml](../apps/fieldcraft/apps/fieldcraft-web/Cargo.toml)<br>[apps/fieldcraft-web/index.html](../apps/fieldcraft/apps/fieldcraft-web/index.html)<br>Recipe: cargo | Queued for browser hosting, account storage and workflow qualification. |
 | P3 / S | gcode-preview — G-code visualization | [apps/gcode-preview/](../apps/gcode-preview/) | Account G-code files; browser worker/rendering | [index.mjs](../apps/gcode-preview/index.mjs)<br>Recipe: js | Not build-qualified in this source-only pass. |
 | P3 / S | grid-tools — Kiri:Moto slicer and Mesh:Tool mesh editor; two visible tools | [apps/grid-tools/](../apps/grid-tools/) | Account workspace/mesh files; lazy Grid.Space package; two launch entries in one upstream project | [index.mjs](../apps/grid-tools/index.mjs)<br>[prepare.py](../apps/grid-tools/prepare.py)<br>Recipe: js | Not build-qualified in this source-only pass. |
 | P3 / S | jsketcher — Original JSketcher fork, distinct from ACAD | [apps/jsketcher/](../apps/jsketcher/) | Standalone CAD browser build; OCCT interpreter dependency; integration separate from ACAD | [package.json](../apps/jsketcher/package.json)<br>[README.md](../apps/jsketcher/README.md)<br>Recipe: cad | Not build-qualified in this source-only pass. |
 | P3 / I | microduck — Robotics simulation and policy viewer | [apps/microduck/](../apps/microduck/) | Account project files; MuJoCo/ONNX inputs; browser worker/rendering | [index.mjs](../apps/microduck/index.mjs)<br>Recipe: microduck | Rig/mesh/policy input hashes verified; exact MuJoCo no-eval WASM cold rebuild remains unresolved. A retained runtime is not complete source reproducibility. |
 | P3 / I | notebook — JupyterLite/Pyodide Python notebooks | [apps/notebook/](../apps/notebook/) | Account notebook/text files; browser Python kernel/worker; optional guest terminal is separate | [index.mjs](../apps/notebook/index.mjs)<br>[prepare.py](../apps/notebook/prepare.py)<br>Recipe: notebook | All manifest paths are covered by source, the locked reference and verified prepared inputs. Verify the full prepared runtime. |
 | P3 / X | pcb-design — Node PCB construction/rendering experiment | [apps/pcb-design/](../apps/pcb-design/) | Node prototype only; browser app and complete dependency notices absent | [package.json](../apps/pcb-design/package.json)<br>[README.md](../apps/pcb-design/README.md)<br>Recipe: prototype | Node research prototype only. Browser packaging and an exact transitive dependency license remain unresolved. |
+| P3 / B | pcbcraft — Printed circuit board design | [apps/pcbcraft/](../apps/pcbcraft/) | Board editor and command-line interface with a Rust/WASM browser target | [apps/pcbcraft-web/Cargo.toml](../apps/pcbcraft/apps/pcbcraft-web/Cargo.toml)<br>[apps/pcbcraft-web/index.html](../apps/pcbcraft/apps/pcbcraft-web/index.html)<br>Recipe: cargo | Queued for browser hosting, account storage and workflow qualification. |
 | P3 / S | pico-simulator — RP2040 firmware simulation | [apps/pico-simulator/](../apps/pico-simulator/) | Account firmware files; browser worker; simulated hardware/serial | [index.mjs](../apps/pico-simulator/index.mjs)<br>Recipe: js | Not build-qualified in this source-only pass. |
 | P3 / S | replicad — Programmatic CAD editor | [apps/replicad/](../apps/replicad/) | Account source/model files; app-owned worker and independent kernel | [index.mjs](../apps/replicad/index.mjs)<br>[model.mjs](../apps/replicad/model.mjs)<br>Recipe: js | Not build-qualified in this source-only pass. |
 | P3 / B | sketchcraft — SketchCraft push/pull 3D modeling | [apps/sketchcraft/](../apps/sketchcraft/) | React and three.js interface; Rust modeling commands; native Tauri shell and local browser bridge | [app/index.html](../apps/sketchcraft/app/index.html)<br>[Cargo.toml](../apps/sketchcraft/Cargo.toml)<br>Recipe: native | Queued after the initial Craft apps. WebOS hosting, account storage, recovery and browser qualification remain. |
@@ -178,6 +180,7 @@ Every row has source on disk. The state distinguishes what remains before produc
 | P2 / S | craft-libs — Shared Craft crates, formats, UI and host integration | [libraries/craft-libs/](../libraries/craft-libs/) | Used by multiple Craft apps; platform/atomic/doc/media/fonts/web-host and other crates; not just WordCraft | [Cargo.toml](../libraries/craft-libs/Cargo.toml)<br>[README.md](../libraries/craft-libs/README.md)<br>Recipe: cargo | Not build-qualified in this source-only pass. |
 | P2 / S | egui — Maintained shared Rust GUI fork | [libraries/egui/](../libraries/egui/) | Craft app rendering/UI dependency; browser/native targets | [Cargo.toml](../libraries/egui/Cargo.toml)<br>[README.md](../libraries/egui/README.md)<br>Recipe: cargo | Not build-qualified in this source-only pass. |
 
+| P3 / S | pcbcraft-app — Upstream PCBCraft web packaging | [apps/pcbcraft-app/](../apps/pcbcraft-app/) | Assembles the PCBCraft browser app and publishes the upstream Pages site | [assemble.sh](../apps/pcbcraft-app/assemble.sh)<br>Recipe: pcb-web-package | Packaging reference for the PCBCraft integration. |
 ## Optional platform services and policy
 
 | Priority / state | Component and purpose | Source location | Existing interfaces | Source/build entry | Remaining qualification or gap |
@@ -268,6 +271,7 @@ Recipes below identify source-owned instructions, not commands run during this p
 | python-js | Owned Python package and browser modules; [scripts/bootstrap_backend.py](../scripts/bootstrap_backend.py) |
 | python | Owned Python package; see the row’s owned build definitions and README |
 | craft-web | Upstream Cargo/browser packaging; parent supplies shared fonts; [scripts/craft_cargo.py](../scripts/craft_cargo.py) |
+| pcb-web-package | Upstream PCBCraft browser assembly script; [apps/pcbcraft-app/assemble.sh](../apps/pcbcraft-app/assemble.sh) |
 | cargo | Shared Cargo workspace or workflow source; see the row’s owned build definitions and README |
 | native | Owned native/engine build definitions; see the row’s owned build definitions and README |
 | model | JavaScript model/library source; component package test command; see the row’s owned build definitions and README |
@@ -286,6 +290,6 @@ The initial source pass checked metadata for 17 Craft workspaces, which was not 
 
 [Declared asset coverage](ASSET-COVERAGE.md) accounts for all Notebook paths and identifies 130 missing generated paths in the historical ACAD-host build. Notebook and CAD still need runtime and rebuild qualification. See the [Craft build input audit](CRAFT-BUILD-INPUTS.md) for pinned dependencies and assets for the 17 Craft apps.
 
-The parent also retains historical cross-system tests, deployment definitions and operator sources under `tests/legacy-*`, `deploy/legacy-*` and `migration/legacy-*`; they are not additional application repositories or an instruction to execute them. Private original recovery and unresolved historical records remain outside the source tree. This chart covers the 125 attached source owners, not every old recovery file.
+The parent also retains historical cross-system tests, deployment definitions and operator sources under `tests/legacy-*`, `deploy/legacy-*` and `migration/legacy-*`; they are not additional application repositories or an instruction to execute them. Private original recovery and unresolved historical records remain outside the source tree. This chart covers the 128 attached source owners, not every old recovery file.
 
 Refresh from reviewed roles and current source paths with `PYTHONDONTWRITEBYTECODE=1 python3 scripts/report_components.py --write`. Exact selected revisions remain in the parent Git links. [Machine-readable roles](COMPONENT-ROLES.json), [full source catalog](SOURCE-CATALOG.json) and [CSV matrix](APP-MATRIX.csv) accompany this chart.
