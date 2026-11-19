@@ -27,5 +27,7 @@ const commands = Object.freeze({
 export function mount(host) {
   return mountCraftAccount(host, {
     ...design, recovery, commands, reviewWindowClose:true, accountAutosave:false,
+    // Opening a saved part reconstructs its feature tree and initializes its viewport.
+    accountOpenTimeoutMs:180_000,
   });
 }

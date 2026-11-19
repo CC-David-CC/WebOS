@@ -3,7 +3,7 @@ const originalRequestPattern = /^[1-9][0-9]{0,19}$/;
 const saveFields = ['ticket', 'documentId', 'revision', 'path'];
 
 /** Connect a Craft editor to its own account window in the classic Desktop. */
-export function connectCraftAccount(frame, {app, name, url, signal, originalStore, onSave, onDialog, onLocalFile, onCloseIntent, onProjectState, onUnavailable}) {
+export function connectCraftAccount(frame, {app, name, url, signal, originalStore, accountOpenTimeoutMs = 30_000, onSave, onDialog, onLocalFile, onCloseIntent, onProjectState, onUnavailable}) {
   const prefix = app + ':account-';
   const desktop = frame.ownerDocument.defaultView;
   if (url.origin !== desktop.location.origin) throw Error(`${name} requires the desktop origin.`);
@@ -81,6 +81,12 @@ export function connectCraftAccount(frame, {app, name, url, signal, originalStor
       generation = data.generation;
     }
     if (!generation || generation !== data.generation) return;
+    // Native startup may fail while constructing the renderer, after ready and
+    // before started. Only the active document can fail its pending open.
+    if (kind === 'failed' && waiting.has('started')) {
+      unavailable(typeof data.message === 'string' && data.message ? data.message : `${name} could not open the project.`);
+      return;
+    }
     const entry = waiting.get(kind);
     if (entry?.matches(data)) {
       if (kind === 'save-settled' && data.projectState) {
@@ -159,8 +165,11 @@ export function connectCraftAccount(frame, {app, name, url, signal, originalStor
     if (originalStore && originalAccess) throw Error(`This ${name} editor already owns a project.`);
     if (originalStore) originalAccess = {editable:false};
     try {
+      let timeout = 30_000;
+      if (importName !== null) timeout = null; // Device import may ask the user a question.
+      else if (bytes !== null) timeout = accountOpenTimeoutMs;
       const packet = await exchange('start', {requestId, path, bytes, newSettings, recover, importName}, bytes ? [bytes] : [],
-        'started', data => data.requestId === requestId, importName === null ? 30_000 : null);
+        'started', data => data.requestId === requestId, timeout);
       if (packet.ok !== true) throw Error(packet.message || `${name} could not open the project.`);
       if (originalAccess) originalAccess.editable = true;
       return packet;

@@ -1572,8 +1572,11 @@ async function solidcraftDispatch(browser,page,credentials) {
       await file(fresh.page,freshFiles,'open',{path:filePath});
       const handle=await fresh.page.waitForFunction((view,title)=>[...document.querySelectorAll(view)].find(window=>
         window.querySelector('.caption-text')?.textContent===title+' — SolidCraft' &&
-        window.querySelector('iframe:not([inert])'))?.dataset.window,timeout,appWindow,filename);
+        window.appView?.ready)?.dataset.window,timeout,appWindow,filename);
       const id=await handle.jsonValue();
+      // Let the actual bounded open report success or the reason it failed.
+      await fresh.page.$eval(selector(id),async window=>{ await window.appView.ready; });
+      await fresh.page.waitForSelector(selector(id)+' iframe:not([inert])',timeout);
       const approval=await grant(fresh.page,id);
       const doc=await edit(fresh.page,approval,'document.inspect');
       assert.equal(doc.featureCount,part.featureCount);
