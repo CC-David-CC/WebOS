@@ -1,17 +1,28 @@
 # SolidCore repair discussion
 
-SolidCraft remains disabled on ksu.codes. Keep its WebOS account branch and
-its local qualification evidence available while researching the geometry.
-TextureCraft is live as app 15 of 18. The general rollout is paused at the
-MaterialCraft native checkpoint. SketchCraft remains queued.
+The two required cornered radius-law regressions passed on WebOS commit
+`71a573e234418b8f30106124505aabaaa1aac287`. The tests verified the rolling-ball
+geometry, retained control-parameter identities, native save/reopen and
+Undo/Redo. The production component was built on R730 and verified after transfer to the
+laptop. Its 64,861,240-byte archive has SHA-256
+`071cb3d5f8f583d63f64b29c382befe9573f984aec04045f7022b4345214c815`.
+All 23 content files match the commit-bound build manifest.
+The release owner still needs to qualify the assembled browser application
+and verify it on ksu.codes. MaterialCraft and SketchCraft qualify independently.
+
+## Public SolidCraft fillet contribution
+
+[SolidCraft PR #19314](https://github.com/tangency-labs/solidcraft/pull/19314) proposes the cornered-radius repair against Tangency Labs main `b695a9b35294`. The source branch is `CC-David-CC/solidcraft:fix/route-cornered-variable-fillets`, commit `db35c5adead7`. The five focused engine, kernel and adapter tests and workspace Clippy passed on that base. The WebOS account integration remains on `webos/solidcraft-account-fillet-repairs`. The PR description links a browser screenshot of the synthetic peak model from an evidence branch on the fork.
 
 ## Editor and kernel source
 
 SolidCraft is the parametric editor. Its `solidcore/` subtree contains the
 Rust B-rep kernel derived from NVIDIA SMLib. Tangency Labs' `smlib` repo is
 a C++ USD BRep fork. The standalone `solidcore` repository mirrors the Rust
-subtree. The pinned contribution instructions route kernel-only changes
-through SolidCraft's `kernel` branch.
+subtree. The current SolidCraft contribution guide on upstream main
+`b695a9b35294` sends both application and kernel pull requests to
+SolidCraft's `main` branch.
+[Upstream contribution guide](https://github.com/tangency-labs/solidcraft/blob/b695a9b352949f3d14c5ac47c6b8a8f97a15830d/CONTRIBUTING.md)
 [SolidCraft kernel source](../apps/solidcraft/solidcore/README.md)
 [Tangency Labs SMLib](https://github.com/tangency-labs/smlib)
 
@@ -59,7 +70,7 @@ one void to one material region and zero voids. The other 24 recorded
 observations match across builds, including all three reverse operand orders.
 The direct SM_API result establishes a reason to retain the patch on a
 review branch. A complete WASM build and ACAD browser regressions are still
-open before adopting this base. The Craft rollout remains paused.
+open before adopting this ACAD base.
 Private receipts and native probe source are under
 `smlib-tangency-replay-8eac63c4.RoVVkT/` beside the migration checkpoint.
 [Pinned Tangency release](https://github.com/tangency-labs/smlib/releases/tag/prebuilt-8eac63c439b2670ecffcc2d7beaf2242849463bf)
@@ -95,15 +106,33 @@ The original selected SolidCraft source at `a5b35abd133e` and the WebOS
 integration at `7b7716fba56c` reproduced the same four native cases. The
 local account candidate also passed six browser checks with a live editable
 parametric part, including confirmed Save and Save As, Files Open, draft
-recovery and fresh-browser editing. The current upstream test list still
-contains the four geometry cases.
+recovery and fresh-browser editing. The pinned upstream test list contains all four geometry cases. Its corrected-hole branch still reproduced all three fillet failures.
 [Pinned upstream test list](https://github.com/tangency-labs/solidcraft/blob/6afe1611c62691337933c5b0e57b528d8f1618b2/tests/KNOWN_FAILING_TESTS)
 
 | Case | Verified finding | Remaining work |
 |---|---|---|
-| `a_hole_wider_than_the_part_says_it_removes_all_of_it` | The 40 mm cutter through the 40 × 30 × 10 mm plate at (10, 10) leaves two solids where the bore touches the edge. Their combined volume is 4,031.9614 mm³. The native probe checked complete removal at 100 mm and restored a single solid at 5 mm. | Run the corrected upstream test on the pinned newer main. Decide whether to share the small test correction upstream. |
-| `inserting_variable_fillet_control_preserves_parameters_at_existing_positions` and `chord_and_variable_fillets` | Both encounter the cornered radius-law limitation documented in SolidCore issue #430. | Decide whether support for an explicit cornered law is useful enough to pursue. Preserve the requested law when evaluating a kernel change. [SolidCore issue](https://github.com/tangency-labs/solidcore/issues/430) |
-| `fillet_fit_taper_closes_to_a_point` | The 16 mm fitted fillet closes toward zero radius and reports status 1001. | Run `taper_closing_to_a_point_rounds_the_wedge` at the kernel boundary. The pinned fixture checks the same wedge with both `Fixes::None` and `Fixes::All`. If it passes, compare the feature's body, chosen edge, radius law and flags with the passing fixture. The direct fixture has yet to be run for this investigation. |
+| `a_hole_wider_than_the_part_says_it_removes_all_of_it` | The 40 mm cutter through the 40 × 30 × 10 mm plate at (10, 10) leaves two solids where the bore touches the edge. Their combined volume is 4,031.9614 mm³. The native probe checked complete removal at 100 mm and restored a single solid at 5 mm. The corrected test passed independently on both WebOS `189330449f8a` and newer upstream `7e6605729d14`. | Optional upstream submission of the test correction. |
+| `inserting_variable_fillet_control_preserves_parameters_at_existing_positions` and `chord_and_variable_fillets` | Both reproduce the cornered radius-law refusal documented in SolidCore issue #430. The 2 → 4 → 2 mm waist and the two-control-point law both have an abrupt slope change. The control-insertion test stops while creating the initial fillet. Refusal preserves the authored model and saved part. | Both original engine tests passed on WebOS `71a573e23441` after routing the unchanged controls to the vendored kernel. The inserted-control test also passed native save/reopen and Undo/Redo. [SolidCore issue](https://github.com/tangency-labs/solidcore/issues/430) |
+| `fillet_fit_taper_closes_to_a_point` | The direct kernel wedge test passed with both upstream fix settings, as did the zero-radius box controls and radius-law evaluation. SolidCraft’s constant 16 mm radius fails to build the corner. Its fit command propagates that failure before trying the taper. Explicitly applying the app’s own generated spline to the same edge succeeds and reduces volume from 42,000 to 41,245.7293 mm³. | WebOS `d34f4440a55f` passed the fitted-wedge test, adjacent taper tests, both hole cases and account save/recovery. The same repair passed the wedge test on pinned newer upstream. |
+
+The pinned Rust kernel already splits radius-law faces at their corners.
+The WebOS and newer upstream kernel probes each applied four degree-one
+laws with the original control positions, with both upstream fix settings.
+Level 2 B-rep checks passed in all 16 cases. The 2 → 4 → 2 mm peak, its
+3 mm revision, the two-control law and the inserted-control law yielded
+8, 8, 9 and 10 faces. Removed volumes agreed with an independent rolling-ball
+integration to within 0.0006 mm³. SolidCraft’s adapter had an explicit guard
+that returned an error before passing such laws to this kernel. The
+application-level repair removes that obsolete guard.
+
+For all three fillet refusals in the original WebOS candidate, a native
+account-container probe checked the complete authored document, measured
+volume and clean state before and after the command. A second attempt from an already-dirty part also kept its pending edit and dirty flag. Opening a second
+save produced the same document as opening the first. The part accepted
+a subsequent edit and its recovery draft reopened. The in-memory revision
+advanced by two on rejection. The account adapter reports dirtiness
+separately. Private receipts are under `solidcraft-geometry-resume.qS91vLP4/`
+in the checkpoint directory.
 
 The ACAD through-hole planner rejected that same cutter at its clearance
 check with `HOLE_OUTSIDE_PROFILE`. A smaller cutter at the same position
@@ -145,13 +174,20 @@ workflows through its command stack separately.
 
 | Branch in `apps/solidcraft` | Pin | Purpose |
 |---|---|---|
-| `main` | `6afe1611c626` | Fast-forwarded to the verified Tangency Labs main |
-| `webos/solidcraft-account-part` | `7b7716fba56c` | Paused WebOS integration |
+| `main` | `b695a9b35294` | Fast-forwarded to the verified Tangency Labs main used for the corner-law PR |
+| `webos/solidcraft-account-part` | `7b7716fba56c` | Earlier WebOS account candidate |
 | `fix/tangent-hole-regression` | `7e6605729d14` | Hole-test correction based on upstream main |
 | `webos/solidcraft-tangent-hole-review` | `189330449f8a` | Same correction based on the WebOS integration |
+| `webos/solidcraft-zero-tip` | `d34f4440a55f` | Verified tapered-wedge repair on the WebOS integration |
+| `webos/solidcraft-account-fillet-repairs` | `71a573e23441` | Final geometry candidate with all 13 focused native tests passing |
+| `fix/route-cornered-variable-fillets` | `db35c5adead7` | Six-file corner-law fix based directly on Tangency `b695a9b35294`; five native regressions and whole-workspace Clippy passed |
 
 The private checkpoint linked from [START-HERE](../START-HERE.md) names the
 native differential receipts, archived SolidCraft candidate, exact hole
 probe, review patches and ACAD comparison. The two review commits are local.
-The native geometry probe used our pinned engine. Validation on the newer
-upstream binary is still open.
+The native geometry probe used the pinned engine. Fresh isolated R730 builds
+ran the corrected hole test on both branches. Each selected one test and passed.
+The four generated browser regression models live in
+`solidcraft-geometry-resume.qS91vLP4/law-fixtures/` under the private checkpoint.
+Their manifest records each model’s SHA-256, native volume in mm³, feature
+count and solid count after saving and reopening it.
