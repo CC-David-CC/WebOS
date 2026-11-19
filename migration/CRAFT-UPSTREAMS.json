@@ -116,6 +116,21 @@
       "path": "tooling/craft-common-actions",
       "upstream": "https://github.com/storytold/craft-common-actions.git",
       "trackingBranch": "main"
+    },
+    {
+      "path": "apps/pcbcraft",
+      "upstream": "https://github.com/tangency-labs/pcbcraft.git",
+      "trackingBranch": "main"
+    },
+    {
+      "path": "apps/fieldcraft",
+      "upstream": "https://github.com/tangency-labs/fieldcraft.git",
+      "trackingBranch": "develop"
+    },
+    {
+      "path": "apps/pcbcraft-app",
+      "upstream": "https://github.com/tangency-labs/pcbcraft-app.git",
+      "trackingBranch": "main"
     }
   ]
 }

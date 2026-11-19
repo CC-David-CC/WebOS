@@ -819,6 +819,40 @@
       "scope": "Existing source locations and declared recipes, not functional or build qualification."
     },
     {
+      "id": "fieldcraft",
+      "path": "apps/fieldcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [
+        "apps/fieldcraft-web/Cargo.toml",
+        "apps/fieldcraft-web/index.html"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".cargo",
+        ".github",
+        "apps",
+        "assets",
+        "crates",
+        "docs",
+        "packaging",
+        "scripts",
+        "skills",
+        "tests",
+        "tools",
+        "xtask"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
       "id": "figcraft",
       "path": "apps/figcraft",
       "group": "apps",
@@ -1654,6 +1688,56 @@
         "MIGRATION.md"
       ],
       "sourceDirectories": [],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pcbcraft",
+      "path": "apps/pcbcraft",
+      "group": "apps",
+      "kind": "upstream-craft-app",
+      "sourceEntries": [
+        "apps/pcbcraft-web/Cargo.toml",
+        "apps/pcbcraft-web/index.html"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [
+        "Cargo.lock",
+        "Cargo.toml"
+      ],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github",
+        "apps",
+        "crates",
+        "docs",
+        "examples",
+        "libraries",
+        "scripts",
+        "tools",
+        "vendor"
+      ],
+      "scope": "Existing source locations and declared recipes, not functional or build qualification."
+    },
+    {
+      "id": "pcbcraft-app",
+      "path": "apps/pcbcraft-app",
+      "group": "apps",
+      "kind": "component-source",
+      "sourceEntries": [
+        "assemble.sh"
+      ],
+      "packageEntrypoints": [],
+      "buildDefinitions": [],
+      "npmDependencies": [],
+      "documentation": [
+        "README.md"
+      ],
+      "sourceDirectories": [
+        ".github"
+      ],
       "scope": "Existing source locations and declared recipes, not functional or build qualification."
     },
     {

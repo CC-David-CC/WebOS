@@ -30,6 +30,7 @@ Source locations only. Component versions are selected by the parent Git links. 
 | excalidraw | `apps/excalidraw/` | `index.mjs` |
 | expression-puppet | `apps/expression-puppet/` | `index.mjs` |
 | falling-blocks | `apps/falling-blocks/` | `index.mjs`, `model.mjs` |
+| fieldcraft | `apps/fieldcraft/` | `apps/fieldcraft-web/Cargo.toml`, `apps/fieldcraft-web/index.html` |
 | figcraft | `apps/figcraft/` | `Cargo.lock`, `Cargo.toml` |
 | files | `apps/files/` | `apps/system/files/index.mjs` |
 | filmcraft | `apps/filmcraft/` | `Cargo.lock`, `Cargo.toml` |
@@ -56,6 +57,8 @@ Source locations only. Component versions are selected by the parent Git links. 
 | orbital-courier | `apps/orbital-courier/` | `index.mjs` |
 | owl-companion | `apps/owl-companion/` | `index.mjs` |
 | pcb-design | `apps/pcb-design/` | `package-lock.json`, `package.json` |
+| pcbcraft | `apps/pcbcraft/` | `apps/pcbcraft-web/Cargo.toml`, `apps/pcbcraft-web/index.html` |
+| pcbcraft-app | `apps/pcbcraft-app/` | `assemble.sh` |
 | pdf-viewer | `apps/pdf-viewer/` | `index.mjs` |
 | pdfcraft | `apps/pdfcraft/` | `Cargo.lock`, `Cargo.toml` |
 | personal-template | `apps/personal-template/` | `index.mjs` |

@@ -12,6 +12,9 @@ ORIGINAL_ENTRIES = {
     'apps/calculator': ['apps/system/calculator/index.mjs'],
     'apps/help': ['apps/system/help/index.mjs'],
     'apps/files': ['apps/system/files/index.mjs'],
+    'apps/fieldcraft': ['apps/fieldcraft-web/Cargo.toml', 'apps/fieldcraft-web/index.html'],
+    'apps/pcbcraft': ['apps/pcbcraft-web/Cargo.toml', 'apps/pcbcraft-web/index.html'],
+    'apps/pcbcraft-app': ['assemble.sh'],
     'apps/sketchcraft': ['app/index.html', 'Cargo.toml'],
 }
 PLANNED = {'math-path', 'fraction-farm', 'word-weaver', 'market-math', 'rule-detective', 'pocket-conquest', 'tile-islands'}

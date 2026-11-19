@@ -1393,6 +1393,39 @@
       "state": "S",
       "gap": "Not build-qualified in this source-only pass.",
       "path": "tooling/craft-common-actions"
+    },
+    {
+      "id": "pcbcraft",
+      "category": "Engineering and developer apps",
+      "priority": 3,
+      "purpose": "Printed circuit board design",
+      "interfaces": "Board editor and command-line interface with a Rust/WASM browser target",
+      "recipe": "cargo",
+      "state": "B",
+      "gap": "Queued for browser hosting, account storage and workflow qualification.",
+      "path": "apps/pcbcraft"
+    },
+    {
+      "id": "fieldcraft",
+      "category": "Engineering and developer apps",
+      "priority": 3,
+      "purpose": "Structural, thermal and fluid simulation",
+      "interfaces": "Modeler and solver with a Rust/WASM browser target",
+      "recipe": "cargo",
+      "state": "B",
+      "gap": "Queued for browser hosting, account storage and workflow qualification.",
+      "path": "apps/fieldcraft"
+    },
+    {
+      "id": "pcbcraft-app",
+      "category": "Craft shared source, assets and build tools",
+      "priority": 3,
+      "purpose": "Upstream PCBCraft web packaging",
+      "interfaces": "Assembles the PCBCraft browser app and publishes the upstream Pages site",
+      "recipe": "pcb-web-package",
+      "state": "S",
+      "gap": "Packaging reference for the PCBCraft integration.",
+      "path": "apps/pcbcraft-app"
     }
   ],
   "categoryOrder": [
