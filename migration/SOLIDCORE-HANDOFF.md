@@ -26,6 +26,13 @@ remains unverified.
 [ACAD direct SMLib provider](../apps/acad/modules/engine/raw-smlib/README.md)
 [Direct provider build pins and browser evidence](../apps/acad/test/raw-smlib-whole-void/README.md)
 
+The source comparison used NVIDIA `main` at `3fd5b9548d19`. Tangency Labs'
+C++ `smlib` main at `8eac63c439b2` was 665 commits ahead and zero behind.
+ACAD's direct binding and experimental kernel were six and eight commits
+ahead, respectively, and zero behind. The older `smlib-wasm` wrapper fork
+was two commits ahead of its own wrapper upstream `1ffd5708dd19`.
+[Public fork comparison](https://api.github.com/repos/NVIDIA-Omniverse/usd-brep/compare/3fd5b9548d19aa8c12c29bc9637a96d42a06f8a5...tangency-labs:main)
+
 ## What we proved
 
 The original selected SolidCraft source at `a5b35abd133e` and the WebOS
