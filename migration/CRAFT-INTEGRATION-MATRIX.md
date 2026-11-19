@@ -15,13 +15,12 @@ The on-disk Craft list now has **21 repositories covering 20 applications**. The
 
 | Stage | Count | Projects |
 |---|---:|---|
-| Enabled on ksu.codes | 16 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, TextureCraft, MaterialCraft |
-| Browser component qualified, assembled account checks pending | 1 | SketchCraft |
-| Release held for both variable-radius fillets and release qualification | 1 | SolidCraft |
+| Enabled on ksu.codes | 17 | WordCraft, PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft, LightCraft, DesignCraft, SoundCraft, FilmCraft, EffectCraft, CADCraft, TextureCraft, MaterialCraft, SketchCraft |
+| Both fillets pass natively, assembled browser qualification underway | 1 | SolidCraft |
 | Source organized for future integration | 2 | PCBCraft, FieldCraft |
 | Companion packaging source | 1 | pcbcraft-app |
 
-The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables Files, Text, Calculator and Help. MaterialCraft is the sixteenth Craft editor, packaged from parent `892f78b9f60f`. Hosted verification matched 686 files and loaded the WASM editor. TextureCraft is its immediate rollback. The [component matrix](APP-MATRIX.md) covers the full assembly.
+The [live launcher profile](https://ksu.codes/viewer-profile.json) also enables Files, Text, Calculator and Help. MaterialCraft is the sixteenth Craft editor, packaged from parent `892f78b9f60f`. Hosted verification matched 686 files and loaded the WASM editor. SketchCraft is now live at packaged parent `05064e22` and MaterialCraft is the immediate rollback. The [component matrix](APP-MATRIX.md) covers the full assembly.
 
 After the remaining Craft integrations, the next approved priority is Files
 previews. Load the original account file through Storage and render it in
@@ -96,7 +95,7 @@ for the acceptance contract.
 | Audio | [soundcraft](../apps/soundcraft/) at `e196254ee15f` | Multitrack audio projects | `soundcraft-web` | Live portable `.scraftz` workflow. Signed Chromium confirmed native track edits, Save and Save As, local recovery, reopening from Files, exact sample fidelity and playback through WebAudio. |
 | CAD | [cadcraft](../apps/cadcraft/) `webos/cadcraft-account-drawing` at `816d428e8a33` | Drafting and drawing documents | `cadcraft-web` | Live editable 2D DXF. Scoped native geometry and Undo, Save and Save As, local recovery, Files activation and a fresh-browser account round trip passed. |
 | CAD | [solidcraft](../apps/solidcraft/) `webos/solidcraft-account-part` at `7b7716fba56c` | Parametric solid modeling | `solidcraft-web` | Local account candidate. Hold release until both variable-radius fillet workflows and the exact release checks pass. |
-| CAD | [sketchcraft](../apps/sketchcraft/) at `f40e10b06079` | Push/pull 3D modeling | React/Vite and Rust/WASM | Browser component qualified. Assembled signed account and release checks are next. |
+| CAD | [sketchcraft](../apps/sketchcraft/) at `f40e10b06079` | Push/pull 3D modeling | React/Vite and Rust/WASM | Live. The exact signed workflow created and extruded geometry, verified account saves, Undo and recovery, and reopened the solid in a fresh browser. |
 | Materials and textures | [texturecraft](../apps/texturecraft/) `webos/texturecraft-account-project` at `3ada1e30108a` | Mesh painting and embedded texture data | `texturecraft-web` | Live. The tested account project kept the original mesh bytes, paint layers and editable tiles. Save, Save As, recovery and fresh-browser editing passed. Broader mesh, bake and export workflows still need qualification. |
 | Materials and textures | [materialcraft](../apps/materialcraft/) at `b41e57dc787b` | Procedural material graphs | `materialcraft-web` | Live. Native graph edits, account saves, recovery and a fresh browser reopen passed on the release candidate. |
 | Electronics | [pcbcraft](../apps/pcbcraft/) at `96f31b02442a` | Printed circuit board design | `apps/pcbcraft-web` | Source organized. Browser and account qualification pending. |

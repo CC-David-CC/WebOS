@@ -1,6 +1,6 @@
 > **Current Craft inventory** — 21 independent Craft repositories under `apps/` represent 20 applications. PCBCraft and FieldCraft join the queue after the original 18. The third addition, pcbcraft-app, owns the upstream browser packaging for PCBCraft. See the [integration matrix](migration/CRAFT-INTEGRATION-MATRIX.md) for paths and status.
 >
-> MaterialCraft is live, bringing the original rollout to 16 of 18. SketchCraft is next in assembled browser qualification. SolidCraft is held for both variable-radius fillets and its release checks.
+> SketchCraft is live, bringing the original rollout to 17 of 18. SolidCraft passed native checks on both variable-radius fillets and is in assembled browser qualification.
 
 > **User scope decision — all 18 Craft integrations (2026-11-18 UTC)**
 >
