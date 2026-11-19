@@ -1186,3 +1186,9 @@ The immediate rollback is CADCraft
 The host backup is `/var/backups/webos-texturecraft-3ada1e30108a-account-package`.
 The private `texturecraft-3ada1e30108a-account-package/` record contains
 the archive, build evidence, activation and hosted verification.
+
+## MaterialCraft release on ksu.codes
+
+Component `b41e57dc787b`, classic Desktop `8d4c793ff28a`, packaged parent `892f78b9f60f`. The release manifest SHA-256 is `1a15fa86c7c122beca2b856efd9f2eaee415b0c2883786faca423dbd74564f42`. The rollback release is TextureCraft `60cf68e83c32dc68684aff1dfde05da5dc493deb391784dd22faf4c13c11e581`.
+
+The exact package passed 108 Chromium checks, including MaterialCraft graph editing, server-confirmed Save and Save As, recovery, Files reopen in a fresh browser and scoped Undo. Hosted verification matched all 686 files and confirmed native WASM startup. The private checkpoint links the suite receipts, archive verification, rollback and operator report.

@@ -11,6 +11,10 @@ The local ledger is in `../.webos-migration/github-publication.MJn2SZsB/` relati
 - The GitHub CLI on box-git creates repositories. Its API identity and the existing Git SSH identity both verified as `CC-David-CC`. Git sends the pack through box-git using its existing SSH identity. Credentials stay on box-git. The ledger contains the prepared creation, inventory, audit and push commands.
 - The initial pin snapshot predates some active Craft work. Reconcile it with the chosen final parent and its exact gitlinks before calling the release complete. Review intended WIP branches separately. Staged changes, untracked files and uncommitted drafts require explicit selection for publication.
 
+The current assembly pins 128 components plus the parent. The original 126-destination ledger predates the three Tangency additions. The parent already references the public upstream commit for each of those three. PCBCraft and FieldCraft own editor code. The third repository, pcbcraft-app, owns PCBCraft browser packaging. Keep future WebOS edits on component branches and switch a parent URL to the owner's fork once that exact pin is published there.
+
+SolidCraft is an independent app in the same publication plan. The owner authorized a separate upstream SolidCraft PR for the two cornered-radius workflows after native tests on upstream main. Keep upstream contributions on a focused branch and preserve WebOS account changes on the integration branch. Record a verified GitHub fork as the component destination so the two workflows use the same repository.
+
 ## Publishing each component
 
 1. Record the exact source commits and intended refs. For Craft forks, retain the upstream-tracking main or master and publish the maintained WebOS branch separately. Preserve original histories locally. Inspect nested submodules, Git LFS objects and required build assets for availability on another machine.
