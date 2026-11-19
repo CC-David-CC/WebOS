@@ -19,6 +19,7 @@ const graphicsEngines = [
   {id:'effectcraft', name:'EffectCraft', extension:'.ecproj'},
   {id:'cadcraft', name:'CADCraft', extension:'.dxf'},
   {id:'texturecraft', name:'TextureCraft', extension:'.tcraft'},
+  {id:'solidcraft', name:'SolidCraft', extension:'.sc', legacyExtensions:['.solidcraft','.solvecraft']},
   {id:'sketchcraft', name:'SketchCraft', extension:'.sketchcraft', externalModule:true},
   {id:'materialcraft', name:'MaterialCraft', extension:'.mcraft'},
 ].flatMap(engine => {
@@ -29,7 +30,7 @@ const graphicsEngines = [
 });
 const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site',
   '--photocraft-site','--test-photocraft-site',
-  ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
+  ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
   throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
 }
@@ -130,7 +131,7 @@ const servicesSource = officeEngines.length || photoSite || graphicsEngines.leng
       ...officeEngines.map(({id,name})=>`import * as ${id} from '@webos/${id}/recovery';export const restore${id[0].toUpperCase()+id.slice(1)}Recovery=createOfficeRecovery('${id}','${name}',${id}).restore;`),
       ...(photoSite ? ["import {photoRecovery} from './assembly/viewer/photocraft-app.mjs';export const restorePhotocraftRecovery=photoRecovery.restore;"] : []),
       ...(graphicsEngines.length ? ["import {createCraftRecovery} from './assembly/viewer/craft-account-recovery.mjs';"] : []),
-      ...graphicsEngines.map(({id,name,extension})=>`export const restore${name[0]+id.slice(1)}Recovery=createCraftRecovery(${JSON.stringify({app:id,name,extension})}).restore;`),
+      ...graphicsEngines.map(({id,name,extension,legacyExtensions})=>`export const restore${name[0]+id.slice(1)}Recovery=createCraftRecovery(${JSON.stringify({app:id,name,extension,legacyExtensions})}).restore;`),
     ].join('\n'),
     resolveDir: root, sourcefile: '<account-services>', loader: 'js',
   },
@@ -157,6 +158,7 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
     id==='filmcraft'?"export {mount} from './assembly/viewer/filmcraft-app.mjs';":
     id==='effectcraft'?"export {mount} from './assembly/viewer/effectcraft-app.mjs';":
     id==='cadcraft'?"export {mount} from './assembly/viewer/cadcraft-app.mjs';":
+    id==='solidcraft'?"export {mount} from './assembly/viewer/solidcraft-app.mjs';":
     id==='sketchcraft'?"export {mount} from './assembly/viewer/sketchcraft-app.mjs';":
     id==='materialcraft'?"export {mount} from './assembly/viewer/materialcraft-app.mjs';":
     id==='texturecraft'?"export {mount} from './assembly/viewer/texturecraft-app.mjs';":

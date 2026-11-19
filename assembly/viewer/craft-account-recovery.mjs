@@ -2,10 +2,10 @@ import {createRecoveryStore, createRecoveryJournal} from '@webos/runtime/local-r
 import {createOfficeRecovery} from './office-recovery.mjs';
 import {MAX_BYTES, craftProjectPath} from './craft-account-storage.mjs';
 
-export function createCraftRecovery({app, name, extension}) {
+export function createCraftRecovery({app, name, extension, legacyExtensions}) {
   function capture(value) {
     const {path, revision, bytes, nativeRevision} = value;
-    if (path !== null) craftProjectPath(path, extension);
+    if (path !== null) craftProjectPath(path, extension, legacyExtensions);
     if (!(path === null ? revision === null : typeof revision === 'string' && /^[0-9a-f]{64}$/.test(revision)) ||
         typeof nativeRevision !== 'string' || !/^[0-9]{1,20}$/.test(nativeRevision) ||
         !(bytes instanceof Blob) || bytes.size < 8 || bytes.size > MAX_BYTES) {
