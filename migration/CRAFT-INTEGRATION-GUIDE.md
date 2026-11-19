@@ -1,4 +1,4 @@
-> **Active rollout — engineering editors.** The original 18 apps are live. PCBCraft and FieldCraft bring the target to 20 distinct applications. Build PCBCraft from `apps/pcbcraft/apps/pcbcraft-web`. The separate `pcbcraft-app` repository packages the upstream standalone site. [Engineering rollout checkpoint](CRAFT-ENGINEERING-ROLLOUT.md)
+> **20 of 20 distinct Craft apps are live on ksu.codes.** PCBCraft is available under Electronics. FieldCraft is available under CAD. The 21st source repository, `apps/pcbcraft-app`, packages the upstream standalone PCBCraft site. WebOS builds the editor directly from `apps/pcbcraft/apps/pcbcraft-web`. [Engineering integration evidence](CRAFT-ENGINEERING-ROLLOUT.md)
 
 > **Current product scope, 2026-11-18 UTC.** Integrate all 18 selected Craft apps, including SketchCraft.
 > The [integration matrix](CRAFT-INTEGRATION-MATRIX.md) tracks live and queued

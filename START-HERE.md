@@ -1,8 +1,4 @@
-> **Current work** — Qualify PCBCraft and FieldCraft for rolling deployment to ksu.codes. [Engineering rollout and acceptance criteria](migration/CRAFT-ENGINEERING-ROLLOUT.md)
-
-> **Current Craft inventory** — 21 independent Craft repositories under `apps/` represent 20 applications. PCBCraft and FieldCraft join the queue after the original 18. The third addition, pcbcraft-app, owns the upstream browser packaging for PCBCraft. See the [integration matrix](migration/CRAFT-INTEGRATION-MATRIX.md) for paths and status.
->
-> **18 of 20 distinct Craft apps are live.** All original 18 Craft applications are live on ksu.codes. SolidCraft passed both fillet regressions in the browser. Hosted release `22b0211e018ae27561ce943a666fb730f795a07e3c016bd084c77d415fb51f0f` matched all 773 files and started the native editor. [Release and rollback](migration/CRAFT-INTEGRATION-LOG.md#solidcraft-release-on-ksucodes)
+> **20 of 20 distinct Craft apps are live on ksu.codes.** PCBCraft is available under Electronics. FieldCraft is available under CAD. The 21st source repository, `apps/pcbcraft-app`, packages the upstream standalone PCBCraft site. WebOS builds the editor directly from `apps/pcbcraft/apps/pcbcraft-web`. [Source pins, tested workflows and rollback](migration/CRAFT-ENGINEERING-ROLLOUT.md)
 
 > **Current SolidCraft source** — The assembly pins `webos/integration` at `030b30262ede` on upstream main `c22baab6e505`. The hosted release runs `71a573e23441`. [Source qualification](migration/SOLIDCORE-HANDOFF.md#qualified-source-rebase-on-november-19-2026-utc)
 
