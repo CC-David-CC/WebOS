@@ -108,7 +108,7 @@
 	url = ../craft-i18n.git
 [submodule "craft-common-actions"]
 	path = tooling/craft-common-actions
-	url = ../craft-common-actions.git
+	url = https://github.com/storytold/craft-common-actions.git
 [submodule "engine-ffmpeg"]
 	path = engines/ffmpeg
 	url = ../engine-ffmpeg.git
