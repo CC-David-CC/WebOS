@@ -326,6 +326,17 @@ SolidCraft's beta release can be decided from its own demonstrated workflows
 while ACAD's WebOS host and C++ provider work proceeds separately.
 [SolidCore and ACAD evidence](SOLIDCORE-HANDOFF.md)
 
+### SolidCraft release condition for cornered variable fillets
+
+The owner requires both failing fillet workflows to work before SolidCraft goes live. Keep MaterialCraft and SketchCraft on their independent release paths.
+
+1. Capture the authored radii, knot positions, direction, selected edge and body from both engine regressions. Feed those same values to the pinned Rust SolidCore kernel, bypassing the SolidCraft adapter. Exercise the existing radius-corner splitting code for a peak and a dip. Trace where rejection or incorrect geometry first occurs.
+2. If the direct result passes geometric checks, correct the adapter’s guard and route the supported case through the tested kernel path. If the direct result fails, compare the generated faces at the knot with the existing upstream implementation. Keep the guard for unsupported geometry until the corrected path is verified.
+3. Check the section radius on each side of the knot, topology, solid count and volume using the applicable fillet definition. Verify parameter edits and control insertion preserve the original parameter bindings and edge direction. Retest constant, smooth and zero-tip neighbors.
+4. Exercise native Undo, save, fresh reopen, edit and recompute on the corrected part. Then qualify the exact WebOS package. Record any remaining limitation before enabling the app.
+
+See [SolidCore issue 430](https://github.com/tangency-labs/solidcore/issues/430) for the difference between earlier section fitting and the generic rolling-ball construction.
+
 ## SolidCraft preparation
 
 Use the organized `a5b35abd133e` checkout. Its existing
