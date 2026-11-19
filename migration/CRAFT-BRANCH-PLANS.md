@@ -375,6 +375,14 @@ from Files in a fresh browser and check the expected output pixels.
 The R730 verified the locked native and WASM inputs from the selected
 source manifests.
 
+The account graph branch `webos/materialcraft-account-graph` is checkpointed
+at `0d15d6c6ecca`. The exact source passed the locked WASM check, the
+graph-and-bitmap save receipt and Undo test, and the native File menu's
+host reply test. Resume with the production browser package and Desktop
+assembly, then qualify account Save, Save As, recovery, and recooking the
+reopened graph in Chromium. The private checkpoint records the test
+receipt and package command entry point.
+
 ## SketchCraft preparation
 
 Start from the organized community fork at `3a895db54c8a`. The React UI

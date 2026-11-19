@@ -45,7 +45,9 @@ TextureCraft is live in release
 It is the 15th enabled Craft app. A fresh account browser reopened editable
 paint tiles and saved a later revision. CADCraft is the immediate rollback.
 See the [TextureCraft release record](migration/CRAFT-INTEGRATION-LOG.md#texturecraft-release-on-ksucodes).
-MaterialCraft is next. SolidCraft remains paused and disabled by user request.
+The rollout is paused at the MaterialCraft native checkpoint. SketchCraft
+remains queued. SolidCraft remains disabled while we decide how to proceed
+on the [SolidCore cases](migration/SOLIDCORE-HANDOFF.md).
 
 The classic Desktop hosts Calculator, Files, CodeMirror 6 Text, WordCraft,
 PdfCraft, GridCraft, DeckCraft, PhotoCraft, FigCraft, VectorCraft, AniCraft,

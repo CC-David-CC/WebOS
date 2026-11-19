@@ -472,9 +472,9 @@ commits locally; they are not an off-machine backup.
 
 ## Rolling integration queue
 
-TextureCraft is live with editable account texture projects. The active queue
-starts with MaterialCraft, followed by SketchCraft. SolidCraft remains paused
-and disabled by user request.
+TextureCraft is live with editable account texture projects. The rollout is
+paused at the MaterialCraft checkpoint. SketchCraft remains queued.
+SolidCraft remains disabled during the [SolidCore discussion](SOLIDCORE-HANDOFF.md).
 
 The [integration matrix](CRAFT-INTEGRATION-MATRIX.md) records live status and
 source pins for all 18 selected apps. Each app can roll out independently once
@@ -484,7 +484,7 @@ remaining work by the behavior that needs qualification.
 | Next work | Acceptance milestone |
 |---|---|
 | MaterialCraft | Preserve procedural graphs and their inputs in account projects. Verify renderer availability and re-render after reopening. |
-| SolidCraft, paused | Verify precision and editable parametric geometry after account reopen when the user resumes this integration. |
+| SolidCraft, paused | Resolve the geometry release decision, then run the affected regressions on the final assembled release and verify it after rollout. The local candidate passed the editable parametric account round trip. |
 | SketchCraft | Connect the React modeling interface to the native Rust command model in a browser release. Prove push/pull, undo, scoped commands and a round trip of the editable `.sketchcraft` model through account Storage. The upstream Vite launch uses a local development bridge. |
 
 Files, Accounts, Storage and Runtime reliability outrank adding games or another
