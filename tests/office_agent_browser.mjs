@@ -26,6 +26,7 @@ const disabled = process.env.WEBOS_AGENT_DISABLED_TEST === '1';
 const graphicsOnly = process.env.WEBOS_GRAPHICS_AGENT_ONLY === '1';
 const selected = Object.entries({
   lightcraft:lightcraftDispatch, designcraft:designcraftDispatch,
+  pcbcraft:pcbcraftDispatch, fieldcraft:fieldcraftDispatch,
   soundcraft:soundcraftDispatch, filmcraft:filmcraftDispatch,
   effectcraft:effectcraftDispatch, cadcraft:cadcraftDispatch, texturecraft:texturecraftDispatch, materialcraft:materialcraftDispatch, sketchcraft:sketchcraftDispatch, solidcraft:solidcraftDispatch,
 }).filter(([app])=>process.env['WEBOS_'+app.toUpperCase()+'_TEST']==='1');
@@ -65,7 +66,7 @@ async function editor(page, app) {
   const id = await page.evaluate(app => window.desktopLab.surfaces.get('Desktop').launch(app).id, app);
   const status = await page.waitForFunction(async (id,app) => {
     const model = await document.querySelector('.window[data-window="'+id+'"]')?.appView?.inspect();
-    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
+    if (['photocraft','figcraft','vectorcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].includes(app)) return model?.instanceId ? 'ready' : false;
     return model && ['ready','failed','unavailable'].includes(model.phase) ? model.phase : false;
   }, timeout, id, app);
   assert.equal(await status.jsonValue(), 'ready');
@@ -1360,6 +1361,141 @@ function craftProjectControls(app,displayName,extension,commands,focusSelector='
     },timeout,copy,'webos-'+app+'-recovery-v1');
   }
   return {appWindow,picker,approveEditor,edit,files,file,read,key,ready,chooseSave,waitForDraft};
+}
+
+async function engineeringActivation(tab, controls, id, filesId, copy) {
+  await controls.key(tab,id,'o');
+  await labelledButton(tab,controls.picker,'Open folder Documents');
+  await labelledButton(tab,controls.picker,'Choose file '+path.basename(copy));
+  await tab.waitForSelector(controls.picker,{hidden:true,...timeout});
+  await controls.file(tab,filesId,'open',{path:copy});
+  assert.equal(String(await controls.ready(tab,path.basename(copy),true)),String(id));
+  assert.equal(await tab.$$eval(controls.appWindow,nodes=>nodes.length),1);
+}
+
+async function engineeringRecovery(tab, controls, app, id, copy, verifyDraft) {
+  await controls.waitForDraft(tab,copy);
+  const accept=dialog=>{void dialog.accept();};
+  tab.on('dialog',accept);
+  try { await tab.reload({waitUntil:'domcontentloaded'}); }
+  finally { tab.off('dialog',accept); }
+  await tab.waitForFunction(view=>document.querySelector(view)?.appView?.inspect?.()?.instanceId,timeout,selector(id));
+  const reopened=await controls.approveEditor(tab,id);
+  await verifyDraft(await controls.edit(tab,reopened,'document.inspect'));
+  assert.equal(await tab.$eval(selector(id),node=>node.appView.lifecycle.snapshot().dirty),true);
+  await labelledButton(tab,selector(id),'Close');
+  await labelledButton(tab,'dialog.webos-'+app+'-session[open]','Discard');
+  await tab.waitForSelector(selector(id),{hidden:true,...timeout});
+}
+
+async function pcbcraftDispatch(browser,page,credentials) {
+  const app='pcbcraft', commands=['document.inspect','edit.undo','project.rename','schematic.place_symbol','pcb.place_footprint'];
+  const c=craftProjectControls(app,'PCBCraft','.pc',commands);
+  const id=await editor(page,app), filesId=await c.files(page);
+  let grant=await c.approveEditor(page,id);
+  const change=(cmd,args)=>c.edit(page,grant,cmd,args);
+  const empty=await change('document.inspect');
+  assert.equal(empty.symbolCount,0);
+  assert.equal(empty.footprintCount,0);
+  const coords={x_nm:2000000,y_nm:3000000};
+  const resistor={definition:'resistor',...coords};
+  await change('schematic.place_symbol',resistor);
+  assert.equal((await change('edit.undo')).symbolCount,0);
+  const sheet=await change('schematic.place_symbol',resistor);
+  assert.equal(sheet.symbols[0].library,'basic-components');
+  assert.equal(sheet.symbols[0].definition,'resistor');
+  assert.equal(sheet.symbols[0].x_nm,coords.x_nm);
+  const design=await change('pcb.place_footprint',{symbol:sheet.symbols[0].id,definition:'resistor-0402',
+    mapping:{'1':'1','2':'2'},x_nm:6000000,y_nm:7000000});
+  assert.equal(design.footprints[0].pads,2);
+  assert.equal(design.footprints[0].y_nm,7000000);
+  assert.equal(design.sheets,1);
+  assert.equal(design.boards,1);
+  present('PCBCraft native schematic and board share pinned parts and scoped edits support Undo');
+
+  const original='Documents/Controller.pc', copy='Documents/Controller review.pc';
+  await c.chooseSave(page,id,'Controller',false);
+  const saved=await c.read(page,filesId,original);
+  const members=JSON.parse(execFileSync('python3',['-c',
+    'import io,json,sys,zipfile; z=zipfile.ZipFile(io.BytesIO(sys.stdin.buffer.read())); print(json.dumps(z.namelist()))'],{input:saved}));
+  assert(members.includes('project.json'));
+  assert(members.some(n=>n.startsWith('library/symbols/basic-components/resistor.r')));
+  assert(members.includes('library/footprints/basic-components/resistor-0402.r4.json'));
+  await c.chooseSave(page,id,'Controller review',true);
+  assert.deepEqual(await c.read(page,filesId,original),saved);
+  const savedCopy=await c.read(page,filesId,copy);
+  present('PCBCraft Save and Save As persist account archives containing the pinned symbol and footprint');
+  await engineeringActivation(page,c,id,filesId,copy);
+  present('PCBCraft Open and Files activate one existing editor for the account project');
+  grant=await c.approveEditor(page,id);
+  const draft=await change('project.rename',{name:'Recovered controller'});
+  await engineeringRecovery(page,c,app,id,copy,state=>assert.deepEqual(state,draft));
+  present('PCBCraft refresh recovers the unsaved native design and Discard closes it');
+
+  const fresh=await login(browser,credentials);
+  try {
+    const tab=fresh.page, files=await c.files(tab);
+    assert.deepEqual(await c.read(tab,files,copy),savedCopy);
+    await c.file(tab,files,'open',{path:copy});
+    const current=await c.ready(tab,path.basename(copy),true);
+    const approved=await c.approveEditor(tab,current);
+    assert.deepEqual(await c.edit(tab,approved,'document.inspect'),design);
+    present('Fresh Files reopen restores both PCB views, pinned definitions and placements from the server');
+  } finally {await fresh.context.close();}
+}
+
+async function fieldcraftDispatch(browser,page,credentials) {
+  const app='fieldcraft', commands=['document.inspect','mesh.node.add','edit.undo','solve.static'];
+  const c=craftProjectControls(app,'FieldCraft','.fieldcraft',commands);
+  const filename='Cantilever.fieldcraft', original='Documents/'+filename, copy='Documents/Beam review.fieldcraft';
+  const filesId=await c.files(page);
+  const fixture=await readFile(process.env.WEBOS_FIELDCRAFT_FIXTURE);
+  await c.file(page,filesId,'list',{path:'Documents'});
+  await page.$eval(selector(filesId),(node,{bytes,name})=>node.appView.execute('import',{name,blob:new Blob([Uint8Array.from(bytes)])}),
+    {name:filename,bytes:Array.from(fixture)});
+  await c.file(page,filesId,'open',{path:original});
+  const id=await c.ready(page,filename,true);
+  let grant=await c.approveEditor(page,id);
+  const change=(cmd,args)=>c.edit(page,grant,cmd,args);
+  const design=await change('document.inspect');
+  assert(design.nodes>0 && design.elements>0);
+  assert(design.constraints.includes('Clamp') && design.loads.includes('Push') && design.steps.includes('Load'));
+  const node={label:999999,xyz:[0,0,0]};
+  await change('mesh.node.add',node);
+  assert.equal((await change('document.inspect')).nodes,design.nodes+1);
+  await change('edit.undo');
+  assert.equal((await change('document.inspect')).nodes,design.nodes);
+  present('FieldCraft Files opens the native beam with Clamp and Push and supports scoped node editing and Undo');
+  const first=(await change('solve.static')).max_displacement.value;
+  const beam=4*1000*100**3/(210000*10*20**3);
+  assert(first>beam && first<1.1*beam,'Unexpected cantilever displacement '+first+' mm');
+  await c.key(page,id,'s');
+  await c.ready(page,filename,true);
+  const saved=await c.read(page,filesId,original);
+  assert.notDeepEqual(saved,fixture);
+  await c.chooseSave(page,id,'Beam review',true);
+  assert.deepEqual(await c.read(page,filesId,original),saved);
+  const savedCopy=await c.read(page,filesId,copy);
+  present('FieldCraft solved the cantilever at '+first+' mm and confirmed Save and Save As in account storage');
+  await engineeringActivation(page,c,id,filesId,copy);
+  present('FieldCraft Open and Files activate one existing analysis');
+  grant=await c.approveEditor(page,id);
+  await change('mesh.node.add',node);
+  await engineeringRecovery(page,c,app,id,copy,state=>assert.equal(state.nodes,design.nodes+1));
+  present('FieldCraft recovers an unsaved mesh edit after refresh and Discard preserves the server version');
+
+  const fresh=await login(browser,credentials);
+  try {
+    const tab=fresh.page, files=await c.files(tab);
+    assert.deepEqual(await c.read(tab,files,copy),savedCopy);
+    await c.file(tab,files,'open',{path:copy});
+    const current=await c.ready(tab,path.basename(copy),true), approved=await c.approveEditor(tab,current);
+    const reopened=await c.edit(tab,approved,'document.inspect');
+    for(const key of ['nodes','elements','constraints','loads','steps']) assert.deepEqual(reopened[key],design[key],key);
+    const solved=(await c.edit(tab,approved,'solve.static')).max_displacement.value;
+    assert.equal(solved,first);
+    present('Fresh Files reopen retains loads and constraints and independently reproduces '+solved+' mm displacement');
+  } finally {await fresh.context.close();}
 }
 
 async function solidcraftDispatch(browser,page,credentials) {

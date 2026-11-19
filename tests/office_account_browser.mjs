@@ -85,7 +85,8 @@ async function verifyMenu(page) {
     Graphics: ['PhotoCraft', 'VectorCraft', 'FigCraft', 'LightCraft'],
     'Animation & Video': ['AniCraft', 'FilmCraft', 'EffectCraft'],
     'Audio Tools': ['SoundCraft', 'Audio Editor (AudioMass)'],
-    CAD: ['CADCraft', 'SolidCraft'],
+    Electronics: ['PCBCraft'],
+    CAD: ['CADCraft', 'SolidCraft', 'FieldCraft'],
     'Materials & Textures': ['TextureCraft', 'MaterialCraft'],
   };
   for (const [group, names] of Object.entries(groups)) {

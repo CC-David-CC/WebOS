@@ -20,6 +20,8 @@ const graphicsEngines = [
   {id:'cadcraft', name:'CADCraft', extension:'.dxf'},
   {id:'texturecraft', name:'TextureCraft', extension:'.tcraft'},
   {id:'solidcraft', name:'SolidCraft', extension:'.sc', legacyExtensions:['.solidcraft','.solvecraft']},
+  {id:'pcbcraft', name:'PCBCraft', extension:'.pc'},
+  {id:'fieldcraft', name:'FieldCraft', extension:'.fieldcraft'},
   {id:'sketchcraft', name:'SketchCraft', extension:'.sketchcraft', externalModule:true},
   {id:'materialcraft', name:'MaterialCraft', extension:'.mcraft'},
 ].flatMap(engine => {
@@ -30,7 +32,7 @@ const graphicsEngines = [
 });
 const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site',
   '--photocraft-site','--test-photocraft-site',
-  ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
+  ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
   throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
 }
@@ -159,6 +161,7 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
     id==='effectcraft'?"export {mount} from './assembly/viewer/effectcraft-app.mjs';":
     id==='cadcraft'?"export {mount} from './assembly/viewer/cadcraft-app.mjs';":
     id==='solidcraft'?"export {mount} from './assembly/viewer/solidcraft-app.mjs';":
+    id==='pcbcraft'||id==='fieldcraft'?`export {mount} from './assembly/viewer/${id}-app.mjs';`:
     id==='sketchcraft'?"export {mount} from './assembly/viewer/sketchcraft-app.mjs';":
     id==='materialcraft'?"export {mount} from './assembly/viewer/materialcraft-app.mjs';":
     id==='texturecraft'?"export {mount} from './assembly/viewer/texturecraft-app.mjs';":
