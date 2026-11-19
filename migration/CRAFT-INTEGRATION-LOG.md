@@ -1192,3 +1192,9 @@ the archive, build evidence, activation and hosted verification.
 Component `b41e57dc787b`, classic Desktop `8d4c793ff28a`, packaged parent `892f78b9f60f`. The release manifest SHA-256 is `1a15fa86c7c122beca2b856efd9f2eaee415b0c2883786faca423dbd74564f42`. The rollback release is TextureCraft `60cf68e83c32dc68684aff1dfde05da5dc493deb391784dd22faf4c13c11e581`.
 
 The exact package passed 108 Chromium checks, including MaterialCraft graph editing, server-confirmed Save and Save As, recovery, Files reopen in a fresh browser and scoped Undo. Hosted verification matched all 686 files and confirmed native WASM startup. The private checkpoint links the suite receipts, archive verification, rollback and operator report.
+
+## SketchCraft release on ksu.codes
+
+Component `f40e10b06079`, classic Desktop `8f6167ea46bc`, packaged parent `05064e22`. Release `322d3e715975f22dd16b5eb5a20d1c71b7b8f214f8ee29616ab18115d3cd9a5e` rolls back to the MaterialCraft release recorded above. Hosted verification matched 747 files and confirmed the browser engine started. All 59 SketchCraft package files matched their component receipt.
+
+The exact assembled release passed 107 Chromium checks. The native scenario drew a rectangle, push/pulled it three metres, saved two independent server files, recovered later edits and verified agent Undo. A fresh signed browser reopened a saved solid from Files and confirmed another revision. Additional tests covered MaterialCraft, Desktop, Office, Text, PdfCraft and WordCraft.
