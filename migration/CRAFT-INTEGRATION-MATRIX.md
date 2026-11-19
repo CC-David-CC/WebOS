@@ -11,7 +11,7 @@ must prove native content fidelity, account saves, recovery and fresh browser
 retrieval before it is enabled. A passing dependency fetch does not exercise
 build scripts, assets, linking or browser behavior.
 
-The on-disk Craft list now has **21 repositories covering 20 applications**. The original rollout covers 18 applications. Two additional engineering editors and the PCBCraft packaging companion are queued after that milestone.
+**17 of 20 distinct Craft applications are live on ksu.codes. All 21 Craft repositories are on disk.** The original rollout covers 18 applications. Two additional engineering editors and the PCBCraft packaging companion are queued after that milestone.
 
 | Stage | Count | Projects |
 |---|---:|---|
