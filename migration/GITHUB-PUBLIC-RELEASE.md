@@ -19,6 +19,20 @@ SolidCraft and WordCraft now each have a public component repository with separa
 
 All WebOS publication workers share the private ledger’s `github-pacing.lock` and `github-pacing.json`. Wait at least 15 seconds from completion of one GitHub operation to the start of the next. This applies across repository creation, uploads, ref verification and API reads. A rate-limit response pauses every worker for at least 15 minutes. Honor a longer Retry-After or exhausted-quota reset. New repository creations and forks use a separate 20-minute minimum interval. A creator waiting for that interval releases the shared lock so pushes and verification can proceed after the normal 15-second delay. A global rate-limit cooldown applies to both queues. The `github-actions.jsonl` receipt log records timing and exit status. Manual operations for this rollout use the same `paced-bin` transport on the laptop via box-git. Credentials stay on box-git.
 
+## Keeping Craft upstream branches current
+
+Track the upstream default-branch tip, the owner’s published baseline, and the latest qualified WebOS integration separately. Advancing the upstream baseline requires no WebOS rebuild, integration push, parent pin change, or deployment. GitHub’s “updated” timestamp measures activity. Use commit IDs and ancestry to measure synchronization.
+
+| Repository type | Updating the published baseline |
+|---|---|
+| Registered fork with a clean upstream baseline, such as SolidCraft | Fetch the verified upstream default branch and compare its exact SHA with the public fork’s default branch. After approval, fast-forward the single baseline ref if the remote tip is an ancestor. Record and reread the resulting public SHA. |
+| Independent source export with rewritten portions of history, such as FilmCraft, VectorCraft, EffectCraft and LightCraft | Treat the previously published baseline and its upstream source SHA as a pair. Review the upstream commits added since that source SHA, apply the repo’s recorded exclusions and notices, and add the resulting author-preserving source commits on top of the existing public baseline. Verify the exported tree and the new upstream-to-public mapping before a non-force push. Keep prior public commits reachable for existing assembly checkouts. |
+| Independent repository carrying exact upstream commit history | Apply the same fast-forward check as for registered forks if source review permits publication of the added history. Record the upstream URL explicitly because GitHub does not supply fork comparison metadata for the repository. |
+
+Box-git can run a persistent systemd user timer, initially hourly. Use a dedicated work area and an allowlist with the verified upstream URL, upstream ref, owner repository ID, destination ref, and publication mode for each app. Each run fetches upstream, compares the recorded tips, and queues only changed refs. For registered forks, an authorized worker can apply the fast-forward automatically after checking branch ancestry, destination identity and the publication policy. For filtered exports, the timer should prepare a source update for review. A repeatable filter and successful audit of the new commit range are prerequisites for unattended publication of those exports.
+
+Reuse one box-git worker and the shared publication pacing rules above. Stop that repository’s update on divergence, a changed upstream mapping, missing dependencies, or a source-review failure. Record the upstream tip, previous and new published tips, pending review reason, and the last verified WebOS integration SHA in the private ledger. Existing publication scripts for initial exports assume an empty destination or matching refs. Extend and test the incremental export path before scheduling writes for those repositories.
+
 ## Publishing each component
 
 1. Record the exact source commits and intended refs. For Craft forks, retain the upstream-tracking main or master and publish the maintained WebOS branch separately. Preserve original histories locally. Inspect nested submodules, Git LFS objects and required build assets for availability on another machine.
