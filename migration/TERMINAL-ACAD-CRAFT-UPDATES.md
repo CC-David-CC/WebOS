@@ -48,22 +48,22 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | fieldcraft | `5db1a30ecb86` | `c1bec5b74f66` | `3bc9ca0565d6` | **Live and hosted-verified** |
 | materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `a0c356d2899c` | **Live and hosted-verified** |
 | pcbcraft | `96f31b02442a` | `f839c74a5a20` | `00e78b1df0a7` | **Live and hosted-verified** |
-| anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | `a803cd86cb01` review merge. Review merge retains WebOS-owned document opening, closing, and recovery while standalone app retains native tabs. |
-| cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | `dc4ffcdf8211` review merge. Review merge applies upstream automation-root checks and the existing WebOS file-command guard in the same dispatcher. |
+| anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | The `a803cd86cb01` review passed the locked WASM compiler check. Exact package and browser checks remain. |
+| cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | The `dc4ffcdf8211` review preserves WebOS file-command guards and upstream automation-root checks. Locked WASM check started. |
 | deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `eb26bc6945e3` | **Live and hosted-verified** |
 | designcraft | `c0721c08b4c4` | `4000591c6681` | `8e5f309bed61` | **Live and hosted-verified** |
 | effectcraft | `b617ea08e544` | `c561e7352f60` | `cf2336ddfc00` | **Live and hosted-verified** |
-| figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | `2837cfdc32e3` review merge. Separate review merge matches preflight tree. Build and browser checks pending. |
+| figcraft | `559c952d107f` | `390e5f4e4b60` | `2837cfdc32e3` | **Live and hosted-verified** |
 | filmcraft | `9bac134d95b1` | `960a66100176` | `3d2796e01bdd` | **Live and hosted-verified** |
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `b1988c539ee9` | **Live and hosted-verified** |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
-| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | `e68429e12299` review adapts account saves, project recovery and preset isolation to the new upstream UI. Browser compile passed. Full package and browser tests remain. |
+| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | The `e68429e12299` review packaged successfully using its locked wasm-bindgen version. Exact browser account and recovery checks are underway. |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. The cylinder crease timed out in two parallel runs and one serial run. A standalone attempt reported passing geometry, but new isolated runs timed out both with and without diagnostics. Browser WASM compiled. The optimized package exceeds the assembly size budget, so a size pass is underway. The native fillet suite still reports the crease timeout |
+| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | The `78672362ae0f` candidate fits the assembly size budget and passed 10 account and geometry browser checks. Native fillet suite still times out on the cylinder-crease fixture. |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e738caf3c9aa` | **Live and hosted-verified** |
-| texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
-| vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | `c54691a43f7a` review merge matches preflight tree. Exact package started on R730 with pinned fonts and tools. |
+| texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | The `cd2c82345a8b` review passed the locked WASM compiler check. Exact packaging uses the upstream font and translation pins. |
+| vectorcraft | `7452b6f383e3` | `063f55080244` | `c54691a43f7a` | **Live and hosted-verified** |
 | wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | Pending |
 
 The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-craft-current.txt`. It identifies the exact release and browser evidence, Terminal builder reuse and R730 ACAD build inputs. The adjacent previous checkpoint includes the full 20-app audit with unabridged SHAs.
@@ -78,7 +78,7 @@ The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-
 - SketchCraft's review preserves the account viewport observer and the upstream Layout viewport pause. The upstream batch lifetime and drawing date use the existing browser-compatible Rust clock. The packaged-WASM check reproduced a crash in `sheet_ir`, which started native threads when drawing a viewport. The fixed engine renders sequentially in WASM and retains native parallel drawing. The browser regression passed initial drawing, cache invalidation after a geometry edit and redrawing with the unchanged application UI.
 - DeckCraft's review preserves correlated document identity and adds upstream import warnings. GridCraft's review preserves WebOS's confirmed account save and the upstream save transport for ordinary embedded hosts. Both passed their exact account browser suites.
 - PdfCraft's review keeps confirmed-write receipts and applies the upstream object-identity invalidation when an acknowledged PDF rewrite renumbers objects. It retains the fork's existing trademark exclusions and regenerates the affected attribution table from its asset manifest.
-- SolidCraft upstream includes the merged cornered-radius fillet PR `2d196b1c9e7e`. The review adopts that implementation and retains the downstream taper and through-hole regressions. The prior local rebase's four patches were compared with the review. The new commit retains its unsigned account serialization and canonical file-command checks. R730 verified all 17,282 tracked inputs. Target-filtered offline resolution passed and native compilation is underway.
+- SolidCraft upstream includes the merged cornered-radius fillet PR `2d196b1c9e7e`. The review adopts that implementation and retains the downstream taper and through-hole regressions. The prior local rebase's four patches were compared with the review. The new commit retains its unsigned account serialization and canonical file-command checks. R730 verified all 17,282 tracked inputs. Native SMLib passed 407 tests. Three full fillet runs timed out on `every-block-cylinder-crease-block-top-edge-r2-curvature`. The optimized WASM candidate passed all 10 local browser checks, including four fillet fixtures, and remains staged locally pending the native suite.
 
 ### PCBCraft upgrade on ksu.codes
 
@@ -141,3 +141,17 @@ The scoped overlay verified 6,773 prior files and preserved 6,757 by hardlink. H
 Release `89fdbeba9f370cedd83c639d15b618ac71cf4d1680e30c95e1bd945ad7bc5dfd` runs DesignCraft `8e5f309bed615d0d9203ff42225a830ba437869b` from parent pin `95d0c132c2577702a09cc540ee28e1dd038709e9`. All six local Chromium checks passed. They covered confirmed account Save and Save As, draft recovery, and reopening the publication from Files. A missing linked image was located through the account picker, embedded, and recovered in a full-resolution PDF export from a fresh browser.
 
 The overlay verified 6,773 prior files and preserved 6,763 by hardlink. Hosted Chromium verified WASM digest `51490ad3b4c393909b240ed4ae7700f8de235ec0dd690802187f9180e4cc466d` and started the editor. The operator verified account service and beta continuity. Rollback is the EffectCraft release `06fe3593fd3c19b7d99eae124c98d20b33775d3206badf5577c8047442376aaa`. The operator plan is at `/var/backups/webos-designcraft-upstream-8e5f309bed61/plan.json`. Duplicate transfer archives were reclaimed.
+
+### VectorCraft upgrade on ksu.codes
+
+Release `709ad552e74fedec3be12f408d9cea9578bb39990e688e96f04d40a6cff36ee5` runs VectorCraft `c54691a43f7ab304f083121064bcbab8b7b33a7b` from parent pin `676c1fc204bee8afc617608425b2aee860ac2536`. All 12 local Chromium checks passed, including account Save and Save As, draft recovery, and reopening the saved project from Files in a fresh account session. Hosted Chromium verified WASM digest `2dcd6d90851bec7188e12ac2de6a18c426157be5eb4385c4add8f0503b028364` and started the editor under the site script policy.
+
+The overlay verified 6,773 prior files and preserved 6,735 by hardlink. Rollback is release `89fdbeba9f370cedd83c639d15b618ac71cf4d1680e30c95e1bd945ad7bc5dfd`. The operator plan is at `/var/backups/webos-vectorcraft-upstream-c54691a43f7a/plan.json`. Both duplicate transfer archives were removed.
+
+### FigCraft upgrade on ksu.codes
+
+Release `488279e189f278086b32e630815b07cdfe1888bbb8bbd73d09851d822115f527` runs FigCraft `2837cfdc32e3f2ec9746e7c047189c7f09f540f6` from parent pin `989adb0b4a1f91e13898ea4b8413cfc3a2fe635f`. All 12 local Chromium checks passed, including account Save and Save As, draft recovery, and reopening the saved project from Files in a fresh account session. Hosted Chromium verified WASM digest `5b5a325c1ef37760ce4c82cf7702b9b604b79bdd38a83ac2c70db1779050189b` and started the editor under the site script policy.
+
+The overlay verified 6,784 prior files and preserved 6,742 by hardlink. Rollback is release `709ad552e74fedec3be12f408d9cea9578bb39990e688e96f04d40a6cff36ee5`. The operator plan is at `/var/backups/webos-figcraft-upstream-2837cfdc32e3/plan.json`. Both duplicate transfer archives were removed.
+
+VectorCraft used its pinned font catalog and verified all packaged fonts. FigCraft exceeded upstream’s 25 MiB portable hosting limit. Its exact 28,205,332-byte WebOS component fits the existing 64 MiB assembly limit and includes the original bundled font notices.
