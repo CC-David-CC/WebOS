@@ -48,8 +48,8 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | fieldcraft | `5db1a30ecb86` | `c1bec5b74f66` | `3bc9ca0565d6` | **Live and hosted-verified** |
 | materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `a0c356d2899c` | **Live and hosted-verified** |
 | pcbcraft | `96f31b02442a` | `f839c74a5a20` | `00e78b1df0a7` | **Live and hosted-verified** |
-| anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | The `a803cd86cb01` review passed the locked WASM compiler check. Exact package and browser checks remain. |
-| cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | The `dc4ffcdf8211` review preserves WebOS file-command guards and upstream automation-root checks. Locked WASM compiler check passed. |
+| anicraft | `bcfea816478f` | `3ccb59e02b1a` | `a803cd86cb01` | **Live and hosted-verified** |
+| cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `dc4ffcdf8211` | **Live and hosted-verified** |
 | deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `eb26bc6945e3` | **Live and hosted-verified** |
 | designcraft | `c0721c08b4c4` | `4000591c6681` | `8e5f309bed61` | **Live and hosted-verified** |
 | effectcraft | `b617ea08e544` | `c561e7352f60` | `cf2336ddfc00` | **Live and hosted-verified** |
@@ -58,13 +58,13 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `b1988c539ee9` | **Live and hosted-verified** |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
-| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | The first package panicked during browser startup on a native Rust clock call. The `0bd86c430d2c` fix passed the locked WASM compiler check and is packaging for a new browser run. |
+| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Browser startup fix passed nine account scenarios. The upgraded close dialog lost its No keyboard shortcut. Review `9d4369578445` restores hosted keyboard choices and requires new browser qualification. |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | The `78672362ae0f` candidate fits the assembly size budget and passed 10 account and geometry browser checks. Native fillet suite still times out on the cylinder-crease fixture. |
+| solidcraft | `c22baab6e505` | `82f65a2158b1` | `71a573e23441` | Review `19f0ed46af99` merges the next upstream fixes cleanly, including two fillet updates. Native suite must qualify this revision. The prior review passed 10 browser checks and timed out in native geometry. |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e738caf3c9aa` | **Live and hosted-verified** |
-| texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | The `cd2c82345a8b` review passed the locked WASM compiler check. Exact packaging uses the upstream font and translation pins. |
+| texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `cd2c82345a8b` | **Live and hosted-verified** |
 | vectorcraft | `7452b6f383e3` | `063f55080244` | `c54691a43f7a` | **Live and hosted-verified** |
-| wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | Isolated merge from the live pin. 31 conflicts include upstream file dialogs, save lifecycle, preferences and print handling. |
+| wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | 14 of 31 conflict files reconciled. Upstream ribbon and file services are the baseline for porting WebOS account lifecycle. Seventeen conflict files remain. |
 
 The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-craft-current.txt`. It identifies the exact release and browser evidence, Terminal builder reuse and R730 ACAD build inputs. The adjacent previous checkpoint includes the full 20-app audit with unabridged SHAs.
 
@@ -155,3 +155,21 @@ Release `488279e189f278086b32e630815b07cdfe1888bbb8bbd73d09851d822115f527` runs 
 The overlay verified 6,784 prior files and preserved 6,742 by hardlink. Rollback is release `709ad552e74fedec3be12f408d9cea9578bb39990e688e96f04d40a6cff36ee5`. The operator plan is at `/var/backups/webos-figcraft-upstream-2837cfdc32e3/plan.json`. Both duplicate transfer archives were removed.
 
 VectorCraft used its pinned font catalog and verified all packaged fonts. FigCraft exceeded upstream’s 25 MiB portable hosting limit. Its exact 28,205,332-byte WebOS component fits the existing 64 MiB assembly limit and includes the original bundled font notices.
+
+### TextureCraft upgrade on ksu.codes
+
+Release `d01f19ac2e827c623e4758ec8605cc930a662b0f7508e34b70d31106c48e78a0` runs TextureCraft `cd2c82345a8b0f1a0d4b8795b8e4bf7a08b8e479` from parent pin `e7a9603842e99d992962d8d41a3be59a93f41e88`. Mesh import and UV paint, embedded asset Save and Save As, draft recovery and fresh account reopen passed in 5 Chromium checks. Hosted Chromium started the editor under the site script policy and verified WASM digest `abe5197995513529ba4d1be42a076621b9676d48e3cde3ea731f52aa5a47ac32`.
+
+The overlay verified 6,784 prior files and retained 6,773 by hardlink. Rollback is release `488279e189f278086b32e630815b07cdfe1888bbb8bbd73d09851d822115f527`. The operator plan is at `/var/backups/webos-texturecraft-upstream-cd2c82345a8b/plan.json`. Both duplicate transfer archives were removed.
+
+### CADCraft upgrade on ksu.codes
+
+Release `dfc7d666c4d5665e0f6a0f65440f8bb8fb33b824352aa412111976a889376b73` runs CADCraft `dc4ffcdf8211357fdf60b4aaf2eece5c1f413aed` from parent pin `0339e7b5255814cd183d0ee8926e3a342aba18cb`. Native line, circle and dimension editing, editable DXF Save and Save As, draft recovery and fresh account reopen passed in 5 Chromium checks. Hosted Chromium started the editor under the site script policy and verified WASM digest `fd673912297974d3a99704ce6c6b27745bda9480cd4392dde049413b9d0ff186`.
+
+The overlay verified 6,790 prior files and retained 6,779 by hardlink. Rollback is release `d01f19ac2e827c623e4758ec8605cc930a662b0f7508e34b70d31106c48e78a0`. The operator plan is at `/var/backups/webos-cadcraft-upstream-dc4ffcdf8211/plan.json`. Both duplicate transfer archives were removed.
+
+### AniCraft upgrade on ksu.codes
+
+Release `426b10a481616642d6e1afb94f5bfae3bc406464d2e005e9b2167fdf4d89b1f9` runs AniCraft `a803cd86cb0197161e141e0a23804f730c085e7d` from parent pin `4a6618dda1173c264a7410045a977e5fa5e30991`. Timeline editing, linked media, account Save and Save As, draft recovery and fresh account reopen passed in 14 Chromium checks. Hosted Chromium started the editor under the site script policy and verified WASM digest `91abbde5c765271fd09b8283cec735c09139c435eecf0948163f5cff944f8859`.
+
+The overlay verified 6,797 prior files and retained 6,752 by hardlink. Rollback is release `dfc7d666c4d5665e0f6a0f65440f8bb8fb33b824352aa412111976a889376b73`. The operator plan is at `/var/backups/webos-anicraft-upstream-a803cd86cb01/plan.json`. Both duplicate transfer archives were removed.
