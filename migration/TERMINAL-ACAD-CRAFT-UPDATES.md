@@ -58,10 +58,10 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
 | photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. The cylinder crease passes alone. Both concurrent full runs timed out on it. The serial run and an isolated diagnostic-dump comparison are in progress |
+| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. The cylinder crease timed out in two parallel runs and one serial run. A standalone attempt reported passing geometry, but new isolated runs timed out both with and without diagnostics. Browser build and native follow-up underway |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e738caf3c9aa` | **Live and hosted-verified** |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
-| vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | `c54691a43f7a` review merge. Separate review merge matches preflight tree. Build and browser checks pending. |
+| vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | `c54691a43f7a` review merge matches preflight tree. Exact package started on R730 with pinned fonts and tools. |
 | wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | Pending |
 
 The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-craft-current.txt`. It identifies the exact release and browser evidence, Terminal builder reuse and R730 ACAD build inputs. The adjacent previous checkpoint includes the full 20-app audit with unabridged SHAs.
