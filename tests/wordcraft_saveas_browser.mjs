@@ -140,31 +140,31 @@ try {
     await button('Cancel', '.webos-wordcraft-dialog[data-kind="path"] ');
   });
   await check('Browse can change filename and folder; the original account file stays unchanged', async () => {
-    await browse(); await destination('Digital Projects/Renamed copy.docx'); await binding('Digital Projects/Renamed copy.docx'); await editor();
+    await browse(); await destination('Digital-Projects/Renamed copy.docx'); await binding('Digital-Projects/Renamed copy.docx'); await editor();
     assert.equal((await ui()).dirty, false); assert.equal((await download('Documents/Chosen original.docx')).sha256, original.sha256);
-    assert.notEqual((await download('Digital Projects/Renamed copy.docx')).sha256, original.sha256);
+    assert.notEqual((await download('Digital-Projects/Renamed copy.docx')).sha256, original.sha256);
     await page.screenshot({path: path.join(output, 'browse-saved.png')});
   });
   await check('Ordinary Save after Browse writes the chosen file, preserving the original', async () => {
-    const before = await download('Digital Projects/Renamed copy.docx');
+    const before = await download('Digital-Projects/Renamed copy.docx');
     await native('text.insert', {text: ' Subsequent ordinary save.'}); await native('file.save'); await settled();
-    assert.equal((await ui()).dirty, false); assert.equal((await state()).path, 'Digital Projects/Renamed copy.docx');
-    assert.notEqual((await download('Digital Projects/Renamed copy.docx')).sha256, before.sha256);
+    assert.equal((await ui()).dirty, false); assert.equal((await state()).path, 'Digital-Projects/Renamed copy.docx');
+    assert.notEqual((await download('Digital-Projects/Renamed copy.docx')).sha256, before.sha256);
     assert.equal((await download('Documents/Chosen original.docx')).sha256, original.sha256);
   });
   await check('Keeping the suggested existing path saves that file without requiring a rename', async () => {
-    const before = await download('Digital Projects/Renamed copy.docx');
+    const before = await download('Digital-Projects/Renamed copy.docx');
     await native('text.insert', {text: ' Keep the suggested filename.'}); await browse();
-    assert.equal(await page.$eval('.webos-wordcraft-dialog[data-kind="path"] input', n => n.value), 'Digital Projects/Renamed copy.docx');
+    assert.equal(await page.$eval('.webos-wordcraft-dialog[data-kind="path"] input', n => n.value), 'Digital-Projects/Renamed copy.docx');
     await button('Save', '.webos-wordcraft-dialog[data-kind="path"] ');
-    await binding('Digital Projects/Renamed copy.docx'); await editor(); assert.equal((await ui()).dirty, false);
-    assert.notEqual((await download('Digital Projects/Renamed copy.docx')).sha256, before.sha256);
+    await binding('Digital-Projects/Renamed copy.docx'); await editor(); assert.equal((await ui()).dirty, false);
+    assert.notEqual((await download('Digital-Projects/Renamed copy.docx')).sha256, before.sha256);
     assert.equal((await download('Documents/Chosen original.docx')).sha256, original.sha256);
   });
   await check('A name collision after Browse keeps the dirty original identity and existing target bytes', async () => {
     await native('text.insert', {text: ' Preserve on collision.'}); await browse(); await destination('Documents/Chosen original.docx'); await settled();
     await page.waitForFunction(() => [...document.querySelectorAll('.webos-wordcraft-status')].some(n => /conflict|exists|precondition/i.test(n.textContent)));
-    assert.equal((await state()).path, 'Digital Projects/Renamed copy.docx'); assert.equal((await ui()).dirty, true); assert.equal((await ui()).ui.backstage, true);
+    assert.equal((await state()).path, 'Digital-Projects/Renamed copy.docx'); assert.equal((await ui()).dirty, true); assert.equal((await ui()).ui.backstage, true);
     assert.equal((await download('Documents/Chosen original.docx')).sha256, original.sha256);
   });
   // Native kittest clicks every visible export button and reimports ten formats.
