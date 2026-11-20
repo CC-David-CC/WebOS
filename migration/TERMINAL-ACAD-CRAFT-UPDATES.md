@@ -49,7 +49,7 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `a0c356d2899c` | **Live and hosted-verified** |
 | pcbcraft | `96f31b02442a` | `f839c74a5a20` | `00e78b1df0a7` | **Live and hosted-verified** |
 | anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | The `a803cd86cb01` review passed the locked WASM compiler check. Exact package and browser checks remain. |
-| cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | The `dc4ffcdf8211` review preserves WebOS file-command guards and upstream automation-root checks. Locked WASM check started. |
+| cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | The `dc4ffcdf8211` review preserves WebOS file-command guards and upstream automation-root checks. Locked WASM compiler check passed. |
 | deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `eb26bc6945e3` | **Live and hosted-verified** |
 | designcraft | `c0721c08b4c4` | `4000591c6681` | `8e5f309bed61` | **Live and hosted-verified** |
 | effectcraft | `b617ea08e544` | `c561e7352f60` | `cf2336ddfc00` | **Live and hosted-verified** |
@@ -58,13 +58,13 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `b1988c539ee9` | **Live and hosted-verified** |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
-| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | The `e68429e12299` review packaged successfully using its locked wasm-bindgen version. Exact browser account and recovery checks are underway. |
+| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | The first package panicked during browser startup on a native Rust clock call. The `0bd86c430d2c` fix passed the locked WASM compiler check and is packaging for a new browser run. |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
 | solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | The `78672362ae0f` candidate fits the assembly size budget and passed 10 account and geometry browser checks. Native fillet suite still times out on the cylinder-crease fixture. |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e738caf3c9aa` | **Live and hosted-verified** |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | The `cd2c82345a8b` review passed the locked WASM compiler check. Exact packaging uses the upstream font and translation pins. |
 | vectorcraft | `7452b6f383e3` | `063f55080244` | `c54691a43f7a` | **Live and hosted-verified** |
-| wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | Pending |
+| wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | Isolated merge from the live pin. 31 conflicts include upstream file dialogs, save lifecycle, preferences and print handling. |
 
 The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-craft-current.txt`. It identifies the exact release and browser evidence, Terminal builder reuse and R730 ACAD build inputs. The adjacent previous checkpoint includes the full 20-app audit with unabridged SHAs.
 
