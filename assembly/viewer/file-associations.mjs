@@ -1,5 +1,8 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 export function accountFileApp(path, sourceApp) {
+  if (/[.]drakonpy$/i.test(path)) return 'drakon-python';
+  if (/[.]drakonjs$/i.test(path)) return 'drakon-javascript';
+  if (/[.]drakonsh$/i.test(path)) return 'drakon-bash';
   if (['wordcraft','pdfcraft','gridcraft','deckcraft','photocraft','vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].includes(sourceApp)) return sourceApp;
   if (/[.](docx|dotx|odt|rtf)$/i.test(path)) return 'wordcraft';
   if (/[.]pdf$/i.test(path)) return 'pdfcraft';

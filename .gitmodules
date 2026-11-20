@@ -391,3 +391,12 @@
 [submodule "projectcraft"]
 	path = apps/projectcraft
 	url = ../projectcraft.git
+[submodule "drakon-python"]
+	path = apps/drakon-python
+	url = ../drakon-python.git
+[submodule "drakon-javascript"]
+	path = apps/drakon-javascript
+	url = ../drakon-javascript.git
+[submodule "drakon-bash"]
+	path = apps/drakon-bash
+	url = ../drakon-bash.git
