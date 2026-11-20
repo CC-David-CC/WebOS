@@ -39,8 +39,9 @@ if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!k
   throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
 }
 if(flags['--photocraft-site']&&flags['--test-photocraft-site'])throw Error('Choose a single PhotoCraft build input');
-if(flags['--terminal']!==undefined&&flags['--terminal']!=='enabled')throw Error('Use --terminal enabled to package Terminal');
-const terminalEnabled=flags['--terminal']==='enabled';
+if(flags['--terminal']!==undefined&&!['enabled','account-home'].includes(flags['--terminal']))throw Error('Use --terminal enabled or --terminal account-home to package Terminal');
+const terminalEnabled=flags['--terminal']!==undefined;
+const accountGuestHome=flags['--terminal']==='account-home';
 const output=path.resolve(flags['--output']),wordcraft=path.resolve(flags['--wordcraft-site']);
 if(output===root||output.startsWith(root+path.sep)||root.startsWith(output+path.sep))throw Error('Output must be outside source');
 for(let p=output;path.dirname(p)!==p;p=path.dirname(p)){try{if((await lstat(p)).isSymbolicLink())throw Error('Direct output paths required');}catch(e){if(e.code!=='ENOENT')throw e;}}
@@ -126,7 +127,8 @@ for(const item of await readdir(path.join(root,'platform/runtime/active-system/a
 await copySource('platform/runtime/active-system/network/strict-json.mjs','network/strict-json.mjs');
 await tree('platform/storage/src/webos_storage/vendor/js-sha256','assets/desktop/vendor/js-sha256');
 const storageBrowser = 'platform/storage/active-system/storage/browser';
-for (const file of ['account-context.mjs', 'mirror.mjs', 'verified-content.mjs']) {
+for (const file of ['account-context.mjs', 'mirror.mjs', 'verified-content.mjs',
+  ...(accountGuestHome ? ['account-home.mjs'] : [])]) {
   await copySource(storageBrowser+'/'+file, 'storage/browser/'+file);
 }
 await tree(storageBrowser+'/opfs', 'storage/browser/opfs');
@@ -222,10 +224,10 @@ try {
 } finally {
   await rm(weatherDist,{recursive:true,force:true});
 }
-if(terminalEnabled)apps.push(await buildTerminal({root,output,copySource,
+if(terminalEnabled)apps.push(await buildTerminal({root,output,copySource,accountHome:accountGuestHome,
   recordSource:async relative=>sourceInputs.set(relative,hash(await readFile(path.join(root,relative))))}));
 await put('assets/desktop/apps.json',JSON.stringify({version:'codi-public-apps/2',hostAPI:2,apps}));
-await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,speech:false,offlineCache:false}));
+await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:false,offlineCache:false}));
 await put('assets/desktop/cache-manifest.json',JSON.stringify({version:'webos-viewer-cache-disabled/1',id:hash(Buffer.concat([await readFile(path.join(output,'bootstrap.js')),await readFile(path.join(output,'viewer-profile.json')),await readFile(path.join(output,'assets/desktop/apps.json'))]))}));
 let engineBytes=0;
 for(const file of engine.files){if(!safe(file.path)||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid engine path/size');const bytes=await readFile(path.join(wordcraft,file.path));if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error('Engine input hash mismatch');await put('wordcraft/'+file.path,bytes);engineBytes+=bytes.length;}

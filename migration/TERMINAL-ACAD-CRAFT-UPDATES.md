@@ -11,6 +11,22 @@ Live release `9866ceba34bcbaebd863de4fc8289fe4df28e293732c8064c0f3f358d0537654`,
 - Rollback release `d4fd27d18355de03418e69cba19e2f903824bf3f34f7e2f3d0e13134f81c3239`. Root-owned operator and routing backup `/var/backups/webos-terminal-20261120-01`.
 - All 20 previous Craft binary pins and the 71 existing app entries were verified. The static promotion retained 6,587 existing files by hardlink. The operator verified the backend and beta continuity checks.
 
+### Offline Linux guest verification
+
+The hosted image manifest and the local 31,033,507-byte initramfs matched SHA-256 `e571ca17c12f1b392851b1cc1144aa14abc185c3bac7380d7c24821073e6e389`. The hosted config advertised no `guestNetwork`. The owner-only checkpoint contains `linux-offline-smoke.cjs` and its exit-zero `linux-offline-smoke.log`. Headless Chromium booted the pinned guest on a loopback-only fixture using the real guest Worker and PTY. UID 1000 ran CPython, queried SQLite, spawned a Linux child process, and wrote a guest file that the Worker read back. The harness recorded no guest default route, external requests, or WebSockets and closed the Worker. This check required no hosted configuration changes.
+
+The pinned guest has no `xclock`, `Xorg`, or `Xvfb` on its executable path. Terminal remains the serial-console application in `apps/terminal`. A future X11 application gets its own Git repository, image, build outputs and runtime disk storage. It can reuse the engine in `engines/v86`. Its first graphics smoke test would use a compatible image with an X server and `xclock`, plus a v86 VGA view for visible output and input. Local ISO boot and persistent VM storage are future options.
+
+### Account-backed Terminal development
+
+Use `--terminal account-home` for the local viewer candidate. A registered user's `/home/guest` is My files over VirtIO 9P. The browser uses the existing signed Storage client and exact prior revisions for commits. Credentials stay in the browser. The guest retains its temporary root and `/tmp`. The login page also offers an ephemeral **Anon** session with no private file authority. The local release derives the localhost mapping from the pinned initramfs with a reproducible build-time overlay.
+
+The owner-only checkpoint's `account-home-preview-current.txt` locates the isolated assembled preview and `browser-v3.log`. Actual Chromium and the signed local Gateway passed Files upload → shell read, shell write → Files Refresh, fresh browser read, stale guest `fsync` refusal, hostname loopback and ordinary-account egress denial. Anon booted a separate guest and could not access the signed-in user's files or server authority. The standalone guest test also passed mkdir, file rename and removal. Folder rename and full POSIX metadata remain outside the current Storage mount capabilities. The hosted viewer has not been promoted to this build.
+
+The requested existing-folder migration on the `ksu.codes` development account store moved both starter folders in 101 homes. Storage verified each recursive manifest after its no-overwrite move. The owner-only checkpoint records the operation journal location. Local Storage source seeds `3D-Objects` and `Digital-Projects` on new accounts. The live backend still needs that source update for accounts created after the migration.
+
+Upcoming work is an owner-only network entitlement, then a separate packaged X11 app. No shared guest relay should be enabled for Anon or ordinary signed-in users. Server authorization must pin the verified owner subject and separately restrict any LAN destination by service and port. Use R730 SSH for the first LAN test. Host and service details belong in the private checkpoint. Terminal's core tools are the shell, nano, Python, SQLite and the bundled archive and text utilities. X11 starts with a window manager, `xclock`, and then `xterm` for keyboard, pointer, focus and disposal checks.
+
 ## ACAD Modeler
 
 Source owner `apps/acad`. The R730 build used legacy OCCT WASM `a2b2f7daf6a4eb98b975f8aec136f6cbaf2720295ea32e71edb13ff4c5ceaecb` produced from the recorded interpreter sources. The six prepared runtime artifacts and source archive were verified in place. The current preparer marks this source-built runtime local-only. Resolve recipient-accessible corresponding source and the separate wrapper modification terms for each shipped OCCT runtime. See the [source build record](../apps/acad/docs/WEBOS-REPRODUCIBLE-BUILD.md) and [wrapper notices](../apps/acad/docs/occt-source-rebuild-20261102/LICENSE-EVIDENCE.md).
@@ -34,16 +50,16 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | Pending |
 | deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `eb26bc6945e3` | **Live and hosted-verified** |
 | designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | Pending |
-| effectcraft | `b617ea08e544` | `c561e7352f60` | `78f11b7fc1ce` | Pending |
+| effectcraft | `b617ea08e544` | `c561e7352f60` | `78f11b7fc1ce` | `cf2336ddfc00` review merge |
 | figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | Pending |
-| filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | Pending |
+| filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | `3d2796e01bdd` review merge |
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
-| lightcraft | `c864637d44fb` | `c17badc68a96` | `ef00c97ec7f4` | Pending |
-| pdfcraft | `271e479c5372` | `df18640982f6` | `a5b512846f59` | `4cbecb35cad2` Verified source, OCR and translation inputs staged on R730 |
+| lightcraft | `c864637d44fb` | `c17badc68a96` | `ef00c97ec7f4` | `b1988c539ee9` review merge |
+| pdfcraft | `271e479c5372` | `df18640982f6` | `a5b512846f59` | `4cbecb35cad2` built with OCR worker and passed focused native save tests. Browser qualification pending |
 | photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` Integration reconciled, native qualification compiling |
-| soundcraft | `5976545fe1dd` | `85623f28f99a` | `e196254ee15f` | Pending |
+| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` native build finished. Fillet gate timed out on one cylinder crease fixture |
+| soundcraft | `5976545fe1dd` | `85623f28f99a` | `e196254ee15f` | `e738caf3c9aa` review merge preserves both account command routing and upstream AAF import |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
 | vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | Pending |
 | wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | Pending |
