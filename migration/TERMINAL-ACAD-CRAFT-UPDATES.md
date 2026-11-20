@@ -15,6 +15,8 @@ Live release `9866ceba34bcbaebd863de4fc8289fe4df28e293732c8064c0f3f358d0537654`,
 
 Source owner `apps/acad`, current candidate `e3fc7d90ff13610e54b7cfe210b24c1b61c532fe`. Build privately on R730 with legacy OCCT WASM `a2b2f7daf6a4eb98b975f8aec136f6cbaf2720295ea32e71edb13ff4c5ceaecb` produced from the recorded interpreter sources. The six prepared runtime artifacts and source archive were verified in place. The current preparer marks this source-built runtime local-only. Resolve recipient-accessible corresponding source and the separate wrapper modification terms for each exact shipped OCCT runtime. Qualify sketch, solid and account file round trips in the current viewer before activation. See the [source build record](../apps/acad/docs/WEBOS-REPRODUCIBLE-BUILD.md) and [wrapper notices](../apps/acad/docs/occt-source-rebuild-20261102/LICENSE-EVIDENCE.md).
 
+The complete R730 build passed with the source-built legacy OCCT input and emitted **19 WASM files**. The hash inventory is in the private checkpoint. Polynomial, sketch history, and selection tests passed. The strict sketch fixture now verifies that the native decoder rejects arbitrary passive spline point IDs and preserves valid IDs through save and reload. The corrected test passed. ACAD test revision `855b61c9bf43b97e7bc1a23b002d2fc1b0ef6e63` changes only that test fixture.
+
 ## Craft branch and release ledger
 
 The November 20 ancestry audit established that the local main is a strict ancestor of each observed upstream main. The table records those observations as baselines. Refresh each upstream tip before advancing its branch. Review from the deployed pin and preserve app-specific work. Record each actual branch change, integration test, release and rollback here.
