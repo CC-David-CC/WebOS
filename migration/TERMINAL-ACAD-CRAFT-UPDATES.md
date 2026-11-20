@@ -19,6 +19,10 @@ The pinned guest has no `xclock`, `Xorg`, or `Xvfb` on its executable path. Term
 
 The separate X11 package preflight downloaded 102 MB of Debian Bookworm i386 packages, including Xorg, VESA and evdev drivers, and xterm. The owner-only `linux-x11-current.txt` pointer locates the package selection and download logs. The X11 repository, guest image, and Desktop entry are pending. First verify a prepackaged guest under the existing network policy, with visible xclock and a usable xterm, keyboard and mouse focus, close/reopen, and Worker cleanup. Then try Chromium in that guest as a separate experiment. Confirm package and guest compatibility, boot and application memory use, and launch performance before considering it for the default X11 image.
 
+Guest Chromium serves local files for both Anon and signed-in users. The owner wants `dflanag3` to be able to browse externally from guest Chromium through the configured `.33` route. Bind that capability to the verified owner account at the server. Verify real guest Chromium access for the owner and local-file access with external guest networking denied for a separate signed-in account and Anon. Keep the exact route and runtime settings in the private checkpoint.
+
+The CLI and X11 apps form the foundation for a development and gaming environment. Record the supported languages, file types, and applications as they pass. Qualify a representative edit, run, and reopen workflow for each supported development runtime, plus offline game launch, input, and cleanup. Keep those checks distinct from the network entitlement tests.
+
 ### Account-backed Terminal development
 
 Use `--terminal account-home` for the local viewer candidate. A registered user's `/home/guest` is My files over VirtIO 9P. The browser uses the existing signed Storage client and exact prior revisions for commits. Credentials stay in the browser. The guest retains its temporary root and `/tmp`. The login page also offers an ephemeral **Anon** session with no private file authority. The local release derives the localhost mapping from the pinned initramfs with a reproducible build-time overlay.
