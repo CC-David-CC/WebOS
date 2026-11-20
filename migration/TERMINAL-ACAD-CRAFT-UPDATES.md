@@ -52,7 +52,7 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | Pending |
 | effectcraft | `b617ea08e544` | `c561e7352f60` | `78f11b7fc1ce` | `cf2336ddfc00` review merge |
 | figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | Pending |
-| filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | `3d2796e01bdd` WASM packaged; linked-media qualification underway |
+| filmcraft | `9bac134d95b1` | `960a66100176` | `3d2796e01bdd` | **Live and hosted-verified** |
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `b1988c539ee9` | **Live and hosted-verified** |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
@@ -115,3 +115,9 @@ Both account suites covered Save As, server acknowledgement, write spacing and R
 Release `08afbdbac4f6fc502ce2567b59b3954fb905ad391f4bdc8c3261d8c0da2e53a6` runs LightCraft `b1988c539ee98c22cd392977ed6cc87bc101fad4` from parent pin `5702369b4815503eaaa23bc605d92b2c171e2cb6`. All seven local Chromium checks passed. They verified native PNG import and rating, Save and Save As, draft recovery, and a fresh browser opening the saved account catalog through Files with the detached original rendered. The signed account tests verified digest deduplication and cross-account denial.
 
 The scoped overlay verified 6,773 prior files and preserved 6,760 by hardlink. Hosted Chromium verified WASM digest `ffad4af154823195db8e7fa7a28f54e7711db74be734f04552e5af45ba7af8d6` and started the editor under the site script policy. The operator verified account service and beta continuity. Rollback is the PdfCraft release `6b20cb508528fe59181c812334f358b4f7576a2a6630e1bc19adfd115b5ac455`. The operator plan is at `/var/backups/webos-lightcraft-upstream-b1988c539ee9/plan.json`.
+
+### FilmCraft upgrade on ksu.codes
+
+Release `4f81f0241862b7460ad02e5b741956af5c7d4907869c4992769633f16ce8a54a` runs FilmCraft `3d2796e01bdd30824b33478717bb3e54439b936a` from parent pin `06ff8241f5f4d1a6404efd128821521dd707a45b`. All seven local Chromium checks passed. They covered native editing and Undo, confirmed Save and Save As, activating an existing window for the same project, recovery of project and linked media, and a fresh browser decoding the video from account storage. A full-resolution frame exported from the reopened video matched the expected test pixels.
+
+The scoped overlay verified 6,773 prior files and preserved 6,759 by hardlink. Hosted Chromium verified WASM digest `cfb4eed1c59e3e6a70abe64f9b61a56fbd5b937a7d29682961d3edaac06965b2` and started the editor. The operator verified account service and beta continuity. Rollback is the LightCraft release `08afbdbac4f6fc502ce2567b59b3954fb905ad391f4bdc8c3261d8c0da2e53a6`. The operator plan is at `/var/backups/webos-filmcraft-upstream-3d2796e01bdd/plan.json`. Both upgrades reclaimed their duplicate transfer archives after verification.
