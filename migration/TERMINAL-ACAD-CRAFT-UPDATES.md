@@ -19,29 +19,29 @@ The complete R730 build passed with the source-built legacy OCCT input and emitt
 
 ## Craft branch and release ledger
 
-The November 20 ancestry audit established that the local main is a strict ancestor of each observed upstream main. The table records those observations as baselines. Refresh each upstream tip before advancing its branch. Review from the deployed pin and preserve app-specific work. Record each actual branch change, integration test, release and rollback here.
+All 20 local tracking branches were advanced to the fetched public upstream main tips. The exact SHAs and preserved integration checkout IDs are in the private checkpoint. VectorCraft required a longer fetch for its upstream asset history.
 
-| App | Local main baseline | Audited upstream main | Deployed source pin | Upgrade status |
+| App | Previous local main | Refreshed main | Deployed source pin | Review |
 |---|---|---|---|---|
+| fieldcraft | `5db1a30ecb86` | `c1bec5b74f66` | `8f14daaa674c` | `3bc9ca0565d6` R730 qualification running |
+| materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `b41e57dc787b` | `8437eee2873b` merge reviewed; qualification pending |
+| pcbcraft | `96f31b02442a` | `f839c74a5a20` | `2348195417bf` | `00e78b1df0a7` merge reviewed; qualification pending |
 | anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | Pending |
-| cadcraft | `2ccf5874b001` | `1d92bb275c75` | `816d428e8a33` | Pending |
-| deckcraft | `e4f86d11fe8a` | `b16257a8b20e` | `5b065c4ef93c` | Pending |
+| cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | Pending |
+| deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `5b065c4ef93c` | Pending |
 | designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | Pending |
 | effectcraft | `b617ea08e544` | `c561e7352f60` | `78f11b7fc1ce` | Pending |
-| fieldcraft | `5db1a30ecb86` | `c1bec5b74f66` | `8f14daaa674c` | Pending |
-| figcraft | `559c952d107f` | `8320b6699e3f` | `cf78eb22978c` | Pending |
+| figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | Pending |
 | filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | Pending |
-| gridcraft | `1476d4e7abef` | `442a40ecb14e` | `fd80ce897bce` | Pending |
-| lightcraft | `c864637d44fb` | `041c8db2f7d5` | `ef00c97ec7f4` | Pending |
-| materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `b41e57dc787b` | Pending |
-| pcbcraft | `96f31b02442a` | `f839c74a5a20` | `2348195417bf` | Pending |
+| gridcraft | `1476d4e7abef` | `c89d55036432` | `fd80ce897bce` | Pending |
+| lightcraft | `c864637d44fb` | `c17badc68a96` | `ef00c97ec7f4` | Pending |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `a5b512846f59` | Pending |
 | photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `f40e10b06079` | Pending |
-| solidcraft | `c22baab6e505` | `0301073f3e45` | `71a573e23441` | Pending |
+| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | Pending |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e196254ee15f` | Pending |
-| texturecraft | `2951f3c3885a` | `2971e3d8e64f` | `3ada1e30108a` | Pending |
+| texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
 | vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | Pending |
-| wordcraft | `6ef13b2cc8a6` | `f2e6234c5240` | `edeb4a090cd3` | Pending |
+| wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | Pending |
 
 The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-craft-current.txt`. It identifies the exact release and browser evidence, Terminal builder reuse and R730 ACAD build inputs. The adjacent previous checkpoint includes the full 20-app audit with unabridged SHAs.
