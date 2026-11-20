@@ -388,3 +388,18 @@
 [submodule "pohoda"]
 	path = apps/pohoda
 	url = ../pohoda.git
+[submodule "winit"]
+	path = libraries/winit
+	url = ../winit.git
+[submodule "opencharts"]
+	path = apps/opencharts
+	url = ../opencharts.git
+[submodule "mailcraft"]
+	path = apps/mailcraft
+	url = ../mailcraft.git
+[submodule "metriccraft"]
+	path = apps/metriccraft
+	url = ../metriccraft.git
+[submodule "projectcraft"]
+	path = apps/projectcraft
+	url = ../projectcraft.git

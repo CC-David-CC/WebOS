@@ -196,3 +196,15 @@ Craft provenance:16 ArtCraft first-party projects plus community SolidCraft (Tan
 
 The seven additional game cores and their shared library are source/domain packages,
 not enabled Desktop applications. See [their extraction and test scope](LEARNING-GAMES.md).
+
+## Additional independent sources
+
+| Component | Category | Source path | Selected upstream | Integration status |
+|---|---|---|---|---|
+| Winit | System Tools | `libraries/winit` | [758a50e35a92](https://github.com/UCS-Care-Group/winit/commit/758a50e35a928dbf72bf05ae91f12fee7a540a83) | Rust windowing dependency. Existing apps retain their own pinned dependencies. |
+| OpenCharts | System Tools | `apps/opencharts` | [399e27538d81](https://github.com/dylanpersonguy/OpenCharts/commit/399e27538d8150796571dbdecbe920a54b771de4) | Charting component reserved for the planned stock game. |
+| MailCraft | Office | `apps/mailcraft` | [33740ca6e6b8](https://github.com/UCS-Care-Group/mailcraft/commit/33740ca6e6b8ed0743edb49b7e3f728115913944) | Independent mail, calendar, contacts and tasks source. Browser provider integration is pending. |
+| MetricCraft | Office | `apps/metriccraft` | [765eec66b755](https://github.com/UCS-Care-Group/metriccraft/commit/765eec66b7556dad7e21922875733cca4cef4a5b) | Independent business intelligence source. Browser and Files integration are pending. |
+| ProjectCraft | Office | `apps/projectcraft` | [1757247b53a5](https://github.com/UCS-Care-Group/projectcraft/commit/1757247b53a5641d645bfcd0b4612504c5150785) | Existing project scheduler checkout and published source now pinned by the local parent. Browser integration is pending. |
+
+The organized viewer lists Winit and OpenCharts under System Tools as disabled entries. These additions are at the source stage.
