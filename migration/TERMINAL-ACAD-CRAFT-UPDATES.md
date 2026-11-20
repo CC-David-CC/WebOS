@@ -55,10 +55,10 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | `3d2796e01bdd` review merge |
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `ef00c97ec7f4` | `b1988c539ee9` review merge |
-| pdfcraft | `271e479c5372` | `df18640982f6` | `a5b512846f59` | `4cbecb35cad2` built with OCR worker and passed focused native save tests. Browser qualification pending |
+| pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
 | photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` native build finished. Fillet gate timed out on one cylinder crease fixture |
+| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. Cylinder crease fixture passed alone after a timeout. Controlled full fillet rerun underway |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e196254ee15f` | `e738caf3c9aa` review merge preserves both account command routing and upstream AAF import |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
 | vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | Pending |
@@ -67,6 +67,8 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-craft-current.txt`. It identifies the exact release and browser evidence, Terminal builder reuse and R730 ACAD build inputs. The adjacent previous checkpoint includes the full 20-app audit with unabridged SHAs.
 
 ### Qualification details
+
+- PdfCraft `4cbecb35cad291af0d580b51c3dc77beaef20a11` at source tree `45199ac6ab40b0d50a98e295d9228dbf9e0c3f29` is pinned by parent `e83a605ee7d0d145c694a3aebd4a6744b29bb349`. Five focused native save tests passed. All 17 signed-account browser checks passed both on the assembled private viewer and on `ksu.codes`. Independent PDF extraction verified authored, recovered and uncertain-save bytes as well as the saved 180-degree rotation. The hosted main and OCR WASM payloads matched the 66-file build inventory. Active release `6b20cb508528fe59181c812334f358b4f7576a2a6630e1bc19adfd115b5ac455` retained 6,705 prior files by hardlink, all 72 app entries, and the same backend instance and issuer. Rollback is `e91b4ff1697a6d98ef12b2b05f279f5468d6febf339a112eee688077eee048d5` with routing backup `/var/backups/webos-pdfcraft-upstream-4cbecb35cad2`. The two transfer copies were removed after the hosted checks. The checkpoint retains the full build, qualification and cleanup receipts.
 
 - FieldCraft's first R730 run passed 494, failed four and ignored 18. The original no-home runner conflicted with three upstream home-redaction fixtures and a fourth crash-directory test. The two test files match upstream. With a private temporary home and crash directory, the focused rerun passed all seven tests, including the four original failures. The full rerun passed 498 with 18 ignored.
 - MaterialCraft's dependency check now passes with the locked, offline cache inside the matching isolated runner. The integration retained a bitmap fixture that used the removed `materialcraft_image` crate. Its import now uses upstream's `craft_texture`, and the resource, engine and egui suites passed with the same assertions.
