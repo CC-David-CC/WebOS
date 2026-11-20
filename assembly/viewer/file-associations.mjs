@@ -21,5 +21,6 @@ export function accountFileApp(path, sourceApp) {
   if (/[.]sketchcraft$/i.test(path)) return 'sketchcraft';
   if (/[.]pc$/i.test(path)) return 'pcbcraft';
   if (/[.]fieldcraft$/i.test(path)) return 'fieldcraft';
+  if (/[.](cad|jsketcher[.]json)$/i.test(path)) return 'jsketcher';
   return 'text';
 }

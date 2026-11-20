@@ -8,6 +8,9 @@ test('Files routes supported account formats and preserves Text/WordCraft defaul
     for(const extension of extensions)assert.equal(accountFileApp('Documents/a.'+extension.toUpperCase(),'files'),app);
   }
   assert.equal(accountFileApp('Documents/name.xlsx.txt','files'),'text');
+  assert.equal(accountFileApp('Documents/Part.CAD','files'),'jsketcher');
+  assert.equal(accountFileApp('Documents/Legacy.JSKETCHER.JSON','files'),'jsketcher');
+  assert.equal(accountFileApp('Documents/Part.cad.txt','files'),'text');
 });
 test('native Open remains in its owning app',()=>{
   for(const app of ['wordcraft','pdfcraft','gridcraft','deckcraft','photocraft','vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'])assert.equal(accountFileApp('Documents/other.txt',app),app);

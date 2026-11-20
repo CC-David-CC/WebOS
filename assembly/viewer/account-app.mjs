@@ -78,7 +78,12 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
       // A second Files instance may have opened it while this read waited.
       if (activateFile(file)) return {status: 'activated'};
-      const app = accountFileApp(file.path,kind);
+      const target = accountFileApp(file.path,kind);
+      if (target === 'jsketcher' && window.CODI_VIEWER_PROFILE?.apps.includes(target)) {
+        host.desktop.open(target, {version: 1, storage: 'mirror', path: '/' + file.path, sha256: file.sha256, owner: context.owner});
+        return {status: 'opened'};
+      }
+      const app = target === 'jsketcher' ? 'text' : target;
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
       return {status: 'opened'};
     };

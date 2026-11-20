@@ -17,6 +17,10 @@ Source owner `apps/acad`, current candidate `e3fc7d90ff13610e54b7cfe210b24c1b61c
 
 The complete R730 build passed with the source-built legacy OCCT input and emitted **19 WASM files**. The hash inventory is in the private checkpoint. Polynomial, sketch history, and selection tests passed. The strict sketch fixture now verifies that the native decoder rejects arbitrary passive spline point IDs and preserves valid IDs through save and reload. The corrected test passed. ACAD test revision `855b61c9bf43b97e7bc1a23b002d2fc1b0ef6e63` changes only that test fixture.
 
+ACAD `bd798c90a418a6c13c03e368660eabb8ac7c6fdb` and the Files launcher passed the private assembled browser workflow. A rectangle and extrusion were saved in a native archive and independently read from the account server. Files reopened the archive in a fresh Chromium context, with identical model history and no dirty state, and a second open reused the existing window. The hosted profile still excludes ACAD. The candidate uses the current site script policy.
+
+All 19 emitted WASM files matched their exact binary build inputs. That inventory includes modified interpreter variants. For example, the circular worker digest matches the native receipt for interpreter `7bf611ce`. It retains the Autodrop3d license, whose distribution conditions include upstream submission with a copyright assignment for modifications. Corresponding-source publication and the rights for these modified variants remain open. See the [exact upstream license](https://raw.githubusercontent.com/Autodrop3d/occt-interpreter/5efaf53accb45bac475155fc4d5552642c19e91e/LICENSE).
+
 ## Craft branch and release ledger
 
 All 20 local tracking branches were advanced to the fetched public upstream main tips. The exact SHAs and preserved integration checkout IDs are in the private checkpoint. VectorCraft required a longer fetch for its upstream asset history.
