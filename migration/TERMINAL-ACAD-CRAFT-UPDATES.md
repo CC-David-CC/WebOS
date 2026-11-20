@@ -52,13 +52,13 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | Pending |
 | effectcraft | `b617ea08e544` | `c561e7352f60` | `78f11b7fc1ce` | `cf2336ddfc00` review merge |
 | figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | Pending |
-| filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | `3d2796e01bdd` review merge |
+| filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | `3d2796e01bdd` WASM packaged; linked-media qualification underway |
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
-| lightcraft | `c864637d44fb` | `c17badc68a96` | `ef00c97ec7f4` | `b1988c539ee9` review merge |
+| lightcraft | `c864637d44fb` | `c17badc68a96` | `b1988c539ee9` | **Live and hosted-verified** |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
 | photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. Cylinder crease fixture passed alone after a timeout. Controlled full fillet rerun underway |
+| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. The cylinder crease passes alone. Both concurrent full runs timed out on it. A serial full run is underway |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e196254ee15f` | `e738caf3c9aa` review merge preserves both account command routing and upstream AAF import |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
 | vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | Pending |
@@ -109,3 +109,9 @@ GridCraft `321c7db9651b0b3762d7e336e224a86e3f43609b` is live from parent `1f4404
 DeckCraft `eb26bc6945e3a8469d11f817175eab3b1ebc768d` is live from parent `05a6d5fe50298eea0f8dc9ee0c3634fcc6480c06`. Release `e91b4ff1697a6d98ef12b2b05f279f5468d6febf339a112eee688077eee048d5` passed 14 exact browser checks, including paired presenter and audience window lifecycle. The overlay verified 6,633 prior files and preserved 6,525 by hardlink. Hosted Chromium started WASM `30c8836e162928ce5ca22641930c58a24b051baa6996e5b5dec6089a76210d2b`. Rollback is the GridCraft upgrade. The operator plan is at `/var/backups/webos-deckcraft-upstream-eb26bc6945e3/plan.json`.
 
 Both account suites covered Save As, server acknowledgement, write spacing and Retry-After, stale and uncertain writes, draft recovery, and reopen in a fresh browser signed into the same account. The operator verified account service and beta continuity. All six upgrades reclaimed their duplicate transfer archives after hosted verification. Immutable release files and rollback records are retained.
+
+### LightCraft upgrade on ksu.codes
+
+Release `08afbdbac4f6fc502ce2567b59b3954fb905ad391f4bdc8c3261d8c0da2e53a6` runs LightCraft `b1988c539ee98c22cd392977ed6cc87bc101fad4` from parent pin `5702369b4815503eaaa23bc605d92b2c171e2cb6`. All seven local Chromium checks passed. They verified native PNG import and rating, Save and Save As, draft recovery, and a fresh browser opening the saved account catalog through Files with the detached original rendered. The signed account tests verified digest deduplication and cross-account denial.
+
+The scoped overlay verified 6,773 prior files and preserved 6,760 by hardlink. Hosted Chromium verified WASM digest `ffad4af154823195db8e7fa7a28f54e7711db74be734f04552e5af45ba7af8d6` and started the editor under the site script policy. The operator verified account service and beta continuity. Rollback is the PdfCraft release `6b20cb508528fe59181c812334f358b4f7576a2a6630e1bc19adfd115b5ac455`. The operator plan is at `/var/backups/webos-lightcraft-upstream-b1988c539ee9/plan.json`.
