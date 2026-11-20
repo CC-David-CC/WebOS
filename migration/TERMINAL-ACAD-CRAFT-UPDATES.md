@@ -58,7 +58,7 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `b1988c539ee9` | **Live and hosted-verified** |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
-| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | `e68429e12299` review adapts account saves, project recovery and preset isolation to the new upstream UI. Browser compile checks underway. |
+| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | `e68429e12299` review adapts account saves, project recovery and preset isolation to the new upstream UI. Browser compile passed. Full package and browser tests remain. |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
 | solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. The cylinder crease timed out in two parallel runs and one serial run. A standalone attempt reported passing geometry, but new isolated runs timed out both with and without diagnostics. Browser WASM compiled. The optimized package exceeds the assembly size budget, so a size pass is underway. The native fillet suite still reports the crease timeout |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e738caf3c9aa` | **Live and hosted-verified** |
