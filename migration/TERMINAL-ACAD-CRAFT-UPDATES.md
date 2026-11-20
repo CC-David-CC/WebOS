@@ -28,20 +28,20 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | App | Previous local main | Refreshed main | Deployed source pin | Review |
 |---|---|---|---|---|
 | fieldcraft | `5db1a30ecb86` | `c1bec5b74f66` | `8f14daaa674c` | `3bc9ca0565d6` Native suite passed, browser build underway |
-| materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `b41e57dc787b` | `a0c356d2899c` Fixed stale test import, native qualification restarted |
-| pcbcraft | `96f31b02442a` | `f839c74a5a20` | `2348195417bf` | `00e78b1df0a7` Browser package verified, account tests underway, native endpoint tests require loopback |
+| materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `b41e57dc787b` | `a0c356d2899c` Native engine and egui suites passed, browser build underway |
+| pcbcraft | `96f31b02442a` | `f839c74a5a20` | `00e78b1df0a7` | **Live and hosted-verified** |
 | anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | Pending |
 | cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | Pending |
-| deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `5b065c4ef93c` | Pending |
+| deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `5b065c4ef93c` | `eb26bc6945e3` Source review merged, build pending |
 | designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | Pending |
 | effectcraft | `b617ea08e544` | `c561e7352f60` | `78f11b7fc1ce` | Pending |
 | figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | Pending |
 | filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | Pending |
-| gridcraft | `1476d4e7abef` | `c89d55036432` | `fd80ce897bce` | Pending |
+| gridcraft | `1476d4e7abef` | `c89d55036432` | `fd80ce897bce` | `321c7db9651b` Source review merged, build pending |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `ef00c97ec7f4` | Pending |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `a5b512846f59` | Pending |
 | photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
-| sketchcraft | `561703d415af` | `86a742d6997f` | `f40e10b06079` | `eee4eb767c27` Engine and UI merge reviewed, compile and browser tests pending |
+| sketchcraft | `561703d415af` | `86a742d6997f` | `f40e10b06079` | `eee4eb767c27` TypeScript and 282 UI tests passed, Rust and WASM underway |
 | solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | Pending |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e196254ee15f` | Pending |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
@@ -53,6 +53,14 @@ The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-
 ### Qualification details
 
 - FieldCraft's first R730 run passed 494, failed four and ignored 18. The original no-home runner conflicted with three upstream home-redaction fixtures and a fourth crash-directory test. The two test files match upstream. With a private temporary home and crash directory, the focused rerun passed all seven tests, including the four original failures. The full rerun passed 498 with 18 ignored.
-- MaterialCraft's dependency check now passes with the locked, offline cache inside the matching isolated runner. The integration retained a bitmap fixture that used the removed `materialcraft_image` crate. Its import now uses upstream's `craft_texture`, and qualification restarted with the same assertions.
-- PCBCraft's native app suite passed 1,143, failed 61 and ignored 10 in the no-network runner. The failures originate in tests that start the desktop loopback endpoint. The runner rejects socket calls, and subsequent UI assertions in those tests depend on successful endpoint setup. Full native endpoint qualification remains outstanding. Browser WASM digest `cd528cea24e8ad74f876b459a11d33f8ece696ad11efc01b23ec49693a28e7ab` matched the build receipt and passed initial schematic, board and Undo checks in the private preview.
+- MaterialCraft's dependency check now passes with the locked, offline cache inside the matching isolated runner. The integration retained a bitmap fixture that used the removed `materialcraft_image` crate. Its import now uses upstream's `craft_texture`, and the resource, engine and egui suites passed with the same assertions.
+- PCBCraft's native app suite passed 1,143, failed 61 and ignored 10 in the no-network runner. The failures originate in tests that start the desktop loopback endpoint. The runner rejects socket calls, and subsequent UI assertions in those tests depend on successful endpoint setup. That native endpoint is outside the WebOS editor path. Five browser scenarios passed, including schematic and board editing, Undo, Save and Save As, existing-document activation, refresh recovery and fresh account reopen from Files.
 - SketchCraft's review preserves the account viewport observer and the upstream Layout viewport pause. The upstream batch lifetime and drawing date use the existing browser-compatible Rust clock. Model edits invalidate kept drawings and the browser redraws on demand. The new browser regression checks that sequence against the packaged WASM. Browser and native qualification are still required for the drawing workspace and account saves.
+
+- DeckCraft's review preserves correlated document identity and adds upstream import warnings. GridCraft's review preserves WebOS's confirmed account save and the upstream save transport for ordinary embedded hosts. Each still needs a browser save and recovery pass.
+
+### PCBCraft upgrade on ksu.codes
+
+Release `2ad815cb2ff8094f35d9b6825d8150586a1329b83fc09f3ab5fe665236b140e6` runs PCBCraft `00e78b1df0a7a6b5cd516ec615c188cc27a166ca` from parent pin `1a9521a87f34b9e844c205a6547dc3d793d6d829`. The scoped overlay verified all 6,614 prior files and kept 6,574 by hardlink. A hosted Chromium session matched WASM digest `cd528cea24e8ad74f876b459a11d33f8ece696ad11efc01b23ec49693a28e7ab`, confirmed its MIME type and started the editor under the current policy. The operator verified backend and beta continuity.
+
+Rollback is Terminal release `9866ceba34bcbaebd863de4fc8289fe4df28e293732c8064c0f3f358d0537654`. The root-owned plan is at `/var/backups/webos-pcbcraft-upstream-00e78b1df0a7/plan.json`.
