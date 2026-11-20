@@ -24,7 +24,7 @@ Keep full submodule history. The backend packager uses the Accounts revision
 Accounts commit. The WordCraft build also uses earlier shared-library revisions.
 
 Follow the **Complete browser assets** instructions in
-[WordCraft's checkout](apps/wordcraft/webos/README.md). Use
+[WordCraft's WebOS build guide](https://github.com/CC-David-CC/wordcraft/blob/edeb4a090cd301cd7d4405e20af795007b37b69b/webos/README.md#complete-browser-assets). Use
 `$webos_build_dir/wordcraft` as its site output. The Git submodules under
 `assets/` provide the fonts and translations. Select the exact revisions in
 `apps/wordcraft/webos/craft-fonts.rev` and `apps/wordcraft/craft-i18n.rev` in
