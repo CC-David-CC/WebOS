@@ -1,0 +1,45 @@
+# Terminal, ACAD and Craft updates
+
+The approved goal covers the existing ksu.codes viewer and the 20 currently registered Craft editors. The legacy JSketcher fork and the optional PCBCraft packager have separate source owners.
+
+## Terminal
+
+Live release \`9866ceba34bcbaebd863de4fc8289fe4df28e293732c8064c0f3f358d0537654\`, verified in Chromium with an isolated test account. Local source-built assembly and hosted browser checks passed. Sign-in and Files issue zero guest asset requests. Two concurrently open windows get independent PTYs on one v86 Worker. Closing shells removes their sessions, reopening retains temporary guest home, and stopping the guest terminates its Worker and clears the filesystem handle. An account upload retains exact bytes on the server and stays separate from guest files.
+
+- Terminal \`a6bae78831c5f9218147c0253d295fa4981a4879\`, Desktop \`22c1b12bd6a972208a818657970f9efc6d857ecf\`, Linux \`584bbeaee1e15f36b603ed20bcb2cc6dd58b38dd\`, v86 \`c2c6a3296c631746fbc2f55c6c34bb5739c36784\`.
+- Parent source commit \`f9fda5ea59734c1dfe97eebdfaf443d56833f93c\`. App bundle \`991370da47e178b8dcff2ed3feb2aa807ab4206a2e063184a1f0a1612f592c28\`.
+- Rollback release \`d4fd27d18355de03418e69cba19e2f903824bf3f34f7e2f3d0e13134f81c3239\`. Root-owned operator and routing backup \`/var/backups/webos-terminal-20261120-01\`.
+- All 20 previous Craft binary pins and the 71 existing app entries were verified. The static promotion retained 6,587 existing files by hardlink. The operator verified the backend and beta continuity checks.
+
+## ACAD Modeler
+
+Source owner \`apps/acad\`, current candidate \`e3fc7d90ff13610e54b7cfe210b24c1b61c532fe\`. Build privately on R730 with legacy OCCT WASM \`a2b2f7daf6a4eb98b975f8aec136f6cbaf2720295ea32e71edb13ff4c5ceaecb\` produced from the recorded interpreter sources. The six prepared runtime artifacts and source archive were verified in place. The current preparer marks this source-built runtime local-only. Resolve recipient-accessible corresponding source and the separate wrapper modification terms for each exact shipped OCCT runtime. Qualify sketch, solid and account file round trips in the current viewer before activation. See the [source build record](../apps/acad/docs/WEBOS-REPRODUCIBLE-BUILD.md) and [wrapper notices](../apps/acad/docs/occt-source-rebuild-20261102/LICENSE-EVIDENCE.md).
+
+## Craft branch and release ledger
+
+The November 20 ancestry audit established that the local main is a strict ancestor of each observed upstream main. The table records those observations as baselines. Refresh each upstream tip before advancing its branch. Review from the deployed pin and preserve app-specific work. Record each actual branch change, integration test, release and rollback here.
+
+| App | Local main baseline | Audited upstream main | Deployed source pin | Upgrade status |
+|---|---|---|---|---|
+| anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | Pending |
+| cadcraft | `2ccf5874b001` | `1d92bb275c75` | `816d428e8a33` | Pending |
+| deckcraft | `e4f86d11fe8a` | `b16257a8b20e` | `5b065c4ef93c` | Pending |
+| designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | Pending |
+| effectcraft | `b617ea08e544` | `c561e7352f60` | `78f11b7fc1ce` | Pending |
+| fieldcraft | `5db1a30ecb86` | `c1bec5b74f66` | `8f14daaa674c` | Pending |
+| figcraft | `559c952d107f` | `8320b6699e3f` | `cf78eb22978c` | Pending |
+| filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | Pending |
+| gridcraft | `1476d4e7abef` | `442a40ecb14e` | `fd80ce897bce` | Pending |
+| lightcraft | `c864637d44fb` | `041c8db2f7d5` | `ef00c97ec7f4` | Pending |
+| materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `b41e57dc787b` | Pending |
+| pcbcraft | `96f31b02442a` | `f839c74a5a20` | `2348195417bf` | Pending |
+| pdfcraft | `271e479c5372` | `df18640982f6` | `a5b512846f59` | Pending |
+| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
+| sketchcraft | `561703d415af` | `86a742d6997f` | `f40e10b06079` | Pending |
+| solidcraft | `c22baab6e505` | `0301073f3e45` | `71a573e23441` | Pending |
+| soundcraft | `5976545fe1dd` | `85623f28f99a` | `e196254ee15f` | Pending |
+| texturecraft | `2951f3c3885a` | `2971e3d8e64f` | `3ada1e30108a` | Pending |
+| vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | Pending |
+| wordcraft | `6ef13b2cc8a6` | `f2e6234c5240` | `edeb4a090cd3` | Pending |
+
+The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-craft-current.txt`. It identifies the exact release and browser evidence, Terminal builder reuse and R730 ACAD build inputs. The adjacent previous checkpoint includes the full 20-app audit with unabridged SHAs.
