@@ -64,13 +64,13 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `b1988c539ee9` | **Live and hosted-verified** |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
-| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Browser startup fix passed nine account scenarios. The upgraded close dialog lost its No keyboard shortcut. Review `9d4369578445` restores hosted keyboard choices and requires new browser qualification. |
+| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Nine browser account scenarios passed. A close request was refused immediately before the finished edit released focus. Review `826ed8f590df` processes editor input before starting close and retains the hosted keyboard choices. Its WASM check passed. Packaging and the browser rerun are pending. |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `82f65a2158b1` | `71a573e23441` | Review `19f0ed46af99` merges the next upstream fixes cleanly, including two fillet updates. Native suite must qualify this revision. The prior review passed 10 browser checks and timed out in native geometry. |
+| solidcraft | `c22baab6e505` | `82f65a2158b1` | `71a573e23441` | Review `19f0ed46af99` merges the next upstream fixes, including two fillet updates. R730 verified 17,298 tracked inputs and built the native CLI and test driver. The fillet suite is running. The prior review passed 10 browser checks and timed out in native geometry. |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e738caf3c9aa` | **Live and hosted-verified** |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `cd2c82345a8b` | **Live and hosted-verified** |
 | vectorcraft | `7452b6f383e3` | `063f55080244` | `c54691a43f7a` | **Live and hosted-verified** |
-| wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | 14 of 31 conflict files reconciled. Upstream ribbon and file services are the baseline for porting WebOS account lifecycle. Seventeen conflict files remain. |
+| wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | 23 of 31 conflict files reconciled. The upstream file service now carries WebOS save identity and acknowledgement handling, scoped preferences and the one-window-per-document rule. Eight conflict files remain across the File menu, printing and tests. The merge still requires compilation and browser qualification. |
 
 The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-craft-current.txt`. It identifies the exact release and browser evidence, Terminal builder reuse and R730 ACAD build inputs. The adjacent previous checkpoint includes the full 20-app audit with unabridged SHAs.
 
