@@ -19,8 +19,8 @@ The Terminal entry is `apps/terminal/index.mjs` with its CSS and pinned xterm.js
 ## Terminal rollout
 
 Terminal is live on ksu.codes. The source assembler enables the optional
-guest with \`--terminal enabled\` and the pinned Runtime app-builder dependencies.
+guest with `--terminal enabled` and the pinned Runtime app-builder dependencies.
 The viewer starts the guest on Terminal mount and uses the public
-\`assets/terminal/v86/\` directory. This guest shares a temporary home across
+`assets/terminal/v86/` directory. This guest shares a temporary home across
 its shell windows and is separate from the Files app's account storage.
 See [release, tests, and rollback](TERMINAL-ACAD-CRAFT-UPDATES.md#terminal).
