@@ -390,4 +390,4 @@
 	url = ../pohoda.git
 [submodule "projectcraft"]
 	path = apps/projectcraft
-	url = https://github.com/UCS-Care-Group/projectcraft.git
+	url = ../projectcraft.git
