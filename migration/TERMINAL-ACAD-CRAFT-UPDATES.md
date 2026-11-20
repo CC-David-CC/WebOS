@@ -46,22 +46,22 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | fieldcraft | `5db1a30ecb86` | `c1bec5b74f66` | `3bc9ca0565d6` | **Live and hosted-verified** |
 | materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `a0c356d2899c` | **Live and hosted-verified** |
 | pcbcraft | `96f31b02442a` | `f839c74a5a20` | `00e78b1df0a7` | **Live and hosted-verified** |
-| anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | Pending |
-| cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | Pending |
+| anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | `a803cd86cb01` review merge. Review merge retains WebOS-owned document opening, closing, and recovery while standalone app retains native tabs. |
+| cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | `dc4ffcdf8211` review merge. Review merge applies upstream automation-root checks and the existing WebOS file-command guard in the same dispatcher. |
 | deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `eb26bc6945e3` | **Live and hosted-verified** |
-| designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | Pending |
-| effectcraft | `b617ea08e544` | `c561e7352f60` | `78f11b7fc1ce` | `cf2336ddfc00` review merge |
-| figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | Pending |
+| designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | `8e5f309bed61` review merge. Separate review merge matches preflight tree. Build and browser checks pending. |
+| effectcraft | `b617ea08e544` | `c561e7352f60` | `cf2336ddfc00` | **Live and hosted-verified** |
+| figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | `2837cfdc32e3` review merge. Separate review merge matches preflight tree. Build and browser checks pending. |
 | filmcraft | `9bac134d95b1` | `960a66100176` | `3d2796e01bdd` | **Live and hosted-verified** |
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `b1988c539ee9` | **Live and hosted-verified** |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
 | photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. The cylinder crease passes alone. Both concurrent full runs timed out on it. A serial full run is underway |
-| soundcraft | `5976545fe1dd` | `85623f28f99a` | `e196254ee15f` | `e738caf3c9aa` review merge preserves both account command routing and upstream AAF import |
+| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. The cylinder crease passes alone. Both concurrent full runs timed out on it. The serial run and an isolated diagnostic-dump comparison are in progress |
+| soundcraft | `5976545fe1dd` | `85623f28f99a` | `e738caf3c9aa` | **Live and hosted-verified** |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
-| vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | Pending |
+| vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | `c54691a43f7a` review merge. Separate review merge matches preflight tree. Build and browser checks pending. |
 | wordcraft | `6ef13b2cc8a6` | `fea7a9182e43` | `edeb4a090cd3` | Pending |
 
 The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-craft-current.txt`. It identifies the exact release and browser evidence, Terminal builder reuse and R730 ACAD build inputs. The adjacent previous checkpoint includes the full 20-app audit with unabridged SHAs.
@@ -121,3 +121,15 @@ The scoped overlay verified 6,773 prior files and preserved 6,760 by hardlink. H
 Release `4f81f0241862b7460ad02e5b741956af5c7d4907869c4992769633f16ce8a54a` runs FilmCraft `3d2796e01bdd30824b33478717bb3e54439b936a` from parent pin `06ff8241f5f4d1a6404efd128821521dd707a45b`. All seven local Chromium checks passed. They covered native editing and Undo, confirmed Save and Save As, activating an existing window for the same project, recovery of project and linked media, and a fresh browser decoding the video from account storage. A full-resolution frame exported from the reopened video matched the expected test pixels.
 
 The scoped overlay verified 6,773 prior files and preserved 6,759 by hardlink. Hosted Chromium verified WASM digest `cfb4eed1c59e3e6a70abe64f9b61a56fbd5b937a7d29682961d3edaac06965b2` and started the editor. The operator verified account service and beta continuity. Rollback is the LightCraft release `08afbdbac4f6fc502ce2567b59b3954fb905ad391f4bdc8c3261d8c0da2e53a6`. The operator plan is at `/var/backups/webos-filmcraft-upstream-3d2796e01bdd/plan.json`. Both upgrades reclaimed their duplicate transfer archives after verification.
+
+### SoundCraft upgrade on ksu.codes
+
+Release `81bf3fbd8c41a311688b697cdda742ef18848036c43b40b06006944aef5b44b4` runs SoundCraft `e738caf3c9aa41faf7d9554e8ec708071071554e` from parent pin `5adce9158c57c3c0947c070b600fb6ee3ebb2b31`. Seven local Chromium checks covered native track editing and Undo, account Save and Save As, reuse of an open account project, revision advancement, and local draft recovery. A new browser opened the project from Files, played its expected signal through Chromium WebAudio, and saved all 4,800 original WAV samples.
+
+The scoped overlay verified 6,773 prior files and preserved 6,761 by hardlink. Hosted Chromium verified WASM digest `1359c59ee3485f1fa3992097b32ffe4a045e1008d593d05c1d084e0964ae4af3` and started the editor. The operator verified account service and beta continuity. Rollback is release `4f81f0241862b7460ad02e5b741956af5c7d4907869c4992769633f16ce8a54a`. The operator plan is at `/var/backups/webos-soundcraft-upstream-e738caf3c9aa/plan.json`. Duplicate transfer archives were reclaimed.
+
+### EffectCraft upgrade on ksu.codes
+
+Release `06fe3593fd3c19b7d99eae124c98d20b33775d3206badf5577c8047442376aaa` runs EffectCraft `cf2336ddfc00c5490850a9e9913d4dde17f2e15a` from parent pin `2114cd888b34abebc8703298b66b7abdb21b7b7d`. Eight local Chromium checks covered native composition editing and Undo, linked-media import, confirmed Save and Save As, existing-window activation, and local draft recovery. A fresh browser reopened the composition through Files, retrieved the correct original and rendered its expected pixels. Closing the editor retired its browser frame workers.
+
+The scoped overlay verified 6,773 prior files and preserved 6,757 by hardlink. Hosted Chromium verified WASM digest `97e9c067ae81344cf460b7434ef67bd658162af4a02f20df853250ea04ededf5` and started the editor. The operator verified account service and beta continuity. Rollback is release `81bf3fbd8c41a311688b697cdda742ef18848036c43b40b06006944aef5b44b4`. The operator plan is at `/var/backups/webos-effectcraft-upstream-cf2336ddfc00/plan.json`. Duplicate transfer archives were reclaimed.
