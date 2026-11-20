@@ -27,9 +27,9 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 
 | App | Previous local main | Refreshed main | Deployed source pin | Review |
 |---|---|---|---|---|
-| fieldcraft | `5db1a30ecb86` | `c1bec5b74f66` | `8f14daaa674c` | `3bc9ca0565d6` Native suite rerun with disposable test directories |
-| materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `b41e57dc787b` | `8437eee2873b` Offline dependency resolution verified, native tests compiling |
-| pcbcraft | `96f31b02442a` | `f839c74a5a20` | `2348195417bf` | `00e78b1df0a7` Native endpoint tests require loopback, browser package building |
+| fieldcraft | `5db1a30ecb86` | `c1bec5b74f66` | `8f14daaa674c` | `3bc9ca0565d6` Native suite passed, browser build underway |
+| materialcraft | `b71c02cacd8d` | `4ff5af9af737` | `b41e57dc787b` | `a0c356d2899c` Fixed stale test import, native qualification restarted |
+| pcbcraft | `96f31b02442a` | `f839c74a5a20` | `2348195417bf` | `00e78b1df0a7` Browser package verified, account tests underway, native endpoint tests require loopback |
 | anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | Pending |
 | cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | Pending |
 | deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `5b065c4ef93c` | Pending |
@@ -52,7 +52,7 @@ The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-
 
 ### Qualification details
 
-- FieldCraft's first R730 run passed 494, failed four and ignored 18. The original no-home runner conflicted with three upstream home-redaction fixtures and a fourth crash-directory test. The two test files match upstream. The rerun adds a private temporary home and crash directory within the existing runner, with source and test assertions unchanged.
-- MaterialCraft's first runs exposed a snapshot path outside the chosen runner's filesystem permissions and an offline dependency-resolution failure for pinned egui. Locked offline Cargo metadata subsequently passed both outside and inside the matching isolated runner with the same verified dependency cache. Engine and UI tests are running on that runner.
-- PCBCraft's native app suite passed 1,143, failed 61 and ignored 10 in the no-network runner. The failures originate in tests that start the desktop loopback endpoint. The runner rejects socket calls, and subsequent UI assertions in those tests depend on successful endpoint setup. Full native endpoint qualification remains outstanding. A separate browser build is running.
+- FieldCraft's first R730 run passed 494, failed four and ignored 18. The original no-home runner conflicted with three upstream home-redaction fixtures and a fourth crash-directory test. The two test files match upstream. With a private temporary home and crash directory, the focused rerun passed all seven tests, including the four original failures. The full rerun passed 498 with 18 ignored.
+- MaterialCraft's dependency check now passes with the locked, offline cache inside the matching isolated runner. The integration retained a bitmap fixture that used the removed `materialcraft_image` crate. Its import now uses upstream's `craft_texture`, and qualification restarted with the same assertions.
+- PCBCraft's native app suite passed 1,143, failed 61 and ignored 10 in the no-network runner. The failures originate in tests that start the desktop loopback endpoint. The runner rejects socket calls, and subsequent UI assertions in those tests depend on successful endpoint setup. Full native endpoint qualification remains outstanding. Browser WASM digest `cd528cea24e8ad74f876b459a11d33f8ece696ad11efc01b23ec49693a28e7ab` matched the build receipt and passed initial schematic, board and Undo checks in the private preview.
 - SketchCraft's review preserves the account viewport observer and the upstream Layout viewport pause. The upstream batch lifetime and drawing date use the existing browser-compatible Rust clock. Model edits invalidate kept drawings and the browser redraws on demand. The new browser regression checks that sequence against the packaged WASM. Browser and native qualification are still required for the drawing workspace and account saves.
