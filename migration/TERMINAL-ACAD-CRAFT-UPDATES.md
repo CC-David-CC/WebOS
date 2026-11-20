@@ -32,17 +32,17 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | pcbcraft | `96f31b02442a` | `f839c74a5a20` | `00e78b1df0a7` | **Live and hosted-verified** |
 | anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | Pending |
 | cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | Pending |
-| deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `5b065c4ef93c` | `eb26bc6945e3` Browser package built, account tests underway |
+| deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `eb26bc6945e3` | **Live and hosted-verified** |
 | designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | Pending |
 | effectcraft | `b617ea08e544` | `c561e7352f60` | `78f11b7fc1ce` | Pending |
 | figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | Pending |
 | filmcraft | `9bac134d95b1` | `960a66100176` | `b7ba79c366e6` | Pending |
-| gridcraft | `1476d4e7abef` | `c89d55036432` | `fd80ce897bce` | `321c7db9651b` Browser package verified, account tests underway |
+| gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `ef00c97ec7f4` | Pending |
-| pdfcraft | `271e479c5372` | `df18640982f6` | `a5b512846f59` | `4cbecb35cad2` Source review merged, build pending |
+| pdfcraft | `271e479c5372` | `df18640982f6` | `a5b512846f59` | `4cbecb35cad2` Verified source, OCR and translation inputs staged on R730 |
 | photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `aa69299267de` Upstream merge reviewed, reconcile current integration before testing |
+| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` Integration reconciled, native qualification compiling |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e196254ee15f` | Pending |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
 | vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | Pending |
@@ -56,9 +56,9 @@ The owner-only checkpoint pointer is `~/Projects/.webos-migration/terminal-acad-
 - MaterialCraft's dependency check now passes with the locked, offline cache inside the matching isolated runner. The integration retained a bitmap fixture that used the removed `materialcraft_image` crate. Its import now uses upstream's `craft_texture`, and the resource, engine and egui suites passed with the same assertions.
 - PCBCraft's native app suite passed 1,143, failed 61 and ignored 10 in the no-network runner. The failures originate in tests that start the desktop loopback endpoint. The runner rejects socket calls, and subsequent UI assertions in those tests depend on successful endpoint setup. That native endpoint is outside the WebOS editor path. Five browser scenarios passed, including schematic and board editing, Undo, Save and Save As, existing-document activation, refresh recovery and fresh account reopen from Files.
 - SketchCraft's review preserves the account viewport observer and the upstream Layout viewport pause. The upstream batch lifetime and drawing date use the existing browser-compatible Rust clock. The packaged-WASM check reproduced a crash in `sheet_ir`, which started native threads when drawing a viewport. The fixed engine renders sequentially in WASM and retains native parallel drawing. The browser regression passed initial drawing, cache invalidation after a geometry edit and redrawing with the unchanged application UI.
-- DeckCraft's review preserves correlated document identity and adds upstream import warnings. GridCraft's review preserves WebOS's confirmed account save and the upstream save transport for ordinary embedded hosts. Each still needs a browser save and recovery pass.
+- DeckCraft's review preserves correlated document identity and adds upstream import warnings. GridCraft's review preserves WebOS's confirmed account save and the upstream save transport for ordinary embedded hosts. Both passed their exact account browser suites.
 - PdfCraft's review keeps confirmed-write receipts and applies the upstream object-identity invalidation when an acknowledged PDF rewrite renumbers objects. It retains the fork's existing trademark exclusions and regenerates the affected attribution table from its asset manifest.
-- SolidCraft upstream includes the merged cornered-radius fillet PR `2d196b1c9e7e`. The review adopts the upstream fillet implementation and retains the downstream taper and through-hole regressions. The current local rebased integration has four corresponding patches. Its overlapping save, toolbar, browser and test-ledger changes still need reconciliation before running the native geometry suite.
+- SolidCraft upstream includes the merged cornered-radius fillet PR `2d196b1c9e7e`. The review adopts that implementation and retains the downstream taper and through-hole regressions. The prior local rebase's four patches were compared with the review. The new commit retains its unsigned account serialization and canonical file-command checks. R730 verified all 17,282 tracked inputs. Target-filtered offline resolution passed and native compilation is underway.
 
 ### PCBCraft upgrade on ksu.codes
 
@@ -84,4 +84,10 @@ Release `4b44b40ba621f11231d0a72b61c44dab33ddf20e0e4ca23ce9f03564b2f77d80` runs 
 
 The overlay verified 6,629 prior files and preserved 6,568 by hardlink. Hosted Chromium matched WASM digest `54739c2507277f70a7f398b9e20035e5e7df68a7f341ca02c31f4602bd6ca89f` and started the editor. The operator verified backend and beta continuity. Rollback is MaterialCraft release `a72fa917ad29f76e877d2cd7856e63b36f67eab2ee0050f86b2c79a325898fef`. The root-owned plan is at `/var/backups/webos-sketchcraft-upstream-89c6c11df97a/plan.json`.
 
-The four verified upgrades reclaimed their duplicate transfer archives after hosted verification. Immutable release files and rollback records are retained.
+### GridCraft and DeckCraft upgrades on ksu.codes
+
+GridCraft `321c7db9651b0b3762d7e336e224a86e3f43609b` is live from parent `1f4404fa41beeabd84260e60026d562587827348`. Release `1182bb8526339a8febc43cf09d806d0847176e821a08136e6a49c0259519c078` passed 13 exact browser checks. The overlay verified 6,633 prior files and preserved 6,606 by hardlink. Hosted Chromium started WASM `dea668479eb70767f66f46960dac43ee57fcd9af185b8fea6941c0ba459dd992`. Rollback is SketchCraft release `4b44b40ba621f11231d0a72b61c44dab33ddf20e0e4ca23ce9f03564b2f77d80`. The operator plan is at `/var/backups/webos-gridcraft-upstream-321c7db9651b/plan.json`.
+
+DeckCraft `eb26bc6945e3a8469d11f817175eab3b1ebc768d` is live from parent `05a6d5fe50298eea0f8dc9ee0c3634fcc6480c06`. Release `e91b4ff1697a6d98ef12b2b05f279f5468d6febf339a112eee688077eee048d5` passed 14 exact browser checks, including paired presenter and audience window lifecycle. The overlay verified 6,633 prior files and preserved 6,525 by hardlink. Hosted Chromium started WASM `30c8836e162928ce5ca22641930c58a24b051baa6996e5b5dec6089a76210d2b`. Rollback is the GridCraft upgrade. The operator plan is at `/var/backups/webos-deckcraft-upstream-eb26bc6945e3/plan.json`.
+
+Both account suites covered Save As, server acknowledgement, write spacing and Retry-After, stale and uncertain writes, draft recovery, and reopen in a fresh browser signed into the same account. The operator verified account service and beta continuity. All six upgrades reclaimed their duplicate transfer archives after hosted verification. Immutable release files and rollback records are retained.
