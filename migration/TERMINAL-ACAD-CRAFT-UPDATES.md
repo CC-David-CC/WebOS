@@ -37,6 +37,8 @@ ACAD `bd798c90a418a6c13c03e368660eabb8ac7c6fdb` and the Files launcher passed th
 
 All 19 emitted WASM files matched their exact binary build inputs. That inventory includes modified interpreter variants. For example, the circular worker digest matches the native receipt for interpreter `7bf611ce`. It retains the Autodrop3d license, whose distribution conditions include upstream submission with a copyright assignment for modifications. Corresponding-source publication and the rights for these modified variants remain open. See the [exact upstream license](https://raw.githubusercontent.com/Autodrop3d/occt-interpreter/5efaf53accb45bac475155fc4d5552642c19e91e/LICENSE).
 
+The follow-up on R730 rehashed all 19 retained inputs without copying them. It found 16 hash-bound build records and 6 outputs with source revisions in those matching records. The remaining records need further source mapping. The owner-only checkpoint holds the per-artifact inventory. Both corresponding-source availability and wrapper terms still need resolution before deployment.
+
 ## Craft branch and release ledger
 
 All 20 local tracking branches were advanced to the fetched public upstream main tips. The exact SHAs and preserved integration checkout IDs are in the private checkpoint. VectorCraft required a longer fetch for its upstream asset history.
@@ -49,16 +51,16 @@ All 20 local tracking branches were advanced to the fetched public upstream main
 | anicraft | `bcfea816478f` | `3ccb59e02b1a` | `04610927977e` | `a803cd86cb01` review merge. Review merge retains WebOS-owned document opening, closing, and recovery while standalone app retains native tabs. |
 | cadcraft | `2ccf5874b001` | `d3af2d5077e3` | `816d428e8a33` | `dc4ffcdf8211` review merge. Review merge applies upstream automation-root checks and the existing WebOS file-command guard in the same dispatcher. |
 | deckcraft | `e4f86d11fe8a` | `6ebac8b9b3ad` | `eb26bc6945e3` | **Live and hosted-verified** |
-| designcraft | `c0721c08b4c4` | `4000591c6681` | `afca6f8d0f9a` | `8e5f309bed61` review merge. Separate review merge matches preflight tree. Build and browser checks pending. |
+| designcraft | `c0721c08b4c4` | `4000591c6681` | `8e5f309bed61` | **Live and hosted-verified** |
 | effectcraft | `b617ea08e544` | `c561e7352f60` | `cf2336ddfc00` | **Live and hosted-verified** |
 | figcraft | `559c952d107f` | `390e5f4e4b60` | `cf78eb22978c` | `2837cfdc32e3` review merge. Separate review merge matches preflight tree. Build and browser checks pending. |
 | filmcraft | `9bac134d95b1` | `960a66100176` | `3d2796e01bdd` | **Live and hosted-verified** |
 | gridcraft | `1476d4e7abef` | `c89d55036432` | `321c7db9651b` | **Live and hosted-verified** |
 | lightcraft | `c864637d44fb` | `c17badc68a96` | `b1988c539ee9` | **Live and hosted-verified** |
 | pdfcraft | `271e479c5372` | `df18640982f6` | `4cbecb35cad2` | **Live and hosted-verified** |
-| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | Pending |
+| photocraft | `d53b5edb600d` | `877d58844029` | `403994fc5f41` | `e68429e12299` review adapts account saves, project recovery and preset isolation to the new upstream UI. Browser compile checks underway. |
 | sketchcraft | `561703d415af` | `86a742d6997f` | `89c6c11df97a` | **Live and hosted-verified** |
-| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. The cylinder crease timed out in two parallel runs and one serial run. A standalone attempt reported passing geometry, but new isolated runs timed out both with and without diagnostics. Browser build and native follow-up underway |
+| solidcraft | `c22baab6e505` | `80e075ae6860` | `71a573e23441` | `78672362ae0f` SMLib passed 407 tests. The cylinder crease timed out in two parallel runs and one serial run. A standalone attempt reported passing geometry, but new isolated runs timed out both with and without diagnostics. Browser WASM compiled. The optimized package exceeds the assembly size budget, so a size pass is underway. The native fillet suite still reports the crease timeout |
 | soundcraft | `5976545fe1dd` | `85623f28f99a` | `e738caf3c9aa` | **Live and hosted-verified** |
 | texturecraft | `2951f3c3885a` | `2bbd2625bfb7` | `3ada1e30108a` | Pending |
 | vectorcraft | `7452b6f383e3` | `063f55080244` | `09ee69a08736` | `c54691a43f7a` review merge matches preflight tree. Exact package started on R730 with pinned fonts and tools. |
@@ -133,3 +135,9 @@ The scoped overlay verified 6,773 prior files and preserved 6,761 by hardlink. H
 Release `06fe3593fd3c19b7d99eae124c98d20b33775d3206badf5577c8047442376aaa` runs EffectCraft `cf2336ddfc00c5490850a9e9913d4dde17f2e15a` from parent pin `2114cd888b34abebc8703298b66b7abdb21b7b7d`. Eight local Chromium checks covered native composition editing and Undo, linked-media import, confirmed Save and Save As, existing-window activation, and local draft recovery. A fresh browser reopened the composition through Files, retrieved the correct original and rendered its expected pixels. Closing the editor retired its browser frame workers.
 
 The scoped overlay verified 6,773 prior files and preserved 6,757 by hardlink. Hosted Chromium verified WASM digest `97e9c067ae81344cf460b7434ef67bd658162af4a02f20df853250ea04ededf5` and started the editor. The operator verified account service and beta continuity. Rollback is release `81bf3fbd8c41a311688b697cdda742ef18848036c43b40b06006944aef5b44b4`. The operator plan is at `/var/backups/webos-effectcraft-upstream-cf2336ddfc00/plan.json`. Duplicate transfer archives were reclaimed.
+
+### DesignCraft upgrade on ksu.codes
+
+Release `89fdbeba9f370cedd83c639d15b618ac71cf4d1680e30c95e1bd945ad7bc5dfd` runs DesignCraft `8e5f309bed615d0d9203ff42225a830ba437869b` from parent pin `95d0c132c2577702a09cc540ee28e1dd038709e9`. All six local Chromium checks passed. They covered confirmed account Save and Save As, draft recovery, and reopening the publication from Files. A missing linked image was located through the account picker, embedded, and recovered in a full-resolution PDF export from a fresh browser.
+
+The overlay verified 6,773 prior files and preserved 6,763 by hardlink. Hosted Chromium verified WASM digest `51490ad3b4c393909b240ed4ae7700f8de235ec0dd690802187f9180e4cc466d` and started the editor. The operator verified account service and beta continuity. Rollback is the EffectCraft release `06fe3593fd3c19b7d99eae124c98d20b33775d3206badf5577c8047442376aaa`. The operator plan is at `/var/backups/webos-designcraft-upstream-8e5f309bed61/plan.json`. Duplicate transfer archives were reclaimed.
