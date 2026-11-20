@@ -122,6 +122,11 @@ await copySource('apps/terminal/active-system/terminal.js','terminal.js');
 for(const item of await readdir(path.join(root,'platform/runtime/active-system/assets/desktop'),{withFileTypes:true})){if(item.isFile()&&item.name.endsWith('.mjs'))await copySource('platform/runtime/active-system/assets/desktop/'+item.name,'assets/desktop/'+item.name);}
 await copySource('platform/runtime/active-system/network/strict-json.mjs','network/strict-json.mjs');
 await tree('platform/storage/src/webos_storage/vendor/js-sha256','assets/desktop/vendor/js-sha256');
+const storageBrowser = 'platform/storage/active-system/storage/browser';
+for (const file of ['account-context.mjs', 'mirror.mjs', 'verified-content.mjs']) {
+  await copySource(storageBrowser+'/'+file, 'storage/browser/'+file);
+}
+await tree(storageBrowser+'/opfs', 'storage/browser/opfs');
 const common={absWorkingDir:root,bundle:true,platform:'browser',format:'esm',target:'es2022',minify:false,legalComments:'eof',metafile:true,write:false,
   nodePaths:[path.join(root,'node_modules')],loader:{'.woff':'file','.woff2':'file','.ttf':'file','.svg':'file','.png':'file'}};
 function recordInputs(meta){for(const name of Object.keys(meta.inputs)){if(name.startsWith('<'))continue;const absolute=path.resolve(root,name);if(!absolute.startsWith(root+path.sep))throw Error('Build dependency outside assembly');}}
