@@ -89,6 +89,12 @@ async function verifyMenu(page) {
     CAD: ['CADCraft', 'SolidCraft', 'FieldCraft'],
     'Materials & Textures': ['TextureCraft', 'MaterialCraft'],
   };
+  const legacyIds = {
+    'Document Editor (Tiptap)': 'document-editor',
+    'Spreadsheet (Jspreadsheet CE + SheetJS CE)': 'spreadsheet',
+    'PDF Viewer (PDF.js)': 'pdf-viewer',
+    'Audio Editor (AudioMass)': 'audio-editor',
+  };
   for (const [group, names] of Object.entries(groups)) {
     await page.click('.app-menu-button');
     await button(page, group, '.menu-pane ');
@@ -97,7 +103,7 @@ async function verifyMenu(page) {
     for (const name of names) {
       const matches = rows.filter(row => row.name === name);
       assert.equal(matches.length, 1, name);
-      assert.equal(matches[0].disabled, !profile.apps.includes(name.toLowerCase()), name);
+      assert.equal(matches[0].disabled, !profile.apps.includes(legacyIds[name] ?? name.toLowerCase()), name);
     }
     await page.click('.app-menu-button');
   }
@@ -654,7 +660,7 @@ try {
     await login(page, true, credentials);
     if (!checks.length) {
       await verifyMenu(page);
-      passed('all 17 Craft menu entries and the disabled legacy Office apps match the selected profile');
+      passed('Craft and legacy menu entries match the selected profile');
     }
     const filesId = await files(page);
     const resource = 'Documents/Office-browser-roundtrip.' + ext;
