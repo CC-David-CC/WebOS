@@ -409,3 +409,12 @@
 [submodule "linux-x11"]
 	path = apps/linux-x11
 	url = ../linux-x11.git
+[submodule "drakon-python"]
+	path = apps/drakon-python
+	url = ../drakon-python.git
+[submodule "drakon-javascript"]
+	path = apps/drakon-javascript
+	url = ../drakon-javascript.git
+[submodule "drakon-bash"]
+	path = apps/drakon-bash
+	url = ../drakon-bash.git

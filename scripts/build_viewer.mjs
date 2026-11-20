@@ -264,6 +264,28 @@ if (flags['--linux-x11-packages']) {
   await registerFiles('linux-x11',files);
   await copySource('apps/linux-x11/docs/debian-sources.json','assets/legal/linux-x11/debian-sources.json');
 }
+// The three DRAKON generators are independently installable browser apps.
+for (const id of ['drakon-python','drakon-javascript','drakon-bash']) {
+  const appRoot = 'apps/'+id;
+  const manifest = appRoot+'/webos-files.json';
+  let bytes;
+  try { bytes = await readFile(path.join(root,manifest)); }
+  catch (error) { if (error.code === 'ENOENT') continue; throw error; }
+  sourceInputs.set(manifest,hash(bytes));
+  const names = JSON.parse(bytes);
+  if (!Array.isArray(names) || new Set(names).size !== names.length ||
+      names.some(name => !safe(name) || !/^(app[.]mjs|language[.]mjs|icon[.]svg|runtime\/[a-zA-Z0-9./_-]+)$/.test(name)) ||
+      !['app.mjs','language.mjs','icon.svg'].every(name=>names.includes(name))) throw Error('Invalid '+id+' inventory');
+  const bundle = [];
+  for (const name of names) {
+    const relative = appRoot+'/'+name;
+    const content = await readFile(path.join(root,relative));
+    sourceInputs.set(relative,hash(content));
+    bundle.push({name:name === 'app.mjs' ? 'index.mjs' : name,bytes:content});
+    if (name === 'icon.svg') await put('assets/desktop/'+id+'.svg',content);
+  }
+  await registerFiles(id,bundle);
+}
 await put('assets/desktop/apps.json',JSON.stringify({version:'codi-public-apps/2',hostAPI:2,apps}));
 await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:false,offlineCache:false}));
 await put('assets/desktop/cache-manifest.json',JSON.stringify({version:'webos-viewer-cache-disabled/1',id:hash(Buffer.concat([await readFile(path.join(output,'bootstrap.js')),await readFile(path.join(output,'viewer-profile.json')),await readFile(path.join(output,'assets/desktop/apps.json'))]))}));
