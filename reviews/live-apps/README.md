@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Thirteen entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Fourteen entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -72,7 +72,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | solitaire | Pending |
 | soundcraft | [Partial review and screenshot](soundcraft/README.md) |
 | stack-balance | Pending |
-| stitch-converter | Pending |
+| stitch-converter | [Review and screenshots](stitch-converter/README.md) |
 | story-cards | Pending |
 | svg-editor | Pending |
 | tabletop-bot-arena | Pending |
