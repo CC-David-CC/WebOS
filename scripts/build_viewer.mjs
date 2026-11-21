@@ -33,7 +33,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages',
+const knownFlags = ['--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -308,7 +308,19 @@ for (const id of ['drakon-python','drakon-javascript','drakon-bash']) {
   await registerFiles('narrator', bundle);
 }
 await put('assets/desktop/apps.json',JSON.stringify({version:'codi-public-apps/2',hostAPI:2,apps}));
-await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:false,offlineCache:false}));
+const speechInputs=flags['--speech-inputs'];
+let speechReceipt;
+if(speechInputs){
+  const engineRoot=path.join(root,'engines/speech');
+  const pin=execFileSync('git',['-C',root,'rev-parse','HEAD:engines/speech'],{encoding:'utf8'}).trim();
+  const checkedOut=execFileSync('git',['-C',engineRoot,'rev-parse','HEAD'],{encoding:'utf8'}).trim();
+  if(checkedOut!==pin)throw Error('Speech engine must match the assembly pin');
+  const destination=path.join(output,'assets/speech');
+  execFileSync(process.execPath,[path.join(engineRoot,'scripts/build.mjs'),'--inputs',path.resolve(speechInputs),'--output',destination]);
+  const receipt=await readFile(path.join(destination,'component-build.json'));
+  speechReceipt={sourceCommit:pin,receiptSHA256:hash(receipt)};
+}
+await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:!!speechReceipt,offlineCache:false}));
 await put('assets/desktop/cache-manifest.json',JSON.stringify({version:'webos-viewer-cache-disabled/1',id:hash(Buffer.concat([await readFile(path.join(output,'bootstrap.js')),await readFile(path.join(output,'viewer-profile.json')),await readFile(path.join(output,'assets/desktop/apps.json'))]))}));
 let engineBytes=0;
 for(const file of engine.files){if(!safe(file.path)||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid engine path/size');const bytes=await readFile(path.join(wordcraft,file.path));if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error('Engine input hash mismatch');await put('wordcraft/'+file.path,bytes);engineBytes+=bytes.length;}
@@ -350,6 +362,6 @@ for(const {id,site,receipt,receiptBytes} of additionalEngines){
 const receipt={schema:'webos-existing-viewer-build/1',engine:{sourceCommit:engine.sourceCommit,bytes:engineBytes,receiptSHA256:hash(await readFile(path.join(wordcraft,'component-build.json')))},
   ...(photoTest||graphicsEngines.some(app=>app.review)?{developmentOnly:true}:{}),
   ...(pdfEngine?{pdfcraftEngine:{sourceCommit:pdfEngine.sourceCommit,bytes:pdfEngineBytes,receiptSHA256:hash(await readFile(path.join(pdfcraft,'component-build.json')))}}:{}),
-  ...additionalReceipts,sourceInputs:[...sourceInputs].map(([path,sha256])=>({path,sha256})),apps:apps.map(a=>a.id),qualification:'Source-assembled candidate. Real viewer/browser/account acceptance remains separate; WordCraft engine is a verified prebuilt input.'};
+  ...(speechReceipt?{speechEngine:speechReceipt}:{}),...additionalReceipts,sourceInputs:[...sourceInputs].map(([path,sha256])=>({path,sha256})),apps:apps.map(a=>a.id),qualification:'Source-assembled candidate. Real viewer/browser/account acceptance remains separate; WordCraft engine is a verified prebuilt input.'};
 await put('viewer-build.json',JSON.stringify(receipt,null,2)+'\n');
 console.log(JSON.stringify({output,apps:receipt.apps,sourceInputs:sourceInputs.size,engineBytes,engineSourceCommit:engine.sourceCommit,guest:terminalEnabled,sourceAssembled:true}));
