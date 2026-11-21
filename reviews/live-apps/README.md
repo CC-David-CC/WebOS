@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Fifty-four entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Fifty-eight entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -11,19 +11,19 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | Application | Review |
 |---|---|
 | anicraft | Pending |
-| arduino-simulator | Pending |
+| arduino-simulator | [Partial review and screenshots](arduino-simulator/README.md) |
 | audio-editor | [Review and screenshots](audio-editor/README.md) |
 | cadcraft | Pending |
 | calculator | [Review and screenshots](calculator/README.md) |
 | chess-study | [Review and screenshots](chess-study/README.md) |
-| circuitjs | Pending |
+| circuitjs | [Partial review and screenshots](circuitjs/README.md) |
 | clockwork-quest | [Review and screenshots](clockwork-quest/README.md) |
 | clockwork-room | [Review and screenshots](clockwork-room/README.md) |
 | crystal-defense | [Review and screenshots](crystal-defense/README.md) |
 | deckcraft | [Review and screenshots](deckcraft/README.md) |
 | designcraft | Pending |
 | diagrams-net | [Partial review and screenshots](diagrams-net/README.md) |
-| digital-logic | Pending |
+| digital-logic | [Partial review and screenshots](digital-logic/README.md) |
 | drakon-bash | [Review and screenshots](drakon-bash/README.md) |
 | drakon-javascript | [Review and screenshots](drakon-javascript/README.md) |
 | drakon-python | [Review and screenshots](drakon-python/README.md) |
@@ -62,7 +62,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | pdfcraft | [Review and screenshots](pdfcraft/README.md) |
 | photocraft | [Review and screenshots](photocraft/README.md) |
 | physics-playground | [Review and screenshots](physics-playground/README.md) |
-| pico-simulator | Pending |
+| pico-simulator | [Review and screenshots](pico-simulator/README.md) |
 | pocket-golf | [Review and screenshots](pocket-golf/README.md) |
 | pocket-rally | [Partial review and screenshots](pocket-rally/README.md) |
 | reactive-control-desk | [Review and screenshots](reactive-control-desk/README.md) |
