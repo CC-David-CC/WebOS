@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Fifty-eight entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Sixty-one entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -30,7 +30,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | drone-circuit | [Review and screenshots](drone-circuit/README.md) |
 | effectcraft | Pending |
 | electronics-design | Pending |
-| embroidery-studio | Pending |
+| embroidery-studio | [Partial review and screenshots](embroidery-studio/README.md) |
 | excalidraw | [Partial review and screenshots](excalidraw/README.md) |
 | expression-puppet | [Review and screenshots](expression-puppet/README.md) |
 | falling-blocks | [Review and screenshots](falling-blocks/README.md) |
@@ -55,7 +55,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | memory-garden | [Review and screenshots](memory-garden/README.md) |
 | mesh-tool | Pending |
 | narrator | [Review and screenshots](https://github.com/CC-David-CC/webos-narrator/tree/6e602df7b02d77431124952a7ba2aeabae6b4a97/docs/live-review) |
-| notebook | Pending |
+| notebook | [Partial review and screenshots](notebook/README.md) |
 | orbital-courier | [Review and screenshots](orbital-courier/README.md) |
 | owl-companion | [Review and screenshots](owl-companion/README.md) |
 | pcbcraft | Pending |
@@ -66,7 +66,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | pocket-golf | [Review and screenshots](pocket-golf/README.md) |
 | pocket-rally | [Partial review and screenshots](pocket-rally/README.md) |
 | reactive-control-desk | [Review and screenshots](reactive-control-desk/README.md) |
-| replicad | Pending |
+| replicad | [Partial review and screenshots](replicad/README.md) |
 | rhythm-garden | [Review and screenshots](rhythm-garden/README.md) |
 | sketchcraft | Pending |
 | sky-courier | [Review and screenshots](sky-courier/README.md) |
