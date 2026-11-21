@@ -2,6 +2,12 @@
 
 The November 20 inventory contains 74 enabled launch IDs. Thirteen entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
+## Small-screen review criteria
+
+Judge each task using the space available in the app window and the input it needs. Keep simple edits such as typing a paragraph when they work comfortably by touch. For precision work such as moving CAD vertices or trimming a timeline, check whether a person can select the intended target, see the result and undo the edit. Where that fails, recommend opening in viewing mode and record the limitation. Check reading, panning, zooming, or playback as appropriate. Queue broken controls even when viewing is a good default.
+
+For an editor that supports phone edits, verify that the saved file reopens on desktop. For a viewing-only phone workflow, open the same account file on both screen sizes and verify that viewing preserved the saved revision. Shrinking or rotating an active editor must preserve pending work. Record physical-device checks separately and retain the full desktop workflow.
+
 | Application | Review |
 |---|---|
 | anicraft | Pending |
