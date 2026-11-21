@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Seventy-three entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Seventy-four entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -34,7 +34,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | excalidraw | [Partial review and screenshots](excalidraw/README.md) |
 | expression-puppet | [Review and screenshots](expression-puppet/README.md) |
 | falling-blocks | [Review and screenshots](falling-blocks/README.md) |
-| fieldcraft | Pending |
+| fieldcraft | [Partial review and screenshots](fieldcraft/README.md) |
 | figcraft | [Review and screenshots](figcraft/README.md) |
 | files | [Review and screenshots](files/README.md) |
 | filmcraft | [Partial review and screenshots](filmcraft/README.md) |
