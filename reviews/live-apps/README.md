@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Eleven entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Twelve entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 | Application | Review |
 |---|---|
@@ -9,7 +9,7 @@ The November 20 inventory contains 74 enabled launch IDs. Eleven entries have si
 | audio-editor | Pending |
 | cadcraft | Pending |
 | calculator | [Review and screenshots](calculator/README.md) |
-| chess-study | Pending |
+| chess-study | [Review and screenshots](chess-study/README.md) |
 | circuitjs | Pending |
 | clockwork-quest | Pending |
 | clockwork-room | Pending |
