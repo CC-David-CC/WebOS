@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors joined the menu on November 21. Seventeen entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Nineteen entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -54,6 +54,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | mathcraft | [Review and screenshot](mathcraft/README.md) |
 | memory-garden | Pending |
 | mesh-tool | Pending |
+| narrator | [Review and screenshots](https://github.com/CC-David-CC/webos-narrator/tree/6e602df7b02d77431124952a7ba2aeabae6b4a97/docs/live-review) |
 | notebook | Pending |
 | orbital-courier | Pending |
 | owl-companion | Pending |
@@ -72,7 +73,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | sling-targets | Pending |
 | snake-garden | Pending |
 | solidcraft | Pending |
-| solitaire | Pending |
+| solitaire | [Review and screenshots](solitaire/README.md) |
 | soundcraft | [Partial review and screenshot](soundcraft/README.md) |
 | stack-balance | Pending |
 | stitch-converter | [Review and screenshots](stitch-converter/README.md) |

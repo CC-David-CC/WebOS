@@ -7,3 +7,5 @@ At 820 × 1180 the selected filename shifted down by 38 CSS pixels when the tool
 Viewer release manifest SHA-256 `5c6cb58b0cd3528cd046b3b95b1763cd93284ce516d46605f652a1652d4d1bbd`.
 
 [Phone](phone.png) · [Tablet](tablet.png) · [1080p](desktop.png) · [4K](4k.png)
+
+The November 21 fix kept the row and Upload button in place across 13 window widths during selection and deselection. With one file selected at 820 CSS pixels, the full toolbar occupies the same space as before selection. Hosted viewer release `86b8880299c3`. [Retest screenshot](selection-fixed.png)
