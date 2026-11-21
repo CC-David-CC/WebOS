@@ -19,7 +19,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | circuitjs | Pending |
 | clockwork-quest | Pending |
 | clockwork-room | Pending |
-| crystal-defense | Pending |
+| crystal-defense | [Review and screenshots](crystal-defense/README.md) |
 | deckcraft | Pending |
 | designcraft | Pending |
 | diagrams-net | Pending |
@@ -38,7 +38,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | figcraft | Pending |
 | files | [Review and screenshots](files/README.md) |
 | filmcraft | Pending |
-| garden-defense | Pending |
+| garden-defense | [Review and screenshots](garden-defense/README.md) |
 | gcode-preview | [Review and screenshots](gcode-preview/README.md) |
 | gravity-pinball | Pending |
 | gridcraft | Pending |
@@ -46,7 +46,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | image-editor | Pending |
 | kinetic-relay | Pending |
 | kiri-moto | Pending |
-| lantern-leap | Pending |
+| lantern-leap | [Review and screenshots](lantern-leap/README.md) |
 | lightcraft | Pending |
 | linux-x11 | [Hosted desktop check and screenshot](https://github.com/CC-David-CC/linux-x11/tree/2607504c2deec903dd3103c2d5a37719c18541ec#browser-verification). Phone, tablet and 4K checks pending. |
 | marble-works | Pending |
@@ -63,13 +63,13 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | photocraft | [Review and screenshots](photocraft/README.md) |
 | physics-playground | Pending |
 | pico-simulator | Pending |
-| pocket-golf | Pending |
+| pocket-golf | [Review and screenshots](pocket-golf/README.md) |
 | pocket-rally | Pending |
 | reactive-control-desk | [Review and screenshots](reactive-control-desk/README.md) |
 | replicad | Pending |
 | rhythm-garden | [Review and screenshots](rhythm-garden/README.md) |
 | sketchcraft | Pending |
-| sky-courier | Pending |
+| sky-courier | [Review and screenshots](sky-courier/README.md) |
 | sling-targets | Pending |
 | snake-garden | [Review and screenshots](snake-garden/README.md) |
 | solidcraft | Pending |
