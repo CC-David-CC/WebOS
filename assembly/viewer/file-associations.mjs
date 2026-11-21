@@ -27,5 +27,6 @@ export function accountFileApp(path, sourceApp) {
   if (/[.]pc$/i.test(path)) return 'pcbcraft';
   if (/[.]fieldcraft$/i.test(path)) return 'fieldcraft';
   if (/[.](cad|jsketcher[.]json)$/i.test(path)) return 'jsketcher';
+  if (/[.](amss|wav|mp3|m4a|ogg|opus|webm|flac)$/i.test(path)) return 'audio-editor';
   return 'text';
 }

@@ -79,10 +79,12 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       // A second Files instance may have opened it while this read waited.
       if (activateFile(file)) return {status: 'activated'};
       const target = accountFileApp(file.path,kind);
-      if (target === 'jsketcher' && window.CODI_VIEWER_PROFILE?.apps.includes(target)) {
+      const mirrorApp = target === 'audio-editor' || target === 'jsketcher';
+      if (mirrorApp && window.CODI_VIEWER_PROFILE?.apps.includes(target)) {
         host.desktop.open(target, {version: 1, storage: 'mirror', path: '/' + file.path, sha256: file.sha256, owner: context.owner});
         return {status: 'opened'};
       }
+      if (target === 'audio-editor') throw Error('Audio Editor is unavailable in this desktop. Use Download to keep a copy.');
       const app = target === 'jsketcher' ? 'text' : target;
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
       return {status: 'opened'};
