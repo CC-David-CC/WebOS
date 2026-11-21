@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 73 enabled launch IDs. Four entries have signed-in reviews and screenshots, including partial reviews. Each review names the interaction and its test coverage.
+The November 20 inventory contains 73 enabled launch IDs. Seven entries have signed-in reviews and screenshots, including partial reviews. Each review names the interaction and its test coverage.
 
 | Application | Review |
 |---|---|
@@ -8,7 +8,7 @@ The November 20 inventory contains 73 enabled launch IDs. Four entries have sign
 | arduino-simulator | Pending |
 | audio-editor | Pending |
 | cadcraft | Pending |
-| calculator | Pending |
+| calculator | [Review and screenshots](calculator/README.md) |
 | chess-study | Pending |
 | circuitjs | Pending |
 | clockwork-quest | Pending |
@@ -33,7 +33,7 @@ The November 20 inventory contains 73 enabled launch IDs. Four entries have sign
 | gcode-preview | Pending |
 | gravity-pinball | Pending |
 | gridcraft | Pending |
-| help | Pending |
+| help | [Review and screenshots](help/README.md) |
 | image-editor | Pending |
 | kinetic-relay | Pending |
 | kiri-moto | Pending |
@@ -71,7 +71,7 @@ The November 20 inventory contains 73 enabled launch IDs. Four entries have sign
 | tabletop-bot-arena | Pending |
 | target-garden | Pending |
 | terminal | Pending |
-| text | Pending |
+| text | [Review and screenshots](text/README.md) |
 | texturecraft | Pending |
 | vectorcraft | Pending |
 | weather | Pending |
