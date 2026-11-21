@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Thirty-one entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Forty-four entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -40,7 +40,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | filmcraft | Pending |
 | garden-defense | [Review and screenshots](garden-defense/README.md) |
 | gcode-preview | [Review and screenshots](gcode-preview/README.md) |
-| gravity-pinball | Pending |
+| gravity-pinball | [Review and screenshots](gravity-pinball/README.md) |
 | gridcraft | [Review and screenshots](gridcraft/README.md) |
 | help | [Review and screenshots](help/README.md) |
 | image-editor | Pending |
@@ -49,7 +49,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | lantern-leap | [Review and screenshots](lantern-leap/README.md) |
 | lightcraft | Pending |
 | linux-x11 | [Hosted desktop check and screenshot](https://github.com/CC-David-CC/linux-x11/tree/2607504c2deec903dd3103c2d5a37719c18541ec#browser-verification). Phone, tablet and 4K checks pending. |
-| marble-works | Pending |
+| marble-works | [Review and screenshots](marble-works/README.md) |
 | materialcraft | Pending |
 | mathcraft | [Review and screenshot](mathcraft/README.md) |
 | memory-garden | [Review and screenshots](memory-garden/README.md) |
@@ -61,16 +61,16 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | pcbcraft | Pending |
 | pdfcraft | [Review and screenshots](pdfcraft/README.md) |
 | photocraft | [Review and screenshots](photocraft/README.md) |
-| physics-playground | Pending |
+| physics-playground | [Review and screenshots](physics-playground/README.md) |
 | pico-simulator | Pending |
 | pocket-golf | [Review and screenshots](pocket-golf/README.md) |
-| pocket-rally | Pending |
+| pocket-rally | [Partial review and screenshots](pocket-rally/README.md) |
 | reactive-control-desk | [Review and screenshots](reactive-control-desk/README.md) |
 | replicad | Pending |
 | rhythm-garden | [Review and screenshots](rhythm-garden/README.md) |
 | sketchcraft | Pending |
 | sky-courier | [Review and screenshots](sky-courier/README.md) |
-| sling-targets | Pending |
+| sling-targets | [Review and screenshots](sling-targets/README.md) |
 | snake-garden | [Review and screenshots](snake-garden/README.md) |
 | solidcraft | Pending |
 | solitaire | [Review and screenshots](solitaire/README.md) |
