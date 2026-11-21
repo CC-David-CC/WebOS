@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Fourteen entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors joined the menu on November 21. Seventeen entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -24,6 +24,9 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | designcraft | Pending |
 | diagrams-net | Pending |
 | digital-logic | Pending |
+| drakon-bash | [Review and screenshots](drakon-bash/README.md) |
+| drakon-javascript | [Review and screenshots](drakon-javascript/README.md) |
+| drakon-python | [Review and screenshots](drakon-python/README.md) |
 | drone-circuit | Pending |
 | effectcraft | Pending |
 | electronics-design | Pending |
