@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Twenty-one entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Twenty-six entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -33,7 +33,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | embroidery-studio | Pending |
 | excalidraw | Pending |
 | expression-puppet | Pending |
-| falling-blocks | Pending |
+| falling-blocks | [Review and screenshots](falling-blocks/README.md) |
 | fieldcraft | Pending |
 | figcraft | Pending |
 | files | [Review and screenshots](files/README.md) |
@@ -52,7 +52,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | marble-works | Pending |
 | materialcraft | Pending |
 | mathcraft | [Review and screenshot](mathcraft/README.md) |
-| memory-garden | Pending |
+| memory-garden | [Review and screenshots](memory-garden/README.md) |
 | mesh-tool | Pending |
 | narrator | [Review and screenshots](https://github.com/CC-David-CC/webos-narrator/tree/6e602df7b02d77431124952a7ba2aeabae6b4a97/docs/live-review) |
 | notebook | Pending |
@@ -71,16 +71,16 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | sketchcraft | Pending |
 | sky-courier | Pending |
 | sling-targets | Pending |
-| snake-garden | Pending |
+| snake-garden | [Review and screenshots](snake-garden/README.md) |
 | solidcraft | Pending |
 | solitaire | [Review and screenshots](solitaire/README.md) |
 | soundcraft | [Partial review and screenshot](soundcraft/README.md) |
-| stack-balance | Pending |
+| stack-balance | [Review and screenshots](stack-balance/README.md) |
 | stitch-converter | [Review and screenshots](stitch-converter/README.md) |
 | story-cards | Pending |
 | svg-editor | Pending |
 | tabletop-bot-arena | Pending |
-| target-garden | Pending |
+| target-garden | [Review and screenshots](target-garden/README.md) |
 | terminal | [Review and screenshots](terminal/README.md) |
 | text | [Review and screenshots](text/README.md) |
 | texturecraft | Pending |
