@@ -262,6 +262,7 @@ if (flags['--linux-x11-packages']) {
   if (!accountGuestHome) throw Error('The X11 release requires the account-home runtime');
   const files = await buildLinuxX11(root,flags['--linux-x11-packages'],sourceInputs);
   await registerFiles('linux-x11',files);
+  await copySource('apps/linux-x11/docs/debian-sources.json','assets/legal/linux-x11/debian-sources.json');
 }
 await put('assets/desktop/apps.json',JSON.stringify({version:'codi-public-apps/2',hostAPI:2,apps}));
 await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:false,offlineCache:false}));
