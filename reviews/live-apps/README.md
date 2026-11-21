@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Ten entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Eleven entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 | Application | Review |
 |---|---|
@@ -75,7 +75,7 @@ The November 20 inventory contains 74 enabled launch IDs. Ten entries have signe
 | text | [Review and screenshots](text/README.md) |
 | texturecraft | Pending |
 | vectorcraft | Pending |
-| weather | Pending |
+| weather | [Review and screenshots](weather/README.md) |
 | weather-maps | [Review and screenshot](weather-maps/README.md) |
 | wordcraft | [Partial review and desktop/phone screenshots](wordcraft/README.md) |
 
