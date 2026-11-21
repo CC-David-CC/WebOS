@@ -418,3 +418,6 @@
 [submodule "drakon-bash"]
 	path = apps/drakon-bash
 	url = ../drakon-bash.git
+[submodule "narrator"]
+	path = apps/narrator
+	url = ../webos-narrator.git

@@ -286,6 +286,27 @@ for (const id of ['drakon-python','drakon-javascript','drakon-bash']) {
   }
   await registerFiles(id,bundle);
 }
+// One independently pinned Narrator repository supplies the window and speech API.
+{
+  const appRoot = 'apps/narrator';
+  execFileSync(process.execPath, ['scripts/inventory.mjs', '--check'], { cwd: path.join(root, appRoot) });
+  const manifest = appRoot + '/webos-files.json';
+  const bytes = await readFile(path.join(root, manifest));
+  sourceInputs.set(manifest, hash(bytes));
+  const names = JSON.parse(bytes);
+  if (!Array.isArray(names) || !names.includes('app.mjs') || !names.includes('index.html') ||
+      new Set(names).size !== names.length || names.includes('index.mjs') ||
+      names.some(n => !safe(n) || !/^[a-zA-Z0-9_./-]+$/.test(n))) throw Error('Invalid Narrator inventory');
+  const bundle = [{ name: 'index.mjs', bytes: Buffer.from("export * from './app.mjs';\n") }];
+  for (const name of names) {
+    const relative = appRoot + '/' + name;
+    const content = await readFile(path.join(root, relative));
+    sourceInputs.set(relative, hash(content));
+    bundle.push({ name, bytes: content });
+    if (name === 'icon.svg') await put('assets/desktop/narrator.svg', content);
+  }
+  await registerFiles('narrator', bundle);
+}
 await put('assets/desktop/apps.json',JSON.stringify({version:'codi-public-apps/2',hostAPI:2,apps}));
 await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:false,offlineCache:false}));
 await put('assets/desktop/cache-manifest.json',JSON.stringify({version:'webos-viewer-cache-disabled/1',id:hash(Buffer.concat([await readFile(path.join(output,'bootstrap.js')),await readFile(path.join(output,'viewer-profile.json')),await readFile(path.join(output,'assets/desktop/apps.json'))]))}));
