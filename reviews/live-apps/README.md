@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 73 enabled launch IDs. Seven entries have signed-in reviews and screenshots, including partial reviews. Each review names the interaction and its test coverage.
+The November 20 inventory contains 73 enabled launch IDs. Eight entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 | Application | Review |
 |---|---|
@@ -27,7 +27,7 @@ The November 20 inventory contains 73 enabled launch IDs. Seven entries have sig
 | falling-blocks | Pending |
 | fieldcraft | Pending |
 | figcraft | Pending |
-| files | Pending |
+| files | [Review and screenshots](files/README.md) |
 | filmcraft | Pending |
 | garden-defense | Pending |
 | gcode-preview | Pending |
