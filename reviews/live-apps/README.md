@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 73 enabled launch IDs. Two entries currently have a signed-in review and screenshot. Each review names the interaction and its test coverage.
+The November 20 inventory contains 73 enabled launch IDs. Three entries have signed-in reviews and screenshots, including one partial review. Each review names the interaction and its test coverage.
 
 | Application | Review |
 |---|---|
@@ -76,6 +76,6 @@ The November 20 inventory contains 73 enabled launch IDs. Two entries currently 
 | vectorcraft | Pending |
 | weather | Pending |
 | weather-maps | [Review and screenshot](weather-maps/README.md) |
-| wordcraft | Pending |
+| wordcraft | [Partial review and desktop/phone screenshots](wordcraft/README.md) |
 
 [Fix queue](FIX-QUEUE.md)
