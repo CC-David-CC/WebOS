@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Sixty-four entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Sixty-eight entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -13,7 +13,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | anicraft | Pending |
 | arduino-simulator | [Partial review and screenshots](arduino-simulator/README.md) |
 | audio-editor | [Review and screenshots](audio-editor/README.md) |
-| cadcraft | Pending |
+| cadcraft | [Review and screenshots](cadcraft/README.md) |
 | calculator | [Review and screenshots](calculator/README.md) |
 | chess-study | [Review and screenshots](chess-study/README.md) |
 | circuitjs | [Partial review and screenshots](circuitjs/README.md) |
@@ -21,7 +21,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | clockwork-room | [Review and screenshots](clockwork-room/README.md) |
 | crystal-defense | [Review and screenshots](crystal-defense/README.md) |
 | deckcraft | [Review and screenshots](deckcraft/README.md) |
-| designcraft | Pending |
+| designcraft | [Partial review and screenshots](designcraft/README.md) |
 | diagrams-net | [Partial review and screenshots](diagrams-net/README.md) |
 | digital-logic | [Partial review and screenshots](digital-logic/README.md) |
 | drakon-bash | [Review and screenshots](drakon-bash/README.md) |
@@ -35,7 +35,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | expression-puppet | [Review and screenshots](expression-puppet/README.md) |
 | falling-blocks | [Review and screenshots](falling-blocks/README.md) |
 | fieldcraft | Pending |
-| figcraft | Pending |
+| figcraft | [Review and screenshots](figcraft/README.md) |
 | files | [Review and screenshots](files/README.md) |
 | filmcraft | Pending |
 | garden-defense | [Review and screenshots](garden-defense/README.md) |
@@ -68,7 +68,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | reactive-control-desk | [Review and screenshots](reactive-control-desk/README.md) |
 | replicad | [Partial review and screenshots](replicad/README.md) |
 | rhythm-garden | [Review and screenshots](rhythm-garden/README.md) |
-| sketchcraft | Pending |
+| sketchcraft | [Partial review and screenshots](sketchcraft/README.md) |
 | sky-courier | [Review and screenshots](sky-courier/README.md) |
 | sling-targets | [Review and screenshots](sling-targets/README.md) |
 | snake-garden | [Review and screenshots](snake-garden/README.md) |
