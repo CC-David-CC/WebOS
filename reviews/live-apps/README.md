@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 73 enabled launch IDs. Three entries have signed-in reviews and screenshots, including one partial review. Each review names the interaction and its test coverage.
+The November 20 inventory contains 73 enabled launch IDs. Four entries have signed-in reviews and screenshots, including partial reviews. Each review names the interaction and its test coverage.
 
 | Application | Review |
 |---|---|
@@ -63,7 +63,7 @@ The November 20 inventory contains 73 enabled launch IDs. Three entries have sig
 | snake-garden | Pending |
 | solidcraft | Pending |
 | solitaire | Pending |
-| soundcraft | Pending |
+| soundcraft | [Partial review and screenshot](soundcraft/README.md) |
 | stack-balance | Pending |
 | stitch-converter | Pending |
 | story-cards | Pending |
