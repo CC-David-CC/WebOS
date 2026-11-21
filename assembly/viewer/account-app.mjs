@@ -88,6 +88,9 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       return {status: 'opened'};
     };
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
+      ...(kind === 'files' && host.refreshPanelPins ? {onRefresh() {
+        if (valid() && context.valid()) return host.refreshPanelPins();
+      }} : {}),
       ...(kind === 'text' ? {recovery: textRecovery(host, context, valid)} : {}),
       ...(kind === 'wordcraft' ? {
         recovery: wordcraftRecovery(host,context,valid), profileId: context.owner,
