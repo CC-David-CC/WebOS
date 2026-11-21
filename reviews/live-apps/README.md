@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Seventy entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Seventy-one entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -47,7 +47,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | kinetic-relay | [Review and screenshots](kinetic-relay/README.md) |
 | kiri-moto | [Partial review and screenshots](kiri-moto/README.md) |
 | lantern-leap | [Review and screenshots](lantern-leap/README.md) |
-| lightcraft | Pending |
+| lightcraft | [Partial review and screenshots](lightcraft/README.md) |
 | linux-x11 | [Hosted desktop check and screenshot](https://github.com/CC-David-CC/linux-x11/tree/2607504c2deec903dd3103c2d5a37719c18541ec#browser-verification). Phone, tablet and 4K checks pending. |
 | marble-works | [Review and screenshots](marble-works/README.md) |
 | materialcraft | Pending |
