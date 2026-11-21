@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {tmpdir} from 'node:os';
 import {execFileSync} from 'node:child_process';
+import {buildLinuxX11} from './build_linux_x11.mjs';
 import {buildTerminal} from './build_terminal.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -32,7 +33,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal',
+const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -256,6 +257,11 @@ if(terminalEnabled)apps.push(await buildTerminal({root,output,copySource,account
       await put('assets/legal/mathcraft/' + name, bytes);
     }
   }
+}
+if (flags['--linux-x11-packages']) {
+  if (!accountGuestHome) throw Error('The X11 release requires the account-home runtime');
+  const files = await buildLinuxX11(root,flags['--linux-x11-packages'],sourceInputs);
+  await registerFiles('linux-x11',files);
 }
 await put('assets/desktop/apps.json',JSON.stringify({version:'codi-public-apps/2',hostAPI:2,apps}));
 await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:false,offlineCache:false}));

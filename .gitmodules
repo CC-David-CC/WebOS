@@ -406,3 +406,6 @@
 [submodule "mathcraft"]
 	path = apps/mathcraft
 	url = git@github.com:CC-David-CC/mathcraft.git
+[submodule "linux-x11"]
+	path = apps/linux-x11
+	url = ../linux-x11.git
