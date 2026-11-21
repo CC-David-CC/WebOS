@@ -226,6 +226,37 @@ try {
 }
 if(terminalEnabled)apps.push(await buildTerminal({root,output,copySource,accountHome:accountGuestHome,
   recordSource:async relative=>sourceInputs.set(relative,hash(await readFile(path.join(root,relative))))}));
+// MathCraft has an independent app checkout and a browser-local Octave runtime.
+{
+  const id = 'mathcraft', appRoot = 'apps/' + id;
+  const manifest = appRoot + '/webos-files.json';
+  let inventory;
+  try { inventory = await readFile(path.join(root, manifest)); }
+  catch (e) { if (e.code !== 'ENOENT') throw e; }
+  if (inventory) {
+    sourceInputs.set(manifest, hash(inventory));
+    const names = JSON.parse(inventory);
+    if (!Array.isArray(names) || new Set(names).size !== names.length ||
+        !['app.mjs','icon.svg','vendor/octave/octave.wasm'].every(n => names.includes(n)) ||
+        names.some(n => typeof n !== 'string' || !safe(n) || n.split('/').some(s => !s || s === '.' || s === '..') ||
+          !/^(app[.]mjs|icon[.]svg|(?:src|lab|examples|vendor[/]octave)[/][a-zA-Z0-9._-]+)$/.test(n)))
+      throw Error('Invalid MathCraft app inventory');
+    const bundle = [];
+    for (const name of names) {
+      const source = appRoot + '/' + name, bytes = await readFile(path.join(root, source));
+      sourceInputs.set(source, hash(bytes));
+      bundle.push({name: name === 'app.mjs' ? 'index.mjs' : name, bytes});
+      if (name === 'icon.svg') await put('assets/desktop/mathcraft.svg', bytes);
+    }
+    await registerFiles(id, bundle);
+    // The corresponding source is available separately from the startup payload.
+    for (const name of ['source-3996ed4.tar.xz', 'PROVENANCE.md','GNU-GPL-3.txt','WASM-wrapper.LICENSE','EMSCRIPTEN.LICENSE','prepare-no-eval.mjs','SHA256SUMS']) {
+      const source = appRoot + '/vendor/octave/' + name, bytes = await readFile(path.join(root, source));
+      sourceInputs.set(source, hash(bytes));
+      await put('assets/legal/mathcraft/' + name, bytes);
+    }
+  }
+}
 await put('assets/desktop/apps.json',JSON.stringify({version:'codi-public-apps/2',hostAPI:2,apps}));
 await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:false,offlineCache:false}));
 await put('assets/desktop/cache-manifest.json',JSON.stringify({version:'webos-viewer-cache-disabled/1',id:hash(Buffer.concat([await readFile(path.join(output,'bootstrap.js')),await readFile(path.join(output,'viewer-profile.json')),await readFile(path.join(output,'assets/desktop/apps.json'))]))}));

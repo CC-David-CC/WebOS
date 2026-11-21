@@ -403,3 +403,6 @@
 [submodule "projectcraft"]
 	path = apps/projectcraft
 	url = ../projectcraft.git
+[submodule "mathcraft"]
+	path = apps/mathcraft
+	url = git@github.com:CC-David-CC/mathcraft.git
