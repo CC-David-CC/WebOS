@@ -158,6 +158,8 @@ async def create_application(public_root, private_root, origin, *, account_trans
             # WordCraft prints its generated PDF in a same-origin blob frame. Keep
             # that permission off the desktop/other apps and keep object-src disabled.
             csp = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'none'"
+            if name == 'index.html' or re.fullmatch(r'assets/desktop/apps/narrator/[0-9a-f]{64}/index\.html', name):
+                csp = csp.replace("default-src 'self';", "default-src 'self'; media-src 'self' blob:;")
             if name == 'index.html':
                 csp = csp.replace("connect-src 'self'", "connect-src 'self' https://noaa-gfs-bdp-pds.s3.amazonaws.com https://noaa-gefs-pds.s3.amazonaws.com https://noaa-cfs-pds.s3.amazonaws.com https://data.ecmwf.int https://opengeo.ncep.noaa.gov https://nowcoast.noaa.gov https://mapservices.weather.noaa.gov https://gibs.earthdata.nasa.gov https://api.weather.gov https://tiles.openfreemap.org https://www.gdacs.org https://mesonet.agron.iastate.edu https://eonet.gsfc.nasa.gov").replace("img-src 'self' data: blob:", "img-src 'self' data: blob: https://radar.weather.gov https://opengeo.ncep.noaa.gov https://nowcoast.noaa.gov https://tiles.openfreemap.org https://gibs.earthdata.nasa.gov https://mapservices.weather.noaa.gov")
             return web.FileResponse(current, headers={'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',

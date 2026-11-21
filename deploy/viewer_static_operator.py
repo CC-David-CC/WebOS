@@ -80,17 +80,45 @@ def with_wordcraft_print_policy(block):
     base = match.group(3)
     weather = bool(match.group(2))
     if weather:
-        assert re.search(r"(?m)^\s*@otherDocuments not path / /index\.html$", block)
+        assert re.search(r"(?m)^\s*@otherDocuments not path / /index\.html(?: /assets/desktop/apps/narrator/\*/index\.html)?$", block)
     assert base.count("frame-src 'self';") == 1 and "object-src 'none';" in base
     printing = base.replace("frame-src 'self';", "frame-src 'self' blob:;")
     indent = match.group(1)
     lines = [
         '@wordcraft_print path /wordcraft/index.html',
-        '@other_viewer not path /wordcraft/index.html' + (' / /index.html' if weather else ''),
+        '@other_viewer not path /wordcraft/index.html' + ((' / /index.html' + (' /assets/desktop/apps/narrator/*/index.html' if '@narratorPortable' in block else '')) if weather else ''),
         'header @other_viewer >Content-Security-Policy "' + base + '"',
         'header @wordcraft_print >Content-Security-Policy "' + printing + '"',
     ]
     return block[:match.start()] + ('\n'.join(indent + line for line in lines)) + block[match.end():]
+
+
+def with_narrator_media_policy(block):
+    """Allow locally generated audio on the desktop and portable Narrator page."""
+    portable = "/assets/desktop/apps/narrator/*/index.html"
+    lines = block.splitlines(keepends=True)
+    general = next(name for name in ("@other_viewer", "@otherDocuments")
+                   if any(line.lstrip().startswith(name + " not path ") for line in lines))
+    def line_for(prefix):
+        matches = [i for i, line in enumerate(lines) if line.lstrip().startswith(prefix)]
+        if len(matches) != 1:
+            raise ValueError("Unrecognized desktop security policy")
+        return matches[0]
+    def allow_local_media(line):
+        if "media-src " in line or line.count("default-src 'self';") != 1:
+            raise ValueError("Unexpected existing media policy")
+        return line.replace("default-src 'self';", "default-src 'self'; media-src 'self' blob:;")
+    if "@narratorPortable" in block:
+        raise ValueError("Narrator media policy already installed")
+    matcher = line_for(general + " not path ")
+    lines[matcher] = lines[matcher].rstrip("\n") + " " + portable + "\n"
+    desktop = line_for("header @weatherDesktop >Content-Security-Policy ")
+    lines[desktop] = allow_local_media(lines[desktop])
+    other = line_for("header " + general + " >Content-Security-Policy ")
+    indent = lines[other][:len(lines[other]) - len(lines[other].lstrip())]
+    standalone = allow_local_media(lines[other].replace(general, "@narratorPortable", 1))
+    lines[other + 1:other + 1] = [indent + "@narratorPortable path " + portable + "\n", standalone]
+    return "".join(lines)
 
 
 def verify_archive_inventory(tar, release_id):
@@ -130,6 +158,7 @@ def main():
     parser.add_argument('--archive-sha')
     parser.add_argument('--expected-current')
     parser.add_argument('--wordcraft-print-policy', action='store_true', help='Allow generated PDF blob frames only on the WordCraft HTML response')
+    parser.add_argument('--narrator-media-policy', action='store_true', help='Allow generated audio on the desktop and portable Narrator page')
     args = parser.parse_args()
     assert os.geteuid() == 0 and socket.gethostname().split('.')[0] == 'box-webhost'
     assert re.fullmatch('[a-z0-9][a-z0-9-]{0,59}', args.tag)
@@ -174,6 +203,8 @@ def main():
         new = old[:root.start(2)] + str(public) + old[root.end(2):]
         if args.wordcraft_print_policy:
             new = with_wordcraft_print_policy(new)
+        if args.narrator_media_policy:
+            new = with_narrator_media_policy(new)
         candidate = (text[:block.start()] + new + text[block.end():]).encode()
         assert candidate.decode().replace(new, old, 1) == text
         backup.mkdir(mode=0o700)
