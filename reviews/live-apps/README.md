@@ -48,7 +48,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | kiri-moto | [Partial review and screenshots](kiri-moto/README.md) |
 | lantern-leap | [Review and screenshots](lantern-leap/README.md) |
 | lightcraft | [Partial review and screenshots](lightcraft/README.md) |
-| linux-x11 | [Hosted desktop check and screenshot](https://github.com/CC-David-CC/linux-x11/tree/2607504c2deec903dd3103c2d5a37719c18541ec#browser-verification). Phone, tablet and 4K checks pending. |
+| linux-x11 | [Review and screenshots](linux-x11/README.md) |
 | marble-works | [Review and screenshots](marble-works/README.md) |
 | materialcraft | [Review and screenshots](materialcraft/README.md) |
 | mathcraft | [Review and screenshot](mathcraft/README.md) |
