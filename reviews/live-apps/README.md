@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 73 enabled launch IDs. Nine entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Ten entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 | Application | Review |
 |---|---|
@@ -39,6 +39,7 @@ The November 20 inventory contains 73 enabled launch IDs. Nine entries have sign
 | kiri-moto | Pending |
 | lantern-leap | Pending |
 | lightcraft | Pending |
+| linux-x11 | [Hosted desktop check and screenshot](https://github.com/CC-David-CC/linux-x11/tree/2607504c2deec903dd3103c2d5a37719c18541ec#browser-verification). Phone, tablet and 4K checks pending. |
 | marble-works | Pending |
 | materialcraft | Pending |
 | mathcraft | [Review and screenshot](mathcraft/README.md) |
