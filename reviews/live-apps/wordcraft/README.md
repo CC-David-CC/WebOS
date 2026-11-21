@@ -1,13 +1,19 @@
 # WordCraft
 
-A signed-in launch from Office opened the editor at a blank document. The desktop window showed the full ribbon. On a 390 × 844 CSS-pixel viewport the editing surface measured 336 × 794 after the desktop frame and apps bar. WordCraft collapsed parts of the ribbon into groups. The rightmost group, document width and status text still clipped, and some footer controls overlapped.
+Type text into the document, save the DOCX to My files and reopen the phone revision in a fresh desktop browser. Append text and verify the original text remains.
 
-| View | Capture |
-|---|---|
-| Desktop | ![WordCraft Home ribbon in a desktop window](desktop.png) |
-| Phone | ![WordCraft ribbon and clipped footer in a narrow touch window](phone.png) |
+| Viewport | Input | Result | Screenshot |
+|---|---|---|---|
+| 390 × 844 | Emulated touch | Edit and account save passed | [phone](phone.png) |
+| 820 × 1,180 | Emulated touch | Edit and account save passed | [tablet](tablet.png) |
+| 1,920 × 1,080 | Mouse | Edit and account save passed | [desktop](desktop.png) |
+| 3,840 × 2,160 | Mouse | Edit and account save passed | [4k](4k.png) |
 
-Review status is partial. Opening and resizing were observed. Typing with the virtual keyboard, saving on a phone, reopening on desktop, PDF export and printing still need a signed-in cross-device test. Browser was Chromium. The desktop screenshot shows a tiled window in a 1920 × 1080 desktop. The phone screenshot uses emulated touch.
+The phone capture still shows a clipped ribbon and a horizontally scrolling page. The review used the F12 and Ctrl+S shortcuts to verify the account workflow. Virtual keyboard, touch-only saving, and physical printing remain to be checked.
+
+The browser used a disposable account and a fresh context at each size. Physical-device input, software keyboard and GPU performance still need hardware testing.
+
+Desktop release `0234bfd516a2da8f4b78462518613c346c8027bf2689b04ee7a752d48726ae4b`. Tested app bundle `70c48174a24e6c8eedc4f55d4e0db53b3d0bbac64e3644804efc973238b5cbf7`.
 
 ## Browser dictation
 

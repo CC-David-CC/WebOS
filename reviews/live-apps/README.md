@@ -20,7 +20,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | clockwork-quest | Pending |
 | clockwork-room | Pending |
 | crystal-defense | [Review and screenshots](crystal-defense/README.md) |
-| deckcraft | Pending |
+| deckcraft | [Review and screenshots](deckcraft/README.md) |
 | designcraft | Pending |
 | diagrams-net | Pending |
 | digital-logic | Pending |
@@ -41,7 +41,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | garden-defense | [Review and screenshots](garden-defense/README.md) |
 | gcode-preview | [Review and screenshots](gcode-preview/README.md) |
 | gravity-pinball | Pending |
-| gridcraft | Pending |
+| gridcraft | [Review and screenshots](gridcraft/README.md) |
 | help | [Review and screenshots](help/README.md) |
 | image-editor | Pending |
 | kinetic-relay | Pending |
@@ -59,7 +59,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | orbital-courier | Pending |
 | owl-companion | [Review and screenshots](owl-companion/README.md) |
 | pcbcraft | Pending |
-| pdfcraft | Pending |
+| pdfcraft | [Review and screenshots](pdfcraft/README.md) |
 | photocraft | [Review and screenshots](photocraft/README.md) |
 | physics-playground | Pending |
 | pico-simulator | Pending |
@@ -87,6 +87,6 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | vectorcraft | Pending |
 | weather | [Review and screenshots](weather/README.md) |
 | weather-maps | [Review and screenshot](weather-maps/README.md) |
-| wordcraft | [Partial review and desktop/phone screenshots](wordcraft/README.md) |
+| wordcraft | [Review and screenshots](wordcraft/README.md) |
 
 [Fix queue](FIX-QUEUE.md)
