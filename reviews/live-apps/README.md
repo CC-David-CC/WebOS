@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Forty-eight entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Fifty-four entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -17,8 +17,8 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | calculator | [Review and screenshots](calculator/README.md) |
 | chess-study | [Review and screenshots](chess-study/README.md) |
 | circuitjs | Pending |
-| clockwork-quest | Pending |
-| clockwork-room | Pending |
+| clockwork-quest | [Review and screenshots](clockwork-quest/README.md) |
+| clockwork-room | [Review and screenshots](clockwork-room/README.md) |
 | crystal-defense | [Review and screenshots](crystal-defense/README.md) |
 | deckcraft | [Review and screenshots](deckcraft/README.md) |
 | designcraft | Pending |
@@ -27,7 +27,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | drakon-bash | [Review and screenshots](drakon-bash/README.md) |
 | drakon-javascript | [Review and screenshots](drakon-javascript/README.md) |
 | drakon-python | [Review and screenshots](drakon-python/README.md) |
-| drone-circuit | Pending |
+| drone-circuit | [Review and screenshots](drone-circuit/README.md) |
 | effectcraft | Pending |
 | electronics-design | Pending |
 | embroidery-studio | Pending |
@@ -44,7 +44,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | gridcraft | [Review and screenshots](gridcraft/README.md) |
 | help | [Review and screenshots](help/README.md) |
 | image-editor | [Partial review and screenshots](image-editor/README.md) |
-| kinetic-relay | Pending |
+| kinetic-relay | [Review and screenshots](kinetic-relay/README.md) |
 | kiri-moto | Pending |
 | lantern-leap | [Review and screenshots](lantern-leap/README.md) |
 | lightcraft | Pending |
@@ -56,7 +56,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | mesh-tool | Pending |
 | narrator | [Review and screenshots](https://github.com/CC-David-CC/webos-narrator/tree/6e602df7b02d77431124952a7ba2aeabae6b4a97/docs/live-review) |
 | notebook | Pending |
-| orbital-courier | Pending |
+| orbital-courier | [Review and screenshots](orbital-courier/README.md) |
 | owl-companion | [Review and screenshots](owl-companion/README.md) |
 | pcbcraft | Pending |
 | pdfcraft | [Review and screenshots](pdfcraft/README.md) |
@@ -79,7 +79,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | stitch-converter | [Review and screenshots](stitch-converter/README.md) |
 | story-cards | [Review and screenshots](story-cards/README.md) |
 | svg-editor | [Partial review and screenshots](svg-editor/README.md) |
-| tabletop-bot-arena | Pending |
+| tabletop-bot-arena | [Review and screenshots](tabletop-bot-arena/README.md) |
 | target-garden | [Review and screenshots](target-garden/README.md) |
 | terminal | [Review and screenshots](terminal/README.md) |
 | text | [Review and screenshots](text/README.md) |
