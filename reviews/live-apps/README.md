@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Forty-four entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Forty-eight entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -22,7 +22,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | crystal-defense | [Review and screenshots](crystal-defense/README.md) |
 | deckcraft | [Review and screenshots](deckcraft/README.md) |
 | designcraft | Pending |
-| diagrams-net | Pending |
+| diagrams-net | [Partial review and screenshots](diagrams-net/README.md) |
 | digital-logic | Pending |
 | drakon-bash | [Review and screenshots](drakon-bash/README.md) |
 | drakon-javascript | [Review and screenshots](drakon-javascript/README.md) |
@@ -31,7 +31,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | effectcraft | Pending |
 | electronics-design | Pending |
 | embroidery-studio | Pending |
-| excalidraw | Pending |
+| excalidraw | [Partial review and screenshots](excalidraw/README.md) |
 | expression-puppet | [Review and screenshots](expression-puppet/README.md) |
 | falling-blocks | [Review and screenshots](falling-blocks/README.md) |
 | fieldcraft | Pending |
@@ -43,7 +43,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | gravity-pinball | [Review and screenshots](gravity-pinball/README.md) |
 | gridcraft | [Review and screenshots](gridcraft/README.md) |
 | help | [Review and screenshots](help/README.md) |
-| image-editor | Pending |
+| image-editor | [Partial review and screenshots](image-editor/README.md) |
 | kinetic-relay | Pending |
 | kiri-moto | Pending |
 | lantern-leap | [Review and screenshots](lantern-leap/README.md) |
@@ -78,7 +78,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | stack-balance | [Review and screenshots](stack-balance/README.md) |
 | stitch-converter | [Review and screenshots](stitch-converter/README.md) |
 | story-cards | [Review and screenshots](story-cards/README.md) |
-| svg-editor | Pending |
+| svg-editor | [Partial review and screenshots](svg-editor/README.md) |
 | tabletop-bot-arena | Pending |
 | target-garden | [Review and screenshots](target-garden/README.md) |
 | terminal | [Review and screenshots](terminal/README.md) |
