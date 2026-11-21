@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Sixty-one entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Sixty-three entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -45,7 +45,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | help | [Review and screenshots](help/README.md) |
 | image-editor | [Partial review and screenshots](image-editor/README.md) |
 | kinetic-relay | [Review and screenshots](kinetic-relay/README.md) |
-| kiri-moto | Pending |
+| kiri-moto | [Partial review and screenshots](kiri-moto/README.md) |
 | lantern-leap | [Review and screenshots](lantern-leap/README.md) |
 | lightcraft | Pending |
 | linux-x11 | [Hosted desktop check and screenshot](https://github.com/CC-David-CC/linux-x11/tree/2607504c2deec903dd3103c2d5a37719c18541ec#browser-verification). Phone, tablet and 4K checks pending. |
@@ -53,7 +53,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | materialcraft | Pending |
 | mathcraft | [Review and screenshot](mathcraft/README.md) |
 | memory-garden | [Review and screenshots](memory-garden/README.md) |
-| mesh-tool | Pending |
+| mesh-tool | [Partial review and screenshots](mesh-tool/README.md) |
 | narrator | [Review and screenshots](https://github.com/CC-David-CC/webos-narrator/tree/6e602df7b02d77431124952a7ba2aeabae6b4a97/docs/live-review) |
 | notebook | [Partial review and screenshots](notebook/README.md) |
 | orbital-courier | [Review and screenshots](orbital-courier/README.md) |
