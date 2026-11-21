@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Seventy-six entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Seventy-seven entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -58,7 +58,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | notebook | [Partial review and screenshots](notebook/README.md) |
 | orbital-courier | [Review and screenshots](orbital-courier/README.md) |
 | owl-companion | [Review and screenshots](owl-companion/README.md) |
-| pcbcraft | Pending |
+| pcbcraft | [Review and screenshots](pcbcraft/README.md) |
 | pdfcraft | [Review and screenshots](pdfcraft/README.md) |
 | photocraft | [Review and screenshots](photocraft/README.md) |
 | physics-playground | [Review and screenshots](physics-playground/README.md) |
