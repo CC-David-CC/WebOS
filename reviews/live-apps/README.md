@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Nineteen entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Twenty entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -12,7 +12,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 |---|---|
 | anicraft | Pending |
 | arduino-simulator | Pending |
-| audio-editor | Pending |
+| audio-editor | [Review and screenshots](audio-editor/README.md) |
 | cadcraft | Pending |
 | calculator | [Review and screenshots](calculator/README.md) |
 | chess-study | [Review and screenshots](chess-study/README.md) |

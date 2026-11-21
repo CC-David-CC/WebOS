@@ -14,3 +14,5 @@
 | Stitch Converter | Medium. The edited 64 mm heart reports different command bounds after PES export and reopen on all four layouts. | Compare stitch-only and travel coordinates before export and after independent decoding. [Review](stitch-converter/README.md) |
 | Stitch Converter | Medium. The reopened design is below the visible phone area with Save locations expanded, and only its top is visible on the tablet. | Prioritize the design when opening a machine file. Check scrolling and preview sizing on hardware. [Phone](stitch-converter/phone.png) · [Tablet](stitch-converter/tablet.png) |
 | Solitaire | Low. The board is capped at 760 CSS pixels in maximized 1080p and 4K windows. | Check whether a larger board improves legibility on 4K displays. [4K screenshot](solitaire/4k.png) |
+| Audio Editor | Low. The right edge of the MultiTrack control clips at 390 × 844. | Open. Retest the compact menu and transport on a physical phone. [Phone](audio-editor/phone.png) |
+| Files → Audio Editor | Dragging an account recording from Files into the editor does not load it. | Deferred. Double-click the recording in Files or use Audio Editor’s File → Open from My files. |
