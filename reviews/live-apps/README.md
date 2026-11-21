@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Seventy-seven entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. All 78 entries now have signed-in review evidence and screenshots. The individual reviews record which tasks and screen sizes passed and what still needs checking on physical devices. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -72,7 +72,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | sky-courier | [Review and screenshots](sky-courier/README.md) |
 | sling-targets | [Review and screenshots](sling-targets/README.md) |
 | snake-garden | [Review and screenshots](snake-garden/README.md) |
-| solidcraft | Pending |
+| solidcraft | [Review and screenshots](solidcraft/README.md) |
 | solitaire | [Review and screenshots](solitaire/README.md) |
 | soundcraft | [Partial review and screenshot](soundcraft/README.md) |
 | stack-balance | [Review and screenshots](stack-balance/README.md) |
