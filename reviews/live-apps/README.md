@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 73 enabled launch IDs. Eight entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 73 enabled launch IDs. Nine entries have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 | Application | Review |
 |---|---|
@@ -70,7 +70,7 @@ The November 20 inventory contains 73 enabled launch IDs. Eight entries have sig
 | svg-editor | Pending |
 | tabletop-bot-arena | Pending |
 | target-garden | Pending |
-| terminal | Pending |
+| terminal | [Review and screenshots](terminal/README.md) |
 | text | [Review and screenshots](text/README.md) |
 | texturecraft | Pending |
 | vectorcraft | Pending |
