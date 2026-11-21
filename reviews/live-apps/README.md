@@ -1,6 +1,6 @@
 # Live WebOS app reviews
 
-The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Twenty-six entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
+The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. Thirty-one entries now have signed-in reviews and screenshots, including partial reviews. Each completed review includes inspected screenshots, its primary task, verification results and open device checks. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
 
@@ -32,7 +32,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | electronics-design | Pending |
 | embroidery-studio | Pending |
 | excalidraw | Pending |
-| expression-puppet | Pending |
+| expression-puppet | [Review and screenshots](expression-puppet/README.md) |
 | falling-blocks | [Review and screenshots](falling-blocks/README.md) |
 | fieldcraft | Pending |
 | figcraft | Pending |
@@ -57,7 +57,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | narrator | [Review and screenshots](https://github.com/CC-David-CC/webos-narrator/tree/6e602df7b02d77431124952a7ba2aeabae6b4a97/docs/live-review) |
 | notebook | Pending |
 | orbital-courier | Pending |
-| owl-companion | Pending |
+| owl-companion | [Review and screenshots](owl-companion/README.md) |
 | pcbcraft | Pending |
 | pdfcraft | Pending |
 | photocraft | [Review and screenshots](photocraft/README.md) |
@@ -65,9 +65,9 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | pico-simulator | Pending |
 | pocket-golf | Pending |
 | pocket-rally | Pending |
-| reactive-control-desk | Pending |
+| reactive-control-desk | [Review and screenshots](reactive-control-desk/README.md) |
 | replicad | Pending |
-| rhythm-garden | Pending |
+| rhythm-garden | [Review and screenshots](rhythm-garden/README.md) |
 | sketchcraft | Pending |
 | sky-courier | Pending |
 | sling-targets | Pending |
@@ -77,7 +77,7 @@ For an editor that supports phone edits, verify that the saved file reopens on d
 | soundcraft | [Partial review and screenshot](soundcraft/README.md) |
 | stack-balance | [Review and screenshots](stack-balance/README.md) |
 | stitch-converter | [Review and screenshots](stitch-converter/README.md) |
-| story-cards | Pending |
+| story-cards | [Review and screenshots](story-cards/README.md) |
 | svg-editor | Pending |
 | tabletop-bot-arena | Pending |
 | target-garden | [Review and screenshots](target-garden/README.md) |
