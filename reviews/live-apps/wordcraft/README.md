@@ -1,19 +1,19 @@
 # WordCraft
 
-Type text into the document, save the DOCX to My files and reopen the phone revision in a fresh desktop browser. Append text and verify the original text remains.
+On ksu.codes, open Office → WordCraft. At phone width the editor wraps text to the window and exposes File, Save and Tools. Tools includes common formatting commands and a paper-layout option. Wider windows keep the full ribbon. Print and export retain the document’s paper dimensions.
 
-| Viewport | Input | Result | Screenshot |
-|---|---|---|---|
-| 390 × 844 | Emulated touch | Edit and account save passed | [phone](phone.png) |
-| 820 × 1,180 | Emulated touch | Edit and account save passed | [tablet](tablet.png) |
-| 1,920 × 1,080 | Mouse | Edit and account save passed | [desktop](desktop.png) |
-| 3,840 × 2,160 | Mouse | Edit and account save passed | [4k](4k.png) |
+| Browser viewport | Production result | Screenshot |
+|---|---|---|
+| 390 × 844 touch | Tapped the native Save control twice and reopened the edited DOCX from Files. Anon used the same tab. Signed-in edits reopened in a fresh desktop browser. | [Phone](phone.png) |
+| 820 × 1,180 touch | Full ribbon. Typed, saved and reopened the DOCX. | [Tablet](tablet.png) |
+| 1,920 × 1,080 | Full ribbon. Typed, saved and reopened the DOCX. | [Desktop](desktop.png) |
+| 3,840 × 2,160 | Full ribbon. Typed, saved and reopened the DOCX. | [4K](4k.png) |
 
-The phone capture still shows a clipped ribbon and a horizontally scrolling page. The review used the F12 and Ctrl+S shortcuts to verify the account workflow. Virtual keyboard, touch-only saving, and physical printing remain to be checked.
+The browser run used emulated touch and inserted text. A physical phone still needs a check with its on-screen keyboard and IME. Real printer output also remains open.
 
-The browser used a disposable account and a fresh context at each size. Physical-device input, software keyboard and GPU performance still need hardware testing.
+WebOS viewer `37726dc08098e42b1cee2b8a05977b4e5e6e7d03c819205276a8bcd3cef55707`. [WordCraft component ebe09b3c57bc](https://github.com/CC-David-CC/wordcraft/commit/ebe09b3c57bc4a834320d747cc4e25db3c6aeee1) · [WebOS release 6df090a71ac0](https://github.com/CC-David-CC/WebOS/commit/6df090a71ac07fe90e3ea1c58cfe94e05fa2e3ce)
 
-Desktop release `0234bfd516a2da8f4b78462518613c346c8027bf2689b04ee7a752d48726ae4b`. Tested app bundle `70c48174a24e6c8eedc4f55d4e0db53b3d0bbac64e3644804efc973238b5cbf7`.
+The WebOS main branch still pinned WordCraft at `edeb4a090cd3` when this production release was verified.
 
 ## Browser dictation
 
