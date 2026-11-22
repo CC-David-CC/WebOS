@@ -12,3 +12,5 @@ Open the Dual LED example through account Files, place a resistor on the schemat
 The native archive retained the existing wires and all 14 board footprints. The saved phone project had 17 symbols, and a fresh desktop saved 18 without changing the phone revision. The phone used the visible Symbol and Place buttons and an emulated keyboard to search for the resistor. A tap over the Properties panel did not place the symbol. Touch-only search, readable compact controls and board editing on actual hardware remain open.
 
 Tested in Chromium with disposable accounts on ksu.codes release `0234bfd516a2da8f4b78462518613c346c8027bf2689b04ee7a752d48726ae4b`.
+
+[The compact schematic release and verified Files workflow](compact-schematic.md) are live on ksu.codes.

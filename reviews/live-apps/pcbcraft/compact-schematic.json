@@ -1,0 +1,159 @@
+{
+  "viewer": "c4e128af80025bd62273696e5c257518bd8a28f8aeafe0275f939fe42676d4ae",
+  "parent": "bb4fd2c30890d7860c3a59faaa23e2320f3ea92e",
+  "component": "8290b73bf17dc2b8c6608b326fe207f13dbefdce",
+  "traceBounds": {
+    "before": {
+      "phone": {
+        "width": 46,
+        "height": 36,
+        "bounds": [
+          218,
+          297,
+          264,
+          333
+        ],
+        "canvas": [
+          336,
+          776
+        ]
+      },
+      "4k": {
+        "width": 374,
+        "height": 240,
+        "bounds": [
+          1696,
+          1014,
+          2070,
+          1254
+        ],
+        "canvas": [
+          3766,
+          2113
+        ]
+      }
+    },
+    "after": {
+      "phone": {
+        "width": 240,
+        "height": 157,
+        "bounds": [
+          48,
+          390,
+          288,
+          547
+        ],
+        "canvas": [
+          336,
+          758
+        ]
+      },
+      "4k": {
+        "width": 2499,
+        "height": 1570,
+        "bounds": [
+          633,
+          352,
+          3132,
+          1922
+        ],
+        "canvas": [
+          3766,
+          2128
+        ]
+      }
+    }
+  },
+  "tests": [
+    {
+      "mode": "hosted",
+      "tier": "phone",
+      "role": "anon",
+      "canvas": [
+        336,
+        758
+      ],
+      "added": "R5",
+      "symbols": 17,
+      "wires": 40,
+      "footprints": 14,
+      "stored": "4d8e2a01b21cb9d2da082b06766a100ba8d12a3d54776dcb7276e7825c2fb4a7",
+      "reopened": "4d8e2a01b21cb9d2da082b06766a100ba8d12a3d54776dcb7276e7825c2fb4a7",
+      "guestPrivateRequests": 0,
+      "wasm": "490432fffec5729e8a6122883e4897e9dc988055f43f974919b8422b8e9e56ff",
+      "errors": []
+    },
+    {
+      "mode": "hosted",
+      "tier": "phone",
+      "role": "signed",
+      "canvas": [
+        336,
+        794
+      ],
+      "added": "R5",
+      "symbols": 17,
+      "wires": 40,
+      "footprints": 14,
+      "stored": "13ccdabb18e508bc4caa8945cf4644fbfc039e86ff4eb8e55f9eabe75af36159",
+      "reopened": "13ccdabb18e508bc4caa8945cf4644fbfc039e86ff4eb8e55f9eabe75af36159",
+      "guestPrivateRequests": null,
+      "wasm": "490432fffec5729e8a6122883e4897e9dc988055f43f974919b8422b8e9e56ff",
+      "errors": []
+    },
+    {
+      "mode": "hosted",
+      "tier": "tablet",
+      "role": "anon",
+      "canvas": [
+        766,
+        1112
+      ],
+      "added": "R5",
+      "symbols": 17,
+      "wires": 40,
+      "footprints": 14,
+      "stored": "592d3b0fa0311ad9cf3ea3de6623ed80f9e311a167c2cc0e7e081cfdebe41080",
+      "reopened": "592d3b0fa0311ad9cf3ea3de6623ed80f9e311a167c2cc0e7e081cfdebe41080",
+      "guestPrivateRequests": 0,
+      "wasm": "490432fffec5729e8a6122883e4897e9dc988055f43f974919b8422b8e9e56ff",
+      "errors": []
+    },
+    {
+      "mode": "hosted",
+      "tier": "desktop",
+      "role": "anon",
+      "canvas": [
+        1846,
+        1033
+      ],
+      "added": "R5",
+      "symbols": 17,
+      "wires": 40,
+      "footprints": 14,
+      "stored": "f63bd502539b47285f3fd349d23951548689262010d4b4762b596a3818278bab",
+      "reopened": "f63bd502539b47285f3fd349d23951548689262010d4b4762b596a3818278bab",
+      "guestPrivateRequests": 0,
+      "wasm": "490432fffec5729e8a6122883e4897e9dc988055f43f974919b8422b8e9e56ff",
+      "errors": []
+    },
+    {
+      "mode": "hosted",
+      "tier": "4k",
+      "role": "signed",
+      "canvas": [
+        3766,
+        2128
+      ],
+      "added": "R5",
+      "symbols": 17,
+      "wires": 40,
+      "footprints": 14,
+      "stored": "f922c08393f935208da4ca83da72c518467426290a642401ce1fc01fbdf6e00d",
+      "reopened": "f922c08393f935208da4ca83da72c518467426290a642401ce1fc01fbdf6e00d",
+      "guestPrivateRequests": null,
+      "wasm": "490432fffec5729e8a6122883e4897e9dc988055f43f974919b8422b8e9e56ff",
+      "errors": []
+    }
+  ]
+}
