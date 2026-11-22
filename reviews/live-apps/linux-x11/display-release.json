@@ -1,0 +1,129 @@
+{
+  "viewer": "5abc02832b9cdf54c797ed1c72757d7fd0b9b34dea188aeb16ba51a416c7cab2",
+  "parent": "00567c04cff88e3934bfb84c49cf9b39f1ac2129",
+  "component": "557a102702c26158dde685a26152afd594765713",
+  "checks": {
+    "phone": {
+      "view": "phone",
+      "initial": {
+        "native": [
+          800,
+          600
+        ],
+        "size": [
+          336,
+          252
+        ],
+        "view": [
+          336,
+          744
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "actualSize": {
+        "native": [
+          800,
+          600
+        ],
+        "size": [
+          800,
+          600
+        ],
+        "view": [
+          336,
+          744
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "restored": {
+        "native": [
+          800,
+          600
+        ],
+        "size": [
+          336,
+          252
+        ],
+        "view": [
+          336,
+          744
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "mobileInput": true,
+      "filesDownloadedThroughMenu": true,
+      "guestFile": "127.0.0.1 localhost\n",
+      "errors": []
+    },
+    "desktop": {
+      "view": "desktop",
+      "initial": {
+        "native": [
+          1280,
+          800
+        ],
+        "size": [
+          3344,
+          2090
+        ],
+        "view": [
+          3766,
+          2090
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "actualSize": {
+        "native": [
+          1280,
+          800
+        ],
+        "size": [
+          1280,
+          800
+        ],
+        "view": [
+          3766,
+          2090
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "restored": {
+        "native": [
+          1280,
+          800
+        ],
+        "size": [
+          3344,
+          2090
+        ],
+        "view": [
+          3766,
+          2090
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "mobileInput": false,
+      "filesDownloadedThroughMenu": true,
+      "guestFile": "127.0.0.1 localhost\n",
+      "errors": []
+    }
+  }
+}

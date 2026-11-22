@@ -34,3 +34,7 @@ The subsequent ACAD viewer `b07393596a72` retained X11 bundle `04a6f9ff19fb47988
 ## Immediate typing after a click
 
 The X11 input controller fix passed on live viewer `5c2abc3689a1`. Both roles passed eight immediate click-and-type trials and read back a file written by the guest. The remaining hardware checks cover cold mobile startup and real keyboards. [Hosted workflow, screenshots and test page](chromium-input.md)
+
+## Guest display and phone input
+
+[Zoom, touch panning, mobile keyboard and native 4K-window checks](guest-display.md) passed on ksu.codes.
