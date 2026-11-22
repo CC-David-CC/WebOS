@@ -126,6 +126,7 @@ await mkdir(output);
 await tree('platform/desktop/active-system','');
 await copySource('apps/terminal/active-system/terminal.js','terminal.js');
 for(const item of await readdir(path.join(root,'platform/runtime/active-system/assets/desktop'),{withFileTypes:true})){if(item.isFile()&&item.name.endsWith('.mjs'))await copySource('platform/runtime/active-system/assets/desktop/'+item.name,'assets/desktop/'+item.name);}
+await copySource('apps/linux/assets/desktop/guest-network.mjs','assets/desktop/guest-network.mjs');
 await copySource('platform/runtime/active-system/network/strict-json.mjs','network/strict-json.mjs');
 await tree('platform/storage/src/webos_storage/vendor/js-sha256','assets/desktop/vendor/js-sha256');
 const storageBrowser = 'platform/storage/active-system/storage/browser';

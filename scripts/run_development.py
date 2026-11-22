@@ -46,10 +46,14 @@ def private_directory(path):
     return path
 
 
-async def create_application(public_root, private_root, origin, *, account_transfers=8, shared_transfers=16, agent_operations=False):
+async def create_application(public_root, private_root, origin, *, account_transfers=8, shared_transfers=16, agent_operations=False, guest_network_policy=None):
     if type(account_transfers) is not int or not 1 <= account_transfers <= 8 or type(shared_transfers) is not int or not account_transfers <= shared_transfers <= 32:
         raise ValueError('Bounded account/shared transfer limits required')
     origin = validate_origin(origin)
+    network = None
+    if guest_network_policy is not None:
+        from guest_service.viewer import ViewerNetwork
+        network = ViewerNetwork.installed(origin, guest_network_policy)
     address = urlsplit(origin)
     if agent_operations and (address.scheme != 'http' or address.hostname not in ('127.0.0.1', 'localhost', '::1')):
         raise ValueError('Development agent operations require a direct loopback origin')
@@ -91,6 +95,8 @@ async def create_application(public_root, private_root, origin, *, account_trans
                 value = super().config()
                 value['gateway'] = {'version': 'codi-user-files/1', 'basePath': '/gateway', 'fileBytes': 128 * 1024 * 1024,
                                     'concurrentTransfers': account_transfers, 'sharedConcurrentTransfers': shared_transfers}
+                if network is not None:
+                    network.configure(value)
                 if agent_operations:
                     value['agentOperations'] = {'version': 'webos-agent-operations/1'}
                 return value
@@ -98,6 +104,8 @@ async def create_application(public_root, private_root, origin, *, account_trans
         authority = FileAuthority(accounts)
         if agent_operations:
             authority = DelegationAuthority(accounts, authority)
+        if network is not None:
+            authority = network.authority(accounts, authority)
         store = UserStore(private_root / 'storage-state', private_root / 'account-files', initial_folders=DEFAULT_ACCOUNT_FOLDERS)
         if new:
             # Only explicitly new development state is initialized. Retained
@@ -141,7 +149,12 @@ async def create_application(public_root, private_root, origin, *, account_trans
                 finally:
                     if hasattr(stream, 'close'): stream.close()
                 return web.Response(status=response['status'], headers=response['headers'], body=data)
-            return await asyncio.to_thread(invoke)
+            response = await asyncio.to_thread(invoke)
+            if network is not None:
+                network.account_response(request, response)
+            return response
+        if network is not None:
+            app.router.add_get('/guest-network', network.relay)
         app.router.add_route('*', '/api/{tail:.*}', account_request)
         app.router.add_get('/config.json', account_request)
         app.router.add_get('/.well-known/codi-issuer.json', account_request)
@@ -186,7 +199,8 @@ async def run(args):
     origin = validate_origin(args.origin) if args.origin else 'http://127.0.0.1:' + str(sock.getsockname()[1])
     try:
         app = await create_application(args.public_root, args.private_root, origin, account_transfers=args.account_transfers,
-                                       shared_transfers=args.shared_transfers, agent_operations=args.agent_operations)
+                                       shared_transfers=args.shared_transfers, agent_operations=args.agent_operations,
+                                       guest_network_policy=args.guest_network_policy)
         runner = web.AppRunner(app, access_log=None); await runner.setup()
         await web.SockSite(runner, sock).start()
         print(json.dumps({'origin': origin, 'scope': 'development-only'}), flush=True)
@@ -210,4 +224,5 @@ if __name__ == '__main__':
     parser.add_argument('--account-transfers', type=int, default=8, help='Concurrent file transfers per account (1–8)')
     parser.add_argument('--shared-transfers', type=int, default=16, help='Concurrent file transfers across the test service (account limit–32)')
     parser.add_argument('--agent-operations', action='store_true', help='Enable scoped operation grants for direct loopback testing')
+    parser.add_argument('--guest-network-policy', type=Path, help='Protected egress policy for the optional guest worker')
     asyncio.run(run(parser.parse_args()))
