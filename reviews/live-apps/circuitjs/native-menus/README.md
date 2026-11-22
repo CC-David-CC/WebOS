@@ -1,0 +1,7 @@
+# CircuitJS schematic and menus
+
+The live build dropped the upstream stylesheet during packaging. The resulting File menu alone occupied over a thousand vertical pixels, even at rest. The corrected build packages that stylesheet with the simulator and serves it inside the same-origin app frame.
+
+Verified in Chromium on ksu.codes using viewer `f836f5e3ba3f073dec9dd4a9a8366e801e704e97f4992bfea3af8346cd267cc2`. At each size the test opened CircuitJS from Electronics, checked that the schematic canvas was visible and idle dropdowns were closed, selected the RC low-pass filter from the native menu, checked that the dropdown closed and observed simulation time advancing. The compact phone workflow used the hamburger menu. [Phone](phone-visible-circuit.png) · [Tablet](tablet-visible-circuit.png) · [Desktop](desktop-visible-circuit.png) · [4K](4k-visible-circuit.png)
+
+Anon and a newly signed-in browser also saved the native circuit to Documents, reopened it through Files, compared the saved bytes and native topology, and observed the reopened simulation running. The Anon session made no private file requests. The signed-in check used an independent browser context after sync. Physical touch remains open. [CircuitJS source](https://github.com/CC-David-CC/circuitjs/commit/bd3b277bbad1c8b00d38eb95eed8bcc4308c06cf) · [WebOS release branch commit](https://github.com/CC-David-CC/WebOS/commit/7f7596a2840672fcf1cc4e9b8f3e0ddc4ebf67cb)

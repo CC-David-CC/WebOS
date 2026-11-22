@@ -1,5 +1,7 @@
 # Circuit Simulator (CircuitJS)
 
+[Updated hosted menu and Files results, with four current screenshots](native-menus/README.md)
+
 Load the RC low-pass example, verify the simulation clock advances, and save the circuit.
 
 | Viewport | Input | Result | Screenshot |
