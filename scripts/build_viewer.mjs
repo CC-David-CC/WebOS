@@ -136,8 +136,22 @@ for (const file of ['temporary-files.mjs', 'account-context.mjs', 'mirror.mjs', 
 await tree(storageBrowser+'/opfs', 'storage/browser/opfs');
 const common={absWorkingDir:root,bundle:true,platform:'browser',format:'esm',target:'es2022',minify:false,legalComments:'eof',metafile:true,write:false,
   nodePaths:[path.join(root,'node_modules')],loader:{'.woff':'file','.woff2':'file','.ttf':'file','.svg':'file','.png':'file'}};
-function recordInputs(meta){for(const name of Object.keys(meta.inputs)){if(name.startsWith('<'))continue;const absolute=path.resolve(root,name);if(!absolute.startsWith(root+path.sep))throw Error('Build dependency outside assembly');}}
-async function emitBuild(options,destination){const result=await build({...common,...options});recordInputs(result.metafile);for(const input of Object.keys(result.metafile.inputs)){if(input.startsWith('<'))continue;sourceInputs.set(input,hash(await readFile(path.resolve(root,input))));}const files=[];for(const file of result.outputFiles){const name=path.relative(options.outdir,file.path).split(path.sep).join('/');files.push({name,bytes:file.contents});}await destination(files);}
+async function emitBuild(options, destination) {
+  const result = await build({...common, ...options});
+  for (const [input, metadata] of Object.entries(result.metafile.inputs)) {
+    if (input.startsWith('<')) continue;
+    // esbuild creates empty virtual modules for dependencies disabled by a browser mapping.
+    if (input.startsWith('(disabled):') && metadata.bytes === 0) continue;
+    const absolute = path.resolve(root, input);
+    if (!absolute.startsWith(root + path.sep)) throw Error('Build dependency outside assembly');
+    sourceInputs.set(input, hash(await readFile(absolute)));
+  }
+  const files = result.outputFiles.map(file => ({
+    name: path.relative(options.outdir, file.path).split(path.sep).join('/'),
+    bytes: file.contents,
+  }));
+  await destination(files);
+}
 const servicesSource = officeEngines.length || photoSite || graphicsEngines.length ? {
   stdin: {
     contents: [
