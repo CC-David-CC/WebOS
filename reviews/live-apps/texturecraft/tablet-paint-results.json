@@ -1,0 +1,114 @@
+[
+  {
+    "tier": "tablet",
+    "role": "anon",
+    "method": "touch",
+    "meshSHA": "226be580081253476e55f6c3ef62b61a2fd5f9e4a4200fd54246010d9f8d070d",
+    "tiles": {
+      "pixels/layer_1_baseColor.bin": {
+        "sha": "9de839e40b25fff49581a4eb7eccfe6e602bfb34aa91d1225094390e3f189748",
+        "tiles": 3
+      },
+      "pixels/layer_1_metallic.bin": {
+        "sha": "483a1807f9bedd8c219c1141044af6059d2077ae1033e03ad8139ece95d845d7",
+        "tiles": 3
+      },
+      "pixels/layer_1_roughness.bin": {
+        "sha": "b28615b4e2899746f6ae43cd07537a2ca425a1a8158663f6fc5ccfedef436016",
+        "tiles": 3
+      },
+      "pixels/layer_1_normal.bin": {
+        "sha": "967cfb02970b3ece1ca81fbe55e7064325c4961c69a8d3fd6258642406d3818f",
+        "tiles": 3
+      },
+      "pixels/layer_1_height.bin": {
+        "sha": "e2724f55e6612745525cebcb76391983126bf3be47ff97328315e64ec0768f19",
+        "tiles": 3
+      }
+    },
+    "channelCount": 5,
+    "tileCount": 15,
+    "revisedTiles": {
+      "pixels/layer_1_baseColor.bin": {
+        "sha": "d1603eac336084c2d71cf2ea418a0b962f06727274538a28b652147098dc9ce0",
+        "tiles": 6
+      },
+      "pixels/layer_1_metallic.bin": {
+        "sha": "d656c00548fae19c6c01150737c9e9b5622e7cdd1e5f11fab7edf91cd44be050",
+        "tiles": 6
+      },
+      "pixels/layer_1_roughness.bin": {
+        "sha": "525370eec4034138bb39fe8668e316c8a9cde787ac914c91e33eb6f71ca59e86",
+        "tiles": 6
+      },
+      "pixels/layer_1_normal.bin": {
+        "sha": "53477b1dfbb3786957cb712f9daf462200919f9e1bc2160de72c8951b73c347c",
+        "tiles": 6
+      },
+      "pixels/layer_1_height.bin": {
+        "sha": "9b34d823b568d6dd1dc4ebb21d7078ded6183fff7cc4cc80f14dc007b5b791fd",
+        "tiles": 6
+      }
+    },
+    "restored": true,
+    "viewer": "2ea502c2e1c276f68d7b1d2f14c6b3ef5f78a6bcea63424e4991330f5dadded2",
+    "errors": [],
+    "privateRequests": 0
+  },
+  {
+    "tier": "tablet",
+    "role": "signed",
+    "method": "touch",
+    "meshSHA": "226be580081253476e55f6c3ef62b61a2fd5f9e4a4200fd54246010d9f8d070d",
+    "tiles": {
+      "pixels/layer_1_baseColor.bin": {
+        "sha": "9de839e40b25fff49581a4eb7eccfe6e602bfb34aa91d1225094390e3f189748",
+        "tiles": 3
+      },
+      "pixels/layer_1_metallic.bin": {
+        "sha": "483a1807f9bedd8c219c1141044af6059d2077ae1033e03ad8139ece95d845d7",
+        "tiles": 3
+      },
+      "pixels/layer_1_roughness.bin": {
+        "sha": "b28615b4e2899746f6ae43cd07537a2ca425a1a8158663f6fc5ccfedef436016",
+        "tiles": 3
+      },
+      "pixels/layer_1_normal.bin": {
+        "sha": "967cfb02970b3ece1ca81fbe55e7064325c4961c69a8d3fd6258642406d3818f",
+        "tiles": 3
+      },
+      "pixels/layer_1_height.bin": {
+        "sha": "e2724f55e6612745525cebcb76391983126bf3be47ff97328315e64ec0768f19",
+        "tiles": 3
+      }
+    },
+    "channelCount": 5,
+    "tileCount": 15,
+    "revisedTiles": {
+      "pixels/layer_1_baseColor.bin": {
+        "sha": "d1603eac336084c2d71cf2ea418a0b962f06727274538a28b652147098dc9ce0",
+        "tiles": 6
+      },
+      "pixels/layer_1_metallic.bin": {
+        "sha": "d656c00548fae19c6c01150737c9e9b5622e7cdd1e5f11fab7edf91cd44be050",
+        "tiles": 6
+      },
+      "pixels/layer_1_roughness.bin": {
+        "sha": "525370eec4034138bb39fe8668e316c8a9cde787ac914c91e33eb6f71ca59e86",
+        "tiles": 6
+      },
+      "pixels/layer_1_normal.bin": {
+        "sha": "53477b1dfbb3786957cb712f9daf462200919f9e1bc2160de72c8951b73c347c",
+        "tiles": 6
+      },
+      "pixels/layer_1_height.bin": {
+        "sha": "9b34d823b568d6dd1dc4ebb21d7078ded6183fff7cc4cc80f14dc007b5b791fd",
+        "tiles": 6
+      }
+    },
+    "restored": true,
+    "viewer": "2ea502c2e1c276f68d7b1d2f14c6b3ef5f78a6bcea63424e4991330f5dadded2",
+    "errors": [],
+    "privateRequests": null
+  }
+]
