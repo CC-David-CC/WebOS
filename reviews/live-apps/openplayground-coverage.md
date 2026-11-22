@@ -1,52 +1,52 @@
 # OpenPlayground and WebOS
 
-Checked November 22, 2026. Of 43 Playground entries, 17 are on ksu.codes, four more have public CC-David-CC repositories, and 22 others have no same-name public repository under that account. Each project counts once. The GitHub column describes source availability. The release column describes verified progress. Feature, hardware, compact-layout and version parity are separate checks. [Pinned upstream catalog](https://github.com/daijro/openplayground/blob/4317d6b7ec991926713fd1af1bc715c42c0e8a55/tools.yaml) · [WebOS profile](https://ksu.codes/viewer-profile.json) · [Production registry](https://ksu.codes/assets/desktop/apps.json) · [Hosted Craft checks](https://github.com/CC-David-CC/WebOS/blob/review/live-app-usability-20261120/reviews/live-apps/anon-craft-files.md)
+Checked November 22, 2026. Of 43 Playground entries, 17 are on ksu.codes, 13 more have public CC-David-CC forks, and 13 others have no matching public fork under that account. Each project counts once. Forks are matched by GitHub’s upstream repository ID, including renamed repositories. The GitHub column describes source availability. The release column describes verified progress. Feature, hardware, compact-layout and version parity are separate checks. [Pinned upstream catalog](https://github.com/daijro/openplayground/blob/4317d6b7ec991926713fd1af1bc715c42c0e8a55/tools.yaml) · [WebOS profile](https://ksu.codes/viewer-profile.json) · [Production registry](https://ksu.codes/assets/desktop/apps.json) · [Hosted Craft checks](https://github.com/CC-David-CC/WebOS/blob/review/live-app-usability-20261120/reviews/live-apps/anon-craft-files.md)
 
 | Group | Project and upstream | Your public GitHub | WebOS release status |
 |---|---|---|---|
 | Image | [PhotoCraft](https://github.com/storytold/photocraft) | [CC-David-CC/photocraft](https://github.com/CC-David-CC/photocraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Image | [VectorCraft](https://github.com/storytold/vectorcraft) | [CC-David-CC/vectorcraft](https://github.com/CC-David-CC/vectorcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| Image | [TraceDraw](https://github.com/tracedraw/tracedraw) | No same-name public repository found | Absent from live profile |
+| Image | [TraceDraw](https://github.com/tracedraw/tracedraw) | [CC-David-CC/tracedraw](https://github.com/CC-David-CC/tracedraw) | Fork verified · WebOS release pending · matches upstream at `cece8d0e` |
 | Image | [DesignCraft](https://github.com/storytold/designcraft) | [CC-David-CC/designcraft](https://github.com/CC-David-CC/designcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Image | [LightCraft](https://github.com/storytold/lightcraft) | [CC-David-CC/lightcraft](https://github.com/CC-David-CC/lightcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| Image | [LightCraft Classic](https://github.com/emmertex/lightcraft-classic) | No same-name public repository found | Absent from live profile |
+| Image | [LightCraft Classic](https://github.com/emmertex/chromaforge) | [CC-David-CC/chromaforge](https://github.com/CC-David-CC/chromaforge) | Fork two commits behind upstream · WebOS release pending |
 | Image | [FigCraft](https://github.com/storytold/figcraft) | [CC-David-CC/figcraft](https://github.com/CC-David-CC/figcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| Image | [FireCraft](https://github.com/aliasfoxkde/FireCraft) | No same-name public repository found | Absent from live profile |
-| Image | [PaintCraft](https://github.com/replicraft/PaintCraft) | No same-name public repository found | Absent from live profile |
-| Image | [Paint.RS](https://github.com/daijro/paint.rs) | [CC-David-CC/paint.rs](https://github.com/CC-David-CC/paint.rs) | Upstream file-boundary test passed · WebOS integration pending |
-| Image | [ProCraft](https://github.com/artcraft-android/procraft) | No same-name public repository found | Absent from live profile |
-| Image | [PixelCraft](https://github.com/asad-albadi/PixelCraft) | No same-name public repository found | Absent from live profile |
+| Image | [FireCraft](https://github.com/aliasfoxkde/FireCraft) | [CC-David-CC/FireCraft](https://github.com/CC-David-CC/FireCraft) | Fork verified · WebOS release pending · matches upstream at `6c68c9e3` |
+| Image | [PaintCraft](https://github.com/replicraft/PaintCraft) | [CC-David-CC/PaintCraft](https://github.com/CC-David-CC/PaintCraft) | Fork verified · WebOS release pending · matches upstream at `e755163c` |
+| Image | [Paint.RS](https://github.com/daijro/paint.rs) | [CC-David-CC/paint.rs](https://github.com/CC-David-CC/paint.rs) | Upstream file-boundary test passed · WebOS integration pending · matches upstream at `0aecc981` |
+| Image | [ProCraft](https://github.com/artcraft-android/procraft) | [CC-David-CC/procraft](https://github.com/CC-David-CC/procraft) | Fork verified · WebOS release pending · matches upstream at `6d470500` |
+| Image | [PixelCraft](https://github.com/asad-albadi/PixelCraft) | No matching public fork found | Absent from live profile |
 | Office | [WordCraft](https://github.com/storytold/wordcraft) | [CC-David-CC/wordcraft](https://github.com/CC-David-CC/wordcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [GridCraft](https://github.com/storytold/gridcraft) | [CC-David-CC/gridcraft](https://github.com/CC-David-CC/gridcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [DeckCraft](https://github.com/storytold/deckcraft) | [CC-David-CC/deckcraft](https://github.com/CC-David-CC/deckcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| Office | [NoteCraft](https://github.com/AlienTechSoftware/notecraft) | [CC-David-CC/notecraft](https://github.com/CC-David-CC/notecraft) | Port in progress · Files qualification pending |
-| Office | [TextCraft](https://github.com/cmspeedau/NoteCraft) | No same-name public repository found | Absent from live profile |
-| Office | [MailCraft](https://github.com/UCS-Care-Group/mailcraft) | No same-name public repository found | Local WebOS source present · production disabled |
+| Office | [NoteCraft](https://github.com/AlienTechSoftware/notecraft) | [CC-David-CC/notecraft](https://github.com/CC-David-CC/notecraft) | Port in progress · Files qualification pending · matches upstream at `b769e70b` |
+| Office | [TextCraft](https://github.com/cmspeedau/NoteCraft) | [CC-David-CC/NoteCraft_simple](https://github.com/CC-David-CC/NoteCraft_simple) | Fork verified · WebOS release pending · matches upstream at `d604d998` |
+| Office | [MailCraft](https://github.com/UCS-Care-Group/mailcraft) | No matching public fork found | Local WebOS source present · production disabled |
 | Office | [PdfCraft](https://github.com/storytold/pdfcraft) | [CC-David-CC/pdfcraft](https://github.com/CC-David-CC/pdfcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [MatCraft](https://github.com/NibrasAz7/matcraft) | [CC-David-CC/matcraft](https://github.com/CC-David-CC/matcraft) | Fork matches upstream master · upstream WebAssembly target exists · WebOS Files and hosted checks pending |
 | Video | [FilmCraft](https://github.com/storytold/filmcraft) | [CC-David-CC/filmcraft](https://github.com/CC-David-CC/filmcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Video | [EffectCraft](https://github.com/storytold/effectcraft) | [CC-David-CC/effectcraft](https://github.com/CC-David-CC/effectcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| Video | [AniCraft](https://github.com/storytold/AniCraft) | [CC-David-CC/anicraft](https://github.com/CC-David-CC/anicraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| Video | [Picasso Suite](https://github.com/fabox-os/Picasso-Suite) | No same-name public repository found | Absent from live profile |
-| Video | [Align](https://github.com/FedyaLight/align) | No same-name public repository found | Absent from live profile |
+| Video | [AniCraft](https://github.com/storytold/anicraft) | [CC-David-CC/anicraft](https://github.com/CC-David-CC/anicraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
+| Video | [Picasso Suite](https://github.com/fabox-os/Picasso-Suite) | [CC-David-CC/Picasso-Suite](https://github.com/CC-David-CC/Picasso-Suite) | Fork verified · WebOS release pending · matches upstream at `801ef77e` |
+| Video | [Align](https://github.com/FedyaLight/align) | [CC-David-CC/align](https://github.com/CC-David-CC/align) | Fork verified · WebOS release pending · matches upstream at `d2a4a06e` |
 | 3D | [CADCraft](https://github.com/storytold/cadcraft) | [CC-David-CC/cadcraft](https://github.com/CC-David-CC/cadcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| 3D | [SolidCraft](https://github.com/bherbruck/solvecraft) | [CC-David-CC/solidcraft](https://github.com/CC-David-CC/solidcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| 3D | [SubCraft](https://github.com/Aalzard/subcraft) | No same-name public repository found | Absent from live profile |
+| 3D | [SolidCraft](https://github.com/tangency-labs/solidcraft) | [CC-David-CC/solidcraft](https://github.com/CC-David-CC/solidcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
+| 3D | [SubCraft](https://github.com/Aalzard/subcraft) | [CC-David-CC/subcraft](https://github.com/CC-David-CC/subcraft) | Fork verified · WebOS release pending · matches upstream at `c1f711f8` |
 | 3D | [TextureCraft](https://github.com/storytold/texturecraft) | [CC-David-CC/texturecraft](https://github.com/CC-David-CC/texturecraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | 3D | [MaterialCraft](https://github.com/storytold/materialcraft) | [CC-David-CC/materialcraft](https://github.com/CC-David-CC/materialcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | 3D | [ClothCraft](https://github.com/erythrofr/ClothCraft) | [CC-David-CC/ClothCraft](https://github.com/CC-David-CC/ClothCraft) | Fork matches upstream main · WebOS integration pending |
-| 3D | [HumanMotionCraft](https://github.com/YalKouassi/HumanMotionCraft) | No same-name public repository found | Absent from live profile |
-| 3D | [OxyBrush](https://github.com/crisprintsstuff/OxyBrush) | No same-name public repository found | Absent from live profile |
+| 3D | [HumanMotionCraft](https://github.com/YalKouassi/HumanMotionCraft) | No matching public fork found | Absent from live profile |
+| 3D | [OxyBrush](https://github.com/crisprintsstuff/OxyBrush) | No matching public fork found | Absent from live profile |
 | Music | [SoundCraft](https://github.com/storytold/soundcraft) | [CC-David-CC/soundcraft](https://github.com/CC-David-CC/soundcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| Music | [Retake](https://github.com/geekcastradio/altered-audio-editor) | No same-name public repository found | Absent from live profile |
-| Music | [Lemon Studio](https://github.com/daijro/Lemon-Studio-web) | No same-name public repository found | Absent from live profile |
-| Music | [Honeydew](https://github.com/daijro/honeydew) | No same-name public repository found | Absent from live profile |
-| Music | [Suhina](https://github.com/suhina-daw/suhina-daw) | No same-name public repository found | Absent from live profile |
-| Music | [Pro Wave](https://github.com/fabox-os/Pro-Wave) | No same-name public repository found | Absent from live profile |
-| Music | [OxiGuitar](https://github.com/mateusrdp/oxiguitar) | No same-name public repository found | Absent from live profile |
-| Music | [Transit](https://github.com/transit-audio/transit) | No same-name public repository found | Absent from live profile |
-| Music | [MixStudio](https://github.com/soulspin/MixStudio) | No same-name public repository found | Absent from live profile |
-| Other | [EarthCraft](https://github.com/therichronicles/EarthCraft) | No same-name public repository found | Absent from live profile |
+| Music | [Retake](https://github.com/geekcastradio/altered-audio-editor) | No matching public fork found | Absent from live profile |
+| Music | [Lemon Studio](https://github.com/daijro/Lemon-Studio-web) | No matching public fork found | Absent from live profile |
+| Music | [Honeydew](https://github.com/daijro/honeydew) | No matching public fork found | Absent from live profile |
+| Music | [Suhina](https://github.com/suhina-daw/suhina-daw) | No matching public fork found | Absent from live profile |
+| Music | [Pro Wave](https://github.com/fabox-os/Pro-Wave) | No matching public fork found | Absent from live profile |
+| Music | [OxiGuitar](https://github.com/mateusrdp/oxiguitar) | No matching public fork found | Absent from live profile |
+| Music | [Transit](https://github.com/transit-audio/transit) | No matching public fork found | Absent from live profile |
+| Music | [MixStudio](https://github.com/soulspin/MixStudio) | No matching public fork found | Absent from live profile |
+| Other | [EarthCraft](https://github.com/therichronicles/EarthCraft) | No matching public fork found | Absent from live profile |
 
 ## All other production profile entries
 
@@ -79,6 +79,7 @@ The following WebOS IDs are additional to the shared projects above. Kiri:Moto a
 | gcode-preview | [Entry point](https://ksu.codes/assets/desktop/apps/gcode-preview/8b15b80036f6225a7404071901dc36e750e7b0c73e42a7e5e4247ca95eccd7d8/index.mjs) |
 | gravity-pinball | [Entry point](https://ksu.codes/assets/desktop/apps/gravity-pinball/45d8ba8669dee825ca6f8d3cf89953a361118dd1ee4599b8f885e141ae9928cd/index.mjs) |
 | help | [Entry point](https://ksu.codes/assets/desktop/apps/help/1ec7d8539a191682e7e4a8edc11c6d759268992b0b497233885ef20debf65ad5/index.mjs) |
+| i-success | [Entry point](https://ksu.codes/assets/desktop/apps/i-success/ad9703d994018504dadb04785312ef2c611af3589f9cd81666a4c912ed199c40/index.mjs) |
 | image-editor | [Entry point](https://ksu.codes/assets/desktop/apps/image-editor/334b43c2e22ad2ca1de2ce6bc28ac52f25a0807f5aa865008d890555dd193dcf/index.mjs) |
 | jsketcher | [Entry point](https://ksu.codes/assets/desktop/apps/jsketcher/291d63dbb59796b77b767ec7e0af2f82b3ba223487b25be79531e1cf82807adc/index.mjs) |
 | kinetic-relay | [Entry point](https://ksu.codes/assets/desktop/apps/kinetic-relay/b747f2b115fb294755292dde1c8348dfe42d8e603c926658383e56b8ac42e65e/index.mjs) |
@@ -119,10 +120,12 @@ The following WebOS IDs are additional to the shared projects above. Kiri:Moto a
 
 ## Fork intake
 
+Twelve of the thirteen forks awaiting WebOS release matched their upstream default-branch commits at this check. LightCraft Classic uses the ChromaForge repository. Its fork was two commits behind upstream. TextCraft uses the cmspeedau editor fork named NoteCraft_simple. AlienTechSoftware’s notebook app has its own NoteCraft row. [ChromaForge comparison](https://github.com/emmertex/chromaforge/compare/294e2aefd1e1405c1b513d09e95a874ed2cf0f06...074caad2266cae99f2859c809e45d8a6eb968d40)
+
 Paint.RS main in the fork and upstream resolved to `0aecc981a6ae0cd183caf3d7f9afc467f2abd8ec`. The fork’s `node tests/web-files.mjs` passed with Node v24.22.1. WebOS needs its Files integration, native layered edit/save/reopen checks, and hosted release.
 
 ClothCraft main in the fork and upstream resolved to `16761c55600342334a2fd585c80f9fe811c2b20c`. Browser simulation, editable project save/reopen and deployment are pending. There is currently no ClothCraft launcher.
 
 MatCraft’s fork and upstream `master` both resolved to `a41ac9551d3118807c299c6ac331ddc81141ef2b`. Its browser crate uses the MatCraft engine. WebOS currently ships the separate MathCraft app. The MatCraft acceptance workflow is to run an M-code matrix calculation, save the script, reopen it from Files, and rerun it in guest and signed-in sessions. [Browser target](https://github.com/CC-David-CC/matcraft/tree/a41ac9551d3118807c299c6ac331ddc81141ef2b/apps/matcraft-web)
 
-I-SUCCESS is an additional requested app outside this catalog. The browser build and 19 native tests passed. Guest and signed-in practice, save and Files reopen still need browser qualification.
+I-SUCCESS is an additional WebOS app outside this catalog. It is live under Apps → Learning → I-SUCCESS. The hosted release passed skill selection, practice, guest save, account promotion and reopen from Files in a fresh signed-in browser. [WebOS assembly](https://github.com/CC-David-CC/WebOS/commit/063c869823ea8a120be50fa7834f7779dae1d4c7)
