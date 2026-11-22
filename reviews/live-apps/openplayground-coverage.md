@@ -1,6 +1,6 @@
 # OpenPlayground and WebOS
 
-Checked November 22, 2026. Of 43 Playground entries, 18 are on ksu.codes, 22 more have source in public CC-David-CC forks, and 3 have no matching public fork under that account. Each project counts once. Forks are matched by GitHub’s upstream repository ID, including renamed repositories. The GitHub column describes source availability. The release column describes verified progress. Feature, hardware, compact-layout and version parity are separate checks. [Pinned upstream catalog](https://github.com/daijro/openplayground/blob/4317d6b7ec991926713fd1af1bc715c42c0e8a55/tools.yaml) · [WebOS profile](https://ksu.codes/viewer-profile.json) · [Production registry](https://ksu.codes/assets/desktop/apps.json) · [Hosted Craft checks](https://github.com/CC-David-CC/WebOS/blob/review/live-app-usability-20261120/reviews/live-apps/anon-craft-files.md)
+Checked November 22, 2026. Of 43 Playground entries, 18 are on ksu.codes, the other 25 have source in public CC-David-CC forks. Each project counts once. Forks are matched by GitHub’s upstream repository ID, including renamed repositories. The GitHub column describes source availability. The release column describes verified progress. Feature, hardware, compact-layout and version parity are separate checks. [Pinned upstream catalog](https://github.com/daijro/openplayground/blob/4317d6b7ec991926713fd1af1bc715c42c0e8a55/tools.yaml) · [WebOS profile](https://ksu.codes/viewer-profile.json) · [Production registry](https://ksu.codes/assets/desktop/apps.json) · [Hosted Craft checks](https://github.com/CC-David-CC/WebOS/blob/review/live-app-usability-20261120/reviews/live-apps/anon-craft-files.md)
 
 | Group | Project and upstream | Your public GitHub | WebOS release status |
 |---|---|---|---|
@@ -15,13 +15,13 @@ Checked November 22, 2026. Of 43 Playground entries, 18 are on ksu.codes, 22 mor
 | Image | [PaintCraft](https://github.com/replicraft/PaintCraft) | [CC-David-CC/PaintCraft](https://github.com/CC-David-CC/PaintCraft) | Fork verified · WebOS release pending · matches upstream at `e755163c` |
 | Image | [Paint.RS](https://github.com/daijro/paint.rs) | [CC-David-CC/paint.rs](https://github.com/CC-David-CC/paint.rs) | Upstream file-boundary test passed · WebOS integration pending · matches upstream at `0aecc981` |
 | Image | [ProCraft](https://github.com/artcraft-android/procraft) | [CC-David-CC/procraft](https://github.com/CC-David-CC/procraft) | Fork verified · WebOS release pending · matches upstream at `6d470500` |
-| Image | [PixelCraft](https://github.com/asad-albadi/PixelCraft) | No matching public fork found | Absent from live profile |
+| Image | [PixelCraft](https://github.com/asad-albadi/PixelCraft) | [CC-David-CC/PixelCraft](https://github.com/CC-David-CC/PixelCraft) | WebOS release pending · matches upstream at `46576e1c` |
 | Office | [WordCraft](https://github.com/storytold/wordcraft) | [CC-David-CC/wordcraft](https://github.com/CC-David-CC/wordcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [GridCraft](https://github.com/storytold/gridcraft) | [CC-David-CC/gridcraft](https://github.com/CC-David-CC/gridcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [DeckCraft](https://github.com/storytold/deckcraft) | [CC-David-CC/deckcraft](https://github.com/CC-David-CC/deckcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [NoteCraft](https://github.com/AlienTechSoftware/notecraft) | [CC-David-CC/notecraft](https://github.com/CC-David-CC/notecraft) | Hosted · Office notebook with pages and sections |
 | Office | [TextCraft](https://github.com/cmspeedau/NoteCraft) | [CC-David-CC/textcraft](https://github.com/CC-David-CC/textcraft) | Fork verified · WebOS release pending · matches upstream at `d604d998` |
-| Office | [MailCraft](https://github.com/UCS-Care-Group/mailcraft) | No matching public fork found | Local WebOS source present · production disabled |
+| Office | [MailCraft](https://github.com/UCS-Care-Group/mailcraft) | [CC-David-CC/mailcraft](https://github.com/CC-David-CC/mailcraft) | Local WebOS source present · production disabled · matches upstream at `8e6df5b4` |
 | Office | [PdfCraft](https://github.com/storytold/pdfcraft) | [CC-David-CC/pdfcraft](https://github.com/CC-David-CC/pdfcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [MatCraft](https://github.com/NibrasAz7/matcraft) | [CC-David-CC/matcraft](https://github.com/CC-David-CC/matcraft) | Browser target available · WebOS Files and hosted checks pending · default heads differ (fork `a41ac955`, upstream `ade42b1e`) |
 | Video | [FilmCraft](https://github.com/storytold/filmcraft) | [CC-David-CC/filmcraft](https://github.com/CC-David-CC/filmcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
@@ -35,7 +35,7 @@ Checked November 22, 2026. Of 43 Playground entries, 18 are on ksu.codes, 22 mor
 | 3D | [TextureCraft](https://github.com/storytold/texturecraft) | [CC-David-CC/texturecraft](https://github.com/CC-David-CC/texturecraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | 3D | [MaterialCraft](https://github.com/storytold/materialcraft) | [CC-David-CC/materialcraft](https://github.com/CC-David-CC/materialcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | 3D | [ClothCraft](https://github.com/erythrofr/ClothCraft) | [CC-David-CC/ClothCraft](https://github.com/CC-David-CC/ClothCraft) | Fork verified · WebOS release pending · matches upstream at `16761c55` |
-| 3D | [HumanMotionCraft](https://github.com/YalKouassi/HumanMotionCraft) | No matching public fork found | Absent from live profile |
+| 3D | [HumanMotionCraft](https://github.com/YalKouassi/HumanMotionCraft) | [CC-David-CC/HumanMotionCraft](https://github.com/CC-David-CC/HumanMotionCraft) | WebOS release pending · matches upstream at `5eda21e0` |
 | 3D | [OxyBrush](https://github.com/crisprintsstuff/OxyBrush) | [CC-David-CC/OxyBrush](https://github.com/CC-David-CC/OxyBrush) | Fork verified · WebOS release pending · matches upstream at `d8de9b87` |
 | Music | [SoundCraft](https://github.com/storytold/soundcraft) | [CC-David-CC/soundcraft](https://github.com/CC-David-CC/soundcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Music | [Retake](https://github.com/geekcastradio/altered-audio-editor) | [CC-David-CC/altered-audio-editor](https://github.com/CC-David-CC/altered-audio-editor) | Fork verified · WebOS release pending · matches upstream at `fb144d9a` |
@@ -127,7 +127,9 @@ Kiri:Moto and Mesh:Tool both use the grid-tools bundle.
 
 ## Fork intake
 
-18 of the 22 queued forks have the same default-branch commit as the catalog source. The remaining missing forks are PixelCraft, MailCraft, HumanMotionCraft.
+At intake, 21 of the 25 queued forks matched the default-branch commit of the catalog source. All 43 entries now have either a hosted app or a verified fork.
+
+WebOS uses the existing MaterialCraft integration repository. The additional public fork of the original project carries the four-file node drag fix submitted upstream. Both repositories represent one app in this chart. [WebOS integration](https://github.com/CC-David-CC/materialcraft) · [Upstream PR #307](https://github.com/storytold/materialcraft/pull/307)
 
 **Lemon Studio.** Both repositories fork ItsAlphaNeon’s DAW. Your fork can carry the web-port work on a separate integration branch while keeping one project and one launcher. [Original DAW](https://github.com/ItsAlphaNeon/Lemon-Studio) · [Browser port](https://github.com/daijro/Lemon-Studio-web) · [Compare the two branches](https://github.com/ItsAlphaNeon/Lemon-Studio/compare/CC-David-CC:main...daijro:main)
 
