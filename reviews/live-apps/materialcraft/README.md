@@ -2,6 +2,10 @@
 
 Import a bitmap, add a Blend node and save the editable graph with its embedded original.
 
+The current compact graph release passed five hosted checks. [Release results and screenshots](compact-graph.md)
+
+## Earlier review
+
 | Viewport | Input | Result | Screenshot |
 |---|---|---|---|
 | 390 × 844 | Emulated touch | Imported, added Blend and saved both nodes. The default graph view showed neither node, even with the cooked red bitmap visible in the 2D panel. | [Phone](phone.png) |
