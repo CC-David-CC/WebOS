@@ -427,3 +427,6 @@
 [submodule "notecraft"]
 	path = apps/notecraft
 	url = ../notecraft.git
+[submodule "paint-rs"]
+	path = apps/paint-rs
+	url = ../paint.rs.git

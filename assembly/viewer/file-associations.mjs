@@ -1,5 +1,6 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 export function accountFileApp(path, sourceApp) {
+  if (/[.]pdn$/i.test(path)) return 'paint-rs';
   if (/[.]stitchfoundry$/i.test(path)) return 'embroidery-studio';
   if (/[.]replicad[.]json$/i.test(path)) return 'replicad';
   if (/[.]kiri$/i.test(path)) return 'kiri-moto';

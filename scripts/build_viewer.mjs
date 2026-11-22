@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -332,6 +332,57 @@ if (flags['--linux-x11-packages']) {
     await copySource('apps/linux-x11/docs/chromium-source-packages.json','assets/legal/linux-x11/chromium-source-packages.json');
     await copySource('apps/linux-x11/docs/ncurses-copyright.txt','assets/legal/linux-x11/ncurses-copyright.txt');
   }
+}
+if (flags['--paint-rs-site']) {
+  const appRoot = 'apps/paint-rs';
+  const checkout = path.join(root, appRoot);
+  const site = path.resolve(flags['--paint-rs-site']);
+  const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], {encoding:'utf8'}).trim();
+  const receipt = JSON.parse(await readFile(path.join(site, 'component-build.json'), 'utf8'));
+  const pin = git(root, 'rev-parse', 'HEAD:' + appRoot);
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'paint-rs' ||
+      receipt.sourceCommit !== pin || git(checkout, 'rev-parse', 'HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout, 'rev-parse', 'HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout, 'Cargo.lock'))) ||
+      !Array.isArray(receipt.files)) {
+    throw Error('Invalid Paint.RS build receipt');
+  }
+  const bundle = [];
+  const names = new Set();
+  for (const item of receipt.files) {
+    const name = item.path;
+    if (typeof name !== 'string' || names.has(name) ||
+        !name.split('/').every(part => /^[A-Za-z0-9_@+-][A-Za-z0-9_@+.\-]*$/.test(part))) {
+      throw Error('Invalid Paint.RS package path');
+    }
+    names.add(name);
+    const bytes = await readFile(path.join(site, name));
+    if (bytes.length !== item.bytes || hash(bytes) !== item.sha256) {
+      throw Error('Invalid Paint.RS artifact ' + name);
+    }
+    bundle.push({name:'webos/native/' + name, bytes});
+  }
+  if (!names.has('index.html') || !names.has('notices/LICENSE') ||
+      !names.has('sam_worker_bg.wasm') ||
+      ![...names].some(name => /^paintrs-.+_bg[.]wasm[.]gz$/.test(name))) {
+    throw Error('Incomplete Paint.RS package');
+  }
+  const entries = new Map([
+    ['app.mjs', 'index.mjs'],
+    ['webos/app.css', 'webos/app.css'],
+    ['LICENSE', 'LICENSE'],
+    ['LICENSE.md', 'LICENSE.md'],
+    ['NOTICE.md', 'NOTICE.md'],
+  ]);
+  for (const [source, name] of entries) {
+    const relative = appRoot + '/' + source;
+    const bytes = await readFile(path.join(root, relative));
+    const committed = execFileSync('git', ['-C', checkout, 'show', 'HEAD:' + source]);
+    if (!bytes.equals(committed)) throw Error('Paint.RS input differs from its pin: ' + source);
+    sourceInputs.set(relative, hash(bytes));
+    bundle.push({name, bytes});
+  }
+  await registerFiles('paint-rs', bundle);
 }
 if (flags['--notecraft-site']) {
   const appRoot = 'apps/notecraft';
