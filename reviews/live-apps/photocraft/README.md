@@ -1,5 +1,7 @@
 # PhotoCraft
 
+The phone canvas fix passed on ksu.codes. The measurements below describe the earlier release. [Current phone and desktop results](compact-canvas.md)
+
 A disposable account on ksu.codes created a layered project at 1920 × 1080. The editor placed a PNG as a smart object, saved the project, and independently verified the revision from Files. Three fresh browser sessions opened the same project from the account. The phone and tablet used emulated touch to launch Files and exercised the standard Files open operation. Viewing preserved the revision. At 3840 × 2160, the editor placed another layer and saved a new confirmed revision. The smart object was introduced through the native image-drop intake using a synthetic test image.
 
 | Viewport | Observed workflow | Capture |

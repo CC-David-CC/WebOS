@@ -1,0 +1,117 @@
+[
+  {
+    "mode": "hosted",
+    "role": "anon",
+    "width": 1920,
+    "canvasOnOpen": 1426,
+    "before": {
+      "sha": "d561b9253fee0c598c6eadce14d7b629130521e5b0f80c7ebe09afaf6f0d813c",
+      "layers": 1,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "savedAndReopened": {
+      "sha": "751bb30bd3497951be53738be52aaaa753d7e0506cc1279358dad5e7505bc71e",
+      "layers": 2,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "errors": []
+  },
+  {
+    "mode": "hosted",
+    "role": "anon",
+    "width": 390,
+    "canvasOnOpen": 250,
+    "before": {
+      "sha": "d561b9253fee0c598c6eadce14d7b629130521e5b0f80c7ebe09afaf6f0d813c",
+      "layers": 1,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "savedAndReopened": {
+      "sha": "751bb30bd3497951be53738be52aaaa753d7e0506cc1279358dad5e7505bc71e",
+      "layers": 2,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "errors": []
+  },
+  {
+    "mode": "hosted",
+    "role": "anon",
+    "width": 820,
+    "canvasOnOpen": 346,
+    "before": {
+      "sha": "d561b9253fee0c598c6eadce14d7b629130521e5b0f80c7ebe09afaf6f0d813c",
+      "layers": 1,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "savedAndReopened": {
+      "sha": "751bb30bd3497951be53738be52aaaa753d7e0506cc1279358dad5e7505bc71e",
+      "layers": 2,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "errors": []
+  },
+  {
+    "mode": "hosted",
+    "role": "signed",
+    "width": 3840,
+    "canvasOnOpen": 1920,
+    "before": {
+      "sha": "d561b9253fee0c598c6eadce14d7b629130521e5b0f80c7ebe09afaf6f0d813c",
+      "layers": 1,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "savedAndReopened": {
+      "sha": "751bb30bd3497951be53738be52aaaa753d7e0506cc1279358dad5e7505bc71e",
+      "layers": 2,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "errors": []
+  },
+  {
+    "mode": "hosted",
+    "role": "signed",
+    "width": 390,
+    "canvasOnOpen": 250,
+    "before": {
+      "sha": "d561b9253fee0c598c6eadce14d7b629130521e5b0f80c7ebe09afaf6f0d813c",
+      "layers": 1,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "savedAndReopened": {
+      "sha": "751bb30bd3497951be53738be52aaaa753d7e0506cc1279358dad5e7505bc71e",
+      "layers": 2,
+      "size": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "errors": []
+  }
+]
