@@ -1,5 +1,7 @@
 # Live app fix queue
 
+[Ordered work plan and dependency tree](WORK-PLAN.md) · [App reviews and screenshots](README.md)
+
 Linux X11 with Chromium, the remaining Craft work, and ACAD are the release priorities. All 35 updated game sources are on GitHub and passed their native suites and local production-bundle launch and close. All 35 game updates are live. The seven Learning & Strategy games passed real play and Files save, reopen, and continued play in guest and signed-in sessions. [Learning game release and pins](learning-games-release.md) Keep each finding open until a live test exercises the reported behavior. [Hosted game checks and screenshots](game-update-checks.md) · [Independent game harness](https://github.com/CC-David-CC/webos-game-harness)
 
 ## Work order

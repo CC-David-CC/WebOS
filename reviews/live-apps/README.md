@@ -1,5 +1,7 @@
 # Live WebOS app reviews
 
+[Start with the ordered work plan](WORK-PLAN.md) for current priorities, parallel work and release dependencies.
+
 The November 20 inventory contains 74 enabled launch IDs. Three DRAKON editors and Narrator joined the menu on November 21, bringing the inventory to 78. All 78 entries now have signed-in review evidence and screenshots. The individual reviews record which tasks and screen sizes passed and what still needs checking on physical devices. Reproducible failures are tracked in the [fix queue](FIX-QUEUE.md).
 
 ## Small-screen review criteria
