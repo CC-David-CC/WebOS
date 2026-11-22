@@ -1,0 +1,54 @@
+{
+  "viewer": "3c5e7d361f288ffda7ee7bb1b444d8c95e403125dab7abc2962ee1872ff663df",
+  "webos": "45f18c85e9f9db4f381d0ecfda73a307ed5b2a5a",
+  "components": {
+    "apps/arduino-simulator": "7522ab0723844567ca8aacb1a4ecd5e09bf13ad8",
+    "apps/digital-logic": "ef02208d1df8728236a69153717a4cdd20c2603f",
+    "apps/circuitjs": "074d4e59cfe8d164b278c8934359adb8435b5ddd",
+    "platform/desktop": "00144b0cef935c0a7c0866eccef3524715493a5f"
+  },
+  "checks": [
+    {
+      "app": "arduino-simulator",
+      "role": "anon",
+      "bytes": 496,
+      "sha256": "709da91dfc961b5287a6e9e77eee33fb1b1dd50012c845823b87a872696683c8",
+      "screenshot": "arduino-simulator-anon-reopened.png"
+    },
+    {
+      "app": "arduino-simulator",
+      "role": "signed",
+      "bytes": 496,
+      "sha256": "709da91dfc961b5287a6e9e77eee33fb1b1dd50012c845823b87a872696683c8",
+      "screenshot": "arduino-simulator-signed-reopened.png"
+    },
+    {
+      "app": "circuitjs",
+      "role": "anon",
+      "bytes": 550,
+      "sha256": "f1e601c06bbb24c135aafa01cff4c14764e4b4ac1d66396c2a7374fb738ea373",
+      "screenshot": "circuitjs-anon-reopened.png"
+    },
+    {
+      "app": "circuitjs",
+      "role": "signed",
+      "bytes": 550,
+      "sha256": "a680ebeb63f15f28824a49743b19cfa3435332b6b1f761fb8a102c3d4c204ae1",
+      "screenshot": "circuitjs-signed-reopened.png"
+    },
+    {
+      "app": "digital-logic",
+      "role": "anon",
+      "bytes": 793,
+      "sha256": "7aa7c41761d8f0673520948923652d9452cad7c753942ff06c06d7c8ada8646e",
+      "screenshot": "digital-logic-anon-reopened.png"
+    },
+    {
+      "app": "digital-logic",
+      "role": "signed",
+      "bytes": 793,
+      "sha256": "7aa7c41761d8f0673520948923652d9452cad7c753942ff06c06d7c8ada8646e",
+      "screenshot": "digital-logic-signed-reopened.png"
+    }
+  ]
+}
