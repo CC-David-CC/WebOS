@@ -121,6 +121,33 @@ def with_narrator_media_policy(block):
     return "".join(lines)
 
 
+def notebook_runtime_path(public):
+    registry = json.loads((public / 'assets/desktop/apps.json').read_bytes())
+    app, = [row for row in registry['apps'] if row['id'] == 'notebook']
+    bundle = app['bundleSHA256']
+    assert re.fullmatch('[0-9a-f]{64}', bundle)
+    prefix = f'/assets/desktop/apps/notebook/{bundle}'
+    assert app['path'] == prefix[1:] + '/index.mjs'
+    relative = 'node_modules/jupyterlite/lab/index.html'
+    html = public / prefix[1:] / relative
+    assert sha(html.read_bytes()) == app['files'][relative]['sha256']
+    return prefix
+
+
+def move_notebook_policy(block, previous, current):
+    """Move the existing Jupyter-only exception to the next verified bundle."""
+    suffix = '/node_modules/jupyterlite/*'
+    old, new = previous + suffix, current + suffix
+    lines = block.splitlines(keepends=True)
+    scoped = [i for i, line in enumerate(lines) if line.strip().split() == ['@notebookRuntime', 'path', old]]
+    excluded = [i for i, line in enumerate(lines) if line.strip().split()[:3] == ['@other_viewer', 'not', 'path']
+                and old in line.strip().split()[3:]]
+    assert len(scoped) == len(excluded) == 1 and block.count(old) == 2
+    for i in (scoped[0], excluded[0]):
+        lines[i] = lines[i].replace(old, new)
+    return ''.join(lines)
+
+
 def verify_archive_inventory(tar, release_id):
     members = tar.getmembers()
     assert len(members) < 10000 and len({m.name for m in members}) == len(members)
@@ -205,6 +232,18 @@ def main():
             new = with_wordcraft_print_policy(new)
         if args.narrator_media_policy:
             new = with_narrator_media_policy(new)
+        notebook_policy = None
+        if '@notebookRuntime ' in old:
+            previous = notebook_runtime_path(BASE / args.expected_current / 'public')
+            current = notebook_runtime_path(public)
+            if previous != current:
+                new = move_notebook_policy(new, previous, current)
+                document = '/node_modules/jupyterlite/lab/index.html'
+                old_policy = fetch(previous + document)[1].get('Content-Security-Policy')
+                wrapper_policy = fetch(previous + '/index.mjs')[1].get('Content-Security-Policy')
+                assert old_policy and "'unsafe-eval'" in old_policy and wrapper_policy and "'unsafe-eval'" not in wrapper_policy
+                notebook_policy = dict(document=current + document, wrapper=current + '/index.mjs',
+                                       retired=previous + document, runtimeCSP=old_policy, wrapperCSP=wrapper_policy)
         candidate = (text[:block.start()] + new + text[block.end():]).encode()
         assert candidate.decode().replace(new, old, 1) == text
         backup.mkdir(mode=0o700)
@@ -214,7 +253,7 @@ def main():
             (backup / ('validate-' + name + '.log')).write_bytes(run.stdout + run.stderr); assert run.returncode == 0
         info = CADDY.stat()
         plan = {'release': args.release, 'previousRelease': args.expected_current, 'beforeSHA256': sha(before), 'candidateSHA256': sha(candidate),
-                'wordcraftPrintPolicy': args.wordcraft_print_policy, 'desktopCSP': fetch('/')[1].get('Content-Security-Policy'),
+                'notebookPolicy': notebook_policy, 'wordcraftPrintPolicy': args.wordcraft_print_policy, 'desktopCSP': fetch('/')[1].get('Content-Security-Policy'),
                 'uid': info.st_uid, 'gid': info.st_gid, 'mode': stat.S_IMODE(info.st_mode), 'instanceId': json.loads(fetch('/healthz')[0])['instanceId'],
                 'issuerSHA256': sha(fetch('/.well-known/codi-issuer.json')[0]), 'betaIndexSHA256': sha(fetch('/', True)[0]), 'peerPIDs': peers()}
         (backup / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n')
@@ -235,6 +274,13 @@ def main():
             data, headers = fetch('/' if name == 'index.html' else '/' + name)
             assert sha(data) == files[name]['sha256']
             assert headers.get('Cross-Origin-Opener-Policy') == 'same-origin' and headers.get('Cross-Origin-Embedder-Policy') == 'require-corp'
+        if policy := plan.get('notebookPolicy'):
+            for name, expected in [(policy['document'], policy['runtimeCSP']), (policy['wrapper'], policy['wrapperCSP'])]:
+                data, headers = fetch(name)
+                assert sha(data) == files[name[1:]]['sha256']
+                assert headers.get('Content-Security-Policy') == expected
+            if (public / policy['retired'][1:]).is_file():
+                assert fetch(policy['retired'])[1].get('Content-Security-Policy') == policy['wrapperCSP']
         if plan.get('wordcraftPrintPolicy'):
             assert fetch('/')[1].get('Content-Security-Policy') == plan['desktopCSP']
             assert fetch('/wordcraft/index.html')[1].get('Content-Security-Policy') == plan['desktopCSP'].replace("frame-src 'self';", "frame-src 'self' blob:;")
