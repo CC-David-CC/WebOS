@@ -253,8 +253,12 @@ with sync_playwright() as pw:
             win.get_by_role('button', name='Maximize', exact=True).click()
         box = win.locator('iframe').bounding_box()
         native = next((f for f in page.frames if '/soundcraft/index.html' in f.url))
-        click('Rewind')
-        click('Play')
+        # End users can also operate the native transport by keyboard. Wait for
+        # resizing to settle before handing the restored session a playback gesture.
+        native.wait_for_function("document.querySelector('canvas')?.clientWidth >= 1400")
+        shortcut(page, win, 'soundcraft', 'Home')
+        page.wait_for_timeout(150)
+        shortcut(page, win, 'soundcraft', 'Space')
         audible = native.evaluate("""async () => {
           let amp = 0, frequency = 0;
           for (let j = 0; j < 100; j++) {
@@ -271,7 +275,7 @@ with sync_playwright() as pw:
             if (amp > .05 && frequency > 400 && frequency < 480) break;
             await new Promise(resolve => setTimeout(resolve, 20));
           }
-          return {amp, frequency};
+          return {amp, frequency, states: [...window.takeAnalyzers.keys()].map(ctx => ctx.state)};
         }""")
         assert 400 < audible['frequency'] < 480 and audible['amp'] > 0.05, audible
         click('Stop')
