@@ -1,6 +1,8 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 export function accountFileApp(path, sourceApp) {
   if (/[.]notecraft$/i.test(path)) return 'notecraft';
+  const game = /[.](fraction-farm|market-math|math-path|pocket-conquest|rule-detective|tile-islands|word-weaver)[.]json$/i.exec(path);
+  if (game) return game[1].toLowerCase();
   if (/[.](?:ipynb|(?:light|percent)[.]py)$/i.test(path)) return 'notebook';
   if (/[.]isuccess$/i.test(path)) return 'i-success';
   if (/[.]narration$/i.test(path)) return 'narrator';
