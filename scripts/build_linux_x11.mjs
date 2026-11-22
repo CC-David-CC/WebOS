@@ -31,7 +31,10 @@ export async function buildLinuxX11(root, packages, sourceInputs, chromiumInputs
     files.push({name:'debian-common-licenses.txt',bytes:await source(appRoot+'/docs/debian-common-licenses.txt')});
     const engine = execFileSync('git',['rev-parse','HEAD'],{cwd:path.join(root,'engines/v86'),encoding:'utf8'}).trim();
     if (engine !== metadata.engineCommit) throw Error('Chromium runtime does not match the checked-out v86 source');
-    for (const name of ['browser.sqfs','v86-chromium.wasm','chromium-copyright.txt']) {
+    const engineScript = 'v86-chromium.js';
+    const inputs = ['browser.sqfs','v86-chromium.wasm','chromium-copyright.txt'];
+    if (metadata.files[engineScript]) inputs.push(engineScript);
+    for (const name of inputs) {
       const bytes = await readFile(path.resolve(chromiumInputs,name));
       const expected = metadata.files[name];
       if (!expected || bytes.length !== expected.bytes || createHash('sha256').update(bytes).digest('hex') !== expected.sha256) {
@@ -40,7 +43,12 @@ export async function buildLinuxX11(root, packages, sourceInputs, chromiumInputs
       files.push({name,bytes});
     }
     const session = files.find(file => file.name === 'session.html');
-    const html = session.bytes.toString('utf8');
+    let html = session.bytes.toString('utf8');
+    if (metadata.files[engineScript]) {
+      const sharedScript = 'src="/assets/terminal/v86/libv86.js"';
+      if (!html.includes(sharedScript)) throw Error('Unexpected X11 emulator script');
+      html = html.replace(sharedScript, 'src="./' + engineScript + '"');
+    }
     if (!html.includes('<html lang="en">')) throw Error('Unexpected X11 document');
     const size = metadata.files['browser.sqfs'].bytes;
     if (size % (256 * 1024)) throw Error('Chromium disk must be padded to its HTTP range block size');
