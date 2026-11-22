@@ -331,7 +331,7 @@ if (flags['--i-success-site']) {
       native.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
       native.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'Cargo.lock'))) ||
       native.wasmBindgen !== 'wasm-bindgen 0.2.130' || !Array.isArray(native.files) ||
-      native.files.map(f => f.path).sort().join(',') !== 'i_success.js,i_success_bg.wasm') {
+      native.files.map(f => f.path).sort().join(',') !== 'THIRD-PARTY-NOTICES.txt,i_success.js,i_success_bg.wasm') {
     throw Error('I-SUCCESS requires the exact browser build of the selected component');
   }
   const bundle = [];
