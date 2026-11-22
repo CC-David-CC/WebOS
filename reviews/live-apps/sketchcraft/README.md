@@ -1,5 +1,9 @@
 # SketchCraft
 
+[Production touch modeling, Files reopen and the updated screenshots](compact-solid.md)
+
+## Earlier baseline
+
 Draw a rectangle and use Push / Pull to extrude it 3 m. Save the native model.
 
 | Viewport | Input | Result | Screenshot |

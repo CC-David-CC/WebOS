@@ -1,0 +1,97 @@
+{
+  "viewer": "b13979e5071d1a68c003847b3558e5f1f89757b72ed05c68b57ae8f538b14c04",
+  "parent": "900bf8a5ae71908343c8c73c345b3ab753f90557",
+  "engine": "4f20b296ee65685f230a2ed375e1eeacb0bf3253",
+  "tests": [
+    {
+      "mode": "hosted",
+      "role": "anon",
+      "tier": "phone",
+      "canvas": {
+        "x": 1,
+        "y": 187,
+        "width": 336,
+        "height": 656
+      },
+      "faces": 6,
+      "facesAfterReopenEdit": 7,
+      "module": "./assets/index-mCfom7hG.js",
+      "height_m": 3.0,
+      "sha": "49624d8f8be2b3970fdb5acdebeb251ad9626fa34f4675e8c9bbb177b644d3d1",
+      "errors": [],
+      "privateRequests": 0
+    },
+    {
+      "mode": "hosted",
+      "role": "signed",
+      "tier": "phone",
+      "canvas": {
+        "x": 1,
+        "y": 169,
+        "width": 336,
+        "height": 674
+      },
+      "faces": 6,
+      "facesAfterReopenEdit": 7,
+      "module": "./assets/index-mCfom7hG.js",
+      "height_m": 3.0,
+      "sha": "52e9a94c5ec1687a3da972257320dcf6facaacfba88afd19ed767b97c8913b9a",
+      "errors": [],
+      "privateRequests": null
+    },
+    {
+      "mode": "hosted",
+      "role": "anon",
+      "tier": "tablet",
+      "canvas": {
+        "x": 1,
+        "y": 187,
+        "width": 766,
+        "height": 992
+      },
+      "faces": 6,
+      "facesAfterReopenEdit": 7,
+      "module": "./assets/index-mCfom7hG.js",
+      "height_m": 3.0,
+      "sha": "af898a62e7cf28f24300624d3a4a4be063608a86ed8a6b210c496f206b3ea96e",
+      "errors": [],
+      "privateRequests": 0
+    },
+    {
+      "mode": "hosted",
+      "role": "anon",
+      "tier": "desktop",
+      "canvas": {
+        "x": 249,
+        "y": 170,
+        "width": 1326,
+        "height": 909
+      },
+      "faces": 6,
+      "facesAfterReopenEdit": 7,
+      "module": "./assets/index-mCfom7hG.js",
+      "height_m": 3.0,
+      "sha": "d76c6f05fe6947a04874dff10130debc26e1cc5bd07e817787e13cc2726148d1",
+      "errors": [],
+      "privateRequests": 0
+    },
+    {
+      "mode": "hosted",
+      "role": "signed",
+      "tier": "4k",
+      "canvas": {
+        "x": 249,
+        "y": 155,
+        "width": 3246,
+        "height": 2004
+      },
+      "faces": 6,
+      "facesAfterReopenEdit": 7,
+      "module": "./assets/index-mCfom7hG.js",
+      "height_m": 3.0,
+      "sha": "a1bc795e87fea3bf10d72ecf4f57866086538e69cbea30157e5bb7890d2cc893",
+      "errors": [],
+      "privateRequests": null
+    }
+  ]
+}
