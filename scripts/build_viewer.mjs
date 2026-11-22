@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -54,6 +54,15 @@ const sourceInputs=new Map();
 async function put(name,bytes){if(!safe(name))throw Error('Unsafe output');const target=path.join(output,name);await mkdir(path.dirname(target),{recursive:true});await writeFile(target,bytes);}
 async function copySource(relative,name){const parts=relative.split('/'),owner=parts.slice(0,2).join('/');execFileSync('git',['--no-optional-locks','-C',path.join(root,owner),'ls-files','--error-unmatch','--',parts.slice(2).join('/')],{stdio:'pipe'});const bytes=await readFile(path.join(root,relative));sourceInputs.set(relative,hash(bytes));await put(name,bytes);}
 async function tree(relative,prefix){for(const item of await readdir(path.join(root,relative),{withFileTypes:true})){if(item.isSymbolicLink())throw Error('Symlinked source input');const name=[prefix,item.name].filter(Boolean).join('/');if(item.isDirectory())await tree(relative+'/'+item.name,name);else if(item.isFile())await copySource(relative+'/'+item.name,name);}}
+const latexRuntime = flags['--wordcraft-latex-runtime'] && path.resolve(flags['--wordcraft-latex-runtime']);
+let latexReceipt;
+if (latexRuntime) {
+  latexReceipt = JSON.parse(await readFile(path.join(latexRuntime,'runtime-build.json'),'utf8'));
+  if (latexReceipt.schema !== 'webos-wordcraft-latex-runtime/1' ||
+      !Array.isArray(latexReceipt.files) || !latexReceipt.files.length) {
+    throw Error('A pinned WordCraft LaTeX runtime build receipt is required');
+  }
+}
 const engine=JSON.parse(await readFile(path.join(wordcraft,'component-build.json'),'utf8'));
 if(engine.schema!=='webos-component-build/1'||engine.component!=='wordcraft'||!Array.isArray(engine.files)||!engine.files.length)throw Error('WordCraft build receipt required');
 execFileSync('git',['-C',path.join(root,'apps/wordcraft'),'merge-base','--is-ancestor',engine.sourceCommit,'HEAD']);
@@ -212,11 +221,26 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
     id==='sketchcraft'?"export {mount} from './assembly/viewer/sketchcraft-app.mjs';":
     id==='materialcraft'?"export {mount} from './assembly/viewer/materialcraft-app.mjs';":
     id==='texturecraft'?"export {mount} from './assembly/viewer/texturecraft-app.mjs';":
+    id==='wordcraft'&&latexRuntime?
+      "import {mount as appMount} from '@webos/wordcraft';import {mountAccountApp} from './assembly/viewer/account-app.mjs';import {mountWordcraftLatex} from './assembly/viewer/wordcraft-latex-preview.mjs';export function mount(host){return mountAccountApp(options=>mountWordcraftLatex(appMount,options,host),host,'wordcraft');}":
     graphics?`import {mountCraftAccount} from './assembly/viewer/craft-account-app.mjs';import {createCraftRecovery} from './assembly/viewer/craft-account-recovery.mjs';const project=${graphicsProject};const recovery=createCraftRecovery(project);export function mount(host){return mountCraftAccount(host,{...project,recovery,reviewWindowClose:true});}`:
     `import {mount as appMount${delegation}} from '@webos/${id}';import {mountAccountApp} from './assembly/viewer/account-app.mjs';${recovery}export function mount(host){return mountAccountApp(appMount,host,${JSON.stringify(id)},officeRecovery${delegation});}`;
   await emitBuild({stdin:{contents,resolveDir:root,sourcefile:'<viewer-'+id+'>',loader:'js'},outdir:path.join(output,'.virtual-'+id),outExtension:{'.js':'.mjs'}},async files=>{
     // esbuild calls a stdin entry "stdin"; the loader's stable entry is index.
     for(const f of files)f.name=f.name.replace(/^stdin[.]/,'index.');
+    if (id === 'wordcraft' && latexRuntime) {
+      const seen = new Set();
+      for (const record of latexReceipt.files) {
+        if (!safe(record.path) || seen.has(record.path)) throw Error('Unsafe or repeated LaTeX runtime file');
+        seen.add(record.path);
+        const bytes = await readFile(path.join(latexRuntime,record.path));
+        if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) {
+          throw Error('LaTeX runtime file differs from its receipt: '+record.path);
+        }
+        files.push({name:'latex/'+record.path,bytes});
+      }
+      files.push({name:'latex/runtime-build.json',bytes:await readFile(path.join(latexRuntime,'runtime-build.json'))});
+    }
     await registerFiles(id,files,files.filter(f=>f.name.endsWith('.css')).map(f=>f.name));
   });
 }
