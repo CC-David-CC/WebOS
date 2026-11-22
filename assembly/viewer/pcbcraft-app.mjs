@@ -22,5 +22,5 @@ const commands = Object.freeze({
 });
 
 export function mount(host) {
-  return mountCraftAccount(host, {...project, recovery, commands, reviewWindowClose:true, accountAutosave:false, guestFiles:true});
+  return mountCraftAccount(host, {...project, recovery, commands, reviewWindowClose:true, accountAutosave:false});
 }

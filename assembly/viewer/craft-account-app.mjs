@@ -22,7 +22,7 @@ function fileFromDevice(file) {
 
 /** Mount a native layer editor in its own classic Desktop account window. */
 export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false,
-  setupOriginals, guestFiles = false, commands = scopedCommands, accountControls = false, artworkExtensions, accountAutosave = true, accountOpenTimeoutMs, legacyExtensions = []}) {
+  setupOriginals, commands = scopedCommands, accountControls = false, artworkExtensions, accountAutosave = true, accountOpenTimeoutMs, legacyExtensions = []}) {
   const extensions = [extension,...legacyExtensions];
   const projectPath = path => craftProjectPath(path, extension, legacyExtensions);
   const element = document.createElement('div');
@@ -50,7 +50,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
 
   const abort = new AbortController();
   const session = host.session();
-  const guest = guestFiles && session?.public.kind === 'anonymous';
+  const guest = session?.public.kind === 'anonymous';
   const currentOwner = guest ? host.storage.workspaceOwner : host.storage.signedInSubject;
   const pickFile = guest ? host.storage.pickWorkspaceFile : host.storage.pickAccountFile;
   const instanceId = !guest && typeof host.registerAgentView === 'function' ? crypto.randomUUID() : null;
@@ -153,7 +153,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     autosave.enabled(value);
   }
   autoToggle.addEventListener('click', () => {
-    if (!accountAutosave || !loaded || !valid()) return;
+    if (guest || !accountAutosave || !loaded || !valid()) return;
     setAutosave(!autoEnabled);
     try {
       document.defaultView.localStorage?.setItem(autosaveKey, autoEnabled ? 'on' : 'off');
@@ -388,12 +388,12 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     frame.inert = false;
     accountSession.observe();
     let value = false;
-    if (accountAutosave) {
+    if (accountAutosave && !guest) {
       autosaveKey = `webos:${app}:account-autosave:` + encodeURIComponent(context.owner);
       try { value = document.defaultView.localStorage?.getItem(autosaveKey) === 'on'; } catch { /* Use this window's default. */ }
     }
     setAutosave(value);
-    autoToggle.hidden = !accountAutosave;
+    autoToggle.hidden = guest || !accountAutosave;
     for (const control of controls) control.hidden = false;
     if (openLocal) openLocal.hidden = false;
     message(guest ? (resource ? `Opened in this tab: ${resource.path}` : 'New temporary project.') : recoveryMessage);

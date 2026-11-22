@@ -32,7 +32,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
   const listeners = new Set();
   const authority = Object.freeze({});
   const commands = kind === 'gridcraft' ? gridCommands : appAgentCommands;
-  const workspace = ['files','wordcraft','text'].includes(kind) && host.storage.workspaceFileContext;
+  const workspace = host.storage.workspaceFileContext;
   const guest = !!workspace && host.session()?.public.kind === 'anonymous';
   const delegated = !guest && commands && typeof host.registerAgentView === 'function';
   const invocations = delegated ? new WeakMap() : null;
@@ -108,14 +108,14 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
         closeView: () => host.desktop.requestWindowClose(host.w)
       } : {}),
       ...(kind === 'pdfcraft' ? {
-        recovery: pdfcraftRecovery(host,context,valid), profileId: context.owner,
+        recovery: guest ? null : pdfcraftRecovery(host,context,valid), profileId: context.owner,
         imported: host.w.pdfcraftImport || null, recoveryAsCopy: !!host.w.pdfcraftRecoveryAsCopy,
         newDocument() {if(!valid())throw new DOMException('Account view closed.','AbortError');const w=host.desktop.launch('pdfcraft');return {status:'opened',instanceId:String(w.id)};},
         importDocument(input) {if(!valid())throw new DOMException('Account view closed.','AbortError');const w=host.desktop.launch('pdfcraft',input.name+' — PdfCraft');w.pdfcraftImport=Object.freeze({...input});return {status:'opened',instanceId:String(w.id)};},
         closeView: () => host.desktop.requestWindowClose(host.w)
       } : {}),
       ...(officeRecovery ? {
-        recovery: officeRecovery.journal(host,context,valid), profileId:context.owner,
+        recovery: guest ? null : officeRecovery.journal(host,context,valid), profileId:context.owner,
         imported:host.w[kind+'Import']||null, recoveryAsCopy:!!host.w[kind+'RecoveryAsCopy'],
         template:host.w[kind+'Template']||(kind==='deckcraft'?{}:'blank'),
         newDocument(params={}) {
