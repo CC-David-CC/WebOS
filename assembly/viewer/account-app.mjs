@@ -32,7 +32,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
   const listeners = new Set();
   const authority = Object.freeze({});
   const commands = kind === 'gridcraft' ? gridCommands : appAgentCommands;
-  const workspace = ['files','wordcraft','text','pdfcraft'].includes(kind) && host.storage.workspaceFileContext;
+  const workspace = host.storage.workspaceFileContext;
   const guest = !!workspace && host.session()?.public.kind === 'anonymous';
   const delegated = !guest && commands && typeof host.registerAgentView === 'function';
   const invocations = delegated ? new WeakMap() : null;
@@ -115,7 +115,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
         closeView: () => host.desktop.requestWindowClose(host.w)
       } : {}),
       ...(officeRecovery ? {
-        recovery: officeRecovery.journal(host,context,valid), profileId:context.owner,
+        recovery: guest ? null : officeRecovery.journal(host,context,valid), profileId:context.owner,
         imported:host.w[kind+'Import']||null, recoveryAsCopy:!!host.w[kind+'RecoveryAsCopy'],
         template:host.w[kind+'Template']||(kind==='deckcraft'?{}:'blank'),
         newDocument(params={}) {
