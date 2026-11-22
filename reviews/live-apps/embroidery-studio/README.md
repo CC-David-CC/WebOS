@@ -1,5 +1,21 @@
 # Embroidery Studio (StitchFoundry)
 
+## Native Files on ksu.codes
+
+Verified on November 22 in the production viewer `9a79203991300cb148012a9ff02da4fc4fb32bda57e789463d41c8a031ddca8c`. Both anonymous and signed-in users can reopen the editable project by double-clicking it in Files.
+
+A guest saved the stitched rectangle example and reopened it from Files. Placing an SVG added two objects, taking the design from two to four. The guest saved the edited design, registered an account and reopened the same 28,510-byte native file from a fresh signed-in browser. Each export produced a 1,073-byte Tajima DST with a valid header.
+
+The anonymous session made zero private file requests. Both roles completed without a browser page error. The readback SHA-256 of the signed project was `fa5976710b7f7daf1e5703f9daa6fa2262da81c68609e599fc1e18a09360f352`.
+
+The preview or File menu was accessible in Chromium at 390 × 844, 820 × 1,180, 1,920 × 1,080 and 3,840 × 2,160. Physical touch placement and sewing the exported design remain unverified. The phone artboard layout and the guest save-status wording have separate follow-ups.
+
+[Guest workflow](native-guest.png) · [Signed-in workflow](native-signed.png) · [Phone viewport](native-phone.png)
+
+[App source](https://github.com/CC-David-CC/embroidery-studio/commit/d281b23e3edeea48deda3f5b7763d0b6b032ce02) · [Desktop source](https://github.com/CC-David-CC/desktop/commit/ec6c8c93b31e6d191e9ca517054c8a2582038ad8) · [WebOS assembly](https://github.com/CC-David-CC/WebOS/commit/f3c156265094e856e6edce1d91fa12b785288b42)
+
+## Initial review
+
 Open the stitched rectangle example, save the native design, and export stitches.
 
 | Viewport | Input | Result | Screenshot |
