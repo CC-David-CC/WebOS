@@ -1,5 +1,6 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 export function accountFileApp(path, sourceApp) {
+  if (/[.]isuccess$/i.test(path)) return 'i-success';
   if (/[.]narration$/i.test(path)) return 'narrator';
   if (/[.]drakonpy$/i.test(path)) return 'drakon-python';
   if (/[.]drakonjs$/i.test(path)) return 'drakon-javascript';

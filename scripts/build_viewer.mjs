@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -317,6 +317,38 @@ if (flags['--linux-x11-packages']) {
     await copySource('apps/linux-x11/docs/chromium-source-packages.json','assets/legal/linux-x11/chromium-source-packages.json');
     await copySource('apps/linux-x11/docs/ncurses-copyright.txt','assets/legal/linux-x11/ncurses-copyright.txt');
   }
+}
+if (flags['--i-success-site']) {
+  const id = 'i-success';
+  const appRoot = 'apps/' + id;
+  const site = path.resolve(flags['--i-success-site']);
+  const native = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const git = (cwd,...args) => execFileSync('git',['-C',cwd,...args],{encoding:'utf8'}).trim();
+  const checkout = path.join(root,appRoot);
+  const pin = git(root,'rev-parse','HEAD:'+appRoot);
+  if (native.schema !== 'webos-component-build/1' || native.component !== id ||
+      native.sourceCommit !== pin || git(checkout,'rev-parse','HEAD') !== pin ||
+      native.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
+      native.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'Cargo.lock'))) ||
+      native.wasmBindgen !== 'wasm-bindgen 0.2.130' || !Array.isArray(native.files) ||
+      native.files.map(f => f.path).sort().join(',') !== 'i_success.js,i_success_bg.wasm') {
+    throw Error('I-SUCCESS requires the exact browser build of the selected component');
+  }
+  const bundle = [];
+  for (const artifact of native.files) {
+    const bytes = await readFile(path.join(site,artifact.path));
+    if (bytes.length !== artifact.bytes || hash(bytes) !== artifact.sha256) throw Error('Invalid I-SUCCESS artifact '+artifact.path);
+    bundle.push({name:artifact.path,bytes});
+  }
+  for (const [name,relative] of [
+    ['index.mjs','assembly/viewer/i-success.mjs'],['index.css','assembly/viewer/i-success.css'],
+    ...['LICENSE-MIT','LICENSE-APACHE','NOTICE','ATTRIBUTION.md'].map(name => [name,appRoot+'/'+name])
+  ]) {
+    const bytes = await readFile(path.join(root,relative));
+    sourceInputs.set(relative,hash(bytes));
+    bundle.push({name,bytes});
+  }
+  await registerFiles(id,bundle,['index.css']);
 }
 // The three DRAKON generators are independently installable browser apps.
 for (const id of ['drakon-python','drakon-javascript','drakon-bash']) {
