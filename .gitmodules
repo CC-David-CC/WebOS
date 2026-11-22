@@ -436,3 +436,6 @@
 [submodule "clothcraft"]
 	path = apps/clothcraft
 	url = ../ClothCraft.git
+[submodule "cuepool"]
+	path = apps/cuepool
+	url = ../CuePool.git

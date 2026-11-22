@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -417,6 +417,49 @@ if (flags['--paintcraft-site']) {
     sourceInputs.set(source,hash(bytes)); bundle.push({name:name==='app.mjs'?'index.mjs':name,bytes});
   }
   await registerFiles('paintcraft',bundle);
+}
+if (flags['--cuepool-site']) {
+  const appRoot = 'apps/cuepool';
+  const checkout = path.join(root, appRoot);
+  const site = path.resolve(flags['--cuepool-site']);
+  const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], {encoding:'utf8'}).trim();
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const pin = git(root,'rev-parse','HEAD:'+appRoot);
+  const required = new Map([
+    ['index.mjs','webos/app.mjs'],
+    ['webos/workspace.css','webos/workspace.css'],
+    ['legal/LICENSE-MIT','LICENSE-MIT'],
+    ['legal/LICENSE-APACHE','LICENSE-APACHE'],
+    ['legal/THIRD_PARTY.md','webos/THIRD_PARTY.md'],
+    ['webos/native/cuepool.js',null],
+    ['webos/native/cuepool_bg.wasm',null],
+  ]);
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'cuepool' ||
+      receipt.sourceCommit !== pin || git(checkout,'rev-parse','HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'webos/engine/Cargo.lock'))) ||
+      receipt.wasmBindgen !== '0.2.129' || !Array.isArray(receipt.files) ||
+      receipt.files.length !== required.size) {
+    throw Error('Invalid CuePool build receipt');
+  }
+  const bundle = [];
+  for (const record of receipt.files) {
+    const name = record.path;
+    if (!required.has(name)) throw Error('Invalid CuePool artifact path: '+name);
+    const tracked = required.get(name);
+    required.delete(name);
+    const bytes = await readFile(path.join(site,name));
+    if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) {
+      throw Error('CuePool artifact hash mismatch: '+name);
+    }
+    if (tracked) {
+      const committed = execFileSync('git',['-C',checkout,'show','HEAD:'+tracked]);
+      if (!bytes.equals(committed)) throw Error('CuePool file differs from its pin: '+tracked);
+      sourceInputs.set(appRoot+'/'+tracked,hash(bytes));
+    }
+    bundle.push({name,bytes});
+  }
+  await registerFiles('cuepool',bundle);
 }
 if (flags['--clothcraft-site']) {
   const appRoot = 'apps/clothcraft';
