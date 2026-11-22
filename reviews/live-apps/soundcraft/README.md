@@ -14,4 +14,6 @@ The released editor recorded a generated 440 Hz microphone through the Record bu
 
 Both roles retained the exact saved bytes after discarding a later edit. There were zero uncaught page errors. The test used software-rendered Chromium at 1540 × 1000 CSS pixels. A physical microphone and speaker or headphone check remains open, along with phone, tablet, 1080p and 4K task checks. The former software-rendering observation was 23.7 seconds through edited Discard on viewer `5c6cb58b0cd3`.
 
+On the exact release source, all 446 native engine tests passed. All 345 UI tests passed with each test in its own process. In a shared-process run, the palette-lock test exceeded its 120-second timeout while other UI tests competed for the global lock. That same test passed alone in 0.10 s.
+
 Viewer release `fdb8a0af8b45dc700baba6ee0205e112d299f1138bfbc90c2421ca2501981b2b`, SoundCraft `92ded9fdd09337864d219b49823efcbfb7659d98`, WebOS `a096a6aa16a8b82ea64d2523938bf0ee05a303a2`. [SoundCraft source](https://github.com/CC-David-CC/soundcraft/tree/92ded9fdd09337864d219b49823efcbfb7659d98) · [Reproducible browser check](https://github.com/CC-David-CC/WebOS/blob/a096a6aa16a8b82ea64d2523938bf0ee05a303a2/tests/soundcraft_microphone_browser.py)
