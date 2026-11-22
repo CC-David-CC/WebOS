@@ -88,7 +88,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
         return {status: 'opened'};
       }
       if (target === 'jsketcher' && window.CODI_VIEWER_PROFILE?.apps.includes(target)) {
-        host.desktop.open(target, {version: 1, storage: 'mirror', path: '/' + file.path, sha256: file.sha256, owner: context.owner});
+        host.desktop.open(target, {version: 1, storage: guest ? 'temporary' : 'mirror', path: '/' + file.path, sha256: file.sha256, owner: context.owner});
         return {status: 'opened'};
       }
       const app = target === 'jsketcher' ? 'text' : target;
