@@ -128,7 +128,7 @@ for(const item of await readdir(path.join(root,'platform/runtime/active-system/a
 await copySource('platform/runtime/active-system/network/strict-json.mjs','network/strict-json.mjs');
 await tree('platform/storage/src/webos_storage/vendor/js-sha256','assets/desktop/vendor/js-sha256');
 const storageBrowser = 'platform/storage/active-system/storage/browser';
-for (const file of ['account-context.mjs', 'mirror.mjs', 'verified-content.mjs',
+for (const file of ['temporary-files.mjs', 'account-context.mjs', 'mirror.mjs', 'verified-content.mjs',
   ...(accountGuestHome ? ['account-home.mjs'] : [])]) {
   await copySource(storageBrowser+'/'+file, 'storage/browser/'+file);
 }
