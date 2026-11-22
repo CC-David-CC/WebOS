@@ -4,7 +4,7 @@ import path from 'node:path';
 
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const validAsset = /^(?:[a-zA-Z0-9_@+-][a-zA-Z0-9_@+.-]*\/)*[a-zA-Z0-9_@+-][a-zA-Z0-9_@+.-]*$/;
-const viewerRoot = 'node_modules/jsketcher-build';
+const viewerRoot = 'viewer';
 const engineRoot = viewerRoot+'/lib-assets/source-occt/modules/engine/runtime';
 const sources = viewerRoot+'/sources';
 
@@ -41,7 +41,7 @@ export async function assembleAcad({site, sourceCommit, sourceEngine, put}) {
     if (!app.files[name]) throw Error('Missing required ACAD source asset: '+name);
   }
   for (const [name,expected] of Object.entries(app.files)) {
-    if (!validAsset.test(name)) throw Error('Invalid ACAD asset path');
+    if (!validAsset.test(name) || name.split('/').includes('node_modules')) throw Error('Invalid ACAD asset path');
     const bytes = await read(prefix+'/'+name);
     if (bytes.length !== expected.bytes || hash(bytes) !== expected.sha256) throw Error('ACAD asset differs from inventory: '+name);
     await put(prefix+'/'+name,bytes);
