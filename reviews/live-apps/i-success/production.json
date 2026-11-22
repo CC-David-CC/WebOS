@@ -1,0 +1,111 @@
+{
+  "release": {
+    "tag": "isuccess-practice-cf823755cfd9",
+    "base": "3bdb5bf26626224479a36484acc01fdc86161bbcd5bb7e4ebc43f96a92fb8739",
+    "candidate": "cf823755cfd9bfbd6d29fb6efa0d9e1ac8b6835ea58a9565f7eaaa60efdfdcb5",
+    "archiveSHA256": "98db3ca9d39b7628ec60462517fd49559a0d0f8fbef64b97efc45d6e7a4c376d",
+    "parent": "063c869823ea8a120be50fa7834f7779dae1d4c7",
+    "components": {
+      "apps/i-success": "a2cc1582f55c33d642dbe8d7fec8b8d23678221b",
+      "platform/desktop": "0d2d3aa1f16fc7a401707336d1c21e74ccd4c524"
+    }
+  },
+  "app": {
+    "roles": [
+      "anonymous",
+      "promoted account",
+      "fresh authenticated browser"
+    ],
+    "guestPrivateRequests": 0,
+    "guestFirst": {
+      "skill": "prek-count-5",
+      "index": 0,
+      "inputs": [
+        "1"
+      ],
+      "verdicts": [
+        "Wrong"
+      ],
+      "steps_shown": 0,
+      "correct": 0,
+      "attempted": 1,
+      "counted": true,
+      "scored": false
+    },
+    "guestReopened": {
+      "skill": "prek-count-5",
+      "index": 0,
+      "inputs": [
+        "3"
+      ],
+      "verdicts": [
+        "Correct"
+      ],
+      "steps_shown": 1,
+      "correct": 0,
+      "attempted": 1,
+      "counted": true,
+      "scored": true
+    },
+    "signedFinal": {
+      "skill": "prek-count-5",
+      "index": 1,
+      "inputs": [
+        "5"
+      ],
+      "verdicts": [
+        "Correct"
+      ],
+      "steps_shown": 0,
+      "correct": 1,
+      "attempted": 2,
+      "counted": true,
+      "scored": true
+    },
+    "fileBytes": 262,
+    "sha256": "c0bb609d33701fe54c5c030e572eee33b23426fefc0fa5db3fb5dfbd3a74131f",
+    "app": "ad9703d994018504dadb04785312ef2c611af3589f9cd81666a4c912ed199c40"
+  },
+  "layouts": [
+    {
+      "tier": "phone",
+      "viewport": [
+        390,
+        844
+      ],
+      "contentWidth": 336,
+      "touch": true,
+      "selectedSkill": "prek-count-5"
+    },
+    {
+      "tier": "tablet",
+      "viewport": [
+        820,
+        1180
+      ],
+      "contentWidth": 766,
+      "touch": true,
+      "selectedSkill": "prek-count-5"
+    },
+    {
+      "tier": "desktop",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "contentWidth": 1846,
+      "touch": false,
+      "selectedSkill": "prek-count-5"
+    },
+    {
+      "tier": "4k",
+      "viewport": [
+        3840,
+        2160
+      ],
+      "contentWidth": 3766,
+      "touch": false,
+      "selectedSkill": "prek-count-5"
+    }
+  ]
+}
