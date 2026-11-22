@@ -2,7 +2,8 @@
 import {build} from 'esbuild';
 import {createHash} from 'node:crypto';
 import {readFile,writeFile,mkdir,readdir,lstat,mkdtemp,rm} from 'node:fs/promises';
-import {fileURLToPath} from 'node:url';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import {assembleAcad} from './assemble_acad.mjs';
 import path from 'node:path';
 import {tmpdir} from 'node:os';
 import {execFileSync} from 'node:child_process';
@@ -33,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -227,6 +228,18 @@ try {
 }
 if(terminalEnabled)apps.push(await buildTerminal({root,output,copySource,accountHome:accountGuestHome,
   recordSource:async relative=>sourceInputs.set(relative,hash(await readFile(path.join(root,relative))))}));
+if (flags['--acad-site']) {
+  const sourceCommit=execFileSync('git',['-C',root,'rev-parse','HEAD:apps/acad'],{encoding:'utf8'}).trim();
+  const checkout=path.join(root,'apps/acad');
+  const head=execFileSync('git',['-C',checkout,'rev-parse','HEAD'],{encoding:'utf8'}).trim();
+  if (head!==sourceCommit) throw Error('ACAD checkout must match the assembly pin');
+  const pins='modules/engine/source-occt/pins.mjs';
+  const committed=execFileSync('git',['-C',checkout,'show',sourceCommit+':'+pins]);
+  if (!committed.equals(await readFile(path.join(checkout,pins)))) throw Error('Modified ACAD engine pins');
+  const {sourceEngine}=await import(pathToFileURL(path.join(checkout,pins)));
+  apps.push(await assembleAcad({site:flags['--acad-site'],sourceCommit,sourceEngine,put}));
+  sourceInputs.set('apps/acad/'+pins,hash(committed));
+}
 // MathCraft has an independent app checkout and a browser-local Octave runtime.
 {
   const id = 'mathcraft', appRoot = 'apps/' + id;
