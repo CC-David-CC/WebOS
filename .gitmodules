@@ -433,3 +433,6 @@
 [submodule "paintcraft"]
 	path = apps/paintcraft
 	url = ../PaintCraft.git
+[submodule "clothcraft"]
+	path = apps/clothcraft
+	url = ../ClothCraft.git
