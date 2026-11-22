@@ -36,6 +36,7 @@ ADDITIONAL_TDS = (
     "tex/latex/xcolor/", "tex/latex/etoolbox/", "tex/latex/pgfplots/",
     "tex/generic/pgfplots/", "tex/latex/lm/",
     "fonts/tfm/public/lm/", "fonts/type1/public/lm/", "fonts/enc/dvips/lm/",
+    "fonts/tfm/public/cm-super/", "fonts/type1/public/cm-super/", "fonts/enc/dvips/cm-super/",
 )
 UNUSED_PDFTEX = (
     "fonts/afm/", "fonts/opentype/", "fonts/truetype/", "fonts/source/",
@@ -134,7 +135,7 @@ def pack_tex(inputs, output):
         basic = unpack(source, "busytex/texlive-basic.js").decode()
         basic_names = {row["filename"] for row in index(basic)[2]["files"]}
         full = unpack(source, "busytex/texlive-extra.js").decode()
-        start, end, metadata = index(full)
+        _, _, metadata = index(full)
         selection = [row for row in metadata["files"] if choose(row["filename"], basic_names)]
         for required in ("pdflatex.fmt", "tikz.sty", "enumitem.sty", "graphicx.sty", "amsmath.sty"):
             if not any(row["filename"].endswith("/" + required) for row in selection):

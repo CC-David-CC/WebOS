@@ -18,7 +18,7 @@
   background: #fff;
   border-bottom: 1px solid #c8cdd1;
 }
-.wordcraft-latex button {
+:is(.wordcraft-latex-toolbar, .wordcraft-latex-pages) button {
   min-height: 36px;
   padding: 4px 9px;
   border: 1px solid #75808a;
@@ -27,8 +27,8 @@
   color: inherit;
   font: inherit;
 }
-.wordcraft-latex button:disabled { opacity: .6; }
-.wordcraft-latex button:focus-visible { outline: 2px solid #1e6daa; outline-offset: 2px; }
+:is(.wordcraft-latex-toolbar, .wordcraft-latex-pages) button:disabled { opacity: .6; }
+:is(.wordcraft-latex-toolbar, .wordcraft-latex-pages) button:focus-visible { outline: 2px solid #1e6daa; outline-offset: 2px; }
 .wordcraft-latex-status, .wordcraft-latex-log { padding: 7px 10px; overflow-wrap: anywhere; }
 .wordcraft-latex-log pre { margin: 5px 0; max-height: 16rem; overflow: auto; white-space: pre-wrap; }
 .wordcraft-latex-paper { flex: 1 1 auto; min-height: 120px; overflow: auto; padding: 8px 12px; background: #dde1e4; }
