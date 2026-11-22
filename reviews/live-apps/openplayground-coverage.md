@@ -1,6 +1,6 @@
 # OpenPlayground and WebOS
 
-Checked November 22, 2026. Of 43 Playground entries, 17 are on ksu.codes, three more have public CC-David-CC repositories, and 23 others have no same-name public repository under that account. Each project counts once. The GitHub column describes source availability. The release column describes verified progress. Feature, hardware, compact-layout and version parity are separate checks. [Pinned upstream catalog](https://github.com/daijro/openplayground/blob/4317d6b7ec991926713fd1af1bc715c42c0e8a55/tools.yaml) · [WebOS profile](https://ksu.codes/viewer-profile.json) · [Production registry](https://ksu.codes/assets/desktop/apps.json) · [Hosted Craft checks](https://github.com/CC-David-CC/WebOS/blob/review/live-app-usability-20261120/reviews/live-apps/anon-craft-files.md)
+Checked November 22, 2026. Of 43 Playground entries, 17 are on ksu.codes, four more have public CC-David-CC repositories, and 22 others have no same-name public repository under that account. Each project counts once. The GitHub column describes source availability. The release column describes verified progress. Feature, hardware, compact-layout and version parity are separate checks. [Pinned upstream catalog](https://github.com/daijro/openplayground/blob/4317d6b7ec991926713fd1af1bc715c42c0e8a55/tools.yaml) · [WebOS profile](https://ksu.codes/viewer-profile.json) · [Production registry](https://ksu.codes/assets/desktop/apps.json) · [Hosted Craft checks](https://github.com/CC-David-CC/WebOS/blob/review/live-app-usability-20261120/reviews/live-apps/anon-craft-files.md)
 
 | Group | Project and upstream | Your public GitHub | WebOS release status |
 |---|---|---|---|
@@ -23,7 +23,7 @@ Checked November 22, 2026. Of 43 Playground entries, 17 are on ksu.codes, three 
 | Office | [TextCraft](https://github.com/cmspeedau/NoteCraft) | No same-name public repository found | Absent from live profile |
 | Office | [MailCraft](https://github.com/UCS-Care-Group/mailcraft) | No same-name public repository found | Local WebOS source present · production disabled |
 | Office | [PdfCraft](https://github.com/storytold/pdfcraft) | [CC-David-CC/pdfcraft](https://github.com/CC-David-CC/pdfcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
-| Office | [MatCraft](https://github.com/NibrasAz7/matcraft) | No same-name public repository found | Absent from live profile |
+| Office | [MatCraft](https://github.com/NibrasAz7/matcraft) | [CC-David-CC/matcraft](https://github.com/CC-David-CC/matcraft) | Fork matches upstream master · upstream WebAssembly target exists · WebOS Files and hosted checks pending |
 | Video | [FilmCraft](https://github.com/storytold/filmcraft) | [CC-David-CC/filmcraft](https://github.com/CC-David-CC/filmcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Video | [EffectCraft](https://github.com/storytold/effectcraft) | [CC-David-CC/effectcraft](https://github.com/CC-David-CC/effectcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Video | [AniCraft](https://github.com/storytold/AniCraft) | [CC-David-CC/anicraft](https://github.com/CC-David-CC/anicraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
@@ -122,5 +122,7 @@ The following WebOS IDs are additional to the shared projects above. Kiri:Moto a
 Paint.RS main in the fork and upstream resolved to `0aecc981a6ae0cd183caf3d7f9afc467f2abd8ec`. The fork’s `node tests/web-files.mjs` passed with Node v24.22.1. WebOS needs its Files integration, native layered edit/save/reopen checks, and hosted release.
 
 ClothCraft main in the fork and upstream resolved to `16761c55600342334a2fd585c80f9fe811c2b20c`. Browser simulation, editable project save/reopen and deployment are pending. There is currently no ClothCraft launcher.
+
+MatCraft’s fork and upstream `master` both resolved to `a41ac9551d3118807c299c6ac331ddc81141ef2b`. Its browser crate uses the MatCraft engine. WebOS currently ships the separate MathCraft app. The MatCraft acceptance workflow is to run an M-code matrix calculation, save the script, reopen it from Files, and rerun it in guest and signed-in sessions. [Browser target](https://github.com/CC-David-CC/matcraft/tree/a41ac9551d3118807c299c6ac331ddc81141ef2b/apps/matcraft-web)
 
 I-SUCCESS is an additional requested app outside this catalog. The browser build and 19 native tests passed. Guest and signed-in practice, save and Files reopen still need browser qualification.
