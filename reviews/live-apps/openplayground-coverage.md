@@ -20,7 +20,7 @@ Checked November 22, 2026. Of 43 Playground entries, 17 are on ksu.codes, 13 mor
 | Office | [GridCraft](https://github.com/storytold/gridcraft) | [CC-David-CC/gridcraft](https://github.com/CC-David-CC/gridcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [DeckCraft](https://github.com/storytold/deckcraft) | [CC-David-CC/deckcraft](https://github.com/CC-David-CC/deckcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [NoteCraft](https://github.com/AlienTechSoftware/notecraft) | [CC-David-CC/notecraft](https://github.com/CC-David-CC/notecraft) | Port in progress · Files qualification pending · matches upstream at `b769e70b` |
-| Office | [TextCraft](https://github.com/cmspeedau/NoteCraft) | [CC-David-CC/NoteCraft_simple](https://github.com/CC-David-CC/NoteCraft_simple) | Fork verified · WebOS release pending · matches upstream at `d604d998` |
+| Office | [TextCraft](https://github.com/cmspeedau/NoteCraft) | [CC-David-CC/textcraft](https://github.com/CC-David-CC/textcraft) | Fork verified · WebOS release pending · matches upstream at `d604d998` |
 | Office | [MailCraft](https://github.com/UCS-Care-Group/mailcraft) | No matching public fork found | Local WebOS source present · production disabled |
 | Office | [PdfCraft](https://github.com/storytold/pdfcraft) | [CC-David-CC/pdfcraft](https://github.com/CC-David-CC/pdfcraft) | Hosted · native edit, save and Files reopen passed in guest and signed-in checks |
 | Office | [MatCraft](https://github.com/NibrasAz7/matcraft) | [CC-David-CC/matcraft](https://github.com/CC-David-CC/matcraft) | Fork matches upstream master · upstream WebAssembly target exists · WebOS Files and hosted checks pending |
@@ -120,7 +120,7 @@ The following WebOS IDs are additional to the shared projects above. Kiri:Moto a
 
 ## Fork intake
 
-Twelve of the thirteen forks awaiting WebOS release matched their upstream default-branch commits at this check. LightCraft Classic uses the ChromaForge repository. Its fork was two commits behind upstream. TextCraft uses the cmspeedau editor fork named NoteCraft_simple. AlienTechSoftware’s notebook app has its own NoteCraft row. [ChromaForge comparison](https://github.com/emmertex/chromaforge/compare/294e2aefd1e1405c1b513d09e95a874ed2cf0f06...074caad2266cae99f2859c809e45d8a6eb968d40)
+Twelve of the thirteen forks awaiting WebOS release matched their upstream default-branch commits at this check. LightCraft Classic uses the ChromaForge repository. Its fork was two commits behind upstream. TextCraft is the plain-text editor from cmspeedau. Its fork was renamed from NoteCraft_simple to textcraft. NoteCraft is AlienTechSoftware’s notebook app for organizing pages and sections. OneNote is its commercial comparison. WebOS already lists the CodeMirror-based Text Editor under Office. [ChromaForge comparison](https://github.com/emmertex/chromaforge/compare/294e2aefd1e1405c1b513d09e95a874ed2cf0f06...074caad2266cae99f2859c809e45d8a6eb968d40)
 
 Paint.RS main in the fork and upstream resolved to `0aecc981a6ae0cd183caf3d7f9afc467f2abd8ec`. The fork’s `node tests/web-files.mjs` passed with Node v24.22.1. WebOS needs its Files integration, native layered edit/save/reopen checks, and hosted release.
 
