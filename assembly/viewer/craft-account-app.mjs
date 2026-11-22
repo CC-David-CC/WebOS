@@ -22,7 +22,7 @@ function fileFromDevice(file) {
 
 /** Mount a native layer editor in its own classic Desktop account window. */
 export function mountCraftAccount(host, {app, name, extension, recovery, deviceImport = false, reviewWindowClose = false, forceWebGL = false,
-  setupOriginals, commands = scopedCommands, accountControls = false, artworkExtensions, accountAutosave = true, accountOpenTimeoutMs, legacyExtensions = []}) {
+  setupOriginals, guestFiles = false, commands = scopedCommands, accountControls = false, artworkExtensions, accountAutosave = true, accountOpenTimeoutMs, legacyExtensions = []}) {
   const extensions = [extension,...legacyExtensions];
   const projectPath = path => craftProjectPath(path, extension, legacyExtensions);
   const element = document.createElement('div');
@@ -50,14 +50,17 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
 
   const abort = new AbortController();
   const session = host.session();
-  const instanceId = typeof host.registerAgentView === 'function' ? crypto.randomUUID() : null;
+  const guest = guestFiles && session?.public.kind === 'anonymous';
+  const currentOwner = guest ? host.storage.workspaceOwner : host.storage.signedInSubject;
+  const pickFile = guest ? host.storage.pickWorkspaceFile : host.storage.pickAccountFile;
+  const instanceId = !guest && typeof host.registerAgentView === 'function' ? crypto.randomUUID() : null;
   let native, storage, context, dialog, journal, drafts, autosave, accountSession, windowLease;
   let loaded = false, windowCloseApproved = false;
   let autosaveKey, autoEnabled = false;
   let lastDialog = 0n;
   let agentPath, bindingId;
   const valid = () => !abort.signal.aborted && !host.signal.aborted && host.session() === session &&
-    host.desktop.windows.includes(host.w) && host.storage.signedInSubject() === session?.public.sub && context?.valid();
+    host.desktop.windows.includes(host.w) && currentOwner() === session?.public.sub && context?.valid();
   const check = () => {
     if (!valid()) throw new DOMException(`${name} account view closed.`, 'AbortError');
     if (loaded) native.assertLive();
@@ -161,14 +164,14 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
 
   async function save(packet, automatic = false) {
     if (!loaded || !valid()) return {error:Error(`The ${name} account editor is closed.`)};
-    message('Saving to your account…');
+    message(guest ? 'Saving in this tab…' : 'Saving to your account…');
     try {
       check();
       const writing = storage.save(packet, native.acknowledge);
       accountSession.observe();
       const binding = await writing;
       bind(binding);
-      message('');
+      message(guest ? `Saved in this tab: ${binding.path}` : '');
       drafts.schedule();
       if (!automatic) autosave.confirmed();
       return {binding};
@@ -186,7 +189,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
   }
 
   async function chooseProject(packet, signal) {
-    const picked = packet.path === null ? await host.storage.pickAccountFile({extensions, signal}) : null;
+    const picked = packet.path === null ? await pickFile({extensions, signal}) : null;
     check();
     if (!loaded || signal.aborted) return {outcome:'cancelled'};
     if (packet.path === null && picked === null) return {outcome:'cancelled'};
@@ -202,7 +205,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
   }
 
   async function chooseDestination(suggested, signal) {
-    const folder = await host.storage.pickAccountFile({foldersOnly:true, signal});
+    const folder = await pickFile({foldersOnly:true, signal});
     check();
     if (!loaded || signal.aborted || folder === null) return {outcome:'cancelled'};
     if (typeof folder !== 'string' || !folder.startsWith('/')) throw Error('Invalid account folder selection.');
@@ -218,7 +221,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
   }
 
   async function chooseArtwork(signal) {
-    const picked = await host.storage.pickAccountFile({extensions:artworkExtensions, signal});
+    const picked = await pickFile({extensions:artworkExtensions, signal});
     check();
     if (!loaded || signal.aborted || picked === null) return {outcome:'cancelled'};
     if (typeof picked !== 'string' || !picked.startsWith('/')) throw Error('Invalid account artwork selection.');
@@ -273,10 +276,10 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
   }
 
   const ready = (async () => {
-    context = await host.storage.accountFileContext();
+    context = guest ? await host.storage.workspaceFileContext() : await host.storage.accountFileContext();
     check();
-    journal = recovery.journal(host, context, valid);
-    const draft = await journal.load();
+    journal = guest ? null : recovery.journal(host, context, valid);
+    const draft = await journal?.load();
     check();
     const launch = host.w.launchContext;
     let resource;
@@ -393,7 +396,7 @@ export function mountCraftAccount(host, {app, name, extension, recovery, deviceI
     autoToggle.hidden = !accountAutosave;
     for (const control of controls) control.hidden = false;
     if (openLocal) openLocal.hidden = false;
-    message(recoveryMessage);
+    message(guest ? (resource ? `Opened in this tab: ${resource.path}` : 'New temporary project.') : recoveryMessage);
     drafts.schedule();
     if (instanceId) host.registerAgentView({
       windowId:host.w.id, name, signal:abort.signal,
