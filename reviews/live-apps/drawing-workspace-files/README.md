@@ -15,7 +15,7 @@ In a separate check, each editor rejected a launch with an outdated file hash. C
 
 On Chromium with emulated touch at 390 and 820 pixels wide, one tap selected Rectangle, dragging drew a shape, a second toolbar tap opened the alternatives, and choosing Square drew another shape. The built-in example fit entirely inside the visible drawing area at both widths. The Image Editor’s **Editing tools** button exposed **Resize** and its numeric field at 390 pixels. [Phone SVG](svg-example-phone.png) · [Tablet SVG](svg-example-tablet.png) · [Image Editor on phone](image-editor-phone.png)
 
-On a physical phone or iPad, try those same two SVG tools. With VoiceOver or TalkBack enabled, open Image Editor, create a blank image and navigate to **Editing tools → Resize**. Physical touch and screen-reader speech remain unverified. Excalidraw’s separate compact menu issue reproduced on the second draw-and-save cycle at 390 × 844. Its desktop and Files results above passed.
+On a physical phone or iPad, try those same two SVG tools. With VoiceOver or TalkBack enabled, open Image Editor, create a blank image and navigate to **Editing tools → Resize**. Physical touch and screen-reader speech remain unverified. Excalidraw’s separate compact menu issue reproduced on the second draw-and-save cycle at 390 × 844. Its desktop and Files results above passed. The [subsequent compact menu release](../excalidraw/README.md#november-22-compact-menu-verification) fixed this case.
 
 ## Build and source pins
 
