@@ -1,5 +1,7 @@
 # Diagram Editor (diagrams.net)
 
+November 22 follow-up: native Files launch and editing in both account modes passed on ksu.codes. [Updated checks and screenshots](../drawing-workspace-files/README.md)
+
 Open the test diagram, edit its shape label and save an account draw.io file.
 
 | Viewport | Input | Result | Screenshot |

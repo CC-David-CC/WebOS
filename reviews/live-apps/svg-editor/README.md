@@ -1,5 +1,7 @@
 # Vector Editor (SVG-Edit)
 
+November 22 follow-up: native Files launch and editing in both account modes passed on ksu.codes. [Updated checks and screenshots](../drawing-workspace-files/README.md)
+
 Draw a rectangle and save the SVG.
 
 | Viewport | Input | Result | Screenshot |

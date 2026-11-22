@@ -1,5 +1,7 @@
 # Sketch Board (Excalidraw)
 
+November 22 follow-up: native Files launch and editing in both account modes passed on ksu.codes. [Updated checks and screenshots](../drawing-workspace-files/README.md)
+
 Draw a rectangle and save an editable Excalidraw drawing.
 
 | Viewport | Input | Result | Screenshot |

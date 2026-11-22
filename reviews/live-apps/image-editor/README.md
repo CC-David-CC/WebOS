@@ -1,5 +1,7 @@
 # Image Editor (Filerobot)
 
+November 22 follow-up: native Files launch and editing in both account modes passed on ksu.codes. [Updated checks and screenshots](../drawing-workspace-files/README.md)
+
 Create a blank PNG, change its dimensions and save it to My files.
 
 | Viewport | Input | Result | Screenshot |
