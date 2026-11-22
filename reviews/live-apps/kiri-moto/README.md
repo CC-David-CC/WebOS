@@ -1,5 +1,7 @@
 # Fabrication Studio (Kiri:Moto)
 
+[Updated production Files workflow and screenshots](../fabrication-files/README.md)
+
 Add a 20 mm cube, run the slicer and save a workspace.
 
 | Viewport | Input | Result | Screenshot |

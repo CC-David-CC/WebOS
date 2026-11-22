@@ -1,5 +1,7 @@
 # Mesh Editor (Mesh:Tool)
 
+[Updated production Files workflow and screenshots](../fabrication-files/README.md)
+
 Add the example cube, verify its dimensions and save an editable mesh workspace.
 
 | Viewport | Input | Result | Screenshot |

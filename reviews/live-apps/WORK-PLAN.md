@@ -16,7 +16,7 @@ WebOS release queue
 │  └─ TextureCraft: held-touch paint, save and second edit passed in both roles
 ├─ 3. Repair remaining Files routes and editors
 │  ├─ Arduino, Digital Logic, CircuitJS: six deployed reopens passed
-│  ├─ Electronics Design, Kiri:Moto and Mesh:Tool: next associations
+│  ├─ Electronics Design, Kiri:Moto and Mesh:Tool: deployed edit, save and reopen passed
 │  └─ Independent editor issues: menu layout, labels, fit and cold start
 ├─ 4. Work down remaining app and game usability rows
 │  ├─ Craft layouts, editing and recovery, then other enabled apps
@@ -29,13 +29,13 @@ WebOS release queue
    └─ Publish components → pin in WebOS → test candidate → deploy → replay live
 ```
 
-**What goes next:** Take Electronics Design, Kiri:Moto and Mesh:Tool through native Files reopen. Paint.RS and PaintCraft can build in parallel in their own repositories. Keep the physical-device checks available to the owner while software work proceeds. A new reproducible ACAD or Chromium regression takes priority. Each ready candidate can ship independently after its own checks. Coordinate changes to shared Desktop routing and serialize promotion of the live viewer so one release cannot replace another's work.
+**What goes next:** Finish the open Craft compact layouts and fabrication touch checks. Paint.RS and PaintCraft can build in parallel in their own repositories. Keep the physical-device checks available to the owner while software work proceeds. A new reproducible ACAD or Chromium regression takes priority. Each ready candidate can ship independently after its own checks. Coordinate changes to shared Desktop routing and serialize promotion of the live viewer so one release cannot replace another's work.
 
 | Order | Where we are | Next evidence needed |
 |---|---|---|
 | 1 · ACAD and X11 | Both workspace modes created, reopened and resized the same ACAD solid. Chromium opened local files and accepted input. The temporary network grant and live revocation were exercised. [ACAD](acad-modeler/README.md) · [Chromium input](linux-x11/chromium-input.md) · [networking](linux-x11/scoped-network.md) | Follow up on a specific modeling failure immediately. Owner checks Terminal ping and a guest Chromium HTTPS page in the normal session. Physical touch remains separately recorded. |
 | 2 · Craft | The 20-app guest and signed-in native Files baseline passed. SolidCraft's standalone fillet accepted input during calculation. SoundCraft recorded and reopened a synthetic take. CADCraft desktop selection while moving passed. [Files baseline](anon-craft-files.md) · [SolidCraft](solidcraft/README.md) · [SoundCraft](soundcraft/README.md) · [CADCraft](cadcraft/README.md) | The compact CAD, FilmCraft timeline and TextureCraft held-brush fixes passed on the deployed viewer. Keep physical mic/playback, touch, onscreen-keyboard and pen checks open where listed. [FilmCraft](filmcraft/README.md) · [held-brush reproduction](texturecraft/tablet-paint.md) |
-| 3 · Native Files | Arduino Blink, Digital Logic and an editable CircuitJS RC circuit passed all six production Files reopens in Anon and signed-in modes. [Release and screenshots](electronics-files/README.md) | Verify .dez, .kiri and .meshproj with actual edited documents. [CircuitJS menus also passed at four sizes](circuitjs/native-menus/README.md). |
+| 3 · Native Files | Arduino Blink, Digital Logic and an editable CircuitJS RC circuit passed all six production Files reopens in Anon and signed-in modes. [Release and screenshots](electronics-files/README.md) | [Verified .dez projects](electronics-design/README.md) and [verified .kiri and .meshproj projects](fabrication-files/README.md) can be edited after native Files reopen. [CircuitJS menus also passed at four sizes](circuitjs/native-menus/README.md). |
 | 4 · Other enabled apps and games | All 35 audited game updates are live. Seven Learning & Strategy games passed native play and Files checks. Specific games still have sizing, reachability or gameplay findings. DRAKON Python, JavaScript, Bash and Narrator are recorded in the review inventory. [Games](game-update-checks.md) · [seven-game release](learning-games-release.md) · [app reviews](README.md) | Work through individual rows, including notebook startup, fabrication workflows and Weather Maps touch. For games, first fix broken play or resume, then test controls and resizing. Verify a meaningful action, saved state where supported, and screenshots at the tested sizes. |
 | 5 · New capabilities | Fork availability, integration, and hosted verification are tracked independently. The catalog check covered 43 entries. It is one catalog rather than the whole WebOS inventory. [Catalog and per-app status](openplayground-coverage.md) | Qualify each distinct app against its pinned source and browser policy. Preserve existing desktop workflows and signed-in and browser-local Files. Record a feature as live only after its deployed test. |
 

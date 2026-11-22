@@ -1,0 +1,38 @@
+{
+  "viewer": "8670315110a000ae578b6cef32e5c582c9a533c8e06786e580de8ca9f76b5c03",
+  "webos": "7f607b6e69e28e9b012424f0a1974339cce257f5",
+  "components": {
+    "apps/grid-tools": "a46ca2da034769369fec56effb6b723fbe3c1ba3",
+    "platform/desktop": "f4ca7032752f863e79c78cdff9f4cfc2e1d7dc8a"
+  },
+  "checks": [
+    {
+      "app": "kiri-moto",
+      "role": "anon",
+      "originalSHA256": "f9a51016a1603365170f4a91aab917a1f8580e8207130297f1ce91c5c6b6e386",
+      "editedCopySHA256": "63d2621112c223a464fdf32ab273e27bf4ee84f1cb1734cedecb679e7f2139fe",
+      "screenshot": "kiri-moto-anon-native.png"
+    },
+    {
+      "app": "kiri-moto",
+      "role": "signed",
+      "originalSHA256": "b6ac49c434e76d09b0db10acb75c4e14d405f9e49e21f6cfaa9ae1c82e8a972a",
+      "editedCopySHA256": "b52729f2caeafad00ae9107504d82676fb3a1959711f9b67139c4246e60eb98f",
+      "screenshot": "kiri-moto-signed-native.png"
+    },
+    {
+      "app": "mesh-tool",
+      "role": "anon",
+      "originalSHA256": "6aac010a97206a201ca7a7fc60f68ea16a473e4f92d66ca40085125f0eb6094b",
+      "editedCopySHA256": "0fd00a429b8e2321fc85e84700774bf88a7fb56ef0ba5955c52d390a5ed33d5e",
+      "screenshot": "mesh-tool-anon-native.png"
+    },
+    {
+      "app": "mesh-tool",
+      "role": "signed",
+      "originalSHA256": "01f55a90892dbde39d72c92b99dd8edf7e7cc930cd1d247128e277077dca2acc",
+      "editedCopySHA256": "ef3cc9063bc7b97c1ad101b70588f21768f5f267a6882b5ee4b8e7cd436b7d60",
+      "screenshot": "mesh-tool-signed-native.png"
+    }
+  ]
+}
