@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -383,6 +383,40 @@ if (flags['--paint-rs-site']) {
     bundle.push({name, bytes});
   }
   await registerFiles('paint-rs', bundle);
+}
+if (flags['--paintcraft-site']) {
+  const appRoot = 'apps/paintcraft', checkout = path.join(root,appRoot);
+  const site = path.resolve(flags['--paintcraft-site']);
+  const git = (cwd,...args) => execFileSync('git',['-C',cwd,...args],{encoding:'utf8'}).trim();
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const pin = git(root,'rev-parse','HEAD:'+appRoot);
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'paintcraft' ||
+      receipt.sourceCommit !== pin || git(checkout,'rev-parse','HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'Cargo.lock'))) ||
+      receipt.pnpmLockSHA256 !== hash(await readFile(path.join(checkout,'apps/paintcraft-web/pnpm-lock.yaml'))) ||
+      !Array.isArray(receipt.files)) throw Error('Invalid PaintCraft build receipt');
+  const bundle = [], names = new Set();
+  for (const item of receipt.files) {
+    const name = item.path;
+    if (typeof name !== 'string' || !/^(runtime|legal)\//.test(name) ||
+        name.split('/').some(part=>!part || part==='.' || part==='..' || part.includes('\\')) || names.has(name)) {
+      throw Error('Invalid PaintCraft package path');
+    }
+    names.add(name);
+    const bytes = await readFile(path.join(site,name));
+    if (bytes.length !== item.bytes || hash(bytes) !== item.sha256) throw Error('Invalid PaintCraft artifact '+name);
+    bundle.push({name,bytes});
+  }
+  if (!names.has('runtime/index.html') || !names.has('runtime/fonts/manifest.json') ||
+      !names.has('legal/LICENSE') || ![...names].some(n=>n.endsWith('.wasm'))) throw Error('Incomplete PaintCraft package');
+  for (const name of ['app.mjs','webos/workspace.css']) {
+    const source = appRoot+'/'+name;
+    const bytes = await readFile(path.join(root,source));
+    if (hash(bytes) !== hash(execFileSync('git',['-C',checkout,'show','HEAD:'+name]))) throw Error('PaintCraft wrapper differs from its pin');
+    sourceInputs.set(source,hash(bytes)); bundle.push({name:name==='app.mjs'?'index.mjs':name,bytes});
+  }
+  await registerFiles('paintcraft',bundle);
 }
 if (flags['--notecraft-site']) {
   const appRoot = 'apps/notecraft';

@@ -430,3 +430,6 @@
 [submodule "paint-rs"]
 	path = apps/paint-rs
 	url = ../paint.rs.git
+[submodule "paintcraft"]
+	path = apps/paintcraft
+	url = ../PaintCraft.git
