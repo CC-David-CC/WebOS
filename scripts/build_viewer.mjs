@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -317,6 +317,38 @@ if (flags['--linux-x11-packages']) {
     await copySource('apps/linux-x11/docs/chromium-source-packages.json','assets/legal/linux-x11/chromium-source-packages.json');
     await copySource('apps/linux-x11/docs/ncurses-copyright.txt','assets/legal/linux-x11/ncurses-copyright.txt');
   }
+}
+if (flags['--notecraft-site']) {
+  const appRoot = 'apps/notecraft';
+  const site = path.resolve(flags['--notecraft-site']);
+  const checkout = path.join(root,appRoot);
+  const git = (cwd,...args) => execFileSync('git',['-C',cwd,...args],{encoding:'utf8'}).trim();
+  const pin = git(root,'rev-parse','HEAD:'+appRoot);
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const nativeNames = ['NotoSansCJKsc-Regular.otf','OFL-NotoSansCJKsc.txt','notecraft.js','notecraft_bg.wasm','welcome.zip'];
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'notecraft' ||
+      receipt.sourceCommit !== pin || pin !== git(checkout,'rev-parse','HEAD') ||
+      receipt.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'Cargo.lock'))) ||
+      receipt.wasmBindgen !== 'wasm-bindgen 0.2.129' || !Array.isArray(receipt.files) ||
+      receipt.files.map(item=>item.path).sort().join(',') !== nativeNames.join(',')) throw Error('Invalid NoteCraft build receipt');
+  const bundle = [];
+  for (const item of receipt.files) {
+    const bytes = await readFile(path.join(site,item.path));
+    if (bytes.length !== item.bytes || hash(bytes) !== item.sha256) throw Error('Invalid NoteCraft artifact '+item.path);
+    bundle.push({name:'webos/native/'+item.path,bytes});
+  }
+  const names = ['app.mjs','webos/app.css','webos/index.html','webos/native.css','webos/frame.mjs',
+    'webos/notebook.mjs','webos/archive-worker.mjs','webos/vendor/fflate.mjs','webos/vendor/fflate-LICENSE',
+    'LICENSE-MIT','LICENSE-APACHE','NOTICE','ATTRIBUTION.md',
+    ...git(checkout,'ls-files','assets/fonts/*OFL*.txt').split('\n').filter(Boolean)];
+  for (const name of names) {
+    const source = appRoot+'/'+name;
+    const bytes = await readFile(path.join(root,source));
+    sourceInputs.set(source,hash(bytes));
+    bundle.push({name:name === 'app.mjs' ? 'index.mjs' : name,bytes});
+  }
+  await registerFiles('notecraft',bundle);
 }
 if (flags['--i-success-site']) {
   const id = 'i-success';
