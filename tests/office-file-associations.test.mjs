@@ -3,6 +3,13 @@ import assert from 'node:assert/strict';
 import {craftProjectPath} from '../assembly/viewer/craft-account-storage.mjs';
 import {accountFileApp} from '../assembly/viewer/file-associations.mjs';
 
+test('Files recognizes native design suffixes and leaves ordinary JSON and text with the editor', () => {
+  assert.equal(accountFileApp('Documents/Sampler.STITCHFOUNDRY'), 'embroidery-studio');
+  assert.equal(accountFileApp('Documents/Box.Replicad.Json'), 'replicad');
+  assert.equal(accountFileApp('Documents/Box.json'), 'text');
+  assert.equal(accountFileApp('Documents/Sampler.stitchfoundry.txt'), 'text');
+});
+
 test('Files routes supported account formats and preserves Text/WordCraft defaults',()=>{
   for(const [app,extensions] of Object.entries({text:['txt','py'],'audio-editor':['mp3','wav','amss','m4a','ogg','opus','webm','flac'],wordcraft:['docx','dotx','odt','rtf'],pdfcraft:['pdf'],gridcraft:['xlsx'],deckcraft:['pptx','potx','ppsx','deckcraft'],photocraft:['pcraft'],vectorcraft:['vectorcraft'],figcraft:['figcraft'],anicraft:['anicraft'],lightcraft:['lightcraft'],designcraft:['designcraft'],soundcraft:['scraftz'],filmcraft:['fcproj'],effectcraft:['ecproj'],cadcraft:['dxf'],texturecraft:['tcraft'],materialcraft:['mcraft'],sketchcraft:['sketchcraft'],solidcraft:['sc','solidcraft','solvecraft'],pcbcraft:['pc'],fieldcraft:['fieldcraft']})) {
     for(const extension of extensions)assert.equal(accountFileApp('Documents/a.'+extension.toUpperCase(),'files'),app);
