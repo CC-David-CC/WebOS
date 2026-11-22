@@ -2,6 +2,7 @@
 export function accountFileApp(path, sourceApp) {
   const game = /[.](fraction-farm|market-math|math-path|pocket-conquest|rule-detective|tile-islands|word-weaver)[.]json$/i.exec(path);
   if (game) return game[1].toLowerCase();
+  if (/[.](?:ipynb|(?:light|percent)[.]py)$/i.test(path)) return 'notebook';
   if (/[.]isuccess$/i.test(path)) return 'i-success';
   if (/[.]narration$/i.test(path)) return 'narrator';
   if (/[.]drakonpy$/i.test(path)) return 'drakon-python';

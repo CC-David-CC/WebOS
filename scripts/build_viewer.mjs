@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--notebook-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -317,6 +317,35 @@ if (flags['--linux-x11-packages']) {
     await copySource('apps/linux-x11/docs/chromium-source-packages.json','assets/legal/linux-x11/chromium-source-packages.json');
     await copySource('apps/linux-x11/docs/ncurses-copyright.txt','assets/legal/linux-x11/ncurses-copyright.txt');
   }
+}
+if (flags['--notebook-site']) {
+  const id = 'notebook';
+  const component = path.join(root,'apps',id);
+  const site = path.resolve(flags['--notebook-site']);
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const inventory = await readFile(path.join(component,'app.json'));
+  const assets = JSON.parse(inventory).assets;
+  const git = (cwd,...args) => execFileSync('git',['-C',cwd,...args],{encoding:'utf8'}).trim();
+  const pin = git(root,'rev-parse','HEAD:apps/notebook');
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== id ||
+      receipt.sourceCommit !== pin || pin !== git(component,'rev-parse','HEAD') ||
+      receipt.sourceTree !== git(component,'rev-parse','HEAD^{tree}') ||
+      receipt.inventorySHA256 !== hash(inventory) || !Array.isArray(receipt.files) ||
+      receipt.files.length !== assets.length || new Set(assets).size !== assets.length) {
+    throw Error('Notebook requires the exact JupyterLite package of the selected component');
+  }
+  sourceInputs.set('apps/notebook/app.json',hash(inventory));
+  const files = [];
+  for (const [index,artifact] of receipt.files.entries()) {
+    if (artifact.path !== assets[index] || !safe(artifact.path)) throw Error('Invalid Notebook inventory');
+    const bytes = await readFile(path.join(site,artifact.path));
+    if (bytes.length !== artifact.bytes || hash(bytes) !== artifact.sha256) throw Error('Invalid Notebook asset '+artifact.path);
+    files.push({name:artifact.path,bytes});
+  }
+  await emitBuild({
+    entryPoints:{index:'apps/notebook/index.mjs'},outdir:path.join(output,'.virtual-notebook'),outExtension:{'.js':'.mjs'}
+  },async built=>files.push(...built));
+  await registerFiles(id,files,['index.css']);
 }
 if (flags['--i-success-site']) {
   const id = 'i-success';
