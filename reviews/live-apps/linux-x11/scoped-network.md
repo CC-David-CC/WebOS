@@ -6,4 +6,8 @@ The backend archive was built from WebOS `63541d0aa67a85fc26792603577675ee8a9d76
 
 In an isolated network namespace on the production host, the packaged handler admitted a temporary test subject and launched QEMU. Ordinary and anonymous sessions were denied. Revocation ended the connection and terminated QEMU in 1.028 seconds with 298 seconds left on the grant. The registered session could still renew. An earlier integration check reached the designated SSH server from both guests and verified its host key.
 
-The remaining hosted check is to connect from the normal desktop menu using a temporary signed-in account, revoke that connection while it is active, and verify ordinary users and Anon retain loopback. Owner enablement follows that check.
+On the live site, Anon, an ordinary account and the temporary account before its grant each opened Terminal and Linux X11, pinged localhost and exchanged their test files through Files. All six launches had loopback only. With the temporary grant, both guests connected to the configured SSH server and matched its trusted Ed25519 host key. Revoking the grant closed both active WebSockets with more than 38 minutes left on the grant. The desktop session survived. A fresh sign-in of the same test account again opened both guests with zero relay connections and read back the two guest-written files.
+
+The release branch pins the tested guest transport at WebOS `59fd86a94822`. A subsequent Calculator deployment retained the guest assets. Owner enablement, owner WAN testing and physical-device checks have separate release gates. [WebOS transport release](https://github.com/CC-David-CC/WebOS/commit/59fd86a94822690162e4eee12206d276acaf52ae)
+
+![Linux X11 checking loopback and the configured SSH server on ksu.codes](hosted-test-scoped-x11.png)
