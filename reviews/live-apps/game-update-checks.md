@@ -31,6 +31,6 @@ The following bundles launched and closed on ksu.codes in release `2402af156909`
 
 The earlier release `3d32425fb22e` passed both layouts for Solitaire, Falling Blocks, Chess Study, Snake Garden, and the previous Memory Garden bundle. [WebOS source pins](https://github.com/CC-David-CC/WebOS/tree/release/game-updates-20261121)
 
-The remaining seven games have published source and passed local tests. Their launch entries and bundles still need to go live. They are Fraction Farm, Market Math, Math Path, Pocket Conquest, Rule Detective, Tile Islands, and Word Weaver.
+The seven Learning & Strategy games have also shipped. All seven passed native gameplay, Files save and reopen, account promotion, and fresh signed-in browser checks on ksu.codes. [Release pins and screenshots](learning-games-release.md)
 
 Physical touch and individual play, persistence, and usability findings remain in the [fix queue](FIX-QUEUE.md).
