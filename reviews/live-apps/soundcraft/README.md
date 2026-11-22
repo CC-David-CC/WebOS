@@ -1,11 +1,17 @@
 # SoundCraft
 
-On ksu.codes, a signed-in disposable account opened Audio Tools → SoundCraft, created and armed one audio track, pressed Record, then closed the window and chose Discard. Chromium ran headless with software graphics at 1540 × 1000 CSS pixels. The screenshot shows the app window after pressing Record.
+The released editor recorded a generated 440 Hz microphone through the Record button, saved the take in a native `.scraftz` project, and played it after reopening from Files. For the signed-in check, a separate browser context signed back into the disposable account. Anonymous Files stayed in the browser.
 
-![Armed audio track with the input error visible in the status bar](record.png)
+![SoundCraft displaying the waveform of the microphone take reopened from Files on ksu.codes](reopened-take.png)
 
-The editor reported “Cannot record: no audio input device.” It accepted Close and acknowledged both pause and finalization. The clean window closed in 2.1 seconds. The edited window took 23.7 seconds from the start of the automated Close click through Discard and removal. The window disappeared 0.15 seconds after the Discard click returned. The delay is reproducible under this test setup. Its cause remains open.
+| Hosted Chromium check | Anon | Signed in |
+|---|---:|---:|
+| Recorded tone in project | 440 Hz | 440 Hz |
+| Playback tone measured from WebAudio | 445.3 Hz | 433.6 Hz |
+| Close until dirty-project prompt | 0.66 s | 0.63 s |
+| Saved window close | 2.33 s | 2.29 s |
+| Edited Close through Discard and removal | 4.08 s | 5.28 s |
 
-The exact package passed seven local account checks including playback, Save As and recovery. Microphone recording, phone, tablet, 1080p and 4K primary tasks and physical-device input still need testing.
+Both roles retained the exact saved bytes after discarding a later edit. There were zero uncaught page errors. The test used software-rendered Chromium at 1540 × 1000 CSS pixels. A physical microphone and speaker or headphone check remains open, along with phone, tablet, 1080p and 4K task checks. The former software-rendering observation was 23.7 seconds through edited Discard on viewer `5c6cb58b0cd3`.
 
-Tested release `5c6cb58b0cd3528cd046b3b95b1763cd93284ce516d46605f652a1652d4d1bbd`, SoundCraft `dbc11ad16d32d36612f50d01f41d88ed3bd5aded`.
+Viewer release `fdb8a0af8b45dc700baba6ee0205e112d299f1138bfbc90c2421ca2501981b2b`, SoundCraft `92ded9fdd09337864d219b49823efcbfb7659d98`, WebOS `a096a6aa16a8b82ea64d2523938bf0ee05a303a2`. [SoundCraft source](https://github.com/CC-David-CC/soundcraft/tree/92ded9fdd09337864d219b49823efcbfb7659d98) · [Reproducible browser check](https://github.com/CC-David-CC/WebOS/blob/a096a6aa16a8b82ea64d2523938bf0ee05a303a2/tests/soundcraft_microphone_browser.py)
