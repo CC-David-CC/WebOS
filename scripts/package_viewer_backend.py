@@ -76,6 +76,8 @@ def main():
                     raise ValueError(f'Guest extension would replace {source}')
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(git(owner, 'show', entry[2] + ':' + prefix + '/' + source))
+        worker = git('apps/linux', 'show', extensions['apps/linux'] + ':scripts/serve-viewer-wire.py')
+        (out / 'serve-viewer-wire.py').write_bytes(worker)
     server = git('.', 'show', 'HEAD:scripts/run_development.py')
     assert server == (ROOT / 'scripts/run_development.py').read_bytes()
     (out / 'run_development.py').write_bytes(server)
