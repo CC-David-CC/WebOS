@@ -2,8 +2,20 @@
 
 Linux X11 with Chromium, the remaining Craft work, and ACAD are the release priorities. All 35 updated game sources are on GitHub and passed their native suites and local production-bundle launch and close. Twenty-eight are live and passed in signed desktop and anonymous touch-emulated sessions. Seven Learning & Strategy games still need their live release entries. Keep each finding open until a live test exercises the reported behavior. [Hosted game checks and screenshots](game-update-checks.md) · [Independent game harness](https://github.com/CC-David-CC/webos-game-harness)
 
+## Work order
+
+1. **Anon desktop regression and opening view.** Restore browser-local Files and WordCraft first. Then open Weather Maps over the US on fresh anonymous entry. Check the account transitions below before releasing.
+2. **Linux X11 and Chromium.** Reproduce the exact 32-bit browser build, exercise local HTML and input, and test scoped networking with a temporary permitted account. Keep ordinary and anonymous guests on loopback.
+3. **Craft apps.** Follow the open rows below. Verify each affected native edit, account save, reopen from Files, recovery, and compact interaction on the deployed version. Keep verified releases distinct from pending hardware checks.
+4. **ACAD Modeler.** Qualify the source-built engine under the site's existing browser security policy. Create, save and reopen the same editable model through Files.
+5. **Remaining app reviews and games.** Work through the individual findings below, release the remaining seven game entries and verify real play through the desktop menu.
+
+## Findings and release checks
+
 | App | Impact and reproduction | Status and retest |
 |---|---|---|
+| Anon Files and WordCraft | Open both apps in a fresh Anon session. Both remain on “Opening…”. Reproduced on the public site with a new Chromium context. The app adapter requires a registered storage subject. | Open. Implement browser-only guest storage. Verify edit, save, close and reopen through Files, separation between guests, and no account-file requests. Registration must promote saved guest files and existing-account sign-in must discard them. |
+| Anon Weather Maps | A fresh Anon desktop should open with the weather globe over the United States. | Open. Check launch, framing, wind and US radar on desktop and compact screens. Confirm closing the map keeps it closed in this session and that signed-in users restore their own layout. |
 | Desktop startup | A fresh visitor was sent to a full-page sign-in gate with a low-contrast Anon button. | Fixed on ksu.codes in release `4faf8fd04eff`. Fresh desktop and phone-emulated browser sessions started as Anon. Register, existing-account sign-in, automatic recovery of a remembered sign-in, and sign-out passed. A rejected password left the guest desktop available. Creating an account transferred an anonymous Terminal file. Signing in to that existing account from a second guest session kept the account file and discarded the second guest file. [Desktop source](https://github.com/CC-David-CC/desktop/commit/4d6456e6a3c5e4b1c2078a90dc2984f4a642f100) |
 | SoundCraft | High. With an armed track, browser recording lacks an audio input path. | The hosted editor now reports the missing input and survives Record. Verify real microphone capture and audible playback on hardware. |
 | SoundCraft | High. Press Close and Discard after attempting Record. The edited window took 23.7 seconds to close on software-rendered Chromium. | Open. Profile the delay through the two clicks and repeat on hardware. [Hosted review](soundcraft/README.md) |
