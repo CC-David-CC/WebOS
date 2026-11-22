@@ -1,0 +1,28 @@
+<!doctype html><title>Rapid input comparison</title>
+<style>body{background:#c03020;color:white;margin:20px;font:18px sans-serif} input{font:22px sans-serif;width:150px;color:white}#targetA{background:#a040d0}#targetB{background:#508830} #result{display:block;font-size:14px}</style>
+<style>body{font-family:Arial, sans-serif;background:#c03020}main{background:#202634;padding:16px 20px;max-width:560px}h1{margin:0 0 8px;font-size:26px}p{margin:8px 0 16px}label{display:inline-grid;margin-right:12px;gap:5px}input{border:1px solid #ececec;padding:4px}#result{font-size:18px;margin:16px 0}</style>
+ <main><h1>Chromium input check</h1><p>Local HTML opened from WebOS Files</p>
+<label>First field<input id="targetA" aria-label="A"></label><label>Second field<input id="targetB" aria-label="B"></label><output id="result"></output></main>
+<script>
+let trial=0;
+const trace=[];
+for(const event of ['mousedown','focusin','keydown','mouseup']) {
+  document.addEventListener(event,e=>{
+    if(event==='keydown' && e.key.length!==1) return;
+    trace.push([event,e.target.id || 'page',event==='keydown'?e.key:'']);
+    if(event==='keydown' && e.key==='s') setTimeout(report,0);
+  });
+}
+function report(){
+  const expected='webos';
+  const field=document.activeElement;
+  const value=field.value;
+  ++trial;
+  const success=value===expected;
+  const result=JSON.stringify({trial,value,trace:trace.splice(0)});
+  document.title='input-report '+result;
+  document.querySelector('#result').textContent='Check '+trial+' of 8 · '+(success?'Received: '+value:'Input did not match');
+  document.body.style.background='rgb('+(success?32:215)+','+(60+trial)+',180)';
+  if(trial<8) for(const input of document.querySelectorAll('input')) input.value='';
+}
+</script>

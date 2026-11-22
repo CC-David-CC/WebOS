@@ -1,0 +1,31 @@
+{
+  "release": "5c2abc3689a1c3247ef50af2b58e6aa8e01effede74dde70c26c78c36dfc5751",
+  "bundle": "4a64d3867b71c0cd4b88c9956641c3e7d17944f5349f4f5c99f5e7379faf21c9",
+  "inputAssetSHA256": "57913876d634b7e63596730e7fb0ca82dfe4656060d4dcc6288eb1d8052b5303",
+  "webos": "f2f6eca040f6974b80984b45ac2cd7c5ac7654fe",
+  "components": {
+    "apps/linux-x11": "a5c4514899d4097a81dc7f0a785f3aaa1545e1f9",
+    "engines/v86": "9019aa65bf60578fb342830b36315e466d39fb51"
+  },
+  "roles": {
+    "anon": {
+      "bootSeconds": 63.24,
+      "paintSeconds": 248.94,
+      "linkNavigationPaintSeconds": 40.31,
+      "filesInputsUploadedThroughUI": true,
+      "guestWrittenFileDownloadedThroughUI": true,
+      "immediateInputTrialsPassed": 8,
+      "browserOnlyWorkspaceFilesReadback": true,
+      "openX11DescriptorPromoted": true
+    },
+    "signed": {
+      "bootSeconds": 62.6,
+      "paintSeconds": 250.5,
+      "linkNavigationPaintSeconds": 36.32,
+      "filesInputsUploadedThroughUI": true,
+      "guestWrittenFileDownloadedThroughUI": true,
+      "immediateInputTrialsPassed": 8,
+      "freshAccountReadback": true
+    }
+  }
+}

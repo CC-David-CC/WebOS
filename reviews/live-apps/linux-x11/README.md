@@ -25,8 +25,12 @@ On hosted release `efd370e5c981`, both roles opened local HTML from the guest ho
 | Launch guest Chromium to first visible page | 198.99 s | 162.08 s |
 | Follow local link to second visible page | 26.41 s | 32.30 s |
 
-The screenshot shows the focused-input run. A separate signed test that typed immediately after clicking lost the first character. Keep that case open. On a physical device, open Programming → Linux X11, open a local HTML form in guest Chromium, then tap or click an empty field and immediately type `webos`. Record the visible text and whether the on-screen keyboard appeared on a touch device.
+The screenshot shows the focused-input run. A separate signed test on that release lost the first character when typing started immediately after clicking. On a physical device, open Programming → Linux X11, open a local HTML form in guest Chromium, then tap or click an empty field and immediately type `webos`. Record the visible text and whether the on-screen keyboard appeared on a touch device.
 
 ![Guest Chromium on the second local HTML page with the full typed word](chromium-local-files.png)
 
-The live ACAD viewer `b07393596a72` retains X11 bundle `04a6f9ff19fb4798802821670372d886eb7ac6f98acd328dde04f0e64eb4f80f`. Its X11 source is published on the WebOS release branch. The WebOS main tree had no `apps/linux-x11` gitlink when checked. [WebOS X11 release](https://github.com/CC-David-CC/WebOS/commit/aa941e2c5758d5b7b6980037444772129ded75e3) · [X11 source](https://github.com/CC-David-CC/linux-x11/commit/9f99166fabedf4d991a5a1f752d3613f903ed477)
+The subsequent ACAD viewer `b07393596a72` retained X11 bundle `04a6f9ff19fb4798802821670372d886eb7ac6f98acd328dde04f0e64eb4f80f`. Its X11 source is published on the WebOS release branch. The WebOS main tree had no `apps/linux-x11` gitlink when checked. [WebOS X11 release](https://github.com/CC-David-CC/WebOS/commit/aa941e2c5758d5b7b6980037444772129ded75e3) · [X11 source](https://github.com/CC-David-CC/linux-x11/commit/9f99166fabedf4d991a5a1f752d3613f903ed477)
+
+## Immediate typing after a click
+
+The X11 input controller fix passed on live viewer `5c2abc3689a1`. Both roles passed eight immediate click-and-type trials and read back a file written by the guest. The remaining hardware checks cover cold mobile startup and real keyboards. [Hosted workflow, screenshots and test page](chromium-input.md)
