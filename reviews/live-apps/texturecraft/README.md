@@ -1,6 +1,6 @@
 # TextureCraft
 
-Import a UV-mapped OBJ, paint its native 2D canvas and save the editable texture project.
+Import a UV-mapped OBJ, paint its native 2D canvas and save the editable texture project. The [tablet brush investigation](tablet-paint.md) records the current touch behavior and check to repeat.
 
 | Viewport | Input | Result | Screenshot |
 |---|---|---|---|
