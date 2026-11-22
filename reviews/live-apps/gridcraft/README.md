@@ -14,3 +14,7 @@ At phone width the Save icon overlaps the theme control. A tap in that area swit
 The browser used a disposable account and a fresh context at each size. Physical-device input, software keyboard and GPU performance still need hardware testing.
 
 Desktop release `e5ee6f304c8fc82927f0e93c49bb0982871df3320e81a76fd0b320e611e366e7`. Tested app bundle `19f180ef9fbd71d8248f14fee0f2faca0617ef32d008ab304922050e77a14b68`.
+
+## Touch Save release
+
+[The compact toolbar and Files save/reopen checks](touch-save.md) passed on ksu.codes.

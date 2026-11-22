@@ -1,0 +1,142 @@
+{
+  "viewer": "43aa2dc9438d8f8d584119f9d2eeb1b9ed74dc107ebff64eb3d9d95f0390e939",
+  "parent": "90117b1714c73ab1993919c4edfe8af2669d99ff",
+  "app": "757b11dce199db8b953363ad847cf45a36cd2687",
+  "checks": [
+    {
+      "mode": "hosted",
+      "viewport": [
+        390,
+        844
+      ],
+      "canvasWidth": 336,
+      "compact": true,
+      "role": "anon",
+      "first": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "reopened": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "second": {
+        "formula": "9*6",
+        "sha256": "16390693d79f185a7c881c2488f1cd277e4f2fbaacc19c88f4d8e45c5c9aeb9c"
+      },
+      "themePreservedOnTouchSave": true,
+      "changedThemeIndependently": true,
+      "guestPrivateRequests": 0,
+      "wasm": "37f49e02a6bf3738c5a54e95fbf147e37378c01b8462e84bef0bafc4ed61d209",
+      "errors": []
+    },
+    {
+      "mode": "hosted",
+      "viewport": [
+        390,
+        844
+      ],
+      "canvasWidth": 336,
+      "compact": true,
+      "role": "signed",
+      "first": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "reopened": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "second": {
+        "formula": "9*6",
+        "sha256": "16390693d79f185a7c881c2488f1cd277e4f2fbaacc19c88f4d8e45c5c9aeb9c"
+      },
+      "themePreservedOnTouchSave": true,
+      "changedThemeIndependently": true,
+      "guestPrivateRequests": null,
+      "wasm": "37f49e02a6bf3738c5a54e95fbf147e37378c01b8462e84bef0bafc4ed61d209",
+      "errors": []
+    },
+    {
+      "mode": "hosted",
+      "viewport": [
+        820,
+        1180
+      ],
+      "canvasWidth": 766,
+      "compact": false,
+      "role": "anon",
+      "first": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "reopened": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "second": {
+        "formula": "9*6",
+        "sha256": "16390693d79f185a7c881c2488f1cd277e4f2fbaacc19c88f4d8e45c5c9aeb9c"
+      },
+      "themePreservedOnTouchSave": true,
+      "changedThemeIndependently": false,
+      "guestPrivateRequests": 0,
+      "wasm": "37f49e02a6bf3738c5a54e95fbf147e37378c01b8462e84bef0bafc4ed61d209",
+      "errors": []
+    },
+    {
+      "mode": "hosted",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "canvasWidth": 1846,
+      "compact": false,
+      "role": "anon",
+      "first": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "reopened": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "second": {
+        "formula": "9*6",
+        "sha256": "16390693d79f185a7c881c2488f1cd277e4f2fbaacc19c88f4d8e45c5c9aeb9c"
+      },
+      "themePreservedOnTouchSave": true,
+      "changedThemeIndependently": false,
+      "guestPrivateRequests": 0,
+      "wasm": "37f49e02a6bf3738c5a54e95fbf147e37378c01b8462e84bef0bafc4ed61d209",
+      "errors": []
+    },
+    {
+      "mode": "hosted",
+      "viewport": [
+        3840,
+        2160
+      ],
+      "canvasWidth": 3766,
+      "compact": false,
+      "role": "signed",
+      "first": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "reopened": {
+        "formula": "7*6",
+        "sha256": "4ad5998534a9428ee51ce078e5c0fa3e4184713794f69bd103a64e8278bdf18b"
+      },
+      "second": {
+        "formula": "9*6",
+        "sha256": "16390693d79f185a7c881c2488f1cd277e4f2fbaacc19c88f4d8e45c5c9aeb9c"
+      },
+      "themePreservedOnTouchSave": true,
+      "changedThemeIndependently": false,
+      "guestPrivateRequests": null,
+      "wasm": "37f49e02a6bf3738c5a54e95fbf147e37378c01b8462e84bef0bafc4ed61d209",
+      "errors": []
+    }
+  ]
+}
