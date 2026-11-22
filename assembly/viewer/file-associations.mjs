@@ -13,6 +13,10 @@ export function accountFileApp(path, sourceApp) {
   if (/[.]calc[.]json$/i.test(path)) return 'calculator';
   if (['wordcraft','pdfcraft','gridcraft','deckcraft','photocraft','vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].includes(sourceApp)) return sourceApp;
   if (/[.](docx|dotx|odt|rtf)$/i.test(path)) return 'wordcraft';
+  if (/[.](png|jpe?g|webp)$/i.test(path)) return 'image-editor';
+  if (/[.]svg$/i.test(path)) return 'svg-editor';
+  if (/[.]excalidraw$/i.test(path)) return 'excalidraw';
+  if (/[.]drawio$/i.test(path)) return 'diagrams-net';
   if (/[.]pdf$/i.test(path)) return 'pdfcraft';
   if (/[.]xlsx$/i.test(path)) return 'gridcraft';
   if (/[.](pptx|potx|ppsx|deckcraft)$/i.test(path)) return 'deckcraft';
