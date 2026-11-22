@@ -87,11 +87,12 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
         host.desktop.open(target, {version: 1, storage: 'mirror', path: '/' + file.path, owner: context.owner});
         return {status: 'opened'};
       }
-      if (['calculator','jsketcher','notebook','replicad','embroidery-studio'].includes(target) && window.CODI_VIEWER_PROFILE?.apps.includes(target)) {
+      if (['image-editor','svg-editor','excalidraw','diagrams-net','replicad','embroidery-studio'].includes(target) && !window.CODI_VIEWER_PROFILE?.apps.includes(target)) throw Error('The editor for this file is unavailable. Use Download to keep a copy.');
+      if (['calculator','jsketcher','notebook','image-editor','svg-editor','excalidraw','diagrams-net','replicad','embroidery-studio'].includes(target) && window.CODI_VIEWER_PROFILE?.apps.includes(target)) {
         host.desktop.open(target, {version: 1, storage: guest ? 'temporary' : 'mirror', path: '/' + file.path, sha256: file.sha256, owner: context.owner});
         return {status: 'opened'};
       }
-      const app = ['calculator','jsketcher','notebook','replicad','embroidery-studio'].includes(target) ? 'text' : target;
+      const app = ['calculator','jsketcher','notebook'].includes(target) ? 'text' : target;
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
       return {status: 'opened'};
     };

@@ -2,6 +2,7 @@
 export function accountFileApp(path, sourceApp) {
   if (/[.]stitchfoundry$/i.test(path)) return 'embroidery-studio';
   if (/[.]replicad[.]json$/i.test(path)) return 'replicad';
+  if (/[.]notecraft$/i.test(path)) return 'notecraft';
   const game = /[.](fraction-farm|market-math|math-path|pocket-conquest|rule-detective|tile-islands|word-weaver)[.]json$/i.exec(path);
   if (game) return game[1].toLowerCase();
   if (/[.](?:ipynb|(?:light|percent)[.]py)$/i.test(path)) return 'notebook';
@@ -14,6 +15,10 @@ export function accountFileApp(path, sourceApp) {
   if (/[.]calc[.]json$/i.test(path)) return 'calculator';
   if (['wordcraft','pdfcraft','gridcraft','deckcraft','photocraft','vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].includes(sourceApp)) return sourceApp;
   if (/[.](docx|dotx|odt|rtf)$/i.test(path)) return 'wordcraft';
+  if (/[.](png|jpe?g|webp)$/i.test(path)) return 'image-editor';
+  if (/[.]svg$/i.test(path)) return 'svg-editor';
+  if (/[.]excalidraw$/i.test(path)) return 'excalidraw';
+  if (/[.]drawio$/i.test(path)) return 'diagrams-net';
   if (/[.]pdf$/i.test(path)) return 'pdfcraft';
   if (/[.]xlsx$/i.test(path)) return 'gridcraft';
   if (/[.](pptx|potx|ppsx|deckcraft)$/i.test(path)) return 'deckcraft';

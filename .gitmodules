@@ -424,3 +424,6 @@
 [submodule "i-success"]
 	path = apps/i-success
 	url = ../i-success.git
+[submodule "notecraft"]
+	path = apps/notecraft
+	url = ../notecraft.git
