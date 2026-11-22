@@ -8,7 +8,7 @@ Linux X11 with Chromium, the remaining Craft work, and ACAD are the release prio
 2. **Linux X11 and Chromium.** Reproduce the exact 32-bit browser build, exercise local HTML and input, and test scoped networking with a temporary permitted account. Keep ordinary and anonymous guests on loopback.
 3. **Craft apps.** Follow the open rows below. Verify each affected native edit, account save, reopen from Files, recovery, and compact interaction on the deployed version. Keep verified releases distinct from pending hardware checks.
 4. **ACAD Modeler.** Qualify the source-built engine under the site's existing browser security policy. Create, save and reopen the same editable model through Files.
-5. **Remaining app reviews and games.** Work through the individual findings below, release the remaining seven game entries and verify real play through the desktop menu.
+5. **Remaining app reviews and games.** Continue the individual findings below. All 35 updated games are now live, including the seven verified Learning & Strategy games.
 
 ## Findings and release checks
 
