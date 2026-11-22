@@ -8,6 +8,7 @@ export function accountFileApp(path, sourceApp) {
   if (/[.]logic[.]json$/i.test(path)) return 'digital-logic';
   if (/[.]circuit$/i.test(path)) return 'circuitjs';
   if (/[.]dez$/i.test(path)) return 'electronics-design';
+  if (/[.]pcnd$/i.test(path)) return 'paintcraft';
   if (/[.]notecraft$/i.test(path)) return 'notecraft';
   const game = /[.](fraction-farm|market-math|math-path|pocket-conquest|rule-detective|tile-islands|word-weaver)[.]json$/i.exec(path);
   if (game) return game[1].toLowerCase();
