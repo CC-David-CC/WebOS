@@ -2,6 +2,9 @@
 export function accountFileApp(path, sourceApp) {
   if (/[.]stitchfoundry$/i.test(path)) return 'embroidery-studio';
   if (/[.]replicad[.]json$/i.test(path)) return 'replicad';
+  if (/[.]hex$/i.test(path)) return 'arduino-simulator';
+  if (/[.]logic[.]json$/i.test(path)) return 'digital-logic';
+  if (/[.]circuit$/i.test(path)) return 'circuitjs';
   if (/[.]notecraft$/i.test(path)) return 'notecraft';
   const game = /[.](fraction-farm|market-math|math-path|pocket-conquest|rule-detective|tile-islands|word-weaver)[.]json$/i.exec(path);
   if (game) return game[1].toLowerCase();

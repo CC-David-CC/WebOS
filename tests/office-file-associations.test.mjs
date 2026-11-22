@@ -6,6 +6,10 @@ import {accountFileApp} from '../assembly/viewer/file-associations.mjs';
 test('Files recognizes native design suffixes and leaves ordinary JSON and text with the editor', () => {
   assert.equal(accountFileApp('Documents/Sampler.STITCHFOUNDRY'), 'embroidery-studio');
   assert.equal(accountFileApp('Documents/Box.Replicad.Json'), 'replicad');
+  assert.equal(accountFileApp('Documents/Blink.HEX'), 'arduino-simulator');
+  assert.equal(accountFileApp('Documents/Gate.Logic.JSON'), 'digital-logic');
+  assert.equal(accountFileApp('Documents/Filter.CIRCUIT'), 'circuitjs');
+  assert.equal(accountFileApp('Documents/Blink.hex.txt'), 'text');
   assert.equal(accountFileApp('Documents/Box.json'), 'text');
   assert.equal(accountFileApp('Documents/Sampler.stitchfoundry.txt'), 'text');
 });
