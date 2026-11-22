@@ -87,11 +87,11 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
         host.desktop.open(target, {version: 1, storage: 'mirror', path: '/' + file.path, owner: context.owner});
         return {status: 'opened'};
       }
-      if (['calculator','jsketcher','notebook'].includes(target) && window.CODI_VIEWER_PROFILE?.apps.includes(target)) {
+      if (['calculator','jsketcher','notebook','replicad','embroidery-studio'].includes(target) && window.CODI_VIEWER_PROFILE?.apps.includes(target)) {
         host.desktop.open(target, {version: 1, storage: guest ? 'temporary' : 'mirror', path: '/' + file.path, sha256: file.sha256, owner: context.owner});
         return {status: 'opened'};
       }
-      const app = ['calculator','jsketcher','notebook'].includes(target) ? 'text' : target;
+      const app = ['calculator','jsketcher','notebook','replicad','embroidery-studio'].includes(target) ? 'text' : target;
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
       return {status: 'opened'};
     };
