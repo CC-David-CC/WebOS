@@ -5,6 +5,7 @@ export function accountFileApp(path, sourceApp) {
   if (/[.]drakonjs$/i.test(path)) return 'drakon-javascript';
   if (/[.]drakonsh$/i.test(path)) return 'drakon-bash';
   if (/[.]mathcraft$/i.test(path)) return 'mathcraft';
+  if (/[.]calc[.]json$/i.test(path)) return 'calculator';
   if (['wordcraft','pdfcraft','gridcraft','deckcraft','photocraft','vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].includes(sourceApp)) return sourceApp;
   if (/[.](docx|dotx|odt|rtf)$/i.test(path)) return 'wordcraft';
   if (/[.]pdf$/i.test(path)) return 'pdfcraft';

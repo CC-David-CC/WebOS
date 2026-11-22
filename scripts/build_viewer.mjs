@@ -156,6 +156,25 @@ await emitBuild({...servicesSource,outdir:path.join(output,'.virtual-services'),
 });
 const apps=[];
 for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraft']:[]),...additionalEngines.map(engine=>engine.id),'help']){
+  if (id === 'calculator') {
+    const graphing = 'apps/calculator/graphing';
+    const files = [];
+    const outdir = path.join(output,'.virtual-calculator');
+    for (const [name,format] of [['index','esm'],['engine-worker','iife']]) {
+      await emitBuild({entryPoints:{[name]:graphing+'/src/'+name+'.mjs'}, format, outdir,
+        outExtension:{'.js':'.mjs'}, loader:{'.css':'text'}, minify:true}, async built => files.push(...built));
+    }
+    const notices = ['THIRD_PARTY_NOTICES.txt', ...(await readdir(path.join(root,graphing,'licenses'))).sort().map(name => 'licenses/'+name)];
+    for (const name of notices) {
+      const source = graphing+'/'+name;
+      execFileSync('git',['-C',path.join(root,'apps/calculator'),'ls-files','--error-unmatch','--','graphing/'+name],{stdio:'pipe'});
+      const bytes = await readFile(path.join(root,source));
+      sourceInputs.set(source,hash(bytes));
+      files.push({name,bytes});
+    }
+    await registerFiles(id,files);
+    continue;
+  }
   const office=officeEngines.find(engine=>engine.id===id);
   const recovery=office
     ? `import * as drafts from '@webos/${id}/recovery';import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';const officeRecovery=createOfficeRecovery('${id}','${office.name}',drafts);`
