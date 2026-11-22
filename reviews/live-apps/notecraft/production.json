@@ -1,0 +1,96 @@
+{
+  "viewer": "7e6b2b35d462a5b4e1a6bd1467e69fd551398ebcfbf3516fbb1b3a3ae4df3b10",
+  "parent": "39946fbda059fb990b43b709e95df0f2be5111e4",
+  "components": {
+    "apps/notecraft": "8a72dae6838966a21b7351804947d1d5aac53e05",
+    "platform/desktop": "797b7aaf41a35300f115d8e66396e093ebb9f8c1"
+  },
+  "runtime": {
+    "cargoLockSHA256": "f9066e3912bc0c69a181ffaf285e6069cf03bb1c4d32f0be5f9637abb860018e",
+    "component": "notecraft",
+    "files": [
+      {
+        "bytes": 156815,
+        "path": "notecraft.js",
+        "sha256": "efbfc38362f5f1c6943f7bd254aabead317dd76afdd8f1c5ef3b1329ef2c6ca7"
+      },
+      {
+        "bytes": 27318398,
+        "path": "notecraft_bg.wasm",
+        "sha256": "739bbca5e53eeb12869415ced4de711fadb2322da436e8c90d438f7de0173af4"
+      },
+      {
+        "bytes": 16437364,
+        "path": "NotoSansCJKsc-Regular.otf",
+        "sha256": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b"
+      },
+      {
+        "bytes": 4301,
+        "path": "OFL-NotoSansCJKsc.txt",
+        "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+      },
+      {
+        "bytes": 1668687,
+        "path": "welcome.zip",
+        "sha256": "28a28ffcd509b100c5c2a2a00bd0f4eb920af220304468387d33070039ad8f14"
+      }
+    ],
+    "schema": "webos-component-build/1",
+    "sourceCommit": "8a72dae6838966a21b7351804947d1d5aac53e05",
+    "sourceTree": "bebe37167146674372e1ce8c5df617adde573ea4",
+    "wasmBindgen": "wasm-bindgen 0.2.129"
+  },
+  "accountFiles": {
+    "tiers": [
+      "desktop"
+    ],
+    "roles": [
+      "Anon",
+      "promoted account",
+      "fresh account browser"
+    ],
+    "anonPrivateFileRequests": 0,
+    "nativeTextEdits": 3,
+    "bytes": 7248308,
+    "sha256": "27edd5952ea26a9cce682d441d2b1342e4030353c8a582f672207ba7477e221d",
+    "pageErrors": 0
+  },
+  "layouts": [
+    {
+      "tier": "phone",
+      "width": 390,
+      "height": 844,
+      "canvasWidth": 336,
+      "touch": true,
+      "actionVisible": true
+    },
+    {
+      "tier": "tablet",
+      "width": 820,
+      "height": 1180,
+      "canvasWidth": 766,
+      "touch": true,
+      "actionVisible": true
+    },
+    {
+      "tier": "desktop",
+      "width": 1920,
+      "height": 1080,
+      "canvasWidth": 1846,
+      "touch": false,
+      "actionVisible": true
+    },
+    {
+      "tier": "4k",
+      "width": 3840,
+      "height": 2160,
+      "canvasWidth": 3766,
+      "touch": false,
+      "actionVisible": true
+    }
+  ],
+  "rapidInput": {
+    "cycles": 8,
+    "preservedAllCharacters": true
+  }
+}
