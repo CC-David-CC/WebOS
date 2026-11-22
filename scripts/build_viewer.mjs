@@ -33,7 +33,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages',
+const knownFlags = ['--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -258,11 +258,18 @@ if(terminalEnabled)apps.push(await buildTerminal({root,output,copySource,account
     }
   }
 }
+if (flags['--linux-x11-chromium-inputs'] && !flags['--linux-x11-packages']) {
+  throw Error('Chromium inputs require the locked Linux X11 packages');
+}
 if (flags['--linux-x11-packages']) {
   if (!accountGuestHome) throw Error('The X11 release requires the account-home runtime');
-  const files = await buildLinuxX11(root,flags['--linux-x11-packages'],sourceInputs);
+  const files = await buildLinuxX11(root,flags['--linux-x11-packages'],sourceInputs,flags['--linux-x11-chromium-inputs']);
   await registerFiles('linux-x11',files);
   await copySource('apps/linux-x11/docs/debian-sources.json','assets/legal/linux-x11/debian-sources.json');
+  if (flags['--linux-x11-chromium-inputs']) {
+    await copySource('apps/linux-x11/docs/chromium-source-packages.json','assets/legal/linux-x11/chromium-source-packages.json');
+    await copySource('apps/linux-x11/docs/ncurses-copyright.txt','assets/legal/linux-x11/ncurses-copyright.txt');
+  }
 }
 // The three DRAKON generators are independently installable browser apps.
 for (const id of ['drakon-python','drakon-javascript','drakon-bash']) {
