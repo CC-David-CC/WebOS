@@ -9,6 +9,8 @@ test('Files recognizes native design suffixes and leaves ordinary JSON and text 
   assert.equal(accountFileApp('Documents/Blink.HEX'), 'arduino-simulator');
   assert.equal(accountFileApp('Documents/Gate.Logic.JSON'), 'digital-logic');
   assert.equal(accountFileApp('Documents/Filter.CIRCUIT'), 'circuitjs');
+  assert.equal(accountFileApp('Documents/Example.DEZ'), 'electronics-design');
+  assert.equal(accountFileApp('Documents/Example.dez.txt'), 'text');
   assert.equal(accountFileApp('Documents/Blink.hex.txt'), 'text');
   assert.equal(accountFileApp('Documents/Box.json'), 'text');
   assert.equal(accountFileApp('Documents/Sampler.stitchfoundry.txt'), 'text');
