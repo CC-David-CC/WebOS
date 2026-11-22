@@ -2,6 +2,8 @@
 export function accountFileApp(path, sourceApp) {
   if (/[.]stitchfoundry$/i.test(path)) return 'embroidery-studio';
   if (/[.]replicad[.]json$/i.test(path)) return 'replicad';
+  if (/[.]kiri$/i.test(path)) return 'kiri-moto';
+  if (/[.]meshproj$/i.test(path)) return 'mesh-tool';
   if (/[.]hex$/i.test(path)) return 'arduino-simulator';
   if (/[.]logic[.]json$/i.test(path)) return 'digital-logic';
   if (/[.]circuit$/i.test(path)) return 'circuitjs';
