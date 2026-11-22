@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--notebook-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--learning-games','--notebook-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -226,6 +226,21 @@ async function registerFiles(id,files,styles=[]){
     for(const f of files)await put(prefix+'/'+f.name,f.bytes);
     const entry=inventory['index.mjs'];if(!entry)throw Error('Missing app entry');
     apps.push({id,kind:'browser',path:prefix+'/index.mjs',sha256:entry.sha256,bytes:entry.bytes,bundleSHA256,files:inventory,styles});
+}
+
+if (flags['--learning-games'] !== undefined) {
+  if (flags['--learning-games'] !== 'enabled') throw Error('Use --learning-games enabled to bundle the seven learning games.');
+  const ids = ['fraction-farm','market-math','math-path','pocket-conquest','rule-detective','tile-islands','word-weaver'];
+  for (const id of ids) {
+    const entry = 'apps/' + id + '/index.mjs';
+    const style = 'apps/' + id + '/index.css';
+    const css = await readFile(path.join(root, style));
+    sourceInputs.set(style, hash(css));
+    await emitBuild({entryPoints: {index: entry}, outdir: path.join(output,'.virtual-'+id), outExtension: {'.js':'.mjs'}}, async files => {
+      files.push({name: 'index.css', bytes: css});
+      await registerFiles(id, files, ['index.css']);
+    });
+  }
 }
 
 // These native mounts own their Shadow DOM styles. Keep the Isobar worker, ES

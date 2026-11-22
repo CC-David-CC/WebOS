@@ -26,3 +26,11 @@ test('SolidCraft accepts native and legacy account design suffixes without permi
   assert.throws(()=>craftProjectPath('Documents/Plate.sc.txt','.sc',legacy));
   assert.throws(()=>craftProjectPath('Documents/Old.solidcraft','.sc'));
 });
+
+test('learning games reopen their own native snapshots',()=>{
+  for (const id of ['fraction-farm','market-math','math-path','pocket-conquest','rule-detective','tile-islands','word-weaver']) {
+    assert.equal(accountFileApp('Documents/My round.'+id.toUpperCase()+'.JSON', 'files'), id);
+    assert.equal(accountFileApp('Documents/My round.'+id+'.json.txt', 'files'), 'text');
+  }
+  assert.equal(accountFileApp('Documents/other.json','files'), 'text');
+});
