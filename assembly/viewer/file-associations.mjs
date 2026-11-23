@@ -1,5 +1,7 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 export function accountFileApp(path, sourceApp) {
+  if (/[.]subcraft$/i.test(path)) return 'subcraft';
+  if (/[.]transitz?$/i.test(path)) return 'transit';
   if (/[.]m$/i.test(path)) return 'matcraft';
   if (/[.]qproj$/i.test(path)) return 'cuepool';
   if (/[.]clothcraft[.]json$/i.test(path)) return 'clothcraft';

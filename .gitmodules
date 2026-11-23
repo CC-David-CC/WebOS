@@ -442,3 +442,11 @@
 [submodule "matcraft"]
 	path = apps/matcraft
 	url = ../matcraft.git
+
+[submodule "apps/subcraft"]
+	path = apps/subcraft
+	url = https://github.com/CC-David-CC/subcraft.git
+
+[submodule "apps/transit"]
+	path = apps/transit
+	url = https://github.com/CC-David-CC/transit.git

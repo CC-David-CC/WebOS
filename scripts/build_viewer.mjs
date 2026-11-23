@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--subcraft-site','--transit-site','--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -442,6 +442,52 @@ if (flags['--paintcraft-site']) {
   }
   await registerFiles('paintcraft',bundle);
 }
+for (const id of ['subcraft','transit']) {
+  const siteFlag = flags['--'+id+'-site'];
+  if (!siteFlag) continue;
+  const site = path.resolve(siteFlag);
+  const checkout = path.join(root, 'apps', id);
+  const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], {encoding:'utf8'}).trim();
+  const pin = git(root, 'rev-parse', 'HEAD:apps/'+id);
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'), 'utf8'));
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== id ||
+      receipt.sourceCommit !== pin || git(checkout, 'rev-parse', 'HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout, 'rev-parse', 'HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout, 'Cargo.lock'))) ||
+      !Array.isArray(receipt.files)) throw Error('Invalid '+id+' build receipt');
+
+  const bundle = [];
+  const names = new Set();
+  for (const record of receipt.files) {
+    const name = record.path;
+    if (typeof name !== 'string' || !/^(native|legal)\/[-a-zA-Z0-9_./]+$/.test(name) ||
+        name.split('/').some(part => !part || part === '.' || part === '..') || names.has(name)) {
+      throw Error('Invalid '+id+' artifact path');
+    }
+    const bytes = await readFile(path.join(site, name));
+    if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) {
+      throw Error(id+' artifact hash mismatch: '+name);
+    }
+    names.add(name);
+    bundle.push({name, bytes});
+  }
+  if (!names.has('native/index.html') || ![...names].some(name => name.endsWith('_bg.wasm')) ||
+      !names.has('legal/LICENSE-MIT') || !names.has('legal/LICENSE-APACHE')) {
+    throw Error('Incomplete '+id+' package');
+  }
+  for (const [name, filename] of Object.entries({
+    'index.mjs':id+'-app.mjs',
+    'binary-studio.mjs':'binary-studio.mjs',
+    'workspace.css':'binary-studio.css',
+  })) {
+    const source = 'assembly/viewer/'+filename;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    bundle.push({name, bytes});
+  }
+  await registerFiles(id, bundle);
+}
+
 if (flags['--matcraft-site']) {
   const appRoot = 'apps/matcraft';
   const checkout = path.join(root, appRoot);
