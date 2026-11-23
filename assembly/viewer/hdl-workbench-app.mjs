@@ -5,7 +5,7 @@ export function mount(host) {
     name:'HDL Workbench', extension:'.hdl.json', openExtensions:['.hdl.json'],
     fileExport:{
       label:'Save for Digital Logic', title:'Save Digital Logic circuit',
-      extension:'.logic.json', mime:'application/json', take:'take_file_export',
+      extension:'.logic.json', mime:'application/json', take:'take_file_export', refreshMirror:true,
     },
   });
 }

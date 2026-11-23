@@ -171,7 +171,23 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     const path = workspacePath((folder === '/' ? '' : folder + '/') + fileName, [exportSpec.extension]);
     check();
     try {
-      await context.files.write(path, new Blob([output.bytes], {type:exportSpec.mime}), null, {signal});
+      const receipt = await context.files.write(path, new Blob([output.bytes], {type:exportSpec.mime}), null, {signal});
+      if (exportSpec.refreshMirror) {
+        check();
+        const mirror = await host.storage.workspaceMirrorContext();
+        try {
+          await mirror.files.sync();
+          check();
+          const visible = await mirror.files.stat('/' + path, {signal});
+          if (visible.sha256 !== receipt.sha256 || visible.status === 'conflict') {
+            throw Error('The browser mirror has a different revision.');
+          }
+        } catch (error) {
+          check();
+          notify('Saved ' + fileName + ' in Files. Digital Logic will see it after the browser mirror syncs.');
+          return;
+        }
+      }
     } catch (error) {
       if (error?.status === 409) throw Error('A file with that name already exists. Choose another name.');
       throw error;
