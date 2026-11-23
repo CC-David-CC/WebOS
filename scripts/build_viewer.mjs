@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--subcraft-site','--transit-site','--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--mathcraft2-site','--subcraft-site','--transit-site','--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -442,7 +442,7 @@ if (flags['--paintcraft-site']) {
   }
   await registerFiles('paintcraft',bundle);
 }
-for (const id of ['subcraft','transit']) {
+for (const id of ['subcraft','transit','mathcraft2']) {
   const siteFlag = flags['--'+id+'-site'];
   if (!siteFlag) continue;
   const site = path.resolve(siteFlag);
@@ -471,7 +471,7 @@ for (const id of ['subcraft','transit']) {
     names.add(name);
     bundle.push({name, bytes});
   }
-  if (!names.has('native/index.html') || ![...names].some(name => name.endsWith('_bg.wasm')) ||
+  if (!names.has('native/index.html') || ![...names].some(name => name.startsWith('native/') && name.endsWith('.wasm')) ||
       !names.has('legal/LICENSE-MIT') || !names.has('legal/LICENSE-APACHE')) {
     throw Error('Incomplete '+id+' package');
   }

@@ -8,7 +8,7 @@ import sys
 
 component, checkout, artifact, build_log, output = sys.argv[1:]
 checkout, artifact, build_log, output = map(Path, (checkout, artifact, build_log, output))
-if component not in {"subcraft", "transit"}:
+if component not in {"subcraft", "transit", "mathcraft2"}:
     raise ValueError(component)
 
 def git(*args):
@@ -22,7 +22,7 @@ pin = git("rev-parse", "HEAD").decode().strip()
 if git("status", "--porcelain") or pin not in build_log.read_text().splitlines():
     raise ValueError("The build and clean source checkout must have the same pin")
 page = (artifact / "index.html").read_text()
-if "<script" not in page or not list(artifact.glob("*_bg.wasm")):
+if "<script" not in page or not list(artifact.glob("*.wasm")):
     raise ValueError("The site has no browser entry or WASM")
 output.mkdir()
 shutil.copytree(artifact, output / "native")

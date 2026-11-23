@@ -21,6 +21,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
   element.append(styles, tools, view, status);
   const buttons = [];
   let bridge, context, binding, pending, unregister, poll, project;
+  let pendingAudio;
   let initialized = false;
   let paused = false;
 
@@ -67,6 +68,10 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     buttons.push(button);
     tools.append(button);
   }
+  const saveAudioButton = create('button', {type:'button', textContent:'Save WAV', hidden:true});
+  saveAudioButton.addEventListener('click', () => invoke(saveAudio), {signal});
+  buttons.push(saveAudioButton);
+  tools.append(saveAudioButton);
   controls();
 
   function workspacePath(value, allowed) {
@@ -138,6 +143,33 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     }
     check();
     notify('Imported ' + fileName);
+  }
+
+  async function saveAudio() {
+    check();
+    const output = pendingAudio;
+    if (!output) return;
+    const folder = await host.storage.pickWorkspaceFile({foldersOnly:true, signal});
+    if (!folder) return;
+    const chosen = await host.ui.prompt('File name', {
+      title:'Save WAV export', value:output.name, confirmLabel:'Save', signal,
+    });
+    if (chosen == null) return;
+    let fileName = chosen.trim();
+    if (!fileName || /[/\\\x00-\x1f]/.test(fileName)) throw Error('Enter one WAV file name.');
+    if (!fileName.toLowerCase().endsWith('.wav')) fileName += '.wav';
+    const path = workspacePath((folder === '/' ? '' : folder + '/') + fileName, ['.wav']);
+    check();
+    try {
+      await context.files.write(path, new Blob([output.bytes], {type:'audio/wav'}), null, {signal});
+    } catch (error) {
+      if (error?.status === 409) throw Error('A WAV with that name already exists. Choose another name.');
+      throw error;
+    }
+    check();
+    pendingAudio = undefined;
+    saveAudioButton.hidden = true;
+    notify('Exported ' + fileName);
   }
 
   async function save(saveAs, copy) {
@@ -219,6 +251,15 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
         if (request === 'save') invoke(() => save(false, false));
         if (request === 'save-as') invoke(() => save(true, false));
         if (request === 'save-copy') invoke(() => save(true, true));
+        if (request === 'export') {
+          const output = bridge.take_audio_export?.();
+          if (!ArrayBuffer.isView(output?.bytes) || !output.bytes.byteLength) {
+            throw Error(name + ' did not produce a WAV.');
+          }
+          pendingAudio = output;
+          saveAudioButton.hidden = false;
+          invoke(saveAudio);
+        }
       } catch (error) {
         if (error?.name !== 'AbortError') notify(error?.message || String(error));
       }

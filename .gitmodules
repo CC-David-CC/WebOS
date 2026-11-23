@@ -450,3 +450,7 @@
 [submodule "apps/transit"]
 	path = apps/transit
 	url = https://github.com/CC-David-CC/transit.git
+
+[submodule "apps/mathcraft2"]
+	path = apps/mathcraft2
+	url = https://github.com/CC-David-CC/MathCraft-upstream.git
