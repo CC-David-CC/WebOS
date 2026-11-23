@@ -1,5 +1,6 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 export function accountFileApp(path, sourceApp) {
+  if (/[.]hdl[.]json$/i.test(path)) return 'hdl-workbench';
   if (/[.]tdraw$/i.test(path)) return 'tracedraw';
   if (/[.]scriobh$/i.test(path)) return 'scriobh';
   if (/[.]subcraft$/i.test(path)) return 'subcraft';

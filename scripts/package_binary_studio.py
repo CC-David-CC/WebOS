@@ -8,7 +8,7 @@ import sys
 
 component, checkout, artifact, build_log, output = sys.argv[1:]
 checkout, artifact, build_log, output = map(Path, (checkout, artifact, build_log, output))
-if component not in {"subcraft", "transit", "mathcraft2", "scriobh", "tracedraw"}:
+if component not in {"subcraft", "transit", "mathcraft2", "scriobh", "tracedraw", "hdl-workbench"}:
     raise ValueError(component)
 
 def git(*args):
@@ -27,15 +27,17 @@ if "<script" not in page or not list(artifact.rglob("*.wasm")):
 output.mkdir()
 shutil.copytree(artifact, output / "native")
 (output / "legal").mkdir()
-for name in (["LICENSE"] if component == "scriobh" else ["LICENSE-MIT", "LICENSE-APACHE"]):
+for name in (["LICENSE"] if component in {"scriobh", "hdl-workbench"} else ["LICENSE-MIT", "LICENSE-APACHE"]):
     (output / "legal" / name).write_bytes(git("show", "HEAD:" + name))
+package_locks = {"scriobh": "web/webos/package-lock.json", "hdl-workbench": "webos/package-lock.json"}
+lock = ({"packageLockSHA256": digest(checkout / package_locks[component])}
+        if component in package_locks else {"cargoLockSHA256": digest(checkout / "Cargo.lock")})
 receipt = {
     "schema": "webos-component-build/1",
     "component": component,
     "sourceCommit": pin,
     "sourceTree": git("rev-parse", "HEAD^{tree}").decode().strip(),
-    **({"packageLockSHA256": digest(checkout / "web/webos/package-lock.json")}
-       if component == "scriobh" else {"cargoLockSHA256": digest(checkout / "Cargo.lock")}),
+    **lock,
     "files": [
         {"path": file.relative_to(output).as_posix(), "sha256": digest(file), "bytes": file.stat().st_size}
         for file in sorted(output.rglob("*")) if file.is_file()

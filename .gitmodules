@@ -462,3 +462,7 @@
 [submodule "apps/tracedraw"]
 	path = apps/tracedraw
 	url = https://github.com/CC-David-CC/tracedraw.git
+
+[submodule "apps/hdl-workbench"]
+	path = apps/hdl-workbench
+	url = https://github.com/CC-David-CC/verisim.git

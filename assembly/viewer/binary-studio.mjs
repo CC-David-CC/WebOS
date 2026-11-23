@@ -4,7 +4,7 @@ function create(tag, properties) {
   return Object.assign(document.createElement(tag), properties);
 }
 
-export function mountBinaryStudio(host, {name, extension, openExtensions, imports, multipleProjects = false}) {
+export function mountBinaryStudio(host, {name, extension, openExtensions, imports, multipleProjects = false, fileExport}) {
   const session = host.session();
   const owner = host.storage.workspaceOwner();
   const controller = new AbortController();
@@ -21,7 +21,11 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
   element.append(styles, tools, view, status);
   const buttons = [];
   let bridge, context, binding, pending, unregister, poll, project;
-  let pendingAudio;
+  let pendingExport;
+  const exportSpec = fileExport ?? {
+    label:'Save WAV', title:'Save WAV export', extension:'.wav', mime:'audio/wav',
+    take:'take_audio_export',
+  };
   const projectBindings = multipleProjects ? new Map() : null;
   let initialized = false;
   let paused = false;
@@ -69,10 +73,10 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     buttons.push(button);
     tools.append(button);
   }
-  const saveAudioButton = create('button', {type:'button', textContent:'Save WAV', hidden:true});
-  saveAudioButton.addEventListener('click', () => invoke(saveAudio), {signal});
-  buttons.push(saveAudioButton);
-  tools.append(saveAudioButton);
+  const exportButton = create('button', {type:'button', textContent:exportSpec.label, hidden:true});
+  exportButton.addEventListener('click', () => invoke(saveExport), {signal});
+  buttons.push(exportButton);
+  tools.append(exportButton);
   controls();
 
   function workspacePath(value, allowed) {
@@ -151,30 +155,30 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     notify('Imported ' + fileName);
   }
 
-  async function saveAudio() {
+  async function saveExport() {
     check();
-    const output = pendingAudio;
+    const output = pendingExport;
     if (!output) return;
     const folder = await host.storage.pickWorkspaceFile({foldersOnly:true, signal});
     if (!folder) return;
     const chosen = await host.ui.prompt('File name', {
-      title:'Save WAV export', value:output.name, confirmLabel:'Save', signal,
+      title:exportSpec.title, value:output.name, confirmLabel:'Save', signal,
     });
     if (chosen == null) return;
     let fileName = chosen.trim();
-    if (!fileName || /[/\\\x00-\x1f]/.test(fileName)) throw Error('Enter one WAV file name.');
-    if (!fileName.toLowerCase().endsWith('.wav')) fileName += '.wav';
-    const path = workspacePath((folder === '/' ? '' : folder + '/') + fileName, ['.wav']);
+    if (!fileName || /[/\\\x00-\x1f]/.test(fileName)) throw Error('Enter one export file name.');
+    if (!fileName.toLowerCase().endsWith(exportSpec.extension)) fileName += exportSpec.extension;
+    const path = workspacePath((folder === '/' ? '' : folder + '/') + fileName, [exportSpec.extension]);
     check();
     try {
-      await context.files.write(path, new Blob([output.bytes], {type:'audio/wav'}), null, {signal});
+      await context.files.write(path, new Blob([output.bytes], {type:exportSpec.mime}), null, {signal});
     } catch (error) {
-      if (error?.status === 409) throw Error('A WAV with that name already exists. Choose another name.');
+      if (error?.status === 409) throw Error('A file with that name already exists. Choose another name.');
       throw error;
     }
     check();
-    pendingAudio = undefined;
-    saveAudioButton.hidden = true;
+    pendingExport = undefined;
+    exportButton.hidden = true;
     notify('Exported ' + fileName);
   }
 
@@ -258,13 +262,13 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
         if (request === 'save-as') invoke(() => save(true, false));
         if (request === 'save-copy') invoke(() => save(true, true));
         if (request === 'export') {
-          const output = bridge.take_audio_export?.();
+          const output = bridge[exportSpec.take]?.();
           if (!ArrayBuffer.isView(output?.bytes) || !output.bytes.byteLength) {
-            throw Error(name + ' did not produce a WAV.');
+            throw Error(name + ' did not produce an export.');
           }
-          pendingAudio = output;
-          saveAudioButton.hidden = false;
-          invoke(saveAudio);
+          pendingExport = output;
+          exportButton.hidden = false;
+          invoke(saveExport);
         }
       } catch (error) {
         if (error?.name !== 'AbortError') notify(error?.message || String(error));
