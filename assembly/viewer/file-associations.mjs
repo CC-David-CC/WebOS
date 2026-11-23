@@ -1,5 +1,6 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 export function accountFileApp(path, sourceApp) {
+  if (/[.]scriobh$/i.test(path)) return 'scriobh';
   if (/[.]subcraft$/i.test(path)) return 'subcraft';
   if (/[.]transitz?$/i.test(path)) return 'transit';
   if (/[.]mathcraft2$/i.test(path)) return 'mathcraft2';
