@@ -34,7 +34,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -441,6 +441,57 @@ if (flags['--paintcraft-site']) {
     sourceInputs.set(source,hash(bytes)); bundle.push({name:name==='app.mjs'?'index.mjs':name,bytes});
   }
   await registerFiles('paintcraft',bundle);
+}
+if (flags['--matcraft-site']) {
+  const appRoot = 'apps/matcraft';
+  const checkout = path.join(root, appRoot);
+  const site = path.resolve(flags['--matcraft-site']);
+  const git = (dir, ...args) => execFileSync('git', ['-C', dir, ...args], {encoding:'utf8'}).trim();
+  const receipt = JSON.parse(await readFile(path.join(site, 'component-build.json'), 'utf8'));
+  const pin = git(root, 'rev-parse', 'HEAD:'+appRoot);
+  const names = new Set(['native/engine.js','native/engine_bg.wasm','legal/matcraft-NOTICE']);
+  for (const repo of ['matcraft','craft-libs','simcraft']) {
+    names.add('legal/'+repo+'-LICENSE-MIT');
+    names.add('legal/'+repo+'-LICENSE-APACHE');
+  }
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'matcraft' ||
+      receipt.sourceCommit !== pin || receipt.sources?.matcraft !== pin ||
+      receipt.sources?.['craft-libs'] !== 'c4599af4b074cbd48f93723612513ab4067f1a5b' ||
+      receipt.sources?.simcraft !== 'ed8c09a7a16f77ca6e59f1079aec083c72d32564' ||
+      git(checkout, 'rev-parse', 'HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout, 'rev-parse', 'HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout, 'Cargo.lock'))) ||
+      receipt.wasmBindgen !== '0.2.129' || !Array.isArray(receipt.files) || receipt.files.length !== names.size) {
+    throw Error('Invalid MatCraft build receipt');
+  }
+  const bundle = [];
+  for (const record of receipt.files) {
+    if (!names.delete(record.path)) throw Error('Invalid MatCraft artifact path');
+    const bytes = await readFile(path.join(site, record.path));
+    if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) {
+      throw Error('MatCraft artifact hash mismatch: '+record.path);
+    }
+    if (record.path.startsWith('legal/matcraft-')) {
+      const name = record.path.slice('legal/matcraft-'.length);
+      if (!bytes.equals(execFileSync('git', ['-C', checkout, 'show', 'HEAD:'+name]))) {
+        throw Error('MatCraft notice differs from its pin: '+name);
+      }
+    }
+    bundle.push({name:record.path, bytes});
+  }
+  for (const [name, relative] of Object.entries({
+    'index.mjs':'matcraft-app.mjs',
+    'workspace.css':'matcraft-workspace.css',
+    'native/index.html':'matcraft-studio.html',
+    'native/studio.css':'matcraft-studio.css',
+    'native/loader.mjs':'matcraft-loader.mjs',
+  })) {
+    const source = 'assembly/viewer/'+relative;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    bundle.push({name, bytes});
+  }
+  await registerFiles('matcraft', bundle);
 }
 if (flags['--cuepool-site']) {
   const appRoot = 'apps/cuepool';

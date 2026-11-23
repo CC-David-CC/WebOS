@@ -439,3 +439,6 @@
 [submodule "cuepool"]
 	path = apps/cuepool
 	url = ../CuePool.git
+[submodule "matcraft"]
+	path = apps/matcraft
+	url = ../matcraft.git
