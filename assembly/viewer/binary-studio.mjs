@@ -4,7 +4,7 @@ function create(tag, properties) {
   return Object.assign(document.createElement(tag), properties);
 }
 
-export function mountBinaryStudio(host, {name, extension, openExtensions, imports}) {
+export function mountBinaryStudio(host, {name, extension, openExtensions, imports, multipleProjects = false}) {
   const session = host.session();
   const owner = host.storage.workspaceOwner();
   const controller = new AbortController();
@@ -22,6 +22,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
   const buttons = [];
   let bridge, context, binding, pending, unregister, poll, project;
   let pendingAudio;
+  const projectBindings = multipleProjects ? new Map() : null;
   let initialized = false;
   let paused = false;
 
@@ -86,6 +87,10 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
   function bind(path, sha256) {
     if (path !== null && !digest.test(sha256)) throw Error('Files did not confirm the project revision.');
     binding = path === null ? null : {path, sha256};
+    if (projectBindings) {
+      if (binding) projectBindings.set(project, binding);
+      else projectBindings.delete(project);
+    }
     host.desktop.updateAccountFileBinding(host.w, {owner, path, sha256});
   }
 
@@ -93,7 +98,8 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     const next = bridge.project_identity();
     if (next !== project) {
       project = next;
-      if (binding) bind(null, null);
+      const restored = projectBindings?.get(project);
+      if (binding || restored) bind(restored?.path ?? null, restored?.sha256);
     }
     return next;
   }
@@ -126,7 +132,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
 
   async function open() {
     check();
-    if (!(await acceptDiscard())) return;
+    if (!multipleProjects && !(await acceptDiscard())) return;
     const picked = await host.storage.pickWorkspaceFile({extensions:openExtensions, signal});
     if (picked) await load(workspacePath(picked, openExtensions));
   }

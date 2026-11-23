@@ -8,7 +8,7 @@ import sys
 
 component, checkout, artifact, build_log, output = sys.argv[1:]
 checkout, artifact, build_log, output = map(Path, (checkout, artifact, build_log, output))
-if component not in {"subcraft", "transit", "mathcraft2", "scriobh"}:
+if component not in {"subcraft", "transit", "mathcraft2", "scriobh", "tracedraw"}:
     raise ValueError(component)
 
 def git(*args):

@@ -458,3 +458,7 @@
 [submodule "apps/scriobh"]
 	path = apps/scriobh
 	url = https://github.com/CC-David-CC/scriobh.git
+
+[submodule "apps/tracedraw"]
+	path = apps/tracedraw
+	url = https://github.com/CC-David-CC/tracedraw.git
