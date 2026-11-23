@@ -133,7 +133,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     const path = workspacePath(picked, imports);
     const file = await read(path);
     const fileName = path.split('/').at(-1);
-    if (!(await bridge.import_file(fileName, new Uint8Array(file.data)))) {
+    if ((await bridge.import_file(fileName, new Uint8Array(file.data))) === false) {
       throw Error(name + ' could not import this file.');
     }
     check();
