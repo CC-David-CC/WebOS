@@ -8,7 +8,7 @@ The component matrix lists all 143 app sources, eight platform services, and 33 
 
 | Component | Responsibility | Source |
 | --- | --- | --- |
-| Account Management | Planned **My account** and **Manage users** views in one browser app. The initial source establishes the app boundary. | [Account Management](./account-management) |
+| Account Management | One browser app serves signed-in **My account** and permission-scoped **Manage users**. Account, retention and mail lifecycle checks have run on staging. | [Account Management](./account-management) |
 | Accounts and Login | Registration, sign-in, session policy, and the sign-in interface. | [Accounts](../platform/accounts) · [Login](../platform/login) |
 | Files and Storage | Files browser, per-account home access, file operations, and transfers. The scheduled test-account reset coordinates with Storage. | [Files](./files) · [Storage](../platform/storage) · [Reset and cleanup source](../deploy/test-maintenance) |
 | MailCraft | Mail browser, server-side mailbox grants, and WebOS-to-JMAP sign-in. Stalwart stores and delivers mail. | [MailCraft](./mailcraft) · [Mail integration](../deploy/mailcraft) |

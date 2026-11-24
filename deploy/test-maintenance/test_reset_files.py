@@ -61,6 +61,39 @@ class ResetFilesTests(unittest.TestCase):
         with closing(sqlite3.connect(self.database)) as db:
             return db.execute(query).fetchall()
 
+    def test_managed_reset_retries_mail_and_releases_name_only_after_completion(self):
+        from webos_accounts.management import migrate
+        keep = self.account("retainedqa", home=False)
+        old = self.account("reuseqa")
+        migrate(self.database, self.owner.sub, (keep.sub, self.test.sub))
+        with closing(sqlite3.connect(self.database)) as db:
+            db.execute("INSERT INTO am_mail_binding VALUES(?,?)", (old.sub, "qa-mail-id"))
+            db.commit()
+        preview = self.run_reset("preview")
+        self.assertEqual((preview["retained"], preview["mailboxes_to_delete"]), (3, 1))
+        def unavailable(subject, username, mail_id):
+            self.assertEqual((subject, username, mail_id), (old.sub, "reuseqa", "qa-mail-id"))
+            raise OSError("simulated unavailable mail service")
+        with self.assertRaises(OSError):
+            issuer_reset.run(self.database, "reset", cleanup_files=True, retire_mailbox=unavailable)
+        self.assertEqual(self.identity_rows("SELECT disabled FROM accounts JOIN account_policy USING(subject) WHERE username='reuseqa'"), [(1,)])
+        with self.assertRaises(sqlite3.IntegrityError):
+            self.account("reuseqa", home=False)
+        receipts = []
+        result = issuer_reset.run(self.database, "reset", cleanup_files=True,
+                                  retire_mailbox=lambda *args: receipts.append(args))
+        self.assertEqual(receipts, [(old.sub, "reuseqa", "qa-mail-id")])
+        self.assertEqual((result["accounts_deleted"], result["mailboxes_deleted"], result["files_homes_removed"]), (1, 1, 1))
+        self.assertFalse(self.home(old).exists())
+        new = self.account("reuseqa", home=False)
+        self.assertNotEqual(new.sub, old.sub)
+        self.assertEqual(self.identity_rows("SELECT name FROM am_reserved WHERE name='reuseqa'"), [])
+        self.assertEqual(self.identity_rows("SELECT account_id FROM am_mail_binding"), [])
+        self.assertEqual(self.identity_rows("SELECT count(*) FROM am_retiring"), [(0,)])
+        self.assertEqual(self.identity_rows("SELECT setting FROM am_requested_mail JOIN accounts USING(subject) WHERE username='reuseqa' ORDER BY setting"),
+                         [("mailbox",), ("receive_external",)])
+        self.assertEqual(self.identity_rows("SELECT subject FROM accounts WHERE username='retainedqa'"), [(keep.sub,)])
+
     def test_exact_deletion_preserves_retained_files_and_allows_new_accounts(self):
         removed = self.account("temporary")
         orphan = self.store.users_path / uuid.uuid4().hex

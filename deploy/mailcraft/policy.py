@@ -50,7 +50,8 @@ def database(path):
 
 
 class Registry:
-    def __init__(self, credentials):
+    def __init__(self, credentials, *, online=False):
+        self.base = "http://127.0.0.1:28881" if online else BASE
         key = f"{credentials['username']}:{credentials['secret']}".encode()
         self.authorization = "Basic " + base64.b64encode(key).decode()
         self.opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
@@ -59,7 +60,7 @@ class Registry:
         method = f"x:{kind}/{action}"
         body = json.dumps({"using": [CORE, REGISTRY],
                            "methodCalls": [[method, arguments, "policy"]]}).encode()
-        request = urllib.request.Request(BASE + "/jmap", body, {
+        request = urllib.request.Request(self.base + "/jmap", body, {
             "Content-Type": "application/json", "Authorization": self.authorization,
         })
         with self.opener.open(request, timeout=15) as response:

@@ -51,10 +51,10 @@ def monitor_for(origin, accounts):
     return PATH, monitor
 
 
-def compute_gateway_type(directory, monitor, chat=None, mail=None):
+def compute_gateway_type(directory, monitor, chat=None, mail=None, management=None):
     render_enabled = bool(os.environ.get('WEBOS_IMAGE_RENDER_COMMAND'))
     monitor_enabled = os.environ.get('WEBOS_GPU_MONITOR') == '1'
-    if not (monitor_enabled or render_enabled or monitor or chat or mail):
+    if not (monitor_enabled or render_enabled or monitor or chat or mail or management):
         return FileGateway
     from webos_compute.jobs import Jobs
     from webos_storage.policy import Denied
@@ -81,6 +81,12 @@ def compute_gateway_type(directory, monitor, chat=None, mail=None):
 
         def _dispatch(self,principal,request):
             resource = request.get('resource')
+            if resource == 'account-management' and management is not None:
+                from webos_accounts.management import ManagementError
+                try:
+                    return management.dispatch(principal, request)
+                except ManagementError as exc:
+                    raise web.HTTPForbidden(text=str(exc)) from None
             if resource == 'mailcraft' and mail is not None:
                 return mail.issue(principal, request)
             if resource == 'chat' and chat is not None:
@@ -178,6 +184,17 @@ async def create_application(public_root, private_root, origin, *, account_trans
                 folder.mkdir(mode=0o700)
             private_directory(folder)
         class DevelopmentAccounts(AccountsService):
+            def account(self, data):
+                # The registration trigger also protects issuer entry points outside this gateway.
+                import sqlite3
+                from webos_accounts import Failure
+                try:
+                    return super().account(data)
+                except sqlite3.IntegrityError as exc:
+                    if str(exc) == 'reserved WebOS username':
+                        raise Failure(400, 'Username unavailable') from None
+                    raise
+
             def config(self):
                 value = super().config()
                 value['gateway'] = {'version': 'codi-user-files/1', 'basePath': '/gateway', 'fileBytes': 128 * 1024 * 1024,
@@ -212,7 +229,11 @@ async def create_application(public_root, private_root, origin, *, account_trans
             from remote_desktop_backend.sessions import active_session
             binding_file = Path(os.environ['CREDENTIALS_DIRECTORY']) / 'mailcraft-bindings'
             mail = MailGateway(origin, binding_file, lambda subject, sid: active_session(accounts, subject, sid))
-        gateway_type = compute_gateway_type(private_root, monitor, chat, mail)
+        management = None
+        if os.environ.get('WEBOS_ACCOUNT_MANAGEMENT') == '1':
+            from webos_accounts.management import AccountManagement
+            management = AccountManagement(accounts, chat.store if chat else None)
+        gateway_type = compute_gateway_type(private_root, monitor, chat, mail, management)
         gateway = gateway_type(store, accounts.config()['identity'], quotas=quotas, max_requests_per_minute=4096)
         app = web.Application(client_max_size=192 * 1024 * 1024)
         install_weather(app)
@@ -263,6 +284,9 @@ async def create_application(public_root, private_root, origin, *, account_trans
             app.router.add_get('/guest-network', network.relay)
         if mail is not None:
             mail.register(app)
+        if management:
+            from account_management_http import install as install_account_management
+            install_account_management(app, management, origin)
         app.router.add_route('*', '/api/{tail:.*}', account_request)
         app.router.add_get('/config.json', account_request)
         app.router.add_get('/.well-known/codi-issuer.json', account_request)

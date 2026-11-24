@@ -35,7 +35,7 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--freedawm-site','--lovecraft-site','--owner-monitor','--rustirc-demo','--webos-chat','--webos-chat-demo','--gpu-monitor','--hdl-workbench-site','--tracedraw-site','--scriobh-site','--mathcraft2-site','--subcraft-site','--transit-site','--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const knownFlags = ['--account-management','--freedawm-site','--lovecraft-site','--owner-monitor','--rustirc-demo','--webos-chat','--webos-chat-demo','--gpu-monitor','--hdl-workbench-site','--tracedraw-site','--scriobh-site','--mathcraft2-site','--subcraft-site','--transit-site','--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
@@ -264,6 +264,17 @@ for (const [id, pack] of [['lovecraft', packLoveCraft], ['freedawm', packFreeDAW
   await registerFiles(id, files);
 }
 
+if (flags['--account-management'] !== undefined) {
+  if (flags['--account-management'] !== 'enabled') throw Error('Use --account-management enabled');
+  const files = [];
+  for (const [input, name] of [['app.mjs', 'index.mjs'], ['style.css', 'style.css']]) {
+    const source = 'apps/account-management/' + input;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    files.push({name, bytes});
+  }
+  await registerFiles('account-management', files);
+}
 if (flags['--webos-chat'] !== undefined) {
   if (flags['--webos-chat'] !== 'enabled' || flags['--webos-chat-demo'] !== undefined) {
     throw Error('Use --webos-chat enabled for registered Chat, or --webos-chat-demo enabled for the demo.');

@@ -107,6 +107,15 @@ def main():
     server = git('.', 'show', 'HEAD:scripts/run_development.py')
     assert server == (ROOT / 'scripts/run_development.py').read_bytes()
     (out / 'run_development.py').write_bytes(server)
+    owner = 'platform/accounts'
+    management_pin = git('.', 'rev-parse', 'HEAD:' + owner).decode().strip()
+    module = 'src/webos_accounts/management.py'
+    (out / 'packages/webos_accounts/management.py').write_bytes(git(owner, 'show', management_pin + ':' + module))
+    (out / 'account_management_http.py').write_bytes(git('.', 'show', 'HEAD:scripts/account_management_http.py'))
+    # The reset timer imports the same operator as the detached mail lifecycle test.
+    for name in ("policy", "subject_mailboxes"):
+        path = "deploy/mailcraft/" + name + ".py"
+        (out / "packages" / ("mailcraft_policy.py" if name == "policy" else name + ".py")).write_bytes(git(".", "show", "HEAD:" + path))
     mail_gateway = git('.', 'show', 'HEAD:deploy/mailcraft/sso_gateway.py')
     (out / 'mailcraft_sso.py').write_bytes(mail_gateway)
     for name in git('.', 'ls-tree', '-r', '--name-only', 'HEAD', '--', 'scripts/webos_weather', 'scripts/webos_compute').decode().splitlines():
@@ -134,6 +143,7 @@ def main():
     value = {'schema': 'webos-viewer-backend/1', 'parentCommit': git('.', 'rev-parse', 'HEAD').decode().strip(),
              'components': versions, 'accountsPolicy': 'Exact retained source matching the current installed Accounts backend; no delegation-policy upgrade',
              'concurrentTransfers': 8, 'sharedConcurrentTransfers': 16, 'files': records}
+    value['accountManagementSource'] = management_pin
     if retained:
         value['guestNetworkComponents'] = extensions
         value['baseBackendParent'] = retained['parentCommit']

@@ -1,4 +1,4 @@
-"""Keep the two named logins in the retained ksu.codes account registry."""
+"""Reset expiring test accounts and their subject-owned data."""
 import argparse
 import json
 import os
@@ -73,7 +73,92 @@ def seed_test(db):
     return "verified" if unchanged else "updated"
 
 
-def run(database, operation, *, cleanup_files=False):
+def managed_reset(db, operation, homes, retire_mailbox):
+    from webos_accounts.management import revoke_sessions
+    if operation == "seed":
+        raise ValueError("Use the subject-based account operator after migration")
+    active_admin = db.execute(
+        "SELECT 1 FROM am_retained JOIN am_membership USING(subject) JOIN account_policy USING(subject) "
+        "WHERE role='administrator' AND disabled=0 LIMIT 1"
+    ).fetchone()
+    if not active_admin:
+        raise ValueError("An active retained administrator is required")
+    targets = db.execute(
+        "SELECT a.subject, a.username, m.account_id FROM accounts a "
+        "LEFT JOIN am_mail_binding m USING(subject) WHERE NOT EXISTS "
+        "(SELECT 1 FROM am_retained r WHERE r.subject=a.subject) ORDER BY a.subject"
+    ).fetchall()
+    retained, = db.execute("SELECT count(*) FROM am_retained").fetchone()
+    pending = []
+    if db.execute("SELECT 1 FROM sqlite_schema WHERE name='files_cleanup_pending'").fetchone():
+        pending = [sub for sub, in db.execute("SELECT subject FROM files_cleanup_pending")]
+    if operation == "preview":
+        return dict(action="preview", retained=retained, accounts_to_delete=len(targets),
+                    mailboxes_to_delete=sum(mail is not None for _,_,mail in targets),
+                    files_cleanups_pending=len(pending),
+                    files_homes_to_delete=len(homes.existing_homes([s for s,_,_ in targets]+pending))
+                    if homes else None)
+    if homes is None:
+        raise ValueError("Managed account resets require Files cleanup")
+    for subject in pending:
+        if db.execute("SELECT 1 FROM accounts WHERE subject=?", (subject,)).fetchone():
+            raise ValueError("A pending Files cleanup subject is still registered")
+        homes.retire_and_remove(subject)
+        db.execute("DELETE FROM files_cleanup_pending WHERE subject=?", (subject,))
+    # Persist the exact identities before calling either external store. Registration
+    # keeps the username occupied until that subject's cleanup has succeeded.
+    sessions = 0
+    for subject, _, _ in targets:
+        if db.execute("INSERT OR IGNORE INTO am_retiring VALUES(?)", (subject,)).rowcount:
+            sessions += db.execute("SELECT count(*) FROM registered_sessions WHERE json_extract(record,'$.sub')=?",
+                                   (subject,)).fetchone()[0]
+            db.execute("UPDATE account_policy SET disabled=1 WHERE subject=?", (subject,))
+            revoke_sessions(db, subject)
+    db.commit()
+    removed = boxes = deleted = 0
+    failures = []
+    for subject, username, _ in targets:
+        try:
+            result = finish_retirement(db, homes, subject, username, retire_mailbox)
+        except (OSError, ValueError, sqlite3.Error) as exc:
+            db.rollback()
+            failures.append(exc)
+            continue
+        removed += result[0]
+        boxes += result[1]
+        deleted += result[2]
+    if failures:
+        # systemd observes failure and the next run retries the still-disabled subjects.
+        raise failures[0]
+    return dict(action="reset", retained=retained, accounts_deleted=deleted, sessions_deleted=sessions,
+                mailboxes_deleted=boxes, files_homes_removed=removed, files_cleanups_completed=len(pending)+deleted)
+
+
+def finish_retirement(db, homes, subject, username, retire_mailbox):
+    db.execute("BEGIN IMMEDIATE")
+    row = db.execute("SELECT a.username,m.account_id FROM am_retiring JOIN accounts a USING(subject) "
+                     "LEFT JOIN am_mail_binding m USING(subject) WHERE subject=? AND "
+                     "NOT EXISTS (SELECT 1 FROM am_retained WHERE subject=?)", (subject,subject)).fetchone()
+    if row is None:
+        db.rollback()
+        return 0, 0, 0
+    if row[0] != username:
+        raise ValueError("Retiring subject identity changed")
+    if row[1] is not None:
+        if retire_mailbox is None:
+            raise ValueError("Managed mailbox cleanup service is required")
+        retire_mailbox(subject, username, row[1])
+        db.execute("DELETE FROM am_mail_binding WHERE subject=?", (subject,))
+    removed = homes.retire_and_remove(subject)
+    db.execute("DELETE FROM account_policy WHERE subject=?", (subject,))
+    deleted = db.execute("DELETE FROM accounts WHERE subject=?", (subject,)).rowcount
+    if db.execute("PRAGMA foreign_key_check").fetchone():
+        raise ValueError("Account integrity verification failed")
+    db.commit()
+    return removed, int(row[1] is not None), deleted
+
+
+def run(database, operation, *, cleanup_files=False, retire_mailbox=None):
     if database.resolve(strict=True) != database or database.name != "accounts.sqlite3":
         raise ValueError("Expected the direct retained issuer database path")
     assert_private(database.parent, is_dir=True)
@@ -101,10 +186,19 @@ def run(database, operation, *, cleanup_files=False):
             "SELECT sql FROM sqlite_schema WHERE type='table' AND name=?", (FILES_QUEUE_TABLE,)
         ).fetchone()
         policy_version = db.execute("SELECT version FROM account_policy_metadata").fetchall()
-        if (table_names - {FILES_QUEUE_TABLE} != TABLES
+        managed = "am_version" in table_names
+        allowed = TABLES
+        if managed:
+            from webos_accounts.management import TABLES as MANAGEMENT_TABLES
+            allowed = TABLES | MANAGEMENT_TABLES
+            if db.execute("SELECT version FROM am_version").fetchall() != [(1,)]:
+                raise ValueError("Unexpected management schema version")
+        if (table_names - {FILES_QUEUE_TABLE} != allowed
                 or journal not in (None, (FILES_QUEUE_SCHEMA,))
                 or trigger != (POLICY_TRIGGER,) or policy_version != [(1,)]):
             raise ValueError("Unexpected retained account schema")
+        if managed:
+            return managed_reset(db, operation, homes, retire_mailbox)
         before = retained_rows(db)
         if not before or before[0][0] != "dflanag3" or before[0][4]:
             raise ValueError("Expected the enabled retained owner account")
@@ -175,7 +269,15 @@ def main():
     parser.add_argument("--cleanup-files", action="store_true")
     args = parser.parse_args()
     try:
-        result = run(args.database, args.operation, cleanup_files=args.cleanup_files)
+        retire_mailbox = None
+        credentials = os.environ.get("CREDENTIALS_DIRECTORY")
+        if args.operation == "reset" and credentials:
+            operator = Path(credentials) / "mail-lifecycle-operator"
+            if operator.exists():
+                from subject_mailboxes import reset_handler
+                def retire_mailbox(subject, username, account_id):
+                    reset_handler(operator)(subject, username, account_id)
+        result = run(args.database, args.operation, cleanup_files=args.cleanup_files, retire_mailbox=retire_mailbox)
     except (OSError, ValueError, sqlite3.Error) as error:
         print(f"Account maintenance failed ({type(error).__name__})", file=sys.stderr)
         return 1

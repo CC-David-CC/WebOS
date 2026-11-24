@@ -8,10 +8,10 @@ Priority P0 covers platform foundations, P1 essential desktop workflows, P2 prod
 
 | Priority | Source at selected commit | Interface or dependency | Entry or build input | Release status |
 | --- | --- | --- | --- | --- |
-| P0 | [apps/account-management](https://github.com/CC-David-CC/account-management/tree/15c2d99ad75b4c3a1a2a4aa22db809cb73d0077d) | Planned self-service settings and delegated administration. | `README.md` | Scaffold. Browser entry and admin operations pending. |
+| P0 | [apps/account-management](./account-management) | Signed-in My account and permission-scoped Manage users. | `app.mjs` and `style.css`, WebOS viewer option `--account-management enabled` | Chromium qualified with three account roles on staging. Mail settings record operator requests. Public activation pending. Source `91b3de0cfa87`. |
 | P0 | [libraries/network-policy](https://github.com/CC-David-CC/network-policy/tree/5bba00d90a8aea770e2ffb73299c241a73812519) | Accounts/login and Browser relay policy · library only, installing starts no firewall or service | `pyproject.toml` · python | Component source |
-| P0 | [platform/accounts](https://github.com/CC-David-CC/accounts/tree/7d39b91978999d1fca9a82cf76de35d375012612) | Server authority · browser client · Runtime protocol · Storage grants | `src/webos_accounts/service.py` · python-js | Component source |
-| P0 | [platform/runtime](https://github.com/CC-David-CC/runtime/tree/c97638a42a7c894de9f615143efcac3b12cb92e7) | Desktop · app hosting · shared human/agent operation primitives · browser cache · account-file wire protocol | `active-system/assets/desktop/app-instance.mjs` · python-js | Component source |
+| P0 | [platform/accounts](../platform/accounts) | Server authority · browser client · Runtime protocol · Storage grants | `src/webos_accounts/service.py` · python-js | Component source |
+| P0 | [platform/runtime](../platform/runtime) | Desktop · app hosting · shared human/agent operation primitives · browser cache · account-file wire protocol | `active-system/assets/desktop/app-instance.mjs` · python-js | Component source |
 | P0 | [platform/services](https://github.com/CC-David-CC/webos-services/tree/cf5cd77ae583ba3be61b48189cc189523ee693ff) | Worker installation, GPU and rendering services. | `install.py` | Worker service source. See the server index for ownership. |
 | P0 | [platform/storage](https://github.com/CC-David-CC/storage/tree/d5d876894c890c1ee04667806079b8163d72b4b6) | Server filesystem/SQLite · Accounts proofs · browser file client · app file access | `src/webos_storage/__init__.py` · python-js | Component source |
 
@@ -20,7 +20,7 @@ Priority P0 covers platform foundations, P1 essential desktop workflows, P2 prod
 | Priority | Source at selected commit | Interface or dependency | Entry or build input | Release status |
 | --- | --- | --- | --- | --- |
 | P0 | [apps/files](https://github.com/CC-David-CC/files/tree/10f30df75a8b0b7fa8c1bb678e6899e731605903) | Human file UI · Storage · upload/download/browser APIs · file associations · ZIP tool | `apps/system/files/index.mjs` · js | Live · files |
-| P0 | [platform/desktop](https://github.com/CC-David-CC/desktop/tree/0f9b8bfafc17de070ae1b57a18ed1d5683d0240f) | Human workspace/window controls · Runtime app launcher · account and file hooks · original optional guest bootstrap | `active-system/index.html` · js | Component source |
+| P0 | [platform/desktop](../platform/desktop) | Human workspace/window controls · Runtime app launcher · account and file hooks · original optional guest bootstrap | `active-system/index.html` · js | Component source |
 | P1 | [apps/calculator](https://github.com/CC-David-CC/calculator/tree/552d3b0767f309aaffc5ee4d06b176c922f90869) | Human mouse/keyboard input · Runtime window lifecycle · old source also has file hooks | `apps/system/calculator/index.mjs` · js | Live · calculator |
 | P1 | [apps/gpu-monitor](https://github.com/CC-David-CC/gpu-monitor/tree/7359c89f50079ab85bd8867791a383d0be6fd3cb) | Browser display and server-side fleet probes. | `app.mjs` | Live · gpu-monitor |
 | P1 | [apps/help](https://github.com/CC-David-CC/help/tree/5d51ef88ca4dcf8341d5c2f0452934f5d08750ad) | Human guide and contextual buttons · Runtime view lifecycle | `apps/system/help/index.mjs` · js | Live · help |
