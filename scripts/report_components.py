@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 """Render the reviewed component roles against the actual source catalog. No builds."""
 import argparse
+import configparser
 import csv
 import io
 import json
 from collections import Counter
 from pathlib import Path
+from urllib.parse import quote, urljoin
 
-from catalog_sources import ROOT, catalog
+from catalog_sources import ROOT, catalog, git
 
 
 RECIPES = {
+    'component': ('Entry or build instructions in the selected repository', None),
     'js': ('Browser JS bundle', 'platform/runtime/active-system/tools/app-builder/build.mjs'),
     'python-js': ('Owned Python package and browser modules', 'scripts/bootstrap_backend.py'),
     'python': ('Owned Python package', None),
@@ -43,12 +46,14 @@ OWNED_ENTRIES = {
 }
 
 
-def existing_entries(component):
+def existing_entries(component, selected_entry=None):
     folder = ROOT / component['path']
     # Package exports may intentionally name generated dist files. They are not
     # source entries and must not be linked as if source were missing/retained.
     entries = component['sourceEntries'] + [entry for entry in component['packageEntrypoints'] if (folder / entry).is_file()]
     entries = OWNED_ENTRIES.get(component['id'], entries)
+    if selected_entry:
+        entries = [selected_entry]
     if component['kind'] == 'upstream-craft-app' and not entries:
         browser = folder / 'apps' / (component['id'] + '-web') / 'Cargo.toml'
         if browser.is_file():
@@ -78,7 +83,7 @@ def report():
         row = dict(roles[component['path']])
         if row['id'] != component['id'] or row['recipe'] not in RECIPES:
             raise ValueError('Invalid reviewed role identity or recipe')
-        row['entries'] = existing_entries(component)
+        row['entries'] = existing_entries(component, row.get('entry'))
         recipe_file = RECIPES[row['recipe']][1]
         if recipe_file and not (ROOT / recipe_file).is_file():
             raise ValueError('Missing build definition: ' + recipe_file)
@@ -92,11 +97,41 @@ def report():
     return reviewed, rows
 
 
+def component_links():
+    modules = configparser.ConfigParser(interpolation=None)
+    modules.read(ROOT / '.gitmodules')
+    urls = {section['path']: section['url'] for section in modules.values() if 'path' in section}
+    pins = {}
+    for line in git('ls-files', '--stage').splitlines():
+        meta, path = line.split('\t', 1)
+        mode, revision, stage = meta.split()
+        if mode == '160000' and stage == '0':
+            remote = urljoin('https://github.com/CC-David-CC/WebOS/', urls[path]).removesuffix('.git')
+            if not remote.startswith('https://github.com/'):
+                raise ValueError('Expected a public GitHub submodule URL for ' + path)
+            pins[path] = (remote, revision)
+    return pins
+
+
+def source_link(path, pins):
+    parts = Path(path).parts
+    for length in range(len(parts), 0, -1):
+        owner = '/'.join(parts[:length])
+        if owner in pins:
+            remote, revision = pins[owner]
+            if length == len(parts):
+                return f'{remote}/tree/{revision}'
+            entry = quote('/'.join(parts[length:]), safe='/')
+            return f'{remote}/blob/{revision}/{entry}'
+    return '../' + path
+
+
 def markdown(reviewed, rows):
+    pins = component_links()
     counts = Counter(row['category'] for row in rows)
     apps = sum(row['path'].startswith('apps/') for row in rows)
     lines = ['# WebOS source and application matrix', '',
-             f'All locations are relative to `/home/dflanag3/Projects/WebOS/`. Each row is one independent Git repository selected by the parent. **{len(rows)} source owners across {apps} app repositories and {len(rows) - apps} supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template.', '',
+             f'All locations are relative to `/path/to/webos/`. Each row is one independent Git repository selected by the parent. **{len(rows)} source owners across {apps} app repositories and {len(rows) - apps} supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template.', '',
              'The original Desktop/Workspace viewer is `platform/desktop/active-system/`. All 92 files matched the captured original at source correction. Later authorized test-site integration changes bootstrap/account/app wiring; CSS, reference data and artwork remain unchanged. The unsolicited replacement is removed. See deploy/VIEWER-TEST.md for the scoped running composition; this inventory is not an all-app deployment claim.', '',
              'Priority measures contribution to a functional personal WebOS, not popularity. These are reviewed planning priorities, not a dependency resolver. A specialized app still needs its own lower-priority engine. Categories describe ownership and purpose; the interfaces column separately describes human use, browser work, server authority and cross-app/file interaction.', '',
              '| Priority | Meaning |', '|---|---|']
@@ -109,12 +144,12 @@ def markdown(reviewed, rows):
     for category in counts:
         lines += ['', '## ' + category, '', '| Priority / state | Component and purpose | Source location | Existing interfaces | Source/build entry | Remaining qualification or gap |', '|---|---|---|---|---|---|']
         for row in (r for r in rows if r['category'] == category):
-            entry_links = [f'[{entry}](../{row["path"]}/{entry})' for entry in row['entries'][:2]]
+            entry_links = [f'[{entry}]({source_link(row["path"] + "/" + entry, pins)})' for entry in row['entries'][:2]]
             prep = row['preparationDefinitions']
             if prep:
-                entry_links.append(f'[{prep[0]}](../{row["path"]}/{prep[0]})')
+                entry_links.append(f'[{prep[0]}]({source_link(row["path"] + "/" + prep[0], pins)})')
             entry_links.append('Recipe: ' + row['recipe'])
-            cells = [f'P{row["priority"]} / {row["state"]}', row['id'] + ' — ' + row['purpose'], f'[{row["path"]}/](../{row["path"]}/)', row['interfaces'], '<br>'.join(entry_links), row['gap']]
+            cells = [f'P{row["priority"]} / {row["state"]}', row['id'] + ' — ' + row['purpose'], f'[{row["path"]}/]({source_link(row["path"], pins)})', row['interfaces'], '<br>'.join(entry_links), row['gap']]
             lines.append('| ' + ' | '.join(cell.replace('|', '\\|') for cell in cells) + ' |')
     lines += ['', '## Build and interaction notes', '',
               '- **Files versus Storage:** Files is a human-facing application and file launcher. Storage owns account persistence/revision semantics; Accounts owns authentication and grants. An app file hook is not proof of a confirmed server save or cross-machine acceptance.',
@@ -128,7 +163,7 @@ def markdown(reviewed, rows):
               'Recipes below identify source-owned instructions, not commands run during this pass. Read scripts before executing inherited preparation/build operators. Use new external build output directories. Never run deployment/publishing workflows as a source check.', '',
               '| Key | Definition |', '|---|---|']
     for key, (description, source) in RECIPES.items():
-        lines.append('| ' + key + ' | ' + description + (f'; [{source}](../{source})' if source else '; see the row’s owned build definitions and README') + ' |')
+        lines.append('| ' + key + ' | ' + description + (f'; [{source}]({source_link(source, pins)})' if source else '; see the row’s owned build definitions and README') + ' |')
     lines += ['',
               'The retained JS builder accepts an explicit JSON configuration with `source` set to the assembly root, selected `apps`, explicit `entries` relative to that root, and an external `output`. Its inherited defaults and `deploy/legacy-operations/build-public-apps.py` assume the former grouped layout and must not be used unchanged. Per-component pinned packages, prepare scripts, declared assets, workers, notices and hash-checked patches remain required. This is a located recipe, not a tested all-app production command.', '',
               'The 17 Craft Cargo workspaces previously passed metadata inspection only; that is not browser build proof. The selected WordCraft and DeckCraft branches have historical build/operation evidence, but the rejected desktop’s acceptance does not qualify the original viewer. Read [Craft build inputs](CRAFT-BUILD-INPUTS.md).', '',

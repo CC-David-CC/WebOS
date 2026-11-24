@@ -1,5 +1,7 @@
 # WebOS source and application matrix
 
+This is the earlier source-organization snapshot. The November 24 catalog covers all 184 selected components, their entry points and launcher status. [Current component matrix](../apps/CATALOG.md) · [App and server index](../apps/README.md)
+
 All locations are relative to `/path/to/webos/`. Each row is one independent Git repository selected by the parent. **128 source owners across 89 repositories under apps/ and 39 supporting repositories.** The app total includes 7 planned game cores, 1 PCB research prototype and 1 application template.
 
 The original Desktop/Workspace viewer is `platform/desktop/active-system/`. All 92 files matched the captured original at source correction. Later authorized test-site integration changes bootstrap/account/app wiring; CSS, reference data and artwork remain unchanged. The unsolicited replacement is removed. See deploy/VIEWER-TEST.md for the scoped running composition; this inventory is not an all-app deployment claim.

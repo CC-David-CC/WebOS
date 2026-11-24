@@ -1,5 +1,7 @@
 # On-disk component sources
 
+This is the earlier source-organization snapshot. The November 24 catalog covers all 184 selected components, their entry points and launcher status. [Current component matrix](../apps/CATALOG.md) · [App and server index](../apps/README.md)
+
 Source locations only. Component versions are selected by the parent Git links. No parity, deployment or all-app runtime claim.
 
 | Component | Source silo | Source entries / build definitions |

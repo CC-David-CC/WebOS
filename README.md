@@ -2,7 +2,7 @@
 
 The November 24, 2026 source catalog contains 143 app repositories and eight platform services. The ksu.codes release manifest lists 130 launchers. The catalog identifies service owners and distinguishes live applications from planned interfaces. [App and server catalog](apps/README.md) · [Component and launcher matrix](apps/CATALOG.md) · [Live release manifest](https://ksu.codes/viewer-release.json)
 
-Organized source for future WebOS development. Start with [START-HERE.md](START-HERE.md) and the [full app/component matrix](migration/APP-MATRIX.md), sorted by category with functional priorities, source locations, interfaces and build gaps. Applications are independent Git repositories pinned by this parent.
+Organized source for future WebOS development. Start with [START-HERE.md](START-HERE.md) and the [historical source-organization matrix](migration/APP-MATRIX.md), sorted by category with functional priorities, source locations, interfaces and build gaps. Applications are independent Git repositories pinned by this parent.
 
 The existing Desktop/Workspace viewer is in platform/desktop/active-system/. The unsolicited replacement implementation and its parent builder/browser harnesses are removed. This repository does not claim a currently assembled replacement website or full beta parity. Neither website is changed by source organization.
 
