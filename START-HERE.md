@@ -1,4 +1,8 @@
-**Current integration:** [Weather and Weather Maps sources, GitHub queue and resume checkpoint](migration/WEATHER-APPS.md).
+The November 24, 2026 source catalog contains 143 app repositories and eight platform services. The ksu.codes release manifest lists 130 launchers. The catalog identifies service owners and distinguishes live applications from planned interfaces. [App and server catalog](apps/README.md) · [Component and launcher matrix](apps/CATALOG.md) · [Live release manifest](https://ksu.codes/viewer-release.json)
+
+## Earlier release notes
+
+**Weather integration checkpoint.** [Weather and Weather Maps sources, GitHub queue and resume checkpoint](migration/WEATHER-APPS.md).
 
 > **20 of 20 distinct Craft apps are live on ksu.codes.** PCBCraft is available under Electronics. FieldCraft is available under CAD. The 21st source repository, `apps/pcbcraft-app`, packages the upstream standalone PCBCraft site. WebOS builds the editor directly from `apps/pcbcraft/apps/pcbcraft-web`. [Source pins, tested workflows and rollback](migration/CRAFT-ENGINEERING-ROLLOUT.md)
 

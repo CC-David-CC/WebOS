@@ -2,10 +2,14 @@
 import {build} from 'esbuild';
 import {createHash} from 'node:crypto';
 import {readFile,writeFile,mkdir,readdir,lstat,mkdtemp,rm} from 'node:fs/promises';
-import {fileURLToPath} from 'node:url';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import {assembleAcad} from './assemble_acad.mjs';
 import path from 'node:path';
 import {tmpdir} from 'node:os';
 import {execFileSync} from 'node:child_process';
+import {buildLinuxX11} from './build_linux_x11.mjs';
+import {buildTerminal} from './build_terminal.mjs';
+import {packFreeDAWm, packLoveCraft} from './package_lovecraft.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const flags=Object.fromEntries(process.argv.slice(2).reduce((pairs,item,index,all)=>index%2?pairs:[...pairs,[item,all[index+1]]],[]));
@@ -31,13 +35,16 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site',
+const knownFlags = ['--freedawm-site','--lovecraft-site','--owner-monitor','--rustirc-demo','--webos-chat','--webos-chat-demo','--gpu-monitor','--hdl-workbench-site','--tracedraw-site','--scriobh-site','--mathcraft2-site','--subcraft-site','--transit-site','--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
 if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
   throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
 }
 if(flags['--photocraft-site']&&flags['--test-photocraft-site'])throw Error('Choose a single PhotoCraft build input');
+if(flags['--terminal']!==undefined&&!['enabled','account-home'].includes(flags['--terminal']))throw Error('Use --terminal enabled or --terminal account-home to package Terminal');
+const terminalEnabled=flags['--terminal']!==undefined;
+const accountGuestHome=flags['--terminal']==='account-home';
 const output=path.resolve(flags['--output']),wordcraft=path.resolve(flags['--wordcraft-site']);
 if(output===root||output.startsWith(root+path.sep)||root.startsWith(output+path.sep))throw Error('Output must be outside source');
 for(let p=output;path.dirname(p)!==p;p=path.dirname(p)){try{if((await lstat(p)).isSymbolicLink())throw Error('Direct output paths required');}catch(e){if(e.code!=='ENOENT')throw e;}}
@@ -48,6 +55,15 @@ const sourceInputs=new Map();
 async function put(name,bytes){if(!safe(name))throw Error('Unsafe output');const target=path.join(output,name);await mkdir(path.dirname(target),{recursive:true});await writeFile(target,bytes);}
 async function copySource(relative,name){const parts=relative.split('/'),owner=parts.slice(0,2).join('/');execFileSync('git',['--no-optional-locks','-C',path.join(root,owner),'ls-files','--error-unmatch','--',parts.slice(2).join('/')],{stdio:'pipe'});const bytes=await readFile(path.join(root,relative));sourceInputs.set(relative,hash(bytes));await put(name,bytes);}
 async function tree(relative,prefix){for(const item of await readdir(path.join(root,relative),{withFileTypes:true})){if(item.isSymbolicLink())throw Error('Symlinked source input');const name=[prefix,item.name].filter(Boolean).join('/');if(item.isDirectory())await tree(relative+'/'+item.name,name);else if(item.isFile())await copySource(relative+'/'+item.name,name);}}
+const latexRuntime = flags['--wordcraft-latex-runtime'] && path.resolve(flags['--wordcraft-latex-runtime']);
+let latexReceipt;
+if (latexRuntime) {
+  latexReceipt = JSON.parse(await readFile(path.join(latexRuntime,'runtime-build.json'),'utf8'));
+  if (latexReceipt.schema !== 'webos-wordcraft-latex-runtime/1' ||
+      !Array.isArray(latexReceipt.files) || !latexReceipt.files.length) {
+    throw Error('A pinned WordCraft LaTeX runtime build receipt is required');
+  }
+}
 const engine=JSON.parse(await readFile(path.join(wordcraft,'component-build.json'),'utf8'));
 if(engine.schema!=='webos-component-build/1'||engine.component!=='wordcraft'||!Array.isArray(engine.files)||!engine.files.length)throw Error('WordCraft build receipt required');
 execFileSync('git',['-C',path.join(root,'apps/wordcraft'),'merge-base','--is-ancestor',engine.sourceCommit,'HEAD']);
@@ -120,12 +136,33 @@ await mkdir(output);
 await tree('platform/desktop/active-system','');
 await copySource('apps/terminal/active-system/terminal.js','terminal.js');
 for(const item of await readdir(path.join(root,'platform/runtime/active-system/assets/desktop'),{withFileTypes:true})){if(item.isFile()&&item.name.endsWith('.mjs'))await copySource('platform/runtime/active-system/assets/desktop/'+item.name,'assets/desktop/'+item.name);}
+await copySource('apps/linux/assets/desktop/guest-network.mjs','assets/desktop/guest-network.mjs');
 await copySource('platform/runtime/active-system/network/strict-json.mjs','network/strict-json.mjs');
 await tree('platform/storage/src/webos_storage/vendor/js-sha256','assets/desktop/vendor/js-sha256');
+const storageBrowser = 'platform/storage/active-system/storage/browser';
+for (const file of ['temporary-files.mjs', 'account-context.mjs', 'mirror.mjs', 'verified-content.mjs',
+  ...(accountGuestHome ? ['account-home.mjs'] : [])]) {
+  await copySource(storageBrowser+'/'+file, 'storage/browser/'+file);
+}
+await tree(storageBrowser+'/opfs', 'storage/browser/opfs');
 const common={absWorkingDir:root,bundle:true,platform:'browser',format:'esm',target:'es2022',minify:false,legalComments:'eof',metafile:true,write:false,
   nodePaths:[path.join(root,'node_modules')],loader:{'.woff':'file','.woff2':'file','.ttf':'file','.svg':'file','.png':'file'}};
-function recordInputs(meta){for(const name of Object.keys(meta.inputs)){if(name.startsWith('<'))continue;const absolute=path.resolve(root,name);if(!absolute.startsWith(root+path.sep))throw Error('Build dependency outside assembly');}}
-async function emitBuild(options,destination){const result=await build({...common,...options});recordInputs(result.metafile);for(const input of Object.keys(result.metafile.inputs)){if(input.startsWith('<'))continue;sourceInputs.set(input,hash(await readFile(path.resolve(root,input))));}const files=[];for(const file of result.outputFiles){const name=path.relative(options.outdir,file.path).split(path.sep).join('/');files.push({name,bytes:file.contents});}await destination(files);}
+async function emitBuild(options, destination) {
+  const result = await build({...common, ...options});
+  for (const [input, metadata] of Object.entries(result.metafile.inputs)) {
+    if (input.startsWith('<')) continue;
+    // esbuild creates empty virtual modules for dependencies disabled by a browser mapping.
+    if (input.startsWith('(disabled):') && metadata.bytes === 0) continue;
+    const absolute = path.resolve(root, input);
+    if (!absolute.startsWith(root + path.sep)) throw Error('Build dependency outside assembly');
+    sourceInputs.set(input, hash(await readFile(absolute)));
+  }
+  const files = result.outputFiles.map(file => ({
+    name: path.relative(options.outdir, file.path).split(path.sep).join('/'),
+    bytes: file.contents,
+  }));
+  await destination(files);
+}
 const servicesSource = officeEngines.length || photoSite || graphicsEngines.length ? {
   stdin: {
     contents: [
@@ -144,6 +181,25 @@ await emitBuild({...servicesSource,outdir:path.join(output,'.virtual-services'),
 });
 const apps=[];
 for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraft']:[]),...additionalEngines.map(engine=>engine.id),'help']){
+  if (id === 'calculator') {
+    const graphing = 'apps/calculator/graphing';
+    const files = [];
+    const outdir = path.join(output,'.virtual-calculator');
+    for (const [name,format] of [['index','esm'],['engine-worker','iife']]) {
+      await emitBuild({entryPoints:{[name]:graphing+'/src/'+name+'.mjs'}, format, outdir,
+        outExtension:{'.js':'.mjs'}, loader:{'.css':'text'}, minify:true}, async built => files.push(...built));
+    }
+    const notices = ['THIRD_PARTY_NOTICES.txt', ...(await readdir(path.join(root,graphing,'licenses'))).sort().map(name => 'licenses/'+name)];
+    for (const name of notices) {
+      const source = graphing+'/'+name;
+      execFileSync('git',['-C',path.join(root,'apps/calculator'),'ls-files','--error-unmatch','--','graphing/'+name],{stdio:'pipe'});
+      const bytes = await readFile(path.join(root,source));
+      sourceInputs.set(source,hash(bytes));
+      files.push({name,bytes});
+    }
+    await registerFiles(id,files);
+    continue;
+  }
   const office=officeEngines.find(engine=>engine.id===id);
   const recovery=office
     ? `import * as drafts from '@webos/${id}/recovery';import {createOfficeRecovery} from './assembly/viewer/office-recovery.mjs';const officeRecovery=createOfficeRecovery('${id}','${office.name}',drafts);`
@@ -166,11 +222,26 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
     id==='sketchcraft'?"export {mount} from './assembly/viewer/sketchcraft-app.mjs';":
     id==='materialcraft'?"export {mount} from './assembly/viewer/materialcraft-app.mjs';":
     id==='texturecraft'?"export {mount} from './assembly/viewer/texturecraft-app.mjs';":
+    id==='wordcraft'&&latexRuntime?
+      "import {mount as appMount} from '@webos/wordcraft';import {mountAccountApp} from './assembly/viewer/account-app.mjs';import {mountWordcraftLatex} from './assembly/viewer/wordcraft-latex-preview.mjs';export function mount(host){return mountAccountApp(options=>mountWordcraftLatex(appMount,options,host),host,'wordcraft');}":
     graphics?`import {mountCraftAccount} from './assembly/viewer/craft-account-app.mjs';import {createCraftRecovery} from './assembly/viewer/craft-account-recovery.mjs';const project=${graphicsProject};const recovery=createCraftRecovery(project);export function mount(host){return mountCraftAccount(host,{...project,recovery,reviewWindowClose:true});}`:
     `import {mount as appMount${delegation}} from '@webos/${id}';import {mountAccountApp} from './assembly/viewer/account-app.mjs';${recovery}export function mount(host){return mountAccountApp(appMount,host,${JSON.stringify(id)},officeRecovery${delegation});}`;
   await emitBuild({stdin:{contents,resolveDir:root,sourcefile:'<viewer-'+id+'>',loader:'js'},outdir:path.join(output,'.virtual-'+id),outExtension:{'.js':'.mjs'}},async files=>{
     // esbuild calls a stdin entry "stdin"; the loader's stable entry is index.
     for(const f of files)f.name=f.name.replace(/^stdin[.]/,'index.');
+    if (id === 'wordcraft' && latexRuntime) {
+      const seen = new Set();
+      for (const record of latexReceipt.files) {
+        if (!safe(record.path) || seen.has(record.path)) throw Error('Unsafe or repeated LaTeX runtime file');
+        seen.add(record.path);
+        const bytes = await readFile(path.join(latexRuntime,record.path));
+        if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) {
+          throw Error('LaTeX runtime file differs from its receipt: '+record.path);
+        }
+        files.push({name:'latex/'+record.path,bytes});
+      }
+      files.push({name:'latex/runtime-build.json',bytes:await readFile(path.join(latexRuntime,'runtime-build.json'))});
+    }
     await registerFiles(id,files,files.filter(f=>f.name.endsWith('.css')).map(f=>f.name));
   });
 }
@@ -180,6 +251,111 @@ async function registerFiles(id,files,styles=[]){
     for(const f of files)await put(prefix+'/'+f.name,f.bytes);
     const entry=inventory['index.mjs'];if(!entry)throw Error('Missing app entry');
     apps.push({id,kind:'browser',path:prefix+'/index.mjs',sha256:entry.sha256,bytes:entry.bytes,bundleSHA256,files:inventory,styles});
+}
+
+for (const [id, pack] of [['lovecraft', packLoveCraft], ['freedawm', packFreeDAWm]]) {
+  const site = flags['--' + id + '-site'];
+  if (site === undefined) continue;
+  const source = 'scripts/package_lovecraft.mjs';
+  const app = 'apps/' + id;
+  const commit = execFileSync('git', ['-C', root, 'rev-parse', 'HEAD:' + app], {encoding:'utf8'}).trim();
+  const files = await pack(path.resolve(site), path.join(root, app), commit);
+  sourceInputs.set(source, hash(await readFile(path.join(root, source))));
+  await registerFiles(id, files);
+}
+
+if (flags['--webos-chat'] !== undefined) {
+  if (flags['--webos-chat'] !== 'enabled' || flags['--webos-chat-demo'] !== undefined) {
+    throw Error('Use --webos-chat enabled for registered Chat, or --webos-chat-demo enabled for the demo.');
+  }
+  const files = [];
+  for (const [sourceName, name] of [
+    ['registered.mjs', 'index.mjs'], ['transport.mjs', 'transport.mjs'],
+    ['registered.css', 'registered.css'], ['style.css', 'style.css'],
+  ]) {
+    const source = 'apps/webos-chat/' + sourceName;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    files.push({name, bytes});
+  }
+  await registerFiles('webos-chat', files);
+} else if (flags['--webos-chat-demo'] !== undefined) {
+  if (flags['--webos-chat-demo'] !== 'enabled') throw Error('Use --webos-chat-demo enabled to package WebOS Chat.');
+  const files = [];
+  for (const [sourceName, name] of [
+    ['mount.mjs', 'index.mjs'], ['index.html', 'view.html'],
+    ['app.mjs', 'app.mjs'], ['store.mjs', 'store.mjs'], ['style.css', 'style.css'],
+  ]) {
+    const source = 'apps/webos-chat/' + sourceName;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    const output = name === 'view.html'
+      ? Buffer.from(bytes.toString('utf8').replace('  <script type="module" src="./start.mjs"></script>\n', ''))
+      : bytes;
+    files.push({name, bytes: output});
+  }
+  await registerFiles('webos-chat', files);
+}
+
+if (flags['--rustirc-demo'] !== undefined) {
+  if (flags['--rustirc-demo'] !== 'enabled') throw Error('Use --rustirc-demo enabled to package RustIRC.');
+  const files = [];
+  for (const [sourceName, name] of [
+    ['webos-demo.mjs', 'index.mjs'], ['app.mjs', 'app.mjs'],
+    ['webos.css', 'webos.css'], ['demo/transport.mjs', 'demo/transport.mjs'],
+  ]) {
+    const source = 'apps/rustirc/' + sourceName;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    files.push({name, bytes});
+  }
+  await registerFiles('rustirc', files);
+}
+
+if (flags['--owner-monitor'] !== undefined) {
+  if (flags['--owner-monitor'] !== 'enabled') throw Error('Use --owner-monitor enabled to package Remote Desktop.');
+  const sourceRoot = 'apps/remote-desktop';
+  const names = execFileSync('git', ['-C', path.join(root, sourceRoot), 'ls-files', '--', 'core', 'vendor'], {encoding:'utf8'})
+    .split('\n').filter(name => name.endsWith('.js') || name.endsWith('LICENSE'));
+  const files = [];
+  for (const [sourceName, name] of [
+    ['desktop.mjs', 'index.mjs'], ['app.mjs', 'app.mjs'], ['webos.css', 'webos.css'],
+    ['LICENSE.txt', 'LICENSE.txt'], ...names.map(name => [name, name]),
+  ]) {
+    const source = sourceRoot + '/' + sourceName;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    files.push({name, bytes});
+  }
+  await registerFiles('remote-desktop', files);
+}
+
+const gpuMonitor = 'apps/gpu-monitor';
+if (flags['--gpu-monitor'] !== undefined) {
+  if (flags['--gpu-monitor'] !== 'enabled') throw Error('Use --gpu-monitor enabled to package GPU Monitor.');
+  const files = [];
+  for (const [sourceName, name] of [['app.mjs', 'index.mjs'], ['style.css', 'style.css']]) {
+    const source = gpuMonitor + '/' + sourceName;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    files.push({name, bytes});
+  }
+  await registerFiles('gpu-monitor', files);
+}
+
+if (flags['--learning-games'] !== undefined) {
+  if (flags['--learning-games'] !== 'enabled') throw Error('Use --learning-games enabled to bundle the seven learning games.');
+  const ids = ['fraction-farm','market-math','math-path','pocket-conquest','rule-detective','tile-islands','word-weaver'];
+  for (const id of ids) {
+    const entry = 'apps/' + id + '/index.mjs';
+    const style = 'apps/' + id + '/index.css';
+    const css = await readFile(path.join(root, style));
+    sourceInputs.set(style, hash(css));
+    await emitBuild({entryPoints: {index: entry}, outdir: path.join(output,'.virtual-'+id), outExtension: {'.js':'.mjs'}}, async files => {
+      files.push({name: 'index.css', bytes: css});
+      await registerFiles(id, files, ['index.css']);
+    });
+  }
 }
 
 // These native mounts own their Shadow DOM styles. Keep the Isobar worker, ES
@@ -214,8 +390,490 @@ try {
 } finally {
   await rm(weatherDist,{recursive:true,force:true});
 }
+if(terminalEnabled)apps.push(await buildTerminal({root,output,copySource,accountHome:accountGuestHome,
+  recordSource:async relative=>sourceInputs.set(relative,hash(await readFile(path.join(root,relative))))}));
+if (flags['--acad-site']) {
+  const sourceCommit=execFileSync('git',['-C',root,'rev-parse','HEAD:apps/acad'],{encoding:'utf8'}).trim();
+  const checkout=path.join(root,'apps/acad');
+  const head=execFileSync('git',['-C',checkout,'rev-parse','HEAD'],{encoding:'utf8'}).trim();
+  if (head!==sourceCommit) throw Error('ACAD checkout must match the assembly pin');
+  const pins='modules/engine/source-occt/pins.mjs';
+  const committed=execFileSync('git',['-C',checkout,'show',sourceCommit+':'+pins]);
+  if (!committed.equals(await readFile(path.join(checkout,pins)))) throw Error('Modified ACAD engine pins');
+  const {sourceEngine}=await import(pathToFileURL(path.join(checkout,pins)));
+  apps.push(await assembleAcad({site:flags['--acad-site'],sourceCommit,sourceEngine,put}));
+  sourceInputs.set('apps/acad/'+pins,hash(committed));
+}
+// MathCraft has an independent app checkout and a browser-local Octave runtime.
+{
+  const id = 'mathcraft', appRoot = 'apps/' + id;
+  const manifest = appRoot + '/webos-files.json';
+  let inventory;
+  try { inventory = await readFile(path.join(root, manifest)); }
+  catch (e) { if (e.code !== 'ENOENT') throw e; }
+  if (inventory) {
+    sourceInputs.set(manifest, hash(inventory));
+    const names = JSON.parse(inventory);
+    if (!Array.isArray(names) || new Set(names).size !== names.length ||
+        !['app.mjs','icon.svg','vendor/octave/octave.wasm'].every(n => names.includes(n)) ||
+        names.some(n => typeof n !== 'string' || !safe(n) || n.split('/').some(s => !s || s === '.' || s === '..') ||
+          !/^(app[.]mjs|icon[.]svg|(?:src|lab|examples|vendor[/]octave)[/][a-zA-Z0-9._-]+)$/.test(n)))
+      throw Error('Invalid MathCraft app inventory');
+    const bundle = [];
+    for (const name of names) {
+      const source = appRoot + '/' + name, bytes = await readFile(path.join(root, source));
+      sourceInputs.set(source, hash(bytes));
+      bundle.push({name: name === 'app.mjs' ? 'index.mjs' : name, bytes});
+      if (name === 'icon.svg') await put('assets/desktop/mathcraft.svg', bytes);
+    }
+    await registerFiles(id, bundle);
+    // The corresponding source is available separately from the startup payload.
+    for (const name of ['source-3996ed4.tar.xz', 'PROVENANCE.md','GNU-GPL-3.txt','WASM-wrapper.LICENSE','EMSCRIPTEN.LICENSE','prepare-no-eval.mjs','SHA256SUMS']) {
+      const source = appRoot + '/vendor/octave/' + name, bytes = await readFile(path.join(root, source));
+      sourceInputs.set(source, hash(bytes));
+      await put('assets/legal/mathcraft/' + name, bytes);
+    }
+  }
+}
+if (flags['--linux-x11-chromium-inputs'] && !flags['--linux-x11-packages']) {
+  throw Error('Chromium inputs require the locked Linux X11 packages');
+}
+if (flags['--linux-x11-packages']) {
+  if (!accountGuestHome) throw Error('The X11 release requires the account-home runtime');
+  const files = await buildLinuxX11(root,flags['--linux-x11-packages'],sourceInputs,flags['--linux-x11-chromium-inputs']);
+  await registerFiles('linux-x11',files);
+  await copySource('apps/linux-x11/docs/debian-sources.json','assets/legal/linux-x11/debian-sources.json');
+  if (flags['--linux-x11-chromium-inputs']) {
+    await copySource('apps/linux-x11/docs/chromium-source-packages.json','assets/legal/linux-x11/chromium-source-packages.json');
+    await copySource('apps/linux-x11/docs/ncurses-copyright.txt','assets/legal/linux-x11/ncurses-copyright.txt');
+  }
+}
+if (flags['--paint-rs-site']) {
+  const appRoot = 'apps/paint-rs';
+  const checkout = path.join(root, appRoot);
+  const site = path.resolve(flags['--paint-rs-site']);
+  const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], {encoding:'utf8'}).trim();
+  const receipt = JSON.parse(await readFile(path.join(site, 'component-build.json'), 'utf8'));
+  const pin = git(root, 'rev-parse', 'HEAD:' + appRoot);
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'paint-rs' ||
+      receipt.sourceCommit !== pin || git(checkout, 'rev-parse', 'HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout, 'rev-parse', 'HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout, 'Cargo.lock'))) ||
+      !Array.isArray(receipt.files)) {
+    throw Error('Invalid Paint.RS build receipt');
+  }
+  const bundle = [];
+  const names = new Set();
+  for (const item of receipt.files) {
+    const name = item.path;
+    if (typeof name !== 'string' || names.has(name) ||
+        !name.split('/').every(part => /^[A-Za-z0-9_@+-][A-Za-z0-9_@+.\-]*$/.test(part))) {
+      throw Error('Invalid Paint.RS package path');
+    }
+    names.add(name);
+    const bytes = await readFile(path.join(site, name));
+    if (bytes.length !== item.bytes || hash(bytes) !== item.sha256) {
+      throw Error('Invalid Paint.RS artifact ' + name);
+    }
+    bundle.push({name:'webos/native/' + name, bytes});
+  }
+  if (!names.has('index.html') || !names.has('notices/LICENSE') ||
+      !names.has('sam_worker_bg.wasm') ||
+      ![...names].some(name => /^paintrs-.+_bg[.]wasm[.]gz$/.test(name))) {
+    throw Error('Incomplete Paint.RS package');
+  }
+  const entries = new Map([
+    ['app.mjs', 'index.mjs'],
+    ['webos/app.css', 'webos/app.css'],
+    ['LICENSE', 'LICENSE'],
+    ['LICENSE.md', 'LICENSE.md'],
+    ['NOTICE.md', 'NOTICE.md'],
+  ]);
+  for (const [source, name] of entries) {
+    const relative = appRoot + '/' + source;
+    const bytes = await readFile(path.join(root, relative));
+    const committed = execFileSync('git', ['-C', checkout, 'show', 'HEAD:' + source]);
+    if (!bytes.equals(committed)) throw Error('Paint.RS input differs from its pin: ' + source);
+    sourceInputs.set(relative, hash(bytes));
+    bundle.push({name, bytes});
+  }
+  await registerFiles('paint-rs', bundle);
+}
+if (flags['--paintcraft-site']) {
+  const appRoot = 'apps/paintcraft', checkout = path.join(root,appRoot);
+  const site = path.resolve(flags['--paintcraft-site']);
+  const git = (cwd,...args) => execFileSync('git',['-C',cwd,...args],{encoding:'utf8'}).trim();
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const pin = git(root,'rev-parse','HEAD:'+appRoot);
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'paintcraft' ||
+      receipt.sourceCommit !== pin || git(checkout,'rev-parse','HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'Cargo.lock'))) ||
+      receipt.pnpmLockSHA256 !== hash(await readFile(path.join(checkout,'apps/paintcraft-web/pnpm-lock.yaml'))) ||
+      !Array.isArray(receipt.files)) throw Error('Invalid PaintCraft build receipt');
+  const bundle = [], names = new Set();
+  for (const item of receipt.files) {
+    const name = item.path;
+    if (typeof name !== 'string' || !/^(runtime|legal)\//.test(name) ||
+        name.split('/').some(part=>!part || part==='.' || part==='..' || part.includes('\\')) || names.has(name)) {
+      throw Error('Invalid PaintCraft package path');
+    }
+    names.add(name);
+    const bytes = await readFile(path.join(site,name));
+    if (bytes.length !== item.bytes || hash(bytes) !== item.sha256) throw Error('Invalid PaintCraft artifact '+name);
+    bundle.push({name,bytes});
+  }
+  if (!names.has('runtime/index.html') || !names.has('runtime/fonts/manifest.json') ||
+      !names.has('legal/LICENSE') || ![...names].some(n=>n.endsWith('.wasm'))) throw Error('Incomplete PaintCraft package');
+  for (const name of ['app.mjs','webos/workspace.css']) {
+    const source = appRoot+'/'+name;
+    const bytes = await readFile(path.join(root,source));
+    if (hash(bytes) !== hash(execFileSync('git',['-C',checkout,'show','HEAD:'+name]))) throw Error('PaintCraft wrapper differs from its pin');
+    sourceInputs.set(source,hash(bytes)); bundle.push({name:name==='app.mjs'?'index.mjs':name,bytes});
+  }
+  await registerFiles('paintcraft',bundle);
+}
+for (const id of ['subcraft','transit','mathcraft2','scriobh','tracedraw','hdl-workbench']) {
+  const siteFlag = flags['--'+id+'-site'];
+  if (!siteFlag) continue;
+  const site = path.resolve(siteFlag);
+  const checkout = path.join(root, 'apps', id);
+  const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], {encoding:'utf8'}).trim();
+  const pin = git(root, 'rev-parse', 'HEAD:apps/'+id);
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'), 'utf8'));
+  const lockFile = ({scriobh:'web/webos/package-lock.json','hdl-workbench':'webos/package-lock.json'})[id] ?? 'Cargo.lock';
+  const lockHash = lockFile.endsWith('package-lock.json') ? receipt.packageLockSHA256 : receipt.cargoLockSHA256;
+  const licensePaths = ({
+    scriobh:['legal/LICENSE','native/sqlite/LICENSE'],
+    'hdl-workbench':['legal/LICENSE','native/notices/NOTICE.md'],
+  })[id] ?? ['legal/LICENSE-MIT','legal/LICENSE-APACHE'];
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== id ||
+      receipt.sourceCommit !== pin || git(checkout, 'rev-parse', 'HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout, 'rev-parse', 'HEAD^{tree}') ||
+      lockHash !== hash(await readFile(path.join(checkout, lockFile))) ||
+      !Array.isArray(receipt.files)) throw Error('Invalid '+id+' build receipt');
+
+  const bundle = [];
+  const names = new Set();
+  for (const record of receipt.files) {
+    const name = record.path;
+    if (typeof name !== 'string' || !/^(native|legal)\/[-a-zA-Z0-9_./]+$/.test(name) ||
+        name.split('/').some(part => !part || part === '.' || part === '..') || names.has(name)) {
+      throw Error('Invalid '+id+' artifact path');
+    }
+    const bytes = await readFile(path.join(site, name));
+    if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) {
+      throw Error(id+' artifact hash mismatch: '+name);
+    }
+    names.add(name);
+    bundle.push({name, bytes});
+  }
+  if (!names.has('native/index.html') || ![...names].some(name => name.startsWith('native/') && name.endsWith('.wasm')) ||
+      licensePaths.some(name => !names.has(name))) {
+    throw Error('Incomplete '+id+' package');
+  }
+  for (const [name, filename] of Object.entries({
+    'index.mjs':id+'-app.mjs',
+    'binary-studio.mjs':'binary-studio.mjs',
+    'workspace.css':'binary-studio.css',
+  })) {
+    const source = 'assembly/viewer/'+filename;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    bundle.push({name, bytes});
+  }
+  await registerFiles(id, bundle);
+}
+
+if (flags['--matcraft-site']) {
+  const appRoot = 'apps/matcraft';
+  const checkout = path.join(root, appRoot);
+  const site = path.resolve(flags['--matcraft-site']);
+  const git = (dir, ...args) => execFileSync('git', ['-C', dir, ...args], {encoding:'utf8'}).trim();
+  const receipt = JSON.parse(await readFile(path.join(site, 'component-build.json'), 'utf8'));
+  const pin = git(root, 'rev-parse', 'HEAD:'+appRoot);
+  const names = new Set(['native/engine.js','native/engine_bg.wasm','legal/matcraft-NOTICE']);
+  for (const repo of ['matcraft','craft-libs','simcraft']) {
+    names.add('legal/'+repo+'-LICENSE-MIT');
+    names.add('legal/'+repo+'-LICENSE-APACHE');
+  }
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'matcraft' ||
+      receipt.sourceCommit !== pin || receipt.sources?.matcraft !== pin ||
+      receipt.sources?.['craft-libs'] !== 'c4599af4b074cbd48f93723612513ab4067f1a5b' ||
+      receipt.sources?.simcraft !== 'ed8c09a7a16f77ca6e59f1079aec083c72d32564' ||
+      git(checkout, 'rev-parse', 'HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout, 'rev-parse', 'HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout, 'Cargo.lock'))) ||
+      receipt.wasmBindgen !== '0.2.129' || !Array.isArray(receipt.files) || receipt.files.length !== names.size) {
+    throw Error('Invalid MatCraft build receipt');
+  }
+  const bundle = [];
+  for (const record of receipt.files) {
+    if (!names.delete(record.path)) throw Error('Invalid MatCraft artifact path');
+    const bytes = await readFile(path.join(site, record.path));
+    if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) {
+      throw Error('MatCraft artifact hash mismatch: '+record.path);
+    }
+    if (record.path.startsWith('legal/matcraft-')) {
+      const name = record.path.slice('legal/matcraft-'.length);
+      if (!bytes.equals(execFileSync('git', ['-C', checkout, 'show', 'HEAD:'+name]))) {
+        throw Error('MatCraft notice differs from its pin: '+name);
+      }
+    }
+    bundle.push({name:record.path, bytes});
+  }
+  for (const [name, relative] of Object.entries({
+    'index.mjs':'matcraft-app.mjs',
+    'workspace.css':'matcraft-workspace.css',
+    'native/index.html':'matcraft-studio.html',
+    'native/studio.css':'matcraft-studio.css',
+    'native/loader.mjs':'matcraft-loader.mjs',
+  })) {
+    const source = 'assembly/viewer/'+relative;
+    const bytes = await readFile(path.join(root, source));
+    sourceInputs.set(source, hash(bytes));
+    bundle.push({name, bytes});
+  }
+  await registerFiles('matcraft', bundle);
+}
+if (flags['--cuepool-site']) {
+  const appRoot = 'apps/cuepool';
+  const checkout = path.join(root, appRoot);
+  const site = path.resolve(flags['--cuepool-site']);
+  const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], {encoding:'utf8'}).trim();
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const pin = git(root,'rev-parse','HEAD:'+appRoot);
+  const required = new Map([
+    ['index.mjs','webos/app.mjs'],
+    ['webos/workspace.css','webos/workspace.css'],
+    ['legal/LICENSE-MIT','LICENSE-MIT'],
+    ['legal/LICENSE-APACHE','LICENSE-APACHE'],
+    ['legal/THIRD_PARTY.md','webos/THIRD_PARTY.md'],
+    ['webos/native/cuepool.js',null],
+    ['webos/native/cuepool_bg.wasm',null],
+  ]);
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'cuepool' ||
+      receipt.sourceCommit !== pin || git(checkout,'rev-parse','HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'webos/engine/Cargo.lock'))) ||
+      receipt.wasmBindgen !== '0.2.129' || !Array.isArray(receipt.files) ||
+      receipt.files.length !== required.size) {
+    throw Error('Invalid CuePool build receipt');
+  }
+  const bundle = [];
+  for (const record of receipt.files) {
+    const name = record.path;
+    if (!required.has(name)) throw Error('Invalid CuePool artifact path: '+name);
+    const tracked = required.get(name);
+    required.delete(name);
+    const bytes = await readFile(path.join(site,name));
+    if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) {
+      throw Error('CuePool artifact hash mismatch: '+name);
+    }
+    if (tracked) {
+      const committed = execFileSync('git',['-C',checkout,'show','HEAD:'+tracked]);
+      if (!bytes.equals(committed)) throw Error('CuePool file differs from its pin: '+tracked);
+      sourceInputs.set(appRoot+'/'+tracked,hash(bytes));
+    }
+    bundle.push({name,bytes});
+  }
+  await registerFiles('cuepool',bundle);
+}
+if (flags['--clothcraft-site']) {
+  const appRoot = 'apps/clothcraft';
+  const checkout = path.join(root, appRoot);
+  const site = path.resolve(flags['--clothcraft-site']);
+  const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], {encoding:'utf8'}).trim();
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const pin = git(root,'rev-parse','HEAD:'+appRoot);
+  const required = new Map([
+    ['index.mjs','webos/app.mjs'],
+    ['webos/view.mjs','webos/view.mjs'],
+    ['webos/worker.mjs','webos/worker.mjs'],
+    ['webos/workspace.css','webos/workspace.css'],
+    ['legal/LICENSE','LICENSE'],
+    ['legal/THIRD_PARTY_NOTICES.md','THIRD_PARTY_NOTICES.md'],
+    ['legal/MAKEHUMAN.md','assets/makehuman/LICENSE.ASSETS.md'],
+    ['webos/native/clothcraft.js',null],
+    ['webos/native/clothcraft_bg.wasm',null],
+  ]);
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'clothcraft' ||
+      receipt.sourceCommit !== pin || git(checkout,'rev-parse','HEAD') !== pin ||
+      receipt.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'Cargo.lock'))) ||
+      receipt.wasmBindgen !== '0.2.129' || !Array.isArray(receipt.files) ||
+      receipt.files.length !== required.size) {
+    throw Error('Invalid ClothCraft build receipt');
+  }
+  const bundle = [];
+  for (const record of receipt.files) {
+    const name = record.path;
+    if (!required.has(name)) throw Error('Invalid ClothCraft artifact path: '+name);
+    const tracked = required.get(name);
+    required.delete(name);
+    const bytes = await readFile(path.join(site,name));
+    if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) {
+      throw Error('ClothCraft artifact hash mismatch: '+name);
+    }
+    if (tracked) {
+      const committed = execFileSync('git',['-C',checkout,'show','HEAD:'+tracked]);
+      if (!bytes.equals(committed)) throw Error('ClothCraft file differs from its pin: '+tracked);
+      sourceInputs.set(appRoot+'/'+tracked,hash(bytes));
+    }
+    bundle.push({name,bytes});
+  }
+  await registerFiles('clothcraft',bundle);
+}
+if (flags['--notecraft-site']) {
+  const appRoot = 'apps/notecraft';
+  const site = path.resolve(flags['--notecraft-site']);
+  const checkout = path.join(root,appRoot);
+  const git = (cwd,...args) => execFileSync('git',['-C',cwd,...args],{encoding:'utf8'}).trim();
+  const pin = git(root,'rev-parse','HEAD:'+appRoot);
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const nativeNames = ['NotoSansCJKsc-Regular.otf','OFL-NotoSansCJKsc.txt','notecraft.js','notecraft_bg.wasm','welcome.zip'];
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== 'notecraft' ||
+      receipt.sourceCommit !== pin || pin !== git(checkout,'rev-parse','HEAD') ||
+      receipt.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
+      receipt.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'Cargo.lock'))) ||
+      receipt.wasmBindgen !== 'wasm-bindgen 0.2.129' || !Array.isArray(receipt.files) ||
+      receipt.files.map(item=>item.path).sort().join(',') !== nativeNames.join(',')) throw Error('Invalid NoteCraft build receipt');
+  const bundle = [];
+  for (const item of receipt.files) {
+    const bytes = await readFile(path.join(site,item.path));
+    if (bytes.length !== item.bytes || hash(bytes) !== item.sha256) throw Error('Invalid NoteCraft artifact '+item.path);
+    bundle.push({name:'webos/native/'+item.path,bytes});
+  }
+  const names = ['app.mjs','webos/app.css','webos/index.html','webos/native.css','webos/frame.mjs',
+    'webos/notebook.mjs','webos/archive-worker.mjs','webos/vendor/fflate.mjs','webos/vendor/fflate-LICENSE',
+    'LICENSE-MIT','LICENSE-APACHE','NOTICE','ATTRIBUTION.md',
+    ...git(checkout,'ls-files','assets/fonts/*OFL*.txt').split('\n').filter(Boolean)];
+  for (const name of names) {
+    const source = appRoot+'/'+name;
+    const bytes = await readFile(path.join(root,source));
+    sourceInputs.set(source,hash(bytes));
+    bundle.push({name:name === 'app.mjs' ? 'index.mjs' : name,bytes});
+  }
+  await registerFiles('notecraft',bundle);
+}
+if (flags['--notebook-site']) {
+  const id = 'notebook';
+  const component = path.join(root,'apps',id);
+  const site = path.resolve(flags['--notebook-site']);
+  const receipt = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const inventory = await readFile(path.join(component,'app.json'));
+  const assets = JSON.parse(inventory).assets;
+  const git = (cwd,...args) => execFileSync('git',['-C',cwd,...args],{encoding:'utf8'}).trim();
+  const pin = git(root,'rev-parse','HEAD:apps/notebook');
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== id ||
+      receipt.sourceCommit !== pin || pin !== git(component,'rev-parse','HEAD') ||
+      receipt.sourceTree !== git(component,'rev-parse','HEAD^{tree}') ||
+      receipt.inventorySHA256 !== hash(inventory) || !Array.isArray(receipt.files) ||
+      receipt.files.length !== assets.length || new Set(assets).size !== assets.length) {
+    throw Error('Notebook requires the exact JupyterLite package of the selected component');
+  }
+  sourceInputs.set('apps/notebook/app.json',hash(inventory));
+  const files = [];
+  for (const [index,artifact] of receipt.files.entries()) {
+    if (artifact.path !== assets[index] || !safe(artifact.path)) throw Error('Invalid Notebook inventory');
+    const bytes = await readFile(path.join(site,artifact.path));
+    if (bytes.length !== artifact.bytes || hash(bytes) !== artifact.sha256) throw Error('Invalid Notebook asset '+artifact.path);
+    files.push({name:artifact.path,bytes});
+  }
+  await emitBuild({
+    entryPoints:{index:'apps/notebook/index.mjs'},outdir:path.join(output,'.virtual-notebook'),outExtension:{'.js':'.mjs'}
+  },async built=>files.push(...built));
+  await registerFiles(id,files,['index.css']);
+}
+if (flags['--i-success-site']) {
+  const id = 'i-success';
+  const appRoot = 'apps/' + id;
+  const site = path.resolve(flags['--i-success-site']);
+  const native = JSON.parse(await readFile(path.join(site,'component-build.json'),'utf8'));
+  const git = (cwd,...args) => execFileSync('git',['-C',cwd,...args],{encoding:'utf8'}).trim();
+  const checkout = path.join(root,appRoot);
+  const pin = git(root,'rev-parse','HEAD:'+appRoot);
+  if (native.schema !== 'webos-component-build/1' || native.component !== id ||
+      native.sourceCommit !== pin || git(checkout,'rev-parse','HEAD') !== pin ||
+      native.sourceTree !== git(checkout,'rev-parse','HEAD^{tree}') ||
+      native.cargoLockSHA256 !== hash(await readFile(path.join(checkout,'Cargo.lock'))) ||
+      native.wasmBindgen !== 'wasm-bindgen 0.2.130' || !Array.isArray(native.files) ||
+      native.files.map(f => f.path).sort().join(',') !== 'THIRD-PARTY-NOTICES.txt,i_success.js,i_success_bg.wasm') {
+    throw Error('I-SUCCESS requires the exact browser build of the selected component');
+  }
+  const bundle = [];
+  for (const artifact of native.files) {
+    const bytes = await readFile(path.join(site,artifact.path));
+    if (bytes.length !== artifact.bytes || hash(bytes) !== artifact.sha256) throw Error('Invalid I-SUCCESS artifact '+artifact.path);
+    bundle.push({name:artifact.path,bytes});
+  }
+  for (const [name,relative] of [
+    ['index.mjs','assembly/viewer/i-success.mjs'],['index.css','assembly/viewer/i-success.css'],
+    ...['LICENSE-MIT','LICENSE-APACHE','NOTICE','ATTRIBUTION.md'].map(name => [name,appRoot+'/'+name])
+  ]) {
+    const bytes = await readFile(path.join(root,relative));
+    sourceInputs.set(relative,hash(bytes));
+    bundle.push({name,bytes});
+  }
+  await registerFiles(id,bundle,['index.css']);
+}
+// The three DRAKON generators are independently installable browser apps.
+for (const id of ['drakon-python','drakon-javascript','drakon-bash']) {
+  const appRoot = 'apps/'+id;
+  const manifest = appRoot+'/webos-files.json';
+  let bytes;
+  try { bytes = await readFile(path.join(root,manifest)); }
+  catch (error) { if (error.code === 'ENOENT') continue; throw error; }
+  sourceInputs.set(manifest,hash(bytes));
+  const names = JSON.parse(bytes);
+  if (!Array.isArray(names) || new Set(names).size !== names.length ||
+      names.some(name => !safe(name) || !/^(app[.]mjs|language[.]mjs|icon[.]svg|runtime\/[a-zA-Z0-9./_-]+)$/.test(name)) ||
+      !['app.mjs','language.mjs','icon.svg'].every(name=>names.includes(name))) throw Error('Invalid '+id+' inventory');
+  const bundle = [];
+  for (const name of names) {
+    const relative = appRoot+'/'+name;
+    const content = await readFile(path.join(root,relative));
+    sourceInputs.set(relative,hash(content));
+    bundle.push({name:name === 'app.mjs' ? 'index.mjs' : name,bytes:content});
+    if (name === 'icon.svg') await put('assets/desktop/'+id+'.svg',content);
+  }
+  await registerFiles(id,bundle);
+}
+// One independently pinned Narrator repository supplies the window and speech API.
+{
+  const appRoot = 'apps/narrator';
+  execFileSync(process.execPath, ['scripts/inventory.mjs', '--check'], { cwd: path.join(root, appRoot) });
+  const manifest = appRoot + '/webos-files.json';
+  const bytes = await readFile(path.join(root, manifest));
+  sourceInputs.set(manifest, hash(bytes));
+  const names = JSON.parse(bytes);
+  if (!Array.isArray(names) || !names.includes('app.mjs') || !names.includes('index.html') ||
+      new Set(names).size !== names.length || names.includes('index.mjs') ||
+      names.some(n => !safe(n) || !/^[a-zA-Z0-9_./-]+$/.test(n))) throw Error('Invalid Narrator inventory');
+  const bundle = [{ name: 'index.mjs', bytes: Buffer.from("export * from './app.mjs';\n") }];
+  for (const name of names) {
+    const relative = appRoot + '/' + name;
+    const content = await readFile(path.join(root, relative));
+    sourceInputs.set(relative, hash(content));
+    bundle.push({ name, bytes: content });
+    if (name === 'icon.svg') await put('assets/desktop/narrator.svg', content);
+  }
+  await registerFiles('narrator', bundle);
+}
 await put('assets/desktop/apps.json',JSON.stringify({version:'codi-public-apps/2',hostAPI:2,apps}));
-await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:false,speech:false,offlineCache:false}));
+const speechInputs=flags['--speech-inputs'];
+let speechReceipt;
+if(speechInputs){
+  const engineRoot=path.join(root,'engines/speech');
+  const pin=execFileSync('git',['-C',root,'rev-parse','HEAD:engines/speech'],{encoding:'utf8'}).trim();
+  const checkedOut=execFileSync('git',['-C',engineRoot,'rev-parse','HEAD'],{encoding:'utf8'}).trim();
+  if(checkedOut!==pin)throw Error('Speech engine must match the assembly pin');
+  const destination=path.join(output,'assets/speech');
+  execFileSync(process.execPath,[path.join(engineRoot,'scripts/build.mjs'),'--inputs',path.resolve(speechInputs),'--output',destination]);
+  const receipt=await readFile(path.join(destination,'component-build.json'));
+  speechReceipt={sourceCommit:pin,receiptSHA256:hash(receipt)};
+}
+await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:!!speechReceipt,offlineCache:false}));
 await put('assets/desktop/cache-manifest.json',JSON.stringify({version:'webos-viewer-cache-disabled/1',id:hash(Buffer.concat([await readFile(path.join(output,'bootstrap.js')),await readFile(path.join(output,'viewer-profile.json')),await readFile(path.join(output,'assets/desktop/apps.json'))]))}));
 let engineBytes=0;
 for(const file of engine.files){if(!safe(file.path)||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid engine path/size');const bytes=await readFile(path.join(wordcraft,file.path));if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error('Engine input hash mismatch');await put('wordcraft/'+file.path,bytes);engineBytes+=bytes.length;}
@@ -257,6 +915,6 @@ for(const {id,site,receipt,receiptBytes} of additionalEngines){
 const receipt={schema:'webos-existing-viewer-build/1',engine:{sourceCommit:engine.sourceCommit,bytes:engineBytes,receiptSHA256:hash(await readFile(path.join(wordcraft,'component-build.json')))},
   ...(photoTest||graphicsEngines.some(app=>app.review)?{developmentOnly:true}:{}),
   ...(pdfEngine?{pdfcraftEngine:{sourceCommit:pdfEngine.sourceCommit,bytes:pdfEngineBytes,receiptSHA256:hash(await readFile(path.join(pdfcraft,'component-build.json')))}}:{}),
-  ...additionalReceipts,sourceInputs:[...sourceInputs].map(([path,sha256])=>({path,sha256})),apps:apps.map(a=>a.id),qualification:'Source-assembled candidate. Real viewer/browser/account acceptance remains separate; WordCraft engine is a verified prebuilt input.'};
+  ...(speechReceipt?{speechEngine:speechReceipt}:{}),...additionalReceipts,sourceInputs:[...sourceInputs].map(([path,sha256])=>({path,sha256})),apps:apps.map(a=>a.id),qualification:'Source-assembled candidate. Real viewer/browser/account acceptance remains separate; WordCraft engine is a verified prebuilt input.'};
 await put('viewer-build.json',JSON.stringify(receipt,null,2)+'\n');
-console.log(JSON.stringify({output,apps:receipt.apps,sourceInputs:sourceInputs.size,engineBytes,engineSourceCommit:engine.sourceCommit,guest:false,sourceAssembled:true}));
+console.log(JSON.stringify({output,apps:receipt.apps,sourceInputs:sourceInputs.size,engineBytes,engineSourceCommit:engine.sourceCommit,guest:terminalEnabled,sourceAssembled:true}));

@@ -1,0 +1,16 @@
+[Unit]
+Description=Reset non-retained test logins and their Files homes on ksu.codes
+
+[Service]
+Type=oneshot
+User=@SERVICE_USER@
+Environment="WEBOS_TEST_ROOT=@TEST_ROOT@"
+UMask=0077
+ExecStart=/usr/local/libexec/webos-ksu-test-maintenance/ksu-test-account-reset.sh reset --cleanup-files
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=@TEST_ROOT@/private/account-state/identity
+ReadWritePaths=@TEST_ROOT@/private/account-state/storage-state
+ReadWritePaths=@TEST_ROOT@/private/account-state/account-files/users

@@ -1,0 +1,21 @@
+	@mailcraftJmap path /jmap /jmap/*
+	@mailcraftJmapRead {
+		method GET
+		path /jmap/session /jmap/download/*
+	}
+	@mailcraftJmapWrite {
+		method POST
+		path /jmap /jmap/ /jmap/upload/*
+	}
+	handle @mailcraftJmap {
+		header Cache-Control "no-store"
+		route {
+			reverse_proxy @mailcraftJmapRead 127.0.0.1:28881 {
+				header_up X-Forwarded-For {http.request.remote.host}
+			}
+			reverse_proxy @mailcraftJmapWrite 127.0.0.1:28881 {
+				header_up X-Forwarded-For {http.request.remote.host}
+			}
+			respond 404
+		}
+	}

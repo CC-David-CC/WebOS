@@ -32,7 +32,9 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
   const listeners = new Set();
   const authority = Object.freeze({});
   const commands = kind === 'gridcraft' ? gridCommands : appAgentCommands;
-  const delegated = commands && typeof host.registerAgentView === 'function';
+  const workspace = host.storage.workspaceFileContext;
+  const guest = !!workspace && host.session()?.public.kind === 'anonymous';
+  const delegated = !guest && commands && typeof host.registerAgentView === 'function';
   const invocations = delegated ? new WeakMap() : null;
   const instanceId = delegated ? pendingInstances.get(host.w) ?? crypto.randomUUID() : String(host.w.id);
   if (delegated) pendingInstances.delete(host.w);
@@ -43,8 +45,9 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
     return {status:'opened',instanceId:id};
   };
   const session = host.session(), sessionId = session.public.sid;
-  const valid = () => !disposed && !host.signal.aborted && host.session() === session
-    && host.storage.signedInSubject() === session.public.sub && host.desktop.windows.includes(host.w);
+  const mounted = () => !disposed && !host.signal.aborted && host.session() === session
+    && host.desktop.windows.includes(host.w);
+  const valid = () => mounted() && (workspace ? host.storage.workspaceOwner() : host.storage.signedInSubject()) === session.public.sub;
   const authorize = async (candidate, target) => {
     if (!valid() || target.instanceId !== instanceId || target.sessionId !== sessionId) return false;
     if (candidate === authority) return true;
@@ -59,7 +62,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
   };
   let bindingKey, bindingId;
   const ready = (async () => {
-    const context = await host.storage.accountFileContext();
+    const context = await (workspace || host.storage.accountFileContext)();
     if (!valid() || !context.valid()) throw new DOMException('Account view closed.', 'AbortError');
     let resource = null;
     const launch = host.w.launchContext;
@@ -78,28 +81,42 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
       // A second Files instance may have opened it while this read waited.
       if (activateFile(file)) return {status: 'activated'};
-      const app = accountFileApp(file.path,kind);
+      const target = accountFileApp(file.path,kind);
+      if (target === 'audio-editor') {
+        if (!window.CODI_VIEWER_PROFILE?.apps.includes(target)) throw Error('Audio Editor is unavailable in this desktop. Use Download to keep a copy.');
+        host.desktop.open(target, {version: 1, storage: 'mirror', path: '/' + file.path, owner: context.owner});
+        return {status: 'opened'};
+      }
+      if (['image-editor','svg-editor','excalidraw','diagrams-net','replicad','embroidery-studio','arduino-simulator','digital-logic','circuitjs','electronics-design','kiri-moto','mesh-tool'].includes(target) && !window.CODI_VIEWER_PROFILE?.apps.includes(target)) throw Error('The editor for this file is unavailable. Use Download to keep a copy.');
+      if (['calculator','jsketcher','notebook','image-editor','svg-editor','excalidraw','diagrams-net','replicad','embroidery-studio','arduino-simulator','digital-logic','circuitjs','electronics-design','kiri-moto','mesh-tool'].includes(target) && window.CODI_VIEWER_PROFILE?.apps.includes(target)) {
+        host.desktop.open(target, {version: 1, storage: guest ? 'temporary' : 'mirror', path: '/' + file.path, sha256: file.sha256, owner: context.owner});
+        return {status: 'opened'};
+      }
+      const app = ['calculator','jsketcher','notebook'].includes(target) ? 'text' : target;
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
       return {status: 'opened'};
     };
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
-      ...(kind === 'text' ? {recovery: textRecovery(host, context, valid)} : {}),
+      ...(kind === 'files' && host.refreshPanelPins ? {onRefresh() {
+        if (valid() && context.valid()) return host.refreshPanelPins();
+      }} : {}),
+      ...(kind === 'text' ? {recovery: guest ? null : textRecovery(host, context, valid)} : {}),
       ...(kind === 'wordcraft' ? {
-        recovery: wordcraftRecovery(host,context,valid), profileId: context.owner,
+        recovery: guest ? null : wordcraftRecovery(host,context,valid), profileId: context.owner,
         imported: host.w.wordcraftImport || null, template: host.w.wordcraftTemplate || 'blank', recoveryAsCopy: !!host.w.wordcraftRecoveryAsCopy,
         newDocument(params={}) {if(!valid())throw new DOMException('Account view closed.','AbortError');const w=host.desktop.launch('wordcraft');w.wordcraftTemplate=params.template||'blank';return {status:'opened',instanceId:String(w.id)};},
         importDocument(input) {if(!valid())throw new DOMException('Account view closed.','AbortError');const w=host.desktop.launch('wordcraft',input.name+' — WordCraft');w.wordcraftImport=Object.freeze({...input});return {status:'opened',instanceId:String(w.id)};},
         closeView: () => host.desktop.requestWindowClose(host.w)
       } : {}),
       ...(kind === 'pdfcraft' ? {
-        recovery: pdfcraftRecovery(host,context,valid), profileId: context.owner,
+        recovery: guest ? null : pdfcraftRecovery(host,context,valid), profileId: context.owner,
         imported: host.w.pdfcraftImport || null, recoveryAsCopy: !!host.w.pdfcraftRecoveryAsCopy,
         newDocument() {if(!valid())throw new DOMException('Account view closed.','AbortError');const w=host.desktop.launch('pdfcraft');return {status:'opened',instanceId:String(w.id)};},
         importDocument(input) {if(!valid())throw new DOMException('Account view closed.','AbortError');const w=host.desktop.launch('pdfcraft',input.name+' — PdfCraft');w.pdfcraftImport=Object.freeze({...input});return {status:'opened',instanceId:String(w.id)};},
         closeView: () => host.desktop.requestWindowClose(host.w)
       } : {}),
       ...(officeRecovery ? {
-        recovery: officeRecovery.journal(host,context,valid), profileId:context.owner,
+        recovery: guest ? null : officeRecovery.journal(host,context,valid), profileId:context.owner,
         imported:host.w[kind+'Import']||null, recoveryAsCopy:!!host.w[kind+'RecoveryAsCopy'],
         template:host.w[kind+'Template']||(kind==='deckcraft'?{}:'blank'),
         newDocument(params={}) {
@@ -168,7 +185,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
     await view.ready;
     if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
   })();
-  ready.catch(error => { if (valid() && !view?.retry) element.textContent = 'Could not open this app: ' + error.message; });
+  ready.catch(error => { if (mounted() && !view?.retry) element.textContent = 'Could not open this app: ' + error.message; });
   return {
     element, ready,
     focus() {

@@ -1,0 +1,14 @@
+
+# Stalwart owns the certificate for SMTP STARTTLS.
+http://mail.ksu.codes {
+	@mailAcme {
+		method GET
+		path /.well-known/acme-challenge/*
+	}
+	handle @mailAcme {
+		reverse_proxy 127.0.0.1:28881
+	}
+	handle {
+		respond 404
+	}
+}

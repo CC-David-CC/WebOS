@@ -24,7 +24,7 @@
 	url = ../engine-usd-brep.git
 [submodule "legacy-jsketcher"]
 	path = apps/jsketcher
-	url = ../legacy-jsketcher.git
+	url = ../jsketcher.git
 [submodule "wordcraft"]
 	path = apps/wordcraft
 	url = ../wordcraft.git
@@ -375,13 +375,13 @@
 	url = ../sketchcraft.git
 [submodule "pcbcraft"]
 	path = apps/pcbcraft
-	url = ../pcbcraft.git
+	url = https://github.com/tangency-labs/pcbcraft.git
 [submodule "fieldcraft"]
 	path = apps/fieldcraft
-	url = ../fieldcraft.git
+	url = https://github.com/tangency-labs/fieldcraft.git
 [submodule "pcbcraft-app"]
 	path = apps/pcbcraft-app
-	url = ../pcbcraft-app.git
+	url = https://github.com/tangency-labs/pcbcraft-app.git
 [submodule "isobar"]
 	path = apps/isobar
 	url = ../isobar.git
@@ -391,3 +391,162 @@
 [submodule "projectcraft"]
 	path = apps/projectcraft
 	url = ../projectcraft.git
+[submodule "winit"]
+	path = libraries/winit
+	url = https://github.com/UCS-Care-Group/winit.git
+[submodule "opencharts"]
+	path = apps/opencharts
+	url = https://github.com/dylanpersonguy/OpenCharts.git
+[submodule "mailcraft"]
+	path = apps/mailcraft
+	url = ../mailcraft.git
+[submodule "metriccraft"]
+	path = apps/metriccraft
+	url = ../metriccraft.git
+[submodule "mathcraft"]
+	path = apps/mathcraft
+	url = ../mathcraft.git
+[submodule "linux-x11"]
+	path = apps/linux-x11
+	url = ../linux-x11.git
+[submodule "drakon-python"]
+	path = apps/drakon-python
+	url = ../drakon-python.git
+[submodule "drakon-javascript"]
+	path = apps/drakon-javascript
+	url = ../drakon-javascript.git
+[submodule "drakon-bash"]
+	path = apps/drakon-bash
+	url = ../drakon-bash.git
+[submodule "narrator"]
+	path = apps/narrator
+	url = ../webos-narrator.git
+[submodule "i-success"]
+	path = apps/i-success
+	url = ../i-success.git
+[submodule "notecraft"]
+	path = apps/notecraft
+	url = ../notecraft.git
+[submodule "paint-rs"]
+	path = apps/paint-rs
+	url = ../paint.rs.git
+[submodule "paintcraft"]
+	path = apps/paintcraft
+	url = ../PaintCraft.git
+[submodule "clothcraft"]
+	path = apps/clothcraft
+	url = ../ClothCraft.git
+[submodule "cuepool"]
+	path = apps/cuepool
+	url = ../cuePool.git
+[submodule "matcraft"]
+	path = apps/matcraft
+	url = ../matcraft.git
+[submodule "apps/subcraft"]
+	path = apps/subcraft
+	url = ../subcraft.git
+[submodule "apps/transit"]
+	path = apps/transit
+	url = ../transit.git
+[submodule "apps/mathcraft2"]
+	path = apps/mathcraft2
+	url = ../MathCraft-upstream.git
+[submodule "apps/scriobh"]
+	path = apps/scriobh
+	url = ../scriobh.git
+[submodule "apps/tracedraw"]
+	path = apps/tracedraw
+	url = ../tracedraw.git
+[submodule "apps/hdl-workbench"]
+	path = apps/hdl-workbench
+	url = ../verisim.git
+[submodule "apps/humanmotioncraft"]
+	path = apps/humanmotioncraft
+	url = ../HumanMotionCraft.git
+[submodule "apps/oxybrush"]
+	path = apps/oxybrush
+	url = ../OxyBrush.git
+[submodule "apps/firecraft"]
+	path = apps/firecraft
+	url = ../FireCraft.git
+[submodule "apps/chromaforge"]
+	path = apps/chromaforge
+	url = ../chromaforge.git
+[submodule "apps/pixelcraft"]
+	path = apps/pixelcraft
+	url = ../PixelCraft.git
+[submodule "apps/procraft"]
+	path = apps/procraft
+	url = ../procraft.git
+[submodule "apps/honeydew"]
+	path = apps/honeydew
+	url = ../honeydew.git
+[submodule "apps/lemon-studio"]
+	path = apps/lemon-studio
+	url = ../Lemon-Studio.git
+[submodule "apps/mixstudio"]
+	path = apps/mixstudio
+	url = ../MixStudio.git
+[submodule "apps/oxiguitar"]
+	path = apps/oxiguitar
+	url = ../oxiguitar.git
+[submodule "apps/pro-wave"]
+	path = apps/pro-wave
+	url = ../Pro-Wave.git
+[submodule "apps/retake"]
+	path = apps/retake
+	url = ../altered-audio-editor.git
+[submodule "apps/suhina"]
+	path = apps/suhina
+	url = ../suhina-daw.git
+[submodule "apps/textcraft"]
+	path = apps/textcraft
+	url = ../textcraft.git
+[submodule "apps/earthcraft"]
+	path = apps/earthcraft
+	url = ../EarthCraft.git
+[submodule "apps/align"]
+	path = apps/align
+	url = ../align.git
+[submodule "apps/picasso-suite"]
+	path = apps/picasso-suite
+	url = ../Picasso-Suite.git
+[submodule "apps/opencadstudio"]
+	path = apps/opencadstudio
+	url = ../OpenCADStudio.git
+[submodule "softfpga"]
+	path = apps/softfpga
+	url = ../softfpga.git
+[submodule "esp32sim"]
+	path = apps/esp32sim
+	url = ../esp32sim.git
+[submodule "riscv-rust"]
+	path = apps/riscv-rust
+	url = ../riscv-rust.git
+[submodule "gpu-monitor"]
+	path = apps/gpu-monitor
+	url = ../gpu-monitor.git
+[submodule "image-studio"]
+	path = apps/image-studio
+	url = ../image-studio.git
+[submodule "webos-services"]
+	path = platform/services
+	url = ../webos-services.git
+[submodule "webos-chat"]
+	path = apps/webos-chat
+	url = ../webos-chat.git
+[submodule "rustirc"]
+	path = apps/rustirc
+	url = ../RustIRC.git
+[submodule "remote-desktop"]
+	path = apps/remote-desktop
+	url = ../noVNC.git
+[submodule "apps/lovecraft"]
+	path = apps/lovecraft
+	url = ../LoveCraft.git
+[submodule "apps/freedawm"]
+	path = apps/freedawm
+	url = ../FreeDAWm-upstream.git
+[submodule "account-management"]
+	path = apps/account-management
+	url = ../account-management.git

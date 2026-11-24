@@ -26,7 +26,7 @@ export function trackCraftDraft({journal, native, storage, valid, onError}) {
 
   function schedule() {
     clearTimeout(timer);
-    if (stopped || paused || task || !valid() || !state?.capturable) return;
+    if (!journal || stopped || paused || task || !valid() || !state?.capturable) return;
     const inspected = storage.inspect();
     if (!inspected.identity || state.documentId !== inspected.identity.documentId ||
         state.generation !== inspected.identity.generation || (!state.dirty && inspected.pending) ||
@@ -89,7 +89,7 @@ export function trackCraftDraft({journal, native, storage, valid, onError}) {
       stopped = true;
       clearTimeout(timer);
       await task;
-      await journal.clear();
+      await journal?.clear();
     },
     stop() {
       stopped = true;

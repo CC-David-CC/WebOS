@@ -1,0 +1,27 @@
+[Unit]
+Description=WebOS MailCraft mailbox service
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/srv/data/webos-mailcraft
+
+[Service]
+Type=simple
+User=webos-mailcraft
+Group=webos-mailcraft
+WorkingDirectory=/srv/data/webos-mailcraft
+ExecStart=/srv/data/webos-mailcraft/bin/stalwart --config /srv/data/webos-mailcraft/config.json
+Environment=STALWART_HOSTNAME=mail.ksu.codes
+Environment=STALWART_PUBLIC_URL=https://ksu.codes
+UMask=0077
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/srv/data/webos-mailcraft/data /srv/data/webos-mailcraft/logs
+Restart=on-failure
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target

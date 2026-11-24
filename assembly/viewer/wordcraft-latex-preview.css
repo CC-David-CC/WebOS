@@ -1,0 +1,35 @@
+.wordcraft-latex {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  color: #262b2f;
+  background: #f2f4f5;
+  font: 14px/1.45 system-ui, sans-serif;
+}
+.wordcraft-latex [hidden] { display: none !important; }
+.wordcraft-latex-editing { overflow: hidden; }
+.wordcraft-latex-editing > .webos-wordcraft { flex: 1; min-height: 0; }
+.wordcraft-latex-toolbar, .wordcraft-latex-pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 8px 10px;
+  background: #fff;
+  border-bottom: 1px solid #c8cdd1;
+}
+:is(.wordcraft-latex-toolbar, .wordcraft-latex-pages) button {
+  min-height: 36px;
+  padding: 4px 9px;
+  border: 1px solid #75808a;
+  border-radius: 4px;
+  background: white;
+  color: inherit;
+  font: inherit;
+}
+:is(.wordcraft-latex-toolbar, .wordcraft-latex-pages) button:disabled { opacity: .6; }
+:is(.wordcraft-latex-toolbar, .wordcraft-latex-pages) button:focus-visible { outline: 2px solid #1e6daa; outline-offset: 2px; }
+.wordcraft-latex-status, .wordcraft-latex-log { padding: 7px 10px; overflow-wrap: anywhere; }
+.wordcraft-latex-log pre { margin: 5px 0; max-height: 16rem; overflow: auto; white-space: pre-wrap; }
+.wordcraft-latex-paper { flex: 1 1 auto; min-height: 120px; overflow: auto; padding: 8px 12px; background: #dde1e4; }
+.wordcraft-latex-paper canvas { display: block; max-width: 100%; height: auto; margin: auto; background: #fff; }
