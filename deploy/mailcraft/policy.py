@@ -187,6 +187,14 @@ def project(registry, db, roles):
             raise ValueError(f"Invalid grants for {address}")
         permissions[account_id] = (address, grants)
 
+    inventory = accounts(registry)
+    by_id = {row["id"]: row for row in inventory}
+    for account_id, (address, _) in permissions.items():
+        row = by_id.get(account_id, {})
+        expected = f"{row.get('name')}@{DOMAIN}"
+        if row.get("domainId") != domain_id or row.get("@type") != "User" or expected != address:
+            raise ValueError(f"Mailbox binding changed for {address}")
+
     external = sorted(address for address, grants in permissions.values() if "external_send" in grants)
     if any(not re.fullmatch(r"[a-z][a-z0-9-]{1,62}@ksu\.codes", address) for address in external):
         raise ValueError("An external sender address has an unsupported format")
@@ -198,20 +206,18 @@ def project(registry, db, roles):
     if installed["allowRelaying"] != rule:
         raise ValueError("Stalwart external-send ACL readback failed")
 
-    inventory = accounts(registry)
-    by_id = {row["id"]: row for row in inventory}
-    for account_id, (address, _) in permissions.items():
-        row = by_id.get(account_id, {})
-        expected = f"{row.get('name')}@{DOMAIN}"
-        if row.get("domainId") != domain_id or row.get("@type") != "User" or expected != address:
-            raise ValueError(f"Mailbox binding changed for {address}")
-
     updates = {}
     for row in inventory:
         if row.get("@type") != "User":
             continue
         if row.get("roles", {}).get("@type") == "Admin":
             raise ValueError("Remove the bootstrap administrator before starting public mail")
+        if row.get("name") == "webos-mail-operator" and row["id"] not in permissions:
+            role_ids = {r["id"]: True for r in registry.get("Role", properties=["description"])
+                        if r.get("description") == "WebOS mail lifecycle operator"}
+            if len(role_ids) != 1 or row["roles"] != {"@type": "Custom", "roleIds": role_ids}:
+                raise ValueError("Unexpected lifecycle operator role")
+            continue
         _, grants = permissions.get(row["id"], (None, set()))
         mode = "blocked" if "access" not in grants else ("send" if "send" in grants else "receive")
         value = {"@type": "Custom", "roleIds": {roles[mode]: True}}

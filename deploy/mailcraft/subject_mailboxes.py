@@ -142,8 +142,47 @@ def reload_routes(registry):
     registry.create("Action", {"@type": "ReloadSettings"})
 
 
+def remove_relay_sender(registry, address):
+    """Remove this sender from the installed, explicit SMTP2GO relay allowlist."""
+    (stage,) = registry.get("MtaStageRcpt", ids=["singleton"], properties=["allowRelaying"])
+    rule = stage["allowRelaying"]
+    entry = f"authenticated_as == '{address}'"
+    terms = rule["else"].split(" || ")
+    if rule["match"] or any(
+        not re.fullmatch(r"authenticated_as == '[a-z][a-z0-9-]+@ksu\.codes'", term)
+        for term in terms if term != "false"
+    ):
+        raise ValueError("Unexpected external relay policy")
+    if entry in terms:
+        replacement = {"match": {}, "else": " || ".join(t for t in terms if t != entry) or "false"}
+        registry.update("MtaStageRcpt", {"singleton": {"allowRelaying": replacement}})
+        (installed,) = registry.get("MtaStageRcpt", ids=["singleton"], properties=["allowRelaying"])
+        if installed["allowRelaying"] != replacement:
+            raise ValueError("Relay revocation readback failed")
+
+
+def detach_imported_login(registry, subject, username, account_id, blocked_role):
+    """Handle mailboxes originally named after a login, pinned during migration."""
+    rows = [row for row in accounts(registry) if row["id"] == account_id]
+    if not rows or rows[0].get("name") == native_name(subject):
+        return
+    (row,) = registry.get("Account", ids=[account_id], properties=["name","domainId","description","@type","aliases"])
+    if (not PUBLIC_NAME.fullmatch(username) or row["name"] != username
+            or row["domainId"] != local_domain(registry) or row["@type"] != "User"
+            or row.get("description") != "WebOS account " + subject or row.get("aliases")):
+        raise ValueError("Imported mailbox identity changed")
+    remove_relay_sender(registry, username + "@" + DOMAIN)
+    registry.update("Account", {account_id: {
+        "roles": {"@type": "Custom", "roleIds": {blocked_role: True}},
+        "name": native_name(subject),
+    }})
+    if locate(registry, subject, account_id) is None:
+        raise ValueError("Imported mailbox detachment failed")
+
+
 def retire_online(registry, subject, username, account_id, blocked_role):
     # Reload even when retrying after a successful write and an interrupted reload.
+    detach_imported_login(registry, subject, username, account_id, blocked_role)
     retire(registry, subject, username, account_id, blocked_role)
     reload_routes(registry)
 
