@@ -1,4 +1,11 @@
 .matcraft-workspace {
+  --matcraft-surface: light-dark(#fff, #202630);
+  --matcraft-control: light-dark(#f2f4f7, #313c49);
+  --matcraft-ink: light-dark(#253247, #e4edf7);
+  --matcraft-border: light-dark(#9aa8b9, #64778b);
+  --matcraft-focus: light-dark(#1468a0, #8dc9ff);
+  background: var(--matcraft-surface);
+  color: var(--matcraft-ink);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -14,7 +21,15 @@
   padding: .3rem;
 }
 .matcraft-tools button {
-  padding: .2rem .45rem;
+  padding: .25rem .5rem;
+  min-height: 2rem;
+  background: var(--matcraft-control);
+  color: var(--matcraft-ink);
+  border: 1px solid var(--matcraft-border);
+}
+.matcraft-tools button:focus-visible {
+  outline: 2px solid var(--matcraft-focus);
+  outline-offset: 2px;
 }
 .matcraft-studio {
   display: block;
@@ -23,7 +38,7 @@
   min-width: 0;
   width: 100%;
   border: 0;
-  background: white;
+  background: var(--matcraft-surface);
 }
 .matcraft-status {
   flex: 0 0 auto;
