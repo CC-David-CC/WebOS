@@ -27,7 +27,8 @@ SEND_GRANTS = frozenset(("send_local", "send_external"))
 
 
 class MailControl:
-    def __init__(self, database, credentials, provision_key=None, *, legacy_queue=None):
+    def __init__(self, database, credentials, provision_key=None, *,
+                 auto_provision=None, legacy_queue=None):
         self.database = database
         if legacy_queue not in (None, "prepare", "confirmed"):
             raise ValueError("Unknown WebOS legacy queue state")
@@ -36,6 +37,9 @@ class MailControl:
         self.provision_key = Path(provision_key).read_bytes() if provision_key else None
         if self.provision_key is not None and len(self.provision_key) != 32:
             raise ValueError("Expected a 32-byte MailCraft credential key")
+        self.auto_provision = self.provision_key is not None if auto_provision is None else auto_provision
+        if self.auto_provision and self.provision_key is None:
+            raise ValueError("Mailbox provisioning requires its credential key")
 
     def view(self, db, subject):
         requested = self.requested(db, subject)
@@ -249,7 +253,7 @@ class MailControl:
         """, (subject, subject, subject)).fetchone() is not None
 
     def provision_one_pending(self):
-        if self.provision_key is None:
+        if not self.auto_provision:
             return
         with transaction(self.database, write=False) as db:
             subjects = [row[0] for row in db.execute("""
@@ -270,7 +274,7 @@ class MailControl:
         with transaction(self.database, write=False) as db:
             available = self.applied(db, subject)
             requested = "mailbox" in self.requested(db, subject)
-            can_provision = self.provision_key is not None and self.eligible(db, subject)
+            can_provision = self.auto_provision and self.eligible(db, subject)
         if create and can_provision:
             self.provision(subject)
             return self.authorized_mailbox(subject)
@@ -309,7 +313,7 @@ class MailControl:
     async def retry_pending(self, _app):
         async def worker():
             while True:
-                await asyncio.sleep(5 if self.provision_key is not None else 20)
+                await asyncio.sleep(5 if self.auto_provision else 20)
                 await asyncio.to_thread(self.try_reconcile)
                 await asyncio.to_thread(self.provision_one_pending)
 

@@ -236,9 +236,10 @@ async def create_application(public_root, private_root, origin, *, account_trans
             from mail_control import MailControl
             credential = Path(os.environ['CREDENTIALS_DIRECTORY']) / 'mail-lifecycle-operator'
             auto = os.environ.get('WEBOS_MAILCRAFT_AUTO_PROVISION') == '1'
-            provision_key = credential.with_name('mail-provision-key') if auto else None
+            provision_key = credential.with_name('mail-provision-key')
             mail_control = MailControl(
-                accounts.db, credential, provision_key,
+                accounts.db, credential, provision_key if provision_key.exists() else None,
+                auto_provision=auto,
                 legacy_queue=os.environ.get('WEBOS_MAILCRAFT_LEGACY_QUEUE'),
             )
             await asyncio.to_thread(mail_control.initialize)
