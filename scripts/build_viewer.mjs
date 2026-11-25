@@ -210,6 +210,7 @@ for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraf
     app:id,name:graphics.name,extension:graphics.extension,forceWebGL:graphics.forceWebGL,deviceImport:graphics.deviceImport
   });
   const contents=id==='help'?"export {mount} from './apps/help/apps/system/help/index.mjs';":
+    id==='text'?"import {mount as appMount} from '@webos/text';import {mountAccountApp} from './assembly/viewer/account-app.mjs';export function mount(host){const temporary=host.session()?.public.kind==='anonymous';return mountAccountApp(options=>appMount({...options,temporary}),host,'text');}":
     id==='photocraft'?"export {mount} from './assembly/viewer/photocraft-app.mjs';":
     id==='lightcraft'?"export {mount} from './assembly/viewer/lightcraft-app.mjs';":
     id==='designcraft'?"export {mount} from './assembly/viewer/designcraft-app.mjs';":
