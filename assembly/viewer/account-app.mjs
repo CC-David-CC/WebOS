@@ -129,7 +129,13 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       return {status: 'opened'};
     };
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
-      ...(kind === 'files' ? {openChoices} : {}),
+      ...(kind === 'files' ? {
+        openChoices,
+        pickMoveFolder: host.storage.pickWorkspaceFile && (async signal => {
+          if (!valid() || !context.valid()) throw new DOMException('Files workspace closed.', 'AbortError');
+          return host.storage.pickWorkspaceFile({foldersOnly: true, signal});
+        })
+      } : {}),
       ...(kind === 'files' && host.refreshPanelPins ? {onRefresh() {
         if (valid() && context.valid()) return host.refreshPanelPins();
       }} : {}),
