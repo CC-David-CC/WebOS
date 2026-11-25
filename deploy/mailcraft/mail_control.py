@@ -22,9 +22,16 @@ except ModuleNotFoundError as exc:
 from subject_mailboxes import native_name
 
 
+CANONICAL_PILOTS = frozenset(("dflanag3", "test"))
+SEND_GRANTS = frozenset(("send_local", "send_external"))
+
+
 class MailControl:
-    def __init__(self, database, credentials, provision_key=None):
+    def __init__(self, database, credentials, provision_key=None, *, legacy_queue=None):
         self.database = database
+        if legacy_queue not in (None, "prepare", "confirmed"):
+            raise ValueError("Unknown WebOS legacy queue state")
+        self.legacy_queue = legacy_queue
         self.registry = Registry(json.loads(Path(credentials).read_bytes()), online=True)
         self.provision_key = Path(provision_key).read_bytes() if provision_key else None
         if self.provision_key is not None and len(self.provision_key) != 32:
@@ -52,13 +59,27 @@ class MailControl:
         return frozenset(row[0] for row in db.execute(
             "SELECT setting FROM am_applied_mail WHERE subject=?", (subject,)))
 
+    def legacy_sender_clear(self, public):
+        if self.legacy_queue != "confirmed":
+            return False
+        try:
+            result = self.registry.call("QueuedMessage", "query", {
+                "filter": {"text": public}, "limit": 1,
+            })
+        except (OSError, ValueError):
+            logging.getLogger(__name__).warning("Legacy mail queue check will retry")
+            return False
+        # Stalwart's text filter searches both envelope recipients and
+        # return paths. A broader match delays the grant safely.
+        return result.get("ids") == []
+
     def inventory(self, db, *, excluding=None):
         domain = local_domain(self.registry)
         roles_by_label = {row["description"]: row["id"]
                           for row in self.registry.get("Role", properties=["description"])}
         roles = {key: roles_by_label[label] for key, label in ROLE_NAMES.items()}
         records = {}
-        for row in self.registry.get("Account", properties=["name", "@type", "domainId", "roles", "aliases"]):
+        for row in self.registry.get("Account", properties=["name", "@type", "domainId", "roles", "aliases", "description"]):
             if row["domainId"] != domain:
                 continue
             name = f"{row['name']}@{DOMAIN}"
@@ -89,24 +110,39 @@ class MailControl:
                 continue
             login, aliases, row = records[aid]
             public = f"{username}@{DOMAIN}"
-            is_native = login == f"{native_name(sub)}@{DOMAIN}"
+            subject_name = native_name(sub)
+            subject_address = f"{subject_name}@{DOMAIN}"
+            is_native = login == subject_address
+            is_canonical = login == public and username in CANONICAL_PILOTS
             if row["@type"] != "User" or not (
-                (login == public and not aliases) or (is_native and aliases in ((), (public,)))
+                (is_canonical and aliases in ((), (subject_address,)))
+                or (is_native and aliases in ((), (public,)))
             ):
                 raise ValueError("Stalwart mailbox binding changed")
             if sub == excluding:
                 continue
-            grants = self.requested(db, sub)
-            if retiring:
-                grants = frozenset()
+
+            delivery = None
+            if is_canonical and self.legacy_queue:
+                if row["description"] != "WebOS account " + sub:
+                    raise ValueError("Expected the verified pilot mailbox")
+                delivery = subject_address
+                if not aliases:
+                    identity_updates[aid] = subject_name, domain
+
+            grants = self.requested(db, sub) if not retiring else frozenset()
             effective = grants if "mailbox" in grants else frozenset()
+            if is_native and not aliases and effective & SEND_GRANTS:
+                if username in CANONICAL_PILOTS and not self.legacy_sender_clear(public):
+                    # Keep this subject's sending grant pending without
+                    # blocking its receipt or changes to other mailboxes.
+                    effective -= SEND_GRANTS
+                else:
+                    identity_updates[aid] = username, domain
             before = self.applied(db, sub)
-            previous.append(Access(aid, login, (public,), before or frozenset()))
-            access = Access(aid, login, (public,), effective)
-            desired.append(access)
+            previous.append(Access(aid, login, (public,), before or frozenset(), delivery))
+            desired.append(Access(aid, login, (public,), effective, delivery))
             claims[sub] = effective
-            if is_native and not aliases and access.role == "send":
-                identity_updates[aid] = username, domain
         return roles, previous, desired, claims, identity_updates
 
     def read_policy(self):
@@ -115,19 +151,18 @@ class MailControl:
 
     def install(self, db, *, excluding=None, force=False):
         roles, previous, desired, claims, identity_updates = self.inventory(db, excluding=excluding)
-        if not force and all(self.applied(db, sub) == grants for sub, grants in claims.items()):
+        if not force and not identity_updates and all(
+            self.applied(db, sub) == grants for sub, grants in claims.items()
+        ):
             return
         for account, (username, domain) in identity_updates.items():
-            # Historical pilot mail can be addressed to a canonical username in the
-            # old SMTP queue. Rebinding it as a directory alias needs a queue fence.
-            if username in {"dflanag3", "test"}:
-                raise ValueError("Verify the retired pilot address before enabling its sending identity")
             alias = {"name": username, "domainId": domain, "enable": True}
             self.registry.update("Account", {account: {"aliases": {"0": alias}}})
             row, = self.registry.get("Account", ids=[account], properties=["aliases"])
             if any(row["aliases"].get("0", {}).get(k) != v for k, v in alias.items()):
                 raise ValueError("Mail sending address readback failed")
-        apply(self.registry, desired, roles, current=previous)
+        apply(self.registry, desired, roles, current=previous,
+              isolate_return_path=self.legacy_queue is not None)
         for sub, grants in claims.items():
             db.execute("INSERT OR IGNORE INTO am_mail_projected VALUES(?)", (sub,))
             db.execute("DELETE FROM am_applied_mail WHERE subject=?", (sub,))

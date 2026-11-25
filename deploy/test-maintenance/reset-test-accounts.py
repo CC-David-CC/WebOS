@@ -292,7 +292,10 @@ def main():
             if operator.exists():
                 if os.environ.get("WEBOS_MAILCRAFT_MANAGED_POLICY") == "1":
                     from mail_control import MailControl
-                    mail_control = MailControl(args.database, operator)
+                    mail_control = MailControl(
+                        args.database, operator,
+                        legacy_queue=os.environ.get("WEBOS_MAILCRAFT_LEGACY_QUEUE"),
+                    )
                 else:
                     from subject_mailboxes import reset_handler
 

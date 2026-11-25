@@ -237,7 +237,10 @@ async def create_application(public_root, private_root, origin, *, account_trans
             credential = Path(os.environ['CREDENTIALS_DIRECTORY']) / 'mail-lifecycle-operator'
             auto = os.environ.get('WEBOS_MAILCRAFT_AUTO_PROVISION') == '1'
             provision_key = credential.with_name('mail-provision-key') if auto else None
-            mail_control = MailControl(accounts.db, credential, provision_key)
+            mail_control = MailControl(
+                accounts.db, credential, provision_key,
+                legacy_queue=os.environ.get('WEBOS_MAILCRAFT_LEGACY_QUEUE'),
+            )
             await asyncio.to_thread(mail_control.initialize)
         if os.environ.get('WEBOS_MAILCRAFT_SSO') == '1':
             from mailcraft_sso import MailGateway

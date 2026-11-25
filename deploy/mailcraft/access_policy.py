@@ -57,7 +57,7 @@ def recipient_policy(mailboxes):
     """Return an exact router and relay allowlist for one complete mailbox snapshot.
 
     Stalwart runs this RCPT stage for public SMTP and authenticated JMAP submission.
-    Local messages are always routed to the immutable mailbox login before queuing.
+    Local messages use the mailbox delivery address before queuing.
     """
     mailboxes = sorted(mailboxes, key=lambda box: box.login)
     logins = [box.login for box in mailboxes]
@@ -90,6 +90,11 @@ def recipient_policy(mailboxes):
             if not box.allows("receive_external"):
                 rule += f" && {authenticated}"
             local_rewrites.append((rule, f"'{box.destination}'"))
+        if box.destination not in box.addresses and box.allows("receive_external"):
+            # SMTP delivery failures with an empty return path can reach an
+            # installed subject address. A retired subject has no such route.
+            local_rewrites.append((f"rcpt == '{box.destination}' && is_empty(sender)",
+                                   f"'{box.destination}'"))
     # Refuse unconfigured local addresses, disabled inboxes, and raw internal login names.
     local_rewrites.append((local, deny))
     external_senders = [
@@ -100,7 +105,19 @@ def recipient_policy(mailboxes):
             "allowRelaying": expression(external_senders, "false")}
 
 
-def apply(registry, mailboxes, roles, *, current):
+def return_path_policy(mailboxes):
+    """Use the subject address for queued delivery failures from authenticated senders."""
+    return expression([
+        (f"authenticated_as == '{box.login}' && sender == '{address}'",
+         f"'{box.destination}'")
+        for box in sorted(mailboxes, key=lambda item: item.login)
+        if box.role == "send"
+        for address in sorted(box.addresses)
+        if address != box.destination
+    ], "false")
+
+
+def apply(registry, mailboxes, roles, *, current, isolate_return_path=False):
     """Withdraw removed rights first, then apply the requested roles and routes."""
     before = {box.account_id: box for box in current}
     after = {box.account_id: box for box in mailboxes}
@@ -120,6 +137,15 @@ def apply(registry, mailboxes, roles, *, current):
             raise ValueError("Mail recipient policy readback failed")
         registry.create("Action", {"@type": "ReloadSettings"})
 
+    if isolate_return_path:
+        # Install the immutable return path while both new and existing
+        # accounts still have their previous role permissions.
+        stage_mail = "MtaStageMail"
+        rewrite = return_path_policy(mailboxes)
+        registry.update(stage_mail, {"singleton": {"rewrite": rewrite}})
+        actual, = registry.get(stage_mail, ids=["singleton"], properties=["rewrite"])
+        if actual["rewrite"] != rewrite:
+            raise ValueError("Mail return path readback failed")
     activate(recipient_policy(restrictive))
     actual_roles = {row["id"]: row["roles"] for row in
                     registry.get("Account", ids=list(after), properties=["roles"])}
