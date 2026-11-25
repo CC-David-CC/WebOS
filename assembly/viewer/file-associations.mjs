@@ -1,11 +1,58 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 const spiceNetlist = /[.](?:cir|sp|spice)$/i;
+export const isMcraftPackage = path => /[.]mcraft$/i.test(path);
 export const isFpgaSource = path => /[.](?:v|cst|pcf)$/i.test(path);
-/** Alternatives exposed by Files. The first choice is the default opener. */
+// MetricCraft and MaterialCraft share .mcraft. Inspect the ZIP directory without
+// unpacking project data. Both editors still validate their own package contents.
+function isMetricCraftPackage(data) {
+  const bytes = data instanceof ArrayBuffer ? new Uint8Array(data) : data;
+  if (!ArrayBuffer.isView(bytes) || bytes.byteLength < 22) return false;
+  const zip = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  const u16 = offset => zip.getUint16(offset, true);
+  const u32 = offset => zip.getUint32(offset, true);
+  if (u32(0) !== 0x04034b50) return false;
+
+  // The end record can follow up to 65,535 bytes of ZIP comment.
+  const searchStart = Math.max(0, zip.byteLength - 22 - 0xffff);
+  for (let end = zip.byteLength - 22; end >= searchStart; end--) {
+    if (u32(end) !== 0x06054b50 || end + 22 + u16(end + 20) !== zip.byteLength) continue;
+    if (u16(end + 4) !== 0 || u16(end + 6) !== 0) return false;
+    let start = u32(end + 16), size = u32(end + 12), limit = end;
+    if (start === 0xffffffff || size === 0xffffffff) {
+      const locator = end - 20;
+      if (locator < 0 || u32(locator) !== 0x07064b50 || u32(locator + 4) !== 0 || u32(locator + 16) !== 1) return false;
+      const record = Number(zip.getBigUint64(locator + 8, true));
+      if (record > locator - 56 || u32(record) !== 0x06064b50 || u32(record + 16) !== 0 || u32(record + 20) !== 0) return false;
+      start = Number(zip.getBigUint64(record + 48, true));
+      size = Number(zip.getBigUint64(record + 40, true));
+      limit = record;
+    }
+    const stop = start + size;
+    if (stop > limit || size < 46) return false;
+    const decoder = new TextDecoder();
+    let metricManifest = false;
+    for (let entry = start; entry + 46 <= stop;) {
+      if (u32(entry) !== 0x02014b50) return false;
+      const nameStart = entry + 46, nameLength = u16(entry + 28);
+      const next = nameStart + nameLength + u16(entry + 30) + u16(entry + 32);
+      if (next > stop) return false;
+      const name = decoder.decode(new Uint8Array(zip.buffer, zip.byteOffset + nameStart, nameLength));
+      if (/^[^/]+[.]sbs$/i.test(name)) return false;
+      metricManifest ||= name === 'project.mcraft.json';
+      if (next === stop) return metricManifest;
+      entry = next;
+    }
+    return false;
+  }
+  return false;
+}
+
+/** Alternatives exposed by Files in their usual order. */
 export function accountFileOpenChoices(path) {
   if (/[.]pdf$/i.test(path)) return [{id:'pdfcraft',label:'PdfCraft'},{id:'pdf-viewer',label:'PDF Viewer (PDF.js)'}];
   if (spiceNetlist.test(path)) return [{id:'circuit-lab',label:'Circuit Lab'},{id:'text',label:'Text Editor'}];
   if (isFpgaSource(path)) return [{id:'text',label:'Text Editor'},{id:'softfpga',label:'Virtual FPGA Board'}];
+  if (isMcraftPackage(path)) return [{id:'materialcraft',label:'MaterialCraft'},{id:'metriccraft',label:'MetricCraft'}];
   if (/[.]csv$/i.test(path)) return [
     {id:'text',label:'Text Editor'},{id:'spreadsheet',label:'Spreadsheet'},{id:'data-explorer',label:'Data Explorer'}
   ];
@@ -14,6 +61,8 @@ export function accountFileOpenChoices(path) {
 
 export function accountFileApp(path, sourceApp, data) {
   if(sourceApp==='files'){
+    if (/[.]projectcraft$/i.test(path)) return 'projectcraft';
+    if (isMcraftPackage(path) && isMetricCraftPackage(data)) return 'metriccraft';
     if (spiceNetlist.test(path)) return 'circuit-lab';
     if (/[.]pico$/i.test(path)) return 'pico-simulator';
     if (/[.]esp32lab[.]json$/i.test(path)) return 'esp32sim';

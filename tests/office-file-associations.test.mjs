@@ -84,3 +84,50 @@ test('Virtual FPGA Board is an alternate opener for supported source and pin fil
   }
   assert.deepEqual(accountFileOpenChoices('Documents/Board.v.txt'),[]);
 });
+
+function storedZip(names) {
+  const files = [], directory = [];
+  let offset = 0;
+  for (const name of names) {
+    const bytes = Buffer.from(name);
+    const header = Buffer.alloc(30);
+    header.writeUInt32LE(0x04034b50);
+    header.writeUInt16LE(20, 4);
+    header.writeUInt16LE(bytes.length, 26);
+    files.push(header, bytes);
+    const entry = Buffer.alloc(46);
+    entry.writeUInt32LE(0x02014b50);
+    entry.writeUInt16LE(20, 4);
+    entry.writeUInt16LE(20, 6);
+    entry.writeUInt16LE(bytes.length, 28);
+    entry.writeUInt32LE(offset, 42);
+    directory.push(entry, bytes);
+    offset += header.length + bytes.length;
+  }
+  const end = Buffer.alloc(22);
+  end.writeUInt32LE(0x06054b50);
+  end.writeUInt16LE(names.length, 8);
+  end.writeUInt16LE(names.length, 10);
+  end.writeUInt32LE(Buffer.concat(directory).length, 12);
+  end.writeUInt32LE(offset, 16);
+  return Buffer.concat([...files, ...directory, end]);
+}
+
+test('Files opens standalone ProjectCraft and NoteCraft native files', () => {
+  assert.equal(accountFileApp('Documents/Schedule.PROJECTCRAFT','files'),'projectcraft');
+  assert.equal(accountFileApp('Documents/Notes.notecraft','files'),'notecraft');
+  assert.equal(accountFileApp('Documents/Schedule.projectcraft.txt','files'),'text');
+});
+
+test('Files distinguishes MetricCraft from MaterialCraft archives sharing .mcraft', () => {
+  const path = 'Documents/Forecast.MCRAFT';
+  const metric = storedZip(['.gitignore','project.mcraft.json','report/report.json']);
+  const material = storedZip(['package.sbs','project.mcraft.json']);
+  assert.equal(accountFileApp(path,'files',metric),'metriccraft');
+  assert.equal(accountFileApp(path,'files',Uint8Array.from(metric).buffer),'metriccraft');
+  assert.equal(accountFileApp(path,'files',material),'materialcraft');
+  assert.equal(accountFileApp(path,'files',metric.subarray(0,-3)),'materialcraft');
+  assert.equal(accountFileApp(path,'files',Buffer.from('project.mcraft.json')),'materialcraft');
+  assert.equal(accountFileApp('Documents/Forecast.mcraft.txt','files',metric),'text');
+  assert.deepEqual(accountFileOpenChoices(path).map(choice=>choice.id),['materialcraft','metriccraft']);
+});
