@@ -53,3 +53,14 @@ test('Open With menus retain the PDF and CSV defaults and offer their alternate 
   assert.deepEqual(accountFileOpenChoices('table.csv').map(app=>app.id),['text','spreadsheet','data-explorer']);
   assert.deepEqual(accountFileOpenChoices('book.pdf.txt'),[]);
 });
+
+test('Files opens SPICE netlists in Circuit Lab with Text Editor available',()=>{
+  for(const extension of ['cir','sp','SPICE']){
+    const path='Documents/divider.'+extension;
+    assert.equal(accountFileApp(path,'files'),'circuit-lab');
+    assert.deepEqual(accountFileOpenChoices(path).map(choice=>choice.id),['circuit-lab','text']);
+  }
+  assert.equal(accountFileApp('Documents/divider.cir.txt','files'),'text');
+  assert.deepEqual(accountFileOpenChoices('Documents/divider.txt'),[]);
+  assert.equal(accountFileApp('Documents/divider.circuit','files'),'circuitjs');
+});

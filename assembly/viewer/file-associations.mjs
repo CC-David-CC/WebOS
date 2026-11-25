@@ -1,7 +1,9 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
+const spiceNetlist = /[.](?:cir|sp|spice)$/i;
 /** Alternatives exposed by Files. The first choice is the default opener. */
 export function accountFileOpenChoices(path) {
   if (/[.]pdf$/i.test(path)) return [{id:'pdfcraft',label:'PdfCraft'},{id:'pdf-viewer',label:'PDF Viewer (PDF.js)'}];
+  if (spiceNetlist.test(path)) return [{id:'circuit-lab',label:'Circuit Lab'},{id:'text',label:'Text Editor'}];
   if (/[.]csv$/i.test(path)) return [
     {id:'text',label:'Text Editor'},{id:'spreadsheet',label:'Spreadsheet'},{id:'data-explorer',label:'Data Explorer'}
   ];
@@ -10,6 +12,7 @@ export function accountFileOpenChoices(path) {
 
 export function accountFileApp(path, sourceApp, data) {
   if(sourceApp==='files'){
+    if (spiceNetlist.test(path)) return 'circuit-lab';
     if (/[.]prowave$/i.test(path)) return 'pro-wave';
     if (/[.](?:gp|gpx|gp[345])$/i.test(path)) return 'oxiguitar';
     if (/[.]codisheet$/i.test(path)) return 'spreadsheet';
