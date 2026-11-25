@@ -51,7 +51,7 @@ test('Open With menus retain the PDF and CSV defaults and offer their alternate 
   }
   assert.deepEqual(accountFileOpenChoices('book.pdf').map(app=>app.id),['pdfcraft','pdf-viewer']);
   assert.deepEqual(accountFileOpenChoices('table.csv').map(app=>app.id),['text','spreadsheet','data-explorer']);
-  assert.deepEqual(accountFileOpenChoices('book.pdf.txt'),[]);
+  assert.deepEqual(accountFileOpenChoices('book.pdf.txt').map(choice=>choice.id),['text','textcraft']);
 });
 
 test('Files opens SPICE netlists in Circuit Lab with Text Editor available',()=>{
@@ -61,7 +61,7 @@ test('Files opens SPICE netlists in Circuit Lab with Text Editor available',()=>
     assert.deepEqual(accountFileOpenChoices(path).map(choice=>choice.id),['circuit-lab','text']);
   }
   assert.equal(accountFileApp('Documents/divider.cir.txt','files'),'text');
-  assert.deepEqual(accountFileOpenChoices('Documents/divider.txt'),[]);
+  assert.deepEqual(accountFileOpenChoices('Documents/divider.cir.txt').map(choice=>choice.id),['text','textcraft']);
   assert.equal(accountFileApp('Documents/divider.circuit','files'),'circuitjs');
 });
 
@@ -82,7 +82,7 @@ test('Virtual FPGA Board is an alternate opener for supported source and pin fil
     assert.equal(accountFileApp(path,'files'),'text');
     assert.deepEqual(accountFileOpenChoices(path).map(choice=>choice.id),['text','softfpga']);
   }
-  assert.deepEqual(accountFileOpenChoices('Documents/Board.v.txt'),[]);
+  assert.deepEqual(accountFileOpenChoices('Documents/Board.v.txt').map(choice=>choice.id),['text','textcraft']);
 });
 
 function storedZip(names) {
@@ -130,4 +130,13 @@ test('Files distinguishes MetricCraft from MaterialCraft archives sharing .mcraf
   assert.equal(accountFileApp(path,'files',Buffer.from('project.mcraft.json')),'materialcraft');
   assert.equal(accountFileApp('Documents/Forecast.mcraft.txt','files',metric),'text');
   assert.deepEqual(accountFileOpenChoices(path).map(choice=>choice.id),['materialcraft','metriccraft']);
+});
+
+test('TextCraft is an alternate opener for plain text and Markdown files', () => {
+  for (const path of ['Documents/Notes.TXT', 'Documents/Notes.md', 'Documents/Notes.MARKDOWN', 'Documents/Board.v.txt']) {
+    assert.equal(accountFileApp(path, 'files'), 'text');
+    assert.deepEqual(accountFileOpenChoices(path).map(app => app.id), ['text', 'textcraft']);
+  }
+  assert.deepEqual(accountFileOpenChoices('Documents/Notes.md.bak'), []);
+  assert.deepEqual(accountFileOpenChoices('Documents/Notes.py'), []);
 });

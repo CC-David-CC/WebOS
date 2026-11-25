@@ -1,5 +1,6 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 const spiceNetlist = /[.](?:cir|sp|spice)$/i;
+export const isTextCraftSource = path => /[.](?:txt|md|markdown)$/i.test(path);
 export const isMcraftPackage = path => /[.]mcraft$/i.test(path);
 export const isFpgaSource = path => /[.](?:v|cst|pcf)$/i.test(path);
 // MetricCraft and MaterialCraft share .mcraft. Inspect the ZIP directory without
@@ -49,6 +50,7 @@ function isMetricCraftPackage(data) {
 
 /** Alternatives exposed by Files in their usual order. */
 export function accountFileOpenChoices(path) {
+  if (isTextCraftSource(path)) return [{id:'text',label:'Text Editor'},{id:'textcraft',label:'TextCraft'}];
   if (/[.]pdf$/i.test(path)) return [{id:'pdfcraft',label:'PdfCraft'},{id:'pdf-viewer',label:'PDF Viewer (PDF.js)'}];
   if (spiceNetlist.test(path)) return [{id:'circuit-lab',label:'Circuit Lab'},{id:'text',label:'Text Editor'}];
   if (isFpgaSource(path)) return [{id:'text',label:'Text Editor'},{id:'softfpga',label:'Virtual FPGA Board'}];

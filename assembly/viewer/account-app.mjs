@@ -4,7 +4,7 @@
 import {textRecovery} from './text-recovery.mjs';
 import {wordcraftRecovery} from './wordcraft-recovery.mjs';
 import {pdfcraftRecovery} from './pdfcraft-recovery.mjs';
-import {accountFileApp,accountFileOpenChoices,isFpgaSource,isMcraftPackage} from './file-associations.mjs';
+import {accountFileApp,accountFileOpenChoices,isFpgaSource,isMcraftPackage,isTextCraftSource} from './file-associations.mjs';
 
 const restoredOfficeApps = new Set(['document-editor','spreadsheet','data-explorer']);
 const appSpecificFileOpeners = new Set(['pro-wave','oxiguitar','circuit-lab','pico-simulator','esp32sim','riscv-rust','projectcraft','metriccraft']);
@@ -80,6 +80,9 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
       // Resolve the owning app before activating a window for one of these paths.
       if (kind==='files') {
+        if (isTextCraftSource(file.path)) {
+          return !!host.desktop.activateAccountFile({path: file.path, owner: context.owner}, 'text');
+        }
         const target = accountFileApp(file.path, kind);
         if (/[.]doc$/i.test(file.path) || isFpgaSource(file.path) || isMcraftPackage(file.path) || appSpecificFileOpeners.has(target) || restoredOfficeApps.has(target)) return false;
       }
@@ -125,7 +128,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       }
       const app = ['calculator','jsketcher','notebook'].includes(target) ? 'text' : target;
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner},
-        {matchAppOnly: file.openWith!==undefined || isFpgaSource(file.path) || isMcraftPackage(file.path) || appSpecificFileOpeners.has(target)});
+        {matchAppOnly: file.openWith!==undefined || (kind==='files' && isTextCraftSource(file.path)) || isFpgaSource(file.path) || isMcraftPackage(file.path) || appSpecificFileOpeners.has(target)});
       return {status: 'opened'};
     };
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
