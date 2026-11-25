@@ -78,7 +78,10 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
     const activateFile = file => {
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
       // Resolve the owning app before activating a window for one of these paths.
-      if (kind==='files' && (/[.]doc$/i.test(file.path) || restoredOfficeApps.has(accountFileApp(file.path,kind)))) return false;
+      if (kind==='files') {
+        const target = accountFileApp(file.path, kind);
+        if (/[.]doc$/i.test(file.path) || target==='pro-wave' || restoredOfficeApps.has(target)) return false;
+      }
       return !!host.desktop.activateAccountFile({path: file.path, owner: context.owner});
     };
     const openChoices = path => accountFileOpenChoices(path)
@@ -121,7 +124,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       }
       const app = ['calculator','jsketcher','notebook'].includes(target) ? 'text' : target;
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner},
-        {matchAppOnly: file.openWith!==undefined});
+        {matchAppOnly: file.openWith!==undefined || target==='pro-wave'});
       return {status: 'opened'};
     };
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
