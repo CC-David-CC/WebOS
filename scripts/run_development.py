@@ -86,7 +86,7 @@ def compute_gateway_type(directory, monitor, chat=None, mail=None, management=No
                 try:
                     result = management.dispatch(principal, request)
                     if request.get('operation') == 'mail' and mail_control:
-                        if mail_control.try_reconcile():
+                        if mail_control.try_reconcile(force=True):
                             return management.dispatch(principal, {
                                 'resource': 'account-management', 'operation': 'inspect',
                                 'target': request['target'],

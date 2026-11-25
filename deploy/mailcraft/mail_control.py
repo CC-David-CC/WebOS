@@ -5,7 +5,6 @@ import json
 import logging
 from pathlib import Path
 import sqlite3
-from urllib.error import URLError
 
 from webos_accounts.management import migrate_mail_projection, transaction
 from access_policy import Access, DENIED_RECIPIENT, MAIL_SETTINGS, apply
@@ -136,10 +135,10 @@ class MailControl:
         """).fetchone()
         return removals is not None
 
-    def try_reconcile(self):
+    def try_reconcile(self, *, force=False):
         try:
-            self.reconcile()
-        except (KeyError, OSError, sqlite3.Error, ValueError, URLError) as error:
+            self.reconcile(force=force)
+        except (KeyError, OSError, sqlite3.Error, ValueError) as error:
             logging.getLogger(__name__).warning("Mail policy will retry (%s)", type(error).__name__)
             return False
         return True
@@ -157,7 +156,40 @@ class MailControl:
             task.cancel()
             await asyncio.gather(task, return_exceptions=True)
 
+    def retire(self, db, subject, account_id):
+        # The reset already holds the same SQLite write lock as reconciliation.
+        # Withdraw routing before destroying the account, even when retrying.
+        self.install(db, excluding=subject, force=True)
+        rows = self.registry.get("Account", properties=["id"])
+        if any(row["id"] == account_id for row in rows):
+            result = self.registry.call("Account", "set", {"destroy": [account_id]})
+            if result.get("destroyed") != [account_id]:
+                raise ValueError("Stalwart did not acknowledge mailbox destruction")
+
+    def adopt_legacy(self, db):
+        roles, _, mailboxes, _ = self.inventory(db)
+        singleton = self.read_policy()
+        if singleton["rewrite"] != {"match": {}, "else": "false"}:
+            raise ValueError("Expected the legacy pilot recipient router")
+        profile = [box for box in mailboxes if box.login != f"mail-ops@{DOMAIN}"]
+        if {box.login for box in profile} != {f"{name}@{DOMAIN}" for name in ("dflanag3", "test")}:
+            raise ValueError("Expected the two canonical pilot mailboxes")
+        relay = {"match": {}, "else": " || ".join(
+            f"authenticated_as == '{box.login}'" for box in sorted(mailboxes, key=lambda item: item.login))}
+        if singleton["allowRelaying"] != relay:
+            raise ValueError("Review existing pilot grants before adopting managed mail policy")
+        ids = [box.account_id for box in mailboxes]
+        rows = self.registry.get("Account", ids=ids, properties=["roles"])
+        expected = {"@type": "Custom", "roleIds": {roles["send"]: True}}
+        if len(rows) != len(ids) or any(row["roles"] != expected for row in rows):
+            raise ValueError("Pilot role does not match the adopted permissions")
+        db.execute("INSERT INTO am_mail_projected SELECT subject FROM am_mail_binding")
+        db.execute("INSERT INTO am_applied_mail SELECT subject,name FROM am_mail_projected CROSS JOIN am_mail_setting")
+
     def initialize(self):
         with transaction(self.database) as db:
+            existing = db.execute("SELECT 1 FROM sqlite_schema WHERE name='am_mail_projected'").fetchone()
             migrate_mail_projection(db)
-            self.install(db, force=True)
+            if not existing:
+                self.adopt_legacy(db)
+        self.reconcile(force=True)
