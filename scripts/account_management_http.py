@@ -8,11 +8,12 @@ from aiohttp import web
 from webos_accounts.management import ManagementError
 
 PATH = "/api/accounts/reset"
+PASSWORD_RULES = "Use 4–32 characters without control characters"
 FORM = """<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Reset your WebOS password</title><main><h1>Reset your WebOS password</h1>
 {feedback}
 <form method="post"><p><label>One-time code <input name="code" required maxlength="43" autocomplete="one-time-code"></label></p>
-<p id="password-rules">Use 4–32 characters without control characters.</p>
+<p id="password-rules"{rules_role}>{password_rules}.</p>
 <p><label>New password <input type="password" name="password" required aria-describedby="password-rules" autocomplete="new-password"></label></p>
 <p><label>Confirm password <input type="password" name="repeat" required autocomplete="new-password"></label></p>
 <button>Reset password</button></form></main></html>"""
@@ -24,11 +25,12 @@ HEADERS = {
 
 
 def reset_form(error=None):
-    feedback = f'<p role="alert">{escape(error)}</p>' if error else ""
+    rules_role = ' role="alert"' if error == PASSWORD_RULES else ""
+    feedback = f'<p role="alert">{escape(error)}</p>' if error and not rules_role else ""
     return web.Response(
-        text=FORM.format(feedback=feedback),
+        text=FORM.format(feedback=feedback, rules_role=rules_role, password_rules=PASSWORD_RULES),
         content_type="text/html",
-        status=400 if error else 200,
+        status=400 if error is not None else 200,
         headers=HEADERS,
     )
 
