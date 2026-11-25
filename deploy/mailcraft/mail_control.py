@@ -78,6 +78,7 @@ class MailControl:
             raise ValueError("Unexpected operations mailbox addresses")
         ops_access = Access(ops_id, ops_login, (ops_login, *aliases), MAIL_SETTINGS)
         previous, desired, claims = [ops_access], [ops_access], {}
+        identity_updates = {}
         for sub, username, aid in db.execute(
             "SELECT subject,username,account_id FROM am_mail_binding JOIN accounts USING(subject)"
         ):
@@ -88,9 +89,10 @@ class MailControl:
                 continue
             login, aliases, row = records[aid]
             public = f"{username}@{DOMAIN}"
-            if row["@type"] != "User" or ((login, aliases) not in (
-                (public, ()), (f"{native_name(sub)}@{DOMAIN}", ()),
-            )):
+            is_native = login == f"{native_name(sub)}@{DOMAIN}"
+            if row["@type"] != "User" or not (
+                (login == public and not aliases) or (is_native and aliases in ((), (public,)))
+            ):
                 raise ValueError("Stalwart mailbox binding changed")
             if sub == excluding:
                 continue
@@ -100,18 +102,31 @@ class MailControl:
             effective = grants if "mailbox" in grants else frozenset()
             before = self.applied(db, sub)
             previous.append(Access(aid, login, (public,), before or frozenset()))
-            desired.append(Access(aid, login, (public,), effective))
+            access = Access(aid, login, (public,), effective)
+            desired.append(access)
             claims[sub] = effective
-        return roles, previous, desired, claims
+            if is_native and not aliases and access.role == "send":
+                identity_updates[aid] = username, domain
+        return roles, previous, desired, claims, identity_updates
 
     def read_policy(self):
         row, = self.registry.get("MtaStageRcpt", ids=["singleton"], properties=["rewrite", "allowRelaying"])
         return {key: row[key] for key in ("rewrite", "allowRelaying")}
 
     def install(self, db, *, excluding=None, force=False):
-        roles, previous, desired, claims = self.inventory(db, excluding=excluding)
+        roles, previous, desired, claims, identity_updates = self.inventory(db, excluding=excluding)
         if not force and all(self.applied(db, sub) == grants for sub, grants in claims.items()):
             return
+        for account, (username, domain) in identity_updates.items():
+            # Historical pilot mail can be addressed to a canonical username in the
+            # old SMTP queue. Rebinding it as a directory alias needs a queue fence.
+            if username in {"dflanag3", "test"}:
+                raise ValueError("Verify the retired pilot address before enabling its sending identity")
+            alias = {"name": username, "domainId": domain, "enable": True}
+            self.registry.update("Account", {account: {"aliases": {"0": alias}}})
+            row, = self.registry.get("Account", ids=[account], properties=["aliases"])
+            if any(row["aliases"].get("0", {}).get(k) != v for k, v in alias.items()):
+                raise ValueError("Mail sending address readback failed")
         apply(self.registry, desired, roles, current=previous)
         for sub, grants in claims.items():
             db.execute("INSERT OR IGNORE INTO am_mail_projected VALUES(?)", (sub,))
@@ -293,7 +308,7 @@ class MailControl:
         return False
 
     def adopt_legacy(self, db):
-        roles, _, mailboxes, _ = self.inventory(db)
+        roles, _, mailboxes, _, _ = self.inventory(db)
         singleton = self.read_policy()
         if singleton["rewrite"] != {"match": {}, "else": "false"}:
             raise ValueError("Expected the legacy pilot recipient router")
