@@ -13,6 +13,7 @@ export function accountFileOpenChoices(path) {
 export function accountFileApp(path, sourceApp, data) {
   if(sourceApp==='files'){
     if (spiceNetlist.test(path)) return 'circuit-lab';
+    if (/[.]pico$/i.test(path)) return 'pico-simulator';
     if (/[.]prowave$/i.test(path)) return 'pro-wave';
     if (/[.](?:gp|gpx|gp[345])$/i.test(path)) return 'oxiguitar';
     if (/[.]codisheet$/i.test(path)) return 'spreadsheet';

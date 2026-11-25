@@ -64,3 +64,8 @@ test('Files opens SPICE netlists in Circuit Lab with Text Editor available',()=>
   assert.deepEqual(accountFileOpenChoices('Documents/divider.txt'),[]);
   assert.equal(accountFileApp('Documents/divider.circuit','files'),'circuitjs');
 });
+
+test('Files routes a Pico project to Pico Simulator',()=>{
+  assert.equal(accountFileApp('Documents/Blink.PICO','files'),'pico-simulator');
+  assert.equal(accountFileApp('Documents/Blink.pico.txt','files'),'text');
+});
