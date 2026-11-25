@@ -131,6 +131,13 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
       ...(kind === 'files' ? {
         openChoices,
+        openConflictMirror: !guest && host.storage.mirrorFileContext ? async () => {
+          const mirror = await host.storage.mirrorFileContext();
+          if (!valid() || !context.valid() || !mirror.valid() || mirror.owner !== context.owner) {
+            throw new DOMException('Files workspace closed.', 'AbortError');
+          }
+          return mirror.files;
+        } : undefined,
         pickMoveFolder: host.storage.pickWorkspaceFile && (async signal => {
           if (!valid() || !context.valid()) throw new DOMException('Files workspace closed.', 'AbortError');
           return host.storage.pickWorkspaceFile({foldersOnly: true, signal});
