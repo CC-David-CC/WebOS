@@ -1,5 +1,17 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
-export function accountFileApp(path, sourceApp) {
+export function accountFileApp(path, sourceApp, data) {
+  if(sourceApp==='files'){
+    if (/[.]codisheet$/i.test(path)) return 'spreadsheet';
+    if (/[.]codi-data[.]json$/i.test(path)) return 'data-explorer';
+    if (/[.]codidoc$/i.test(path)) return 'document-editor';
+    if (/[.]doc$/i.test(path) && data) {
+      const bytes = data instanceof ArrayBuffer
+        ? new Uint8Array(data,0,Math.min(data.byteLength,256))
+        : new Uint8Array(data.buffer,data.byteOffset,Math.min(data.byteLength,256));
+      const prefix = new TextDecoder().decode(bytes);
+      if (/^\s*\{\s*"format"\s*:\s*"codi-document\/1"\s*,/.test(prefix)) return 'document-editor';
+    }
+  }
   if (/[.]hdl[.]json$/i.test(path)) return 'hdl-workbench';
   if (/[.]tdraw$/i.test(path)) return 'tracedraw';
   if (/[.]scriobh$/i.test(path)) return 'scriobh';

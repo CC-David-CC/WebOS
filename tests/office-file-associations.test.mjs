@@ -22,3 +22,18 @@ test('SolidCraft accepts native and legacy account design suffixes without permi
   assert.throws(()=>craftProjectPath('Documents/Plate.sc.txt','.sc',legacy));
   assert.throws(()=>craftProjectPath('Documents/Old.solidcraft','.sc'));
 });
+
+
+test('Files opens the restored native Office formats using the legacy document marker',()=>{
+  const document=new TextEncoder().encode('{"format":"codi-document/1","document":{"type":"doc"}}');
+  assert.equal(accountFileApp('Project.CODISHEET','files'),'spreadsheet');
+  assert.equal(accountFileApp('Analysis.CODI-DATA.JSON','files'),'data-explorer');
+  assert.equal(accountFileApp('Report.codidoc','files'),'document-editor');
+  assert.equal(accountFileApp('Report.DOC','files',document),'document-editor');
+  assert.equal(accountFileApp('Report.doc','files',document.buffer),'document-editor');
+  assert.equal(accountFileApp('Legacy Word.doc','files',new Uint8Array([208,207,17,224])),'text');
+  assert.equal(accountFileApp('Report.doc','files',new TextEncoder().encode('example codi-document/1')),'text');
+  assert.equal(accountFileApp('Report.doc.txt','files',document),'text');
+  assert.equal(accountFileApp('table.csv','files'),'text');
+  assert.equal(accountFileApp('Report.doc','wordcraft',document),'wordcraft');
+});

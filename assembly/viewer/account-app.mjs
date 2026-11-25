@@ -6,6 +6,8 @@ import {wordcraftRecovery} from './wordcraft-recovery.mjs';
 import {pdfcraftRecovery} from './pdfcraft-recovery.mjs';
 import {accountFileApp} from './file-associations.mjs';
 
+const restoredOfficeApps = new Set(['document-editor','spreadsheet','data-explorer']);
+
 function gridCell(args, write) {
   return args && typeof args === 'object' && !Array.isArray(args) &&
     Object.keys(args).length === (write ? 3 : 2) &&
@@ -75,13 +77,33 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
     if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
     const activateFile = file => {
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
+      // Resolve the owning app before activating a window for one of these paths.
+      if (kind==='files' && (/[.]doc$/i.test(file.path) || restoredOfficeApps.has(accountFileApp(file.path,kind)))) return false;
       return !!host.desktop.activateAccountFile({path: file.path, owner: context.owner});
     };
     const openFile = async file => {
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
       // A second Files instance may have opened it while this read waited.
       if (activateFile(file)) return {status: 'activated'};
-      const target = accountFileApp(file.path,kind);
+      const target = accountFileApp(file.path,kind,file.data);
+      if (restoredOfficeApps.has(target)) {
+        if (!window.CODI_VIEWER_PROFILE?.apps.includes(target)) throw Error('The editor for this file is unavailable. Use Download to keep a copy.');
+        const path = '/' + file.path;
+        const mirror = await host.storage.workspaceMirrorContext();
+        const current = async () => {
+          const item = await mirror.files.stat(path).catch(() => null);
+          return item?.sha256 === file.sha256 && item.status !== 'conflict';
+        };
+        let matched = await current();
+        if (!matched && !guest && valid() && mirror.valid()) {
+          await mirror.files.sync();
+          matched = await current();
+        }
+        if (!valid() || !mirror.valid() || mirror.owner !== context.owner) throw new DOMException('Account view closed.', 'AbortError');
+        if (!matched) throw Error('The selected file changed or has a conflict. Refresh Files and select it again.');
+        host.desktop.open(target,{version:1,storage:guest ? 'temporary' : 'mirror',path,sha256:file.sha256,owner:context.owner});
+        return {status:'opened'};
+      }
       if (target === 'audio-editor') {
         if (!window.CODI_VIEWER_PROFILE?.apps.includes(target)) throw Error('Audio Editor is unavailable in this desktop. Use Download to keep a copy.');
         host.desktop.open(target, {version: 1, storage: 'mirror', path: '/' + file.path, owner: context.owner});
