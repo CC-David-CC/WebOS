@@ -69,3 +69,18 @@ test('Files routes a Pico project to Pico Simulator',()=>{
   assert.equal(accountFileApp('Documents/Blink.PICO','files'),'pico-simulator');
   assert.equal(accountFileApp('Documents/Blink.pico.txt','files'),'text');
 });
+
+test('Files routes ESP32 and RISC-V lab projects without changing generic Python or JSON',()=>{
+  assert.equal(accountFileApp('Documents/Blink.ESP32LAB.JSON','files'),'esp32sim');
+  assert.equal(accountFileApp('Documents/Boot.riscvlab.json','files'),'riscv-rust');
+  assert.equal(accountFileApp('Documents/Blink.py','files'),'text');
+  assert.equal(accountFileApp('Documents/Boot.json','files'),'text');
+});
+test('Virtual FPGA Board is an alternate opener for supported source and pin files',()=>{
+  for(const extension of ['v','cst','PCF']){
+    const path='Documents/Board.'+extension;
+    assert.equal(accountFileApp(path,'files'),'text');
+    assert.deepEqual(accountFileOpenChoices(path).map(choice=>choice.id),['text','softfpga']);
+  }
+  assert.deepEqual(accountFileOpenChoices('Documents/Board.v.txt'),[]);
+});
