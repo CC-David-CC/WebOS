@@ -69,7 +69,7 @@ class MailControl:
                 raise ValueError("Mail denial address already exists")
             records[row["id"]] = name, aliases, row
         ops_login = f"mail-ops@{DOMAIN}"
-        [(ops_id, (name, aliases, ops))] = [
+        [(ops_id, (_, aliases, ops))] = [
             (aid, record) for aid, record in records.items() if record[0] == ops_login
         ]
         if ops["@type"] != "User" or set(aliases) != {
@@ -81,7 +81,10 @@ class MailControl:
         for sub, username, aid in db.execute(
             "SELECT subject,username,account_id FROM am_mail_binding JOIN accounts USING(subject)"
         ):
-            if sub == excluding and aid not in records:
+            retiring = db.execute("SELECT 1 FROM am_retiring WHERE subject=?", (sub,)).fetchone()
+            # Mail destruction can succeed before Files cleanup. A retry must
+            # tolerate the missing retired mailbox while preserving its journal.
+            if (sub == excluding or retiring) and aid not in records:
                 continue
             login, aliases, row = records[aid]
             public = f"{username}@{DOMAIN}"
@@ -92,7 +95,7 @@ class MailControl:
             if sub == excluding:
                 continue
             grants = self.requested(db, sub)
-            if db.execute("SELECT 1 FROM am_retiring WHERE subject=?", (sub,)).fetchone():
+            if retiring:
                 grants = frozenset()
             effective = grants if "mailbox" in grants else frozenset()
             before = self.applied(db, sub)
