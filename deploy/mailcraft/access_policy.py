@@ -111,16 +111,15 @@ def apply(registry, mailboxes, roles, *, current):
         registry.create("Action", {"@type": "ReloadSettings"})
 
     activate(recipient_policy(restrictive))
-    role_updates = {
-        aid: {"roles": {"@type": "Custom", "roleIds": {roles[box.role]: True}}}
-        for aid, box in after.items() if aid not in before or before[aid].role != box.role
-    }
-    if role_updates:
-        registry.update("Account", role_updates)
-    rows = registry.get("Account", ids=list(after), properties=["roles"])
-    if {row["id"]: row["roles"] for row in rows} != {
-        aid: {"@type": "Custom", "roleIds": {roles[box.role]: True}}
-        for aid, box in after.items()
-    }:
+    actual_roles = {row["id"]: row["roles"] for row in
+                    registry.get("Account", ids=list(after), properties=["roles"])}
+    desired_roles = {aid: {"@type": "Custom", "roleIds": {roles[box.role]: True}}
+                     for aid, box in after.items()}
+    registry.update("Account", {aid: {"roles": wanted}
+                                for aid, wanted in desired_roles.items()
+                                if actual_roles.get(aid) != wanted})
+    roles_after = {row["id"]: row["roles"] for row in
+                   registry.get("Account", ids=list(after), properties=["roles"])}
+    if roles_after != desired_roles:
         raise ValueError("Mailbox role readback failed")
     activate(recipient_policy(mailboxes))

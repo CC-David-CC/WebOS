@@ -51,7 +51,7 @@ def monitor_for(origin, accounts):
     return PATH, monitor
 
 
-def compute_gateway_type(directory, monitor, chat=None, mail=None, management=None):
+def compute_gateway_type(directory, monitor, chat=None, mail=None, management=None, mail_control=None):
     render_enabled = bool(os.environ.get('WEBOS_IMAGE_RENDER_COMMAND'))
     monitor_enabled = os.environ.get('WEBOS_GPU_MONITOR') == '1'
     if not (monitor_enabled or render_enabled or monitor or chat or mail or management):
@@ -84,7 +84,14 @@ def compute_gateway_type(directory, monitor, chat=None, mail=None, management=No
             if resource == 'account-management' and management is not None:
                 from webos_accounts.management import ManagementError
                 try:
-                    return management.dispatch(principal, request)
+                    result = management.dispatch(principal, request)
+                    if request.get('operation') == 'mail' and mail_control:
+                        if mail_control.try_reconcile():
+                            return management.dispatch(principal, {
+                                'resource': 'account-management', 'operation': 'inspect',
+                                'target': request['target'],
+                            })
+                    return result
                 except ManagementError as exc:
                     raise web.HTTPForbidden(text=str(exc)) from None
             if resource == 'mailcraft' and mail is not None:
@@ -224,6 +231,12 @@ async def create_application(public_root, private_root, origin, *, account_trans
             from webos_chat_backend.live import LiveChat, PATH as chat_stream
             chat = LiveChat(ChatStore(private_root / 'chat-state', accounts.db), origin)
         mail = None
+        mail_control = None
+        if os.environ.get('WEBOS_MAILCRAFT_MANAGED_POLICY') == '1':
+            from mail_control import MailControl
+            credential = Path(os.environ['CREDENTIALS_DIRECTORY']) / 'mail-lifecycle-operator'
+            mail_control = MailControl(accounts.db, credential)
+            await asyncio.to_thread(mail_control.initialize)
         if os.environ.get('WEBOS_MAILCRAFT_SSO') == '1':
             from mailcraft_sso import MailGateway
             from remote_desktop_backend.sessions import active_session
@@ -232,8 +245,8 @@ async def create_application(public_root, private_root, origin, *, account_trans
         management = None
         if os.environ.get('WEBOS_ACCOUNT_MANAGEMENT') == '1':
             from webos_accounts.management import AccountManagement
-            management = AccountManagement(accounts, chat.store if chat else None)
-        gateway_type = compute_gateway_type(private_root, monitor, chat, mail, management)
+            management = AccountManagement(accounts, chat.store if chat else None, mail_control)
+        gateway_type = compute_gateway_type(private_root, monitor, chat, mail, management, mail_control)
         gateway = gateway_type(store, accounts.config()['identity'], quotas=quotas, max_requests_per_minute=4096)
         app = web.Application(client_max_size=192 * 1024 * 1024)
         install_weather(app)
@@ -284,6 +297,8 @@ async def create_application(public_root, private_root, origin, *, account_trans
             app.router.add_get('/guest-network', network.relay)
         if mail is not None:
             mail.register(app)
+        if mail_control is not None:
+            app.cleanup_ctx.append(mail_control.retry_pending)
         if management:
             from account_management_http import install as install_account_management
             install_account_management(app, management, origin)

@@ -116,6 +116,9 @@ def main():
     for name in ("policy", "subject_mailboxes"):
         path = "deploy/mailcraft/" + name + ".py"
         (out / "packages" / ("mailcraft_policy.py" if name == "policy" else name + ".py")).write_bytes(git(".", "show", "HEAD:" + path))
+    for module in ('access_policy', 'mail_control'):
+        data = git('.', 'show', f'HEAD:deploy/mailcraft/{module}.py')
+        (out / 'packages' / f'{module}.py').write_bytes(data)
     mail_gateway = git('.', 'show', 'HEAD:deploy/mailcraft/sso_gateway.py')
     (out / 'mailcraft_sso.py').write_bytes(mail_gateway)
     for name in git('.', 'ls-tree', '-r', '--name-only', 'HEAD', '--', 'scripts/webos_weather', 'scripts/webos_compute').decode().splitlines():
