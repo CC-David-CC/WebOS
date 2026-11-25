@@ -10,6 +10,10 @@ test('Files routes supported account formats and preserves Text/WordCraft defaul
   assert.equal(accountFileApp('Documents/name.xlsx.txt','files'),'text');
   assert.equal(accountFileApp('Documents/Take.PROWAVE','files'),'pro-wave');
   assert.equal(accountFileApp('Documents/Take.prowave.txt','files'),'text');
+  for (const extension of ['GP','GPX','GP5','GP4','GP3']) {
+    assert.equal(accountFileApp('Documents/Score.'+extension,'files'),'oxiguitar');
+  }
+  assert.equal(accountFileApp('Documents/Score.gp.txt','files'),'text');
 });
 test('native Open remains in its owning app',()=>{
   for(const app of ['wordcraft','pdfcraft','gridcraft','deckcraft','photocraft','vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'])assert.equal(accountFileApp('Documents/other.txt',app),app);

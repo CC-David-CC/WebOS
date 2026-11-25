@@ -11,6 +11,7 @@ export function accountFileOpenChoices(path) {
 export function accountFileApp(path, sourceApp, data) {
   if(sourceApp==='files'){
     if (/[.]prowave$/i.test(path)) return 'pro-wave';
+    if (/[.](?:gp|gpx|gp[345])$/i.test(path)) return 'oxiguitar';
     if (/[.]codisheet$/i.test(path)) return 'spreadsheet';
     if (/[.]codi-data[.]json$/i.test(path)) return 'data-explorer';
     if (/[.]codidoc$/i.test(path)) return 'document-editor';

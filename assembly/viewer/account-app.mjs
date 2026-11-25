@@ -7,6 +7,7 @@ import {pdfcraftRecovery} from './pdfcraft-recovery.mjs';
 import {accountFileApp,accountFileOpenChoices} from './file-associations.mjs';
 
 const restoredOfficeApps = new Set(['document-editor','spreadsheet','data-explorer']);
+const nativeAudioAccountApps = new Set(['pro-wave','oxiguitar']);
 
 function gridCell(args, write) {
   return args && typeof args === 'object' && !Array.isArray(args) &&
@@ -80,7 +81,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       // Resolve the owning app before activating a window for one of these paths.
       if (kind==='files') {
         const target = accountFileApp(file.path, kind);
-        if (/[.]doc$/i.test(file.path) || target==='pro-wave' || restoredOfficeApps.has(target)) return false;
+        if (/[.]doc$/i.test(file.path) || nativeAudioAccountApps.has(target) || restoredOfficeApps.has(target)) return false;
       }
       return !!host.desktop.activateAccountFile({path: file.path, owner: context.owner});
     };
@@ -124,7 +125,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       }
       const app = ['calculator','jsketcher','notebook'].includes(target) ? 'text' : target;
       host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner},
-        {matchAppOnly: file.openWith!==undefined || target==='pro-wave'});
+        {matchAppOnly: file.openWith!==undefined || nativeAudioAccountApps.has(target)});
       return {status: 'opened'};
     };
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
