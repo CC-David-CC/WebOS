@@ -144,6 +144,7 @@ def finish_retirement(db, homes, subject, username, retire_mailbox, mail_control
         return 0, 0, 0
     if row[0] != username:
         raise ValueError("Retiring subject identity changed")
+    mailbox_removed = 0
     if row[1] is not None:
         if mail_control:
             mail_control.retire(db, subject, row[1])
@@ -152,13 +153,18 @@ def finish_retirement(db, homes, subject, username, retire_mailbox, mail_control
         else:
             raise ValueError("Managed mailbox cleanup service is required")
         db.execute("DELETE FROM am_mail_binding WHERE subject=?", (subject,))
+        mailbox_removed = 1
+    elif mail_control and db.execute(
+        "SELECT 1 FROM sqlite_schema WHERE name='am_mail_creating'"
+    ).fetchone() and db.execute("SELECT 1 FROM am_mail_creating WHERE subject=?", (subject,)).fetchone():
+        mailbox_removed = int(mail_control.retire(db, subject, None))
     removed = homes.retire_and_remove(subject)
     db.execute("DELETE FROM account_policy WHERE subject=?", (subject,))
     deleted = db.execute("DELETE FROM accounts WHERE subject=?", (subject,)).rowcount
     if db.execute("PRAGMA foreign_key_check").fetchone():
         raise ValueError("Account integrity verification failed")
     db.commit()
-    return removed, int(row[1] is not None), deleted
+    return removed, mailbox_removed, deleted
 
 
 def run(database, operation, *, cleanup_files=False, retire_mailbox=None, mail_control=None):
@@ -194,6 +200,8 @@ def run(database, operation, *, cleanup_files=False, retire_mailbox=None, mail_c
         if managed:
             from webos_accounts.management import MAIL_PROJECTION_TABLES, TABLES as MANAGEMENT_TABLES
             allowed = TABLES | MANAGEMENT_TABLES
+            if "am_mail_creating" in table_names:
+                allowed.add("am_mail_creating")
             if table_names & MAIL_PROJECTION_TABLES:
                 allowed |= MAIL_PROJECTION_TABLES
                 if operation == "reset" and mail_control is None:

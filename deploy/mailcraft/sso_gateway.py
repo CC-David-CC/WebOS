@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 from hashlib import sha256
 import json
 from pathlib import Path
+import sqlite3
 import re
 import secrets
 import threading
@@ -27,6 +28,7 @@ TTL = 90
 class Binding:
     address: str
     password: str = field(repr=False)
+    login: str | None = None
 
 
 @dataclass(frozen=True)
@@ -53,10 +55,11 @@ def load_bindings(path):
 
 
 class MailGateway:
-    def __init__(self, origin, binding_file, live, upstream="http://127.0.0.1:28881"):
+    def __init__(self, origin, binding_file, live, upstream="http://127.0.0.1:28881", *, control=None):
         self.origin = origin
         self.host = urlsplit(origin).netloc
         self.bindings = load_bindings(binding_file)
+        self.control = control
         self.upstream = upstream
         self.live = live
         self.tickets = {}
@@ -67,9 +70,18 @@ class MailGateway:
         if request != {"resource": "mailcraft", "operation": "ticket"}:
             raise Denied("Unknown MailCraft operation.")
         now = time.time()
-        binding = self.bindings.get(principal.sub)
-        if (principal.kind != "registered" or not binding or principal.deadline <= now
+        if (principal.kind != "registered" or principal.deadline <= now
                 or not self.live(principal.sub, principal.sid)):
+            raise Denied("This account has no approved mailbox.")
+        if self.control:
+            try:
+                ready = self.control.authorized_mailbox(principal.sub, create=True)
+            except (KeyError, OSError, sqlite3.Error, ValueError):
+                raise Denied("MailCraft is preparing your mailbox. Try again shortly.") from None
+            if not ready:
+                raise Denied("This account has no approved mailbox.")
+        binding = self.find_binding(principal.sub)
+        if not binding:
             raise Denied("This account has no approved mailbox.")
         token = secrets.token_urlsafe(32)
         with self.lock:
@@ -81,6 +93,12 @@ class MailGateway:
             )
         return {"address": binding.address, "session": self.origin + PREFIX + "/session", "ticket": token}
 
+    def find_binding(self, subject):
+        if subject in self.bindings:
+            return self.bindings[subject]
+        if self.control and self.control.provision_key is not None:
+            return Binding(*self.control.binding_details(subject))
+
     def binding(self, authorization):
         match = TICKET.fullmatch(authorization)
         if not match:
@@ -89,7 +107,12 @@ class MailGateway:
             ticket = self.tickets.get(sha256(match[1].encode()).digest())
         if ticket is None or ticket.expires <= time.time() or not self.live(ticket.subject, ticket.sid):
             raise web.HTTPUnauthorized()
-        return self.bindings[ticket.subject]
+        if self.control and not self.control.authorized_mailbox(ticket.subject):
+            raise web.HTTPUnauthorized()
+        binding = self.find_binding(ticket.subject)
+        if binding is None:
+            raise web.HTTPUnauthorized()
+        return binding
 
     async def start(self, _app):
         self.http = ClientSession(timeout=ClientTimeout(total=45, connect=5), auto_decompress=False)
@@ -139,7 +162,7 @@ class MailGateway:
                for part in unquote(tail).split("/")):
             raise web.HTTPBadRequest()
         headers = {"Authorization": "Basic " + base64.b64encode(
-            f"{binding.address}:{binding.password}".encode()
+            f"{binding.login or binding.address}:{binding.password}".encode()
         ).decode()}
         body = None
         if request.method == "POST":

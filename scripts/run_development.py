@@ -235,13 +235,16 @@ async def create_application(public_root, private_root, origin, *, account_trans
         if os.environ.get('WEBOS_MAILCRAFT_MANAGED_POLICY') == '1':
             from mail_control import MailControl
             credential = Path(os.environ['CREDENTIALS_DIRECTORY']) / 'mail-lifecycle-operator'
-            mail_control = MailControl(accounts.db, credential)
+            auto = os.environ.get('WEBOS_MAILCRAFT_AUTO_PROVISION') == '1'
+            provision_key = credential.with_name('mail-provision-key') if auto else None
+            mail_control = MailControl(accounts.db, credential, provision_key)
             await asyncio.to_thread(mail_control.initialize)
         if os.environ.get('WEBOS_MAILCRAFT_SSO') == '1':
             from mailcraft_sso import MailGateway
             from remote_desktop_backend.sessions import active_session
             binding_file = Path(os.environ['CREDENTIALS_DIRECTORY']) / 'mailcraft-bindings'
-            mail = MailGateway(origin, binding_file, lambda subject, sid: active_session(accounts, subject, sid))
+            mail = MailGateway(origin, binding_file, lambda subject, sid: active_session(accounts, subject, sid),
+                               control=mail_control)
         management = None
         if os.environ.get('WEBOS_ACCOUNT_MANAGEMENT') == '1':
             from webos_accounts.management import AccountManagement
