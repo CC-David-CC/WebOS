@@ -1,4 +1,13 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
+/** Alternatives exposed by Files. The first choice is the default opener. */
+export function accountFileOpenChoices(path) {
+  if (/[.]pdf$/i.test(path)) return [{id:'pdfcraft',label:'PdfCraft'},{id:'pdf-viewer',label:'PDF Viewer (PDF.js)'}];
+  if (/[.]csv$/i.test(path)) return [
+    {id:'text',label:'Text Editor'},{id:'spreadsheet',label:'Spreadsheet'},{id:'data-explorer',label:'Data Explorer'}
+  ];
+  return [];
+}
+
 export function accountFileApp(path, sourceApp, data) {
   if(sourceApp==='files'){
     if (/[.]codisheet$/i.test(path)) return 'spreadsheet';

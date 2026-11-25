@@ -4,7 +4,7 @@
 import {textRecovery} from './text-recovery.mjs';
 import {wordcraftRecovery} from './wordcraft-recovery.mjs';
 import {pdfcraftRecovery} from './pdfcraft-recovery.mjs';
-import {accountFileApp} from './file-associations.mjs';
+import {accountFileApp,accountFileOpenChoices} from './file-associations.mjs';
 
 const restoredOfficeApps = new Set(['document-editor','spreadsheet','data-explorer']);
 
@@ -81,12 +81,17 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       if (kind==='files' && (/[.]doc$/i.test(file.path) || restoredOfficeApps.has(accountFileApp(file.path,kind)))) return false;
       return !!host.desktop.activateAccountFile({path: file.path, owner: context.owner});
     };
+    const openChoices = path => accountFileOpenChoices(path)
+      .filter(app=>window.CODI_VIEWER_PROFILE?.apps.includes(app.id));
     const openFile = async file => {
       if (!valid()) throw new DOMException('Account view closed.', 'AbortError');
       // A second Files instance may have opened it while this read waited.
-      if (activateFile(file)) return {status: 'activated'};
-      const target = accountFileApp(file.path,kind,file.data);
-      if (restoredOfficeApps.has(target)) {
+      if (file.openWith===undefined && activateFile(file)) return {status: 'activated'};
+      if (file.openWith!==undefined && (kind!=='files' || !openChoices(file.path).some(app=>app.id===file.openWith))) {
+        throw Error('That app is unavailable for this file.');
+      }
+      const target = file.openWith ?? accountFileApp(file.path,kind,file.data);
+      if (restoredOfficeApps.has(target) || target==='pdf-viewer') {
         if (!window.CODI_VIEWER_PROFILE?.apps.includes(target)) throw Error('The editor for this file is unavailable. Use Download to keep a copy.');
         const path = '/' + file.path;
         const mirror = await host.storage.workspaceMirrorContext();
@@ -115,10 +120,12 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
         return {status: 'opened'};
       }
       const app = ['calculator','jsketcher','notebook'].includes(target) ? 'text' : target;
-      host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner});
+      host.desktop.openAccountFile(app, {path: file.path, sha256: file.sha256, owner: context.owner},
+        {matchAppOnly: file.openWith!==undefined});
       return {status: 'opened'};
     };
     view = mount({instanceId, sessionId, resource, files: context.files, authority, authorize,
+      ...(kind === 'files' ? {openChoices} : {}),
       ...(kind === 'files' && host.refreshPanelPins ? {onRefresh() {
         if (valid() && context.valid()) return host.refreshPanelPins();
       }} : {}),

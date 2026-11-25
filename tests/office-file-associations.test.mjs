@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {craftProjectPath} from '../assembly/viewer/craft-account-storage.mjs';
-import {accountFileApp} from '../assembly/viewer/file-associations.mjs';
+import {accountFileApp,accountFileOpenChoices} from '../assembly/viewer/file-associations.mjs';
 
 test('Files routes supported account formats and preserves Text/WordCraft defaults',()=>{
   for(const [app,extensions] of Object.entries({text:['txt','py'],wordcraft:['docx','dotx','odt','rtf'],pdfcraft:['pdf'],gridcraft:['xlsx'],deckcraft:['pptx','potx','ppsx','deckcraft'],photocraft:['pcraft'],vectorcraft:['vectorcraft'],figcraft:['figcraft'],anicraft:['anicraft'],lightcraft:['lightcraft'],designcraft:['designcraft'],soundcraft:['scraftz'],filmcraft:['fcproj'],effectcraft:['ecproj'],cadcraft:['dxf'],texturecraft:['tcraft'],materialcraft:['mcraft'],sketchcraft:['sketchcraft'],solidcraft:['sc','solidcraft','solvecraft'],pcbcraft:['pc'],fieldcraft:['fieldcraft']})) {
@@ -36,4 +36,14 @@ test('Files opens the restored native Office formats using the legacy document m
   assert.equal(accountFileApp('Report.doc.txt','files',document),'text');
   assert.equal(accountFileApp('table.csv','files'),'text');
   assert.equal(accountFileApp('Report.doc','wordcraft',document),'wordcraft');
+});
+
+
+test('Open With menus retain the PDF and CSV defaults and offer their alternate viewers',()=>{
+  for (const path of ['Documents/book.PDF','Documents/grid.CSV']) {
+    assert.equal(accountFileOpenChoices(path)[0].id,accountFileApp(path,'files'));
+  }
+  assert.deepEqual(accountFileOpenChoices('book.pdf').map(app=>app.id),['pdfcraft','pdf-viewer']);
+  assert.deepEqual(accountFileOpenChoices('table.csv').map(app=>app.id),['text','spreadsheet','data-explorer']);
+  assert.deepEqual(accountFileOpenChoices('book.pdf.txt'),[]);
 });
