@@ -23,12 +23,17 @@ class Access:
     login: str
     addresses: tuple[str, ...]
     grants: frozenset[str]
+    delivery: str | None = None
 
     def __post_init__(self):
         if (not self.addresses or self.grants - MAIL_SETTINGS
                 or not all(LOCAL_ADDRESS.fullmatch(a) and a not in (DENIED_RECIPIENT, OPERATOR_LOGIN)
-                           for a in (self.login, *self.addresses))):
+                           for a in (self.login, self.destination, *self.addresses))):
             raise ValueError("Invalid installed mailbox access")
+
+    @property
+    def destination(self):
+        return self.delivery or self.login
 
     def allows(self, setting):
         return "mailbox" in self.grants and setting in self.grants
@@ -60,8 +65,12 @@ def recipient_policy(mailboxes):
     if len(set(logins)) != len(logins) or len(set(addresses)) != len(addresses):
         raise ValueError("Duplicate mailbox policy binding")
     # Do not let another user's alias point at a canonical account login.
-    owner_by_login = {box.login: box.account_id for box in mailboxes}
-    if any(owner_by_login.get(a, box.account_id) != box.account_id
+    owners = {}
+    for box in mailboxes:
+        for address in (box.login, box.destination):
+            if owners.setdefault(address, box.account_id) != box.account_id:
+                raise ValueError("Duplicate mailbox delivery address")
+    if any(owners.get(a, box.account_id) != box.account_id
            for box in mailboxes for a in box.addresses):
         raise ValueError("Mailbox address is already assigned")
 
@@ -80,7 +89,7 @@ def recipient_policy(mailboxes):
             rule = f"rcpt == '{address}'"
             if not box.allows("receive_external"):
                 rule += f" && {authenticated}"
-            local_rewrites.append((rule, f"'{box.login}'"))
+            local_rewrites.append((rule, f"'{box.destination}'"))
     # Refuse unconfigured local addresses, disabled inboxes, and raw internal login names.
     local_rewrites.append((local, deny))
     external_senders = [
@@ -97,7 +106,8 @@ def apply(registry, mailboxes, roles, *, current):
     after = {box.account_id: box for box in mailboxes}
     restrictive = [
         Access(box.account_id, box.login, box.addresses,
-               before[box.account_id].grants & box.grants if box.account_id in before else frozenset())
+               before[box.account_id].grants & box.grants if box.account_id in before else frozenset(),
+               box.delivery)
         for box in mailboxes
     ]
     stage = "MtaStageRcpt"
