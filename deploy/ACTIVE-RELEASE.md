@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## CAD Modeler phone menus and editable project files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `ec3deccd50677eda9ff2ab8e2b7181061c3ad6d68b42634e91ea87daf1ace736` | `1403ba2cbc64cb477b4e6c48bf06cad0e0e34a53` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+The CAD Modeler launcher uses ACAD editor `71ee2f30d6e13496b90e9e2affda413ca381b0fb` and the source-built OpenCascade worker. On the Galaxy S10+, the menu wraps, status text follows the dark palette, and a bare Save As name takes the current project format. The hosted guest reopened a native project from My Files, edited the rectangle, and saved again. Hosted desktop Chromium created and reopened a six-faced 20 mm extrusion. In the isolated install, the Galaxy S10+, Moto G 5G, emulated touch tablet and desktop also passed the native file cycle. Desktop verified signed-in server reopen for both `.cad` and `.jsketcher.json`. [Phone workflow and screenshots](https://github.com/CC-David-CC/acad/blob/0c8d2aaee47ba262f150aa3d6901f6d5630373b3/docs/webos-qa/PHONE.md)
+
+All 153 overlay paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-cad-modeler-phone-ec3deccd5067/deploy-viewer.py rollback` restores viewer `118de96a1ce34be8046cec094e74570868e95f8ddd0e33ef828c2e24e2377627`.
+
 ## G-code Preview dark theme and My files opening
 
 | Deployment | Release digest | Source assembly |
