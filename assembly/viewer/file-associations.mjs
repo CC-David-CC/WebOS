@@ -55,6 +55,7 @@ export function accountFileOpenChoices(path) {
   if (/[.]pdf$/i.test(path)) return [{id:'pdfcraft',label:'PdfCraft'},{id:'pdf-viewer',label:'PDF Viewer (PDF.js)'}];
   if (spiceNetlist.test(path)) return [{id:'circuit-lab',label:'Circuit Lab'},{id:'text',label:'Text Editor'}];
   if (gcodeToolpath.test(path)) return [{id:'gcode-preview',label:'G-code Preview'},{id:'text',label:'Text Editor'}];
+  if (/[.]dxf$/i.test(path)) return [{id:'cadcraft',label:'CADCraft'},{id:'opencadstudio',label:'OpenCADStudio'}];
   if (isFpgaSource(path)) return [{id:'text',label:'Text Editor'},{id:'softfpga',label:'Virtual FPGA Board'}];
   if (isMcraftPackage(path)) return [{id:'materialcraft',label:'MaterialCraft'},{id:'metriccraft',label:'MetricCraft'}];
   if (/[.]csv$/i.test(path)) return [
@@ -133,6 +134,7 @@ export function accountFileApp(path, sourceApp, data) {
   if (/[.]scraftz$/i.test(path)) return 'soundcraft';
   if (/[.]fcproj$/i.test(path)) return 'filmcraft';
   if (/[.]ecproj$/i.test(path)) return 'effectcraft';
+  if (/[.]dwg$/i.test(path)) return 'opencadstudio';
   if (/[.]dxf$/i.test(path)) return 'cadcraft';
   if (/[.]tcraft$/i.test(path)) return 'texturecraft';
   if (/[.]mcraft$/i.test(path)) return 'materialcraft';

@@ -7,7 +7,7 @@ import {pdfcraftRecovery} from './pdfcraft-recovery.mjs';
 import {accountFileApp,accountFileOpenChoices,isFpgaSource,isMcraftPackage,isTextCraftSource} from './file-associations.mjs';
 
 const restoredOfficeApps = new Set(['document-editor','spreadsheet','data-explorer']);
-const appSpecificFileOpeners = new Set(['pro-wave','oxiguitar','circuit-lab','pico-simulator','esp32sim','riscv-rust','projectcraft','metriccraft','gcode-preview']);
+const appSpecificFileOpeners = new Set(['pro-wave','oxiguitar','circuit-lab','pico-simulator','esp32sim','riscv-rust','projectcraft','metriccraft','gcode-preview','opencadstudio']);
 
 function gridCell(args, write) {
   return args && typeof args === 'object' && !Array.isArray(args) &&

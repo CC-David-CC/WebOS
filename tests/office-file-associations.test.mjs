@@ -18,6 +18,12 @@ test('Files routes supported account formats and preserves Text/WordCraft defaul
 test('native Open remains in its owning app',()=>{
   for(const app of ['wordcraft','pdfcraft','gridcraft','deckcraft','photocraft','vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'])assert.equal(accountFileApp('Documents/other.txt',app),app);
 });
+test('Files opens DWG drawings in OpenCADStudio and offers both DXF editors',()=>{
+  assert.equal(accountFileApp('Documents/Plan.DWG','files'),'opencadstudio');
+  assert.equal(accountFileApp('Documents/Plan.DXF','files'),'cadcraft');
+  assert.deepEqual(accountFileOpenChoices('Documents/Plan.DXF').map(app=>app.id),['cadcraft','opencadstudio']);
+  assert.equal(accountFileApp('Documents/Plan.dwg.txt','files'),'text');
+});
 test('SolidCraft accepts native and legacy account design suffixes without permitting traversal', () => {
   const legacy=['.solidcraft','.solvecraft'];
   for (const name of ['Plate.sc','Original.SOLIDCRAFT','Old.solvecraft']) {
