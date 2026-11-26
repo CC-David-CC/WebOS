@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Electronics Design touch and named project saves
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `c30ba950829b52fc2caf07349857e24f27abdcc7c83380f7cb2a29475338beff` | `b21c394e86758479b020dee6ef03102edca07ff2` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Electronics Design runtime `1240d817db549235df279814ba81b5fac94af058` fits the editor controls and status in compact windows. The Galaxy S10+ portrait, Moto G landscape, and desktop Chromium passed the hosted guest autoroute, named DEZ save and Files reopen. The saved project retained seven parts and ten wires. Fresh isolated signed-in sessions reopened matching server-backed files on both phones and desktop. Sync took about 1.5 to 82 seconds after the local save and now has its own status. Desktop passed eight of ten workflows, including a two-state Arduino LED simulation, the design-rule check, three-view fallback, and protecting the opened original while saving and updating a copy. Touch emulation verified the Arduino lesson at 1024 × 768. The Moto canvas remains short, and the lesson can require scrolling when a warning is displayed.
+
+All 24 changed paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-electronics-design-phone-c30ba950829b/deploy-viewer.py rollback` restores viewer `51ee63af95a5`. [Phone screenshots](https://github.com/CC-David-CC/electronics-design/blob/7d141dc3ae2348f1fdf05306f820765a8ec56ede/docs/webos-qa/PHONE.md)
+
 ## DRAKON Python touch and Files
 
 | Deployment | Release digest | Source assembly |
