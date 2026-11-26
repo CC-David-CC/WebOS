@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## RustIRC phone simulator and dark transcript
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `2af400c3519e6cbecafa5ed6bd22586d27825dbb946eb1b214a05756fa52eaa7` | `0d56b76ba162c3da96e8fb33fff93b2d7862cce4` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+RustIRC runtime `a192061447538e0bd525d0eee3713dab32673a39` follows the desktop color scheme, gives phone controls 44 CSS pixels and describes the expected server response as a simulated reply. Its dark transcript measured 14.59:1 contrast. The S10+ and Chromium at 820 and 1300 CSS pixels connected, recovered from invalid names, exchanged exact messages in two simulated channels, disconnected, reconnected and minimized. The loopback browser test passed registration, PING/PONG, JOIN, message transport and cleanup. The current launcher hosts the browser simulation.
+
+All eight changed assets matched over HTTPS. The hosted S10+ replay kept Send above the keyboard and confirmed the simulator's reply status. The viewer cutover preserved the backend process and issuer. On box-webhost, run `sudo python3 -I -B /var/backups/webos-rustirc-phone-simulation-2af400c3519e/deploy-viewer.py rollback` to restore the Chat viewer `fb0e264a3489`. [Hosted S10+ screenshots at source revision `6bd17f67febf`](https://github.com/CC-David-CC/RustIRC/blob/webos/phone-irc-simulation/docs/webos-qa/PHONE.md)
+
 ## WebOS Chat phone conversations and dark controls
 
 | Deployment | Release digest | Source assembly |

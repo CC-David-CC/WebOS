@@ -39,7 +39,7 @@ Priority P0 covers platform foundations, P1 essential desktop workflows, P2 prod
 
 | Priority | Source at selected commit | Interface or dependency | Entry or build input | Release status |
 | --- | --- | --- | --- | --- |
-| P2 | [apps/rustirc](https://github.com/CC-David-CC/RustIRC/tree/d71e9c791bc85b4759999af660f634cf7516f79a) | Simulated IRC conversations in the browser. | `WEBOS.md` | Live browser simulation |
+| P2 | [apps/rustirc](https://github.com/CC-David-CC/RustIRC/tree/a192061447538e0bd525d0eee3713dab32673a39) | Simulated IRC conversations in the browser. | `webos-demo.mjs` | Live browser simulation. [Galaxy S10+ workflow](https://github.com/CC-David-CC/RustIRC/blob/webos/phone-irc-simulation/docs/webos-qa/PHONE.md). |
 
 ## Craft shared source, assets and build tools
 
