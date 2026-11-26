@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Terminal phone shell and Linux files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `0d6e25894d6c740ba41ef51035d930fa8c0587f75d2d2cca28fd86f67b69214e` | `604364f660052dd3543e17bffeb4d3a49f6e60a2` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Terminal runtime `d8c2271dbbc5658c3ddcdc79a3b148271bfacf63` labels the guest Linux home as temporary and identifies the account workspace for signed-in users. The dark guide opens Files. The S10+ booted the real v86 Linux image, ran commands, wrote and reopened a signed-in Linux home file in Text Editor from a fresh browser, and scrolled with touch. Its 44 CSS-pixel Enter control remained above the keyboard. Chromium at 820 and 1300 tested the shell. Desktop also passed independent PTYs, `stty size` after resize, nano, interrupt and clear, exact guest Downloads and temporary home reset on reload. Phone passed five of twelve documented workflows and desktop passed ten of twelve. Clipboard and dictation remain open.
+
+All 12 changed paths matched over HTTPS. The hosted S10+ verified the guest storage guide and a RAM file write and read. On box-webhost, run `sudo python3 -I -B /var/backups/webos-terminal-phone-files-0d6e25894d6c/deploy-viewer.py rollback` to restore Digital Logic viewer `651878ead137`. [S10+ screenshots at source revision `ab5dfe145b68`](https://github.com/CC-David-CC/terminal/blob/webos/phone-terminal-files/docs/webos-qa/PHONE.md)
+
 ## Digital Logic phone truth table and Files
 
 | Deployment | Release digest | Source assembly |

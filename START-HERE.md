@@ -1,4 +1,4 @@
-**Current ksu.codes release, November 26, 2026.** Viewer `651878ead137` and backend `ad91cba3b6b4` are live. Digital Logic passed the half-adder, editable My files and CSV export on the Galaxy S10+. GPU charging and scheduled renewals are paused. Alpha onboarding remains on hold. [Active release and source pins](deploy/ACTIVE-RELEASE.md)
+**Current ksu.codes release, November 26, 2026.** Viewer `0d6e25894d6c` and backend `ad91cba3b6b4` are live. Terminal passed Linux commands, touch scrolling and signed-in My files on the Galaxy S10+. GPU charging and scheduled renewals are paused. Alpha onboarding remains on hold. [Active release and source pins](deploy/ACTIVE-RELEASE.md)
 
 The November 24, 2026 source catalog contains 143 app repositories and eight platform services. The current ksu.codes release manifest lists 138 launchers. The catalog identifies service owners and distinguishes live applications from planned interfaces. [App and server catalog](apps/README.md) · [Component and launcher matrix](apps/CATALOG.md) · [Live release manifest](https://ksu.codes/viewer-release.json)
 
