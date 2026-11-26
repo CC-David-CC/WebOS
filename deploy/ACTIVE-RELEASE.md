@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## DRAKON JavaScript touch and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `bf0df34424896616c7f119d347d0f61ee3cf8d5f31981d3a51dc9d57dc0965fe` | `469170ea182f0a95b824481d39b0e8181ed88699` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+DRAKON JavaScript runtime `556bdf98757ffb7fbf9af48b873a8fc142b41ff9` reuses the DRAKON phone and tablet layout fix with JavaScript's own colors. Both physical phones completed the hosted guest edit, module export, and Files reopen workflow. Disposable signed-in sessions verified a second save under the same project name and fresh-session reopening. The exported module passed Node's syntax check and returned `webos_ok` for 71 and `weak` for 12. The S10+ in portrait passed four of ten workflows. Desktop Chromium passed eight of ten, including Undo and Redo and legacy DRAKON import. Touch emulation passed the Files cycle at 1024 × 768 CSS pixels and opened Source at 474 CSS pixels in a split window. The Moto canvas remains short in landscape.
+
+All 21 changed paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-drakon-javascript-portrait-bf0df3442489/deploy-viewer.py rollback` restores viewer `c3ac341ebf80`. [Phone screenshots](https://github.com/CC-David-CC/drakon-javascript/blob/f14b0877ef3bd045ee18c3f0c3b48d945b46eeb6/docs/webos-qa/PHONE.md)
+
 ## DRAKON Bash touch and Files
 
 | Deployment | Release digest | Source assembly |
