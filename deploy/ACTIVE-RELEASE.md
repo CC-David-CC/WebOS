@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## CADCraft portrait menu and DXF files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `ed31e1b4f1c6ba81136ed5cea3740977b9b73abed675da6c408cf173496facac` | `d90166ba8af9eba3afd2599c952e87b37e07cc3f` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+CADCraft runtime `e44d26945579273e3406eea8d4488c1e160de138` wraps menu categories in compact windows. On the S10+ at 411 CSS pixels, **Window** and **Help** opened by touch and **Help → About CADCraft** displayed the dialog. Hosted guest drawing, cancel and retry, save and reopen passed. The isolated signed-in phone verified a second edit under the same DXF name, native Open and three exact drawing entities after a fresh sign-in. Desktop Chromium passed DXF reopen and PDF download at 1300 CSS pixels. The tablet layout at 820 CSS pixels displayed every menu category and the WebOS app bar. Native tests reported 328 passes and one ignored check.
+
+All seven changed paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-cadcraft-phone-menu-ed31e1b4f1c6/deploy-viewer.py rollback` restores viewer `60e3e542c4f9`. [Galaxy S10+ screenshots](https://github.com/CC-David-CC/cadcraft/blob/bc898737a7acdaad80eb9f0efad2ddbf1d7fc448/docs/webos-qa/PHONE.md)
+
 ## Linux X11 phone fit and Files
 
 | Deployment | Release digest | Source assembly |
