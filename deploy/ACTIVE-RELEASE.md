@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## WebOS Chat phone conversations and dark controls
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `fb0e264a3489529f206b664e518d0aeda76b9ee556387f975a83e370c4b9b468` | `4fb187e4b3b2528c84ca81beb00c7f477f69dd79` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Chat `d1cad10bada81b5b4e8df9414d7e850b514c039a` gives narrow conversations a separate reading view with Back, preserves the wider sidebar, and applies the system dark scheme to the directory and messages. The Galaxy S10+ searched for the second account, exchanged exact messages and reopened both after refresh. History space with the keyboard open increased from 68 to 173 CSS pixels. Back and Send are 44 CSS pixels high. Conversation text measured 13.32:1 contrast. Chromium at 820 and 1300 CSS pixels passed the exchange and retained the app bar and conversation sidebar. All six Chat service tests passed, including expiry archives and username reuse.
+
+All eight changed paths matched over HTTPS. The hosted S10+ found its disposable peer, sent and received matching messages, reopened the thread after refresh and minimized to the launcher. Box-webhost verified the existing backend process and issuer throughout the viewer deployment. Run `sudo python3 -I -B /var/backups/webos-chat-phone-workflow-fb0e264a3489/deploy-viewer.py rollback` to restore MailCraft viewer `20d3656b91f1`. [Galaxy S10+ evidence](https://github.com/CC-David-CC/webos-chat/blob/webos/phone-chat-workflow/docs/webos-qa/PHONE.md)
+
 ## MailCraft phone startup and compose
 
 | Deployment | Release digest | Source assembly |

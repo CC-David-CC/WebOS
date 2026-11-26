@@ -26,7 +26,7 @@ Priority P0 covers platform foundations, P1 essential desktop workflows, P2 prod
 | P1 | [apps/help](https://github.com/CC-David-CC/help/tree/5d51ef88ca4dcf8341d5c2f0452934f5d08750ad) | Human guide and contextual buttons · Runtime view lifecycle | `apps/system/help/index.mjs` · js | Live · help |
 | P1 | [apps/remote-desktop](https://github.com/CC-David-CC/noVNC/tree/5bf4a8315e0346447cb8cacf66f120fb782f08ad) | Owner-authorized browser monitor and remote session relay. | `WEBOS.md` | Live for the owner |
 | P1 | [apps/text](https://github.com/CC-David-CC/text/tree/0c34b0e1c36881963d4bdf98e282dab1df56785f) | Files open/save · Storage · CodeMirror · document/lifecycle hooks | `index.mjs` · js | Live · text |
-| P1 | [apps/webos-chat](https://github.com/CC-David-CC/webos-chat/tree/f6eb27fcf9fa68f5c26895d795238fdf4bad64e2) | Signed-in conversations, membership, read positions and live updates. | `app.mjs` | Live for registered users |
+| P1 | [apps/webos-chat](https://github.com/CC-David-CC/webos-chat/tree/d1cad10bada81b5b4e8df9414d7e850b514c039a) | Signed-in conversations, membership, read positions and live updates. | `registered.mjs` | Live for registered users. [Galaxy S10+ workflow](https://github.com/CC-David-CC/webos-chat/blob/webos/phone-chat-workflow/docs/webos-qa/PHONE.md). |
 | P1 | [platform/login](https://github.com/CC-David-CC/login/tree/444e9e62e0bfa014ab3a3eedd5f339b42acdb312) | Human credential entry · Accounts client · public session result | `src/index.mjs` · js | Component source |
 
 ## App templates
