@@ -37,14 +37,61 @@ export function mount(host) {
     className:'matcraft-studio', title:'MatCraft Studio',
     src:new URL('./native/index.html', import.meta.url).href,
   });
+  const compactPane = element('section', {className:'matcraft-compact', hidden:true});
+  const script = element('textarea', {className:'matcraft-script', spellcheck:false, autocapitalize:'off'});
+  script.setAttribute('aria-label', 'M script');
+  const output = element('pre', {className:'matcraft-output', textContent:'Run the script to see its output.'});
+  output.setAttribute('role', 'log');
+  output.setAttribute('aria-label', 'Script output');
+  const studioToggle = element('button', {type:'button', textContent:'Studio', hidden:true});
+  compactPane.append(script, output);
   const status = element('p', {className:'matcraft-status', textContent:'Starting MatCraft…'});
   status.setAttribute('role', 'status');
-  app.append(styles, tools, view, status);
+  app.append(styles, tools, view, compactPane, status);
 
   const buttons = [];
   let bridge, context, binding, pending, unregister, poll, lastRun;
   let initialized = false;
   let paused = false;
+  let compact = false;
+  let preferStudio = false;
+  let cleanText = null;
+  const touch = matchMedia('(pointer: coarse)');
+
+  function enableTouchTyping() {
+    if (touch.matches) host.ui.enableKeyboard?.();
+  }
+
+  function showOutput(message) {
+    output.textContent = message;
+    output.scrollTop = 0;
+  }
+
+  function pushCompactScript() {
+    const text = script.value;
+    const name = binding?.path.split('/').at(-1) || '';
+    if (text !== nativeSnapshot().text && !bridge.replace(name, text)) {
+      throw Error('The Studio could not load these edits.');
+    }
+    if (cleanText !== null) bridge.saved(name, cleanText);
+  }
+
+  function updateLayout() {
+    if (!app.isConnected || pending) return;
+    const narrow = app.clientWidth <= 650 || touch.matches && app.clientHeight < 440;
+    const next = narrow && !preferStudio;
+    if (initialized && next !== compact) {
+      if (next) script.value = nativeSnapshot().text;
+      else pushCompactScript();
+    }
+    compact = next;
+    app.classList.toggle('matcraft-compact-active', compact);
+    compactPane.hidden = !compact;
+    studioToggle.hidden = !narrow;
+    studioToggle.textContent = compact ? 'Studio' : 'Script view';
+    controls();
+  }
+
 
   function check() {
     if (signal.aborted || session !== host.session() || owner !== host.storage.workspaceOwner() ||
@@ -61,7 +108,9 @@ export function mount(host) {
   function controls() {
     const blocked = !initialized || Boolean(pending) || paused;
     for (const button of buttons) button.disabled = blocked;
-    view.inert = blocked;
+    view.inert = blocked || compact;
+    script.readOnly = blocked;
+    studioToggle.disabled = blocked;
   }
 
   function invoke(action) {
@@ -77,7 +126,7 @@ export function mount(host) {
       }
     }).finally(() => {
       pending = null;
-      controls();
+      updateLayout();
     });
   }
 
@@ -93,15 +142,33 @@ export function mount(host) {
     buttons.push(button);
     tools.append(button);
   }
+  tools.append(studioToggle);
+  studioToggle.addEventListener('click', () => {
+    preferStudio = compact;
+    updateLayout();
+    if (compact) script.focus();
+    else view.focus();
+  }, {signal});
+  script.addEventListener('pointerdown', enableTouchTyping, {signal});
+  const layoutObserver = new ResizeObserver(updateLayout);
+  layoutObserver.observe(app);
   controls();
 
-  function snapshot() {
+  function nativeSnapshot() {
     return JSON.parse(bridge.snapshot());
+  }
+
+  function snapshot() {
+    return compact ? {text:script.value, dirty:script.value !== cleanText} : nativeSnapshot();
   }
 
   function replace(name, text) {
     if (!bridge.replace(name, text)) throw Error('The MatCraft editor could not open this script.');
+    const current = nativeSnapshot();
+    script.value = current.text;
+    cleanText = current.dirty ? null : current.text;
     lastRun = null;
+    showOutput('Run the script to see its output.');
   }
 
   async function acceptDiscard() {
@@ -146,12 +213,14 @@ export function mount(host) {
 
   async function save(copy) {
     check();
-    const data = new Blob([snapshot().text], {type:'text/plain;charset=utf-8'});
+    const savedText = snapshot().text;
+    const data = new Blob([savedText], {type:'text/plain;charset=utf-8'});
     if (data.size > maxScriptBytes) throw Error('M scripts can be up to 2 MiB.');
     let path = binding?.path;
     if (copy || !path) {
       const folder = await host.storage.pickWorkspaceFile({foldersOnly:true, signal});
       if (!folder) return;
+      enableTouchTyping();
       const picked = await host.ui.prompt('File name', {
         title:'Save M script', value:path?.split('/').at(-1) || 'Script.m', confirmLabel:'Save', signal,
       });
@@ -162,18 +231,22 @@ export function mount(host) {
       path = workspacePath((folder === '/' ? '' : folder + '/') + name);
     }
     check();
-    const savedText = snapshot().text;
     const receipt = await context.files.write(path, data, path === binding?.path ? binding.sha256 : null, {signal});
     check();
     bind(path, receipt.sha256);
     const name = path.split('/').at(-1);
+    cleanText = savedText;
+    if (compact) pushCompactScript();
     notify(bridge.saved(name, savedText) ? 'Saved ' + name : 'Saved ' + name + ' · New edits are unsaved');
   }
 
   function runScript() {
     check();
+    if (compact) pushCompactScript();
     lastRun = JSON.parse(bridge.run());
-    notify(lastRun.ok ? 'Script ran · See Command Window' : lastRun.error || 'Script stopped');
+    showOutput(lastRun.ok ? lastRun.output || 'Script finished with no output.' : lastRun.error || 'Script stopped.');
+    if (lastRun.ok) notify(compact ? 'Script ran' : 'Script ran · See Command Window');
+    else notify(compact ? 'Script stopped' : lastRun.error || 'Script stopped');
   }
 
   async function waitForStudio() {
@@ -206,10 +279,13 @@ export function mount(host) {
       if (file.storage !== 'account' || file.owner !== owner) throw Error('Open an M script from your Files.');
       await load(workspacePath(file.path), file.restore ? null : file.sha256);
     } else {
+      const current = nativeSnapshot();
+      script.value = current.text;
+      cleanText = current.text;
       notify('MatCraft is ready');
     }
     initialized = true;
-    controls();
+    updateLayout();
     poll = setInterval(() => {
       if (signal.aborted || pending || paused) return;
       try {
@@ -230,7 +306,7 @@ export function mount(host) {
   return {
     element:app,
     ready,
-    focus:() => view.focus(),
+    focus:() => compact ? script.focus() : view.focus(),
     inspect:() => ({path:binding?.path ?? null, dirty:initialized && snapshot().dirty, lastRun}),
     async requestClose() {
       if (pending) await pending.catch(() => {});
@@ -238,6 +314,7 @@ export function mount(host) {
     },
     dispose() {
       abort.abort();
+      layoutObserver.disconnect();
       clearInterval(poll);
       unregister?.();
     },
