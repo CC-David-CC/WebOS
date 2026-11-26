@@ -1,4 +1,4 @@
-**Current ksu.codes release, November 26, 2026.** Viewer `8069281f64e8` and backend `ad91cba3b6b4` are live. Scríobh passed two-chapter editing, save, My files reopen and resave on the S10+. GPU charging and scheduled renewals are paused. Alpha onboarding remains on hold. [Active release and source pins](deploy/ACTIVE-RELEASE.md)
+**Current ksu.codes release, November 26, 2026.** Viewer `20d3656b91f1` and backend `ad91cba3b6b4` are live. MailCraft passed phone sign-in after refresh, keyboard-open composition and local test delivery. GPU charging and scheduled renewals are paused. Alpha onboarding remains on hold. [Active release and source pins](deploy/ACTIVE-RELEASE.md)
 
 The November 24, 2026 source catalog contains 143 app repositories and eight platform services. The current ksu.codes release manifest lists 138 launchers. The catalog identifies service owners and distinguishes live applications from planned interfaces. [App and server catalog](apps/README.md) · [Component and launcher matrix](apps/CATALOG.md) · [Live release manifest](https://ksu.codes/viewer-release.json)
 

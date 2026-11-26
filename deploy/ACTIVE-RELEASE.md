@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## MailCraft phone startup and compose
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `20d3656b91f1267ffbcd6e4e4a749bfeabac80fab85f1cce181561df0b1b5108` | `550a7915f04924ea8c32582e25ae6811d2f519a9` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+MailCraft `061ef3e20940` uses the WebGL adapter's supported texture size, fits the composer above the phone keyboard and keeps delivery status readable. The Galaxy S10+ restored both test inboxes after refresh, composed and delivered an exact message with the keyboard open, and verified that a receive-only reply was denied. Chromium at 820 and 1300 CSS pixels delivered the expected test subjects and bodies. Rapid scripted focus changes in headless Chromium remain a follow-up. All 14 repository checks, including 10,552 passing native tests, and three JMAP gateway tests passed.
+
+All 18 changed paths matched over HTTPS. The hosted S10+ opened MailCraft for a disposable registered account, refreshed into the same JMAP mailbox and returned to the WebOS launcher on minimize. On box-webhost, `sudo python3 -I -B /var/backups/webos-mailcraft-phone-compose-20d3656b91f1/deploy-viewer.py rollback` restores viewer `8069281f64e8`. [Galaxy S10+ evidence](https://github.com/CC-David-CC/mailcraft/blob/webos/phone-mailbox-workflow/docs/webos-qa/PHONE.md)
+
 ## Scríobh manuscript files and picker contrast
 
 | Deployment | Release digest | Source assembly |
