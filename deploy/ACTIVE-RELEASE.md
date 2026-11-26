@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## MathCraft2 notebook on phones and desktops
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `8d25f92969abc49ee272bf182602a207031d5b19030d9222651eff9d4629ca92` | `b20040445c1857db7e9b110bd5faf08b701261a7` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+The MathCraft2 notebook pinned at `06ce75d2c9712169cb2a801becb2945eb135b45c` shows a touch Run hint, a single copy of numeric output and higher-contrast errors. The exact hosted viewer passed on the Galaxy S10+ and desktop Chromium. The two-cell example returned 50, saved with the `.mathcraft2` extension and reopened with editable source. The phone app bar returned when the notebook was minimized. Desktop also passed variable reset, shortcut execution, another save and syntax-error recovery. Moto landscape and emulated touch tablet passed the same editable workflow in isolation. A fresh disposable signed-in desktop context reopened the server-backed notebook in isolated WebOS. Rust formatting, Clippy, workspace tests, dependency policy and the deployed engine tests passed. [Phone screenshots and coverage](https://github.com/CC-David-CC/MathCraft-upstream/blob/06ce75d2c9712169cb2a801becb2945eb135b45c/docs/webos-qa/PHONE.md)
+
+All 14 overlay paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-mathcraft2-phone-8d25f92969ab/deploy-viewer.py rollback` restores viewer `3c7c0b2981c4b68ad7e6db20b398662cfe46be24dac7785af308318b02a55914`.
+
 ## MatCraft numerical consistency and MathCraft verification
 
 | Deployment | Release digest | Source assembly |
