@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Circuit Simulator phone editing and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `bf112eb8a95190ee4c13ce4b3530e570d53ea5571dfc95b35e083e1e97a58948` | `30c1477c48865fe62daab8d354fca004933343d8` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Circuit Simulator runtime `452a11543aab08bcd321cfed5e42bc82d1e031e9` adds bare-name completion, a compact Save As button and dark native menus. The S10+ and Chromium at 820 and 1300 CSS pixels used the real resistor editor and verified 5 V, 6.66667 V and 7.5 V. They saved an editable circuit, reopened it from My files in a fresh signed-in session and saved a later revision. The phone and 1300 CSS-pixel Chromium saved probe CSV, PNG and SVG. WebOS Keep editing preserves a pending change. Discard changes preserves the saved revision and closes the simulator. Desktop and phone each passed six of ten documented workflows.
+
+All 418 changed paths matched over HTTPS and the guest S10+ replay passed the editable and export workflows. On box-webhost, run `sudo python3 -I -B /var/backups/webos-circuitjs-phone-files-bf112eb8a951/deploy-viewer.py rollback` to restore Circuit Lab viewer `8a8be0c8cf3b`. [S10+ screenshots at source revision `0098960ad719`](https://github.com/CC-David-CC/circuitjs/blob/webos/phone-circuit-files/docs/webos-qa/PHONE.md)
+
 ## Circuit Lab phone plot and Files
 
 | Deployment | Release digest | Source assembly |
