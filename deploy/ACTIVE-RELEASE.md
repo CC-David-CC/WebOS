@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## RISC-V Machine Lab phone console and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `f9c8cf22f5593ed315f4a0ab8ca8ea77c65ac1b324f3aa8d212519decc58cc87` | `7b059ea939ede65c23c596ebba2b1c166813e5da` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+RISC-V runtime `9a52b700071c2b0f5bb7db99075dbfab1b79b9a7` gives phone commands 44 CSS pixel targets, adds a direct Console button and completes bare project names with `.riscvlab.json`. The S10+ and Chromium at 820 and 1300 CSS pixels booted the real xv6 image, typed directly in the shell, ran an edited two-line script, saved a project and a copy, and reopened and revised the project at the same path in a fresh signed-in session. A cancelled picker and an invalid suffix preserved the script. The desktop covers four of seven workflow groups. Command limits, project round trips and 12 Files association checks passed.
+
+All 27 changed paths matched over HTTPS. The hosted S10+ verified editable guest projects and the revised script in the real xv6 console. On box-webhost, run `sudo python3 -I -B /var/backups/webos-riscv-phone-projects-f9c8cf22f559/deploy-viewer.py rollback` to restore ESP32 viewer `0bdf8d505ab3`. [S10+ screenshots at source revision `7d23dfa90b56`](https://github.com/CC-David-CC/riscv-rust/blob/webos/phone-xv6-projects/docs/webos-qa/PHONE.md)
+
 ## ESP32 Firmware Lab phone startup and Files
 
 | Deployment | Release digest | Source assembly |
