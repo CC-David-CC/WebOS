@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Digital Logic phone truth table and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `651878ead1378ac2357ce062f982978ef1ac09474f7424096e55b64e0d578a73` | `9d3469dc78bb16a66603018c27999ae03aae5549` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Digital Logic runtime `89b5f22e5f39f753d80493fb3c0dfcbe78f7c691` adds Save As, completes editable and CSV filenames, and gives the dark truth table 13.32:1 contrast. The physical S10+ and Chromium at 820 and 1300 toggled the four half-adder input pairs, exported the exact truth table and reopened a signed-in editable project. The latest label edit saved to the original path. An invalid draft left the simulation and the saved revision intact. Desktop passed ten of twelve workflow groups, including all basic and advanced examples and a two-bit input. The S10+ passed six of twelve.
+
+All 18 changed paths matched over HTTPS. The hosted S10+ guest verified the editable and CSV save flows and ran the revised circuit. On box-webhost, run `sudo python3 -I -B /var/backups/webos-digital-logic-phone-files-651878ead137/deploy-viewer.py rollback` to restore Circuit Simulator viewer `bf112eb8a951`. [S10+ screenshots at source revision `ee5340f81bff`](https://github.com/CC-David-CC/digital-logic/blob/webos/phone-logic-files/docs/webos-qa/PHONE.md)
+
 ## Circuit Simulator phone editing and Files
 
 | Deployment | Release digest | Source assembly |
