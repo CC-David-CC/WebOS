@@ -134,7 +134,7 @@ Priority P0 covers platform foundations, P1 essential desktop workflows, P2 prod
 | P3 | [apps/replicad](https://github.com/CC-David-CC/replicad/tree/005c746c66290fbdd64cb6e4f1b72ff9c1db474f) | Account source/model files · app-owned worker and independent kernel | `index.mjs` · js | Live · replicad |
 | P3 | [apps/riscv-rust](https://github.com/CC-David-CC/riscv-rust/tree/7d23dfa90b56f03aa43a479793e9cb83d2707919) | Browser RISC-V machine simulator and image files. | `webos/README.md` | Live · riscv-rust |
 | P3 | [apps/sketchcraft](https://github.com/CC-David-CC/sketchcraft/tree/4f20b296ee65685f230a2ed375e1eeacb0bf3253) | React/Vite and Rust/WASM modeling, account storage and scoped operations | `app/index.html` · native | Live · sketchcraft |
-| P3 | [apps/softfpga](https://github.com/CC-David-CC/softfpga/tree/936463d910eb2d6f1e7e2c4c30fc1ba2b2f05e1f) | Browser FPGA simulation. | `index.html` | Live · softfpga |
+| P3 | [apps/softfpga](https://github.com/CC-David-CC/softfpga/tree/eaf3f6ecc72286617ab6a4344ab27f2e1b54fdef) | Browser FPGA simulation. | `index.html` | Live · softfpga |
 | P3 | [apps/solidcraft](https://github.com/CC-David-CC/solidcraft/tree/789fce1bf17145b4086a175f552ce268c846f784) | Browser WASM, native parametric modeling, account storage and scoped operations | `apps/solidcraft-web/Cargo.toml` · craft-web | Live · solidcraft |
 
 ## Games and interactive activities

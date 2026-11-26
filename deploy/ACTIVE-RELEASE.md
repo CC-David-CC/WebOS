@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Virtual FPGA Board phone controls and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `6cf99fdb32864e042400c0a0ff5a6a91a4ff1098062b763253771ab1509933eb` | `c3f89122bae095dea09a336890494f568f5748bf` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Virtual FPGA runtime `0fc6de7ef384d294e75b4375a709f0aa649c6217` adds Board and Editor navigation, 36 × 44 CSS pixel switch targets, and dark Files status contrast of 13.32:1. The S10+ and Chromium at 820 and 1300 CSS pixels synthesized and routed the Yosys half-adder, verified all four switch inputs, saved both source files and reopened and resaved them in a fresh browser session. My files used Text Editor by default for Verilog and offered Virtual FPGA Board through Open With. Desktop also ran Blink, captured a logic analyzer trace and marker, exported the Verilog netlist, and saved and reopened iCEBreaker PCF. Desktop coverage reached eight of ten workflows.
+
+All 45 changed paths matched over HTTPS. Hosted S10+ replay passed the half-adder and guest file cycle. On box-webhost, run `sudo python3 -I -B /var/backups/webos-fpga-phone-files-6cf99fdb3286/deploy-viewer.py rollback` to restore FPGA viewer `0dea144bcb26`. Then run `sudo python3 -I -B /var/backups/webos-fpga-phone-files-0dea144bcb26/deploy-viewer.py rollback` to restore HDL viewer `a898c954da9c`. [S10+ screenshots at source revision `eaf3f6ecc722`](https://github.com/CC-David-CC/softfpga/blob/webos/phone-fpga-files/docs/webos-qa/PHONE.md)
+
 ## HDL Workbench phone waveforms and Files
 
 | Deployment | Release digest | Source assembly |
