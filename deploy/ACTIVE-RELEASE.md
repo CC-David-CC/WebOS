@@ -21,7 +21,7 @@ The viewer and backend have independent source assemblies. The backend build use
 
 FigCraft is tree-identical at both commits. LightCraft and VectorCraft use the same runtime source, with public-source documentation and branding differences. The packaged binaries and exact source are retained with the release.
 
-Use the pinned source and the verified prepared app inputs for incremental builds. The commands in [README.md](../README.md#build-the-core-viewer-from-a-checkout) build the core viewer. A full cold rebuild of all hosted apps remains open.
+Use the pinned source and the verified prepared app inputs for incremental builds. The commands in [README.md](../README.md#build-the-core-viewer-from-a-checkout) build the core viewer. The clean-checkout packaging check uses the published WordCraft component build and retains the notices for both transitive math dependencies. A full cold rebuild of all hosted apps remains open.
 
 Hosted rollback restores viewer `e50026bd9dff8e0b7d852a10e2b95fe09ebb733af951f2f2cfae978f5c8c236d` and backend `b7f0816a7eddef49e96a4bfd2b3f8b88a0ddb2770228e4b348154dddf082cd1b` together.
 
