@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Kiri:Moto touch menus and editable file cycle
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `6676a3842adb988f7d75b32d9d4470914ca5ac5362a1f25876452c6922b0b23d` | `10525098a86384491db948ac46ccf398c5d2a97c` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Grid.Space wrapper `f36e83dfafb6dd9f532596cdefeec93934e8cc43` gives the File menu a usable width, refreshes the account picker after uploads, and supplies the expected extension for bare filenames. The Galaxy S10+ and desktop Chromium replayed the hosted cube slicing, native workspace reopen, in-place save, and G-code Preview handoff. The test cube yielded 81 slices. Isolated desktop testing verified signed-in STL import from a real Files upload, fresh server-backed reopen, and a 24 mm, 12-facet STL export. The Moto G 5G repeated the core workflow in landscape. The shared Mesh:Tool wrapper passed a native file regression on the S10+. [Screenshots and workflow coverage](https://github.com/CC-David-CC/grid-tools/blob/2f6f3fc6bf782f54f98a8f0a5b8cfaa9541889d5/docs/webos-qa/PHONE.md)
+
+All 54 overlay paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-kiri-moto-phone-6676a3842adb/deploy-viewer.py rollback` restores viewer `ec3deccd50677eda9ff2ab8e2b7181061c3ad6d68b42634e91ea87daf1ace736`.
+
 ## CAD Modeler phone menus and editable project files
 
 | Deployment | Release digest | Source assembly |
