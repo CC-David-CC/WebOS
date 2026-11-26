@@ -550,3 +550,6 @@
 [submodule "account-management"]
 	path = apps/account-management
 	url = ../account-management.git
+[submodule "gusset-pattern-drafter"]
+	path = apps/gusset-pattern-drafter
+	url = ../gusset-pattern-drafter.git
