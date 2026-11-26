@@ -201,6 +201,7 @@ Priority P0 covers platform foundations, P1 essential desktop workflows, P2 prod
 | P2 | [apps/spreadsheet](https://github.com/CC-David-CC/spreadsheet/tree/10f7c5b7ea2863fe4b4bdbafd8b9c60fcf6aab80) | Account files · XLSX worker · CSV import/export · existing browser host | `index.mjs` · js | Source. No separate launcher in this manifest. |
 | P2 | [apps/textcraft](https://github.com/CC-David-CC/textcraft/tree/d84bf0a4cab44704fc3d607a23f000d7ad790389) | Plain-text editing and encoding-preserving saves. | `Cargo.toml` | Live · textcraft |
 | P2 | [apps/wordcraft](https://github.com/CC-David-CC/wordcraft/tree/ddbef623161c88e1e6aa575d8684f9643fbef39d) | Browser WASM app · shared Craft crates/fonts · WebOS file/operation integration on our branch | `webos/build.py` · craft-web | Live · wordcraft |
+| P3 | [apps/prosecraft](https://github.com/CC-David-CC/ProseCraft/tree/f33335573c63509b9f22de22ade87a02d588bac6) | Novel-writing editor · outlines, chapters, scenes and publishing · browser vault and project backups | `src/routes/+page.svelte` · SvelteKit static build | Source prepared · queued at the end for scoped My files and phone checks. [Standalone browser baseline](https://github.com/CC-David-CC/ProseCraft/blob/webos/integration/docs/webos-qa/INTEGRATION.md) |
 
 ## Optional execution environments
 

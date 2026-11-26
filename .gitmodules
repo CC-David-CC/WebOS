@@ -553,3 +553,6 @@
 [submodule "gusset-pattern-drafter"]
 	path = apps/gusset-pattern-drafter
 	url = ../gusset-pattern-drafter.git
+[submodule "prosecraft"]
+	path = apps/prosecraft
+	url = ../ProseCraft.git
