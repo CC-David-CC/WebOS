@@ -206,8 +206,9 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
       const folder = await host.storage.pickWorkspaceFile({foldersOnly:true, signal});
       if (!folder) return;
       const suggested = path?.split('/').at(-1);
+      const suffix = suggested?.toLowerCase().endsWith(extension) ? -extension.length : suggested?.lastIndexOf('.');
       const defaultName = suggested
-        ? suggested.slice(0, suggested.lastIndexOf('.')) + (copy ? ' copy' : '') + extension
+        ? suggested.slice(0, suffix) + (copy ? ' copy' : '') + extension
         : name + (copy ? ' copy' : '') + extension;
       const chosen = await host.ui.prompt('File name', {
         title:'Save ' + name + ' project', value:defaultName, confirmLabel:'Save', signal,

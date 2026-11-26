@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## HDL Workbench phone waveforms and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `a898c954da9c31a40fe1c2f0936918bbe7cdbecf2d8a6821dd00515652cc3608` | `2935de5e851d2467e674b9c7347a9ff35975393b` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+HDL runtime `919db9a45464d8029764c9560cec56aac54f85cc` fits Run and the waveform to the phone width, raises the keyboard-open editor from 63 to 114 CSS pixels, and follows the WebOS color scheme. The binary studio wrapper suggests the compound `.hdl.json` suffix once. The S10+ and Chromium at 820 and 1300 CSS pixels verified Icarus half-adder results, signal selection, editable save, exact copy, fresh sign-in reopen and same-path resave. Desktop also downloaded VCD, rendered the Gates schematic and saved an exported Digital Logic circuit. Desktop covers seven of ten workflow groups.
+
+The first hosted candidate was rolled back after two quick signal taps triggered Android page zoom. The touch fix kept browser scale steady, and the final viewer spaced the time labels by plot width. All 40 changed paths matched over HTTPS and the hosted guest repeated the project cycle. On box-webhost, run `sudo python3 -I -B /var/backups/webos-hdl-phone-projects-a898c954da9c/deploy-viewer.py rollback` to restore HDL viewer `ee80c48ee9ca`. Then run `sudo python3 -I -B /var/backups/webos-hdl-phone-projects-ee80c48ee9ca/deploy-viewer.py rollback` to restore the RISC-V viewer `f9c8cf22f559`. [S10+ screenshots at source revision `396ed7a9c12c`](https://github.com/CC-David-CC/verisim/blob/webos/phone-hdl-projects/docs/webos-qa/PHONE.md)
+
 ## RISC-V Machine Lab phone console and Files
 
 | Deployment | Release digest | Source assembly |
