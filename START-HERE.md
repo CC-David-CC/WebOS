@@ -1,3 +1,5 @@
+**Current ksu.codes release, November 25, 2026.** Walkthrough viewer `8a2b06a99ca2` and backend `13193818d7f7` are live. The release improves Office file recovery, WordCraft input, launcher icons and navigation, Files, Account Management and MailCraft. Guest and registered hosted Office recovery passed. Safari and physical-device checks remain open. Alpha onboarding remains on hold. [Active release and source pins](deploy/ACTIVE-RELEASE.md)
+
 The November 24, 2026 source catalog contains 143 app repositories and eight platform services. The ksu.codes release manifest lists 130 launchers. The catalog identifies service owners and distinguishes live applications from planned interfaces. [App and server catalog](apps/README.md) · [Component and launcher matrix](apps/CATALOG.md) · [Live release manifest](https://ksu.codes/viewer-release.json)
 
 ## Earlier release notes
