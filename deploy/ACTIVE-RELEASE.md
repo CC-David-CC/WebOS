@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Scríobh manuscript files and picker contrast
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `8069281f64e82d68861f8df8f7b079ba240883afe0dc8afbe572395107984a44` | `113ab0e3d702f40748f98e8a226f1913b84918ca` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Desktop `5def3aef9e819` gives the shared Files picker hint 8.08:1 contrast in dark mode. Scríobh `afc3feb30387` records three of ten workflow groups. The Galaxy S10+ and Chromium at 820 and 1300 CSS pixels edited two ordered chapters in rich text and Markdown, cancelled and retried Save as, saved a bare filename with `.scriobh`, reopened it directly from My files, and updated the same path. A fresh registered session matched the saved project bytes. Two SQLite store tests and 24 Desktop tests passed. The 18 rebuilt Scríobh assets matched the retained runtime.
+
+All three changed assets matched over HTTPS. The hosted guest S10+ replay repeated the manuscript and file cycle. On box-webhost, `sudo python3 -I -B /var/backups/webos-scriobh-picker-contrast-8069281f64e8/deploy-viewer.py rollback` restores viewer `c2acfe055fdc`. [Galaxy S10+ evidence](https://github.com/CC-David-CC/scriobh/blob/webos/phone-manuscript-files/docs/webos-qa/PHONE.md)
+
 ## LoveCraft phone writing and backups
 
 | Deployment | Release digest | Source assembly |
