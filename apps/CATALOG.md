@@ -105,7 +105,7 @@ Priority P0 covers platform foundations, P1 essential desktop workflows, P2 prod
 | Priority | Source at selected commit | Interface or dependency | Entry or build input | Release status |
 | --- | --- | --- | --- | --- |
 | P3 | [apps/acad](https://github.com/CC-David-CC/acad/tree/0c1da8df1c5447ddd6e01a4ef28a27549ab33458) | Browser UI · worker geometry kernels · account files · shared human/agent CAD operations | `package.json` · cad | Source. No separate launcher in this manifest. |
-| P3 | [apps/arduino-simulator](https://github.com/CC-David-CC/arduino-simulator/tree/7522ab0723844567ca8aacb1a4ecd5e09bf13ad8) | Account HEX files · AVR8js worker · pin/serial display | `index.mjs` · js | Live · arduino-simulator |
+| P3 | [apps/arduino-simulator](https://github.com/CC-David-CC/arduino-simulator/tree/48e47f1b528ff5a76855724d3d1ee932791fab23) | Account HEX files · AVR8js worker · pin/serial display | `index.mjs` · js | Live · arduino-simulator · [Galaxy S10+ workflow](https://github.com/CC-David-CC/arduino-simulator/blob/webos/phone-uno-files/docs/webos-qa/PHONE.md) |
 | P3 | [apps/cadcraft](https://github.com/CC-David-CC/cadcraft/tree/f6052b39d0ca5415a4536d8060681c84b40d084a) | Browser WASM · shared Craft source · host/file integration to qualify | `apps/cadcraft-web/Cargo.toml` · craft-web | Live · cadcraft |
 | P3 | [apps/circuit-lab](https://github.com/CC-David-CC/circuit-lab/tree/7e791a1ba3d20460ecba8e69069d547d7a4df4b9) | Account netlists · bounded local worker · retained restricted research runtime | `index.mjs` · js | Live · circuit-lab |
 | P3 | [apps/circuitjs](https://github.com/CC-David-CC/circuitjs/tree/bd3b277bbad1c8b00d38eb95eed8bcc4308c06cf) | Account circuit files · per-window CircuitJS frame | `index.mjs` · js | Live · circuitjs |

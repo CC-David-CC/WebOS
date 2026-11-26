@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Arduino Simulator phone controls and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `a204a6b266d44028661852afd9b0d66ccee981b2df5bd139604e2eba7ae99547` | `860fbb52b9b392944896697e04ebda7cbde6f0d0` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Arduino runtime `48e47f1b528ff5a76855724d3d1ee932791fab23` completes bare HEX, C and TXT filenames, shows save progress, and keeps the board and D13 label clear of the phone controls. The S10+ and Chromium at 820 and 1300 CSS pixels ran the ATmega328P Blink, D2, AND and Unicode serial examples, recovered from an invalid HEX, and saved and reopened all three formats in a fresh signed-in session. The desktop also passed independent worker state in two windows. Two reference tests and the retained worker and chunk comparisons passed.
+
+All 24 changed paths matched over HTTPS. The hosted guest S10+ ran Blink, saved a bare HEX name in temporary My files and reopened it in Arduino. On box-webhost, run `sudo python3 -I -B /var/backups/webos-arduino-phone-files-a204a6b266d4/deploy-viewer.py rollback` to restore Pico viewer `b0d6980862c3`. [S10+ screenshots at source revision `65853479b501`](https://github.com/CC-David-CC/arduino-simulator/blob/webos/phone-uno-files/docs/webos-qa/PHONE.md)
+
 ## Pico Simulator phone Blink and Files
 
 | Deployment | Release digest | Source assembly |
