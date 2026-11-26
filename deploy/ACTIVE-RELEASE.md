@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## ESP32 Firmware Lab phone startup and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `0bdf8d505ab31aaed5349cf08f8d5162ff206044de4f316657dd36be4f198fc5` | `03e5bbbf7d87022dafb2454e2a40f17b2dc52132` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+ESP32 runtime `d72c20b54526d56ca203b8e9f38d0a4025bf322e` waits for the MicroPython prompt, makes UART output reachable with one tap, and uses the desktop color scheme in its program editor. The S10+ and Chromium at 820 and 1300 CSS pixels ran real MicroPython, saved and reopened `.esp32lab.json` and `.py` files in fresh signed-in sessions, and resaved changed code to the same project path. Generic Python opened in Text Editor after the bound Lab window was closed. The phone and desktop cover four of eight workflow groups. Twelve Files association checks passed. The WebAssembly engine, ROM and MicroPython inputs matched the previous package.
+
+All 81 changed paths matched over HTTPS. The hosted S10+ ran the stock GPIO example and saved, reopened and reran an edited program as a guest. On box-webhost, run `sudo python3 -I -B /var/backups/webos-esp32-phone-programs-0bdf8d505ab3/deploy-viewer.py rollback` to restore Arduino viewer `a204a6b266d4`. [S10+ screenshots at source revision `e03de7f5813a`](https://github.com/CC-David-CC/esp32sim/blob/webos/phone-esp32-programs/docs/webos-qa/PHONE.md)
+
 ## Arduino Simulator phone controls and Files
 
 | Deployment | Release digest | Source assembly |
