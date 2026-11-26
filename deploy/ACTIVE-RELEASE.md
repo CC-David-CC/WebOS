@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## G-code Preview dark theme and My files opening
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `118de96a1ce34be8046cec094e74570868e95f8ddd0e33ef828c2e24e2377627` | `21bcb293c2ec707c75645a204e8420525e768410` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+G-code Preview `eaccff83f30da5ec2497a18249d39bf023dd8e8e` uses the dark WebOS palette. My files opens `.gcode`, `.gco`, and `.nc` in the viewer through the revision-aware Desktop pin `b954155738dca9a58f32eb090775ecdb6fd94fe1`. Open With keeps Text Editor available. The Galaxy S10+ and Moto G opened a synthetic two-layer path on ksu.codes, rotated and pinched the view, toggled travel, cancelled the picker and kept the preview when the parser rejected a different file. Desktop Chromium repeated the hosted workflow with mouse and keyboard. A real Android picker upload and fresh signed-in reopen with exact source bytes passed in the isolated build. Touch emulation at 820 × 1050 kept the app bar visible. The S10+ and desktop each covered eight of ten workflows. Source-change reload and automatic window restore still need checks for this release.
+
+All 18 changed paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-gcode-preview-phone-118de96a1ce3/deploy-viewer.py rollback` restores viewer `c30ba950829b`. [G-code phone screenshots](https://github.com/CC-David-CC/gcode-preview/blob/c53935e0009438570005c643096c0ce988be2e19/docs/webos-qa/PHONE.md) · [Public source pins](https://github.com/CC-David-CC/WebOS/tree/64ec80eb2a682c6eed2b0cad4c9775bcb68a86b2)
+
 ## Electronics Design touch and named project saves
 
 | Deployment | Release digest | Source assembly |
