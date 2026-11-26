@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## MatCraft touch scripting and editable M files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `7f2ef5f0e62b1db0ac50341b6e8c7243a6af722fb4f25716e236b4e4eaf5351f` | `574193485e8027452701c252d96f489e4629a658` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+MatCraft's WebOS wrapper gives narrow windows a script editor, visible results and the same Files toolbar as Studio. The WASM engine is pinned at `9e0f03ba304b9fcd941bb63bf9d671762b8e3d59`. On ksu.codes the Galaxy S10+ and desktop Chromium calculated matrix determinants, recovered from invalid syntax, saved a bare filename with the `.m` extension, reopened the editable script through Files and saved another revision. The Moto G 5G and emulated touch tablet repeated the guest workflow in isolated WebOS. Desktop also reopened server-backed work from a fresh disposable session and passed the app's Open picker, draft preservation on cancellation, resizing between editing views and a 2D plot in Studio. MatCraft passed 8 of 10 documented desktop workflows.
+
+All 18 overlay paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-matcraft-phone-7f2ef5f0e62b/deploy-viewer.py rollback` restores viewer `6676a3842adb988f7d75b32d9d4470914ca5ac5362a1f25876452c6922b0b23d`.
+
 ## Kiri:Moto touch menus and editable file cycle
 
 | Deployment | Release digest | Source assembly |

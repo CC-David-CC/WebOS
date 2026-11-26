@@ -1,4 +1,4 @@
-**Current ksu.codes release, November 26, 2026.** Viewer `6676a3842adb` and backend `ad91cba3b6b4` are live. Kiri:Moto passed slicing, native workspace reopen and G-code Preview handoff on the Galaxy S10+ and desktop Chromium. GPU charging and scheduled renewals are paused. Alpha onboarding remains on hold. [Active release and source pins](deploy/ACTIVE-RELEASE.md)
+**Current ksu.codes release, November 26, 2026.** Viewer `7f2ef5f0e62b` and backend `ad91cba3b6b4` are live. MatCraft passed touch scripting, matrix calculations and editable M file reopen on the Galaxy S10+ and desktop Chromium. GPU charging and scheduled renewals are paused. Alpha onboarding remains on hold. [Active release and source pins](deploy/ACTIVE-RELEASE.md)
 
 The November 24, 2026 source catalog contains 143 app repositories and eight platform services. The current ksu.codes release manifest lists 138 launchers. The catalog identifies service owners and distinguishes live applications from planned interfaces. [App and server catalog](apps/README.md) · [Component and launcher matrix](apps/CATALOG.md) · [Live release manifest](https://ksu.codes/viewer-release.json)
 
