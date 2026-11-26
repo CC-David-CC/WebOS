@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Mesh:Tool touch menus and editable workspaces
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `56f8d568effe543f4efa74d0d95092b365519dbb6af3c4eea2c8445a384989c1` | `a2a5d87131bd0eb706bde22961380f79d112573f` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Grid.Space wrapper `cb3a5aefa1450c222ca4c8c5f4a583aa426a5012` fits Mesh:Tool's menus inside the phone window and lets people open them by tapping. The exact hosted viewer passed on the Galaxy S10+ and desktop Chromium. Guests duplicated a mesh, exported a binary STL with 12 triangles and 20-unit dimensions on all axes, reopened the editable `.meshproj` from Files, saved in place and reimported the STL. Desktop verified the camera change, OBJ, 3MF and STEP export and a fresh signed-in Files reopen in isolation. The Moto G 5G and touch tablet repeated the core workflow in isolation. Kiri:Moto still sliced the example into 81 layers and passed its editable workspace and G-code cycle on the updated shared bundle. [Phone screenshots and desktop workflow coverage](https://github.com/CC-David-CC/grid-tools/blob/1b892db9ccd158d647951a03b98a56599f5b346d/docs/webos-qa/MESH-TOOL.md)
+
+All 54 overlay paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-mesh-tool-phone-56f8d568effe/deploy-viewer.py rollback` restores viewer `8d25f92969abc49ee272bf182602a207031d5b19030d9222651eff9d4629ca92`.
+
 ## MathCraft2 notebook on phones and desktops
 
 | Deployment | Release digest | Source assembly |
