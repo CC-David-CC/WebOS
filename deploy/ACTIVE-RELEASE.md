@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## DRAKON Python touch and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `51ee63af95a5ee14d1326eaadbc69fe00a6f7bdb499bf294377f86d26cdc2641` | `af2694f8213bbe5f5da25ea55ce95b6576e27522` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+DRAKON Python runtime `77c1f11c40abeba9de071b2228387350e4f53660` uses the responsive DRAKON studio and Python's teal accent. Both physical phones passed the hosted guest edit, script export, and Files reopen workflow. Disposable signed-in sessions verified the same-path second save and fresh-session reopening. Python 3 compiled and ran the exported script. It returned `weak` for 12 and 69, and `webos_ok` for 70 and 71. The S10+ in portrait passed four of ten workflows. Desktop Chromium passed eight of ten, including Undo and Redo and importing a legacy Python DRAKON diagram. Touch emulation passed the 1024 × 768 Files cycle and opened Source in a 474 CSS-pixel split window. The Moto diagram area remains short in landscape.
+
+All 21 changed paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-drakon-python-portrait-51ee63af95a5/deploy-viewer.py rollback` restores viewer `bf0df3442489`. [Phone screenshots](https://github.com/CC-David-CC/drakon-python/blob/f112027384924525cac853c0ca4498b42a8a0b88/docs/webos-qa/PHONE.md)
+
 ## DRAKON JavaScript touch and Files
 
 | Deployment | Release digest | Source assembly |
