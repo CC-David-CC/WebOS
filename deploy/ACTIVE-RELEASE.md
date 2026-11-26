@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Linux X11 phone fit and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `60e3e542c4f9a101ee16265ff57045f8a54ab3770192b01f645cfeee7caf93d9` | `05fd4e3b4c1d6633af23032e1694914ff5c17c5d` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Linux X11 runtime `d64d9a87947bf5ee3c4c2abdfe9ad84ae5af4ffc` applies the Zoom menu in CSS pixels. S10+ Fit grew from 157 to 411 CSS pixels. The hosted guest booted xterm and xclock, used 100% zoom and touch panning, and opened the xterm-written file in Text Editor from temporary My files. A separate signed-in phone replay reopened the exact file after a fresh sign-in. Chromium passed native xterm input, 1300 and 820 CSS-pixel fit, and a fresh signed-in Files reopen. Five of eight phone workflows and four of eight desktop workflows passed. Broader desktop and guest Chromium work remain stretch goals.
+
+All 14 changed paths matched over HTTPS. The Linux image, v86, Chromium disk and notices reused their verified bytes. On box-webhost, run `sudo python3 -I -B /var/backups/webos-linux-x11-phone-fit-60e3e542c4f9/deploy-viewer.py rollback` to restore Terminal viewer `0d6e25894d6c`. [S10+ screenshots at source revision `f76c5e19c0b5`](https://github.com/CC-David-CC/linux-x11/blob/webos/phone-x11-fit/docs/webos-qa/PHONE.md)
+
 ## Terminal phone shell and Linux files
 
 | Deployment | Release digest | Source assembly |

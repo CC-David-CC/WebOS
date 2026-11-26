@@ -208,7 +208,7 @@ Priority P0 covers platform foundations, P1 essential desktop workflows, P2 prod
 | --- | --- | --- | --- | --- |
 | P3 | [apps/browser](https://github.com/CC-David-CC/browser/tree/09a4d57fde2ae5d4ecf9c4d62a7764994546a994) | Worker engine · guest downloads to account files · separately owned authenticated network relay and policy | `index.mjs` · gecko | Source. No separate launcher in this manifest. |
 | P3 | [apps/linux](https://github.com/CC-David-CC/linux/tree/27b01eb5c4a66e559d6c90da82cd4def2770b5b4) | v86 worker · temporary guest filesystem · optional guest networking server · distinct from account storage | `assets/desktop/guest-worker-client.mjs` · guest | Source. No separate launcher in this manifest. |
-| P3 | [apps/linux-x11](https://github.com/CC-David-CC/linux-x11/tree/557a102702c26158dde685a26152afd594765713) | Browser Linux X11 guest. | `app.mjs` | Live · linux-x11 |
+| P3 | [apps/linux-x11](https://github.com/CC-David-CC/linux-x11/tree/f76c5e19c0b53a689ecb9668c25a1e6923ec0c54) | Browser Linux X11 guest. | `app.mjs` | Live · linux-x11 |
 | P3 | [apps/terminal](https://github.com/CC-David-CC/terminal/tree/ab5dfe145b6882f804beb939bfc110fce550262b) | Browser xterm.js · host-provided guest PTY · explicit file copies · no server shell | `index.mjs` · js | Live · terminal |
 
 ## Optional platform services and policy
