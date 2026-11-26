@@ -1,5 +1,18 @@
 # Active ksu.codes release
 
+## MatCraft numerical consistency and MathCraft verification
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `3c7c0b2981c4b68ad7e6db20b398662cfe46be24dac7785af308318b02a55914` | `c99491bd7c49f024bfb39c407c47c50bed74b1b7` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+The MatCraft engine is pinned at `f91d07b74a58b17a02850bbafde6fdaefe9072e6`. Bode and the complex frequency response now use the same overflow-safe magnitude operation. `cargo xtask ci` passed formatting, Clippy, workspace tests, layer checks and the WASM target. The exact browser build passed the numerical comparison, syntax recovery and editable Files workflow on the Galaxy S10+ and desktop Chromium. [MatCraft screenshots and desktop coverage](https://github.com/CC-David-CC/matcraft/blob/fbc48ea0be66eec4d71010b38760bbd8480fb011/docs/webos-qa/PHONE.md)
+
+MathCraft `f983f10c2a95d61b8efa0b02ef94fdb083a4d742` passed the existing hosted rotor experiment and editable worksheet workflow on the S10+, Moto G, touch tablet emulation and desktop Chromium. The desktop fit returned approximately 7.9982% damping, and a fresh signed-in session in the isolated viewer reopened and replayed a saved worksheet. [MathCraft screenshots and desktop coverage](https://github.com/CC-David-CC/mathcraft/blob/778c6daa8191f23e2932d36a2ea58c4cb5af1519/docs/webos-qa/PHONE.md)
+
+All 18 overlay paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-matcraft-bode-3c7c0b2981c4/deploy-viewer.py rollback` restores the touch-workspace viewer `7f2ef5f0e62b1db0ac50341b6e8c7243a6af722fb4f25716e236b4e4eaf5351f`.
+
 ## MatCraft touch scripting and editable M files
 
 | Deployment | Release digest | Source assembly |
