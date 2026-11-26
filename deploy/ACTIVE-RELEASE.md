@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## DRAKON Bash touch and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `c3ac341ebf800563a58f9eb96d564ae43d7380971a11fd6f8af3161148f67288` | `33b39cf3c198c44856e68d4c16909d28324e1aef` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+DRAKON Bash runtime `cf02726c613ede13b2924a4cb7614a6b1bad277d` fixes contrast and makes toolbar controls fit on phones and in a 474 CSS-pixel tablet split. Galaxy S10+ portrait and Moto G landscape passed the hosted guest edit, export and Files reopen. Disposable signed-in replay verified a second save and fresh-session persistence. The exported script returned `webos_ok` for 71 and `weak` for 12. On the Moto the keyboard left about 118 CSS pixels, and Apply stayed reachable. The diagram canvas remains cramped in phone landscape. Touch at an emulated 1024 × 768 CSS pixels passed the file cycle and the Source tab in the split window. Desktop Chromium passed eight of ten workflows.
+
+All 21 changed paths matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-drakon-bash-portrait-c3ac341ebf80/deploy-viewer.py rollback` restores viewer `ed31e1b4f1c6`. [Phone and tablet screenshots](https://github.com/CC-David-CC/drakon-bash/blob/285d9c8fa321511eeb16ece37ec671c1c52943c4/docs/webos-qa/PHONE.md)
+
 ## CADCraft portrait menu and DXF files
 
 | Deployment | Release digest | Source assembly |
