@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Pico Simulator phone Blink and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `b0d6980862c325379f81cc3b3dc58de87f441dfd63b44e91a81917e617eb00a3` | `8a6c55cf7d15f0706398c3f5722bdc73d4805c80` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Pico runtime `32afc75ad8f118342e9c8952ccf16bb328c6282a` keeps the board status visible, reports Blink stopping, and completes bare project and serial filenames. The S10+ ran actual RP2040 Blink instructions and observed GPIO 25 on and off. On the isolated account server, the phone and Chromium at 820 and 1300 CSS pixels booted MicroPython, exercised serial I/O, synchronized a `.pico` from a bare name, and reopened it through My files in a fresh sign-in. The physical phone resaved the same project with changed flash. All three layouts opened the serial snapshot in Text Editor. The Pico baseline, reference, MicroPython and 12 Files association checks passed.
+
+The hosted S10+ confirmed Blink, its Stop status and launcher return. All eight changed paths matched over HTTPS. The ROM and MicroPython fixtures stayed in the private installation. Run `sudo python3 -I -B /var/backups/webos-pico-phone-files-b0d6980862c3/deploy-viewer.py rollback` on box-webhost to restore RustIRC viewer `2af400c3519e`. [S10+ screenshots at source revision `82b281687dd5`](https://github.com/CC-David-CC/pico-simulator/blob/webos/phone-blink-and-files/docs/webos-qa/PHONE.md)
+
 ## RustIRC phone simulator and dark transcript
 
 | Deployment | Release digest | Source assembly |
