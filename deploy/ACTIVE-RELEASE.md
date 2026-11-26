@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Circuit Lab phone plot and Files
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `8a8be0c8cf3b1914d14fb1d3b5229e2dc59a95156c11d2527bdee5eeb655a705` | `4756dbfcd0971d0323b34170280504404d6c6569` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Circuit Lab runtime `23c0d64e8d1b986f73e502928097aba97f538675` uses the desktop color scheme, renders output-voltage plots at the current width and completes bare filenames with `.cir`. The physical S10+ and Chromium at 820 and 1300 CSS pixels verified the 5 V divider, 4.96632 V RC transient and editable Files reopen and same-path save. Desktop also passed supported suffixes, native import, AC and DC sweeps, MOSFET, Stop, and a two-session revision conflict, reaching ten of ten documented groups. The released solver wrapper passed the app's native circuit tests. Eight audit tests and twelve Files association checks passed. The refreshed browser source archive matches the UI source, existing worker, vetted binary and notices.
+
+All 11 changed paths matched over HTTPS. The hosted guest S10+ reopened a temporary circuit and reran the revised 7.5 V result. On box-webhost, run `sudo python3 -I -B /var/backups/webos-circuit-phone-files-8a8be0c8cf3b/deploy-viewer.py rollback` to restore Virtual FPGA viewer `6cf99fdb3286`. [S10+ screenshots at source revision `b48366786843`](https://github.com/CC-David-CC/circuit-lab/blob/webos/phone-spice-files/docs/webos-qa/PHONE.md)
+
 ## Virtual FPGA Board phone controls and Files
 
 | Deployment | Release digest | Source assembly |
