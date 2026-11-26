@@ -1,6 +1,17 @@
 # Active ksu.codes release
 
-The November 25, 2026 walkthrough release is live.
+## LoveCraft phone writing and backups
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `c2acfe055fdcdc1dbb74f50ca8de657542112cb6300454d89ca0571c47717870` | `b1e42313c656cd27e3f43b1174a79d9264f95931` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+LoveCraft `47d45201b1d0` fits the project dialogs and chapter outline into phone windows. The S10+ wrote a scene with the keyboard open, reopened it after refresh and restored an editable `.prosecraft` backup through the Android picker. Cancelling a second picker preserved the manuscript. Minimizing restored the WebOS launcher. Chromium at 820 and 1300 CSS pixels passed the edit, reopen and backup cycle. Desktop Chromium also exported the manuscript as plain text and reopened an edited outline summary in the preceding optimized preview. All five repository checks passed with 608 native tests passing and 7 existing ignored tests.
+
+The hosted S10+ guest replay passed the manuscript and backup cycle. A desktop guest profile created on the previous viewer reopened the same browser library after the release. All 17 changed assets matched over HTTPS. On box-webhost, `sudo python3 -I -B /var/backups/webos-lovecraft-compact-writing-c2acfe055fdc/deploy-viewer.py rollback` restores viewer `e91a7ae19ef0`. [Galaxy S10+ evidence](https://github.com/CC-David-CC/lovecraft/blob/webos/compact-writing/docs/webos-qa/PHONE.md)
+
+## Earlier November 25 walkthrough release
 
 | Deployment | Release digest | Source assembly |
 | --- | --- | --- |
