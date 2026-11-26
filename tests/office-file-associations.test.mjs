@@ -65,6 +65,15 @@ test('Files opens SPICE netlists in Circuit Lab with Text Editor available',()=>
   assert.equal(accountFileApp('Documents/divider.circuit','files'),'circuitjs');
 });
 
+test('Files opens standard toolpaths in G-code Preview with Text Editor available',()=>{
+  for (const extension of ['gcode','gco','NC']) {
+    const path='Documents/print.'+extension;
+    assert.equal(accountFileApp(path,'files'),'gcode-preview');
+    assert.deepEqual(accountFileOpenChoices(path).map(choice=>choice.id),['gcode-preview','text']);
+  }
+  assert.equal(accountFileApp('Documents/print.gcode.txt','files'),'text');
+});
+
 test('Files routes a Pico project to Pico Simulator',()=>{
   assert.equal(accountFileApp('Documents/Blink.PICO','files'),'pico-simulator');
   assert.equal(accountFileApp('Documents/Blink.pico.txt','files'),'text');

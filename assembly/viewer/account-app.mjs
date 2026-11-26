@@ -7,7 +7,7 @@ import {pdfcraftRecovery} from './pdfcraft-recovery.mjs';
 import {accountFileApp,accountFileOpenChoices,isFpgaSource,isMcraftPackage,isTextCraftSource} from './file-associations.mjs';
 
 const restoredOfficeApps = new Set(['document-editor','spreadsheet','data-explorer']);
-const appSpecificFileOpeners = new Set(['pro-wave','oxiguitar','circuit-lab','pico-simulator','esp32sim','riscv-rust','projectcraft','metriccraft']);
+const appSpecificFileOpeners = new Set(['pro-wave','oxiguitar','circuit-lab','pico-simulator','esp32sim','riscv-rust','projectcraft','metriccraft','gcode-preview']);
 
 function gridCell(args, write) {
   return args && typeof args === 'object' && !Array.isArray(args) &&
@@ -98,7 +98,7 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
         throw Error('That app is unavailable for this file.');
       }
       const target = file.openWith ?? accountFileApp(file.path,kind,file.data);
-      if (restoredOfficeApps.has(target) || target==='pdf-viewer' || target==='pico-simulator') {
+      if (restoredOfficeApps.has(target) || target==='pdf-viewer' || target==='pico-simulator' || target==='gcode-preview') {
         if (!window.CODI_VIEWER_PROFILE?.apps.includes(target)) throw Error('The editor for this file is unavailable. Use Download to keep a copy.');
         const path = '/' + file.path;
         const mirror = await host.storage.workspaceMirrorContext();

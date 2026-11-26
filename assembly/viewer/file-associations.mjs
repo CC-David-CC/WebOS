@@ -1,5 +1,6 @@
 /** Parent-owned default routing; individual apps validate actual file contents. */
 const spiceNetlist = /[.](?:cir|sp|spice)$/i;
+const gcodeToolpath = /[.](?:gcode|gco|nc)$/i;
 export const isTextCraftSource = path => /[.](?:txt|md|markdown)$/i.test(path);
 export const isMcraftPackage = path => /[.]mcraft$/i.test(path);
 export const isFpgaSource = path => /[.](?:v|cst|pcf)$/i.test(path);
@@ -53,6 +54,7 @@ export function accountFileOpenChoices(path) {
   if (isTextCraftSource(path)) return [{id:'text',label:'Text Editor'},{id:'textcraft',label:'TextCraft'}];
   if (/[.]pdf$/i.test(path)) return [{id:'pdfcraft',label:'PdfCraft'},{id:'pdf-viewer',label:'PDF Viewer (PDF.js)'}];
   if (spiceNetlist.test(path)) return [{id:'circuit-lab',label:'Circuit Lab'},{id:'text',label:'Text Editor'}];
+  if (gcodeToolpath.test(path)) return [{id:'gcode-preview',label:'G-code Preview'},{id:'text',label:'Text Editor'}];
   if (isFpgaSource(path)) return [{id:'text',label:'Text Editor'},{id:'softfpga',label:'Virtual FPGA Board'}];
   if (isMcraftPackage(path)) return [{id:'materialcraft',label:'MaterialCraft'},{id:'metriccraft',label:'MetricCraft'}];
   if (/[.]csv$/i.test(path)) return [
@@ -66,6 +68,7 @@ export function accountFileApp(path, sourceApp, data) {
     if (/[.]projectcraft$/i.test(path)) return 'projectcraft';
     if (isMcraftPackage(path) && isMetricCraftPackage(data)) return 'metriccraft';
     if (spiceNetlist.test(path)) return 'circuit-lab';
+    if (gcodeToolpath.test(path)) return 'gcode-preview';
     if (/[.]pico$/i.test(path)) return 'pico-simulator';
     if (/[.]esp32lab[.]json$/i.test(path)) return 'esp32sim';
     if (/[.]riscvlab[.]json$/i.test(path)) return 'riscv-rust';
