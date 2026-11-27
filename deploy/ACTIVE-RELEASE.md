@@ -1,5 +1,18 @@
 # Active ksu.codes release
 
+## PCBCraft board framing and compact inspector
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `7b60d3f1cbf85dd49e5e5c2420e7a1c3319ef905de2de811d24cbde31ade9570` | `8c3c83cce1a9f927602bbac3d6ccb1e734de1a97` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+PCBCraft `407944c8cc33b063cde24fcf48cc9ade8cfe5621` fits a newly opened board, collapses the panels on a phone, and makes the expanded Properties card wide enough for position and side controls. On the Galaxy S10+ at 411 CSS pixels, the hosted schematic passed touch placement, an automatically suffixed `.pc` save and direct My Files reopen. On the exact isolated viewer, the phone moved C1 through the touch ribbon, saved the server-backed board, and reopened the identical revision after signing in again. All 82 tracks stayed in the saved board. [Physical-phone screenshots and reproducible fixture](https://github.com/CC-David-CC/pcbcraft/blob/516c426a29c6eaac1cf1536a29192aab798ab22e/docs/webos-qa/PHONE.md)
+
+Desktop Chromium passed nine of eleven documented workflows, including an explicit `.pc` Save As, schematic editing, footprint movement, Undo and Redo, DRC for the sample board and fabrication export. The hosted desktop ZIP contained ten verified outputs. Touch-tablet emulation at 820 × 1050 opened the board and kept the app bar available. Authoring a new library definition and a new routed connection remain open in the parity checklist.
+
+The release verifier matched all 13 changed HTTPS paths and confirmed the running backend identity. On box-webhost, `sudo python3 -I -B /var/backups/webos-pcbcraft-phone-7b60d3f1cbf8/deploy-viewer.py rollback` restores viewer `5946993ae026a9e4f6de7bf82fe47dc5977373f63a927d2cf6606e98663c3074`.
+
 ## OpenCADStudio compact drawing tools and Files routing
 
 | Deployment | Release digest | Source assembly |
