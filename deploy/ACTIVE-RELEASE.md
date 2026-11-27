@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## Replicad filenames and dark file status
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `b9b705bdfd4543d7ce0fcbcb8da2498773cc4ae34df62ec5085f0d11cdcd76c3` | `fd162ab9b0bc01d9c6473947682dd87dc6bb8096` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+Replicad `ac2f0290fe0870cf479dc1d8208dd6b62353eb4a` adds the correct extension to a bare project or export name and uses the desktop palette for readable file status. The hosted portrait Galaxy S10+ and desktop Chromium built a 40 × 40 × 20 mm box with a 10 mm hole, rotated and zoomed it, saved a second project revision, exported STL and STEP, and reopened the editable model through My files. The STL contained 908 triangles and matched the expected dimensions. An isolated signed-in check on the S10+ and desktop Chromium recovered the same project bytes after signing in again. The phone passed 8 of 15 documented workflows. Desktop passed 12 of 15. The touch-tablet emulation kept the app bar available at 820 × 1050. The file status measured 13.32:1 on all three layouts. [Physical-phone screenshots and complete test matrix](https://github.com/CC-David-CC/replicad/blob/06d8439fd78a0f027f50d7a7ee6c8739e7afd72a/docs/webos-qa/PHONE.md)
+
+The release verifier matched all 13 changed HTTPS paths and confirmed the running backend identity. On box-webhost, `sudo python3 -I -B /var/backups/webos-replicad-phone-b9b705bdfd45/deploy-viewer.py rollback` restores the initial Replicad filename update `754d5f2fd41bdd6c7ba424a7b9cee99415053720917cbc3e05b1b4d514a04669`. Its own rollback script at `/var/backups/webos-replicad-phone-754d5f2fd41b/deploy-viewer.py` restores the PCBCraft viewer `7b60d3f1cbf85dd49e5e5c2420e7a1c3319ef905de2de811d24cbde31ade9570`.
+
 ## PCBCraft board framing and compact inspector
 
 | Deployment | Release digest | Source assembly |
