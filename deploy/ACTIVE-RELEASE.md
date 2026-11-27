@@ -1,5 +1,18 @@
 # Active ksu.codes release
 
+## SketchCraft browser STL and desktop qualification
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `b3d7562df2dc94f19abbd24d0c001d9fd04592b628ed847dfd16eb7c820ae9e6` | `b87032b9dc41f941c6b1d94cd072908dfd2ef920` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+SketchCraft `30c85a691c54f6906a947d36e130fb7d3ea8e89e` downloads binary STL in millimetres from **File → Export → Download STL (mm)**. The hosted Galaxy S10+ and Chromium downloaded a 12-triangle solid with a 200 mm height and the same bounds as the editable source. Both verified the project revision stayed byte-identical through export and checked the empty-model message. The Rust 1.99.1 build passed 94 native modeling tests, including STL byte parity and the output size limit. The 282 app tests also passed.
+
+SketchCraft passed six of eighteen phone workflows plus Fit and fifteen of eighteen desktop workflows. Desktop verification added face grouping, a saved paint material and Blueprint appearance, and an A3 drawing sheet with a 1:50 model view. External CAD import, native backup restore, and desktop plugins belong to standalone SketchCraft. Other export formats remain standalone. [Phone workflow, tests and screenshots](https://github.com/CC-David-CC/sketchcraft/blob/6d3b684ab7e3edfc09fbf56d48ca45c24c73ee17/docs/webos-qa/PHONE.md)
+
+The release verifier matched all seven changed HTTPS paths and confirmed the running backend identity. On box-webhost, `sudo python3 -I -B /var/backups/webos-sketchcraft-stl-b3d7562df2dc/deploy-viewer.py rollback` restores viewer `bdeb4cb0b66ceba720067066f84dc38af97ed612290e969a42ed2d8921aaa426`.
+
 ## SketchCraft portrait camera fit
 
 | Deployment | Release digest | Source assembly |
