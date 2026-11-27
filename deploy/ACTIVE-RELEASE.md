@@ -1,5 +1,18 @@
 # Active ksu.codes release
 
+## OpenCADStudio compact drawing tools and Files routing
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `5946993ae026a9e4f6de7bf82fe47dc5977373f63a927d2cf6606e98663c3074` | `740cac29899de74b8042b48cc58a799549f513ef` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+OpenCADStudio `860481708ca81e1631a712a04802f589b1ac2d46` makes the Draw menu, tabs and command form reachable on a phone, including with the Android keyboard open. The hosted Galaxy S10+ and desktop Chromium both drew a line, cancelled and retried Save, reopened through Files, added a second line and confirmed both saved revisions. Fresh guest sessions have separate temporary Files. A fresh sign-in on the isolated release reopened server-backed Files and saved the second revision. DWG opens directly in OpenCADStudio. DXF opens in CADCraft by default and offers OpenCADStudio under Open With. [Phone screenshots, setup and desktop workflows](https://github.com/CC-David-CC/OpenCADStudio/blob/0c24ec3261ecbd927a97dd8616574077e5e6c280/docs/webos-qa/PHONE.md)
+
+Desktop passed nine of ten documented workflows on the exact candidate, including DWG round trip, layer, dimension, paper layout, PDF export and the 3D solid DXF round trip. A malformed DWG showed a usable recovery report. Browser Xref Attach still needs a WebOS Files reader. An emulated 820 × 1050 touch tablet kept the app bar available and reached Measurement. The assembly passed 21 Files association and activation checks.
+
+The release verifier matched all 47 hosted overlay paths and confirmed the running backend identity. On box-webhost, `sudo python3 -I -B /var/backups/webos-opencadstudio-phone-5946993ae026/deploy-viewer.py rollback` restores viewer `56f8d568effe543f4efa74d0d95092b365519dbb6af3c4eea2c8445a384989c1`.
+
 ## Mesh:Tool touch menus and editable workspaces
 
 | Deployment | Release digest | Source assembly |
