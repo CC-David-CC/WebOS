@@ -375,7 +375,7 @@
 	url = ../sketchcraft.git
 [submodule "pcbcraft"]
 	path = apps/pcbcraft
-	url = https://github.com/tangency-labs/pcbcraft.git
+	url = ../pcbcraft.git
 [submodule "fieldcraft"]
 	path = apps/fieldcraft
 	url = https://github.com/tangency-labs/fieldcraft.git
