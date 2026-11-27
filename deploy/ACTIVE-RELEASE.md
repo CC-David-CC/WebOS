@@ -1,5 +1,16 @@
 # Active ksu.codes release
 
+## SketchCraft portrait camera fit
+
+| Deployment | Release digest | Source assembly |
+| --- | --- | --- |
+| Viewer | `bdeb4cb0b66ceba720067066f84dc38af97ed612290e969a42ed2d8921aaa426` | `79ab45e09b358e32598c889ab2c38ec8a5070beb` |
+| Backend | `ad91cba3b6b4c2e14a63e76fcf2ddbf9d7ae1b67b7338286c362744695586d14` | `ccda1a3f893e2bfd941a89ebe1fc9f05c5ec93da` |
+
+SketchCraft `b752e9d03967bca49cfe9417297942f6b9a101bf` fits models to both viewport dimensions. The hosted Galaxy S10+ and desktop Chromium drew a rectangular face, saved and reopened it from My files, pulled it into a six-face solid, and saved the new revision in place. The S10+ reopened the whole face and could reach Save with the software keyboard open. The exact isolated 820 × 1050 touch tablet passed the editing and file cycle. A new signed-in Chromium session reopened the byte-identical second save. Desktop passed eleven of eighteen documented workflows. External CAD import, model export, plugins and native backup restoration remain standalone SketchCraft workflows. [Phone screenshots and workflow coverage](https://github.com/CC-David-CC/sketchcraft/blob/531c5f6122cda72ccc214e70649cf76d3eacde0f/docs/webos-qa/PHONE.md)
+
+The release verifier matched all five changed HTTPS paths and confirmed the running backend identity. On box-webhost, `sudo python3 -I -B /var/backups/webos-sketchcraft-phone-bdeb4cb0b66c/deploy-viewer.py rollback` restores viewer `b9b705bdfd4543d7ce0fcbcb8da2498773cc4ae34df62ec5085f0d11cdcd76c3`.
+
 ## Replicad filenames and dark file status
 
 | Deployment | Release digest | Source assembly |
