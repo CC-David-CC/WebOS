@@ -556,3 +556,6 @@
 [submodule "prosecraft"]
 	path = apps/prosecraft
 	url = ../ProseCraft.git
+[submodule "chiralcraft"]
+	path = apps/chiralcraft
+	url = ../chiralcraft.git
