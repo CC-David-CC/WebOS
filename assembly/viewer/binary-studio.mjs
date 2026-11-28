@@ -136,6 +136,11 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     return file;
   }
 
+  function focusEditor() {
+    const canvas = view.contentDocument?.querySelector('body > canvas[tabindex], main > canvas[tabindex]');
+    (canvas || view).focus({preventScroll:true});
+  }
+
   async function load(path, expected = null) {
     const file = await read(path);
     if (expected && file.sha256 !== expected) throw Error('The project changed in Files. Open its current revision.');
@@ -150,6 +155,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     project = bridge.project_identity();
     bind(path, file.sha256);
     notify('Opened ' + fileName);
+    focusEditor();
   }
 
   async function open() {
@@ -321,7 +327,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
   return {
     element,
     ready,
-    focus:() => view.focus(),
+    focus:focusEditor,
     inspect:() => ({path:binding?.path ?? null, dirty:initialized && bridge.project_dirty()}),
     async requestClose() {
       if (pending) await pending.catch(() => {});
