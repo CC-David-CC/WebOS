@@ -4,7 +4,7 @@ function create(tag, properties) {
   return Object.assign(document.createElement(tag), properties);
 }
 
-export function mountBinaryStudio(host, {name, extension, openExtensions, imports, multipleProjects = false, fileExport}) {
+export function mountBinaryStudio(host, {name, extension, openExtensions, imports, multipleProjects = false, fileExport, scopedStorage = false, nativeURL = "./native/index.html?webos", saveExtensions = [extension]}) {
   const session = host.session();
   const owner = host.storage.workspaceOwner();
   const controller = new AbortController();
@@ -14,8 +14,13 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
   const tools = create('div', {className:'binary-studio-tools'});
   const view = create('iframe', {
     className:'binary-studio-native', title:name,
-    src:new URL('./native/index.html?webos', import.meta.url).href,
+    src:new URL(nativeURL, import.meta.url).href,
   });
+  if (scopedStorage) {
+    view.name = JSON.stringify({
+      owner, guest:session.public.kind === 'anonymous', document:String(host.w.id),
+    });
+  }
   const status = create('p', {className:'binary-studio-status', textContent:'Starting ' + name + '…'});
   status.setAttribute('role', 'status');
   element.append(styles, tools, view, status);
@@ -57,6 +62,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
         ? 'The project changed in Files. Use Save as to keep your edits.'
         : error?.message || String(error));
     }).finally(() => {
+      bridge?.cancel_file_request?.();
       pending = null;
       controls();
     });
@@ -73,7 +79,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     buttons.push(button);
     tools.append(button);
   }
-  const exportButton = create('button', {type:'button', textContent:exportSpec.label, hidden:true});
+  const exportButton = create('button', {type:'button', textContent:exportSpec.label, hidden:!exportSpec.direct});
   exportButton.addEventListener('click', () => invoke(saveExport), {signal});
   buttons.push(exportButton);
   tools.append(exportButton);
@@ -157,7 +163,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
 
   async function saveExport() {
     check();
-    const output = pendingExport;
+    const output = pendingExport ?? (exportSpec.direct ? await bridge[exportSpec.take]() : null);
     if (!output) return;
     const folder = await host.storage.pickWorkspaceFile({foldersOnly:true, signal});
     if (!folder) return;
@@ -194,7 +200,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     }
     check();
     pendingExport = undefined;
-    exportButton.hidden = true;
+    exportButton.hidden = !exportSpec.direct;
     notify('Exported ' + fileName);
   }
 
@@ -202,12 +208,12 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     check();
     const savedProject = currentProject();
     let path = binding?.path;
-    if (saveAs || !path || !path.toLowerCase().endsWith(extension)) {
+    if (saveAs || !path || !saveExtensions.some(suffix => path.toLowerCase().endsWith(suffix))) {
       const folder = await host.storage.pickWorkspaceFile({foldersOnly:true, signal});
       if (!folder) return;
       const suggested = path?.split('/').at(-1);
       const defaultName = suggested
-        ? suggested.slice(0, suggested.lastIndexOf('.')) + (copy ? ' copy' : '') + extension
+        ? (copy ? suggested.replace(/(\.[^.]+)$/, ' copy$1') : suggested)
         : name + (copy ? ' copy' : '') + extension;
       const chosen = await host.ui.prompt('File name', {
         title:'Save ' + name + ' project', value:defaultName, confirmLabel:'Save', signal,
@@ -215,13 +221,14 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
       if (chosen == null) return;
       let fileName = chosen.trim();
       if (!fileName || /[/\\\x00-\x1f]/.test(fileName)) throw Error('Enter one project name.');
-      if (!fileName.toLowerCase().endsWith(extension)) fileName += extension;
-      path = workspacePath((folder === '/' ? '' : folder + '/') + fileName, [extension]);
+      if (!saveExtensions.some(suffix => fileName.toLowerCase().endsWith(suffix))) fileName += extension;
+      path = workspacePath((folder === '/' ? '' : folder + '/') + fileName, saveExtensions);
     }
     check();
     if (savedProject !== currentProject()) throw Error('The open project changed. Save the current project again.');
     if (copy && path === binding?.path) throw Error('Choose a different file name for the copy.');
-    const snapshot = bridge.project_snapshot();
+    const snapshot = await bridge.project_snapshot(path);
+    check();
     if (!ArrayBuffer.isView(snapshot.bytes) || typeof snapshot.revision !== 'string' ||
         snapshot.bytes.byteLength === 0) throw Error(name + ' could not prepare a project to save.');
     const data = new Blob([snapshot.bytes], {type:'application/octet-stream'});

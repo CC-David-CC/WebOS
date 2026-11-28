@@ -7,7 +7,7 @@ import {pdfcraftRecovery} from './pdfcraft-recovery.mjs';
 import {accountFileApp,accountFileOpenChoices,isFpgaSource,isMcraftPackage,isTextCraftSource} from './file-associations.mjs';
 
 const restoredOfficeApps = new Set(['document-editor','spreadsheet','data-explorer']);
-const appSpecificFileOpeners = new Set(['pro-wave','oxiguitar','circuit-lab','pico-simulator','esp32sim','riscv-rust','projectcraft','metriccraft']);
+const appSpecificFileOpeners = new Set(['pro-wave','oxiguitar','circuit-lab','pico-simulator','esp32sim','riscv-rust','projectcraft','metriccraft','sewing-pattern-drafter','prosecraft','chiralcraft','fashioncraft','clothcraft','fontcraft','diacraft']);
 
 function gridCell(args, write) {
   return args && typeof args === 'object' && !Array.isArray(args) &&
@@ -97,7 +97,11 @@ export function mountAccountApp(mount, host, kind, officeRecovery = null, appAge
       if (file.openWith!==undefined && (kind!=='files' || !openChoices(file.path).some(app=>app.id===file.openWith))) {
         throw Error('That app is unavailable for this file.');
       }
-      const target = file.openWith ?? accountFileApp(file.path,kind,file.data);
+      let target = file.openWith ?? accountFileApp(file.path,kind,file.data);
+      if (!file.openWith && target === 'clothcraft' && !window.CODI_VIEWER_PROFILE?.apps.includes(target) &&
+          openChoices(file.path).some(choice => choice.id === 'fashioncraft')) target = 'fashioncraft';
+      if (['sewing-pattern-drafter','prosecraft','chiralcraft','fashioncraft','fontcraft','diacraft'].includes(target) &&
+          !window.CODI_VIEWER_PROFILE?.apps.includes(target)) throw Error('The editor for this file is unavailable. Use Download to keep a copy.');
       if (restoredOfficeApps.has(target) || target==='pdf-viewer' || target==='pico-simulator') {
         if (!window.CODI_VIEWER_PROFILE?.apps.includes(target)) throw Error('The editor for this file is unavailable. Use Download to keep a copy.');
         const path = '/' + file.path;

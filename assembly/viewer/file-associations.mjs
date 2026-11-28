@@ -50,6 +50,9 @@ function isMetricCraftPackage(data) {
 
 /** Alternatives exposed by Files in their usual order. */
 export function accountFileOpenChoices(path) {
+  if (/[.]clothcraft[.]json$/i.test(path)) return [{id:'clothcraft',label:'ClothCraft'},{id:'fashioncraft',label:'FashionCraft'}];
+  if (/[.]obj$/i.test(path)) return [{id:'text',label:'Text Editor'},{id:'fashioncraft',label:'FashionCraft avatar'}];
+  if (/[.](diacraft|vsdx|odg)$/i.test(path)) return [{id:'diacraft',label:'DiaCraft'}];
   if (isTextCraftSource(path)) return [{id:'text',label:'Text Editor'},{id:'textcraft',label:'TextCraft'}];
   if (/[.]pdf$/i.test(path)) return [{id:'pdfcraft',label:'PdfCraft'},{id:'pdf-viewer',label:'PDF Viewer (PDF.js)'}];
   if (spiceNetlist.test(path)) return [{id:'circuit-lab',label:'Circuit Lab'},{id:'text',label:'Text Editor'}];
@@ -90,6 +93,12 @@ export function accountFileApp(path, sourceApp, data) {
   if (/[.]mathcraft2$/i.test(path)) return 'mathcraft2';
   if (/[.]m$/i.test(path)) return 'matcraft';
   if (/[.]qproj$/i.test(path)) return 'cuepool';
+  if (/[.]pdraft$/i.test(path)) return 'sewing-pattern-drafter';
+  if (/[.]prosecraft$/i.test(path)) return 'prosecraft';
+  if (/[.]cdxml$/i.test(path)) return 'chiralcraft';
+  if (/[.]fashioncraft[.]json$/i.test(path)) return 'fashioncraft';
+  if (/[.]fontcraft$/i.test(path)) return 'fontcraft';
+  if (/[.](diacraft|vsdx|odg)$/i.test(path)) return 'diacraft';
   if (/[.]clothcraft[.]json$/i.test(path)) return 'clothcraft';
   if (/[.]pdn$/i.test(path)) return 'paint-rs';
   if (/[.]stitchfoundry$/i.test(path)) return 'embroidery-studio';

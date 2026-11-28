@@ -35,17 +35,22 @@ const graphicsEngines = [
   if(release && review) throw Error(`Choose one ${engine.name} build input`);
   return release || review ? [{...engine,site:release??review,review:!!review}] : [];
 });
-const knownFlags = ['--account-management','--freedawm-site','--lovecraft-site','--owner-monitor','--rustirc-demo','--webos-chat','--webos-chat-demo','--gpu-monitor','--hdl-workbench-site','--tracedraw-site','--scriobh-site','--mathcraft2-site','--subcraft-site','--transit-site','--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
+const editorSilos = {
+  'sewing-pattern-drafter':'gusset-pattern-drafter', prosecraft:'prosecraft',
+  chiralcraft:'chiralcraft', fashioncraft:'fashioncraft', fontcraft:'fontcraft', diacraft:'diacraft',
+};
+const filesPreview = flags['--profile'] === 'files-preview';
+const knownFlags = ['--profile', ...Object.keys(editorSilos).map(id => '--' + id + '-site'), '--account-management','--freedawm-site','--lovecraft-site','--owner-monitor','--rustirc-demo','--webos-chat','--webos-chat-demo','--gpu-monitor','--hdl-workbench-site','--tracedraw-site','--scriobh-site','--mathcraft2-site','--subcraft-site','--transit-site','--matcraft-site','--wordcraft-latex-runtime','--cuepool-site','--clothcraft-site','--paintcraft-site','--paint-rs-site','--learning-games','--notebook-site','--notecraft-site','--i-success-site','--acad-site','--speech-inputs','--output','--wordcraft-site','--pdfcraft-site','--gridcraft-site','--deckcraft-site','--terminal','--linux-x11-packages','--linux-x11-chromium-inputs',
   '--photocraft-site','--test-photocraft-site',
   ...['vectorcraft','figcraft','anicraft','lightcraft','designcraft','soundcraft','filmcraft','effectcraft','cadcraft','texturecraft','materialcraft','sketchcraft','solidcraft','pcbcraft','fieldcraft'].flatMap(id=>['--'+id+'-site','--test-'+id+'-site'])];
-if(!flags['--output']||!flags['--wordcraft-site']||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
+if(!flags['--output']||(!flags['--wordcraft-site'] && !filesPreview)||(flags['--profile'] && !filesPreview)||Object.keys(flags).some(k=>!knownFlags.includes(k))) {
   throw Error('Use --output NEW_EXTERNAL_DIRECTORY --wordcraft-site VERIFIED_ENGINE_SITE with optional supported component site flags');
 }
 if(flags['--photocraft-site']&&flags['--test-photocraft-site'])throw Error('Choose a single PhotoCraft build input');
 if(flags['--terminal']!==undefined&&!['enabled','account-home'].includes(flags['--terminal']))throw Error('Use --terminal enabled or --terminal account-home to package Terminal');
 const terminalEnabled=flags['--terminal']!==undefined;
 const accountGuestHome=flags['--terminal']==='account-home';
-const output=path.resolve(flags['--output']),wordcraft=path.resolve(flags['--wordcraft-site']);
+const output=path.resolve(flags['--output']),wordcraft=flags['--wordcraft-site'] && path.resolve(flags['--wordcraft-site']);
 if(output===root||output.startsWith(root+path.sep)||root.startsWith(output+path.sep))throw Error('Output must be outside source');
 for(let p=output;path.dirname(p)!==p;p=path.dirname(p)){try{if((await lstat(p)).isSymbolicLink())throw Error('Direct output paths required');}catch(e){if(e.code!=='ENOENT')throw e;}}
 try{await lstat(output);throw Error('Refusing existing output');}catch(e){if(e.code!=='ENOENT')throw e;}
@@ -64,9 +69,11 @@ if (latexRuntime) {
     throw Error('A pinned WordCraft LaTeX runtime build receipt is required');
   }
 }
-const engine=JSON.parse(await readFile(path.join(wordcraft,'component-build.json'),'utf8'));
+const engine=wordcraft && JSON.parse(await readFile(path.join(wordcraft,'component-build.json'),'utf8'));
+if (wordcraft) {
 if(engine.schema!=='webos-component-build/1'||engine.component!=='wordcraft'||!Array.isArray(engine.files)||!engine.files.length)throw Error('WordCraft build receipt required');
 execFileSync('git',['-C',path.join(root,'apps/wordcraft'),'merge-base','--is-ancestor',engine.sourceCommit,'HEAD']);
+}
 let pdfcraft=null,pdfEngine=null;
 if(flags['--pdfcraft-site']){
   pdfcraft=path.resolve(flags['--pdfcraft-site']);pdfEngine=JSON.parse(await readFile(path.join(pdfcraft,'component-build.json'),'utf8'));
@@ -180,7 +187,7 @@ await emitBuild({...servicesSource,outdir:path.join(output,'.virtual-services'),
   for(const file of files)await put('assets/desktop/'+file.name.replace(/^stdin[.]/,'account-services.'),file.bytes);
 });
 const apps=[];
-for(const id of ['calculator','files','text','wordcraft',...(pdfEngine?['pdfcraft']:[]),...additionalEngines.map(engine=>engine.id),'help']){
+for(const id of ['calculator','files','text',...(engine?['wordcraft']:[]),...(pdfEngine?['pdfcraft']:[]),...additionalEngines.map(engine=>engine.id),'help']){
   if (id === 'calculator') {
     const graphing = 'apps/calculator/graphing';
     const files = [];
@@ -372,6 +379,7 @@ if (flags['--learning-games'] !== undefined) {
 
 // These native mounts own their Shadow DOM styles. Keep the Isobar worker, ES
 // modules and tile assets at their original relative URLs in the hashed bundle.
+if (!filesPreview) {
 const mapsRoot='apps/isobar';
 const mapFiles=execFileSync('git',['-C',path.join(root,mapsRoot),'ls-files','-z','--','app.mjs','js','css','vendor','favicon.svg','LICENSE'],{encoding:'utf8'}).split('\0').filter(Boolean);
 const mapBundle=[];
@@ -404,6 +412,7 @@ try {
 }
 if(terminalEnabled)apps.push(await buildTerminal({root,output,copySource,accountHome:accountGuestHome,
   recordSource:async relative=>sourceInputs.set(relative,hash(await readFile(path.join(root,relative))))}));
+}
 if (flags['--acad-site']) {
   const sourceCommit=execFileSync('git',['-C',root,'rev-parse','HEAD:apps/acad'],{encoding:'utf8'}).trim();
   const checkout=path.join(root,'apps/acad');
@@ -691,6 +700,53 @@ if (flags['--cuepool-site']) {
   }
   await registerFiles('cuepool',bundle);
 }
+for (const [id, silo] of Object.entries(editorSilos)) {
+  const site = flags['--' + id + '-site'];
+  if (!site) continue;
+  const checkout = path.join(root, 'apps', silo);
+  const git = (dir, ...args) => execFileSync('git', ['-C', dir, ...args], {encoding:'utf8'}).trim();
+  const pin = git(root, 'rev-parse', 'HEAD:apps/' + silo);
+  const receipt = JSON.parse(await readFile(path.join(site, 'component-build.json')));
+  if (receipt.schema !== 'webos-component-build/1' || receipt.component !== id ||
+      pin !== receipt.sourceCommit || pin !== git(checkout, 'rev-parse', 'HEAD') ||
+      receipt.sourceTree !== git(checkout, 'rev-parse', 'HEAD^{tree}') || !Array.isArray(receipt.files)) {
+    throw Error('Invalid ' + id + ' component receipt');
+  }
+  const files = [], names = new Set();
+  for (const record of receipt.files) {
+    const name = record.path;
+    if (!safe(name) || !/^[a-zA-Z0-9_@+./-]+$/.test(name) || names.has(name)) throw Error('Invalid ' + id + ' artifact path');
+    names.add(name);
+    if (!(await lstat(path.join(site, name))).isFile()) throw Error('Expected regular artifact ' + name);
+    const bytes = await readFile(path.join(site, name));
+    if (bytes.length !== record.bytes || hash(bytes) !== record.sha256) throw Error('Artifact mismatch: ' + name);
+    files.push({name, bytes});
+  }
+  if (!names.has('index.mjs') || ![...names].some(n => n.startsWith('legal/')) ||
+      !files.find(f => f.name === 'index.mjs').bytes.equals(execFileSync('git', ['-C', checkout, 'show', 'HEAD:webos/app.mjs']))) {
+    throw Error('Missing or unpinned editor mount or notices: ' + id);
+  }
+  if (id !== 'fashioncraft') {
+    for (const [name, source] of [['binary-studio.mjs','binary-studio.mjs'], ['workspace.css','binary-studio.css'],
+        ...(['sewing-pattern-drafter','prosecraft'].includes(id) ? [['native/scoped-editor-storage.js','scoped-editor-storage.js']] : [])]) {
+      if (names.has(name)) throw Error('Conflicting host file: ' + name);
+      const relative = 'assembly/viewer/' + source;
+      const bytes = await readFile(path.join(root, relative));
+      sourceInputs.set(relative, hash(bytes));
+      files.push({name, bytes});
+    }
+  }
+  if (id === 'prosecraft') {
+    const mount = [];
+    for (const file of files) {
+      if (file.name.startsWith('native/')) await put('prosecraft/' + file.name.slice(7), file.bytes);
+      else mount.push(file);
+    }
+    await put('prosecraft/component-build.json', JSON.stringify(receipt));
+    await registerFiles(id, mount);
+  } else await registerFiles(id, files);
+}
+
 if (flags['--clothcraft-site']) {
   const appRoot = 'apps/clothcraft';
   const checkout = path.join(root, appRoot);
@@ -852,7 +908,7 @@ for (const id of ['drakon-python','drakon-javascript','drakon-bash']) {
   await registerFiles(id,bundle);
 }
 // One independently pinned Narrator repository supplies the window and speech API.
-{
+if (!filesPreview) {
   const appRoot = 'apps/narrator';
   execFileSync(process.execPath, ['scripts/inventory.mjs', '--check'], { cwd: path.join(root, appRoot) });
   const manifest = appRoot + '/webos-files.json';
@@ -888,8 +944,10 @@ if(speechInputs){
 await put('viewer-profile.json',JSON.stringify({version:'webos-existing-viewer/1',apps:apps.map(a=>a.id),guest:terminalEnabled,...(accountGuestHome?{accountGuestHome:true}:{}),speech:!!speechReceipt,offlineCache:false}));
 await put('assets/desktop/cache-manifest.json',JSON.stringify({version:'webos-viewer-cache-disabled/1',id:hash(Buffer.concat([await readFile(path.join(output,'bootstrap.js')),await readFile(path.join(output,'viewer-profile.json')),await readFile(path.join(output,'assets/desktop/apps.json'))]))}));
 let engineBytes=0;
+if (engine) {
 for(const file of engine.files){if(!safe(file.path)||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid engine path/size');const bytes=await readFile(path.join(wordcraft,file.path));if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error('Engine input hash mismatch');await put('wordcraft/'+file.path,bytes);engineBytes+=bytes.length;}
 await put('wordcraft/component-build.json',JSON.stringify(engine,null,2)+'\n');
+}
 let pdfEngineBytes=0;
 if(pdfEngine){
   for(const file of pdfEngine.files){if(!safe(file.path)||!Number.isSafeInteger(file.bytes)||file.bytes<0)throw Error('Invalid PdfCraft engine path/size');const bytes=await readFile(path.join(pdfcraft,file.path));if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)throw Error('PdfCraft engine input hash mismatch');await put('pdfcraft/'+file.path,bytes);pdfEngineBytes+=bytes.length;}
@@ -924,9 +982,10 @@ for(const {id,site,receipt,receiptBytes} of additionalEngines){
     ...(graphicsEngines.some(app=>app.id===id)?{sourceTree:receipt.sourceTree}:{})};
 }
 // No backend/package/credential state is included in public output.
-const receipt={schema:'webos-existing-viewer-build/1',engine:{sourceCommit:engine.sourceCommit,bytes:engineBytes,receiptSHA256:hash(await readFile(path.join(wordcraft,'component-build.json')))},
+const receipt={schema:'webos-existing-viewer-build/1',engine:engine ? {sourceCommit:engine.sourceCommit,bytes:engineBytes,receiptSHA256:hash(await readFile(path.join(wordcraft,'component-build.json')))} : null,
+  ...(filesPreview ? {developmentOnly:true,profile:'files-preview'} : {}),
   ...(photoTest||graphicsEngines.some(app=>app.review)?{developmentOnly:true}:{}),
   ...(pdfEngine?{pdfcraftEngine:{sourceCommit:pdfEngine.sourceCommit,bytes:pdfEngineBytes,receiptSHA256:hash(await readFile(path.join(pdfcraft,'component-build.json')))}}:{}),
-  ...(speechReceipt?{speechEngine:speechReceipt}:{}),...additionalReceipts,sourceInputs:[...sourceInputs].map(([path,sha256])=>({path,sha256})),apps:apps.map(a=>a.id),qualification:'Source-assembled candidate. Real viewer/browser/account acceptance remains separate; WordCraft engine is a verified prebuilt input.'};
+  ...(speechReceipt?{speechEngine:speechReceipt}:{}),...additionalReceipts,sourceInputs:[...sourceInputs].map(([path,sha256])=>({path,sha256})),apps:apps.map(a=>a.id),qualification:filesPreview ? 'Isolated Files workflow candidate.' : 'Source-assembled candidate. Real viewer/browser/account acceptance remains separate; WordCraft engine is a verified prebuilt input.'};
 await put('viewer-build.json',JSON.stringify(receipt,null,2)+'\n');
-console.log(JSON.stringify({output,apps:receipt.apps,sourceInputs:sourceInputs.size,engineBytes,engineSourceCommit:engine.sourceCommit,guest:terminalEnabled,sourceAssembled:true}));
+console.log(JSON.stringify({output,apps:receipt.apps,sourceInputs:sourceInputs.size,engineBytes,engineSourceCommit:engine?.sourceCommit,guest:terminalEnabled,sourceAssembled:true}));

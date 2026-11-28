@@ -140,3 +140,18 @@ test('TextCraft is an alternate opener for plain text and Markdown files', () =>
   assert.deepEqual(accountFileOpenChoices('Documents/Notes.md.bak'), []);
   assert.deepEqual(accountFileOpenChoices('Documents/Notes.py'), []);
 });
+
+test('Files routes the six independent editors and preserves existing garment and drawing formats', () => {
+  const samples = {
+    'Pattern.PDRAFT':'sewing-pattern-drafter', 'Novel.prosecraft':'prosecraft',
+    'Formula.CDXML':'chiralcraft', 'Dress.fashioncraft.json':'fashioncraft', 'Faces.fontcraft':'fontcraft',
+    'Plan.diacraft':'diacraft', 'Plan.VSDX':'diacraft', 'Plan.ODG':'diacraft',
+    'Dress.clothcraft.json':'clothcraft', 'Map.drawio':'diagrams-net', 'Sketch.excalidraw':'excalidraw',
+  };
+  for (const [file,app] of Object.entries(samples)) {
+    assert.equal(accountFileApp('Documents/'+file,'files'),app);
+    assert.equal(accountFileApp(file+'.txt','files'),'text');
+  }
+  assert.deepEqual(accountFileOpenChoices('old.CLOTHCRAFT.JSON').map(x=>x.id),['clothcraft','fashioncraft']);
+  assert.deepEqual(accountFileOpenChoices('model.obj').map(x=>x.id),['text','fashioncraft']);
+});
