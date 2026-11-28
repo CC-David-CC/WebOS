@@ -550,3 +550,21 @@
 [submodule "account-management"]
 	path = apps/account-management
 	url = ../account-management.git
+[submodule "gusset-pattern-drafter"]
+	path = apps/gusset-pattern-drafter
+	url = https://github.com/CC-David-CC/gusset-pattern-drafter.git
+[submodule "prosecraft"]
+	path = apps/prosecraft
+	url = https://github.com/CC-David-CC/ProseCraft.git
+[submodule "chiralcraft"]
+	path = apps/chiralcraft
+	url = https://github.com/CC-David-CC/chiralcraft.git
+[submodule "fashioncraft"]
+	path = apps/fashioncraft
+	url = https://github.com/CC-David-CC/fashioncraft.git
+[submodule "fontcraft"]
+	path = apps/fontcraft
+	url = https://github.com/CC-David-CC/FontCraft.git
+[submodule "diacraft"]
+	path = apps/diacraft
+	url = https://github.com/CC-David-CC/diacraft.git
