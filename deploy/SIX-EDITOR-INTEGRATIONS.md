@@ -1,0 +1,20 @@
+# Six editor integrations on surface16-2
+
+Local integration branch `webos/six-app-integrations` in the assembly and all six app repositories. The source baseline for rollback is `e6339b63a013abd53f5e5a5fe81a5c0fef631dc7`. Each editor launches from the existing Desktop. Accounts and Files own authentication, file bytes, and revision checks. The editors run in the browser. FashionCraft runs its solver in a browser worker. The development service uses a private account store and synthetic documents.
+
+| Desktop category | Editor and source | Browser entry and package recipe | Files workflow and current evidence |
+| --- | --- | --- | --- |
+| CAD | ChiralCraft, `apps/chiralcraft` | `webos/app.mjs`, native eframe editor, `python3 scripts/package_editor.py chiralcraft OUT` | CDXML and separate SVG. Native workspace tests passed before browser qualification. Browser round trip pending. |
+| Crafts | FashionCraft, `apps/fashioncraft` | `webos/app.mjs`, Rust/Wasm worker, build commands in `webos/README.md` | Fitting project, relative OBJ avatar, simulation state and draped OBJ export. Existing ClothCraft template routing has an alternate opener. Browser round trip pending. |
+| Crafts | Sewing Pattern Drafter, `apps/gusset-pattern-drafter` | `webos/app.mjs`, existing browser editor, `python3 apps/gusset-pattern-drafter/webos/build.py OUT` | Physical S10+ portrait tested at 411 CSS pixels. Drew by touch, saved and reopened an editable rectangle from Files, verified the Apps bar on minimize, and exported a separate print HTML file. The multi-sheet A4 check uses a larger two-piece fixture. |
+| Diagramming | DiaCraft, `apps/diacraft` | `webos/app.mjs`, existing eframe web window, `python3 scripts/package_editor.py diacraft OUT` | Native drawing, VSDX, ODG and separate SVG. File serialization uses the native writer. Qualification of each format is pending. |
+| Graphics | FontCraft, `apps/fontcraft` | `webos/app.mjs`, Rust font parser, browser specimen and glyph view, `python3 scripts/package_editor.py fontcraft OUT` | Signed-in Chromium rejected a malformed font, imported licensed DejaVu Sans, paged glyphs, edited a specimen, saved a collection, exported PNG, reopened in a fresh sign-in and saved a changed revision. Physical S10+ imported, typed, inserted a glyph, saved and minimized with the Apps bar restored. |
+| Office | ProseCraft, `apps/prosecraft` | `webos/app.mjs`, Svelte manuscript editor, `python3 scripts/package_editor.py prosecraft OUT` | Manuscript and separate Markdown. A static entry returned a Svelte 404 in the Desktop iframe. The source has a routing fix. Browser qualification of the rebuilt package is pending. |
+
+## Assembly and evidence
+
+Use Node 24, Rust 1.100 with the wasm32-unknown-unknown target and wasm-bindgen CLI 0.2.130 for ChiralCraft, FontCraft and DiaCraft. FashionCraft uses 0.2.129. The component builders write to new directories outside the checkout. The parent reads and validates each component receipt against its selected gitlink and payload hashes. `git ls-tree HEAD apps/APP` gives the selected commit.
+
+The isolated Desktop build accepts `--profile files-preview`, `--output OUT` and `--APP-site DIRECTORY` for each app. Sewing uses `--sewing-pattern-drafter-site`. The release build requires its compatible WordCraft input. Enable the selected six together for combined acceptance. To reproduce the previous configuration, build the original parent commit in a separate checkout with its recorded submodule pins. No account database rollback is involved.
+
+Private evidence is under the sibling `qualification/` directory on surface16-2. FontCraft receipts are `fontcraft-checks.json` and `fontcraft-phone-checks.json`. Reviewed screenshots include `desktop-fontcraft-collection.png`, `phone-sewing-fullscreen.png` and `phone-sewing-reopened.png`. The garment layout, native-format diagram interchange, manuscript vault isolation, combined candidate and release checks remain open. File associations passed all 13 tests in `logs/associations`.
