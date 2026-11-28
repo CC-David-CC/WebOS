@@ -140,7 +140,10 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     const file = await read(path);
     if (expected && file.sha256 !== expected) throw Error('The project changed in Files. Open its current revision.');
     const fileName = path.split('/').at(-1);
-    if (!(await bridge.open_project(fileName, new Uint8Array(file.data)))) {
+    const bytes = new Uint8Array(file.data);
+    if (bridge.would_replace_dirty?.(fileName, bytes) &&
+        !await host.ui.confirm('Replace the edited manuscript with the copy in Files?', {confirmLabel:'Replace', signal})) return;
+    if (!(await bridge.open_project(fileName, bytes))) {
       throw Error(name + ' could not open this project.');
     }
     check();
