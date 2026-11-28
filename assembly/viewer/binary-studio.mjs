@@ -5,6 +5,13 @@ function create(tag, properties) {
   return Object.assign(document.createElement(tag), properties);
 }
 
+export function suggestedProjectName(path, name, extension, saveExtensions, copy) {
+  const suggested = path?.split('/').at(-1);
+  const suffix = suggested && saveExtensions.find(ext => suggested.toLowerCase().endsWith(ext));
+  const stem = suffix ? suggested.slice(0, -suffix.length) : suggested?.replace(/\.[^.]+$/, '') ?? name;
+  return stem + (copy ? ' copy' : '') + (suffix ? suggested.slice(-suffix.length) : extension);
+}
+
 export function mountBinaryStudio(host, {name, extension, openExtensions, imports, multipleProjects = false, fileExport, sourceArchive, scopedStorage = false, nativeURL = "./native/index.html?webos", saveExtensions = [extension]}) {
   const session = host.session();
   const owner = host.storage.workspaceOwner();
@@ -229,10 +236,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     if (saveAs || !path || !saveExtensions.some(suffix => path.toLowerCase().endsWith(suffix))) {
       const folder = await host.storage.pickWorkspaceFile({foldersOnly:true, signal});
       if (!folder) return;
-      const suggested = path?.split('/').at(-1);
-      const defaultName = suggested
-        ? (copy ? suggested.replace(/(\.[^.]+)$/, ' copy$1') : suggested)
-        : name + (copy ? ' copy' : '') + extension;
+      const defaultName = suggestedProjectName(path, name, extension, saveExtensions, copy);
       const chosen = await host.ui.prompt('File name', {
         title:'Save ' + name + ' project', value:defaultName, confirmLabel:'Save', signal,
       });
