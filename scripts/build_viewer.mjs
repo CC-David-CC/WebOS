@@ -379,6 +379,7 @@ if (flags['--learning-games'] !== undefined) {
 
 // These native mounts own their Shadow DOM styles. Keep the Isobar worker, ES
 // modules and tile assets at their original relative URLs in the hashed bundle.
+await copySource('apps/pohoda/app/icon.svg','assets/desktop/weather.svg');
 if (!filesPreview) {
 const mapsRoot='apps/isobar';
 const mapFiles=execFileSync('git',['-C',path.join(root,mapsRoot),'ls-files','-z','--','app.mjs','js','css','vendor','favicon.svg','LICENSE'],{encoding:'utf8'}).split('\0').filter(Boolean);
@@ -390,7 +391,6 @@ for(const name of mapFiles){
 }
 await registerFiles('weather-maps',mapBundle);
 await copySource('apps/isobar/favicon.svg','assets/desktop/weather-maps.svg');
-await copySource('apps/pohoda/app/icon.svg','assets/desktop/weather.svg');
 const weatherDist=await mkdtemp(path.join(tmpdir(),'webos-weather-dist-'));
 try {
   execFileSync(process.execPath,['scripts/build-webos.mjs','--outdir',weatherDist],{cwd:path.join(root,'apps/pohoda'),stdio:['ignore','inherit','inherit']});
