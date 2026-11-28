@@ -1,4 +1,5 @@
 const digest = /^[a-f0-9]{64}$/;
+const guestEditorStorage = new WeakMap();
 
 function create(tag, properties) {
   return Object.assign(document.createElement(tag), properties);
@@ -17,6 +18,12 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     src:new URL(nativeURL, import.meta.url).href,
   });
   if (scopedStorage) {
+    if (session.public.kind === 'anonymous') {
+      if (!guestEditorStorage.has(session)) {
+        guestEditorStorage.set(session, {local:new Map(), session:new Map()});
+      }
+      Object.defineProperty(view, 'webosGuestStorage', {value:guestEditorStorage.get(session)});
+    }
     view.name = JSON.stringify({
       owner, guest:session.public.kind === 'anonymous', document:String(host.w.id),
     });

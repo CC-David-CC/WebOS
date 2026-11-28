@@ -1,5 +1,5 @@
 // Loaded before the embedded editor. Each account owns its vault and each guest
-// uses tab storage. Only the current editor window can recover its autosave.
+// uses memory owned by its current Desktop session. Only the current editor window can recover its autosave.
 (() => {
   const {owner, guest, document:windowId} = JSON.parse(window.name);
   if (window === window.parent || typeof owner !== 'string' || !owner || !windowId) {
@@ -11,9 +11,17 @@
     const perWindow = /autosave|^pdraft:file$/i.test(key);
     return namespace + (perWindow ? 'windows/' + encodeURIComponent(windowId) + '/' : 'vault/') + key;
   }
-  function scoped(storage) {
+  function memory(map) {
+    return {
+      keys:() => Array.from(map.keys()),
+      getItem:key => map.get(key) ?? null,
+      setItem:(key,value) => map.set(key,String(value)),
+      removeItem:key => map.delete(key),
+    };
+  }
+  function scoped(storage, inMemory = false) {
     function keys() {
-      return Object.keys(storage).flatMap(key => {
+      return (inMemory ? storage.keys() : Object.keys(storage)).flatMap(key => {
         if (!key.startsWith(namespace)) return [];
         const name = key.slice(key.indexOf('/', namespace.length) + 1);
         const candidate = name.startsWith(encodeURIComponent(windowId) + '/')
@@ -30,10 +38,13 @@
       clear() { keys().forEach(key => storage.removeItem(prefix(key))); },
     };
   }
-  const persistent = window.localStorage, temporary = window.sessionStorage, databases = window.indexedDB;
+  const temporary = guest ? window.frameElement.webosGuestStorage : null;
+  const local = guest ? memory(temporary.local) : window.localStorage;
+  const session = guest ? memory(temporary.session) : window.sessionStorage;
+  const databases = window.indexedDB;
   Object.defineProperties(window, {
-    localStorage:{value:scoped(guest ? temporary : persistent)},
-    sessionStorage:{value:scoped(temporary)},
+    localStorage:{value:scoped(local,guest)},
+    sessionStorage:{value:scoped(session,guest)},
     indexedDB:{value:guest ? undefined : {
       open:(name, ...args) => databases.open(prefix(name), ...args),
       deleteDatabase:name => databases.deleteDatabase(prefix(name)),
