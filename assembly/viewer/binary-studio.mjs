@@ -4,7 +4,7 @@ function create(tag, properties) {
   return Object.assign(document.createElement(tag), properties);
 }
 
-export function mountBinaryStudio(host, {name, extension, openExtensions, imports, multipleProjects = false, fileExport, scopedStorage = false, nativeURL = "./native/index.html?webos", saveExtensions = [extension]}) {
+export function mountBinaryStudio(host, {name, extension, openExtensions, imports, multipleProjects = false, fileExport, sourceArchive, scopedStorage = false, nativeURL = "./native/index.html?webos", saveExtensions = [extension]}) {
   const session = host.session();
   const owner = host.storage.workspaceOwner();
   const controller = new AbortController();
@@ -83,6 +83,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
   exportButton.addEventListener('click', () => invoke(saveExport), {signal});
   buttons.push(exportButton);
   tools.append(exportButton);
+  if (sourceArchive) tools.append(create('a', {textContent:'Source',download:'',href:new URL(sourceArchive,import.meta.url).href}));
   controls();
 
   function workspacePath(value, allowed) {
@@ -114,8 +115,9 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     return next;
   }
 
-  function acceptDiscard() {
-    return !bridge?.project_dirty() ||
+  function acceptDiscard(all = false) {
+    const dirty = all && bridge?.workspace_dirty ? bridge.workspace_dirty() : bridge?.project_dirty();
+    return !dirty ||
       host.ui.confirm('Discard unsaved changes to this project?', {confirmLabel:'Discard', signal});
   }
 
@@ -261,7 +263,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     project = bridge.project_identity();
     unregister = context.registerFileWriter?.(async () => {
       if (pending) await pending;
-      if (bridge.project_dirty()) throw Error('Save your ' + name + ' project before transferring Files.');
+      if ((bridge.workspace_dirty ?? bridge.project_dirty)()) throw Error('Save your ' + name + ' project before transferring Files.');
       paused = true;
       controls();
       return () => { paused = false; controls(); };
@@ -307,7 +309,7 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     inspect:() => ({path:binding?.path ?? null, dirty:initialized && bridge.project_dirty()}),
     async requestClose() {
       if (pending) await pending.catch(() => {});
-      return acceptDiscard();
+      return acceptDiscard(true);
     },
     dispose() {
       controller.abort();
