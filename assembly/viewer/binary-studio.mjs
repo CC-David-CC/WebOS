@@ -281,7 +281,13 @@ export function mountBinaryStudio(host, {name, extension, openExtensions, import
     const file = host.w.launchContext;
     if (file) {
       if (file.storage !== 'account' || file.owner !== owner) throw Error('Open a project from your Files.');
-      await load(workspacePath(file.path, openExtensions), file.restore ? null : file.sha256);
+      try {
+        await load(workspacePath(file.path, openExtensions), file.restore ? null : file.sha256);
+      } catch (error) {
+        check();
+        bind(null, null);
+        notify(error?.message || String(error));
+      }
     } else notify(name + ' is ready');
     initialized = true;
     controls();
